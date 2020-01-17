@@ -1,16 +1,16 @@
+library(BiDAG)
+
 
 generateDAG <- function(n, e) {
   # n is number of nodes
   # e is expected number of parents
-  n_offdiag <- n*(n - 1)/2
-  offdiag_vec <- rbinom(n_offdiag, 1, e*n/n_offdiag)
-  
+  n_offdiag <- n * (n - 1) / 2
+  offdiag_vec <- rbinom(n_offdiag, 1, e * n / n_offdiag)
+
   DAG <- matrix(0, n, n)
   DAG[upper.tri(DAG)] <- offdiag_vec
-
   permy <- sample(1:n)
-  
-  DAG[permy, permy]
+  return(DAG[permy, permy])
 }
 
 generateBinData <- function(DAG, N) {
@@ -27,28 +27,26 @@ generateBinData <- function(DAG, N) {
     lp <- length(parents)
     if (lp == 0) {
       reg_local <- runif(1, -b_unif, b_unif)
-      p_local <- 1/(1 + exp(reg_local)) # sample and inverse logit transform
+      p_local <- 1 / (1 + exp(reg_local)) # sample and inverse logit transform
       binData[, ii] <- rbinom(N, 1, p_local)
     }
     if (lp == 1) {
-      reg_local <- runif(1, -b_unif, b_unif) + 
-        runif(1, min_unif, max_unif)*sample(c(-1, 1), 1)*binData[, parents]
-      p_local <- 1/(1 + exp(reg_local)) # sample and inverse logit transform
+      reg_local <- runif(1, -b_unif, b_unif) +
+        runif(1, min_unif, max_unif) * sample(c(-1, 1), 1) * binData[, parents]
+      p_local <- 1 / (1 + exp(reg_local)) # sample and inverse logit transform
       binData[, ii] <- rbinom(N, 1, p_local)
     }
     if (lp > 1) {
-      reg_local <- runif(1, -b_unif, b_unif) + 
-        colSums(runif(lp, min_unif, max_unif)*sample(c(-1, 1), lp, replace = TRUE)*t(binData[, parents]))
-      p_local <- 1/(1 + exp(reg_local)) # sample and inverse logit transform
+      reg_local <- runif(1, -b_unif, b_unif) +
+        colSums(runif(lp, min_unif, max_unif) * sample(c(-1, 1), lp, replace = TRUE) * t(binData[, parents]))
+      p_local <- 1 / (1 + exp(reg_local)) # sample and inverse logit transform
       binData[, ii] <- rbinom(N, 1, p_local)
     }
-    #print(p_local)
+    # print(p_local)
   }
-  binData
+  return(binData)
 }
 
-
-library(BiDAG)
 
 n <- 40
 N <- 1e3 # need like 10k observations to get good graph!
@@ -71,4 +69,3 @@ sum(trueDAG)
 # check DAGs?
 
 BiDAG::compareDAGs(BiDAG::adjacency2dag(itMCMC$max$DAG), BiDAG::adjacency2dag(trueDAG))
-
