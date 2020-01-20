@@ -1,20 +1,9 @@
 library(BiDAG)
-
-
-generateDAG <- function(n, e) {
-  # n is number of nodes
-  # e is expected number of parents
-  n_offdiag <- n * (n - 1) / 2
-  offdiag_vec <- rbinom(n_offdiag, 1, e * n / n_offdiag)
-
-  DAG <- matrix(0, n, n)
-  DAG[upper.tri(DAG)] <- offdiag_vec
-  permy <- sample(1:n)
-  return(DAG[permy, permy])
-}
+source("lib/binarydatagen/generate_DAG.R")
 
 #' Generates binary data from a given DAG adjacency matrix.
 #' It genereates th conditional probabilit tables and the data "simulataneously".
+#' This is a logit version with interaction terms.
 #'
 #' @param DAG DAG adjacency matrix.
 #' @param N Number of data samples.
@@ -63,8 +52,8 @@ GenerateBinDataWithInteractions <- function(DAG, N) {
       reg_local <- runif(1, -b_unif, b_unif) +
         colSums(runif(n_terms, min_unif, max_unif) * signs * bin_with_ints)
       p_local <- 1 / (1 + exp(reg_local)) # sample and inverse logit transform
-      print(p_local)
-      print(length(p_local))
+      #print(p_local)
+      #print(length(p_local))
       binData[, ii] <- rbinom(N, 1, p_local)
     }
   }

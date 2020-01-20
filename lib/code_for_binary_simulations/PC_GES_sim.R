@@ -101,16 +101,4 @@ PCGESsim <- function(i, n, DAGfile, datafile, path = NULL) {
   return(simres)
 }
 
-library(parallel)
 
-# simulation settings, graph properties
-DAGtype <- "randomDAG"
-n <- 20
-sampsize <- 10 * n
-
-for (indc in 0:9) {
-  ind <- c(1:10 + indc * 10)
-  cl <- makeCluster(10)
-  outputClApply <- clusterApply(cl, ind, PCGESsim, n, "DAGfile.rds", "datafile.rds")
-  stopCluster(cl)
-}

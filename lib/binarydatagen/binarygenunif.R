@@ -1,4 +1,5 @@
 library(BiDAG)
+source("lib/binarydatagen/generate_DAG.R")
 
 SampleBinaryVec <- function(theta, vecSize){
   binarySample <- stats::rbinom(vecSize, 1, theta)
@@ -48,18 +49,6 @@ BinarySampleFromDAGcore <- function(j, parentNodes, n, DAGparams, binarySample){
   return(sampleNode)
 }
 
-generateDAG <- function(n, e) {
-  # n is number of nodes
-  # e is expected number of parents
-  n_offdiag <- n*(n - 1)/2
-  offdiag_vec <- rbinom(n_offdiag, 1, e*n/n_offdiag)
-
-  DAG <- matrix(0, n, n)
-  DAG[upper.tri(DAG)] <- offdiag_vec
-  permy <- sample(1:n)
-  return(DAG[permy, permy])
-}
-
 DAGparameters <- function(incidence) {
   # add parameters to an incidence matrix
 
@@ -78,6 +67,17 @@ DAGparameters <- function(incidence) {
   return(posteriorParams)
 }
 
+#' BinarySampleFromDAG
+#'
+#' Generates a uniform probability for each parent state
+#' independently (like the BDe score imagines).
+#' @param DAGparams
+#' @param sampleSize
+#'
+#' @return
+#' @export
+#'
+#' @examples
 BinarySampleFromDAG <- function(DAGparams, sampleSize){
   # sample a set of binary vectors from a DAG with parameters
   n <- nrow(DAGparams$DAG)
@@ -92,27 +92,4 @@ BinarySampleFromDAG <- function(DAGparams, sampleSize){
   return(binarySample)
 }
 
-n <- 40
-N <- 1e3 # need like 10k observations to get good graph!
-
-set.seed(42)
-
-trueDAG <- generateDAG(n, 2)
-
-DAGparams <- DAGparameters(trueDAG)
-
-binData <- BinarySampleFromDAG(DAGparams, N)
-
-scorepar <- scoreparameters(n, scoretype = "bde", data = binData, bdepar = list(chi = 1, edgepf = 1))
-
-itMCMC <- iterativeMCMCsearch(n, scorepar)
-
-itMCMC
-DAGscore(n, scorepar, trueDAG)
-# number of true edges
-sum(trueDAG)
-
-# check DAGs?
-
-BiDAG::compareDAGs(BiDAG::adjacency2dag(itMCMC$max$DAG), BiDAG::adjacency2dag(trueDAG))
 

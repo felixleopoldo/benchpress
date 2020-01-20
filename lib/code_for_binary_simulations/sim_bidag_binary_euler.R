@@ -1,17 +1,16 @@
-n <- 100
-
-simulationBiDAGvsBLIP <- function(i, n, DAGfile, datafile) {
+simulationBiDAGvsBLIP <- function(i, n, DAGs, datas) {
+  setwd("/Users/rios0000/git/BiDAG")
   library(bnlearn)
   library(BiDAG)
   library(gRbase) # for is.DAG
   library(pcalg)
-  source("makevarnames.R")
-  source("bnlearnhelpfns.R")
-  source("makename.R")
+  source("lib/code_for_binary_simulations/make_var_names.R")
+  source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
+  source("lib/code_for_binary_simulations/make_name.R")
 
-  DAGs <- readRDS(DAGfile)
-  datas <- readRDS(datafile)
-  DAG <- DAGs[[i]]$DAG
+  #DAGs <- list(readRDS(DAGfile)) # TODO: This is just temporary
+  #datas <- list(readRDS(datafile))
+  DAG <- DAGs[[i]]$DAG # Should this be a sequence of DAGs / data? /Felix
   data <- datas[[i]]
   DAGs <- NULL
   datas <- NULL
@@ -24,7 +23,7 @@ simulationBiDAGvsBLIP <- function(i, n, DAGfile, datafile) {
   # BiDAG part first we run iterative version for 2 search spaces one for PC and one for TABU
   starttime <- Sys.time()
   myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
-  itfit <- iterativeMCMCsearch(n, myscore)
+  itfit <- iterativeMCMCsearch(n, myscore,chainout = TRUE)
   samplefit <- orderMCMC(n, myscore, startspace = itfit$endspace, MAP = FALSE, chainout = TRUE)
   endtime <- Sys.time()
   sim$totaltime <- endtime - starttime
@@ -59,7 +58,7 @@ simulationBiDAGvsBLIP <- function(i, n, DAGfile, datafile) {
   tabufit <- tabu(datadf, score = "bde")
   tabu.g <- bnarcs2dag(varnames, tabufit$arcs)
   myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
-  itfit <- iterativeMCMCsearch(n, myscore, startspace = dag2adjacencymatrix(tabu.g))
+  itfit <- iterativeMCMCsearch(n, myscore, startspace = dag2adjacencymatrix(tabu.g), chainout = TRUE)
   maxit <- length(itfit$max)
   samplefit <- orderMCMC(n, myscore, startspace = itfit$endspace, MAP = FALSE, chainout = TRUE)
   endtime <- Sys.time()
@@ -75,27 +74,11 @@ simulationBiDAGvsBLIP <- function(i, n, DAGfile, datafile) {
   sim$TABUiterativeMCMC <- iterations.check(itfit, DAG)
   sim$TABUfinalMCMC <- sample.check(n, samplefit$chain$incidence, DAG, pdag = TRUE)
   sim$i <- i
-  save(sim, file = paste("simresults/blippower/BiDAGbinsimn", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
+  save(sim, file = paste("./myoutfile", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
+  #save(sim, file = paste("simresults/blippower/BiDAGbinsimn", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
   itfit <- NULL
   samplefit <- NULL
-  return(sim)
+ return(sim)
 }
 
-library(parallel)
 
-# test
-# simulationBiDAGvsBLIP(1,100,"binBN.rds","bindata10n.rds")
-
-for (indc in 0:9) {
-  ind <- c(1:10 + indc * 10)
-  cl <- makeCluster(10)
-  outputClApply <- clusterApply(cl, ind, simulationBiDAGvsBLIP, n = n, "binBNpower.rds", "bindata10npower.rds")
-  stopCluster(cl)
-}
-
-for (indc in 0:9) {
-  ind <- c(1:10 + indc * 10)
-  cl <- makeCluster(10)
-  outputClApply <- clusterApply(cl, ind, simulationBiDAGvsBLIP, n = n, "binBNpower.rds", "bindata2npower.rds")
-  stopCluster(cl)
-}

@@ -1,18 +1,19 @@
 library(BiDAG)
+source("lib/binarydatagen/generate_DAG.R")
 
 
-generateDAG <- function(n, e) {
-  # n is number of nodes
-  # e is expected number of parents
-  n_offdiag <- n * (n - 1) / 2
-  offdiag_vec <- rbinom(n_offdiag, 1, e * n / n_offdiag)
-
-  DAG <- matrix(0, n, n)
-  DAG[upper.tri(DAG)] <- offdiag_vec
-  permy <- sample(1:n)
-  return(DAG[permy, permy])
-}
-
+#' generateBinData
+#'
+#' Generates the probabilities as a linear combination of the parents,
+#' then inverse logit transforming.
+#'
+#' @param DAG
+#' @param N
+#'
+#' @return
+#' @export
+#'
+#' @examples
 generateBinData <- function(DAG, N) {
   b_unif <- 1 # for the starting probability
   min_unif <- 0.5 # when the parent is on range
@@ -48,24 +49,3 @@ generateBinData <- function(DAG, N) {
 }
 
 
-n <- 40
-N <- 1e3 # need like 10k observations to get good graph!
-
-set.seed(42)
-
-trueDAG <- generateDAG(n, 2)
-
-binData <- generateBinData(trueDAG, N)
-
-scorepar <- scoreparameters(n, scoretype = "bde", data = binData, bdepar = list(chi = 1, edgepf = 1))
-
-itMCMC <- iterativeMCMCsearch(n, scorepar)
-
-itMCMC
-DAGscore(n, scorepar, trueDAG)
-# number of true edges
-sum(trueDAG)
-
-# check DAGs?
-
-BiDAG::compareDAGs(BiDAG::adjacency2dag(itMCMC$max$DAG), BiDAG::adjacency2dag(trueDAG))

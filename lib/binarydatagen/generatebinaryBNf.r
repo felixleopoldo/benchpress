@@ -53,6 +53,15 @@ BNmaps <- function(np) {
   return(maps)
 }
 
+
+#' @title generatebinaryBN
+#'
+#' This has different DAG types (from PCalg) and tries to make sure the
+#' probabilities aren't too similar when the parents change.
+#' Also it has an upper limit on the number of parents - without a lot of data
+#' it is almost impossible to detect the small changes in probability when
+#' additional parents are there.
+#'
 #' @param n number of nodes
 #' @param ii set seed to reproduce
 #' @param baseline vector with 2 values min and max probability of 1 for nodes
@@ -116,11 +125,3 @@ generatebinaryBN.data <- function(n, binaryBN, samplesize) {
   return(BNsample)
 }
 
-# how to use
-binBN <- generatebinaryBN(n = 100, 1, c(0.1, 0.9), d = 2)
-bindata10n <- generatebinaryBN.data(n = 100, binBN, 1000)
-
-# example of structure learning
-myscore <- scoreparameters(n = 100, "bde", bindata10n, bdepar = list(chi = 1, edgepf = 1))
-itmap <- iterativeMCMCsearch(n = 100, myscore)
-iterations.check(itmap, binBN$DAG)

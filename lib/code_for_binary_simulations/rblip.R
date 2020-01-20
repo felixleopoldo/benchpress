@@ -1,17 +1,19 @@
-varnames.make <- function(n) {
-  return(paste("V", c(1:n), sep = ""))
-}
+library(BiDAG)
+source("lib/code_for_binary_simulations/make_var_names.R")
+source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
+source("lib/code_for_binary_simulations/make_name.R")
 
-blipsim <- function(n, DAG, data, timesvec, scorefunction) {
-  res <- matrix(ncol = 8, nrow = length(timesvec))
-  res[, 8] <- timesvec
-  colnames(res) <- c("TP", "FP", "SHD", "TPR", "FPRn", "score", "bnscore", "time")
-
+blipsim <- function(n, DAG, data, timesvec, scorefunction = "bdeu", rep) {
+  sim <- list()
   sim$n <- n
   sim$sampsize <- nrow(data)
   sim$DAG <- DAG
   sim$nedges <- sum(dag2adjacencymatrix(DAG))
+  res <- matrix(ncol = 8, nrow = length(timesvec))
+  res[, 8] <- timesvec
+  colnames(res) <- c("TP", "FP", "SHD", "TPR", "FPRn", "score", "bnscore", "time")
 
+  # convert to a df for rblip and tabu search
   datadf <- data
   varnames <- varnames.make(n)
   colnames(datadf) <- varnames
@@ -44,12 +46,8 @@ blipsim <- function(n, DAG, data, timesvec, scorefunction) {
   sim$blip$res <- res
   sim$blip$DAG <- adjacency2dag(blipadj)
   sim$i <- rep
+
   save(sim, file = paste("simresults/blipsim/BLIPbinsimn", n, "s", sim$sampsize, "r", rep, ".Rda", sep = ""))
   return(sim)
 }
 
-blipsimlist10n <- list()
-for (j in 1:100) {
-  blipsimlist10n[[j]] <- blipsim(n, binBN[[j]]$DAG, bindata10n[[j]], timesvec = c(60, 120, 240), "bdeu", rep = j)
-  save(blipsimlist10n, file = "blippower10n.Rda")
-}

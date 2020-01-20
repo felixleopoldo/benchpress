@@ -1,3 +1,8 @@
+## This seems to an intermediate step in between simulation an plotting.
+
+# Felix: is this needed here?
+source("lib/code_for_binary_simulations/df_fns.R")
+
 scoredf.blip <- scoredf.init()
 ROCdf.blip <- ROCdf.init()
 SHDdf.blip <- SHDdf.init()

@@ -11,6 +11,10 @@
 # Example code in package build process
 *-Ex.R
 
+# Serialized objects
+*.Rda
+*.rds
+
 # Output files from R CMD build
 /*.tar.gz
 
