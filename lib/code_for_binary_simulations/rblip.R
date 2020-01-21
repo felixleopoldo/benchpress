@@ -1,4 +1,6 @@
 library(BiDAG)
+library(bnlearn)
+
 source("lib/code_for_binary_simulations/make_var_names.R")
 source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 source("lib/code_for_binary_simulations/make_name.R")
@@ -47,7 +49,8 @@ blipsim <- function(n, DAG, data, timesvec, scorefunction = "bdeu", rep) {
   sim$blip$DAG <- adjacency2dag(blipadj)
   sim$i <- rep
 
-  save(sim, file = paste("simresults/blipsim/BLIPbinsimn", n, "s", sim$sampsize, "r", rep, ".Rda", sep = ""))
+  #dir.create(file.path(mainDir, subDir), showWarnings = FALSE)
+  #save(sim, file = paste("simresults/blipsim/BLIPbinsimn", n, "s", sim$sampsize, "r", rep, ".Rda", sep = ""))
   return(sim)
 }
 

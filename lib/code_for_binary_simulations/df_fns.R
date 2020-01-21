@@ -10,6 +10,7 @@ scoredf.init <- function() {
   )
   return(scoredf)
 }
+
 ROCdf.init <- function() {
   ROCdf <- data.frame(
     TPR = double(),
@@ -21,6 +22,7 @@ ROCdf.init <- function() {
   )
   return(ROCdf)
 }
+
 SHDdf.init <- function() {
   SHDdf <- data.frame(
     time = double(),
@@ -31,14 +33,15 @@ SHDdf.init <- function() {
   )
   return(SHDdf)
 }
+
 scoredf.add <- function(newrep, scoredf, algo, repl) {
   if (algo == "blip") {
     scoredf <- rbind(scoredf, data.frame(
-      logscore = newrep$blip$res[3, 6],
+      logscore = newrep$blip$res[3, 6], # 3 is ? and 6 is the score column
       algo = "blip",
       ss = newrep$sampsize / newrep$n,
       replicate = repl,
-      time = newrep$blip$res[3, 8]
+      time = newrep$blip$res[3, 8] # 3 is ? and 8 is the time column
     ))
   } else {
     scoredf <- rbind(scoredf, data.frame(
@@ -79,6 +82,7 @@ scoredf.add <- function(newrep, scoredf, algo, repl) {
   }
   return(scoredf)
 }
+
 ROCdf.add <- function(newrep, ROCdf, algo, repl) {
   if (algo == "blip") {
     ROCdf <- rbind(ROCdf, data.frame(
@@ -110,6 +114,7 @@ ROCdf.add <- function(newrep, ROCdf, algo, repl) {
   }
   return(ROCdf)
 }
+
 SHDdf.add <- function(newrep, SHDdf, algo, repl) {
   if (algo == "blip") {
     SHDdf <- rbind(SHDdf, data.frame(

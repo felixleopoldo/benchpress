@@ -1,11 +1,15 @@
 ## This seems to an intermediate step in between simulation an plotting.
 
 # Felix: is this needed here?
-source("lib/code_for_binary_simulations/df_fns.R")
+source("lib/code_for_binary_simulations/df_fns.R") # This line is added by Felix
 
 scoredf.blip <- scoredf.init()
 ROCdf.blip <- ROCdf.init()
 SHDdf.blip <- SHDdf.init()
+
+
+load("blippower10n.Rda") # for some reason this gets loadad into a list called blipsimlist10n
+load("blippower2n.Rda")
 
 load("blipsimlist2n.rda") # list containing results of r.blip simulations
 load("blipsimlist10n.rda") # list containing results of r.blip simulations
@@ -26,7 +30,9 @@ for (i in 1:simlength) {
 }
 
 # NOW ADD BIDAG PART
-path <- "/Users/pminkina/Downloads/simresults/blippower/" # path to simulation results
+path <- "
+
+/Users/pminkina/Downloads/simresults/blippower/" # path to simulation results
 file_list <- list.files(path = path)
 length(file_list)
 k <- 1

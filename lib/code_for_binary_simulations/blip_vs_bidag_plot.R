@@ -121,8 +121,6 @@ scale_fill_manual(
   ylim(c(0, 200)) + ggtitle("n=100, sample size 10n")
 
 
-
-
 scale_fill_manual(
   labels = c("BiDAG MAP", "BiDAG sample", "r.blip"),
   values = c("red", "purple", "orange")

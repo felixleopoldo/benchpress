@@ -69,7 +69,7 @@ BNmaps <- function(np) {
 #' @param d average neighborhood size (children+parents)
 #'
 generatebinaryBN <- function(n, ii, baseline, d = 2) {
-  set.seed(ii)
+  #set.seed(ii)
   maxneib <- 5
   while (maxneib > 4) {
     # here we make sure graphs do not have to big parent sets

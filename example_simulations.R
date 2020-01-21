@@ -1,38 +1,42 @@
+library(r.blip)
+library(parallel)
+
 source("lib/code_for_binary_simulations/rblip.R")
 source("lib/code_for_binary_simulations/sim_bidag_binary_euler.R")
 source("lib/code_for_binary_simulations/PC_GES_sim.R")
-library(parallel)
+source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
+
+
 ## Simulate rblip
 ##
 binBN <- readRDS("binBNs.rds") # TODO: This is just temporary
 bindata10n <- readRDS("bindata10n.rds")
-timesvec = c(60, 120, 240)
+bindata2n <- readRDS("bindata2n.rds")
 rep = 1
 
 ##### test just 1 repliate
-n <- 5
-j <- 1
-blipsim(n, binBN[[j]]$DAG, bindata10n[[j]], timesvec = c(60, 120, 240), rep = 1)
+n <- numNodes(binBN[[1]]$DAG)
+sim <- blipsim(n, binBN[[1]]$DAG, bindata10n[[1]], timesvec = c(60), rep = 1)
+output_path <- file.path(getwd(),"simresults","blipsim")
+dir.create(output_path, showWarnings = FALSE, recursive = TRUE)
+save(sim, file = paste(output_path, "BLIPbinsim", "n" , n, "s", sim$sampsize, "r", rep, ".Rda", sep = "_"))
 
-blipsimlist10n <- list()
-for (j in 1:100) {
-  blipsimlist10n[[j]] <- blipsim(n, binBN[[j]]$DAG, bindata10n[[j]],
-                                 timesvec = c(60, 120, 240), rep = j)
-  save(blipsimlist10n, file = "blippower10n.Rda")
-}
+n_datasets <- length(binBN)
 
 blipsimlist2n <- list()
-for (j in 1:100) {
+blipsimlist10n <- list()
+for (j in 1:n_datasets) {
+  blipsimlist10n[[j]] <- blipsim(n, binBN[[j]]$DAG, bindata10n[[j]],
+                                 timesvec = c(60), rep = j)
   blipsimlist2n[[j]] <- blipsim(n, binBN[[j]]$DAG, bindata2n[[j]],
-                                timesvec = c(60, 120, 240), rep = j)
-  save(blipsimlist2n, file = "blippower2n.Rda")
+                                timesvec = c(60), rep = j)
 }
 
-
-
+save(blipsimlist10n, file = "blippower10n.Rda")
+save(blipsimlist2n, file = "blippower2n.Rda")
 
 ##
-## BiDAG biary Euler
+## BiDAG binary Euler
 ##
 
 i <- 1 # data simulation index
