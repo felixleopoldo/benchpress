@@ -14,7 +14,7 @@ source("lib/binarydatagen/generate_DAG.R")
 #' @export
 #'
 #' @examples
-generateBinData <- function(DAG, N) {
+generateBinDataLogit <- function(DAG, N) {
   b_unif <- 1 # for the starting probability
   min_unif <- 0.5 # when the parent is on range
   max_unif <- 2

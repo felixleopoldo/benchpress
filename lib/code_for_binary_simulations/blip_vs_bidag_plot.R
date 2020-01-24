@@ -1,6 +1,53 @@
 # ROC
+library(gridExtra)
+library(grid)
+library(ggplot2)
+#library(lattice)
+# Code from http://rpubs.com/sjackman/grid_arrange_shared_legend
+# grid_arrange_shared_legend <- function(...) {
+#   plots <- list(...)
+#   g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom"))$grobs
+#   legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+#   lheight <- sum(legend$height)
+#   grid.arrange(
+#     do.call(arrangeGrob, lapply(plots, function(x)
+#       x + theme(legend.position="none"))),
+#     legend,
+#     ncol = 1,
+#     heights = unit.c(unit(1, "npc") - lheight, lheight))
+# }
+grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
+
+  plots <- list(...)
+  position <- match.arg(position)
+  g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+  lheight <- sum(legend$height)
+  lwidth <- sum(legend$width)
+  gl <- lapply(plots, function(x) x + theme(legend.position="none"))
+  gl <- c(gl, ncol = ncol, nrow = nrow)
+
+  combined <- switch(position,
+                     "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
+                                            legend,
+                                            ncol = 1,
+                                            heights = unit.c(unit(1, "npc") - lheight, lheight)),
+                     "right" = arrangeGrob(do.call(arrangeGrob, gl),
+                                           legend,
+                                           ncol = 2,
+                                           widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+
+  grid.newpage()
+  grid.draw(combined)
+
+  # return gtable invisibly
+  invisible(combined)
+}
+
 
 sumROCdf.blip$algorithm <- with(sumROCdf.blip, factor(algorithm, levels = c("blip", "iterativeMCMC", "finalMCMC")))
+
+width.er <- 2 # Added by Felix
 
 p1 <- ggplot(data = subset(sumROCdf.blip[order(sumROCdf.blip$threshold), ], ss == 10), aes(x = FPRn, y = TPR, group = threshold, col = algorithm)) +
   geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = width.er) +
@@ -133,11 +180,12 @@ scale_fill_manual(
   ylim(c(0, 300))
 
 grid_arrange_shared_legend(p1, p2, ncol = 2, nrow = 1, position = "bottom")
-# ROC
 
+# ROC
 for (i in 1:simlength) {
   ROCdf.blip <- ROCdf.add(newrep = BiDAGbin[[i]], ROCdf = ROCdf.blip, algo = "MCMC", repl = 1)
 }
 
 summaryROCdf <- summarySE(ROCdf.blip, "TPR", "FPRn", groupvars = c("ss", "algorithm", "threshold"))
 summaryROCdf$algorithm <- with(summaryROCdf, factor(algorithm, levels = c("iterativeMCMC", "finalMCMC", "blip")))
+

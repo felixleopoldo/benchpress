@@ -1,5 +1,4 @@
 simulationBiDAGvsBLIP <- function(i, n, DAGs, datas) {
-  setwd("/Users/rios0000/git/BiDAG")
   library(bnlearn)
   library(BiDAG)
   library(gRbase) # for is.DAG
@@ -74,8 +73,11 @@ simulationBiDAGvsBLIP <- function(i, n, DAGs, datas) {
   sim$TABUiterativeMCMC <- iterations.check(itfit, DAG)
   sim$TABUfinalMCMC <- sample.check(n, samplefit$chain$incidence, DAG, pdag = TRUE)
   sim$i <- i
-  save(sim, file = paste("./myoutfile", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
-  #save(sim, file = paste("simresults/blippower/BiDAGbinsimn", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
+  #save(sim, file = paste("./myoutfile", n, "s", sim$sampsize, "r", i, ".Rda", sep = ""))
+  output_path <- "./simresults/blippower"
+  dir.create(output_path, showWarnings = FALSE, recursive = TRUE)
+  output_filename <- paste("BiDAGbinsim", "n", n, "s", sim$sampsize, "r", i, ".Rda", sep = "_")
+  save(sim, file = file.path(output_path, output_filename))
   itfit <- NULL
   samplefit <- NULL
  return(sim)

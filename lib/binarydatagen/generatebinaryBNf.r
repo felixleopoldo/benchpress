@@ -68,7 +68,7 @@ BNmaps <- function(np) {
 #'                 which have no parents but have children (upstream)
 #' @param d average neighborhood size (children+parents)
 #'
-generatebinaryBN <- function(n, ii, baseline, d = 2) {
+generatebinaryBN <- function(n, ii, baseline, mydag, d = 2) {
   #set.seed(ii)
   maxneib <- 5
   while (maxneib > 4) {

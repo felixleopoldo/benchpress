@@ -1,18 +1,14 @@
 ## This seems to an intermediate step in between simulation an plotting.
+library(stringr)
 
-# Felix: is this needed here?
-source("lib/code_for_binary_simulations/df_fns.R") # This line is added by Felix
+source("lib/code_for_binary_simulations/df_fns.R")
+source("lib/code_for_binary_simulations/summarySE.R")
 
 scoredf.blip <- scoredf.init()
 ROCdf.blip <- ROCdf.init()
 SHDdf.blip <- SHDdf.init()
 
-
-load("blippower10n.Rda") # for some reason this gets loadad into a list called blipsimlist10n
-load("blippower2n.Rda")
-
 load("blipsimlist2n.rda") # list containing results of r.blip simulations
-load("blipsimlist10n.rda") # list containing results of r.blip simulations
 
 simlength <- length(blipsimlist2n)
 
@@ -21,6 +17,9 @@ for (i in 1:simlength) {
   ROCdf.blip <- ROCdf.add(blipsimlist2n[[i]], ROCdf.blip, "blip", repl = i)
   SHDdf.blip <- SHDdf.add(blipsimlist2n[[i]], SHDdf.blip, "blip", repl = i)
 }
+
+load("blipsimlist10n.rda") # list containing results of r.blip simulations
+
 simlength <- length(blipsimlist10n)
 
 for (i in 1:simlength) {
@@ -30,12 +29,12 @@ for (i in 1:simlength) {
 }
 
 # NOW ADD BIDAG PART
-path <- "
-
-/Users/pminkina/Downloads/simresults/blippower/" # path to simulation results
+path <- "./simresults/blippower/" # path to simulation results
 file_list <- list.files(path = path)
+print(file_list)
 length(file_list)
 k <- 1
+BiDAGbin <- list() # added by Felix
 for (j in 1:length(file_list)) {
   # BiDAGbin[[k]]<-readRDS(paste(path,file_list[j],sep=""))
   load(paste(path, file_list[j], sep = ""))
@@ -53,10 +52,12 @@ for (j in 1:length(file_list)) {
   BiDAGbin[[k]]$TABUfinalMCMC <- cbind(BiDAGbin[[j]]$TABUfinalMCMC, BiDAGbin[[j]]$TABUfinalMCMC[, 1] / BiDAGbin[[j]]$nedges, BiDAGbin[[j]]$TABUfinalMCMC[, 2] / BiDAGbin[[j]]$nedges)
   colnames(BiDAGbin[[j]]$TABUfinalMCMC)[c(5, 6)] <- c("TPR", "FPRn")
 
-
   BiDAGbin[[k]]$ss <- BiDAGbin[[k]]$sampsize / BiDAGbin[[k]]$n
 
-  BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r(.*?).Rda")[[2]])
+  #BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r(.*?).Rda")[[2]])
+  BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r_(.*?).Rda")[[2]])
+  #BiDAGbin[[k]]$replicate <- j
+
 
   nit <- nrow(BiDAGbin[[j]]$iterativeMCMC)
   BiDAGbin[[k]]$SHDMAP <- BiDAGbin[[k]]$terativeMCMC[nit, 4]
@@ -72,7 +73,9 @@ simlength <- length(BiDAGbin)
 
 # this you might need for storing PC
 pcgeslist <- list()
-path <- "/Users/pminkina/Downloads/simresults/pcges/randomDAG2" # path to simulation results
+#path <- "./simresults/pcges/randomDAG2" # path to simulation results
+path <- "./simresults/pcges/randomDAG/2/" # path to simulation results
+
 file_list <- list.files(path = path)
 k <- 1
 for (j in 1:length(file_list)) {
