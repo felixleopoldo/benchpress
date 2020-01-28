@@ -4,18 +4,7 @@ library(grid)
 library(ggplot2)
 #library(lattice)
 # Code from http://rpubs.com/sjackman/grid_arrange_shared_legend
-# grid_arrange_shared_legend <- function(...) {
-#   plots <- list(...)
-#   g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom"))$grobs
-#   legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
-#   lheight <- sum(legend$height)
-#   grid.arrange(
-#     do.call(arrangeGrob, lapply(plots, function(x)
-#       x + theme(legend.position="none"))),
-#     legend,
-#     ncol = 1,
-#     heights = unit.c(unit(1, "npc") - lheight, lheight))
-# }
+
 grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
 
   plots <- list(...)
@@ -44,16 +33,16 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
   invisible(combined)
 }
 
-
 sumROCdf.blip$algorithm <- with(sumROCdf.blip, factor(algorithm, levels = c("blip", "iterativeMCMC", "finalMCMC")))
 
-width.er <- 2 # Added by Felix
+width.er <- 1 # Added by Felix
 
 p1 <- ggplot(data = subset(sumROCdf.blip[order(sumROCdf.blip$threshold), ], ss == 10), aes(x = FPRn, y = TPR, group = threshold, col = algorithm)) +
   geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = width.er) +
   geom_path(aes(group = algorithm, col = algorithm)) +
   geom_point(aes(group = algorithm, col = algorithm, shape = algorithm), size = 2) +
-  xlim(c(-width.er, 0.3 + width.er)) + ylim(c(0, 1)) +
+  xlim(c(0, 1)) + ylim(c(0, 1)) +
+  #xlim(c(0, 0.3 + width.er)) + ylim(c(0, 1)) +
   scale_shape_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(5, 3, 15)) +
   scale_size_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(3, 1, 1)) +
   scale_colour_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c("#4daf4a", "red", "purple")) +
@@ -62,7 +51,7 @@ p2 <- ggplot(data = subset(sumROCdf.blip[order(sumROCdf.blip$threshold), ], ss =
   geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = width.er) +
   geom_path(aes(group = algorithm, col = algorithm)) +
   geom_point(aes(group = algorithm, col = algorithm, shape = algorithm), size = 2) +
-  xlim(c(-width.er, 0.9 + width.er)) + ylim(c(0, 1)) +
+  xlim(c(0, 0.9 + width.er)) + ylim(c(0, 1)) +
   scale_shape_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(5, 3, 15)) +
   scale_size_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(3, 1, 1)) +
   scale_colour_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c("#4daf4a", "red", "purple")) +
@@ -76,7 +65,7 @@ grid_arrange_shared_legend(p1, p2, ncol = 2, nrow = 1, position = "bottom")
 
 dev.off()
 
-
+# Plotting shift (The difference in score between the sampled and the true graph)
 scoredf.blip <- cbind(scoredf.blip, 0)
 colnames(scoredf.blip)[6] <- "shift"
 scoredf.blip <- cbind(scoredf.blip, 0)
@@ -102,6 +91,9 @@ for (i in unique(scoredf.blip$replicate)) {
 
 subset(subset(scoredf.blip, ss == 2), replicate == 1)
 boxplot(shift ~ algo, subset(scoredf.blip, ss == 2))
+subset(scoredf.blip, ss == 2)
+
+
 col2 <- c("#d7b5d8", "#df65b0")
 boxplot(shiftBLIP ~ ss, subset(scoredf.blip, algo == "MAP PC"),
   col = col2, names = c("2n", "10n"), ylab = "sample size",

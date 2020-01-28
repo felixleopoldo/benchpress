@@ -1,5 +1,7 @@
 # data frame function for binary simulations
 
+# These seem to be almost ready for being "methods" in S3(?) objects.
+
 scoredf.init <- function() {
   scoredf <- data.frame(
     time = double(),
@@ -83,7 +85,19 @@ scoredf.add <- function(newrep, scoredf, algo, repl) {
   return(scoredf)
 }
 
+#' Title
+#'
+#' @param newrep Simulation result data frame (from BiDAG?)
+#' @param ROCdf
+#' @param algo
+#' @param repl
+#'
+#' @return
+#' @export
+#'
+#' @examples
 ROCdf.add <- function(newrep, ROCdf, algo, repl) {
+
   if (algo == "blip") {
     ROCdf <- rbind(ROCdf, data.frame(
       TPR = newrep$blip$res[, 4],

@@ -1,5 +1,5 @@
 summarySE <- function(data = NULL, measurevar, othervars = NULL, groupvars = NULL, na.rm = FALSE, .drop = TRUE) {
-  #library(plyr) # for the rename function
+  library(plyr) # for the rename function
   #library(dplyr)
 
   library(reshape)

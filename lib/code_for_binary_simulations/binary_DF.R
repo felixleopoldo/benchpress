@@ -1,15 +1,17 @@
 ## This seems to an intermediate step in between simulation an plotting.
 library(stringr)
-
-source("lib/code_for_binary_simulations/df_fns.R")
 source("lib/code_for_binary_simulations/summarySE.R")
+source("lib/code_for_binary_simulations/df_fns.R")
 
+# Summarizing r.blip simulations
+#
+# These should not be named blip
 scoredf.blip <- scoredf.init()
 ROCdf.blip <- ROCdf.init()
 SHDdf.blip <- SHDdf.init()
 
-load("blipsimlist2n.rda") # list containing results of r.blip simulations
-
+load("blipsimlist2n.rda") # list blipsimlist2n containing results of r.blip simulations
+# reads a list by bidag reads oneby one
 simlength <- length(blipsimlist2n)
 
 for (i in 1:simlength) {
@@ -28,6 +30,15 @@ for (i in 1:simlength) {
   SHDdf.blip <- SHDdf.add(blipsimlist10n[[i]], SHDdf.blip, "blip", repl = i)
 }
 
+scoredf.blip
+ROCdf.blip
+
+
+
+
+# This adds some columns to the already exixting simulation dataframe
+#
+# TODO: Remove side effects, dont load as "sim" variable
 # NOW ADD BIDAG PART
 path <- "./simresults/blippower/" # path to simulation results
 file_list <- list.files(path = path)
@@ -36,9 +47,12 @@ length(file_list)
 k <- 1
 BiDAGbin <- list() # added by Felix
 for (j in 1:length(file_list)) {
-  # BiDAGbin[[k]]<-readRDS(paste(path,file_list[j],sep=""))
+  #BiDAGbin[[k]] <- readRDS(paste(path, file_list[j], sep=""))
+  #print(file_list)
   load(paste(path, file_list[j], sep = ""))
   BiDAGbin[[k]] <- sim
+
+  print(sim$i)
 
   BiDAGbin[[k]]$iterativeMCMC <- cbind(BiDAGbin[[j]]$iterativeMCMC, BiDAGbin[[j]]$iterativeMCMC[, 2] / BiDAGbin[[j]]$nedges)
   colnames(BiDAGbin[[j]]$iterativeMCMC)[6] <- "FPRn"
@@ -55,8 +69,9 @@ for (j in 1:length(file_list)) {
   BiDAGbin[[k]]$ss <- BiDAGbin[[k]]$sampsize / BiDAGbin[[k]]$n
 
   #BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r(.*?).Rda")[[2]])
-  BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r_(.*?).Rda")[[2]])
-  #BiDAGbin[[k]]$replicate <- j
+  #BiDAGbin[[k]]$replicate <- as.numeric(str_match(file_list[j], pattern = "r_(.*?).Rda")[[2]])
+  BiDAGbin[[k]]$replicate <- sim$i
+
 
 
   nit <- nrow(BiDAGbin[[j]]$iterativeMCMC)
@@ -69,8 +84,13 @@ for (j in 1:length(file_list)) {
   BiDAGbin[[k]]$TABUtotaltime <- as.numeric(BiDAGbin[[k]]$TABUtotaltime) * 60
   k <- k + 1
 }
+
 simlength <- length(BiDAGbin)
 
+
+
+# Summarizing PCALG simulations
+#
 # this you might need for storing PC
 pcgeslist <- list()
 #path <- "./simresults/pcges/randomDAG2" # path to simulation results
@@ -86,6 +106,8 @@ for (j in 1:length(file_list)) {
   pcgeslist[[k]]$maxpar <- max(apply(dag2adjacencymatrix(pcgeslist[[j]]$DAG), 2, sum))
   k <- k + 1
 }
+BiDAGbin[[1]]
+pcgeslist # Seems to be never used.. / Felix
 
 for (i in 1:simlength) {
   scoredf.blip <- scoredf.add(newrep = BiDAGbin[[i]], scoredf = scoredf.blip, algo = "MCMC", repl = 1)
@@ -96,7 +118,7 @@ for (i in 1:simlength) {
 }
 
 for (i in 1:simlength) {
-  ROCdf.blip <- ROCdf.add(newrep = BiDAGbin[[i]], ROCdf = ROCdf.blip, algo = "MCMC", repl = 1)
+  ROCdf.blip <- ROCdf.add(newrep = BiDAGbin[[i]], ROCdf = ROCdf.blip, algo = "MCMC", repl = 1) # This variable name cunfuses me, should it be RODdf.itarative mcmc?
 }
 
 sumROCdf.blip <- summarySE(ROCdf.blip, "TPR", "FPRn", groupvars = c("ss", "algorithm", "threshold"))
