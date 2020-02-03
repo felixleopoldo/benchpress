@@ -2,6 +2,50 @@
 
 # These seem to be almost ready for being "methods" in S3(?) objects.
 
+# This adds some columns to the already exixting simulation dataframe
+#
+# TODO: Remove side effects, dont load as "sim" variable
+# NOW ADD BIDAG PART
+
+
+#' Extends the statitics summary of BiDAG algorithm.
+#'
+#'
+#' @param sim_list Results from the BiDAG agorithm.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+extendBidagSimResult <- function(sim_list) {
+  sim_list$replicate <- sim_list$i
+  sim_list$ss <- sim_list$sampsize / sim_list$n
+
+  # PCalg search start
+  sim_list$iterativeMCMC <- cbind(sim_list$iterativeMCMC, sim_list$iterativeMCMC[, 2] / sim_list$nedges)
+  colnames(sim_list$iterativeMCMC)[6] <- "FPRn"
+  sim_list$finalMCMC <- cbind(sim_list$finalMCMC, sim_list$finalMCMC[, 1] / sim_list$nedges, sim_list$finalMCMC[, 2] / sim_list$nedges)
+  colnames(sim_list$finalMCMC)[c(5, 6)] <- c("TPR", "FPRn")
+
+  nit <- nrow(sim_list$iterativeMCMC)
+  sim_list$SHDMAP <- sim_list$terativeMCMC[nit, 4]
+  sim_list$SHDmdeian <- sim_list$finalMCMC[7, 3]
+  sim_list$totaltime <- as.numeric(sim_list$totaltime) * 60
+
+  # Tabu search start
+  sim_list$TABUiterativeMCMC <- cbind(sim_list$TABUiterativeMCMC, sim_list$TABUiterativeMCMC[, 2] / sim_list$nedges)
+  colnames(sim_list$TABUiterativeMCMC)[6] <- "FPRn"
+  sim_list$TABUfinalMCMC <- cbind(sim_list$TABUfinalMCMC, sim_list$TABUfinalMCMC[, 1] / sim_list$nedges, sim_list$TABUfinalMCMC[, 2] / sim_list$nedges)
+  colnames(sim_list$TABUfinalMCMC)[c(5, 6)] <- c("TPR", "FPRn")
+
+  nit <- nrow(sim_list$TABUiterativeMCMC)
+  sim_list$SHDMAPtabu <- sim_list$TABUterativeMCMC[nit, 4]
+  sim_list$SHDmediantabu <- sim_list$TABUfinalMCMC[7, 3]
+  sim_list$TABUtotaltime <- as.numeric(sim_list$TABUtotaltime) * 60
+
+  return(sim_list)
+}
+
 scoredf.init <- function() {
   scoredf <- data.frame(
     time = double(),

@@ -16,13 +16,18 @@ blipsim <- function(n, DAG, data, timesvec, scorefunction = "bdeu", rep) {
   colnames(res) <- c("TP", "FP", "SHD", "TPR", "FPRn", "score", "bnscore", "time")
 
   # convert to a df for rblip and tabu search
-  datadf <- data
+  # datadf <- data
+  # varnames <- varnames.make(n)
+  # print(datadf)
+  # colnames(datadf) <- varnames
+  # datadf <- as.data.frame(datadf)
+  # for (i in 1:ncol(datadf)) {
+  #   datadf[, varnames[i]] <- as.factor(datadf[, varnames[i]])
+  # }
+  # data <- datadf
+
   varnames <- varnames.make(n)
-  colnames(datadf) <- varnames
-  datadf <- as.data.frame(datadf)
-  for (i in 1:ncol(datadf)) {
-    datadf[, varnames[i]] <- as.factor(datadf[, varnames[i]])
-  }
+  datadf <- matrixToDataframe(data, varnames = varnames)
   data <- datadf
 
   k <- 1

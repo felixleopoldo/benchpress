@@ -19,6 +19,7 @@ RUN echo "install.packages(\"reticulate\", repos=\"https://cran.rstudio.com\")" 
 RUN echo "install.packages(\"stringr\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"reshape\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"gridExtra\", repos=\"https://cran.rstudio.com\")" | R --no-save
+RUN echo "install.packages(\"argparser\", repos=\"https://cran.rstudio.com\")" | R --no-save
 
 # For the Python version of GOBNILP needed for the R version. Obs a licence is needed for theis. 
 # Register on the Gurobi webpage and send a mail to the support since it does not work by default with Docker.
@@ -64,3 +65,20 @@ WORKDIR /myappdir/
 
 RUN echo "Checking that it works"
 RUN gobnilp/bin/gobnilp pygobnilp/test_data_and_scores/asia_10000.dat
+
+RUN mkdir /myappdir/benchmark
+WORKDIR /myappdir/benchmark
+
+COPY -r scripts scripts
+COPY -r lib lib
+# Just comy the files here
+#RUN git clone git@github.com:felixleopoldo/compare_bayesian_network_learners.git
+
+# Set R workdir some where
+RUN Rscript scripts/sample_dags.R --filename dags.rds --nodes 15 --parents 2 --samples 4 --seed 1
+RUN Rscript scripts/sample_bayesian_network_for_dag.R --input_filename dags.rds --filename bns.rds --seed 1
+RUN Rscript scripts/sample_data.R --filename data2n.rds --filename_bn bns.rds --samples 30
+RUN Rscript scripts/sample_data.R --filename data10n.rds --filename_bn bns.rds --samples 150
+#RUN Rscript scripts/run_blip.R --filename blipsim.rds --filename_dags dags.rds --filename_data data.rds --seed 1 --timesvec 3 4 5
+RUN Rscript scripts/run_simulations.R --filename_dags dags.rds --filename_datas data2n.rds data10n.rds --timesvec 4 5 6
+RUN Rscript scripts/plot_results.R
