@@ -19,7 +19,7 @@ p <- add_argument(p, "--timesvec", help = "Timesvec", nargs = Inf, type = "numer
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
 
 argv <- parse_args(p)
-print(argv)
+
 dir <- argv$output_dir
 filename <- file.path(dir, argv$filename)
 filename_dags <- argv$filename_dags

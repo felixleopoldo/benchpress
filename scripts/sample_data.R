@@ -17,7 +17,9 @@ argv <- parse_args(p)
 dir <- argv$output_dir
 filename <- file.path(dir, argv$filename)
 filename_bn <- argv$filename_bn
+seed <- argv$seed
 
+set.seed(seed)
 bns <- readRDS(filename_bn)
 samples <- argv$samples
 n_datasets <- length(bns)
