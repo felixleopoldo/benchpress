@@ -8,6 +8,7 @@ RUN conda install -c bioconda bioconductor-rgraphviz
 RUN conda install -c bioconda bioconductor-graph
 RUN conda install -c bioconda bioconductor-rbgl
 
+RUN echo "install.packages(\"tidyverse\", repos=\"https://cran.rstudio.com\")" | R --no-save 
 RUN echo "install.packages(\"gRbase\", dependencies=TRUE, repos=\"https://cran.rstudio.com\");" | R --no-save
 RUN echo "install.packages(\"pcalg\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"BiDAG\", repos=\"https://cran.rstudio.com\")" | R --no-save
@@ -15,8 +16,10 @@ RUN echo "install.packages(\"bnlearn\", repos=\"https://cran.rstudio.com\")" | R
 RUN echo "install.packages(\"r.blip\", repos=\"https://cran.rstudio.com\")" | R --no-save
 # For the R version of GOBNILP
 RUN echo "install.packages(\"reticulate\", repos=\"https://cran.rstudio.com\")" | R --no-save
-# Tidyvese may be replaced by r-ggplot2 since it is very big
-RUN echo "install.packages(\"tidyverse\", repos=\"https://cran.rstudio.com\")" | R --no-save 
+# Tidyvese may be replaced by r-ggplot2 since it is very big.
+# Also, it seems like the containers had to be rebuilt each time after I added this.
+#RUN echo "install.packages(\"r-ggplot2\", repos=\"https://cran.rstudio.com\")" | R --no-save 
+
 RUN echo "install.packages(\"stringr\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"reshape\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"gridExtra\", repos=\"https://cran.rstudio.com\")" | R --no-save
@@ -79,10 +82,5 @@ WORKDIR /myappdir/benchmark
 
 ADD scripts scripts
 ADD lib lib
-# # Set R workdir some where
-#RUN Rscript scripts/sample_dags.R --filename dags.rds --nodes 20 --parents 2 --samples 4 --seed 1
-#RUN Rscript scripts/sample_bayesian_network_for_dag.R --input_filename dags.rds --filename bns.rds --seed 1
-#RUN Rscript scripts/sample_data.R --filename data2n.rds --filename_bn bns.rds --samples 40 --seed 1
-#RUN Rscript scripts/sample_data.R --filename data10n.rds --filename_bn bns.rds --samples 200 --seed 1
-#RUN Rscript scripts/run_simulations.R --filename_dags dags.rds --filename_datas data2n.rds data10n.rds --timesvec 4 5 6
-#RUN Rscript scripts/plot_results.R
+ADD example_run.sh .
+RUN chmod 755 example_run.sh
