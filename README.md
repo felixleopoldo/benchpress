@@ -2,7 +2,7 @@
   <content><![CDATA[
 # ${1:Graphical model structure learning benchmarking}
 
-TODO: Benchmarking structure learning algorithm in probabilistic graphical models.
+TODO: Benchmarking structure learning algorithms in probabilistic graphical models.
 
 ## Installation
 
@@ -12,6 +12,7 @@ TODO: Benchmarking structure learning algorithm in probabilistic graphical model
 ## Usage
 
 `docker run -it benchmark`
+
 `$ ./example_run.sh`
 
 ## Contributing
