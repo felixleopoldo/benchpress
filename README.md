@@ -6,13 +6,13 @@ TODO: Benchmarking structure learning algorithm in probabilistic graphical model
 
 ## Installation
 
-docker build -t benchmark_platform .
+`docker build -t benchmark .`
 
 
 ## Usage
 
-docker run -it benchmark_platfrom
-$ ./example_run.sh
+`docker run -it benchmark`
+`$ ./example_run.sh`
 
 ## Contributing
 
