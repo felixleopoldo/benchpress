@@ -1,0 +1,44 @@
+
+
+# rule sample_dag:
+#     input:
+#         "dag.rds ./ 10 2 1"
+#     output:
+#         "dag.rds"
+#     shell:
+#         "Rscript scripts/sample_dags.R --filename_data {input}"
+
+
+rule sim_blip:
+    input: 
+        "data.csv"
+    output: 
+        "./blip_output/blipsim.rds", "./blip_output/scores_blip.csv", "./blip_output/SHD_blip.csv", "./blip_output/ROC_blip.csv"
+    message: 
+        "Executing blip algorithm on the following files {input}."
+#    conda:
+#        "env/conda_r_env_spec_file.txt"
+    #singularity: 
+    #    "docker://onceltuca/graphical_model_benchmark:latest"
+    shell: 
+        "Rscript scripts/run_blip.R --filename_data {input} --output_dir ./blip_output" 
+    #script:
+    #    "scripts/run_blip.R --filename_data {input}"
+
+
+# rule sim_bidag_max:
+#     input:
+#     output:
+#     shell:
+
+# rule sim_bidag_sample:
+#     input:
+#     output:
+#     shell:
+
+# rule sim_gobnilp:
+#     input:
+#     output:
+#     shell:
+#     singularity:
+#         "docker://onceltuca/graphical_model_benchmark"
