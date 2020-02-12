@@ -1,9 +1,19 @@
 #!/bin/bash
 
-Rscript scripts/sample_dags.R --filename dags.rds --nodes 20 --parents 2 --samples 4 --seed 1
-Rscript scripts/sample_bayesian_network_for_dag.R --input_filename dags.rds --filename bns.rds --seed 1
-Rscript scripts/sample_data.R --filename data2n.rds --filename_bn bns.rds --samples 40 --seed 1
-Rscript scripts/sample_data.R --filename data10n.rds --filename_bn bns.rds --samples 200 --seed 1
-Rscript scripts/run_simulations.R --filename_dags dags.rds --filename_datas data2n.rds data10n.rds --timesvec 4 5 6
-Rscript scripts/plot_results.R
+N_DATASETS=3
+OUTPUT_DIR="simresults"
+for i in {1..3}
+do
+    Rscript scripts/sample_dags.R --filename dag_$i.rds --nodes 20 --parents 2 --seed $i --output_dir $OUTPUT_DIR
+    Rscript scripts/sample_bayesian_network_for_dag.R --filename_dag  $OUTPUT_DIR/dag_$i.rds --filename bn_$i.rds --seed 1 --output_dir $OUTPUT_DIR
+    Rscript scripts/sample_data.R --filename data_$i.csv --filename_bn $OUTPUT_DIR/bn_$i.rds --samples 200 --seed 1 --output_dir $OUTPUT_DIR
+done
+
+for i in {1..3}
+do
+    Rscript example_simulations_refactored.R --filename_dag $OUTPUT_DIR/dag_$i.rds --filename_data  $OUTPUT_DIR/data_$i.csv --blip_max_time 10 --seed 1 --replicate $i --output_dir $OUTPUT_DIR
+done
+
+Rscript scripts/plot_results.R --dir $OUTPUT_DIR
+
 
