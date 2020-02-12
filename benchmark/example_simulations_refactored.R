@@ -34,7 +34,7 @@ data <- read.csv(filename_data)
 set.seed(seed)
 
 
-run_and_write_everthing_to_files <- function(data, dag, replicate, blip_max_time){
+run_and_write_everthing_to_files <- function(data, dag, replicate, blip_max_time, dir){
     n <- numNodes(dag)
     sample_size <- dim(data)[1]
     true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -205,20 +205,20 @@ run_and_write_everthing_to_files <- function(data, dag, replicate, blip_max_time
                             replicate = replicate,
                             time = time)
 
-    write.csv(scoresdf_order_mcmc, file = paste("scores_order_mcmc_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(SHDdf_order_mcmc, file = paste("SHD_order_mcmc_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(ROCdf_order_mcmc, file = paste("ROC_order_mcmc_", replicate, ".csv", sep=""), row.names = FALSE)
+    write.csv(scoresdf_order_mcmc, file = file.path(dir, paste("scores_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(SHDdf_order_mcmc, file = file.path(dir,paste("SHD_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(ROCdf_order_mcmc, file = file.path(dir,paste("ROC_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
     
-    write.csv(scoresdf_itsearch, file = paste("scores_itsearch_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(SHDdf_itsearch, file = paste("SHD_itsearch_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(ROCdf_itsearch, file = paste("ROC_itsearch_", replicate, ".csv", sep=""), row.names = FALSE)
+    write.csv(scoresdf_itsearch, file = file.path(dir,paste("scores_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(SHDdf_itsearch, file = file.path(dir,paste("SHD_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(ROCdf_itsearch, file = file.path(dir,paste("ROC_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
     
-    write.csv(scoresdf_blip, file = paste("scores_blip_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(SHDdf_blip, file = paste("SHD_blip_", replicate, ".csv", sep=""), row.names = FALSE)
-    write.csv(ROCdf_blip, file = paste("ROC_blip_", replicate, ".csv", sep=""), row.names = FALSE)
+    write.csv(scoresdf_blip, file = file.path(dir,paste("scores_blip_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(SHDdf_blip, file = file.path(dir,paste("SHD_blip_", replicate, ".csv", sep="")), row.names = FALSE)
+    write.csv(ROCdf_blip, file = file.path(dir,paste("ROC_blip_", replicate, ".csv", sep="")), row.names = FALSE)
 }
 
-run_and_write_everthing_to_files(data, dag, replicate, 5)
+run_and_write_everthing_to_files(data, dag, replicate, 5, dir)
 
 
 

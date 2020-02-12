@@ -12,29 +12,27 @@ argv <- parse_args(p)
 dir <- argv$dir
 
 # Read all files in dir
-filenames <- list.files(pattern = "^(scores_)")
+filenames <- list.files(pattern = "^(scores_)", path=dir)
 scoredf <- data.frame()
 for (filename in filenames) {
-    print(filename)
-    tmpdf <- read.csv(filename)
+    tmpdf <- read.csv(file.path(dir, filename))
     scoredf <- rbind(scoredf, tmpdf)
 }
-print(scoredf)
 
-filenames <- list.files(pattern = "^(ROC_)")
+filenames <- list.files(pattern = "^(ROC_)", path=dir)
 ROCdf <- data.frame()
 for (filename in filenames) {
-   tmpdf <- read.csv(filename)
+   tmpdf <- read.csv(file.path(dir, filename))
    ROCdf <- rbind(ROCdf, tmpdf)
 }
-print(ROCdf)
-filenames <- list.files(pattern = "^(SHD_)")
+
+filenames <- list.files(pattern = "^(SHD_)", path=dir)
 SHDdf <- data.frame()
 for (filename in filenames) {
-   tmpdf <- read.csv(filename)
+   tmpdf <- read.csv(file.path(dir, filename))
    SHDdf <- rbind(SHDdf, tmpdf)
 }
-print(SHDdf)
+
 # SHDdf <- do.call("rbind", list(SHDdf_itsearch, SHDdf_order_mcmc, SHDdf_blip))
 # ROCdf <- do.call("rbind", list(ROCdf_itsearch, ROCdf_order_mcmc, ROCdf_blip))
 # scoredf <- do.call("rbind", list(scoresdf_itsearch, scoresdf_order_mcmc, scoresdf_blip))
