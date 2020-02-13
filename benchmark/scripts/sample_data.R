@@ -15,15 +15,13 @@ source("lib/binarydatagen/generatebinaryBNf.r")
 p <- arg_parser("A program for running r.blip and save to file.")
 
 p <- add_argument(p, "--filename", help = "output filename", default = "data.csv")
-p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename_bn", help = "Bayesian network filename", default = "bn.rds")
 p <- add_argument(p, "--samples", help = "Sample size", type = "numeric")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
 
 argv <- parse_args(p)
 
-dir <- argv$output_dir
-filename <- file.path(dir, argv$filename)
+filename <- file.path(argv$filename)
 filename_bn <- argv$filename_bn
 seed <- argv$seed
 

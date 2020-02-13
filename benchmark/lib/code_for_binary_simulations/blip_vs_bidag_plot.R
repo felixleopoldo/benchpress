@@ -35,30 +35,16 @@ grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, 
 # Plotting ROC curves
 plot_ROC <- function(data, title=""){
   width.er <- 1 # Added by Felix
-  #p1 <-
+
   ggplot(data = data, aes(x = FPRn, y = TPR, group = threshold, col = algorithm)) +
   geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = width.er) +
   geom_path(aes(group = algorithm, col = algorithm)) +
   geom_point(aes(group = algorithm, col = algorithm, shape = algorithm), size = 2) +
   xlim(c(0, 1)) + ylim(c(0, 1)) +
-  #xlim(c(0, 0.3 + width.er)) + ylim(c(0, 1)) +
   scale_shape_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(5, 3, 15)) +
   scale_size_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(3, 1, 1)) +
   scale_colour_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c("#4daf4a", "red", "purple")) +
   ggtitle(title)
-
-  # p2 <- ggplot(data = subset(sumROCdf[order(sumROCdf$threshold), ], ss == 2), aes(x = FPRn, y = TPR, group = threshold, col = algorithm)) +
-  #   geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = width.er) +
-  #   geom_path(aes(group = algorithm, col = algorithm)) +
-  #   geom_point(aes(group = algorithm, col = algorithm, shape = algorithm), size = 2) +
-  #   xlim(c(0, 0.9 + width.er)) + ylim(c(0, 1)) +
-  #   scale_shape_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(5, 3, 15)) +
-  #   scale_size_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c(3, 1, 1)) +
-  #   scale_colour_manual(labels = c("r.blip", "MAP MCMC", "sample MCMC"), values = c("#4daf4a", "red", "purple")) +
-  #   ggtitle("n=100, sample size 2n")
-
-
-  #grid_arrange_shared_legend(p1, p2, ncol = 2, nrow = 1, position = "bottom")
 }
 
 #

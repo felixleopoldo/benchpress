@@ -8,12 +8,11 @@ p <- arg_parser("A program for generating a random directed acyclig graph.")
 p <- add_argument(p, "--filename", help = "output filename", default = "bn.rds")
 p <- add_argument(p, "--filename_dag", help = "Filename for DAG", default = "dag.rds")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 
 argv <- parse_args(p)
 
-dir <- argv$output_dir
-filename <- file.path(dir, argv$filename)
+
+filename <- file.path(argv$filename)
 seed_number <- argv$seed
 filename_dag <- argv$filename_dag
 

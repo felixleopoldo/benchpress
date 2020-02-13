@@ -6,20 +6,18 @@ library(argparser)
 source("lib/code_for_binary_simulations/df_fns.R")
 source("lib/code_for_binary_simulations/summarySE.R")
 source("lib/code_for_binary_simulations/sim_bidag_binary.R")
-
+source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 p <- arg_parser("A program for running r.blip and save to file.")
 
-#p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
-p <- add_argument(p, "--filename_dag", help = "DAG filename") # This should not be here
+p <- add_argument(p, "--filename_dag", help = "DAG filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--blip_max_time", help = "Time limit for blip", type = "numeric")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
 p <- add_argument(p, "--replicate", help = "Dag replicate id", type = "numeric", default = 1)
 
 argv <- parse_args(p)
-
-dir <- argv$output_dir
+directory <- argv$output_dir
 
 filename_dag <- argv$filename_dag
 filename_data <- argv$filename_data
@@ -30,195 +28,41 @@ replicate <- argv$replicate
 dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
 
-
 set.seed(seed)
 
+# Each parameter setting the one wish to test should have a number instead of name
+# Then one can pass fin the setting in the output instead
 
-run_and_write_everthing_to_files <- function(data, dag, replicate, blip_max_time, dir){
-    n <- numNodes(dag)
-    sample_size <- dim(data)[1]
-    true_nedges <- sum(dag2adjacencymatrix(dag))
+title <- "iterativeMCMC_map"
+itsearch_map <- runItsearch(data, dag, TRUE, replicate, "iterativeMCMC_map")
+write.csv(itsearch_map$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(itsearch_map$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(itsearch_map$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
 
-    myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
+title <- "iterativeMCMC_sample"
+itsearch_sample <- runItsearch(data, dag, FALSE, replicate, "iterativeMCMC_sample")
+write.csv(itsearch_sample$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(itsearch_sample$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(itsearch_sample$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
 
-    # True graph
-    truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
-    scoresdf_truegraph <- data.frame(logscore = truescore, 
-                                    algo = "TRUE", 
-                                    ss = dim(data)[1], 
-                                    replicate = replicate,
-                                    time = 0) # Should add dag name
+title <- "orderMCMC_itsearch_map"
+order_mcmc <- runOrderMCMC(data, dag, replicate, itsearch_map$itsearch_res, title)
+write.csv(order_mcmc$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
 
-    # Iterative search
-    print("Runnning iterative seach algorithm")
-    starttime <- Sys.time()
-    itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE, MAP = FALSE) 
-    endtime <- Sys.time()
-    totaltime <- endtime - starttime
+title <- "orderMCMC_itsearch_sample"
+order_mcmc_sample <- runOrderMCMC(data, dag, replicate, itsearch_sample$itsearch_res, title)
+write.csv(order_mcmc_sample$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
 
-    # Score dataframe
-    # Should add dataset name here which can be tracked to the dag
-    # and the parameters in the database
-    scoresdf_itsearch <- data.frame(logscore = itsearch_res$max$score, 
-                                    algo = "iterativeMCMC", 
-                                    ss = sample_size / n, 
-                                    replicate = replicate, 
-                                    time = totaltime) 
+title <- "blip"
+blip <- runBlip(data, dag, replicate, blip_max_time, title)
+write.csv(blip$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(blip$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(blip$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
 
-    # Extend iterations.check table by FPRn (TODO: if dag exists)
-    tmp <- iterations.check(itsearch_res, dag)
-    tmp <- cbind(tmp, tmp[, "FP"] / true_nedges) # 2 is FP
-    colnames(tmp)[6] <- "FPRn" # it happened to be column 6
-    n_iterations <- nrow(tmp)
-    iterations.check_extended <- tmp
-
-    # ROC dataframe
-    ROCdf_itsearch <- data.frame(TPR = iterations.check_extended[[n_iterations, "TPR"]],
-                                FPRn = iterations.check_extended[[n_iterations, "FPRn"]],
-                                threshold = NaN,
-                                algorithm = "iterativeMCMC",
-                                ss = sample_size / n,
-                                replicate = replicate)
-
-    # SHD dataframe
-    SHDdf_itsearch <- data.frame(SHD = iterations.check_extended[[n_iterations, "SHD"]],
-                                algorithm = "MAP PC",
-                                ss = sample_size / n,
-                                replicate = replicate,
-                                time = totaltime)
-
-    #write.csv(scoresdf_itsearch, file = file.path(dir, "scores_itsearch.csv"), row.names = FALSE)
-    #write.csv(SHDdf_itsearch, file = file.path(dir, "SHD_itsearch.csv"), row.names = FALSE)
-    #write.csv(ROCdf_itsearch, file = file.path(dir, "ROC_itsearch.csv"), row.names = FALSE)
-
-    #
-    # Order MCMC
-    #
-    print("Runnning ordermcmc algorithm with startspace from iterative search")
-    startspace <- itsearch_res$endspace
-    starttime <- Sys.time()
-    order_mcmc_res <- orderMCMC(n, myscore, startspace = startspace, MAP = FALSE, chainout = TRUE) 
-    endtime <- Sys.time()
-    totaltime <- endtime - starttime
-    order_mcmc_res
-
-    # DAG obtained from order MCMC with the space definced by the iterativeMCMCSearch
-
-    # Score
-    # Scode the median thresholded graph
-    dag_thresh <- dag.threshold(n, order_mcmc_res$chain$incidence, pbarrier = 0.5, pdag = FALSE, burnin = 0.5) # incidence is a chain of adjacency matrices
-    medianscore <- ifelse(is.DAG(dag_thresh), DAGscore(n, myscore, dag_thresh), 10) # it is called median score since pbarrier = 0.5 
-
-    scoresdf_order_mcmc <- scoredf <- data.frame(logscore = medianscore,
-                                                algo = "finalMCMC",
-                                                ss = sample_size / n,
-                                                replicate = replicate,
-                                                time = totaltime)
-    # ROC
-    # Extend the sample.check output by TPR and FPRn
-    tmp <- sample.check(n, order_mcmc_res$chain$incidence, dag, pdag = TRUE)
-    tmp <- cbind(tmp, 
-                tmp[, "TP"] / true_nedges, 
-                tmp[, "FP"] / true_nedges)
-    colnames(tmp)[c(5, 6)] <- c("TPR", "FPRn")
-    sample.check_extended <- tmp
-    sample.check_extended
-    ROCdf_order_mcmc <- data.frame(TPR = sample.check_extended[, "TPR"],
-                                FPRn = sample.check_extended[, "FPRn"],
-                                threshold = sample.check_extended[, "post.thr."],
-                                algorithm = "finalMCMC",
-                                ss = sample_size / n,
-                                replicate = replicate)
-
-    # SHD
-    SHDdf_order_mcmc <- data.frame(SHD = data.frame(sample.check_extended)[[nrow(sample.check_extended), "SHD"]],
-                                algorithm = "finalMCMC",
-                                ss = sample_size / n,
-                                replicate = replicate,
-                                time = totaltime)
-
-    #write.csv(scoresdf_order_mcmc, file = file.path(dir, "scores_order_mcmc.csv"), row.names = FALSE)
-    #write.csv(SHDdf_order_mcmc, file = file.path(dir, "SHD_order_mcmc.csv"), row.names = FALSE)
-    #write.csv(ROCdf_order_mcmc, file = file.path(dir, "ROC_order_mcmc.csv"), row.names = FALSE)
-
-
-    # Blip
-    print("Runnning Blip")
-    res <- data.frame(matrix(ncol = 8, nrow = 1))
-    colnames(res) <- c("TP", "FP", "SHD", "TPR", "FPRn", "score", "bnscore", "time")
-
-    # Transform data to blip compatible format
-    varnames <- varnames.make(n)
-    datadf <- matrixToDataframe(data, varnames = varnames)
-
-    time <- blip_max_time
-    blipfit <- blip.learn(datadf, time = blip_max_time, scorefunction = "bdeu", verbose = 0)
-    print("blipfit done")
-    blipadj <- bnfit2matrix(blipfit)
-    blipadj <- rearrangeMatrix(blipadj, varnames)
-    compres <- compareDAGs(adjacency2dag(blipadj), dag)
-    names(compres) <- c("SHD", "TP", "FP")
-    
-    res["TP"] <- compres["TP"]
-    res["FP"] <- compres["FP"]
-    res["SHD"] <- compres["SHD"]
-    res["TPR"] <- compres["TP"] / true_nedges
-    res["FPRn"] <- compres["FP"] / true_nedges
-    res["time"] <- time
-    bnblip <- as.bn(modelstring(blipfit))
-
-    #res["score"] <- bnlearn::score(bnblip, data, type = "bde")
-
-    myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = 1, edgepf = 1))
-    res["score"] <- DAGscore(ncol(data), myscore_tmp, blipadj) # this was bnscore, dont know why...
-
-    res["ss"] <- sample_size / n
-    res["replicate"] <- replicate
-    res["algo"] <- "blip"
-    res
-    res[["score"]]
-    # All tihs information is anyway stored in the above table
-    # For TPR and SHD, the true graph is needed. But not for score.
-    # we might put all in one dataframe instead
-    # Is each row corersponding to one graph?
-    # Threshold is not relevant in some cases.
-    # - Then it can be none, eg. or 1, so that just nothing is thresholded.
-    # For TPR, each dot in the diagram is a threshold
-
-
-    scoresdf_blip <- data.frame(logscore = res[["score"]], # 3 is ? and 6 is the score column
-                                algo = "blip",
-                                ss = sample_size / n,
-                                replicate = replicate,
-                                time = res[["time"]]) # 3 is ? and 8 is the time column
-
-    ROCdf_blip <- data.frame(TPR = res[["TPR"]], # shold be for all times
-                            FPRn = res[["FPRn"]],
-                            threshold = NaN, #?is this correct?
-                            algorithm = "blip",
-                            ss = sample_size / n,
-                            replicate = replicate)
-
-    SHDdf_blip <- data.frame(SHD = res[["SHD"]],
-                            algorithm = "blip",
-                            ss = sample_size / n,
-                            replicate = replicate,
-                            time = time)
-
-    write.csv(scoresdf_order_mcmc, file = file.path(dir, paste("scores_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(SHDdf_order_mcmc, file = file.path(dir,paste("SHD_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(ROCdf_order_mcmc, file = file.path(dir,paste("ROC_order_mcmc_", replicate, ".csv", sep="")), row.names = FALSE)
-    
-    write.csv(scoresdf_itsearch, file = file.path(dir,paste("scores_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(SHDdf_itsearch, file = file.path(dir,paste("SHD_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(ROCdf_itsearch, file = file.path(dir,paste("ROC_itsearch_", replicate, ".csv", sep="")), row.names = FALSE)
-    
-    write.csv(scoresdf_blip, file = file.path(dir,paste("scores_blip_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(SHDdf_blip, file = file.path(dir,paste("SHD_blip_", replicate, ".csv", sep="")), row.names = FALSE)
-    write.csv(ROCdf_blip, file = file.path(dir,paste("ROC_blip_", replicate, ".csv", sep="")), row.names = FALSE)
-}
-
-run_and_write_everthing_to_files(data, dag, replicate, 5, dir)
 
 
 

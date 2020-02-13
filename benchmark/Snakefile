@@ -1,29 +1,55 @@
 
+output_dir="simresults"
+replicates=[1, 2]
 
-# rule sample_dag:
-#     input:
-#         "dag.rds ./ 10 2 1"
-#     output:
-#         "dag.rds"
-#     shell:
-#         "Rscript scripts/sample_dags.R --filename_data {input}"
+rule sample_dag:
+    output:
+        "{output_dir}/dag_{replicate}.rds"
+    shell:
+        "Rscript scripts/sample_dags.R --filename {output} --nodes 20 --parents 2 --seed {wildcards.replicate}"
 
+rule sample_bn:
+    input:
+        "{output_dir}/dag_{replicate}.rds"
+    output:
+        bn="{output_dir}/bn_{replicate}.rds"
+    shell:
+        "Rscript scripts/sample_bayesian_network_for_dag.R "
+        "--filename_dag {input} "
+        "--filename {output} --seed {wildcards.replicate} "
+
+rule sample_data:
+    input:
+        "{output_dir}/bn_{replicate}.rds"
+    output:
+        "{output_dir}/data_{replicate}.csv"
+    shell:
+        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 200 --seed {wildcards.replicate}"
 
 rule sim_blip:
     input: 
-        "data.csv"
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv"
     output: 
-        "./blip_output/blipsim.rds", "./blip_output/scores_blip.csv", "./blip_output/SHD_blip.csv", "./blip_output/ROC_blip.csv"
+        #"{output_dir}/scores_blip_{replicate}.csv", 
+        #"{output_dir}/SHD_blip_{replicate}.csv", 
+        "simresults/ROC_blip_{replicate}.csv"
     message: 
         "Executing blip algorithm on the following files {input}."
-#    conda:
-#        "env/conda_r_env_spec_file.txt"
-    #singularity: 
-    #    "docker://onceltuca/graphical_model_benchmark:latest"
     shell: 
-        "Rscript scripts/run_blip.R --filename_data {input} --output_dir ./blip_output" 
-    #script:
-    #    "scripts/run_blip.R --filename_data {input}"
+        "Rscript scripts/run_blip.R --filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--max_time 10" 
+    #benchmark:
+rule plot:
+    input: 
+        expand(output_dir+"/ROC_blip_{replicate}.csv", replicate=replicates)
+    output:
+        "{output_dir}/ROC.eps"
+    shell: 
+        "Rscript scripts/plot_results.R --directory simresults --roc_files {input}"
 
 
 # rule sim_bidag_max:
@@ -31,7 +57,7 @@ rule sim_blip:
 #     output:
 #     shell:
 
-# rule sim_bidag_sample:
+# rule sim_bidag_replicate:
 #     input:
 #     output:
 #     shell:
