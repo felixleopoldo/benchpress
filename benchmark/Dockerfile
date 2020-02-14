@@ -80,8 +80,8 @@ RUN apt install -y default-jdk
 RUN mkdir /myappdir/benchmark
 WORKDIR /myappdir/benchmark
 
-ADD data.csv .
-ADD dag.rds .
+# ADD data.csv .
+# ADD dag.rds .
 ADD scripts scripts
 ADD lib lib
 #ADD example_run.sh .

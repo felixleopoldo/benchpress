@@ -2,13 +2,12 @@ library(RBGL)
 library(r.blip)
 library(argparser)
 
-
 source("lib/code_for_binary_simulations/df_fns.R")
 source("lib/code_for_binary_simulations/summarySE.R")
 source("lib/code_for_binary_simulations/sim_bidag_binary.R")
 source("lib/code_for_binary_simulations/algorithm_wrappers.R")
-p <- arg_parser("A program for running r.blip and save to file.")
 
+p <- arg_parser("A program for running r.blip and save to file.")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename_dag", help = "DAG filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")

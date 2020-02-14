@@ -2,6 +2,9 @@
 output_dir="simresults"
 replicates=[1, 2]
 
+singularity:
+        "docker://onceltuca/graphical_model_benchmark:mytag"
+
 rule sample_dag:
     output:
         "{output_dir}/dag_{replicate}.rds"
@@ -24,47 +27,70 @@ rule sample_data:
     output:
         "{output_dir}/data_{replicate}.csv"
     shell:
-        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 200 --seed {wildcards.replicate}"
+        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 100 --seed {wildcards.replicate}"
 
 rule sim_blip:
     input: 
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv"
     output: 
-        #"{output_dir}/scores_blip_{replicate}.csv", 
-        #"{output_dir}/SHD_blip_{replicate}.csv", 
         "simresults/ROC_blip_{replicate}.csv"
     message: 
-        "Executing blip algorithm on the following files {input}."
+        "Executing blip algorithm on the following files: {input}."
     shell: 
         "Rscript scripts/run_blip.R --filename_data {input.data} "
         "--filename_dag {input.dag} "
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
         "--max_time 10" 
-    #benchmark:
+
+rule itsearch_map:
+    input: 
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv"
+    output: 
+        "simresults/ROC_itsearch_map_TRUE_{replicate}.csv",
+        "simresults/endspace_itsearch_map_TRUE_{replicate}.rds"
+    message: 
+        "Executing iterative search algorithm on the following files: {input}."
+    shell: 
+        "Rscript scripts/run_iterative_search.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--seed {wildcards.replicate} "
+        "--map 1"
+
+rule ordermcmc_itsearch_map:
+    input: 
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv",
+        startspace="simresults/endspace_itsearch_map_TRUE_{replicate}.rds"
+    output: 
+        "simresults/ROC_orderMCMC_itsearch_{replicate}.csv",
+    message: 
+        "Executing iterative search algorithm on the following files: {input}."
+#    params:
+#        seed="{replicate}"
+#        filename_data="{input.data}"
+#        filename_dag="{input.dag}"
+
+    shell: 
+        "Rscript scripts/run_order_mcmc.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--filename_startspace {input.startspace} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--seed {wildcards.replicate} "
+
 rule plot:
     input: 
-        expand(output_dir+"/ROC_blip_{replicate}.csv", replicate=replicates)
+        expand(output_dir+"/ROC_blip_{replicate}.csv", replicate=replicates),
+        expand(output_dir+"/ROC_itsearch_map_TRUE_{replicate}.csv", replicate=replicates),
+        expand(output_dir+"/ROC_orderMCMC_itsearch_{replicate}.csv", replicate=replicates)
     output:
         "{output_dir}/ROC.eps"
     shell: 
         "Rscript scripts/plot_results.R --directory simresults --roc_files {input}"
-
-
-# rule sim_bidag_max:
-#     input:
-#     output:
-#     shell:
-
-# rule sim_bidag_replicate:
-#     input:
-#     output:
-#     shell:
-
-# rule sim_gobnilp:
-#     input:
-#     output:
-#     shell:
-#     singularity:
-#         "docker://onceltuca/graphical_model_benchmark"

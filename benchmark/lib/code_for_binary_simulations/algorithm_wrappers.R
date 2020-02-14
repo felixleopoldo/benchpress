@@ -58,13 +58,13 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
     #write.csv(scoresdf_itsearch, file = file.path(dir, "scores_itsearch.csv"), row.names = FALSE)
     #write.csv(SHDdf_itsearch, file = file.path(dir, "SHD_itsearch.csv"), row.names = FALSE)
     #write.csv(ROCdf_itsearch, file = file.path(dir, "ROC_itsearch.csv"), row.names = FALSE)
-    return(list("scores"=scoresdf_itsearch, 
-                "SHD"=SHDdf_itsearch,
-                "ROC"=ROCdf_itsearch, 
-                "itsearch_res"=itsearch_res))
+    return(list("scores" = scoresdf_itsearch, 
+                "SHD" = SHDdf_itsearch,
+                "ROC" = ROCdf_itsearch, 
+                "endspace" = itsearch_res$endspace))
 }
 
-runOrderMCMC <- function(data, dag, replicate, itsearch_res, title) {
+runOrderMCMC <- function(data, dag, replicate, startspace, title) {
     #
     # Order MCMC
     #
@@ -73,7 +73,7 @@ runOrderMCMC <- function(data, dag, replicate, itsearch_res, title) {
     n <- dim(data)[2]
     true_nedges <- sum(dag2adjacencymatrix(dag))
     myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
-    startspace <- itsearch_res$endspace
+    #startspace <- itsearch_res$endspace
     starttime <- Sys.time()
     order_mcmc_res <- orderMCMC(n, myscore, startspace = startspace, MAP = FALSE, chainout = TRUE) 
     endtime <- Sys.time()
