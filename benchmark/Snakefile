@@ -1,6 +1,8 @@
 
-output_dir="simresults"
-replicates=[1, 2]
+output_dir = "simresults"
+replicates = [1, 2]
+itsearch_map = [0, 1]
+blip_times = [5]
 
 singularity:
         "docker://onceltuca/graphical_model_benchmark:mytag"
@@ -34,7 +36,7 @@ rule sim_blip:
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv"
     output: 
-        "simresults/ROC_blip_{replicate}.csv"
+        "simresults/ROC_blip_time_{blip_time}_{replicate}.csv"
     message: 
         "Executing blip algorithm on the following files: {input}."
     shell: 
@@ -42,15 +44,16 @@ rule sim_blip:
         "--filename_dag {input.dag} "
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
-        "--max_time 10" 
+        "--max_time {wildcards.blip_time}" 
 
-rule itsearch_map:
+rule itsearch:
     input: 
+        # Maybe we should set title here?
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv"
     output: 
-        "simresults/ROC_itsearch_map_TRUE_{replicate}.csv",
-        "simresults/endspace_itsearch_map_TRUE_{replicate}.rds"
+        "simresults/ROC_itsearch_map_{map}_{replicate}.csv",
+        "simresults/endspace_itsearch_map_{map}_{replicate}.rds"
     message: 
         "Executing iterative search algorithm on the following files: {input}."
     shell: 
@@ -60,22 +63,22 @@ rule itsearch_map:
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
         "--seed {wildcards.replicate} "
-        "--map 1"
+        "--map {wildcards.map}"
+        # Maybe we should set title here? But it is so dependent on the parameters.
+        # each combo should have a.
 
-rule ordermcmc_itsearch_map:
+rule ordermcmc_itsearch:
     input: 
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv",
-        startspace="simresults/endspace_itsearch_map_TRUE_{replicate}.rds"
+        startspace="simresults/endspace_itsearch_map_{map}_{replicate}.rds"
+        # Fixa ordermcmc, ska kunna köras med olika startspacce, inte bara från itsearch.
+        # kanske bara att lägga till filnamened på startspace
+
     output: 
-        "simresults/ROC_orderMCMC_itsearch_{replicate}.csv",
+        "simresults/ROC_orderMCMC_{replicate}_startspace_endspace_itsearch_map_{map}_{replicate}.csv",
     message: 
         "Executing iterative search algorithm on the following files: {input}."
-#    params:
-#        seed="{replicate}"
-#        filename_data="{input.data}"
-#        filename_dag="{input.dag}"
-
     shell: 
         "Rscript scripts/run_order_mcmc.R "
         "--filename_data {input.data} "
@@ -85,11 +88,16 @@ rule ordermcmc_itsearch_map:
         "--replicate {wildcards.replicate} "
         "--seed {wildcards.replicate} "
 
+# How to label the runs of interest?
+# It seems weird that the input is the results filenames.
+# Since this means that the labels must be in the filenames.
 rule plot:
     input: 
-        expand(output_dir+"/ROC_blip_{replicate}.csv", replicate=replicates),
-        expand(output_dir+"/ROC_itsearch_map_TRUE_{replicate}.csv", replicate=replicates),
-        expand(output_dir+"/ROC_orderMCMC_itsearch_{replicate}.csv", replicate=replicates)
+        expand(output_dir+"/ROC_blip_time_{blip_time}_{replicate}.csv", replicate=replicates, blip_time=blip_times),
+        expand(output_dir+"/ROC_itsearch_map_{map}_{replicate}.csv", replicate=replicates, map=itsearch_map),
+        expand(output_dir+"/ROC_orderMCMC_{replicate}_startspace_endspace_itsearch_map_{map}_{replicate}.csv", 
+              replicate=replicates, 
+              map=itsearch_map)
     output:
         "{output_dir}/ROC.eps"
     shell: 

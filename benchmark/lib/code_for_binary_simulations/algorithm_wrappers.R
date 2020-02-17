@@ -18,9 +18,10 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
                                     time = 0) # Should add dag name
 
     # Iterative search
-    print("Runnning iterative search algorithm")
     starttime <- Sys.time()
-    itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE, MAP = MAP) 
+ 
+    itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE, 
+                                        MAP = MAP && TRUE, posterior=0.5)
     endtime <- Sys.time()
     totaltime <- endtime - starttime
 
@@ -68,7 +69,6 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
     #
     # Order MCMC
     #
-    print("Runnning ordermcmc algorithm with startspace from iterative search")
     sample_size <- dim(data)[1]
     n <- dim(data)[2]
     true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -128,7 +128,6 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
     n <- dim(data)[2]
     true_nedges <- sum(dag2adjacencymatrix(dag))
     # Blip
-    print("Runnning Blip")
     res <- data.frame(matrix(ncol = 8, nrow = 1))
     colnames(res) <- c("TP", "FP", "SHD", "TPR", "FPRn", "score", "bnscore", "time")
 
@@ -138,7 +137,6 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
 
     time <- blip_max_time
     blipfit <- blip.learn(datadf, time = blip_max_time, scorefunction = "bdeu", verbose = 0)
-    print("done")
     blipadj <- bnfit2matrix(blipfit)
     blipadj <- rearrangeMatrix(blipadj, varnames)
     compres <- compareDAGs(adjacency2dag(blipadj), dag)

@@ -1,18 +1,17 @@
 ## Simulate rblip
 ##
 library(argparser)
+library(tools)
 
 library(RBGL)
-library(r.blip)
 source("lib/code_for_binary_simulations/rblip.R")
 source("lib/code_for_binary_simulations/df_fns.R")
 source("lib/code_for_binary_simulations/sim_bidag_binary.R")
 source("lib/code_for_binary_simulations/summarySE.R")
 source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
-p <- arg_parser("A program for running r.blip and save to file.")
+p <- arg_parser("A program for running porder MCMC and save results to file.")
 
-#p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--filename_startspace", help = "Start space")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename_dag", help = "DAGs filename") # This should not be here
@@ -33,9 +32,15 @@ dag <- readRDS(argv$filename_dag)
 data <- read.csv(argv$filename_data)
 startspace <- readRDS(argv$filename_startspace)
 
+#start_space_name = basename(argv$filename_startspace)
+#start_space_name = tools::file_path_sans_ext(argv$filename_startspace)
+startspace_name = sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(argv$filename_startspace))
 
-title <- "orderMCMC_itsearch"
+title <- "orderMCMC"
+
+# append filename of startspace to the titles
+
 order_mcmc_sample <- runOrderMCMC(data, dag, replicate, startspace, title)
-write.csv(order_mcmc_sample$scores, file = file.path(directory, paste("scores_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
-write.csv(order_mcmc_sample$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
-write.csv(order_mcmc_sample$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample$scores, file = file.path(directory, paste("scores_", title, "_", replicate, "_startspace_", startspace_name, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample$SHD, file = file.path(directory, paste("SHD_", title, "_", replicate, "_startspace_", startspace_name, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample$ROC, file = file.path(directory, paste("ROC_", title, "_", replicate, "_startspace_", startspace_name, ".csv", sep="")), row.names = FALSE)
