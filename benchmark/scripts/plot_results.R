@@ -11,7 +11,6 @@ p <- add_argument(p, "--directory", help = "directory with data")
 p <- add_argument(p, "--roc_files", help = "ROC csv file", nargs = Inf)
 
 argv <- parse_args(p)
-print(argv)
 directory <- argv$directory
 
 # Read all files in directory

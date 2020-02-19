@@ -14,6 +14,7 @@ p <- arg_parser("A program for running r.blip and save to file.")
 
 #p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
+p <- add_argument(p, "--title", help = "Title")
 p <- add_argument(p, "--filename_dag", help = "DAGs filename") # This should not be here
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
@@ -35,7 +36,8 @@ dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
 
 # Iterative search
-title <- paste("itsearch_map_", map, sep="") 
+#title <- "itsearch"
+title <- argv$title
 res <- runItsearch(data, dag, map, replicate, title)
 write.csv(res$scores, file = file.path(directory, paste("scores_", title, "_map_", map, "_", replicate, ".csv", sep="")), row.names = FALSE)
 write.csv(res$SHD, file = file.path(directory, paste("SHD_", title, "_map_", map, "_", replicate, ".csv", sep="")), row.names = FALSE)

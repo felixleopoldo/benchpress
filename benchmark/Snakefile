@@ -1,8 +1,8 @@
 
 output_dir = "simresults"
-replicates = [1, 2]
+replicates = [1, 2, 3, 4, 5]
 itsearch_map = [0, 1]
-blip_times = [5]
+blip_times = [10]
 
 singularity:
         "docker://onceltuca/graphical_model_benchmark:mytag"
@@ -11,7 +11,7 @@ rule sample_dag:
     output:
         "{output_dir}/dag_{replicate}.rds"
     shell:
-        "Rscript scripts/sample_dags.R --filename {output} --nodes 20 --parents 2 --seed {wildcards.replicate}"
+        "Rscript scripts/sample_dags.R --filename {output} --nodes 50 --parents 2 --seed {wildcards.replicate}"
 
 rule sample_bn:
     input:
@@ -29,7 +29,7 @@ rule sample_data:
     output:
         "{output_dir}/data_{replicate}.csv"
     shell:
-        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 100 --seed {wildcards.replicate}"
+        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 500 --seed {wildcards.replicate}"
 
 rule sim_blip:
     input: 
@@ -44,18 +44,19 @@ rule sim_blip:
         "--filename_dag {input.dag} "
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
-        "--max_time {wildcards.blip_time}" 
+        "--max_time {wildcards.blip_time} "
+        "--title blip" 
 
-rule itsearch:
+rule itsearch_sample:
     input: 
         # Maybe we should set title here?
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv"
     output: 
-        "simresults/ROC_itsearch_map_{map}_{replicate}.csv",
-        "simresults/endspace_itsearch_map_{map}_{replicate}.rds"
+        "simresults/ROC_itsearch_sample_map_0_{replicate}.csv",
+        "simresults/endspace_itsearch_sample_map_0_{replicate}.rds"
     message: 
-        "Executing iterative search algorithm on the following files: {input}."
+        "Executing iterative search algorithm with MAP=FALSE on the following files: {input}"
     shell: 
         "Rscript scripts/run_iterative_search.R "
         "--filename_data {input.data} "
@@ -63,23 +64,45 @@ rule itsearch:
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
         "--seed {wildcards.replicate} "
-        "--map {wildcards.map}"
+        "--map 0 "
+        "--title itsearch_sample"
         # Maybe we should set title here? But it is so dependent on the parameters.
         # each combo should have a.
 
-rule ordermcmc_itsearch:
+rule itsearch_map:
+    input: 
+        # Maybe we should set title here?
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv"
+    output: 
+        "simresults/ROC_itsearch_map_map_1_{replicate}.csv",
+        "simresults/endspace_itsearch_map_map_1_{replicate}.rds"
+    message: 
+        "Executing iterative search algorithm with MAP=TRUE on the following files: {input}"
+    shell: 
+        "Rscript scripts/run_iterative_search.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--seed {wildcards.replicate} "
+        "--map 1 "
+        "--title itsearch_map"
+        # Maybe we should set title here? But it is so dependent on the parameters.
+        # each combo should have a.
+
+rule ordermcmc_itsearch_sample:
     input: 
         dag="simresults/dag_{replicate}.rds",
         data="simresults/data_{replicate}.csv",
-        startspace="simresults/endspace_itsearch_map_{map}_{replicate}.rds"
-        # Fixa ordermcmc, ska kunna köras med olika startspacce, inte bara från itsearch.
-        # kanske bara att lägga till filnamened på startspace
-
+        startspace="simresults/endspace_itsearch_sample_map_0_{replicate}.rds"
+        # Fixa ordermcmc, ska kunna köras med olika startspace, inte bara från itsearch.
+        # kanske bara att lägga till filename på startspace
     output: 
-        "simresults/ROC_orderMCMC_{replicate}_startspace_endspace_itsearch_map_{map}_{replicate}.csv",
+        "simresults/ROC_orderMCMC_sample_{replicate}_startspace_endspace_itsearch_sample_map_0_{replicate}.csv",
     message: 
-        "Executing iterative search algorithm on the following files: {input}."
-    shell: 
+        "Executing order mcmc algorithm with startspace on the following files: {input}."
+    shell: # First check if results are in the database eg.
         "Rscript scripts/run_order_mcmc.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
@@ -87,18 +110,56 @@ rule ordermcmc_itsearch:
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
         "--seed {wildcards.replicate} "
+        "--title orderMCMC_sample"
+        # Here we could save to database
+
+
+rule ordermcmc_itsearch_map:
+    input: 
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv",
+        startspace="simresults/endspace_itsearch_map_map_1_{replicate}.rds"
+        # Fixa ordermcmc, ska kunna köras med olika startspace, inte bara från itsearch.
+        # kanske bara att lägga till filename på startspace
+    output: 
+        "simresults/ROC_orderMCMC_map_{replicate}_startspace_endspace_itsearch_map_map_1_{replicate}.csv",
+    message: 
+        "Executing order mcmc algorithm on the following files: {input}."
+    shell: # First check if results are in the database eg.
+        "Rscript scripts/run_order_mcmc.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--filename_startspace {input.startspace} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--seed {wildcards.replicate} "
+        "--title orderMCMC_map"
+        # Here we could save to database
 
 # How to label the runs of interest?
-# It seems weird that the input is the results filenames.
-# Since this means that the labels must be in the filenames.
+# It seems weird that the input is the results filenames
+# since this means that the labels must be in the filenames.
+
 rule plot:
     input: 
-        expand(output_dir+"/ROC_blip_time_{blip_time}_{replicate}.csv", replicate=replicates, blip_time=blip_times),
-        expand(output_dir+"/ROC_itsearch_map_{map}_{replicate}.csv", replicate=replicates, map=itsearch_map),
-        expand(output_dir+"/ROC_orderMCMC_{replicate}_startspace_endspace_itsearch_map_{map}_{replicate}.csv", 
-              replicate=replicates, 
-              map=itsearch_map)
+        expand(output_dir+"/ROC_blip_time_{blip_time}_{replicate}.csv", 
+               replicate=replicates, 
+               blip_time=blip_times),
+        expand(output_dir+"/ROC_itsearch_map_map_1_{replicate}.csv", 
+               replicate=replicates),
+        expand(output_dir+"/ROC_itsearch_sample_map_0_{replicate}.csv", 
+               replicate=replicates),
+        expand(output_dir+"/ROC_orderMCMC_sample_{replicate}_startspace_endspace_itsearch_sample_map_0_{replicate}.csv", 
+               replicate=replicates),
+        expand(output_dir+"/ROC_orderMCMC_map_{replicate}_startspace_endspace_itsearch_map_map_1_{replicate}.csv", 
+               replicate=replicates)
     output:
         "{output_dir}/ROC.eps"
     shell: 
         "Rscript scripts/plot_results.R --directory simresults --roc_files {input}"
+        # Maybe I can maniputate or add the titles here, prior to plotting.
+        # This sems to be the way to go, also for other parameters.
+        # but then these files would be overwritten by other simulations.
+        # Maybe they can be stored in a database.
+
+# Maybe there could be just one rule for each type of run

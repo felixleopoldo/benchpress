@@ -21,7 +21,7 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
     starttime <- Sys.time()
  
     itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE, 
-                                        MAP = MAP && TRUE, posterior=0.5)
+                                        MAP = MAP && TRUE, posterior=0.5, scoreout=TRUE)
     endtime <- Sys.time()
     totaltime <- endtime - starttime
 
@@ -45,7 +45,7 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
     ROCdf_itsearch <- data.frame(TPR = iterations.check_extended[[n_iterations, "TPR"]],
                                 FPRn = iterations.check_extended[[n_iterations, "FPRn"]],
                                 threshold = NaN,
-                                algorithm = title,
+                                algorithm = title, # Title should be set putside i think..
                                 ss = sample_size / n,
                                 replicate = replicate)
 
@@ -59,10 +59,11 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
     #write.csv(scoresdf_itsearch, file = file.path(dir, "scores_itsearch.csv"), row.names = FALSE)
     #write.csv(SHDdf_itsearch, file = file.path(dir, "SHD_itsearch.csv"), row.names = FALSE)
     #write.csv(ROCdf_itsearch, file = file.path(dir, "ROC_itsearch.csv"), row.names = FALSE)
+    print(itsearch_res$space$adjacency)
     return(list("scores" = scoresdf_itsearch, 
                 "SHD" = SHDdf_itsearch,
                 "ROC" = ROCdf_itsearch, 
-                "endspace" = itsearch_res$endspace))
+                "endspace" = itsearch_res$space$adjacency))
 }
 
 runOrderMCMC <- function(data, dag, replicate, startspace, title) {
@@ -78,7 +79,6 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
     order_mcmc_res <- orderMCMC(n, myscore, startspace = startspace, MAP = FALSE, chainout = TRUE) 
     endtime <- Sys.time()
     totaltime <- endtime - starttime
-    order_mcmc_res
 
     # DAG obtained from order MCMC with the space definced by the iterativeMCMCSearch
 
@@ -100,7 +100,7 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
                 tmp[, "FP"] / true_nedges)
     colnames(tmp)[c(5, 6)] <- c("TPR", "FPRn")
     sample.check_extended <- tmp
-    sample.check_extended
+
     ROCdf_order_mcmc <- data.frame(TPR = sample.check_extended[, "TPR"],
                                 FPRn = sample.check_extended[, "FPRn"],
                                 threshold = sample.check_extended[, "post.thr."],
