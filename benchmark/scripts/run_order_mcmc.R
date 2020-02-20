@@ -37,6 +37,8 @@ startspace <- readRDS(argv$filename_startspace)
 #start_space_name = tools::file_path_sans_ext(argv$filename_startspace)
 startspace_name = sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(argv$filename_startspace))
 
+
+
 #title <- "orderMCMC"
 title <- argv$title
 

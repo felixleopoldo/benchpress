@@ -1,3 +1,8 @@
+library(pcalg)
+library(RBGL)
+library(BiDAG)
+
+
 source("lib/code_for_binary_simulations/make_var_names.R")
 source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 source("lib/code_for_binary_simulations/make_name.R")
@@ -59,7 +64,8 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
     #write.csv(scoresdf_itsearch, file = file.path(dir, "scores_itsearch.csv"), row.names = FALSE)
     #write.csv(SHDdf_itsearch, file = file.path(dir, "SHD_itsearch.csv"), row.names = FALSE)
     #write.csv(ROCdf_itsearch, file = file.path(dir, "ROC_itsearch.csv"), row.names = FALSE)
-    print(itsearch_res$space$adjacency)
+    
+    # TODO: Also return all in one.
     return(list("scores" = scoresdf_itsearch, 
                 "SHD" = SHDdf_itsearch,
                 "ROC" = ROCdf_itsearch, 
@@ -191,4 +197,32 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
     return(list("scores" = scoresdf_blip,
                 "ROC" = ROCdf_blip,
                 "SHD" = SHDdf_blip))
+}
+
+runPCalg <- function(data, dag, replicate, alpha, title){
+    n <- numNodes(dag)
+    sample_size <- dim(data)[1]
+    true_nedges <- sum(dag2adjacencymatrix(dag))
+    myCPDAG <- pcalg::dag2cpdag(dag)
+
+    pc.fit <- pc(suffStat = list(dm = data, 
+                               adaptDF = FALSE),
+                               indepTest = binCItest,
+                               alpha = alpha, 
+                               labels = sapply(c(1:n), toString))
+    
+    comp <- compareDAGs(pc.fit@graph, myCPDAG) # c(SHD, TP, FP)
+    ROCdf <- data.frame(TPR = comp[2] / true_nedges,
+                        FPRn = comp[3] / true_nedges,
+                        threshold = NaN,
+                        algorithm = title, # Title should be set putside i think..
+                        ss = sample_size / n,
+                        replicate = replicate)
+    
+
+    resdf <- cbind(ROCdf, 
+                   alpha = alpha, 
+                   SHD = comp[1])
+    return(list("ROC" = ROCdf,
+                "summary" = resdf))
 }

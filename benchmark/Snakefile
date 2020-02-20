@@ -1,8 +1,11 @@
 
 output_dir = "simresults"
-replicates = [1, 2, 3, 4, 5]
+replicates = [1, 2, 3]
 itsearch_map = [0, 1]
 blip_times = [10]
+dim = [15]
+sample_sizes = [30, 150]
+
 
 singularity:
         "docker://onceltuca/graphical_model_benchmark:mytag"
@@ -11,7 +14,7 @@ rule sample_dag:
     output:
         "{output_dir}/dag_{replicate}.rds"
     shell:
-        "Rscript scripts/sample_dags.R --filename {output} --nodes 50 --parents 2 --seed {wildcards.replicate}"
+        "Rscript scripts/sample_dags.R --filename {output} --nodes 20 --parents 2 --seed {wildcards.replicate}"
 
 rule sample_bn:
     input:
@@ -29,7 +32,7 @@ rule sample_data:
     output:
         "{output_dir}/data_{replicate}.csv"
     shell:
-        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 500 --seed {wildcards.replicate}"
+        "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples 200 --seed {wildcards.replicate}"
 
 rule sim_blip:
     input: 
@@ -136,23 +139,41 @@ rule ordermcmc_itsearch_map:
         "--title orderMCMC_map"
         # Here we could save to database
 
+rule pcalg:
+    input:
+        dag="simresults/dag_{replicate}.rds",
+        data="simresults/data_{replicate}.csv",
+    output:
+        "{output_dir}/ROC_pcalg_alpha_{alpha}_{replicate}.csv"
+    shell:
+        "Rscript scripts/run_pcalg.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--alpha {wildcards.alpha} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--title pcalg"
+
 # How to label the runs of interest?
 # It seems weird that the input is the results filenames
 # since this means that the labels must be in the filenames.
 
 rule plot:
     input: 
-        expand(output_dir+"/ROC_blip_time_{blip_time}_{replicate}.csv", 
+        expand(output_dir + "/ROC_blip_time_{blip_time}_{replicate}.csv", 
                replicate=replicates, 
                blip_time=blip_times),
-        expand(output_dir+"/ROC_itsearch_map_map_1_{replicate}.csv", 
+        expand(output_dir + "/ROC_itsearch_map_map_1_{replicate}.csv", 
                replicate=replicates),
-        expand(output_dir+"/ROC_itsearch_sample_map_0_{replicate}.csv", 
+        expand(output_dir + "/ROC_itsearch_sample_map_0_{replicate}.csv", 
                replicate=replicates),
-        expand(output_dir+"/ROC_orderMCMC_sample_{replicate}_startspace_endspace_itsearch_sample_map_0_{replicate}.csv", 
+        expand(output_dir + "/ROC_orderMCMC_sample_{replicate}_startspace_endspace_itsearch_sample_map_0_{replicate}.csv", 
                replicate=replicates),
-        expand(output_dir+"/ROC_orderMCMC_map_{replicate}_startspace_endspace_itsearch_map_map_1_{replicate}.csv", 
-               replicate=replicates)
+        expand(output_dir + "/ROC_orderMCMC_map_{replicate}_startspace_endspace_itsearch_map_map_1_{replicate}.csv", 
+               replicate=replicates),
+        expand(output_dir + "/ROC_pcalg_alpha_{alpha}_{replicate}.csv", 
+               replicate=replicates,
+               alpha=[0.1])               
     output:
         "{output_dir}/ROC.eps"
     shell: 
