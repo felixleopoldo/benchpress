@@ -32,7 +32,6 @@ dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
 
 # Iterative search
-#title <- "itsearch"
 title <- argv$title
 res <- runPCalg(data, dag, replicate, alpha, title)
 write.csv(res$res, file = file.path(directory, paste("res_", title, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
