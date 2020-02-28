@@ -1,72 +1,50 @@
 library(RBGL)
 library(ggplot2)
+library(argparser)
 
 source("lib/code_for_binary_simulations/blip_vs_bidag_plot.R")
 source("lib/code_for_binary_simulations/summarySE.R")
-library(argparser)
-
 
 p <- arg_parser("A program for plotting.")
 p <- add_argument(p, "--directory", help = "directory with data")
-p <- add_argument(p, "--roc_files", help = "ROC csv file", nargs = Inf)
+p <- add_argument(p, "--roc_files_blip", help = "ROC csv files", nargs = Inf)
+p <- add_argument(p, "--roc_files_itsearch_map", help = "ROC csv files", nargs = Inf)
+p <- add_argument(p, "--roc_files_itsearch_sample", help = "ROC csv files", nargs = Inf)
+p <- add_argument(p, "--roc_files_order_mcmc_sample", help = "ROC csv files", nargs = Inf)
+p <- add_argument(p, "--roc_files_order_mcmc_map", help = "ROC csv files", nargs = Inf)
+p <- add_argument(p, "--roc_files_pcalg", help = "ROC csv files", nargs = Inf)
 
 argv <- parse_args(p)
+
 directory <- argv$directory
 
-# Read all files in directory
-filenames <- list.files(pattern = "^(scores_)", path=directory)
-scoredf <- data.frame()
-for (filename in filenames) {
-    tmpdf <- read.csv(file.path(directory, filename))
-    scoredf <- rbind(scoredf, tmpdf)
-}
+filenames <- list.files(pattern = "^(ROC_)", path = directory)
 
 ROCdf <- data.frame()
-for (filename in argv$roc_files) {
-   tmpdf <- read.csv(filename)
-   ROCdf <- rbind(ROCdf, tmpdf)
-}
-
-filenames <- list.files(pattern = "^(SHD_)", path=directory)
-SHDdf <- data.frame()
 for (filename in filenames) {
-   tmpdf <- read.csv(file.path(directory, filename))
-   SHDdf <- rbind(SHDdf, tmpdf)
+  tmpdf <- read.csv(file.path(directory, filename))
+  ROCdf <- dplyr::bind_rows(ROCdf, tmpdf)
 }
 
-#sumROCdf <- summarySE(ROCdf, "TPR", "FPRn", groupvars = c("ss", "algorithm", "threshold"))
-#sumROCdf$algorithm <- with(sumROCdf, factor(algorithm, levels = c("blip", "iterativeMCMC", "finalMCMC")))
+# Summarizes TPR over iterations as quantiles an saves mean TPR as TPR
+sumROCdf <- summarySE(ROCdf, "TPR",
+                      othervars = "FPRn",
+                      groupvars = c("ss", "algorithm", "threshold"),
+                      na.rm =TRUE)
 
-
-sumROCdf <- summarySE(ROCdf, "TPR", "FPRn", groupvars = c("ss", "algorithm", "threshold"))
-#alg_factor <- factor(sumROCdf[, "algorithm"])
-#sumROCdf$algorithm <- with(sumROCdf, factor(algorithm, levels = levels(alg_factor)))
-
-write.csv(sumROCdf, file = file.path(directory, "sumROC.csv"), row.names = FALSE)
-write.csv(scoredf, file = file.path(directory, "scores.csv"), row.names = FALSE)
 write.csv(ROCdf, file = file.path(directory, "ROC.csv"), row.names = FALSE)
-write.csv(SHDdf, file = file.path(directory, "SHD.csv"), row.names = FALSE)
-
-# Plotting
 
 setEPS()
 postscript(file.path(directory, "ROC.eps"))
-ggplot(data = sumROCdf, aes(x = FPRn, y = TPR, group = threshold, col = algorithm)) +
-geom_errorbar(aes(ymin = q1, ymax = q3, col = algorithm), width = 1) +
-geom_path(aes(group = algorithm, col = algorithm)) +
-geom_point(aes(group = algorithm, col = algorithm, shape = algorithm), size = 2) +
-xlim(c(0, 1)) + ylim(c(0, 1)) +
-#scale_shape_manual(labels = levels(alg_factor), values = c(5, 3, 15)) +
-#scale_size_manual(labels = levels(alg_factor), values = c(3, 1, 1)) +
-#scale_colour_manual(labels = levels(alg_factor), values = c("#4daf4a", "red", "purple")) +
 
-ggtitle("ROC")
+
+if (length(argv$roc_files_blip) > 1 && !is.na(argv$roc_files_blip)) {
+  ROCdf_blip <- data.frame()
+  for (filename in argv$roc_files_blip) {
+    tmpdf <- read.csv(filename)
+    ROCdf_blip <- dplyr::bind_rows(ROCdf_blip, tmpdf) # jon df with different columns
+  }
+  geom_blip = geom_point(data = ROCdf_blip, aes(FPRn, TPR), colour = 'red', size = 3)
+}
+
 dev.off()
-
-#postscript(file.path(directory, "scores_shift.eps"))
-#scoreShiftPlot(scoredf)
-#dev.off()
-
-#postscript(file.path(directory, "scores_boxplot.eps"))
-#HorisontalBoxplot(scoredf)
-#dev.off()

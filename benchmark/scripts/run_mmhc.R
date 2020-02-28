@@ -6,7 +6,7 @@ library(RBGL)
 
 source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
-p <- arg_parser("A program for running PC algorithm and save to file.")
+p <- arg_parser("A program for running Max-Min hill-climbing algorithm and save to file.")
 
 #p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
@@ -32,9 +32,8 @@ dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
 
 # Iterative search
-#title <- "itsearch"
 title <- argv$title
-res <- runPCalg(data, dag, replicate, alpha, title)
+res <- runMMHC(data, dag, replicate, alpha, title)
 write.csv(res$res, file = file.path(directory, paste("res_", title, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
 
 # Instead of having explicit parameters in the filenames, ids should be taken from a database.
