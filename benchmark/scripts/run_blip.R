@@ -30,8 +30,10 @@ max_time <- argv$max_time
 
 dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
+n <- dim(data)[1]
+p <- dim(data)[2]
 
 title <- argv$title
 blip <- runBlip(data, dag, replicate, max_time, title)
-write.csv(blip, file = file.path(directory, paste("res_", title, "_time_", max_time, "_", replicate, ".csv", sep="")), row.names = FALSE)
+write.csv(blip, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p,  "_time_", max_time, "_", replicate, ".csv", sep="")), row.names = FALSE)
 

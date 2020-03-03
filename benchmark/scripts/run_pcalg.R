@@ -30,10 +30,11 @@ alpha <- argv$alpha
 #set.seed(seed)
 dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
-
+n <- dim(data)[1]
+p <- dim(data)[2]
 # Iterative search
 title <- argv$title
 res <- runPCalg(data, dag, replicate, alpha, title)
-write.csv(res$res, file = file.path(directory, paste("res_", title, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
+write.csv(res$res, file = file.path(directory, paste("res_", title,"_n_", n, "_p_", p, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
 
 # Instead of having explicit parameters in the filenames, ids should be taken from a database.

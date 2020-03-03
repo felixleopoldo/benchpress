@@ -33,9 +33,10 @@ map <- argv$map
 set.seed(seed)
 dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
-
+n <- dim(data)[1]
+p <- dim(data)[2]
 # Iterative search
 title <- argv$title
 res <- runItsearch(data, dag, map, replicate, title)
-write.csv(res$res, file = file.path(directory, paste("res_", title, "_map_", map, "_", replicate, ".csv", sep="")), row.names = FALSE)
-saveRDS(object = res$endspace, file.path(directory, paste("endspace_", title, "_map_", map, "_", replicate, ".rds", sep="")))
+write.csv(res$res, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p,"_map_", map, "_", replicate, ".csv", sep="")), row.names = FALSE)
+saveRDS(object = res$endspace, file.path(directory, paste("endspace_", title,"_n_", n, "_p_", p, "_map_", map, "_", replicate, ".rds", sep="")))

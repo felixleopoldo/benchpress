@@ -17,11 +17,11 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
 
   # True graph
   truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
-  scoresdf_truegraph <- data.frame(logscore = truescore,
-                                    algo = "TRUE",
-                                    ss = dim(data)[1],
-                                    replicate = replicate,
-                                    time = 0) # Should add dag name
+  # scoresdf_truegraph <- data.frame(logscore = truescore,
+  #                                   algo = "TRUE",
+  #                                   ss = dim(data)[1],
+  #                                   replicate = replicate,
+  #                                   time = 0) # Should add dag name
 
   # Iterative search
   starttime <- Sys.time()
@@ -34,11 +34,13 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
   # Score dataframe
   # Should add dataset name here which can be tracked to the dag
   # and the parameters in the database
-  scoresdf_itsearch <- data.frame(logscore = itsearch_res$max$score,
-                                    algo = title,
-                                    ss = sample_size / n,
-                                    replicate = replicate,
-                                    time = totaltime)
+  # scoresdf_itsearch <- data.frame(logscore = itsearch_res$max$score,
+  #                                   algo = title,
+  #                                   ss = sample_size / n,
+  #                                   replicate = replicate,
+  #                                   time = totaltime,
+  #                                   sample_size=sample_size,
+  #                                   dim=dim))
 
   # Extend iterations.check table by FPRn (TODO: if dag exists)
   benchmarks <- iterations.check(itsearch_res, dag)
@@ -53,7 +55,9 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
                                 replicate = replicate,
                                 SHD = benchmarks[[n_iterations, "SHD"]],
                                 logscore = itsearch_res$max$score,
-                                time = totaltime)
+                                time = totaltime,
+                                sample_size=sample_size,
+                                dim=dim(data)[2])
 
   return(list("res" = results,
               "endspace" = itsearch_res$space$adjacency))
@@ -90,9 +94,10 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
                     logscore = scores,
                     threshold = benchmarks[, "post.thr."],
                     algorithm = title,
-                    ss = sample_size / n,
                     replicate = replicate,
-                    SHD = benchmarks[, "SHD"]) 
+                    SHD = benchmarks[, "SHD"],
+                    sample_size=sample_size,
+                    dim=dim(data)[2]) 
   res$time = totaltime
 
   return(res)
@@ -100,7 +105,7 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
 
 runBlip <- function(data, dag, replicate, blip_max_time, title) {
   sample_size <- dim(data)[1]
-  n <- dim(data)[2]
+  n <- dim(data)[2]  
   true_nedges <- sum(dag2adjacencymatrix(dag))
   # Blip
   res <- data.frame(matrix(ncol = 8, nrow = 1))
@@ -125,9 +130,10 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
                             logscore = logscore,
                             SHD = compres["SHD"],
                             algorithm = title,
-                            ss = sample_size / n,
                             replicate = replicate,
-                            time = time)
+                            time = time,
+                            sample_size=sample_size,
+                            dim=dim(data)[2])
     return(res)
 }
 
@@ -149,11 +155,12 @@ runPCalg <- function(data, dag, replicate, alpha, title) {
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
                         algorithm = title, # Title should be set putside i think
-                        ss = sample_size / n,
                         replicate = replicate,
                         alpha = alpha,
                         time=totaltime,
-                        SHD = comp[1])
+                        SHD = comp[1],
+                        sample_size=sample_size,
+                        dim=dim(data)[2])
 
   resdf <- cbind(res,
                    alpha = alpha,
@@ -180,10 +187,11 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
                         algorithm = title, # Title should be set outside i think
-                        ss = sample_size / n,
                         replicate = replicate,
                         alpha = alpha,
                         time=totaltime,
-                        SHD = comp[1])
+                        SHD = comp[1],
+                        sample_size=sample_size,
+                        dim=dim(data)[2])
   return(res)
 }

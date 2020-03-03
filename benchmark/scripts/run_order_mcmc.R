@@ -27,6 +27,8 @@ replicate <- argv$replicate
 set.seed(seed)
 dag <- readRDS(argv$filename_dag)
 data <- read.csv(argv$filename_data)
+n <- dim(data)[1]
+p <- dim(data)[2]
 startspace <- readRDS(argv$filename_startspace)
 
 #start_space_name = basename(argv$filename_startspace)
@@ -37,4 +39,4 @@ title <- argv$title
 
 # append filename of startspace to the titles
 order_mcmc_sample <- runOrderMCMC(data, dag, replicate, startspace, title)
-write.csv(order_mcmc_sample, file = file.path(directory, paste("res_", title, "_", replicate, "_startspace_", startspace_name, ".csv", sep="")), row.names = FALSE)
+write.csv(order_mcmc_sample, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p, "_", replicate, "_startspace_", startspace_name, ".csv", sep="")), row.names = FALSE)
