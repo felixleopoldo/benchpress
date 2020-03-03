@@ -4,7 +4,7 @@ replicates = [1, 2, 3, 4]
 itsearch_map = [0, 1]
 blip_times = [10]
 dims = [20]
-sample_sizes = [40]
+sample_sizes = [40, 200]
 
 singularity:
         "docker://onceltuca/graphical_model_benchmark:mytag"
