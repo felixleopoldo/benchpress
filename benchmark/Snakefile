@@ -1,13 +1,18 @@
 
 output_dir = "simresults"
-replicates = [1, 2, 3, 4]
+replicates = [1, 2, 3]
 itsearch_map = [0, 1]
-blip_times = [10]
-dims = [20]
-sample_sizes = [40, 200]
-
+blip_times = [30]
+# dims = [[20], [80], [140], [200]]
+# sample_sizes = [[40, 200],
+#                 [160, 800],
+#                 [280, 1400],
+#                 [400, 2000]]
+dims = [[5], [10]]
+sample_sizes = [[10, 50],
+                [20, 100]]
 singularity:
-        "docker://onceltuca/graphical_model_benchmark:mytag"
+    "docker://onceltuca/graphical_model_benchmark:mytag"
 
 rule sample_dag:
     output:
@@ -19,7 +24,7 @@ rule sample_bn:
     input:
         "{output_dir}/dag_p_{p}_{replicate}.rds"
     output:
-        bn="{output_dir}/bn_p_{p}_{replicate}.rds"
+        bn = "{output_dir}/bn_p_{p}_{replicate}.rds"
     shell:
         "Rscript scripts/sample_bayesian_network_for_dag.R "
         "--filename_dag {input} "
@@ -33,34 +38,42 @@ rule sample_data:
     shell:
         "Rscript scripts/sample_data.R --filename {output} --filename_bn {input} --samples {wildcards.n} --seed {wildcards.replicate}"
 
+rule sample_data_range_header:
+    input:
+        "{output_dir}/bn_p_{p}_{replicate}.rds"
+    output:
+        "{output_dir}/range_header_data_n_{n}_p_{p}_{replicate}.csv"
+    shell:
+        "Rscript scripts/sample_data_with_range_header.R --filename {output} --filename_bn {input} --samples {wildcards.n} --seed {wildcards.replicate}"
+
 rule sim_blip:
-    input: 
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv"
-    output: 
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv"
+    output:
         "simresults/res_blip_n_{n}_p_{p}_time_{blip_time}_{replicate}.csv"
-        #"simresults/{input.dag}_{input.data}_res_blip_time_{blip_time}_{replicate}.csv" 
-    message: 
+        # "simresults/{input.dag}_{input.data}_res_blip_time_{blip_time}_{replicate}.csv"
+    message:
         "Executing blip algorithm on the following files: {input}."
-    shell: 
+    shell:
         "Rscript scripts/run_blip.R --filename_data {input.data} "
         "--filename_dag {input.dag} "
         "--output_dir {output_dir} "
         "--replicate {wildcards.replicate} "
         "--max_time {wildcards.blip_time} "
         "--title blip "
-        #" > {output}"
+        # " > {output}"
 
 rule itsearch_sample:
-    input: 
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv"
-    output: 
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv"
+    output:
         "simresults/res_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv",
         "simresults/endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.rds"
-    message: 
+    message:
         "Executing iterative search algorithm with MAP=FALSE on the following files: {input}"
-    shell: 
+    shell:
         "Rscript scripts/run_iterative_search.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
@@ -71,15 +84,15 @@ rule itsearch_sample:
         "--title itsearch_sample"
 
 rule itsearch_map:
-    input: 
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv"
-    output: 
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv"
+    output:
         "simresults/res_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv",
         "simresults/endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.rds"
-    message: 
+    message:
         "Executing iterative search algorithm with MAP=TRUE on the following files: {input}"
-    shell: 
+    shell:
         "Rscript scripts/run_iterative_search.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
@@ -90,17 +103,17 @@ rule itsearch_map:
         "--title itsearch_map"
 
 rule ordermcmc_itsearch_sample:
-    input: 
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv",
-        startspace="simresults/endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.rds"
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv",
+        startspace = "simresults/endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.rds"
         # Fixa ordermcmc, ska kunna köras med olika startspace, inte bara från itsearch.
         # kanske bara att lägga till filename på startspace
-    output: 
+    output:
         "simresults/res_orderMCMC_sample_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv",
-    message: 
+    message:
         "Executing order mcmc algorithm with startspace on the following files: {input}."
-    shell: # First check if results are in the database eg.
+    shell:  # First check if results are in the database eg.
         "Rscript scripts/run_order_mcmc.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
@@ -113,17 +126,17 @@ rule ordermcmc_itsearch_sample:
 
 
 rule ordermcmc_itsearch_map:
-    input: 
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv",
-        startspace="simresults/endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.rds"
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv",
+        startspace = "simresults/endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.rds"
         # Fixa ordermcmc, ska kunna köras med olika startspace, inte bara från itsearch.
         # kanske bara att lägga till filename på startspace
-    output: 
+    output:
         "simresults/res_orderMCMC_map_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv",
-    message: 
+    message:
         "Executing order mcmc algorithm on the following files: {input}."
-    shell: # First check if results are in the database eg.
+    shell:  # First check if results are in the database eg.
         "Rscript scripts/run_order_mcmc.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
@@ -136,8 +149,8 @@ rule ordermcmc_itsearch_map:
 
 rule pcalg:
     input:
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv"
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv"
     output:
         "{output_dir}/res_pcalg_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv"
     shell:
@@ -151,12 +164,12 @@ rule pcalg:
 
 rule mmhc:
     input:
-        dag="simresults/dag_p_{p}_{replicate}.rds",
-        data="simresults/data_n_{n}_p_{p}_{replicate}.csv"
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/data_n_{n}_p_{p}_{replicate}.csv"
     output:
         "{output_dir}/res_mmhc_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv"
     shell:
-        "Rscript scripts/run_pcalg.R "
+        "Rscript scripts/run_mmhc.R "
         "--filename_data {input.data} "
         "--filename_dag {input.dag} "
         "--alpha {wildcards.alpha} "
@@ -164,47 +177,65 @@ rule mmhc:
         "--replicate {wildcards.replicate} "
         "--title mmhc"
 
+rule gobnilp:
+    input:
+        dag = "simresults/dag_p_{p}_{replicate}.rds",
+        data = "simresults/range_header_data_n_{n}_p_{p}_{replicate}.csv"
+    output:
+        "{output_dir}/res_gobnilp_n_{n}_p_{p}_{replicate}.csv"
+    shell:
+        "Rscript scripts/run_gobnilp.R "
+        "--filename_data {input.data} "
+        "--filename_dag {input.dag} "
+        "--output_dir {output_dir} "
+        "--replicate {wildcards.replicate} "
+        "--title gobnilp"
+
 # How to label the runs of interest?
 # It seems weird that the input is the results filenames
 # since this means that the labels must be in the filenames.
 rule plot:
-    input: 
-        blip = expand(output_dir + "/res_blip_n_{n}_p_{p}_time_{blip_time}_{replicate}.csv", 
-                      replicate=replicates, 
-                      blip_time=blip_times,
-                      n=sample_sizes,
-                      p=dims),
-        itsearch_map = expand(output_dir + "/res_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv", 
-                             replicate=replicates,
-                             n=sample_sizes,
-                             p=dims),
-        itsearch_sample = expand(output_dir + "/res_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv", 
-                                replicate=replicates,
-                                n=sample_sizes,
-                                p=dims),
-        order_mcmc_sample = expand(output_dir + "/res_orderMCMC_sample_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv", 
-                                   replicate=replicates,
-                                   n=sample_sizes,
-                                   p=dims),
-        order_mcmc_map = expand(output_dir + "/res_orderMCMC_map_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv",
-                                replicate=replicates,
-                                n=sample_sizes,
-                                p=dims),
-        pcalg = expand(output_dir + "/res_pcalg_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv",
+    input:
+        blip = [expand(output_dir + "/res_blip_n_{n}_p_{p}_time_{blip_time}_{replicate}.csv",
+                       replicate=replicates,
+                       blip_time=blip_times,
+                       n=sample_sizes[i],
+                       p=dims[i]) for i in range(len(dims))],
+        itsearch_map = [expand(output_dir + "/res_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv",
+                               replicate=replicates,
+                               n=sample_sizes[i],
+                               p=dims[i]) for i in range(len(dims))],
+        itsearch_sample = [expand(output_dir + "/res_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv",
+                                  replicate=replicates,
+                                  n=sample_sizes[i],
+                                  p=dims[i]) for i in range(len(dims))],
+        order_mcmc_sample = [expand(output_dir + "/res_orderMCMC_sample_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_map_0_{replicate}.csv",
+                                    replicate=replicates,
+                                    n=sample_sizes[i],
+                                    p=dims[i]) for i in range(len(dims))],
+        order_mcmc_map = [expand(output_dir + "/res_orderMCMC_map_n_{n}_p_{p}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_map_1_{replicate}.csv",
+                                 replicate=replicates,
+                                 n=sample_sizes[i],
+                                 p=dims[i]) for i in range(len(dims))],
+        pcalg = [expand(output_dir + "/res_pcalg_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv",
+                        replicate=replicates,
+                        alpha=[0.01, 0.05, 0.1, 0.2, 0.35, 0.45],
+                        n=sample_sizes[i],
+                        p=dims[i]) for i in range(len(dims))],
+        mmhc = [expand(output_dir + "/res_mmhc_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv",
                        replicate=replicates,
                        alpha=[0.01, 0.05, 0.1, 0.2, 0.35, 0.45],
-                       n=sample_sizes,
-                       p=dims),
-        mmhc = expand(output_dir + "/res_mmhc_n_{n}_p_{p}_alpha_{alpha}_{replicate}.csv", 
-                      replicate=replicates,
-                      alpha=[0.01, 0.05, 0.1, 0.2, 0.35, 0.45],
-                      n=sample_sizes,
-                      p=dims)
+                       n=sample_sizes[i],
+                       p=dims[i]) for i in range(len(dims))],
+        gobnilp = [expand(output_dir + "/res_gobnilp_n_{n}_p_{p}_{replicate}.csv",
+                          replicate=replicates,
+                          n=sample_sizes[i],
+                          p=dims[i]) for i in range(len(dims))]
     output:
         "{output_dir}/ROC.eps"
     notebook:
         "plot.ipynb"
-    # shell: 
+    # shell:
     #     "Rscript scripts/plot_results.R "
     #     "--directory simresults "
     #     "--res_files_blip {input.blip} "

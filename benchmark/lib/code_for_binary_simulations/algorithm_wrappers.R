@@ -3,10 +3,29 @@ library(BiDAG)
 library(bnlearn)
 library(r.blip)
 library(RBGL)
+library(reticulate)
 
 source("lib/code_for_binary_simulations/make_var_names.R")
 source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 source("lib/code_for_binary_simulations/make_name.R")
+
+numeric_labels <- function(gnel_dag){
+    ## The node labels from gobnilp are sorted alphabetically
+    ## which is not desired. The they are sorted by the in value en the string.
+    ## e.g. "1","2","13" and not "1", "13", "2"
+    nodelist <- c()
+    for (i in seq(length(nodes(gnel_dag)))) {
+        nodelist <- c(nodelist, toString(i))
+    }
+    gR <- graphNEL(nodes=nodelist, edgemode = "directed")
+    edL <- vector("list", length=length(nodes(gnel_dag)))
+    for (node in ls(edges(gnel_dag))) {
+        for (child in edges(gnel_dag)[[node]]){        
+            gR <- addEdge(from=node, to=child, gR)
+        }
+    }
+    return(gR)
+}
 
 runItsearch <- function(data, dag, MAP, replicate, title) {
   n <- numNodes(dag)
@@ -27,7 +46,7 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
   starttime <- Sys.time()
 
   itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE,
-                                        MAP = MAP && TRUE, posterior = 0.5, scoreout = TRUE)
+                                      MAP = MAP && TRUE, posterior = 0.5, scoreout = TRUE, plus1it = 10)
   endtime <- Sys.time()
   totaltime <- endtime - starttime
 
@@ -55,6 +74,8 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
                                 replicate = replicate,
                                 SHD = benchmarks[[n_iterations, "SHD"]],
                                 logscore = itsearch_res$max$score,
+                                plus1it = 10,
+                                posterior = 0.5,
                                 time = totaltime,
                                 sample_size=sample_size,
                                 dim=dim(data)[2])
@@ -176,14 +197,14 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
   datanew <- matrixToDataframe(data, names(data))
   learn.net <- empty.graph(names(datanew))
   starttime <- Sys.time()
-  mmoutput <- mmhc(datanew)
+  mmoutput <- mmhc(datanew, restrict.args = list(alpha=alpha))
   endtime <- Sys.time()
   totaltime <- endtime - starttime
   ## convert to graphneldag
   gnel_dag <- as.graphNEL(mmoutput)
  
   comp <- compareDAGs(gnel_dag, dag)
-  comp
+
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
                         algorithm = title, # Title should be set outside i think
@@ -193,5 +214,37 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
                         SHD = comp[1],
                         sample_size=sample_size,
                         dim=dim(data)[2])
+  return(res)
+}
+
+runGobnilp <- function(filename_data, dag, replicate, title) {
+  n <- numNodes(dag)
+  data <- read.csv(filename_data, sep=" ")
+  sample_size <- dim(data)[1]-1
+  true_nedges <- sum(dag2adjacencymatrix(dag))
+
+  gob <- import("pygobnilp.gobnilp")
+  m <- gob$Gobnilp()
+
+  starttime <- Sys.time()
+  m$learn(filename_data, plot=FALSE)
+  endtime <- Sys.time()
+  totaltime <- endtime - starttime
+  ## convert to graphneldag
+  graphstring = m$learned_bn$bnlearn_modelstring()
+  gnel_dag <- as.graphNEL(model2network(graphstring))
+  gnel_dag <- numeric_labels(gnel_dag) # Corrects the node labels
+
+  comp <- compareDAGs(gnel_dag, dag)
+  
+  res <- data.frame(TPR = comp[2] / true_nedges,
+                        FPRn = comp[3] / true_nedges,
+                        algorithm = title, # Title should be set outside i think
+                        replicate = replicate,
+                        time=totaltime,
+                        SHD = comp[1],
+                        sample_size=sample_size,
+                        dim=dim(data)[2])
+
   return(res)
 }

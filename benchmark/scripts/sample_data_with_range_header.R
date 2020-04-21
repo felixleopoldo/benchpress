@@ -12,7 +12,7 @@ library(argparser)
 
 source("lib/binarydatagen/generatebinaryBNf.r")
 
-p <- arg_parser("A program for sampling dat from a binary Bayesian network and save to file.")
+p <- arg_parser("A program for sampling data from a binary Bayesian network and save to file.")
 
 p <- add_argument(p, "--filename", help = "output filename", default = "data.csv")
 p <- add_argument(p, "--filename_bn", help = "Bayesian network filename", default = "bn.rds")
@@ -32,6 +32,9 @@ n = numNodes(bn$DAG)
 set.seed(seed)
 bindata <- generatebinaryBN.data(n = n, binaryBN = bn, samplesize = samples)
 
-write.csv(bindata, file = filename, row.names = FALSE)
+myrow <- rep(2, n)
+bindata_range_header <- data.frame(rbind(myrow, as.matrix(bindata)))
 
+colnames(bindata_range_header) <- seq(n)
+write.table(bindata_range_header, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE)
 
