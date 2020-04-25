@@ -9,25 +9,25 @@ source("lib/code_for_binary_simulations/make_var_names.R")
 source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 source("lib/code_for_binary_simulations/make_name.R")
 
-numeric_labels <- function(gnel_dag){
-    ## The node labels from gobnilp are sorted alphabetically
-    ## which is not desired. The they are sorted by the in value en the string.
-    ## e.g. "1","2","13" and not "1", "13", "2"
-    nodelist <- c()
-    for (i in seq(length(nodes(gnel_dag)))) {
-        nodelist <- c(nodelist, toString(i))
+numeric_labels <- function(gnel_dag) {
+  ## The node labels from gobnilp are sorted alphabetically
+  ## which is not desired. The they are sorted by the in value en the string.
+  ## e.g. "1","2","13" and not "1", "13", "2"
+  nodelist <- c()
+  for (i in seq(length(nodes(gnel_dag)))) {
+    nodelist <- c(nodelist, toString(i))
+  }
+  gR <- graphNEL(nodes = nodelist, edgemode = "directed")
+  edL <- vector("list", length = length(nodes(gnel_dag)))
+  for (node in ls(edges(gnel_dag))) {
+    for (child in edges(gnel_dag)[[node]]) {
+      gR <- addEdge(from = node, to = child, gR)
     }
-    gR <- graphNEL(nodes=nodelist, edgemode = "directed")
-    edL <- vector("list", length=length(nodes(gnel_dag)))
-    for (node in ls(edges(gnel_dag))) {
-        for (child in edges(gnel_dag)[[node]]){        
-            gR <- addEdge(from=node, to=child, gR)
-        }
-    }
-    return(gR)
+  }
+  return(gR)
 }
 
-runItsearch <- function(data, dag, MAP, replicate, title) {
+runItsearchMAP <- function(data, dag, replicate, title) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -36,53 +36,168 @@ runItsearch <- function(data, dag, MAP, replicate, title) {
 
   # True graph
   truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
-  # scoresdf_truegraph <- data.frame(logscore = truescore,
-  #                                   algo = "TRUE",
-  #                                   ss = dim(data)[1],
-  #                                   replicate = replicate,
-  #                                   time = 0) # Should add dag name
 
   # Iterative search
   starttime <- Sys.time()
 
-  itsearch_res <- iterativeMCMCsearch(n, myscore, chainout = TRUE,
-                                      MAP = MAP && TRUE, posterior = 0.5, scoreout = TRUE, plus1it = 10)
-  endtime <- Sys.time()
-  totaltime <- endtime - starttime
+  # best graph in ech it is addspace
+  # addcum, keep track of edges, current best and the add space
 
-  # Score dataframe
-  # Should add dataset name here which can be tracked to the dag
-  # and the parameters in the database
-  # scoresdf_itsearch <- data.frame(logscore = itsearch_res$max$score,
-  #                                   algo = title,
-  #                                   ss = sample_size / n,
-  #                                   replicate = replicate,
-  #                                   time = totaltime,
-  #                                   sample_size=sample_size,
-  #                                   dim=dim))
+  itsearch_res <- iterativeMCMCsearch(n,
+                                      myscore,
+                                      chainout = TRUE,
+                                      MAP = MAP && TRUE,
+                                      posterior = 0.5,
+                                      scoreout = TRUE,
+                                      plus1it = 10) # 1 and loop
+
+  endtime <- Sys.time()
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
 
   # Extend iterations.check table by FPRn (TODO: if dag exists)
   benchmarks <- iterations.check(itsearch_res, dag)
-
   n_iterations <- nrow(benchmarks) # To get results of the final graph
 
   # ROC dataframe
   results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
-                                FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
-                                algorithm = title, # TODO: Title should be set outside..
-                                ss = sample_size / n,
-                                replicate = replicate,
-                                SHD = benchmarks[[n_iterations, "SHD"]],
-                                logscore = itsearch_res$max$score,
-                                plus1it = 10,
-                                posterior = 0.5,
-                                time = totaltime,
-                                sample_size=sample_size,
-                                dim=dim(data)[2])
+                                    FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
+                                    algorithm = title, # TODO: Title should be set outside..
+                                    ss = sample_size / n,
+                                    replicate = replicate,
+                                    SHD = benchmarks[[n_iterations, "SHD"]],
+                                    logscore = itsearch_res$max$score,
+  #plus1it = 10,
+  #posterior = 0.5,
+                                    time = totaltime,
+                                    sample_size = sample_size,
+                                    dim = dim(data)[2],
+                                    MAP = TRUE,
+                                    score_type = "bde",
+                                    score_param = 1)
 
   return(list("res" = results,
-              "endspace" = itsearch_res$space$adjacency))
+                "endspace" = itsearch_res$space$adjacency))
 }
+
+runItsearchSample <- function(data, dag, replicate, title) {
+  n <- numNodes(dag)
+  sample_size <- dim(data)[1]
+  true_nedges <- sum(dag2adjacencymatrix(dag))
+
+  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
+
+  # True graph
+  truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
+
+  # Iterative search
+  starttime <- Sys.time()
+
+  # best graph in ech it is addspace
+  # addcum, keep track of edges, current best and the add space
+  itsearch_res <- iterativeMCMCsearch(n,
+                                      myscore,
+                                      chainout = TRUE,
+                                      MAP = FALSE,
+                                      posterior = 0.5,
+                                      scoreout = TRUE,
+                                      plus1it = 2) # 1 and loop
+
+  endspace <- itsearch_res$space$adjacency
+  addspace <- itsearch_res$addspace
+  print(addspace)
+  while (FALSE) {
+    itsearch_res <- iterativeMCMCsearch(n,
+                                      myscore,
+                                      chainout = TRUE,
+                                      MAP = FALSE,
+                                      posterior = 0.5,
+                                      scoreout = TRUE,
+                                      plus1it = 1,
+                                      startspace = endspace) # 1 and loop
+    addspace <- itsearch_res$addspace
+    endspace <- itsearch_res$space$adjacency
+  }
+
+  endtime <- Sys.time()
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
+
+  # Extend iterations.check table by FPRn (TODO: if dag exists)
+  benchmarks <- iterations.check(itsearch_res, dag)
+  n_iterations <- nrow(benchmarks) # To get results of the final graph
+
+  # ROC dataframe
+  results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
+                                    FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
+                                    algorithm = title, # TODO: Title should be set outside..
+                                    ss = sample_size / n,
+                                    replicate = replicate,
+                                    SHD = benchmarks[[n_iterations, "SHD"]],
+                                    logscore = itsearch_res$max$score,
+  #plus1it = 10,
+                                    posterior = 0.5,
+                                    time = totaltime,
+                                    sample_size = sample_size,
+                                    dim = dim(data)[2],
+                                    MAP = FALSE,
+                                    score_type = "bde",
+                                    score_param = 1)
+
+  return(list("res" = results,
+                "endspace" = itsearch_res$space$adjacency))
+}
+
+runItsearch <- function(data, dag, map, replicate, title) {
+  n <- numNodes(dag)
+  sample_size <- dim(data)[1]
+  true_nedges <- sum(dag2adjacencymatrix(dag))
+
+  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
+
+  # True graph
+  truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
+
+  # Iterative search
+  starttime <- Sys.time()
+
+  # best graph in ech it is addspace
+  # addcum, keep track of edges, current best and the add space
+  itsearch_res <- iterativeMCMCsearch(n,
+                                      myscore,
+                                      chainout = TRUE,
+                                      MAP = map && TRUE,
+                                      posterior = 0.5,
+                                      scoreout = TRUE,
+                                      plus1it = 10) # 1 and loop
+
+  endspace <- itsearch_res$space$adjacency
+  endtime <- Sys.time()
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
+
+  # Extend iterations.check table by FPRn (TODO: if dag exists)
+  benchmarks <- iterations.check(itsearch_res, dag)
+  n_iterations <- nrow(benchmarks) # To get results of the final graph
+
+  # ROC dataframe
+  results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
+                                    FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
+                                    algorithm = title, # TODO: Title should be set outside..
+                                    ss = sample_size / n,
+                                    replicate = replicate,
+                                    SHD = benchmarks[[n_iterations, "SHD"]],
+                                    logscore = itsearch_res$max$score,
+                                    plus1it = 10,
+                                    posterior = 0.5,
+                                    time = totaltime,
+                                    sample_size = sample_size,
+                                    dim = dim(data)[2],
+                                    MAP = FALSE,
+                                    score_type = "bde",
+                                    score_param = 1)
+
+  return(list("res" = results,
+                "endspace" = itsearch_res$space$adjacency))
+}
+
 
 runOrderMCMC <- function(data, dag, replicate, startspace, title) {
   #
@@ -91,19 +206,19 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
   sample_size <- dim(data)[1]
   n <- dim(data)[2]
   true_nedges <- sum(dag2adjacencymatrix(dag))
-  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))  
+  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
   starttime <- Sys.time()
   order_mcmc_res <- orderMCMC(n, myscore, startspace = startspace, MAP = FALSE, chainout = TRUE)
   endtime <- Sys.time()
-  totaltime <- endtime - starttime
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
 
   # DAG obtained from order MCMC with the space definced by the iterativeMCMCSearch
   # Extend the sample.check output by TPR and FPRn
   pbarrier = c(0.99, 0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2)
-  benchmarks <- sample.check(n, order_mcmc_res$chain$incidence, dag, pbarrier=pbarrier, pdag = FALSE, burnin = 0.5)
-  
+  benchmarks <- sample.check(n, order_mcmc_res$chain$incidence, dag, pbarrier = pbarrier, pdag = FALSE, burnin = 0.5)
+
   scores <- rep(NaN, length(pbarrier))
-  for (i in 1:length(pbarrier)) {  
+  for (i in 1:length(pbarrier)) {
     graph_thresh <- dag.threshold(n, order_mcmc_res$chain$incidence, pbarrier = pbarrier[i], pdag = FALSE, burnin = 0.5)
     if (gRbase::is.DAG(graph_thresh)) {
       scores[i] <- DAGscore(n, myscore, graph_thresh)
@@ -117,8 +232,8 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
                     algorithm = title,
                     replicate = replicate,
                     SHD = benchmarks[, "SHD"],
-                    sample_size=sample_size,
-                    dim=dim(data)[2]) 
+                    sample_size = sample_size,
+                    dim = dim(data)[2])
   res$time = totaltime
 
   return(res)
@@ -126,7 +241,7 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
 
 runBlip <- function(data, dag, replicate, blip_max_time, title) {
   sample_size <- dim(data)[1]
-  n <- dim(data)[2]  
+  n <- dim(data)[2]
   true_nedges <- sum(dag2adjacencymatrix(dag))
   # Blip
   res <- data.frame(matrix(ncol = 8, nrow = 1))
@@ -136,8 +251,11 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
   varnames <- varnames.make(n)
   datadf <- matrixToDataframe(data, varnames = varnames)
 
-  time <- blip_max_time
+  starttime <- Sys.time()
   blipfit <- blip.learn(datadf, time = blip_max_time, scorefunction = "bdeu", verbose = 0)
+  endtime <- Sys.time()
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
+
   blipadj <- bnfit2matrix(blipfit)
   blipadj <- rearrangeMatrix(blipadj, varnames)
   compres <- compareDAGs(adjacency2dag(blipadj), dag)
@@ -152,9 +270,10 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
                             SHD = compres["SHD"],
                             algorithm = title,
                             replicate = replicate,
-                            time = time,
-                            sample_size=sample_size,
-                            dim=dim(data)[2])
+                            blip_max_time = blip_max_time,
+                            time = totaltime,
+                            sample_size = sample_size,
+                            dim = dim(data)[2])
     return(res)
 }
 
@@ -171,17 +290,17 @@ runPCalg <- function(data, dag, replicate, alpha, title) {
                                alpha = alpha,
                                labels = sapply(c(1:n), toString))
   endtime <- Sys.time()
-  totaltime <- endtime - starttime
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
   comp <- compareDAGs(pc.fit@graph, myCPDAG) # c(SHD, TP, FP)
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
                         algorithm = title, # Title should be set putside i think
                         replicate = replicate,
                         alpha = alpha,
-                        time=totaltime,
+                        time = totaltime,
                         SHD = comp[1],
-                        sample_size=sample_size,
-                        dim=dim(data)[2])
+                        sample_size = sample_size,
+                        dim = dim(data)[2])
 
   resdf <- cbind(res,
                    alpha = alpha,
@@ -197,12 +316,12 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
   datanew <- matrixToDataframe(data, names(data))
   learn.net <- empty.graph(names(datanew))
   starttime <- Sys.time()
-  mmoutput <- mmhc(datanew, restrict.args = list(alpha=alpha))
+  mmoutput <- mmhc(datanew, restrict.args = list(alpha = alpha))
   endtime <- Sys.time()
-  totaltime <- endtime - starttime
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
   ## convert to graphneldag
   gnel_dag <- as.graphNEL(mmoutput)
- 
+
   comp <- compareDAGs(gnel_dag, dag)
 
   res <- data.frame(TPR = comp[2] / true_nedges,
@@ -210,41 +329,41 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
                         algorithm = title, # Title should be set outside i think
                         replicate = replicate,
                         alpha = alpha,
-                        time=totaltime,
+                        time = totaltime,
                         SHD = comp[1],
-                        sample_size=sample_size,
-                        dim=dim(data)[2])
+                        sample_size = sample_size,
+                        dim = dim(data)[2])
   return(res)
 }
 
 runGobnilp <- function(filename_data, dag, replicate, title) {
   n <- numNodes(dag)
-  data <- read.csv(filename_data, sep=" ")
-  sample_size <- dim(data)[1]-1
+  data <- read.csv(filename_data, sep = " ")
+  sample_size <- dim(data)[1] - 1
   true_nedges <- sum(dag2adjacencymatrix(dag))
 
   gob <- import("pygobnilp.gobnilp")
   m <- gob$Gobnilp()
 
   starttime <- Sys.time()
-  m$learn(filename_data, plot=FALSE)
+  m$learn(filename_data, plot = FALSE)
   endtime <- Sys.time()
-  totaltime <- endtime - starttime
+  totaltime <- as.numeric(endtime - starttime, units = "secs")
   ## convert to graphneldag
   graphstring = m$learned_bn$bnlearn_modelstring()
   gnel_dag <- as.graphNEL(model2network(graphstring))
   gnel_dag <- numeric_labels(gnel_dag) # Corrects the node labels
 
   comp <- compareDAGs(gnel_dag, dag)
-  
+
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
                         algorithm = title, # Title should be set outside i think
                         replicate = replicate,
-                        time=totaltime,
+                        time = totaltime,
                         SHD = comp[1],
-                        sample_size=sample_size,
-                        dim=dim(data)[2])
+                        sample_size = sample_size,
+                        dim = dim(data)[2])
 
   return(res)
 }

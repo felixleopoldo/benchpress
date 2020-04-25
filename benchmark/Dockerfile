@@ -26,6 +26,8 @@ RUN echo "install.packages(\"reshape\", repos=\"https://cran.rstudio.com\")" | R
 RUN echo "install.packages(\"gridExtra\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"argparser\", repos=\"https://cran.rstudio.com\")" | R --no-save
 
+# conda install -c conda-forge r-reticulate
+
 # For the Python version of GOBNILP needed for the R version. Obs a licence is needed for theis. 
 # Register on the Gurobi webpage and send a mail to the support since it does not work by default with Docker.
 # A so called floating licence is needed.

@@ -1,16 +1,21 @@
 
 output_dir = "simresults"
-replicates = [1, 2, 3]
+replicates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+              11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 itsearch_map = [0, 1]
 blip_times = [30]
-# dims = [[20], [80], [140], [200]]
+# dims = [[20], [80], [140]]  # , [200]]
 # sample_sizes = [[40, 200],
 #                 [160, 800],
-#                 [280, 1400],
-#                 [400, 2000]]
-dims = [[5], [10]]
-sample_sizes = [[10, 50],
-                [20, 100]]
+#                 [280]]
+
+dims = [[80]]  # , [200]]
+sample_sizes = [[80, 160, 240, 400, 480, 640, 800]]
+#[280, 1400],
+# [400, 2000]]
+# dims = [[5], [10]]
+# sample_sizes = [[10, 50],
+#                [20, 100]]
 singularity:
     "docker://onceltuca/graphical_model_benchmark:mytag"
 
