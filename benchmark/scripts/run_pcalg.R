@@ -8,7 +8,7 @@ source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
 p <- arg_parser("A program for running PC algorithm and save to file.")
 
-#p <- add_argument(p, "--filename", help = "output filename")
+p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--title", help = "Title")
 p <- add_argument(p, "--filename_dag", help = "DAGs filename") # This should not be here
@@ -20,7 +20,7 @@ p <- add_argument(p, "--alpha", help = "Alpha parameter", type = "numeric")
 argv <- parse_args(p)
 
 directory <- argv$output_dir
-filename <- file.path(directory, argv$filename)
+filename <- file.path(argv$filename)
 filename_dag <- argv$filename_dag
 filename_data <- argv$filename_data
 replicate <- argv$replicate
@@ -35,6 +35,8 @@ p <- dim(data)[2]
 # Iterative search
 title <- argv$title
 res <- runPCalg(data, dag, replicate, alpha, title)
-write.csv(res$res, file = file.path(directory, paste("res_", title,"_n_", n, "_p_", p, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
+
+write.csv(res$res, file =  filename, row.names = FALSE)
+#write.csv(res$res, file = file.path(directory, paste("res_", title,"_n_", n, "_p_", p, "_alpha_", alpha, "_", replicate, ".csv", sep = "")), row.names = FALSE)
 
 # Instead of having explicit parameters in the filenames, ids should be taken from a database.
