@@ -13,7 +13,7 @@ dims = [[5],
 sample_sizes = [[100], 
                 [500]]
 singularity:
-    "docker://onceltuca/benchmark:1.0.3"
+    "docker://onceltuca/benchmark:1.0.4"
 
 rule sample_dag:
     output:
