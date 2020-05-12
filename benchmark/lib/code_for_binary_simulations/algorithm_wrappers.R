@@ -190,7 +190,7 @@ runItsearch <- function(data, dag, map, replicate, title) {
                                     time = totaltime,
                                     sample_size = sample_size,
                                     dim = dim(data)[2],
-                                    MAP = FALSE,
+                                    MAP = map && TRUE,
                                     score_type = "bde",
                                     score_param = 1)
 
