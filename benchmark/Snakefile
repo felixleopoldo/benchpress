@@ -3,14 +3,17 @@ output_dir = "simresults"
 replicates = [1, 2]
 itsearch_map = [0, 1]
 blip_times = [30]
-av_parents = [[2, 3]]
+av_parents = [[2], 
+              [3]]
 pcalg_alphas = [0.01, 0.05, 0.1, 0.2, 0.35, 0.45]
 #dims = [[80]]  # , [200]]
 #sample_sizes = [[80, 160, 240, 400, 480, 640, 800]]
-dims = [[5], [10]]
-sample_sizes = [[100, 500]]
+dims = [[5], 
+        [10]]
+sample_sizes = [[100], 
+                [500]]
 singularity:
-    "docker://onceltuca/benchmark:1.0.1"
+    "docker://onceltuca/benchmark:1.0.3"
 
 rule sample_dag:
     output:
