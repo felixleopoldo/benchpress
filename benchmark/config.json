@@ -1,0 +1,29 @@
+{
+    "output_dir": "simresults",
+    "replicates": [1, 2, 3, 4,5,6,7,8,9,10],
+    "sample_sizes": [[80]],
+    "av_parents":[[2]],
+    "dims": [[80]],
+    "blip":
+        {"scorer.method": "is", 
+         "solver.method": "winasobs",
+         "indeg": 6, 
+         "time": [60], 
+         "allocated": 80, 
+         "scorefunction": "bdeu",
+         "alpha": 1, 
+         "cores": 1, 
+         "verbose": 0, 
+         "bdecatpar.chi":1, 
+         "bdecatpar.edgepf":1},
+    "itsearch_map": 
+        [0, 1],
+    "pcalg":
+        {
+            "alpha": [0.01, 0.05, 0.1, 0.2, 0.35, 0.45]
+        },
+    "mmhc":
+        {
+            "alpha": [0.01, 0.05, 0.1, 0.2, 0.35, 0.45]
+        }   
+}

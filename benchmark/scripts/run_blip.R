@@ -11,31 +11,48 @@ source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
 p <- arg_parser("A program for running r.blip and save to file.")
 
-p <- add_argument(p, "--title", help = "Title")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename_dag", help = "DAGs filename")
 p <- add_argument(p, "--filename", help = "Output filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
-p <- add_argument(p, "--replicate", help = "Replicate id", type = "numeric")
-p <- add_argument(p, "--max_time", help = "Blip max time", type = "numeric")
+p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
+
+p <- add_argument(p, "--time", help = "Blip max time", type = "numeric")
+p <- add_argument(p, "--scorer.method", help="scorer.method", default = "is")
+p <- add_argument(p, "--solver.method", help="solver.method", default = "winasobs")
+p <- add_argument(p, "--indeg", help="max in degree", type = "numeric", default = 6)
+p <- add_argument(p, "--cores", help="cores", type = "numeric", default = 1)
+p <- add_argument(p, "--allocated", help="allocated", type = "numeric", default = 80)
+p <- add_argument(p, "--scorefunction", help="score function", default = "bic")
+p <- add_argument(p, "--alpha", help="alpha", type = "numeric", default = 1.0)
+p <- add_argument(p, "--verbose", help="see r.blip doc", type = "numeric", default = 0)
+p <- add_argument(p, "--bdecatpar.chi", help="see r.blip doc", type = "numeric", default = 1)
+p <- add_argument(p, "--bdecatpar.edgepf", help="see r.blip doc", type = "numeric", default = 1)
 
 argv <- parse_args(p)
 
 directory <- argv$output_dir
 dir.create(directory)
 filename <- file.path(argv$filename)
-filename_dag <- argv$filename_dag
+filename_dag <- argv$filename_dag   
 filename_data <- argv$filename_data
-replicate <- argv$replicate
-max_time <- argv$max_time
 
 dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
-n <- dim(data)[1]
-p <- dim(data)[2]
+seed <- argv$seed
+set.seed(seed)
 
-title <- argv$title
-blip <- runBlip(data, dag, replicate, max_time, title)
-#write.csv(blip, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p,  "_time_", max_time, "_", replicate, ".csv", sep="")), row.names = FALSE)
+blip <- runBlip(data, dag, time=argv$time, 
+                           scorer.method=argv$scorer.method,
+                           solver.method=argv$solver.method,
+                           indeg=argv$indeg,
+                           cores=argv$cores,
+                           allocated=argv$allocated,
+                           scorefunction=argv$scorefunction,
+                           alpha=argv$alpha,
+                           verbose=argv$verbose,
+                           bdecatpar.chi=argv$bdecatpar.chi,
+                           bdecatpar.edgepf=argv$bdecatpar.edgepf
+                           )
 write.csv(blip, file = filename, row.names = FALSE)
 

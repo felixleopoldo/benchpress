@@ -5,13 +5,16 @@ WORKDIR /myappdir
 RUN conda update -n base -c defaults conda
 
 RUN conda install -c bioconda bioconductor-rgraphviz
-RUN conda install -c bioconda bioconductor-graph # not neded
+#RUN conda install -c bioconda bioconductor-graph # not neded
 RUN conda install -c bioconda bioconductor-rbgl
 
 #RUN echo "install.packages(\"tidyverse\", repos=\"https://cran.rstudio.com\")" | R --no-save 
 RUN echo "install.packages(\"ggplot2\", repos=\"https://cran.rstudio.com\")" | R --no-save 
 RUN echo "install.packages(\"gRbase\", dependencies=TRUE, repos=\"https://cran.rstudio.com\");" | R --no-save
 RUN echo "install.packages(\"pcalg\", repos=\"https://cran.rstudio.com\")" | R --no-save
+RUN echo "install.packages(\"devtools\", repos=\"https://cran.rstudio.com\")" | R --no-save
+RUN echo "require(\"devtools\"); install_version(\"BiDAG\", version = \"1.2.0\", repos = \"https://cran.rstudio.com\")" | R --no-save
+
 RUN echo "install.packages(\"BiDAG\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"bnlearn\", repos=\"https://cran.rstudio.com\")" | R --no-save
 RUN echo "install.packages(\"r.blip\", repos=\"https://cran.rstudio.com\")" | R --no-save

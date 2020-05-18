@@ -19,7 +19,6 @@ p <- add_argument(p, "--avparents", help = "Average number of parents in DAG")
 p <- add_argument(p, "--filename_dag", help = "DAGs filename") # This should not be here
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--replicate", help = "Replicate id", type = "numeric")
 p <- add_argument(p, "--map", help = "MAP flag 0/1", type = "numeric")
 
 argv <- parse_args(p)
@@ -28,7 +27,7 @@ directory <- argv$output_dir
 #filename <- file.path(argv$filename)
 filename_dag <- argv$filename_dag
 filename_data <- argv$filename_data
-replicate <- argv$replicate
+
 seed <- argv$seed
 map <- argv$map
 avparents <- argv$avparents
@@ -48,7 +47,7 @@ title <- argv$title
 #   res <- runItsearchSample(data, dag, replicate, title)
 # }
 
-res <- runItsearch(data, dag, map, replicate, title)
+res <- runItsearch(data, dag, map)
 
-write.csv(res$res, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p, "_avpar_", avparents, "_map_", map, "_", replicate, ".csv", sep = "")), row.names = FALSE)
-saveRDS(object = res$endspace, file.path(directory, paste("endspace_", title, "_n_", n,  "_p_", p, "_avpar_", avparents, "_map_", map, "_", replicate, ".rds", sep = "")))
+write.csv(res$res, file = file.path(directory, paste("res_", title, "_n_", n, "_p_", p, "_avpar_", avparents, "_map_", map, "_", seed, ".csv", sep = "")), row.names = FALSE)
+saveRDS(object = res$endspace, file.path(directory, paste("endspace_", title, "_n_", n,  "_p_", p, "_avpar_", avparents, "_map_", map, "_", seed, ".rds", sep = "")))

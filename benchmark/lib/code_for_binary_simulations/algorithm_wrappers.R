@@ -27,7 +27,7 @@ numeric_labels <- function(gnel_dag) {
   return(gR)
 }
 
-runItsearchMAP <- function(data, dag, replicate, title) {
+runItsearchMAP <- function(data, dag) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -61,16 +61,9 @@ runItsearchMAP <- function(data, dag, replicate, title) {
   # ROC dataframe
   results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
-                                    algorithm = title, # TODO: Title should be set outside..
-                                    ss = sample_size / n,
-                                    replicate = replicate,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
-  #plus1it = 10,
-  #posterior = 0.5,
                                     time = totaltime,
-                                    sample_size = sample_size,
-                                    dim = dim(data)[2],
                                     MAP = TRUE,
                                     score_type = "bde",
                                     score_param = 1)
@@ -79,7 +72,7 @@ runItsearchMAP <- function(data, dag, replicate, title) {
                 "endspace" = itsearch_res$space$adjacency))
 }
 
-runItsearchSample <- function(data, dag, replicate, title) {
+runItsearchSample <- function(data, dag) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -128,16 +121,12 @@ runItsearchSample <- function(data, dag, replicate, title) {
   # ROC dataframe
   results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
-                                    algorithm = title, # TODO: Title should be set outside..
                                     ss = sample_size / n,
-                                    replicate = replicate,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
   #plus1it = 10,
                                     posterior = 0.5,
                                     time = totaltime,
-                                    sample_size = sample_size,
-                                    dim = dim(data)[2],
                                     MAP = FALSE,
                                     score_type = "bde",
                                     score_param = 1)
@@ -146,7 +135,7 @@ runItsearchSample <- function(data, dag, replicate, title) {
                 "endspace" = itsearch_res$space$adjacency))
 }
 
-runItsearch <- function(data, dag, map, replicate, title) {
+runItsearch <- function(data, dag, map) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -180,16 +169,11 @@ runItsearch <- function(data, dag, map, replicate, title) {
   # ROC dataframe
   results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
-                                    algorithm = title, # TODO: Title should be set outside..
-                                    ss = sample_size / n,
-                                    replicate = replicate,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
                                     plus1it = 10,
                                     posterior = 0.5,
                                     time = totaltime,
-                                    sample_size = sample_size,
-                                    dim = dim(data)[2],
                                     MAP = map && TRUE,
                                     score_type = "bde",
                                     score_param = 1)
@@ -199,7 +183,7 @@ runItsearch <- function(data, dag, map, replicate, title) {
 }
 
 
-runOrderMCMC <- function(data, dag, replicate, startspace, title) {
+runOrderMCMC <- function(data, dag, startspace) {
   #
   # Order MCMC
   #
@@ -229,17 +213,18 @@ runOrderMCMC <- function(data, dag, replicate, startspace, title) {
                     FPRn = benchmarks[, "FP"] / true_nedges,
                     logscore = scores,
                     threshold = benchmarks[, "post.thr."],
-                    algorithm = title,
-                    replicate = replicate,
-                    SHD = benchmarks[, "SHD"],
-                    sample_size = sample_size,
-                    dim = dim(data)[2])
+                    SHD = benchmarks[, "SHD"]
+                    )
   res$time = totaltime
 
   return(res)
 }
 
-runBlip <- function(data, dag, replicate, blip_max_time, title) {
+runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs", 
+                    indeg = 6, time = 3600, allocated = 80, 
+                    scorefunction = "bic", alpha = 1, cores = 1, 
+                    verbose = 0, bdecatpar.chi = 1, bdecatpar.edgepf = 1){
+
   sample_size <- dim(data)[1]
   n <- dim(data)[2]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -252,7 +237,16 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
   datadf <- matrixToDataframe(data, varnames = varnames)
 
   starttime <- Sys.time()
-  blipfit <- blip.learn(datadf, time = blip_max_time, scorefunction = "bdeu", verbose = 0)
+  blipfit <- blip.learn(datadf,
+                        scorer.method=scorer.method,
+                        solver.method=solver.method,
+                        indeg=indeg,
+                        cores=cores, 
+                        time = time, 
+                        allocated = allocated,
+                        scorefunction = scorefunction, 
+                        alpha = alpha,
+                        verbose = verbose)
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
 
@@ -261,23 +255,19 @@ runBlip <- function(data, dag, replicate, blip_max_time, title) {
   compres <- compareDAGs(adjacency2dag(blipadj), dag)
   names(compres) <- c("SHD", "TP", "FP")
 
-  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = 1, edgepf = 1))
+  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = bdecatpar.chi, 
+                                                                              edgepf = bdecatpar.edgepf))
   logscore <- DAGscore(ncol(data), myscore_tmp, blipadj) # this was bnscore, dont know why...
 
-  res <- data.frame(TPR = compres["TP"] / true_nedges, # shold be for all times
+  res <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                             FPRn = compres["FP"] / true_nedges,
                             logscore = logscore,
                             SHD = compres["SHD"],
-                            algorithm = title,
-                            replicate = replicate,
-                            blip_max_time = blip_max_time,
-                            time = totaltime,
-                            sample_size = sample_size,
-                            dim = dim(data)[2])
+                            time = totaltime)
     return(res)
 }
 
-runPCalg <- function(data, dag, replicate, alpha, title) {
+runPCalg <- function(data, dag, alpha) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -286,30 +276,31 @@ runPCalg <- function(data, dag, replicate, alpha, title) {
   starttime <- Sys.time()
   pc.fit <- pc(suffStat = list(dm = data,
                                adaptDF = FALSE),
-                               indepTest = binCItest,
-                               alpha = alpha,
-                               labels = sapply(c(1:n), toString))
+              indepTest = binCItest,
+              alpha = alpha,
+              labels = sapply(c(1:n), toString),
+              fixedGaps = NULL, 
+              fixedEdges = NULL,
+              NAdelete = TRUE, 
+              m.max = Inf,
+              u2pd = c("relaxed", "rand", "retry"),
+              skel.method = c("stable", "original", "stable.fast"),
+              conservative = FALSE, 
+              maj.rule = FALSE, 
+              solve.confl = FALSE,
+              numCores = 1, 
+              verbose = FALSE)
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
   comp <- compareDAGs(pc.fit@graph, myCPDAG) # c(SHD, TP, FP)
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
-                        algorithm = title, # Title should be set putside i think
-                        replicate = replicate,
-                        alpha = alpha,
                         time = totaltime,
-                        SHD = comp[1],
-                        sample_size = sample_size,
-                        dim = dim(data)[2])
-
-  resdf <- cbind(res,
-                   alpha = alpha,
-                   SHD = comp[1])
-  return(list("res" = res,
-                "summary" = resdf))
+                        SHD = comp[1])
+  return(res)
 }
 
-runMMHC <- function(data, dag, replicate, alpha, title) {
+runMMHC <- function(data, dag, alpha) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -326,17 +317,12 @@ runMMHC <- function(data, dag, replicate, alpha, title) {
 
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
-                        algorithm = title, # Title should be set outside i think
-                        replicate = replicate,
-                        alpha = alpha,
                         time = totaltime,
-                        SHD = comp[1],
-                        sample_size = sample_size,
-                        dim = dim(data)[2])
+                        SHD = comp[1])
   return(res)
 }
 
-runGobnilp <- function(filename_data, dag, replicate, title) {
+runGobnilp <- function(filename_data, dag) {
   n <- numNodes(dag)
   data <- read.csv(filename_data, sep = " ")
   sample_size <- dim(data)[1] - 1
@@ -346,7 +332,9 @@ runGobnilp <- function(filename_data, dag, replicate, title) {
   m <- gob$Gobnilp()
 
   starttime <- Sys.time()
-  m$learn(filename_data, plot = FALSE)
+  m$learn(filename_data, 
+          plot = FALSE, 
+          palim=6) # score=BGeu ? 
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
   ## convert to graphneldag
@@ -358,12 +346,8 @@ runGobnilp <- function(filename_data, dag, replicate, title) {
 
   res <- data.frame(TPR = comp[2] / true_nedges,
                         FPRn = comp[3] / true_nedges,
-                        algorithm = title, # Title should be set outside i think
-                        replicate = replicate,
                         time = totaltime,
-                        SHD = comp[1],
-                        sample_size = sample_size,
-                        dim = dim(data)[2])
+                        SHD = comp[1])
 
   return(res)
 }
