@@ -1,40 +1,43 @@
 configfile: 
     "config.json"
 
+replicates = range(int(config["replicates"]["start"]), 
+                    int(config["replicates"]["end"]+1))
+
 singularity:
     "docker://onceltuca/benchmark:1.0.5"
 
 rule sample_dag:
     output:
-        "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
+        dag = "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
     shell:
-        "Rscript scripts/sample_dags.R "
-        "--filename {output} "
-        "--nodes {wildcards.p} "
-        "--parents {wildcards.avparents} "
+        "Rscript scripts/sample_dags.R " \
+        "--filename {output.dag} " \ 
+        "--nodes {wildcards.p} " \
+        "--parents {wildcards.avparents} " \
         "--seed {wildcards.replicate}"
 
 rule sample_bn:
     input:
-        "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
+        dag = "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
     output:
         bn = "{output_dir}/bn_p_{p}_avpar_{avparents}_{replicate}.rds"
     shell:
-        "Rscript scripts/sample_bayesian_network_for_dag.R "
-        "--filename_dag {input} "
-        "--filename {output} " 
+        "Rscript scripts/sample_bayesian_network_for_dag.R " \
+        "--filename_dag {input.dag} " \
+        "--filename {output} "  \
         "--seed {wildcards.replicate} "
 
 rule sample_data:
     input:
-        "{output_dir}/bn_p_{p}_avpar_{avparents}_{replicate}.rds"
+        bn="{output_dir}/bn_p_{p}_avpar_{avparents}_{replicate}.rds"
     output:
-        "{output_dir}/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
+        data="{output_dir}/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     shell:
-        "Rscript scripts/sample_data.R "
-        "--filename {output} "
-        "--filename_bn {input} "
-        "--samples {wildcards.n} "
+        "Rscript scripts/sample_data.R " \
+        "--filename {output.data} " \
+        "--filename_bn {input.bn} " \
+        "--samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
 
 rule sample_data_range_header:
@@ -54,147 +57,236 @@ rule sim_blip:
         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_blip_n_{n}_p_{p}_avpar_{avparents}_"
-        "time_{blip_time}_"
-        "scorer.method_{scorermethod}_"
-        "solver.method_{solvermethod}_"
-        "indeg_{indeg}_"
-        "cores_{cores}_"
-        "allocated_{allocated}_"
-        "scorefunction_{scorefunction}_"
-        "alpha_{alpha}_"
-        "verbose_{verbose}_"
-        "bdecatpar.chi_{bdecatparchi}_"
-        "bdecatpar.edgepf_{bdecatparedgepf}_"
+        config["output_dir"]+"/res_blip_n_{n}_p_{p}_avpar_{avparents}_" \
+        "time_{max_time}_" \
+        "scorer.method_{scorermethod}_" \
+        "solver.method_{solvermethod}_" \
+        "indeg_{indeg}_" \
+        "cores_{cores}_" \
+        "allocated_{allocated}_" \
+        "scorefunction_{scorefunction}_" \
+        "alpha_{alpha}_" \
+        "verbose_{verbose}_" \
+        "bdecatpar.chi_{bdecatparchi}_" \
+        "bdecatpar.edgepf_{bdecatparedgepf}_" \
         "{replicate}.csv"
     message:
         "Executing blip algorithm on the following files: {input}."
     shell:
-        "Rscript scripts/run_blip.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--output_dir config[output_dir] "  
-        "--time {wildcards.blip_time} "
-        "--scorer.method {wildcards.scorermethod} "
-        "--solver.method {wildcards.solvermethod} "
-        "--indeg {wildcards.indeg} "
-        "--cores {wildcards.cores} "
-        "--allocated {wildcards.allocated} "
-        "--scorefunction {wildcards.scorefunction} "
-        "--alpha {wildcards.alpha} "
-        "--verbose {wildcards.verbose} "
-        "--bdecatpar.chi {wildcards.bdecatparchi} "
-        "--bdecatpar.edgepf {wildcards.bdecatparedgepf} "
-        "--filename {output} "
-        " && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip "
-        " && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} "
-        " && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} "
-        " && python scripts/add_column.py --filename {output} --colname blip_max_time   --colval {wildcards.blip_time} "
-        " && python scripts/add_column.py --filename {output} --colname scorer.method   --colval {wildcards.scorermethod} "
-        " && python scripts/add_column.py --filename {output} --colname solver.method   --colval {wildcards.solvermethod} "
-        " && python scripts/add_column.py --filename {output} --colname indeg           --colval {wildcards.indeg} "
-        " && python scripts/add_column.py --filename {output} --colname cores           --colval {wildcards.cores} "
-        " && python scripts/add_column.py --filename {output} --colname allocated       --colval {wildcards.allocated} "
-        " && python scripts/add_column.py --filename {output} --colname scorefunction   --colval {wildcards.scorefunction} "
-        " && python scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} "
-        " && python scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} "
-        " && python scripts/add_column.py --filename {output} --colname bdecatpar.chi   --colval {wildcards.bdecatparchi} "
+        "Rscript scripts/run_blip.R " \
+        "--filename_data {input.data} " \
+        "--filename_dag {input.dag} " \
+        "--output_dir config[output_dir] " \
+        "--time {wildcards.max_time} " \
+        "--scorer.method {wildcards.scorermethod} " \
+        "--solver.method {wildcards.solvermethod} " \
+        "--indeg {wildcards.indeg} " \
+        "--cores {wildcards.cores} " \
+        "--allocated {wildcards.allocated} " \
+        "--scorefunction {wildcards.scorefunction} " \
+        "--alpha {wildcards.alpha} " \
+        "--verbose {wildcards.verbose} " \
+        "--bdecatpar.chi {wildcards.bdecatparchi} " \
+        "--bdecatpar.edgepf {wildcards.bdecatparedgepf} " \
+        "--filename {output} " \
+        " && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} " \
+        " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+        " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
+        " && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} " \
+        " && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname max_time        --colval {wildcards.max_time} " \
+        " && python scripts/add_column.py --filename {output} --colname scorer.method   --colval {wildcards.scorermethod} " \
+        " && python scripts/add_column.py --filename {output} --colname solver.method   --colval {wildcards.solvermethod} " \
+        " && python scripts/add_column.py --filename {output} --colname indeg           --colval {wildcards.indeg} " \ 
+        " && python scripts/add_column.py --filename {output} --colname cores           --colval {wildcards.cores} " \
+        " && python scripts/add_column.py --filename {output} --colname allocated       --colval {wildcards.allocated} " \
+        " && python scripts/add_column.py --filename {output} --colname scorefunction   --colval {wildcards.scorefunction} " \
+        " && python scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
+        " && python scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar.chi   --colval {wildcards.bdecatparchi} " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar.edgepf --colval {wildcards.bdecatparedgepf} "
 
-rule itsearch_sample:
+rule itsearch:
     input:
         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        benchmark = config["output_dir"]+"/res_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
-        endspace = config["output_dir"]+"/endspace_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.rds"
+        benchmark = config["output_dir"]+"/res_itsearch_"\
+                    "n_{n}_"\
+                    "p_{p}_"\
+                    "avpar_{avparents}_"\
+                    "map_{MAP}_"\
+                    "score_type_{score_type}_"\
+                    "bdepar_chi_{bdepar_chi}_" \
+                    "bdepar_edgepf_{bdepar_edgepf}_" \
+                    "plus1it_{plus1it}_"\
+                    "posterior_{posterior}_"\
+                    "{replicate}.csv",\
+        endspace = config["output_dir"] + "/endspace_itsearch_"\
+                    "n_{n}_"\
+                    "p_{p}_"\
+                    "avpar_{avparents}_"\
+                    "map_{MAP}_"\
+                    "score_type_{score_type}_"\
+                    "bdepar_chi_{bdepar_chi}_" \
+                    "bdepar_edgepf_{bdepar_edgepf}_" \
+                    "plus1it_{plus1it}_"\
+                    "posterior_{posterior}_"\
+                    "{replicate}.rds"
     message:
         "Executing iterative search algorithm with MAP=FALSE on the following files: {input}"
     shell:
-        "Rscript scripts/run_iterative_search.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        "--map 0 "
-        "--avparents {wildcards.avparents} "
-        "--title itsearch_sample"
-        " && python scripts/add_column.py --filename {output.benchmark} --colname avparents     --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname replicate     --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname algorithm     --colval itsearch_sample "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname dim           --colval {wildcards.p} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname sample_size   --colval {wildcards.n} "
+        "Rscript scripts/run_iterative_search.R "\
+        "--filename_data {input.data} "\
+        "--filename_dag {input.dag} "\
+        "--output_dir {config[output_dir]} "\
+        "--seed {wildcards.replicate} "\
+        "--map {wildcards.MAP} "\
+        "--avparents {wildcards.avparents} " \
+        "--score_type {wildcards.score_type} " \
+        "--bdepar_chi {wildcards.bdepar_chi} " \
+        "--bdepar_edgepf {wildcards.bdepar_edgepf} " \
+        "--plus1it {wildcards.plus1it} " \
+        "--posterior {wildcards.posterior} " \
+        "--title itsearch_sample"\
+        " && python scripts/add_column.py --filename {output.benchmark} --colname avparents     --colval {wildcards.avparents} "\
+        " && python scripts/add_column.py --filename {output.benchmark} --colname replicate     --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output.benchmark} --colname algorithm     --colval itsearch_sample "\
+        " && python scripts/add_column.py --filename {output.benchmark} --colname dim           --colval {wildcards.p} "\
+        " && python scripts/add_column.py --filename {output.benchmark} --colname sample_size   --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname MAP           --colval {wildcards.MAP} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname plus1it       --colval {wildcards.plus1it} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname posterior     --colval {wildcards.posterior} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname score_type    --colval {wildcards.score_type} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_chi    --colval {wildcards.bdepar_chi} " \
+        " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_edgepf --colval {wildcards.bdepar_edgepf} " 
 
-rule itsearch_map:
-    input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
-        data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
-    output:
-        benchmark = config["output_dir"]+"/res_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.csv",
-        endspace = config["output_dir"]+"/endspace_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.rds"
-    message:
-        "Executing iterative search algorithm with MAP=TRUE on the following files: {input}"
-    shell:
-        "Rscript scripts/run_iterative_search.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        "--map 1 "
-        "--avparents {wildcards.avparents} "
-        "--title itsearch_map"
-        " && python scripts/add_column.py --filename {output.benchmark} --colname avparents     --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname replicate     --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname algorithm     --colval itsearch_map "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname dim           --colval {wildcards.p} "
-        " && python scripts/add_column.py --filename {output.benchmark} --colname sample_size   --colval {wildcards.n} "
 
+# rule itsearch_map:
+#     input:
+#         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
+#         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
+#     output:
+#         benchmark = config["output_dir"]+"/res_itsearch_map_"\
+#                     "n_{n}_"\
+#                     "p_{p}_"\
+#                     "avpar_{avparents}_"\
+#                     "map_1_" \
+#                     "score_type_{score_type}_" \
+#                     "bdepar_chi_{bdepar_chi}_" \
+#                     "bdepar_edgepf_{bdepar_edgepf}_" \
+#                     "{replicate}.csv", 
+#         endspace = config["output_dir"]+"/endspace_itsearch_map_"\
+#                     "n_{n}_"\
+#                     "p_{p}_"\
+#                     "avpar_{avparents}_" \
+#                     "map_1_" \
+#                     "score_type_{score_type}_" \
+#                     "bdepar_chi_{bdepar_chi}_" \
+#                     "bdepar_edgepf_{bdepar_edgepf}_" \
+#                     "{replicate}.rds"
+#     message:
+#         "Executing iterative search algorithm with MAP=TRUE on the following files: {input}"
+#     shell:
+#         "Rscript scripts/run_iterative_search.R " \
+#         "--filename_data {input.data} " \ 
+#         "--filename_dag {input.dag} " \
+#         "--output_dir {config[output_dir]} " \
+#         "--seed {wildcards.replicate} " \
+#         "--avparents {wildcards.avparents} " \
+#         "--map 1 " \
+#         "--score_type {wildcards.score_type} " \
+#         "--bdepar_chi {wildcards.bdepar_chi} " \
+#         "--bdepar_edgepf {wildcards.bdepar_edgepf} " \
+#         "--plus1it {wildcards.plus1it} " \
+#         "--posterior {wildcards.posterior} " \
+#         "--title itsearch_map " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname avparents     --colval {wildcards.avparents} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname replicate     --colval {wildcards.replicate} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname algorithm     --colval itsearch_map " \ 
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname dim           --colval {wildcards.p} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname sample_size   --colval {wildcards.n} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname MAP           --colval true " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname plus1it       --colval null " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname posterior     --colval null " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname score_type    --colval {wildcards.score_type} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_chi    --colval {wildcards.bdepar_chi} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_edgepf --colval {wildcards.bdepar_edgepf} " 
+        
 rule ordermcmc_itsearch_sample:
     input:
         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
-        startspace = config["output_dir"]+"/endspace_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.rds"
+        startspace = config["output_dir"]+"/endspace_itsearch_sample_"\
+                     "n_{n}_"\
+                     "p_{p}_"\
+                     "avpar_{avparents}_"\
+                     "map_0_{replicate}.rds"
     output:
-        config["output_dir"]+"/res_orderMCMC_sample_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
+        config["output_dir"]+"/res_orderMCMC_sample_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "{replicate}_"\
+        "startspace_endspace_itsearch_sample_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "map_0_{replicate}.csv",
     message:
         "Executing order mcmc algorithm with startspace on the following files: {input}."
     shell: 
         "Rscript scripts/run_order_mcmc.R "
-        "--filename {output} "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--filename_startspace {input.startspace} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC_sample "
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "
-        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "
+        "--filename {output} " \
+        "--filename_data {input.data} " \
+        "--filename_dag {input.dag} " \
+        "--filename_startspace {input.startspace} " \
+        "--output_dir {config[output_dir]} " \
+        "--seed {wildcards.replicate} " \
+        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} " \
+        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC_sample "\
+        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
+        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "\
+
+
 
 rule ordermcmc_itsearch_map:
     input:
         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
-        startspace = config["output_dir"]+"/endspace_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.rds"
+        startspace = config["output_dir"]+"/endspace_itsearch_map_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "map_1_"\
+        "{replicate}.rds"
     output:
-        config["output_dir"]+"/res_orderMCMC_map_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.csv",
+        config["output_dir"]+"/res_orderMCMC_map_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "{replicate}_"\
+        "startspace_endspace_itsearch_map_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "map_1_"\
+        "{replicate}.csv",
     message:
         "Executing order mcmc algorithm on the following files: {input}."
     shell: 
-        "Rscript scripts/run_order_mcmc.R "
-        "--filename {output} "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--filename_startspace {input.startspace} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "        
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC_map "
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "
+        "Rscript scripts/run_order_mcmc.R " \
+        "--filename {output} " \
+        "--filename_data {input.data} " \
+        "--filename_dag {input.dag} "\
+        "--filename_startspace {input.startspace} "\
+        "--output_dir {config[output_dir]} "\
+        "--seed {wildcards.replicate} "      \  
+        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} " \
+        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC_map "\
+        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "
 
 rule pcalg:
@@ -204,18 +296,18 @@ rule pcalg:
     output:
         config["output_dir"]+"/res_pcalg_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv"
     shell:
-        "Rscript scripts/run_pcalg.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--alpha {wildcards.alpha} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        "--filename {output} "
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "
-        " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "
+        "Rscript scripts/run_pcalg.R " \
+        "--filename_data {input.data} "\
+        "--filename_dag {input.dag} "\
+        "--alpha {wildcards.alpha} "\
+        "--output_dir {config[output_dir]} "\
+        "--seed {wildcards.replicate} "\
+        "--filename {output} "\
+        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
+        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
+        " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "
 
 rule mmhc:
@@ -225,18 +317,18 @@ rule mmhc:
     output:
         config["output_dir"]+"/res_mmhc_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv"
     shell:
-        "Rscript scripts/run_mmhc.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--alpha {wildcards.alpha} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        "--filename {output} "
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "
-        " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "
+        "Rscript scripts/run_mmhc.R "\
+        "--filename_data {input.data} "\
+        "--filename_dag {input.dag} "\
+        "--alpha {wildcards.alpha} "\
+        "--output_dir {config[output_dir]} "\
+        "--seed {wildcards.replicate} "\
+        "--filename {output} "\
+        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
+        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
+        " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "
 
 rule gobnilp:
@@ -244,19 +336,21 @@ rule gobnilp:
         dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/range_header_data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
+        config["output_dir"]+"/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.csv"
     shell:
-        "Rscript scripts/run_gobnilp.R "
-        "--filename_data {input.data} "
-        "--filename_dag {input.dag} "
-        "--output_dir {config[output_dir]} "
-        "--seed {wildcards.replicate} "
-        "--filename {output} "
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "
-        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "
-        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "
-        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "
+        "Rscript scripts/run_gobnilp.R "\
+        "--filename_data {input.data} "\
+        "--filename_dag {input.dag} "\
+        "--output_dir {config[output_dir]} "\
+        "--seed {wildcards.replicate} "\
+        "--palim {wildcards.palim} "\
+        "--filename {output} "\
+        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
+        " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "\
+        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
+        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "\
+        " && python scripts/add_column.py --filename {output} --colname palim --colval {wildcards.palim} "
 
 rule plot:
     input:
@@ -273,58 +367,97 @@ rule plot:
         "bdecatpar.chi_{bdecatparchi}_"
         "bdecatpar.edgepf_{bdecatparedgepf}_"
         "{replicate}.csv",
-                       replicate=config["replicates"],
-                       time=config["blip"]["time"],
-                       scorermethod=config["blip"]["scorer.method"],
-                       solvermethod=config["blip"]["solver.method"],                       
-                       indeg=config["blip"]["indeg"],
-                       cores=config["blip"]["cores"],
-                       allocated=config["blip"]["allocated"],
-                       scorefunction=config["blip"]["scorefunction"],
-                       alpha=config["blip"]["alpha"],
-                       verbose=config["blip"]["verbose"],
-                       bdecatparchi=config["blip"]["bdecatpar.chi"],
-                       bdecatparedgepf=config["blip"]["bdecatpar.edgepf"],
-                       n=config["sample_sizes"][i],
-                       avparents=config["av_parents"][i],
-                       p=config["dims"][i]) for i in range(len(config["dims"]))],
-        itsearch_map = [expand(config["output_dir"] + "/res_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.csv",
-                               replicate=config["replicates"],
-                               n=config["sample_sizes"][i],
-                               avparents=config["av_parents"][i],
-                               p=config["dims"][i]) for i in range(len(config["dims"]))],
-        itsearch_sample = [expand(config["output_dir"] + "/res_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
-                                  replicate=config["replicates"],
-                                  n=config["sample_sizes"][i],
-                                  avparents=config["av_parents"][i],
-                                  p=config["dims"][i]) for i in range(len(config["dims"]))],
-        order_mcmc_sample = [expand(config["output_dir"] + "/res_orderMCMC_sample_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
-                                    replicate=config["replicates"],   
-                                    n=config["sample_sizes"][i],
-                                    avparents=config["av_parents"][i],
-                                    p=config["dims"][i]) for i in range(len(config["dims"]))],
-        order_mcmc_map = [expand(config["output_dir"] + "/res_orderMCMC_map_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.csv",
-                                 replicate=config["replicates"],
-                                 n=config["sample_sizes"][i],
-                                 avparents=config["av_parents"][i],
-                                 p=config["dims"][i]) for i in range(len(config["dims"]))],
+                        replicate=replicates,
+                        time=config["blip"]["time"],
+                        scorermethod=config["blip"]["scorer.method"],
+                        solvermethod=config["blip"]["solver.method"],                       
+                        indeg=config["blip"]["indeg"],
+                        cores=config["blip"]["cores"],
+                        allocated=config["blip"]["allocated"],
+                        scorefunction=config["blip"]["scorefunction"],
+                        alpha=config["blip"]["alpha"],
+                        verbose=config["blip"]["verbose"],
+                        bdecatparchi=config["blip"]["bdecatpar.chi"],
+                        bdecatparedgepf=config["blip"]["bdecatpar.edgepf"],
+                        n=config["sample_sizes"][i],
+                        avparents=config["av_parents"][i],
+                        p=config["dims"][i]) for i in range(len(config["dims"]))],
+    
+        itsearch_map = [expand(config["output_dir"] + "/res_itsearch_"
+                        "n_{n}_"
+                        "p_{p}_"
+                        "avpar_{avparents}_"
+                        "map_{map}_"
+                        "score_type_{score_type}_" 
+                        "bdepar_chi_{bdepar_chi}_" 
+                        "bdepar_edgepf_{bdepar_edgepf}_" 
+                        "plus1it_{plus1it}_" 
+                        "posterior_{posterior}_" 
+                        "{replicate}.csv",
+                        replicate=replicates,
+                        n=config["sample_sizes"][i],
+                        avparents=config["av_parents"][i],
+                        p=config["dims"][i],
+                        map=config["itsearch_mapnew"]["optional"]["MAP"],
+                        score_type=config["itsearch_mapnew"]["score_params"]["type"],
+                        bdepar_chi=config["itsearch_mapnew"]["score_params"]["bdepar"]["chi"],
+                        bdepar_edgepf=config["itsearch_mapnew"]["score_params"]["bdepar"]["edgepf"],
+                        plus1it=config["itsearch_mapnew"]["optional"]["plus1it"],
+                        posterior=config["itsearch_mapnew"]["optional"]["posterior"]
+                        ) for i in range(len(config["dims"]))],
+
+        # itsearch_sample = [expand(config["output_dir"] + "/res_itsearch_"
+        #                 "n_{n}_"
+        #                 "p_{p}_"
+        #                 "avpar_{avparents}_"
+        #                 "map_0_"
+        #                 "score_type_{score_type}_" 
+        #                 "bdepar_chi_{bdepar_chi}_" \
+        #                 "bdepar_edgepf_{bdepar_edgepf}_" \
+        #                 "{replicate}.csv",
+        #                 replicate=replicates,
+        #                 n=config["sample_sizes"][i],
+        #                 avparents=config["av_parents"][i],
+        #                 p=config["dims"][i],
+        #                 score_type=config["itsearch_mapnew"]["score_params"]["type"],
+        #                 bdepar_chi=config["itsearch_mapnew"]["score_params"]["bdepar"]["chi"],
+        #                 bdepar_edgepf=config["itsearch_mapnew"]["score_params"]["bdepar"]["edgepf"],
+        #                 ) for i in range(len(config["dims"]))],
+
+
+        #itsearch_sample = [expand(config["output_dir"] + "/res_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
+        #                          replicate=config["replicates"],
+        #                          n=config["sample_sizes"][i],
+        #                          avparents=config["av_parents"][i],
+        #                          p=config["dims"][i]) for i in range(len(config["dims"]))],
+        # order_mcmc_sample = [expand(config["output_dir"] + "/res_orderMCMC_sample_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_sample_n_{n}_p_{p}_avpar_{avparents}_map_0_{replicate}.csv",
+        #                             replicate=config["replicates"],   
+        #                             n=config["sample_sizes"][i],
+        #                             avparents=config["av_parents"][i],
+        #                             p=config["dims"][i]) for i in range(len(config["dims"]))],
+        # order_mcmc_map = [expand(config["output_dir"] + "/res_orderMCMC_map_n_{n}_p_{p}_avpar_{avparents}_{replicate}_startspace_endspace_itsearch_map_n_{n}_p_{p}_avpar_{avparents}_map_1_{replicate}.csv",
+        #                          replicate=config["replicates"],
+        #                          n=config["sample_sizes"][i],
+        #                          avparents=config["av_parents"][i],
+        #                          p=config["dims"][i]) for i in range(len(config["dims"]))],
         pcalg = [expand(config["output_dir"] + "/res_pcalg_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv",
-                        replicate=config["replicates"],
+                        replicate=replicates,
                         alpha=config["pcalg"]["alpha"],
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
                         p=config["dims"][i]) for i in range(len(config["dims"]))],
-         mmhc = [expand(config["output_dir"] + "/res_mmhc_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv",
-                        replicate=config["replicates"],
+        mmhc = [expand(config["output_dir"] + "/res_mmhc_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv",
+                        replicate=replicates,
                         alpha=config["mmhc"]["alpha"],
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))]#,
-#        gobnilp = [expand(config["output_dir"] + "/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
-#                          replicate=config["replicates"],
-#                          n=config["sample_sizes"][i],
-#                          avparents=config["av_parents"][i],
-#                          p=config["dims"][i]) for i in range(len(config["dims"]))]
+                        p=config["dims"][i]) for i in range(len(config["dims"]))],
+        gobnilp = [expand(config["output_dir"] + "/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.csv",
+                         replicate=replicates,
+                         n=config["sample_sizes"][i],
+                         avparents=config["av_parents"][i],
+                         palim=config["gobnilp"]["palim"],
+                         p=config["dims"][i]) for i in range(len(config["dims"]))]
     output:
         "ROC.eps" 
         #SHD.eps

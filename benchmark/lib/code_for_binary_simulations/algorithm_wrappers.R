@@ -97,7 +97,7 @@ runItsearchSample <- function(data, dag) {
 
   endspace <- itsearch_res$space$adjacency
   addspace <- itsearch_res$addspace
-  print(addspace)
+
   while (FALSE) {
     itsearch_res <- iterativeMCMCsearch(n,
                                       myscore,
@@ -135,7 +135,29 @@ runItsearchSample <- function(data, dag) {
                 "endspace" = itsearch_res$space$adjacency))
 }
 
-runItsearch <- function(data, dag, map) {
+runItsearch <- function(data, dag,
+                        plus1it = NULL,
+                        moveprobs = NULL,
+                        MAP = TRUE,
+                        posterior = 0.5,
+                        iterations = NULL,
+                        stepsave = NULL,
+                        softlimit = 9,
+                        hardlimit = 12,
+                        alpha = 0.05,
+                        gamma = 1,
+                        startspace = NULL,
+                        blacklist = NULL,
+                        verbose = TRUE,
+                        chainout = FALSE,
+                        scoreout = FALSE,
+                        cpdag = FALSE,
+                        mergetype = "skeleton",
+                        addspace = NULL,
+                        scoretable = NULL,
+                        startorder = NULL,
+                        accum = FALSE
+) {
   n <- numNodes(dag)
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
@@ -148,15 +170,18 @@ runItsearch <- function(data, dag, map) {
   # Iterative search
   starttime <- Sys.time()
 
+  #if (map == 0) {
+  #  plus1it <- 10
+  #}
   # best graph in ech it is addspace
   # addcum, keep track of edges, current best and the add space
   itsearch_res <- iterativeMCMCsearch(n,
                                       myscore,
                                       chainout = TRUE,
-                                      MAP = map && TRUE,
+                                      MAP = MAP,
                                       posterior = 0.5,
                                       scoreout = TRUE,
-                                      plus1it = 10) # 1 and loop
+                                      plus1it = plus1it) # 1 and loop
 
   endspace <- itsearch_res$space$adjacency
   endtime <- Sys.time()
@@ -171,15 +196,14 @@ runItsearch <- function(data, dag, map) {
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
-                                    plus1it = 10,
-                                    posterior = 0.5,
+  ##plus1it = NULL,
+  #                                  posterior = 0.5,
                                     time = totaltime,
-                                    MAP = map && TRUE,
-                                    score_type = "bde",
-                                    score_param = 1)
+                                    it = itsearch_res$max$it
+                                    ) # Iterartion where the max score was found
 
   return(list("res" = results,
-                "endspace" = itsearch_res$space$adjacency))
+              "endspace" = itsearch_res$space$adjacency))
 }
 
 
@@ -220,10 +244,10 @@ runOrderMCMC <- function(data, dag, startspace) {
   return(res)
 }
 
-runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs", 
-                    indeg = 6, time = 3600, allocated = 80, 
-                    scorefunction = "bic", alpha = 1, cores = 1, 
-                    verbose = 0, bdecatpar.chi = 1, bdecatpar.edgepf = 1){
+runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs",
+                    indeg = 6, time = 3600, allocated = 80,
+                    scorefunction = "bic", alpha = 1, cores = 1,
+                    verbose = 0, bdecatpar.chi = 1, bdecatpar.edgepf = 1) {
 
   sample_size <- dim(data)[1]
   n <- dim(data)[2]
@@ -238,13 +262,13 @@ runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs",
 
   starttime <- Sys.time()
   blipfit <- blip.learn(datadf,
-                        scorer.method=scorer.method,
-                        solver.method=solver.method,
-                        indeg=indeg,
-                        cores=cores, 
-                        time = time, 
+                        scorer.method = scorer.method,
+                        solver.method = solver.method,
+                        indeg = indeg,
+                        cores = cores,
+                        time = time,
                         allocated = allocated,
-                        scorefunction = scorefunction, 
+                        scorefunction = scorefunction,
                         alpha = alpha,
                         verbose = verbose)
   endtime <- Sys.time()
@@ -255,7 +279,7 @@ runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs",
   compres <- compareDAGs(adjacency2dag(blipadj), dag)
   names(compres) <- c("SHD", "TP", "FP")
 
-  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = bdecatpar.chi, 
+  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = bdecatpar.chi,
                                                                               edgepf = bdecatpar.edgepf))
   logscore <- DAGscore(ncol(data), myscore_tmp, blipadj) # this was bnscore, dont know why...
 
@@ -279,16 +303,16 @@ runPCalg <- function(data, dag, alpha) {
               indepTest = binCItest,
               alpha = alpha,
               labels = sapply(c(1:n), toString),
-              fixedGaps = NULL, 
+              fixedGaps = NULL,
               fixedEdges = NULL,
-              NAdelete = TRUE, 
+              NAdelete = TRUE,
               m.max = Inf,
               u2pd = c("relaxed", "rand", "retry"),
               skel.method = c("stable", "original", "stable.fast"),
-              conservative = FALSE, 
-              maj.rule = FALSE, 
+              conservative = FALSE,
+              maj.rule = FALSE,
               solve.confl = FALSE,
-              numCores = 1, 
+              numCores = 1,
               verbose = FALSE)
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
@@ -322,7 +346,7 @@ runMMHC <- function(data, dag, alpha) {
   return(res)
 }
 
-runGobnilp <- function(filename_data, dag) {
+runGobnilp <- function(filename_data, dag, palim = 6, plot = FALSE) {
   n <- numNodes(dag)
   data <- read.csv(filename_data, sep = " ")
   sample_size <- dim(data)[1] - 1
@@ -332,9 +356,9 @@ runGobnilp <- function(filename_data, dag) {
   m <- gob$Gobnilp()
 
   starttime <- Sys.time()
-  m$learn(filename_data, 
-          plot = FALSE, 
-          palim=6) # score=BGeu ? 
+  m$learn(filename_data,
+          plot = plot,
+          palim = palim) # score=BGeu ? 
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
   ## convert to graphneldag
