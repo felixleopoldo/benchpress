@@ -2,29 +2,32 @@
     "output_dir": "simresults",
     "replicates": {
         "start": 1,
-        "end": 2
+        "end": 50
     },
     "sample_sizes": [
         [
-            80
+            80,
+            160
         ]
     ],
     "av_parents": [
         [
-            2
+            2,
+            3
         ]
     ],
     "dims": [
         [
-            8
+            80
         ]
     ],
     "blip": {
         "scorer.method": "is",
         "solver.method": "winasobs",
-        "indeg": 6,
+        "indeg": 80,
         "time": [
-            60
+            60,
+            120
         ],
         "allocated": 80,
         "scorefunction": "bdeu",
@@ -34,15 +37,10 @@
         "bdecatpar.chi": 1,
         "bdecatpar.edgepf": 1
     },
-    "itsearch_map": [
-        0,
-        1
-    ],
     "gobnilp": {
         "plot": false,
         "palim": [
-            3,
-            4
+            2
         ]
     },
     "pcalg": {
@@ -53,39 +51,9 @@
             0.2,
             0.35,
             0.45
-        ],
-        "fixedGaps": null,
-        "fixedEdges": null,
-        "NAdelete": true,
-        "m.max": "inf",
-        "u2pd": [
-            "relaxed",
-            "rand",
-            "retry"
-        ],
-        "skel.method": [
-            "stable",
-            "original",
-            "stable.fast"
-        ],
-        "conservative": false,
-        "maj.rule": false,
-        "solve.confl": false,
-        "numCores": 1,
-        "verbose": false
+        ]
     },
     "mmhc": {
-        "title": "mmhc",
-        "alpha": [
-            0.01,
-            0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
-        ],
-        "whitelist": null,
-        "blacklist": null,
         "restrict.args": {
             "alpha": [
                 0.01,
@@ -95,35 +63,15 @@
                 0.35,
                 0.45
             ]
-        },
-        "maximize.args": {},
-        "debug": false
+        }
     },
-    "itsearch_mapnew": {
-        "title": "itsearch_map",
+    "itsearch_map": {
         "optional": {
-            "plus1it": 5,
-            "moveprobs": null,
+            "plus1it": null,
             "MAP": 1,
-            "posterior": 0.5,
-            "iterations": null,
-            "stepsave": null,
-            "softlimit": 9,
-            "hardlimit": 12,
-            "alpha": null,
-            "gamma": 1,
-            "startspace": null,
-            "blacklist": null,
-            "verbose": true,
-            "chainout": false,
-            "scoreout": false,
-            "cpdag": false,
-            "mergetype": "skeleton",
-            "addspace": null,
-            "scoretable": null
+            "posterior": null
         },
         "score_params": {
-            "type": "bde",
             "bdepar": {
                 "chi": 1,
                 "edgepf": 1
@@ -131,45 +79,40 @@
         }
     },
     "itsearch_sample": {
-        "title": "itsearch_sample",
         "optional": {
+            "MAP": 0,
             "plus1it": 10,
-            "moveprobs": null,
-            "MAP": true,
-            "posterior": 0.5,
-            "iterations": null,
-            "stepsave": null,
-            "softlimit": 9,
-            "hardlimit": 12,
-            "alpha": null,
-            "gamma": 1,
-            "startspace": null,
-            "blacklist": null,
-            "verbose": true,
-            "chainout": true,
-            "scoreout": false,
-            "cpdag": false,
-            "mergetype": "skeleton",
-            "addspace": null,
-            "scoretable": null
+            "posterior": 0.5
+        },
+        "score_params": {
+            "bdepar": {
+                "chi": 1,
+                "edgepf": 1
+            }
         }
     },
-    "orderMCMC": {
-        "title": "orderMCMC",
+    "ordermcmc_map": {
+        "startspace": "itsearch_map",
         "optional": {
-            "MAP": true,
-            "plus1": true,
-            "blacklist": null,
-            "scoretable": null,
-            "moveprobs": null,
-            "iterations": null,
-            "stepsave": null,
-            "alpha": null,
-            "cpdag": false,
-            "gamma": 1,
-            "chainout": false,
-            "scoreout": false,
-            "verbose": false
+            "plus1": true
+        },
+        "score_params": {
+            "bdepar": {
+                "chi": 1,
+                "edgepf": 1
+            }
+        }
+    },
+    "ordermcmc_sample": {
+        "startspace": "itsearch_sample",
+        "optional": {
+            "plus1": true
+        },
+        "score_params": {
+            "bdepar": {
+                "chi": 1,
+                "edgepf": 1
+            }
         }
     }
 }

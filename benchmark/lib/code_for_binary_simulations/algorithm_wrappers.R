@@ -135,7 +135,7 @@ runItsearchSample <- function(data, dag) {
                 "endspace" = itsearch_res$space$adjacency))
 }
 
-runItsearch <- function(data, dag,
+runItsearch <- function(data, dag, scorepar,
                         plus1it = NULL,
                         moveprobs = NULL,
                         MAP = TRUE,
@@ -162,10 +162,10 @@ runItsearch <- function(data, dag,
   sample_size <- dim(data)[1]
   true_nedges <- sum(dag2adjacencymatrix(dag))
 
-  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
+  #myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
 
   # True graph
-  truescore <- DAGscore(n, myscore, dag2adjacencymatrix(dag))
+  truescore <- DAGscore(n, scorepar, dag2adjacencymatrix(dag))
 
   # Iterative search
   starttime <- Sys.time()
@@ -176,7 +176,7 @@ runItsearch <- function(data, dag,
   # best graph in ech it is addspace
   # addcum, keep track of edges, current best and the add space
   itsearch_res <- iterativeMCMCsearch(n,
-                                      myscore,
+                                      scorepar,
                                       chainout = TRUE,
                                       MAP = MAP,
                                       posterior = 0.5,
@@ -196,10 +196,8 @@ runItsearch <- function(data, dag,
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
-  ##plus1it = NULL,
-  #                                  posterior = 0.5,
                                     time = totaltime,
-                                    it = itsearch_res$max$it
+                                    it = n_iterations - 1 #itsearch_res$max$it
                                     ) # Iterartion where the max score was found
 
   return(list("res" = results,
@@ -207,16 +205,36 @@ runItsearch <- function(data, dag,
 }
 
 
-runOrderMCMC <- function(data, dag, startspace) {
+runOrderMCMC <- function(data, dag, scorepar,
+MAP = TRUE,
+plus1 = TRUE,
+startspace = NULL,
+blacklist = NULL,
+startorder = NULL,
+scoretable = NULL,
+moveprobs = NULL,
+iterations = NULL,
+stepsave = NULL,
+alpha = 0.05,
+cpdag = FALSE,
+gamma = 1,
+hardlimit = ifelse(plus1, 15, 22),
+chainout = TRUE,
+scoreout = FALSE,
+verbose = FALSE
+) {
   #
   # Order MCMC
   #
   sample_size <- dim(data)[1]
   n <- dim(data)[2]
   true_nedges <- sum(dag2adjacencymatrix(dag))
-  myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
+  # myscore <- scoreparameters(n, "bde", data, bdepar = list(chi = 1, edgepf = 1))
   starttime <- Sys.time()
-  order_mcmc_res <- orderMCMC(n, myscore, startspace = startspace, MAP = FALSE, chainout = TRUE)
+  order_mcmc_res <- orderMCMC(n, scorepar,
+                              startspace = startspace,
+                              MAP = MAP,
+                              chainout = chainout)
   endtime <- Sys.time()
   totaltime <- as.numeric(endtime - starttime, units = "secs")
 
@@ -229,7 +247,7 @@ runOrderMCMC <- function(data, dag, startspace) {
   for (i in 1:length(pbarrier)) {
     graph_thresh <- dag.threshold(n, order_mcmc_res$chain$incidence, pbarrier = pbarrier[i], pdag = FALSE, burnin = 0.5)
     if (gRbase::is.DAG(graph_thresh)) {
-      scores[i] <- DAGscore(n, myscore, graph_thresh)
+      scores[i] <- DAGscore(n, scorepar, graph_thresh)
     }
   }
 

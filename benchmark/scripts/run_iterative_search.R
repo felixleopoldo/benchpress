@@ -1,7 +1,6 @@
 ## Simulate rblip
 ##
 library(argparser)
-
 library(RBGL)
 
 source("lib/code_for_binary_simulations/rblip.R")
@@ -10,7 +9,7 @@ source("lib/code_for_binary_simulations/sim_bidag_binary.R")
 source("lib/code_for_binary_simulations/summarySE.R")
 source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
-p <- arg_parser("A program for running r.blip and save to file.")
+p <- arg_parser("A program for running iterativeMCMC and save to file.")
 
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--title", help = "Title")
@@ -63,7 +62,9 @@ if (argv$posterior != "None") {
   posterior <- as.numeric(argv$posterior)
 }
 
-res <- runItsearch(data, dag,
+
+myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = 1, edgepf = 1))
+res <- runItsearch(data, dag, myscore,
                             MAP = map && TRUE,
                             plus1it = plus1it,
                             posterior = posterior)
