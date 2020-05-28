@@ -2,18 +2,18 @@
     "output_dir": "simresults",
     "replicates": {
         "start": 1,
-        "end": 50
+        "end": 100
     },
     "sample_sizes": [
         [
-            80,
-            160
+            160,
+            320,
+            640
         ]
     ],
     "av_parents": [
         [
-            2,
-            3
+            2
         ]
     ],
     "dims": [
@@ -81,7 +81,7 @@
     "itsearch_sample": {
         "optional": {
             "MAP": 0,
-            "plus1it": 10,
+            "plus1it": 6,
             "posterior": 0.5
         },
         "score_params": {

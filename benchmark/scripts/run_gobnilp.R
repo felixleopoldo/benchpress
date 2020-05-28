@@ -17,7 +17,6 @@ p <- add_argument(p, "--palim", help = "Max number of parents", type = "numeric"
 
 
 argv <- parse_args(p)
-print(argv)
 
 directory <- argv$output_dir
 filename <- file.path(argv$filename)
