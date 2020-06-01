@@ -4,14 +4,10 @@
 
 TODO: Benchmarking structure learning algorithms in probabilistic graphical models.
 
-## Installation
-
-`docker build -t benchmark .`
-
 
 ## Usage
 
-`docker run -it benchmark`
+`snakemake ROC.eps --cores 20 --use-singularity`
 
 `$ ./example_run.sh`
 
