@@ -2,12 +2,17 @@
   <content><![CDATA[
 # ${1:Graphical model structure learning benchmarking}
 
-TODO: Benchmarking structure learning algorithms in probabilistic graphical models.
+Benchmarking structure learning algorithms in probabilistic graphical models.
 
 
 ## Usage
 
 `snakemake ROC.eps --cores 20 --use-singularity`
+
+## Reqirements
+- Snakemake
+- Docker
+- Singularity
 
 
 ## Contributing
