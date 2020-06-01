@@ -9,7 +9,6 @@ TODO: Benchmarking structure learning algorithms in probabilistic graphical mode
 
 `snakemake ROC.eps --cores 20 --use-singularity`
 
-`$ ./example_run.sh`
 
 ## Contributing
 
