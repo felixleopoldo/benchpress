@@ -6,7 +6,7 @@ Benchmarking structure learning algorithms in probabilistic graphical models.
 
 
 ## Usage
-
+Define the simulation setup by altering the values in config.json and run
 `snakemake ROC.eps --cores 20 --use-singularity`
 
 ## Reqirements
