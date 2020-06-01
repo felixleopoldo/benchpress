@@ -249,6 +249,7 @@ rule ordermcmc:
         " && python scripts/add_column.py --filename {output} --colname scoreout    --colval false "\   
         " && python scripts/add_column.py --filename {output} --colname verbose     --colval false "\
         " && python scripts/add_column.py --filename {output} --colname itsearch_MAP     --colval {wildcards.MAP} "\
+        " && python scripts/add_column.py --filename {output} --colname itsearch_plus1it     --colval {wildcards.plus1it} "\
 
 rule pcalg:
     input:
@@ -446,7 +447,7 @@ rule plot:
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
                         p=config["dims"][i]) for i in range(len(config["dims"]))]
-                        #,
+                            #,
         #gobnilp = [expand(config["output_dir"] + "/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.csv",
         #                 replicate=replicates,
         #                 n=config["sample_sizes"][i],
