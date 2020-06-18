@@ -98,6 +98,9 @@ runItsearchSample <- function(data, dag) {
   endspace <- itsearch_res$space$adjacency
   addspace <- itsearch_res$addspace
 
+  # If average number of edges altered last e.g k iterations is less then e.g 3. 
+  # (I.e. the graph was not changed chnged in less then 3 places)
+  it <- 1
   while (FALSE) {
     itsearch_res <- iterativeMCMCsearch(n,
                                       myscore,
@@ -109,6 +112,7 @@ runItsearchSample <- function(data, dag) {
                                       startspace = endspace) # 1 and loop
     addspace <- itsearch_res$addspace
     endspace <- itsearch_res$space$adjacency
+    it <- it + 1
   }
 
   endtime <- Sys.time()
@@ -121,15 +125,10 @@ runItsearchSample <- function(data, dag) {
   # ROC dataframe
   results <- data.frame(TPR = benchmarks[[n_iterations, "TPR"]],
                                     FPRn = benchmarks[[n_iterations, "FP"]] / true_nedges,
-                                    ss = sample_size / n,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
-  #plus1it = 10,
-                                    posterior = 0.5,
                                     time = totaltime,
-                                    MAP = FALSE,
-                                    score_type = "bde",
-                                    score_param = 1)
+                                    it = it)
 
   return(list("res" = results,
                 "endspace" = itsearch_res$space$adjacency))
@@ -197,7 +196,7 @@ runItsearch <- function(data, dag, scorepar,
                                     SHD = benchmarks[[n_iterations, "SHD"]],
                                     logscore = itsearch_res$max$score,
                                     time = totaltime,
-                                    it = n_iterations - 1 #itsearch_res$max$it
+                                    it = n_iterations #itsearch_res$max$it
                                     ) # Iterartion where the max score was found
 
   return(list("res" = results,
@@ -265,7 +264,7 @@ verbose = FALSE
 runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs",
                     indeg = 6, time = 3600, allocated = 80,
                     scorefunction = "bic", alpha = 1, cores = 1,
-                    verbose = 0, bdecatpar.chi = 1, bdecatpar.edgepf = 1) {
+                    verbose = 0, treewidth = 5) {
 
   sample_size <- dim(data)[1]
   n <- dim(data)[2]
@@ -297,15 +296,17 @@ runBlip <- function(data, dag, scorer.method = "is", solver.method = "winasobs",
   compres <- compareDAGs(adjacency2dag(blipadj), dag)
   names(compres) <- c("SHD", "TP", "FP")
 
-  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = bdecatpar.chi,
-                                                                              edgepf = bdecatpar.edgepf))
+  myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = argv$alpha,
+                                                                              edgepf = argv$alpha))
   logscore <- DAGscore(ncol(data), myscore_tmp, blipadj) # this was bnscore, dont know why...
 
-  res <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
+  res <- list()
+  res$res <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                             FPRn = compres["FP"] / true_nedges,
                             logscore = logscore,
                             SHD = compres["SHD"],
                             time = totaltime)
+  res$adjmat <- blipadj
     return(res)
 }
 

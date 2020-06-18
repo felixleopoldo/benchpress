@@ -1,7 +1,7 @@
-## Simulate rblip
-##
+## Simulate 
 library(argparser)
 library(RBGL)
+library(BiDAG)
 
 source("lib/code_for_binary_simulations/rblip.R")
 source("lib/code_for_binary_simulations/df_fns.R")
@@ -13,24 +13,21 @@ p <- arg_parser("A program for running iterativeMCMC and save to file.")
 
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--title", help = "Title")
-#p <- add_argument(p, "--filename", help = "Filename") 
+p <- add_argument(p, "--filename", help = "Filename") 
 p <- add_argument(p, "--avparents", help = "Average number of parents in DAG")
-p <- add_argument(p, "--filename_dag", help = "DAGs filename") # This should not be here
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
 p <- add_argument(p, "--map", help = "MAP parameter 0/1", type = "numeric")
 p <- add_argument(p, "--score_type", help = "bde/..")
-p <- add_argument(p, "--bdepar_chi", help = "bde parameter", type = "numeric")
-p <- add_argument(p, "--bdepar_edgepf", help = "bde parameter", type = "numeric")
+p <- add_argument(p, "--bdecatpar_chi", help = "bde parameter", type = "numeric", default = 1)
+p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numeric", default = 1)
 p <- add_argument(p, "--posterior", help = "parameter")
 p <- add_argument(p, "--plus1it", help = "parameter")
 
 argv <- parse_args(p)
 
-print(argv)
 directory <- argv$output_dir
-#filename <- file.path(argv$filename)
-filename_dag <- argv$filename_dag
+filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 
 seed <- argv$seed
@@ -38,19 +35,8 @@ map <- argv$map
 avparents <- argv$avparents
 
 set.seed(seed)
-dag <- readRDS(filename_dag)
 data <- read.csv(filename_data)
-n <- dim(data)[1]
-p <- dim(data)[2]
 # Iterative search
-title <- argv$title
-
-# res <- None
-# if (map == 1) {
-#   res <- runItsearchMAP(data, dag, replicate, title)
-# } else {
-#   res <- runItsearchSample(data, dag, replicate, title)
-# }
 
 plus1it <- NULL
 if (argv$plus1it != "None") {
@@ -62,37 +48,17 @@ if (argv$posterior != "None") {
   posterior <- as.numeric(argv$posterior)
 }
 
+myscore <- scoreparameters(dim(data)[2], "bdecat", data, bdecatpar = list(chi = argv$bdacatpar_chi,
+                            edgepf = argv$bdacatpar_edgepf))
+itsearch_res <- iterativeMCMCsearch(dim(data)[2],
+                                      myscore,
+                                      chainout = TRUE,
+                                      MAP = map && TRUE,
+                                      posterior = posterior,
+                                      scoreout = TRUE,
+                                      plus1it = plus1it) # 1 and loop
+endspace <- itsearch_res$space$adjacency
+rownames(endspace) <- seq(dim(data)[2])
+colnames(endspace) <- seq(dim(data)[2])
 
-myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = 1, edgepf = 1))
-res <- runItsearch(data, dag, myscore,
-                            MAP = map && TRUE,
-                            plus1it = plus1it,
-                            posterior = posterior)
-
-write.csv(res$res, file = file.path(directory, paste(
-    "res_itsearch", #title,
-    "_n_", n,
-    "_p_", p,
-    "_avpar_", avparents,
-    "_map_", map,
-    "_score_type_", argv$score_type,
-    "_bdepar_chi_", argv$bdepar_chi,
-    "_bdepar_edgepf_", argv$bdepar_edgepf,
-    "_plus1it_", argv$plus1it,
-    "_posterior_", argv$posterior,
-    "_", seed,
-    ".csv", sep = "")), row.names = FALSE)
-
-saveRDS(object = res$endspace, file.path(directory,
-paste("endspace_itsearch", #title,
-    "_n_", n,
-    "_p_", p,
-    "_avpar_", avparents,
-    "_map_", map,
-    "_score_type_", argv$score_type,
-    "_bdepar_chi_", argv$bdepar_chi,
-    "_bdepar_edgepf_", argv$bdepar_edgepf,
-    "_plus1it_", argv$plus1it,
-    "_posterior_", argv$posterior,
-    "_", seed,
-    ".rds", sep = "")))
+write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)

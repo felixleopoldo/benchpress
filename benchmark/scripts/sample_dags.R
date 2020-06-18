@@ -1,8 +1,9 @@
 # Samples dags and saves to file
 library(argparser)
-
+library(BiDAG)
+library(gRbase)
 source("lib/binarydatagen/generate_DAG.R")
-
+source("lib/code_for_binary_simulations/make_name.R")
 p <- arg_parser("A program for generating a random directed acyclic graph.")
 
 p <- add_argument(p, "--filename", help = "output filename", default = "dag.rds")
@@ -19,8 +20,16 @@ filename <- file.path(argv$filename)
 n <- argv$nodes
 avParents <- argv$parents
 seed_number <- argv$seed
-
+set.seed(seed_number)
 DAG <- generateDAGMaxParents(n = n, d = avParents)
 
-saveRDS(DAG, file = filename)
+adjmat <- graphNEL2adjMAT(DAG)
+print(adjmat)
+
+#varnames <- varnames.make(n)
+#rownames(adjmat) <- seq(n)
+#colnames(adjmat) <- seq(n)
+
+
+write.csv(adjmat, file = filename, quote = FALSE, row.names = FALSE)
 

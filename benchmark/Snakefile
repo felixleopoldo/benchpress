@@ -4,27 +4,29 @@ configfile:
 replicates = range(int(config["replicates"]["start"]), 
                     int(config["replicates"]["end"]+1))
 
+# TODO: All filenames should be generated from the config file.
+
 singularity:
     "docker://onceltuca/benchmark:1.0.5"
 
 rule sample_dag:
     output:
-        dag = "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
+        adjmat = "{output_dir}/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv"
     shell:
         "Rscript scripts/sample_dags.R " \
-        "--filename {output.dag} " \ 
+        "--filename {output.adjmat} " \ 
         "--nodes {wildcards.p} " \
         "--parents {wildcards.avparents} " \
         "--seed {wildcards.replicate}"
 
 rule sample_bn:
     input:
-        dag = "{output_dir}/dag_p_{p}_avpar_{avparents}_{replicate}.rds"
+        adjmat = "{output_dir}/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
         bn = "{output_dir}/bn_p_{p}_avpar_{avparents}_{replicate}.rds"
     shell:
         "Rscript scripts/sample_bayesian_network_for_dag.R " \
-        "--filename_dag {input.dag} " \
+        "--filename_dag {input.adjmat} " \
         "--filename {output} "  \
         "--seed {wildcards.replicate} "
 
@@ -52,12 +54,109 @@ rule sample_data_range_header:
         "--samples {wildcards.n} "
         "--seed {wildcards.replicate} "
 
-rule sim_blip:
+rule run_blip:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_blip_n_{n}_p_{p}_avpar_{avparents}_" \
+        adjmat = config["output_dir"]+"/adjmat_blip_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_" \
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "time_{max_time}_" \
+                "scorer.method_{scorermethod}_" \
+                "solver.method_{solvermethod}_" \
+                "indeg_{indeg}_" \        
+                "cores_{cores}_" \
+                "allocated_{allocated}_" \
+                "scorefunction_{scorefunction}_" \
+                "alpha_{alpha}_" \
+                "verbose_{verbose}_" \
+                "{replicate}.csv",
+        time = config["output_dir"]+"/time_blip_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_" \
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "time_{max_time}_" \
+                "scorer.method_{scorermethod}_" \
+                "solver.method_{solvermethod}_" \
+                "indeg_{indeg}_" \
+                "cores_{cores}_" \
+                "allocated_{allocated}_" \
+                "scorefunction_{scorefunction}_" \
+                "alpha_{alpha}_" \
+                "verbose_{verbose}_" \
+                "{replicate}.txt"
+    message:
+        "Executing blip algorithm on the following files: {input}."
+    shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
+        "Rscript scripts/run_blip.R " \
+        "--filename_data {input.data} " \
+        "--output_dir config[output_dir] " \
+        "--time {wildcards.max_time} " \
+        "--scorer.method {wildcards.scorermethod} " \
+        "--solver.method {wildcards.solvermethod} " \
+        "--indeg {wildcards.indeg} " \  
+        "--cores {wildcards.cores} " \
+        "--allocated {wildcards.allocated} " \
+        "--scorefunction {wildcards.scorefunction} " \
+        "--alpha {wildcards.alpha} " \
+        "--verbose {wildcards.verbose} " \
+        "--filename {output.adjmat} " 
+
+rule summarise_blip:
+    input:
+        data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_true = config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_blip_" \
+                        "n_{n}_" \
+                        "p_{p}_" \
+                        "avpar_{avparents}_" \
+                        "score_type_{score_type}_" \
+                        "bdecatpar_chi_{bdecatpar_chi}_" \
+                        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                        "time_{max_time}_" \
+                        "scorer.method_{scorermethod}_" \
+                        "solver.method_{solvermethod}_" \                        
+                        "indeg_{indeg}_" \
+                        "cores_{cores}_" \
+                        "allocated_{allocated}_" \
+                        "scorefunction_{scorefunction}_" \
+                        "alpha_{alpha}_" \
+                        "verbose_{verbose}_" \
+                        "{replicate}.csv",
+        time = config["output_dir"]+"/time_blip_" \
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_" \
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "time_{max_time}_" \
+                "scorer.method_{scorermethod}_" \
+                "solver.method_{solvermethod}_" \
+                "indeg_{indeg}_" \
+                "cores_{cores}_" \
+                "allocated_{allocated}_" \
+                "scorefunction_{scorefunction}_" \
+                "alpha_{alpha}_" \
+                "verbose_{verbose}_" \
+                "{replicate}.txt",
+
+    output:
+        res = config["output_dir"]+"/res_blip_" \
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_" \
+        "score_type_{score_type}_" \
+        "bdecatpar_chi_{bdecatpar_chi}_" \
+        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
         "time_{max_time}_" \
         "scorer.method_{scorermethod}_" \
         "solver.method_{solvermethod}_" \
@@ -67,33 +166,26 @@ rule sim_blip:
         "scorefunction_{scorefunction}_" \
         "alpha_{alpha}_" \
         "verbose_{verbose}_" \
-        "bdecatpar.chi_{bdecatparchi}_" \
-        "bdecatpar.edgepf_{bdecatparedgepf}_" \
-        "{replicate}.csv"
+        "{replicate}.csv",
+
     message:
-        "Executing blip algorithm on the following files: {input}."
+        "Summarising blip results from the following files: {input}."
     shell:
-        "Rscript scripts/run_blip.R " \
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
         "--filename_data {input.data} " \
-        "--filename_dag {input.dag} " \
-        "--output_dir config[output_dir] " \
-        "--time {wildcards.max_time} " \
-        "--scorer.method {wildcards.scorermethod} " \
-        "--solver.method {wildcards.solvermethod} " \
-        "--indeg {wildcards.indeg} " \
-        "--cores {wildcards.cores} " \
-        "--allocated {wildcards.allocated} " \
-        "--scorefunction {wildcards.scorefunction} " \
-        "--alpha {wildcards.alpha} " \
-        "--verbose {wildcards.verbose} " \
-        "--bdecatpar.chi {wildcards.bdecatparchi} " \
-        "--bdecatpar.edgepf {wildcards.bdecatparedgepf} " \
-        "--filename {output} " \
+        "--filename {output.res} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} " \
         " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
         " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
         " && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} " \
-        " && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \        
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname max_time        --colval {wildcards.max_time} " \
         " && python scripts/add_column.py --filename {output} --colname scorer.method   --colval {wildcards.scorermethod} " \
         " && python scripts/add_column.py --filename {output} --colname solver.method   --colval {wildcards.solvermethod} " \
@@ -103,138 +195,261 @@ rule sim_blip:
         " && python scripts/add_column.py --filename {output} --colname scorefunction   --colval {wildcards.scorefunction} " \
         " && python scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
         " && python scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
-        " && python scripts/add_column.py --filename {output} --colname bdecatpar.chi   --colval {wildcards.bdecatparchi} " \
-        " && python scripts/add_column.py --filename {output} --colname bdecatpar.edgepf --colval {wildcards.bdecatparedgepf} "
+        " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " 
 
 rule itsearch:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        benchmark = config["output_dir"]+"/res_itsearch_"\
+        adjmat = config["output_dir"] + "/adjmat_itsearch_"\
                     "n_{n}_"\
                     "p_{p}_"\
                     "avpar_{avparents}_"\
-                    "map_{MAP}_"\
                     "score_type_{score_type}_"\
-                    "bdepar_chi_{bdepar_chi}_" \
-                    "bdepar_edgepf_{bdepar_edgepf}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "map_{MAP}_"\
                     "plus1it_{plus1it}_"\
                     "posterior_{posterior}_"\
-                    "{replicate}.csv",\
-        endspace = config["output_dir"] + "/endspace_itsearch_"\
+                    #"score_type_{score_type}_"\
+                    #"bdecatpar_chi_{bdecatpar_chi}_" \
+                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "{replicate}.csv",
+        time = config["output_dir"] + "/time_itsearch_"\
                     "n_{n}_"\
                     "p_{p}_"\
                     "avpar_{avparents}_"\
-                    "map_{MAP}_"\
                     "score_type_{score_type}_"\
-                    "bdepar_chi_{bdepar_chi}_" \
-                    "bdepar_edgepf_{bdepar_edgepf}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "map_{MAP}_"\
                     "plus1it_{plus1it}_"\
                     "posterior_{posterior}_"\
-                    "{replicate}.rds"
+                    #"score_type_{score_type}_"\
+                    #"bdecatpar_chi_{bdecatpar_chi}_" \
+                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "{replicate}.txt"
+
     message:
         "Executing iterative search algorithm with MAP={wildcards.MAP} on the following files: {input}"
     shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_iterative_search.R "\
         "--filename_data {input.data} "\
-        "--filename_dag {input.dag} "\
+        "--filename {output.adjmat} " \
         "--output_dir {config[output_dir]} "\
         "--seed {wildcards.replicate} "\
         "--map {wildcards.MAP} "\
         "--avparents {wildcards.avparents} " \
         "--score_type {wildcards.score_type} " \
-        "--bdepar_chi {wildcards.bdepar_chi} " \
-        "--bdepar_edgepf {wildcards.bdepar_edgepf} " \
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         "--plus1it {wildcards.plus1it} " \
         "--posterior {wildcards.posterior} " \
         "--title itsearch"\
-        " && python scripts/add_column.py --filename {output.benchmark} --colname avparents     --colval {wildcards.avparents} "\
-        " && python scripts/add_column.py --filename {output.benchmark} --colname replicate     --colval {wildcards.replicate} "\
-        " && python scripts/add_column.py --filename {output.benchmark} --colname algorithm     --colval itsearch_sample "\
-        " && python scripts/add_column.py --filename {output.benchmark} --colname dim           --colval {wildcards.p} "\
-        " && python scripts/add_column.py --filename {output.benchmark} --colname sample_size   --colval {wildcards.n} " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname plus1it       --colval {wildcards.plus1it} " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname moveprobs     --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname MAP           --colval {wildcards.MAP} " \            
-        " && python scripts/add_column.py --filename {output.benchmark} --colname posterior     --colval {wildcards.posterior} " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname iterations    --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname stepsave      --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname softlimit     --colval 9 " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname hardlimit     --colval 12 " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname alpha         --colval 0.05 " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname gamma         --colval 1  " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname startspace    --colval null " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname blacklist     --colval null " \ 
-        " && python scripts/add_column.py --filename {output.benchmark} --colname verbose       --colval true " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname chainout      --colval true " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname scoreout      --colval true " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname cpdag         --colval false " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname mergetype     --colval skeleton " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname addspace      --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname scoretable    --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname startorder    --colval null " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname accum         --colval false " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname score_type    --colval {wildcards.score_type} " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_chi    --colval {wildcards.bdepar_chi} " \
-        " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_edgepf --colval {wildcards.bdepar_edgepf} " 
-       
-rule ordermcmc:
+
+rule sumarise_itsearch:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
-        startspace = config["output_dir"] + "/endspace_itsearch_"\
+        adjmat_true = config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est = config["output_dir"]+"/adjmat_itsearch_"\
                     "n_{n}_"\
                     "p_{p}_"\
                     "avpar_{avparents}_"\
-                    "map_{MAP}_"\
                     "score_type_{score_type}_"\
-                    "bdepar_chi_{bdepar_chi}_" \
-                    "bdepar_edgepf_{bdepar_edgepf}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "map_{MAP}_"\
                     "plus1it_{plus1it}_"\
                     "posterior_{posterior}_"\
-                    "{replicate}.rds"
+                    #"score_type_{score_type}_"\
+                    #"bdecatpar_chi_{bdecatpar_chi}_" \
+                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "{replicate}.csv",
+        time = config["output_dir"]+"/time_itsearch_"\
+                    "n_{n}_"\
+                    "p_{p}_"\
+                    "avpar_{avparents}_"\
+                    "score_type_{score_type}_"\
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "map_{MAP}_"\
+                    "plus1it_{plus1it}_"\
+                    "posterior_{posterior}_"\
+                    #"score_type_{score_type}_"\
+                    #"bdecatpar_chi_{bdecatpar_chi}_" \
+                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "{replicate}.txt"
+    output:
+        config["output_dir"] + "/res_itsearch_" \
+                    "n_{n}_" \
+                    "p_{p}_" \
+                    "avpar_{avparents}_" \
+                    "score_type_{score_type}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "map_{MAP}_" \
+                    "plus1it_{plus1it}_" \
+                    "posterior_{posterior}_" \
+                    #"score_type_{score_type}_"\
+                    #"bdecatpar_chi_{bdecatpar_chi}_" \
+                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "{replicate}.csv"
+    message:
+        "Executing iterative search algorithm with MAP={wildcards.MAP} on the following files: {input}"
+    shell:
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--filename {output} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname avparents     --colval {wildcards.avparents} "\
+        " && python scripts/add_column.py --filename {output} --colname replicate     --colval {wildcards.replicate} "\
+        " && python scripts/add_column.py --filename {output} --colname algorithm     --colval itsearch_sample "\
+        " && python scripts/add_column.py --filename {output} --colname dim           --colval {wildcards.p} "\
+        " && python scripts/add_column.py --filename {output} --colname sample_size   --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname plus1it       --colval {wildcards.plus1it} " \
+        " && python scripts/add_column.py --filename {output} --colname moveprobs     --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname MAP           --colval {wildcards.MAP} " \            
+        " && python scripts/add_column.py --filename {output} --colname posterior     --colval {wildcards.posterior} " \
+        " && python scripts/add_column.py --filename {output} --colname iterations    --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname stepsave      --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname softlimit     --colval 9 " \ 
+        " && python scripts/add_column.py --filename {output} --colname hardlimit     --colval 12 " \ 
+        " && python scripts/add_column.py --filename {output} --colname alpha         --colval 0.05 " \ 
+        " && python scripts/add_column.py --filename {output} --colname gamma         --colval 1  " \ 
+        " && python scripts/add_column.py --filename {output} --colname startspace    --colval null " \ 
+        " && python scripts/add_column.py --filename {output} --colname blacklist     --colval null " \ 
+        " && python scripts/add_column.py --filename {output} --colname verbose       --colval true " \
+        " && python scripts/add_column.py --filename {output} --colname chainout      --colval true " \
+        " && python scripts/add_column.py --filename {output} --colname scoreout      --colval true " \
+        " && python scripts/add_column.py --filename {output} --colname cpdag         --colval false " \
+        " && python scripts/add_column.py --filename {output} --colname mergetype     --colval skeleton " \
+        " && python scripts/add_column.py --filename {output} --colname addspace      --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname scoretable    --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname startorder    --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname accum         --colval false " \
+        " && python scripts/add_column.py --filename {output} --colname score_type    --colval {wildcards.score_type} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi    --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` "  
 
+rule ordermcmc:
+    input:
+        data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
+        startspace = config["output_dir"]+"/{startspace}.csv"
+    output:
+        adjmat=config["output_dir"]+"/adjmat_orderMCMC_"\
+            "n_{n}_" \
+            "p_{p}_" \
+            "avpar_{avparents}_"\
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "{replicate}_"\
+            "startspace_{startspace}.csv",
+        time=config["output_dir"]+"/time_orderMCMC_"\
+            "n_{n}_" \
+            "p_{p}_" \
+            "avpar_{avparents}_"\
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "{replicate}_"\
+            "startspace_{startspace}.txt"
+    message:
+        "Executing order mcmc algorithm with startspace on the following files: {input}."
+    shell: 
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
+        "Rscript scripts/run_order_mcmc.R "
+        "--filename {output.adjmat} " \
+        "--filename_data {input.data} " \
+        "--filename_startspace {input.startspace} " \   
+        #"--score_type {wildcards.score_type} " \
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
+        #"--plus1it {wildcards.plus1it} " \
+        #"--map {wildcards.MAP} "\
+        "--output_dir {config[output_dir]} " \
+        "--seed {wildcards.replicate} "
+
+rule summarise_ordermcmc:
+    input:
+        data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_true = config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est=config["output_dir"]+"/adjmat_orderMCMC_"\
+                "n_{n}_" \
+                "p_{p}_" \
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "{replicate}_"\
+                "startspace_adjmat_{startspace_method}_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "{startspace_params}_"\
+                "{replicate}.csv",
+#               "startspace_{startspace}.csv",
+        time=config["output_dir"]+"/time_orderMCMC_"\
+                "n_{n}_" \
+                "p_{p}_" \
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "{replicate}_"\
+                "startspace_adjmat_{startspace_method}_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "{startspace_params}_"\
+                "{replicate}.txt"
     output:
         config["output_dir"]+"/res_orderMCMC_"\
         "n_{n}_" \
         "p_{p}_" \
         "avpar_{avparents}_"\
+        "score_type_{score_type}_" \
+        "bdecatpar_chi_{bdecatpar_chi}_" \
+        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
         "{replicate}_"\
-        "startspace_endspace_itsearch_"\
+        "startspace_adjmat_{startspace_method}_"\
         "n_{n}_"\
         "p_{p}_"\
         "avpar_{avparents}_"\
-        "map_{MAP}_"\
-        "score_type_{score_type}_"\
-        "bdepar_chi_{bdepar_chi}_" \
-        "bdepar_edgepf_{bdepar_edgepf}_" \
-        "plus1it_{plus1it}_"\
-        "posterior_{posterior}_"\
+        "score_type_{score_type}_" \
+        "bdecatpar_chi_{bdecatpar_chi}_" \
+        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+        "{startspace_params}_"\
         "{replicate}.csv"
 
     message:
         "Executing order mcmc algorithm with startspace on the following files: {input}."
     shell: 
-        "Rscript scripts/run_order_mcmc.R "
-        "--filename {output} " \
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
         "--filename_data {input.data} " \
-        "--filename_dag {input.dag} " \
-        "--filename_startspace {input.startspace} " \   
-        #"--score_type {wildcards.score_type} " \
-        "--bdepar_chi {wildcards.bdepar_chi} " \
-        "--bdepar_edgepf {wildcards.bdepar_edgepf} " \
-        #"--plus1it {wildcards.plus1it} " \
-        #"--map {wildcards.MAP} "\
-        "--output_dir {config[output_dir]} " \
-        "--seed {wildcards.replicate} " \
+        "--filename {output} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} " \
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC_sample "\
         " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "\
         " && python scripts/add_column.py --filename {output} --colname map         --colval null "\
-        " && python scripts/add_column.py --filename {output} --colname startspace_filename --colval {input.startspace} "\
+        #" && python scripts/add_column.py --filename {output} --colname startspace_filename --colval {input.startspace}.csv"\
         " && python scripts/add_column.py --filename {output} --colname blacklist   --colval null "\
         " && python scripts/add_column.py --filename {output} --colname startorder  --colval null "\
         " && python scripts/add_column.py --filename {output} --colname scoretable  --colval null "\
@@ -248,29 +463,95 @@ rule ordermcmc:
         " && python scripts/add_column.py --filename {output} --colname chainout    --colval true "\   
         " && python scripts/add_column.py --filename {output} --colname scoreout    --colval false "\   
         " && python scripts/add_column.py --filename {output} --colname verbose     --colval false "\
-        " && python scripts/add_column.py --filename {output} --colname itsearch_MAP     --colval {wildcards.MAP} "\
-        " && python scripts/add_column.py --filename {output} --colname itsearch_plus1it     --colval {wildcards.plus1it} "\
+        #" && python scripts/add_column.py --filename {output} --colname itsearch_MAP     --colval {wildcards.MAP} "\
+        #" && python scripts/add_column.py --filename {output} --colname itsearch_plus1it     --colval {wildcards.plus1it} "\
+        " && python scripts/add_column.py --filename {output} --colname startspace_method     --colval {wildcards.startspace_method} "\
+        " && python scripts/add_column.py --filename {output} --colname startspace_params     --colval {wildcards.startspace_params} "\
+        " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` "  
 
-rule pcalg:
+rule run_pcalg:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_pcalg_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv"
+        adjmat = config["output_dir"]+"/adjmat_pcalg_" \
+            "n_{n}_"\
+            "p_{p}_"\
+            "avpar_{avparents}_"\
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "alpha_{alpha}_"\
+            "{replicate}.csv",
+        time = config["output_dir"]+"/time_pcalg_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "alpha_{alpha}_"\
+                "{replicate}.txt"
+    message:
+        "Executing order pc algorithm with startspace on the following files: {input}."
     shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_pcalg.R " \
         "--filename_data {input.data} "\
-        "--filename_dag {input.dag} "\
         "--alpha {wildcards.alpha} "\
         "--output_dir {config[output_dir]} "\
         "--seed {wildcards.replicate} "\
-        "--filename {output} "\
+        "--filename {output.adjmat} "
+
+rule summarise_pcalg:
+    input:
+        adjmat_true=config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est=config["output_dir"]+"/adjmat_pcalg_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "alpha_{alpha}_"\
+                "{replicate}.csv",
+        data=config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
+        time = config["output_dir"]+"/time_pcalg_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "alpha_{alpha}_"\
+                "{replicate}.txt"
+    output:
+        config["output_dir"]+"/res_pcalg_n_{n}_" \
+            "p_{p}_" \
+            "avpar_{avparents}_" \
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "alpha_{alpha}_"\
+            "{replicate}.csv"
+    message:
+        "Summarising pc algorithm with startspace on the following files: {input}."
+    shell:
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--filename {output} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
         " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
         " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \    
         " && python scripts/add_column.py --filename {output} --colname fixedGaps   --colval null " \
         " && python scripts/add_column.py --filename {output} --colname fixedEdges  --colval null " \
         " && python scripts/add_column.py --filename {output} --colname NAdelete    --colval true " \
@@ -279,56 +560,176 @@ rule pcalg:
         " && python scripts/add_column.py --filename {output} --colname maj.rule     --colval false " \
         " && python scripts/add_column.py --filename {output} --colname solve.confl  --colval false " \
         " && python scripts/add_column.py --filename {output} --colname numCores     --colval 1 " \
-        " && python scripts/add_column.py --filename {output} --colname verbose      --colval false "
-
+        " && python scripts/add_column.py --filename {output} --colname verbose      --colval false " \
+        " && python scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " 
 rule mmhc:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_mmhc_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv"
+        adjmat=config["output_dir"]+"/adjmat_mmhc_" \
+            "n_{n}_"\
+            "p_{p}_"\
+            "avpar_{avparents}_"\
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "alpha_{alpha}_"\
+            "{replicate}.csv",
+        time=config["output_dir"]+"/time_mmhc_" \
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "alpha_{alpha}_"\
+                "{replicate}.txt"
     shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_mmhc.R "\
         "--filename_data {input.data} "\
-        "--filename_dag {input.dag} "\
         "--alpha {wildcards.alpha} "\
         "--output_dir {config[output_dir]} "\
         "--seed {wildcards.replicate} "\
-        "--filename {output} "\
+        "--filename {output.adjmat} "\
+
+rule summarise_mmhc:
+    input:
+        adjmat_true = config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est=config["output_dir"]+"/adjmat_mmhc_" \
+            "n_{n}_" \
+            "p_{p}_" \
+            "avpar_{avparents}_"\
+            "score_type_{score_type}_" \
+            "bdecatpar_chi_{bdecatpar_chi}_" \
+            "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+            "alpha_{alpha}_"\
+            "{replicate}.csv",
+        time=config["output_dir"]+"/time_mmhc_" \
+                "n_{n}_" \
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "alpha_{alpha}_"\
+                "{replicate}.txt",
+        data = config["output_dir"]+"/data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
+    output:
+        config["output_dir"]+"/res_mmhc_"\
+        "n_{n}_"\
+        "p_{p}_"\
+        "avpar_{avparents}_"\
+        "score_type_{score_type}_" \
+        "bdecatpar_chi_{bdecatpar_chi}_" \
+        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+        "alpha_{alpha}_"\
+        "{replicate}.csv"
+    shell:
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--filename {output} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
         " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
         " && python scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
         " && python scripts/add_column.py --filename {output} --colname debug       --colval false " \
-        " && python scripts/add_column.py --filename {output} --colname maximize.args   --colval null "
+        " && python scripts/add_column.py --filename {output} --colname maximize.args   --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " 
 
 rule gobnilp:
     input:
-        dag = config["output_dir"]+"/dag_p_{p}_avpar_{avparents}_{replicate}.rds",
         data = config["output_dir"]+"/range_header_data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv"
     output:
-        config["output_dir"]+"/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.csv"
+        adjmat = config["output_dir"]+"/adjmat_gobnilp_"\
+                    "n_{n}_"\
+                    "p_{p}_"\
+                    "avpar_{avparents}_"\
+                    "score_type_{score_type}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "palim_{palim}_"\
+                    "{replicate}.csv",
+        time = config["output_dir"]+"/time_gobnilp_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "palim_{palim}_"\
+                "{replicate}.txt"
     shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_gobnilp.R "\
         "--filename_data {input.data} "\
-        "--filename_dag {input.dag} "\
         "--output_dir {config[output_dir]} "\
         "--seed {wildcards.replicate} "\
         "--palim {wildcards.palim} "\
-        "--filename {output} "\
+        "--filename {output.adjmat} "\
+
+rule summarise_gobnilp:
+    input:
+        data = config["output_dir"]+"/range_header_data_n_{n}_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_true = config["output_dir"]+"/adjmat_p_{p}_avpar_{avparents}_{replicate}.csv",
+        adjmat_est = config["output_dir"]+"/adjmat_gobnilp_"\
+                     "n_{n}_"\
+                     "p_{p}_"\
+                     "avpar_{avparents}_"\
+                    "score_type_{score_type}_" \
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                     "palim_{palim}_"\
+                     "{replicate}.csv",
+        time = config["output_dir"]+"/time_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.txt"     
+    output:
+        res = config["output_dir"]+"/res_gobnilp_"\
+                "n_{n}_"\
+                "p_{p}_"\
+                "avpar_{avparents}_"\
+                "score_type_{score_type}_" \
+                "bdecatpar_chi_{bdecatpar_chi}_" \
+                "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                "palim_{palim}_"\
+                "{replicate}.csv"
+    shell:
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--filename {output.res} " \ 
+        "--range_header_data 1 " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "\
         " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
         " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "\
-        " && python scripts/add_column.py --filename {output} --colname palim --colval {wildcards.palim} "
-
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname palim       --colval {wildcards.palim} "\
+        " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " 
 rule plot:
     input:
-        blip = [expand(config["output_dir"] + "/res_blip_n_{n}_p_{p}_avpar_{avparents}_"
+        blip = [expand(config["output_dir"] + "/res_blip_"
+        "n_{n}_"
+        "p_{p}_"
+        "avpar_{avparents}_"
+        "score_type_bde_" 
+        "bdecatpar_chi_{bdecatpar_chi}_" 
+        "bdecatpar_edgepf_{bdecatpar_edgepf}_"
         "time_{time}_" 
         "scorer.method_{scorermethod}_"
         "solver.method_{solvermethod}_"
@@ -338,8 +739,6 @@ rule plot:
         "scorefunction_{scorefunction}_"
         "alpha_{alpha}_"
         "verbose_{verbose}_"
-        "bdecatpar.chi_{bdecatparchi}_"
-        "bdecatpar.edgepf_{bdecatparedgepf}_"
         "{replicate}.csv",
                         replicate=replicates,
                         time=config["blip"]["time"],
@@ -351,21 +750,24 @@ rule plot:
                         scorefunction=config["blip"]["scorefunction"],
                         alpha=config["blip"]["alpha"],
                         verbose=config["blip"]["verbose"],
-                        bdecatparchi=config["blip"]["bdecatpar.chi"],
-                        bdecatparedgepf=config["blip"]["bdecatpar.edgepf"],
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))],    
+                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
+                        p=config["dims"][i]) for i in range(len(config["dims"]))], 
         itsearch = [expand(config["output_dir"] + "/res_itsearch_"
                         "n_{n}_"
                         "p_{p}_"
-                        "avpar_{avparents}_"
-                        "map_{map}_"
+                        "avpar_{avparents}_"                        
                         "score_type_bde_" 
-                        "bdepar_chi_{bdepar_chi}_" 
-                        "bdepar_edgepf_{bdepar_edgepf}_" 
+                        "bdecatpar_chi_{bdecatpar_chi}_" 
+                        "bdecatpar_edgepf_{bdecatpar_edgepf}_" 
+                        "map_{map}_"
                         "plus1it_{plus1it}_" 
                         "posterior_{posterior}_" 
+                        "score_type_bde_" 
+                        "bdecatpar_chi_{bdecatpar_chi}_" 
+                        "bdecatpar_edgepf_{bdecatpar_edgepf}_" 
                         "{replicate}.csv",
                         replicate=replicates,
                         n=config["sample_sizes"][i],
@@ -373,36 +775,45 @@ rule plot:
                         p=config["dims"][i],
                         map=config["itsearch_map"]["optional"]["MAP"],
                         #score_type=config["itsearch_map"]["score_params"]["type"],
-                        bdepar_chi=config["itsearch_map"]["score_params"]["bdepar"]["chi"],
-                        bdepar_edgepf=config["itsearch_map"]["score_params"]["bdepar"]["edgepf"],
+                        bdecatpar_chi=config["itsearch_map"]["score_params"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["itsearch_map"]["score_params"]["bdecatpar"]["edgepf"],
                         plus1it=config["itsearch_map"]["optional"]["plus1it"],
                         posterior=config["itsearch_map"]["optional"]["posterior"]
                         ) for i in range(len(config["dims"]))],
+        # This will be very specialised for every starts.
         order_mcmc_sample = [expand(
                                     config["output_dir"]+"/res_orderMCMC_"\
                                     "n_{n}_" \
                                     "p_{p}_" \
                                     "avpar_{avparents}_"\
+                                    "score_type_bde_"\
+                                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
                                     "{replicate}_"\
-                                    "startspace_endspace_itsearch_"\
+                                    "startspace_adjmat_itsearch_"\
                                     "n_{n}_"\
                                     "p_{p}_"\
-                                    "avpar_{avparents}_"\
-                                    "map_{itsearch_map}_"\
+                                    "avpar_{avparents}_"\                                    
                                     "score_type_bde_"\
-                                    "bdepar_chi_{itsearch_bdepar_chi}_" \
-                                    "bdepar_edgepf_{itsearch_bdepar_edgepf}_" \
+                                    "bdecatpar_chi_{itsearch_bdecatpar_chi}_" \
+                                    "bdecatpar_edgepf_{itsearch_bdecatpar_edgepf}_" \
+                                    "map_{itsearch_map}_"\
                                     "plus1it_{itsearch_plus1it}_"\
                                     "posterior_{itsearch_posterior}_"\
+                                    #"score_type_bde_"\
+                                    #"bdecatpar_chi_{bdecatpar_chi}_" 
+                                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" 
                                     "{replicate}.csv",
                             replicate=replicates,   
                             n=config["sample_sizes"][i],
                             avparents=config["av_parents"][i],
                             p=config["dims"][i],
+                            bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                            bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
                             #map=config["ordermcmc_sample"]["optional"]["MAP"],
                             itsearch_map=config[config["ordermcmc_sample"]["startspace"]]["optional"]["MAP"],
-                            itsearch_bdepar_chi=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdepar"]["chi"],
-                            itsearch_bdepar_edgepf=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdepar"]["edgepf"],
+                            itsearch_bdecatpar_chi=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
+                            itsearch_bdecatpar_edgepf=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
                             itsearch_plus1it=config[config["ordermcmc_sample"]["startspace"]]["optional"]["plus1it"],
                             itsearch_posterior=config[config["ordermcmc_sample"]["startspace"]]["optional"]["posterior"]
                             ) for i in range(len(config["dims"]))],
@@ -411,49 +822,86 @@ rule plot:
                                     "n_{n}_" \
                                     "p_{p}_" \
                                     "avpar_{avparents}_"\
+                                    "score_type_bde_"\
+                                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
                                     "{replicate}_"\
-                                    "startspace_endspace_itsearch_"\
+                                    "startspace_adjmat_itsearch_"\
                                     "n_{n}_"\
                                     "p_{p}_"\
-                                    "avpar_{avparents}_"\
-                                    "map_{itsearch_map}_"\
+                                    "avpar_{avparents}_"\                                    
                                     "score_type_bde_"\
-                                    "bdepar_chi_{itsearch_bdepar_chi}_" \
-                                    "bdepar_edgepf_{itsearch_bdepar_edgepf}_" \
+                                    "bdecatpar_chi_{itsearch_bdecatpar_chi}_" \
+                                    "bdecatpar_edgepf_{itsearch_bdecatpar_edgepf}_" \
+                                    "map_{itsearch_map}_"\
                                     "plus1it_{itsearch_plus1it}_"\
                                     "posterior_{itsearch_posterior}_"\
+                                    #"score_type_bde_"\
+                                    #"bdecatpar_chi_{bdecatpar_chi}_" 
+                                    #"bdecatpar_edgepf_{bdecatpar_edgepf}_" 
                                     "{replicate}.csv",
                             replicate=replicates,   
                             n=config["sample_sizes"][i],
                             avparents=config["av_parents"][i],
                             p=config["dims"][i],
+                            bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                            bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
                             #map=config["ordermcmc_sample"]["optional"]["MAP"],
                             itsearch_map=config[config["ordermcmc_map"]["startspace"]]["optional"]["MAP"],
-                            itsearch_bdepar_chi=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdepar"]["chi"],
-                            itsearch_bdepar_edgepf=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdepar"]["edgepf"],
+                            itsearch_bdecatpar_chi=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
+                            itsearch_bdecatpar_edgepf=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
                             itsearch_plus1it=config[config["ordermcmc_map"]["startspace"]]["optional"]["plus1it"],
                             itsearch_posterior=config[config["ordermcmc_map"]["startspace"]]["optional"]["posterior"]
                             ) for i in range(len(config["dims"]))],
 
-        pcalg = [expand(config["output_dir"] + "/res_pcalg_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv",
+        pcalg = [expand(config["output_dir"] + "/res_pcalg_"
+                        "n_{n}_"
+                        "p_{p}_"
+                        "avpar_{avparents}_"
+                        "score_type_bde_"\
+                        "bdecatpar_chi_{bdecatpar_chi}_" \
+                        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                        "alpha_{alpha}_"
+                        "{replicate}.csv",
                         replicate=replicates,
                         alpha=config["pcalg"]["alpha"],
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
+                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                         bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
                         p=config["dims"][i]) for i in range(len(config["dims"]))],
-        mmhc = [expand(config["output_dir"] + "/res_mmhc_n_{n}_p_{p}_avpar_{avparents}_alpha_{alpha}_{replicate}.csv",
+        mmhc = [expand(config["output_dir"] + "/res_mmhc_"
+                        "n_{n}_"
+                        "p_{p}_"
+                        "avpar_{avparents}_"
+                        "score_type_bde_"\
+                        "bdecatpar_chi_{bdecatpar_chi}_" \
+                        "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                        "alpha_{alpha}_"
+                        "{replicate}.csv",
                         replicate=replicates,
                         alpha=config["mmhc"]["restrict.args"]["alpha"],
                         n=config["sample_sizes"][i],
                         avparents=config["av_parents"][i],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))]
-                            #,
-        #gobnilp = [expand(config["output_dir"] + "/res_gobnilp_n_{n}_p_{p}_avpar_{avparents}_palim_{palim}_{replicate}.csv",
-        #                 replicate=replicates,
-        #                 n=config["sample_sizes"][i],
-        #                 avparents=config["av_parents"][i],
-        #                 palim=config["gobnilp"]["palim"],
-        #                 p=config["dims"][i]) for i in range(len(config["dims"]))]
+                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
+                        p=config["dims"][i]) for i in range(len(config["dims"]))],
+        gobnilp = [expand(config["output_dir"] + "/res_gobnilp_"
+                    "n_{n}_"
+                    "p_{p}_"
+                    "avpar_{avparents}_"
+                    "score_type_bde_"\
+                    "bdecatpar_chi_{bdecatpar_chi}_" \
+                    "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
+                    "palim_{palim}_"
+                    "{replicate}.csv",
+                         replicate=replicates,
+                         n=config["sample_sizes"][i],
+                         avparents=config["av_parents"][i],
+                         palim=config["gobnilp"]["palim"],
+                         bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
+                         bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],                         
+                         p=config["dims"][i]) for i in range(len(config["dims"]))]
     output:
         "ROC.eps" 
         #SHD.eps
@@ -475,16 +923,16 @@ rule plot:
         #                 "avpar_{avparents}_"
         #                 "map_0_"
         #                 "score_type_{score_type}_" 
-        #                 "bdepar_chi_{bdepar_chi}_" \
-        #                 "bdepar_edgepf_{bdepar_edgepf}_" \
+        #                 "bdecatpar_chi_{bdecatpar_chi}_" \
+        #                 "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
         #                 "{replicate}.csv",
         #                 replicate=replicates,
         #                 n=config["sample_sizes"][i],
         #                 avparents=config["av_parents"][i],
         #                 p=config["dims"][i],
         #                 score_type=config["itsearch_mapnew"]["score_params"]["type"],
-        #                 bdepar_chi=config["itsearch_mapnew"]["score_params"]["bdepar"]["chi"],
-        #                 bdepar_edgepf=config["itsearch_mapnew"]["score_params"]["bdepar"]["edgepf"],
+        #                 bdecatpar_chi=config["itsearch_mapnew"]["score_params"]["bdecatpar"]["chi"],
+        #                 bdecatpar_edgepf=config["itsearch_mapnew"]["score_params"]["bdecatpar"]["edgepf"],
         #                 ) for i in range(len(config["dims"]))],
 
 
@@ -518,8 +966,8 @@ rule plot:
 #         "avpar_{avparents}_"\
 #         "map_{map}_"\
 #         "score_type_{score_type}_" \
-#         "bdepar_chi_{bdepar_chi}_" \
-#         "bdepar_edgepf_{bdepar_edgepf}_" \
+#         "bdecatpar_chi_{bdecatpar_chi}_" \
+#         "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
 #         "plus1it_{plus1it}_" \
 #         "posterior_{posterior}_"\
 #         "{replicate}.csv",
@@ -591,8 +1039,8 @@ rule plot:
 #                     "avpar_{avparents}_"\
 #                     "map_1_" \
 #                     "score_type_{score_type}_" \
-#                     "bdepar_chi_{bdepar_chi}_" \
-#                     "bdepar_edgepf_{bdepar_edgepf}_" \
+#                     "bdecatpar_chi_{bdecatpar_chi}_" \
+#                     "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
 #                     "{replicate}.csv", 
 #         endspace = config["output_dir"]+"/endspace_itsearch_map_"\
 #                     "n_{n}_"\
@@ -600,8 +1048,8 @@ rule plot:
 #                     "avpar_{avparents}_" \
 #                     "map_1_" \
 #                     "score_type_{score_type}_" \
-#                     "bdepar_chi_{bdepar_chi}_" \
-#                     "bdepar_edgepf_{bdepar_edgepf}_" \
+#                     "bdecatpar_chi_{bdecatpar_chi}_" \
+#                     "bdecatpar_edgepf_{bdecatpar_edgepf}_" \
 #                     "{replicate}.rds"
 #     message:
 #         "Executing iterative search algorithm with MAP=TRUE on the following files: {input}"
@@ -614,8 +1062,8 @@ rule plot:
 #         "--avparents {wildcards.avparents} " \
 #         "--map 1 " \
 #         "--score_type {wildcards.score_type} " \
-#         "--bdepar_chi {wildcards.bdepar_chi} " \
-#         "--bdepar_edgepf {wildcards.bdepar_edgepf} " \
+#         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+#         "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
 #         "--plus1it {wildcards.plus1it} " \
 #         "--posterior {wildcards.posterior} " \
 #         "--title itsearch_map " \
@@ -628,6 +1076,6 @@ rule plot:
 #         " && python scripts/add_column.py --filename {output.benchmark} --colname plus1it       --colval null " \
 #         " && python scripts/add_column.py --filename {output.benchmark} --colname posterior     --colval null " \
 #         " && python scripts/add_column.py --filename {output.benchmark} --colname score_type    --colval {wildcards.score_type} " \
-#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_chi    --colval {wildcards.bdepar_chi} " \
-#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdepar_edgepf --colval {wildcards.bdepar_edgepf} " 
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdecatpar_chi    --colval {wildcards.bdecatpar_chi} " \
+#         " && python scripts/add_column.py --filename {output.benchmark} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " 
  

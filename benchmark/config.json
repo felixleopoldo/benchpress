@@ -2,13 +2,11 @@
     "output_dir": "simresults",
     "replicates": {
         "start": 1,
-        "end": 100
+        "end": 1
     },
     "sample_sizes": [
         [
-            160,
-            320,
-            640
+            100
         ]
     ],
     "av_parents": [
@@ -18,24 +16,27 @@
     ],
     "dims": [
         [
-            80
+            5
         ]
     ],
+    "score": {
+        "bdecatpar": {
+            "chi": 1,
+            "edgepf": 1
+        }
+    },
     "blip": {
         "scorer.method": "is",
         "solver.method": "winasobs",
         "indeg": 80,
         "time": [
-            60,
-            120
+            10
         ],
         "allocated": 80,
         "scorefunction": "bdeu",
         "alpha": 1,
         "cores": 1,
-        "verbose": 0,
-        "bdecatpar.chi": 1,
-        "bdecatpar.edgepf": 1
+        "verbose": 0
     },
     "gobnilp": {
         "plot": false,
@@ -67,12 +68,12 @@
     },
     "itsearch_map": {
         "optional": {
-            "plus1it": null,
             "MAP": 1,
+            "plus1it": null,
             "posterior": null
         },
         "score_params": {
-            "bdepar": {
+            "bdecatpar": {
                 "chi": 1,
                 "edgepf": 1
             }
@@ -85,13 +86,14 @@
             "posterior": 0.5
         },
         "score_params": {
-            "bdepar": {
+            "bdecatpar": {
                 "chi": 1,
                 "edgepf": 1
             }
         }
     },
     "ordermcmc_map": {
+        "plot_legend": "ordermcmc_map",
         "startspace": "itsearch_map",
         "optional": {
             "plus1": true

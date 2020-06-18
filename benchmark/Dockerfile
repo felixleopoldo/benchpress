@@ -55,6 +55,20 @@ RUN R -e "install.packages(\"rjson\", repos=\"https://cran.rstudio.com\")" --no-
 #RUN R -e "BiocManager::install(c(\"gRbase\"))" --no-save 
 #RUN R -e "BiocManager::install(c(\"gRbase\", \"RBGL\", \"gRain\"))" --no-save 
 # Running R-banchmarks
+
+
+
+
+RUN sudo apt-get install r-base-dev xml2 libxml2-dev libssl-dev libcurl4-openssl-dev unixodbc-dev
+RUN R -e "install.packages(\"devtools\")" --no-save
+RUN R -e "install.packages(\"stringr\")" --no-save
+RUN R -e "install.packages(\"rJava\")" --no-save
+
+#library(devtools)
+#install_github("bd2kccd/r-causal")
+
+
+
 RUN mkdir /myappdir/benchmark
 WORKDIR /myappdir/benchmark
 

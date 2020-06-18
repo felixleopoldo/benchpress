@@ -16,9 +16,18 @@ filename <- file.path(argv$filename)
 seed_number <- argv$seed
 filename_dag <- argv$filename_dag
 
-DAG <- readRDS(filename_dag)
+#DAG <- readRDS(filename_dag)
+adjmat <- read.csv(filename_dag)
+n <- dim(adjmat)[1]
+#varnames <- varnames.make(n)
+rownames(adjmat) <- seq(n)
+colnames(adjmat) <- seq(n)
 
+print(adjmat)
+DAG <- adjacency2dag(adjmat)
+#print(DAG)
 set.seed(seed_number)
 binBN <- generateBinaryBN(DAG, c(0.1, 0.9))
+print(binBN)
 saveRDS(binBN, file = filename)
 
