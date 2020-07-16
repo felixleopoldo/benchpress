@@ -59,7 +59,7 @@ gnel_dag <- as.graphNEL(model2network(graphstring))
 gnel_dag <- numeric_labels(gnel_dag) # Corrects the node labels
 adjmat <- as(gnel_dag, "matrix")
 
-print(adjmat)
+#print(adjmat)
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 

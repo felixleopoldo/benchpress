@@ -13,7 +13,7 @@ p <- arg_parser("A program for running iterativeMCMC and save to file.")
 
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--title", help = "Title")
-p <- add_argument(p, "--filename", help = "Filename") 
+p <- add_argument(p, "--filename", help = "Filename")
 p <- add_argument(p, "--avparents", help = "Average number of parents in DAG")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
@@ -57,6 +57,9 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       posterior = posterior,
                                       scoreout = TRUE,
                                       plus1it = plus1it) # 1 and loop
+# How to get number of iterations (it)?
+# output a csv file with "additional statistics" eg
+
 endspace <- itsearch_res$space$adjacency
 rownames(endspace) <- seq(dim(data)[2])
 colnames(endspace) <- seq(dim(data)[2])

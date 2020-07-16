@@ -2,7 +2,7 @@
     "output_dir": "simresults",
     "replicates": {
         "start": 1,
-        "end": 1
+        "end": 2
     },
     "sample_sizes": [
         [
@@ -16,7 +16,8 @@
     ],
     "dims": [
         [
-            5
+            20,
+            50
         ]
     ],
     "score": {
@@ -26,6 +27,7 @@
         }
     },
     "blip": {
+        "plot_legend": "blip",
         "scorer.method": "is",
         "solver.method": "winasobs",
         "indeg": 80,
@@ -39,12 +41,18 @@
         "verbose": 0
     },
     "gobnilp": {
+        "plot_legend": "gobnilp",
         "plot": false,
         "palim": [
             2
         ]
     },
+    "fges": {
+        "plot_legend": "fges",
+        "faithfulnessAssumed": 1
+    },
     "pcalg": {
+        "plot_legend": "pcalg",
         "alpha": [
             0.01,
             0.05,
@@ -55,6 +63,7 @@
         ]
     },
     "mmhc": {
+        "plot_legend": "mmhc",
         "restrict.args": {
             "alpha": [
                 0.01,
@@ -67,6 +76,7 @@
         }
     },
     "itsearch_map": {
+        "plot_legend": "itmap",
         "optional": {
             "MAP": 1,
             "plus1it": null,
@@ -80,6 +90,7 @@
         }
     },
     "itsearch_sample": {
+        "plot_legend": "itsample",
         "optional": {
             "MAP": 0,
             "plus1it": 6,
@@ -93,7 +104,7 @@
         }
     },
     "ordermcmc_map": {
-        "plot_legend": "ordermcmc_map",
+        "plot_legend": "omcmc_itmap",
         "startspace": "itsearch_map",
         "optional": {
             "plus1": true
@@ -103,13 +114,38 @@
                 "chi": 1,
                 "edgepf": 1
             }
-        }
+        },
+        "threshold": [
+            0.99,
+            0.95,
+            0.9,
+            0.8,
+            0.7,
+            0.6,
+            0.5,
+            0.4,
+            0.3,
+            0.2
+        ]
     },
     "ordermcmc_sample": {
+        "plot_legend": "omcmc_itsample",
         "startspace": "itsearch_sample",
         "optional": {
             "plus1": true
         },
+        "threshold": [
+            0.99,
+            0.95,
+            0.9,
+            0.8,
+            0.7,
+            0.6,
+            0.5,
+            0.4,
+            0.3,
+            0.2
+        ],
         "score_params": {
             "bdepar": {
                 "chi": 1,

@@ -9,7 +9,7 @@ source("lib/code_for_binary_simulations/df_fns.R")
 
 
 # TODO
-JoinResultsAndSettingBiDAG <- function(sim_results){
+JoinResultsAndSettingBiDAG <- function(sim_results) {
   sim <- list()
   for (i in seq(n_datasets)) {
     # Summarising statistics (could this be made when we call this function instead? / Felix)
@@ -60,18 +60,18 @@ simulationOrderMCMC <- function(i, n, DAG, data, scoretype = "bde", MAP = FALSE)
 }
 
 
-SummarizeIterativeSearchResults <- function(myscore, iterative_search_res, DAG,  MAP) {
+SummarizeIterativeSearchResults <- function(myscore, iterative_search_res, DAG, MAP) {
   sim <- list()
   sim$true_nedges <- sum(dag2adjacencymatrix(DAG))
-  
+
   # Iterative search
- 
+
   sim$output <- iterations.check(iterative_search_res, DAG)
   sim$output <- cbind(sim$output, sim$output[, 2] / sim$true_nedges) # 2 is FP
   colnames(sim$output)[6] <- "FPRn"
   nit <- nrow(sim$output)
 
-  
+
   sim$SHDMAP <- sim$output[nit, 4] # 4 is SHD
   sim$sampsize <- nrow(data)
   sim$n <- numNodes(DAG)
@@ -147,6 +147,7 @@ SummarizeOrderMCMCResults <- function(i, myscore, order_mcmc_res, DAG, totaltime
     sim$order_mcmc$medianscore <- 10 # this is the "final MCMC" score
   }
   sim$order_mcmc$output <- sample.check(n, order_mcmc_res$chain$incidence, DAG, pdag = TRUE)
+  # pbarrier = c(0.99, 0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2),
   sim$order_mcmc$output <- cbind(sim$order_mcmc$output, sim$order_mcmc$output[, 1] / sim$nedges, sim$order_mcmc$output[, 2] / sim$nedges)
   colnames(sim$order_mcmc$output)[c(5, 6)] <- c("TPR", "FPRn")
   sim$order_mcmc$SHDmdeian <- sim$order_mcmc$output[7, 3] #  TODO: bug? hardcoded?

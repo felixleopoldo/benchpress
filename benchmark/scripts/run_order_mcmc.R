@@ -19,18 +19,12 @@ directory <- argv$output_dir
 filename <- file.path(argv$filename)
 seed <- argv$seed
 
-
-print(argv)
 set.seed(seed)
-#dag <- readRDS(argv$filename_dag)
 data <- read.csv(argv$filename_data)
 
 startspace <- read.csv(argv$filename_startspace)
 rownames(startspace) <- seq(dim(data)[2])
 colnames(startspace) <- seq(dim(data)[2])
-
-print(dim(startspace))
-print(startspace)
 
 #startspace_graph <- adjacency2dag(startspace)
 
@@ -59,16 +53,40 @@ order_mcmc_res <- orderMCMC(dim(data)[2], myscore,
 #                                  chainout = TRUE
 #                                  )
 
-print(order_mcmc_res)
-endspace <- order_mcmc_res$space$adjacency
-print(endspace)
+#print(order_mcmc_res)
+endspace <- order_mcmc_res$space$adjacency # This might not be what we want
+#print(endspace)
 
-rownames(endspace) <- seq(dim(data)[2])
-colnames(endspace) <- seq(dim(data)[2])
-print(is(endspace))
-print(endspace)
+#DAG05 <- dag.threshold(dim(data)[2], order_mcmc_res$chain$incidence, pbarrier = 0.5, pdag = FALSE, burnin = 0.5)
+
+#library(jsonlite)
+#jsontraj <- jsonlite::toJSON(order_mcmc_res$chain$incidence, pretty = TRUE)
+#write(jsontraj, filename)
+
+library(rjson)
+# This returns a string which is a list of flattened adjacency matrices.
+adjvecliststr <- rjson::toJSON(order_mcmc_res$chain$incidence)
+
+write(adjvecliststr, file = filename)
 
 
-write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
+
+
+#print(order_mcmc_res$chain$incidence)
+#print(is(order_mcmc_res$chain$incidence))
+
+# This should probably return a trajectory of graphs instead of a single one.
+# Convert it to eg json and save.
+# The estimation can be done using another script.
+
+# sample.check(dim(data)[2], order_mcmc_res$chain$incidence, DAG, pdag = TRUE, pbarrier = c(0.99, 0.95, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2))
+
+#rownames(endspace) <- seq(dim(data)[2])
+#colnames(endspace) <- seq(dim(data)[2])
+#print(is(endspace))
+#print(endspace)
+
+
+#write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
 
 #write.csv(order_mcmc_sample, file = filename, row.names = FALSE, )
