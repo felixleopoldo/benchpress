@@ -35,8 +35,3 @@ WORKDIR /myappdir/gobnilp163
 RUN ./configure.sh /myappdir/scipoptsuite-3.2.1/scip-3.2.1
 RUN make
 WORKDIR /myappdir/gobnilp163
-
-#COPY range_header_data_n_100_p_10_avpar_2_1.csv .
-#COPY gobnilp.set .
-#RUN echo "Checking that it works"
-#RUN bin/gobnilp data/asia_100_1_3.cip

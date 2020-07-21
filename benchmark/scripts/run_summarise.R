@@ -51,7 +51,7 @@ p <- add_argument(p,
 p <- add_argument(p,
                   "--adjmat_header",
                   help = "1 if the first row in the estimated adjaceny matrix are the variable names.",
-                  default = 0)
+                  default = 1)
 
 #p <- add_argument(p, "--score_type", help = "bde/..")
 p <- add_argument(p, "--bdecatpar_chi", help = "bde parameter", type = "numeric", default = 1)
