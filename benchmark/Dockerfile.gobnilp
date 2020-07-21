@@ -1,0 +1,42 @@
+FROM debian 
+
+WORKDIR /myappdir
+#
+# Installing the C version of the GOBNILP library
+#
+COPY scipoptsuite-3.2.1.tgz .
+RUN tar xvf scipoptsuite-3.2.1.tgz
+RUN rm scipoptsuite-3.2.1.tgz
+RUN apt update
+# needed for gcc
+RUN apt install -y build-essential 
+
+# SCIP Optimization Suite needs the following external libraries:
+# - the Z Compression Library (ZLIB: `libz.a` or `libz.so` on Unix systems)
+#   Lets you read in `.gz` compressed data files.
+# - the GNU Multi Precision Library (GMP: `libgmp.a` or `libgmp.so` on Unix systems)
+#   Allows ZIMPL to perform calculations in exact arithmetic.
+# - the Readline Library (READLINE: `libreadline.a` or `libreadline.so` on Unix systems)
+#   Enables cursor keys and file name completion in the SCIP shell.
+RUN apt install -y libgmp3-dev
+RUN apt install -y zlib1g-dev
+RUN apt install -y libreadline-dev
+WORKDIR /myappdir/scipoptsuite-3.2.1
+RUN make
+
+#RUN apt install -y git
+# Installing GOBNILP (instructions from https://bitbucket.org/jamescussens/gobnilp/src/master)
+WORKDIR /myappdir/
+
+COPY gobnilp1.6.3.tar.gz .
+RUN tar zxf gobnilp1.6.3.tar.gz
+RUN rm gobnilp1.6.3.tar.gz 
+WORKDIR /myappdir/gobnilp163
+RUN ./configure.sh /myappdir/scipoptsuite-3.2.1/scip-3.2.1
+RUN make
+WORKDIR /myappdir/gobnilp163
+
+#COPY range_header_data_n_100_p_10_avpar_2_1.csv .
+#COPY gobnilp.set .
+#RUN echo "Checking that it works"
+#RUN bin/gobnilp data/asia_100_1_3.cip

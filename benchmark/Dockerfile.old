@@ -73,6 +73,7 @@ WORKDIR /myappdir/gobnilp/
 RUN ./configure.sh /myappdir/scipoptsuite-6.0.1/scip
 RUN make
 WORKDIR /myappdir/
+COPY gobnilp.set .
 
 RUN echo "Checking that it works"
 RUN gobnilp/bin/gobnilp pygobnilp/data/asia_10000.dat

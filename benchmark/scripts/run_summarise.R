@@ -1,6 +1,44 @@
 library(argparser)
 library(BiDAG)
 library(pcalg)
+
+#########
+## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
+## and returns the pattern of this pdag in the Meek sense, that is,
+## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
+## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
+getPattern <- function(amat) {
+
+  ## makes the whole graph undirected
+  tmp <- amat + t(amat)
+  tmp[tmp == 2] <- 1
+
+  ## find all v-structures i -> k <- j s.t. i not adj to k
+  ## and make only those edges directed
+  for (i in 1:(length(tmp[1, ]) - 1))
+    for (j in (i + 1):length(tmp[1, ])) {
+      if ((amat[j, i] == 0) & (amat[i, j] == 0) & (i != j)) {
+        ## if i no adjacent with j in G
+
+        possible.k <- which(amat[, i] != 0 & amat[i,] == 0) ## finds all k such that i -> k is in G
+
+        if (length(possible.k) != 0) {
+          ## if there are any such k's then check whether j -> k for any of them
+          for (k in 1:length(possible.k)) {
+            if ((amat[possible.k[k], j] == 1) & (amat[j, possible.k[k]] == 0)) {
+              ## if j -> k add the v-struc orientation to tmp
+              tmp[i, possible.k[k]] <- 0
+              tmp[j, possible.k[k]] <- 0
+            }
+          }
+        }
+      }
+    }
+    tmp
+}
+
+
+
 p <- arg_parser("A program for running iterativeMCMC and save to file.")
 p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
 p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
@@ -8,8 +46,13 @@ p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--filename", help = "Output filename")
 p <- add_argument(p,
                   "--range_header_data",
-                  help = "1 if the second row of the data indicates the variable ranges",
+                  help = "1 if the second row of the data indicates the variable ranges.",
                   default = 0)
+p <- add_argument(p,
+                  "--adjmat_header",
+                  help = "1 if the first row in the estimated adjaceny matrix are the variable names.",
+                  default = 0)
+
 #p <- add_argument(p, "--score_type", help = "bde/..")
 p <- add_argument(p, "--bdecatpar_chi", help = "bde parameter", type = "numeric", default = 1)
 p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numeric", default = 1)
@@ -28,13 +71,20 @@ if (argv$range_header_data == 1) {
 n <- dim(data)[2]
 
 true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
-estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+#estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
 
-#print(dim(data))
-#print("True adjmat")
-#print(true_adjmat)
-#print("Estimated adjmat")
-#print(estimated_adjmat)
+estimated_adjmat <- NULL
+if (argv$adjmat_header == 1) {
+  estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+} else {
+  estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
+}
+
+# print(dim(data))
+# print("True adjmat")
+# print(true_adjmat)
+# print("Estimated adjmat")
+# print(estimated_adjmat)
 
 rownames(true_adjmat) <- seq(n)
 colnames(true_adjmat) <- seq(n)
