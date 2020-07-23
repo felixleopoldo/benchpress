@@ -38,3 +38,12 @@ write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 #write.csv(res, file = filename, row.names = FALSE)
 
 # Instead of having explicit parameters in the filenames, ids should be taken from a database.
+
+
+# pcalg input, orientation step, sum undirected from mcmc
+# coult set alpha = 1 so all are rejected
+
+# in the bidag package, takes a chain adds.. or so. flag skeleton.. 
+# dag.threshold, instead of dag or cpdag, take dag transpose
+
+# average skeleton and direct it using pcalg

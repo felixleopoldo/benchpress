@@ -11,7 +11,6 @@ p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default =
 
 argv <- parse_args(p)
 
-
 filename <- file.path(argv$filename)
 seed_number <- argv$seed
 filename_dag <- argv$filename_dag
@@ -23,7 +22,6 @@ n <- dim(adjmat)[1]
 rownames(adjmat) <- seq(n)
 colnames(adjmat) <- seq(n)
 
-print(adjmat)
 DAG <- adjacency2dag(adjmat)
 #print(DAG)
 set.seed(seed_number)

@@ -1,8 +1,8 @@
 configfile: 
     "config.json"
 
-replicates = range(int(config["replicates"]["start"]), 
-                    int(config["replicates"]["end"]+1))
+replicates = range(int(config["data"]["replicates"]["start"]), 
+                    int(config["data"]["replicates"]["end"]+1))
 
 # TODO: All filenames should be generated from the config file.
 
@@ -824,8 +824,22 @@ rule fges: #use funtion as input to generate filename from the config file
         "--seed {wildcards.replicate} "\
         "--faithfulnessAssumed {wildcards.faithfulnessAssumed} "\
         "--filename {output.adjmat} "\
-        #'java -jar causal-cmd-1.1.3-jar-with-dependencies.jar --algorithm fges --data-type discrete --dataset data_n_100_p_50_avpar_2_1.txt --delimiter comma --score bdeu-score --quote-char \" --json-graph --structurePrior 1'
-
+        
+        'java -jar causal-cmd-1.1.3-jar-with-dependencies.jar ' \
+        '--algorithm fges '\
+        '--data-type discrete '\
+        '--dataset {input.data} '\
+        '--delimiter comma '\
+        '--score bdeu-score '\
+        '--quote-char \" '\
+        '--json-graph '\
+        '--structurePrior 1 '\
+        '--prefix {output.adjmat} ' \
+        '&& Rscript scripts/tetrad_graph_to_adjmat.R ' \
+        '--input {output.adjmat}.json ' \
+        '--output {output.adjmat} ' \
+        '&& ' \
+        'rm {output.adjmat}.json'
 
 rule summarise_fges:
     input:
@@ -898,21 +912,21 @@ rule plot:
         "legend_{plot_legend}/" 
         "{replicate}.csv",
                         replicate=replicates,
-                        time=config["blip"]["time"],
-                        scorermethod=config["blip"]["scorer.method"],
-                        solvermethod=config["blip"]["solver.method"],                       
-                        indeg=config["blip"]["indeg"],
-                        cores=config["blip"]["cores"],
-                        allocated=config["blip"]["allocated"],
-                        scorefunction=config["blip"]["scorefunction"],
-                        alpha=config["blip"]["alpha"],
-                        verbose=config["blip"]["verbose"],
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["blip"]["plot_legend"],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))], 
+                        time=config["algorithms"]["blip"]["time"],
+                        scorermethod=config["algorithms"]["blip"]["scorer.method"],
+                        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
+                        indeg=config["algorithms"]["blip"]["indeg"],
+                        cores=config["algorithms"]["blip"]["cores"],
+                        allocated=config["algorithms"]["blip"]["allocated"],
+                        scorefunction=config["algorithms"]["blip"]["scorefunction"],
+                        alpha=config["algorithms"]["blip"]["alpha"],
+                        verbose=config["algorithms"]["blip"]["verbose"],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["blip"]["plot_legend"],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))], 
         itsearch_map = [expand(config["output_dir"] + "/res/itsearch/"
                         "n_{n}/"
                         "p_{p}/"
@@ -929,17 +943,17 @@ rule plot:
                         "legend_{plot_legend}/" \
                         "{replicate}.csv",
                         replicate=replicates,
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        p=config["dims"][i],
-                        map=config["itsearch_map"]["optional"]["MAP"],
-                        #score_type=config["itsearch_map"]["score_params"]["type"],
-                        bdecatpar_chi=config["itsearch_map"]["score_params"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["itsearch_map"]["score_params"]["bdecatpar"]["edgepf"],
-                        plus1it=config["itsearch_map"]["optional"]["plus1it"],
-                        posterior=config["itsearch_map"]["optional"]["posterior"],
-                        plot_legend=config["itsearch_map"]["plot_legend"],
-                        ) for i in range(len(config["dims"]))],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i],
+                        map=config["algorithms"]["itsearch_map"]["optional"]["MAP"],
+                        #score_type=config["algorithms"]["itsearch_map"]["score_params"]["type"],
+                        bdecatpar_chi=config["algorithms"]["itsearch_map"]["score_params"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["algorithms"]["itsearch_map"]["score_params"]["bdecatpar"]["edgepf"],
+                        plus1it=config["algorithms"]["itsearch_map"]["optional"]["plus1it"],
+                        posterior=config["algorithms"]["itsearch_map"]["optional"]["posterior"],
+                        plot_legend=config["algorithms"]["itsearch_map"]["plot_legend"],
+                        ) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         itsearch_sample = [expand(config["output_dir"] + "/res/itsearch/"
                         "n_{n}/"
                         "p_{p}/"
@@ -956,17 +970,17 @@ rule plot:
                         "legend_{plot_legend}/" \
                         "{replicate}.csv",
                         replicate=replicates,
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        p=config["dims"][i],
-                        map=config["itsearch_sample"]["optional"]["MAP"],
-                        #score_type=config["itsearch_map"]["score_params"]["type"],
-                        bdecatpar_chi=config["itsearch_sample"]["score_params"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["itsearch_sample"]["score_params"]["bdecatpar"]["edgepf"],
-                        plus1it=config["itsearch_sample"]["optional"]["plus1it"],
-                        posterior=config["itsearch_sample"]["optional"]["posterior"],
-                        plot_legend=config["itsearch_sample"]["plot_legend"],
-                        ) for i in range(len(config["dims"]))],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i],
+                        map=config["algorithms"]["itsearch_sample"]["optional"]["MAP"],
+                        #score_type=config["algorithms"]["itsearch_map"]["score_params"]["type"],
+                        bdecatpar_chi=config["algorithms"]["itsearch_sample"]["score_params"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["algorithms"]["itsearch_sample"]["score_params"]["bdecatpar"]["edgepf"],
+                        plus1it=config["algorithms"]["itsearch_sample"]["optional"]["plus1it"],
+                        posterior=config["algorithms"]["itsearch_sample"]["optional"]["posterior"],
+                        plot_legend=config["algorithms"]["itsearch_sample"]["plot_legend"],
+                        ) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         # This will be very specialised for every starts.
         order_mcmc_sample = [expand(
                                     config["output_dir"]+"/res/orderMCMC/"\
@@ -994,20 +1008,20 @@ rule plot:
                                     #"bdecatpar_edgepf_{bdecatpar_edgepf}/" 
                                     "{replicate}.csv",
                             replicate=replicates,   
-                            n=config["sample_sizes"][i],
-                            avparents=config["av_parents"][i],
-                            p=config["dims"][i],
-                            bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                            bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
+                            n=config["data"]["sample_sizes"][i],
+                            avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                            p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i],
+                            bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                            bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                             #map=config["ordermcmc_sample"]["optional"]["MAP"],
-                            itsearch_map=config[config["ordermcmc_sample"]["startspace"]]["optional"]["MAP"],
-                            itsearch_bdecatpar_chi=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
-                            itsearch_bdecatpar_edgepf=config[config["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
-                            itsearch_plus1it=config[config["ordermcmc_sample"]["startspace"]]["optional"]["plus1it"],
-                            itsearch_posterior=config[config["ordermcmc_sample"]["startspace"]]["optional"]["posterior"],
-                            threshold=config["ordermcmc_sample"]["threshold"],
-                            plot_legend=config["ordermcmc_sample"]["plot_legend"],
-                            ) for i in range(len(config["dims"]))],
+                            itsearch_map=config["algorithms"][config["algorithms"]["ordermcmc_sample"]["startspace"]]["optional"]["MAP"],
+                            itsearch_bdecatpar_chi=config["algorithms"][config["algorithms"]["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
+                            itsearch_bdecatpar_edgepf=config["algorithms"][config["algorithms"]["ordermcmc_sample"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
+                            itsearch_plus1it=config["algorithms"][config["algorithms"]["ordermcmc_sample"]["startspace"]]["optional"]["plus1it"],
+                            itsearch_posterior=config["algorithms"][config["algorithms"]["ordermcmc_sample"]["startspace"]]["optional"]["posterior"],
+                            threshold=config["algorithms"]["ordermcmc_sample"]["threshold"],
+                            plot_legend=config["algorithms"]["ordermcmc_sample"]["plot_legend"],
+                            ) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         order_mcmc_map = [expand(
                                 config["output_dir"]+"/res/orderMCMC/"\
                                 "n_{n}/" \
@@ -1034,20 +1048,20 @@ rule plot:
                                 #"bdecatpar_edgepf_{bdecatpar_edgepf}/" 
                                 "{replicate}.csv",
                         replicate=replicates,   
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        p=config["dims"][i],
-                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i],
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                         #map=config["ordermcmc_sample"]["optional"]["MAP"],
-                        itsearch_map=config[config["ordermcmc_map"]["startspace"]]["optional"]["MAP"],
-                        itsearch_bdecatpar_chi=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
-                        itsearch_bdecatpar_edgepf=config[config["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
-                        itsearch_plus1it=config[config["ordermcmc_map"]["startspace"]]["optional"]["plus1it"],
-                        itsearch_posterior=config[config["ordermcmc_map"]["startspace"]]["optional"]["posterior"],
-                        threshold=config["ordermcmc_map"]["threshold"],
-                        plot_legend=config["ordermcmc_map"]["plot_legend"],
-                        ) for i in range(len(config["dims"]))],
+                        itsearch_map=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["MAP"],
+                        itsearch_bdecatpar_chi=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
+                        itsearch_bdecatpar_edgepf=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
+                        itsearch_plus1it=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["plus1it"],
+                        itsearch_posterior=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["posterior"],
+                        threshold=config["algorithms"]["ordermcmc_map"]["threshold"],
+                        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"],
+                        ) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         pcalg = [expand(config["output_dir"] + "/res/pcalg/"
                         "n_{n}/"
                         "p_{p}/"
@@ -1059,13 +1073,13 @@ rule plot:
                         "legend_{plot_legend}/" \
                         "{replicate}.csv",
                         replicate=replicates,
-                        alpha=config["pcalg"]["alpha"],
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                         bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
-                         plot_legend=config["pcalg"]["plot_legend"],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))],
+                        alpha=config["algorithms"]["pcalg"]["alpha"],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                         plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         mmhc = [expand(config["output_dir"] + "/res/mmhc/"
                         "n_{n}/"
                         "p_{p}/"
@@ -1077,13 +1091,13 @@ rule plot:
                         "legend_{plot_legend}/" \
                         "{replicate}.csv",
                         replicate=replicates,
-                        alpha=config["mmhc"]["restrict.args"]["alpha"],
-                        n=config["sample_sizes"][i],
-                        avparents=config["av_parents"][i],
-                        bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["mmhc"]["plot_legend"],
-                        p=config["dims"][i]) for i in range(len(config["dims"]))],
+                        alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
+                        n=config["data"]["sample_sizes"][i],
+                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
+                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         gobnilp = [expand(config["output_dir"] + "/res/gobnilp/"
                     "n_{n}/"
                     "p_{p}/"
@@ -1095,13 +1109,13 @@ rule plot:
                     "legend_{plot_legend}/" \
                     "{replicate}.csv",
                          replicate=replicates,
-                         n=config["sample_sizes"][i],
-                         avparents=config["av_parents"][i],
-                         palim=config["gobnilp"]["palim"],
-                         bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                         bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],                         
-                         plot_legend=config["gobnilp"]["plot_legend"],
-                         p=config["dims"][i]) for i in range(len(config["dims"]))],
+                         n=config["data"]["sample_sizes"][i],
+                         avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                         palim=config["algorithms"]["gobnilp"]["palim"],
+                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],                         
+                         plot_legend=config["algorithms"]["gobnilp"]["plot_legend"],
+                         p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
         fges = [expand(config["output_dir"] + "/res/fges/"
             "n_{n}/"
             "p_{p}/"
@@ -1113,13 +1127,13 @@ rule plot:
             "legend_{plot_legend}/" \
             "{replicate}.csv",
                     replicate=replicates,
-                    n=config["sample_sizes"][i],
-                    avparents=config["av_parents"][i],
-                    faithfulnessAssumed=config["fges"]["faithfulnessAssumed"],
-                    bdecatpar_chi=config["score"]["bdecatpar"]["chi"],
-                    bdecatpar_edgepf=config["score"]["bdecatpar"]["edgepf"],                         
-                    plot_legend=config["fges"]["plot_legend"],
-                    p=config["dims"][i]) for i in range(len(config["dims"]))]
+                    n=config["data"]["sample_sizes"][i],
+                    avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                    faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+                    bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                    bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],                         
+                    plot_legend=config["algorithms"]["fges"]["plot_legend"],
+                    p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
 
     output:
         "ROC.eps" 

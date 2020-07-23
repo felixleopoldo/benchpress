@@ -1,69 +1,76 @@
 {
     "output_dir": "simresults",
-    "replicates": {
-        "start": 1,
-        "end": 2
+    "data": {
+        "replicates": {
+            "start": 1,
+            "end": 30
+        },
+        "sample_sizes": [
+            [
+                100
+            ]
+        ]
     },
-    "sample_sizes": [
-        [
-            100
-        ]
+    "bayesian_networks": [
+        "asia"
     ],
-    "av_parents": [
-        [
-            2
+    "graphs": {
+        "sampled": {
+            "algorithms": {
+                "generateDAGMaxParents": {
+                    "av_parents": [
+                        [
+                            2
+                        ]
+                    ],
+                    "dims": [
+                        [
+                            80
+                        ]
+                    ]
+                }
+            }
+        },
+        "fixed": [
+            "asia"
         ]
-    ],
-    "dims": [
-        [
-            80
-        ]
-    ],
-    "score": {
-        "bdecatpar": {
-            "chi": 1,
-            "edgepf": 1
+    },
+    "evaluation": {
+        "score": {
+            "bdecatpar": {
+                "chi": 1,
+                "edgepf": 1
+            }
         }
     },
-    "blip": {
-        "plot_legend": "blip",
-        "scorer.method": "is",
-        "solver.method": "winasobs",
-        "indeg": 80,
-        "time": [
-            10
-        ],
-        "allocated": 80,
-        "scorefunction": "bdeu",
-        "alpha": 1,
-        "cores": 1,
-        "verbose": 0
-    },
-    "gobnilp": {
-        "plot_legend": "gobnilp",
-        "plot": false,
-        "palim": [
-            2
-        ]
-    },
-    "fges": {
-        "plot_legend": "fges",
-        "faithfulnessAssumed": 1
-    },
-    "pcalg": {
-        "plot_legend": "pcalg",
-        "alpha": [
-            0.01,
-            0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
-        ]
-    },
-    "mmhc": {
-        "plot_legend": "mmhc",
-        "restrict.args": {
+    "algorithms": {
+        "blip": {
+            "plot_legend": "blip",
+            "scorer.method": "is",
+            "solver.method": "winasobs",
+            "indeg": 80,
+            "time": [
+                10
+            ],
+            "allocated": 80,
+            "scorefunction": "bdeu",
+            "alpha": 1,
+            "cores": 1,
+            "verbose": 0
+        },
+        "gobnilp": {
+            "plot_legend": "gobnilp",
+            "plot": false,
+            "palim": [
+                2
+            ]
+        },
+        "fges": {
+            "plot_legend": "fges",
+            "faithfulnessAssumed": 1
+        },
+        "pcalg": {
+            "plot_legend": "pcalg",
             "alpha": [
                 0.01,
                 0.05,
@@ -72,83 +79,96 @@
                 0.35,
                 0.45
             ]
-        }
-    },
-    "itsearch_map": {
-        "plot_legend": "itmap",
-        "optional": {
-            "MAP": 1,
-            "plus1it": null,
-            "posterior": null
         },
-        "score_params": {
-            "bdecatpar": {
-                "chi": 1,
-                "edgepf": 1
-            }
-        }
-    },
-    "itsearch_sample": {
-        "plot_legend": "itsample",
-        "optional": {
-            "MAP": 0,
-            "plus1it": 6,
-            "posterior": 0.5
-        },
-        "score_params": {
-            "bdecatpar": {
-                "chi": 1,
-                "edgepf": 1
-            }
-        }
-    },
-    "ordermcmc_map": {
-        "plot_legend": "omcmc_itmap",
-        "startspace": "itsearch_map",
-        "optional": {
-            "plus1": true
-        },
-        "score_params": {
-            "bdepar": {
-                "chi": 1,
-                "edgepf": 1
+        "mmhc": {
+            "plot_legend": "mmhc",
+            "restrict.args": {
+                "alpha": [
+                    0.01,
+                    0.05,
+                    0.1,
+                    0.2,
+                    0.35,
+                    0.45
+                ]
             }
         },
-        "threshold": [
-            0.99,
-            0.95,
-            0.9,
-            0.8,
-            0.7,
-            0.6,
-            0.5,
-            0.4,
-            0.3,
-            0.2
-        ]
-    },
-    "ordermcmc_sample": {
-        "plot_legend": "omcmc_itsample",
-        "startspace": "itsearch_sample",
-        "optional": {
-            "plus1": true
+        "itsearch_map": {
+            "plot_legend": "itmap",
+            "optional": {
+                "MAP": 1,
+                "plus1it": null,
+                "posterior": null
+            },
+            "score_params": {
+                "bdecatpar": {
+                    "chi": 1,
+                    "edgepf": 1
+                }
+            }
         },
-        "threshold": [
-            0.99,
-            0.95,
-            0.9,
-            0.8,
-            0.7,
-            0.6,
-            0.5,
-            0.4,
-            0.3,
-            0.2
-        ],
-        "score_params": {
-            "bdepar": {
-                "chi": 1,
-                "edgepf": 1
+        "itsearch_sample": {
+            "plot_legend": "itsample",
+            "optional": {
+                "MAP": 0,
+                "plus1it": 6,
+                "posterior": 0.5
+            },
+            "score_params": {
+                "bdecatpar": {
+                    "chi": 1,
+                    "edgepf": 1
+                }
+            }
+        },
+        "ordermcmc_map": {
+            "plot_legend": "omcmc_itmap",
+            "startspace": "itsearch_map",
+            "optional": {
+                "plus1": true
+            },
+            "score_params": {
+                "bdepar": {
+                    "chi": 1,
+                    "edgepf": 1
+                }
+            },
+            "threshold": [
+                0.99,
+                0.95,
+                0.9,
+                0.8,
+                0.7,
+                0.6,
+                0.5,
+                0.4,
+                0.3,
+                0.2
+            ]
+        },
+        "ordermcmc_sample": {
+            "plot_legend": "omcmc_itsample",
+            "startspace": "itsearch_sample",
+            "optional": {
+                "plus1": true
+            },
+            "threshold": [
+                0.99,
+                0.95,
+                0.9,
+                0.8,
+                0.7,
+                0.6,
+                0.5,
+                0.4,
+                0.3,
+                0.2
+            ],
+            "score_params": {
+                "bdepar": {
+                    "chi": 1,
+                    "edgepf": 1
+                }
             }
         }
     }

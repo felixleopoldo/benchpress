@@ -24,7 +24,6 @@ set.seed(seed_number)
 DAG <- generateDAGMaxParents(n = n, d = avParents)
 
 adjmat <- graphNEL2adjMAT(DAG)
-print(adjmat)
 
 #varnames <- varnames.make(n)
 #rownames(adjmat) <- seq(n)
