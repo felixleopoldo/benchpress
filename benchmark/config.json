@@ -3,7 +3,7 @@
     "data": {
         "replicates": {
             "start": 1,
-            "end": 30
+            "end": 3
         },
         "sample_sizes": [
             [
@@ -43,6 +43,15 @@
             }
         }
     },
+    "plotting": {
+        "algorithms": [
+            "blip",
+            "gobnilp",
+            "fges",
+            "pcalg",
+            "mmhc"
+        ]
+    },
     "algorithms": {
         "blip": {
             "plot_legend": "blip",
@@ -50,7 +59,7 @@
             "solver.method": "winasobs",
             "indeg": 80,
             "time": [
-                10
+                60
             ],
             "allocated": 80,
             "scorefunction": "bdeu",

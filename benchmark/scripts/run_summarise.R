@@ -10,6 +10,8 @@ library(pcalg)
 getPattern <- function(amat) {
 
   ## makes the whole graph undirected
+  amat <- t(amat)
+
   tmp <- amat + t(amat)
   tmp[tmp == 2] <- 1
 
@@ -34,7 +36,8 @@ getPattern <- function(amat) {
         }
       }
     }
-    tmp
+
+    t(tmp)
 }
 
 p <- arg_parser("A program for running iterativeMCMC and save to file.")
@@ -92,31 +95,44 @@ colnames(estimated_adjmat) <- seq(n)
 
 true_dag <- adjacency2dag(true_adjmat)
 estimated_dag <- adjacency2dag(estimated_adjmat)
+true_nedges <- sum(true_adjmat)
 
 true_cpdag <- pcalg::dag2cpdag(true_dag)
 estimated_cpdag <- pcalg::dag2cpdag(estimated_dag)
 
-true_nedges <- sum(true_adjmat)
+true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
+estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
 
-compres <- compareDAGs(estimated_cpdag, true_cpdag)
-names(compres) <- c("SHD", "TP", "FP")
+true_nedges <- sum(getPattern(true_adjmat))
 
-#myscore_tmp <- scoreparameters(ncol(data), "bdecat", data, bdecatpar = list(chi = bdecatpar.chi, edgepf = bdecatpar.edgepf))
+#compres <- compareDAGs(estimated_cpdag, true_cpdag)
+
+
+# Scoring DAG
 myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
                               bdecatpar = list(chi = argv$bdecatpar_chi,
                                                edgepf = argv$bdecatpar_edgepf))
 
-#blipadj <- bnfit2matrix(blipfit)
-#blipadj <- rearrangeMatrix(blipadj, varnames)
-
-
 logscore <- DAGscore(ncol(data), myscore_tmp, estimated_adjmat) # this was bnscore, dont know why...
 
-res <- list()
-res$res <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
+# Statistics on getPattern graph
+compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
+names(compres) <- c("SHD", "TP", "FP")
+true_nedges <- sum(getPattern(true_adjmat))
+
+#res <- list()
+df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                             FPRn = compres["FP"] / true_nedges,
                             logscore = logscore,
                             SHD = compres["SHD"])
 
+# Statistics on getPattern graph
+compres <- compareDAGs(estimated_cpdag, true_cpdag)
+names(compres) <- c("SHD", "TP", "FP")
+df$TPR_cpdag <- compres["TP"] / true_nedges, # should be for all times
 
-write.csv(res$res, file = argv$filename, row.names = FALSE, quote = FALSE)
+
+
+
+
+write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
