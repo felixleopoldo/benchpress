@@ -1,0 +1,21 @@
+library(argparser)
+library(dplyr)
+
+p <- arg_parser("A program for joining csv files.")
+p <- add_argument(p, "--algorithm", help = "Algorithm name")
+p <- add_argument(p, "--filename", help = "Output filename")
+argv <- parse_args(p)
+directory <- "simresults"
+filenames <- list.files(pattern = "csv", path = file.path(directory, "res",argv$algorithm), recursive = TRUE)
+df <- data.frame()
+for (filename in filenames) {
+  tmpdf <- read.csv(file.path(directory, "res", argv$algorithm, filename))
+  #print()
+ 
+  #tmpdf["plus1it"] <- na_if(tmpdf["plus1it"], "None")
+  #tmpdf["posterior"] <- na_if(tmpdf["posterior"], "None")
+  tmpdf <- na_if(tmpdf, "None")
+  df <- dplyr::bind_rows(df, tmpdf)
+}
+
+write.csv(df, file=argv$filename)

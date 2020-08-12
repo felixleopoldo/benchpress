@@ -129,7 +129,7 @@ df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
 # Statistics on getPattern graph
 compres <- compareDAGs(estimated_cpdag, true_cpdag)
 names(compres) <- c("SHD", "TP", "FP")
-df$TPR_cpdag <- compres["TP"] / true_nedges, # should be for all times
+df$TPR_cpdag <- compres["TP"] / true_nedges # should be for all times
 
 
 

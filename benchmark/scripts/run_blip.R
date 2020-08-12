@@ -1,5 +1,4 @@
 ## Simulate rblip
-##
 
 library(argparser)
 library(RBGL)

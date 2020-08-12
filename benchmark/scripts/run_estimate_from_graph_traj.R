@@ -1,6 +1,5 @@
 library(argparser)
 library(rjson)
-#source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
 p <- arg_parser("A program for estimating a graphs from a trajectory of adjacencymatrices by threholding.")
 p <- add_argument(p, "--filename", help = "Filename")
