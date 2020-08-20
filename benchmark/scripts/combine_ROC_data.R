@@ -12,9 +12,11 @@ directory <- config$output_dir
 dims <- config$graphs$sampled$algorithms$generateDAGMaxParents$dims[[1]]
 sample_sizes <- config$data$sample_sizes[[1]]
 replicates <- config$data$replicates$start:config$data$replicates$end
-dag_avparents <-config$graphs$sampled$algorithms$generateDAGMaxParents$av_parents[[1]]
+#dag_avparents <-config$graphs$sampled$algorithms$generateDAGMaxParents$av_parents[[1]]
 
 toplot <- data.frame()
+
+print(config$plotting$algorithms)
 
 if("order_mcmc_map" %in% config$plotting$algorithms) {
     ROCdf_order_mcmc <- read.csv("simresults/order_mcmc_sample.csv")
@@ -75,11 +77,12 @@ if("pcalg" %in% config$plotting$algorithms) {
     roc_pcalg <-read.csv("simresults/pcalg.csv")
 
     sum_roc_pcalg <- roc_pcalg %>% 
-                     filter(dim %in% dims) %>%
-                     filter(sample_size %in% sample_sizes) %>%         
-                     filter(avparents %in% dag_avparents) %>%
+                     #filter(dim %in% dims) %>%
+                     #filter(sample_size %in% sample_sizes) %>%         
+                     #filter(avparents %in% dag_avparents) %>%
                     filter(replicate %in% replicates) %>%
-                     group_by(legend, !!as.symbol("alpha"), sample_size, dim, avparents) %>% 
+                     #group_by(legend, !!as.symbol("alpha"), sample_size, dim, avparents) %>% 
+                     group_by(legend, adjmat, bn, data, !!as.symbol("alpha")) %>% 
                      summarise(    
                            SHD_mean = mean(SHD),
                               TPR_mean = mean(TPR), 
@@ -90,11 +93,12 @@ if("pcalg" %in% config$plotting$algorithms) {
                               time_mean = mean(time),
                               N = n())# %>% ungroup() %>%
     #                 filter(N %in% replicates)
-    labels <- apply(sum_roc_pcalg, 1, function(row) {
-        paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
-    })
+    #labels <- apply(sum_roc_pcalg, 1, function(row) {
+    #    paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+    #})
 
-    sum_roc_pcalg["labels"] <- labels 
+    #sum_roc_pcalg["labels"] <- labels 
+    sum_roc_pcalg["labels"] <- NA   
     toplot <- dplyr::bind_rows(toplot, sum_roc_pcalg)
 }
 
@@ -103,11 +107,11 @@ if("mmhc" %in% config$plotting$algorithms) {
     roc_mmhc <- read.csv("simresults/mmhc.csv")
 
     sum_roc_mmhc <- roc_mmhc %>% 
-                    filter(dim %in% dims) %>%
-                    filter(sample_size %in% sample_sizes) %>%
-                        filter(avparents %in% dag_avparents) %>% 
+                    #filter(dim %in% dims) %>%
+                    #filter(sample_size %in% sample_sizes) %>%
+                    #filter(avparents %in% dag_avparents) %>% 
                     filter(replicate %in% replicates) %>%
-                     group_by(legend, !!as.symbol("alpha"), sample_size, dim, avparents) %>% 
+                     group_by(legend,adjmat,bn,data, !!as.symbol("alpha")) %>% 
                      summarise( SHD_mean = mean(SHD),
                                TPR_mean = mean(TPR), 
                               TPR_median = median(TPR), 
@@ -118,12 +122,13 @@ if("mmhc" %in% config$plotting$algorithms) {
                               N = n()) #%>% ungroup() %>%
                         #filter(N %in% replicates)
 
-    labels <- apply(sum_roc_mmhc, 1, function(row) {
-        paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
-    })
+    #labels <- apply(sum_roc_mmhc, 1, function(row) {
+    #    paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+    #})
 
-    sum_roc_mmhc["labels"] <- labels 
-    sum_roc_mmhc
+    #sum_roc_mmhc["labels"] <- labels 
+    sum_roc_mmhc["labels"] <- NA
+    #sum_roc_mmhc
     toplot <- dplyr::bind_rows(toplot, sum_roc_mmhc)
 }
 
@@ -131,11 +136,11 @@ if("fges" %in% config$plotting$algorithms) {
     roc_fges <- read.csv("simresults/fges.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(dim %in% dims) %>%
-                    filter(sample_size %in% sample_sizes) %>%
-                        filter(avparents %in% dag_avparents) %>% 
+                    #filter(dim %in% dims) %>%
+                    #filter(sample_size %in% sample_sizes) %>%
+                    #filter(avparents %in% dag_avparents) %>% 
                     filter(replicate %in% replicates) %>%
-                    group_by(legend, sample_size, dim, avparents) %>% 
+                    group_by(legend,adjmat,bn,data) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
                             TPR_median = median(TPR), 
@@ -146,27 +151,27 @@ if("fges" %in% config$plotting$algorithms) {
                             N = n()) #%>% ungroup() %>%
                         #filter(N %in% replicates)
 
-    labels <- apply(sum_roc_fges, 1, function(row) {
-        paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
-    })
+    #labels <- apply(sum_roc_fges, 1, function(row) {
+    #    paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+    #})
 
-    sum_roc_fges["labels"] <- labels 
+    #sum_roc_fges["labels"] <- labels 
+    sum_roc_fges["labels"] <- NA 
 
-    sum_roc_fges
+
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
 
 if("blip" %in% config$plotting$algorithms) {
     ROCdf_blip <- read.csv("simresults/blip.csv")
-    print(config)
-    print(ROCdf_blip)
     sum_roc_blip <- ROCdf_blip %>% 
                 #filter(dim %in% dims) %>%
                 #filter(sample_size %in% sample_sizes) %>%
-                filter(avparents %in% dag_avparents) %>%      
+                #filter(avparents %in% dag_avparents) %>%      
                 filter(replicate %in% replicates) %>%
-                filter(indeg %in% config$algorithms$blip$indeg) %>%
-                 group_by(legend, sample_size, dim, !!as.symbol("max_time"), avparents) %>% 
+                #filter(indeg %in% config$algorithms$blip$indeg) %>%
+                # group_by(legend, sample_size, dim, !!as.symbol("max_time"), avparents) %>% 
+                 group_by(legend, adjmat, bn, data, !!as.symbol("max_time")) %>% 
                  summarise( SHD_mean = mean(SHD),
                            TPR_mean = mean(TPR),
                           time_mean=mean(time),
@@ -181,7 +186,8 @@ if("blip" %in% config$plotting$algorithms) {
                     paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
                 })
 
-    sum_roc_blip["labels"] <- labels 
+    #sum_roc_blip["labels"] <- labels 
+    sum_roc_blip["labels"] <- NA
     toplot <- dplyr::bind_rows(toplot, sum_roc_blip)
 }
 

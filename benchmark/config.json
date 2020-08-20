@@ -8,7 +8,7 @@
         },
         "sample_sizes": [
             [
-                1000
+                150
             ]
         ]
     },
@@ -54,11 +54,11 @@
     },
     "plotting": {
         "algorithms": [
-            "blip"
+            "blip", "pcalg", "fges", "mmhc"
         ],
         "models":[
-            {"graph":"asia", 
-             "parameters":"generateBinaryBN"}
+            {"graph": "hepar2", 
+            "parameters": "generateBinaryBN"}
         ],
         "measures": [
             {

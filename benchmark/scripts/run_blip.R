@@ -26,7 +26,7 @@ p <- add_argument(p, "--verbose", help = "see r.blip doc", type = "numeric", def
 argv <- parse_args(p)
 
 directory <- argv$output_dir
-dir.create(directory)
+dir.create(directory, showWarnings=FALSE)
 filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 

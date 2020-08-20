@@ -13,6 +13,31 @@ blip_string =   "/blip/" \
                 "scorefunction={scorefunction}/" \
                 "alpha={alpha}/" \
                 "verbose={verbose}/"
+pcalg_string = "/pcalg/"\
+               "score_type={score_type}/" \
+               "bdecatpar_chi={bdecatpar_chi}/" \
+               "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+               "alpha={alpha}/"
+mmhc_string = "/mmhc/"\
+               "score_type={score_type}/" \
+               "bdecatpar_chi={bdecatpar_chi}/" \
+               "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+               "alpha={alpha}/"
+gobnilp_string = "/gobnilp/"\
+                 "score_type={score_type}/" \
+                 "bdecatpar_chi={bdecatpar_chi}/" \
+                 "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+                 "palim={palim}/"
+fges_string = "/fges/"\
+               "score_type={score_type}/" \
+               "bdecatpar_chi={bdecatpar_chi}/" \
+               "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+               "faithfulnessAssumed={faithfulnessAssumed}/"
+
+evaluation_string= "/evaluation/" \
+                   "score_type={score_type}/" \
+                   "bdecatpar_chi={bdecatpar_chi}/" \
+                   "bdecatpar_edgepf={bdecatpar_edgepf}/" 
 
 def gen_model_strings_from_conf(models, seed, setup):
     """
@@ -31,7 +56,7 @@ def gen_adjmat_string_from_conf(adjmat_gen_method, seed, setup):
     with open('config.json') as json_file:
         conf = json.load(json_file)
 
-    fixed_graphs = ["asia", "survey", "alarm", "sachs", "hepar2"]
+    fixed_graphs = ["asia", "survey", "alarm", "sachs", "hepar2", "hailfinder"]
     if adjmat_gen_method == "generateDAGMaxParents":
         curconf = conf["graphs"]["sampled"]["algorithms"][adjmat_gen_method]
         n_simulation_setups = len(conf["data"]["sample_sizes"])
@@ -57,7 +82,7 @@ def gen_parameter_string_from_conf(gen_method, seed):
                 min=curconf["min"], 
                 max=curconf["max"], 
                 seed=seed)
-    elif gen_method in ["asia", "survey", "alarm", "sachs", "hepar2"]:
+    elif gen_method in ["asia", "survey", "hailfinder", "alarm", "sachs", "hepar2"]:
         return "bn.fit_networks/"+gen_method
     
 
@@ -153,10 +178,6 @@ rule sample_data_range_header:
         "--samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
 
-# names could be /data/graph=/reference_graph=asia/graph_parameters=/
-# For simulated networks, the graphical model name contains both graph with seed and parameters with seed.
-
-# graphical_models=/graphname=/parameter_name=/method=/method_parameters=/
 rule run_blip:
     input:
         data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
@@ -172,8 +193,6 @@ rule run_blip:
 
     message:
         "Executing blip algorithm on the following files: {input}."
-    #singularity:
-    #    "docker://onceltuca/rblip"
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_blip.R " \
@@ -190,18 +209,8 @@ rule run_blip:
         "--verbose {wildcards.verbose} " \
         "--filename {output.adjmat} " 
 
-# This means that no benchmarking can be done. This is separate.
-rule summarise_blip_only_data:
-    input: "test.csv"
-
-# This means that the graph is given but the paramters should be sampled. 
-# This might be the same as summarise_blip.
-rule summarise_blip_only_graph:
-    input: "test.csv"
-
 rule summarise_blip:
     input:
-        # seed is needed here. Seems like fixed graphs and data should be treatet separately.
         data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
         adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
         adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
@@ -237,11 +246,8 @@ rule summarise_blip:
         "--filename {output.res} " \ 
         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
         "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
-        #" && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} " \
         " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
         " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
-        #" && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} " \
-        #" && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \
         " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
@@ -258,7 +264,8 @@ rule summarise_blip:
         " && python scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
         " && python scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
         " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-        " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
+        " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
+        
 rule itsearch:
     input:
         data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
@@ -593,28 +600,18 @@ rule summarise_ordermcmc:
         " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
         " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
 
-rule run_pcalg:
+rule pcalg:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
     output:
-        adjmat = config["output_dir"]+"/adjmat/pcalg/" \
-            "n={n}/"\
-            "p={p}/"\
-            "avpar={avparents}/"\
-            "score_type={score_type}/" \
-            "bdecatpar_chi={bdecatpar_chi}/" \
-            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-            "alpha={alpha}/"\
-            "{replicate}.csv",
-        time = config["output_dir"]+"/time/pcalg/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "alpha={alpha}/"\
-                "{replicate}.txt"
+        adjmat = config["output_dir"]+"/adjmat_estimate/{data}/"\
+                "algorithm=" + pcalg_string +\
+                "seed={replicate}/" \
+                "adjmat.csv",
+        time = config["output_dir"] + "/time/{data}/"\
+                "algorithm=" + pcalg_string +\
+                "seed={replicate}/" \
+                "time.txt"
     message:
         "Executing order pc algorithm with startspace on the following files: {input}."
     shell:
@@ -628,36 +625,31 @@ rule run_pcalg:
 
 rule summarise_pcalg:
     input:
-        adjmat_true=config["output_dir"]+"/adjmat/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_est=config["output_dir"]+"/adjmat/pcalg/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "alpha={alpha}/"\
-                "{replicate}.csv",
-        data=config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv",
-        time = config["output_dir"]+"/time/pcalg/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "alpha={alpha}/"\
-                "{replicate}.txt"
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
+        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=" + pcalg_string +\
+                        "seed={replicate}/" \
+                        "adjmat.csv",
+        time = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=" + pcalg_string +\
+                    "seed={replicate}/" \
+                    "time.txt",
     output:
-        config["output_dir"]+"/res/pcalg/n={n}/" \
-            "p={p}/" \
-            "avpar={avparents}/" \
-            "score_type={score_type}/" \
-            "bdecatpar_chi={bdecatpar_chi}/" \
-            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-            "alpha={alpha}/"\
-            "legend={plot_legend}/" \
-            "{replicate}.csv"
+        res = config["output_dir"]+"/result/"\
+            "algorithm=" + pcalg_string + \
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv",
     message:
         "Summarising pc algorithm with startspace on the following files: {input}."
     shell:
@@ -668,12 +660,12 @@ rule summarise_pcalg:
         "--filename {output} " \ 
         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
         "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
+        " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
         " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
-        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} " \
         " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \    
@@ -688,28 +680,21 @@ rule summarise_pcalg:
         " && python scripts/add_column.py --filename {output} --colname verbose      --colval false " \
         " && python scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
         " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
+            
 rule mmhc:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
     output:
-        adjmat=config["output_dir"]+"/adjmat/mmhc/" \
-            "n={n}/"\
-            "p={p}/"\
-            "avpar={avparents}/"\
-            "score_type={score_type}/" \
-            "bdecatpar_chi={bdecatpar_chi}/" \
-            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-            "alpha={alpha}/"\
-            "{replicate}.csv",
-        time=config["output_dir"]+"/time/mmhc/" \
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "alpha={alpha}/"\
-                "{replicate}.txt"
+        adjmat = config["output_dir"]+"/adjmat_estimate/{data}/"\
+                "algorithm=" + mmhc_string +\
+                "seed={replicate}/" \
+                "adjmat.csv",
+        time = config["output_dir"] + "/time/{data}/"\
+                "algorithm=" + mmhc_string +\
+                "seed={replicate}/" \
+                "time.txt"
+    message:
+        "Executing the mmhc algorithm on the following files: {input}."
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_mmhc.R "\
@@ -721,37 +706,31 @@ rule mmhc:
 
 rule summarise_mmhc:
     input:
-        adjmat_true = config["output_dir"]+"/adjmat/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_est=config["output_dir"]+"/adjmat/mmhc/" \
-            "n={n}/" \
-            "p={p}/" \
-            "avpar={avparents}/"\
-            "score_type={score_type}/" \
-            "bdecatpar_chi={bdecatpar_chi}/" \
-            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-            "alpha={alpha}/"\
-            "{replicate}.csv",
-        time=config["output_dir"]+"/time/mmhc/" \
-                "n={n}/" \
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "alpha={alpha}/"\
-                "{replicate}.txt",
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
+        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=" + mmhc_string +\
+                        "seed={replicate}/" \
+                        "adjmat.csv",
+        time = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=" + mmhc_string +\
+                    "seed={replicate}/" \
+                    "time.txt",
     output:
-        config["output_dir"]+"/res/mmhc/"\
-        "n={n}/"\
-        "p={p}/"\
-        "avpar={avparents}/"\
-        "score_type={score_type}/" \
-        "bdecatpar_chi={bdecatpar_chi}/" \
-        "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-        "alpha={alpha}/"\
-        "legend={plot_legend}/" \
-        "{replicate}.csv"
+        res = config["output_dir"]+"/result/"\
+            "algorithm=" + mmhc_string + \
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv",
     shell:
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -760,11 +739,11 @@ rule summarise_mmhc:
         "--filename {output} " \ 
         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
         "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
-        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
         " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
@@ -871,28 +850,20 @@ rule summarise_gobnilp:
         " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time} | grep -Eo '[0-9]\.[0-9]*$'` " \
         " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
 
-rule fges: #use funtion as input to generate filename from the config file
+rule fges:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
     output:
-        adjmat = config["output_dir"]+"/adjmat/fges/"\
-                    "n={n}/"\
-                    "p={p}/"\
-                    "avpar={avparents}/"\
-                    "score_type={score_type}/" \
-                    "bdecatpar_chi={bdecatpar_chi}/" \
-                    "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                    "faithfulnessAssumed={faithfulnessAssumed}/"\
-                    "{replicate}.csv",
-        time = config["output_dir"]+"/time/fges/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "faithfulnessAssumed={faithfulnessAssumed}/"\
-                "{replicate}.txt"
+        adjmat = config["output_dir"]+"/adjmat_estimate/{data}/"\
+                "algorithm=" + fges_string +\
+                "seed={replicate}/" \
+                "adjmat.csv",
+        time = config["output_dir"] + "/time/{data}/"\
+                "algorithm=" + fges_string +\
+                "seed={replicate}/" \
+                "time.txt"
+    message:
+        "Executing fges algorithm on the following files: {input}."
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
@@ -914,33 +885,33 @@ rule fges: #use funtion as input to generate filename from the config file
 
 rule summarise_fges:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_true = config["output_dir"]+"/adjmat/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_est = config["output_dir"]+"/adjmat/fges/"\
-                     "n={n}/"\
-                     "p={p}/"\
-                     "avpar={avparents}/"\
-                    "score_type={score_type}/" \
-                    "bdecatpar_chi={bdecatpar_chi}/" \
-                    "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                    "faithfulnessAssumed={faithfulnessAssumed}/"\
-                     "{replicate}.csv",
-        time = config["output_dir"]+"/time/fges/n={n}/p={p}/avpar={avparents}/" \
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "faithfulnessAssumed={faithfulnessAssumed}/{replicate}.txt"     
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
+        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=" + fges_string +
+                        "seed={replicate}/" \
+                        "adjmat.csv",
+        time = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=" + fges_string +
+                    "seed={replicate}/" \
+                    "time.txt",
     output:
-        res = config["output_dir"]+"/res/fges/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "faithfulnessAssumed={faithfulnessAssumed}/"\
-                "legend={plot_legend}/" \
-                "{replicate}.csv"
+        res = config["output_dir"]+"/result/"\
+            "algorithm=" + fges_string +
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv",
+    message:
+        "Summarising blip results based on the files: {input}."
     shell:
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -949,82 +920,24 @@ rule summarise_fges:
         "--filename {output.res} " \ 
         "--range_header_data 0 " \ 
         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
-        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
-        " && python scripts/add_column.py --filename {output} --colname avparents   --colval {wildcards.avparents} "\
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \        
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval fges "\
-        " && python scripts/add_column.py --filename {output} --colname dim         --colval {wildcards.p} "\
-        " && python scripts/add_column.py --filename {output} --colname sample_size --colval {wildcards.n} "\
         " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-        #" && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
-        #" && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
+        " && python scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname faithfulnessAssumed       --colval {wildcards.faithfulnessAssumed} "\
         " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
         " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
-
-# rule join_summaries_blip:
-#     input:
-#         [expand(config["output_dir"] + "/result/"\        
-#         "algorithm=/blip/"\
-#         "score_type=bde/" \
-#         "bdecatpar_chi={bdecatpar_chi}/" 
-#         "bdecatpar_edgepf={bdecatpar_edgepf}/"
-#         "time={time}/" 
-#         "scorer.method={scorermethod}/"
-#         "solver.method={solvermethod}/"
-#         "indeg={indeg}/"
-#         "cores={cores}/"
-#         "allocated={allocated}/"
-#         "scorefunction={scorefunction}/"
-#         "alpha={alpha}/"
-#         "verbose={verbose}/"
-#         #"seed={replicate}/"
-#         "adjmat=/"
-#         "{adjmat_string}/"
-#         #"seed={replicate}/"
-#         "bn=/"\
-#         "{param_string}/"
-#         #"seed={replicate}/"
-#         "data=/"
-#         "n={n}/"
-#         "seed={replicate}/"
-#         "legend={plot_legend}/" 
-#         "result.csv"
-#         ,
-#         replicate=replicates,
-#         time=config["algorithms"]["blip"]["time"],
-#         scorermethod=config["algorithms"]["blip"]["scorer.method"],
-#         solvermethod=config["algorithms"]["blip"]["solver.method"],                       
-#         indeg=config["algorithms"]["blip"]["indeg"],
-#         cores=config["algorithms"]["blip"]["cores"],
-#         allocated=config["algorithms"]["blip"]["allocated"],    
-#         scorefunction=config["algorithms"]["blip"]["scorefunction"],
-#         alpha=config["algorithms"]["blip"]["alpha"],
-#         verbose=config["algorithms"]["blip"]["verbose"],
-#         n=config["data"]["sample_sizes"][i],
-#         avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
-#         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-#         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-#         plot_legend=config["algorithms"]["blip"]["plot_legend"],
-#         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["graph_sampling_algorithm"], i), #seed should be put in here
-#         param_string=gen_parameter_string_from_conf(config["plotting"]["parameter_sampling_algorithm"], i),
-#         p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i])         
-#         for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
-#     output:
-#         config["output_dir"] + "/blip.csv"
-#     shell:
-#         "Rscript scripts/join_csv_files.R --algorithm blip --filename {output}"
-#         # add input parameters to csv here instead for better pattern mathing..? NO, since the values vary
-#         # How to extract n and p? Should we just group on graph when plotting? Then both method and parameters are there.
-#         # 
-#         # statistical model is model + parameters = graph + parameters, 
-#         # but the graph is a function of the parameters
-#         # Maybe seed can be outside when we are sampling..
-
+        
 rule join_summaries_blip:
     input:
-        "config.json",
-        [[[expand(config["output_dir"] + "/result/"\        
+        conf="config.json",
+        res=[[[expand(config["output_dir"] + "/result/"\        
         "algorithm=/blip/"\
         "score_type=bde/" \
         "bdecatpar_chi={bdecatpar_chi}/" 
@@ -1038,13 +951,11 @@ rule join_summaries_blip:
         "scorefunction={scorefunction}/"
         "alpha={alpha}/"
         "verbose={verbose}/" 
-        #{model_string}       
         "adjmat=/"
         "{adjmat_string}/"
         "bn=/"\
         "{param_string}/"
         "data=/"
-        #"method=bindatasampling/"
         "n={n}/"
         "seed={replicate}/"
         "legend={plot_legend}/" 
@@ -1059,17 +970,13 @@ rule join_summaries_blip:
         allocated=config["algorithms"]["blip"]["allocated"],    
         scorefunction=config["algorithms"]["blip"]["scorefunction"],
         alpha=config["algorithms"]["blip"]["alpha"],
-        verbose=config["algorithms"]["blip"]["verbose"],
-        #n=[config["data"]["sample_sizes"][i] for i in range(len(config["data"]["sample_sizes"]))],
+        verbose=config["algorithms"]["blip"]["verbose"],        
         n=config["data"]["sample_sizes"][i], 
-        #avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
         plot_legend=config["algorithms"]["blip"]["plot_legend"],
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        #model_string=gen_model_strings_from_conf(config["plotting"]["models"], seed, i),
-        #p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
@@ -1077,7 +984,9 @@ rule join_summaries_blip:
     output:
         config["output_dir"] + "/blip.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm blip --filename {output}"
+        "Rscript scripts/join_csv_files.R --algorithm blip --filename {output} --files {input.res} "
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+        
 
 rule join_summaries_itsearch_map:
     input:
@@ -1243,54 +1152,95 @@ rule join_summaries_order_mcmc_map:
 
 rule join_summaries_pcalg:
     input:
-        [expand(config["output_dir"] + "/res/pcalg/"
+        conf="config.json",
+        res=[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + pcalg_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
                         "n={n}/"
-                        "p={p}/"
-                        "avpar={avparents}/"
-                        "score_type=bde/"\
-                        "bdecatpar_chi={bdecatpar_chi}/" \
-                        "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                        "alpha={alpha}/" \
-                        "legend={plot_legend}/" \
-                        "{replicate}.csv",
-                        replicate=replicates,
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=seed,
                         alpha=config["algorithms"]["pcalg"]["alpha"],
                         n=config["data"]["sample_sizes"][i],
-                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                         plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
-                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm pcalg --filename {output}"
+        "Rscript scripts/join_csv_files.R --algorithm pcalg --filename {output} --files {input.res}"
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule join_summaries_mmhc:
     input:
-        "config.json",
-        [expand(config["output_dir"] + "/res/mmhc/"
+        conf="config.json",
+        res=[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + mmhc_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
                         "n={n}/"
-                        "p={p}/"
-                        "avpar={avparents}/"
-                        "score_type=bde/"\
-                        "bdecatpar_chi={bdecatpar_chi}/" \
-                        "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                        "alpha={alpha}/"
-                        "legend={plot_legend}/" \
-                        "{replicate}.csv",\
-                        replicate=replicates,
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=seed,
                         alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
                         n=config["data"]["sample_sizes"][i],
-                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+                        score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                         plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
-                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output}"
+        "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output} --files {input.res}"
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+    # input:
+    #     "config.json",
+    #     [expand(config["output_dir"] + "/res/mmhc/"
+    #                     "n={n}/"
+    #                     "p={p}/"
+    #                     "avpar={avparents}/"
+    #                     "score_type=bde/"\
+    #                     "bdecatpar_chi={bdecatpar_chi}/" \
+    #                     "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+    #                     "alpha={alpha}/"
+    #                     "legend={plot_legend}/" \
+    #                     "{replicate}.csv",\
+    #                     replicate=replicates,
+    #                     alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
+    #                     n=config["data"]["sample_sizes"][i],
+    #                     avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+    #                     bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+    #                     bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+    #                     plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
+    #                     p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+    # output:
+    #     config["output_dir"] + "/mmhc.csv"
+    # shell:
+    #     "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output}"
 
 rule join_summaries_gobnilp:
     input:
@@ -1319,28 +1269,54 @@ rule join_summaries_gobnilp:
 
 rule join_summaries_fges:
     input:
-        [expand(config["output_dir"] + "/res/fges/"
-            "n={n}/"
-            "p={p}/"
-            "avpar={avparents}/"
-            "score_type=bde/"\
-            "bdecatpar_chi={bdecatpar_chi}/" \
-            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-            "faithfulnessAssumed={faithfulnessAssumed}/" \
-            "legend={plot_legend}/" \
-            "{replicate}.csv",
-                    replicate=replicates,
-                    n=config["data"]["sample_sizes"][i],
-                    avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
-                    faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
-                    bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                    bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],                         
-                    plot_legend=config["algorithms"]["fges"]["plot_legend"],
-                    p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+        res=[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + fges_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=seed,                        
+                        faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+                        n=config["data"]["sample_sizes"][i],
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["fges"]["plot_legend"],
+                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
+        # [expand(config["output_dir"] + "/res/fges/"
+        #     "n={n}/"
+        #     "p={p}/"
+        #     "avpar={avparents}/"
+        #     "score_type=bde/"\
+        #     "bdecatpar_chi={bdecatpar_chi}/" \
+        #     "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+        #     "faithfulnessAssumed={faithfulnessAssumed}/" \
+        #     "legend={plot_legend}/" \
+        #     "{replicate}.csv",
+        #             replicate=replicates,
+        #             n=config["data"]["sample_sizes"][i],
+        #             avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+        #             faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+        #             bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+        #             bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],                         
+        #             plot_legend=config["algorithms"]["fges"]["plot_legend"],
+        #             p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
     output:
         config["output_dir"] + "/fges.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm fges --filename {output}"
+        "Rscript scripts/join_csv_files.R --algorithm fges --filename {output} --files {input.res}"
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule roc:
     input:
@@ -1350,6 +1326,6 @@ rule roc:
         config["output_dir"] + "/ROC.eps", \
         config["output_dir"] + "/ROC_data.csv" 
     shell:
-        "Rscript scripts/combine_ROC_data.R && "\
-        "Rscript scripts/plot_ROC.R"
+        "Rscript scripts/combine_ROC_data.R "\
+        "&& Rscript scripts/plot_ROC.R"
 
