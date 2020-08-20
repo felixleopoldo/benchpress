@@ -6,10 +6,11 @@ p <- add_argument(p, "--algorithm", help = "Algorithm name")
 p <- add_argument(p, "--filename", help = "Output filename")
 argv <- parse_args(p)
 directory <- "simresults"
-filenames <- list.files(pattern = "csv", path = file.path(directory, "res",argv$algorithm), recursive = TRUE)
+filenames <- list.files(pattern = "csv", path = file.path(directory,"result", "algorithm=", argv$algorithm), recursive = TRUE)
+print(filenames)
 df <- data.frame()
 for (filename in filenames) {
-  tmpdf <- read.csv(file.path(directory, "res", argv$algorithm, filename))
+  tmpdf <- read.csv(file.path(directory,"result", "algorithm=", argv$algorithm, filename))
   #print()
  
   #tmpdf["plus1it"] <- na_if(tmpdf["plus1it"], "None")
@@ -18,4 +19,4 @@ for (filename in filenames) {
   df <- dplyr::bind_rows(df, tmpdf)
 }
 
-write.csv(df, file=argv$filename)
+write.csv(df, file=argv$filename, row.names=FALSE)

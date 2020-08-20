@@ -1,5 +1,8 @@
 library(ggplot2)
-toplot <- read.csv("ROC_data.csv")
+library("rjson")
+
+config <- fromJSON(file = "config.json")
+toplot <- read.csv(file.path(config$output_dir, "ROC_data.csv"))
 
 
 ggplot() + geom_errorbar(data = toplot,
@@ -33,5 +36,5 @@ ylab("TPR") +
 ggtitle("ROC") +
 theme(plot.title = element_text(hjust = 0.5))
 
-ggsave(file=file.path("ROC.eps"))
+ggsave(file=file.path(config$output_dir, "ROC.eps"))
 

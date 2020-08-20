@@ -1,5 +1,6 @@
 {
     "output_dir": "simresults",
+    "data_dir": "data",
     "data": {
         "replicates": {
             "start": 1,
@@ -7,32 +8,40 @@
         },
         "sample_sizes": [
             [
-                100
+                1000
             ]
         ]
     },
-    "bayesian_networks": [
-        "asia"
-    ],
     "graphs": {
         "sampled": {
             "algorithms": {
                 "generateDAGMaxParents": {
                     "av_parents": [
-                        [
-                            2
-                        ]
+                        [2,3]
                     ],
                     "dims": [
                         [
-                            10
+                            15
                         ]
                     ]
                 }
             }
         },
         "fixed": [
-            "asia"
+            "asia", "alarm", "hepar2", "cancer"
+        ]
+    },
+    "model_parameters": {
+        "sampled":{
+            "algorithms":{
+                "generateBinaryBN":{
+                    "min":0.1,
+                    "max":0.9
+                }
+            }
+        },
+        "fixed":[
+            "asia", "alarm"
         ]
     },
     "evaluation": {
@@ -45,22 +54,21 @@
     },
     "plotting": {
         "algorithms": [
-            "blip",
-            "gobnilp",
-            "fges",
-            "pcalg",
-            "mmhc",
-            "itsearch_map",
-            "itsearch_sample",
-            "order_mcmc_map",
-            "order_mcmc_sample"
+            "blip"
+        ],
+        "models":[
+            {"graph":"asia", 
+             "parameters":"generateBinaryBN"}
         ],
         "measures": [
-            {"ROC": ["blip", "gobnilp", "fges",  "pcalg"],
-            "curve_varaible": ["alpha",""],
-            "SHD": ["blip", "gobnilp"]}
+            {
+            "ROC": ["blip", "gobnilp", "fges",  "pcalg"],
+            "curve_varaible": ["alpha"],
+            "SHD": ["blip", "gobnilp"]
+            }
         ]
-    },
+    }
+    ,
     "algorithms": {
         "blip": {
             "plot_legend": "blip",

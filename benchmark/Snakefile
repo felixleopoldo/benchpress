@@ -1,5 +1,66 @@
 import json
 
+blip_string =   "/blip/" \
+                "score_type={score_type}/" \
+                "bdecatpar_chi={bdecatpar_chi}/" \
+                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+                "time={max_time}/" \
+                "scorer.method={scorermethod}/" \
+                "solver.method={solvermethod}/" \
+                "indeg={indeg}/" \        
+                "cores={cores}/" \
+                "allocated={allocated}/" \
+                "scorefunction={scorefunction}/" \
+                "alpha={alpha}/" \
+                "verbose={verbose}/"
+
+def gen_model_strings_from_conf(models, seed, setup):
+    """
+    Generate the graphs and paremeters simulatnepusly since we do not want 
+    every combiantion of graphs and paramters.
+    Maybe this should be part of the setup? -No, this part belongs to the method step, 
+    not the model/data simulation step.
+    There are 3 steps.
+    1. Specify the models.
+    2. Generate data sets from the models.
+    3. Run a nunmber of structure learningn algortithms on th dataset.
+    """
+    pass
+
+def gen_adjmat_string_from_conf(adjmat_gen_method, seed, setup):
+    with open('config.json') as json_file:
+        conf = json.load(json_file)
+
+    fixed_graphs = ["asia", "survey", "alarm", "sachs", "hepar2"]
+    if adjmat_gen_method == "generateDAGMaxParents":
+        curconf = conf["graphs"]["sampled"]["algorithms"][adjmat_gen_method]
+        n_simulation_setups = len(conf["data"]["sample_sizes"])
+        return expand(adjmat_gen_method + \
+            "/p={p}" + 
+            "/avpar={av_parents}" + 
+            "/seed={seed}",
+            av_parents=curconf["av_parents"][setup], 
+            p=curconf["dims"][setup],
+            seed=seed) 
+    elif adjmat_gen_method in fixed_graphs:
+        return "bn.fit_adjmats/" + adjmat_gen_method    
+
+def gen_parameter_string_from_conf(gen_method, seed):
+    with open('config.json') as json_file:
+        conf = json.load(json_file)
+    if gen_method == "generateBinaryBN":
+        curconf = conf["model_parameters"]["sampled"]["algorithms"][gen_method]
+        return expand(gen_method + \
+                "/min={min}" + \
+                "/max={max}" + \
+                "/seed={seed}", 
+                min=curconf["min"], 
+                max=curconf["max"], 
+                seed=seed)
+    elif gen_method in ["asia", "survey", "alarm", "sachs", "hepar2"]:
+        return "bn.fit_networks/"+gen_method
+    
+
 def active_algorithm_files(wildcards):
     with open('config.json') as json_file:
         conf = json.load(json_file)
@@ -16,9 +77,28 @@ replicates = range(int(config["data"]["replicates"]["start"]),
 singularity:
     "docker://onceltuca/benchmark:1.0.7"
 
-rule sample_dag:
+rule bnlearn_adjmat:
+    input:
+        config["output_dir"] + "/bn/bn.fit_networks/{name}.rds"
     output:
-        adjmat = "{output_dir}/adjmat/p={p}/avpar={avparents}/{replicate}.csv"
+        config["output_dir"] + "/adjmat/bn.fit_adjmats/{name}.csv"
+    shell:
+        "mkdir -p {config[output_dir]}" + "/adjmat/bn.fit_adjmats/ " \
+        "&& Rscript scripts/bnlearn_bn_to_adjmat.R " 
+        "--filename_graph {output} "
+        "--filename_bn {input}"
+
+rule bnlearn_networks:
+    output:
+        config["output_dir"] + "/bn/bn.fit_networks/{bn}.rds"
+    shell:
+        "mkdir -p {config[output_dir]}" + "/bn/bn.fit_networks/ " \
+        "&& wget https://www.bnlearn.com/bnrepository/{wildcards.bn}/{wildcards.bn}.rds "
+        "--output-document {output}"
+
+rule sample_adjmat:
+    output:        
+        adjmat = config["output_dir"] + "/adjmat/generateDAGMaxParents/p={p}/avpar={avparents}/seed={replicate}.csv"
     shell:
         "Rscript scripts/sample_dags.R " \
         "--filename {output.adjmat} " \ 
@@ -26,24 +106,36 @@ rule sample_dag:
         "--parents {wildcards.avparents} " \
         "--seed {wildcards.replicate}"
 
-rule sample_bn:
+rule sample_binary_bn:
     input:
-        adjmat = "{output_dir}/adjmat/p={p}/avpar={avparents}/{replicate}.csv"
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        bn = "{output_dir}/bn/p={p}/avpar={avparents}/{replicate}.rds"
+        bn = "{output_dir}/bn/generateBinaryBN/min={min}/max={max}/seed={seed}/adjmat=/{adjmat}.rds"
     shell:
         "Rscript scripts/sample_bayesian_network_for_dag.R " \
         "--filename_dag {input.adjmat} " \
         "--filename {output} "  \
-        "--seed {wildcards.replicate} "
+        "--seed {wildcards.seed} "
 
-rule sample_data:
+rule sample_bindata:
     input:
-        bn="{output_dir}/bn/p={p}/avpar={avparents}/{replicate}.rds"
+        bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"
     output:
-        data="{output_dir}/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/generateBinaryBN/{bn}/data=/n={n}/seed={replicate}.csv"
     shell:
-        "Rscript scripts/sample_data.R " \
+        "Rscript scripts/sample_binary_data.R " \
+        "--filename {output.data} " \
+        "--filename_bn {input.bn} " \
+        "--samples {wildcards.n} " \
+        "--seed {wildcards.replicate}"
+
+rule sample_bnfit_data:
+    input:        
+        bn="{output_dir}/bn/bn.fit_networks/{bn}.rds"        
+    output:
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/n={n}/seed={replicate}.csv"
+    shell:
+        "Rscript scripts/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
@@ -51,54 +143,33 @@ rule sample_data:
 
 rule sample_data_range_header:
     input:
-        "{output_dir}/bn/p={p}/avpar={avparents}/{replicate}.rds"
-    output:
-        "{output_dir}/range_header_data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"
+    output:                
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/generateBinaryBN/{bn}/range_header_data=/n={n}/seed={replicate}.csv"
     shell:
-        "Rscript scripts/sample_data_with_range_header.R " 
-        "--filename {output} "
-        "--filename_bn {input} "
-        "--samples {wildcards.n} "
-        "--seed {wildcards.replicate} "
+        "Rscript scripts/sample_data_with_range_header.R " \
+        "--filename {output.data} "\                
+        "--filename_bn {input.bn} " \
+        "--samples {wildcards.n} " \
+        "--seed {wildcards.replicate}"
 
+# names could be /data/graph=/reference_graph=asia/graph_parameters=/
+# For simulated networks, the graphical model name contains both graph with seed and parameters with seed.
+
+# graphical_models=/graphname=/parameter_name=/method=/method_parameters=/
 rule run_blip:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv"
+        data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
     output:
-        adjmat = config["output_dir"]+"/adjmat/blip/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/" \
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "time={max_time}/" \
-                "scorer.method={scorermethod}/" \
-                "solver.method={solvermethod}/" \
-                "indeg={indeg}/" \        
-                "cores={cores}/" \
-                "allocated={allocated}/" \
-                "scorefunction={scorefunction}/" \
-                "alpha={alpha}/" \
-                "verbose={verbose}/" \
-                "{replicate}.csv",
-        time = config["output_dir"]+"/time/blip/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/" \
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "time={max_time}/" \
-                "scorer.method={scorermethod}/" \
-                "solver.method={solvermethod}/" \
-                "indeg={indeg}/" \
-                "cores={cores}/" \
-                "allocated={allocated}/" \
-                "scorefunction={scorefunction}/" \
-                "alpha={alpha}/" \
-                "verbose={verbose}/" \
-                "{replicate}.txt"
+        adjmat = config["output_dir"]+"/adjmat_estimate/{data}/"\
+                "algorithm=" + blip_string +\
+                "seed={replicate}/" \
+                "adjmat.csv",
+        time = config["output_dir"] + "/time/{data}/"\
+                "algorithm=" + blip_string +\
+                "seed={replicate}/" \
+                "time.txt"
+
     message:
         "Executing blip algorithm on the following files: {input}."
     #singularity:
@@ -107,7 +178,7 @@ rule run_blip:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_blip.R " \
         "--filename_data {input.data} " \
-        "--output_dir config[output_dir] " \
+        "--output_dir {config[output_dir]} " \
         "--time {wildcards.max_time} " \
         "--scorer.method {wildcards.scorermethod} " \
         "--solver.method {wildcards.solvermethod} " \
@@ -119,67 +190,45 @@ rule run_blip:
         "--verbose {wildcards.verbose} " \
         "--filename {output.adjmat} " 
 
+# This means that no benchmarking can be done. This is separate.
+rule summarise_blip_only_data:
+    input: "test.csv"
+
+# This means that the graph is given but the paramters should be sampled. 
+# This might be the same as summarise_blip.
+rule summarise_blip_only_graph:
+    input: "test.csv"
+
 rule summarise_blip:
     input:
-        data = config["output_dir"]+"/data/n={n}/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_true = config["output_dir"]+"/adjmat/p={p}/avpar={avparents}/{replicate}.csv",
-        adjmat_est =  config["output_dir"]+"/adjmat/blip/" \
-                        "n={n}/" \
-                        "p={p}/" \
-                        "avpar={avparents}/" \
-                        "score_type={score_type}/" \
-                        "bdecatpar_chi={bdecatpar_chi}/" \
-                        "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                        "time={max_time}/" \
-                        "scorer.method={scorermethod}/" \
-                        "solver.method={solvermethod}/" \                        
-                        "indeg={indeg}/" \
-                        "cores={cores}/" \
-                        "allocated={allocated}/" \
-                        "scorefunction={scorefunction}/" \
-                        "alpha={alpha}/" \
-                        "verbose={verbose}/" \
-                        "{replicate}.csv",
-        time = config["output_dir"]+"/time/blip/" \
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/" \
-                "score_type={score_type}/" \
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "time={max_time}/" \
-                "scorer.method={scorermethod}/" \
-                "solver.method={solvermethod}/" \
-                "indeg={indeg}/" \
-                "cores={cores}/" \
-                "allocated={allocated}/" \
-                "scorefunction={scorefunction}/" \
-                "alpha={alpha}/" \
-                "verbose={verbose}/" \
-                "{replicate}.txt",
-
+        # seed is needed here. Seems like fixed graphs and data should be treatet separately.
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
+        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=" + blip_string +
+                        "seed={replicate}/" \
+                        "adjmat.csv",
+        time = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=" + blip_string +
+                    "seed={replicate}/" \
+                    "time.txt",
     output:
-        res = config["output_dir"]+"/res/blip/" \
-        "n={n}/"\
-        "p={p}/"\
-        "avpar={avparents}/" \
-        "score_type={score_type}/" \
-        "bdecatpar_chi={bdecatpar_chi}/" \
-        "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-        "time={max_time}/" \
-        "scorer.method={scorermethod}/" \
-        "solver.method={solvermethod}/" \
-        "indeg={indeg}/" \
-        "cores={cores}/" \
-        "allocated={allocated}/" \
-        "scorefunction={scorefunction}/" \
-        "alpha={alpha}/" \
-        "verbose={verbose}/" \
-        "legend={plot_legend}/" \
-        "{replicate}.csv",
-
+        res = config["output_dir"]+"/result/"\
+            "algorithm=" + blip_string +
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv",
     message:
-        "Summarising blip results from the following files: {input}."
+        "Summarising blip results based on the files: {input}."
     shell:
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -188,11 +237,14 @@ rule summarise_blip:
         "--filename {output.res} " \ 
         "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
         "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
-        " && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} " \
+        #" && python scripts/add_column.py --filename {output} --colname avparents       --colval {wildcards.avparents} " \
         " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
         " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
-        " && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} " \
-        " && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \        
+        #" && python scripts/add_column.py --filename {output} --colname dim             --colval {wildcards.p} " \
+        #" && python scripts/add_column.py --filename {output} --colname sample_size     --colval {wildcards.n} " \
+        " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
         " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
         " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
@@ -465,7 +517,6 @@ rule summarise_ordermcmc:
                 "bdecatpar_edgepf={bdecatpar_edgepf}/" \
                 "{startspace_params}/"\
                 "{replicate}.csv",
-#               "startspace={startspace}.csv",
         time=config["output_dir"]+"/time/orderMCMC/"\
                 "n={n}/" \
                 "p={p}/" \
@@ -844,19 +895,12 @@ rule fges: #use funtion as input to generate filename from the config file
                 "{replicate}.txt"
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
-#        "Rscript scripts/run_fges.R "\
-#        "--filename_data {input.data} "\
-#        "--output_dir {config[output_dir]} "\
-#        "--seed {wildcards.replicate} "\
-#        "--faithfulnessAssumed {wildcards.faithfulnessAssumed} "\
-#        "--filename {output.adjmat} "\
         "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
         "--algorithm fges "\
         "--data-type discrete "\
         "--dataset {input.data} "\
         "--delimiter comma "\
         "--score bdeu-score "\
-        #"--quote-char \" "\
         "--json-graph "\
         "--structurePrior 1 "\
         "--prefix {output.adjmat} " \
@@ -918,13 +962,71 @@ rule summarise_fges:
         " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
         " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
 
+# rule join_summaries_blip:
+#     input:
+#         [expand(config["output_dir"] + "/result/"\        
+#         "algorithm=/blip/"\
+#         "score_type=bde/" \
+#         "bdecatpar_chi={bdecatpar_chi}/" 
+#         "bdecatpar_edgepf={bdecatpar_edgepf}/"
+#         "time={time}/" 
+#         "scorer.method={scorermethod}/"
+#         "solver.method={solvermethod}/"
+#         "indeg={indeg}/"
+#         "cores={cores}/"
+#         "allocated={allocated}/"
+#         "scorefunction={scorefunction}/"
+#         "alpha={alpha}/"
+#         "verbose={verbose}/"
+#         #"seed={replicate}/"
+#         "adjmat=/"
+#         "{adjmat_string}/"
+#         #"seed={replicate}/"
+#         "bn=/"\
+#         "{param_string}/"
+#         #"seed={replicate}/"
+#         "data=/"
+#         "n={n}/"
+#         "seed={replicate}/"
+#         "legend={plot_legend}/" 
+#         "result.csv"
+#         ,
+#         replicate=replicates,
+#         time=config["algorithms"]["blip"]["time"],
+#         scorermethod=config["algorithms"]["blip"]["scorer.method"],
+#         solvermethod=config["algorithms"]["blip"]["solver.method"],                       
+#         indeg=config["algorithms"]["blip"]["indeg"],
+#         cores=config["algorithms"]["blip"]["cores"],
+#         allocated=config["algorithms"]["blip"]["allocated"],    
+#         scorefunction=config["algorithms"]["blip"]["scorefunction"],
+#         alpha=config["algorithms"]["blip"]["alpha"],
+#         verbose=config["algorithms"]["blip"]["verbose"],
+#         n=config["data"]["sample_sizes"][i],
+#         avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+#         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+#         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+#         plot_legend=config["algorithms"]["blip"]["plot_legend"],
+#         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["graph_sampling_algorithm"], i), #seed should be put in here
+#         param_string=gen_parameter_string_from_conf(config["plotting"]["parameter_sampling_algorithm"], i),
+#         p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i])         
+#         for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+#     output:
+#         config["output_dir"] + "/blip.csv"
+#     shell:
+#         "Rscript scripts/join_csv_files.R --algorithm blip --filename {output}"
+#         # add input parameters to csv here instead for better pattern mathing..? NO, since the values vary
+#         # How to extract n and p? Should we just group on graph when plotting? Then both method and parameters are there.
+#         # 
+#         # statistical model is model + parameters = graph + parameters, 
+#         # but the graph is a function of the parameters
+#         # Maybe seed can be outside when we are sampling..
+
 rule join_summaries_blip:
     input:
-        [expand(config["output_dir"] + "/res/blip/"
-        "n={n}/"
-        "p={p}/"
-        "avpar={avparents}/"
-        "score_type=bde/" 
+        "config.json",
+        [[[expand(config["output_dir"] + "/result/"\        
+        "algorithm=/blip/"\
+        "score_type=bde/" \
         "bdecatpar_chi={bdecatpar_chi}/" 
         "bdecatpar_edgepf={bdecatpar_edgepf}/"
         "time={time}/" 
@@ -935,25 +1037,43 @@ rule join_summaries_blip:
         "allocated={allocated}/"
         "scorefunction={scorefunction}/"
         "alpha={alpha}/"
-        "verbose={verbose}/"
+        "verbose={verbose}/" 
+        #{model_string}       
+        "adjmat=/"
+        "{adjmat_string}/"
+        "bn=/"\
+        "{param_string}/"
+        "data=/"
+        #"method=bindatasampling/"
+        "n={n}/"
+        "seed={replicate}/"
         "legend={plot_legend}/" 
-        "{replicate}.csv",
-                        replicate=replicates,
-                        time=config["algorithms"]["blip"]["time"],
-                        scorermethod=config["algorithms"]["blip"]["scorer.method"],
-                        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
-                        indeg=config["algorithms"]["blip"]["indeg"],
-                        cores=config["algorithms"]["blip"]["cores"],
-                        allocated=config["algorithms"]["blip"]["allocated"],
-                        scorefunction=config["algorithms"]["blip"]["scorefunction"],
-                        alpha=config["algorithms"]["blip"]["alpha"],
-                        verbose=config["algorithms"]["blip"]["verbose"],
-                        n=config["data"]["sample_sizes"][i],
-                        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["blip"]["plot_legend"],
-                        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+        "result.csv"
+        ,
+        replicate=seed,
+        time=config["algorithms"]["blip"]["time"],
+        scorermethod=config["algorithms"]["blip"]["scorer.method"],
+        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
+        indeg=config["algorithms"]["blip"]["indeg"],
+        cores=config["algorithms"]["blip"]["cores"],
+        allocated=config["algorithms"]["blip"]["allocated"],    
+        scorefunction=config["algorithms"]["blip"]["scorefunction"],
+        alpha=config["algorithms"]["blip"]["alpha"],
+        verbose=config["algorithms"]["blip"]["verbose"],
+        #n=[config["data"]["sample_sizes"][i] for i in range(len(config["data"]["sample_sizes"]))],
+        n=config["data"]["sample_sizes"][i], 
+        #avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
+        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+        plot_legend=config["algorithms"]["blip"]["plot_legend"],
+        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        #model_string=gen_model_strings_from_conf(config["plotting"]["models"], seed, i),
+        #p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
     output:
         config["output_dir"] + "/blip.csv"
     shell:
@@ -1227,8 +1347,8 @@ rule roc:
         active_algorithm_files,
         "config.json"
     output:
-        "ROC.eps", \
-        "ROC_data.csv" 
+        config["output_dir"] + "/ROC.eps", \
+        config["output_dir"] + "/ROC_data.csv" 
     shell:
         "Rscript scripts/combine_ROC_data.R && "\
         "Rscript scripts/plot_ROC.R"

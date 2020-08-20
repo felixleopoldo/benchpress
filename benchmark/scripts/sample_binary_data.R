@@ -9,7 +9,7 @@
 # connected to how they were generated.
 
 library(argparser)
-
+library(bnlearn)
 source("lib/binarydatagen/generatebinaryBNf.r")
 
 p <- arg_parser("A program for sampling dat from a binary Bayesian network and save to file.")
@@ -27,6 +27,7 @@ seed <- argv$seed
 
 bn <- readRDS(filename_bn)
 samples <- argv$samples
+
 
 n = numNodes(bn$DAG)
 set.seed(seed)

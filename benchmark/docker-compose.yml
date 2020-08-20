@@ -19,9 +19,9 @@ services:
         #- ./scripts/:/myappdir/scripts_on_local
         #- ./simresults:/myappdir/simresults_on_local
         - ./:/myappdir/benchmark_local
-        - /tmp/.X11-unix:/tmp/.X11-unix
-        - ~/.Xauthority:/root/.Xauthority  
+        #- /tmp/.X11-unix:/tmp/.X11-unix
+        #- ~/.Xauthority:/root/.Xauthority  
     ports:
         - "8080:8080"
-    environment:
-      DISPLAY: $DISPLAY
+    #environment:
+    #  DISPLAY: $DISPLAY

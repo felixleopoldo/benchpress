@@ -158,9 +158,11 @@ if("fges" %in% config$plotting$algorithms) {
 
 if("blip" %in% config$plotting$algorithms) {
     ROCdf_blip <- read.csv("simresults/blip.csv")
+    print(config)
+    print(ROCdf_blip)
     sum_roc_blip <- ROCdf_blip %>% 
-                filter(dim %in% dims) %>%
-                filter(sample_size %in% sample_sizes) %>%
+                #filter(dim %in% dims) %>%
+                #filter(sample_size %in% sample_sizes) %>%
                 filter(avparents %in% dag_avparents) %>%      
                 filter(replicate %in% replicates) %>%
                 filter(indeg %in% config$algorithms$blip$indeg) %>%
@@ -208,5 +210,5 @@ if("gobnilp" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_gobnilp)
 }
 
-write.csv(toplot, "ROC_data.csv")
+write.csv(toplot,  file.path(directory, "ROC_data.csv"))
 
