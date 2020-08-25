@@ -4,20 +4,21 @@
     "data": {
         "replicates": {
             "start": 1,
-            "end": 2
+            "end": 1
         },
         "sample_sizes": [
             [
-                150
+                1000
             ]
         ]
     },
+    "fixed_data":["mynicedata.csv"],
     "graphs": {
         "sampled": {
             "algorithms": {
                 "generateDAGMaxParents": {
                     "av_parents": [
-                        [2,3]
+                        [2, 3]
                     ],
                     "dims": [
                         [
@@ -54,11 +55,15 @@
     },
     "plotting": {
         "algorithms": [
-            "blip", "pcalg", "fges", "mmhc"
+            "mmhc"
         ],
         "models":[
             {"graph": "hepar2", 
-            "parameters": "generateBinaryBN"}
+             "parameters": "generateBinaryBN"},
+             {"graph": "hepar2", 
+              "parameters": "generateBinaryBN",
+              "datageneration": "standard_sampling"
+            }
         ],
         "measures": [
             {
@@ -66,17 +71,21 @@
             "curve_varaible": ["alpha"],
             "SHD": ["blip", "gobnilp"]
             }
-        ]
+        ],
+        "fixed_data":[{"graph":"bn.fit_adjmats/asia", 
+                      "data":"asiadata.csv",
+                      "range_header_data": "asiadata_rangeheader.csv"}]
     }
     ,
     "algorithms": {
         "blip": {
+            "string": "/blip/scorer.method=is/...",
             "plot_legend": "blip",
             "scorer.method": "is",
             "solver.method": "winasobs",
             "indeg": 80,
             "time": [
-                60
+                5,10,20
             ],
             "allocated": 80,
             "scorefunction": "bdeu",
@@ -173,8 +182,8 @@
             ]
         },
         "ordermcmc_sample": {
-            "plot_legend": "omcmc_itsample",
-            "startspace": "itsearch_sample",
+            "plot_legend": "omcmc_itsample", 
+            "startspace": "itsearch_map",
             "optional": {
                 "plus1": true
             },

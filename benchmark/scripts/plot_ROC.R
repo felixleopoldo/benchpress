@@ -29,7 +29,7 @@ geom_point(data = toplot,
 #           nudge_x=-0.02,
 #          nudge_y=0.02
 #          )
-facet_wrap(. ~ labels, scales="free_x", nrow = 2) +
+facet_wrap(. ~ adjmat, scales="free_x", nrow = 2) +
 # Titles etc
 xlab("FPRn") +
 ylab("TPR") +

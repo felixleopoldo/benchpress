@@ -18,6 +18,8 @@ df <- data.frame()
 #  tmpdf <- na_if(tmpdf, "None")
 #  df <- dplyr::bind_rows(df, tmpdf)
 #}
+print("HEJ")
+print(argv$files)
 
 for (filename in argv$files) {
   print(filename)

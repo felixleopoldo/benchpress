@@ -60,7 +60,7 @@ p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numer
 
 argv <- parse_args(p)
 
-#print(argv)
+print(argv)
 
 data <- NULL
 if (argv$range_header_data == 1) {
