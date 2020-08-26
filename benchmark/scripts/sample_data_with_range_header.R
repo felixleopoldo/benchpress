@@ -37,4 +37,5 @@ bindata_range_header <- data.frame(rbind(myrow, as.matrix(bindata)))
 
 colnames(bindata_range_header) <- seq(n)
 write.table(bindata_range_header, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE)
+#write.csv(bindata_range_header, file = filename, row.names = FALSE)
 

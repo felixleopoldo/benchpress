@@ -20,8 +20,8 @@ filename <- file.path(argv$filename)
 seed <- argv$seed
 
 set.seed(seed)
-data <- read.csv(argv$filename_data)
-
+data <- read.csv(argv$filename_data, sep=" ")
+data <- data[-1,] # Remove range header
 startspace <- read.csv(argv$filename_startspace)
 rownames(startspace) <- seq(dim(data)[2])
 colnames(startspace) <- seq(dim(data)[2])

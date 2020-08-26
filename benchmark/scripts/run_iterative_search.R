@@ -34,7 +34,8 @@ map <- argv$map
 
 
 set.seed(seed)
-data <- read.csv(filename_data)
+data <- read.csv(filename_data, sep=" ")
+data <- data[-1,] # Remove range header
 # Iterative search
 
 plus1it <- NULL

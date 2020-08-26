@@ -40,7 +40,8 @@ filename_data <- argv$filename_data
 seed <- argv$seed
 
 set.seed(seed)
-mydata <- read.csv(filename_data)
+mydata <- read.csv(filename_data, sep=" ")
+mydata <- mydata[-1,] # Remove range header
 
 # fGES
 tetradrunner <- tetradrunner(algoId = 'fges',

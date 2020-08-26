@@ -42,7 +42,8 @@ seed <- argv$seed
 set.seed(seed)
 
 #dag <- readRDS(filename_dag)
-data <- read.csv(filename_data, sep = " ")
+#data <- read.csv(filename_data, sep = " ")
+#data <- read.csv(filename_data, sep = ",")
 #res <- runGobnilp(filename_data, dag, palim = argv$palim)
 gob <- import("pygobnilp.gobnilp")
 m <- gob$Gobnilp()
@@ -51,7 +52,6 @@ m <- gob$Gobnilp()
 m$learn(filename_data,
           plot = FALSE,
           palim = argv$palim) # score=BGeu ? 
-
 
 ## convert to graphneldag
 graphstring = m$learned_bn$bnlearn_modelstring()

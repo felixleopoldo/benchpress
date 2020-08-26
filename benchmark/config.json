@@ -55,15 +55,11 @@
     },
     "plotting": {
         "algorithms": [
-            "mmhc"
+            "pcalg", "gobnilp", "blip", "fges"
         ],
         "models":[
-            {"graph": "hepar2", 
-             "parameters": "generateBinaryBN"},
-             {"graph": "hepar2", 
-              "parameters": "generateBinaryBN",
-              "datageneration": "standard_sampling"
-            }
+            {"graph": "generateDAGMaxParents", 
+             "parameters": "generateBinaryBN"}
         ],
         "measures": [
             {
@@ -72,9 +68,7 @@
             "SHD": ["blip", "gobnilp"]
             }
         ],
-        "fixed_data":[{"graph":"bn.fit_adjmats/asia", 
-                      "data":"asiadata.csv",
-                      "range_header_data": "asiadata_rangeheader.csv"}]
+        "fixed_data":[]
     }
     ,
     "algorithms": {

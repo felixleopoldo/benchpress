@@ -26,7 +26,8 @@ seed <- argv$seed
 alpha <- argv$alpha
 
 set.seed(seed)
-data <- read.csv(filename_data)
+data <- read.csv(filename_data, sep=" ")
+data <- data[-1,] # Remove range header
 n <- dim(data)[2]
 
 
