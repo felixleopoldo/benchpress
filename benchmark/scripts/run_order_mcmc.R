@@ -35,7 +35,7 @@ colnames(startspace) <- seq(dim(data)[2])
 
 # append filename of startspace to the titles
 
-myscore <- scoreparameters(dim(data)[2], "bde", data,
+myscore <- scoreparameters(dim(data)[2], "bdecat", data,
                             bdepar = list(chi = argv$bdecatpar_chi,
                             edgepf = argv$bdecatpar_edgepf))
 

@@ -199,11 +199,13 @@ rule sample_bindata:
         "--seed {wildcards.replicate}"
 
 rule copy_fixed_data:
+    input:
+        "{output_dir}/data/mydatasets/{filename}.csv" # this ensures that the file exists and is copied again if changed.
     output:
         data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/generation_method=fixed/name={filename}/n={n}/seed={replicate}.csv"
     shell:\
         "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/generation_method=fixed/name={wildcards.filename}/n={wildcards.n} && "\
-        "cp {wildcards.output_dir}/data/datasets/{wildcards.filename} {output.data}"
+        "cp {input} {output.data}"
 
 rule sample_bnfit_data:
     input:        
@@ -755,19 +757,19 @@ rule gobnilp:
 
 rule summarise_gobnilp:
     input:
-        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/range_header_data=/{data}/seed={replicate}.csv", 
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
         adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
         adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\
                         "bn=/{bn}/"\
-                        "range_header_data=/{data}/"\
+                        "data=/{data}/"\
                         "algorithm=" + gobnilp_string +\
                         "seed={replicate}/" \
                         "adjmat.csv",
         time = config["output_dir"]+"/time/"\
                     "adjmat=/{adjmat}/"\
                     "bn=/{bn}/"\
-                    "range_header_data=/{data}/" \ 
+                    "data=/{data}/" \ 
                     "algorithm=" + gobnilp_string +\
                     "seed={replicate}/" \
                     "time.txt"
@@ -776,7 +778,7 @@ rule summarise_gobnilp:
             "algorithm=" + gobnilp_string + \
             "adjmat=/{adjmat}/"\
             "bn=/{bn}/"\
-            "range_header_data=/{data}/"\
+            "data=/{data}/"\
             "seed={replicate}/" \
             "legend={plot_legend}/" \        
             "result.csv",
@@ -825,7 +827,7 @@ rule fges:
         "--algorithm fges "\
         "--data-type discrete "\
         "--dataset {input.data} "\
-        "--delimiter comma "\
+        "--delimiter space " # TODO: This might read the header as well
         "--score bdeu-score "\
         "--json-graph "\
         "--structurePrior 1 "\
@@ -866,7 +868,7 @@ rule summarise_fges:
             "legend={plot_legend}/" \        
             "result.csv",
     message:
-        "Summarising blip results based on the files: {input}."
+        "Summarising fges results based on the files: {input}."
     shell:
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -893,19 +895,21 @@ rule join_summaries_blip:
     input:
         conf="config.json",
         res=[[[expand(config["output_dir"] + "/result/"\        
-        "algorithm=/blip/"\
-        "score_type=bde/" \
-        "bdecatpar_chi={bdecatpar_chi}/" 
-        "bdecatpar_edgepf={bdecatpar_edgepf}/"
-        "time={time}/" 
-        "scorer.method={scorermethod}/"
-        "solver.method={solvermethod}/"
-        "indeg={indeg}/"
-        "cores={cores}/"
-        "allocated={allocated}/"
-        "scorefunction={scorefunction}/"
-        "alpha={alpha}/"
-        "verbose={verbose}/" 
+        #"algorithm=/blip/"\
+         "algorithm="
+        + blip_string +
+        #"score_type=bde/" \
+        #"bdecatpar_chi={bdecatpar_chi}/" 
+        #"bdecatpar_edgepf={bdecatpar_edgepf}/"
+        #"time={time}/" 
+        #"scorer.method={scorermethod}/"
+        #"solver.method={solvermethod}/"
+        #"indeg={indeg}/"
+        #"cores={cores}/"
+        #"allocated={allocated}/"
+        #"scorefunction={scorefunction}/"
+        #"alpha={alpha}/"
+        #"verbose={verbose}/" 
         "adjmat=/"
         "{adjmat_string}/"
         "bn=/"\
@@ -917,7 +921,7 @@ rule join_summaries_blip:
         "result.csv"
         ,
         replicate=seed,
-        time=config["algorithms"]["blip"]["time"],
+        max_time=config["algorithms"]["blip"]["time"],
         scorermethod=config["algorithms"]["blip"]["scorer.method"],
         solvermethod=config["algorithms"]["blip"]["solver.method"],                       
         indeg=config["algorithms"]["blip"]["indeg"],
@@ -935,14 +939,48 @@ rule join_summaries_blip:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + blip_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,
+                        #alpha=config["algorithms"]["pcalg"]["alpha"],
+                        max_time=config["algorithms"]["blip"]["time"],
+                        scorermethod=config["algorithms"]["blip"]["scorer.method"],
+                        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
+                        indeg=config["algorithms"]["blip"]["indeg"],
+                        cores=config["algorithms"]["blip"]["cores"],
+                        allocated=config["algorithms"]["blip"]["allocated"],    
+                        scorefunction=config["algorithms"]["blip"]["scorefunction"],
+                        alpha=config["algorithms"]["blip"]["alpha"],
+                        verbose=config["algorithms"]["blip"]["verbose"],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["blip"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
     output:
         config["output_dir"] + "/blip.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm blip --filename {output} --files {input.res} "
+        "Rscript scripts/join_csv_files.R --algorithm blip --filename {output} --files {input.res} {input.fixed_res} "
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
         
-
 rule join_summaries_itsearch_map:
     input:
         conf="config.json",
@@ -971,11 +1009,40 @@ rule join_summaries_itsearch_map:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + itsearch_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,                        
+                        plus1it=config["algorithms"]["itsearch_map"]["optional"]["plus1it"],
+                        posterior=config["algorithms"]["itsearch_map"]["optional"]["posterior"],
+                        MAP=config["algorithms"]["itsearch_map"]["optional"]["MAP"],
+                        n=None,
+                        score_type="bdecat",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["itsearch_map"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]    
+
     output:
         config["output_dir"] + "/itsearch_map.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm itsearch_map --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm itsearch_map --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule join_summaries_itsearch_sample:
@@ -1008,11 +1075,39 @@ rule join_summaries_itsearch_sample:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + itsearch_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,                        
+                        plus1it=config["algorithms"]["itsearch_sample"]["optional"]["plus1it"],
+                        posterior=config["algorithms"]["itsearch_sample"]["optional"]["posterior"],
+                        MAP=config["algorithms"]["itsearch_sample"]["optional"]["MAP"],
+                        n=None,
+                        score_type="bdecat",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["itsearch_sample"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]    
     output:
         config["output_dir"] + "/itsearch_sample.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm itsearch_sample --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm itsearch_sample --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 # create to string  method for algorithms in json files
@@ -1043,62 +1138,100 @@ rule join_summaries_order_mcmc_sample:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + order_mcmc_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,                        
+                        threshold=config["algorithms"]["ordermcmc_sample"]["threshold"],
+                        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_sample"]["startspace"]],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["ordermcmc_sample"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
     output:
         config["output_dir"] + "/ordermcmc_sample.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm ordermcmc_sample --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm ordermcmc_sample --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule join_summaries_order_mcmc_map:
-    input:
-        [expand(
-                config["output_dir"]+"/res/orderMCMC/"\
-                "n={n}/" \
-                "p={p}/" \
-                "avpar={avparents}/"\
-                "score_type=bde/"\
-                "bdecatpar_chi={bdecatpar_chi}/" \
-                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                "threshold={threshold}/" \  
-                "legend={plot_legend}/" \
-                "{replicate}/"\
-                "startspace=/adjmat/itsearch/"\
-                "n={n}/"\
-                "p={p}/"\
-                "avpar={avparents}/"\                                    
-                "score_type=bde/"\
-                "bdecatpar_chi={itsearch_bdecatpar_chi}/" \
-                "bdecatpar_edgepf={itsearch_bdecatpar_edgepf}/" \
-                "map={itsearch_map}/"\
-                "plus1it={itsearch_plus1it}/"\
-                "posterior={itsearch_posterior}/"\
-                #"score_type=bde/"\
-                #"bdecatpar_chi={bdecatpar_chi}/" 
-                #"bdecatpar_edgepf={bdecatpar_edgepf}/" 
-                "{replicate}.csv",
-        replicate=replicates,   
+    input: # should save the database and give id. then startspace would have been an id instead.
+           # How would we know that id...?
+        conf="config.json",
+        res=[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + order_mcmc_string +
+                        "adjmat=/{adjmat_string}/"
+                        "bn=/{param_string}/"
+                        "data=/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+        replicate=seed,   
         n=config["data"]["sample_sizes"][i],
-        avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
-        p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i],
         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+        score_type="bde",
         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-        #map=config["ordermcmc_sample"]["optional"]["MAP"],
-        itsearch_map=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["MAP"],
-        itsearch_bdecatpar_chi=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["chi"],
-        itsearch_bdecatpar_edgepf=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["score_params"]["bdecatpar"]["edgepf"],
-        itsearch_plus1it=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["plus1it"],
-        itsearch_posterior=config["algorithms"][config["algorithms"]["ordermcmc_map"]["startspace"]]["optional"]["posterior"],
         threshold=config["algorithms"]["ordermcmc_map"]["threshold"],
-        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"],
-        ) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
+        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_map"]["startspace"]],
+        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"], 
+        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + order_mcmc_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,                        
+                        threshold=config["algorithms"]["ordermcmc_map"]["threshold"],
+                        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_map"]["startspace"]],
+                        n=None,
+                        score_type="bdecat",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
     output:
-        config["output_dir"] + "/order_mcmc_map.csv"
+        config["output_dir"] + "/ordermcmc_map.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm orderMCMC --filename {output}"
-
-
-
+        "Rscript scripts/join_csv_files.R --algorithm ordermcmc_map --filename {output} --files {input.res} {input.fixed_res}"
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule join_summaries_pcalg:
     input:
@@ -1127,11 +1260,37 @@ rule join_summaries_pcalg:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + pcalg_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,
+                        alpha=config["algorithms"]["pcalg"]["alpha"],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm pcalg --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm pcalg --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_mmhc(wildcards):
@@ -1190,8 +1349,8 @@ rule join_summaries_mmhc:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))] + 
-        [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))], 
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + mmhc_string +
                         "adjmat=/"
@@ -1205,61 +1364,22 @@ rule join_summaries_mmhc:
                         "seed={replicate}/"
                         "legend={plot_legend}/" 
                         "result.csv",
-                        replicate=1,#seed,
+                        replicate=1,
                         alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
-                        n=None, #config["data"]["sample_sizes"][i],
+                        n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                         plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
-                        adjmat_string=config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, #gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
-        #for seed in replicates] 
-        #for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["fixed_data"]))]
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output} --files {input.res}"
-        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-
-rule join_summaries_mmhc_fixed_data:
-    input:
-        conf="config.json",
-        res=[expand(config["output_dir"] + "/result/"\        
-                        "algorithm="
-                        + mmhc_string +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,#seed,
-                        alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
-                        n=None, #config["data"]["sample_sizes"][i],
-                        score_type="bde",
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
-                        adjmat_string=config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, #gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        #for seed in replicates] 
-        #for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["fixed_data"]))]
-    output:
-        config["output_dir"] + "/mmhc_fixed.csv"
-    shell:
-        "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm mmhc --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule join_summaries_gobnilp:
@@ -1271,7 +1391,7 @@ rule join_summaries_gobnilp:
                         "{adjmat_string}/"
                         "bn=/"\
                         "{param_string}/"
-                        "range_header_data=/"
+                        "data=/"
                         "n={n}/"
                         "seed={replicate}/"
                         "legend={plot_legend}/" 
@@ -1288,38 +1408,43 @@ rule join_summaries_gobnilp:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + gobnilp_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,
+                        palim=config["algorithms"]["gobnilp"]["palim"],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["gobnilp"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
+
     output:
         config["output_dir"] + "/gobnilp.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm gobnilp --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm gobnilp --filename {output} --files {input.res} {input.fixed_res} "
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-    # input:
-    #     [expand(config["output_dir"] + "/res/gobnilp/"
-    #                 "n={n}/"
-    #                 "p={p}/"
-    #                 "avpar={avparents}/"
-    #                 "score_type=bde/"\
-    #                 "bdecatpar_chi={bdecatpar_chi}/" \
-    #                 "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-    #                 "palim={palim}/" \
-    #                 "legend={plot_legend}/" \
-    #                 "{replicate}.csv",
-    #                      replicate=replicates,
-    #                      n=config["data"]["sample_sizes"][i],
-    #                      avparents=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["av_parents"][i],
-    #                      palim=config["algorithms"]["gobnilp"]["palim"],
-    #                      bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-    #                      bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],                         
-    #                      plot_legend=config["algorithms"]["gobnilp"]["plot_legend"],
-    #                      p=config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"][i]) for i in range(len(config["graphs"]["sampled"]["algorithms"]["generateDAGMaxParents"]["dims"]))]
-    # output:
-    #     config["output_dir"] + "/gobnilp.csv"
-    # shell:
-    #     "Rscript scripts/join_csv_files.R --algorithm gobnilp --filename {output}"
 
 rule join_summaries_fges:
     input:
+        conf="config.json",
         res=[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + fges_string +
@@ -1344,18 +1469,45 @@ rule join_summaries_fges:
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
+        for j in range(len(config["plotting"]["models"]))],
+        fixed_res = [expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + fges_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,
+                        faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=config["algorithms"]["fges"]["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
+
     output:
         config["output_dir"] + "/fges.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm fges --filename {output} --files {input.res}"
+        "Rscript scripts/join_csv_files.R --algorithm fges --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule roc:
     input:
-        active_algorithm_files,
+        "config.json",
+        active_algorithm_files
         #config["output_dir"] + "/mmhc.csv",
-        "config.json"
     output:
         config["output_dir"] + "/ROC.eps", \
         config["output_dir"] + "/ROC_data.csv" 

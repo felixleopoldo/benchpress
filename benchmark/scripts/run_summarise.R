@@ -60,11 +60,10 @@ p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numer
 
 argv <- parse_args(p)
 
-print(argv)
-
 data <- NULL
 if (argv$range_header_data == 1) {
   data <- read.csv(argv$filename_data, sep = " ") # this is gobnilp data
+  data <- data[-1,]
 } else {
   data <- read.csv(argv$filename_data) # this is different with gobnilp data
 }
@@ -82,14 +81,13 @@ if (argv$adjmat_header == 1) {
 }
 
 # print(dim(data))
-# print("True adjmat")
-# print(true_adjmat)
-# print("Estimated adjmat")
-# print(estimated_adjmat)
+#print("True adjmat")
+#print(true_adjmat)
+#print("Estimated adjmat")
+#print(estimated_adjmat)
 
 rownames(true_adjmat) <- seq(n)
 colnames(true_adjmat) <- seq(n)
-
 rownames(estimated_adjmat) <- seq(n)
 colnames(estimated_adjmat) <- seq(n)
 
@@ -130,9 +128,5 @@ df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
 compres <- compareDAGs(estimated_cpdag, true_cpdag)
 names(compres) <- c("SHD", "TP", "FP")
 df$TPR_cpdag <- compres["TP"] / true_nedges # should be for all times
-
-
-
-
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

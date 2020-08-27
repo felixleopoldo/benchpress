@@ -31,6 +31,7 @@ mmoutput <- mmhc(datanew, restrict.args = list(alpha = argv$alpha))
 gnel_dag <- as.graphNEL(mmoutput)
 
 adjmat <- as(gnel_dag, "matrix")
+colnames(adjmat) <- names(data)
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 

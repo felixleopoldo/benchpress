@@ -53,5 +53,5 @@ blipfit <- blip.learn(datadf,
 
 blipadj <- bnfit2matrix(blipfit)
 blipadj <- rearrangeMatrix(blipadj, varnames)
-
+colnames(blipadj) <- names(data)
 write.csv(blipadj, file = filename, row.names = FALSE, quote = FALSE)

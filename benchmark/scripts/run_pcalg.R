@@ -51,6 +51,8 @@ pc.fit <- pc(suffStat = list(dm = data,
 graph <- pc.fit@graph
 
 adjmat <- as(graph, "matrix")
+colnames(adjmat) <- names(data)
+
 #blipadj <- bnfit2matrix(blipfit)
 #blipadj <- rearrangeMatrix(blipadj, varnames)
 

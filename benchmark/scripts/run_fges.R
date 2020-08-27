@@ -54,4 +54,6 @@ tetradrunner <- tetradrunner(algoId = 'fges',
 edges <- tetradrunner$edges
 
 adjmat <- TetradGetAdjmat(tetradrunner)
+
+
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)

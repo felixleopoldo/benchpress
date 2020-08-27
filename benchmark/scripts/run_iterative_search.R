@@ -61,7 +61,8 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
 # output a csv file with "additional statistics" eg
 
 endspace <- itsearch_res$space$adjacency
-rownames(endspace) <- seq(dim(data)[2])
-colnames(endspace) <- seq(dim(data)[2])
+#rownames(endspace) <- seq(dim(data)[2])
+#colnames(endspace) <- seq(dim(data)[2])
+colnames(endspace) <- names(data)
 
 write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
