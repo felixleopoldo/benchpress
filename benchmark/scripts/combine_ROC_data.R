@@ -15,11 +15,22 @@ replicates <- config$data$replicates$start:config$data$replicates$end
 #dag_avparents <-config$graphs$sampled$algorithms$generateDAGMaxParents$av_parents[[1]]
 
 toplot <- data.frame()
+active_algorithms <- c()
+print(names(config$algorithms))
+for(alg_name in names(config$algorithms)) {
+    for (alg_conf_name in names(config$algorithms[[alg_name]])) {
+       if(alg_conf_name %in% config$plotting$algorithms) {
+           active_algorithms <- c(active_algorithms, alg_name)
 
+        }
+    }
+}
+active_algorithms <- unique(active_algorithms)
+print(active_algorithms)
 #print(config$plotting$algorithms)
 
-if("ordermcmc_sample" %in% config$plotting$algorithms) {
-    ROCdf_order_mcmc <- read.csv("simresults/ordermcmc_sample.csv")
+if("ordermcmc" %in% active_algorithms) {
+    ROCdf_order_mcmc <- read.csv("simresults/ordermcmc.csv")
     sumROC_order_mcmc = ROCdf_order_mcmc %>%
                         #filter(dim %in% dims) %>%
                         #filter(sample_size %in% sample_sizes) %>%
@@ -47,8 +58,37 @@ if("ordermcmc_sample" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sumROC_order_mcmc)
 }
 
-if("itsearch_map" %in% config$plotting$algorithms) {
-    ROCdf_itsearch <-read.csv("simresults/itsearch_map.csv")
+# if("ordermcmc_map" %in% config$plotting$algorithms) {
+#     ROCdf_order_mcmc <- read.csv("simresults/ordermcmc_map.csv")
+#     sumROC_order_mcmc = ROCdf_order_mcmc %>%
+#                         #filter(dim %in% dims) %>%
+#                         #filter(sample_size %in% sample_sizes) %>%
+#                         #filter(avparents %in% dag_avparents) %>%
+#                         filter(replicate %in% replicates) %>%
+#                         # filter(is.na(itsearch_plus1it) | (itsearch_plus1it %in% config$itsearch_sample$optional$plus1it)) %>%
+#                         # group_by(legend, !!as.symbol("threshold"), sample_size, dim, avparents) %>% 
+#                         group_by(legend, adjmat, bn, data, !!as.symbol("threshold")) %>% 
+#                         summarise(SHD_mean = mean(SHD),
+#                                   TPR_mean = mean(TPR), 
+#                                   TPR_median = median(TPR), 
+#                                   FPRn_median = median(FPRn), 
+#                                   TPR_q1 = quantile(TPR, probs = c(0.05)), 
+#                                   TPR_q3 = quantile(TPR, probs = c(0.95)),
+#                                   time_mean = mean(time),
+#                                   logscore_mean = mean(logscore),
+#                                   N = n()) #%>%
+#                         #filter(N %in% length(replicates))
+
+#     #labels <- apply(sumROC_order_mcmc, 1, function(row) {
+#     #    paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+#     #})
+#     #sumROC_order_mcmc["labels"] <- labels
+#     sumROC_order_mcmc["labels"] <- NA
+#     toplot <- dplyr::bind_rows(toplot, sumROC_order_mcmc)
+# }
+
+if("itsearch" %in% active_algorithms) {
+    ROCdf_itsearch <-read.csv("simresults/itsearch.csv")
     sum_roc_itsearch <- ROCdf_itsearch %>% 
                     #filter(!!as.symbol("dim") %in% dims) %>%
                     #filter(sample_size %in% sample_sizes) %>%
@@ -76,34 +116,34 @@ if("itsearch_map" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_itsearch)
 }
 
-if("itsearch_sample" %in% config$plotting$algorithms) {
-    ROCdf_itsearch <-read.csv("simresults/itsearch_sample.csv")
-    sum_roc_itsearch <- ROCdf_itsearch %>% 
-                    #filter(!!as.symbol("dim") %in% dims) %>%
-                    #filter(sample_size %in% sample_sizes) %>%
-                    #filter(avparents %in% dag_avparents) %>%
-                    #filter(is.na(plus1it) | (plus1it %in% config$algorithms$itsearch_sample$optional$plus1it)) %>%
-                     group_by(legend, adjmat, bn, data) %>% 
-                     summarise( SHD_mean = mean(SHD),
-                               TPR_mean = mean(TPR), 
-                              TPR_median = median(TPR), 
-                              FPRn_median = median(FPRn), 
-                              TPR_q1 = quantile(TPR, probs = c(0.05)), 
-                              TPR_q3 = quantile(TPR, probs = c(0.95)),
-                              logscore_mean =  mean(logscore),
-                               time_mean = mean(time),
-                             #  it_mean = mean(it),
-                              N = n()) #%>%
-                        #filter(N %in% length(replicates))0
+# if("itsearch_sample" %in% config$plotting$algorithms) {
+#     ROCdf_itsearch <-read.csv("simresults/itsearch.csv")
+#     sum_roc_itsearch <- ROCdf_itsearch %>% 
+#                     #filter(!!as.symbol("dim") %in% dims) %>%
+#                     #filter(sample_size %in% sample_sizes) %>%
+#                     #filter(avparents %in% dag_avparents) %>%
+#                     #filter(is.na(plus1it) | (plus1it %in% config$algorithms$itsearch_sample$optional$plus1it)) %>%
+#                      group_by(legend, adjmat, bn, data) %>% 
+#                      summarise( SHD_mean = mean(SHD),
+#                                TPR_mean = mean(TPR), 
+#                               TPR_median = median(TPR), 
+#                               FPRn_median = median(FPRn), 
+#                               TPR_q1 = quantile(TPR, probs = c(0.05)), 
+#                               TPR_q3 = quantile(TPR, probs = c(0.95)),
+#                               logscore_mean =  mean(logscore),
+#                                time_mean = mean(time),
+#                              #  it_mean = mean(it),
+#                               N = n()) #%>%
+#                         #filter(N %in% length(replicates))0
 
-    #labels <- apply(sum_roc_itsearch, 1, function(row) {
-    #    paste("p=",row["dim"],", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
-    #})
+#     #labels <- apply(sum_roc_itsearch, 1, function(row) {
+#     #    paste("p=",row["dim"],", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+#     #})
 
-    #sum_roc_itsearch["labels"] <- labels 
-    sum_roc_itsearch["labels"] <- NA
-    toplot <- dplyr::bind_rows(toplot, sum_roc_itsearch)
-}
+#     #sum_roc_itsearch["labels"] <- labels 
+#     sum_roc_itsearch["labels"] <- NA
+#     toplot <- dplyr::bind_rows(toplot, sum_roc_itsearch)
+# }
 
 if("pcalg" %in% config$plotting$algorithms) {
     roc_pcalg <-read.csv("simresults/pcalg.csv")

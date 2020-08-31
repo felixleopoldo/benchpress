@@ -105,7 +105,6 @@ true_nedges <- sum(getPattern(true_adjmat))
 
 #compres <- compareDAGs(estimated_cpdag, true_cpdag)
 
-
 # Scoring DAG
 myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
                               bdecatpar = list(chi = argv$bdecatpar_chi,
@@ -124,6 +123,7 @@ df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                             logscore = logscore,
                             SHD = compres["SHD"])
 
+# Divide by 2
 # Statistics on getPattern graph
 compres <- compareDAGs(estimated_cpdag, true_cpdag)
 names(compres) <- c("SHD", "TP", "FP")

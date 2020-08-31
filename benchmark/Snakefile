@@ -1,5 +1,6 @@
 import json
-
+# tabu
+# use the keys in eg fges as the keys for eg startspace etc
 blip_string =   "/blip/" \
                 "score_type={score_type}/" \
                 "bdecatpar_chi={bdecatpar_chi}/" \
@@ -33,35 +34,6 @@ fges_string = "/fges/"\
                "bdecatpar_chi={bdecatpar_chi}/" \
                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
                "faithfulnessAssumed={faithfulnessAssumed}/"
-with open('config.json') as json_file:
-    conf = json.load(json_file)
-
-json_string = {}
-itsearch_sample_dict = conf["algorithms"]["itsearch_sample"]
-itsearch_map_dict = conf["algorithms"]["itsearch_map"]
-
-json_string["itsearch_sample"]= "/itsearch/" \
-                                "score_type=bde/"\
-                                "bdecatpar_chi="+str(itsearch_sample_dict["score_params"]["bdecatpar"]["chi"]) +"/" \
-                                "bdecatpar_edgepf="+str(itsearch_sample_dict["score_params"]["bdecatpar"]["edgepf"]) +"/" \
-                                "map="+str(itsearch_sample_dict["optional"]["MAP"]) +"/"\
-                                "plus1it="+str(itsearch_sample_dict["optional"]["plus1it"]) +"/"\
-                                "posterior="+str(itsearch_sample_dict["optional"]["posterior"]) 
-json_string["itsearch_map"]= "/itsearch/" \
-                                "score_type=bde/"\
-                                "bdecatpar_chi="+str(itsearch_map_dict["score_params"]["bdecatpar"]["chi"]) +"/" \
-                                "bdecatpar_edgepf="+str(itsearch_map_dict["score_params"]["bdecatpar"]["edgepf"]) +"/" \
-                                "map="+str(itsearch_map_dict["optional"]["MAP"]) +"/"\
-                                "plus1it="+str(itsearch_map_dict["optional"]["plus1it"]) +"/"\
-                                "posterior="+str(itsearch_map_dict["optional"]["posterior"]) 
-
-json_string["fges"] =   "/fges/" \
-                        "score_type=bde/"\
-                        "bdecatpar_chi="+str(conf["evaluation"]["score"]["bdecatpar"]["chi"]) +"/" \
-                        "bdecatpar_edgepf="+str(conf["evaluation"]["score"]["bdecatpar"]["edgepf"]) +"/" \
-                        "faithfulnessAssumed="+ str(conf["algorithms"]["fges"]["faithfulnessAssumed"])
-
-
 
 itsearch_string =   "/itsearch/"\
                     "score_type={score_type}/"\
@@ -82,6 +54,50 @@ evaluation_string= "/evaluation/" \
                    "bdecatpar_chi={bdecatpar_chi}/" \
                    "bdecatpar_edgepf={bdecatpar_edgepf}/" 
 
+with open('config.json') as json_file:
+    conf = json.load(json_file)
+
+json_string = {}
+
+itsearch_dict = conf["algorithms"]["itsearch"]
+json_string = {key:"/itsearch/" 
+                    "score_type=bde/"\
+                    "bdecatpar_chi="+str(val["score_params"]["bdecatpar"]["chi"]) +"/" \
+                    "bdecatpar_edgepf="+str(val["score_params"]["bdecatpar"]["edgepf"]) +"/" \
+                    "map="+str(val["optional"]["MAP"]) +"/"\
+                    "plus1it="+str(val["optional"]["plus1it"]) +"/"\
+                    "posterior="+str(val["optional"]["posterior"]) 
+                    for key,val in itsearch_dict.items()}
+
+
+json_string.update({key:"/fges/" \
+                        "score_type=bdecat/"\
+                        "bdecatpar_chi="+str(conf["evaluation"]["score"]["bdecatpar"]["chi"]) +"/" \
+                        "bdecatpar_edgepf="+str(conf["evaluation"]["score"]["bdecatpar"]["edgepf"]) +"/" \
+                        "faithfulnessAssumed="+ str(val["faithfulnessAssumed"]) for key,val in conf["algorithms"]["fges"].items()})
+
+json_string.update({key: "/pcalg/"\
+                    "score_type={score_type}/" \
+                    "bdecatpar_chi={bdecatpar_chi}/" \
+                    "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+                    "alpha={alpha}".format(score_type="bdecat",
+                                           bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                                           bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                                           alpha=val["alpha"])  
+                    for key, val in conf["algorithms"]["pcalg"].items() } )
+
+json_string.update({key:  "/gobnilp/"\
+                            "score_type={score_type}/" \
+                            "bdecatpar_chi={bdecatpar_chi}/" \
+                            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+                            "palim={palim}".format(score_type="bdecat",
+                                                    bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                                        bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                                        palim=val["palim"])
+                for key, val in conf["algorithms"]["gobnilp"].items()})
+
+
+print(json_string)
 def gen_model_strings_from_conf(models, seed, setup):
     """
     Generate the graphs and paremeters simulatnepusly since we do not want 
@@ -116,6 +132,7 @@ def gen_adjmat_string_from_conf(adjmat_gen_method, seed, setup):
 def gen_parameter_string_from_conf(gen_method, seed):
     with open('config.json') as json_file:
         conf = json.load(json_file)
+
     if gen_method == "generateBinaryBN":
         curconf = conf["model_parameters"]["sampled"]["algorithms"][gen_method]
         return expand(gen_method + \
@@ -132,7 +149,12 @@ def gen_parameter_string_from_conf(gen_method, seed):
 def active_algorithm_files(wildcards):
     with open('config.json') as json_file:
         conf = json.load(json_file)
-    return [conf["output_dir"] + "/" + alg + ".csv" for alg in conf["plotting"]["algorithms"]]
+    algs = []
+    for alg, val in conf["algorithms"].items():     
+        for alg_conf in conf["plotting"]["algorithms"]:
+            if alg_conf in val:
+                    algs.append(conf["output_dir"] + "/" + alg + ".csv")
+    return algs
 
 configfile: 
     "config.json"
@@ -894,22 +916,9 @@ rule summarise_fges:
 rule join_summaries_blip:
     input:
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
-        #"algorithm=/blip/"\
+        res=[[[[expand(config["output_dir"] + "/result/"\
          "algorithm="
         + blip_string +
-        #"score_type=bde/" \
-        #"bdecatpar_chi={bdecatpar_chi}/" 
-        #"bdecatpar_edgepf={bdecatpar_edgepf}/"
-        #"time={time}/" 
-        #"scorer.method={scorermethod}/"
-        #"solver.method={solvermethod}/"
-        #"indeg={indeg}/"
-        #"cores={cores}/"
-        #"allocated={allocated}/"
-        #"scorefunction={scorefunction}/"
-        #"alpha={alpha}/"
-        #"verbose={verbose}/" 
         "adjmat=/"
         "{adjmat_string}/"
         "bn=/"\
@@ -921,26 +930,28 @@ rule join_summaries_blip:
         "result.csv"
         ,
         replicate=seed,
-        max_time=config["algorithms"]["blip"]["time"],
-        scorermethod=config["algorithms"]["blip"]["scorer.method"],
-        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
-        indeg=config["algorithms"]["blip"]["indeg"],
-        cores=config["algorithms"]["blip"]["cores"],
-        allocated=config["algorithms"]["blip"]["allocated"],    
-        scorefunction=config["algorithms"]["blip"]["scorefunction"],
-        alpha=config["algorithms"]["blip"]["alpha"],
-        verbose=config["algorithms"]["blip"]["verbose"],        
+        max_time=alg_conf["time"],
+        scorermethod=alg_conf["scorer.method"],
+        solvermethod=alg_conf["solver.method"],                       
+        indeg=alg_conf["indeg"],
+        cores=alg_conf["cores"],
+        allocated=alg_conf["allocated"],    
+        scorefunction=alg_conf["scorefunction"],
+        alpha=alg_conf["alpha"],
+        verbose=alg_conf["verbose"],        
         n=config["data"]["sample_sizes"][i], 
+        score_type="bdecat",
         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-        plot_legend=config["algorithms"]["blip"]["plot_legend"],
+        plot_legend=alg_conf["plot_legend"],
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for alg_conf_key, alg_conf in config["algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + blip_string +
                         "adjmat=/"
@@ -956,61 +967,65 @@ rule join_summaries_blip:
                         "result.csv",
                         replicate=1,
                         #alpha=config["algorithms"]["pcalg"]["alpha"],
-                        max_time=config["algorithms"]["blip"]["time"],
-                        scorermethod=config["algorithms"]["blip"]["scorer.method"],
-                        solvermethod=config["algorithms"]["blip"]["solver.method"],                       
-                        indeg=config["algorithms"]["blip"]["indeg"],
-                        cores=config["algorithms"]["blip"]["cores"],
-                        allocated=config["algorithms"]["blip"]["allocated"],    
-                        scorefunction=config["algorithms"]["blip"]["scorefunction"],
-                        alpha=config["algorithms"]["blip"]["alpha"],
-                        verbose=config["algorithms"]["blip"]["verbose"],
+                        max_time=alg_conf["time"],
+                        scorermethod=alg_conf["scorer.method"],
+                        solvermethod=alg_conf["solver.method"],                       
+                        indeg=alg_conf["indeg"],
+                        cores=alg_conf["cores"],
+                        allocated=alg_conf["allocated"],    
+                        scorefunction=alg_conf["scorefunction"],
+                        alpha=alg_conf["alpha"],
+                        verbose=alg_conf["verbose"],
                         n=None,
-                        score_type="bde",
+                        score_type="bdecat",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["blip"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        for alg_conf_key, alg_conf in config["algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/blip.csv"
     shell:
         "Rscript scripts/join_csv_files.R --algorithm blip --filename {output} --files {input.res} {input.fixed_res} "
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
         
-rule join_summaries_itsearch_map:
+rule join_summaries_itsearch:
     input:
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + itsearch_string +
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
                         "data=/"
                         "n={n}/"
                         "seed={replicate}/"
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        #alpha=config["algorithms"]["itsearch_map"]["alpha"],
-                        plus1it=config["algorithms"]["itsearch_map"]["optional"]["plus1it"],
-                        posterior=config["algorithms"]["itsearch_map"]["optional"]["posterior"],
-                        MAP=config["algorithms"]["itsearch_map"]["optional"]["MAP"],
+                        plus1it=alg_conf["optional"]["plus1it"],
+                        posterior=alg_conf["optional"]["posterior"],
+                        MAP=alg_conf["optional"]["MAP"],                        
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["itsearch_map"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["itsearch_sample"][k]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for alg_conf_key, alg_conf in config["algorithms"]["itsearch"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + itsearch_string +
                         "adjmat=/"
@@ -1025,97 +1040,34 @@ rule join_summaries_itsearch_map:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,                        
-                        plus1it=config["algorithms"]["itsearch_map"]["optional"]["plus1it"],
-                        posterior=config["algorithms"]["itsearch_map"]["optional"]["posterior"],
-                        MAP=config["algorithms"]["itsearch_map"]["optional"]["MAP"],
+                        plus1it=alg_conf["optional"]["plus1it"],
+                        posterior=alg_conf["optional"]["posterior"],
+                        MAP=alg_conf["optional"]["MAP"],
                         n=None,
                         score_type="bdecat",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["itsearch_map"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["itsearch_sample"][k]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
-        for j in range(len(config["plotting"]["fixed_data"]))]    
-
+        for j in range(len(config["plotting"]["fixed_data"]))]
+        #for k in range(len(config["algorithms"]["itsearch_sample"]))],
+        for key, alg_conf in config["algorithms"]["itsearch"].items() if key in config["plotting"]["algorithms"]],
     output:
-        config["output_dir"] + "/itsearch_map.csv"
+        config["output_dir"] + "/itsearch.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm itsearch_map --filename {output} --files {input.res} {input.fixed_res}"
-        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-
-rule join_summaries_itsearch_sample:
-    input:
-        conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm="
-                        + itsearch_string +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        #alpha=config["algorithms"]["itsearch_map"]["alpha"],
-                        plus1it=config["algorithms"]["itsearch_sample"]["optional"]["plus1it"],
-                        posterior=config["algorithms"]["itsearch_sample"]["optional"]["posterior"],
-                        MAP=config["algorithms"]["itsearch_sample"]["optional"]["MAP"],
-                        n=config["data"]["sample_sizes"][i],
-                        score_type="bde",
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["itsearch_sample"]["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
-                        "algorithm="
-                        + itsearch_string +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,                        
-                        plus1it=config["algorithms"]["itsearch_sample"]["optional"]["plus1it"],
-                        posterior=config["algorithms"]["itsearch_sample"]["optional"]["posterior"],
-                        MAP=config["algorithms"]["itsearch_sample"]["optional"]["MAP"],
-                        n=None,
-                        score_type="bdecat",
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["itsearch_sample"]["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]    
-    output:
-        config["output_dir"] + "/itsearch_sample.csv"
-    shell:
-        "Rscript scripts/join_csv_files.R --algorithm itsearch_sample --filename {output} --files {input.res} {input.fixed_res}"
+        "Rscript scripts/join_csv_files.R --algorithm itsearch --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 # create to string  method for algorithms in json files
-rule join_summaries_order_mcmc_sample:
+rule join_summaries_order_mcmc:
     input: # should save the database and give id. then startspace would have been an id instead.
            # How would we know that id...?
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + order_mcmc_string +
                         "adjmat=/{adjmat_string}/"
@@ -1130,16 +1082,17 @@ rule join_summaries_order_mcmc_sample:
         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
         score_type="bde",
         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-        threshold=config["algorithms"]["ordermcmc_sample"]["threshold"],
-        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_sample"]["startspace"]],
-        plot_legend=config["algorithms"]["ordermcmc_sample"]["plot_legend"], 
+        threshold=alg_conf["threshold"],
+        startspace_algorithm=json_string[alg_conf["startspace"]],
+        plot_legend=alg_conf["plot_legend"], 
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for key, alg_conf in config["algorithms"]["ordermcmc"].items() if key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + order_mcmc_string +
                         "adjmat=/"
@@ -1154,89 +1107,30 @@ rule join_summaries_order_mcmc_sample:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,                        
-                        threshold=config["algorithms"]["ordermcmc_sample"]["threshold"],
-                        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_sample"]["startspace"]],
-                        n=None,
-                        score_type="bde",
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["ordermcmc_sample"]["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-    output:
-        config["output_dir"] + "/ordermcmc_sample.csv"
-    shell:
-        "Rscript scripts/join_csv_files.R --algorithm ordermcmc_sample --filename {output} --files {input.res} {input.fixed_res}"
-        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-
-rule join_summaries_order_mcmc_map:
-    input: # should save the database and give id. then startspace would have been an id instead.
-           # How would we know that id...?
-        conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm="
-                        + order_mcmc_string +
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-        replicate=seed,   
-        n=config["data"]["sample_sizes"][i],
-        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-        score_type="bde",
-        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-        threshold=config["algorithms"]["ordermcmc_map"]["threshold"],
-        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_map"]["startspace"]],
-        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"], 
-        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
-                        "algorithm="
-                        + order_mcmc_string +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,                        
-                        threshold=config["algorithms"]["ordermcmc_map"]["threshold"],
-                        startspace_algorithm=json_string[config["algorithms"]["ordermcmc_map"]["startspace"]],
+                        threshold=alg_conf["threshold"],
+                        startspace_algorithm=json_string[alg_conf["startspace"]],
                         n=None,
                         score_type="bdecat",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["ordermcmc_map"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        for key, alg_conf in config["algorithms"]["ordermcmc"].items() if key in config["plotting"]["algorithms"]],
     output:
-        config["output_dir"] + "/ordermcmc_map.csv"
+        config["output_dir"] + "/ordermcmc.csv"
     shell:
-        "Rscript scripts/join_csv_files.R --algorithm ordermcmc_map --filename {output} --files {input.res} {input.fixed_res}"
+        "Rscript scripts/join_csv_files.R --algorithm ordermcmc --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+
 
 rule join_summaries_pcalg:
     input:
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + pcalg_string +
                         "adjmat=/"
@@ -1249,19 +1143,23 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alpha=config["algorithms"]["pcalg"]["alpha"],
+                        #alpha=config["algorithms"]["pcalg"]["alpha"],
+                        alpha=alg_conf["alpha"],
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for key, alg_conf in config["algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]]
+        ,
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + pcalg_string +
                         "adjmat=/"
@@ -1276,17 +1174,20 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alpha=config["algorithms"]["pcalg"]["alpha"],
+                        #alpha=config["algorithms"]["pcalg"]["alpha"],
+                        alpha=alg_conf["alpha"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        for key, alg_conf in config["algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
@@ -1324,7 +1225,7 @@ def join_summaries_mmhc(wildcards):
 rule join_summaries_mmhc:
     input:
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + mmhc_string +
                         "adjmat=/"
@@ -1337,20 +1238,21 @@ rule join_summaries_mmhc:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
+                        alpha=alg_conf["restrict.args"]["alpha"],
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
                         #data_string=gen_data_string_from_conf()
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))], 
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for key, alg_conf in config["algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + mmhc_string +
                         "adjmat=/"
@@ -1365,17 +1267,18 @@ rule join_summaries_mmhc:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alpha=config["algorithms"]["mmhc"]["restrict.args"]["alpha"],
+                        alpha=alg_conf["restrict.args"]["alpha"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["mmhc"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        for key, alg_conf in config["algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
@@ -1384,7 +1287,7 @@ rule join_summaries_mmhc:
 
 rule join_summaries_gobnilp:
     input:
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + gobnilp_string +
                         "adjmat=/"
@@ -1397,19 +1300,20 @@ rule join_summaries_gobnilp:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,                        
-                        palim=config["algorithms"]["gobnilp"]["palim"],
+                        palim=alg_conf["palim"],
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["gobnilp"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        for key, alg_conf in config["algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + gobnilp_string +
                         "adjmat=/"
@@ -1424,17 +1328,18 @@ rule join_summaries_gobnilp:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        palim=config["algorithms"]["gobnilp"]["palim"],
+                        palim=alg_conf["palim"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["gobnilp"]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        for key, alg_conf in config["algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
 
     output:
         config["output_dir"] + "/gobnilp.csv"
@@ -1445,7 +1350,7 @@ rule join_summaries_gobnilp:
 rule join_summaries_fges:
     input:
         conf="config.json",
-        res=[[[expand(config["output_dir"] + "/result/"\        
+        res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + fges_string +
                         "adjmat=/"
@@ -1458,19 +1363,23 @@ rule join_summaries_fges:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,                        
-                        faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+                        #faithfulnessAssumed=config["algorithms"]["fges"][k]["faithfulnessAssumed"],
+                        faithfulnessAssumed=alg_conf["faithfulnessAssumed"],
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["fges"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["fges"][k]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
         )         
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))],
-        fixed_res = [expand(config["output_dir"] + "/result/"\        
+        for j in range(len(config["plotting"]["models"]))]
+        #for k in range(len(config["algorithms"]["fges"]))],
+        for key, alg_conf in config["algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + fges_string +
                         "adjmat=/"
@@ -1485,17 +1394,21 @@ rule join_summaries_fges:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        faithfulnessAssumed=config["algorithms"]["fges"]["faithfulnessAssumed"],
+                        #faithfulnessAssumed=config["algorithms"]["fges"][k]["faithfulnessAssumed"],
+                        faithfulnessAssumed=alg_conf["faithfulnessAssumed"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=config["algorithms"]["fges"]["plot_legend"],
+                        #plot_legend=config["algorithms"]["fges"][k]["plot_legend"],
+                        plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
+        #for k in range(len(config["algorithms"]["fges"]))],
+        for key, alg_conf in config["algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
 
     output:
         config["output_dir"] + "/fges.csv"

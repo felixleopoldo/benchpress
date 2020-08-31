@@ -30,7 +30,7 @@
         },
         "fixed": [
             "asia", "alarm", "hepar2", "cancer"
-        ]
+        ] 
     },
     "model_parameters": {
         "sampled":{
@@ -55,9 +55,11 @@
     },
     "plotting": {
         "algorithms": [
-             "blip"
+          "gobnilp", "fges"
+
         ],
-        "models":[  
+        "models":[ {"graph":"asia",
+                    "parameters":"asia"}
         ],
         "measures": [
             {
@@ -66,12 +68,13 @@
             "SHD": ["blip", "gobnilp"]
             }
         ],
-        "fixed_data":[{"graph":"myasia", 
-                       "data":"myasiandata"}]
+        "fixed_data":[{"graph":"myasia",
+                      "data":"myasiandata"}]
     }
     ,
     "algorithms": {
         "blip": {
+            "blip": {
             "string": "/blip/scorer.method=is/...",
             "plot_legend": "blip",
             "scorer.method": "is",
@@ -85,32 +88,25 @@
             "alpha": 1,
             "cores": 1,
             "verbose": 0
+            }
         },
-        "gobnilp": {
-            "plot_legend": "gobnilp",
-            "plot": false,
-            "palim": [
-                2
-            ]
+        "gobnilp": 
+            {"gobnilp": {
+                "plot_legend": "gobnilp",
+                "plot": false,
+                "palim": 
+                    2                
+            }
         },
         "fges": {
-            "plot_legend": "fges",
-            "faithfulnessAssumed": 1
+            "fges":{
+                    "plot_legend": "fges",
+                    "faithfulnessAssumed": 1
+            }
         },
         "pcalg": {
-            "plot_legend": "pcalg",
-            "alpha": [
-                0.01,
-                0.05,
-                0.1,
-                0.2,
-                0.35,
-                0.45
-            ]
-        },
-        "mmhc": {
-            "plot_legend": "mmhc",
-            "restrict.args": {
+            "pcalg": {
+                "plot_legend": "pcalg",
                 "alpha": [
                     0.01,
                     0.05,
@@ -119,83 +115,159 @@
                     0.35,
                     0.45
                 ]
-            }
-        },
-        "itsearch_map": {
-            "plot_legend": "itmap",
-            "optional": {
-                "MAP": 1,
-                "plus1it": null,
-                "posterior": null
             },
-            "score_params": {
-                "bdecatpar": {
-                    "chi": 1,
-                    "edgepf": 1
+            "pcalg005": {
+                "plot_legend": "pcalg005",
+                "alpha": 
+                    0.05
+                 }
+        },
+        "mmhc": {
+            "mmhc":{
+                "plot_legend": "mmhc",
+                "restrict.args": {
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45
+                    ]
                 }
             }
         },
-        "itsearch_sample": {
-            "plot_legend": "itsample",
-            "optional": {
-                "MAP": 0,
-                "plus1it": 6,
-                "posterior": 0.5
-            },
-            "score_params": {
-                "bdecatpar": {
-                    "chi": 1,
-                    "edgepf": 1
+        "itsearch": {
+            "itsearch_map": {
+                "plot_legend": "itmap",
+                "optional": {
+                    "MAP": 1,
+                    "plus1it": null,
+                    "posterior": null
+                },
+                "score_params": {
+                    "bdecatpar": {
+                        "chi": 1,
+                        "edgepf": 1
+                    }
                 }
             }
+            ,
+            "itsearch_sample": {
+                "plot_legend": "itsample",
+                "optional": {
+                    "MAP": 0,
+                    "plus1it": 6,
+                    "posterior": 0.5
+                },
+                "score_params": {
+                    "bdecatpar": {
+                        "chi": 1,
+                        "edgepf": 1
+                        }
+                    }
+                }
         },
-        "ordermcmc_map": {
-            "plot_legend": "omcmc_itmap",
-            "startspace": "itsearch_map",
-            "optional": {
-                "plus1": true
+
+        "ordermcmc": {
+            "ordermcmc_itmap": {
+                "plot_legend": "omcmc_itmap",
+                "startspace": "itsearch_map",
+                "optional": {
+                    "plus1": true
+                },
+                "score_params": {
+                    "bdepar": {
+                        "chi": 1,
+                        "edgepf": 1
+                    }
+                },
+                "threshold": [
+                    0.99,
+                    0.95,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.6,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.2
+                ]
             },
-            "score_params": {
-                "bdepar": {
-                    "chi": 1,
-                    "edgepf": 1
+            "ordermcmc_fges": {
+                "plot_legend": "omcmc_fges", 
+                "startspace": "fges",
+                "optional": {
+                    "plus1": true
+                },
+                "threshold": [
+                    0.99,
+                    0.95,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.6,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.2
+                ],
+                "score_params": {
+                    "bdepar": {
+                        "chi": 1,
+                        "edgepf": 1
+                    }
                 }
             },
-            "threshold": [
-                0.99,
-                0.95,
-                0.9,
-                0.8,
-                0.7,
-                0.6,
-                0.5,
-                0.4,
-                0.3,
-                0.2
-            ]
-        },
-        "ordermcmc_sample": {
-            "plot_legend": "omcmc_itsample", 
-            "startspace": "itsearch_map",
-            "optional": {
-                "plus1": true
+            "ordermcmc_pcalg005": {
+                "plot_legend": "omcmc_pcalg005", 
+                "startspace": "pcalg005",
+                "optional": {
+                    "plus1": true
+                },
+                "threshold": [
+                    0.99,
+                    0.95,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.6,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.2
+                ],
+                "score_params": {
+                    "bdepar": {
+                        "chi": 1,
+                        "edgepf": 1
+                    }
+                }
             },
-            "threshold": [
-                0.99,
-                0.95,
-                0.9,
-                0.8,
-                0.7,
-                0.6,
-                0.5,
-                0.4,
-                0.3,
-                0.2
-            ],
-            "score_params": {
-                "bdepar": {
-                    "chi": 1,
-                    "edgepf": 1
+            "ordermcmc_gobnilp": {
+                "plot_legend": "omcmc_gobnilp", 
+                "startspace": "gobnilp",
+                "optional": {
+                    "plus1": true
+                },
+                "threshold": [
+                    0.99,
+                    0.95,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.6,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.2
+                ],
+                "score_params": {
+                    "bdepar": {
+                        "chi": 1,
+                        "edgepf": 1
+                    }
                 }
             }
         }

@@ -18,14 +18,24 @@ df <- data.frame()
 #  tmpdf <- na_if(tmpdf, "None")
 #  df <- dplyr::bind_rows(df, tmpdf)
 #}
-print("HEJ")
-print(argv$files)
 
 for (filename in argv$files) {
-  print(filename)
+  #print(filename)
   tmpdf <- read.csv(filename)
+  #print(tmpdf)
   tmpdf <- na_if(tmpdf, "None")
+  #tmpdf["plus1it"] <- na_if(tmpdf["plus1it"], "None")
+  #tmpdf["posterior"] <- na_if(tmpdf["posterior"], "None")
+  
+  if("plus1it" %in% colnames(tmpdf)) {
+      tmpdf["plus1it"] <- as.numeric(tmpdf["plus1it"])
+  }
+  if("posterior" %in% colnames(tmpdf)) {
+      tmpdf["posterior"] <- as.numeric(tmpdf["posterior"])
+  }
+  #print(str(tmpdf))
+  #print("Ny rad")
   df <- dplyr::bind_rows(df, tmpdf)
 }
-
+print(df)
 write.csv(df, file=argv$filename, row.names=FALSE)
