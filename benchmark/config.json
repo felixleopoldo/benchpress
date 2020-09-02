@@ -55,11 +55,11 @@
     },
     "plotting": {
         "algorithms": [
-          "gobnilp", "fges"
+          "tabu","fges","mmhc", "pcalg", "gobnilp","blip", "itsearch_map", "ordermcmc_itmap"
 
         ],
-        "models":[ {"graph":"asia",
-                    "parameters":"asia"}
+        "models":[ {"graph":"hepar2",
+                    "parameters":"generateBinaryBN"}
         ],
         "measures": [
             {
@@ -68,8 +68,7 @@
             "SHD": ["blip", "gobnilp"]
             }
         ],
-        "fixed_data":[{"graph":"myasia",
-                      "data":"myasiandata"}]
+        "fixed_data":[]
     }
     ,
     "algorithms": {
@@ -135,6 +134,12 @@
                         0.45
                     ]
                 }
+            }
+        },
+        "tabu": {
+            "tabu":{
+                "plot_legend": "tabu",
+                "score":"bde"
             }
         },
         "itsearch": {

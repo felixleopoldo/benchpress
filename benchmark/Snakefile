@@ -24,6 +24,12 @@ mmhc_string = "/mmhc/"\
                "bdecatpar_chi={bdecatpar_chi}/" \
                "bdecatpar_edgepf={bdecatpar_edgepf}/" \
                "alpha={alpha}/"
+tabu_string = "/tabu/"\
+               "score_type={score_type}/" \
+               "bdecatpar_chi={bdecatpar_chi}/" \
+               "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+               "score={score}/"
+
 gobnilp_string = "/gobnilp/"\
                  "score_type={score_type}/" \
                  "bdecatpar_chi={bdecatpar_chi}/" \
@@ -95,6 +101,17 @@ json_string.update({key:  "/gobnilp/"\
                                         bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                         palim=val["palim"])
                 for key, val in conf["algorithms"]["gobnilp"].items()})
+
+json_string.update({key:  "/tabu/"\
+                            "score_type={score_type}/" \
+                            "bdecatpar_chi={bdecatpar_chi}/" \
+                            "bdecatpar_edgepf={bdecatpar_edgepf}/" \
+                            "score={score}".format(score_type="bdecat",
+                                                    bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                                                    bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                                                    score=val["score"])
+                for key, val in conf["algorithms"]["tabu"].items()})
+
 
 
 print(json_string)
@@ -252,6 +269,86 @@ rule sample_data_range_header:
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
+rule tabu:
+    input:
+        data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
+    output:
+        adjmat = config["output_dir"]+"/adjmat_estimate/{data}/"\
+                "algorithm=" + tabu_string +\
+                "seed={replicate}/" \
+                "adjmat.csv",
+        time = config["output_dir"] + "/time/{data}/"\
+                "algorithm=" + tabu_string +\
+                "seed={replicate}/" \
+                "time.txt"
+
+    message:
+        "Executing blip algorithm on the following files: {input}."
+    shell:
+        "/usr/bin/time -f \"%e\" -o {output.time} " \  
+        "Rscript scripts/run_tabu.R " \
+        "--filename_data {input.data} " \
+        "--output_dir {config[output_dir]} " \
+        "--score {wildcards.score} " \
+        "--filename {output.adjmat} " 
+
+rule summarise_tabu:
+    input:
+        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
+        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
+        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=" + tabu_string +
+                        "seed={replicate}/" \
+                        "adjmat.csv",
+        time = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=" + tabu_string +
+                    "seed={replicate}/" \
+                    "time.txt",
+    output:
+        res = config["output_dir"]+"/result/"\
+            "algorithm=" + tabu_string +
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv",
+    message:
+        "Summarising tabu results based on the files: {input}."
+    shell:
+        "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--range_header_data 1 " \ 
+        "--filename {output.res} " \ 
+        "--bdecatpar_chi {wildcards.bdecatpar_chi} " \
+        "--bdecatpar_edgepf {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+        " && python scripts/add_column.py --filename {output} --colname algorithm       --colval tabu " \
+        " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_chi   --colval {wildcards.bdecatpar_chi} " \
+        " && python scripts/add_column.py --filename {output} --colname bdecatpar_edgepf --colval {wildcards.bdecatpar_edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname start           --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname whitelist       --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname blacklist       --colval null " \
+        " && python scripts/add_column.py --filename {output} --colname debug           --colval false " \ 
+        " && python scripts/add_column.py --filename {output} --colname tabu            --colval 10 " \
+        " && python scripts/add_column.py --filename {output} --colname max.tabu        --colval tabu " \
+        " && python scripts/add_column.py --filename {output} --colname max.iter        --colval Inf " \
+        " && python scripts/add_column.py --filename {output} --colname maxp            --colval Inf " \
+        " && python scripts/add_column.py --filename {output} --colname optimized       --colval true " \
+        " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+        " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
 
 rule blip:
     input:
@@ -607,7 +704,7 @@ rule pcalg:
                 "seed={replicate}/" \
                 "time.txt"
     message:
-        "Executing order pc algorithm with startspace on the following files: {input}."
+        "Executing order pc algorithm on the following files: {input}."
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_pcalg.R " \
@@ -645,7 +742,7 @@ rule summarise_pcalg:
             "legend={plot_legend}/" \        
             "result.csv",
     message:
-        "Summarising pc algorithm with startspace on the following files: {input}."
+        "Summarising pc algorithm based on the following files: {input}."
     shell:
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -1143,13 +1240,11 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        #alpha=config["algorithms"]["pcalg"]["alpha"],
                         alpha=alg_conf["alpha"],
                         n=config["data"]["sample_sizes"][i],
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        #plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
@@ -1174,13 +1269,11 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        #alpha=config["algorithms"]["pcalg"]["alpha"],
                         alpha=alg_conf["alpha"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
                         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        #plot_legend=config["algorithms"]["pcalg"]["plot_legend"],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
@@ -1193,6 +1286,70 @@ rule join_summaries_pcalg:
     shell:
         "Rscript scripts/join_csv_files.R --algorithm pcalg --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+
+rule join_summaries_tabu:
+    input:
+        conf="config.json",
+        res=[[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + tabu_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=seed,
+                        score=alg_conf["score"],
+                        n=config["data"]["sample_sizes"][i],
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=alg_conf["plot_legend"],
+                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
+        for key, alg_conf in config["algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]]
+        ,
+        fixed_res = [[expand(config["output_dir"] + "/result/"\        
+                        "algorithm="
+                        + tabu_string +
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" #or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,
+                        score=alg_conf["score"],
+                        n=None,
+                        score_type="bde",
+                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                        plot_legend=alg_conf["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
+        for key, alg_conf in config["algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]],
+    output:
+        config["output_dir"] + "/tabu.csv"
+    shell:
+        "Rscript scripts/join_csv_files.R --algorithm tabu --filename {output} --files {input.res} {input.fixed_res}"
+        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+
 
 def join_summaries_mmhc(wildcards):
     res=[[[expand(config["output_dir"] + "/result/"\        
