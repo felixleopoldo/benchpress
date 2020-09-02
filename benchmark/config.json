@@ -58,8 +58,10 @@
           "tabu","fges","mmhc", "pcalg", "gobnilp","blip", "itsearch_map", "ordermcmc_itmap"
 
         ],
-        "models":[ {"graph":"hepar2",
-                    "parameters":"generateBinaryBN"}
+        "models":[ {"graph":"generateDAGMaxParents",
+                    "parameters":"generateBinaryBN"},
+                    {"graph":"hepar2",
+                        "parameters":"generateBinaryBN"}
         ],
         "measures": [
             {
@@ -68,7 +70,8 @@
             "SHD": ["blip", "gobnilp"]
             }
         ],
-        "fixed_data":[]
+        "fixed_data":[{"graph":"myasia", 
+                       "data": "myasiandata"}]
     }
     ,
     "algorithms": {

@@ -112,9 +112,6 @@ json_string.update({key:  "/tabu/"\
                                                     score=val["score"])
                 for key, val in conf["algorithms"]["tabu"].items()})
 
-
-
-print(json_string)
 def gen_model_strings_from_conf(models, seed, setup):
     """
     Generate the graphs and paremeters simulatnepusly since we do not want 
@@ -1444,6 +1441,7 @@ rule join_summaries_mmhc:
 
 rule join_summaries_gobnilp:
     input:
+        conf="config.json",
         res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
                         + gobnilp_string +
@@ -1577,7 +1575,6 @@ rule roc:
     input:
         "config.json",
         active_algorithm_files
-        #config["output_dir"] + "/mmhc.csv",
     output:
         config["output_dir"] + "/ROC.eps", \
         config["output_dir"] + "/ROC_data.csv" 

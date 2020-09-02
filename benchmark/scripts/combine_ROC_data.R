@@ -9,14 +9,12 @@ source("lib/code_for_binary_simulations/summarySE.R")
 config <- fromJSON(file = "config.json")
 
 directory <- config$output_dir
-dims <- config$graphs$sampled$algorithms$generateDAGMaxParents$dims[[1]]
-sample_sizes <- config$data$sample_sizes[[1]]
+
 replicates <- config$data$replicates$start:config$data$replicates$end
-#dag_avparents <-config$graphs$sampled$algorithms$generateDAGMaxParents$av_parents[[1]]
 
 toplot <- data.frame()
 active_algorithms <- c()
-print(names(config$algorithms))
+
 for(alg_name in names(config$algorithms)) {
     for (alg_conf_name in names(config$algorithms[[alg_name]])) {
        if(alg_conf_name %in% config$plotting$algorithms) {
@@ -26,13 +24,29 @@ for(alg_name in names(config$algorithms)) {
     }
 }
 active_algorithms <- unique(active_algorithms)
+bns <- c()
+adjmats <- c()
+for (model in config$plotting$models) {
+    bns <- c(bns, model$parameters)
+    adjmats <- c(bns, model$graph)
+}
 
+for (model in config$plotting$fixed_data) {
+    adjmats <- c(adjmats, model$graph)
+    data <- c(data, model$data)
+}
+# Wee need the model and parameter strings here..
+# maybe switch to pandas.
+bns <- unique(bns)
+adjmats <- unique(adjmats)
+print(bns)
+print(adjmats)
 if("ordermcmc" %in% active_algorithms) {
     ROCdf_order_mcmc <- read.csv("simresults/ordermcmc.csv")
     sumROC_order_mcmc = ROCdf_order_mcmc %>%
-                        #filter(dim %in% dims) %>%
-                        #filter(sample_size %in% sample_sizes) %>%
-                        #filter(avparents %in% dag_avparents) %>%
+                        #filter(adjmat %in% adjmats) %>%
+                        #filter(bn %in% bns) %>%
+                        #filter(data %in% data) %>%
                         filter(replicate %in% replicates) %>%
                         # filter(is.na(itsearch_plus1it) | (itsearch_plus1it %in% config$itsearch_sample$optional$plus1it)) %>%
                         # group_by(legend, !!as.symbol("threshold"), sample_size, dim, avparents) %>% 
@@ -59,6 +73,8 @@ if("ordermcmc" %in% active_algorithms) {
 if("itsearch" %in% active_algorithms) {
     ROCdf_itsearch <-read.csv("simresults/itsearch.csv")
     sum_roc_itsearch <- ROCdf_itsearch %>% 
+                    #filter(adjmat %in% adjmats) %>%
+                    #filter(bn %in% bns) %>%
                     #filter(!!as.symbol("dim") %in% dims) %>%
                     #filter(sample_size %in% sample_sizes) %>%
                     #filter(avparents %in% dag_avparents) %>%
@@ -90,6 +106,8 @@ if("pcalg" %in% config$plotting$algorithms) {
     roc_pcalg <-read.csv("simresults/pcalg.csv")
 
     sum_roc_pcalg <- roc_pcalg %>% 
+                    #filter(adjmat %in% adjmats) %>%
+                    #filter(bn %in% bns) %>%
                      #filter(dim %in% dims) %>%
                      #filter(sample_size %in% sample_sizes) %>%         
                      #filter(avparents %in% dag_avparents) %>%
@@ -236,6 +254,8 @@ if("blip" %in% config$plotting$algorithms) {
 if("gobnilp" %in% config$plotting$algorithms) {
     ROCdf_gobnilp <- read.csv("simresults/gobnilp.csv")
     sum_roc_gobnilp <- ROCdf_gobnilp %>% 
+                    #filter(adjmat %in% adjmats) %>%
+                    #filter(bn %in% bns) %>%
                     #filter(dim %in% dims) %>%
                     #filter(sample_size %in% sample_sizes) %>%
                     #filter(avparents %in% avparents) %>%          
