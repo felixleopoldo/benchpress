@@ -95,15 +95,9 @@ true_dag <- adjacency2dag(true_adjmat)
 estimated_dag <- adjacency2dag(estimated_adjmat)
 true_nedges <- sum(true_adjmat)
 
-true_cpdag <- pcalg::dag2cpdag(true_dag)
-estimated_cpdag <- pcalg::dag2cpdag(estimated_dag)
-
 true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
 estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
-
 true_nedges <- sum(getPattern(true_adjmat))
-
-#compres <- compareDAGs(estimated_cpdag, true_cpdag)
 
 # Scoring DAG
 myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
@@ -117,16 +111,17 @@ compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
 names(compres) <- c("SHD", "TP", "FP")
 true_nedges <- sum(getPattern(true_adjmat))
 
-#res <- list()
 df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                             FPRn = compres["FP"] / true_nedges,
                             logscore = logscore,
                             SHD = compres["SHD"])
 
 # Divide by 2
-# Statistics on getPattern graph
-compres <- compareDAGs(estimated_cpdag, true_cpdag)
-names(compres) <- c("SHD", "TP", "FP")
-df$TPR_cpdag <- compres["TP"] / true_nedges # should be for all times
+# Essential graph
+#true_cpdag <- pcalg::dag2cpdag(true_dag)
+#estimated_cpdag <- pcalg::dag2cpdag(estimated_dag)
+#compres <- compareDAGs(estimated_cpdag, true_cpdag)
+#names(compres) <- c("SHD", "TP", "FP")
+#df$TPR_cpdag <- compres["TP"] / true_nedges # should be for all times
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
