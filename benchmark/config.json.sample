@@ -55,12 +55,10 @@
     },
     "plotting": {
         "algorithms": [
-          "tabu","fges","mmhc", "pcalg", "gobnilp","blip", "itsearch_map", "ordermcmc_itmap"
+           "ordermcmc_itmap"
 
         ],
-        "models":[ {"graph":"generateDAGMaxParents",
-                    "parameters":"generateBinaryBN"},
-                    {"graph":"hepar2",
+        "models":[ {"graph":"hepar2",
                         "parameters":"generateBinaryBN"}
         ],
         "measures": [
@@ -70,8 +68,7 @@
             "SHD": ["blip", "gobnilp"]
             }
         ],
-        "fixed_data":[{"graph":"myasia", 
-                       "data": "myasiandata"}]
+        "fixed_data":[]
     }
     ,
     "algorithms": {
@@ -201,7 +198,8 @@
                     0.4,
                     0.3,
                     0.2
-                ]
+                ],
+                "burnin": 0
             },
             "ordermcmc_fges": {
                 "plot_legend": "omcmc_fges", 

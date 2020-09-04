@@ -52,8 +52,11 @@ order_mcmc_string = "/order_mcmc/"\
                     "score_type={score_type}/"\
                     "bdecatpar_chi={bdecatpar_chi}/" \
                     "bdecatpar_edgepf={bdecatpar_edgepf}/" \
-                    "threshold={threshold}/" \
-                    "startspace_algorithm={startspace_algorithm}/"
+                    "startspace_algorithm={startspace_algorithm}"
+
+mcmc_est_string = "/estimation_method/"\
+                  "threshold={threshold}/"\
+                  "burnin={burnin}"
 
 evaluation_string= "/evaluation/" \
                    "score_type={score_type}/" \
@@ -542,11 +545,11 @@ rule ordermcmc:
         startspace = config["output_dir"]+"/adjmat_estimate/{graph_param_data}/algorithm={startspace_algorithm}/seed={replicate}/adjmat.csv"
     output:
         adjvecs = config["output_dir"]+"/adjvecs/{graph_param_data}/"\
-                "algorithm="  + order_mcmc_string +\
+                "algorithm="  + order_mcmc_string + "/" + \
                 "seed={replicate}/" \
                 "adjvecs.json",
         time = config["output_dir"] + "/time/{graph_param_data}/"\
-                "algorithm=" + order_mcmc_string +\
+                "algorithm=" + order_mcmc_string +"/" + \
                 "seed={replicate}/" \
                 "time.txt"
     message:
@@ -563,47 +566,52 @@ rule ordermcmc:
         "--output_dir {config[output_dir]} " \
         "--seed {wildcards.replicate} "
 
-rule heatmap_from_trajectory_ordermcmc:
+rule heatmap_from_adjmat_trajectory:
     input:
-        #adjvecs=config["output_dir"]+"/adjvecs/{somewhere}.json"
-        adjvecs = config["output_dir"]+"/adjvecs/"\
-                "adjmat=/{adjmat}/"\
-                "bn=/{bn}/"\
-                "data=/{data}/"\
-                "algorithm=" + order_mcmc_string +\
-                "seed={replicate}/" \
-                "adjvecs.json",
+        adjvecs = config["output_dir"]+"/adjvecs/{something}/seed={seed}/adjvecs.json" #this should not contain threshold
     output:
-        heatmap = config["output_dir"]+"/heatmap_estimate/"\
-                "adjmat=/{adjmat}/"\
-                "bn=/{bn}/"\
-                "data=/{data}/"\
-                "algorithm=" + order_mcmc_string +\
-                "seed={replicate}/" \
-                "heatmap.csv"
+        heatmap = config["output_dir"]+"/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" # Add burnin/thinning
+    message: 
+        "Estimating heatmap from graph trajectory"
     shell:
         "Rscript scripts/run_estimate_heatmap_from_traj.R " \
         "--adjvectraj {input.adjvecs} " \
         "--filename {output.heatmap} " \
         "--tosymmetric 0"
 
+#rule size_autocorrelation_from_trajectory:
+#    input:
+#        adjvecs = config["output_dir"]+"/adjvecs/{something}/adjvecs.json" #this should not contain threshold
+#    output:
+#        autocorr = config["output_dir"]+"/autocorr_estimate/{something}/burnin={burnin}/autocorr.csv" # Add burnin/thinning
+
 rule adjmat_from_heatmap:
     input:
-        heatmap=config["output_dir"]+"/heatmap_estimate/"\
-        "adjmat=/{adjmat}/"\
-        "bn=/{bn}/"\
-        "data=/{data}/"\
-        "algorithm=" + order_mcmc_string +\
-        "seed={replicate}/" \
-        "heatmap.csv"
+        # heatmap=config["output_dir"]+"/heatmap_estimate/"\ 
+        # "adjmat=/{adjmat}/"\
+        # "bn=/{bn}/"\
+        # "data=/{data}/"\
+        # "algorithm=" + order_mcmc_string +"/" + \
+        # "seed={replicate}/" \
+        # "heatmap.csv" #this should not contain threshold. But burnin and maybe thinning.
+        heatmap=config["output_dir"]+"/heatmap_estimate/"\ 
+                "{something}/"\
+                "burnin={burnin}/"\
+                "{somethingelse}/" \
+                "heatmap.csv" #this should not contain threshold. But burnin and maybe thinning.
     output:
+        # adjmat_est=config["output_dir"]+"/adjmat_estimate/"\
+        # "adjmat=/{adjmat}/"\
+        # "bn=/{bn}/"\
+        # "data=/{data}/"\
+        # "algorithm=" + order_mcmc_string +"/" + \
+        # "seed={replicate}/" \
+        # "adjmat.csv",
         adjmat_est=config["output_dir"]+"/adjmat_estimate/"\
-        "adjmat=/{adjmat}/"\
-        "bn=/{bn}/"\
-        "data=/{data}/"\
-        "algorithm=" + order_mcmc_string +\
-        "seed={replicate}/" \
+        "{something}" + mcmc_est_string + "/{somethingelse}/"\
         "adjmat.csv",
+    message:
+        "Estimating adjmat from heatmap"
     shell:
         "Rscript scripts/run_threshold_heatmap.R " \
         "--heatmap {input.heatmap} " \
@@ -612,35 +620,28 @@ rule adjmat_from_heatmap:
 
 rule summarise_ordermcmc:
     input:
-        #data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/n={n}/seed={replicate}.csv", 
         data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
         adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
         adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\
                         "bn=/{bn}/"\
                         "data=/{data}/"\
-                        #"data=/"\
-                        #"n={n}/"
-                        "algorithm=" + order_mcmc_string +\
+                        "algorithm=" + order_mcmc_string + mcmc_est_string + "/" \
                         "seed={replicate}/" \
                         "adjmat.csv",
         time = config["output_dir"]+"/time/"\
                     "adjmat=/{adjmat}/"\
                     "bn=/{bn}/"\
                     "data=/{data}/"\
-                    #"data=/" \ 
-                    #"n={n}/"
-                    "algorithm=" + order_mcmc_string +\
+                    "algorithm=" + order_mcmc_string + "/" \
                     "seed={replicate}/" \
                     "time.txt",
     output:
         res = config["output_dir"]+"/result/"\
-            "algorithm=" + order_mcmc_string +\
+            "algorithm=" + order_mcmc_string + mcmc_est_string + "/"\
             "adjmat=/{adjmat}/"\
             "bn=/{bn}/"\
-            "data=/{data}/"\
-            #"data=/"\
-            #"n={n}/"\           
+            "data=/{data}/"\   
             "seed={replicate}/" \
             "legend={plot_legend}/" \        
             "result.csv",
@@ -1163,7 +1164,7 @@ rule join_summaries_order_mcmc:
         conf="config.json",
         res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
-                        + order_mcmc_string +
+                        + order_mcmc_string + mcmc_est_string + "/" + 
                         "adjmat=/{adjmat_string}/"
                         "bn=/{param_string}/"
                         "data=/"
@@ -1177,6 +1178,7 @@ rule join_summaries_order_mcmc:
         score_type="bde",
         bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
         threshold=alg_conf["threshold"],
+        burnin=alg_conf["burnin"],
         startspace_algorithm=json_string[alg_conf["startspace"]],
         plot_legend=alg_conf["plot_legend"], 
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1188,7 +1190,8 @@ rule join_summaries_order_mcmc:
         for key, alg_conf in config["algorithms"]["ordermcmc"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm="
-                        + order_mcmc_string +
+                        + order_mcmc_string + 
+                        + mcmc_est_string + 
                         "adjmat=/"
                         "{adjmat_string}/"
                         "bn=/"\
@@ -1202,6 +1205,7 @@ rule join_summaries_order_mcmc:
                         "result.csv",
                         replicate=1,                        
                         threshold=alg_conf["threshold"],
+                        burnin=alg_conf["burnin"],
                         startspace_algorithm=json_string[alg_conf["startspace"]],
                         n=None,
                         score_type="bdecat",
