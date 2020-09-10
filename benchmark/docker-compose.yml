@@ -7,7 +7,8 @@ services:
     volumes: 
         - ./scripts/run_gobnilp.R:/myappdir/run_gobnilp.R
         - ./simresults:/myappdir/simresults
-      
+  trilearn:
+    image: onceltuca/trilearn
   benchmark:
     image: onceltuca/benchmark:1.0.7
     #build: . /Dockerfile

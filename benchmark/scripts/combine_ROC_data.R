@@ -39,10 +39,38 @@ for (model in config$plotting$fixed_data) {
 # maybe switch to pandas.
 bns <- unique(bns)
 adjmats <- unique(adjmats)
-print(bns)
-print(adjmats)
-if("ordermcmc" %in% active_algorithms) {
-    ROCdf_order_mcmc <- read.csv("simresults/ordermcmc.csv")
+
+if("order_mcmc" %in% active_algorithms) {
+    ROCdf_order_mcmc <- read.csv("simresults/order_mcmc.csv")
+    sumROC_order_mcmc = ROCdf_order_mcmc %>%
+                        #filter(adjmat %in% adjmats) %>%
+                        #filter(bn %in% bns) %>%
+                        #filter(data %in% data) %>%
+                        filter(replicate %in% replicates) %>%
+                        # filter(is.na(itsearch_plus1it) | (itsearch_plus1it %in% config$itsearch_sample$optional$plus1it)) %>%
+                        # group_by(legend, !!as.symbol("threshold"), sample_size, dim, avparents) %>% 
+                        group_by(legend, adjmat, bn, data, !!as.symbol("threshold")) %>% 
+                        summarise(SHD_mean = mean(SHD),
+                                  TPR_mean = mean(TPR), 
+                                  TPR_median = median(TPR), 
+                                  FPRn_median = median(FPRn), 
+                                  TPR_q1 = quantile(TPR, probs = c(0.05)), 
+                                  TPR_q3 = quantile(TPR, probs = c(0.95)),
+                                  time_mean = mean(time),
+                                  logscore_mean = mean(logscore),
+                                  N = n()) #%>%
+                        #filter(N %in% length(replicates))
+
+    #labels <- apply(sumROC_order_mcmc, 1, function(row) {
+    #    paste("p=",row["dim"], ", n=",row["sample_size"], ", avparents=", row["avparents"], ", N=",row["N"] , sep="")
+    #})
+    #sumROC_order_mcmc["labels"] <- labels
+    sumROC_order_mcmc["labels"] <- NA
+    toplot <- dplyr::bind_rows(toplot, sumROC_order_mcmc)
+}
+
+if("trilearn_loglin" %in% active_algorithms) {
+    ROCdf_order_mcmc <- read.csv("simresults/trilearn_loglin.csv")
     sumROC_order_mcmc = ROCdf_order_mcmc %>%
                         #filter(adjmat %in% adjmats) %>%
                         #filter(bn %in% bns) %>%
