@@ -11,20 +11,21 @@ source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 
 p <- arg_parser("A program for running iterativeMCMC and save to file.")
 
-p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
-p <- add_argument(p, "--title", help = "Title")
-p <- add_argument(p, "--filename", help = "Filename")
+p <- add_argument(p, "--output_dir",    help = "output dir", default = ".")
+p <- add_argument(p, "--title",         help = "Title")
+p <- add_argument(p, "--filename",      help = "Filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
-p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--map", help = "MAP parameter 0/1", type = "numeric")
-p <- add_argument(p, "--score_type", help = "bde/..")
-p <- add_argument(p, "--bdecatpar_chi", help = "bde parameter", type = "numeric", default = 1)
-p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numeric", default = 1)
-p <- add_argument(p, "--posterior", help = "parameter")
-p <- add_argument(p, "--plus1it", help = "parameter")
+p <- add_argument(p, "--seed",          help = "Random seed", type = "numeric", default = 1)
+p <- add_argument(p, "--map",           help = "MAP parameter 0/1", type = "numeric")
+p <- add_argument(p, "--scoretype",     help = "bde/bge/bic")
+p <- add_argument(p, "--chi",           help = "score parameter", type = "numeric", default = 0.5)
+p <- add_argument(p, "--edgepf",        help = "score parameter", type = "numeric", default = 2)
+p <- add_argument(p, "--am",            help = "score parameter")
+p <- add_argument(p, "--aw",            help = "score parameter") # fix null
+p <- add_argument(p, "--posterior",     help = "parameter")
+p <- add_argument(p, "--plus1it",       help = "parameter")
 
 argv <- parse_args(p)
-
 directory <- argv$output_dir
 filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
@@ -47,9 +48,27 @@ posterior <- NULL
 if (argv$posterior != "None") {
   posterior <- as.numeric(argv$posterior)
 }
+aw <- NULL
+if (argv$aw != "None") {
+  aw <- as.numeric(argv$aw)
+}
 
-myscore <- scoreparameters(dim(data)[2], "bdecat", data, bdecatpar = list(chi = argv$bdacatpar_chi,
-                            edgepf = argv$bdacatpar_edgepf))
+am <- NULL
+if (argv$am != "None") {
+  am <- as.numeric(argv$am)
+}
+if(argv$scoretype == "bdecat"){
+    myscore <- scoreparameters(dim(data)[2], "bdecat", data, bdecatpar = list(chi = argv$chi,
+                            edgepf = argv$edgepf))
+} 
+if(argv$scoretype == "bde"){
+    myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = argv$chi,
+                                                                        edgepf = argv$edgepf))
+} 
+if(argv$scoretype == "bge"){
+    myscore <- scoreparameters(dim(data)[2], "bge", data, bgepar = list(am = am,
+                                                                        aw = aw))
+}
 itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       myscore,
                                       chainout = TRUE,

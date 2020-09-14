@@ -13,6 +13,13 @@ p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
 #p <- add_argument(p, "--start", help = "Tabu parameter", type = "numeric", default=NULL)
 p <- add_argument(p, "--score", help = "Tabu parameter")
+p <- add_argument(p, "--iss", help = "Score parameter", type="numeric")
+p <- add_argument(p, "--iss.mu", help = "Score parameter", type="numeric")
+p <- add_argument(p, "--l", help = "Score parameter", type="numeric")
+p <- add_argument(p, "--k", help = "Score parameter", type="numeric")
+p <- add_argument(p, "--prior", help = "Score parameter")
+p <- add_argument(p, "--beta", help = "Score parameter", type="numeric")
+
 
 argv <- parse_args(p)
 
@@ -27,7 +34,14 @@ set.seed(seed)
 
 datanew <- matrixToDataframe(data, names(data))
 
-output <- tabu(datanew, score=argv$score)
+output <- tabu(datanew, score=argv$score, 
+                        iss=argv$iss,
+                        iss.mu=argv$iss.mu,
+                        l=argv$l,
+                        k=argv$k,
+                        prior=argv$prior,
+                        beta=argv$beta
+                        )
 ## convert to graphneldag
 gnel_dag <- as.graphNEL(output)
 
