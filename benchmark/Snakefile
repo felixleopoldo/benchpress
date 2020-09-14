@@ -86,7 +86,7 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
                   "radii={radii}/"\
                   "pseudo_obs={pseudo_obs}/"\
                   "N={N}/"\
-                  "M={M}"
+                  "M={M}" # maybe just att estimation parameters here too, then ignore them in the running of the alg
 
 pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \
@@ -154,16 +154,20 @@ json_string.update({key:  expand(pattern_strings["tabu"], score_type="bdecat",
                                                     )
                 for key, val in conf["algorithms"]["tabu"].items()})
 
-json_string.update({key: expand(pattern_strings["trilearn_loglin"], score_type="bdecat",
-                                                    bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                                    bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                                                    alpha=val["alpha"],
-                                                    beta=val["beta"],
-                                                    N=val["N"],
-                                                    M=val["M"],
-                                                    pseudo_obs=val["pseudo_obs"],
-                                                    radii=val["radii"])
-                for key, val in conf["algorithms"]["trilearn_loglin"].items()})
+json_string.update({key: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
+                    score_type="bdecat",
+                    bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                    bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                    alpha=val["alpha"],
+                    beta=val["beta"],
+                    N=val["N"],
+                    M=val["M"],
+                    pseudo_obs=val["pseudo_obs"],
+                    radii=val["radii"],
+                    threshold=val["threshold"],
+                    burnin=val["burnin"],
+                    )
+               for key, val in conf["algorithms"]["trilearn_loglin"].items()})
 
 json_string.update({key: expand(pattern_strings["blip"], score_type="bdecat",
                                             bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -1650,7 +1654,6 @@ rule join_summaries_gobnilp:
         res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
-                        #+ pattern_strings["gobnilp"] + "/" +
                         "adjmat=/"
                         "{adjmat_string}/"
                         "bn=/"\
@@ -1662,11 +1665,7 @@ rule join_summaries_gobnilp:
                         "result.csv",
                         replicate=seed,      
                         alg_string=json_string[key],                  
-                        #palim=alg_conf["palim"],
                         n=config["data"]["sample_sizes"][i],
-                        #score_type="bde",
-                        #bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        #bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
