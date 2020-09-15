@@ -1093,15 +1093,15 @@ rule gobnilp:
     shell: 
         "touch {output.adjmat}.gobnilp.set && " \   
         "echo 'gobnilp/outputfile/adjacencymatrix = \"{output.adjmat}.bn.mat\" ' > {output.adjmat}.gobnilp.set &&" \
-        "echo 'gobnilp/outputfile/scoreandtime = \"score_and_time.txt\" ' >> {output.adjmat}.gobnilp.set &&" \
+        "echo 'gobnilp/outputfile/scoreandtime = \"{output.adjmat}.score_and_time.txt\" ' >> {output.adjmat}.gobnilp.set &&" \
         "echo 'gobnilp/scoring/palim = {wildcards.palim} ' >> {output.adjmat}.gobnilp.set && " \     
         "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set && " \
         "echo 'gobnilp/scoring/prune = {wildcards.prune} ' >> {output.adjmat}.gobnilp.set && " \     
         "/myappdir/gobnilp163/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \
         " && cat {output.adjmat}.bn.mat > {output.adjmat} " \
-        " && cat score_and_time.txt > {output.time} " \
+        " && cat {output.adjmat}.score_and_time.txt > {output.time} " \ 
         " && rm {output.adjmat}.bn.mat " \
-        " && rm score_and_time.txt " \
+        " && rm {output.adjmat}.score_and_time.txt " \
         " && rm {output.adjmat}.gobnilp.set"
 
 rule summarise_gobnilp:
