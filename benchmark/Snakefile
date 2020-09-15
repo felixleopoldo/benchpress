@@ -1377,7 +1377,7 @@ rule join_summaries_order_mcmc:
         for j in range(len(config["plotting"]["models"]))]
         for key, alg_conf in config["algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + 
+                        "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + "/"
                         "adjmat=/"
                         "{adjmat_string}/"
                         "bn=/"\
@@ -1755,7 +1755,6 @@ rule join_summaries_fges:
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
         for key, alg_conf in config["algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
-
     output:
         config["output_dir"] + "/fges.csv"
     shell:
