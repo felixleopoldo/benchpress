@@ -1,6 +1,5 @@
 {
     "output_dir": "simresults",
-    "data_dir": "data",
     "plotting": {
         "algorithms": [
           "itsearch_map", "itsearch_sample", "blip","gobnilp", "pcalg", "mmhc", "tabu","order_mcmc_itsample", "order_mcmc_itmap"
@@ -29,30 +28,22 @@
             ]
         ]
     },
-    "graphs": {
-        "sampled": {
-            "algorithms": {
-                "generateDAGMaxParents": {
-                    "av_parents": [
-                        [2]
-                    ],
-                    "dims": [
-                        [
-                            80
-                        ]
-                    ]
-                }
-            }
+    "graph_sampling_algorithms": {
+        "generateDAGMaxParents": {
+            "av_parents": [
+                [2]
+            ],
+            "dims": [
+                [
+                    80
+                ]
+            ]
         }
     },
-    "model_parameters": {
-        "sampled":{
-            "algorithms":{
-                "generateBinaryBN":{
-                    "min":0.1,
-                    "max":0.9
-                }
-            }
+    "parameters_sampling_algorithms": {
+        "generateBinaryBN":{
+            "min":0.1,
+            "max":0.9
         }
     },
     "evaluation": {
@@ -63,7 +54,7 @@
             }
         }
     },
-    "algorithms": {
+    "structure_learning_algorithms": {
         "trilearn_loglin": {
             "trilearn_loglin":{
                 "plot_legend": "trilearn_loglin",

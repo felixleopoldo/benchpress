@@ -110,7 +110,7 @@ json_string = {key: expand(pattern_strings["itsearch"],
                                            MAP=val["optional"]["MAP"],
                                            plus1it=val["optional"]["plus1it"],
                                            posterior=val["optional"]["posterior"]) 
-                    for key,val in conf["algorithms"]["itsearch"].items()}
+                    for key,val in conf["structure_learning_algorithms"]["itsearch"].items()}
 
 json_string.update({key: expand(pattern_strings["fges"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -118,19 +118,19 @@ json_string.update({key: expand(pattern_strings["fges"], score_type="bdecat",
                                            faithfulnessAssumed=val["faithfulnessAssumed"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
-                    for key,val in conf["algorithms"]["fges"].items()})
+                    for key,val in conf["structure_learning_algorithms"]["fges"].items()})
 
 json_string.update({key: expand(pattern_strings["pcalg"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"])  
-                    for key, val in conf["algorithms"]["pcalg"].items() } )
+                    for key, val in conf["structure_learning_algorithms"]["pcalg"].items() } )
 
 json_string.update({key: expand(pattern_strings["mmhc"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["restrict.args"]["alpha"])  
-                    for key, val in conf["algorithms"]["mmhc"].items() } )
+                    for key, val in conf["structure_learning_algorithms"]["mmhc"].items() } )
 
 json_string.update({key: expand(pattern_strings["gobnilp"], score_type="bdecat",
                                                 bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -139,7 +139,7 @@ json_string.update({key: expand(pattern_strings["gobnilp"], score_type="bdecat",
                                                 alpha=val["alpha"],
                                                 prune=val["prune"]
                                                 )
-                for key, val in conf["algorithms"]["gobnilp"].items()})
+                for key, val in conf["structure_learning_algorithms"]["gobnilp"].items()})
 
 json_string.update({key:  expand(pattern_strings["tabu"], score_type="bdecat",
                                                     bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -152,7 +152,7 @@ json_string.update({key:  expand(pattern_strings["tabu"], score_type="bdecat",
                                                     prior=val["prior"],
                                                     beta=val["beta"],
                                                     )
-                for key, val in conf["algorithms"]["tabu"].items()})
+                for key, val in conf["structure_learning_algorithms"]["tabu"].items()})
 
 json_string.update({key: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
                     score_type="bdecat",
@@ -167,7 +167,7 @@ json_string.update({key: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_
                     threshold=val["threshold"],
                     burnin=val["burnin"],
                     )
-               for key, val in conf["algorithms"]["trilearn_loglin"].items()})
+               for key, val in conf["structure_learning_algorithms"]["trilearn_loglin"].items()})
 
 json_string.update({key: expand(pattern_strings["blip"], score_type="bdecat",
                                             bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -182,7 +182,7 @@ json_string.update({key: expand(pattern_strings["blip"], score_type="bdecat",
                                             alpha=val["alpha"],
                                             verbose=val["verbose"]
                                             )
-                for key, val in conf["algorithms"]["blip"].items()})
+                for key, val in conf["structure_learning_algorithms"]["blip"].items()})
 
 # This has to be the last one since it takes input strings as start space...
 json_string.update({key: expand(pattern_strings["order_mcmc"], 
@@ -192,7 +192,7 @@ json_string.update({key: expand(pattern_strings["order_mcmc"],
                                             am=val["am"],
                                             aw=val["aw"],
                                             startspace_algorithm=json_string[val["startspace"]])  
-                    for key, val in conf["algorithms"]["order_mcmc"].items() } )
+                    for key, val in conf["structure_learning_algorithms"]["order_mcmc"].items() } )
 
 def gen_model_strings_from_conf(models, seed, setup):
     """
@@ -213,7 +213,7 @@ def gen_adjmat_string_from_conf(adjmat_gen_method, seed, setup):
 
     fixed_graphs = ["asia", "survey", "alarm", "sachs", "hepar2", "hailfinder"]
     if adjmat_gen_method == "generateDAGMaxParents":
-        curconf = conf["graphs"]["sampled"]["algorithms"][adjmat_gen_method]
+        curconf = conf["graph_sampling_algorithms"][adjmat_gen_method]
         n_simulation_setups = len(conf["data"]["sample_sizes"])
         return expand(adjmat_gen_method + \
             "/p={p}" + 
@@ -230,7 +230,7 @@ def gen_parameter_string_from_conf(gen_method, seed):
         conf = json.load(json_file)
 
     if gen_method == "generateBinaryBN":
-        curconf = conf["model_parameters"]["sampled"]["algorithms"][gen_method]
+        curconf = conf["parameters_sampling_algorithms"][gen_method]
         return expand(gen_method + \
                 "/min={min}" + \
                 "/max={max}" + \
@@ -245,7 +245,7 @@ def active_algorithm_files(wildcards):
     with open('config.json') as json_file:
         conf = json.load(json_file)
     algs = []
-    for alg, val in conf["algorithms"].items():     
+    for alg, val in conf["structure_learning_algorithms"].items():     
         for alg_conf in conf["plotting"]["algorithms"]:
             if alg_conf in val:
                     algs.append(conf["output_dir"] + "/" + alg + ".csv")
@@ -1265,7 +1265,7 @@ rule join_summaries_blip:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for alg_conf_key, alg_conf in config["algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1289,7 +1289,7 @@ rule join_summaries_blip:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf_key, alg_conf in config["algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/blip.csv"
     shell:
@@ -1321,7 +1321,7 @@ rule join_summaries_itsearch:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for alg_conf_key, alg_conf in config["algorithms"]["itsearch"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["itsearch"].items() if alg_conf_key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/{alg_string}/"
                         "adjmat=/{adjmat_string}/"
@@ -1342,7 +1342,7 @@ rule join_summaries_itsearch:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["itsearch"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["itsearch"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/itsearch.csv"
     shell:
@@ -1375,7 +1375,7 @@ rule join_summaries_order_mcmc:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + "/"
                         "adjmat=/"
@@ -1400,7 +1400,7 @@ rule join_summaries_order_mcmc:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/order_mcmc.csv"
     shell:
@@ -1434,7 +1434,7 @@ rule join_summaries_trilearn_loglin:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"\
                         "{alg_string}/" + 
@@ -1461,7 +1461,7 @@ rule join_summaries_trilearn_loglin:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/trilearn_loglin.csv"
     shell:
@@ -1493,7 +1493,7 @@ rule join_summaries_pcalg:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]]
+        for key, alg_conf in config["structure_learning_algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]]
         ,
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
@@ -1518,7 +1518,7 @@ rule join_summaries_pcalg:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
@@ -1550,7 +1550,7 @@ rule join_summaries_tabu:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]]
+        for key, alg_conf in config["structure_learning_algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]]
         ,
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
@@ -1575,7 +1575,7 @@ rule join_summaries_tabu:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/tabu.csv"
     shell:
@@ -1588,7 +1588,6 @@ rule join_summaries_mmhc:
         res=[[[[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
-                        #+ pattern_strings["mmhc"] + "/" +
                         "adjmat=/"
                         "{adjmat_string}/"
                         "bn=/"\
@@ -1600,11 +1599,7 @@ rule join_summaries_mmhc:
                         "result.csv",
                         replicate=seed,
                         alg_string=json_string[key],
-                        #alpha=alg_conf["restrict.args"]["alpha"],
                         n=config["data"]["sample_sizes"][i],
-                        #score_type="bde",
-                        #bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        #bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
@@ -1612,11 +1607,10 @@ rule join_summaries_mmhc:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
-                        #+ pattern_strings["mmhc"] + "/" +
                         "adjmat=/"
                         "{adjmat_string}/"
                         "bn=/"\
@@ -1630,7 +1624,6 @@ rule join_summaries_mmhc:
                         "result.csv",
                         replicate=1,
                         alg_string=json_string[key],
-                        #alpha=alg_conf["restrict.args"]["alpha"],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -1641,7 +1634,7 @@ rule join_summaries_mmhc:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
@@ -1673,7 +1666,7 @@ rule join_summaries_gobnilp:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1697,7 +1690,7 @@ rule join_summaries_gobnilp:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
 
     output:
         config["output_dir"] + "/gobnilp.csv"
@@ -1730,7 +1723,7 @@ rule join_summaries_fges:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1754,7 +1747,7 @@ rule join_summaries_fges:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
+        for key, alg_conf in config["structure_learning_algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/fges.csv"
     shell:
@@ -1787,7 +1780,7 @@ rule join_summaries_fges:
 #         for seed in replicates] 
 #         for i in range(len(config["data"]["sample_sizes"]))]
 #         for j in range(len(config["plotting"]["models"]))]
-#         for key, alg_conf in config["algorithms"][alg].items() if key in config["plotting"]["algorithms"]],
+#         for key, alg_conf in config["structure_learning_algorithms"][alg].items() if key in config["plotting"]["algorithms"]],
 #     fixed_res = [[expand(config["output_dir"] + "/result/"\        
 #                         "algorithm=/"
 #                         "{alg_string}/"
@@ -1811,7 +1804,7 @@ rule join_summaries_fges:
 #                         filename=config["plotting"]["fixed_data"][j]["data"],
 #         )         
 #         for j in range(len(config["plotting"]["fixed_data"]))]
-#         for key, alg_conf in config["algorithms"][alg].items() if key in config["plotting"]["algorithms"]]
+#         for key, alg_conf in config["structure_learning_algorithms"][alg].items() if key in config["plotting"]["algorithms"]]
 
 #         return res + fixed_res
 
