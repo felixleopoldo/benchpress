@@ -15,8 +15,8 @@ replicates <- config$data$replicates$start:config$data$replicates$end
 toplot <- data.frame()
 active_algorithms <- c()
 
-for(alg_name in names(config$algorithms)) {
-    for (alg_conf_name in names(config$algorithms[[alg_name]])) {
+for(alg_name in names(config$structure_learning_algorithms)) {
+    for (alg_conf_name in names(config$structure_learning_algorithms[[alg_name]])) {
        if(alg_conf_name %in% config$plotting$algorithms) {
            active_algorithms <- c(active_algorithms, alg_name)
 
