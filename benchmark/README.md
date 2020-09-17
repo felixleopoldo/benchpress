@@ -8,7 +8,7 @@ Systematic benchmarks of structure learning algorithms for graphical models.
 
 ## Reqirements
 - Snakemake (required) https://snakemake.readthedocs.io/en/stable/
-- Docker (rstrongly recommended) https://www.docker.com/
+- Docker (strongly recommended) https://www.docker.com/
 - Singularity (strongly recommended) https://sylabs.io/docs/
 
 ## Installation
