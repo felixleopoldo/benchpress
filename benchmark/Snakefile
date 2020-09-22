@@ -105,14 +105,13 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
                   "beta={beta}/"\
                   "radii={radii}/"\
                   "pseudo_obs={pseudo_obs}/"\
-                  "N={N}/"\
-                  "M={M}" # maybe just att estimation parameters here too, then ignore them in the running of the alg
+                  "M={M}/"\
+                  "N={N}" # maybe just att estimation parameters here too, then ignore them in the running of the alg
 
 pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \
                    "bdecatpar_chi={bdecatpar_chi}/" \
                    "bdecatpar_edgepf={bdecatpar_edgepf}" 
-
 
 # This is to be used for startspace for certain methods.
 # Method with severalvalues for one arguments will be added here as well even though these 
@@ -211,16 +210,165 @@ json_string.update({val["id"]: expand(pattern_strings["blip"], score_type="bdeca
                 for val in conf["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...
-json_string.update({val["id"]: expand(pattern_strings["order_mcmc"], 
+json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 
                                             scoretype="bdecat",
                                             chi=val["chi"],
                                             edgepf=val["edgepf"],
                                             am=val["am"],
                                             aw=val["aw"],
-                                            startspace_algorithm=json_string[val["startspace"]])  
+                                            startspace_algorithm=json_string[val["startspace"]],
+                                            threshold=val["threshold"],
+                                            burnin=val["burnin"],)  
                     for val in conf["structure_learning_algorithms"]["order_mcmc"] } )
 
-#print(json_string)
+#print(json_string["trilearn_loglin"])
+#print(json_string["order_mcmc_itmap"])
+def join_string_sampled_model_mcmc(algorithm):
+    ret = [[[[expand(config["output_dir"] + "/result/"\        
+                        "algorithm=/{json_string}/" #+ pattern_strings["mcmc_est"] + "/" + 
+                        "adjmat=/{adjmat_string}/"
+                        "bn=/{param_string}/"
+                        "data=/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+        replicate=seed,   
+        n=config["data"]["sample_sizes"][i],
+        threshold=alg_conf["threshold"],
+        burnin=alg_conf["burnin"],        
+        json_string=json_string[alg_conf["id"]],
+        plot_legend=alg_conf["plot_legend"], 
+        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+        )         
+        for seed in replicates] 
+        for i in range(len(config["data"]["sample_sizes"]))]
+        for j in range(len(config["plotting"]["models"]))]
+        for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["plotting"]["algorithms"]],
+    return ret
+
+def join_string_fixed_data_mcmc(algorithm):
+    ret = [[expand(config["output_dir"] + "/result/"\        
+                        "algorithm=/{json_string}/" #+ pattern_strings["mcmc_est"] + "/"
+                        "adjmat=/"
+                        "{adjmat_string}/"
+                        "bn=/"\
+                        "{param_string}/"
+                        "data=/"
+                        "generation_method=fixed/" # or standard_Sampling                        
+                        "name={filename}/"
+                        "n={n}/"
+                        "seed={replicate}/"
+                        "legend={plot_legend}/" 
+                        "result.csv",
+                        replicate=1,                        
+                        threshold=alg_conf["threshold"],
+                        burnin=alg_conf["burnin"],
+                        n=None,
+                        json_string=json_string[alg_conf["id"]],
+                        plot_legend=alg_conf["plot_legend"],
+                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                        param_string=None, 
+                        filename=config["plotting"]["fixed_data"][j]["data"],
+        )         
+        for j in range(len(config["plotting"]["fixed_data"]))]
+        for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["plotting"]["algorithms"]]
+    return ret
+
+def adjmat_estimate_path_mcmc(algorithm):
+    ret = config["output_dir"]+"/adjmat_estimate/"\
+                        "adjmat=/{adjmat}/"\
+                        "bn=/{bn}/"\
+                        "data=/{data}/"\
+                        "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/" \
+                        "seed={replicate}/" \
+                        "adjmat.csv"
+    return ret
+
+def time_path(algorithm):
+    ret = config["output_dir"]+"/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/"\
+                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
+                    "seed={replicate}/" \
+                    "time.txt"
+    return ret
+
+def result_path_mcmc(algorithm):
+    res = config["output_dir"]+"/result/"\
+            "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\   
+            "seed={replicate}/" \
+            "legend={plot_legend}/" \        
+            "result.csv"
+    return res
+
+def data_path():
+    return config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
+
+def adjmat_true_path():
+    return config["output_dir"]+"/adjmat/{adjmat}.csv",
+
+def join_string_sampled_model(algorithm):
+    ret = [[[[expand(config["output_dir"] + "/result/"\        
+                            "algorithm=/"
+                            "{alg_string}/"
+                            "adjmat=/"
+                            "{adjmat_string}/"
+                            "bn=/"\
+                            "{param_string}/"
+                            "data=/"
+                            "n={n}/"
+                            "seed={replicate}/"
+                            "legend={plot_legend}/" 
+                            "result.csv",
+                            replicate=seed,
+                            alg_string=json_string[alg_conf["id"]],
+                            n=config["data"]["sample_sizes"][i],
+                            plot_legend=alg_conf["plot_legend"],
+                            adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
+                            param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
+            )         
+            for seed in replicates] 
+            for i in range(len(config["data"]["sample_sizes"]))]
+            for j in range(len(config["plotting"]["models"]))]
+            for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["plotting"]["algorithms"]]
+    return ret
+
+def join_string_fixed_data(algorithm):
+    ret = [[expand(config["output_dir"] + "/result/"\        
+                            "algorithm=/"
+                            "{alg_string}/"
+                            "adjmat=/"
+                            "{adjmat_string}/"
+                            "bn=/"\
+                            "{param_string}/"
+                            "data=/"
+                            "generation_method=fixed/" #or standard_Sampling                        
+                            "name={filename}/"
+                            "n={n}/"
+                            "seed={replicate}/"
+                            "legend={plot_legend}/" 
+                            "result.csv",
+                            replicate=1,
+                            alg_string=json_string[alg_conf["id"]],
+                            n=None,
+                            score_type="bde",
+                            bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
+                            bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                            plot_legend=alg_conf["plot_legend"],
+                            adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
+                            param_string=None, 
+                            filename=config["plotting"]["fixed_data"][j]["data"],
+            )         
+            for j in range(len(config["plotting"]["fixed_data"]))]
+            for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["plotting"]["algorithms"]]
+    return ret
+
 def gen_model_strings_from_conf(models, seed, setup):
     """
     Generate the graphs and paremeters simulatnepusly since we do not want 
@@ -414,13 +562,13 @@ rule trilearn_loglin:
         adjvecs = config["output_dir"]+"/adjvecs/{graph_param_data}/"\
                 "algorithm=/"  + pattern_strings["trilearn_loglin"] + "/" + \
                 "seed={replicate}/" \
-                "adjvecs.json",
+               "adjvecs.json",
         time = config["output_dir"] + "/time/{graph_param_data}/"\
                 "algorithm=/" + pattern_strings["trilearn_loglin"] + "/" + \
                 "seed={replicate}/" \
                 "time.txt"
     message:
-        "Executing trilearn algorithm on the following files: {input}."
+        "Executing trilearn algorithm on the following files: {input}, output: {output}. wildcards {wildcards}"
     singularity:
         "docker://onceltuca/trilearn:1.1"
     shell:
@@ -432,33 +580,14 @@ rule trilearn_loglin:
 
 rule summarise_trilearn_loglin:
     input:
-        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
-        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
-        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
-                        "adjmat=/{adjmat}/"\
-                        "bn=/{bn}/"\
-                        "data=/{data}/"\
-                        "algorithm=/" + pattern_strings["trilearn_loglin"] +"/"+  pattern_strings["mcmc_est"] + "/" \
-                        "seed={replicate}/" \
-                        "adjmat.csv",
-        time = config["output_dir"]+"/time/"\
-                    "adjmat=/{adjmat}/"\
-                    "bn=/{bn}/"\
-                    "data=/{data}/"\
-                    "algorithm=/" + pattern_strings["trilearn_loglin"] +  "/" \
-                    "seed={replicate}/" \
-                    "time.txt",
+        data = data_path(),
+        adjmat_true = adjmat_true_path(),
+        adjmat_est = adjmat_estimate_path_mcmc("trilearn_loglin"),
+        time = time_path("trilearn_loglin")
     output:
-        res = config["output_dir"]+"/result/"\
-            "algorithm=/" + pattern_strings["trilearn_loglin"] + "/"+ pattern_strings["mcmc_est"] + "/"\
-            "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
-            "data=/{data}/"\   
-            "seed={replicate}/" \
-            "legend={plot_legend}/" \        
-            "result.csv",
+        res = result_path_mcmc("trilearn_loglin")
     message:
-        "Summarizing trilearn algorithm with startspace on the following files: {input}."
+        "Summarizing trilearn algorithm with startspace on the following files: {input}, output: {output}."
     shell: 
         "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
@@ -547,82 +676,6 @@ rule summarise_tabu:
         " && python scripts/add_column.py --filename {output} --colname optimized       --colval true " \
         " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
         " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
-
-# def shell_command(alg):
-#     #return alg
-#     if alg == "blip":
-#         return "/usr/bin/time -f \"%e\" -o {output.time} " 
-#         command = "/usr/bin/time -f \"%e\" -o {output.time} " \  
-#             "Rscript scripts/run_blip.R " \
-#             "--filename_data {input.data} " \
-#             "--output_dir {config[output_dir]} " \
-#             "--time {wildcards.max_time} " \
-#             "--scorer.method {wildcards.scorermethod} " \
-#             "--solver.method {wildcards.solvermethod} " \
-#             "--indeg {wildcards.indeg} " \  
-#             "--cores {wildcards.cores} " \
-#             "--allocated {wildcards.allocated} " \
-#             "--scorefunction {wildcards.scorefunction} " \
-#             "--alpha {wildcards.alpha} " \
-#             "--verbose {wildcards.verbose} " \
-#             "--filename {output.adjmat} " 
-#         return command
-
-# rule run_algorithm:
-#     input:
-#         data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
-#     output:
-#         adjmat = config["output_dir"]+"/adjmat_estimate/{data}/" + \
-#                  "algorithm=/{algorithm}/alg_parameters=/{alg_parameters}" + "/"\
-#                 "seed={replicate}/" \
-#                 "adjmat.csv",
-#         time = config["output_dir"] + "/time/{data}/"\
-#                 "algorithm=/{algorithm}/alg_parameters=/{alg_parameters}" + "/"\
-#                 "seed={replicate}/" \
-#                 "time.txt"
-#     run:
-#         if wildcards.algorithm == "blip":
-#             command = "/usr/bin/time -f \"%e\" -o {output.time} " \  
-#             "Rscript scripts/run_blip.R " \
-#             "--filename_data {input.data} " \
-#             "--output_dir {config[output_dir]} " \
-#             "--time {wildcards.max_time} " \
-#             "--scorer.method {wildcards.scorermethod} " \
-#             "--solver.method {wildcards.solvermethod} " \
-#             "--indeg {wildcards.indeg} " \  
-#             "--cores {wildcards.cores} " \
-#             "--allocated {wildcards.allocated} " \
-#             "--scorefunction {wildcards.scorefunction} " \
-#             "--alpha {wildcards.alpha} " \
-#             "--verbose {wildcards.verbose} " \
-#             "--filename {output.adjmat} " 
-#             #shell("{wildcards.algorithm}")
-#             shell(command)
-
-# rule run_algorithm_pseudo:
-#     input:
-#         data = config["output_dir"]+"/data/{data}/seed={replicate}.csv"
-#         adjmat = config["output_dir"]+"/adjmat_estimate/{data}/" + \
-#                  "algorithm=/"+get_alg_pattern("{wildcards.alg_parameters}") + "/"\
-#                 "seed={replicate}/" \
-#                 "adjmat.csv",
-#         time = config["output_dir"] + "/time/{data}/"\
-#                 "algorithm=/"+get_alg_pattern("{wildcards.alg_parameters}") + "/"\
-#                 "algorithm=/{algorithm}/alg_parameters=/{alg_parameters}" + "/"\
-#                 "seed={replicate}/" \
-#                 "time.txt"
-#         # get input data string some way..
-#         # this seems to be hard to automate since the pattern matching becomes hard
-#         # maybe this canbe a wrapper 
-#     output:
-#         adjmat = config["output_dir"]+"/adjmat_estimate/{data}/" + \
-#                  "algorithm=/{algorithm}/alg_parameters=/{alg_parameters}" + "/"\
-#                 "seed={replicate}/" \
-#                 "adjmat.csv",
-#         time = config["output_dir"] + "/time/{data}/"\
-#                 "algorithm=/{algorithm}/alg_parameters=/{alg_parameters}" + "/"\
-#                 "seed={replicate}/" \
-#                 "time.txt"
 
 rule blip:
     input:
@@ -830,7 +883,7 @@ rule order_mcmc:
                 "seed={replicate}/" \
                 "time.txt"
     message:
-        "Executing order mcmc algorithm with startspace on the following files: {input}."
+        "Executing order mcmc algorithm with startspace on the following files: {input}.\n Output: {output}"
     shell: 
         "/usr/bin/time -f \"%e\" -o {output.time} " \  
         "Rscript scripts/run_order_mcmc.R "
@@ -884,33 +937,14 @@ rule adjmat_from_heatmap:
         "--filename {output.adjmat_est} " \
         "--threshold {wildcards.threshold}"
 
-rule summarise_ordermcmc:
+rule summarise_order_mcmc:
     input:
-        data = config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv", 
-        adjmat_true = config["output_dir"]+"/adjmat/{adjmat}.csv",
-        adjmat_est =  config["output_dir"]+"/adjmat_estimate/"\
-                        "adjmat=/{adjmat}/"\
-                        "bn=/{bn}/"\
-                        "data=/{data}/"\
-                        "algorithm=/" + pattern_strings["order_mcmc"] + "/" + pattern_strings["mcmc_est"] + "/" \
-                        "seed={replicate}/" \
-                        "adjmat.csv",
-        time = config["output_dir"]+"/time/"\
-                    "adjmat=/{adjmat}/"\
-                    "bn=/{bn}/"\
-                    "data=/{data}/"\
-                    "algorithm=/" + pattern_strings["order_mcmc"] + "/" + \
-                    "seed={replicate}/" \
-                    "time.txt",
+        data = data_path(),
+        adjmat_true = adjmat_true_path(),
+        adjmat_est = adjmat_estimate_path_mcmc("order_mcmc"),
+        time = time_path("order_mcmc")
     output:
-        res = config["output_dir"]+"/result/"\
-            "algorithm=/" + pattern_strings["order_mcmc"] + "/" + pattern_strings["mcmc_est"] + "/"\
-            "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
-            "data=/{data}/"\   
-            "seed={replicate}/" \
-            "legend={plot_legend}/" \        
-            "result.csv",
+        res = result_path_mcmc("order_mcmc")
     message:
         "Summarizing order mcmc algorithm with startspace on the following files: {input}."
     shell: 
@@ -1273,54 +1307,8 @@ rule summarise_fges:
 rule join_summaries_blip:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\
-        "algorithm=/"
-        "{alg_string}/" 
-        "adjmat=/"
-        "{adjmat_string}/"
-        "bn=/"\
-        "{param_string}/"
-        "data=/"
-        "n={n}/"
-        "seed={replicate}/"
-        "legend={plot_legend}/" 
-        "result.csv"
-        ,
-        replicate=seed,
-        alg_string=json_string[alg_conf["id"]],
-        n=config["data"]["sample_sizes"][i], 
-        plot_legend=alg_conf["plot_legend"],
-        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["blip"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["blip"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("blip"),
+        fixed_res = join_string_fixed_data("blip")
     output:
         config["output_dir"] + "/blip.csv"
     shell:
@@ -1330,50 +1318,8 @@ rule join_summaries_blip:
 rule join_summaries_itsearch:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["itsearch"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/{alg_string}/"
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,                        
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["itsearch"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("itsearch"),
+        fixed_res = join_string_fixed_data("itsearch")
     output:
         config["output_dir"] + "/itsearch.csv"
     shell:
@@ -1381,57 +1327,13 @@ rule join_summaries_itsearch:
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 # create to string method for algorithms in json files
+
 rule join_summaries_order_mcmc:
     input: # should save the database and give id. then startspace would have been an id instead.
            # How would we know that id...?
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + "/" + 
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-        replicate=seed,   
-        n=config["data"]["sample_sizes"][i],
-        threshold=alg_conf["threshold"],
-        burnin=alg_conf["burnin"],        
-        json_string=json_string[alg_conf["id"]],
-        plot_legend=alg_conf["plot_legend"], 
-        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["order_mcmc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + "/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" # or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,                        
-                        threshold=alg_conf["threshold"],
-                        burnin=alg_conf["burnin"],
-                        n=None,
-                        json_string=json_string[alg_conf["id"]],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["order_mcmc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model_mcmc("order_mcmc"),
+        fixed_res = join_string_fixed_data_mcmc("order_mcmc")
     output:
         config["output_dir"] + "/order_mcmc.csv"
     shell:
@@ -1442,59 +1344,12 @@ rule join_summaries_trilearn_loglin:
     input: # should save the database and give id. then startspace would have been an id instead.
            # How would we know that id...?
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        + pattern_strings["mcmc_est"]  + "/" + 
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-        replicate=seed,   
-        n=config["data"]["sample_sizes"][i],
-        threshold=alg_conf["threshold"],
-        burnin=alg_conf["burnin"],
-        alg_string=json_string[alg_conf["id"]],
-        plot_legend=alg_conf["plot_legend"], 
-        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"\
-                        "{alg_string}/" + 
-                        pattern_strings["mcmc_est"] + "/" +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" # or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,                        
-                        threshold=alg_conf["threshold"],
-                        burnin=alg_conf["burnin"],
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model_mcmc("trilearn_loglin"),
+        fixed_res = join_string_fixed_data_mcmc("trilearn_loglin")        
     output:
         config["output_dir"] + "/trilearn_loglin.csv"
+    message:
+        "Input: {input}"
     shell:
         "Rscript scripts/join_csv_files.R --algorithm trilearn_loglin --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
@@ -1502,54 +1357,8 @@ rule join_summaries_trilearn_loglin:
 rule join_summaries_pcalg:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/" +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["pcalg"] if alg_conf["id"] in config["plotting"]["algorithms"]]
-        ,
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/" +
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["pcalg"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("pcalg"),
+        fixed_res = join_string_fixed_data("pcalg")
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
@@ -1559,113 +1368,20 @@ rule join_summaries_pcalg:
 rule join_summaries_tabu:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["tabu"] if alg_conf["id"] in config["plotting"]["algorithms"]]
-        ,
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["tabu"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("tabu"),
+        fixed_res = join_string_fixed_data("tabu")
     output:
         config["output_dir"] + "/tabu.csv"
     shell:
         "Rscript scripts/join_csv_files.R --algorithm tabu --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
+
 rule join_summaries_mmhc:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["mmhc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        score_type="bde",
-                        bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
-                        bdecatpar_edgepf=config["evaluation"]["score"]["bdecatpar"]["edgepf"],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["mmhc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("mmhc"),
+        fixed_res = join_string_fixed_data("mmhc")
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
@@ -1675,54 +1391,8 @@ rule join_summaries_mmhc:
 rule join_summaries_gobnilp:
     input:
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,      
-                        alg_string=json_string[alg_conf["id"]],                  
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["gobnilp"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],                  
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["gobnilp"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-
+        res=join_string_sampled_model("gobnilp"),
+        fixed_res = join_string_fixed_data("gobnilp")     
     output:
         config["output_dir"] + "/gobnilp.csv"
     shell:
@@ -1732,122 +1402,13 @@ rule join_summaries_gobnilp:
 rule join_summaries_fges:
     input: # This could be a funciton since no pattern mathing is going on here
         conf="config.json",
-        res=[[[[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=seed,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=config["data"]["sample_sizes"][i],
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-                        param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-        )         
-        for seed in replicates] 
-        for i in range(len(config["data"]["sample_sizes"]))]
-        for j in range(len(config["plotting"]["models"]))]
-        for alg_conf in config["structure_learning_algorithms"]["fges"] if alg_conf["id"] in config["plotting"]["algorithms"]],
-        fixed_res = [[expand(config["output_dir"] + "/result/"\        
-                        "algorithm=/"
-                        "{alg_string}/"
-                        "adjmat=/"
-                        "{adjmat_string}/"
-                        "bn=/"\
-                        "{param_string}/"
-                        "data=/"
-                        "generation_method=fixed/" #or standard_Sampling                        
-                        "name={filename}/"
-                        "n={n}/"
-                        "seed={replicate}/"
-                        "legend={plot_legend}/" 
-                        "result.csv",
-                        replicate=1,
-                        alg_string=json_string[alg_conf["id"]],
-                        n=None,
-                        plot_legend=alg_conf["plot_legend"],
-                        adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-                        param_string=None, 
-                        filename=config["plotting"]["fixed_data"][j]["data"],
-        )         
-        for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf in config["structure_learning_algorithms"]["fges"] if alg_conf["id"] in config["plotting"]["algorithms"]],
+        res=join_string_sampled_model("fges"),
+        fixed_res = join_string_fixed_data("fges") 
     output:
         config["output_dir"] + "/fges.csv"
     shell:
         "Rscript scripts/join_csv_files.R --algorithm fges --filename {output} --files {input.res} {input.fixed_res}"
         " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-
-# This should be different for mcmc algorithms for example
-# def join_csv_files(wildcards):
-#     alg = wildcards.alg
-#     conf="config.json",
-#     res=[[[[expand(config["output_dir"] + "/result/"\        
-#                         "algorithm=/"
-#                         "{alg_string}/"
-#                         "adjmat=/"
-#                         "{adjmat_string}/"
-#                         "bn=/"\
-#                         "{param_string}/"
-#                         "data=/"
-#                         "n={n}/"
-#                         "seed={replicate}/"
-#                         "legend={plot_legend}/" 
-#                         "result.csv",
-#                         replicate=seed,
-#                         alg_string=json_string[alg_conf["id"]],
-#                         n=config["data"]["sample_sizes"][i],
-#                         plot_legend=alg_conf["plot_legend"],
-#                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
-#                         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
-#         )         
-#         for seed in replicates] 
-#         for i in range(len(config["data"]["sample_sizes"]))]
-#         for j in range(len(config["plotting"]["models"]))]
-#         for alg_conf["id"], alg_conf in config["structure_learning_algorithms"][alg].items() if alg_conf["id"] in config["plotting"]["algorithms"]],
-#     fixed_res = [[expand(config["output_dir"] + "/result/"\        
-#                         "algorithm=/"
-#                         "{alg_string}/"
-#                         "adjmat=/"
-#                         "{adjmat_string}/"
-#                         "bn=/"\
-#                         "{param_string}/"
-#                         "data=/"
-#                         "generation_method=fixed/" #or standard_Sampling                        
-#                         "name={filename}/"
-#                         "n={n}/"
-#                         "seed={replicate}/"
-#                         "legend={plot_legend}/" 
-#                         "result.csv",
-#                         replicate=1,
-#                         alg_string=json_string[alg_conf["id"]],
-#                         n=None,
-#                         plot_legend=alg_conf["plot_legend"],
-#                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
-#                         param_string=None, 
-#                         filename=config["plotting"]["fixed_data"][j]["data"],
-#         )         
-#         for j in range(len(config["plotting"]["fixed_data"]))]
-#         for alg_conf["id"], alg_conf in config["structure_learning_algorithms"][alg].items() if alg_conf["id"] in config["plotting"]["algorithms"]]
-
-#         return res + fixed_res
-
-#le join_summaries:
-#    input:
-#        "config.json",
-#        join_csv_files
-#    output:
-#        config["output_dir"] + "/{algorithm}.csv"
-#    shell:
-#        "Rscript scripts/join_csv_files.R --algorithm {wildcards.algorithm} --filename {output} --files {input.res} {input.fixed_res}"
-#        " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 rule roc:
     input:
