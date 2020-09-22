@@ -1,7 +1,27 @@
 import json
+from jsonschema import validate
+
+
+with open('config.json') as json_file:
+    conf = json.load(json_file)
+
+# Validade cofnig.json file
+with open('config.schema') as json_file:
+    schema = json.load(json_file)
+
+validate(instance=conf, schema=schema)
+
+available_conf_ids = []
+for alg, alg_conf_avail in conf["structure_learning_algorithms"].items():
+    for alg_conf in alg_conf_avail:
+        available_conf_ids.append(alg_conf["id"])   
+
+for alg_conf_id in conf["plotting"]["algorithms"]:
+    if alg_conf_id not in available_conf_ids:
+        raise Exception(alg_conf_id + " not available")
 
 pattern_strings = {}
-pattern_strings["blip"] =   "blip/alg_params=/" \
+pattern_strings["blip"] = "blip/alg_params=/" \
                 "score_type={score_type}/" \
                 "bdecatpar_chi={bdecatpar_chi}/" \
                 "bdecatpar_edgepf={bdecatpar_edgepf}/" \
@@ -93,15 +113,21 @@ pattern_strings["evaluation"] = "evaluation/" \
                    "bdecatpar_chi={bdecatpar_chi}/" \
                    "bdecatpar_edgepf={bdecatpar_edgepf}" 
 
-with open('config.json') as json_file:
-    conf = json.load(json_file)
 
 # This is to be used for startspace for certain methods.
 # Method with severalvalues for one arguments will be added here as well even though these 
 # never used. E.g. pcalg have typically several alphas.
 # TODO: Could it also be expanded to use in the join functions?
+# val = conf["structure_learning_algorithms"]["pcalg"][0]
+# a = expand(pattern_strings["pcalg"], score_type="bdecat",
+#                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+#                                            alpha=val["alpha"]) 
+
+# print(a)
+
 json_string = {}
-json_string = {key: expand(pattern_strings["itsearch"], 
+json_string = {val["id"]: expand(pattern_strings["itsearch"], 
                                             scoretype=val["optional"]["scoretype"],
                                             chi=val["optional"]["chi"],
                                            edgepf=val["optional"]["edgepf"],
@@ -110,38 +136,38 @@ json_string = {key: expand(pattern_strings["itsearch"],
                                            MAP=val["optional"]["MAP"],
                                            plus1it=val["optional"]["plus1it"],
                                            posterior=val["optional"]["posterior"]) 
-                    for key,val in conf["structure_learning_algorithms"]["itsearch"].items()}
+                    for val in conf["structure_learning_algorithms"]["itsearch"]}
 
-json_string.update({key: expand(pattern_strings["fges"], score_type="bdecat",
+json_string.update({val["id"]: expand(pattern_strings["fges"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            faithfulnessAssumed=val["faithfulnessAssumed"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
-                    for key,val in conf["structure_learning_algorithms"]["fges"].items()})
+                    for val in conf["structure_learning_algorithms"]["fges"]})
 
-json_string.update({key: expand(pattern_strings["pcalg"], score_type="bdecat",
+json_string.update({val["id"]: expand(pattern_strings["pcalg"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"])  
-                    for key, val in conf["structure_learning_algorithms"]["pcalg"].items() } )
+                    for val in conf["structure_learning_algorithms"]["pcalg"]})
 
-json_string.update({key: expand(pattern_strings["mmhc"], score_type="bdecat",
+json_string.update({val["id"]: expand(pattern_strings["mmhc"], score_type="bdecat",
                                            bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                            bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["restrict.args"]["alpha"])  
-                    for key, val in conf["structure_learning_algorithms"]["mmhc"].items() } )
+                    for val in conf["structure_learning_algorithms"]["mmhc"]} )
 
-json_string.update({key: expand(pattern_strings["gobnilp"], score_type="bdecat",
+json_string.update({val["id"]: expand(pattern_strings["gobnilp"], score_type="bdecat",
                                                 bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                                 bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                 palim=val["palim"],
                                                 alpha=val["alpha"],
                                                 prune=val["prune"]
                                                 )
-                for key, val in conf["structure_learning_algorithms"]["gobnilp"].items()})
+                for val in conf["structure_learning_algorithms"]["gobnilp"]})
 
-json_string.update({key:  expand(pattern_strings["tabu"], score_type="bdecat",
+json_string.update({val["id"]:  expand(pattern_strings["tabu"], score_type="bdecat",
                                                     bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                                     bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                     score=val["score"],
@@ -150,11 +176,11 @@ json_string.update({key:  expand(pattern_strings["tabu"], score_type="bdecat",
                                                     l=val["l"],
                                                     k=val["k"],
                                                     prior=val["prior"],
-                                                    beta=val["beta"],
+                                                    beta=val["beta"]
                                                     )
-                for key, val in conf["structure_learning_algorithms"]["tabu"].items()})
+                for val in conf["structure_learning_algorithms"]["tabu"]})
 
-json_string.update({key: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
+json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
                     score_type="bdecat",
                     bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                     bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
@@ -167,9 +193,9 @@ json_string.update({key: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_
                     threshold=val["threshold"],
                     burnin=val["burnin"],
                     )
-               for key, val in conf["structure_learning_algorithms"]["trilearn_loglin"].items()})
+               for val in conf["structure_learning_algorithms"]["trilearn_loglin"]})
 
-json_string.update({key: expand(pattern_strings["blip"], score_type="bdecat",
+json_string.update({val["id"]: expand(pattern_strings["blip"], score_type="bdecat",
                                             bdecatpar_chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
                                             bdecatpar_edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                             max_time=val["time"],
@@ -182,18 +208,19 @@ json_string.update({key: expand(pattern_strings["blip"], score_type="bdecat",
                                             alpha=val["alpha"],
                                             verbose=val["verbose"]
                                             )
-                for key, val in conf["structure_learning_algorithms"]["blip"].items()})
+                for val in conf["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...
-json_string.update({key: expand(pattern_strings["order_mcmc"], 
+json_string.update({val["id"]: expand(pattern_strings["order_mcmc"], 
                                             scoretype="bdecat",
                                             chi=val["chi"],
                                             edgepf=val["edgepf"],
                                             am=val["am"],
                                             aw=val["aw"],
                                             startspace_algorithm=json_string[val["startspace"]])  
-                    for key, val in conf["structure_learning_algorithms"]["order_mcmc"].items() } )
+                    for val in conf["structure_learning_algorithms"]["order_mcmc"] } )
 
+#print(json_string)
 def gen_model_strings_from_conf(models, seed, setup):
     """
     Generate the graphs and paremeters simulatnepusly since we do not want 
@@ -245,11 +272,15 @@ def active_algorithm_files(wildcards):
     with open('config.json') as json_file:
         conf = json.load(json_file)
     algs = []
-    for alg, val in conf["structure_learning_algorithms"].items():     
-        for alg_conf in conf["plotting"]["algorithms"]:
-            if alg_conf in val:
+
+    #plotting_algconfs = [alg_conf for alg_conf in conf["plotting"]["algorithms"]]
+
+    for alg, alg_conf_list in conf["structure_learning_algorithms"].items():     
+        for alg_conf_id in conf["plotting"]["algorithms"]:
+            if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(conf["output_dir"] + "/" + alg + ".csv")
     return algs
+
 
 configfile: 
     "config.json"
@@ -1256,7 +1287,7 @@ rule join_summaries_blip:
         "result.csv"
         ,
         replicate=seed,
-        alg_string=json_string[alg_conf_key],
+        alg_string=json_string[alg_conf["id"]],
         n=config["data"]["sample_sizes"][i], 
         plot_legend=alg_conf["plot_legend"],
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1265,7 +1296,7 @@ rule join_summaries_blip:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["blip"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1281,7 +1312,7 @@ rule join_summaries_blip:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[alg_conf_key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1289,7 +1320,7 @@ rule join_summaries_blip:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["blip"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["blip"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/blip.csv"
     shell:
@@ -1312,7 +1343,7 @@ rule join_summaries_itsearch:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alg_string=json_string[alg_conf_key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1321,7 +1352,7 @@ rule join_summaries_itsearch:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for alg_conf_key, alg_conf in config["structure_learning_algorithms"]["itsearch"].items() if alg_conf_key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["itsearch"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/{alg_string}/"
                         "adjmat=/{adjmat_string}/"
@@ -1334,7 +1365,7 @@ rule join_summaries_itsearch:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,                        
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1342,7 +1373,7 @@ rule join_summaries_itsearch:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["itsearch"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["itsearch"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/itsearch.csv"
     shell:
@@ -1367,7 +1398,7 @@ rule join_summaries_order_mcmc:
         n=config["data"]["sample_sizes"][i],
         threshold=alg_conf["threshold"],
         burnin=alg_conf["burnin"],        
-        json_string=json_string[key],
+        json_string=json_string[alg_conf["id"]],
         plot_legend=alg_conf["plot_legend"], 
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
@@ -1375,7 +1406,7 @@ rule join_summaries_order_mcmc:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["order_mcmc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/{json_string}/" + pattern_strings["mcmc_est"] + "/"
                         "adjmat=/"
@@ -1393,14 +1424,14 @@ rule join_summaries_order_mcmc:
                         threshold=alg_conf["threshold"],
                         burnin=alg_conf["burnin"],
                         n=None,
-                        json_string=json_string[key],
+                        json_string=json_string[alg_conf["id"]],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
                         param_string=None, 
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["order_mcmc"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["order_mcmc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/order_mcmc.csv"
     shell:
@@ -1426,7 +1457,7 @@ rule join_summaries_trilearn_loglin:
         n=config["data"]["sample_sizes"][i],
         threshold=alg_conf["threshold"],
         burnin=alg_conf["burnin"],
-        alg_string=json_string[key],
+        alg_string=json_string[alg_conf["id"]],
         plot_legend=alg_conf["plot_legend"], 
         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
         param_string=gen_parameter_string_from_conf(config["plotting"]["models"][j]["parameters"], seed)
@@ -1434,7 +1465,7 @@ rule join_summaries_trilearn_loglin:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"\
                         "{alg_string}/" + 
@@ -1453,7 +1484,7 @@ rule join_summaries_trilearn_loglin:
                         replicate=1,                        
                         threshold=alg_conf["threshold"],
                         burnin=alg_conf["burnin"],
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1461,7 +1492,7 @@ rule join_summaries_trilearn_loglin:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/trilearn_loglin.csv"
     shell:
@@ -1484,7 +1515,7 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1493,7 +1524,7 @@ rule join_summaries_pcalg:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]]
+        for alg_conf in config["structure_learning_algorithms"]["pcalg"] if alg_conf["id"] in config["plotting"]["algorithms"]]
         ,
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
@@ -1510,7 +1541,7 @@ rule join_summaries_pcalg:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1518,7 +1549,7 @@ rule join_summaries_pcalg:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["pcalg"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["pcalg"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/pcalg.csv"
     shell:
@@ -1541,7 +1572,7 @@ rule join_summaries_tabu:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1550,7 +1581,7 @@ rule join_summaries_tabu:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]]
+        for alg_conf in config["structure_learning_algorithms"]["tabu"] if alg_conf["id"] in config["plotting"]["algorithms"]]
         ,
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
@@ -1567,7 +1598,7 @@ rule join_summaries_tabu:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1575,7 +1606,7 @@ rule join_summaries_tabu:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["tabu"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["tabu"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/tabu.csv"
     shell:
@@ -1598,7 +1629,7 @@ rule join_summaries_mmhc:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1607,7 +1638,7 @@ rule join_summaries_mmhc:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["mmhc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1623,7 +1654,7 @@ rule join_summaries_mmhc:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         score_type="bde",
                         bdecatpar_chi=config["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -1634,7 +1665,7 @@ rule join_summaries_mmhc:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["mmhc"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["mmhc"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/mmhc.csv"
     shell:
@@ -1657,7 +1688,7 @@ rule join_summaries_gobnilp:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,      
-                        alg_string=json_string[key],                  
+                        alg_string=json_string[alg_conf["id"]],                  
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1666,7 +1697,7 @@ rule join_summaries_gobnilp:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["gobnilp"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1682,7 +1713,7 @@ rule join_summaries_gobnilp:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[key],                  
+                        alg_string=json_string[alg_conf["id"]],                  
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1690,7 +1721,7 @@ rule join_summaries_gobnilp:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["gobnilp"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["gobnilp"] if alg_conf["id"] in config["plotting"]["algorithms"]],
 
     output:
         config["output_dir"] + "/gobnilp.csv"
@@ -1714,7 +1745,7 @@ rule join_summaries_fges:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=seed,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=config["data"]["sample_sizes"][i],
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1723,7 +1754,7 @@ rule join_summaries_fges:
         for seed in replicates] 
         for i in range(len(config["data"]["sample_sizes"]))]
         for j in range(len(config["plotting"]["models"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["fges"] if alg_conf["id"] in config["plotting"]["algorithms"]],
         fixed_res = [[expand(config["output_dir"] + "/result/"\        
                         "algorithm=/"
                         "{alg_string}/"
@@ -1739,7 +1770,7 @@ rule join_summaries_fges:
                         "legend={plot_legend}/" 
                         "result.csv",
                         replicate=1,
-                        alg_string=json_string[key],
+                        alg_string=json_string[alg_conf["id"]],
                         n=None,
                         plot_legend=alg_conf["plot_legend"],
                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1747,7 +1778,7 @@ rule join_summaries_fges:
                         filename=config["plotting"]["fixed_data"][j]["data"],
         )         
         for j in range(len(config["plotting"]["fixed_data"]))]
-        for key, alg_conf in config["structure_learning_algorithms"]["fges"].items() if key in config["plotting"]["algorithms"]],
+        for alg_conf in config["structure_learning_algorithms"]["fges"] if alg_conf["id"] in config["plotting"]["algorithms"]],
     output:
         config["output_dir"] + "/fges.csv"
     shell:
@@ -1771,7 +1802,7 @@ rule join_summaries_fges:
 #                         "legend={plot_legend}/" 
 #                         "result.csv",
 #                         replicate=seed,
-#                         alg_string=json_string[key],
+#                         alg_string=json_string[alg_conf["id"]],
 #                         n=config["data"]["sample_sizes"][i],
 #                         plot_legend=alg_conf["plot_legend"],
 #                         adjmat_string=gen_adjmat_string_from_conf(config["plotting"]["models"][j]["graph"], seed, i), 
@@ -1780,7 +1811,7 @@ rule join_summaries_fges:
 #         for seed in replicates] 
 #         for i in range(len(config["data"]["sample_sizes"]))]
 #         for j in range(len(config["plotting"]["models"]))]
-#         for key, alg_conf in config["structure_learning_algorithms"][alg].items() if key in config["plotting"]["algorithms"]],
+#         for alg_conf["id"], alg_conf in config["structure_learning_algorithms"][alg].items() if alg_conf["id"] in config["plotting"]["algorithms"]],
 #     fixed_res = [[expand(config["output_dir"] + "/result/"\        
 #                         "algorithm=/"
 #                         "{alg_string}/"
@@ -1796,7 +1827,7 @@ rule join_summaries_fges:
 #                         "legend={plot_legend}/" 
 #                         "result.csv",
 #                         replicate=1,
-#                         alg_string=json_string[key],
+#                         alg_string=json_string[alg_conf["id"]],
 #                         n=None,
 #                         plot_legend=alg_conf["plot_legend"],
 #                         adjmat_string="myadjmats/" + config["plotting"]["fixed_data"][j]["graph"],
@@ -1804,7 +1835,7 @@ rule join_summaries_fges:
 #                         filename=config["plotting"]["fixed_data"][j]["data"],
 #         )         
 #         for j in range(len(config["plotting"]["fixed_data"]))]
-#         for key, alg_conf in config["structure_learning_algorithms"][alg].items() if key in config["plotting"]["algorithms"]]
+#         for alg_conf["id"], alg_conf in config["structure_learning_algorithms"][alg].items() if alg_conf["id"] in config["plotting"]["algorithms"]]
 
 #         return res + fixed_res
 
@@ -1821,6 +1852,7 @@ rule join_summaries_fges:
 rule roc:
     input:
         "config.json",
+        "Snakefile",
         active_algorithm_files
     output:
         config["output_dir"] + "/ROC.eps", \

@@ -1,6 +1,4 @@
-#library(RBGL)
 library(dplyr, warn.conflicts = FALSE)
-#library(tibble)
 library("rjson")
 
 source("lib/code_for_binary_simulations/blip_vs_bidag_plot.R")
@@ -16,14 +14,14 @@ toplot <- data.frame()
 active_algorithms <- c()
 
 for(alg_name in names(config$structure_learning_algorithms)) {
-    for (alg_conf_name in names(config$structure_learning_algorithms[[alg_name]])) {
-       if(alg_conf_name %in% config$plotting$algorithms) {
+    for (alg_conf in config$structure_learning_algorithms[[alg_name]]) {
+       if(alg_conf$id %in% config$plotting$algorithms) {
            active_algorithms <- c(active_algorithms, alg_name)
-
-        }
+       }
     }
 }
 active_algorithms <- unique(active_algorithms)
+
 bns <- c()
 adjmats <- c()
 for (model in config$plotting$models) {

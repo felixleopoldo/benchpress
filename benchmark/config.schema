@@ -374,7 +374,7 @@
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "verbose":{
-                    "type": "boolean"
+                    "$ref": "#/definitions/nonnegint"
                 }
             },
             "additionalProperties": false,
@@ -607,5 +607,6 @@
             "additionalProperties": false,
             "required": ["scoretype", "chi", "edgepf", "am", "aw", "threshold", "burnin"]
         }
-    }
+    },
+    "additionalProperties": false
 }

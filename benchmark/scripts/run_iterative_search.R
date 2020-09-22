@@ -16,7 +16,7 @@ p <- add_argument(p, "--title",         help = "Title")
 p <- add_argument(p, "--filename",      help = "Filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed",          help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--map",           help = "MAP parameter 0/1", type = "numeric")
+p <- add_argument(p, "--map",           help = "MAP parameter True False", )
 p <- add_argument(p, "--scoretype",     help = "bde/bge/bic")
 p <- add_argument(p, "--chi",           help = "score parameter", type = "numeric", default = 0.5)
 p <- add_argument(p, "--edgepf",        help = "score parameter", type = "numeric", default = 2)
@@ -72,7 +72,7 @@ if(argv$scoretype == "bge"){
 itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       myscore,
                                       chainout = TRUE,
-                                      MAP = map && TRUE,
+                                      MAP = as.logical(map),
                                       posterior = posterior,
                                       scoreout = TRUE,
                                       plus1it = plus1it) # 1 and loop
@@ -80,8 +80,6 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
 # output a csv file with "additional statistics" eg
 
 endspace <- itsearch_res$space$adjacency
-#rownames(endspace) <- seq(dim(data)[2])
-#colnames(endspace) <- seq(dim(data)[2])
 colnames(endspace) <- names(data)
 
 write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
