@@ -116,6 +116,28 @@
                         "$ref": "#/definitions/fges"
                     }
                 },
+                "fci":{
+                    "description": "FCI instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/fci"
+                    }
+                },
+                "rfci":{
+                    "description": "RFCI instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/rfci"
+                    }
+                },
+                "gfci":{
+                    "description": "GFCI instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/gfci"
+                    }
+                },
+
                 "pcalg":{
                     "description": "PC algorithm instances",
                     "type":"array",
@@ -434,6 +456,85 @@
             "required": ["id","plot_legend", "faithfulnessAssumed", 
                          "score", "data-type"]
         },
+        "fci":{
+            "description": "FCI instance",
+            "type":"object",
+            "properties": {
+                "id": {"type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test":{
+                    "type": "string"
+                },
+                "data-type":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id","plot_legend", "alpha", 
+                         "test"]
+        },
+        "gfci":{
+            "description": "GFCI instance",
+            "type":"object",
+            "properties": {
+                "id": {"type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test":{
+                    "type": "string"
+                },
+                "score":{
+                    "type": "string"
+                },
+                "data-type":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id","plot_legend", "alpha", 
+                         "test"]
+        },        
+        "rfci":{
+            "description": "RFCI instance",
+            "type":"object",
+            "properties": {
+                "id": {"type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test":{
+                    "type": "string"
+                },
+                "data-type":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id","plot_legend", "alpha", 
+                         "test"]
+        },        
+
         "pcalg":{
             "description": "PC algorithm instance",
             "type":"object",

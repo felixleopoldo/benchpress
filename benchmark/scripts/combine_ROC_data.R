@@ -248,6 +248,64 @@ if("fges" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
 
+if("fci" %in% config$plotting$algorithms) {
+    roc_fges <- read.csv("simresults/fci.csv")
+
+    sum_roc_fges <- roc_fges %>% 
+                    filter(replicate %in% replicates) %>%
+                    group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
+                    summarise( SHD_mean = mean(SHD),
+                            TPR_mean = mean(TPR), 
+                            TPR_median = median(TPR), 
+                            FPRn_median = median(FPRn), 
+                            TPR_q1 = quantile(TPR, probs = c(0.05)), 
+                            TPR_q3 = quantile(TPR, probs = c(0.95)),
+                            time_mean = mean(time),
+                            N = n()) #%>% ungroup() %>%
+                        #filter(N %in% replicates)
+    sum_roc_fges["labels"] <- NA 
+
+    toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
+}
+if("gfci" %in% config$plotting$algorithms) {
+    roc_fges <- read.csv("simresults/gfci.csv")
+
+    sum_roc_fges <- roc_fges %>% 
+                    filter(replicate %in% replicates) %>%
+                    group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
+                    summarise( SHD_mean = mean(SHD),
+                            TPR_mean = mean(TPR), 
+                            TPR_median = median(TPR), 
+                            FPRn_median = median(FPRn), 
+                            TPR_q1 = quantile(TPR, probs = c(0.05)), 
+                            TPR_q3 = quantile(TPR, probs = c(0.95)),
+                            time_mean = mean(time),
+                            N = n()) #%>% ungroup() %>%
+                        #filter(N %in% replicates)
+    sum_roc_fges["labels"] <- NA 
+
+    toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
+}
+if("rfci" %in% config$plotting$algorithms) {
+    roc_fges <- read.csv("simresults/rfci.csv")
+
+    sum_roc_fges <- roc_fges %>% 
+                    filter(replicate %in% replicates) %>%
+                    group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
+                    summarise( SHD_mean = mean(SHD),
+                            TPR_mean = mean(TPR), 
+                            TPR_median = median(TPR), 
+                            FPRn_median = median(FPRn), 
+                            TPR_q1 = quantile(TPR, probs = c(0.05)), 
+                            TPR_q3 = quantile(TPR, probs = c(0.95)),
+                            time_mean = mean(time),
+                            N = n()) #%>% ungroup() %>%
+                        #filter(N %in% replicates)
+    sum_roc_fges["labels"] <- NA 
+
+    toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
+}
+
 if("blip" %in% config$plotting$algorithms) {
     ROCdf_blip <- read.csv("simresults/blip.csv")
     sum_roc_blip <- ROCdf_blip %>% 
