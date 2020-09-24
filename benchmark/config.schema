@@ -172,8 +172,38 @@
                     "items": {
                         "$ref": "#/definitions/order_mcmc"
                     }
+                },
+                "interiamb":{
+                    "description": "Inter-IAMB instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/interiamb"
+                    }
+                },
+                "gs":{
+                    "description": "GS instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/interiamb"
+                    }
+                },
+                "hc":{
+                    "description": "HC instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/hc"
+                    }
+                },
+                "h2pc":{
+                    "description": "H2PC instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/h2pc"
+                    }
                 }
-            }
+            },
+            "additionalProperties": false
+
         }     
     },
     "required": ["output_dir", 
@@ -578,6 +608,70 @@
             "additionalProperties": false,
             "required": ["id", "plot_legend", "restrict.args"]
         },
+        "h2pc":{
+            "description": "H2PC algorithm instance",
+            "type":"object",
+            "properties": {
+                "id": {
+                    "type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "restrict.args":{
+                    "type":"object",
+                    "properties": {
+                    "alpha":{
+                        "$ref": "#/definitions/flexprob"
+                        }
+                    },
+                    "required": ["alpha"]
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id", "plot_legend", "restrict.args"]
+        },
+
+        "interiamb":{
+            "description": "Inter-IAMB algorithm instance",
+            "type":"object",
+            "properties": {
+                "id": {
+                    "type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id", "plot_legend", "alpha"]
+        },
+        "gs":{
+            "description": "Grow shrink (GS) algorithm instance",
+            "type":"object",
+            "properties": {
+                "id": {
+                    "type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id", "plot_legend", "alpha"]
+        },
         "tabu":{
             "description": "TABU algorithm instance",
             "type":"object",
@@ -614,6 +708,49 @@
             "additionalProperties": false,
             "required": ["id", "plot_legend", "beta", "score", "iss", "iss.mu", "l", "k", "prior"]
         },
+        "hc":{
+            "description": "HC algorithm instance",
+            "type":"object",
+            "properties": {
+                "id": {"type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "perturb":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "restart":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "beta":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "score":{
+                    "type":"string"
+                },
+                "iss":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "iss.mu":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "l":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "k":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "prior":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id", "plot_legend", "beta", "score", "iss", "iss.mu", "l", "k", "prior", "perturb", "restart"]
+        },
+
         "itsearch":{
             "description": "Iterative search +1 algorithm instance",
             "type":"object",
