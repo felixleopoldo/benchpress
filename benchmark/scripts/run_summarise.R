@@ -40,7 +40,7 @@ getPattern <- function(amat) {
     t(tmp)
 }
 
-p <- arg_parser("A program for running iterativeMCMC and save to file.")
+p <- arg_parser("A program for summarising and save to file.")
 p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
 p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")

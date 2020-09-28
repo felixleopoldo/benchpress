@@ -200,6 +200,13 @@
                     "items": {
                         "$ref": "#/definitions/h2pc"
                     }
+                },
+                "greenthomas":{
+                    "description": "Green and Thomas instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/greenthomas"
+                    }
                 }
             },
             "additionalProperties": false
@@ -459,6 +466,30 @@
             },
             "additionalProperties": false,
             "required": ["id", "plot_legend", "plot","palim", "alpha", "prune"]
+        },
+        "greenthomas":{
+            "description": "Green & Thomas instance",
+            "type":"object",
+            "properties": {
+                "id": {"type":"string",
+                    "description":"Unique idenfifier"
+                },
+                "plot_legend": {
+                    "description": "Legend to show in plotting",
+                    "type": "string"
+                },
+                "n_samples":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "penalty":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "randomits":{
+                    "$ref": "#/definitions/flexnonnegint"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["id", "plot_legend", "n_samples","penalty", "randomits"]
         },
         "fges":{
             "description": "fGES instance",
