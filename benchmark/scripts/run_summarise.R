@@ -1,6 +1,7 @@
 library(argparser)
 library(BiDAG)
 library(pcalg)
+library(bnlearn)
 
 #########
 ## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
@@ -99,12 +100,29 @@ true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
 estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
 true_nedges <- sum(getPattern(true_adjmat))
 
+# Benchmarks on skeleton
+true_adjmat_skel = true_adjmat + t(true_adjmat)
+true_skeleton <- adjacency2dag(true_adjmat_skel)
+
+est_adjmat_skel = true_adjmat + t(true_adjmat)
+est_skeleton <- adjacency2dag(est_adjmat_skel)
+
+true_nedges <- sum(true_adjmat_skel) / 2
+compres <- compareDAGs(est_skeleton, true_skeleton)
+names(compres) <- c("SHD", "TP", "FP")
+
 # Scoring DAG
 myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
                               bdecatpar = list(chi = argv$bdecatpar_chi,
                                                edgepf = argv$bdecatpar_edgepf))
 
 logscore <- DAGscore(ncol(data), myscore_tmp, estimated_adjmat) # this was bnscore, dont know why...
+
+# Compute number of correct Markov blankets
+
+# Cannot convert graphnel to bn. These functions are for grain networks.
+# true_dag_bn.fit <- as.bn.fit(true_dag)
+# est_dag_bn.fit <- as.bn.fit(estimated_dag)
 
 # Statistics on getPattern graph
 compres <- compareDAGs(estimated_patterngraph, true_patterngraph)

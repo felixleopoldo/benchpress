@@ -3,8 +3,6 @@ library("rjson")
 
 config <- fromJSON(file = "config.json")
 toplot <- read.csv(file.path(config$output_dir, "ROC_data.csv"))
-
-
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_median,
                   ymin = TPR_q1, 

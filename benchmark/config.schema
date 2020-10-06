@@ -8,11 +8,11 @@
             "description": "Directory for the generated files.",
             "type": "string"
         },
-        "plotting":{
-            "description": "Description of the plotting setup.",
+        "benchmark_setup":{
+            "description": "Description of the benchmarking setup.",
             "type": "object",
             "properties": {
-                "algorithms": {
+                "structure_learning_algorithms": {
                     "type":"array",
                     "uniqueItems": true
                 },
@@ -28,45 +28,49 @@
                         "$ref": "#/definitions/fixed_data_dict"
                     },
                     "uniqueItems": true
-                }
-            }
-        },
-        "data":{
-            "description": "Data sampling setup.",
-            "type": "object",
-            "properties": {
-                "replicates":{
+                },
+                "data_sampling_algorithms":{
+                    "type": "array"
+                },
+                "seed_range":{
                     "description": "Interval of seeds to simulate from.",
                     "type": "object",
                     "properties": {
-                        "start":{
+                        "from":{
                             "description": "Start of seed interval",
                             "type":"integer"
                         },
-                        "end":{
+                        "to":{
                             "description": "End of seed interval",
                             "type": "integer"
                         }
                     }
-                },
-                "sample_sizes":{
-                    "description": "Sample sizes in simulation setup arranged in a list of list of sample sizes.",
+                }
+            }
+        },
+        "data_sampling_algorithms":{
+            "description": "Data sampling setup.",
+            "type":"object",
+            "properties": {
+                "standard_sampling":{
+                    "description": "List of standard_sampling setups.",
                     "type":"array",
-                    "items": {
-                        "type":"array",
-                        "items": 
-                             {"$ref": "#/definitions/nonnegint"}           
+                    "items":{
+                        "$ref": "#/definitions/standard_sampling"
                     }
                 }
-            },
-            "required": ["replicates","sample_sizes"]
+            }
         },
         "graph_sampling_algorithms":{
             "description": "The graph samplings algorithms.",
             "type":"object",
             "properties": {
                 "generateDAGMaxParents":{
-                    "$ref": "#/definitions/generateDAGMaxParents"
+                    "description": "List of generateDAGMaxParents instances",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/generateDAGMaxParents"
+                    }
                 }
             }
         },
@@ -75,7 +79,11 @@
             "type": "object",
             "properties": {
                 "generateBinaryBN":{
-                    "$ref": "#/definitions/generateBinaryBN"
+                    "description": "List of generateBinayBN instances",
+                    "type":"array",
+                    "items":{
+                        "$ref": "#/definitions/generateBinaryBN"
+                    }
                 }
             }
         },
@@ -214,10 +222,9 @@
         }     
     },
     "required": ["output_dir", 
-                "plotting", 
+                "benchmark_setup", 
                 "graph_sampling_algorithms",
                 "parameters_sampling_algorithms",
-                "data",
                 "evaluation",
                 "structure_learning_algorithms"],
     "definitions":{
@@ -240,30 +247,55 @@
                 },
                 "parameters": {
                     "type":"string"
+                },
+                "data": {
+                    "type":"string"
+                },
+                "replicates" :{
+                    "type": "array",
+                    "items": {
+                        "type":"integer"
+                    }
                 }
             }
+        },
+        "standard_sampling":{
+            "description": "Sampling data from the multivariate distribution.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "sample_sizes":{
+                    "description": "Sample sizes in simulation setup arranged in a list of list of sample sizes.",
+                    "type":"array",
+                    "items": {
+                        "$ref": "#/definitions/nonnegint"
+                    }
+                }
+            },
+            "required": ["id","sample_sizes"]
         },
         "generateDAGMaxParents":{
             "description": "An instance of generateDAGMaxParents",
             "type":"object",
             "properties": {
+                "id":{
+                    "type":"string"
+                },
                 "av_parent":{
                     "description":"Maximum average number of parents",                   
                     "type":"array",
                     "items": {
-                        "type":"array",
-                        "items": 
-                             {"$ref": "#/definitions/nonnegint"}           
+                        "$ref": "#/definitions/nonnegint"
                     }
                 },
                 "dims":{
                     "description": "Dimensions of the DAGs, a list of list of dimensions, matching the sample_sizes in the data setup.",
                     "type":"array",
                     "items": {
-                        "type":"array",
-                        "items": 
-                             {"$ref": "#/definitions/nonnegint"}           
-                    }                
+                        "$ref": "#/definitions/nonnegint"
+                    }
                 }
             },
             "required": ["av_parents", "dims"]
@@ -272,6 +304,9 @@
             "description": "Parameter setting for generateBinaryBN",
             "type":"object",
             "properties": {
+                "id":{
+                    "type":"string"
+                },
                 "min":{
                     "description": "Minimum probability",
                     "type":"number",

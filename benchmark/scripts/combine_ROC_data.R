@@ -8,20 +8,20 @@ config <- fromJSON(file = "config.json")
 
 directory <- config$output_dir
 
-replicates <- config$data$replicates$start:config$data$replicates$end
+#replicates <- config$data$replicates$start:config$data$replicates$end
 
 toplot <- data.frame()
 active_algorithms <- c()
 
 for(alg_name in names(config$structure_learning_algorithms)) {
     for (alg_conf in config$structure_learning_algorithms[[alg_name]]) {
-       if(alg_conf$id %in% config$plotting$algorithms) {
+       if(alg_conf$id %in% config$benchmark_setup$structure_learning_algorithms) {
            active_algorithms <- c(active_algorithms, alg_name)
        }
     }
 }
 active_algorithms <- unique(active_algorithms)
-
+print(active_algorithms)
 bns <- c()
 adjmats <- c()
 for (model in config$plotting$models) {
@@ -44,7 +44,7 @@ if("order_mcmc" %in% active_algorithms) {
                         #filter(adjmat %in% adjmats) %>%
                         #filter(bn %in% bns) %>%
                         #filter(data %in% data) %>%
-                        filter(replicate %in% replicates) %>%
+                        #filter(replicate %in% replicates) %>%
                         # filter(is.na(itsearch_plus1it) | (itsearch_plus1it %in% config$itsearch_sample$optional$plus1it)) %>%
                         # group_by(legend, !!as.symbol("threshold"), sample_size, dim, avparents) %>% 
                         group_by(legend, adjmat, bn, data, !!as.symbol("threshold")) %>% 
@@ -73,7 +73,7 @@ if("trilearn_loglin" %in% active_algorithms) {
                         #filter(adjmat %in% adjmats) %>%
                         #filter(bn %in% bns) %>%
                         #filter(data %in% data) %>%
-                        filter(replicate %in% replicates) %>%
+                        #filter(replicate %in% replicates) %>%
                         # filter(is.na(itsearch_plus1it) | (itsearch_plus1it %in% config$itsearch_sample$optional$plus1it)) %>%
                         # group_by(legend, !!as.symbol("threshold"), sample_size, dim, avparents) %>% 
                         group_by(legend, adjmat, bn, data, !!as.symbol("threshold")) %>% 
@@ -128,7 +128,8 @@ if("itsearch" %in% active_algorithms) {
 }
 
 
-if("pcalg" %in% config$plotting$algorithms) {
+if("pcalg" %in% config$benchmark_setup$structure_learning_algorithms) {
+    print("PCALG")
     roc_pcalg <-read.csv("simresults/pcalg.csv")
 
     sum_roc_pcalg <- roc_pcalg %>% 
@@ -137,7 +138,7 @@ if("pcalg" %in% config$plotting$algorithms) {
                      #filter(dim %in% dims) %>%
                      #filter(sample_size %in% sample_sizes) %>%         
                      #filter(avparents %in% dag_avparents) %>%
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                      #group_by(legend, !!as.symbol("alpha"), sample_size, dim, avparents) %>% 
                      group_by(legend, adjmat, bn, data, !!as.symbol("alpha")) %>% 
                      summarise(    
@@ -159,14 +160,14 @@ if("pcalg" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_pcalg)
 }
 
-if("tabu" %in% config$plotting$algorithms) {
+if("tabu" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_pcalg <-read.csv("simresults/tabu.csv")
 
     sum_roc_pcalg <- roc_pcalg %>% 
                      #filter(dim %in% dims) %>%
                      #filter(sample_size %in% sample_sizes) %>%         
                      #filter(avparents %in% dag_avparents) %>%
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                      #group_by(legend, !!as.symbol("alpha"), sample_size, dim, avparents) %>% 
                      group_by(legend, adjmat, bn, data) %>% 
                      summarise(    
@@ -188,15 +189,12 @@ if("tabu" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_pcalg)
 }
 
-if("mmhc" %in% config$plotting$algorithms) {
+if("mmhc" %in% config$benchmark_setup$structure_learning_algorithms) {
 
     roc_mmhc <- read.csv("simresults/mmhc.csv")
 
     sum_roc_mmhc <- roc_mmhc %>% 
-                    #filter(dim %in% dims) %>%
-                    #filter(sample_size %in% sample_sizes) %>%
-                    #filter(avparents %in% dag_avparents) %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                      group_by(legend,adjmat,bn,data, !!as.symbol("alpha")) %>% 
                      summarise( SHD_mean = mean(SHD),
                                TPR_mean = mean(TPR), 
@@ -219,14 +217,11 @@ if("mmhc" %in% config$plotting$algorithms) {
 }
 
 
-if("fges" %in% config$plotting$algorithms) {
+if("fges" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/fges.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    #filter(dim %in% dims) %>%
-                    #filter(sample_size %in% sample_sizes) %>%
-                    #filter(avparents %in% dag_avparents) %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -249,11 +244,11 @@ if("fges" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
 
-if("fci" %in% config$plotting$algorithms) {
+if("fci" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/fci.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -268,11 +263,11 @@ if("fci" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("gfci" %in% config$plotting$algorithms) {
+if("gfci" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/gfci.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -287,11 +282,11 @@ if("gfci" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("greenthomas" %in% config$plotting$algorithms) {
+if("greenthomas" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/greenthomas.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("randomits")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -307,11 +302,11 @@ if("greenthomas" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
 
-if("rfci" %in% config$plotting$algorithms) {
+if("rfci" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/rfci.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -326,11 +321,11 @@ if("rfci" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("interiamb" %in% config$plotting$algorithms) {
+if("interiamb" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/interiamb.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -345,11 +340,11 @@ if("interiamb" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("gs" %in% config$plotting$algorithms) {
+if("gs" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/gs.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -364,11 +359,11 @@ if("gs" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("h2pc" %in% config$plotting$algorithms) {
+if("h2pc" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/h2pc.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("alpha")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -383,11 +378,11 @@ if("h2pc" %in% config$plotting$algorithms) {
 
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
-if("hc" %in% config$plotting$algorithms) {
+if("hc" %in% config$benchmark_setup$structure_learning_algorithms) {
     roc_fges <- read.csv("simresults/hc.csv")
 
     sum_roc_fges <- roc_fges %>% 
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     group_by(legend,adjmat,bn,data,!!as.symbol("restart")) %>% 
                     summarise( SHD_mean = mean(SHD),
                             TPR_mean = mean(TPR), 
@@ -403,13 +398,13 @@ if("hc" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_fges)
 }
 
-if("blip" %in% config$plotting$algorithms) {
+if("blip" %in% config$benchmark_setup$structure_learning_algorithms) {
     ROCdf_blip <- read.csv("simresults/blip.csv")
     sum_roc_blip <- ROCdf_blip %>% 
                 #filter(dim %in% dims) %>%
                 #filter(sample_size %in% sample_sizes) %>%
                 #filter(avparents %in% dag_avparents) %>%      
-                filter(replicate %in% replicates) %>%
+                #filter(replicate %in% replicates) %>%
                 #filter(indeg %in% config$algorithms$blip$indeg) %>%
                 # group_by(legend, sample_size, dim, !!as.symbol("max_time"), avparents) %>% 
                  group_by(legend, adjmat, bn, data, !!as.symbol("max_time")) %>% 
@@ -432,7 +427,7 @@ if("blip" %in% config$plotting$algorithms) {
     toplot <- dplyr::bind_rows(toplot, sum_roc_blip)
 }
 
-if("gobnilp" %in% config$plotting$algorithms) {
+if("gobnilp" %in% config$benchmark_setup$structure_learning_algorithms) {
     ROCdf_gobnilp <- read.csv("simresults/gobnilp.csv")
     sum_roc_gobnilp <- ROCdf_gobnilp %>% 
                     #filter(adjmat %in% adjmats) %>%
@@ -440,7 +435,7 @@ if("gobnilp" %in% config$plotting$algorithms) {
                     #filter(dim %in% dims) %>%
                     #filter(sample_size %in% sample_sizes) %>%
                     #filter(avparents %in% avparents) %>%          
-                    filter(replicate %in% replicates) %>%
+                    #filter(replicate %in% replicates) %>%
                     #group_by(legend, sample_size, dim, avparents, !!as.symbol("palim")) %>% 
                     group_by(legend, adjmat, bn, data, !!as.symbol("palim")) %>% 
                      summarise( SHD_mean = mean(SHD),
