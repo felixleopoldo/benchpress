@@ -400,7 +400,7 @@ def join_string_sampled_model(algorithm):
             param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["simulated_data"]]
+            for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["structure_learning_algorithms"]],
     return ret
 
@@ -412,8 +412,8 @@ def join_string_sampled_model_mcmc(algorithm):
                         "data=/{data_string}/"                       
                         "legend={plot_legend}/" 
                         "result.csv",
-            threshold=alg_conf["threshold"],
-            burnin=alg_conf["burnin"],
+            threshold=alg_conf["threshold"], # only for mcmc
+            burnin=alg_conf["burnin"], # only for mcmc
             plot_legend=alg_conf["plot_legend"], 
             algorithm_string=json_string[alg_conf["id"]],
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
@@ -421,7 +421,7 @@ def join_string_sampled_model_mcmc(algorithm):
             data_string=gen_data_string_from_conf(sim_setup["data"], seed)
             )
             for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["simulated_data"]]
+            for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["structure_learning_algorithms"]]
     return ret
 
