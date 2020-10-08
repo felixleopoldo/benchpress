@@ -29,10 +29,9 @@ geom_point(data = toplot,
 #          )
 facet_wrap(. ~ adjmat+bn+data, scales="free_x", nrow = 2) +
 # Titles etc
-xlab("FPRn") +
+xlab("FPRp") +
 ylab("TPR") +
 ggtitle("ROC") +
-theme(plot.title = element_text(hjust = 0.5))
-
+theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=file.path(config$output_dir, "ROC.eps"))
 

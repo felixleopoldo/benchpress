@@ -56,11 +56,13 @@ p <- add_argument(p,
                   default = 1)
 
 #p <- add_argument(p, "--score_type", help = "bde/..")
-p <- add_argument(p, "--bdecatpar_chi", help = "bde parameter", type = "numeric", default = 1)
-p <- add_argument(p, "--bdecatpar_edgepf", help = "bde parameter", type = "numeric", default = 1)
+#p <- add_argument(p, "--chi", help = "bde parameter", type = "numeric", default = 1)
+#p <- add_argument(p, "--edgepf", help = "bde parameter", type = "numeric", default = 1)
+#p <- add_argument(p, "--am",            help = "bge score parameter")
+#p <- add_argument(p, "--aw",            help = "bge score parameter") # fix null
 
 argv <- parse_args(p)
-
+print(argv)
 data <- NULL
 if (argv$range_header_data == 1) {
   data <- read.csv(argv$filename_data, sep = " ") # this is gobnilp data
@@ -69,6 +71,7 @@ if (argv$range_header_data == 1) {
   data <- read.csv(argv$filename_data) # this is different with gobnilp data
 }
 
+print(data)
 n <- dim(data)[2]
 
 true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
@@ -92,32 +95,68 @@ colnames(true_adjmat) <- seq(n)
 rownames(estimated_adjmat) <- seq(n)
 colnames(estimated_adjmat) <- seq(n)
 
-true_dag <- adjacency2dag(true_adjmat)
-estimated_dag <- adjacency2dag(estimated_adjmat)
-true_nedges <- sum(true_adjmat)
+# true_dag <- adjacency2dag(true_adjmat)
+# estimated_dag <- adjacency2dag(estimated_adjmat)
+# true_nedges <- sum(true_adjmat)
 
 true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
 estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
 true_nedges <- sum(getPattern(true_adjmat))
 
 # Benchmarks on skeleton
-true_adjmat_skel = true_adjmat + t(true_adjmat)
-true_skeleton <- adjacency2dag(true_adjmat_skel)
+# true_adjmat_skel = true_adjmat + t(true_adjmat)
+# true_skeleton <- adjacency2dag(true_adjmat_skel)
 
-est_adjmat_skel = true_adjmat + t(true_adjmat)
-est_skeleton <- adjacency2dag(est_adjmat_skel)
+# est_adjmat_skel = true_adjmat + t(true_adjmat)
+# est_skeleton <- adjacency2dag(est_adjmat_skel)
 
-true_nedges <- sum(true_adjmat_skel) / 2
-compres <- compareDAGs(est_skeleton, true_skeleton)
-names(compres) <- c("SHD", "TP", "FP")
+# true_nedges <- sum(true_adjmat_skel) / 2
+# compres <- compareDAGs(est_skeleton, true_skeleton)
+# names(compres) <- c("SHD", "TP", "FP")
 
-# Scoring DAG
-myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
-                              bdecatpar = list(chi = argv$bdecatpar_chi,
-                                               edgepf = argv$bdecatpar_edgepf))
+# # Scoring DAG
+# chi <- NULL
+# if (argv$chi != "None") {
+#   chi <- as.numeric(argv$chi)
+# }
 
-logscore <- DAGscore(ncol(data), myscore_tmp, estimated_adjmat) # this was bnscore, dont know why...
+# edgepf <- NULL
+# if (argv$edgepf != "None") {
+#   edgepf <- as.numeric(argv$edgepf)
+# }
 
+# aw <- NULL
+# if (argv$aw != "None") {
+#   aw <- as.numeric(argv$aw)
+# }
+
+# am <- NULL
+# if (argv$am != "None") {
+#   am <- as.numeric(argv$am)
+# }
+# if(argv$scoretype == "bdecat"){
+#     myscore <- scoreparameters(dim(data)[2], "bdecat", data, 
+#                                 bdecatpar = list(chi = chi,
+#                                                  edgepf = edgepf))
+# } 
+# if(argv$scoretype == "bde"){
+#     myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
+#                                                                         edgepf = edgepf))
+# } 
+# if(argv$scoretype == "bge"){
+#     myscore <- scoreparameters(dim(data)[2], "bge", data, bgepar = list(am = am,
+#                                                                         aw = aw))
+# }
+# #myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
+# #                              bdecatpar = list(chi = argv$bdecatpar_chi,
+# #                                               edgepf = argv$bdecatpar_edgepf))
+
+# logscore <- DAGscore(ncol(data), myscore, estimated_adjmat) # this was bnscore, dont know why...
+logscore <- 100
+
+print(true_patterngraph)
+print(estimated_patterngraph)
+print(true_nedges)
 # Compute number of correct Markov blankets
 
 # Cannot convert graphnel to bn. These functions are for grain networks.
@@ -127,12 +166,17 @@ logscore <- DAGscore(ncol(data), myscore_tmp, estimated_adjmat) # this was bnsco
 # Statistics on getPattern graph
 compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
 names(compres) <- c("SHD", "TP", "FP")
+print(compres)
 true_nedges <- sum(getPattern(true_adjmat))
 
+print(compres["TP"] / true_nedges)
+print(compres["FP"] / true_nedges)
+print(logscore)
+print(compres["SHD"])
 df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
-                            FPRn = compres["FP"] / true_nedges,
-                            logscore = logscore,
-                            SHD = compres["SHD"])
+                 FPRn = compres["FP"] / true_nedges,
+                 logscore = logscore,
+                 SHD = compres["SHD"])
 
 # Divide by 2
 # Essential graph

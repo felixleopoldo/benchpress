@@ -18,8 +18,8 @@ p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed",          help = "Random seed", type = "numeric", default = 1)
 p <- add_argument(p, "--map",           help = "MAP parameter True False", )
 p <- add_argument(p, "--scoretype",     help = "bde/bge/bic")
-p <- add_argument(p, "--chi",           help = "score parameter", type = "numeric", default = 0.5)
-p <- add_argument(p, "--edgepf",        help = "score parameter", type = "numeric", default = 2)
+p <- add_argument(p, "--chi",           help = "score parameter")
+p <- add_argument(p, "--edgepf",        help = "score parameter")
 p <- add_argument(p, "--am",            help = "score parameter")
 p <- add_argument(p, "--aw",            help = "score parameter") # fix null
 p <- add_argument(p, "--posterior",     help = "parameter")
@@ -48,6 +48,16 @@ posterior <- NULL
 if (argv$posterior != "None") {
   posterior <- as.numeric(argv$posterior)
 }
+chi <- NULL
+if (argv$chi != "None") {
+  chi <- as.numeric(argv$chi)
+}
+
+edgepf <- NULL
+if (argv$edgepf != "None") {
+  edgepf <- as.numeric(argv$edgepf)
+}
+
 aw <- NULL
 if (argv$aw != "None") {
   aw <- as.numeric(argv$aw)
@@ -58,12 +68,13 @@ if (argv$am != "None") {
   am <- as.numeric(argv$am)
 }
 if(argv$scoretype == "bdecat"){
-    myscore <- scoreparameters(dim(data)[2], "bdecat", data, bdecatpar = list(chi = argv$chi,
-                            edgepf = argv$edgepf))
+    myscore <- scoreparameters(dim(data)[2], "bdecat", data, 
+                                bdecatpar = list(chi = chi,
+                                                 edgepf = edgepf))
 } 
 if(argv$scoretype == "bde"){
-    myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = argv$chi,
-                                                                        edgepf = argv$edgepf))
+    myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
+                                                                        edgepf = edgepf))
 } 
 if(argv$scoretype == "bge"){
     myscore <- scoreparameters(dim(data)[2], "bge", data, bgepar = list(am = am,
