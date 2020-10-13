@@ -5,7 +5,7 @@ with open('config.json') as json_file:
     conf = json.load(json_file)
 
 # Validade cofnig.json file
-with open('config.schema') as json_file:
+with open('config.schema.json') as json_file:
     schema = json.load(json_file)
 
 validate(instance=conf, schema=schema)
@@ -27,6 +27,16 @@ pattern_strings["greenthomas"] = "greenthomas/alg_params=/" \
                 "n_samples={n_samples}/" \
                 "randomits={randomits}/" \
                 "penalty={penalty}"
+
+pattern_strings["notears"] = "notears/alg_params=/" \
+                "score_type={score_type}/" \
+                "chi={chi}/" \
+                "edgepf={edgepf}/" \
+                "min_rate_of_progress={min_rate_of_progress}/" \
+                "penalty_growth_rate={penalty_growth_rate}/" \
+                "optimation_accuracy={optimation_accuracy}/" \
+                "loss={loss}/" \
+                "loss_grad={loss_grad}"
 
 pattern_strings["blip"] = "blip/alg_params=/" \
                 "score_type={score_type}/" \
@@ -207,6 +217,19 @@ json_string.update({val["id"]: expand(pattern_strings["fges"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
                     for val in conf["structure_learning_algorithms"]["fges"]})
+
+json_string.update({val["id"]: expand(pattern_strings["notears"], 
+                                        score_type="bdecat",
+                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+                                           min_rate_of_progress=val["min_rate_of_progress"],
+                                           penalty_growth_rate=val["penalty_growth_rate"],
+                                           optimation_accuracy=val["optimation_accuracy"],
+                                           loss=val["loss"],
+                                           loss_grad=val["loss_grad"]
+                                           ) 
+                    for val in conf["structure_learning_algorithms"]["notears"]})
+
 
 json_string.update({val["id"]: expand(pattern_strings["fci"], score_type="bdecat",
                                            chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
@@ -589,6 +612,18 @@ def alg_shell(algorithm):
             "&& rm ../{output.adjmat}.adjlist ../{input.data}.noheader "\
             "&& echo 1 > ../{output.time}"
 
+    elif algorithm == "notears":
+        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
+            "python scripts/notears/run_notears.py " \
+            "--data_filename {input.data} " \
+            "--min_rate_of_progress {wildcards.min_rate_of_progress} " \
+            "--penalty_growth_rate {wildcards.penalty_growth_rate} " \
+            "--optimation_accuracy {wildcards.optimation_accuracy} " \
+            "--loss {wildcards.loss} " \
+            "--loss_grad {wildcards.loss_grad} " \
+            "--filename {output.adjmat} " \     
+            "--seed {wildcards.replicate}"        
+
     elif algorithm == "tabu":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript scripts/run_tabu.R " \
@@ -818,7 +853,7 @@ def docker_image(algorithm):
     elif algorithm == "greenthomas":
         return "docker://onceltuca/thomasgreen:1.0"
     elif algorithm == "notears":
-        return "docker://onceltuca/jmoss20notears:1.3"
+        return "docker://onceltuca/jmoss20notears:1.4"
 
 def summarise_alg_input_data_path():
     return config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
@@ -912,6 +947,29 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
                 " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
 
+    elif algorithm == "notears":
+        return         "Rscript scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--range_header_data 1 " \ 
+        "--filename {output.res} " \ 
+        " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+        " && python scripts/add_column.py --filename {output} --colname algorithm       --colval notears " \
+        " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+        " && python scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score_type} " \
+        " && python scripts/add_column.py --filename {output} --colname chi             --colval {wildcards.chi} " \
+        " && python scripts/add_column.py --filename {output} --colname edgepf          --colval {wildcards.edgepf} " \
+        " && python scripts/add_column.py --filename {output} --colname min_rate_of_progress        --colval {wildcards.min_rate_of_progress} " \
+        " && python scripts/add_column.py --filename {output} --colname penalty_growth_rate        --colval {wildcards.penalty_growth_rate} " \
+        " && python scripts/add_column.py --filename {output} --colname optimation_accuracy         --colval {wildcards.optimation_accuracy} " \
+        " && python scripts/add_column.py --filename {output} --colname loss                        --colval {wildcards.loss} " \ 
+        " && python scripts/add_column.py --filename {output} --colname loss_grad           --colval {wildcards.loss_grad} " \
+        " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+        " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
+
     if algorithm == "hc":
         return  "Rscript scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
@@ -948,7 +1006,7 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
 
     elif algorithm == "blip":
-        return         "Rscript scripts/run_summarise.R " \
+        return "Rscript scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
         "--filename_data {input.data} " \
@@ -1586,6 +1644,42 @@ rule join_summaries_tabu:
         join_summaries_output("tabu")
     shell:
         join_summaries_shell("tabu")
+
+rule notears:
+    input:
+        data = alg_input_data()
+    output:
+        adjmat = alg_output_adjmat_path("notears"),
+        time = alg_output_time_path("notears")
+    singularity:
+        docker_image("notears")
+    message:
+        "Executing notears algorithm on the following files: {input}."
+    shell:
+        alg_shell("notears")
+
+rule summarise_notears:
+    input:
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("notears"),
+        time = summarise_alg_input_time_path("notears")
+    output:
+        res = summarise_alg_output_res_path("notears")
+    message:
+        "Summarising notears results based on the files: {input}."
+    shell:
+        summarise_alg_shell("notears")
+       
+rule join_summaries_notears:
+    input:
+        conf="config.json",
+        res=join_string_sampled_model("notears")
+    output:
+        join_summaries_output("notears")
+    shell:
+        join_summaries_shell("notears")
+
 rule h2pc:
     input:
         data = alg_input_data()

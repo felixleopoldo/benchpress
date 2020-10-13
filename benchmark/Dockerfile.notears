@@ -8,4 +8,5 @@ WORKDIR /git/notears
 RUN pip install -r requirements.txt
 RUN pip install matplotlib pandas
 ENV PYTHONPATH /git:/git/notears
+RUN apt update && apt install time 
 CMD bash
