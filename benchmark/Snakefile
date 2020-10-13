@@ -355,7 +355,7 @@ json_string.update({val["id"]: expand(pattern_strings["blip"], score_type="bdeca
 
 # This has to be the last one since it takes input strings as start space...
 json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 
-                                            scoretype="bdecat",
+                                            scoretype=val["scoretype"],
                                             chi=val["chi"],
                                             edgepf=val["edgepf"],
                                             am=val["am"],
@@ -1360,8 +1360,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--range_header_data 1 " \ 
                 "--filename {output} " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval orderMCMC "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
