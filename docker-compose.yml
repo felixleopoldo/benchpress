@@ -1,0 +1,36 @@
+version: "3.3"
+services:
+  gobnilp:
+    image: onceltuca/gobnilp:1.6.3
+    #build: . /Dockerfile.gobnilp
+    command: tail -f /dev/null
+    volumes: 
+        - ./scripts/run_gobnilp.R:/myappdir/run_gobnilp.R
+        - ./simresults:/myappdir/simresults
+  trilearn:
+    image: onceltuca/trilearn
+    volumes: 
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: $DISPLAY
+      MPLBACKEND: Agg
+  notears:
+    image: onceltuca/jmoss20notears:1.2
+    command: tail -f /dev/null
+  benchmark:
+    image: onceltuca/benchmark:1.0.7
+    #build: . /Dockerfile
+    #command: tail -f /dev/null
+    working_dir: /myappdir
+    command: jupyter lab --port 8080 --ip 0.0.0.0 --allow-root --no-browser
+
+    volumes: 
+        #- ./scripts/:/myappdir/scripts_on_local
+        #- ./simresults:/myappdir/simresults_on_local
+        - ./:/myappdir/benchmark_local
+        #- /tmp/.X11-unix:/tmp/.X11-unix
+        #- ~/.Xauthority:/root/.Xauthority  
+    ports:
+        - "8080:8080"
+    #environment:
+    #  DISPLAY: $DISPLAY

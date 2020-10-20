@@ -1,0 +1,189 @@
+library(argparser)
+library(BiDAG)
+library(pcalg)
+library(bnlearn)
+
+#########
+## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
+## and returns the pattern of this pdag in the Meek sense, that is,
+## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
+## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
+getPattern <- function(amat) {
+
+  ## makes the whole graph undirected
+  amat <- t(amat)
+
+  tmp <- amat + t(amat)
+  tmp[tmp == 2] <- 1
+
+  ## find all v-structures i -> k <- j s.t. i not adj to k
+  ## and make only those edges directed
+  for (i in 1:(length(tmp[1, ]) - 1))
+    for (j in (i + 1):length(tmp[1, ])) {
+      if ((amat[j, i] == 0) & (amat[i, j] == 0) & (i != j)) {
+        ## if i no adjacent with j in G
+
+        possible.k <- which(amat[, i] != 0 & amat[i,] == 0) ## finds all k such that i -> k is in G
+
+        if (length(possible.k) != 0) {
+          ## if there are any such k's then check whether j -> k for any of them
+          for (k in 1:length(possible.k)) {
+            if ((amat[possible.k[k], j] == 1) & (amat[j, possible.k[k]] == 0)) {
+              ## if j -> k add the v-struc orientation to tmp
+              tmp[i, possible.k[k]] <- 0
+              tmp[j, possible.k[k]] <- 0
+            }
+          }
+        }
+      }
+    }
+
+    t(tmp)
+}
+
+p <- arg_parser("A program for summarising and save to file.")
+p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
+p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
+p <- add_argument(p, "--filename_data", help = "Dataset filename")
+p <- add_argument(p, "--filename", help = "Output filename")
+p <- add_argument(p,
+                  "--range_header_data",
+                  help = "1 if the second row of the data indicates the variable ranges.",
+                  default = 0)
+p <- add_argument(p,
+                  "--adjmat_header",
+                  help = "1 if the first row in the estimated adjaceny matrix are the variable names.",
+                  default = 1)
+
+#p <- add_argument(p, "--score_type", help = "bde/..")
+p <- add_argument(p, "--chi", help = "bde parameter", type = "numeric", default = 1)
+p <- add_argument(p, "--edgepf", help = "bde parameter", type = "numeric", default = 1)
+#p <- add_argument(p, "--am",            help = "bge score parameter")
+#p <- add_argument(p, "--aw",            help = "bge score parameter") # fix null
+
+argv <- parse_args(p)
+print(argv)
+data <- NULL
+if (argv$range_header_data == 1) {
+  data <- read.csv(argv$filename_data, sep = " ") # this is gobnilp data
+  data <- data[-1,]
+} else {
+  data <- read.csv(argv$filename_data) # this is different with gobnilp data
+}
+
+print(data)
+n <- dim(data)[2]
+
+true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
+#estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+
+estimated_adjmat <- NULL
+if (argv$adjmat_header == 1) {
+  estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+} else {
+  estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
+}
+
+# print(dim(data))
+#print("True adjmat")
+#print(true_adjmat)
+#print("Estimated adjmat")
+#print(estimated_adjmat)
+
+rownames(true_adjmat) <- seq(n)
+colnames(true_adjmat) <- seq(n)
+rownames(estimated_adjmat) <- seq(n)
+colnames(estimated_adjmat) <- seq(n)
+
+# true_dag <- adjacency2dag(true_adjmat)
+# estimated_dag <- adjacency2dag(estimated_adjmat)
+# true_nedges <- sum(true_adjmat)
+
+true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
+estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
+true_nedges <- sum(getPattern(true_adjmat))
+
+# Benchmarks on skeleton
+# true_adjmat_skel = true_adjmat + t(true_adjmat)
+# true_skeleton <- adjacency2dag(true_adjmat_skel)
+
+# est_adjmat_skel = true_adjmat + t(true_adjmat)
+# est_skeleton <- adjacency2dag(est_adjmat_skel)
+
+# true_nedges <- sum(true_adjmat_skel) / 2
+# compres <- compareDAGs(est_skeleton, true_skeleton)
+# names(compres) <- c("SHD", "TP", "FP")
+
+# # Scoring DAG
+# chi <- NULL
+# if (argv$chi != "None") {
+#   chi <- as.numeric(argv$chi)
+# }
+
+# edgepf <- NULL
+# if (argv$edgepf != "None") {
+#   edgepf <- as.numeric(argv$edgepf)
+# }
+
+# aw <- NULL
+# if (argv$aw != "None") {
+#   aw <- as.numeric(argv$aw)
+# }
+
+# am <- NULL
+# if (argv$am != "None") {
+#   am <- as.numeric(argv$am)
+# }
+# if(argv$scoretype == "bdecat"){
+#     myscore <- scoreparameters(dim(data)[2], "bdecat", data, 
+#                                 bdecatpar = list(chi = chi,
+#                                                  edgepf = edgepf))
+# } 
+# if(argv$scoretype == "bde"){
+#     myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
+#                                                                         edgepf = edgepf))
+# } 
+# if(argv$scoretype == "bge"){
+#     myscore <- scoreparameters(dim(data)[2], "bge", data, bgepar = list(am = am,
+#                                                                         aw = aw))
+# }
+# #myscore_tmp <- scoreparameters(ncol(data), "bdecat", data,
+# #                              bdecatpar = list(chi = argv$bdecatpar_chi,
+# #                                               edgepf = argv$bdecatpar_edgepf))
+
+# logscore <- DAGscore(ncol(data), myscore, estimated_adjmat) # this was bnscore, dont know why...
+logscore <- 100
+
+print(true_patterngraph)
+print(estimated_patterngraph)
+print(true_nedges)
+# Compute number of correct Markov blankets
+
+# Cannot convert graphnel to bn. These functions are for grain networks.
+# true_dag_bn.fit <- as.bn.fit(true_dag)
+# est_dag_bn.fit <- as.bn.fit(estimated_dag)
+
+# Statistics on getPattern graph
+compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
+names(compres) <- c("SHD", "TP", "FP")
+print(compres)
+true_nedges <- sum(getPattern(true_adjmat))
+
+print(compres["TP"] / true_nedges)
+print(compres["FP"] / true_nedges)
+print(logscore)
+print(compres["SHD"])
+df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
+                 FPRn = compres["FP"] / true_nedges,
+                 logscore = logscore,
+                 SHD = compres["SHD"])
+
+# Divide by 2
+# Essential graph
+#true_cpdag <- pcalg::dag2cpdag(true_dag)
+#estimated_cpdag <- pcalg::dag2cpdag(estimated_dag)
+#compres <- compareDAGs(estimated_cpdag, true_cpdag)
+#names(compres) <- c("SHD", "TP", "FP")
+#df$TPR_cpdag <- compres["TP"] / true_nedges # should be for all times
+
+write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
