@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="readme">README</h1>
+<h2 id="top-level-schemas">Top-level Schemas</h2>
+<ul>
+<li><a href="./config.md">JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema</code></li>
+</ul>
+<h2 id="other-schemas">Other Schemas</h2>
+<h3 id="objects">Objects</h3>
+<ul>
+<li><a href="./config-properties-structure_learning_algorithms-properties-hc-items.md" title="HC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/hc/items</code></li>
+<li><a href="./config-properties-plotting.md" title="Description of the plotting setup">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting</code></li>
+<li><a href="./config-properties-plotting-properties-fixed_data-items.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting/properties/fixed_data/items</code></li>
+<li><a href="./config-properties-data.md" title="Data sampling setup">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/data</code></li>
+<li><a href="./config-properties-data-properties-replicates.md" title="Interval of seeds to simulate from">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/data/properties/replicates</code></li>
+<li><a href="./config-properties-graph_sampling_algorithms.md" title="The graph samplings algorithms">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/graph_sampling_algorithms</code></li>
+<li><a href="./config-properties-graph_sampling_algorithms-properties-generatedagmaxparents.md" title="An instance of generateDAGMaxParents">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/graph_sampling_algorithms/properties/generateDAGMaxParents</code></li>
+<li><a href="./config-properties-parameters_sampling_algorithms.md" title="The parameter sampling algorithms">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/parameters_sampling_algorithms</code></li>
+<li><a href="./config-properties-parameters_sampling_algorithms-properties-generatebinarybn.md" title="Parameter setting for generateBinaryBN">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/parameters_sampling_algorithms/properties/generateBinaryBN</code></li>
+<li><a href="./config-properties-evaluation.md" title="Setup for the evaluation procedure">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/evaluation</code></li>
+<li><a href="./config-properties-structure_learning_algorithms.md" title="The structure learning algorithms">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-trilearn_loglin-items.md" title="Parameter setting for trilearn">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/trilearn_loglin/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-blip-items.md" title="Blip instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/blip/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gobnilp-items.md" title="Gobnilp instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gobnilp/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-fges-items.md" title="fGES instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/fges/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-fci-items.md" title="FCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/fci/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-rfci-items.md" title="RFCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/rfci/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gfci-items.md" title="GFCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gfci/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-pcalg-items.md" title="PC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/pcalg/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-mmhc-items.md" title="MMHC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/mmhc/items</code></li>
+<li><a href="./config-definitions-mmhc-properties-restrictargs.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/mmhc/properties/restrict.args</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-tabu-items.md" title="TABU algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/tabu/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-itsearch-items.md" title="Iterative search +1 algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/itsearch/items</code></li>
+<li><a href="./config-definitions-itsearch-properties-optional.md" title="Algorithm parameters to show in plotting">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/itsearch/properties/optional</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-order_mcmc-items.md" title="Order algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/order_mcmc/items</code></li>
+<li><a href="./config-definitions-order_mcmc-properties-optional.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/order_mcmc/properties/optional</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-interiamb-items.md" title="Inter-IAMB algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/interiamb/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gs-items.md" title="Inter-IAMB algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gs/items</code></li>
+<li><a href="./config-properties-plotting-properties-models-items.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting/properties/models/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-h2pc-items.md" title="H2PC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/h2pc/items</code></li>
+<li><a href="./config-definitions-h2pc-properties-restrictargs.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/h2pc/properties/restrict.args</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-greenthomas-items.md" title="Green &amp; Thomas instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/greenthomas/items</code></li>
+<li><a href="./config-definitions-fixed_data_dict.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/fixed_data_dict</code></li>
+<li><a href="./config-definitions-sampled_model_dict.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/sampled_model_dict</code></li>
+<li><a href="./config-definitions-generatedagmaxparents.md" title="An instance of generateDAGMaxParents">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents</code></li>
+<li><a href="./config-definitions-generatebinarybn.md" title="Parameter setting for generateBinaryBN">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateBinaryBN</code></li>
+<li><a href="./config-definitions-trilearn_loglin.md" title="Parameter setting for trilearn">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/trilearn_loglin</code></li>
+<li><a href="./config-definitions-blip.md" title="Blip instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/blip</code></li>
+<li><a href="./config-definitions-gobnilp.md" title="Gobnilp instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/gobnilp</code></li>
+<li><a href="./config-definitions-greenthomas.md" title="Green &amp; Thomas instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/greenthomas</code></li>
+<li><a href="./config-definitions-fges.md" title="fGES instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/fges</code></li>
+<li><a href="./config-definitions-fci.md" title="FCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/fci</code></li>
+<li><a href="./config-definitions-gfci.md" title="GFCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/gfci</code></li>
+<li><a href="./config-definitions-rfci.md" title="RFCI instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/rfci</code></li>
+<li><a href="./config-definitions-pcalg.md" title="PC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/pcalg</code></li>
+<li><a href="./config-definitions-mmhc.md" title="MMHC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/mmhc</code></li>
+<li><a href="./config-definitions-mmhc-properties-restrictargs.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/mmhc/properties/restrict.args</code></li>
+<li><a href="./config-definitions-h2pc.md" title="H2PC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/h2pc</code></li>
+<li><a href="./config-definitions-h2pc-properties-restrictargs.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/h2pc/properties/restrict.args</code></li>
+<li><a href="./config-definitions-interiamb.md" title="Inter-IAMB algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/interiamb</code></li>
+<li><a href="./config-definitions-gs.md" title="Grow shrink (GS) algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/gs</code></li>
+<li><a href="./config-definitions-tabu.md" title="TABU algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/tabu</code></li>
+<li><a href="./config-definitions-hc.md" title="HC algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/hc</code></li>
+<li><a href="./config-definitions-itsearch.md" title="Iterative search +1 algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/itsearch</code></li>
+<li><a href="./config-definitions-itsearch-properties-optional.md" title="Algorithm parameters to show in plotting">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/itsearch/properties/optional</code></li>
+<li><a href="./config-definitions-order_mcmc.md" title="Order algorithm instance">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/order_mcmc</code></li>
+<li><a href="./config-definitions-order_mcmc-properties-optional.md">Untitled object in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/order_mcmc/properties/optional</code></li>
+</ul>
+<h3 id="arrays">Arrays</h3>
+<ul>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-properties-plotting-properties-algorithms.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting/properties/algorithms</code></li>
+<li><a href="./config-properties-plotting-properties-fixed_data.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting/properties/fixed_data</code></li>
+<li><a href="./config-properties-data-properties-sample_sizes.md" title="Sample sizes in simulation setup arranged in a list of list of sample sizes">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/data/properties/sample_sizes</code></li>
+<li><a href="./config-properties-data-properties-sample_sizes-items.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/data/properties/sample_sizes/items</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-av_parent.md" title="Maximum average number of parents">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/av_parent</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-av_parent-items.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/av_parent/items</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-dims.md" title="Dimensions of the DAGs, a list of list of dimensions, matching the sample_sizes in the data setup">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/dims</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-dims-items.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/dims/items</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-trilearn_loglin.md" title="List of trilearn_loglin instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/trilearn_loglin</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-blip.md" title="Blip instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/blip</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gobnilp.md" title="Gobnilp instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gobnilp</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-fges.md" title="fGES instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/fges</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-fci.md" title="FCI instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/fci</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-rfci.md" title="RFCI instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/rfci</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gfci.md" title="GFCI instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gfci</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-pcalg.md" title="PC algorithm instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/pcalg</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-mmhc.md" title="MMHC instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/mmhc</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-tabu.md" title="Tabu search instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/tabu</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-itsearch.md" title="Iterative +1 search instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/itsearch</code></li>
+<li><a href="./config-definitions-flexnonnegintnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegintnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprobnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprobnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-order_mcmc.md" title="Order MCMC instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/order_mcmc</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-interiamb.md" title="Inter-IAMB instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/interiamb</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-gs.md" title="GS instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/gs</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-hc.md" title="HC instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/hc</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-properties-plotting-properties-models.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/plotting/properties/models</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-h2pc.md" title="H2PC instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/h2pc</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-properties-structure_learning_algorithms-properties-greenthomas.md" title="Green and Thomas instances">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/properties/structure_learning_algorithms/properties/greenthomas</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-av_parent.md" title="Maximum average number of parents">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/av_parent</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-av_parent-items.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/av_parent/items</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-dims.md" title="Dimensions of the DAGs, a list of list of dimensions, matching the sample_sizes in the data setup">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/dims</code></li>
+<li><a href="./config-definitions-generatedagmaxparents-properties-dims-items.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/generateDAGMaxParents/properties/dims/items</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegintnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegintnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprobnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprobnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnatnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnatnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnum-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnum/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegintnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegintnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprobnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprobnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegnumnull-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegnumnull/anyOf/1</code></li>
+<li><a href="./config-definitions-flexprob-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexprob/anyOf/1</code></li>
+<li><a href="./config-definitions-flexnonnegint-anyof-1.md">Untitled array in JSON schema for BenchPress config file.</a> – <code>http://github.com/felixleopoldo/benchpress/config.schema#/definitions/flexnonnegint/anyOf/1</code></li>
+</ul>
+<h2 id="version-note">Version Note</h2>
+<p>The schemas linked above follow the JSON Schema Spec version: <code>http://json-schema.org/schema#</code></p>
+
+</body>
+</html>
