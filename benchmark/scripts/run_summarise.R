@@ -56,8 +56,8 @@ p <- add_argument(p,
                   default = 1)
 
 #p <- add_argument(p, "--score_type", help = "bde/..")
-#p <- add_argument(p, "--chi", help = "bde parameter", type = "numeric", default = 1)
-#p <- add_argument(p, "--edgepf", help = "bde parameter", type = "numeric", default = 1)
+p <- add_argument(p, "--chi", help = "bde parameter", type = "numeric", default = 1)
+p <- add_argument(p, "--edgepf", help = "bde parameter", type = "numeric", default = 1)
 #p <- add_argument(p, "--am",            help = "bge score parameter")
 #p <- add_argument(p, "--aw",            help = "bge score parameter") # fix null
 
