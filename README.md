@@ -29,7 +29,7 @@ If you are using Docker and Singularity (which is strongly recommended) you migh
 
 `git clone git@github.com:felixleopoldo/benchpress.git`
 
-`cd benchpress/benchmark`
+`cd benchpress`
 
 Copy the simulation setup in config.json.sample to config.json 
 
