@@ -44,7 +44,8 @@ def validate_data_setup(conf, dict):
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])   
 
-    if dict["parameters"] not in available_conf_ids:
+    
+    if dict["data"] not in [dataconf["id"] for dataconf in conf["data_sampling_algorithms"]["fixed_data"]] and dict["parameters"] not in available_conf_ids:
         raise Exception(dict["parameters"] + 
                         " is not an available parameter id. "
                         "The available paremeter id´s are: " + str(available_conf_ids))
