@@ -33,12 +33,12 @@ If you are using Docker and Singularity (which is strongly recommended) you migh
 
 Copy the simulation setup in config.json.sample to config.json 
 
-`$ cp config.json.sample config.json`
+`$ cp config.sample.json config.json`
 ## Usage
 
 To run the simulation setup in config.json type
 
-`$ snakemake simresults/ROC.eps --cores 20 --use-singularity`
+`$ snakemake roc --cores 20 --use-singularity`
 
 Open the file `simresults/ROC.eps`.
 
@@ -49,42 +49,146 @@ Open the file `simresults/ROC.eps`.
 ```javascript
 {
     "output_dir": "simresults",
-    "plotting": {
-        "algorithms": [
-         "fci","gfci", "blip", "pcalg", "gobnilp"
+    "benchmark_setup": {
+        "structure_learning_algorithms": [
+            "itsearch_map", "order_mcmc_itmap", "blip"
         ],
-        "models":[{"graph": "generateDAGMaxParents",
-                   "parameters": "generateBinaryBN"}],
-        "fixed_data":[]
+        "data":[{
+                    "graph": "hepar2.csv",
+                    "parameters": "generateBinaryBN" ,
+                    "data": "standard_sampling",
+                    "seed_range": [1, 1]
+                }],
+        "evaluation": {
+            "ROC": [{
+                        "structure_learning_algorithm":"blip", 
+                        "curve_variable":"time"
+                    },
+                    {
+                        "structure_learning_algorithm":"order_mcmc", 
+                        "curve_variable":"threshold"
+                    },
+                    {"structure_learning_algorithm":"itsearch", "curve_variable":"plus1it"},
+                    {"structure_learning_algorithm":"notears", "curve_variable":"min_rate_of_progress"}
+                    ],                    
+            "SHD": ["blip", "gobnilp"],
+            "bdecat_score": {
+                "chi": 1.0,
+                "edgepf": 0.5,
+                "algorithms": ["blip"]},
+            "bge_score": {},
+            "bic":[],
+            "bic*":[],
+            "correct_markov_blankets":[],
+            "correct_neighbors":[],
+            "auto_correlation_plot":[],
+            "adjmat_plot":[],
+            "adjmat_csv":[],
+            "heatmap_plot":{"seed":1,
+                            "algorithms":["itsearch_map"]}
+        }
     },
-    "data": {
-        "replicates": {
-            "start": 1,
-            "end": 1
-        },
-        "sample_sizes": [
-            [
-            100
-            ]
+    "data_sampling_algorithms": {
+        "standard_sampling":[
+            {"id":"standard_sampling",
+             "sample_sizes": [100],
+             "replicates": {
+                "start": 1,
+                "end": 1
+             }},
+             {"id":"standard_sampling2000",
+                "sample_sizes": [2000],
+                "replicates": {
+                   "start": 1,
+                   "end": 1
+                }}
+        ],
+        "notears_linear_gaussian_sampling":[
+            {
+                "id":"standard_linear_gaussian",
+                "type":"continuous",
+                "sample_sizes":[100],
+                "mean":0,
+                "variance":1
+            }
+        ],
+        "fixed_data":[
+           {"id":"myasiandata.csv",
+            "type":"binary",
+            "samples":100,
+            "filename":"myasiandata.csv",
+            "graph":"asia.csv"}
+            ,
+           {"id":"myhepar2data.csv",
+            "type":"categorical",
+            "samples":1000,
+            "filename":"myhepar2data.csv"
+            }
+        ],
+        "data_dir":[
+            {"id":"my_bio_data_dir",
+             "directory":"biodata/"}
+            ,
+            {"id":"mydatadir",
+             "directory":"mydata"}
         ]
     },
     "graph_sampling_algorithms": {
-        "generateDAGMaxParents": {
-            "av_parents": [
-                [2]
-            ],
-            "dims": [
-                [
-                    80
-                ]
-            ]
-        }
+        "notears":[{
+            "id":"notears",
+            "num_nodes":40,
+            "num_edges": 80
+        }],
+        "generateDAGMaxParents": [{
+            "id": "generateDAGMaxParents",
+            "av_parents": [2],
+            "dims": [80]
+        }],
+        "bn.fit_adjmats" :[{
+            "id":"bn.fit_adjmat",
+            "sub_directory": "bn.fit_adjmats/"
+        }],
+        "fixed_adjmats": [
+            {"id":"asia.csv",
+             "filename":"asia.csv",
+             "nodes": 8,
+             "edges": 8,
+             "average_markov_blanket_size": 2.5,
+             "average_degree": 2,
+             "maximum_degree": 2,
+             "origin":"http://bnlearn.com/bnrepository/discrete-large.html#asia"}
+             ,
+             {
+                "id":"myasia.csv",
+                "filename":"myasia.csv",
+                "nodes": 8,
+                "edges": 8,
+                "average_markov_blanket_size": 2.5,
+                "average_degree": 2,
+                "maximum_degree": 2,
+                "origin":"http://bnlearn.com/bnrepository/discrete-large.html#asia"
+            }
+            ,  
+            {"id": "hepar2.csv",
+             "filename": "hepar2.csv",
+             "origin":"http://bnlearn.com/bnrepository/discrete-large.html#hepar2"}]
     },
     "parameters_sampling_algorithms": {
-        "generateBinaryBN":{
+        "generateBinaryBN":[{
+            "id":"generateBinaryBN",
             "min":0.1,
             "max":0.9
-        }
+        }],
+        "bn.fit_networks": [
+            {"id":"hepar2.rds",
+             "filename": "hepar2.rds",
+            "sub_directory":"bn.fit_networks"}
+        ],
+        "notears":[{
+            "id":"notears",
+            "edge_coefficient_range_from":0.5,
+            "edge_coefficient_range_to":2
+        }]
     },
     "evaluation": {
         "score": {
@@ -126,7 +230,7 @@ Open the file `simresults/ROC.eps`.
             "plot_legend": "Blip",
             "scorer.method": "is",
             "solver.method": "winasobs",
-            "indeg": 80,
+            "indeg": 80,   
             "time": [
                 20, 60
             ],
@@ -135,6 +239,16 @@ Open the file `simresults/ROC.eps`.
             "alpha": 1,
             "cores": 1,
             "verbose": 0
+            }
+        ],
+        "notears": [{
+            "id": "notears",
+            "plot_legend": "Notears",
+            "min_rate_of_progress": 0.25,
+            "penalty_growth_rate": 10,
+            "optimation_accuracy": 0.00000001,
+            "loss": "least_squares_loss",
+            "loss_grad": "least_squares_loss_grad"
             }
         ],
         "gobnilp": 
@@ -150,7 +264,7 @@ Open the file `simresults/ROC.eps`.
             [{
             "id":"greenthomas",
             "plot_legend": "GreenThomas",                
-            "n_samples": 10000000,
+            "n_samples": 10000,
             "randomits": 1000,
             "penalty": 0            
             }
@@ -299,34 +413,50 @@ Open the file `simresults/ROC.eps`.
             "perturb":1
             }
         ],
-        "itsearch": [{
-            "id": "itsearch_map",
-            "plot_legend": "itmap",
-            "optional": {
-                "MAP": true,
-                "plus1it": null,
-                "posterior": null,
-                "scoretype": "bdecat",
-                "chi": 0.5,
-                "edgepf": 2,
-                "am":null,
-                "aw":null
+        "itsearch": [
+            {
+                "id": "itsearch_map",
+                "plot_legend": "itmap",
+                "optional": {
+                    "MAP": true,
+                    "plus1it": null,
+                    "posterior": null,
+                    "scoretype": "bdecat",
+                    "chi": 0.5,
+                    "edgepf": 2,
+                    "am":null,
+                    "aw":null
+                }
+            },
+            {
+                "id": "itsearch_map_cont",
+                "plot_legend": "itmap_cont",
+                "optional": {
+                    "MAP": true,
+                    "plus1it": null,
+                    "posterior": null,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am":1,
+                    "aw":null
+                }
             }
-        }
-        ,
-        {"id":"itsearch_sample",
-        "plot_legend": "itsample",
-        "optional": {
-            "MAP": false,
-            "plus1it": 6,
-            "posterior": 0.5,
-            "scoretype": "bdecat",
-            "chi": 1,
-            "edgepf": 1,
-            "am":null,
-            "aw":null}
-            }
-        ],
+            ,
+            {
+                "id":"itsearch_sample",
+                "plot_legend": "itsample",
+                "optional": {
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bdecat",
+                    "chi": 1,
+                    "edgepf": 1,
+                    "am":null,
+                    "aw":null}
+                    }
+            ],
         "order_mcmc": [{
             "id":"order_mcmc_itmap",
             "plot_legend": "order_mcmc_itmap",
@@ -352,6 +482,32 @@ Open the file `simresults/ROC.eps`.
                 0.2
             ],
             "burnin": 0
+            },
+            {
+                "id":"order_mcmc_itmap_cont",
+                "plot_legend": "order_mcmc_itmap_cont",
+                "startspace": "itsearch_map_cont",
+                "optional": {
+                    "plus1": true
+                },
+                "scoretype": "bge",
+                "chi": null,
+                "edgepf": null,
+                "aw":null,
+                "am":1,
+                "threshold": [
+                    0.99,
+                    0.95,
+                    0.9,
+                    0.8,
+                    0.7,
+                    0.6,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.2
+                ],
+                "burnin": 0
             },
             {
                 "id":"order_mcmc_itsample",

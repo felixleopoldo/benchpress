@@ -9,6 +9,11 @@ services:
         - ./simresults:/myappdir/simresults
   trilearn:
     image: onceltuca/trilearn
+    volumes: 
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: $DISPLAY
+      MPLBACKEND: Agg
   notears:
     image: onceltuca/jmoss20notears:1.2
     command: tail -f /dev/null
