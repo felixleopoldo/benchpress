@@ -767,7 +767,7 @@ def alg_shell(algorithm):
 
     elif algorithm ==  "fges":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
+                "java -jar scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
                 "--algorithm fges "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
