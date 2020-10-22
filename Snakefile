@@ -5,7 +5,7 @@ with open('config.json') as json_file:
     conf = json.load(json_file)
 
 # Validate config.json file against the schema
-with open('config.schema.json') as json_file:
+with open('schema/config.schema.json') as json_file:
     schema = json.load(json_file)
 
 validate(instance=conf, schema=schema)
@@ -67,17 +67,11 @@ for data_setup in conf["benchmark_setup"]["data"]:
 
 pattern_strings = {}
 pattern_strings["greenthomas"] = "greenthomas/alg_params=/" \
-                "score_type={score_type}/" \
-                "chi={chi}/" \
-                "edgepf={edgepf}/" \
                 "n_samples={n_samples}/" \
                 "randomits={randomits}/" \
                 "penalty={penalty}"
 
 pattern_strings["notears"] = "notears/alg_params=/" \
-                "score_type={score_type}/" \
-                "chi={chi}/" \
-                "edgepf={edgepf}/" \
                 "min_rate_of_progress={min_rate_of_progress}/" \
                 "penalty_growth_rate={penalty_growth_rate}/" \
                 "optimation_accuracy={optimation_accuracy}/" \
@@ -85,9 +79,6 @@ pattern_strings["notears"] = "notears/alg_params=/" \
                 "loss_grad={loss_grad}"
 
 pattern_strings["blip"] = "blip/alg_params=/" \
-                "score_type={score_type}/" \
-                "chi={chi}/" \
-                "edgepf={edgepf}/" \
                 "time={max_time}/" \
                 "scorer.method={scorermethod}/" \
                 "solver.method={solvermethod}/" \
@@ -99,39 +90,21 @@ pattern_strings["blip"] = "blip/alg_params=/" \
                 "verbose={verbose}"
 
 pattern_strings["pcalg"] = "pcalg/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "alpha={alpha}"
 
 pattern_strings["mmhc"] = "mmhc/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "alpha={alpha}"
 
 pattern_strings["h2pc"] = "h2pc/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "alpha={alpha}"
 
 pattern_strings["interiamb"] = "interiamb/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "alpha={alpha}"
 
 pattern_strings["gs"] = "gs/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "alpha={alpha}"
 
 pattern_strings["tabu"] = "tabu/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "score={score}/"\
                "iss={iss}/"\
                "iss.mu={issmu}/"\
@@ -141,9 +114,6 @@ pattern_strings["tabu"] = "tabu/alg_params=/"\
                "beta={beta}"\
 
 pattern_strings["hc"] = "hc/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "perturb={perturb}/"\
                "restart={restart}/"\
                "score={score}/"\
@@ -155,9 +125,6 @@ pattern_strings["hc"] = "hc/alg_params=/"\
                "beta={beta}"\
 
 pattern_strings["gobnilp"] = "gobnilp/alg_params=/"\
-                 "score_type={score_type}/" \
-                 "chi={chi}/" \
-                 "edgepf={edgepf}/" \
                  "palim={palim}/" \
                  "alpha={alpha}/"\
                  "prune={prune}"
@@ -185,9 +152,6 @@ pattern_strings["mcmc_est"] = "estimation_method/"\
                   "burnin={burnin}"
 
 pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
-                  "score_type={score_type}/"\
-                  "chi={chi}/" \
-                  "edgepf={edgepf}/" \
                   "alpha={alpha}/"\
                   "beta={beta}/"\
                   "radii={radii}/"\
@@ -196,34 +160,22 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
                   "N={N}" 
 
 pattern_strings["fges"] = "fges/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "score={score}/" \
                "data-type={datatype}/"\
                "faithfulnessAssumed={faithfulnessAssumed}"
 
 pattern_strings["fci"] = "fci/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "test={test}/" \
                "alpha={alpha}/" \
                "data-type={datatype}"
 
 pattern_strings["gfci"] = "gfci/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "test={test}/" \
                "alpha={alpha}/" \
                "score={score}/" \
                "data-type={datatype}"
 
 pattern_strings["rfci"] = "rfci/alg_params=/"\
-               "score_type={score_type}/" \
-               "chi={chi}/" \
-               "edgepf={edgepf}/" \
                "test={test}/" \
                "alpha={alpha}/" \
                "data-type={datatype}"
@@ -236,9 +188,9 @@ pattern_strings["evaluation"] = "evaluation/" \
 json_string = {}
 
 json_string = {val["id"]: expand(pattern_strings["greenthomas"], 
-                                        score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+#                                        score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            n_samples=val["n_samples"],
                                            randomits=val["randomits"],
                                            penalty=val["penalty"])
@@ -256,18 +208,18 @@ json_string.update({val["id"]: expand(pattern_strings["itsearch"],
                     for val in conf["structure_learning_algorithms"]["itsearch"]})
 
 json_string.update({val["id"]: expand(pattern_strings["fges"], 
-                                        score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+#                                        score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            faithfulnessAssumed=val["faithfulnessAssumed"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
                     for val in conf["structure_learning_algorithms"]["fges"]})
 
 json_string.update({val["id"]: expand(pattern_strings["notears"], 
-                                        score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+ #                                       score_type="bdecat",
+ #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            min_rate_of_progress=val["min_rate_of_progress"],
                                            penalty_growth_rate=val["penalty_growth_rate"],
                                            optimation_accuracy=val["optimation_accuracy"],
@@ -277,73 +229,74 @@ json_string.update({val["id"]: expand(pattern_strings["notears"],
                     for val in conf["structure_learning_algorithms"]["notears"]})
 
 
-json_string.update({val["id"]: expand(pattern_strings["fci"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["fci"], #score_type="bdecat",
+ #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["fci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gfci"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gfci"], #score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"],
                                            score=val["score"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["gfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["rfci"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["rfci"], #score_type="bdecat",
+ #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["rfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["pcalg"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["pcalg"], #score_type="bdecat",
+ #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["pcalg"]})
 
-json_string.update({val["id"]: expand(pattern_strings["mmhc"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["mmhc"], #score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["restrict.args"]["alpha"])  
                     for val in conf["structure_learning_algorithms"]["mmhc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["h2pc"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["h2pc"], #score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["restrict.args"]["alpha"])  
                     for val in conf["structure_learning_algorithms"]["h2pc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["interiamb"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["interiamb"], #score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["interiamb"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gs"], score_type="bdecat",
-                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gs"], #score_type="bdecat",
+#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["gs"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gobnilp"], score_type="bdecat",
-                                                chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                                edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gobnilp"], #score_type="bdecat",
+#                                                chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                               edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                 palim=val["palim"],
                                                 alpha=val["alpha"],
                                                 prune=val["prune"]
                                                 )
                 for val in conf["structure_learning_algorithms"]["gobnilp"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["tabu"], score_type="bdecat",
-                                                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]:  expand(pattern_strings["tabu"], 
+#score_type="bdecat",
+ #                                                   chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+ #                                                   edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                     score=val["score"],
                                                     iss=val["iss"],
                                                     issmu=val["iss.mu"],
@@ -354,9 +307,10 @@ json_string.update({val["id"]:  expand(pattern_strings["tabu"], score_type="bdec
                                                     )
                 for val in conf["structure_learning_algorithms"]["tabu"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["hc"], score_type="bdecat",
-                                                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]:  expand(pattern_strings["hc"], 
+#                                                    score_type="bdecat",
+#                                                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                                                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                     perturb=val["perturb"],
                                                     restart=val["restart"],
                                                     score=val["score"],
@@ -370,9 +324,9 @@ json_string.update({val["id"]:  expand(pattern_strings["hc"], score_type="bdecat
                 for val in conf["structure_learning_algorithms"]["hc"]})
 
 json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
-                    score_type="bdecat",
-                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+#                    score_type="bdecat",
+#                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+#                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                     alpha=val["alpha"],
                     beta=val["beta"],
                     N=val["N"],
@@ -384,9 +338,9 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
                     )
                for val in conf["structure_learning_algorithms"]["trilearn_loglin"]})
 
-json_string.update({val["id"]: expand(pattern_strings["blip"], score_type="bdecat",
-                                            chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                            edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["blip"], #score_type="bdecat",
+                                            #chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
+                                            #edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                             max_time=val["time"],
                                             solvermethod=val["solver.method"],
                                             scorermethod=val["scorer.method"],
@@ -962,8 +916,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
                 " && python scripts/add_column.py --filename {output} --colname algorithm       --colval greenthomas " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
@@ -972,8 +924,6 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname n_samples       --colval {wildcards.n_samples} " \
                 " && python scripts/add_column.py --filename {output} --colname randomits       --colval {wildcards.randomits} " \
                 " && python scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \                
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
                 " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
 
@@ -984,8 +934,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
                 " && python scripts/add_column.py --filename {output} --colname algorithm       --colval tabu " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
@@ -998,8 +946,6 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
                 " && python scripts/add_column.py --filename {output} --colname beta            --colval {wildcards.beta} " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname start           --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist       --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname blacklist       --colval null " \
@@ -1024,9 +970,6 @@ def summarise_alg_shell(algorithm):
         " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
-        " && python scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score_type} " \
-        " && python scripts/add_column.py --filename {output} --colname chi             --colval {wildcards.chi} " \
-        " && python scripts/add_column.py --filename {output} --colname edgepf          --colval {wildcards.edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname min_rate_of_progress        --colval {wildcards.min_rate_of_progress} " \
         " && python scripts/add_column.py --filename {output} --colname penalty_growth_rate        --colval {wildcards.penalty_growth_rate} " \
         " && python scripts/add_column.py --filename {output} --colname optimation_accuracy         --colval {wildcards.optimation_accuracy} " \
@@ -1042,8 +985,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
                 " && python scripts/add_column.py --filename {output} --colname algorithm       --colval hc " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
@@ -1056,8 +997,6 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
                 " && python scripts/add_column.py --filename {output} --colname beta            --colval {wildcards.beta} " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname start           --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist       --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname blacklist       --colval null " \
@@ -1077,16 +1016,11 @@ def summarise_alg_shell(algorithm):
         "--filename_data {input.data} " \
         "--range_header_data 1 " \ 
         "--filename {output.res} " \ 
-        "--chi {wildcards.chi} " \
-        "--edgepf {wildcards.edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
         " && python scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
         " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
-        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-        " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-        " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname max_time        --colval {wildcards.max_time} " \
         " && python scripts/add_column.py --filename {output} --colname scorer.method   --colval {wildcards.scorermethod} " \
         " && python scripts/add_column.py --filename {output} --colname solver.method   --colval {wildcards.solvermethod} " \
@@ -1098,9 +1032,6 @@ def summarise_alg_shell(algorithm):
         " && python scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
         " && python scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
         " && python scripts/add_column.py --filename {output} --colname legend          --colval {wildcards.plot_legend} " 
-
-       #"--chi {wildcards.chi} " \
-       # "--edgepf {wildcards.edgepf} " \
 
     elif algorithm == "itsearch":
         return "Rscript scripts/run_summarise.R " \
@@ -1150,17 +1081,12 @@ def summarise_alg_shell(algorithm):
         "--filename_data {input.data} " \
         "--filename {output} " \ 
         "--range_header_data 1 " \ 
-        "--chi {wildcards.chi} " \
-        "--edgepf {wildcards.edgepf} " \
         " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
         " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
         " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
-        " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-        " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-        " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \    
         " && python scripts/add_column.py --filename {output} --colname fixedGaps   --colval null " \
         " && python scripts/add_column.py --filename {output} --colname fixedEdges  --colval null " \
         " && python scripts/add_column.py --filename {output} --colname NAdelete    --colval true " \
@@ -1180,16 +1106,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname debug       --colval false " \
@@ -1204,16 +1125,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval h2pc "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname debug       --colval false " \
@@ -1228,16 +1144,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm        --colval interiamb "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
                 " && python scripts/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
                 " && python scripts/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
-                " && python scripts/add_column.py --filename {output} --colname score            --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi    --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
                 " && python scripts/add_column.py --filename {output} --colname cluster          --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist        --colval null " \
@@ -1257,16 +1168,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm        --colval gs "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
                 " && python scripts/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
                 " && python scripts/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
-                " && python scripts/add_column.py --filename {output} --colname score            --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi    --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
                 " && python scripts/add_column.py --filename {output} --colname cluster          --colval null " \
                 " && python scripts/add_column.py --filename {output} --colname whitelist        --colval null " \
@@ -1286,17 +1192,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \        
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval fges "\
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
                 " && python scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname faithfulnessAssumed       --colval {wildcards.faithfulnessAssumed} "\
                 " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
                 " && python scripts/add_column.py --filename {output} --colname legend      --colval {wildcards.plot_legend} "  
@@ -1308,17 +1208,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \        
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval fci "\
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
                 " && python scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
                 " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
@@ -1331,16 +1225,11 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \        
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval gfci "\
-                " && python scripts/add_column.py --filename {output} --colname eval_score       --colval bde " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
                 " && python scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python scripts/add_column.py --filename {output} --colname score       --colval {wildcards.score} "\
                 " && python scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
@@ -1358,12 +1247,9 @@ def summarise_alg_shell(algorithm):
                 "--edgepf {wildcards.edgepf} " \        
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval rfci "\
-                " && python scripts/add_column.py --filename {output} --colname eval_score       --colval bde " \
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
                 " && python scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
                 " && python scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
@@ -1384,9 +1270,6 @@ def summarise_alg_shell(algorithm):
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \
-                " && python scripts/add_column.py --filename {output} --colname score           --colval bde " \
-                " && python scripts/add_column.py --filename {output} --colname chi   --colval {wildcards.chi} " \
-                " && python scripts/add_column.py --filename {output} --colname edgepf --colval {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname palim       --colval {wildcards.palim} "\
                 " && python scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python scripts/add_column.py --filename {output} --colname prune       --colval {wildcards.prune} "\
