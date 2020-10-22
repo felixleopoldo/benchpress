@@ -536,7 +536,7 @@ def gen_data_string_from_conf(data_id, seed):
                         "/seed={seed}", 
                         n = data["sample_sizes"],
                         seed = seed)
-                        
+
     elif data_id in [c["id"] for c in conf["data_sampling_algorithms"]["notears_linear_gaussian_sampling"]]:
         data = next(item for item in conf["data_sampling_algorithms"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
         return expand("notears_linear_gaussian_sampling" +\
@@ -585,12 +585,12 @@ def alg_shell(algorithm):
     if algorithm == "greenthomas":
         #"&& /usr/bin/time -f \"%e\" -o {output.time} " \  
         return "tail -n +3 {input.data} > {input.data}.noheader " \    
-            "&& cd thomasgreen && java EstimateMultinomialGM -v 0 " \
+            "&& cd scripts/thomasgreen && java EstimateMultinomialGM -v 0 " \
             "-s 0 "\
             "-n {wildcards.n_samples} "\
             "-r {wildcards.randomits} "\
             "-p {wildcards.penalty} < ../{input.data}.noheader > ../{output.adjmat}.adjlist " \
-            "&& python adjlist_to_adjmat.py ../{output.adjmat}.adjlist ../{output.adjmat} " \
+            "&& python scripts/adjlist_to_adjmat.py ../{output.adjmat}.adjlist ../{output.adjmat} " \
             "&& rm ../{output.adjmat}.adjlist ../{input.data}.noheader "\
             "&& echo 1 > ../{output.time}"
 
