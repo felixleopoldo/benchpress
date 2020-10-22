@@ -4,3 +4,9 @@ docs
 .devcontainer
 .snakemake
 .vscode
+files/data/adjmat=/
+files/result
+files/time
+files/adjvecs
+files/adjmat_estimate
+files/heatmap_estimate
