@@ -208,18 +208,12 @@ json_string.update({val["id"]: expand(pattern_strings["itsearch"],
                     for val in conf["structure_learning_algorithms"]["itsearch"]})
 
 json_string.update({val["id"]: expand(pattern_strings["fges"], 
-#                                        score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            faithfulnessAssumed=val["faithfulnessAssumed"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
                     for val in conf["structure_learning_algorithms"]["fges"]})
 
 json_string.update({val["id"]: expand(pattern_strings["notears"], 
- #                                       score_type="bdecat",
- #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                            min_rate_of_progress=val["min_rate_of_progress"],
                                            penalty_growth_rate=val["penalty_growth_rate"],
                                            optimation_accuracy=val["optimation_accuracy"],
@@ -229,64 +223,46 @@ json_string.update({val["id"]: expand(pattern_strings["notears"],
                     for val in conf["structure_learning_algorithms"]["notears"]})
 
 
-json_string.update({val["id"]: expand(pattern_strings["fci"], #score_type="bdecat",
- #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["fci"], 
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["fci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gfci"], #score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gfci"], 
                                            alpha=val["alpha"],
                                            score=val["score"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["gfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["rfci"], #score_type="bdecat",
- #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["rfci"], 
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
                     for val in conf["structure_learning_algorithms"]["rfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["pcalg"], #score_type="bdecat",
- #                                          chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                          edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["pcalg"], 
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["pcalg"]})
 
-json_string.update({val["id"]: expand(pattern_strings["mmhc"], #score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["mmhc"], 
                                            alpha=val["restrict.args"]["alpha"])  
                     for val in conf["structure_learning_algorithms"]["mmhc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["h2pc"], #score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["h2pc"], 
                                            alpha=val["restrict.args"]["alpha"])  
                     for val in conf["structure_learning_algorithms"]["h2pc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["interiamb"], #score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["interiamb"], 
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["interiamb"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gs"], #score_type="bdecat",
-#                                           chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                           edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gs"], 
                                            alpha=val["alpha"])  
                     for val in conf["structure_learning_algorithms"]["gs"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gobnilp"], #score_type="bdecat",
-#                                                chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                               edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["gobnilp"],
                                                 palim=val["palim"],
                                                 alpha=val["alpha"],
                                                 prune=val["prune"]
@@ -294,9 +270,6 @@ json_string.update({val["id"]: expand(pattern_strings["gobnilp"], #score_type="b
                 for val in conf["structure_learning_algorithms"]["gobnilp"]})
 
 json_string.update({val["id"]:  expand(pattern_strings["tabu"], 
-#score_type="bdecat",
- #                                                   chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
- #                                                   edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                     score=val["score"],
                                                     iss=val["iss"],
                                                     issmu=val["iss.mu"],
@@ -308,9 +281,6 @@ json_string.update({val["id"]:  expand(pattern_strings["tabu"],
                 for val in conf["structure_learning_algorithms"]["tabu"]})
 
 json_string.update({val["id"]:  expand(pattern_strings["hc"], 
-#                                                    score_type="bdecat",
-#                                                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                                                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                                                     perturb=val["perturb"],
                                                     restart=val["restart"],
                                                     score=val["score"],
@@ -324,9 +294,6 @@ json_string.update({val["id"]:  expand(pattern_strings["hc"],
                 for val in conf["structure_learning_algorithms"]["hc"]})
 
 json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
-#                    score_type="bdecat",
-#                    chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-#                    edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
                     alpha=val["alpha"],
                     beta=val["beta"],
                     N=val["N"],
@@ -338,9 +305,7 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
                     )
                for val in conf["structure_learning_algorithms"]["trilearn_loglin"]})
 
-json_string.update({val["id"]: expand(pattern_strings["blip"], #score_type="bdecat",
-                                            #chi=conf["evaluation"]["score"]["bdecatpar"]["chi"],
-                                            #edgepf=conf["evaluation"]["score"]["bdecatpar"]["edgepf"],
+json_string.update({val["id"]: expand(pattern_strings["blip"], 
                                             max_time=val["time"],
                                             solvermethod=val["solver.method"],
                                             scorermethod=val["scorer.method"],
@@ -502,28 +467,25 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
             av_parents=adjmat_dict["av_parents"], 
             p=adjmat_dict["dims"],
             seed=seed)
+
     elif adjmat_id in [c["id"] for c in conf["graph_sampling_algorithms"]["fixed_adjmats"]]:
         adjmat_dict = next(item for item in conf["graph_sampling_algorithms"]["fixed_adjmats"] if item["id"] == adjmat_id)
         # This means the id is the conf, and it takes everything in a folder?
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_dict["filename"]))[0]
-        #print(filename_no_ext)
         return  "myadjmats/" + filename_no_ext # this could be hepar2 e.g.
 
     elif adjmat_id in [c["id"] for c in conf["graph_sampling_algorithms"]["bn.fit_adjmats"]]:
         # This means the id is the conf, and it takes everything in a folder?
         return  "bn.fit_adjmats/" + adjmat_id # this could be hepar2 e.g.
+
     elif adjmat_id == "notears":
         adjmat_dict = next(item for item in conf["graph_sampling_algorithms"]["notears"] if item["id"] == adjmat_id)
         return expand("notears/" \
                         "num_nodes={num_nodes}/" \
                         "num_edges={num_edges}/"\
-                        #"edge_coefficient_range_from={edge_coefficient_range_from}/"\
-                        #"edge_coefficient_range_to={edge_coefficient_range_to}/"\
                         "seed={seed}",
                         num_nodes=adjmat_dict["num_nodes"],
                         num_edges=adjmat_dict["num_edges"],
-                        #edge_coefficient_range_from=adjmat_dict["edge_coefficient_range_from"],
-                        #edge_coefficient_range_to=adjmat_dict["edge_coefficient_range_to"],
                         seed=seed)
                         
     elif adjmat_id is None:
@@ -532,7 +494,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
 def gen_parameter_string_from_conf(gen_method_id, seed):
     with open('config.json') as json_file:
         conf = json.load(json_file)
-    print(gen_method_id)
+
     if gen_method_id in [c["id"] for c in conf["parameters_sampling_algorithms"]["generateBinaryBN"]]:        
         curconf = next(item for item in conf["parameters_sampling_algorithms"]["generateBinaryBN"] if item["id"] == gen_method_id)
         return expand("generateBinaryBN" + \
@@ -542,9 +504,10 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         min=curconf["min"], 
                         max=curconf["max"],
                         seed=seed)
+
     elif gen_method_id in [c["id"] for c in conf["parameters_sampling_algorithms"]["bn.fit_networks"]]:
-        #print("found")
         return "bn.fit_networks/"+gen_method_id
+
     elif gen_method_id == "notears":
         curconf = next(item for item in conf["parameters_sampling_algorithms"]["notears"] if item["id"] == gen_method_id)
         return expand("notears/" \
@@ -559,13 +522,12 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return None
 
 def gen_data_string_from_conf(data_id, seed):
-    print(data_id)
     if data_id in [c["id"] for c in conf["data_sampling_algorithms"]["fixed_data"]]:
         data = next(item for item in conf["data_sampling_algorithms"]["fixed_data"] if item["id"] == data_id)        
         return "fixed" + \
                 "/name="+data["filename"] + \
                 "/n="+str(data["samples"]) + \ 
-                "/seed="+str(seed) # TODO: this may caus som error with seed somewhere
+                "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
 
     elif data_id in [c["id"] for c in conf["data_sampling_algorithms"]["standard_sampling"]]:
         data = next(item for item in conf["data_sampling_algorithms"]["standard_sampling"] if item["id"] == data_id)
@@ -574,6 +536,7 @@ def gen_data_string_from_conf(data_id, seed):
                         "/seed={seed}", 
                         n = data["sample_sizes"],
                         seed = seed)
+                        
     elif data_id in [c["id"] for c in conf["data_sampling_algorithms"]["notears_linear_gaussian_sampling"]]:
         data = next(item for item in conf["data_sampling_algorithms"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
         return expand("notears_linear_gaussian_sampling" +\
