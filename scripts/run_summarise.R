@@ -62,7 +62,7 @@ p <- add_argument(p, "--edgepf", help = "bde parameter", type = "numeric", defau
 #p <- add_argument(p, "--aw",            help = "bge score parameter") # fix null
 
 argv <- parse_args(p)
-print(argv)
+
 data <- NULL
 if (argv$range_header_data == 1) {
   data <- read.csv(argv$filename_data, sep = " ") # this is gobnilp data
@@ -154,9 +154,6 @@ true_nedges <- sum(getPattern(true_adjmat))
 # logscore <- DAGscore(ncol(data), myscore, estimated_adjmat) # this was bnscore, dont know why...
 logscore <- 100
 
-print(true_patterngraph)
-print(estimated_patterngraph)
-print(true_nedges)
 # Compute number of correct Markov blankets
 
 # Cannot convert graphnel to bn. These functions are for grain networks.
@@ -166,13 +163,13 @@ print(true_nedges)
 # Statistics on getPattern graph
 compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
 names(compres) <- c("SHD", "TP", "FP")
-print(compres)
+#print(compres)
 true_nedges <- sum(getPattern(true_adjmat))
 
-print(compres["TP"] / true_nedges)
-print(compres["FP"] / true_nedges)
-print(logscore)
-print(compres["SHD"])
+# print(compres["TP"] / true_nedges)
+# print(compres["FP"] / true_nedges)
+# print(logscore)
+# print(compres["SHD"])
 df <- data.frame(TPR = compres["TP"] / true_nedges, # should be for all times
                  FPRn = compres["FP"] / true_nedges,
                  logscore = logscore,
