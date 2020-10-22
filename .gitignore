@@ -1,2 +1,3 @@
-benchmark/config.json
+config.json
 *.class
+docs
