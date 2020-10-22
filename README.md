@@ -57,7 +57,7 @@ Open the file `simresults/ROC.eps`.
                     "graph": "hepar2.csv",
                     "parameters": "generateBinaryBN" ,
                     "data": "standard_sampling",
-                    "seed_range": [1, 1]
+                    "seed_range": [1, 10]
                 }],
         "evaluation": {
             "ROC": [{
@@ -74,22 +74,7 @@ Open the file `simresults/ROC.eps`.
                     {
                         "structure_learning_algorithm":"notears",  
                         "curve_variable":"min_rate_of_progress"}
-                    ],                    
-            "SHD": ["blip", "gobnilp"],
-            "bdecat_score": {
-                "chi": 1.0,
-                "edgepf": 0.5,
-                "algorithms": ["blip"]},
-            "bge_score": {},
-            "bic":[],
-            "bic*":[],
-            "correct_markov_blankets":[],
-            "correct_neighbors":[],
-            "auto_correlation_plot":[],
-            "adjmat_plot":[],
-            "adjmat_csv":[],
-            "heatmap_plot":{"seed":1,
-                            "algorithms":["itsearch_map"]}
+                    ]
         }
     },
     "data_sampling_algorithms": {
