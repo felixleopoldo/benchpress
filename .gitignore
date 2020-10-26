@@ -9,3 +9,7 @@ files/time
 files/adjvecs
 files/adjmat_estimate
 files/heatmap_estimate
+files/*.csv
+files/*.eps
+files/bn/generateBinaryBN
+files/adjmat/generateDAGMaxParents
