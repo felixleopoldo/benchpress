@@ -6,6 +6,7 @@
 #  
 # Benchpress
 
+![Benchpress](figures/benchpress.jpg)
 
 Systematic benchmarks of structure learning algorithms for graphical models.
 
@@ -47,15 +48,13 @@ To run the simulation setup in config.json type
 
 ## History
 
-TODO: Write history
+This is the first program of its kind.
 
-## Credits
-
-TODO: Write credits
 
 ## License
 
-TODO: Write license
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+
 ]]></content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
