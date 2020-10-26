@@ -71,7 +71,6 @@ if (argv$range_header_data == 1) {
   data <- read.csv(argv$filename_data) # this is different with gobnilp data
 }
 
-print(data)
 n <- dim(data)[2]
 
 true_adjmat <- as.matrix(read.csv(argv$adjmat_true))

@@ -18,8 +18,9 @@ for(alg_name in names(config$structure_learning_algorithms)) {
 }
 active_algorithms <- unique(active_algorithms)
 
-roc_plot_algorithms <- config$benchmark_setup$evaluation$ROC
-for (alg in roc_plot_algorithms){
+rocalgs <- config$benchmark_setup$evaluation$ROC
+
+for (alg in rocalgs){
     if(alg$structure_learning_algorithm %in% active_algorithms) {
         ROCdf <- read.csv(file.path(config$output_dir, paste(alg$structure_learning_algorithm ,".csv", sep = "")))
         sumROC = ROCdf %>%
