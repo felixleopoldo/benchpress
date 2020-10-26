@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blip instantiation Schema &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="blip-instantiation-schema">
+<h1>Blip instantiation Schema<a class="headerlink" href="#blip-instantiation-schema" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/blip
+</pre></div>
+</div>
+<p>Blip instantiation</p>
+<p>| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
+| :—————— | ———- | ————– | ———— | :—————- | ——————— | ——————- | ————————————————————————— |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | <a class="reference external" href="../../out/config.schema.json">config.schema.json*</a> |</p>
+<div class="section" id="blip-type">
+<h2>blip Type<a class="headerlink" href="#blip-type" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> (<a class="reference internal" href="#"><span class="doc">Blip instantiation</span></a>)</p>
+</div>
+</div>
+<div class="section" id="blip-instantiation-properties">
+<h1>Blip instantiation Properties<a class="headerlink" href="#blip-instantiation-properties" title="Permalink to this headline">¶</a></h1>
+<p>| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :—————————— | ——— | ——– | ————– | :———————————————————————————————————————————————————————————————————————————- |
+| <a class="reference external" href="#id">id</a>                       | <code class="docutils literal notranslate"><span class="pre">string</span></code>  | Required | cannot be null | <a class="reference internal" href="config-definitions-blip-instantiation-properties-unique-idenfifier.html"><span class="doc">JSON schema for BenchPress config file.</span></a>        |
+| <a class="reference external" href="#plot_legend">plot_legend</a>     | <code class="docutils literal notranslate"><span class="pre">string</span></code>  | Required | cannot be null | <a class="reference internal" href="config-definitions-blip-instantiation-properties-legend.html"><span class="doc">JSON schema for BenchPress config file.</span></a>          |
+| <a class="reference external" href="#scorer.method">scorer.method</a> | <code class="docutils literal notranslate"><span class="pre">string</span></code>  | Required | cannot be null | <a class="reference internal" href="config-definitions-blip-instantiation-properties-scorermethod.html"><span class="doc">JSON schema for BenchPress config file.</span></a>  |
+| <a class="reference external" href="#solver.method">solver.method</a> | <code class="docutils literal notranslate"><span class="pre">string</span></code>  | Required | cannot be null | <a class="reference internal" href="config-definitions-blip-instantiation-properties-solvermethod.html"><span class="doc">JSON schema for BenchPress config file.</span></a>  |
+| <a class="reference external" href="#indeg">indeg</a>                 | Merged    | Required | cannot be null | <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                               |
+| <a class="reference external" href="#time">time</a>                   | Merged    | Required | cannot be null | <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                                        |
+| <a class="reference external" href="#allocated">allocated</a>         | Merged    | Required | cannot be null | <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                           |
+| <a class="reference external" href="#scorefunction">scorefunction</a> | <code class="docutils literal notranslate"><span class="pre">string</span></code>  | Required | cannot be null | <a class="reference internal" href="config-definitions-blip-instantiation-properties-scorefunction.html"><span class="doc">JSON schema for BenchPress config file.</span></a> |
+| <a class="reference external" href="#alpha">alpha</a>                 | Merged    | Required | cannot be null | <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                             |
+| <a class="reference external" href="#cores">cores</a>                 | Merged    | Required | cannot be null | <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                               |
+| <a class="reference external" href="#verbose">verbose</a>             | <code class="docutils literal notranslate"><span class="pre">integer</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                              |</p>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p>Unique idenfifier for that can be used as reference in the benchmark_setup.</p>
+<p><code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code> (<a class="reference internal" href="config-definitions-blip-instantiation-properties-unique-idenfifier.html"><span class="doc">Unique idenfifier</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-blip-instantiation-properties-unique-idenfifier.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="id-type">
+<h3>id Type<a class="headerlink" href="#id-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code> (<a class="reference internal" href="config-definitions-blip-instantiation-properties-unique-idenfifier.html"><span class="doc">Unique idenfifier</span></a>)</p>
+</div>
+</div>
+<div class="section" id="plot-legend">
+<h2>plot_legend<a class="headerlink" href="#plot-legend" title="Permalink to this headline">¶</a></h2>
+<p>Legend to show in plotting</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot_legend</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code> (<a class="reference internal" href="config-definitions-blip-instantiation-properties-legend.html"><span class="doc">Legend</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-blip-instantiation-properties-legend.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="plot-legend-type">
+<h3>plot_legend Type<a class="headerlink" href="#plot-legend-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code> (<a class="reference internal" href="config-definitions-blip-instantiation-properties-legend.html"><span class="doc">Legend</span></a>)</p>
+</div>
+</div>
+<div class="section" id="scorer-method">
+<h2>scorer.method<a class="headerlink" href="#scorer-method" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">scorer.method</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-blip-instantiation-properties-scorermethod.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="scorer-method-type">
+<h3>scorer.method Type<a class="headerlink" href="#scorer-method-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="solver-method">
+<h2>solver.method<a class="headerlink" href="#solver-method" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">solver.method</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-blip-instantiation-properties-solvermethod.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="solver-method-type">
+<h3>solver.method Type<a class="headerlink" href="#solver-method-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="indeg">
+<h2>indeg<a class="headerlink" href="#indeg" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative integers, (0,1,2,…), or array of the same.</p>
+<p><code class="docutils literal notranslate"><span class="pre">indeg</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="indeg-type">
+<h3>indeg Type<a class="headerlink" href="#indeg-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">Non-negative integer</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-non-negative-integers-anyof-non-negative-integer-list.html"><span class="doc">Non-negative integer list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="time">
+<h2>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative number(s).</p>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="time-type">
+<h3>time Type<a class="headerlink" href="#time-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-number.html"><span class="doc">Non-negative number</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-flexnonnegnum-anyof-non-negative-number-list.html"><span class="doc">Non-negative number list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="allocated">
+<h2>allocated<a class="headerlink" href="#allocated" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative integers, (0,1,2,…), or array of the same.</p>
+<p><code class="docutils literal notranslate"><span class="pre">allocated</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="allocated-type">
+<h3>allocated Type<a class="headerlink" href="#allocated-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">Non-negative integer</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-non-negative-integers-anyof-non-negative-integer-list.html"><span class="doc">Non-negative integer list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scorefunction">
+<h2>scorefunction<a class="headerlink" href="#scorefunction" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">scorefunction</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-blip-instantiation-properties-scorefunction.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="scorefunction-type">
+<h3>scorefunction Type<a class="headerlink" href="#scorefunction-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="alpha">
+<h2>alpha<a class="headerlink" href="#alpha" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="alpha-type">
+<h3>alpha Type<a class="headerlink" href="#alpha-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-probabaility.html"><span class="doc">Probabaility</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probability-list.html"><span class="doc">Probability list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cores">
+<h2>cores<a class="headerlink" href="#cores" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative integers, (0,1,2,…), or array of the same.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cores</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="cores-type">
+<h3>cores Type<a class="headerlink" href="#cores-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-non-negative-integers.html"><span class="doc">Non-negative integer(s)</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">Non-negative integer</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-non-negative-integers-anyof-non-negative-integer-list.html"><span class="doc">Non-negative integer list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="verbose">
+<h2>verbose<a class="headerlink" href="#verbose" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative integer, 0,1,2,…</p>
+<p><code class="docutils literal notranslate"><span class="pre">verbose</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">integer</span></code> (<a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">Non-negative integer</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="verbose-type">
+<h3>verbose Type<a class="headerlink" href="#verbose-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">integer</span></code> (<a class="reference internal" href="config-definitions-non-negative-integer.html"><span class="doc">Non-negative integer</span></a>)</p>
+</div>
+<div class="section" id="verbose-constraints">
+<h3>verbose Constraints<a class="headerlink" href="#verbose-constraints" title="Permalink to this headline">¶</a></h3>
+<p><strong>minimum</strong>: the value of this number must greater than or equal to: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Json Schema</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config.html">JSON schema for BenchPress config file. Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-properties">JSON schema for BenchPress config file. Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-definitions">JSON schema for BenchPress config file. Definitions</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/schema/config-definitions-blip-instantiation.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

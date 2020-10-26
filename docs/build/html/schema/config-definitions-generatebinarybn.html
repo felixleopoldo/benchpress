@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>generateBinaryBN Schema &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="generatebinarybn-schema">
+<h1>generateBinaryBN Schema<a class="headerlink" href="#generatebinarybn-schema" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN
+</pre></div>
+</div>
+<p>Parameter setting for generateBinaryBN</p>
+<p>| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
+| :—————— | ———- | ————– | ———— | :—————- | ——————— | ——————- | ————————————————————————— |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | <a class="reference external" href="../../out/config.schema.json">config.schema.json*</a> |</p>
+<div class="section" id="generatebinarybn-type">
+<h2>generateBinaryBN Type<a class="headerlink" href="#generatebinarybn-type" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> (<a class="reference internal" href="#"><span class="doc">generateBinaryBN</span></a>)</p>
+</div>
+</div>
+<div class="section" id="generatebinarybn-properties">
+<h1>generateBinaryBN Properties<a class="headerlink" href="#generatebinarybn-properties" title="Permalink to this headline">¶</a></h1>
+<p>| Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                              |
+| :———- | ——– | ——– | ————– | :———————————————————————————————————————————————————————————————————————- |
+| <a class="reference external" href="#id">id</a>   | <code class="docutils literal notranslate"><span class="pre">string</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-generatebinarybn-properties-id.html"><span class="doc">JSON schema for BenchPress config file.</span></a> |
+| <a class="reference external" href="#min">min</a> | Merged   | Required | cannot be null | <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a>       |
+| <a class="reference external" href="#max">max</a> | Merged   | Required | cannot be null | <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a>       |</p>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-generatebinarybn-properties-id.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="id-type">
+<h3>id Type<a class="headerlink" href="#id-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="min">
+<h2>min<a class="headerlink" href="#min" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="min-type">
+<h3>min Type<a class="headerlink" href="#min-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probabaility.html"><span class="doc">Probabaility</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probability-list.html"><span class="doc">Probability list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="max">
+<h2>max<a class="headerlink" href="#max" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="max-type">
+<h3>max Type<a class="headerlink" href="#max-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probabaility.html"><span class="doc">Probabaility</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probability-list.html"><span class="doc">Probability list</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Json Schema</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config.html">JSON schema for BenchPress config file. Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-properties">JSON schema for BenchPress config file. Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-definitions">JSON schema for BenchPress config file. Definitions</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/schema/config-definitions-generatebinarybn.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

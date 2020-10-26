@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notears Schema &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="notears-schema">
+<h1>Notears Schema<a class="headerlink" href="#notears-schema" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears
+</pre></div>
+</div>
+<p>Notears instantiation</p>
+<p>| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
+| :—————— | ———- | ————– | ———— | :—————- | ——————— | ——————- | ————————————————————————— |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | <a class="reference external" href="../../out/config.schema.json">config.schema.json*</a> |</p>
+<div class="section" id="notears-type">
+<h2>notears Type<a class="headerlink" href="#notears-type" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> (<a class="reference internal" href="#"><span class="doc">Notears</span></a>)</p>
+</div>
+</div>
+<div class="section" id="notears-properties">
+<h1>Notears Properties<a class="headerlink" href="#notears-properties" title="Permalink to this headline">¶</a></h1>
+<p>| Property                                      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                |
+| :——————————————– | ——– | ——– | ————– | :———————————————————————————————————————————————————————————————————————— |
+| <a class="reference external" href="#id">id</a>                                     | <code class="docutils literal notranslate"><span class="pre">string</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-notears-properties-id.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                     |
+| <a class="reference external" href="#plot_legend">plot_legend</a>                   | <code class="docutils literal notranslate"><span class="pre">string</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-notears-properties-plot_legend.html"><span class="doc">JSON schema for BenchPress config file.</span></a>   |
+| <a class="reference external" href="#min_rate_of_progress">min_rate_of_progress</a> | Merged   | Required | cannot be null | <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a> |
+| <a class="reference external" href="#penalty_growth_rate">penalty_growth_rate</a>   | Merged   | Required | cannot be null | <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a>            |
+| <a class="reference external" href="#optimation_accuracy">optimation_accuracy</a>   | Merged   | Required | cannot be null | <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a>            |
+| <a class="reference external" href="#loss">loss</a>                                 | <code class="docutils literal notranslate"><span class="pre">string</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-notears-properties-loss.html"><span class="doc">JSON schema for BenchPress config file.</span></a>                 |
+| <a class="reference external" href="#loss_grad">loss_grad</a>                       | <code class="docutils literal notranslate"><span class="pre">string</span></code> | Required | cannot be null | <a class="reference internal" href="config-definitions-notears-properties-loss_grad.html"><span class="doc">JSON schema for BenchPress config file.</span></a>       |</p>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p>Unique idenfifier</p>
+<p><code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-notears-properties-id.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="id-type">
+<h3>id Type<a class="headerlink" href="#id-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="plot-legend">
+<h2>plot_legend<a class="headerlink" href="#plot-legend" title="Permalink to this headline">¶</a></h2>
+<p>Legend to show in plotting</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot_legend</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-notears-properties-plot_legend.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="plot-legend-type">
+<h3>plot_legend Type<a class="headerlink" href="#plot-legend-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+</div>
+<div class="section" id="min-rate-of-progress">
+<h2>min_rate_of_progress<a class="headerlink" href="#min-rate-of-progress" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">min_rate_of_progress</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="min-rate-of-progress-type">
+<h3>min_rate_of_progress Type<a class="headerlink" href="#min-rate-of-progress-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-numbers-in-the-range-01.html"><span class="doc">Number(s) in the range [0,1].</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-probabaility.html"><span class="doc">Probabaility</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-numbers-in-the-range-01-anyof-probability-list.html"><span class="doc">Probability list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="penalty-growth-rate">
+<h2>penalty_growth_rate<a class="headerlink" href="#penalty-growth-rate" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative number(s).</p>
+<p><code class="docutils literal notranslate"><span class="pre">penalty_growth_rate</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="penalty-growth-rate-type">
+<h3>penalty_growth_rate Type<a class="headerlink" href="#penalty-growth-rate-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-number.html"><span class="doc">Non-negative number</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-flexnonnegnum-anyof-non-negative-number-list.html"><span class="doc">Non-negative number list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="optimation-accuracy">
+<h2>optimation_accuracy<a class="headerlink" href="#optimation-accuracy" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative number(s).</p>
+<p><code class="docutils literal notranslate"><span class="pre">optimation_accuracy</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="optimation-accuracy-type">
+<h3>optimation_accuracy Type<a class="headerlink" href="#optimation-accuracy-type" title="Permalink to this headline">¶</a></h3>
+<p>merged type (<a class="reference internal" href="config-definitions-flexnonnegnum.html"><span class="doc">Details</span></a>)</p>
+<p>any of</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config-definitions-non-negative-number.html"><span class="doc">Non-negative number</span></a></p></li>
+<li><p><a class="reference internal" href="config-definitions-flexnonnegnum-anyof-non-negative-number-list.html"><span class="doc">Non-negative number list</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="loss">
+<h2>loss<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">loss</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-notears-properties-loss.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="loss-type">
+<h3>loss Type<a class="headerlink" href="#loss-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+<div class="section" id="loss-constraints">
+<h3>loss Constraints<a class="headerlink" href="#loss-constraints" title="Permalink to this headline">¶</a></h3>
+<p><strong>enum</strong>: the value of this property must be equal to one of the following values:</p>
+<p>| Value                      | Explanation |
+| :————————- | ———– |
+| <code class="docutils literal notranslate"><span class="pre">&quot;least_squares_loss&quot;</span></code>     |             |
+| <code class="docutils literal notranslate"><span class="pre">&quot;least_squares_loss_cov&quot;</span></code> |             |</p>
+</div>
+</div>
+<div class="section" id="loss-grad">
+<h2>loss_grad<a class="headerlink" href="#loss-grad" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">loss_grad</span></code></p>
+<ul class="simple">
+<li><p>is required</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>cannot be null</p></li>
+<li><p>defined in: <a class="reference internal" href="config-definitions-notears-properties-loss_grad.html"><span class="doc">JSON schema for BenchPress config file.</span></a></p></li>
+</ul>
+<div class="section" id="loss-grad-type">
+<h3>loss_grad Type<a class="headerlink" href="#loss-grad-type" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</div>
+<div class="section" id="loss-grad-constraints">
+<h3>loss_grad Constraints<a class="headerlink" href="#loss-grad-constraints" title="Permalink to this headline">¶</a></h3>
+<p><strong>enum</strong>: the value of this property must be equal to one of the following values:</p>
+<p>| Value                           | Explanation |
+| :—————————— | ———– |
+| <code class="docutils literal notranslate"><span class="pre">&quot;least_squares_loss_grad&quot;</span></code>     |             |
+| <code class="docutils literal notranslate"><span class="pre">&quot;least_squares_loss_cov_grad&quot;</span></code> |             |</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Json Schema</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config.html">JSON schema for BenchPress config file. Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-properties">JSON schema for BenchPress config file. Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html#json-schema-for-benchpress-config-file-definitions">JSON schema for BenchPress config file. Definitions</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/schema/config-definitions-notears.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

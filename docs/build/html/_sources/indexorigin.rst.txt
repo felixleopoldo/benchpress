@@ -1,0 +1,21 @@
+.. Benchpress documentation master file, created by
+   sphinx-quickstart on Mon Oct 26 10:03:54 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Benchpress's documentation!
+======================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+.. jsonschema:: /home/felix/git/benchpress/schema/config.schema.json
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

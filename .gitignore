@@ -1,6 +1,5 @@
 config.json
 *.class
-docs
 .devcontainer
 .snakemake
 .vscode

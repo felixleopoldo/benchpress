@@ -1,0 +1,2533 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Benchpress’s documentation! &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-benchpress-s-documentation">
+<h1>Welcome to Benchpress’s documentation!<a class="headerlink" href="#welcome-to-benchpress-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="json-schema-for-benchpress-config-file">
+<h2>JSON schema for BenchPress config file.<a class="headerlink" href="#json-schema-for-benchpress-config-file" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="6"><p><a class="reference external" href="http://github.com/felixleopoldo/benchpress/schema/config.schema.json">http://github.com/felixleopoldo/benchpress/schema/config.schema.json</a></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="5"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="6"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>output_dir</strong></p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Output directory</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Directory for the generated files.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="22"><ul class="simple">
+<li><p><strong>benchmark_setup</strong></p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Benchmark setup</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Description of the benchmarking setup.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p><strong>structure_learning_algorithms</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Structure learning algorithms</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>A list of id’s for structure learning algorithm instantiations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p><strong>data</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Data setup</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>A list of data setup instantiations.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/data_setup_dict</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p><strong>evaluation</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Evaluation methods</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p><strong>ROC</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><em>ROC</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>Algorithm id’s for ROC evaluation.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="2"><p><span class="xref std std-ref">#/definitions/roc_item</span></p></td>
+</tr>
+<tr class="row-even"><td><p>uniqueItems</p></td>
+<td colspan="2"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="20"><ul class="simple">
+<li><p>data_sampling_algorithms</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Data sampling algorithms</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Data sampling setup.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p>standard_sampling</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of standard_sampling setups.</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of standard_sampling setups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/standard_sampling</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>notears_linear_gaussian_sampling</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of settings for notears_linear_gaussian_sampling</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>List of settings for notears_linear_gaussian_sampling</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/notears_linear_gaussian_sampling</span></p></td>
+</tr>
+<tr class="row-even"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p>fixed_data</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of fixed_data id’s</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of fixed_data id’s</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/fixed_data</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="19"><ul class="simple">
+<li><p><strong>graph_sampling_algorithms</strong></p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Graph sampling algorithms</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>The available graph samplings algorithms.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p>generateDAGMaxParents</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of generateDAGMaxParents instatiations</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of generateDAGMaxParents instatiations</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/generateDAGMaxParents</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>notears</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Notears DAG sampling id’s</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/notears_dag_sampling</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>fixed_adjmats</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of fixed adjmat id’s</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>List of fixed adjmat id’s</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/fixed_adjmats</span></p></td>
+</tr>
+<tr class="row-even"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="19"><ul class="simple">
+<li><p><strong>parameters_sampling_algorithms</strong></p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Parameters sampling algorithm</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>The available parameter sampling algorithms</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>generateBinaryBN</p></li>
+</ul>
+</td>
+<td colspan="4"><p>List of generateBinayBN instatiations</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/generateBinaryBN</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>bn.fit_networks</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of bn.fit_network id’s</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>List of bn.fit_network id’s</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/bn.fit_networks</span></p></td>
+</tr>
+<tr class="row-even"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p>notears_parameters_sampling</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of notears id’s</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of notears id’s</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/notears_parameters_sampling</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="78"><ul class="simple">
+<li><p><strong>structure_learning_algorithms</strong></p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Available structure learning algorithms</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>The available structure learning algorithms</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><ul class="simple">
+<li><p>trilearn_loglin</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of trilearn_loglin instatiations</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of trilearn_loglin instatiations</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/trilearn_loglin</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>uniqueItems</p></td>
+<td colspan="3"><p>True</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>blip</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>List of blip instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>List of blip instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/blip</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>notears</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Notears instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Notears instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/notears</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>gobnilp</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Gobnilp instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Gobnilp instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/gobnilp</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>fges</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>fGES instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>fGES instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/fges</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>fci</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>FCI instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>FCI instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/fci</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>rfci</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>RFCI instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>RFCI instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/rfci</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>gfci</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>GFCI instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>GFCI instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/gfci</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>pcalg</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>PC algorithm instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>PC algorithm instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/pcalg</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>mmhc</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>MMHC instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>MMHC instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/mmhc</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>tabu</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Tabu search instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Tabu search instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/tabu</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>itsearch</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Iterative +1 search instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Iterative +1 search instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/itsearch</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>order_mcmc</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Order MCMC instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Order MCMC instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/order_mcmc</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>interiamb</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Inter-IAMB instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Inter-IAMB instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/interiamb</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>gs</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>GS instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>GS instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/interiamb</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>hc</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>HC instatiations</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>HC instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/hc</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>h2pc</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>H2PC id’s</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>H2PC instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/h2pc</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p>greenthomas</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Green &amp; Thomas id’s</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Green &amp; Thomas instatiations</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/greenthomas</span></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="5"><p>False</p></td>
+</tr>
+<tr class="row-even"><td colspan="6"><p>definitions</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><ul class="simple">
+<li><p>notears_parameters_sampling</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Notears parameter sampling for Gaissian Bayesian networks</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>id</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>edge_coefficient_range_from</p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>edge_coefficient_range_to</p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegnum</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>bn.fit_networks</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Bn.fit network file</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Bayesian network in bn.fit type serialised as .rds file.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>filename</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>source</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Source</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="11"><ul class="simple">
+<li><p>notears_linear_gaussian_sampling</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Notears linear Gaussian sampling</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Notears linear Gaussian sampling. This requires that the parameters are of type notears_parameters.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p>id</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>sample_sizes</p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>mean</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Mean</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>variance</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Variance</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>fixed_data</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Data file</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Data file in csv format separated by empy space ‘ ‘. The firs row must have the variable names. For categorical data, the second row shold contain the possible values for the specific variable.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>id</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>filename</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Data filename</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>graph</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Underlying graph id</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>source</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Data source</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>datatype</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Data type</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>enum</p></td>
+<td colspan="3"><p>continuous, binary, categorical</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>samples</p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>fixed_adjmats</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Fixed adjacenty matrix of a graph</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Fixed adjacenty matrix of a graph. Must be in .csv format with , as separator. First row should contain names for th nodes.</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>filename</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Filename of the csv file.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>source</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Source of the adjacency matrix</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p>notears_dag_sampling</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Notears DAG sampling</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><dl class="simple">
+<dt>Graph sampling method provided by the notears package.</dt><dd><p>Documentation: <a class="reference external" href="https://github.com/jmoss20/notears">https://github.com/jmoss20/notears</a></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>ID</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>num_nodes</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>num_edges</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="11"><ul class="simple">
+<li><p>roc_item</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>ROC item</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>ROC item</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>structure_learning_algorithm</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="6"><ul class="simple">
+<li><p>curve_variable</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Curve variable</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>The varying parameter in the roc curve. This must be one of the parameters for the actual algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>anyOf</p></td>
+<td colspan="3"><p><em>Curve variable</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>The varying parameter in the roc curve. This must be one of the parameters for the actual algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="23"><ul class="simple">
+<li><p>data_setup_dict</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Data setup</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Description of the data model and sampling setup. Make sure that the id’s are properly combined.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>graph</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Graph</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>ID of the graph instantiation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p><strong>parameters</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Parameters</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Parameters ID.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>anyOf</p></td>
+<td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="2"><p><em>null</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>data</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Data</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Data sampling method ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="8"><ul class="simple">
+<li><p><strong>seed_range</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Seed range</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>This data setup will be simulated for this range of seeds. E.g. seed_range:[1,3] will generate 3 datsets (and corresponding models) with seeds 1,2,3.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="6"><p>anyOf</p></td>
+<td colspan="3"><p><em>List of 2 integers [a, b], where a&lt;=b.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>array</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>maxLength</p></td>
+<td colspan="2"><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>minLength</p></td>
+<td colspan="2"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>items</p></td>
+<td><p>type</p></td>
+<td><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="2"><p><em>null</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p>standard_sampling</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Standard sampling</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Data sampling from disctete Bayesian network.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Unique ID</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>sample_sizes</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p>generateDAGMaxParents</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>generateDAGMaxParents</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>An instance of generateDAGMaxParents. Sampling of a DAG with specified maximum averge number for parents for the nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>av_parents</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>dims</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><ul class="simple">
+<li><p>generateBinaryBN</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>generateBinaryBN</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Parameter setting for generateBinaryBN</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>min</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>max</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>prob</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Probabaility</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Number in the range [0,1].</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>number</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>maximum</p></td>
+<td colspan="4"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>minimum</p></td>
+<td colspan="4"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p>natnum</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Positive integer</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Positive integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>minimum</p></td>
+<td colspan="4"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p>nonnegint</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative integer</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Non-negative integer, 0,1,2,…</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>integer</em></p></td>
+</tr>
+<tr class="row-even"><td><p>minimum</p></td>
+<td colspan="4"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p>nonnegnum</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative number</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Non-negative number</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>number</em></p></td>
+</tr>
+<tr class="row-even"><td><p>minimum</p></td>
+<td colspan="4"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="6"><ul class="simple">
+<li><p>flexnonnegnum</p></li>
+</ul>
+</td>
+<td colspan="5"><p>Non-negative number(s).</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><em>Non-negative number list</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>List of non-negative numbers</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/nonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p>flexnonnegnumnull</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative number(s) or null</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>E.g. 1.5 or [1.6, 3.8] or null.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="6"><ul class="simple">
+<li><p>flexnonnegint</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative integer(s)</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Non-negative integers, (0,1,2,…), or array of the same.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><em>Non-negative integer list</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/nonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>flexnonnegintnull</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative integer(s), or null.</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>flexnatnum</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Non-negative integer(s)</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/natnum</span></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><em>Positive integer list</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/natnum</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p>flexnatnumnull</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Npn-negative integer or null</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnatnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>flexprob</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Number(s) in the range [0,1].</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/prob</span></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><em>Probability list</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>array</em></p></td>
+</tr>
+<tr class="row-even"><td><p>items</p></td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/prob</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p>flexprobnull</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Number(s) in the range [0,1], or null.</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Number(s) in the range [0,1], or null.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>anyOf</p></td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>null</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="15"><ul class="simple">
+<li><p>trilearn_loglin</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Trilearn</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Parameter setting for trilearn with log-linear decomposable model.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>beta</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>pseudo_obs</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>radii</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>N</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnatnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>M</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnatnum</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>burnin</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>threshold</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td rowspan="20"><ul class="simple">
+<li><p>blip</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Blip instantiation</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Blip instantiation</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Unique idenfifier</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Unique idenfifier for that can be used as reference in the benchmark_setup.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Legend</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>scorer.method</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>solver.method</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>indeg</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>time</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>allocated</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>scorefunction</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>cores</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>verbose</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/nonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="16"><ul class="simple">
+<li><p>notears</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Notears</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Notears instantiation</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>min_rate_of_progress</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>penalty_growth_rate</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>optimation_accuracy</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>loss</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>enum</p></td>
+<td colspan="3"><p>least_squares_loss, least_squares_loss_cov</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>loss_grad</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>enum</p></td>
+<td colspan="3"><p>least_squares_loss_grad, least_squares_loss_cov_grad</p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="13"><ul class="simple">
+<li><p>gobnilp</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Gobnilp algorithm</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Gobnilp instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>plot</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>palim</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>prune</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="12"><ul class="simple">
+<li><p>greenthomas</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Green &amp; Thomas algorithm for sampling from decomposable graph distributions</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><dl class="simple">
+<dt>Green &amp; Thomas algorithm for learning decomopasble graphs.</dt><dd><p>Source: Green, P. J., &amp; Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>n_samples</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>penalty</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>randomits</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="12"><ul class="simple">
+<li><p>fges</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Fast greedy equivalent search (fGES)</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>fGES instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>faithfulnessAssumed</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>score</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>data-type</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="12"><ul class="simple">
+<li><p>fci</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>FCI</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>FCI instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>test</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>data-type</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="13"><ul class="simple">
+<li><p>gfci</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>GFCI (parameter setting)</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>GFCI instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>test</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>score</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>data-type</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="12"><ul class="simple">
+<li><p>rfci</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>RFCI</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>RFCI instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>test</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>data-type</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>pcalg</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>PC algorithm</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>PC algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="13"><ul class="simple">
+<li><p>mmhc</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Max-min hill climbing algorithm (MMHC)</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>MMHC algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><ul class="simple">
+<li><p><strong>restrict.args</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Parameters for mmhc</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="13"><ul class="simple">
+<li><p>h2pc</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>H2PC algorithm</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>H2PC algorithm instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><ul class="simple">
+<li><p><strong>restrict.args</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Paramters for h2pc</em></p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>interiamb</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Inter-IAMB algorithm</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Inter-IAMB algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><ul class="simple">
+<li><p>gs</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Grow shrink (GS) algorithm (paramter setting)</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Grow shrink (GS) algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>alpha</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="16"><ul class="simple">
+<li><p>tabu</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>TABU search (parameter setting)</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>TABU algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>beta</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>score</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>iss</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>iss.mu</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>l</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>k</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>prior</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="18"><ul class="simple">
+<li><p>hc</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>HC algorithm (parameter setting)</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>HC algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>id</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p><strong>plot_legend</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>perturb</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>restart</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>beta</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnum</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>score</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>iss</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>iss.mu</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>l</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>k</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>prior</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+<tr class="row-even"><td rowspan="21"><ul class="simple">
+<li><p>itsearch</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Iterative search (paramter setting)</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>Iterative search +1 algorithm instance</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>id</p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><ul class="simple">
+<li><p>plot_legend</p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="13"><ul class="simple">
+<li><p>optional</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Parameters for itsearch</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>Algorithm parameters to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>MAP</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="2"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>plus1it</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexnonnegintnull</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>posterior</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexprobnull</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>scoretype</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="2"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>chi</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>edgepf</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>am</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>aw</strong></p></li>
+</ul>
+</td>
+<td colspan="3"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="22"><ul class="simple">
+<li><p>order_mcmc</p></li>
+</ul>
+</td>
+<td colspan="5"><p><em>Order MCMC (paramter setting  )</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>Order MCMC algorithm instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="4"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p>id</p></li>
+</ul>
+</td>
+<td colspan="4"><p>Unique idenfifier</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ul class="simple">
+<li><p>plot_legend</p></li>
+</ul>
+</td>
+<td colspan="4"><p>Legend to show in plotting</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>startspace</p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><ul class="simple">
+<li><p>optional</p></li>
+</ul>
+</td>
+<td colspan="4"><p><em>Parameters for order_mcmc</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td colspan="3"><p><em>object</em></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>properties</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>plus1</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="2"><p><em>boolean</em></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="3"><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>scoretype</strong></p></li>
+</ul>
+</td>
+<td><p>type</p></td>
+<td colspan="3"><p><em>string</em></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>chi</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>edgepf</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>am</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>aw</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegnumnull</span></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>threshold</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexprob</span></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p><strong>burnin</strong></p></li>
+</ul>
+</td>
+<td colspan="4"><p><span class="xref std std-ref">#/definitions/flexnonnegint</span></p></td>
+</tr>
+<tr class="row-even"><td><p>additionalProperties</p></td>
+<td colspan="4"><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config.schema.html">config.schema</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/indexorigin.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

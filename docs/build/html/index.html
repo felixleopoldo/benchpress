@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Benchpress’s documentation! &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-benchpress-s-documentation">
+<h1>Welcome to Benchpress’s documentation!<a class="headerlink" href="#welcome-to-benchpress-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<p>Benchpress is a command-line tool for creating reproducible benchmarks in graphical models.
+As such it implements several of the state of the arts structure learning algorithm aas well as data and parameter sampling algorithms and benchmarking metrics.
+Benchpress is based on Snakemake and is interfaced via the file config.json.</p>
+<p>Next follows a desxcription of the structure of config.json, where <a class="reference download internal" download="" href="_downloads/82f70c95291b212bffe5a0bf5fb2ba26/config.json.sample"><code class="xref download docutils literal notranslate"><span class="pre">config.json.sample</span></code></a> file is used thoughout the example.</p>
+<p>The config.json.sample consists of six main keys, seen below (where the conten has been removed in order to )</p>
+<a class="reference internal image-reference" href="_images/ROC.png"><img alt="_images/ROC.png" src="_images/ROC.png" style="width: 600px;" /></a>
+<p>This json produces <a class="reference download internal" download="" href="_downloads/5f2124a93049bb5fa43eb727ce3467eb/ROC_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">ROC_data.csv</span></code></a> from which following roc curve is plotted.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;output_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;benchmark_setup&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;structure_learning_algorithms&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="s2">&quot;itsearch_map&quot;</span><span class="p">,</span> <span class="s2">&quot;order_mcmc_itmap&quot;</span><span class="p">,</span> <span class="s2">&quot;blip&quot;</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;data&quot;</span><span class="p">:[</span>               <span class="p">{</span>
+         <span class="nt">&quot;graph&quot;</span><span class="p">:</span> <span class="s2">&quot;generateDAGMaxParents&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="s2">&quot;generateBinaryBN&quot;</span> <span class="p">,</span>
+         <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;standard_sampling&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;seed_range&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+     <span class="p">}],</span>
+     <span class="nt">&quot;evaluation&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;ROC&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                     <span class="nt">&quot;structure_learning_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;blip&quot;</span><span class="p">,</span>
+                     <span class="nt">&quot;curve_variable&quot;</span><span class="p">:</span><span class="s2">&quot;time&quot;</span>
+                 <span class="p">},</span>
+                 <span class="p">{</span>
+                     <span class="nt">&quot;structure_learning_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;order_mcmc&quot;</span><span class="p">,</span>
+                     <span class="nt">&quot;curve_variable&quot;</span><span class="p">:</span><span class="s2">&quot;threshold&quot;</span>
+                 <span class="p">},</span>
+                 <span class="p">{</span><span class="nt">&quot;structure_learning_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;itsearch&quot;</span><span class="p">,</span> <span class="nt">&quot;curve_variable&quot;</span><span class="p">:</span><span class="s2">&quot;plus1it&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="nt">&quot;structure_learning_algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span> <span class="nt">&quot;curve_variable&quot;</span><span class="p">:</span><span class="s2">&quot;min_rate_of_progress&quot;</span><span class="p">}</span>
+                 <span class="p">]</span>
+     <span class="p">}</span>
+ <span class="p">},</span>
+ <span class="nt">&quot;data_sampling_algorithms&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;standard_sampling&quot;</span><span class="p">:[</span>
+         <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;standard_sampling&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;sample_sizes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+          <span class="p">},</span>
+          <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;standard_sampling2000&quot;</span><span class="p">,</span>
+             <span class="nt">&quot;sample_sizes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">]</span>
+             <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;notears_linear_gaussian_sampling&quot;</span><span class="p">:[</span>
+         <span class="p">{</span>
+             <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;standard_linear_gaussian&quot;</span><span class="p">,</span>
+             <span class="nt">&quot;sample_sizes&quot;</span><span class="p">:[</span><span class="mi">100</span><span class="p">],</span>
+             <span class="nt">&quot;mean&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+             <span class="nt">&quot;variance&quot;</span><span class="p">:</span><span class="mi">1</span>
+         <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;fixed_data&quot;</span><span class="p">:[</span>
+        <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;myasiandata.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;datatype&quot;</span><span class="p">:</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+         <span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="s2">&quot;myasiandata.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;graph&quot;</span><span class="p">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;scutari&quot;</span>
+         <span class="p">}</span>
+         <span class="p">,</span>
+        <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;myhepar2data.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;datatype&quot;</span><span class="p">:</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
+         <span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="s2">&quot;myhepar2data.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;graph&quot;</span><span class="p">:</span><span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;scutari&quot;</span>
+         <span class="p">}</span>
+     <span class="p">]</span>
+ <span class="p">},</span>
+ <span class="nt">&quot;graph_sampling_algorithms&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;notears&quot;</span><span class="p">:[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;num_nodes&quot;</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span>
+         <span class="nt">&quot;num_edges&quot;</span><span class="p">:</span> <span class="mi">80</span>
+     <span class="p">}],</span>
+     <span class="nt">&quot;generateDAGMaxParents&quot;</span><span class="p">:</span> <span class="p">[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;generateDAGMaxParents&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;av_parents&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+         <span class="nt">&quot;dims&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">]</span>
+     <span class="p">}],</span>
+     <span class="nt">&quot;fixed_adjmats&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;http://bnlearn.com/bnrepository/discrete-large.html#asia&quot;</span><span class="p">}</span>
+         <span class="p">,</span>
+         <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;http://bnlearn.com/bnrepository/discrete-large.html#hepar2&quot;</span><span class="p">}]</span>
+ <span class="p">},</span>
+ <span class="nt">&quot;parameters_sampling_algorithms&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;generateBinaryBN&quot;</span><span class="p">:[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;generateBinaryBN&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+         <span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="mf">0.9</span>
+     <span class="p">}],</span>
+     <span class="nt">&quot;bn.fit_networks&quot;</span><span class="p">:</span> <span class="p">[</span>
+         <span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;hepar2.rds&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;hepar2.rds&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;Scutari&quot;</span>
+         <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;notears_parameters_sampling&quot;</span><span class="p">:[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;edge_coefficient_range_from&quot;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span>
+         <span class="nt">&quot;edge_coefficient_range_to&quot;</span><span class="p">:</span><span class="mi">2</span>
+     <span class="p">}]</span>
+ <span class="p">},</span>
+ <span class="nt">&quot;structure_learning_algorithms&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;blip&quot;</span><span class="p">:</span> <span class="p">[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;blip&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;plot_legend&quot;</span><span class="p">:</span> <span class="s2">&quot;Blip&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;scorer.method&quot;</span><span class="p">:</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;solver.method&quot;</span><span class="p">:</span> <span class="s2">&quot;winasobs&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;indeg&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+         <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="p">[</span>
+             <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span>
+         <span class="p">],</span>
+         <span class="nt">&quot;allocated&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+         <span class="nt">&quot;scorefunction&quot;</span><span class="p">:</span> <span class="s2">&quot;bdeu&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;cores&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="nt">&quot;verbose&quot;</span><span class="p">:</span> <span class="mi">0</span>
+         <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;notears&quot;</span><span class="p">:</span> <span class="p">[{</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;plot_legend&quot;</span><span class="p">:</span> <span class="s2">&quot;Notears&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;min_rate_of_progress&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+         <span class="nt">&quot;penalty_growth_rate&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+         <span class="nt">&quot;optimation_accuracy&quot;</span><span class="p">:</span> <span class="mf">0.00000001</span><span class="p">,</span>
+         <span class="nt">&quot;loss&quot;</span><span class="p">:</span> <span class="s2">&quot;least_squares_loss&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;loss_grad&quot;</span><span class="p">:</span> <span class="s2">&quot;least_squares_loss_grad&quot;</span>
+         <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;gobnilp&quot;</span><span class="p">:</span>
+         <span class="p">[{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;gobnilp&quot;</span><span class="p">,</span>
+             <span class="nt">&quot;plot_legend&quot;</span><span class="p">:</span> <span class="s2">&quot;GOBNILP&quot;</span><span class="p">,</span>
+             <span class="nt">&quot;plot&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+             <span class="nt">&quot;palim&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+             <span class="nt">&quot;alpha&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+             <span class="nt">&quot;prune&quot;</span><span class="p">:</span> <span class="kc">true</span>
+         <span class="p">}</span>
+         <span class="p">]</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

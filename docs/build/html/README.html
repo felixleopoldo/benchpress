@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> &#8212; Benchpress 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <snippet>
+  <content><![CDATA[
+# ${1:Systematic benchmarks of structure learning algorithms for graphical models}<div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="benchpress">
+<h1>Benchpress<a class="headerlink" href="#benchpress" title="Permalink to this headline">¶</a></h1>
+<p>Systematic benchmarks of structure learning algorithms for graphical models.</p>
+<div class="section" id="reqirements">
+<h2>Reqirements<a class="headerlink" href="#reqirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Snakemake https://snakemake.readthedocs.io/en/stable/</p></li>
+<li><p>Docker https://www.docker.com/</p></li>
+<li><p>Singularity https://sylabs.io/guides/3.6/admin-guide/installation.html</p></li>
+<li><p>Linux/Unix or Windows (Singularity is currently not fully supporting OSX)</p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloning-the-benchpress-repository">
+<h3>Cloning the BenchPress repository<a class="headerlink" href="#cloning-the-benchpress-repository" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:felixleopoldo/benchpress.git</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">benchpress</span></code></p>
+<p>Copy the simulation setup in config.json.sample to config.json</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cp</span> <span class="pre">config.sample.json</span> <span class="pre">config.json</span></code></p>
+<div class="section" id="notes">
+<h4>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h4>
+<p>On some systems, you might also have to explicitly install squash-tools. This can be done using conda as</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">squash-tools</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To run the simulation setup in config.json type</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">snakemake</span> <span class="pre">roc</span> <span class="pre">--cores</span> <span class="pre">20</span> <span class="pre">--use-singularity</span></code></p>
+<p>Open the file <code class="docutils literal notranslate"><span class="pre">simresults/ROC.eps</span></code>.</p>
+<p><img alt="ROC curve" src="files/ROC.eps" /></p>
+</div>
+<div class="section" id="example-json-file">
+<h2>Example JSON file<a class="headerlink" href="#example-json-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;output_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;simresults&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;benchmark_setup&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;structure_learning_algorithms&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;itsearch_map&quot;</span><span class="p">,</span> <span class="s2">&quot;order_mcmc_itmap&quot;</span><span class="p">,</span> <span class="s2">&quot;blip&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[{</span>
+                    <span class="s2">&quot;graph&quot;</span><span class="o">:</span> <span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;parameters&quot;</span><span class="o">:</span> <span class="s2">&quot;generateBinaryBN&quot;</span> <span class="p">,</span>
+                    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;standard_sampling&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;seed_range&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+                <span class="p">}],</span>
+        <span class="s2">&quot;evaluation&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;ROC&quot;</span><span class="o">:</span> <span class="p">[{</span>
+                        <span class="s2">&quot;structure_learning_algorithm&quot;</span><span class="o">:</span><span class="s2">&quot;blip&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;curve_variable&quot;</span><span class="o">:</span><span class="s2">&quot;time&quot;</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;structure_learning_algorithm&quot;</span><span class="o">:</span><span class="s2">&quot;order_mcmc&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;curve_variable&quot;</span><span class="o">:</span><span class="s2">&quot;threshold&quot;</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;structure_learning_algorithm&quot;</span><span class="o">:</span><span class="s2">&quot;itsearch&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;curve_variable&quot;</span><span class="o">:</span><span class="s2">&quot;plus1it&quot;</span><span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;structure_learning_algorithm&quot;</span><span class="o">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span>  
+                        <span class="s2">&quot;curve_variable&quot;</span><span class="o">:</span><span class="s2">&quot;min_rate_of_progress&quot;</span><span class="p">}</span>
+                    <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data_sampling_algorithms&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;standard_sampling&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;standard_sampling&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;sample_sizes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">],</span>
+             <span class="s2">&quot;replicates&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1</span>
+             <span class="p">}},</span>
+             <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;standard_sampling2000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sample_sizes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">],</span>
+                <span class="s2">&quot;replicates&quot;</span><span class="o">:</span> <span class="p">{</span>
+                   <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1</span>
+                <span class="p">}}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;notears_linear_gaussian_sampling&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;standard_linear_gaussian&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sample_sizes&quot;</span><span class="o">:</span><span class="p">[</span><span class="mi">100</span><span class="p">],</span>
+                <span class="s2">&quot;mean&quot;</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;variance&quot;</span><span class="o">:</span><span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;fixed_data&quot;</span><span class="o">:</span><span class="p">[</span>
+           <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;myasiandata.csv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;samples&quot;</span><span class="o">:</span><span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;filename&quot;</span><span class="o">:</span><span class="s2">&quot;myasiandata.csv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;graph&quot;</span><span class="o">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">}</span>
+            <span class="p">,</span>
+           <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;myhepar2data.csv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;samples&quot;</span><span class="o">:</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="s2">&quot;filename&quot;</span><span class="o">:</span><span class="s2">&quot;myhepar2data.csv&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;data_dir&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;my_bio_data_dir&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;directory&quot;</span><span class="o">:</span><span class="s2">&quot;biodata/&quot;</span><span class="p">}</span>
+            <span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;mydatadir&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;directory&quot;</span><span class="o">:</span><span class="s2">&quot;mydata&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;graph_sampling_algorithms&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;notears&quot;</span><span class="o">:</span><span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;num_nodes&quot;</span><span class="o">:</span><span class="mi">40</span><span class="p">,</span>
+            <span class="s2">&quot;num_edges&quot;</span><span class="o">:</span> <span class="mi">80</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;generateDAGMaxParents&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;generateDAGMaxParents&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;av_parents&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">&quot;dims&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">]</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;bn.fit_adjmats&quot;</span> <span class="o">:</span><span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;bn.fit_adjmat&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sub_directory&quot;</span><span class="o">:</span> <span class="s2">&quot;bn.fit_adjmats/&quot;</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;fixed_adjmats&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;filename&quot;</span><span class="o">:</span><span class="s2">&quot;asia.csv&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;nodes&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+             <span class="s2">&quot;edges&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+             <span class="s2">&quot;average_markov_blanket_size&quot;</span><span class="o">:</span> <span class="mf">2.5</span><span class="p">,</span>
+             <span class="s2">&quot;average_degree&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+             <span class="s2">&quot;maximum_degree&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+             <span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://bnlearn.com/bnrepository/discrete-large.html#asia&quot;</span><span class="p">}</span>
+             <span class="p">,</span>
+             <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;myasia.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;filename&quot;</span><span class="o">:</span><span class="s2">&quot;myasia.csv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;nodes&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;edges&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;average_markov_blanket_size&quot;</span><span class="o">:</span> <span class="mf">2.5</span><span class="p">,</span>
+                <span class="s2">&quot;average_degree&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;maximum_degree&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://bnlearn.com/bnrepository/discrete-large.html#asia&quot;</span>
+            <span class="p">}</span>
+            <span class="p">,</span>  
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;hepar2.csv&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;origin&quot;</span><span class="o">:</span><span class="s2">&quot;http://bnlearn.com/bnrepository/discrete-large.html#hepar2&quot;</span><span class="p">}]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;parameters_sampling_algorithms&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;generateBinaryBN&quot;</span><span class="o">:</span><span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;generateBinaryBN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span><span class="mf">0.1</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span><span class="mf">0.9</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;bn.fit_networks&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;hepar2.rds&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;hepar2.rds&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sub_directory&quot;</span><span class="o">:</span><span class="s2">&quot;bn.fit_networks&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;notears&quot;</span><span class="o">:</span><span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;edge_coefficient_range_from&quot;</span><span class="o">:</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="s2">&quot;edge_coefficient_range_to&quot;</span><span class="o">:</span><span class="mi">2</span>
+        <span class="p">}]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;evaluation&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;score&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bdecatpar&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;structure_learning_algorithms&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;trilearn_loglin&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;trilearn_loglin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;trilearn_loglin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="s2">&quot;beta&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="s2">&quot;radii&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="s2">&quot;N&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+            <span class="s2">&quot;M&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;pseudo_obs&quot;</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span>
+            <span class="s2">&quot;threshold&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="mf">0.7</span><span class="p">,</span>
+                <span class="mf">0.6</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;burnin&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">}</span>
+            <span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;trilearn_loglin05&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;trilearn_loglin05&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">&quot;beta&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">&quot;radii&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+                <span class="s2">&quot;N&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+                <span class="s2">&quot;M&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+                <span class="s2">&quot;pseudo_obs&quot;</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                <span class="s2">&quot;threshold&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">&quot;burnin&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;blip&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;blip&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Blip&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scorer.method&quot;</span><span class="o">:</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;solver.method&quot;</span><span class="o">:</span> <span class="s2">&quot;winasobs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;indeg&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>   
+            <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;allocated&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="s2">&quot;scorefunction&quot;</span><span class="o">:</span> <span class="s2">&quot;bdeu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;cores&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;verbose&quot;</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;notears&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;notears&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Notears&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min_rate_of_progress&quot;</span><span class="o">:</span> <span class="mf">0.25</span><span class="p">,</span>
+            <span class="s2">&quot;penalty_growth_rate&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;optimation_accuracy&quot;</span><span class="o">:</span> <span class="mf">0.00000001</span><span class="p">,</span>
+            <span class="s2">&quot;loss&quot;</span><span class="o">:</span> <span class="s2">&quot;least_squares_loss&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;loss_grad&quot;</span><span class="o">:</span> <span class="s2">&quot;least_squares_loss_grad&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;gobnilp&quot;</span><span class="o">:</span> 
+            <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;gobnilp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;GOBNILP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;palim&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;prune&quot;</span><span class="o">:</span> <span class="kc">true</span>            
+            <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;greenthomas&quot;</span><span class="o">:</span> 
+            <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;greenthomas&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;GreenThomas&quot;</span><span class="p">,</span>                
+            <span class="s2">&quot;n_samples&quot;</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
+            <span class="s2">&quot;randomits&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="s2">&quot;penalty&quot;</span><span class="o">:</span> <span class="mi">0</span>            
+            <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;fges&quot;</span><span class="o">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fges&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;fGES&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;faithfulnessAssumed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;score&quot;</span><span class="o">:</span><span class="s2">&quot;bdeu-score&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;data-type&quot;</span><span class="o">:</span> <span class="s2">&quot;discrete&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;fci&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;fci&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;FCI&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span>
+                <span class="mf">0.05</span><span class="p">,</span>
+                <span class="mf">0.1</span><span class="p">,</span>
+                <span class="mf">0.2</span><span class="p">,</span>
+                <span class="mf">0.35</span><span class="p">,</span>
+                <span class="mf">0.45</span><span class="p">],</span>
+            <span class="s2">&quot;test&quot;</span><span class="o">:</span><span class="s2">&quot;chi-square-test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;data-type&quot;</span><span class="o">:</span> <span class="s2">&quot;discrete&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;gfci&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;gfci&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;GFCI&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span>
+                <span class="mf">0.05</span><span class="p">,</span>
+                <span class="mf">0.1</span><span class="p">,</span>
+                <span class="mf">0.2</span><span class="p">,</span>
+                <span class="mf">0.35</span><span class="p">,</span>
+                <span class="mf">0.45</span><span class="p">],</span>
+            <span class="s2">&quot;score&quot;</span><span class="o">:</span><span class="s2">&quot;bdeu-score&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;test&quot;</span><span class="o">:</span><span class="s2">&quot;chi-square-test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;data-type&quot;</span><span class="o">:</span> <span class="s2">&quot;discrete&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;rfci&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;rfci&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;rfci&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span>
+                <span class="mf">0.05</span><span class="p">,</span>
+                <span class="mf">0.1</span><span class="p">,</span>
+                <span class="mf">0.2</span><span class="p">,</span>
+                <span class="mf">0.35</span><span class="p">,</span>
+                <span class="mf">0.45</span><span class="p">],</span>
+            <span class="s2">&quot;test&quot;</span><span class="o">:</span><span class="s2">&quot;chi-square-test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;data-type&quot;</span><span class="o">:</span> <span class="s2">&quot;discrete&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;pcalg&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;pcalg&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;PC&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.01</span><span class="p">,</span>
+                    <span class="mf">0.05</span><span class="p">,</span>
+                    <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="mf">0.35</span><span class="p">,</span>
+                    <span class="mf">0.45</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;pcalg005&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;pcalg005&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> 
+                <span class="mf">0.05</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;mmhc&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;mmhc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;MMHC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;restrict.args&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.01</span><span class="p">,</span>
+                    <span class="mf">0.05</span><span class="p">,</span>
+                    <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="mf">0.35</span><span class="p">,</span>
+                    <span class="mf">0.45</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;h2pc&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;h2pc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;H2PC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;restrict.args&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.01</span><span class="p">,</span>
+                    <span class="mf">0.05</span><span class="p">,</span>
+                    <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="mf">0.35</span><span class="p">,</span>
+                    <span class="mf">0.45</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;interiamb&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;interiamb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Inter-IAMB&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.01</span><span class="p">,</span>
+                    <span class="mf">0.05</span><span class="p">,</span>
+                    <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="mf">0.35</span><span class="p">,</span>
+                    <span class="mf">0.45</span>
+                <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;gs&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;gs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Grow-Shrink&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.01</span><span class="p">,</span>
+                    <span class="mf">0.05</span><span class="p">,</span>
+                    <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="mf">0.35</span><span class="p">,</span>
+                    <span class="mf">0.45</span>
+                <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;tabu&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;tabu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Tabu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;score&quot;</span><span class="o">:</span><span class="s2">&quot;bde&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;iss&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;iss.mu&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>                
+            <span class="s2">&quot;l&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;k&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;prior&quot;</span><span class="o">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;beta&quot;</span><span class="o">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;hc&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;hc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;Hill-Climbing&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;score&quot;</span><span class="o">:</span><span class="s2">&quot;bde&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;iss&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;iss.mu&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>                
+            <span class="s2">&quot;l&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;k&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;prior&quot;</span><span class="o">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;beta&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;restart&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;perturb&quot;</span><span class="o">:</span><span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;itsearch&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;itsearch_map&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;itmap&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;MAP&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;plus1it&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;posterior&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bdecat&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;itsearch_map_cont&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;itmap_cont&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;MAP&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;plus1it&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;posterior&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bge&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;itsearch_sample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;itsample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;MAP&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;plus1it&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+                    <span class="s2">&quot;posterior&quot;</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bdecat&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">}</span>
+                    <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;order_mcmc&quot;</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;order_mcmc_itmap&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;order_mcmc_itmap&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;startspace&quot;</span><span class="o">:</span> <span class="s2">&quot;itsearch_map&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;plus1&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bdecat&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;threshold&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="mf">0.99</span><span class="p">,</span>
+                <span class="mf">0.95</span><span class="p">,</span>
+                <span class="mf">0.9</span><span class="p">,</span>
+                <span class="mf">0.8</span><span class="p">,</span>
+                <span class="mf">0.7</span><span class="p">,</span>
+                <span class="mf">0.6</span><span class="p">,</span>
+                <span class="mf">0.5</span><span class="p">,</span>
+                <span class="mf">0.4</span><span class="p">,</span>
+                <span class="mf">0.3</span><span class="p">,</span>
+                <span class="mf">0.2</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;burnin&quot;</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;order_mcmc_itmap_cont&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;order_mcmc_itmap_cont&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;startspace&quot;</span><span class="o">:</span> <span class="s2">&quot;itsearch_map_cont&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;plus1&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bge&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;threshold&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.99</span><span class="p">,</span>
+                    <span class="mf">0.95</span><span class="p">,</span>
+                    <span class="mf">0.9</span><span class="p">,</span>
+                    <span class="mf">0.8</span><span class="p">,</span>
+                    <span class="mf">0.7</span><span class="p">,</span>
+                    <span class="mf">0.6</span><span class="p">,</span>
+                    <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="mf">0.4</span><span class="p">,</span>
+                    <span class="mf">0.3</span><span class="p">,</span>
+                    <span class="mf">0.2</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;burnin&quot;</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="s2">&quot;order_mcmc_itsample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;plot_legend&quot;</span><span class="o">:</span> <span class="s2">&quot;order_mcmc_itsample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;startspace&quot;</span><span class="o">:</span> <span class="s2">&quot;itsearch_sample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;optional&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;plus1&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;scoretype&quot;</span><span class="o">:</span> <span class="s2">&quot;bdecat&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;chi&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;edgepf&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;aw&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;am&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+                <span class="s2">&quot;threshold&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mf">0.99</span><span class="p">,</span>
+                    <span class="mf">0.95</span><span class="p">,</span>
+                    <span class="mf">0.9</span><span class="p">,</span>
+                    <span class="mf">0.8</span><span class="p">,</span>
+                    <span class="mf">0.7</span><span class="p">,</span>
+                    <span class="mf">0.6</span><span class="p">,</span>
+                    <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="mf">0.4</span><span class="p">,</span>
+                    <span class="mf">0.3</span><span class="p">,</span>
+                    <span class="mf">0.2</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;burnin&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Fork it!</p></li>
+<li><p>Create your feature branch: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">my-new-feature</span></code></p></li>
+<li><p>Commit your changes: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">'Add</span> <span class="pre">some</span> <span class="pre">feature'</span></code></p></li>
+<li><p>Push to the branch: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">my-new-feature</span></code></p></li>
+<li><p>Submit a pull request :D</p></li>
+</ol>
+</div>
+<div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Write history</p>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Write credits</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Write license
+]]&gt;</content>
+<tabTrigger>readme</tabTrigger>
+</snippet></p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Benchpress</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Felix L. Rios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/README.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

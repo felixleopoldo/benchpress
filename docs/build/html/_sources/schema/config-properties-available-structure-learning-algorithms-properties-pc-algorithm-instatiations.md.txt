@@ -1,0 +1,16 @@
+# PC algorithm instatiations Schema
+
+```txt
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms/properties/pcalg
+```
+
+PC algorithm instatiations
+
+
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
+| :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
+
+## pcalg Type
+
+`object[]` ([PC algorithm](config-definitions-pc-algorithm.md))
