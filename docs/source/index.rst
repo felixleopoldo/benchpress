@@ -6,6 +6,9 @@
 Welcome to Benchpress's documentation!
 ======================================
 
+Systematic benchmarks of structure learning algorithms for graphical models.
+A command-line tool for making re-producible benchmarks based on `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -16,6 +19,22 @@ Getting started
 
 Installation
 ------------
+
+Requirements
+^^^^^^^^^^^^
+
+* `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
+* `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
+* `Singularity <https://docs.docker.com/engine/install/>`_  (`installation instructions <https://sylabs.io/guides/3.6/admin-guide/installation.html>`_)
+* Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
+
+
+Cloning the repository
+^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: bash
+
+    $ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress
+
 
 Example ROC curve benchmark
 ---------------------------
