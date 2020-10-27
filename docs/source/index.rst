@@ -3,25 +3,28 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Benchpress's documentation!
-======================================
-
-Systematic benchmarks of structure learning algorithms for graphical models.
-A command-line tool for making re-producible benchmarks based on `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_.
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
 
+Welcome to Benchpress's documentation!
+###########################################
+
+Systematic benchmarks of structure learning algorithms for graphical models.
+A command-line tool for making re-producible benchmarks based on `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_.
+
+
+
 Getting started
-===============
+###############
+
 
 Installation
-------------
+============
 
 Requirements
-^^^^^^^^^^^^
+************
 
 * `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
 * `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)

@@ -1,8 +1,8 @@
 {
-    "output_dir": "simresults",
+    "output_dir": "files",
     "benchmark_setup": {
         "structure_learning_algorithms": [
-            "itsearch_map", "order_mcmc_itmap", "blip"
+            "blip", "gobnilp", "mmhc", "fges", "tabu", "hc" ,"pcalg", "order_mcmc_itmap"
         ],
         "data":[               {
             "graph": "generateDAGMaxParents",
@@ -23,22 +23,40 @@
             "seed_range": [1, 1]
         },
         {
-            "graph":"myasia.csv",
+            "graph":"asia.csv",
             "parameters": null,
             "data": "myasiandata.csv",
             "seed_range": null
         }],
         "evaluation": {
             "ROC": [{
-                        "structure_learning_algorithsm":"blip", 
+                        "structure_learning_algorithm":"blip", 
                         "curve_variable":"time"
                     },
                     {
                         "structure_learning_algorithm":"order_mcmc", 
                         "curve_variable":"threshold"
                     },
-                    {"structure_learning_algorithm":"itsearch", "curve_variable":"plus1it"},
-                    {"structure_learning_algorithm":"notears", "curve_variable":"min_rate_of_progress"}
+                     {
+                        "structure_learning_algorithm":"gobnilp", 
+                        "curve_variable":"palim"
+                    },
+                     {
+                        "structure_learning_algorithm":"fges", 
+                        "curve_variable":"faithfulnessAssumed"
+                    },
+                     {
+                        "structure_learning_algorithm":"tabu", 
+                        "curve_variable":"beta"
+                    },
+                     {
+                        "structure_learning_algorithm":"hc", 
+                        "curve_variable":"restart"
+                    },
+                     {
+                        "structure_learning_algorithm":"pcalg", 
+                        "curve_variable":"alpha"
+                    }
                     ]
         }
     },

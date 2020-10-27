@@ -1206,8 +1206,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \        
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval rfci "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
@@ -1226,8 +1224,6 @@ def summarise_alg_shell(algorithm):
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
                 "--adjmat_header 0 " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
@@ -1246,8 +1242,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--range_header_data 1 " \ 
                 "--filename {output} " \ 
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
                 " && python scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python scripts/add_column.py --filename {output} --colname algorithm   --colval trilearn_loglin "\
                 " && python scripts/add_column.py --filename {output} --colname adjmat      --colval {wildcards.adjmat} "  \       
