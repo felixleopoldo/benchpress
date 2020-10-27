@@ -9,19 +9,19 @@
 ![Benchpress](figures/benchpress.jpg)
 
 Systematic benchmarks of structure learning algorithms for graphical models.
+The documentation is found here https://benchpressx.readthedocs.io.
 
 ## Reqirements
 - Snakemake https://snakemake.readthedocs.io/en/stable/
 - Docker https://www.docker.com/
 - Singularity https://sylabs.io/guides/3.6/admin-guide/installation.html
-- Linux/Unix or Windows (Singularity is currently not fully supporting OSX)
+- Linux/Unix (Singularity currently only has a Beta release for OSX)
 ## Installation
 
 
+### Cloning the repository
 
-### Cloning the BenchPress repository
-
-`git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress`
+`$ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress`
 
 Copy the simulation setup in config.json.sample to config.json 
 
@@ -31,11 +31,16 @@ Copy the simulation setup in config.json.sample to config.json
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
 
 `$ conda install -c conda-forge squash-tools`
+
 ## Usage
 
 To run the simulation setup in config.json type
 
 `$ snakemake roc --cores 20 --use-singularity`
+
+A roc curve defined by config.json is found in the file files/ROC.eps and can be viewed with e.g. evince as
+
+`$ evince files/ROC.eps`
 
 
 ## Contributing
