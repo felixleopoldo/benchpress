@@ -18,18 +18,15 @@ Systematic benchmarks of structure learning algorithms for graphical models.
 A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ Snakemake based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
 
 Benchpress implements several of the state of the arts structure learning algorithm as well as data and parameter sampling algorithms and benchmarking metrics.
-Benchpress is based on `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ and is interfaced via the file config.json.
-
+Benchpress is interfaced via the file config.json.
+Example figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
 Getting started
 ###############
 
 
-Installation
-============
-
 Requirements
-************
+^^^^^^^^^^^^
 
 * `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
 * `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
@@ -43,9 +40,7 @@ Cloning the repository
 
     $ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress
 
-Example 
--------
-ROC curve estimation
+Example: ROC curve estimation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This example plots oc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
 The algorithms a ran on fours different types of datasets.
@@ -67,13 +62,54 @@ This will produce the plot below
    :width: 600
 
 
-Available graph sampling algorithms/sources
+Available graph sources
 ###########################################
 
-Available parameters sampling algorithms/sources
+Random restricted directed acyclic graph
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Key 
+"""
+    generateDAGMaxParents
+Description
+"""""""""""""
+Generates a random directed acyclic graph with restricted average number of parents.
+
+Parameters
+""""""""""
+    av_parents
+    dims
+
+Source
+""""""
+
+JSON schema
+"""""""""""
+https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md
+
+Example
+"""""""
+
+
+.. code-block:: json
+
+    {
+        "id": "generateDAGMaxParents",
+        "av_parents": 2,
+        "dims": 80
+    }
+
+Adjacency matrix .csv file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+Available parameter sources
 ################################################
 
-Available data sampling algorithms/sources
+
+
+Available data sources
 ################################################
 
 
