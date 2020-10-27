@@ -105,6 +105,7 @@ Example
         "dims": 80
     }
 
+
 Adjacency matrix .csv file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
