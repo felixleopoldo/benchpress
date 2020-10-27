@@ -2,25 +2,26 @@
     "output_dir": "files",
     "benchmark_setup": {
         "structure_learning_algorithms": [
-            "blip", "gobnilp", "mmhc", "fges", "tabu", "hc" ,"pcalg", "order_mcmc_itmap"
+            "blip", "gobnilp", "mmhc", "fges", "tabu", "hc", "order_mcmc_itmap"
         ],
         "data":[               {
             "graph": "generateDAGMaxParents",
             "parameters": "generateBinaryBN" ,
             "data": "standard_sampling",
-            "seed_range": [1, 1]
+            "seed_range": [1, 10]
         },
         {
             "graph": "asia.csv",
             "parameters": "generateBinaryBN" ,
             "data": "standard_sampling",
-            "seed_range": [1, 1]
+            "seed_range": [1, 10]
         },
         {
             "graph": "hepar2.csv",
             "parameters": "hepar2.rds",
             "data": "standard_sampling2000",
-            "seed_range": [1, 1]
+            "seed_range": [1, 10
+            ]
         },
         {
             "graph":"asia.csv",
@@ -31,7 +32,7 @@
         "evaluation": {
             "ROC": [{
                         "structure_learning_algorithm":"blip", 
-                        "curve_variable":"time"
+                        "curve_variable":"max_time"
                     },
                     {
                         "structure_learning_algorithm":"order_mcmc", 
