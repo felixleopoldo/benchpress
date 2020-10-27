@@ -14,7 +14,7 @@ The documentation is found here https://benchpressx.readthedocs.io.
 ## Reqirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([instructions for installation](https://docs.docker.com/engine/install/))
 - [Docker](https://www.docker.com/) ([instructions for installation](https://docs.docker.com/engine/install/))
-- [Singularity](https://sylabs.io/guides/3.6/admin-guide/installation.html) ([instructrion for installation](https://sylabs.io/guides/3.6/admin-guide/installation.html))
+- [Singularity](https://sylabs.io/guides/3.6/admin-guide/installation.html) ([instructrions for installation](https://sylabs.io/guides/3.6/admin-guide/installation.html))
 - Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough for this purpose)
 ## Installation
 
