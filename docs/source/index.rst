@@ -14,7 +14,7 @@
 Benchpress's documentation
 ###########################################
 
-.. image:: ../../figures/benchpress.jpg
+.. image:: https://github.com/felixleopoldo/benchpress/tree/master/figures/benchpress.jpg
    :width: 600
 
 Systematic benchmarks of structure learning algorithms for graphical models.
