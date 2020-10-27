@@ -13,4 +13,4 @@ files/*.csv
 files/*.eps
 files/bn/generateBinaryBN
 files/adjmat/generateDAGMaxParents
-conf/build
+docs/build

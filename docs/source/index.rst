@@ -20,7 +20,7 @@ Indices and tables
 
 
 Benchpress is a command-line tool for creating reproducible benchmarks in graphical models.
-As such it implements several of the state of the arts structure learning algorithm aas well as data and parameter sampling algorithms and benchmarking metrics.
+It implements several of the state of the arts structure learning algorithm aas well as data and parameter sampling algorithms and benchmarking metrics.
 Benchpress is based on Snakemake and is interfaced via the file config.json.
 
 Next follows a description of the structure of config.json, where :download:`config.json.sample <../../config.json.sample>` file is used thoughout the example.
