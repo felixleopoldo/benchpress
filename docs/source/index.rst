@@ -14,6 +14,9 @@
 Benchpress's documentation
 ###########################################
 
+.. image:: ../../figures/benchpress.jpg
+   :width: 600
+
 Systematic benchmarks of structure learning algorithms for graphical models.
 A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ Snakemake based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
 
@@ -67,9 +70,13 @@ Available graph sources
 
 Random restricted directed acyclic graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+"""
 Key 
 """
     generateDAGMaxParents
+
+""""""""""""
 Description
 """""""""""""
 Generates a random directed acyclic graph with restricted average number of parents.
