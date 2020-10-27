@@ -23,14 +23,36 @@ Benchpress is a command-line tool for creating reproducible benchmarks in graphi
 As such it implements several of the state of the arts structure learning algorithm aas well as data and parameter sampling algorithms and benchmarking metrics.
 Benchpress is based on Snakemake and is interfaced via the file config.json.
 
-Next follows a desxcription of the structure of config.json, where :download:`config.json.sample <../../config.json.sample>` file is used thoughout the example.
+Next follows a description of the structure of config.json, where :download:`config.json.sample <../../config.json.sample>` file is used thoughout the example.
+It will produce a ROC curve etimation plot.
+
+.. image:: ROC.png
+   :width: 600
 
 The config.json.sample consists of six main keys, seen below (where the conten has been removed in order to )
 
 
 
-.. image:: ROC.png
+.. image:: maincats.png
    :width: 600
+
+""""""""""
+output_dir
+""""""""""
+This is the directoyr where all the output will be stored (should be files/ at the moment).
+
+"""""
+benchmark_setup
+"""""
+
+This is where the benchmark_setup is made. 
+
+""""""""
+data_sampling_algorithms
+""""""""
+Contains the aviliable data sampling algorithms.
+
+
 
 This json produces :download:`ROC_data.csv <../../files/ROC_data.csv>` from which following roc curve is plotted.
 
