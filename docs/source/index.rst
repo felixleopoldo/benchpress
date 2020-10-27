@@ -41,15 +41,15 @@ output_dir
 """"""""""
 This is the directoyr where all the output will be stored (should be files/ at the moment).
 
-"""""
+"""""""""""""""
 benchmark_setup
-"""""
+"""""""""""""""
 
 This is where the benchmark_setup is made. 
 
-""""""""
+""""""""""""""""""""""""
 data_sampling_algorithms
-""""""""
+""""""""""""""""""""""""
 Contains the aviliable data sampling algorithms.
 
 
