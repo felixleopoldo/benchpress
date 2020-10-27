@@ -1,35 +1,158 @@
 
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to Benchpress’s documentation! &mdash; Benchpress 1.0 documentation</title>
+  
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Benchpress’s documentation! &#8212; Benchpress 1.0 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> Benchpress
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Benchpress’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a><ul>
+<li><a class="reference internal" href="#output-dir">output_dir</a></li>
+<li><a class="reference internal" href="#benchmark-setup">benchmark_setup</a></li>
+<li><a class="reference internal" href="#data-sampling-algorithms">data_sampling_algorithms</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Benchpress</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to Benchpress’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="welcome-to-benchpress-s-documentation">
 <h1>Welcome to Benchpress’s documentation!<a class="headerlink" href="#welcome-to-benchpress-s-documentation" title="Permalink to this headline">¶</a></h1>
@@ -46,9 +169,22 @@
 <p>Benchpress is a command-line tool for creating reproducible benchmarks in graphical models.
 As such it implements several of the state of the arts structure learning algorithm aas well as data and parameter sampling algorithms and benchmarking metrics.
 Benchpress is based on Snakemake and is interfaced via the file config.json.</p>
-<p>Next follows a desxcription of the structure of config.json, where <a class="reference download internal" download="" href="_downloads/82f70c95291b212bffe5a0bf5fb2ba26/config.json.sample"><code class="xref download docutils literal notranslate"><span class="pre">config.json.sample</span></code></a> file is used thoughout the example.</p>
-<p>The config.json.sample consists of six main keys, seen below (where the conten has been removed in order to )</p>
+<p>Next follows a description of the structure of config.json, where <a class="reference download internal" download="" href="_downloads/82f70c95291b212bffe5a0bf5fb2ba26/config.json.sample"><code class="xref download docutils literal notranslate"><span class="pre">config.json.sample</span></code></a> file is used thoughout the example.
+It will produce a ROC curve etimation plot.</p>
 <a class="reference internal image-reference" href="_images/ROC.png"><img alt="_images/ROC.png" src="_images/ROC.png" style="width: 600px;" /></a>
+<p>The config.json.sample consists of six main keys, seen below (where the conten has been removed in order to )</p>
+<a class="reference internal image-reference" href="_images/maincats.png"><img alt="_images/maincats.png" src="_images/maincats.png" style="width: 600px;" /></a>
+<div class="section" id="output-dir">
+<h2>output_dir<a class="headerlink" href="#output-dir" title="Permalink to this headline">¶</a></h2>
+<p>This is the directoyr where all the output will be stored (should be files/ at the moment).</p>
+</div>
+<div class="section" id="benchmark-setup">
+<h2>benchmark_setup<a class="headerlink" href="#benchmark-setup" title="Permalink to this headline">¶</a></h2>
+<p>This is where the benchmark_setup is made.</p>
+</div>
+<div class="section" id="data-sampling-algorithms">
+<h2>data_sampling_algorithms<a class="headerlink" href="#data-sampling-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Contains the aviliable data sampling algorithms.</p>
 <p>This json produces <a class="reference download internal" download="" href="_downloads/5f2124a93049bb5fa43eb727ce3467eb/ROC_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">ROC_data.csv</span></code></a> from which following roc curve is plotted.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
  <span class="nt">&quot;output_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
@@ -190,68 +326,53 @@ Benchpress is based on Snakemake and is interfaced via the file config.json.</p>
 </pre></div>
 </div>
 </div>
+</div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">Benchpress</a></h1>
+          <footer>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Felix L. Rios
 
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Felix L. Rios.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>
