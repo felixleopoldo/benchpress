@@ -60,6 +60,6 @@ This is the first program of its kind.
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
 
-]]></content>
-  <tabTrigger>readme</tabTrigger>
+</content>
+  <tabTrigger></tabTrigger>
 </snippet>
