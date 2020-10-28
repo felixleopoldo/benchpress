@@ -18,7 +18,7 @@ Benchpress's documentation
    :width: 600
 
 Systematic benchmarks of structure learning algorithms for graphical models.
-A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ Snakemake based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
+A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
 
 Benchpress implements several of the state of the arts structure learning algorithm as well as data and parameter sampling algorithms and benchmarking metrics.
 Benchpress is interfaced via the file config.json.
@@ -68,54 +68,107 @@ This will produce the plot below
 Available graph sources
 ###########################################
 
-Random restricted directed acyclic graph
+
+generateDAGMaxParents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-"""
-Key 
-"""
-    generateDAGMaxParents
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
 
-""""""""""""
-Description
-"""""""""""""
-Generates a random directed acyclic graph with restricted average number of parents.
-
-Parameters
-""""""""""
-    av_parents
-    dims
-
-Source
-""""""
-
-JSON schema
-"""""""""""
-https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md
 
 Example
 """""""
 
-
 .. code-block:: json
 
     {
-        "id": "generateDAGMaxParents",
+        "id": "myrandomdag",
         "av_parents": 2,
         "dims": 80
     }
 
 
-Adjacency matrix .csv file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fixed_adjmats
+^^^^^^^^^^^^^
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fixed-adjacenty-matrix-of-a-graph.md>`_
 
 
+Example
+"""""""""""
 
+.. code-block:: json
+
+    {
+        "id": "hepar2.csv",
+        "filename": "hepar2.csv",
+        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"
+    }
+    
+
+notears
+"""""""
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-dag-sampling.md>`_
+
+Example
+"""""""""""
+.. code-block:: json
+
+    {
+        "id": "notears_dag_sampling",
+        "num_nodes":40,
+        "num_edges": 80
+    }
 
 Available parameter sources
 ################################################
 
+generateBinaryBN
+^^^^^^^^^^^^^^^^
 
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
+
+Example
+"""""""""""
+.. code-block:: json
+
+    {
+        "id":"generateBinaryBN",
+        "min":0.1,
+        "max":0.9
+    }
+
+
+bn.fit_networks
+^^^^^^^^^^^^^^^
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-bnfit-network-file.md>`_
+
+Example
+"""""""""""
+.. code-block:: json
+
+    {
+        "id":"hepar2.rds",
+        "filename": "hepar2.rds",
+        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"          
+    }
+
+notears_parameters_sampling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+
+Example
+"""""""
+
+.. code-block:: json
+
+    {
+        "id":"notears",
+        "edge_coefficient_range_from":0.5,
+        "edge_coefficient_range_to":2
+    }
 
 Available data sources
 ################################################

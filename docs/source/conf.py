@@ -30,12 +30,12 @@ release = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-#extensions = ['sphinx-jsonschema', 'recommonmark']
-#source_suffix = {
-#    '.rst': 'restructuredtext',
-#    '.txt': 'markdown',
-#    '.md': 'markdown',
-#}
+extensions = ['recommonmark']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
