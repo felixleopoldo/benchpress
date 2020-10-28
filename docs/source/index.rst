@@ -36,6 +36,12 @@ Requirements
 * `Singularity <https://docs.docker.com/engine/install/>`_  (`installation instructions <https://sylabs.io/guides/3.6/admin-guide/installation.html>`_)
 * Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
 
+.. note:: 
+
+    On some systems, you might also have to explicitly install squash-tools in order to run Docer with singularity. 
+    squash-tools can be done using conda as
+    
+        $ conda install -c conda-forge squash-tools
 
 Cloning the repository
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -120,7 +126,7 @@ Example
         "num_edges": 80
     }
 
-Available parameter sources
+parameters_sampling_algorithms
 ################################################
 
 generateBinaryBN
@@ -170,8 +176,25 @@ Example
         "edge_coefficient_range_to":2
     }
 
-Available data sources
+
+data_sampling_algorithms
 ################################################
+
+standard_sampling
+^^^^^^^^^^^^^^^^^
+
+See  `JSON schema <>`_
+
+
+Example
+"""""""
+
+.. code-block:: json
+
+    {
+        "id":"standard_sampling",
+        "sample_sizes": [100]
+    }
 
 
 Understanding config.json
