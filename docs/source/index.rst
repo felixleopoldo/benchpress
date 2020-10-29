@@ -15,7 +15,7 @@ Benchpress's documentation
 
 .. image:: ../../figures/benchpress.jpg
    :width: 600
-   fasa
+
 
 Systematic benchmarks of structure learning algorithms for graphical models.
 A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
