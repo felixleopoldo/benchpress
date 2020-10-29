@@ -93,7 +93,7 @@ config.json is required to consist of two main categories,
     *   ``data``: A list of the data simulation setups.
     *   ``evaluation``: A list of 
 
-.. figure:: _static/confsetup3.png
+.. figure:: _static/confsetup.png
    :width: 400
 
 
