@@ -15,6 +15,7 @@ Benchpress's documentation
 
 .. image:: ../../figures/benchpress.jpg
    :width: 600
+   fasa
 
 Systematic benchmarks of structure learning algorithms for graphical models.
 A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
@@ -69,6 +70,8 @@ This will produce the plot below
 .. image:: _static/ROC.png
    :width: 600
 
+    some text
+
 
 Understanding config.json
 #############################
@@ -76,61 +79,23 @@ Understanding config.json
 
 config.json is required to consist of two main categories, 
 
+.. image:: _static/maincats.png
+   :width: 400
+
+
 *   one contains tha available algorithms for 
-    models, data, and structure learning (graph_sampling_algorithms, parameters_sampling_algorithms, data_sampling_algorithms, and structure_learning_algorithms).   
+    models, data, and structure learning (``graph_sampling_algorithms``, ``parameters_sampling_algorithms``, ``data_sampling_algorithms``, and ``structure_learning_algorithms``).   
     Each algorithm has a unique id in its own category.
 
-*   The second category (benchmark_setup) defines the benchmark_setup, where combinations available algorithms are considered. 
+*   The second category (``benchmark_setup``) defines the benchmark setup in three main categories: 
+    
+    *   ``structure_learning_algorithms``: id´s of structure_learning_algorithms to be considered
+    *   ``data``: A list of the data simulation setups.
+    *   ``evaluation``: A list of 
 
-.. code-block:: json
+.. figure:: _static/confsetup3.png
+   :width: 400
 
-    {
-        "structure_learning_algorithms": [
-            "blip", "gobnilp", "mmhc", "fges", "tabu", 
-            "hc" ,"pcalg", "order_mcmc_itmap"
-        ],
-        "data":[               
-        {
-            "graph": "generateDAGMaxParents",
-            "parameters": "generateBinaryBN" ,
-            "data": "standard_sampling",
-            "seed_range": [1, 1]
-        }],
-        "evaluation": {
-            "ROC": [{
-                        "structure_learning_algorithm":"blip", 
-                        "curve_variable":"time"
-                    },
-                    {
-                        "structure_learning_algorithm":"order_mcmc", 
-                        "curve_variable":"threshold"
-                    },
-                     {
-                        "structure_learning_algorithm":"gobnilp", 
-                        "curve_variable":"palim"
-                    },
-                     {
-                        "structure_learning_algorithm":"fges", 
-                        "curve_variable":"faithfulnessAssumed"
-                    },
-                     {
-                        "structure_learning_algorithm":"tabu", 
-                        "curve_variable":"beta"
-                    },
-                     {
-                        "structure_learning_algorithm":"hc", 
-                        "curve_variable":"restart"
-                    },
-                     {
-                        "structure_learning_algorithm":"pcalg", 
-                        "curve_variable":"alpha"
-                    }
-                    ]
-        }
-    }
-
-.. image:: _static/maincats.png
-   :width: 600
 
 Available graph sources
 ###########################################
