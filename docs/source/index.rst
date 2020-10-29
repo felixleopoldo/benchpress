@@ -5,8 +5,7 @@
 
 
 .. toctree::
-
-    :maxdepth: 3
+    :maxdepth: 2
     :caption: Contents:
 
 
@@ -50,8 +49,8 @@ Cloning the repository
     $ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress
 
 Example: ROC curve estimation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This example plots oc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This example plots roc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
 The algorithms a ran on fours different types of datasets.
 To run the configuration copy :download:`config.sample.json <../../config.sample.json>` to config.json by
 
@@ -70,6 +69,68 @@ This will produce the plot below
 .. image:: _static/ROC.png
    :width: 600
 
+
+Understanding config.json
+#############################
+
+
+config.json is required to consist of two main categories, 
+
+*   one contains tha available algorithms for 
+    models, data, and structure learning (graph_sampling_algorithms, parameters_sampling_algorithms, data_sampling_algorithms, and structure_learning_algorithms).   
+    Each algorithm has a unique id in its own category.
+
+*   The second category (benchmark_setup) defines the benchmark_setup, where combinations available algorithms are considered. 
+
+.. code-block:: json
+
+    {
+        "structure_learning_algorithms": [
+            "blip", "gobnilp", "mmhc", "fges", "tabu", 
+            "hc" ,"pcalg", "order_mcmc_itmap"
+        ],
+        "data":[               
+        {
+            "graph": "generateDAGMaxParents",
+            "parameters": "generateBinaryBN" ,
+            "data": "standard_sampling",
+            "seed_range": [1, 1]
+        }],
+        "evaluation": {
+            "ROC": [{
+                        "structure_learning_algorithm":"blip", 
+                        "curve_variable":"time"
+                    },
+                    {
+                        "structure_learning_algorithm":"order_mcmc", 
+                        "curve_variable":"threshold"
+                    },
+                     {
+                        "structure_learning_algorithm":"gobnilp", 
+                        "curve_variable":"palim"
+                    },
+                     {
+                        "structure_learning_algorithm":"fges", 
+                        "curve_variable":"faithfulnessAssumed"
+                    },
+                     {
+                        "structure_learning_algorithm":"tabu", 
+                        "curve_variable":"beta"
+                    },
+                     {
+                        "structure_learning_algorithm":"hc", 
+                        "curve_variable":"restart"
+                    },
+                     {
+                        "structure_learning_algorithm":"pcalg", 
+                        "curve_variable":"alpha"
+                    }
+                    ]
+        }
+    }
+
+.. image:: _static/maincats.png
+   :width: 600
 
 Available graph sources
 ###########################################
@@ -197,14 +258,6 @@ Example
     }
 
 
-Understanding config.json
-#############################
-
-
-config.json is required to consist of six main keys, seen below 
-
-.. image:: _static/maincats.png
-   :width: 600
 
 
 output_dir
