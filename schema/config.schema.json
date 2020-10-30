@@ -1,6 +1,6 @@
 { 
     "title": "JSON schema for BenchPress config file.",
-    "$schema": "http://json-schema.org/schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "$id": "http://github.com/felixleopoldo/benchpress/schema/config.schema.json",
     "type": "object",
     "properties":{
