@@ -17,12 +17,11 @@ Benchpress's documentation
    :width: 600
 
 
-Systematic benchmarks of structure learning algorithms for graphical models.
-A `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  based command-line tool for making re-producible benchmarks on graphical model learning algorithms.
+Benchpress provides systematic benchmarks of structure learning algorithms for graphical models.
+It is a `Snakemake <https://snakemake.readthedocs.io>`_  based command-line tool interfaced via the file config.json.
+It implements several of the state of the art structure learning algorithms as well as data, parameter sampling algorithms and benchmarking metrics.
 
-Benchpress implements several of the state of the arts structure learning algorithm as well as data and parameter sampling algorithms and benchmarking metrics.
-Benchpress is interfaced via the file config.json.
-Example figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
+
 
 Getting started
 ###############
@@ -31,14 +30,14 @@ Getting started
 Requirements
 ^^^^^^^^^^^^
 
-* `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
+* `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_)
 * `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
 * `Singularity <https://docs.docker.com/engine/install/>`_  (`installation instructions <https://sylabs.io/guides/3.6/admin-guide/installation.html>`_)
 * Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
 
 .. note:: 
 
-    On some systems, you might also have to explicitly install squash-tools in order to run Docer with singularity. 
+    On some systems, you might also have to explicitly install squash-tools in order to run Docker with singularity. 
     squash-tools can be done using conda as
     
         $ conda install -c conda-forge squash-tools
@@ -70,13 +69,13 @@ This will produce the plot below
 .. image:: _static/ROC.png
    :width: 600
 
-    some text
+
 
 
 Understanding config.json
 #############################
 
-
+Example figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 config.json is required to consist of two main categories, 
 
 .. image:: _static/maincats.png
@@ -84,7 +83,12 @@ config.json is required to consist of two main categories,
 
 
 *   one contains tha available algorithms for 
-    models, data, and structure learning (``graph_sampling_algorithms``, ``parameters_sampling_algorithms``, ``data_sampling_algorithms``, and ``structure_learning_algorithms``).   
+    models, data, and structure learning 
+    
+    *   ``graph_sampling_algorithms``
+    *   ``parameters_sampling_algorithms``
+    *   ``data_sampling_algorithms``
+    *   ``structure_learning_algorithms``.   
     Each algorithm has a unique id in its own category.
 
 *   The second category (``benchmark_setup``) defines the benchmark setup in three main categories: 
@@ -94,8 +98,9 @@ config.json is required to consist of two main categories,
     *   ``evaluation``: A list of 
 
 .. figure:: _static/confsetup.png
-   :width: 400
+    :width: 400
 
+    An example of the key ``benchmark_setup`` in :download:`config.sample.json <../../config.sample.json>`. 
 
 Available graph sources
 ###########################################
