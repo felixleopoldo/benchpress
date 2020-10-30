@@ -23,9 +23,7 @@ The documentation is found here https://benchpressx.readthedocs.io.
 
 `$ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress`
 
-Copy the simulation setup in config.json.sample to config.json 
 
-`$ cp config.sample.json config.json`
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
@@ -36,9 +34,9 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run the simulation setup in config.json type
 
-`$ snakemake roc --cores 20 --use-singularity`
+`$ snakemake roc --cores 20 --use-singularity --configfile config.sample.json`
 
-A roc curve defined by config.json is found in the file files/ROC.eps and can be viewed with e.g. evince as
+A roc curve defined by config.sample.json is found in the file files/ROC.eps and can be viewed with e.g. evince as
 
 `$ evince files/ROC.eps`
 
