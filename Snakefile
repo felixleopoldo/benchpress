@@ -1,6 +1,19 @@
 import json
 from jsonschema import validate
 import snakemake.utils
+import sys, getopt
+
+
+args = sys.argv
+
+configfilename="config.json"
+i=0
+for arg in args:
+    if arg=="--configfile":
+        configfilename = args[i+1]
+        break
+    i+=1
+
 
 configfile: 
     "config.json"
@@ -2105,7 +2118,7 @@ rule roc:
         config["output_dir"] + "/ROC.eps", \
         config["output_dir"] + "/ROC_data.csv" 
     shell:
-        "Rscript scripts/combine_ROC_data.R " \
+        "Rscript scripts/combine_ROC_data.R --filename "  + configfilename + " " \
         "&& Rscript scripts/plot_ROC.R"
 
 # rule adjmat_plot:

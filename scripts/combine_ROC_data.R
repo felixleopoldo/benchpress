@@ -1,10 +1,14 @@
 library(dplyr, warn.conflicts = FALSE)
 library("rjson")
-
+library(argparser)
 source("lib/code_for_binary_simulations/blip_vs_bidag_plot.R")
 source("lib/code_for_binary_simulations/summarySE.R")
 
-config <- fromJSON(file = "config.json")
+p <- arg_parser("A program for combining roc data from differents sources.")
+p <- add_argument(p, "--filename", help = "Filename")
+argv <- parse_args(p)
+
+config <- fromJSON(file = argv$filename)
 
 toplot <- data.frame()
 active_algorithms <- c()
