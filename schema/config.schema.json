@@ -4,16 +4,17 @@
     "$id": "http://github.com/felixleopoldo/benchpress/schema/config.schema.json",
     "type": "object",
     "properties":{
-        "output_dir": {
-            "title": "Output directory",
-            "description": "Directory for the generated files.",
-            "type": "string"
-        },
         "benchmark_setup":{
             "title": "Benchmark setup",
             "description": "Description of the benchmarking setup.",
             "type": "object",
             "properties": {
+                "output_dir": {
+                    "title": "Output directory",
+                    "description": "Directory for the generated files.",
+                    "type": "string",
+                    "enum": ["files"]
+                },
                 "structure_learning_algorithms": {
                     "title":"Structure learning algorithms",
                     "description": "A list of id's for structure learning algorithm instantiations.",
@@ -46,7 +47,7 @@
                     "additionalProperties": false
                 }
             },
-            "required": ["structure_learning_algorithms", "data", "evaluation"],
+            "required": ["structure_learning_algorithms", "data", "evaluation", "output_dir"],
             "additionalProperties": false
         },
         "data_sampling_algorithms":{
@@ -309,8 +310,7 @@
 
         }     
     },
-    "required": ["output_dir", 
-                "benchmark_setup", 
+    "required": ["benchmark_setup", 
                 "graph_sampling_algorithms",
                 "parameters_sampling_algorithms",
                 "structure_learning_algorithms"],

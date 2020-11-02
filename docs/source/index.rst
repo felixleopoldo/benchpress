@@ -5,227 +5,44 @@
 
 
 .. toctree::
+    :hidden:
+    :glob:
     :maxdepth: 2
-    :caption: Contents:
+    :name: Installation
+    :caption: Installation
+
+    installation
+    roc_example
+
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+    :name: Configuration
+    :caption: Configuration
+    :titlesonly:
+    
+    json_overview
+
+    available_graphs
+    
+    available_parameters
+    
+    available_data
+
+    available_structure_learning_algorithms
 
 
 ##################################
 Benchpress's documentation
-###########################################
+##################################
 
 .. image:: ../../figures/benchpress.jpg
    :width: 600
 
 
-Benchpress provides systematic benchmarks of structure learning algorithms for graphical models.
-It is a `Snakemake <https://snakemake.readthedocs.io>`_  based command-line tool interfaced via the file config.json.
-It implements several of the state of the art structure learning algorithms as well as data, parameter sampling algorithms and benchmarking metrics.
-
-
-
-Getting started
-###############
-
-
-Requirements
-^^^^^^^^^^^^
-
-* `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_)
-* `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
-* `Singularity <https://docs.docker.com/engine/install/>`_  (`installation instructions <https://sylabs.io/guides/3.6/admin-guide/installation.html>`_)
-* Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
-
-.. note:: 
-
-    On some systems, you might also have to explicitly install squash-tools in order to run Docker with singularity. 
-    squash-tools can be done using conda as
-    
-        $ conda install -c conda-forge squash-tools
-
-Cloning the repository
-^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
-
-    $ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress
-
-Example: ROC curve estimation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This example plots roc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
-The algorithms a ran on fours different types of datasets.
-A sample config file is found in :download:`config.sample.json <../../config.sample.json>` 
-
-
-and run the snakemake taget roc with 2 cores and singularity enabled as
-
-.. code-block:: bash
-
-    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.json
-
-This will produce the plot below
-
-.. image:: _static/ROC.png
-   :width: 600
-
-
-
-
-Understanding config.json
-#############################
-
-Example figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
-config.json is required to consist of two main categories, 
-
-.. image:: _static/maincats.png
-   :width: 400
-
-
-*   one contains tha available algorithms for 
-    models, data, and structure learning 
-    
-    *   ``graph_sampling_algorithms``
-    *   ``parameters_sampling_algorithms``
-    *   ``data_sampling_algorithms``
-    *   ``structure_learning_algorithms``.   
-    Each algorithm has a unique id in its own category.
-
-*   The second category (``benchmark_setup``) defines the benchmark setup in three main categories: 
-    
-    *   ``structure_learning_algorithms``: id´s of structure_learning_algorithms to be considered
-    *   ``data``: A list of the data simulation setups.
-    *   ``evaluation``: A list of 
-
-.. figure:: _static/confsetup.png
-    :width: 400
-
-    An example of the key ``benchmark_setup`` in :download:`config.sample.json <../../config.sample.json>`. 
-
-Available graph sources
-###########################################
-
-
-generateDAGMaxParents
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
-
-
-Example
-"""""""
-
-.. code-block:: json
-
-    {
-        "id": "myrandomdag",
-        "av_parents": 2,
-        "dims": 80
-    }
-
-
-fixed_adjmats
-^^^^^^^^^^^^^
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fixed-adjacenty-matrix-of-a-graph.md>`_
-
-
-Example
-"""""""""""
-
-.. code-block:: json
-
-    {
-        "id": "hepar2.csv",
-        "filename": "hepar2.csv",
-        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"
-    }
-    
-
-notears
-"""""""
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-dag-sampling.md>`_
-
-Example
-"""""""""""
-.. code-block:: json
-
-    {
-        "id": "notears_dag_sampling",
-        "num_nodes":40,
-        "num_edges": 80
-    }
-
-parameters_sampling_algorithms
-################################################
-
-generateBinaryBN
-^^^^^^^^^^^^^^^^
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
-
-Example
-"""""""""""
-.. code-block:: json
-
-    {
-        "id":"generateBinaryBN",
-        "min":0.1,
-        "max":0.9
-    }
-
-
-bn.fit_networks
-^^^^^^^^^^^^^^^
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-bnfit-network-file.md>`_
-
-Example
-"""""""""""
-.. code-block:: json
-
-    {
-        "id":"hepar2.rds",
-        "filename": "hepar2.rds",
-        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"          
-    }
-
-notears_parameters_sampling
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
-
-Example
-"""""""
-
-.. code-block:: json
-
-    {
-        "id":"notears",
-        "edge_coefficient_range_from":0.5,
-        "edge_coefficient_range_to":2
-    }
-
-
-data_sampling_algorithms
-################################################
-
-standard_sampling
-^^^^^^^^^^^^^^^^^
-
-See  `JSON schema <>`_
-
-
-Example
-"""""""
-
-.. code-block:: json
-
-    {
-        "id":"standard_sampling",
-        "sample_sizes": [100]
-    }
-
-
-
+Benchpress provides a  workflow for systematic benchmarking of structure learning algorithms in graphical models.
+It is based on the work flow manager `Snakemake <https://snakemake.readthedocs.io>`_  and has a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file.
+Benchpress implements the state of the art structure learning algorithms available in the literature, as well as data, parameter sampling algorithms and benchmarking metrics.
 
 output_dir
 ==========
@@ -240,19 +57,4 @@ benchmark_setup
 This is where the benchmark_setup is made. 
 
 
-data_sampling_algorithms
-=========================
-
-Contains the aviliable data sampling algorithms.
-
-
-parameters_sampling_algorithms
-==============================
-
-
-graph_sampling_algorithms
-=========================
-
-structure_learning_algorithms
-=============================
 

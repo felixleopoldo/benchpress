@@ -26,7 +26,7 @@ rocalgs <- config$benchmark_setup$evaluation$ROC
 
 for (alg in rocalgs){
     if(alg$structure_learning_algorithm %in% active_algorithms) {
-        ROCdf <- read.csv(file.path(config$output_dir, paste(alg$structure_learning_algorithm ,".csv", sep = "")))
+        ROCdf <- read.csv(file.path(config$benchmark_setup$output_dir, paste(alg$structure_learning_algorithm ,".csv", sep = "")))
         sumROC = ROCdf %>%
                             group_by(legend, adjmat, bn, data, !!as.symbol(alg$curve_variable)) %>% 
                             summarise(SHD_mean = mean(SHD),
@@ -44,5 +44,5 @@ for (alg in rocalgs){
     }
 }
 
-write.csv(toplot,  file.path(config$output_dir, "ROC_data.csv"))
+write.csv(toplot,  file.path(config$benchmark_setup$output_dir, "ROC_data.csv"))
 

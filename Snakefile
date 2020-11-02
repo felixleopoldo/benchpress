@@ -18,20 +18,7 @@ for arg in args:
 configfile: 
     "config.json"
 
-
-#print(type(config))
 snakemake.utils.validate(config, 'schema/config.schema.json')
-
-#with open('config.json') as json_file:
-#    conf = json.load(json_file)
-
-# Validate config.json file against the schema
-
-
-#with open('schema/config.schema.json') as json_file:
-#    schema = json.load(json_file)
-
-#validate(instance=conf, schema=schema)
 
 # Check that algorithm exists
 
@@ -54,7 +41,7 @@ def validate_data_setup(config, dict):
     available_conf_ids = []
     for alg, alg_conf_avail in config["graph_sampling_algorithms"].items():
         for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])   
+            available_conf_ids.append(alg_conf["id"])
 
     if dict["graph"] not in available_conf_ids:
         raise Exception(dict["graph"] + 
@@ -355,7 +342,7 @@ json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_
 
 
 def adjmat_estimate_path_mcmc(algorithm):
-    ret = config["output_dir"]+"/adjmat_estimate/"\
+    ret = "{output_dir}/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\
                         "bn=/{bn}/"\
                         "data=/{data}/"\
@@ -365,7 +352,7 @@ def adjmat_estimate_path_mcmc(algorithm):
     return ret
 
 def time_path(algorithm):
-    ret = config["output_dir"]+"/time/"\
+    ret = "{output_dir}/time/"\
                     "adjmat=/{adjmat}/"\
                     "bn=/{bn}/"\
                     "data=/{data}/"\
@@ -375,7 +362,7 @@ def time_path(algorithm):
     return ret
 
 def result_path_mcmc(algorithm):
-    res = config["output_dir"]+"/result/"\
+    res = "{output_dir}/result/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
             "adjmat=/{adjmat}/"\
             "bn=/{bn}/"\
@@ -386,10 +373,10 @@ def result_path_mcmc(algorithm):
     return res
 
 def data_path():
-    return config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
 
 def adjmat_true_path():
-    return config["output_dir"]+"/adjmat/{adjmat}.csv",
+    return "{output_dir}/adjmat/{adjmat}.csv",
 
 def get_seed_range(seed_range):
     if seed_range == None:
@@ -398,7 +385,7 @@ def get_seed_range(seed_range):
         return range(seed_range[0], seed_range[1]+1)
 
 # def adjmat_plots(algorithm, mode="result"):
-#     ret = [[[expand(config["output_dir"] + "/adjmat_plots/"\
+#     ret = [[[expand(config["benchmark_setup"]["output_dir"] + "/adjmat_plots/"\
 #             "adjmat=/{adjmat_string}/"
 #             "bn=/{param_string}/"
 #             "data=/{data_string}/"
@@ -416,13 +403,14 @@ def get_seed_range(seed_range):
 #     return ret
 
 def join_string_sampled_model(algorithm, mode="result"):
-    ret = [[[expand(config["output_dir"] + "/"+mode+"/"\        
+    ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
             "bn=/{param_string}/"
             "data=/{data_string}/"
             "legend={plot_legend}/" 
             + mode + ".csv",
+            output_dir=config["benchmark_setup"]["output_dir"],
             alg_string=json_string[alg_conf["id"]],
             plot_legend=alg_conf["plot_legend"],
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
@@ -434,13 +422,14 @@ def join_string_sampled_model(algorithm, mode="result"):
     return ret
 
 def join_string_sampled_model_mcmc(algorithm, mode="result"):
-    ret = [[[expand(config["output_dir"] + "/"+mode+"/"\        
+    ret = [[[expand("{output_dir}/"+mode+"/"\        
                         "algorithm=/{algorithm_string}/" 
                         "adjmat=/{adjmat_string}/"
                         "bn=/{param_string}/"
                         "data=/{data_string}/"                       
                         "legend={plot_legend}/" # /output_parameters=/legend={plot_legend}/
                         +mode+".csv",
+            output_dir=config["benchmark_setup"]["output_dir"],
             threshold=alg_conf["threshold"], # only for mcmc
             burnin=alg_conf["burnin"], # only for mcmc
             plot_legend=alg_conf["plot_legend"], 
@@ -459,7 +448,7 @@ def join_summaries_shell(algorithm):
             " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
-    return config["output_dir"] + "/"+algorithm+".csv"
+    return "{output_dir}/"+algorithm+".csv"
 
 def gen_model_strings_from_conf(models, seed, setup):
     """
@@ -580,29 +569,29 @@ def active_algorithm_files(wildcards):
     for alg, alg_conf_list in config["structure_learning_algorithms"].items():     
         for alg_conf_id in config["benchmark_setup"]["structure_learning_algorithms"]:
             if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                    algs.append(conf["output_dir"] + "/" + alg + ".csv")
+                    algs.append(conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv")
     return algs
 
 def alg_output_adjmat_path(algorithm):
-    return config["output_dir"]+"/adjmat_estimate/{data}/"\
+    return "{output_dir}/adjmat_estimate/{data}/"\
                 "algorithm=/" + pattern_strings[algorithm] + "/" +\
                 "seed={replicate}/" \
                 "adjmat.csv"
 
 def alg_output_adjvecs_path(algorithm):
-    return config["output_dir"]+"/adjvecs/{data}/"\
+    return "{output_dir}/adjvecs/{data}/"\
                 "algorithm=/"  + pattern_strings[algorithm] + "/"  + \
                 "seed={replicate}/" \
                 "adjvecs.json"
 
 def alg_output_time_path(algorithm):
-    return config["output_dir"] + "/time/{data}/"\
+    return "{output_dir}/time/{data}/"\
                 "algorithm=/" + pattern_strings[algorithm] + "/" +\
                 "seed={replicate}/" \
                 "time.txt"
 
 def alg_input_data():
-    return config["output_dir"]+"/data/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/{data}/seed={replicate}.csv"
 
 def alg_shell(algorithm):
     if algorithm == "greenthomas":
@@ -633,7 +622,7 @@ def alg_shell(algorithm):
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript scripts/run_tabu.R " \
             "--filename_data {input.data} " \
-            "--output_dir {config[output_dir]} " \
+            "--output_dir {wildcards.output_dir} " \
             "--score {wildcards.score} " \
             "--iss {wildcards.iss} " \
             "--iss.mu {wildcards.issmu} " \
@@ -647,7 +636,7 @@ def alg_shell(algorithm):
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript scripts/run_hc.R " \
             "--filename_data {input.data} " \
-            "--output_dir {config[output_dir]} " \
+            "--output_dir {wildcards.output_dir} " \
             "--perturb {wildcards.perturb} " \
             "--restart {wildcards.restart} " \
             "--score {wildcards.score} " \
@@ -663,7 +652,7 @@ def alg_shell(algorithm):
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "Rscript scripts/run_blip.R " \
                 "--filename_data {input.data} " \
-                "--output_dir {config[output_dir]} " \
+                "--output_dir {wildcards.output_dir} " \
                 "--time {wildcards.max_time} " \
                 "--scorer.method {wildcards.scorermethod} " \
                 "--solver.method {wildcards.solvermethod} " \
@@ -680,7 +669,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_iterative_search.R "\
                 "--filename_data {input.data} "\
                 "--filename {output.adjmat} " \
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--map {wildcards.MAP} "\
                 "--scoretype {wildcards.scoretype} " \
@@ -697,7 +686,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_pcalg.R " \
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "
 
@@ -706,7 +695,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_mmhc.R "\
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "
 
@@ -715,7 +704,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_h2pc.R "\
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "
 
@@ -724,7 +713,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_inter-iamb.R "\
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "
 
@@ -733,7 +722,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_gs.R "\
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
-                "--output_dir {config[output_dir]} "\
+                "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "
 
@@ -840,7 +829,7 @@ def alg_shell(algorithm):
                 "--edgepf {wildcards.edgepf} " \
                 "--aw {wildcards.aw} " \
                 "--am {wildcards.am} " \
-                "--output_dir {config[output_dir]} " \
+                "--output_dir {wildcards.output_dir} " \
                 "--seed {wildcards.replicate} "
 
     elif algorithm == "trilearn_loglin":
@@ -861,13 +850,13 @@ def docker_image(algorithm):
         return "docker://onceltuca/jmoss20notears:1.4"
 
 def summarise_alg_input_data_path():
-    return config["output_dir"]+"/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
 
 def summarise_alg_input_adjmat_true_path():
-    return config["output_dir"]+"/adjmat/{adjmat}.csv"
+    return "{output_dir}/adjmat/{adjmat}.csv"
 
 def summarise_alg_input_adjmat_est_path(algorithm):
-    return config["output_dir"]+"/adjmat_estimate/"\
+    return "{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat}/"\
             "bn=/{bn}/"\
             "data=/{data}/"\
@@ -876,7 +865,7 @@ def summarise_alg_input_adjmat_est_path(algorithm):
             "adjmat.csv",
 
 def summarise_alg_input_time_path(algorithm):
-    return config["output_dir"]+"/time/"\
+    return "{output_dir}/time/"\
                     "adjmat=/{adjmat}/"\
                     "bn=/{bn}/"\
                     "data=/{data}/" \ 
@@ -885,7 +874,7 @@ def summarise_alg_input_time_path(algorithm):
                     "time.txt"
 
 def summarise_alg_output_res_path(algorithm):
-    return config["output_dir"]+"/result/"\
+    return "{output_dir}/result/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + \
             "adjmat=/{adjmat}/"\
             "bn=/{bn}/"\
@@ -1329,9 +1318,9 @@ singularity:
 
 rule heatmap_from_adjmat_trajectory:
     input:
-        adjvecs = config["output_dir"]+"/adjvecs/{something}/seed={seed}/adjvecs.json"
+        adjvecs = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.json"
     output:
-        heatmap = config["output_dir"]+"/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
+        heatmap = "{output_dir}/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
     message:
         "Estimating heatmap from graph trajectory"
     shell:
@@ -1342,19 +1331,19 @@ rule heatmap_from_adjmat_trajectory:
 
 rule size_autocorrelation_from_trajectory:
    input:
-       adjvecs = config["output_dir"]+"/adjvecs/{something}/adjvecs.json" 
+       adjvecs = "{output_dir}/adjvecs/{something}/adjvecs.json" 
    output:
-       autocorr = config["output_dir"]+"/autocorr_estimate/{something}/burnin={burnin}/autocorr.csv" 
+       autocorr = "{output_dir}/autocorr_estimate/{something}/burnin={burnin}/autocorr.csv" 
 
 rule adjmat_from_heatmap:
     input:
-        heatmap=config["output_dir"]+"/heatmap_estimate/"\ 
+        heatmap="{output_dir}/heatmap_estimate/"\ 
                 "{something}/"\
                 "burnin={burnin}/"\
                 "{somethingelse}/" \
                 "heatmap.csv"
     output:
-        adjmat_est=config["output_dir"]+"/adjmat_estimate/"\
+        adjmat_est="{output_dir}/adjmat_estimate/"\
                     "{something}/" + pattern_strings["mcmc_est"] + "/{somethingelse}/"\
                     "adjmat.csv"
     message:
@@ -1377,26 +1366,26 @@ rule plot_matrix:
 
 rule bnlearn_adjmat:
     input:
-        config["output_dir"] + "/bn/bn.fit_networks/{name}"
+        "{output_dir}/bn/bn.fit_networks/{name}"
     output:
-        config["output_dir"] + "/adjmat/bn.fit_adjmats/{name}.csv"
+        "{output_dir}/adjmat/bn.fit_adjmats/{name}.csv"
     shell:
-        "mkdir -p {config[output_dir]}" + "/adjmat/bn.fit_adjmats/ " \
+        "mkdir -p {wildcards.output_dir}" + "/adjmat/bn.fit_adjmats/ " \
         "&& Rscript scripts/bnlearn_bn_to_adjmat.R " 
         "--filename_graph {output} "
         "--filename_bn {input}"
 
 rule bnlearn_networks:
     output:
-        config["output_dir"] + "/bn/bn.fit_networks/{bn}"
+        "{output_dir}/bn/bn.fit_networks/{bn}"
     #shell:
-    #    "mkdir -p {config[output_dir]}" + "/bn/bn.fit_networks/ " \
+    #    "mkdir -p {wildcards.output_dir}" + "/bn/bn.fit_networks/ " \
     #    "&& wget https://www.bnlearn.com/bnrepository/{wildcards.bn}/{wildcards.bn}.rds "
     #    "--output-document {output}"
 
 rule sample_adjmat:
     output:        
-        adjmat = config["output_dir"] + "/adjmat/generateDAGMaxParents/p={p}/avpar={avparents}/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/generateDAGMaxParents/p={p}/avpar={avparents}/seed={replicate}.csv"
     shell:
         "Rscript scripts/sample_dags.R " \
         "--filename {output.adjmat} " \ 
@@ -1406,7 +1395,7 @@ rule sample_adjmat:
 
 rule sample_adjmat_notears:
     output:        
-        adjmat = config["output_dir"] + "/adjmat/" \
+        adjmat = "{output_dir}/adjmat/" \
                 "notears/" \
                 "num_nodes={num_nodes}/" \
                 "num_edges={num_edges}/"\
@@ -2041,7 +2030,7 @@ rule join_summaries_rfci:
 rule order_mcmc:
     input:
         data = alg_input_data(),
-        startspace = config["output_dir"]+"/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
+        startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
     output:
         adjvecs = alg_output_adjvecs_path("order_mcmc"),
         time = alg_output_time_path("order_mcmc")
@@ -2115,11 +2104,11 @@ rule roc:
         "Snakefile",
         active_algorithm_files
     output:
-        config["output_dir"] + "/ROC.eps", \
-        config["output_dir"] + "/ROC_data.csv" 
+        eps=config["benchmark_setup"]["output_dir"] + "/ROC.eps", \
+        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
     shell:
         "Rscript scripts/combine_ROC_data.R --filename "  + configfilename + " " \
-        "&& Rscript scripts/plot_ROC.R"
+        "&& Rscript scripts/plot_ROC.R --input_filename {output.csv} --output_filename {output.eps}"
 
 # rule adjmat_plot:
 #     input:
@@ -2127,8 +2116,8 @@ rule roc:
 #         itsearch=adjmat_plots("itsearch"),
         #gobnilp=adjmat_plots("gobnilp", seed)
 #    output:
-#        config["output_dir"] + "/adjmat_plots",
-#        plots=config["output_dir"]+"/adjmat_plots/itsearch_map.eps", #"adjmat_plots/gobnilp_seed={seed}/gobnilp.eps", "fges_seed.eps"
+#        config["benchmark_setup"]["output_dir"] + "/adjmat_plots",
+#        plots="{output_dir}/adjmat_plots/itsearch_map.eps", #"adjmat_plots/gobnilp_seed={seed}/gobnilp.eps", "fges_seed.eps"
         # For the output, all the parameters are not that important
         # If there is a true graph, plot it
 #    shell:

@@ -1,8 +1,16 @@
 library(ggplot2)
 library("rjson")
+library(argparser)
 
-config <- fromJSON(file = "config.json")
-toplot <- read.csv(file.path(config$output_dir, "ROC_data.csv"))
+p <- arg_parser("A program for plotting ROC data.")
+p <- add_argument(p, "--input_filename", help = "Input filename")
+p <- add_argument(p, "--output_filename", help = "Output filename")
+argv <- parse_args(p)
+
+#config <- fromJSON(file = argv$filename)
+
+#toplot <- read.csv(file.path(config$output_dir, "ROC_data.csv"))
+toplot <- read.csv(argv$input_filename)
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_median,
                   ymin = TPR_q1, 
@@ -33,5 +41,6 @@ xlab("FPRp") +
 ylab("TPR") +
 ggtitle("ROC") +
 theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file=file.path(config$output_dir, "ROC.eps"))
+#ggsave(file=file.path(config$output_dir, "ROC.eps"))
+ggsave(file=argv$output_filename)
 
