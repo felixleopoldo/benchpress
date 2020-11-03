@@ -2,6 +2,7 @@
   <content><![CDATA[
 # ${1:Systematic benchmarks of structure learning algorithms for graphical models}
 
+[![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
 
 #  
 # Benchpress
@@ -18,12 +19,9 @@ The documentation is found here https://benchpressx.readthedocs.io.
 - Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough for this purpose)
 ## Installation
 
-
 ### Cloning the repository
 
 `$ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress`
-
-
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as

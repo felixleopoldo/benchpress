@@ -39,22 +39,9 @@ Benchpress's documentation
 .. image:: ../../figures/benchpress.jpg
    :width: 600
 
-
-Benchpress provides a  workflow for systematic benchmarking of structure learning algorithms in graphical models.
-It is based on the work flow manager `Snakemake <https://snakemake.readthedocs.io>`_  and has a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file.
+Benchpress is a  workflow for systematic benchmarking of algorithms for learning graphical models from observed data.
+It is based on the workflow managment system `Snakemake <https://snakemake.readthedocs.io>`_  and provides a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file.
 Benchpress implements the state of the art structure learning algorithms available in the literature, as well as data, parameter sampling algorithms and benchmarking metrics.
-
-output_dir
-==========
-
-This is the directory where all the output will be stored (should be files/ at the moment).
-
-
-
-benchmark_setup
-===============
-
-This is where the benchmark_setup is made. 
 
 
 

@@ -13,9 +13,9 @@ config <- fromJSON(file = argv$filename)
 toplot <- data.frame()
 active_algorithms <- c()
 
-for(alg_name in names(config$structure_learning_algorithms)) {
-    for (alg_conf in config$structure_learning_algorithms[[alg_name]]) {
-       if(alg_conf$id %in% config$benchmark_setup$structure_learning_algorithms) {
+for(alg_name in names(config$resources$structure_learning_algorithms)) {
+    for (alg_conf in config$resources$structure_learning_algorithms[[alg_name]]) {
+       if(alg_conf$id %in% config$benchmark_setup$algorithm_ids) {
            active_algorithms <- c(active_algorithms, alg_name)
        }
     }

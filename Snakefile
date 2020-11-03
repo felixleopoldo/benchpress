@@ -23,51 +23,51 @@ snakemake.utils.validate(config, 'schema/config.schema.json')
 # Check that algorithm exists
 
 available_conf_ids = []
-for alg, alg_conf_avail in config["structure_learning_algorithms"].items():
+for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].items():
     for alg_conf in alg_conf_avail:
         available_conf_ids.append(alg_conf["id"])   
 
-for alg_conf_id in config["benchmark_setup"]["structure_learning_algorithms"]:
+for alg_conf_id in config["benchmark_setup"]["algorithm_ids"]:
     if alg_conf_id not in available_conf_ids:
         raise Exception(alg_conf_id + " not available")
 
-for alg_conf in config["structure_learning_algorithms"]["order_mcmc"]:
-    if alg_conf["startspace"] not in set(available_conf_ids) - {c["id"] for c in config["structure_learning_algorithms"]["order_mcmc"]}:
+for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
+    if alg_conf["startspace"] not in set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
         raise Exception(alg_conf["startspace"] + " not available startspace for order_mcmc."\
-                        "The available are: "+str(list(set(available_conf_ids) - {c["id"] for c in config["structure_learning_algorithms"]["order_mcmc"]})))
+                        "The available are: "+str(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]})))
 
 def validate_data_setup(config, dict):
     # Check that adjmat exists
     available_conf_ids = []
-    for alg, alg_conf_avail in config["graph_sampling_algorithms"].items():
+    for alg, alg_conf_avail in config["resources"]["graph"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
 
-    if dict["graph"] not in available_conf_ids:
+    if dict["graph_id"] not in available_conf_ids:
         raise Exception(dict["graph"] + 
                         " is not an available graph id. "
                         "The available graph id´s are: " + str(available_conf_ids))
     
     # Check that parameters exists
     available_conf_ids = []
-    for alg, alg_conf_avail in config["parameters_sampling_algorithms"].items():
+    for alg, alg_conf_avail in config["resources"]["parameters"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])   
 
     
-    if dict["data"] not in [dataconf["id"] for dataconf in config["data_sampling_algorithms"]["fixed_data"]] and dict["parameters"] not in available_conf_ids:
+    if dict["data_id"] not in [dataconf["id"] for dataconf in config["resources"]["data"]["fixed_data"]] and dict["parameters_id"] not in available_conf_ids:
         raise Exception(dict["parameters"] + 
                         " is not an available parameter id. "
                         "The available paremeter id´s are: " + str(available_conf_ids))
 
     # Check that data exists
     available_conf_ids = []
-    for alg, alg_conf_avail in config["data_sampling_algorithms"].items():
+    for alg, alg_conf_avail in config["resources"]["data"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])   
 
-    if dict["data"] not in available_conf_ids:
-        raise Exception(dict["data"] + 
+    if dict["data_id"] not in available_conf_ids:
+        raise Exception(dict["data_id"] + 
                         " is not an available data id. "
                         "The available data id´s are: " + str(available_conf_ids))
     # Check that graph, parameters, and data are properly combined.
@@ -204,7 +204,7 @@ json_string = {val["id"]: expand(pattern_strings["greenthomas"],
                                            n_samples=val["n_samples"],
                                            randomits=val["randomits"],
                                            penalty=val["penalty"])
-                    for val in config["structure_learning_algorithms"]["greenthomas"]}
+                    for val in config["resources"]["structure_learning_algorithms"]["greenthomas"]}
 
 json_string.update({val["id"]: expand(pattern_strings["itsearch"], 
                                             scoretype=val["optional"]["scoretype"],
@@ -215,13 +215,13 @@ json_string.update({val["id"]: expand(pattern_strings["itsearch"],
                                            MAP=val["optional"]["MAP"],
                                            plus1it=val["optional"]["plus1it"],
                                            posterior=val["optional"]["posterior"]) 
-                    for val in config["structure_learning_algorithms"]["itsearch"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["itsearch"]})
 
 json_string.update({val["id"]: expand(pattern_strings["fges"], 
                                            faithfulnessAssumed=val["faithfulnessAssumed"],
                                            datatype=val["data-type"],
                                            score=val["score"]) 
-                    for val in config["structure_learning_algorithms"]["fges"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["fges"]})
 
 json_string.update({val["id"]: expand(pattern_strings["notears"], 
                                            min_rate_of_progress=val["min_rate_of_progress"],
@@ -230,54 +230,54 @@ json_string.update({val["id"]: expand(pattern_strings["notears"],
                                            loss=val["loss"],
                                            loss_grad=val["loss_grad"]
                                            ) 
-                    for val in config["structure_learning_algorithms"]["notears"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["notears"]})
 
 
 json_string.update({val["id"]: expand(pattern_strings["fci"], 
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
-                    for val in config["structure_learning_algorithms"]["fci"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["fci"]})
 
 json_string.update({val["id"]: expand(pattern_strings["gfci"], 
                                            alpha=val["alpha"],
                                            score=val["score"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
-                    for val in config["structure_learning_algorithms"]["gfci"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["gfci"]})
 
 json_string.update({val["id"]: expand(pattern_strings["rfci"], 
                                            alpha=val["alpha"],
                                            datatype=val["data-type"],
                                            test=val["test"]) 
-                    for val in config["structure_learning_algorithms"]["rfci"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["rfci"]})
 
 json_string.update({val["id"]: expand(pattern_strings["pcalg"], 
                                            alpha=val["alpha"])  
-                    for val in config["structure_learning_algorithms"]["pcalg"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["pcalg"]})
 
 json_string.update({val["id"]: expand(pattern_strings["mmhc"], 
                                            alpha=val["restrict.args"]["alpha"])  
-                    for val in config["structure_learning_algorithms"]["mmhc"]} )
+                    for val in config["resources"]["structure_learning_algorithms"]["mmhc"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["h2pc"], 
                                            alpha=val["restrict.args"]["alpha"])  
-                    for val in config["structure_learning_algorithms"]["h2pc"]} )
+                    for val in config["resources"]["structure_learning_algorithms"]["h2pc"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["interiamb"], 
                                            alpha=val["alpha"])  
-                    for val in config["structure_learning_algorithms"]["interiamb"]} )
+                    for val in config["resources"]["structure_learning_algorithms"]["interiamb"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["gs"], 
                                            alpha=val["alpha"])  
-                    for val in config["structure_learning_algorithms"]["gs"]} )
+                    for val in config["resources"]["structure_learning_algorithms"]["gs"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["gobnilp"],
                                                 palim=val["palim"],
                                                 alpha=val["alpha"],
                                                 prune=val["prune"]
                                                 )
-                for val in config["structure_learning_algorithms"]["gobnilp"]})
+                for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})
 
 json_string.update({val["id"]:  expand(pattern_strings["tabu"], 
                                                     score=val["score"],
@@ -288,7 +288,7 @@ json_string.update({val["id"]:  expand(pattern_strings["tabu"],
                                                     prior=val["prior"],
                                                     beta=val["beta"]
                                                     )
-                for val in config["structure_learning_algorithms"]["tabu"]})
+                for val in config["resources"]["structure_learning_algorithms"]["tabu"]})
 
 json_string.update({val["id"]:  expand(pattern_strings["hc"], 
                                                     perturb=val["perturb"],
@@ -301,7 +301,7 @@ json_string.update({val["id"]:  expand(pattern_strings["hc"],
                                                     prior=val["prior"],
                                                     beta=val["beta"]
                                                     )
-                for val in config["structure_learning_algorithms"]["hc"]})
+                for val in config["resources"]["structure_learning_algorithms"]["hc"]})
 
 json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
                     alpha=val["alpha"],
@@ -313,7 +313,7 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
                     threshold=val["threshold"],
                     burnin=val["burnin"],
                     )
-               for val in config["structure_learning_algorithms"]["trilearn_loglin"]})
+               for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
 
 json_string.update({val["id"]: expand(pattern_strings["blip"], 
                                             max_time=val["time"],
@@ -326,7 +326,7 @@ json_string.update({val["id"]: expand(pattern_strings["blip"],
                                             alpha=val["alpha"],
                                             verbose=val["verbose"]
                                             )
-                for val in config["structure_learning_algorithms"]["blip"]})
+                for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...
 json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 
@@ -338,7 +338,7 @@ json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_
                                             startspace_algorithm=json_string[val["startspace"]],
                                             threshold=val["threshold"],
                                             burnin=val["burnin"],)  
-                    for val in config["structure_learning_algorithms"]["order_mcmc"] } )
+                    for val in config["resources"]["structure_learning_algorithms"]["order_mcmc"] } )
 
 
 def adjmat_estimate_path_mcmc(algorithm):
@@ -399,7 +399,7 @@ def get_seed_range(seed_range):
 #             data_string=gen_data_string_from_conf(sim_setup["data"], seed))
 #             for seed in get_seed_range(sim_setup["seed_range"])]
 #             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["structure_learning_algorithms"]],
+#             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
 #     return ret
 
 def join_string_sampled_model(algorithm, mode="result"):
@@ -413,12 +413,12 @@ def join_string_sampled_model(algorithm, mode="result"):
             output_dir=config["benchmark_setup"]["output_dir"],
             alg_string=json_string[alg_conf["id"]],
             plot_legend=alg_conf["plot_legend"],
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data"], seed))
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["structure_learning_algorithms"]],
+            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
     return ret
 
 def join_string_sampled_model_mcmc(algorithm, mode="result"):
@@ -434,13 +434,13 @@ def join_string_sampled_model_mcmc(algorithm, mode="result"):
             burnin=alg_conf["burnin"], # only for mcmc
             plot_legend=alg_conf["plot_legend"], 
             algorithm_string=json_string[alg_conf["id"]],
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data"], seed)
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed)
             )
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["structure_learning_algorithms"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]]
     return ret
 
 def join_summaries_shell(algorithm):
@@ -470,8 +470,8 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
     
-    if adjmat_id in [c["id"] for c in config["graph_sampling_algorithms"]["generateDAGMaxParents"]]:
-        adjmat_dict = next(item for item in config["graph_sampling_algorithms"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
+    if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
         return expand("generateDAGMaxParents" + \
             "/p={p}" + \
             "/avpar={av_parents}" + \
@@ -480,18 +480,18 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
             p=adjmat_dict["dims"],
             seed=seed)
 
-    elif adjmat_id in [c["id"] for c in config["graph_sampling_algorithms"]["fixed_adjmats"]]:
-        adjmat_dict = next(item for item in config["graph_sampling_algorithms"]["fixed_adjmats"] if item["id"] == adjmat_id)
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["fixed_adjmats"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["fixed_adjmats"] if item["id"] == adjmat_id)
         # This means the id is the conf, and it takes everything in a folder?
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_dict["filename"]))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2 e.g.
 
-    elif adjmat_id in [c["id"] for c in config["graph_sampling_algorithms"]["bn.fit_adjmats"]]:
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bn.fit_adjmats"]]:
         # This means the id is the conf, and it takes everything in a folder?
         return  "bn.fit_adjmats/" + adjmat_id # this could be hepar2 e.g.
 
     elif adjmat_id == "notears":
-        adjmat_dict = next(item for item in config["graph_sampling_algorithms"]["notears"] if item["id"] == adjmat_id)
+        adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
         return expand("notears/" \
                         "num_nodes={num_nodes}/" \
                         "num_edges={num_edges}/"\
@@ -507,8 +507,8 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     with open('config.json') as json_file:
         conf = json.load(json_file)
 
-    if gen_method_id in [c["id"] for c in config["parameters_sampling_algorithms"]["generateBinaryBN"]]:        
-        curconf = next(item for item in config["parameters_sampling_algorithms"]["generateBinaryBN"] if item["id"] == gen_method_id)
+    if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["generateBinaryBN"] if item["id"] == gen_method_id)
         return expand("generateBinaryBN" + \
                         "/min={min}" + \
                         "/max={max}" + \
@@ -517,11 +517,11 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         max=curconf["max"],
                         seed=seed)
 
-    elif gen_method_id in [c["id"] for c in config["parameters_sampling_algorithms"]["bn.fit_networks"]]:
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bn.fit_networks"]]:
         return "bn.fit_networks/"+gen_method_id
 
     elif gen_method_id == "notears":
-        curconf = next(item for item in config["parameters_sampling_algorithms"]["notears"] if item["id"] == gen_method_id)
+        curconf = next(item for item in config["resources"]["parameters"]["notears"] if item["id"] == gen_method_id)
         return expand("notears/" \
                       "edge_coefficient_range_from={edge_coefficient_range_from}/"\
                       "edge_coefficient_range_to={edge_coefficient_range_to}/"\
@@ -534,23 +534,23 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return None
 
 def gen_data_string_from_conf(data_id, seed):
-    if data_id in [c["id"] for c in config["data_sampling_algorithms"]["fixed_data"]]:
-        data = next(item for item in config["data_sampling_algorithms"]["fixed_data"] if item["id"] == data_id)        
+    if data_id in [c["id"] for c in config["resources"]["data"]["fixed_data"]]:
+        data = next(item for item in config["resources"]["data"]["fixed_data"] if item["id"] == data_id)        
         return "fixed" + \
                 "/name="+data["filename"] + \
                 "/n="+str(data["samples"]) + \ 
                 "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
 
-    elif data_id in [c["id"] for c in config["data_sampling_algorithms"]["standard_sampling"]]:
-        data = next(item for item in config["data_sampling_algorithms"]["standard_sampling"] if item["id"] == data_id)
+    elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
+        data = next(item for item in config["resources"]["data"]["standard_sampling"] if item["id"] == data_id)
         return expand("standard_sampling" +\
                         "/n={n}" + \
                         "/seed={seed}", 
                         n = data["sample_sizes"],
                         seed = seed)
 
-    elif data_id in [c["id"] for c in config["data_sampling_algorithms"]["notears_linear_gaussian_sampling"]]:
-        data = next(item for item in config["data_sampling_algorithms"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
+    elif data_id in [c["id"] for c in config["resources"]["data"]["notears_linear_gaussian_sampling"]]:
+        data = next(item for item in config["resources"]["data"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
         return expand("notears_linear_gaussian_sampling" +\
                         "/n={n}" + \
                         "/mean={mean}" + \
@@ -566,8 +566,8 @@ def active_algorithm_files(wildcards):
         conf = json.load(json_file)
     algs = []
 
-    for alg, alg_conf_list in config["structure_learning_algorithms"].items():     
-        for alg_conf_id in config["benchmark_setup"]["structure_learning_algorithms"]:
+    for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
+        for alg_conf_id in config["benchmark_setup"]["algorithm_ids"]:
             if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv")
     return algs

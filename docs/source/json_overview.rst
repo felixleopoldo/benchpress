@@ -34,6 +34,7 @@ benchmark_setup
 
 This defines the benchmark setup in three main categories: 
 
+*   ``output_dir``: This is the directory where all the output will be stored (should be files/ at the moment).
 *   ``structure_learning_algorithms``: id´s of structure_learning_algorithms to be considered
 *   ``data``: A list of the data simulation setups.
 *   ``evaluation``: A list of 
