@@ -12,23 +12,19 @@
     :caption: Installation
 
     installation
+    
     roc_example
 
 .. toctree::
     :hidden:
-    :maxdepth: 1
+    :maxdepth: 2
     :name: Configuration
     :caption: Configuration
-    :titlesonly:
     
     json_overview
-
     available_graphs
-    
     available_parameters
-    
     available_data
-
     available_structure_learning_algorithms
 
 
@@ -39,9 +35,9 @@ Benchpress's documentation
 .. image:: ../../figures/benchpress.jpg
    :width: 600
 
-Benchpress is a  workflow for systematic benchmarking of algorithms for learning graphical models from observed data.
-It is based on the workflow managment system `Snakemake <https://snakemake.readthedocs.io>`_  and provides a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file.
-Benchpress implements the state of the art structure learning algorithms available in the literature, as well as data, parameter sampling algorithms and benchmarking metrics.
+Benchpress is a `Snakemake <https://snakemake.readthedocs.io>`_-workflow for systematic benchmarking of algorithms for learning graphical models.
+It provides a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file.
+Benchpress implements the state-of-the-art algorithms available in the literature, as well as data, parameter sampling algorithms and benchmarking metrics.
 
 
 

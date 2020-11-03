@@ -2,13 +2,13 @@ data_sampling_algorithms
 ################################################
 
 standard_sampling
-^^^^^^^^^^^^^^^^^
+*****************
 
 See `JSON schema <>`_
 
 
-Example
-"""""""
+.. rubric:: Example
+
 
 .. code-block:: json
 
