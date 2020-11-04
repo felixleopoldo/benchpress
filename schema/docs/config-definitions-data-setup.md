@@ -17,42 +17,42 @@ Description of the data model and sampling setup. Make sure that the id's are pr
 
 # Data setup Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                       |
-| :------------------------ | -------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [graph](#graph)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph")           |
-| [parameters](#parameters) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters") |
-| [data](#data)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data")             |
-| [seed_range](#seed_range) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range") |
+| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :------------------------------ | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [graph_id](#graph_id)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")           |
+| [parameters_id](#parameters_id) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id") |
+| [data_id](#data_id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")             |
+| [seed_range](#seed_range)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range")    |
 
-## graph
+## graph_id
 
 ID of the graph instantiation.
 
 
-`graph`
+`graph_id`
 
 -   is required
 -   Type: `string` ([Graph](config-definitions-data-setup-properties-graph.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")
 
-### graph Type
+### graph_id Type
 
 `string` ([Graph](config-definitions-data-setup-properties-graph.md))
 
-## parameters
+## parameters_id
 
 Parameters ID.
 
 
-`parameters`
+`parameters_id`
 
 -   is required
 -   Type: merged type ([Parameters](config-definitions-data-setup-properties-parameters.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id")
 
-### parameters Type
+### parameters_id Type
 
 merged type ([Parameters](config-definitions-data-setup-properties-parameters.md))
 
@@ -61,19 +61,19 @@ any of
 -   [Untitled string in JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters-anyof-0.md "check type definition")
 -   [Untitled null in JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters-anyof-1.md "check type definition")
 
-## data
+## data_id
 
 Data sampling method ID.
 
 
-`data`
+`data_id`
 
 -   is required
 -   Type: `string` ([Data](config-definitions-data-setup-properties-data.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")
 
-### data Type
+### data_id Type
 
 `string` ([Data](config-definitions-data-setup-properties-data.md))
 

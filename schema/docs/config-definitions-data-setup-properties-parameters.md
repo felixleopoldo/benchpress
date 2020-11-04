@@ -1,7 +1,7 @@
 # Parameters Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id
 ```
 
 Parameters ID.
@@ -11,7 +11,7 @@ Parameters ID.
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## parameters Type
+## parameters_id Type
 
 merged type ([Parameters](config-definitions-data-setup-properties-parameters.md))
 

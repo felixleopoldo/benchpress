@@ -1,16 +1,16 @@
-# Data Schema
+# HC instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/hc
 ```
 
-Data sampling method ID.
+HC instatiations
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## hc Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+`object[]` ([HC algorithm (parameter setting)](config-definitions-hc-algorithm-parameter-setting.md))

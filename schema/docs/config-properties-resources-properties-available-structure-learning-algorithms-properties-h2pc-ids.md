@@ -1,16 +1,16 @@
-# Data Schema
+# H2PC id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/h2pc
 ```
 
-Data sampling method ID.
+H2PC instatiations
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## h2pc Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+`object[]` ([H2PC algorithm](config-definitions-h2pc-algorithm.md))

@@ -17,29 +17,54 @@ Description of the benchmarking setup.
 
 # Benchmark setup Properties
 
-| Property                                                        | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                |
-| :-------------------------------------------------------------- | ------------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [structure_learning_algorithms](#structure_learning_algorithms) | `array`       | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/structure_learning_algorithms") |
-| [data](#data)                                                   | `array`       | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-data-setup.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/data")                                             |
-| [evaluation](#evaluation)                                       | Not specified | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-evaluation-methods.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/evaluation")                               |
+| Property                        | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                                                |
+| :------------------------------ | ------------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [output_dir](#output_dir)       | `string`      | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-output-directory.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/output_dir")                 |
+| [algorithm_ids](#algorithm_ids) | `array`       | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/algorithm_ids") |
+| [data](#data)                   | `array`       | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-data-setup.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/data")                             |
+| [evaluation](#evaluation)       | Not specified | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-evaluation-methods.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/evaluation")               |
 
-## structure_learning_algorithms
+## output_dir
+
+Directory for the generated files.
+
+
+`output_dir`
+
+-   is required
+-   Type: `string` ([Output directory](config-properties-benchmark-setup-properties-output-directory.md))
+-   cannot be null
+-   defined in: [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-output-directory.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/output_dir")
+
+### output_dir Type
+
+`string` ([Output directory](config-properties-benchmark-setup-properties-output-directory.md))
+
+### output_dir Constraints
+
+**enum**: the value of this property must be equal to one of the following values:
+
+| Value     | Explanation |
+| :-------- | ----------- |
+| `"files"` |             |
+
+## algorithm_ids
 
 A list of id's for structure learning algorithm instantiations.
 
 
-`structure_learning_algorithms`
+`algorithm_ids`
 
 -   is required
 -   Type: `array` ([Structure learning algorithms](config-properties-benchmark-setup-properties-structure-learning-algorithms.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/structure_learning_algorithms")
+-   defined in: [JSON schema for BenchPress config file.](config-properties-benchmark-setup-properties-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup/properties/algorithm_ids")
 
-### structure_learning_algorithms Type
+### algorithm_ids Type
 
 `array` ([Structure learning algorithms](config-properties-benchmark-setup-properties-structure-learning-algorithms.md))
 
-### structure_learning_algorithms Constraints
+### algorithm_ids Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 

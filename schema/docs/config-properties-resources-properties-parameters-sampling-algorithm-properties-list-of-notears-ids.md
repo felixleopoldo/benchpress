@@ -1,16 +1,20 @@
-# Data Schema
+# List of notears id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling
 ```
 
-Data sampling method ID.
+List of notears id's
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## notears_parameters_sampling Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+unknown\[] ([Notears parameter sampling for Gaissian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md))
+
+## notears_parameters_sampling Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.

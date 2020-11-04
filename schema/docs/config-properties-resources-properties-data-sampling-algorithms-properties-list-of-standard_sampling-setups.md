@@ -1,16 +1,20 @@
-# Data Schema
+# List of standard_sampling setups. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/data/properties/standard_sampling
 ```
 
-Data sampling method ID.
+List of standard_sampling setups.
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## standard_sampling Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+`object[]` ([Standard sampling](config-definitions-standard-sampling.md))
+
+## standard_sampling Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.

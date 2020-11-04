@@ -1,16 +1,16 @@
-# Data Schema
+# GFCI instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gfci
 ```
 
-Data sampling method ID.
+GFCI instatiations
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## gfci Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+`object[]` ([GFCI (parameter setting)](config-definitions-gfci-parameter-setting.md))

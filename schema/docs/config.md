@@ -9,7 +9,7 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                |
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | ------------------------------------------------------------------------- |
-| Can be instantiated | Yes        | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json](../../out/config.schema.json "open original schema") |
+| Can be instantiated | Yes        | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json](../../out/config.schema.json "open original schema") |
 
 ## JSON schema for BenchPress config file. Type
 
@@ -17,30 +17,10 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json
 
 # JSON schema for BenchPress config file. Properties
 
-| Property                                                          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
-| :---------------------------------------------------------------- | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [output_dir](#output_dir)                                         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-output-directory.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/output_dir")                                           |
-| [benchmark_setup](#benchmark_setup)                               | `object` | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup")                                       |
-| [data_sampling_algorithms](#data_sampling_algorithms)             | `object` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-data-sampling-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/data_sampling_algorithms")                     |
-| [graph_sampling_algorithms](#graph_sampling_algorithms)           | `object` | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-graph-sampling-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/graph_sampling_algorithms")                   |
-| [parameters_sampling_algorithms](#parameters_sampling_algorithms) | `object` | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-parameters-sampling-algorithm.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/parameters_sampling_algorithms")          |
-| [structure_learning_algorithms](#structure_learning_algorithms)   | `object` | Required | cannot be null | [JSON schema for BenchPress config file.](config-properties-available-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms") |
-
-## output_dir
-
-Directory for the generated files.
-
-
-`output_dir`
-
--   is required
--   Type: `string` ([Output directory](config-properties-output-directory.md))
--   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-output-directory.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/output_dir")
-
-### output_dir Type
-
-`string` ([Output directory](config-properties-output-directory.md))
+| Property                            | Type          | Required | Nullable       | Defined by                                                                                                                                                                              |
+| :---------------------------------- | ------------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [benchmark_setup](#benchmark_setup) | `object`      | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-benchmark-setup.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup") |
+| [resources](#resources)             | Not specified | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources")             |
 
 ## benchmark_setup
 
@@ -49,7 +29,7 @@ Description of the benchmarking setup.
 
 `benchmark_setup`
 
--   is required
+-   is optional
 -   Type: `object` ([Benchmark setup](config-properties-benchmark-setup.md))
 -   cannot be null
 -   defined in: [JSON schema for BenchPress config file.](config-properties-benchmark-setup.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/benchmark_setup")
@@ -58,69 +38,21 @@ Description of the benchmarking setup.
 
 `object` ([Benchmark setup](config-properties-benchmark-setup.md))
 
-## data_sampling_algorithms
+## resources
 
-Data sampling setup.
+Algorithms and files available for benchmarking.
 
 
-`data_sampling_algorithms`
+`resources`
 
 -   is optional
--   Type: `object` ([Data sampling algorithms](config-properties-data-sampling-algorithms.md))
+-   Type: unknown ([Resources](config-properties-resources.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-data-sampling-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/data_sampling_algorithms")
+-   defined in: [JSON schema for BenchPress config file.](config-properties-resources.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources")
 
-### data_sampling_algorithms Type
+### resources Type
 
-`object` ([Data sampling algorithms](config-properties-data-sampling-algorithms.md))
-
-## graph_sampling_algorithms
-
-The available graph samplings algorithms.
-
-
-`graph_sampling_algorithms`
-
--   is required
--   Type: `object` ([Graph sampling algorithms](config-properties-graph-sampling-algorithms.md))
--   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-graph-sampling-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/graph_sampling_algorithms")
-
-### graph_sampling_algorithms Type
-
-`object` ([Graph sampling algorithms](config-properties-graph-sampling-algorithms.md))
-
-## parameters_sampling_algorithms
-
-The available parameter sampling algorithms
-
-
-`parameters_sampling_algorithms`
-
--   is required
--   Type: `object` ([Parameters sampling algorithm](config-properties-parameters-sampling-algorithm.md))
--   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-parameters-sampling-algorithm.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/parameters_sampling_algorithms")
-
-### parameters_sampling_algorithms Type
-
-`object` ([Parameters sampling algorithm](config-properties-parameters-sampling-algorithm.md))
-
-## structure_learning_algorithms
-
-The available structure learning algorithms
-
-
-`structure_learning_algorithms`
-
--   is required
--   Type: `object` ([Available structure learning algorithms](config-properties-available-structure-learning-algorithms.md))
--   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-available-structure-learning-algorithms.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms")
-
-### structure_learning_algorithms Type
-
-`object` ([Available structure learning algorithms](config-properties-available-structure-learning-algorithms.md))
+unknown ([Resources](config-properties-resources.md))
 
 # JSON schema for BenchPress config file. Definitions
 
@@ -659,42 +591,42 @@ Reference this group by using
 {"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict"}
 ```
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                       |
-| :------------------------ | -------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [graph](#graph)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph")           |
-| [parameters](#parameters) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters") |
-| [data](#data)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data")             |
-| [seed_range](#seed_range) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range") |
+| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :------------------------------ | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [graph_id](#graph_id)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")           |
+| [parameters_id](#parameters_id) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id") |
+| [data_id](#data_id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")             |
+| [seed_range](#seed_range)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range")    |
 
-### graph
+### graph_id
 
 ID of the graph instantiation.
 
 
-`graph`
+`graph_id`
 
 -   is required
 -   Type: `string` ([Graph](config-definitions-data-setup-properties-graph.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")
 
-#### graph Type
+#### graph_id Type
 
 `string` ([Graph](config-definitions-data-setup-properties-graph.md))
 
-### parameters
+### parameters_id
 
 Parameters ID.
 
 
-`parameters`
+`parameters_id`
 
 -   is required
 -   Type: merged type ([Parameters](config-definitions-data-setup-properties-parameters.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id")
 
-#### parameters Type
+#### parameters_id Type
 
 merged type ([Parameters](config-definitions-data-setup-properties-parameters.md))
 
@@ -703,19 +635,19 @@ any of
 -   [Untitled string in JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters-anyof-0.md "check type definition")
 -   [Untitled null in JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters-anyof-1.md "check type definition")
 
-### data
+### data_id
 
 Data sampling method ID.
 
 
-`data`
+`data_id`
 
 -   is required
 -   Type: `string` ([Data](config-definitions-data-setup-properties-data.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")
 
-#### data Type
+#### data_id Type
 
 `string` ([Data](config-definitions-data-setup-properties-data.md))
 

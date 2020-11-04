@@ -1,16 +1,20 @@
-# Data Schema
+# List of bn.fit_network id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bn.fit_networks
 ```
 
-Data sampling method ID.
+List of bn.fit_network id's
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## bn.fit_networks Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+unknown\[] ([Bn.fit network file](config-definitions-bnfit-network-file.md))
+
+## bn.fit_networks Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.

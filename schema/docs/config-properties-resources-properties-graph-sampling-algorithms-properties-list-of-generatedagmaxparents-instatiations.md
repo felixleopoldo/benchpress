@@ -1,16 +1,20 @@
-# Data Schema
+# List of generateDAGMaxParents instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/generateDAGMaxParents
 ```
 
-Data sampling method ID.
+List of generateDAGMaxParents instatiations
 
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                  |
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## data_id Type
+## generateDAGMaxParents Type
 
-`string` ([Data](config-definitions-data-setup-properties-data.md))
+`object[]` ([generateDAGMaxParents](config-definitions-generatedagmaxparents.md))
+
+## generateDAGMaxParents Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
