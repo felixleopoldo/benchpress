@@ -15,4 +15,4 @@ and run the snakemake taget roc with 2 cores and singularity enabled as
 This will produce the plot below
 
 .. image:: _static/ROC.png
-   :width: 600
+   :width: 400
