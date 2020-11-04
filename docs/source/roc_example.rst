@@ -1,12 +1,10 @@
 Simple example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example plots roc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
-The algorithms a ran on fours different types of datasets.
-A sample config file is found in :download:`config.sample.json <../../config.sample.json>` 
+This example is based on the config file is found in :download:`config.sample.json <../../config.sample.json>` 
+This example plots roc curve for some of the available structure learning algorithms.
 
-
-and run the snakemake taget roc with 2 cores and singularity enabled as
+Run the snakemake rule roc with 2 cores by:
 
 .. code-block:: bash
 

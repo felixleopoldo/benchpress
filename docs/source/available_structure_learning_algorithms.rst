@@ -5,7 +5,7 @@ structure_learning_algorithms
 gobnilp
 -------
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gobnilp-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -25,7 +25,7 @@ See `JSON schema <>`_
 blip
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-blip-instantiation.md>`_
 
 
 .. rubric:: Example
@@ -53,7 +53,7 @@ See `JSON schema <>`_
 notears
 -------
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears.md>`_
 
 
 .. rubric:: Example
@@ -74,7 +74,7 @@ See `JSON schema <>`_
 fges
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fast-greedy-equivalent-search-fges.md>`_
 
 
 .. rubric:: Example
@@ -93,7 +93,7 @@ See `JSON schema <>`_
 fci
 ---
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fci.md>`_
 
 
 .. rubric:: Example
@@ -119,7 +119,7 @@ See `JSON schema <>`_
 gfci
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gfci-parameter-setting.md>`_
 
 
 .. rubric:: Example
@@ -146,7 +146,7 @@ See `JSON schema <>`_
 rcfi
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-rfci.md>`_
 
 
 .. rubric:: Example
@@ -172,7 +172,7 @@ See `JSON schema <>`_
 pcalg
 -----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-pc-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -196,7 +196,7 @@ See `JSON schema <>`_
 mmhc
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_
 
 
 .. rubric:: Example
@@ -222,7 +222,7 @@ See `JSON schema <>`_
 h2pc
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-h2pc-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -248,7 +248,7 @@ See `JSON schema <>`_
 interiamb
 ---------
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -272,7 +272,7 @@ See `JSON schema <>`_
 gs
 ---
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -296,7 +296,7 @@ See `JSON schema <>`_
 tabu
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tabu-search-parameter-setting.md>`_
 
 
 .. rubric:: Example
@@ -319,7 +319,7 @@ See `JSON schema <>`_
 h2pc
 ----
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-h2pc-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -345,7 +345,7 @@ See `JSON schema <>`_
 itsearch
 ---------
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-iterative-search-paramter-setting.md>`_
 
 
 .. rubric:: Example
@@ -371,7 +371,7 @@ See `JSON schema <>`_
 order_mcmc
 ----------
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-order-mcmc-paramter-setting--.md>`_
 
 
 .. rubric:: Example

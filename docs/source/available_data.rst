@@ -1,10 +1,14 @@
 data
 =====
 
-fixed
------
+fixed_data
+----------
 
-See `JSON schema <>`_
+Analysing fixed data set in ``.csv`` format.
+The data file should be put in the folder ``files/data/mydatasets``.
+The colomns should be separated by a blank space " ".
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-data-file.md>`_
 
 
 .. rubric:: Example
@@ -20,13 +24,16 @@ See `JSON schema <>`_
         "graph": "asia.csv",
         "source": "scutari"
     }
-    
+
 notears_standard_sampling
 -------------------------
 
-Datatype: continuous
+This samples data from a Gaussian Bayesian network.
+Note that this can only be combined with the parameters from ``notears_standard_sampling`` and graph from ``notears``.
 
-See `JSON schema <>`_
+Documentation: https://github.com/jmoss20/notears
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-linear-gaussian-sampling.md>`_
 
 .. rubric:: Example
 
@@ -46,7 +53,9 @@ See `JSON schema <>`_
 standard_sampling
 -----------------
 
-See `JSON schema <>`_
+Sampling from a discrete Bayesian network.
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
 
 
 .. rubric:: Example

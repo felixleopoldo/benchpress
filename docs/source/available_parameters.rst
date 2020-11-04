@@ -4,6 +4,8 @@ parameters
 generateBinaryBN
 ----------------
 
+Samples parameters for a binary Bayesian network.
+
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
 
 
@@ -21,6 +23,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 bn.fit_networks
 ---------------
 
+Fixed Bayesian network file in ``bn.fit`` format saved in ``.rds`` format.
+
+
+
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-bnfit-network-file.md>`_
 
 .. rubric:: Example
@@ -35,6 +41,12 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 notears_parameters_sampling
 ---------------------------
+
+Samples parameters for a Gaussisan Bayesian network.
+Note that this can only be combined with graph from ``notears``.
+
+Documentation: https://github.com/jmoss20/notears
+
 
 See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 

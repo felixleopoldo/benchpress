@@ -1,9 +1,10 @@
 
-JSON file
+JSON config file
 #########
 
-In this overview, the file :download:`config.sample.json <../../config.sample.json>` is used. The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
-
+This overview is based on the sample config file :download:`config.sample.json <../../config.sample.json>`. 
+The `JSON schema <json-schema.org>`_ for the config file is found here `here <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config.md>`_.
+The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
 The configuration file consists of two main categories ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
 
@@ -15,16 +16,15 @@ The configuration file consists of two main categories ``benchmark_setup`` and `
     Main categories in :download:`config.sample.json <../../config.sample.json>`.
 
 ``resources`` contains the available resources by means of graphs, parameters, data and structure learning algorithms.
-``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by there id´s.
+``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their ``id``.
 
     
 benchmark_setup
 ***************
 
-This defines the benchmark setup in four main categories, see :numref:`benchmark_setup`  
-
+This defines the benchmark setup in four main categories, see :numref:`benchmark_setup`.
 ``output_dir`` is the directory where the output will be stored (can only be files at the moment).
-``structure_learning_algorithms`` is a list of id´s of structure learning algorithms to be analysed.
+``structure_learning_algorithms`` is a list of ``id`` s of structure learning algorithms to be analysed.
 ``data`` is a list of the data simulation setups.
 ``evaluation`` is a list of evaluation metrics (currently only ROC available).
 
@@ -38,25 +38,41 @@ This defines the benchmark setup in four main categories, see :numref:`benchmark
 output_dir
 ==========
 
-This is simply the directory for the files created.
+The directory for the files created.
 
 algorithm_ids
 =============
 
+.. rubric:: Example
+
+.. code-block::
+
+    [
+        "blip",
+        "gobnilp",
+        "mmhc",
+        "fges",
+        "tabu",
+        "hc",
+        "order_mcmc_itmap"
+    ]
+
 data
 ====
 
-graph_id
----------
+.. rubric:: Example
 
-parameters_id
---------------
+.. code-block:: json
 
-data_id
---------
-
-seed_range
-----------
+    [{
+        "graph_id": "generateDAGMaxParents",
+        "parameters_id": "generateBinaryBN",
+        "data_id": "standard_sampling",
+        "seed_range": [
+            1,
+            10
+        ]
+    }]
 
 
 evaluation
@@ -67,7 +83,7 @@ ROC
 
 List of algorithm to be included in roc curve estimation.
 
-See `JSON schema <>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
 
 .. rubric:: Example
 
@@ -110,8 +126,8 @@ resources
 *********
 
 
-The first catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``.
-contains the available algorithms for models, data, and structure learning 
+The first catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
+contains the available algorithms for models, data, and structure learning algorihtms.
 
 
 .. _resources:

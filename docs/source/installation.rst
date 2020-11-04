@@ -12,8 +12,8 @@ Requirements
 
 .. note:: 
 
-    On some systems, you might also have to explicitly install squash-tools in order to run Docker with singularity. 
-    squash-tools can be done using conda as
+    Some systems require explicit installation of squash-tools in order to run docker with singularity. 
+    This can be done using conda by
     
         $ conda install -c conda-forge squash-tools
 
