@@ -1,11 +1,9 @@
 
-JSON file overview
-#############################
+
 
 In this overview, the file :download:`config.sample.json <../../config.sample.json>` is used. The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
-Overview
-********
+
 The configuration file consists of two main categories ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
 
 
@@ -36,6 +34,77 @@ This defines the benchmark setup in four main categories, see :numref:`benchmark
     Expanded ``benchmark_setup`` in :download:`config.sample.json <../../config.sample.json>`. 
 
 
+output_dir
+==========
+
+This is simply the directory for the files created.
+
+algorithm_ids
+=============
+
+data
+====
+
+graph_id
+---------
+
+parameters_id
+--------------
+
+data_id
+--------
+
+seed_range
+----------
+
+
+evaluation
+==========
+
+ROC
+---
+
+List of algorithm to be included in roc curve estimation.
+
+See `JSON schema <>`_
+
+.. rubric:: Example
+
+.. code-block:: json
+
+    [
+        {
+            "structure_learning_algorithm": "blip",
+            "curve_variable": "max_time"
+        },
+        {
+            "structure_learning_algorithm": "order_mcmc",
+            "curve_variable": "threshold"
+        },
+        {
+            "structure_learning_algorithm": "gobnilp",
+            "curve_variable": "palim"
+        },
+        {
+            "structure_learning_algorithm": "fges",
+            "curve_variable": "faithfulnessAssumed"
+        },
+        {
+            "structure_learning_algorithm": "tabu",
+            "curve_variable": "beta"
+        },
+        {
+            "structure_learning_algorithm": "hc",
+            "curve_variable": "restart"
+        },
+        {
+            "structure_learning_algorithm": "mmhc",
+            "curve_variable": "alpha"
+        }
+    ]
+
+
+
 resources
 *********
 
@@ -62,3 +131,8 @@ contains the available algorithms for models, data, and structure learning
 
 
     Each algorithm has a unique id in its own category.
+
+.. include:: available_graphs.rst
+.. include:: available_parameters.rst
+.. include:: available_data.rst
+.. include:: available_structure_learning_algorithms.rst

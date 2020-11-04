@@ -1,5 +1,6 @@
 Simple ROC curve example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 This example plots roc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.
 The algorithms a ran on fours different types of datasets.
 A sample config file is found in :download:`config.sample.json <../../config.sample.json>` 

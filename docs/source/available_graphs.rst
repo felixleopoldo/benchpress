@@ -1,9 +1,9 @@
-Available graph sources
-#######################################
+graph
+========================
 
 
 generateDAGMaxParents
-*********************
+----------------------
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
 
@@ -21,7 +21,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 
 fixed_adjmats
-****************
+-------------
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fixed-adjacenty-matrix-of-a-graph.md>`_
 
@@ -41,7 +41,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     
 
 notears
-*******
+-------
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-dag-sampling.md>`_
 

@@ -7,7 +7,7 @@
 .. toctree::
     :hidden:
     :glob:
-    :maxdepth: 2
+    :maxdepth: 3
     :name: Installation
     :caption: Installation
 
@@ -17,17 +17,12 @@
 
 .. toctree::
     :hidden:
-    :maxdepth: 2
+    :maxdepth: 3
     :name: Configuration
-    :caption: Configuration
+    :caption: JSON documentation
     
     json_overview
-    available_graphs
-    available_parameters
-    available_data
-    available_structure_learning_algorithms
-
-
+    
 ##################################
 Benchpress's documentation
 ##################################

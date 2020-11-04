@@ -14,3 +14,6 @@ files/*.eps
 files/bn/generateBinaryBN
 files/adjmat/generateDAGMaxParents
 docs/build
+.DS_Store
+.R*
+docs/source/_build

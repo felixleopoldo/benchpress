@@ -1,9 +1,9 @@
 structure_learning_algorithms
-#############################
+==============================
 
 
 gobnilp
-*******
+-------
 
 See `JSON schema <>`_
 
@@ -23,7 +23,7 @@ See `JSON schema <>`_
     }
 
 blip
-****
+----
 
 See `JSON schema <>`_
 
@@ -51,7 +51,7 @@ See `JSON schema <>`_
     }
 
 notears
-*******
+-------
 
 See `JSON schema <>`_
 
@@ -72,7 +72,7 @@ See `JSON schema <>`_
     }
 
 fges
-****
+----
 
 See `JSON schema <>`_
 
@@ -91,7 +91,7 @@ See `JSON schema <>`_
     }
 
 fci
-***
+---
 
 See `JSON schema <>`_
 
@@ -117,7 +117,7 @@ See `JSON schema <>`_
     }
 
 gfci
-****
+----
 
 See `JSON schema <>`_
 
@@ -144,7 +144,7 @@ See `JSON schema <>`_
     }
 
 rcfi
-****
+----
 
 See `JSON schema <>`_
 
@@ -170,7 +170,7 @@ See `JSON schema <>`_
     }
 
 pcalg
-*****
+-----
 
 See `JSON schema <>`_
 
@@ -194,7 +194,7 @@ See `JSON schema <>`_
     }
 
 mmhc
-****
+----
 
 See `JSON schema <>`_
 
@@ -220,7 +220,7 @@ See `JSON schema <>`_
     }
 
 h2pc
-****
+----
 
 See `JSON schema <>`_
 
@@ -246,7 +246,7 @@ See `JSON schema <>`_
     }
 
 interiamb
-*********
+---------
 
 See `JSON schema <>`_
 
@@ -270,7 +270,7 @@ See `JSON schema <>`_
     }
 
 gs
-***
+---
 
 See `JSON schema <>`_
 
@@ -294,7 +294,7 @@ See `JSON schema <>`_
     }
 
 tabu
-****
+----
 
 See `JSON schema <>`_
 
@@ -317,7 +317,7 @@ See `JSON schema <>`_
     }
 
 h2pc
-****
+----
 
 See `JSON schema <>`_
 
@@ -343,7 +343,7 @@ See `JSON schema <>`_
     }
 
 itsearch
-*********
+---------
 
 See `JSON schema <>`_
 
@@ -369,7 +369,7 @@ See `JSON schema <>`_
     }
 
 order_mcmc
-**********
+----------
 
 See `JSON schema <>`_
 

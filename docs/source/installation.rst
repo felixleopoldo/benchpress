@@ -3,7 +3,7 @@ Getting started
 
 
 Requirements
-^^^^^^^^^^^^
+************
 
 * `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ (`installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_)
 * `Docker <https://www.docker.com/>`_ (`installation instructions <https://docs.docker.com/engine/install/>`_)
@@ -18,7 +18,9 @@ Requirements
         $ conda install -c conda-forge squash-tools
 
 Cloning the repository
-^^^^^^^^^^^^^^^^^^^^^^
+**********************
+
+
 .. code-block:: bash
 
     $ git clone git@github.com:felixleopoldo/benchpress.git && cd benchpress

@@ -1,8 +1,8 @@
-parameters_sampling_algorithms
-##############################
+parameters
+==============================
 
 generateBinaryBN
-****************
+----------------
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
 
@@ -19,7 +19,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 
 bn.fit_networks
-***************
+---------------
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-bnfit-network-file.md>`_
 
@@ -34,7 +34,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 notears_parameters_sampling
-***************************
+---------------------------
 
 See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
