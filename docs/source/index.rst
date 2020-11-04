@@ -19,7 +19,7 @@
     :hidden:
     :maxdepth: 3
     :name: Configuration
-    :caption: JSON documentation
+    :caption: Documentation
     
     json_overview
     

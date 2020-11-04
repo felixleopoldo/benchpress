@@ -1,4 +1,4 @@
-Simple ROC curve example
+Simple example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example plots roc curves for some of the available structure learning algorithms is pre-configured in config.sample.json.

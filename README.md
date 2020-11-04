@@ -3,20 +3,24 @@
 # ${1:Systematic benchmarks of structure learning algorithms for graphical models}
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+
 
 #  
 # Benchpress
 
 ![Benchpress](figures/benchpress.jpg)
 
-Systematic benchmarks of structure learning algorithms for graphical models.
+A [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow benchmarks of structure learning algorithms for graphical models.
 The documentation is found here https://benchpressx.readthedocs.io.
 
 ## Reqirements
-- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([instructions for installation](https://docs.docker.com/engine/install/))
-- [Docker](https://www.docker.com/) ([instructions for installation](https://docs.docker.com/engine/install/))
-- [Singularity](https://sylabs.io/guides/3.6/admin-guide/installation.html) ([instructrions for installation](https://sylabs.io/guides/3.6/admin-guide/installation.html))
-- Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough for this purpose)
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://docs.docker.com/engine/install/))
+- [Docker](https://www.docker.com/) ([installation instructions](https://docs.docker.com/engine/install/))
+- [Singularity](https://sylabs.io/guides/3.6/admin-guide/installation.html) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
+- Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
 ## Installation
 
 ### Cloning the repository

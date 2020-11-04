@@ -1,5 +1,6 @@
 
-
+JSON file
+#########
 
 In this overview, the file :download:`config.sample.json <../../config.sample.json>` is used. The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
