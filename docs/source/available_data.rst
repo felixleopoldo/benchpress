@@ -25,8 +25,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "source": "scutari"
     }
 
-notears_standard_sampling
--------------------------
+notears_linear_gaussian_sampling
+--------------------------------
 
 This samples data from a Gaussian Bayesian network.
 Note that this can only be combined with the parameters from ``notears_standard_sampling`` and graph from ``notears``.
