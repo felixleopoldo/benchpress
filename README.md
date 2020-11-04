@@ -38,10 +38,11 @@ To run the simulation setup in config.json type
 
 `$ snakemake roc --cores 20 --use-singularity --configfile config.sample.json`
 
-A roc curve defined by config.sample.json is found in the file files/ROC.eps and can be viewed with e.g. evince as
+A roc curve defined by [config.sample.json](config.sample.json) is found in the file [files/ROC.eps](files/ROC.eps) and can be viewed with e.g. evince as
 
 `$ evince files/ROC.eps`
 
+![ROC](files/roc.png)
 
 ## Contributing
 
