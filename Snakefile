@@ -16,7 +16,7 @@ for arg in args:
 
 
 configfile: 
-    "config.json"
+    configfilename
 
 snakemake.utils.validate(config, 'schema/config.schema.json')
 
@@ -464,7 +464,7 @@ def gen_model_strings_from_conf(models, seed, setup):
     pass
 
 def gen_adjmat_string_from_conf(adjmat_id, seed):
-    with open('config.json') as json_file:
+    with open(configfilename) as json_file:
         conf = json.load(json_file)
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
@@ -504,7 +504,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return None
 
 def gen_parameter_string_from_conf(gen_method_id, seed):
-    with open('config.json') as json_file:
+    with open(configfilename) as json_file:
         conf = json.load(json_file)
 
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
@@ -562,7 +562,7 @@ def gen_data_string_from_conf(data_id, seed):
                         seed = seed)
 
 def active_algorithm_files(wildcards):
-    with open('config.json') as json_file:
+    with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = []
 
