@@ -6,21 +6,19 @@ source("lib/code_for_binary_simulations/summarySE.R")
 
 p <- arg_parser("A program for combining roc data from differents sources.")
 p <- add_argument(p, "--filename", help = "Filename")
+p <- add_argument(p, "--config_filename", help = "Filename config file")
+p <- add_argument(p, "--algorithms", help = "Algorithms", nargs=Inf)
+
 argv <- parse_args(p)
 
-config <- fromJSON(file = argv$filename)
+config <- fromJSON(file = argv$config_filename)
 
 toplot <- data.frame()
-active_algorithms <- c()
 
-for(alg_name in names(config$resources$structure_learning_algorithms)) {
-    for (alg_conf in config$resources$structure_learning_algorithms[[alg_name]]) {
-       if(alg_conf$id %in% config$benchmark_setup$algorithm_ids) {
-           active_algorithms <- c(active_algorithms, alg_name)
-       }
-    }
+active_algorithms <- c()
+for (file in argv$algorithms){
+    active_algorithms <- c(active_algorithms, tools::file_path_sans_ext(basename(file)))
 }
-active_algorithms <- unique(active_algorithms)
 
 rocalgs <- config$benchmark_setup$evaluation$ROC
 
@@ -44,5 +42,5 @@ for (alg in rocalgs){
     }
 }
 
-write.csv(toplot,  file.path(config$benchmark_setup$output_dir, "ROC_data.csv"))
+write.csv(toplot,  argv$filename)
 

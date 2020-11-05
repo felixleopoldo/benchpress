@@ -17,7 +17,7 @@
                 "data_id": "standard_sampling",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             }
         ],

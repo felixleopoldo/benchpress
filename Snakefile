@@ -2098,16 +2098,25 @@ rule join_summaries_trilearn_loglin:
     shell:
         join_summaries_shell("trilearn_loglin")
 
+rule roc_data:
+    input:
+        conf=configfilename,
+        snake="Snakefile",
+        algs=active_algorithm_files
+    output:
+        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv"
+    shell:
+        "Rscript scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} " \
+
 rule roc:
     input:
-        configfilename,        
-        active_algorithm_files
+        configfilename,
+        "Snakefile",
+        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
     output:
-        eps=ancient(config["benchmark_setup"]["output_dir"] + "/ROC.eps"), \
-        csv=ancient(config["benchmark_setup"]["output_dir"] + "/ROC_data.csv") 
+        eps=config["benchmark_setup"]["output_dir"] + "/ROC.eps"
     shell:
-        "Rscript scripts/combine_ROC_data.R --filename "  + configfilename + " " \
-        "&& Rscript scripts/plot_ROC.R --input_filename {output.csv} --output_filename {output.eps}"
+        "Rscript scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
 
 # rule adjmat_plot:
 #     input:
