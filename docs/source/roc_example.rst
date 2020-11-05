@@ -16,10 +16,7 @@ Run the snakemake rule roc with 2 cores by:
 
     $ snakemake roc --cores 2 --use-singularity --configfile config.sample.json
 
-This will produce the plot below
-
-.. image:: _static/ROC.png
-   :width: 400
+This will produce the plot below 
 
 
 .. code-block:: json
@@ -30,6 +27,9 @@ This will produce the plot below
         "data_id": "standard_sampling",
         "seed_range": [1, 10]
     }
+
+.. image:: _static/ROC.png
+   :width: 400
 
 
 Fixed graph
@@ -44,13 +44,13 @@ Fixed graph
         "seed_range": [1, 10]
     }
 
-
-
 .. figure:: _static/ROC2.png
    :width: 400
 
 Fixed graph and parameters
-*****************************************
+***************************************
+
+
 
 
 .. code-block:: json
@@ -61,9 +61,15 @@ Fixed graph and parameters
         "data_id": "standard_sampling2000",
         "seed_range": [1, 10]
     }
+    
+.. figure:: _static/ROC3.png
+    :width: 400
+
 
 Fixed graph and data
 ************************************
+
+
 
 .. code-block:: json
 
