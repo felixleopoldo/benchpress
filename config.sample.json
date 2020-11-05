@@ -12,12 +12,12 @@
         ],
         "data": [
             {
-                "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "standard_sampling2000",
+                "graph_id": "generateDAGMaxParents",
+                "parameters_id": "generateBinaryBN",
+                "data_id": "standard_sampling",
                 "seed_range": [
                     1,
-                    1
+                    10
                 ]
             }
         ],
