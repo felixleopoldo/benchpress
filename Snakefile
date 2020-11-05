@@ -16,7 +16,7 @@ for arg in args:
 
 
 configfile: 
-    configfilename
+        configfilename
 
 snakemake.utils.validate(config, 'schema/config.schema.json')
 
@@ -2100,12 +2100,11 @@ rule join_summaries_trilearn_loglin:
 
 rule roc:
     input:
-        configfilename,
-        "Snakefile",
+        configfilename,        
         active_algorithm_files
     output:
-        eps=config["benchmark_setup"]["output_dir"] + "/ROC.eps", \
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
+        eps=ancient(config["benchmark_setup"]["output_dir"] + "/ROC.eps"), \
+        csv=ancient(config["benchmark_setup"]["output_dir"] + "/ROC_data.csv") 
     shell:
         "Rscript scripts/combine_ROC_data.R --filename "  + configfilename + " " \
         "&& Rscript scripts/plot_ROC.R --input_filename {output.csv} --output_filename {output.eps}"
