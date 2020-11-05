@@ -1529,7 +1529,7 @@ rule summarise_greenthomas:
        
 rule join_summaries_greenthomas:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("greenthomas")
     output:
         join_summaries_output("greenthomas")
@@ -1562,7 +1562,7 @@ rule summarise_tabu:
        
 rule join_summaries_tabu:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("tabu")
     output:
         join_summaries_output("tabu")
@@ -1597,7 +1597,7 @@ rule summarise_notears:
        
 rule join_summaries_notears:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("notears")
     output:
         join_summaries_output("notears")
@@ -1630,7 +1630,7 @@ rule summarise_h2pc:
        
 rule join_summaries_h2pc:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("h2pc")
     output:
         join_summaries_output("h2pc")
@@ -1663,7 +1663,7 @@ rule summarise_hc:
        
 rule join_summaries_hc:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("hc")
     output:
         join_summaries_output("hc")
@@ -1696,7 +1696,7 @@ rule summarise_interiamb:
        
 rule join_summaries_interiamb:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("interiamb")
     output:
         join_summaries_output("interiamb")
@@ -1729,7 +1729,7 @@ rule summarise_gs:
        
 rule join_summaries_gs:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("gs")
     output:
         join_summaries_output("gs")
@@ -1762,7 +1762,7 @@ rule summarise_blip:
 
 rule join_summaries_blip:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("blip")
     output:
         join_summaries_output("blip")
@@ -1795,7 +1795,7 @@ rule summarise_itsearch:
 
 rule join_summaries_itsearch:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("itsearch")
     output:
         join_summaries_output("itsearch")
@@ -1828,7 +1828,7 @@ rule summarise_pcalg:
 
 rule join_summaries_pcalg:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("pcalg")
     output:
         join_summaries_output("pcalg")
@@ -1859,7 +1859,7 @@ rule summarise_mmhc:
 
 rule join_summaries_mmhc:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("mmhc")
     output:
         join_summaries_output("mmhc")  
@@ -1890,7 +1890,7 @@ rule summarise_gobnilp:
 
 rule join_summaries_gobnilp:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("gobnilp")
     output:
         join_summaries_output("gobnilp")
@@ -1922,7 +1922,7 @@ rule summarise_fges:
 
 rule join_summaries_fges:
     input:
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("fges")
     output:
         join_summaries_output("fges")
@@ -1955,7 +1955,7 @@ rule summarise_fci:
 
 rule join_summaries_fci:
     input: # This could be a funciton since no pattern mathing is going on here
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("fci")
     output:
         join_summaries_output("fci")
@@ -1987,7 +1987,7 @@ rule summarise_gfci:
 
 rule join_summaries_gfci:
     input: # This could be a funciton since no pattern mathing is going on here
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("gfci")
     output:
         join_summaries_output("gfci")
@@ -2019,7 +2019,7 @@ rule summarise_rfci:
 
 rule join_summaries_rfci:
     input: # This could be a funciton since no pattern mathing is going on here
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model("rfci")
     output:
         join_summaries_output("rfci")
@@ -2054,7 +2054,7 @@ rule summarise_order_mcmc:
 
 rule join_summaries_order_mcmc:
     input: 
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model_mcmc("order_mcmc")
     output:
         join_summaries_output("order_mcmc")
@@ -2089,7 +2089,7 @@ rule summarise_trilearn_loglin:
 
 rule join_summaries_trilearn_loglin:
     input: 
-        conf="config.json",
+        conf=configfilename,
         res=join_string_sampled_model_mcmc("trilearn_loglin")
     output:
         join_summaries_output("trilearn_loglin")
@@ -2100,7 +2100,7 @@ rule join_summaries_trilearn_loglin:
 
 rule roc:
     input:
-        "config.json",
+        configfilename,
         "Snakefile",
         active_algorithm_files
     output:
@@ -2112,7 +2112,7 @@ rule roc:
 
 # rule adjmat_plot:
 #     input:
-#         "config.json",
+#         configfilename,
 #         itsearch=adjmat_plots("itsearch"),
         #gobnilp=adjmat_plots("gobnilp", seed)
 #    output:
