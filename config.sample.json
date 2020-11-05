@@ -12,13 +12,10 @@
         ],
         "data": [
             {
-                "graph_id": "generateDAGMaxParents",
-                "parameters_id": "generateBinaryBN",
-                "data_id": "standard_sampling",
-                "seed_range": [
-                    1,
-                    10
-                ]
+                "graph_id": "hepar2.csv",
+                "parameters_id": null,
+                "data_id": "myhepar2data2000.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
@@ -90,10 +87,10 @@
                     "source": "scutari"
                 },
                 {
-                    "id": "myhepar2data.csv",
+                    "id": "myhepar2data2000.csv",
                     "datatype": "categorical",
-                    "samples": 1000,
-                    "filename": "myhepar2data.csv",
+                    "samples": 2000,
+                    "filename": "myhepar2data2000.csv",
                     "graph": "hepar2.csv",
                     "source": "scutari"
                 }
