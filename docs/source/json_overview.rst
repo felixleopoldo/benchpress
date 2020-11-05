@@ -78,8 +78,17 @@ data
 evaluation
 ==========
 
+.. _rocdef:
+
 ROC
 ---
+
+
+
+.. math::
+
+    TPR(\theta) := \frac{TP}{FP} 
+
 
 List of algorithm to be included in roc curve estimation.
 

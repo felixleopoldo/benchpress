@@ -8,8 +8,8 @@
     :hidden:
     :glob:
     :maxdepth: 3
-    :name: Installation
-    :caption: Installation
+    :name: Getting started
+    :caption: Getting started
 
     installation
     
@@ -19,7 +19,7 @@
     :hidden:
     :maxdepth: 3
     :name: Configuration
-    :caption: Documentation
+    :caption: Configuration
     
     json_overview
     
