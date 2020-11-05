@@ -38,11 +38,16 @@ Fixed graph
 .. code-block:: json
     
     {
-        "graph_id": "asia.csv",
+        "graph_id": "hepar2.csv",
         "parameters_id": "generateBinaryBN" ,
         "data_id": "standard_sampling",
         "seed_range": [1, 10]
     }
+
+
+
+.. figure:: _static/ROC2.png
+   :width: 400
 
 Fixed graph and parameters
 *****************************************
