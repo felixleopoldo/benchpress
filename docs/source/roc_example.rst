@@ -79,3 +79,6 @@ Fixed graph and data
         "data_id": "myasiandata.csv",
         "seed_range": null
     }
+
+.. figure:: _static/ROC4.png
+    :width: 400

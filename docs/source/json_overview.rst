@@ -1,6 +1,6 @@
 
 JSON config file
-#########
+##################
 
 This overview is based on the sample config file :download:`config.sample.json <../../config.sample.json>`. 
 The `JSON schema <json-schema.org>`_ for the config file is found here `here <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config.md>`_.
