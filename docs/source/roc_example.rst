@@ -74,9 +74,9 @@ Fixed graph and data
 .. code-block:: json
 
     {
-        "graph_id": "asia.csv",
+        "graph_id": "hepar2.csv",
         "parameters_id": null,
-        "data_id": "myasiandata.csv",
+        "data_id": "hepar2data2000.csv",
         "seed_range": null
     }
 
