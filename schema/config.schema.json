@@ -85,15 +85,6 @@
                                 "$ref": "#/definitions/notears_linear_gaussian_sampling"
                             },
                             "uniqueItems": true
-                        },
-                        "fixed_data": {
-                            "title": "List of fixed_data id's",
-                            "description": "List of fixed_data id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/fixed_data"
-                            },
-                            "uniqueItems": true
                         }
                     },
                     "additionalProperties": false
@@ -119,15 +110,6 @@
                                 "$ref": "#/definitions/notears_dag_sampling"
                             },
                             "uniqueItems": true
-                        },
-                        "fixed_adjmats": {
-                            "title": "List of fixed adjmat id's",
-                            "description": "List of fixed adjmat id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/fixed_adjmats"
-                            },
-                            "uniqueItems": true
                         }
                     },
                     "additionalProperties": false
@@ -142,15 +124,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/generateBinaryBN"
-                            },
-                            "uniqueItems": true
-                        },
-                        "bn.fit_networks": {
-                            "title": "List of bn.fit_network id's",
-                            "description": "List of bn.fit_network id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/bn.fit_networks"
                             },
                             "uniqueItems": true
                         },

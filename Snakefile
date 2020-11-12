@@ -42,27 +42,25 @@ def validate_data_setup(config, dict):
     for alg, alg_conf_avail in config["resources"]["graph"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
+    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/adjmat/myadjmats")
 
-    if not ((dict["graph_id"] in available_conf_ids) or Path("files/adjmat/myadjmats/"+dict["graph_id"]).is_file()):
-        
+
+    if not dict["graph_id"] in available_conf_ids:
         raise Exception(dict["graph_id"] + 
                         " is not an available graph id. "
                         "The available graph id´s are: " + str(available_conf_ids))
+  
 
-    
-#    if not Path("files/adjmat/myadjmats/"+dict["graph_id"]).is_file():
-#        raise Exception(dict["graph"] + 
-#                        " is not an available graph id. "
-#                        "The available graph id´s are: " + str(available_conf_ids))
-    
+    available_data_files = os.listdir(config["benchmark_setup"]["output_dir"] + "/data/mydatasets")
     # Check that parameters exists
     available_conf_ids = []
     for alg, alg_conf_avail in config["resources"]["parameters"].items():
         for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])   
+            available_conf_ids.append(alg_conf["id"])
+    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/bn/bn.fit_networks")
 
     
-    if dict["data_id"] not in [dataconf["id"] for dataconf in config["resources"]["data"]["fixed_data"]] and dict["parameters_id"] not in available_conf_ids:
+    if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:
         raise Exception(dict["parameters_id"] + 
                         " is not an available parameter id. "
                         "The available paremeter id´s are: " + str(available_conf_ids))
@@ -71,7 +69,8 @@ def validate_data_setup(config, dict):
     available_conf_ids = []
     for alg, alg_conf_avail in config["resources"]["data"].items():
         for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])   
+            available_conf_ids.append(alg_conf["id"])
+    available_conf_ids += available_data_files
 
     if dict["data_id"] not in available_conf_ids:
         raise Exception(dict["data_id"] + 
@@ -267,8 +266,13 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         max=curconf["max"],
                         seed=seed)
 
-    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bn.fit_networks"]]:
-        return "bn.fit_networks/"+gen_method_id
+    #elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bn.fit_networks"]]:
+    #    return "bn.fit_networks/"+gen_method_id
+
+    elif Path("files/bn/bn.fit_networks/"+gen_method_id).is_file():
+        #filename_no_ext = os.path.splitext(os.path.basename(gen_method_id))[0]
+        return  "bn.fit_networks/" + gen_method_id # this could be hepar2 e.g.
+
 
     elif gen_method_id == "notears":
         curconf = next(item for item in config["resources"]["parameters"]["notears"] if item["id"] == gen_method_id)
@@ -284,14 +288,23 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return None
 
 def gen_data_string_from_conf(data_id, seed):
-    if data_id in [c["id"] for c in config["resources"]["data"]["fixed_data"]]:
-        data = next(item for item in config["resources"]["data"]["fixed_data"] if item["id"] == data_id)        
+
+    if Path("files/data/mydatasets/"+data_id).is_file():
         return "fixed" + \
-                "/name="+data["filename"] + \
-                "/n="+str(data["samples"]) + \ 
-                "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
+            "/filename="+data_id + \
+            "/n="+str(None) + \ 
+            "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
+
+    # if data_id in [c["id"] for c in config["resources"]["data"]["fixed_data"]]:
+    #     # Find the data entry from the resources
+    #     data = next(item for item in config["resources"]["data"]["fixed_data"] if item["id"] == data_id)        
+    #     return "fixed" + \
+    #             "/filename="+data["filename"] + \
+    #             "/n="+str(data["samples"]) + \ 
+    #             "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
+        # Find the data entry from the resources
         data = next(item for item in config["resources"]["data"]["standard_sampling"] if item["id"] == data_id)
         return expand("standard_sampling" +\
                         "/n={n}" + \
@@ -563,9 +576,9 @@ rule copy_fixed_data:
     input:
         "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/fixed/name={filename}/n={n}/seed={replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
     shell:\
-        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/name={wildcards.filename}/n={wildcards.n} && "\
+        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
         "cp {input} {output.data}"
 
 rule sample_bnfit_data:

@@ -13,7 +13,7 @@
         "data": [
             {
                 "graph_id": "hepar2.csv",
-                "parameters_id": null,
+                "parameters_id": "null",
                 "data_id": "myhepar2data2000.csv",
                 "seed_range": null
             }
@@ -76,24 +76,6 @@
                     "mean": 0,
                     "variance": 1
                 }
-            ],
-            "fixed_data": [
-                {
-                    "id": "myasiandata.csv",
-                    "datatype": "binary",
-                    "samples": 100,
-                    "filename": "myasiandata.csv",
-                    "graph": "asia.csv",
-                    "source": "scutari"
-                },
-                {
-                    "id": "myhepar2data2000.csv",
-                    "datatype": "categorical",
-                    "samples": 2000,
-                    "filename": "myhepar2data2000.csv",
-                    "graph": "hepar2.csv",
-                    "source": "scutari"
-                }
             ]
         },
         "graph": {
@@ -114,23 +96,6 @@
                         80
                     ]
                 }
-            ],
-            "fixed_adjmats": [
-                {
-                    "id": "asia.csv",
-                    "filename": "asia.csv",
-                    "source": "http://bnlearn.com/bnrepository/discrete-large.html#asia"
-                },
-                {
-                    "id": "myasia.csv",
-                    "filename": "myasia.csv",
-                    "source": "http://bnlearn.com/bnrepository/discrete-large.html#asia"
-                },
-                {
-                    "id": "hepar2.csv",
-                    "filename": "hepar2.csv",
-                    "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"
-                }
             ]
         },
         "parameters": {
@@ -139,13 +104,6 @@
                     "id": "generateBinaryBN",
                     "min": 0.1,
                     "max": 0.9
-                }
-            ],
-            "bn.fit_networks": [
-                {
-                    "id": "hepar2.rds",
-                    "filename": "hepar2.rds",
-                    "source": "Scutari"
                 }
             ],
             "notears_parameters_sampling": [
