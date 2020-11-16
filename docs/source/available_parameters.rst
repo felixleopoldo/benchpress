@@ -20,25 +20,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-bn.fit_networks
----------------
-
-Fixed Bayesian network file in ``bn.fit`` format saved in ``.rds`` format.
-
-
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-bnfit-network-file.md>`_
-
-.. rubric:: Example
-
-.. code-block:: json
-
-    {
-        "id":"hepar2.rds",
-        "filename": "hepar2.rds",
-        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"          
-    }
-
 notears_parameters_sampling
 ---------------------------
 

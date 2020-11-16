@@ -20,26 +20,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-fixed_adjmats
--------------
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fixed-adjacenty-matrix-of-a-graph.md>`_
-
-
-
-.. rubric:: Example
-
-
-
-.. code-block:: json
-
-    {
-        "id": "hepar2.csv",
-        "filename": "hepar2.csv",
-        "source": "http://bnlearn.com/bnrepository/discrete-large.html#hepar2"
-    }
-    
-
 notears
 -------
 
