@@ -1,29 +1,7 @@
 data
 =====
 
-fixed_data
-----------
 
-Analysing fixed data set in ``.csv`` format.
-The data file should be put in the folder ``files/data/mydatasets``.
-The colomns should be separated by a blank space " ".
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-data-file.md>`_
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    {
-        "id": "myasiandata.csv",
-        "datatype": "binary",
-        "samples": 100,
-        "filename": "myasiandata.csv",
-        "graph": "asia.csv",
-        "source": "scutari"
-    }
 
 notears_linear_gaussian_sampling
 --------------------------------
