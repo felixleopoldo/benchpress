@@ -1,3 +1,11 @@
+
+
+
+def dict_to_path(d):
+    sep = "/"
+    ret = sep.join([key+"={"+key+"}" for key,val in d[0].items()])
+    return ret
+
 pattern_strings = {}
 pattern_strings["greenthomas"] = "greenthomas/alg_params=/" \
                 "n_samples={n_samples}/" \
@@ -37,21 +45,23 @@ pattern_strings["interiamb"] = "interiamb/alg_params=/"\
 pattern_strings["gs"] = "gs/alg_params=/"\
                "alpha={alpha}"
 
-pattern_strings["tabu"] = "tabu/alg_params=/"\
-               "score={score}/"\
-               "iss={iss}/"\
-               "iss.mu={issmu}/"\
-               "l={l}/"\
-               "k={k}/"\
-               "prior={prior}/"\
-               "beta={beta}"\
+pattern_strings["tabu"] = "tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tabu"])
+
+#pattern_strings["tabu"] = "tabu/alg_params=/"\
+ #              "score={score}/"\
+ #              "iss={iss}/"\
+ #              "issmu={issmu}/"\
+ #              "l={l}/"\
+ #              "k={k}/"\
+ #              "prior={prior}/"\
+ #              "beta={beta}"\
 
 pattern_strings["hc"] = "hc/alg_params=/"\
                "perturb={perturb}/"\
                "restart={restart}/"\
                "score={score}/"\
                "iss={iss}/"\
-               "iss.mu={issmu}/"\
+               "issmu={issmu}/"\
                "l={l}/"\
                "k={k}/"\
                "prior={prior}/"\
@@ -94,24 +104,24 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
 
 pattern_strings["fges"] = "fges/alg_params=/"\
                "score={score}/" \
-               "data-type={datatype}/"\
+               "data-type={data-type}/"\
                "faithfulnessAssumed={faithfulnessAssumed}"
 
 pattern_strings["fci"] = "fci/alg_params=/"\
                "test={test}/" \
                "alpha={alpha}/" \
-               "data-type={datatype}"
+               "datatype={datatype}"
 
 pattern_strings["gfci"] = "gfci/alg_params=/"\
                "test={test}/" \
                "alpha={alpha}/" \
                "score={score}/" \
-               "data-type={datatype}"
+               "datatype={datatype}"
 
 pattern_strings["rfci"] = "rfci/alg_params=/"\
                "test={test}/" \
                "alpha={alpha}/" \
-               "data-type={datatype}"
+               "datatype={datatype}"
 
 pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \

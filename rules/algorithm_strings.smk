@@ -1,107 +1,49 @@
 json_string = {}
 
-json_string = {val["id"]: expand(pattern_strings["greenthomas"], 
-                                           n_samples=val["n_samples"],
-                                           randomits=val["randomits"],
-                                           penalty=val["penalty"])
+json_string = {val["id"]: expand(pattern_strings["greenthomas"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["greenthomas"]}
 
-json_string.update({val["id"]: expand(pattern_strings["itsearch"], 
-                                            scoretype=val["optional"]["scoretype"],
-                                            chi=val["optional"]["chi"],
-                                           edgepf=val["optional"]["edgepf"],
-                                           am=val["optional"]["am"],
-                                           aw=val["optional"]["aw"],
-                                           MAP=val["optional"]["MAP"],
-                                           plus1it=val["optional"]["plus1it"],
-                                           posterior=val["optional"]["posterior"]) 
+json_string.update({val["id"]: expand(pattern_strings["itsearch"], **val["optional"])
                     for val in config["resources"]["structure_learning_algorithms"]["itsearch"]})
 
-json_string.update({val["id"]: expand(pattern_strings["fges"], 
-                                           faithfulnessAssumed=val["faithfulnessAssumed"],
-                                           datatype=val["data-type"],
-                                           score=val["score"]) 
+json_string.update({val["id"]: expand(pattern_strings["fges"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["fges"]})
 
-json_string.update({val["id"]: expand(pattern_strings["notears"], 
-                                           min_rate_of_progress=val["min_rate_of_progress"],
-                                           penalty_growth_rate=val["penalty_growth_rate"],
-                                           optimation_accuracy=val["optimation_accuracy"],
-                                           loss=val["loss"],
-                                           loss_grad=val["loss_grad"]
-                                           ) 
+json_string.update({val["id"]: expand(pattern_strings["notears"], **val) 
                     for val in config["resources"]["structure_learning_algorithms"]["notears"]})
 
-
-json_string.update({val["id"]: expand(pattern_strings["fci"], 
-                                           alpha=val["alpha"],
-                                           datatype=val["data-type"],
-                                           test=val["test"]) 
+json_string.update({val["id"]: expand(pattern_strings["fci"], **val) 
                     for val in config["resources"]["structure_learning_algorithms"]["fci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gfci"], 
-                                           alpha=val["alpha"],
-                                           score=val["score"],
-                                           datatype=val["data-type"],
-                                           test=val["test"]) 
+json_string.update({val["id"]: expand(pattern_strings["gfci"], **val) 
                     for val in config["resources"]["structure_learning_algorithms"]["gfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["rfci"], 
-                                           alpha=val["alpha"],
-                                           datatype=val["data-type"],
-                                           test=val["test"]) 
+json_string.update({val["id"]: expand(pattern_strings["rfci"], **val) 
                     for val in config["resources"]["structure_learning_algorithms"]["rfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["pcalg"], 
-                                           alpha=val["alpha"])  
+json_string.update({val["id"]: expand(pattern_strings["pcalg"], **val)  
                     for val in config["resources"]["structure_learning_algorithms"]["pcalg"]})
 
-json_string.update({val["id"]: expand(pattern_strings["mmhc"], 
-                                           alpha=val["restrict.args"]["alpha"])  
+json_string.update({val["id"]: expand(pattern_strings["mmhc"], **val["restrict.args"])
                     for val in config["resources"]["structure_learning_algorithms"]["mmhc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["h2pc"], 
-                                           alpha=val["restrict.args"]["alpha"])  
+json_string.update({val["id"]: expand(pattern_strings["h2pc"], **val["restrict.args"])
                     for val in config["resources"]["structure_learning_algorithms"]["h2pc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["interiamb"], 
-                                           alpha=val["alpha"])  
+json_string.update({val["id"]: expand(pattern_strings["interiamb"], **val)                                        
                     for val in config["resources"]["structure_learning_algorithms"]["interiamb"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gs"], 
-                                           alpha=val["alpha"])  
+json_string.update({val["id"]: expand(pattern_strings["gs"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["gs"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gobnilp"],
-                                                palim=val["palim"],
-                                                alpha=val["alpha"],
-                                                prune=val["prune"]
-                                                )
-                for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})
+json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["tabu"], 
-                                                    score=val["score"],
-                                                    iss=val["iss"],
-                                                    issmu=val["iss.mu"],
-                                                    l=val["l"],
-                                                    k=val["k"],
-                                                    prior=val["prior"],
-                                                    beta=val["beta"]
-                                                    )
-                for val in config["resources"]["structure_learning_algorithms"]["tabu"]})
+json_string.update({val["id"]:  expand(pattern_strings["tabu"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["tabu"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["hc"], 
-                                                    perturb=val["perturb"],
-                                                    restart=val["restart"],
-                                                    score=val["score"],
-                                                    iss=val["iss"],
-                                                    issmu=val["iss.mu"],
-                                                    l=val["l"],
-                                                    k=val["k"],
-                                                    prior=val["prior"],
-                                                    beta=val["beta"]
-                                                    )
-                for val in config["resources"]["structure_learning_algorithms"]["hc"]})
+json_string.update({val["id"]:  expand(pattern_strings["hc"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["hc"]})
 
 json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
                     alpha=val["alpha"],

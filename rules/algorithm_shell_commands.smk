@@ -166,7 +166,7 @@ def alg_shell(algorithm):
 
     elif algorithm ==  "fci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
+                "java -jar scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
                 "--algorithm fci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
@@ -185,7 +185,7 @@ def alg_shell(algorithm):
                 
     elif algorithm ==  "gfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
+                "java -jar scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
                 "--algorithm gfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
@@ -206,7 +206,7 @@ def alg_shell(algorithm):
 
     elif algorithm ==  "rfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "java -jar causal-cmd-1.1.3-jar-with-dependencies.jar " \
+                "java -jar scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
                 "--algorithm rfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\

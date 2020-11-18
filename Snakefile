@@ -3,6 +3,7 @@ from jsonschema import validate
 import snakemake.utils
 import sys, getopt
 
+print(expand("hej {a} och {b}", **{"a":[2,5],"b":3}) )
 
 args = sys.argv
 
@@ -146,6 +147,12 @@ def get_seed_range(seed_range):
 #     return ret
 
 def join_string_sampled_model(algorithm, mode="result"):
+    """ This is the main string for a benchmark.
+
+    TOOD: Should contain evaluation=/{eval_param}
+    where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
+    Create rule for roc
+    """
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
@@ -615,7 +622,7 @@ rule roc:
     shell:
         "Rscript scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
 
-rule roc_essential_graph:
+rule roc_cpdag:
     input:
         configfilename,
         "Snakefile",
@@ -623,7 +630,7 @@ rule roc_essential_graph:
     output:
         eps=config["benchmark_setup"]["output_dir"] + "/ROC_essential_graph.eps"
     shell:
-        "Rscript scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
+        "Rscript scripts/plot_cpdag_roc.R --input_filename {input.csv} --output_filename {output.eps}"
 
 # rule adjmat_plot:
 #     input:
