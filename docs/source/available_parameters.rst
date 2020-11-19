@@ -23,7 +23,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 notears_parameters_sampling
 ---------------------------
 
-Samples parameters for a Gaussisan Bayesian network.
+Samples parameters for a Gaussisn Bayesian network.
 Note that this can only be combined with graph from ``notears``.
 
 Documentation: https://github.com/jmoss20/notears
@@ -37,7 +37,9 @@ See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schem
 .. code-block:: json
 
     {
-        "id":"notears",
-        "edge_coefficient_range_from":0.5,
-        "edge_coefficient_range_to":2
+        "id": "notears",
+        "edge_coefficient_range_from": 0.5,
+        "edge_coefficient_range_to": 2,
+        "mean": 0,
+        "variance": 1.0
     }

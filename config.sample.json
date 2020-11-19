@@ -8,7 +8,7 @@
             {
                 "graph_id": "notears",
                 "parameters_id": "notears",
-                "data_id": "standard_sampling",
+                "data_id": "independent_samples",
                 "seed_range": [1, 2]
             }
         ],
@@ -56,7 +56,7 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "standard_sampling",
+                    "id": "independent_samples",
                     "sample_sizes": [
                         100
                     ]
