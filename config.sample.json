@@ -2,14 +2,14 @@
     "benchmark_setup": {
         "output_dir": "files",
         "algorithm_ids": [
-            "fci", "itsearch_map", "hc", "tabu"
+            "notears"
         ],
         "data": [
             {
-                "graph_id": "hepar2.csv",
-                "parameters_id": "null",
-                "data_id": "myhepar2data2000.csv",
-                "seed_range": null
+                "graph_id": "notears",
+                "parameters_id": "notears",
+                "data_id": "standard_sampling",
+                "seed_range": [1, 2]
             }
         ],
         "evaluation": {
@@ -45,6 +45,9 @@
                 {
                     "structure_learning_algorithm": "fci",
                     "curve_variable": "alpha"
+                },{   
+                    "structure_learning_algorithm": "notears",
+                    "curve_variable": "penalty_growth_rate"
                 }
             ]
         }
@@ -63,16 +66,6 @@
                     "sample_sizes": [
                         2000
                     ]
-                }
-            ],
-            "notears_linear_gaussian_sampling": [
-                {
-                    "id": "standard_linear_gaussian",
-                    "sample_sizes": [
-                        100
-                    ],
-                    "mean": 0,
-                    "variance": 1
                 }
             ]
         },
@@ -108,7 +101,9 @@
                 {
                     "id": "notears",
                     "edge_coefficient_range_from": 0.5,
-                    "edge_coefficient_range_to": 2
+                    "edge_coefficient_range_to": 2,
+                    "mean": 0,
+                    "variance": 1
                 }
             ]
         },

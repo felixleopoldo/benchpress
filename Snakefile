@@ -3,8 +3,6 @@ from jsonschema import validate
 import snakemake.utils
 import sys, getopt
 
-print(expand("hej {a} och {b}", **{"a":[2,5],"b":3}) )
-
 args = sys.argv
 
 configfilename="config.json"
@@ -221,6 +219,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
     
+    print(adjmat_id)
     if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
         return expand("generateDAGMaxParents" + \
@@ -235,16 +234,10 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2 e.g.
 
-    #elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["fixed_adjmats"]]:
-    #    adjmat_dict = next(item for item in config["resources"]["graph"]["fixed_adjmats"] if item["id"] == adjmat_id)
-    #    # This means the id is the conf, and it takes everything in a folder?
-    #    filename_no_ext = os.path.splitext(os.path.basename(adjmat_dict["filename"]))[0]
-    #    return  "myadjmats/" + filename_no_ext # this could be hepar2 e.g.
-
     # Check if file exists instead... maybe in a spefified folder.. No take the same folder..
-    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bn.fit_adjmats"]]:
-        # This means the id is the conf, and it takes everything in a folder?
-        return  "bn.fit_adjmats/" + adjmat_id # this could be hepar2 e.g.
+    #elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bn.fit_adjmats"]]:
+    #    # This means the id is the conf, and it takes everything in a folder?
+    #    return  "bn.fit_adjmats/" + adjmat_id # this could be hepar2 e.g.
 
     elif adjmat_id == "notears":
         adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
@@ -273,22 +266,22 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         max=curconf["max"],
                         seed=seed)
 
-    #elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bn.fit_networks"]]:
-    #    return "bn.fit_networks/"+gen_method_id
-
     elif Path("files/bn/bn.fit_networks/"+gen_method_id).is_file():
         #filename_no_ext = os.path.splitext(os.path.basename(gen_method_id))[0]
         return  "bn.fit_networks/" + gen_method_id # this could be hepar2 e.g.
 
-
     elif gen_method_id == "notears":
-        curconf = next(item for item in config["resources"]["parameters"]["notears"] if item["id"] == gen_method_id)
+        curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
         return expand("notears/" \
                       "edge_coefficient_range_from={edge_coefficient_range_from}/"\
                       "edge_coefficient_range_to={edge_coefficient_range_to}/"\
+                      "mean={mean}/" + \
+                      "variance={variance}/" + \
                       "seed={seed}",
                         edge_coefficient_range_from=curconf["edge_coefficient_range_from"],
                         edge_coefficient_range_to=curconf["edge_coefficient_range_to"],
+                        mean = curconf["mean"],
+                        variance = curconf["variance"],
                         seed=seed)
 
     elif gen_method_id is None:
@@ -301,14 +294,6 @@ def gen_data_string_from_conf(data_id, seed):
             "/filename="+data_id + \
             "/n="+str(None) + \ 
             "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
-
-    # if data_id in [c["id"] for c in config["resources"]["data"]["fixed_data"]]:
-    #     # Find the data entry from the resources
-    #     data = next(item for item in config["resources"]["data"]["fixed_data"] if item["id"] == data_id)        
-    #     return "fixed" + \
-    #             "/filename="+data["filename"] + \
-    #             "/n="+str(data["samples"]) + \ 
-    #             "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
         # Find the data entry from the resources
@@ -323,12 +308,8 @@ def gen_data_string_from_conf(data_id, seed):
         data = next(item for item in config["resources"]["data"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
         return expand("notears_linear_gaussian_sampling" +\
                         "/n={n}" + \
-                        "/mean={mean}" + \
-                        "/variance={variance}" + \
                         "/seed={seed}", 
                         n = data["sample_sizes"],
-                        mean = data["mean"],
-                        variance = data["variance"],
                         seed = seed)
 
 def active_algorithm_files(wildcards):
@@ -516,7 +497,9 @@ rule sample_linear_gaussian_parameters_notears:
             "notears/" \
             "edge_coefficient_range_from={edge_coefficient_range_from}/"\
             "edge_coefficient_range_to={edge_coefficient_range_to}/"\
-            "seed={seed}/" \
+            "mean={mean}/" \
+            "variance={variance}/" \
+            "seed={seed}/" \            
             "adjmat=/{adjmat}.csv"
     singularity:
         docker_image("notears")
@@ -530,22 +513,23 @@ rule sample_linear_gaussian_parameters_notears:
 
 rule sample_notears_linear_gaussian_data:
     input:
-        bn="{output_dir}/bn/notears/{bn}/adjmat=/{adjmat}.csv"
+        bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/notears/{bn}"\
-             "/data=/notears_linear_gaussian_sampling" \
-             "/n={n}" \
-             "/mean={mean}" \
-             "/variance={variance}" \
-             "/seed={replicate}.csv"
+             "/bn=/notears/{edge_params}/" \
+             "mean={mean}/" \
+             "variance={variance}/" \
+             "{rest}/"
+             "data=/standard_sampling/" \
+             "n={n}/" \
+             "seed={replicate}.csv"
     singularity:
         docker_image("notears")
     shell:
         "python scripts/notears/simulate_from_dag_lg.py " \
         "--filename {output.data} " \
-        "--weighted_adjmat_filename {input.bn} " \
+        "--weighted_adjmat_filename {input.bn} " \        
         "--mean {wildcards.mean} " \
         "--variance {wildcards.variance} " \
         "--n_samples {wildcards.n} " \

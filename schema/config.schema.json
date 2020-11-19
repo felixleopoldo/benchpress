@@ -76,16 +76,7 @@
                                 "$ref": "#/definitions/standard_sampling"
                             },
                             "uniqueItems": true
-                        },
-                        "notears_linear_gaussian_sampling": {
-                            "title": "List of settings for notears_linear_gaussian_sampling",
-                            "description": "List of settings for notears_linear_gaussian_sampling",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/notears_linear_gaussian_sampling"
-                            },
-                            "uniqueItems": true
-                        }
+                        }   
                     },
                     "additionalProperties": false
                 },
@@ -343,86 +334,6 @@
             ],
             "additionalProperties": false
         },
-        "notears_linear_gaussian_sampling": {
-            "title": "Notears linear Gaussian sampling",
-            "description": "Notears linear Gaussian sampling. This requires that the parameters are of type notears_parameters.",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "sample_sizes": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "mean": {
-                    "title": "Mean",
-                    "type": "number"
-                },
-                "variance": {
-                    "title": "Variance",
-                    "type": "number"
-                }
-            },
-            "additionalProperties": false
-        },
-        "fixed_data": {
-            "title": "Data file",
-            "description": "Data file in csv format separated by empy space ' '. The firs row must have the variable names. For categorical data, the second row shold contain the possible values for the specific variable.",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "filename": {
-                    "title": "Data filename",
-                    "type": "string"
-                },
-                "graph": {
-                    "title": "Underlying graph id",
-                    "type": "string"
-                },
-                "source": {
-                    "title": "Data source",
-                    "type": "string"
-                },
-                "datatype": {
-                    "title": "Data type",
-                    "enum": [
-                        "continuous",
-                        "binary",
-                        "categorical"
-                    ]
-                },
-                "samples": {
-                    "$ref": "#/definitions/nonnegint"
-                }
-            },
-            "additionalProperties": false
-        },
-        "fixed_adjmats": {
-            "title": "Fixed adjacenty matrix of a graph",
-            "description": "Fixed adjacenty matrix of a graph. Must be in .csv format with , as separator. First row should contain names for th nodes.",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "filename": {
-                    "title": "Filename of the csv file.",
-                    "type": "string"
-                },
-                "source": {
-                    "title": "Source of the adjacency matrix",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "filename",
-                "source"
-            ],
-            "additionalProperties": false
-        },
         "notears_dag_sampling": {
             "title": "Notears DAG sampling",
             "description": "Graph sampling method provided by the notears package. \n Documentation: https://github.com/jmoss20/notears",
@@ -436,6 +347,14 @@
                 },
                 "num_edges": {
                     "$ref": "#definitions/flexnonnegint"
+                },
+                "mean": {
+                    "title": "Mean",
+                    "type": "number"
+                },
+                "variance": {
+                    "title": "Variance",
+                    "type": "number"
                 }
             },
             "required": [
