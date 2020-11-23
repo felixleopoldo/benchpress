@@ -17,12 +17,6 @@
                         "files"
                     ]
                 },
-                "algorithm_ids": {
-                    "title": "Structure learning algorithms",
-                    "description": "A list of id's for structure learning algorithm instantiations.",
-                    "type": "array",
-                    "uniqueItems": true
-                },
                 "data": {
                     "title": "Data setup",
                     "description": "A list of data setup instantiations.",
@@ -52,7 +46,6 @@
                 }
             },
             "required": [
-                "algorithm_ids",
                 "data",
                 "evaluation",
                 "output_dir"
@@ -369,7 +362,7 @@
             "description": "ROC item",
             "type": "object",
             "properties": {
-                "structure_learning_algorithm": {
+                "algorithm_id": {
                     "type": "string"
                 },
                 "curve_variable": {
@@ -647,10 +640,6 @@
                     "desciption": "Algorithm identifier",
                     "type": "string"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
@@ -678,7 +667,6 @@
             },
             "required": [
                 "id",
-                "plot_legend",
                 "alpha",
                 "beta",
                 "radii",
@@ -699,15 +687,10 @@
                     "title": "Unique idenfifier",
                     "description": "Unique idenfifier for that can be used as reference in the benchmark_setup."
                 },
-                "plot_legend": {
-                    "title": "Legend",
-                    "description": "Legend to show in plotting",
+                "scorermethod": {
                     "type": "string"
                 },
-                "scorer.method": {
-                    "type": "string"
-                },
-                "solver.method": {
+                "solvermethod": {
                     "type": "string"
                 },
                 "indeg": {
@@ -735,9 +718,8 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
-                "scorer.method",
-                "solver.method",
+                "scorermethod",
+                "solvermethod",
                 "indeg",
                 "time",
                 "allocated",
@@ -755,10 +737,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "min_rate_of_progress": {
                     "$ref": "#/definitions/flexprob"
@@ -787,7 +765,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "min_rate_of_progress",
                 "penalty_growth_rate",
                 "optimation_accuracy",
@@ -803,10 +780,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "plot": {
                     "type": "boolean"
@@ -824,7 +797,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "plot",
                 "palim",
                 "alpha",
@@ -840,10 +812,6 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
@@ -857,7 +825,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "n_samples",
                 "penalty",
                 "randomits"
@@ -872,10 +839,6 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "faithfulnessAssumed": {
                     "type": "boolean"
                 },
@@ -889,7 +852,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "faithfulnessAssumed",
                 "score",
                 "data-type"
@@ -904,10 +866,6 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
@@ -921,7 +879,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha",
                 "test"
             ]
@@ -934,10 +891,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
@@ -955,7 +908,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha",
                 "test"
             ]
@@ -968,10 +920,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
@@ -986,7 +934,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha",
                 "test"
             ]
@@ -1000,10 +947,6 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 }
@@ -1011,7 +954,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha"
             ]
         },
@@ -1023,10 +965,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "restrict.args": {
                     "title": "Parameters for mmhc",
@@ -1044,7 +982,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "restrict.args"
             ]
         },
@@ -1056,10 +993,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "restrict.args": {
                     "title": "Paramters for h2pc",
@@ -1077,7 +1010,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "restrict.args"
             ]
         },
@@ -1101,7 +1033,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha"
             ]
         },
@@ -1114,10 +1045,6 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
-                },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 }
@@ -1125,7 +1052,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "alpha"
             ]
         },
@@ -1137,10 +1063,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "beta": {
                     "$ref": "#/definitions/flexnonnegnum"
@@ -1167,7 +1089,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "beta",
                 "score",
                 "iss",
@@ -1185,10 +1106,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "perturb": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1221,7 +1138,6 @@
             "additionalProperties": false,
             "required": [
                 "id",
-                "plot_legend",
                 "beta",
                 "score",
                 "iss",
@@ -1241,10 +1157,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "optional": {
                     "title": "Parameters for itsearch",
@@ -1298,10 +1210,6 @@
                 "id": {
                     "type": "string",
                     "description": "Unique idenfifier"
-                },
-                "plot_legend": {
-                    "description": "Legend to show in plotting",
-                    "type": "string"
                 },
                 "startspace": {
                     "type": "string"

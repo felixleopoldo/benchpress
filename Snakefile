@@ -2,6 +2,7 @@ import json
 from jsonschema import validate
 import snakemake.utils
 import sys, getopt
+from pathlib import Path
 
 args = sys.argv
 
@@ -13,73 +14,12 @@ for arg in args:
         break
     i+=1
 
-
 configfile: 
         configfilename
 
 snakemake.utils.validate(config, 'schema/config.schema.json')
 
-# Check that algorithm exists
-
-available_conf_ids = []
-for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].items():
-    for alg_conf in alg_conf_avail:
-        available_conf_ids.append(alg_conf["id"])   
-
-for alg_conf_id in config["benchmark_setup"]["algorithm_ids"]:
-    if alg_conf_id not in available_conf_ids:
-        raise Exception(alg_conf_id + " not available")
-
-for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
-    if alg_conf["startspace"] not in set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
-        raise Exception(alg_conf["startspace"] + " not available startspace for order_mcmc."\
-                        "The available are: "+str(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]})))
-
-def validate_data_setup(config, dict):
-    # Check that adjmat exists
-    available_conf_ids = []
-    for alg, alg_conf_avail in config["resources"]["graph"].items():
-        for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/adjmat/myadjmats")
-
-
-    if not dict["graph_id"] in available_conf_ids:
-        raise Exception(dict["graph_id"] + 
-                        " is not an available graph id. "
-                        "The available graph id´s are: " + str(available_conf_ids))
-  
-
-    available_data_files = os.listdir(config["benchmark_setup"]["output_dir"] + "/data/mydatasets")
-    # Check that parameters exists
-    available_conf_ids = []
-    for alg, alg_conf_avail in config["resources"]["parameters"].items():
-        for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/bn/bn.fit_networks")
-
-    
-    if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:
-        raise Exception(dict["parameters_id"] + 
-                        " is not an available parameter id. "
-                        "The available paremeter id´s are: " + str(available_conf_ids))
-
-    # Check that data exists
-    available_conf_ids = []
-    for alg, alg_conf_avail in config["resources"]["data"].items():
-        for alg_conf in alg_conf_avail:
-            available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += available_data_files
-
-    if dict["data_id"] not in available_conf_ids:
-        raise Exception(dict["data_id"] + 
-                        " is not an available data id. "
-                        "The available data id´s are: " + str(available_conf_ids))
-    # Check that graph, parameters, and data are properly combined.
-
-for data_setup in config["benchmark_setup"]["data"]:
-    validate_data_setup(config, data_setup)
-
+include: "rules/validate.smk"
 include: "rules/pattern_strings.smk"
 include: "rules/algorithm_strings.smk"
 
@@ -103,6 +43,26 @@ def time_path(algorithm):
                     "time.txt"
     return ret
 
+def summarise_alg_input_time_path(algorithm):
+    return "{output_dir}/time/"\
+                    "adjmat=/{adjmat}/"\
+                    "bn=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
+                    "seed={replicate}/" \
+                    "time.txt"
+
+def summarise_alg_output_res_path(algorithm):
+    return "{output_dir}/result/"\
+            "algorithm=/" + pattern_strings[algorithm] + "/" + \
+            "adjmat=/{adjmat}/"\
+            "bn=/{bn}/"\
+            "data=/{data}/"\
+            "seed={replicate}/" \
+            "id={id}/" \        
+            "result.csv"
+
+
 def result_path_mcmc(algorithm):
     res = "{output_dir}/result/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
@@ -110,7 +70,7 @@ def result_path_mcmc(algorithm):
             "bn=/{bn}/"\
             "data=/{data}/"\   
             "seed={replicate}/" \
-            "legend={plot_legend}/" \        
+            "id={id}/" \             
             "result.csv"
     return res
 
@@ -126,24 +86,6 @@ def get_seed_range(seed_range):
     else:
         return range(seed_range[0], seed_range[1]+1)
 
-# def adjmat_plots(algorithm, mode="result"):
-#     ret = [[[expand(config["benchmark_setup"]["output_dir"] + "/adjmat_plots/"\
-#             "adjmat=/{adjmat_string}/"
-#             "bn=/{param_string}/"
-#             "data=/{data_string}/"
-#             "algorithm=/{alg_string}/"
-#             "adjmat.eps",
-#             alg_string=json_string[alg_conf["id"]],
-#             #plot_legend=alg_conf["plot_legend"],
-#             #seed=seed,
-#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
-#             param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
-#             data_string=gen_data_string_from_conf(sim_setup["data"], seed))
-#             for seed in get_seed_range(sim_setup["seed_range"])]
-#             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
-#     return ret
-
 def join_string_sampled_model(algorithm, mode="result"):
     """ This is the main string for a benchmark.
 
@@ -151,45 +93,46 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for roc
     """
+    roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    print(roc_alg_ids)
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
             "bn=/{param_string}/"
             "data=/{data_string}/"
-            "legend={plot_legend}/" 
+            "id={id}/" \        
             + mode + ".csv",
             output_dir=config["benchmark_setup"]["output_dir"],
             alg_string=json_string[alg_conf["id"]],
-            plot_legend=alg_conf["plot_legend"],
+            **alg_conf,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
+            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
+    
+    # # Every algorithm should have this as output, where the parameters are added to the csv.
+    # # A general rule should handle output e.g. SHD or TP, FP...
+    # ret = [[[expand("{output_dir}/"
+    #         "evaluation=/{evaluation_string}"\
+    #         "algorithm=/{alg_string}/"
+    #         "adjmat=/{adjmat_string}/"
+    #         "bn=/{param_string}/"
+    #         "data=/{data_string}/"
+    #         + eval_method + ".csv",
+    #         output_dir=config["benchmark_setup"]["output_dir"],
+    #         alg_string=json_string[alg_conf["id"]],
+    #         plot_legend=alg_conf["plot_legend"],
+    #         evaluation_string=get_eval_string(eval_method),
+    #         adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+    #         param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+    #         data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
+    #         for seed in get_seed_range(sim_setup["seed_range"])]
+    #         for sim_setup in config["benchmark_setup"]["data"]]
+    #         for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
     return ret
 
-def join_string_sampled_model_mcmc(algorithm, mode="result"):
-    ret = [[[expand("{output_dir}/"+mode+"/"\        
-                        "algorithm=/{algorithm_string}/" 
-                        "adjmat=/{adjmat_string}/"
-                        "bn=/{param_string}/"
-                        "data=/{data_string}/"                       
-                        "legend={plot_legend}/" # /output_parameters=/legend={plot_legend}/
-                        +mode+".csv",
-            output_dir=config["benchmark_setup"]["output_dir"],
-            threshold=alg_conf["threshold"], # only for mcmc
-            burnin=alg_conf["burnin"], # only for mcmc
-            plot_legend=alg_conf["plot_legend"], 
-            algorithm_string=json_string[alg_conf["id"]],
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed)
-            )
-            for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]]
-    return ret
 
 def join_summaries_shell(algorithm):
     return "Rscript scripts/join_csv_files.R --algorithm "+algorithm+" --filename {output} --files {input.res} "  \
@@ -212,14 +155,12 @@ def gen_model_strings_from_conf(models, seed, setup):
     pass
 
 def gen_adjmat_string_from_conf(adjmat_id, seed):
-    from pathlib import Path
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
     
-    print(adjmat_id)
     if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
         return expand("generateDAGMaxParents" + \
@@ -232,12 +173,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
 
     elif Path("files/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
-        return  "myadjmats/" + filename_no_ext # this could be hepar2 e.g.
-
-    # Check if file exists instead... maybe in a spefified folder.. No take the same folder..
-    #elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bn.fit_adjmats"]]:
-    #    # This means the id is the conf, and it takes everything in a folder?
-    #    return  "bn.fit_adjmats/" + adjmat_id # this could be hepar2 e.g.
+        return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
     elif adjmat_id == "notears":
         adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
@@ -267,8 +203,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         seed=seed)
 
     elif Path("files/bn/bn.fit_networks/"+gen_method_id).is_file():
-        #filename_no_ext = os.path.splitext(os.path.basename(gen_method_id))[0]
-        return  "bn.fit_networks/" + gen_method_id # this could be hepar2 e.g.
+        return  "bn.fit_networks/" + gen_method_id # this could be hepar2.rds e.g.
 
     elif gen_method_id == "notears":
         curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
@@ -315,12 +250,20 @@ def gen_data_string_from_conf(data_id, seed):
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
-    algs = []
+    algs = active_algorithms()
+    alg_filenames = [conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv" for alg in algs]
+    print(alg_filenames)
+    return alg_filenames
 
+def active_algorithms():
+    with open(configfilename) as json_file:
+        conf = json.load(json_file)
+    algs = []
+    roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
     for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-        for alg_conf_id in config["benchmark_setup"]["algorithm_ids"]:
+        for alg_conf_id in roc_alg_ids:        
             if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                    algs.append(conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv")
+                    algs.append( alg )
     return algs
 
 def alg_output_adjmat_path(algorithm):
@@ -370,25 +313,6 @@ def summarise_alg_input_adjmat_est_path(algorithm):
             "algorithm=/" + pattern_strings[algorithm] + "/" + \
             "seed={replicate}/" \
             "adjmat.csv",
-
-def summarise_alg_input_time_path(algorithm):
-    return "{output_dir}/time/"\
-                    "adjmat=/{adjmat}/"\
-                    "bn=/{bn}/"\
-                    "data=/{data}/" \ 
-                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
-                    "seed={replicate}/" \
-                    "time.txt"
-
-def summarise_alg_output_res_path(algorithm):
-    return "{output_dir}/result/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + \
-            "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
-            "data=/{data}/"\
-            "seed={replicate}/" \
-            "legend={plot_legend}/" \        
-            "result.csv"
 
 include: "rules/algorithm_summary_shell_command.smk"
 # TODO: All filenames should be generated from the config file.
@@ -444,190 +368,26 @@ rule plot_matrix:
     shell:
         "python scripts/plot_heatmap.py -o {output.plot} -f {input.adjmat}"
 
-rule bnlearn_adjmat:
-    input:
-        "{output_dir}/bn/bn.fit_networks/{name}"
-    output:
-        "{output_dir}/adjmat/bn.fit_adjmats/{name}.csv"
-    shell:
-        "mkdir -p {wildcards.output_dir}" + "/adjmat/bn.fit_adjmats/ " \
-        "&& Rscript scripts/bnlearn_bn_to_adjmat.R " 
-        "--filename_graph {output} "
-        "--filename_bn {input}"
-
-rule bnlearn_networks:
-    output:
-        "{output_dir}/bn/bn.fit_networks/{bn}"
-    #shell:
-    #    "mkdir -p {wildcards.output_dir}" + "/bn/bn.fit_networks/ " \
-    #    "&& wget https://www.bnlearn.com/bnrepository/{wildcards.bn}/{wildcards.bn}.rds "
-    #    "--output-document {output}"
-
-rule sample_adjmat:
-    output:        
-        adjmat = "{output_dir}/adjmat/generateDAGMaxParents/p={p}/avpar={avparents}/seed={replicate}.csv"
-    shell:
-        "Rscript scripts/sample_dags.R " \
-        "--filename {output.adjmat} " \ 
-        "--nodes {wildcards.p} " \
-        "--parents {wildcards.avparents} " \
-        "--seed {wildcards.replicate}"
-
-rule sample_adjmat_notears:
-    output:        
-        adjmat = "{output_dir}/adjmat/" \
-                "notears/" \
-                "num_nodes={num_nodes}/" \
-                "num_edges={num_edges}/"\
-                "seed={seed}.csv"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python scripts/notears/generate_random_dag.py " \
-        "--num_nodes {wildcards.num_nodes} " \
-        "--num_edges {wildcards.num_edges} " \
-        "--filename {output.adjmat} " \
-        "--seed {wildcards.seed}"
-
-rule sample_linear_gaussian_parameters_notears:
-    input:
-        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
-    output:        
-        bn = "{output_dir}/bn/" \
-            "notears/" \
-            "edge_coefficient_range_from={edge_coefficient_range_from}/"\
-            "edge_coefficient_range_to={edge_coefficient_range_to}/"\
-            "mean={mean}/" \
-            "variance={variance}/" \
-            "seed={seed}/" \            
-            "adjmat=/{adjmat}.csv"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python scripts/notears/generate_random_dag_parameters.py " \
-        "--edge_coefficient_range_from {wildcards.edge_coefficient_range_from} " \
-        "--edge_coefficient_range_to {wildcards.edge_coefficient_range_to} " \
-        "--filename {output.bn} " \
-        "--dag_filename {input.adjmat} " \
-        "--seed {wildcards.seed}"
-
-rule sample_notears_linear_gaussian_data:
-    input:
-        bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/bn=/notears/{edge_params}/" \
-             "mean={mean}/" \
-             "variance={variance}/" \
-             "{rest}/"
-             "data=/standard_sampling/" \
-             "n={n}/" \
-             "seed={replicate}.csv"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python scripts/notears/simulate_from_dag_lg.py " \
-        "--filename {output.data} " \
-        "--weighted_adjmat_filename {input.bn} " \        
-        "--mean {wildcards.mean} " \
-        "--variance {wildcards.variance} " \
-        "--n_samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
-
-rule sample_binary_bn:
-    input:
-        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
-    output:
-        bn = "{output_dir}/bn/generateBinaryBN/min={min}/max={max}/seed={seed}/adjmat=/{adjmat}.rds"
-    shell:
-        "Rscript scripts/sample_bayesian_network_for_dag.R " \
-        "--filename_dag {input.adjmat} " \
-        "--filename {output} "  \
-        "--min {wildcards.min} " \
-        "--max {wildcards.max} " \
-        "--seed {wildcards.seed} "
-
-rule sample_bindata:
-    input:
-        bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/bn=/generateBinaryBN/{bn}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
-    shell:
-        "Rscript scripts/sample_data_with_range_header.R " \
-        "--filename {output.data} " \
-        "--filename_bn {input.bn} " \
-        "--samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
-
-rule copy_fixed_data:
-    input:
-        "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
-    output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
-    shell:\
-        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
-        "cp {input} {output.data}"
-
-rule sample_bnfit_data:
-    input:        
-        bn="{output_dir}/bn/bn.fit_networks/{bn}"        
-    output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"
-    shell:
-        "Rscript scripts/sample_from_bnlearn_bn.R " \
-        "--filename {output.data} " \
-        "--filename_bn {input.bn} " \
-        "--samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
-
+include: "rules/sample_adjmat.smk"
+include: "rules/sample_parameters.smk"
+include: "rules/sample_data.smk"
 include: "rules/algorithm_rules.smk"
-
-rule roc_data:
-    input:
-        conf=configfilename,
-        snake="Snakefile",
-        algs=active_algorithm_files # It should maybe be stated there which kind of roc to be considered..
-    output:
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv"
-    shell:
-        "Rscript scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} " \
-
-rule roc:
-    input:
-        configfilename,
-        "Snakefile",
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
-    output:
-        eps=config["benchmark_setup"]["output_dir"] + "/ROC.eps"
-    shell:
-        "Rscript scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
-
-rule roc_cpdag:
-    input:
-        configfilename,
-        "Snakefile",
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
-    output:
-        eps=config["benchmark_setup"]["output_dir"] + "/ROC_essential_graph.eps"
-    shell:
-        "Rscript scripts/plot_cpdag_roc.R --input_filename {input.csv} --output_filename {output.eps}"
-
-# rule adjmat_plot:
-#     input:
-#         configfilename,
-#         itsearch=adjmat_plots("itsearch"),
-        #gobnilp=adjmat_plots("gobnilp", seed)
-#    output:
-#        config["benchmark_setup"]["output_dir"] + "/adjmat_plots",
-#        plots="{output_dir}/adjmat_plots/itsearch_map.eps", #"adjmat_plots/gobnilp_seed={seed}/gobnilp.eps", "fges_seed.eps"
-        # For the output, all the parameters are not that important
-        # If there is a true graph, plot it
-#    shell:
-#        "cp {input.gobnilp} adjmat_plots/gobnilp_seed={seed}/gobnilp.eps"\
-#        " && cp {input.itsearch} adjmat_plots/itsearch_seed={seed}/itsearch.eps"\
-
+include: "rules/evaluation.smk"
     
+# def adjmat_plots(algorithm, mode="result"):
+#     ret = [[[expand(config["benchmark_setup"]["output_dir"] + "/adjmat_plots/"\
+#             "adjmat=/{adjmat_string}/"
+#             "bn=/{param_string}/"
+#             "data=/{data_string}/"
+#             "algorithm=/{alg_string}/"
+#             "adjmat.eps",
+#             alg_string=json_string[alg_conf["id"]],
+#             #plot_legend=alg_conf["plot_legend"],
+#             #seed=seed,
+#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
+#             param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
+#             data_string=gen_data_string_from_conf(sim_setup["data"], seed))
+#             for seed in get_seed_range(sim_setup["seed_range"])]
+#             for sim_setup in config["benchmark_setup"]["data"]]
+#             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
+#     return ret

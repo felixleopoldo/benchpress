@@ -20,9 +20,9 @@ pattern_strings["notears"] = "notears/alg_params=/" \
                 "loss_grad={loss_grad}"
 
 pattern_strings["blip"] = "blip/alg_params=/" \
-                "time={max_time}/" \
-                "scorer.method={scorermethod}/" \
-                "solver.method={solvermethod}/" \
+                "time={time}/" \
+                "scorermethod={scorermethod}/" \
+                "solvermethod={solvermethod}/" \
                 "indeg={indeg}/" \        
                 "cores={cores}/" \
                 "allocated={allocated}/" \

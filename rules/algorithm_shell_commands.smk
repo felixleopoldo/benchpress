@@ -58,7 +58,7 @@ def alg_shell(algorithm):
                 "Rscript scripts/run_blip.R " \
                 "--filename_data {input.data} " \
                 "--output_dir {wildcards.output_dir} " \
-                "--time {wildcards.max_time} " \
+                "--time {wildcards.time} " \
                 "--scorer.method {wildcards.scorermethod} " \
                 "--solver.method {wildcards.solvermethod} " \
                 "--indeg {wildcards.indeg} " \  

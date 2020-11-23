@@ -57,17 +57,7 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
                     )
                for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
 
-json_string.update({val["id"]: expand(pattern_strings["blip"], 
-                                            max_time=val["time"],
-                                            solvermethod=val["solver.method"],
-                                            scorermethod=val["scorer.method"],
-                                            indeg=val["indeg"],
-                                            cores=val["cores"],
-                                            allocated=val["allocated"],
-                                            scorefunction=val["scorefunction"],
-                                            alpha=val["alpha"],
-                                            verbose=val["verbose"]
-                                            )
+json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
                 for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...

@@ -1,53 +1,29 @@
 {
     "benchmark_setup": {
         "output_dir": "files",
-        "algorithm_ids": [
-            "notears"
-        ],
         "data": [
             {
-                "graph_id": "notears",
-                "parameters_id": "notears",
+                "graph_id": "generateDAGMaxParents",
+                "parameters_id": "generateBinaryBN",
                 "data_id": "independent_samples",
-                "seed_range": [1, 2]
+                "seed_range": [1, 1]
             }
         ],
         "evaluation": {
             "ROC": [
+                {"algorithm_id": "winasobs", "curve_variable": "time"},
+                {"algorithm_id": "asobs", "curve_variable": "time"},
                 {
-                    "structure_learning_algorithm": "blip",
-                    "curve_variable": "max_time"
-                },
-                {
-                    "structure_learning_algorithm": "order_mcmc",
-                    "curve_variable": "threshold"
-                },
-                {
-                    "structure_learning_algorithm": "gobnilp",
+                    "algorithm_id": "gobnilp",
                     "curve_variable": "palim"
                 },
                 {
-                    "structure_learning_algorithm": "fges",
-                    "curve_variable": "faithfulnessAssumed"
-                },
-                {
-                    "structure_learning_algorithm": "tabu",
+                    "algorithm_id": "tabu",
                     "curve_variable": "beta"
                 },
                 {
-                    "structure_learning_algorithm": "hc",
-                    "curve_variable": "restart"
-                },
-                {
-                    "structure_learning_algorithm": "mmhc",
+                    "algorithm_id": "mmhc",
                     "curve_variable": "alpha"
-                },
-                {
-                    "structure_learning_algorithm": "fci",
-                    "curve_variable": "alpha"
-                },{   
-                    "structure_learning_algorithm": "notears",
-                    "curve_variable": "penalty_growth_rate"
                 }
             ]
         }
@@ -111,7 +87,6 @@
             "trilearn_loglin": [
                 {
                     "id": "trilearn_loglin",
-                    "plot_legend": "trilearn_loglin",
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
@@ -126,7 +101,6 @@
                 },
                 {
                     "id": "trilearn_loglin05",
-                    "plot_legend": "trilearn_loglin05",
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
@@ -139,10 +113,24 @@
             ],
             "blip": [
                 {
-                    "id": "blip",
-                    "plot_legend": "Blip",
-                    "scorer.method": "is",
-                    "solver.method": "winasobs",
+                    "id": "winasobs",
+                    "scorermethod": "is",
+                    "solvermethod": "winasobs",
+                    "indeg": 80,
+                    "time": [
+                        20,
+                        60
+                    ],
+                    "allocated": 80,
+                    "scorefunction": "bdeu",
+                    "alpha": 1,
+                    "cores": 1,
+                    "verbose": 0
+                },
+                                {
+                    "id": "asobs",
+                    "scorermethod": "is",
+                    "solvermethod": "asobs",
                     "indeg": 80,
                     "time": [
                         20,
@@ -158,7 +146,6 @@
             "notears": [
                 {
                     "id": "notears",
-                    "plot_legend": "Notears",
                     "min_rate_of_progress": 0.25,
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
@@ -169,7 +156,6 @@
             "gobnilp": [
                 {
                     "id": "gobnilp",
-                    "plot_legend": "GOBNILP",
                     "plot": false,
                     "palim": 2,
                     "alpha": 1,
@@ -179,7 +165,6 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "plot_legend": "GreenThomas",
                     "n_samples": 10000,
                     "randomits": 1000,
                     "penalty": 0
@@ -188,7 +173,6 @@
             "fges": [
                 {
                     "id": "fges",
-                    "plot_legend": "fGES",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
                     "data-type": "discrete"
@@ -197,7 +181,6 @@
             "fci": [
                 {
                     "id": "fci",
-                    "plot_legend": "FCI",
                     "alpha": [
                         0.01,
                         0.05,
@@ -213,7 +196,6 @@
             "gfci": [
                 {
                     "id": "gfci",
-                    "plot_legend": "GFCI",
                     "alpha": [
                         0.01,
                         0.05,
@@ -230,7 +212,6 @@
             "rfci": [
                 {
                     "id": "rfci",
-                    "plot_legend": "rfci",
                     "alpha": [
                         0.01,
                         0.05,
@@ -246,7 +227,6 @@
             "pcalg": [
                 {
                     "id": "pcalg",
-                    "plot_legend": "PC",
                     "alpha": [
                         0.01,
                         0.05,
@@ -258,14 +238,12 @@
                 },
                 {
                     "id": "pcalg005",
-                    "plot_legend": "pcalg005",
                     "alpha": 0.05
                 }
             ],
             "mmhc": [
                 {
                     "id": "mmhc",
-                    "plot_legend": "MMHC",
                     "restrict.args": {
                         "alpha": [
                             0.01,
@@ -281,7 +259,6 @@
             "h2pc": [
                 {
                     "id": "h2pc",
-                    "plot_legend": "H2PC",
                     "restrict.args": {
                         "alpha": [
                             0.01,
@@ -297,7 +274,6 @@
             "interiamb": [
                 {
                     "id": "interiamb",
-                    "plot_legend": "Inter-IAMB",
                     "alpha": [
                         0.01,
                         0.05,
@@ -311,7 +287,6 @@
             "gs": [
                 {
                     "id": "gs",
-                    "plot_legend": "Grow-Shrink",
                     "alpha": [
                         0.01,
                         0.05,
@@ -325,7 +300,6 @@
             "tabu": [
                 {
                     "id": "tabu",
-                    "plot_legend": "Tabu",
                     "score": "bde",
                     "iss": 1,
                     "issmu": 1,
@@ -338,7 +312,6 @@
             "hc": [
                 {
                     "id": "hc",
-                    "plot_legend": "Hill-Climbing",
                     "score": "bde",
                     "iss": 1,
                     "issmu": 1,
@@ -353,7 +326,6 @@
             "itsearch": [
                 {
                     "id": "itsearch_map",
-                    "plot_legend": "itmap",
                     "optional": {
                         "MAP": true,
                         "plus1it": null,
@@ -367,7 +339,6 @@
                 },
                 {
                     "id": "itsearch_map_cont",
-                    "plot_legend": "itmap_cont",
                     "optional": {
                         "MAP": true,
                         "plus1it": null,
@@ -381,7 +352,6 @@
                 },
                 {
                     "id": "itsearch_sample",
-                    "plot_legend": "itsample",
                     "optional": {
                         "MAP": false,
                         "plus1it": 6,
@@ -397,7 +367,6 @@
             "order_mcmc": [
                 {
                     "id": "order_mcmc_itmap",
-                    "plot_legend": "order_mcmc_itmap",
                     "startspace": "itsearch_map",
                     "optional": {
                         "plus1": true
@@ -423,7 +392,6 @@
                 },
                 {
                     "id": "order_mcmc_itmap_cont",
-                    "plot_legend": "order_mcmc_itmap_cont",
                     "startspace": "itsearch_map_cont",
                     "optional": {
                         "plus1": true
@@ -449,7 +417,6 @@
                 },
                 {
                     "id": "order_mcmc_itsample",
-                    "plot_legend": "order_mcmc_itsample",
                     "startspace": "itsearch_sample",
                     "optional": {
                         "plus1": true

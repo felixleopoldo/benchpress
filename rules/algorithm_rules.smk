@@ -552,7 +552,7 @@ rule summarise_order_mcmc:
 rule join_summaries_order_mcmc:
     input: 
         conf=configfilename,
-        res=join_string_sampled_model_mcmc("order_mcmc")
+        res=join_string_sampled_model("order_mcmc")
     output:
         join_summaries_output("order_mcmc")
     shell:
@@ -587,7 +587,7 @@ rule summarise_trilearn_loglin:
 rule join_summaries_trilearn_loglin:
     input: 
         conf=configfilename,
-        res=join_string_sampled_model_mcmc("trilearn_loglin")
+        res=join_string_sampled_model("trilearn_loglin")
     output:
         join_summaries_output("trilearn_loglin")
     message:

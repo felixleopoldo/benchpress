@@ -8,22 +8,21 @@ p <- add_argument(p, "--output_filename", help = "Output filename")
 argv <- parse_args(p)
 
 toplot <- read.csv(argv$input_filename)
-#print(toplot)
 ggplot() + geom_errorbar(data = toplot,
-              aes(x = FPRn_pattern_median,
-                  ymin = TPR_pattern_q1, 
-                  ymax = TPR_pattern_q3, 
-                  col = id), 
+              aes(x = FPRn_cpdag_median,
+                  ymin = TPR_cpdag_q1, 
+                  ymax = TPR_cpdag_q3, 
+                  col = legend), 
               width = 0.01) +
 geom_path(data = toplot,
-          aes(x = FPRn_pattern_median, 
-              y = TPR_pattern_median,
-              col = id)) +
+          aes(x = FPRn_cpdag_median, 
+              y = TPR_cpdag_median,
+              col = legend)) +
 geom_point(data = toplot,
-           aes(x = FPRn_pattern_median, 
-               y = TPR_pattern_median,               
-               col = id, 
-               shape = id), 
+           aes(x = FPRn_cpdag_median, 
+               y = TPR_cpdag_median,               
+               col = legend, 
+               shape = legend), 
                size = 1) +
 #geom_text(data = toplot,
 #            aes(x = FPRn_median, 
@@ -37,7 +36,7 @@ facet_wrap(. ~ adjmat+bn+data, scales="free_x", nrow = 2) +
 # Titles etc
 xlab("FPRp") +
 ylab("TPR") +
-ggtitle("ROC (pattern graph)") +
+ggtitle("ROC (cpdag)") +
 theme(plot.title = element_text(hjust = 0.5)) +
 
 ggsave(file=argv$output_filename)

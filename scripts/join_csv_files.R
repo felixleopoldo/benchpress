@@ -8,10 +8,11 @@ p <- add_argument(p, "--filename", help = "Output filename")
 argv <- parse_args(p)
 directory <- "simresults"
 df <- data.frame()
-
+print("hohohoo")
+print(argv$files)
 for (filename in argv$files) {
   tmpdf <- read.csv(filename)
-
+  
   tmpdf <- na_if(tmpdf, "None")
 
   if("plus1it" %in% colnames(tmpdf)) {
