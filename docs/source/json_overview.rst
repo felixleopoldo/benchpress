@@ -24,7 +24,6 @@ benchmark_setup
 
 This defines the benchmark setup in four main categories, see :numref:`benchmark_setup`.
 ``output_dir`` is the directory where the output will be stored (can only be files at the moment).
-``structure_learning_algorithms`` is a list of ``id`` s of structure learning algorithms to be analysed.
 ``data`` is a list of the data simulation setups.
 ``evaluation`` is a list of evaluation metrics (currently only ROC available).
 
@@ -39,23 +38,6 @@ output_dir
 ==========
 
 The directory for the files created.
-
-algorithm_ids
-=============
-
-.. rubric:: Example
-
-.. code-block::
-
-    [
-        "blip",
-        "gobnilp",
-        "mmhc",
-        "fges",
-        "tabu",
-        "hc",
-        "order_mcmc_itmap"
-    ]
 
 data
 ====
@@ -87,7 +69,7 @@ ROC
 
 .. math::
 
-    TPR(\theta) := \frac{TP}{FP} 
+    TPR := \frac{TP}{FP} 
 
 
 List of algorithm to be included in roc curve estimation.
@@ -100,31 +82,31 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     [
         {
-            "structure_learning_algorithm": "blip",
-            "curve_variable": "max_time"
+            "algorithm_id": "blip",
+            "curve_variable": "time"
         },
         {
-            "structure_learning_algorithm": "order_mcmc",
+            "algorithm_id": "order_mcmc",
             "curve_variable": "threshold"
         },
         {
-            "structure_learning_algorithm": "gobnilp",
+            "algorithm_id": "gobnilp",
             "curve_variable": "palim"
         },
         {
-            "structure_learning_algorithm": "fges",
+            "algorithm_id": "fges",
             "curve_variable": "faithfulnessAssumed"
         },
         {
-            "structure_learning_algorithm": "tabu",
+            "algorithm_id": "tabu",
             "curve_variable": "beta"
         },
         {
-            "structure_learning_algorithm": "hc",
+            "algorithm_id": "hc",
             "curve_variable": "restart"
         },
         {
-            "structure_learning_algorithm": "mmhc",
+            "algorithm_id": "mmhc",
             "curve_variable": "alpha"
         }
     ]

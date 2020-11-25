@@ -15,7 +15,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "gobnilp",
-        "plot_legend": "GOBNILP",
         "plot": false,
         "palim": 2,
         "alpha": 1,
@@ -35,7 +34,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "blip",
-        "plot_legend": "Blip",
         "scorer.method": "is",
         "solver.method": "winasobs",
         "indeg": 80,
@@ -63,7 +61,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "notears",
-        "plot_legend": "Notears",
         "min_rate_of_progress": 0.25,
         "penalty_growth_rate": 10,
         "optimation_accuracy": 0.00000001,
@@ -84,7 +81,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     
     {
         "id": "fges",
-        "plot_legend": "fGES",
         "faithfulnessAssumed": true,
         "score": "bdeu-score",
         "data-type": "discrete"
@@ -103,7 +99,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "fci",
-        "plot_legend": "FCI",
         "alpha": [
             0.01,
             0.05,
@@ -129,7 +124,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "gfci",
-        "plot_legend": "GFCI",
         "alpha": [
             0.01,
             0.05,
@@ -156,7 +150,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "rfci",
-        "plot_legend": "rfci",
         "alpha": [
             0.01,
             0.05,
@@ -182,7 +175,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "pcalg",
-        "plot_legend": "PC",
         "alpha": [
             0.01,
             0.05,
@@ -232,7 +224,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "h2pc",
-        "plot_legend": "H2PC",
         "restrict.args": {
             "alpha": [
                 0.01,
@@ -258,7 +249,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "interiamb",
-        "plot_legend": "Inter-IAMB",
         "alpha": [
             0.01,
             0.05,
@@ -282,7 +272,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "gs",
-        "plot_legend": "Grow-Shrink",
         "alpha": [
             0.01,
             0.05,
@@ -306,7 +295,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "tabu",
-        "plot_legend": "Tabu",
         "score": "bde",
         "iss": 1,
         "iss.mu": 1,
@@ -329,7 +317,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "h2pc",
-        "plot_legend": "H2PC",
         "restrict.args": {
             "alpha": [
                 0.01,
@@ -355,7 +342,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "itsearch_map",
-        "plot_legend": "itmap",
         "optional": {
             "MAP": true,
             "plus1it": null,
@@ -381,7 +367,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "order_mcmc_itmap",
-        "plot_legend": "order_mcmc_itmap",
         "startspace": "itsearch_map",
         "optional": {
             "plus1": true
