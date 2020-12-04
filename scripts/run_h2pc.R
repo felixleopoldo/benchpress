@@ -1,8 +1,9 @@
 library(argparser)
 library(pcalg)
 library(RBGL)
+library(bnlearn)
 
-source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+source("lib/code_for_binary_simulations/make_var_names.R")
 
 p <- arg_parser("A program for running H2PC algorithm and save to file.")
 p <- add_argument(p, "--filename", help = "output filename")
@@ -22,11 +23,10 @@ data <- data[-1,] # Remove range header
 set.seed(seed)
 
 datanew <- matrixToDataframe(data, names(data))
-print(is(datanew))
+# TODO: BUG this is not working for some reason.
 mmoutput <- h2pc(datanew, restrict.args = list(alpha = argv$alpha))
 ## convert to graphneldag
 gnel_dag <- as.graphNEL(mmoutput)
-
 adjmat <- as(gnel_dag, "matrix")
 colnames(adjmat) <- names(data)
 

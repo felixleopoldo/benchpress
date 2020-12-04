@@ -3,7 +3,7 @@ library(pcalg)
 library(bnlearn)
 library(RBGL)
 
-source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+source("lib/code_for_binary_simulations/make_var_names.R")
 
 p <- arg_parser("A program for running Inter-IAMB algorithm and save to file.")
 

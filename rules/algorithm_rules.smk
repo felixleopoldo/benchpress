@@ -393,6 +393,7 @@ rule join_summaries_gobnilp:
         join_summaries_output("gobnilp")
     shell:
         join_summaries_shell("gobnilp")
+        
 rule fges:
     input:
         data = alg_input_data()

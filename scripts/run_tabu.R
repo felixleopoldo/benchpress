@@ -3,7 +3,10 @@ library(pcalg)
 library(bnlearn)
 library(RBGL)
 
-source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+# source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+source("lib/code_for_binary_simulations/df_fns.R")
+source("lib/code_for_binary_simulations/make_var_names.R")
+source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 
 p <- arg_parser("A program for running Max-Min hill-climbing algorithm and save to file.")
 

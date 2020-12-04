@@ -42,7 +42,7 @@ rule roc_data:
     output:
         csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv"
     shell:
-        "Rscript scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} " \
+        "Rscript scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule roc:
     input:

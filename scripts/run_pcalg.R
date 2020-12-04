@@ -3,7 +3,7 @@
 library(argparser)
 library(RBGL)
 library(pcalg)
-source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+#source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 source("lib/code_for_binary_simulations/make_name.R")
 

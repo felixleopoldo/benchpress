@@ -3,9 +3,11 @@
 library(argparser)
 library(RBGL)
 library(r.blip)
-source("lib/code_for_binary_simulations/rblip.R")
+#source("lib/code_for_binary_simulations/rblip.R")
 source("lib/code_for_binary_simulations/df_fns.R")
-source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+#source("lib/code_for_binary_simulations/algorithm_wrappers.R")
+source("lib/code_for_binary_simulations/make_var_names.R")
+source("lib/code_for_binary_simulations/bnlearn_help_fns.R")
 
 p <- arg_parser("A program for running r.blip and save to file.")
 

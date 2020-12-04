@@ -104,7 +104,7 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
 
 pattern_strings["fges"] = "fges/alg_params=/"\
                "score={score}/" \
-               "data-type={data-type}/"\
+               "datatype={datatype}/"\
                "faithfulnessAssumed={faithfulnessAssumed}"
 
 pattern_strings["fci"] = "fci/alg_params=/"\

@@ -155,8 +155,8 @@ def gen_model_strings_from_conf(models, seed, setup):
     pass
 
 def gen_adjmat_string_from_conf(adjmat_id, seed):
-    with open(configfilename) as json_file:
-        conf = json.load(json_file)
+    #with open(configfilename) as json_file:
+    #    conf = json.load(json_file)
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
@@ -189,8 +189,8 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return None
 
 def gen_parameter_string_from_conf(gen_method_id, seed):
-    with open(configfilename) as json_file:
-        conf = json.load(json_file)
+    #with open(configfilename) as json_file:
+    #    conf = json.load(json_file)
 
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["generateBinaryBN"] if item["id"] == gen_method_id)

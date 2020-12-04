@@ -845,7 +845,7 @@
                 "score": {
                     "type": "string"
                 },
-                "data-type": {
+                "datatype": {
                     "type": "string"
                 }
             },
@@ -854,7 +854,7 @@
                 "id",
                 "faithfulnessAssumed",
                 "score",
-                "data-type"
+                "datatype"
             ]
         },
         "fci": {
