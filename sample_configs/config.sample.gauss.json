@@ -46,8 +46,8 @@
             "notears": [
                 {
                     "id": "notears",
-                    "num_nodes": 80,
-                    "num_edges": 200
+                    "num_nodes": 20,
+                    "num_edges": 100
                 }
             ],
             "generateDAGMaxParents": [
