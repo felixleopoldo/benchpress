@@ -49,7 +49,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "rfci",
+                    "algorithm_id": "pcalg",
                     "curve_variable": "alpha"
                 },
                 {
