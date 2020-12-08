@@ -4,8 +4,8 @@
         "data": [
             {
                 "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "independent_samples2000",
+                "parameters_id": "generateBinaryBN",
+                "data_id": "independent_samples",
                 "seed_range": [1, 10]
             }
         ],
