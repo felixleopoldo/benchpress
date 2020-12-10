@@ -94,7 +94,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     Create rule for roc
     """
     roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
-    print(roc_alg_ids)
+    
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"

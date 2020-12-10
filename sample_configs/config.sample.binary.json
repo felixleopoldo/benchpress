@@ -86,7 +86,7 @@
                 {
                     "id": "independent_samples",
                     "sample_sizes": [
-                        100
+                        80, 160, 320, 640
                     ]
                 },
                 {
