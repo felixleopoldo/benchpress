@@ -252,7 +252,7 @@ def active_algorithm_files(wildcards):
         conf = json.load(json_file)
     algs = active_algorithms()
     alg_filenames = [conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv" for alg in algs]
-    print(alg_filenames)
+    
     return alg_filenames
 
 def active_algorithms():
