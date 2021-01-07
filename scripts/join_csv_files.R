@@ -30,7 +30,7 @@ fix_columns <- function(df){
 df1 <- read.csv(argv$filename1)
 df2 <- read.csv(argv$filename2)
 
-df1 <- fix_columns(df1)
+#df1 <- fix_columns(df1)
 df2 <- fix_columns(df2)
 
 df <- dplyr::bind_rows(df1, df2)
