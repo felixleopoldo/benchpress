@@ -13,7 +13,7 @@ fix_columns <- function(df){
   df <- na_if(df, "None")
 
   if("plus1it" %in% colnames(df)) {
-      df["plus1it"] <- as.numeric(tmpdf["plus1it"])
+      df["plus1it"] <- as.numeric(df["plus1it"])
   }
   if("posterior" %in% colnames(df)) {
       df["posterior"] <- as.numeric(df["posterior"])
