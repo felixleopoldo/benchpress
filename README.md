@@ -11,7 +11,7 @@
 #  
 # Benchpress
 
-![Benchpress](figures/benchpress.jpg)
+![Benchpress](images/benchpress.jpg)
 
 A [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow for flexible and reproducible benchmarks of structure learning algorithms for graphical models.
 The documentation is found here https://benchpressx.readthedocs.io.
