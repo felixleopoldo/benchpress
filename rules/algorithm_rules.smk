@@ -30,8 +30,9 @@ rule join_summaries_greenthomas:
         res=join_string_sampled_model("greenthomas")
     output:
         join_summaries_output("greenthomas")
-    shell:
-        join_summaries_shell("greenthomas")
+    script:
+        "../scripts/join_csv_files.R"
+
 
 rule tabu:
     input:
@@ -63,8 +64,8 @@ rule join_summaries_tabu:
         res=join_string_sampled_model("tabu")
     output:
         join_summaries_output("tabu")
-    shell:
-        join_summaries_shell("tabu")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule notears:
     input:
@@ -98,8 +99,8 @@ rule join_summaries_notears:
         res=join_string_sampled_model("notears")
     output:
         join_summaries_output("notears")
-    shell:
-        join_summaries_shell("notears")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule h2pc:
     input:
@@ -131,8 +132,8 @@ rule join_summaries_h2pc:
         res=join_string_sampled_model("h2pc")
     output:
         join_summaries_output("h2pc")
-    shell:
-        join_summaries_shell("h2pc")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule hc:
     input:
@@ -164,8 +165,8 @@ rule join_summaries_hc:
         res=join_string_sampled_model("hc")
     output:
         join_summaries_output("hc")
-    shell:
-        join_summaries_shell("hc")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule interiamb:
     input:
@@ -197,8 +198,8 @@ rule join_summaries_interiamb:
         res=join_string_sampled_model("interiamb")
     output:
         join_summaries_output("interiamb")
-    shell:
-        join_summaries_shell("interiamb")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule gs:
     input:
@@ -230,8 +231,8 @@ rule join_summaries_gs:
         res=join_string_sampled_model("gs")
     output:
         join_summaries_output("gs")
-    shell:
-        join_summaries_shell("gs")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule blip:
     input:
@@ -263,8 +264,8 @@ rule join_summaries_blip:
         res=join_string_sampled_model("blip")
     output:
         join_summaries_output("blip")
-    shell:
-        join_summaries_shell("blip")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule itsearch:
     input:
@@ -393,7 +394,7 @@ rule join_summaries_gobnilp:
         join_summaries_output("gobnilp")
     shell:
         join_summaries_shell("gobnilp")
-        
+
 rule fges:
     input:
         data = alg_input_data()
@@ -556,8 +557,8 @@ rule join_summaries_order_mcmc:
         res=join_string_sampled_model("order_mcmc")
     output:
         join_summaries_output("order_mcmc")
-    shell:
-        join_summaries_shell("order_mcmc")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule trilearn_loglin:
     input:

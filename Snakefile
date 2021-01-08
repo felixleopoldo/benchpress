@@ -134,20 +134,22 @@ def join_string_sampled_model(algorithm, mode="result"):
     return ret
 
 def join_summaries_shell(algorithm):
-    return "cat {input.res[0]} > {output} && " \
-            "i=0;" \
-            "for file in {input.res} ;"\
-            "do "\  
-            "   if [ $i -gt 0 ] ; " \
-            "      then " \
-            "      Rscript scripts/join_csv_files.R --filename1 {output} --filename2 $file ; "  \
-            "   fi ;" \
-            "   ((i=i+1)) ;"\
-            "done ; " \
-            " sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+    # return "cat {input.res[0]} > {output} && " \
+    #         "i=0;" \
+    #         "l=0;" \
+    #         "cat {input.res[$i]}" \
+    #         "for file in {input.res} ;"\
+    #         "do "\  
+    #         "   if [ $i -gt 0 ] ; " \
+    #         "      then " \
+    #         "      Rscript scripts/join_csv_files.R --filename1 {output} --filename2 $file ; "  \
+    #         "   fi ;" \
+    #         "   ((i=i+1)) ;"\
+    #         "done ; " \
+    #         "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
-#    "Rscript scripts/join_csv_files.R --filename {output} --files {input.res} "  \
-#            " && sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+    #    "Rscript scripts/join_csv_files.R --filename {output} --files {input.res} "  \
+    return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
     return "{output_dir}/"+algorithm+".csv"
