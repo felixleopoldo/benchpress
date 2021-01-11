@@ -10,8 +10,8 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
 #        raise Exception(alg_conf_id + " not available")
 
 for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
-    if alg_conf["startspace"] not in set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
-        raise Exception(alg_conf["startspace"] + " not available startspace for order_mcmc."\
+    if alg_conf["startspace_algorithm"] not in set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
+        raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc."\
                         "The available are: "+str(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]})))
 
 def validate_data_setup(config, dict):

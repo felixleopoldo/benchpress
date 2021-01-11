@@ -284,7 +284,6 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval false " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
-
     elif algorithm == "fges":
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
@@ -299,6 +298,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname faithfulnessAssumed       --colval {wildcards.faithfulnessAssumed} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -317,6 +318,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -336,6 +339,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname score       --colval {wildcards.score} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -354,6 +359,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
     

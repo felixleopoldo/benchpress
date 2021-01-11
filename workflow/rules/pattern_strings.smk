@@ -1,94 +1,44 @@
-
-
-
 def dict_to_path(d):
+    # id should be dropped first
+    c = d[0].copy()
+    c.pop("id") # Remove id from the string as only the parameters should identify the computation.
     sep = "/"
-    ret = sep.join([key+"={"+key+"}" for key,val in d[0].items()])
+    ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
     return ret
 
 pattern_strings = {}
-pattern_strings["greenthomas"] = "greenthomas/alg_params=/" \
-                "n_samples={n_samples}/" \
-                "randomits={randomits}/" \
-                "penalty={penalty}"
 
-pattern_strings["notears"] = "notears/alg_params=/" \
-                "min_rate_of_progress={min_rate_of_progress}/" \
-                "penalty_growth_rate={penalty_growth_rate}/" \
-                "optimation_accuracy={optimation_accuracy}/" \
-                "loss={loss}/" \
-                "loss_grad={loss_grad}"
+pattern_strings["greenthomas"] = "greenthomas/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["greenthomas"])
 
-pattern_strings["blip"] = "blip/alg_params=/" \
-                "time={time}/" \
-                "scorermethod={scorermethod}/" \
-                "solvermethod={solvermethod}/" \
-                "indeg={indeg}/" \        
-                "cores={cores}/" \
-                "allocated={allocated}/" \
-                "scorefunction={scorefunction}/" \
-                "alpha={alpha}/" \
-                "verbose={verbose}"
+pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
 
-pattern_strings["pcalg"] = "pcalg/alg_params=/"\
-               "alpha={alpha}"
+pattern_strings["blip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["blip"])
 
-pattern_strings["mmhc"] = "mmhc/alg_params=/"\
-               "alpha={alpha}"
+pattern_strings["pcalg"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg"])
 
-pattern_strings["h2pc"] = "h2pc/alg_params=/"\
-               "alpha={alpha}"
+pattern_strings["mmhc"] = "mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["mmhc"])
 
-pattern_strings["interiamb"] = "interiamb/alg_params=/"\
-               "alpha={alpha}"
+pattern_strings["interiamb"] = "interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["interiamb"])
 
-pattern_strings["gs"] = "gs/alg_params=/"\
-               "alpha={alpha}"
+pattern_strings["gs"] = "gs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gs"])
 
 pattern_strings["tabu"] = "tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tabu"])
 
-#pattern_strings["tabu"] = "tabu/alg_params=/"\
- #              "score={score}/"\
- #              "iss={iss}/"\
- #              "issmu={issmu}/"\
- #              "l={l}/"\
- #              "k={k}/"\
- #              "prior={prior}/"\
- #              "beta={beta}"\
+pattern_strings["hc"] = "hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["hc"])
 
-pattern_strings["hc"] = "hc/alg_params=/"\
-               "perturb={perturb}/"\
-               "restart={restart}/"\
-               "score={score}/"\
-               "iss={iss}/"\
-               "issmu={issmu}/"\
-               "l={l}/"\
-               "k={k}/"\
-               "prior={prior}/"\
-               "beta={beta}"\
+pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gobnilp"])
 
-pattern_strings["gobnilp"] = "gobnilp/alg_params=/"\
-                 "palim={palim}/" \
-                 "alpha={alpha}/"\
-                 "prune={prune}"
+pattern_strings["itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["itsearch"])
 
-pattern_strings["itsearch"] = "itsearch/alg_params=/"\
-                    "scoretype={scoretype}/"\
-                    "chi={chi}/" \
-                    "edgepf={edgepf}/" \
-                    "am={am}/" \
-                    "aw={aw}/" \
-                    "map={MAP}/"\
-                    "plus1it={plus1it}/"\
-                    "posterior={posterior}"
-
-pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"\
-                    "scoretype={scoretype}/"\
-                    "chi={chi}/" \
-                    "edgepf={edgepf}/" \
-                    "am={am}/" \
-                    "aw={aw}/" \
-                    "startspace_algorithm=/{startspace_algorithm}"
+# pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"\
+#                     "scoretype={scoretype}/"\
+#                     "chi={chi}/" \
+#                     "edgepf={edgepf}/" \
+#                     "am={am}/" \
+#                     "aw={aw}/" \
+#                     "plus1={plus1}/" \
+#                     "startspace_algorithm=/{startspace_algorithm}"
+pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["order_mcmc"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
                   "threshold={threshold}/"\
@@ -102,26 +52,15 @@ pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
                   "M={M}/"\
                   "N={N}" 
 
-pattern_strings["fges"] = "fges/alg_params=/"\
-               "score={score}/" \
-               "datatype={datatype}/"\
-               "faithfulnessAssumed={faithfulnessAssumed}"
+#pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
 
-pattern_strings["fci"] = "fci/alg_params=/"\
-               "test={test}/" \
-               "alpha={alpha}/" \
-               "datatype={datatype}"
+pattern_strings["fges"] = "fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fges"])
 
-pattern_strings["gfci"] = "gfci/alg_params=/"\
-               "test={test}/" \
-               "alpha={alpha}/" \
-               "score={score}/" \
-               "datatype={datatype}"
+pattern_strings["fci"] = "fci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fci"])
 
-pattern_strings["rfci"] = "rfci/alg_params=/"\
-               "test={test}/" \
-               "alpha={alpha}/" \
-               "datatype={datatype}"
+pattern_strings["gfci"] = "gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gfci"])
+
+pattern_strings["rfci"] = "rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rfci"])
 
 pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \

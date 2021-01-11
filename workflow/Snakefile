@@ -15,7 +15,7 @@ for arg in args:
     i+=1
 
 configfile: 
-        configfilename
+    configfilename
 
 snakemake.utils.validate(config, 'schemas/config.schema.json')
 

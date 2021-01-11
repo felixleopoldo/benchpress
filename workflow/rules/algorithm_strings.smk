@@ -3,7 +3,7 @@ json_string = {}
 json_string = {val["id"]: expand(pattern_strings["greenthomas"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["greenthomas"]}
 
-json_string.update({val["id"]: expand(pattern_strings["itsearch"], **val["optional"])
+json_string.update({val["id"]: expand(pattern_strings["itsearch"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["itsearch"]})
 
 json_string.update({val["id"]: expand(pattern_strings["fges"], **val)
@@ -24,11 +24,8 @@ json_string.update({val["id"]: expand(pattern_strings["rfci"], **val)
 json_string.update({val["id"]: expand(pattern_strings["pcalg"], **val)  
                     for val in config["resources"]["structure_learning_algorithms"]["pcalg"]})
 
-json_string.update({val["id"]: expand(pattern_strings["mmhc"], **val["restrict.args"])
+json_string.update({val["id"]: expand(pattern_strings["mmhc"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["mmhc"]} )
-
-json_string.update({val["id"]: expand(pattern_strings["h2pc"], **val["restrict.args"])
-                    for val in config["resources"]["structure_learning_algorithms"]["h2pc"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["interiamb"], **val)                                        
                     for val in config["resources"]["structure_learning_algorithms"]["interiamb"]} )
@@ -60,15 +57,16 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
 json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
                 for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
-# This has to be the last one since it takes input strings as start space...
+# This has to be the last one since it takes input strings as start space...\
 json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 
                                             scoretype=val["scoretype"],
                                             chi=val["chi"],
                                             edgepf=val["edgepf"],
                                             am=val["am"],
                                             aw=val["aw"],
-                                            startspace_algorithm=json_string[val["startspace"]],
+                                            startspace_algorithm=json_string[val["startspace_algorithm"]],
                                             threshold=val["threshold"],
+                                            plus1=val["plus1"],
                                             burnin=val["burnin"],)  
                     for val in config["resources"]["structure_learning_algorithms"]["order_mcmc"] } )
 

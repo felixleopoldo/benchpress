@@ -6,7 +6,6 @@ import seaborn as sns
 def main(adjmat_filename, output_filename):
     heatmap = pd.read_csv(adjmat_filename)
 
-    print(heatmap)
 
     heatmap.index = heatmap.columns
 #    aux.plot_heatmap(heatmap, cbar=False, annot=False,

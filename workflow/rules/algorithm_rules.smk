@@ -101,39 +101,6 @@ rule join_summaries_notears:
     script:
         "../scripts/join_csv_files.R"
 
-rule h2pc:
-    input:
-        data = alg_input_data()
-    output:
-        adjmat = alg_output_adjmat_path("h2pc"),
-        time = alg_output_time_path("h2pc")
-    message:
-        "Executing h2pc algorithm on the following files: {input}."
-    shell:
-        alg_shell("h2pc")
-
-rule summarise_h2pc:
-    input:
-        data = summarise_alg_input_data_path(),
-        adjmat_true = summarise_alg_input_adjmat_true_path(),
-        adjmat_est = summarise_alg_input_adjmat_est_path("h2pc"),
-        time = summarise_alg_input_time_path("h2pc")
-    output:
-        res = summarise_alg_output_res_path("h2pc")
-    message:
-        "Summarising h2pc results based on the files: {input}."
-    shell:
-        summarise_alg_shell("h2pc")
-       
-rule join_summaries_h2pc:
-    input:
-        conf=configfilename,
-        res=join_string_sampled_model("h2pc")
-    output:
-        join_summaries_output("h2pc")
-    script:
-        "../scripts/join_csv_files.R"
-
 rule hc:
     input:
         data = alg_input_data()

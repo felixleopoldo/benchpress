@@ -8,11 +8,11 @@ p <- add_argument(p, "--tosymmetric", help = "1/0 ", default=0, type="numeric")
 
 argv <- parse_args(p)
 
-print(argv)
+
 filename <- file.path(argv$filename)
 
 adjvectraj <- fromJSON(file = argv$adjvectraj)
-print(argv)
+
 p <- sqrt(length(adjvectraj[[1]]))
 adjmat_est <- matrix(0,
                      nrow = p,

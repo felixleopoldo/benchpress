@@ -706,7 +706,7 @@
                     "type": "string"
                 },
                 "alpha": {
-                    "$ref": "#/definitions/flexprob"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "cores": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -788,7 +788,7 @@
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "alpha": {
-                    "$ref": "#/definitions/flexprob"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "prune": {
                     "type": "boolean"
@@ -847,6 +847,12 @@
                 },
                 "datatype": {
                     "type": "string"
+                },
+                "samplePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "structurePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "additionalProperties": false,
@@ -854,7 +860,9 @@
                 "id",
                 "faithfulnessAssumed",
                 "score",
-                "datatype"
+                "datatype",
+                "samplePrior",
+                "structurePrior"
             ]
         },
         "fci": {
@@ -903,13 +911,21 @@
                 },
                 "datatype": {
                     "type": "string"
+                },
+                "samplePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "structurePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
                 "alpha",
-                "test"
+                "test",
+                "samplePrior",
+                "structurePrior"
             ]
         },
         "rfci": {
@@ -929,13 +945,21 @@
                 },
                 "datatype": {
                     "type": "string"
+                },
+                "samplePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "structurePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
                 "alpha",
-                "test"
+                "test",
+                "samplePrior",
+                "structurePrior"
             ]
         },
         "pcalg": {
@@ -966,51 +990,14 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "restrict.args": {
-                    "title": "Parameters for mmhc",
-                    "type": "object",
-                    "properties": {
-                        "alpha": {
-                            "$ref": "#/definitions/flexprob"
-                        }
-                    },
-                    "required": [
-                        "alpha"
-                    ]
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "restrict.args"
-            ]
-        },
-        "h2pc": {
-            "title": "H2PC algorithm",
-            "description": "H2PC algorithm instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique idenfifier"
-                },
-                "restrict.args": {
-                    "title": "Paramters for h2pc",
-                    "type": "object",
-                    "properties": {
-                        "alpha": {
-                            "$ref": "#/definitions/flexprob"
-                        }
-                    },
-                    "required": [
-                        "alpha"
-                    ]
-                }
-            },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "restrict.args"
+                "alpha"
             ]
         },
         "interiamb": {
@@ -1071,7 +1058,7 @@
                     "type": "string"
                 },
                 "iss": {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "issmu": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1120,7 +1107,7 @@
                     "type": "string"
                 },
                 "iss": {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "issmu": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1158,74 +1145,57 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
-                "optional": {
-                    "title": "Parameters for itsearch",
-                    "description": "Algorithm parameters to show in plotting",
-                    "type": "object",
-                    "properties": {
-                        "MAP": {
-                            "type": "boolean"
-                        },
-                        "plus1it": {
-                            "$ref": "#/definitions/flexnonnegintnull"
-                        },
-                        "posterior": {
-                            "$ref": "#/definitions/flexprobnull"
-                        },
-                        "scoretype": {
-                            "type": "string"
-                        },
-                        "chi": {
-                            "$ref": "#/definitions/flexnonnegnumnull"
-                        },
-                        "edgepf": {
-                            "$ref": "#/definitions/flexnonnegnumnull"
-                        },
-                        "am": {
-                            "$ref": "#/definitions/flexnonnegnumnull"
-                        },
-                        "aw": {
-                            "$ref": "#/definitions/flexnonnegnumnull"
-                        }
-                    },
-                    "additionalProperties": false,
-                    "required": [
-                        "MAP",
-                        "plus1it",
-                        "posterior",
-                        "scoretype",
-                        "chi",
-                        "edgepf",
-                        "am",
-                        "aw"
-                    ]
+                "MAP": {
+                    "type": "boolean"
+                },
+                "plus1it": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "posterior": {
+                    "$ref": "#/definitions/flexprobnull"
+                },
+                "scoretype": {
+                    "type": "string"
+                },
+                "chi": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "edgepf": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "am": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "aw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
-            }
+            },
+            "additionalProperties": false,
+            "required": [
+                "MAP",
+                "plus1it",
+                "posterior",
+                "scoretype",
+                "chi",
+                "edgepf",
+                "am",
+                "aw"
+            ]            
         },
         "order_mcmc": {
-            "title": "Order MCMC (paramter setting  )",
+            "title": "Order MCMC (parameter setting)",
             "description": "Order MCMC algorithm instance",
             "type": "object",
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
-                "startspace": {
+                "startspace_algorithm": {
                     "type": "string"
                 },
-                "optional": {
-                    "type": "object",
-                    "title": "Parameters for order_mcmc",
-                    "properties": {
-                        "plus1": {
-                            "type": "boolean"
-                        }
-                    },
-                    "required": [
-                        "plus1"
-                    ],
-                    "additionalProperties": false
+                "plus1": {
+                    "type": "boolean"
                 },
                 "scoretype": {
                     "type": "string"
@@ -1257,7 +1227,9 @@
                 "am",
                 "aw",
                 "threshold",
-                "burnin"
+                "burnin",
+                "startspace_algorithm",
+                "plus1"
             ]
         }
     }

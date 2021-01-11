@@ -154,7 +154,8 @@ def alg_shell(algorithm):
                 "--delimiter space " \
                 "--score {wildcards.score} "\
                 "--json-graph "\
-                "--structurePrior 1 "\
+                "--structurePrior {wildcards.structurePrior} " \
+                "--samplePrior {wildcards.samplePrior} " \
                 "--prefix {output.adjmat} " \
                 '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
                 '--jsongraph {output.adjmat}_graph.json ' \
@@ -194,7 +195,9 @@ def alg_shell(algorithm):
                 "--alpha {wildcards.alpha} "\
                 "--score {wildcards.score} "\
                 "--structurePrior 1 "\
-                "--json-graph "\                
+                "--json-graph "\ 
+                "--structurePrior {wildcards.structurePrior} " \
+                "--samplePrior {wildcards.samplePrior} " \  
                 "--prefix {output.adjmat} " \
                 '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
                 '--jsongraph {output.adjmat}_graph.json ' \
@@ -217,6 +220,8 @@ def alg_shell(algorithm):
                 "--prefix {output.adjmat} " \
                 '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
                 '--jsongraph {output.adjmat}_graph.json ' \
+                "--structurePrior {wildcards.structurePrior} " \
+                "--samplePrior {wildcards.samplePrior} " \
                 '--filename {output.adjmat} ' \
                 '&& ' \
                 'rm {output.adjmat}_graph.json ' \

@@ -8,7 +8,6 @@ p <- add_argument(p, "--output_filename", help = "Output filename")
 argv <- parse_args(p)
 
 toplot <- read.csv(argv$input_filename)
-#print(toplot)
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_pattern_median,
                   ymin = TPR_pattern_q1, 
