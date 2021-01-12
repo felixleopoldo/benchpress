@@ -146,28 +146,27 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname posterior     --colval {wildcards.posterior} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname iterations    --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname stepsave      --colval null " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname softlimit     --colval 9 " \ 
-        " && python workflow/scripts/add_column.py --filename {output} --colname hardlimit     --colval 12 " \ 
-        " && python workflow/scripts/add_column.py --filename {output} --colname alpha         --colval 0.05 " \ 
-        " && python workflow/scripts/add_column.py --filename {output} --colname gamma         --colval 1  " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname softlimit     --colval {wildcards.softlimit} " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname hardlimit     --colval {wildcards.hardlimit} " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname alpha         --colval {wildcards.alpha} " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname gamma         --colval {wildcards.gamma}  " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname startspace    --colval null " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname blacklist     --colval null " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose       --colval true " \
         " && python workflow/scripts/add_column.py --filename {output} --colname chainout      --colval true " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoreout      --colval true " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname cpdag         --colval false " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname mergetype     --colval skeleton " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname cpdag         --colval {wildcards.cpdag} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname mergetype     --colval {wildcards.mergetype} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname addspace      --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretable    --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname startorder    --colval null " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname accum         --colval false " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname accum         --colval {wildcards.accum} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretype    --colval {wildcards.scoretype} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname chi          --colval {wildcards.chi} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname am           --colval {wildcards.am} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname aw           --colval {wildcards.aw} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time         --colval `cat {input.time}` "  \
-
 
     elif algorithm == "pcalg":
         return "Rscript workflow/scripts/run_summarise.R " \
@@ -185,13 +184,13 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname fixedGaps   --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname fixedEdges  --colval null " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname NAdelete    --colval true " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname m.max       --colval inf " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname conservative --colval false " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname maj.rule     --colval false " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname solve.confl  --colval false " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname numCores     --colval 1 " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname verbose      --colval false " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname NAdelete    --colval {wildcards.NAdelete} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname m.max       --colval {wildcards.mmax} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname conservative --colval {wildcards.conservative} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname maj.rule     --colval {wildcards.majrule} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname solve.confl  --colval {wildcards.solveconfl} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname numCores     --colval {wildcards.numCores} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname verbose      --colval {wildcards.verbose} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
 
 

@@ -241,8 +241,8 @@ rule itsearch:
         time = alg_output_time_path("itsearch")
     message:
         "Executing iterative search algorithm with wildcards {wildcards} on the following data: {input}"
-    shell:
-        alg_shell("itsearch")
+    script:
+        "../scripts/run_iterative_search.R"
 
 rule summarise_itsearch:
     input:
@@ -274,8 +274,10 @@ rule pcalg:
         time = alg_output_time_path("pcalg")
     message:
         "Executing order PC algorithm on the following files: {input}."
-    shell:
-       alg_shell("pcalg")
+    script:
+        "../scripts/run_pcalg.R"
+    #shell:
+    #   alg_shell("pcalg")
 
 rule summarise_pcalg:
     input:

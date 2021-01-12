@@ -91,6 +91,10 @@ def alg_shell(algorithm):
                 "Rscript workflow/scripts/run_pcalg.R " \
                 "--filename_data {input.data} "\
                 "--alpha {wildcards.alpha} "\
+                "--NAdelete {wildcards.NAdelete} "\
+                "--mmax {wildcards.mmax} "\
+                "--u2pd {wildcards.u2pd} "\
+                "--skelmethod {wildcards.skelmethod} "\
                 "--output_dir {wildcards.output_dir} "\
                 "--seed {wildcards.replicate} "\
                 "--filename {output.adjmat} "

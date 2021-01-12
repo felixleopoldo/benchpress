@@ -578,6 +578,18 @@
                 }
             ]
         },
+        "flexnonnegintstring": {
+            "title": "Non-negative integer(s), or Inf string.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                {
+                    "type": "string",
+                    "enum": "Inf"
+                }
+            ]
+        },        
         "flexnatnum": {
             "title": "Non-negative integer(s)",
             "anyOf": [
@@ -961,6 +973,35 @@
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
+                },
+                "numCores":{
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "verbose": {
+                    "type":"boolean"
+                },
+                "NAdelete": {
+                    "type":"boolean"
+                },
+                "mmax":{
+                    "$ref": "#/definitions/flexnonnegintstring"
+                },
+                "u2pd":{
+                    "type":"string",
+                    "enum": ["relaxed", "rand", "retry"]
+                },
+                "skelmethod":{
+                    "type": "string",
+                    "enum": ["stable","original", "stable.fast"]
+                },
+                "conservative":{
+                    "type":"boolean"
+                },
+                "majrule":{
+                    "type":"boolean"
+                },
+                "solveconfl":{
+                    "type":"boolean"
                 }
             },
             "additionalProperties": false,
@@ -1142,6 +1183,28 @@
                 "posterior": {
                     "$ref": "#/definitions/flexprobnull"
                 },
+                "softlimit":{
+                    "$ref": "#/definitions/flexnonnegint"    
+                },
+                "hardlimit":{
+                    "$ref": "#/definitions/flexnonnegint"    
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprob"    
+                },
+                "gamma":{
+                    "$ref": "#/definitions/flexnonnegnum"    
+                },
+                "cpdag":{
+                    "type":"boolean"
+                },
+                "mergetype":{
+                    "type":"string",
+                    "enum":["skeleton"]
+                },
+                "accum":{
+                    "type":"boolean"
+                },
                 "scoretype": {
                     "type": "string"
                 },
@@ -1167,7 +1230,13 @@
                 "chi",
                 "edgepf",
                 "am",
-                "aw"
+                "aw",
+                "softlimit",
+                "hardlimit",
+                "alpha",
+                "gamma",
+                "cpdag",
+                "mergetype"
             ]            
         },
         "order_mcmc": {

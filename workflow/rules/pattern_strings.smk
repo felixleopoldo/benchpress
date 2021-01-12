@@ -34,29 +34,13 @@ pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resourc
 
 pattern_strings["itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["itsearch"])
 
-# pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"\
-#                     "scoretype={scoretype}/"\
-#                     "chi={chi}/" \
-#                     "edgepf={edgepf}/" \
-#                     "am={am}/" \
-#                     "aw={aw}/" \
-#                     "plus1={plus1}/" \
-#                     "startspace_algorithm=/{startspace_algorithm}"
 pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["order_mcmc"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
                   "threshold={threshold}/"\
                   "burnin={burnin}"
 
-pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"\
-                  "alpha={alpha}/"\
-                  "beta={beta}/"\
-                  "radii={radii}/"\
-                  "pseudo_obs={pseudo_obs}/"\
-                  "M={M}/"\
-                  "N={N}" 
-
-#pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
+pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
 
 pattern_strings["fges"] = "fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fges"])
 

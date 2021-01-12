@@ -1,12 +1,8 @@
-## Simulate 
 library(argparser)
 library(RBGL)
 library(BiDAG)
 
 source("resources/code_for_binary_simulations/df_fns.R")
-#source("lib/code_for_binary_simulations/sim_bidag_binary.R")
-
-
 
 p <- arg_parser("A program for running iterativeMCMC and save to file.")
 
@@ -25,13 +21,12 @@ p <- add_argument(p, "--posterior",     help = "parameter")
 p <- add_argument(p, "--plus1it",       help = "parameter")
 
 argv <- parse_args(p)
-directory <- argv$output_dir
-filename <- file.path(argv$filename)
-filename_data <- argv$filename_data
 
-seed <- argv$seed
-map <- argv$map
+filename <- file.path(snakemake@output[["adjmat"]])
+filename_data <- snakemake@input[["data"]]
 
+seed <- snakemake@wildcards[["replicate"]]
+map <- snakemake@wildcards[["MAP"]]
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
@@ -39,46 +34,48 @@ data <- data[-1,] # Remove range header
 # Iterative search
 
 plus1it <- NULL
-if (argv$plus1it != "None") {
-  plus1it <- as.numeric(argv$plus1it)
+if (snakemake@wildcards[["plus1it"]] != "None") {
+  plus1it <- as.numeric(snakemake@wildcards[["plus1it"]])
 }
 
 posterior <- NULL
-if (argv$posterior != "None") {
-  posterior <- as.numeric(argv$posterior)
+if (snakemake@wildcards[["posterior"]] != "None") {
+  posterior <- as.numeric(snakemake@wildcards[["posterior"]])
 }
 chi <- NULL
-if (argv$chi != "None") {
-  chi <- as.numeric(argv$chi)
+if (snakemake@wildcards[["chi"]] != "None") {
+  chi <- as.numeric(snakemake@wildcards[["chi"]])
 }
 
 edgepf <- NULL
-if (argv$edgepf != "None") {
-  edgepf <- as.numeric(argv$edgepf)
+if (snakemake@wildcards[["edgepf"]] != "None") {
+  edgepf <- as.numeric(snakemake@wildcards[["edgepf"]])
 }
 
 aw <- NULL
-if (argv$aw != "None") {
-  aw <- as.numeric(argv$aw)
+if (snakemake@wildcards[["aw"]] != "None") {
+  aw <- as.numeric(snakemake@wildcards[["aw"]])
 }
 
 am <- NULL
-if (argv$am != "None") {
-  am <- as.numeric(argv$am)
+if (snakemake@wildcards[["am"]] != "None") {
+  am <- as.numeric(snakemake@wildcards[["am"]])
 }
-if(argv$scoretype == "bdecat"){
+if(snakemake@wildcards[["scoretype"]] == "bdecat"){
     myscore <- scoreparameters(dim(data)[2], "bdecat", data, 
                                 bdecatpar = list(chi = chi,
                                                  edgepf = edgepf))
 } 
-if(argv$scoretype == "bde"){
+if(snakemake@wildcards[["scoretype"]] == "bde"){
     myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
                                                                         edgepf = edgepf))
 } 
-if(argv$scoretype == "bge"){
+if(snakemake@wildcards[["scoretype"]] == "bge"){
     myscore <- scoreparameters(dim(data)[2], "bge", data, bgepar = list(am = am,
                                                                         aw = aw))
 }
+
+start <- proc.time()[1]
 itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       myscore,
                                       chainout = TRUE,
@@ -88,8 +85,9 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       plus1it = plus1it) # 1 and loop
 # How to get number of iterations (it)?
 # output a csv file with "additional statistics" eg
-
+totaltime <- proc.time()[1] - start
 endspace <- itsearch_res$space$adjacency
 colnames(endspace) <- names(data)
 
 write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
+write(totaltime, file = snakemake@output[["time"]])
