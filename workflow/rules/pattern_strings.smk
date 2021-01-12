@@ -2,6 +2,10 @@ def dict_to_path(d):
     # id should be dropped first
     c = d[0].copy()
     c.pop("id") # Remove id from the string as only the parameters should identify the computation.
+    if "burnin" in c:
+        c.pop("burnin")
+    if "threshold" in c:        
+        c.pop("threshold")
     sep = "/"
     ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
     return ret
