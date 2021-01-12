@@ -220,8 +220,6 @@ def alg_shell(algorithm):
                 "--prefix {output.adjmat} " \
                 '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
                 '--jsongraph {output.adjmat}_graph.json ' \
-                "--structurePrior {wildcards.structurePrior} " \
-                "--samplePrior {wildcards.samplePrior} " \
                 '--filename {output.adjmat} ' \
                 '&& ' \
                 'rm {output.adjmat}_graph.json ' \
