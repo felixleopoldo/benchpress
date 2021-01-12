@@ -912,9 +912,6 @@
                 "datatype": {
                     "type": "string"
                 },
-                "samplePrior":{
-                    "$ref": "#/definitions/flexnonnegnum"
-                },
                 "structurePrior":{
                     "$ref": "#/definitions/flexnonnegnum"
                 }
@@ -924,7 +921,6 @@
                 "id",
                 "alpha",
                 "test",
-                "samplePrior",
                 "structurePrior"
             ]
         },
@@ -945,21 +941,13 @@
                 },
                 "datatype": {
                     "type": "string"
-                },
-                "samplePrior":{
-                    "$ref": "#/definitions/flexnonnegnum"
-                },
-                "structurePrior":{
-                    "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
                 "alpha",
-                "test",
-                "samplePrior",
-                "structurePrior"
+                "test"
             ]
         },
         "pcalg": {
