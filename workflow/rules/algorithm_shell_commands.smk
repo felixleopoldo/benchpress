@@ -196,8 +196,6 @@ def alg_shell(algorithm):
                 "--score {wildcards.score} "\
                 "--structurePrior 1 "\
                 "--json-graph "\ 
-                "--structurePrior {wildcards.structurePrior} " \
-                "--samplePrior {wildcards.samplePrior} " \  
                 "--prefix {output.adjmat} " \
                 '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
                 '--jsongraph {output.adjmat}_graph.json ' \
