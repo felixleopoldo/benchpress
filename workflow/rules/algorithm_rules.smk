@@ -504,8 +504,8 @@ rule order_mcmc:
         time = alg_output_time_path("order_mcmc")
     message:
         "Executing order mcmc algorithm with startspace on the following files: {input}.\n Output: {output}"
-    shell: 
-       alg_shell("order_mcmc")
+    script:
+        "../scripts/run_order_mcmc.R"
 
 rule summarise_order_mcmc:
     input:

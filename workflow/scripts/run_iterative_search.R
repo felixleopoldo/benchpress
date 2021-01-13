@@ -1,26 +1,7 @@
-library(argparser)
 library(RBGL)
 library(BiDAG)
 
 source("resources/code_for_binary_simulations/df_fns.R")
-
-p <- arg_parser("A program for running iterativeMCMC and save to file.")
-
-p <- add_argument(p, "--output_dir",    help = "output dir", default = ".")
-p <- add_argument(p, "--title",         help = "Title")
-p <- add_argument(p, "--filename",      help = "Filename")
-p <- add_argument(p, "--filename_data", help = "Dataset filename")
-p <- add_argument(p, "--seed",          help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--map",           help = "MAP parameter True False", )
-p <- add_argument(p, "--scoretype",     help = "bde/bge/bic")
-p <- add_argument(p, "--chi",           help = "score parameter")
-p <- add_argument(p, "--edgepf",        help = "score parameter")
-p <- add_argument(p, "--am",            help = "score parameter")
-p <- add_argument(p, "--aw",            help = "score parameter") # fix null
-p <- add_argument(p, "--posterior",     help = "parameter")
-p <- add_argument(p, "--plus1it",       help = "parameter")
-
-argv <- parse_args(p)
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
@@ -82,7 +63,14 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       MAP = as.logical(map),
                                       posterior = posterior,
                                       scoreout = TRUE,
-                                      plus1it = plus1it) # 1 and loop
+                                      plus1it = plus1it,
+                                      hardlimit=as.integer(snakemake@wildcards[["hardlimit"]]),
+                                      softlimit=as.integer(snakemake@wildcards[["softlimit"]]),
+                    alpha=as.numeric(snakemake@wildcards[["alpha"]]),
+                    gamma=as.numeric(snakemake@wildcards[["gamma"]]),
+                    cpdag=as.boolean(snakemake@wildcards[["cpdag"]]),
+                    mergetype=snakemake@wildcards[["mergetype"]]
+                                      ) # 1 and loop
 # How to get number of iterations (it)?
 # output a csv file with "additional statistics" eg
 totaltime <- proc.time()[1] - start

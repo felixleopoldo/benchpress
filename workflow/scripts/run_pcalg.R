@@ -1,4 +1,3 @@
-## Simulate rblip
 library(RBGL)
 library(pcalg)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
@@ -9,15 +8,8 @@ filename_data <- snakemake@input[["data"]]
 
 seed <- as.integer(snakemake@wildcards[["replicate"]])
 alpha <- as.numeric(snakemake@wildcards[["alpha"]])
-
 NAdelete <- as.logical(snakemake@wildcards[["NAdelete"]])
-
-#mmax <- snakemake@wildcards[["mmax"]]
-#if(mmax == "Inf") {
 mmax <- as.numeric(snakemake@wildcards[["mmax"]])
-#}  else{
-
-#}
 u2pd <- snakemake@wildcards[["u2pd"]]
 skelmethod <- snakemake@wildcards[["skelmethod"]]
 conservative <- as.logical(snakemake@wildcards[["conservative"]])

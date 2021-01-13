@@ -1202,9 +1202,6 @@
                     "type":"string",
                     "enum":["skeleton"]
                 },
-                "accum":{
-                    "type":"boolean"
-                },
                 "scoretype": {
                     "type": "string"
                 },
@@ -1257,6 +1254,9 @@
                 "scoretype": {
                     "type": "string"
                 },
+                "MAP": {
+                    "type": "boolean"
+                },
                 "chi": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
@@ -1268,6 +1268,21 @@
                 },
                 "aw": {
                     "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "iterations": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "stepsave": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "alpha":{
+                    "$ref": "#/definitions/flexprobnull"    
+                },
+                "gamma":{
+                    "$ref": "#/definitions/flexnonnegnum"    
+                },
+                "cpdag":{
+                    "type":"boolean"
                 },
                 "threshold": {
                     "$ref": "#/definitions/flexprob"
@@ -1286,7 +1301,11 @@
                 "threshold",
                 "burnin",
                 "startspace_algorithm",
-                "plus1"
+                "plus1",
+                "MAP",
+                "stepsave",
+                "iterations",
+                "gamma"
             ]
         }
     }

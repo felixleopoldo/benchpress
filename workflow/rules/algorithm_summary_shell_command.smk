@@ -160,7 +160,6 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname addspace      --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretable    --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname startorder    --colval null " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname accum         --colval {wildcards.accum} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretype    --colval {wildcards.scoretype} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname chi          --colval {wildcards.chi} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
@@ -417,16 +416,16 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname am           --colval {wildcards.am} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname aw           --colval {wildcards.aw} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname map         --colval null "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname map         --colval {wildcards.MAP} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname blacklist   --colval null "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname startorder  --colval null "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname scoretable  --colval null "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname moveprobs   --colval null "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname iterations  --colval null "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname stepwise    --colval null "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval 0.05 "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname cpdag       --colval false "\   
-                " && python workflow/scripts/add_column.py --filename {output} --colname gamma       --colval 1 "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname iterations  --colval {wildcards.iterations} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname stepsave    --colval {wildcards.stepsave} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname cpdag       --colval {wildcards.cpdag} "\   
+                " && python workflow/scripts/add_column.py --filename {output} --colname gamma       --colval {wildcards.gamma} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname hardlimit   --colval 15 "\      
                 " && python workflow/scripts/add_column.py --filename {output} --colname chainout    --colval true "\   
                 " && python workflow/scripts/add_column.py --filename {output} --colname scoreout    --colval false "\   
