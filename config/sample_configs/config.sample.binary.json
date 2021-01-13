@@ -1,6 +1,5 @@
 {
     "benchmark_setup": {
-        "output_dir": "results",
         "data": [
             {
                 "graph_id": "generateDAGMaxParents",
@@ -296,12 +295,31 @@
                         0.1,
                         0.2,
                         0.35,
-                        0.45
-                    ]
+                        0.45,
+                        0.5
+                    ],
+                    "NAdelete": true, 
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false, 
+                    "solveconfl": false,
+                    "numCores": 1, 
+                    "verbose": false
                 },
                 {
                     "id": "pcalg005",
-                    "alpha": 0.05
+                    "alpha": 0.05,
+                    "NAdelete": true, 
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false, 
+                    "solveconfl": false,
+                    "numCores": 1, 
+                    "verbose": false
                 }
             ],
             "mmhc": [
@@ -379,7 +397,13 @@
                     "chi": [1, 10, 50, 100],
                     "edgepf": 2,
                     "am": null,
-                    "aw": null
+                    "aw": null,
+                    "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
                 },
                 {
                     "id": "itsearch_map_cont",
@@ -391,7 +415,13 @@
                         "chi": null,
                         "edgepf": null,
                         "am": 1,
-                        "aw": null
+                        "aw": null,
+                    "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
                     
                 },
                 {
@@ -404,7 +434,14 @@
                         "chi": [1, 10, 50, 100],
                         "edgepf": 2,
                         "am": null,
-                        "aw": null
+                        "aw": null,
+                                            "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
+
                     
                 },
                 {
@@ -417,7 +454,14 @@
                         "chi": 1,
                         "edgepf": 2,
                         "am": null,
-                        "aw": null
+                        "aw": null,
+                                            "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
+
                     
                 },
                 {
@@ -430,7 +474,14 @@
                         "chi": 10,
                         "edgepf": 2,
                         "am": null,
-                        "aw": null
+                        "aw": null,
+                        "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
+
                     
                 },
                 {
@@ -443,7 +494,14 @@
                         "chi": 50,
                         "edgepf": 2,
                         "am": null,
-                        "aw": null
+                        "aw": null,
+                        "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
+
                     
                 },
                 {
@@ -456,8 +514,13 @@
                         "chi": 100,
                         "edgepf": 2,
                         "am": null,
-                        "aw": null
-                    
+                        "aw": null,
+                        "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
                 }
             ],
             "order_mcmc": [
@@ -470,6 +533,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
+                    "cpdag": false,
                     "threshold": [
                         0.99,
                         0.95,
@@ -493,6 +562,12 @@
                     "edgepf": null,
                     "aw": null,
                     "am": 1,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
+                    "cpdag": false,
                     "threshold": [
                         0.99,
                         0.95,
@@ -516,6 +591,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
                     "threshold": [
                          0.99,
                         0.95,
@@ -539,6 +620,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
                     "threshold": [
                          0.99,
                         0.95,
@@ -562,6 +649,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
                     "threshold": [
                          0.99,
                         0.95,
@@ -585,6 +678,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
                     "threshold": [
                          0.99,
                         0.95,
@@ -608,6 +707,12 @@
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
                     "threshold": [
                          0.99,
                         0.95,
