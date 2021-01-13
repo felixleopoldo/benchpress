@@ -38,7 +38,7 @@ for (alg in rocalgs){
 
     if(algorithm %in% active_algorithms) { #bug
         #ROCdf <- read.csv(file.path(config$benchmark_setup$output_dir, paste(alg$algorithm_id ,".csv", sep = "")))
-        ROCdf <- read.csv(file.path(config$benchmark_setup$output_dir, paste(algorithm ,".csv", sep = "")))
+        ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = "")))
         sumROC = ROCdf %>%
         group_by(id, adjmat, bn, data, !!as.symbol(alg$curve_variable)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),

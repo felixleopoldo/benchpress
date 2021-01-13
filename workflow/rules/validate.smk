@@ -20,7 +20,7 @@ def validate_data_setup(config, dict):
     for alg, alg_conf_avail in config["resources"]["graph"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/adjmat/myadjmats")
+    available_conf_ids += os.listdir( "results/adjmat/myadjmats")
 
 
     if not dict["graph_id"] in available_conf_ids:
@@ -29,13 +29,13 @@ def validate_data_setup(config, dict):
                         "The available graph id´s are: " + str(available_conf_ids))
   
 
-    available_data_files = os.listdir(config["benchmark_setup"]["output_dir"] + "/data/mydatasets")
+    available_data_files = os.listdir("results/data/mydatasets")
     # Check that parameters exists
     available_conf_ids = []
     for alg, alg_conf_avail in config["resources"]["parameters"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir(config["benchmark_setup"]["output_dir"] + "/bn/bn.fit_networks")
+    available_conf_ids += os.listdir("results/bn/bn.fit_networks")
 
     
     if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:

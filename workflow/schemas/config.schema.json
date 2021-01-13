@@ -9,14 +9,6 @@
             "description": "Description of the benchmarking setup.",
             "type": "object",
             "properties": {
-                "output_dir": {
-                    "title": "Output directory",
-                    "description": "Directory for the generated files.",
-                    "type": "string",
-                    "enum": [
-                        "results"
-                    ]
-                },
                 "data": {
                     "title": "Data setup",
                     "description": "A list of data setup instantiations.",
@@ -47,8 +39,7 @@
             },
             "required": [
                 "data",
-                "evaluation",
-                "output_dir"
+                "evaluation"
             ],
             "additionalProperties": false
         },

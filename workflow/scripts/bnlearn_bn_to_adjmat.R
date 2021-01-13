@@ -14,3 +14,12 @@ adjmat <- as(bn_net_gnel, "matrix")
 write.csv(adjmat, file = argv$filename_graph, row.names = FALSE, quote = FALSE)
 
 
+# for (file in list.files("resources/bn/bn.fit_networks")){
+#     print(file)
+#     noext <- tools::file_path_sans_ext(file)
+#     print(noext)
+#    bn_net <- readRDS(paste("resources/bn/bn.fit_networks/",noext,".rds", sep=""))
+# bn_net_gnel <- as.graphNEL(bn_net)
+# adjmat <- as(bn_net_gnel, "matrix")
+# write.csv(adjmat, file = paste("resources/adjmat/myadjmats/",noext,".csv",sep=""), row.names = FALSE, quote = FALSE) 
+# }

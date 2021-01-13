@@ -2,10 +2,16 @@ import json
 from jsonschema import validate
 import snakemake.utils
 import sys, getopt
+import shutil
+
 from pathlib import Path
 
 args = sys.argv
 
+# copy data adjmats and parameters into the results folder
+shutil.copytree("resources/data", "results/data",dirs_exist_ok=True)
+shutil.copytree("resources/bn", "results/bn",dirs_exist_ok=True)
+shutil.copytree("resources/adjmat", "results/adjmat",dirs_exist_ok=True)
 configfilename="config/config.json"
 i=0
 for arg in args:
@@ -102,7 +108,7 @@ def join_string_sampled_model(algorithm, mode="result"):
             "data=/{data_string}/"
             "id={id}/" \        
             + mode + ".csv",
-            output_dir=config["benchmark_setup"]["output_dir"],
+            output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
@@ -134,20 +140,6 @@ def join_string_sampled_model(algorithm, mode="result"):
     return ret
 
 def join_summaries_shell(algorithm):
-    # return "cat {input.res[0]} > {output} && " \
-    #         "i=0;" \
-    #         "l=0;" \
-    #         "cat {input.res[$i]}" \
-    #         "for file in {input.res} ;"\
-    #         "do "\  
-    #         "   if [ $i -gt 0 ] ; " \
-    #         "      then " \
-    #         "      Rscript scripts/join_csv_files.R --filename1 {output} --filename2 $file ; "  \
-    #         "   fi ;" \
-    #         "   ((i=i+1)) ;"\
-    #         "done ; " \
-    #         "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
-
     #    "Rscript scripts/join_csv_files.R --filename {output} --files {input.res} "  \
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
@@ -264,7 +256,7 @@ def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = active_algorithms()
-    alg_filenames = [conf["benchmark_setup"]["output_dir"] + "/" + alg + ".csv" for alg in algs]
+    alg_filenames = ["results/" + alg + ".csv" for alg in algs]
     
     return alg_filenames
 

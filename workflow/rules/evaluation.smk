@@ -40,7 +40,7 @@ rule roc_data:
         snake="workflow/Snakefile",
         algs=active_algorithm_files # It should maybe be stated there which kind of roc to be considered..
     output:
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv"
+        csv="results/ROC_data.csv"
     shell:
         "Rscript workflow/scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
@@ -48,9 +48,9 @@ rule roc:
     input:
         configfilename,
         "workflow/Snakefile",
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
+        csv="results/ROC_data.csv" 
     output:
-        eps=config["benchmark_setup"]["output_dir"] + "/ROC.eps"
+        eps="results/ROC.eps"
     shell:
         "Rscript workflow/scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
 
@@ -58,9 +58,9 @@ rule roc_cpdag:
     input:
         configfilename,
         "workflow/Snakefile",
-        csv=config["benchmark_setup"]["output_dir"] + "/ROC_data.csv" 
+        csv="results/ROC_data.csv" 
     output:
-        eps=config["benchmark_setup"]["output_dir"] + "/ROC_essential_graph.eps"
+        eps="results/ROC_essential_graph.eps"
     shell:
         "Rscript scripts/plot_cpdag_roc.R --input_filename {input.csv} --output_filename {output.eps}"
 
