@@ -2,8 +2,20 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "notears",
-                "parameters_id": "notears",
+                "graph_id": "notears12",
+                "parameters_id": "rand_sem_gauss",
+                "data_id": "independent_samples",
+                "seed_range": [1, 10]
+            },
+            {
+                "graph_id": "notears20",
+                "parameters_id": "rand_sem_gauss",
+                "data_id": "independent_samples",
+                "seed_range": [1, 10]
+            },
+            {
+                "graph_id": "notears30",
+                "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
             }
@@ -29,9 +41,8 @@
             "standard_sampling": [
                 {
                     "id": "independent_samples",
-                    "sample_sizes": [
-                        100
-                    ]
+                    "sample_sizes": 
+                        [300, 500, 800]
                 },
                 {
                     "id": "standard_sampling2000",
@@ -44,9 +55,19 @@
         "graph": {
             "notears": [
                 {
-                    "id": "notears",
+                    "id": "notears12",
+                    "num_nodes": 12,
+                    "num_edges": 50
+                },
+                {
+                    "id": "notears20",
                     "num_nodes": 20,
                     "num_edges": 100
+                },
+                {
+                    "id": "notears30",
+                    "num_nodes": 30,
+                    "num_edges": 150
                 }
             ],
             "generateDAGMaxParents": [
@@ -71,7 +92,7 @@
             ],
             "notears_parameters_sampling": [
                 {
-                    "id": "notears",
+                    "id": "rand_sem_gauss",
                     "edge_coefficient_range_from": 0.5,
                     "edge_coefficient_range_to": 2,
                     "mean": 0,
@@ -141,7 +162,7 @@
                 {
                     "id": "notears",
                     "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
+                    "penalty_growth_rate": [10],
                     "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss",
                     "loss_grad": "least_squares_loss_grad"

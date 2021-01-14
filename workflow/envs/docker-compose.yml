@@ -14,7 +14,7 @@ services:
       DISPLAY: $DISPLAY
       MPLBACKEND: Agg
   notears:
-    image: onceltuca/jmoss20notears:1.2
+    image: onceltuca/jmoss20notears:1.4
     command: tail -f /dev/null
   benchmark:
     image: onceltuca/benchmark:1.0.7
