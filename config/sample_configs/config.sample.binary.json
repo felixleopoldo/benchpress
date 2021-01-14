@@ -28,7 +28,7 @@
                 },
                 {
                     "algorithm_id": "mmhc",
-                    "curve_variable": "iss"
+                    "curve_variable": "alpha"
                 },
                 {
                     "algorithm_id": "hc",
