@@ -128,9 +128,6 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-
-
-
 # print(dim(data))
 #print("True adjmat")
 #print(true_adjmat)
@@ -141,8 +138,6 @@ rownames(true_adjmat) <- seq(n)
 colnames(true_adjmat) <- seq(n)
 rownames(estimated_adjmat) <- seq(n)
 colnames(estimated_adjmat) <- seq(n)
-
-
 
 true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
 estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
@@ -163,19 +158,21 @@ df <- data.frame(TPR_pattern = compres["TP"] / true_nedges, # should be for all 
 
 
 # Essential graph (CPDAG)
-true_dag <- as(t(true_adjmat), "graphNEL") # TODO: should it be transpose here?
-estimated_dag <- as(t(estimated_adjmat), "graphNEL")
+# true_dag <- as(t(true_adjmat), "graphNEL") # TODO: should it be transpose here?
+# estimated_dag <- as(t(estimated_adjmat), "graphNEL")
 
-cpdag_true <- pcalg::dag2cpdag(true_dag)
-cpdag_est <- pcalg::dag2cpdag(estimated_dag)
-cpdag_adjmat_true = as(cpdag_true, "matrix") != 0
-cpdag_adjmat_est = as(cpdag_est, "matrix") != 0
+# cpdag_true <- pcalg::dag2cpdag(true_dag)
+# cpdag_est <- pcalg::dag2cpdag(estimated_dag) # bug here
+# cpdag_adjmat_true = as(cpdag_true, "matrix") != 0
+# cpdag_adjmat_est = as(cpdag_est, "matrix") != 0
 
-compres <- compareEGs(cpdag_adjmat_est, cpdag_adjmat_true)
+# compres <- compareEGs(cpdag_adjmat_est, cpdag_adjmat_true)
 
-df["TPR_cpdag"] = compres["TPR"]
-df["FPRn_cpdag"] = compres["FPR_P"]
-df["SHD_cpdag"] = compres["SHD"]
+# df["TPR_cpdag"] = compres["TPR"]
+# df["FPRn_cpdag"] = compres["FPR_P"]
+# df["SHD_cpdag"] = compres["SHD"]
+
+
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
 
 

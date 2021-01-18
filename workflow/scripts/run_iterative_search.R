@@ -66,16 +66,25 @@ itsearch_res <- iterativeMCMCsearch(dim(data)[2],
                                       plus1it = plus1it,
                                       hardlimit=as.integer(snakemake@wildcards[["hardlimit"]]),
                                       softlimit=as.integer(snakemake@wildcards[["softlimit"]]),
-                    alpha=as.numeric(snakemake@wildcards[["alpha"]]),
-                    gamma=as.numeric(snakemake@wildcards[["gamma"]]),
-                    cpdag=as.boolean(snakemake@wildcards[["cpdag"]]),
-                    mergetype=snakemake@wildcards[["mergetype"]]
+                                      alpha=as.numeric(snakemake@wildcards[["alpha"]]),
+                                      gamma=as.numeric(snakemake@wildcards[["gamma"]]),
+                                      cpdag=as.boolean(snakemake@wildcards[["cpdag"]]),
+                                      mergetype=snakemake@wildcards[["mergetype"]]
                                       ) # 1 and loop
 # How to get number of iterations (it)?
 # output a csv file with "additional statistics" eg
 totaltime <- proc.time()[1] - start
-endspace <- itsearch_res$space$adjacency
-colnames(endspace) <- names(data)
 
-write.csv(endspace, file = filename, row.names = FALSE, quote = FALSE)
+adjmat <- NULL
+
+if (snakemake@wildcards[["estimate"]] == "map"){
+  adjmat <- itsearch_res$max$DAG
+}
+if (snakemake@wildcards[["estimate"]] == "endspace"){
+  adjmat <- itsearch_res$space$adjacency # this is the space, not the estimate
+}
+
+colnames(adjmat) <- names(data)
+
+write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 write(totaltime, file = snakemake@output[["time"]])

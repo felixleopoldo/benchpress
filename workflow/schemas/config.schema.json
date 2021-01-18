@@ -1165,6 +1165,10 @@
                     "type": "string",
                     "description": "Unique idenfifier"
                 },
+                "estimate": {
+                    "type": "string",
+                    "enum": ["map", "endspace"]
+                },
                 "MAP": {
                     "type": "boolean"
                 },
@@ -1224,7 +1228,8 @@
                 "alpha",
                 "gamma",
                 "cpdag",
-                "mergetype"
+                "mergetype",
+                "estimate"
             ]            
         },
         "order_mcmc": {

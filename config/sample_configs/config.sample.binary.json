@@ -390,6 +390,7 @@
             "itsearch": [
                 {
                     "id": "itsearch_map",                    
+                    "estimate": "map", 
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
@@ -407,7 +408,7 @@
                 },
                 {
                     "id": "itsearch_map_cont",
-                    
+                    "estimate": "map", 
                         "MAP": true,
                         "plus1it": null,
                         "posterior": null,
@@ -426,7 +427,7 @@
                 },
                 {
                     "id": "itsearch_sample",
-                   
+                   "estimate": "map", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,
@@ -446,7 +447,7 @@
                 },
                 {
                     "id": "itsearch_sample_chi1",
-                   
+                   "estimate": "endspace", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,
@@ -466,7 +467,7 @@
                 },
                 {
                     "id": "itsearch_sample_chi10",
-                   
+                   "estimate": "endspace", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,
@@ -486,7 +487,7 @@
                 },
                 {
                     "id": "itsearch_sample_chi50",
-                   
+                   "estimate": "endspace", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,
@@ -506,7 +507,7 @@
                 },
                 {
                     "id": "itsearch_sample_chi100",
-                   
+                   "estimate": "endspace", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,

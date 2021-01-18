@@ -37,8 +37,8 @@ pattern_strings["itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resou
 pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["order_mcmc"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
-                  "threshold={threshold}/"\
-                  "burnin={burnin}"
+                            "threshold={threshold}/"\
+                            "burnin={burnin}"
 
 pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
 
