@@ -23,7 +23,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "tabu",
+                    "algorithm_id": "tabu-bde",
                     "curve_variable": "iss"
                 },
                 {
@@ -31,7 +31,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "hc",
+                    "algorithm_id": "hc-bde",
                     "curve_variable": "iss"
                 },
                 {
@@ -43,23 +43,23 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "fci",
+                    "algorithm_id": "fci-disc",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "rfci",
+                    "algorithm_id": "rfci-disc",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci",
+                    "algorithm_id": "gfci-cgbic",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "pcalg",
+                    "algorithm_id": "pcalg-bin",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "fges",
+                    "algorithm_id": "fges-bdeu",
                     "curve_variable": "samplePrior"
                 },
                 {
@@ -183,7 +183,7 @@
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
-                    "alpha": [1, 10, 50, 100],
+                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
                     "cores": 1,
                     "verbose": 0
                 },
@@ -197,7 +197,7 @@
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
-                    "alpha": [1, 10, 50, 100],
+                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
                     "cores": 1,
                     "verbose": 0
                 }
@@ -217,7 +217,7 @@
                     "id": "gobnilp",
                     "plot": false,
                     "palim": 2,
-                    "alpha": [1, 10, 50, 100],
+                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
                     "prune": true
                 }
             ],
@@ -231,17 +231,38 @@
             ],
             "fges": [
                 {
-                    "id": "fges",
+                    "id": "fges-cgbic",
+                    "faithfulnessAssumed": true,
+                    "score": "cg-bic-score",
+                    "datatype": "continuous",
+                    "samplePrior": [1, 10, 50, 100],
+                    "structurePrior": 1
+                },                                {
+                    "id": "fges-bdeu",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
                     "datatype": "discrete",
                     "samplePrior": [1, 10, 50, 100],
                     "structurePrior": 1
                 }
+
             ],
             "fci": [
                 {
-                    "id": "fci",
+                    "id": "fci-cont",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45
+                    ],
+                    "test": "chi-square-test",
+                    "datatype": "continuous"
+                },
+                {
+                    "id": "fci-disc",
                     "alpha": [
                         0.01,
                         0.05,
@@ -253,10 +274,11 @@
                     "test": "chi-square-test",
                     "datatype": "discrete"
                 }
+
             ],
             "gfci": [
                 {
-                    "id": "gfci",
+                    "id": "gfci-bdeu",
                     "alpha": [
                         0.01,
                         0.05,
@@ -269,11 +291,40 @@
                     "test": "chi-square-test",
                     "datatype": "discrete",
                     "structurePrior": 1
+                },
+                {
+                    "id": "gfci-cgbic",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45
+                    ],
+                    "score": "cg-bic-score",
+                    "test": "chi-square-test",
+                    "datatype": "continuous",
+                    "structurePrior": 1
                 }
+
             ],
             "rfci": [
                 {
-                    "id": "rfci",
+                    "id": "rfci-cont",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45
+                    ],
+                    "test": "chi-square-test",
+                    "datatype": "continuous"
+                },
+                {
+                    "id": "rfci-disc",
                     "alpha": [
                         0.01,
                         0.05,
@@ -288,7 +339,7 @@
             ],
             "pcalg": [
                 {
-                    "id": "pcalg",
+                    "id": "pcalg-bin",
                     "alpha": [
                         0.01,
                         0.05,
@@ -306,10 +357,33 @@
                     "majrule": false, 
                     "solveconfl": false,
                     "numCores": 1, 
-                    "verbose": false
+                    "verbose": false,
+                    "indepTest": "binCItest"
                 },
                 {
-                    "id": "pcalg005",
+                    "id": "pcalg-gauss",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45,
+                        0.5
+                    ],
+                    "NAdelete": true, 
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false, 
+                    "solveconfl": false,
+                    "numCores": 1, 
+                    "verbose": false,
+                    "indepTest": "gaussCItest"
+                },
+                {
+                    "id": "pcalg005-bin",
                     "alpha": 0.05,
                     "NAdelete": true, 
                     "mmax": "Inf",
@@ -319,7 +393,8 @@
                     "majrule": false, 
                     "solveconfl": false,
                     "numCores": 1, 
-                    "verbose": false
+                    "verbose": false,
+                    "indepTest": "binCItest"
                 }
             ],
             "mmhc": [
@@ -363,21 +438,44 @@
             ],
             "tabu": [
                 {
-                    "id": "tabu",
+                    "id": "tabu-bde",
                     "score": "bde",
-                    "iss": [1, 10, 50, 100],
+                    "iss": [0.01, 0.1, 1, 10, 50, 100],
+                    "issmu": 1,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1
+                },
+                {
+                    "id": "tabu-bge",
+                    "score": "bge",
+                    "iss": 1,
                     "issmu": 1,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
                     "beta": 1
                 }
+
             ],
             "hc": [
                 {
-                    "id": "hc",
+                    "id": "hc-bde",
                     "score": "bde",
-                    "iss": [1, 10, 50, 100],
+                    "iss": [0.01, 0.1, 1, 10, 50, 100],
+                    "issmu": 1,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1,
+                    "restart": 0,
+                    "perturb": 1
+                },
+                {
+                    "id": "hc-bge",
+                    "score": "bge",
+                    "iss": 1,
                     "issmu": 1,
                     "l": 5,
                     "k": 1,
@@ -386,6 +484,7 @@
                     "restart": 0,
                     "perturb": 1
                 }
+
             ],
             "itsearch": [
                 {
@@ -395,7 +494,7 @@
                     "plus1it": null,
                     "posterior": null,
                     "scoretype": "bdecat",
-                    "chi": [1, 10, 50, 100],
+                    "chi": [0.01, 0.1, 1, 10, 50, 100],
                     "edgepf": 2,
                     "am": null,
                     "aw": null,
@@ -432,7 +531,7 @@
                         "plus1it": 6,
                         "posterior": 0.5,
                         "scoretype": "bdecat",
-                        "chi": [1, 10, 50, 100],
+                        "chi": [0.01, 0.1, 1, 10, 50, 100],
                         "edgepf": 2,
                         "am": null,
                         "aw": null,
@@ -530,7 +629,7 @@
                     "startspace_algorithm": "itsearch_map",
                     "plus1": true,
                     "scoretype": "bdecat",
-                    "chi": [1, 10, 50, 100],
+                    "chi": [0.01, 0.1, 1, 10, 50, 100],
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
@@ -588,7 +687,7 @@
                     "startspace_algorithm": "itsearch_sample",
                     "plus1": true,
                     "scoretype": "bdecat",
-                    "chi": [1, 10, 50, 100],
+                    "chi": [0.01, 0.1, 1, 10, 50, 100],
                     "edgepf": 2,
                     "aw": null,
                     "am": null,

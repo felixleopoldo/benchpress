@@ -17,6 +17,7 @@ majrule <- as.logical(snakemake@wildcards[["majrule"]])
 solveconfl <- as.logical(snakemake@wildcards[["solveconfl"]])
 numCores <- as.integer(snakemake@wildcards[["numCores"]])
 verbose <- as.logical(snakemake@wildcards[["verbose"]])
+indepTest = match.fun(snakemake@wildcards[["indepTest"]])
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
@@ -24,9 +25,12 @@ data <- data[-1,] # Remove range header
 n <- dim(data)[2]
 
 start <- proc.time()[1]
+
+
+
 pc.fit <- pc(suffStat = list(dm = data,
             adaptDF = FALSE),
-            indepTest = binCItest,
+            indepTest = indepTest,
             alpha = alpha,
             labels = sapply(c(1:n), toString),
             fixedGaps = NULL,
