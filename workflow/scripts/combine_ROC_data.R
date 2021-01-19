@@ -12,7 +12,8 @@ argv <- parse_args(p)
 config <- fromJSON(file = argv$config_filename)
 
 toplot <- data.frame()
-
+# argv$algorithms is a list of paths such as results/order_mcmc.csv.
+# This loop gets the active algorithms from the filenames. It is a bit ugly.
 active_algorithms <- c()
 for (file in argv$algorithms){
     active_algorithms <- c(active_algorithms, tools::file_path_sans_ext(basename(file)))
@@ -21,24 +22,20 @@ for (file in argv$algorithms){
 rocalgs <- config$benchmark_setup$evaluation$ROC
 
 for (alg in rocalgs){
-
+    # get the algorithm from the ROC section in the json file.
     algorithm = NULL
     for (active in active_algorithms){
-        #print("active")
-        #print(active)
-        #print(config$resources$structure_learning_algorithms[[active]])
         for(a in config$resources$structure_learning_algorithms[[active]]){
-            #print(a$id)
             if (a$id == alg$algorithm_id) {
                 algorithm = active
-
             }
         }
     }
 
-    if(algorithm %in% active_algorithms) { #bug
-        #ROCdf <- read.csv(file.path(config$benchmark_setup$output_dir, paste(alg$algorithm_id ,".csv", sep = "")))
-        ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = "")))
+    if(algorithm %in% active_algorithms) { 
+        # This reads all ids of one algorithm so that the same coud be read more than once. The problem is that the curve variable is needed.
+        # It is fixed by running the distinct funtion in the end...
+        ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = ""))) 
         sumROC = ROCdf %>%
         group_by(id, adjmat, bn, data, !!as.symbol(alg$curve_variable)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
@@ -61,6 +58,8 @@ for (alg in rocalgs){
         toplot <- dplyr::bind_rows(toplot, sumROC)
     }
 }
+
+toplot <- toplot %>% distinct()
 
 write.csv(toplot,  argv$filename)
 
