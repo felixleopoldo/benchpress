@@ -51,7 +51,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci-cgbic",
+                    "algorithm_id": "gfci-disc",
                     "curve_variable": "alpha"
                 },
                 {
@@ -258,7 +258,7 @@
                         0.35,
                         0.45
                     ],
-                    "test": "chi-square-test",
+                    "test": "cg-lr-test",
                     "datatype": "continuous"
                 },
                 {
@@ -303,7 +303,7 @@
                         0.45
                     ],
                     "score": "cg-bic-score",
-                    "test": "chi-square-test",
+                    "test": "cg-lr-test",
                     "datatype": "continuous",
                     "structurePrior": 1
                 }
@@ -320,7 +320,7 @@
                         0.35,
                         0.45
                     ],
-                    "test": "chi-square-test",
+                    "test": "cg-lr-test",
                     "datatype": "continuous"
                 },
                 {
