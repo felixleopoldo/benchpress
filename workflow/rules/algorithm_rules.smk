@@ -367,12 +367,14 @@ rule fges:
     input:
         data = alg_input_data()
     output:
-        adjmat = alg_output_adjmat_path("fges"),
-        time = alg_output_time_path("fges")
+        adjmat = alg_output_adjmat_path("fges"), # maybe fges-cont...
+        time = alg_output_time_path("fges") # maybe fges-cont...
     message:
         "Executing fges algorithm on the following files: {input}."
-    shell:
-        alg_shell("fges")
+    script:
+        "../scripts/run_fges.py"
+    #shell:
+    #    alg_shell("fges") # maybe fges-cont...
 
 rule summarise_fges:
     input:

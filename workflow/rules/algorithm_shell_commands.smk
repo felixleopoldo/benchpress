@@ -150,6 +150,8 @@ def alg_shell(algorithm):
                 " && rm {output.adjmat}.gobnilp.set"
 
     elif algorithm ==  "fges":
+        #wrap in python to get variables
+        #print("{wildcards.datatype}" == "continuous" ) 
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
                 "--algorithm fges "\

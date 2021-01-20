@@ -23,6 +23,7 @@ rocalgs <- config$benchmark_setup$evaluation$ROC
 
 for (alg in rocalgs){
     # get the algorithm from the ROC section in the json file.
+    
     algorithm = NULL
     for (active in active_algorithms){
         for(a in config$resources$structure_learning_algorithms[[active]]){

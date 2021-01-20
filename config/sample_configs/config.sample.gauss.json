@@ -6,18 +6,6 @@
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
-            },
-            {
-                "graph_id": "fixed_edges60",
-                "parameters_id": "rand_sem_gauss",
-                "data_id": "independent_samples",
-                "seed_range": [1, 10]
-            },
-            {
-                "graph_id": "fixed_edges80",
-                "parameters_id": "rand_sem_gauss",
-                "data_id": "independent_samples",
-                "seed_range": [1, 10]
             }
         ],
         "evaluation": {
@@ -36,7 +24,7 @@
                 },
                 {
                     "algorithm_id": "hc-bge",
-                    "curve_variable": "issmu"
+                    "curve_variable": "iss.mu"
                 },
                 {
                     "algorithm_id": "gs",
@@ -83,7 +71,7 @@
                 {
                     "id": "independent_samples",
                     "sample_sizes": 
-                        [100, 200, 400]
+                        [80, 160]
                 },
                 {
                     "id": "standard_sampling2000",

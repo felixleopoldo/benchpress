@@ -27,7 +27,7 @@ json_string.update({val["id"]: expand(pattern_strings["pcalg"], **val)
 json_string.update({val["id"]: expand(pattern_strings["mmhc"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["mmhc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["interiamb"], **val)                                        
+json_string.update({val["id"]: expand(pattern_strings["interiamb"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["interiamb"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["gs"], **val)

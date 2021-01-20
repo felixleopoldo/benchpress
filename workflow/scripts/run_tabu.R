@@ -32,12 +32,20 @@ filename_data <- argv$filename_data
 seed <- argv$seed
 
 data <- read.csv(filename_data, sep=" ")
-data <- data[-1,] # Remove range header
+
+names <-names(data)
+if (argv$score %in% c("bde", "bic")){
+    data <- data[-1,] # Remove range header
+    data <- matrixToDataframe(data, names)
+}
+
+
+#data <- data[-1,] # Remove range header
 set.seed(seed)
 
-datanew <- matrixToDataframe(data, names(data))
+#datanew <- matrixToDataframe(data, names(data))
 
-output <- tabu(datanew, score=argv$score, 
+output <- tabu(data, score=argv$score, 
                         iss=argv$iss,
                         iss.mu=argv$iss.mu,
                         l=argv$l,
@@ -49,6 +57,6 @@ output <- tabu(datanew, score=argv$score,
 gnel_dag <- as.graphNEL(output)
 
 adjmat <- as(gnel_dag, "matrix")
-colnames(adjmat) <- names(data)
+colnames(adjmat) <- names
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)

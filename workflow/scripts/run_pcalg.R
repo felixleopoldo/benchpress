@@ -21,18 +21,28 @@ indepTest = match.fun(snakemake@wildcards[["indepTest"]])
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
-data <- data[-1,] # Remove range header
-n <- dim(data)[2]
 
+suffStat = NULL
+if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
+  data <- data[-1,] # Remove range header
+   suffStat <- list(dm = data,
+            adaptDF = FALSE)
+} else {
+  n <- dim(data)[1]
+  suffStat <- list(C = cor(data), n = n)
+
+}
+
+#print(data)
+p <- dim(data)[2]
+
+#print(p)
 start <- proc.time()[1]
 
-
-
-pc.fit <- pc(suffStat = list(dm = data,
-            adaptDF = FALSE),
+pc.fit <- pc(suffStat = suffStat,
             indepTest = indepTest,
             alpha = alpha,
-            labels = sapply(c(1:n), toString),
+            labels = sapply(c(1:p), toString),
             fixedGaps = NULL,
               fixedEdges = NULL,
               NAdelete = NAdelete,

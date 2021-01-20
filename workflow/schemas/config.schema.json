@@ -960,7 +960,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"

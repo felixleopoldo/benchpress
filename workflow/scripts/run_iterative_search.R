@@ -11,6 +11,8 @@ map <- snakemake@wildcards[["MAP"]]
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
+
+# if discrete data
 data <- data[-1,] # Remove range header
 # Iterative search
 
@@ -23,6 +25,7 @@ posterior <- NULL
 if (snakemake@wildcards[["posterior"]] != "None") {
   posterior <- as.numeric(snakemake@wildcards[["posterior"]])
 }
+
 chi <- NULL
 if (snakemake@wildcards[["chi"]] != "None") {
   chi <- as.numeric(snakemake@wildcards[["chi"]])
