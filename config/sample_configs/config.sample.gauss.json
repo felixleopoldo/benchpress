@@ -2,19 +2,19 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "fixededges40",
+                "graph_id": "fixed_edges40",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
             },
             {
-                "graph_id": "fixededges60",
+                "graph_id": "fixed_edges60",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
             },
             {
-                "graph_id": "fixededges80",
+                "graph_id": "fixed_edges80",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
@@ -55,7 +55,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci-bge",
+                    "algorithm_id": "gfci-cgbic",
                     "curve_variable": "alpha"
                 },
                 {
@@ -63,15 +63,11 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "fges-bgeu",
+                    "algorithm_id": "fges-cgbic",
                     "curve_variable": "samplePrior"
                 },
                 {
                     "algorithm_id": "itsearch_map_cont",
-                    "curve_variable": "chi"
-                },
-                {
-                    "algorithm_id": "itsearch_sample_cont",
                     "curve_variable": "chi"
                 },
                 {
@@ -85,7 +81,7 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "independent_samples_cont",
+                    "id": "independent_samples",
                     "sample_sizes": 
                         [100, 200, 400]
                 },
@@ -115,17 +111,17 @@
                     "num_edges": 150
                 },
                                 {
-                    "id": "fixedegdes40",
+                    "id": "fixed_edges40",
                     "num_nodes": 40,
                     "num_edges": 100
                 },
                 {
-                    "id": "fixededges60",
+                    "id": "fixed_edges60",
                     "num_nodes": 60,
                     "num_edges": 150
                 },
                 {
-                    "id": "fixededges80",
+                    "id": "fixed_edges80",
                     "num_nodes": 80,
                     "num_edges": 200
                 }
@@ -455,7 +451,7 @@
             ],
             "tabu": [
                 {
-                    "id": "tabu",
+                    "id": "tabu-bde",
                     "score": "bde",
                     "iss": [0.01, 0.1, 1, 10, 50, 100],
                     "issmu": 1,
@@ -465,7 +461,7 @@
                     "beta": 1
                 },
                 {
-                    "id": "tabu",
+                    "id": "tabu-bge",
                     "score": "bge",
                     "iss": 1,
                     "issmu": 1,
@@ -542,8 +538,8 @@
                     
                 },
                 {
-                    "id": "itsearch_map_cont_endspace",
-                    "estimate": "endpace", 
+                    "id": "itsearch_map_cont_am01_endspace",
+                    "estimate": "endspace", 
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
@@ -595,6 +591,25 @@
                     "cpdag": false,
                     "mergetype":"skeleton"
                 },
+                {
+                    "id": "itsearch_map_cont_am01",
+                    "estimate": "endspace", 
+                    "MAP": true,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": 0.1,
+                    "aw": null,
+                    "softlimit":9,
+                    "hardlimit":12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype":"skeleton"
+                },
+
                 {
                     "id": "itsearch_sample_chi1",
                     "estimate": "endspace", 
@@ -733,6 +748,36 @@
                     ],
                     "burnin": 0
                 },
+                {
+                    "id": "order_mcmc_itsample_cont_am01",
+                    "startspace_algorithm": "itsearch_sample_cont_am01",
+                    "plus1": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": 1,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":false,
+                    "cpdag": false,
+                    "threshold": [
+                        0.99,
+                        0.95,
+                        0.9,
+                        0.8,
+                        0.7,
+                        0.6,
+                        0.5,
+                        0.4,
+                        0.3,
+                        0.2
+                    ],
+                    "burnin": 0
+                },
+
                 {
                     "id": "order_mcmc_itsample",
                     "startspace_algorithm": "itsearch_sample",
