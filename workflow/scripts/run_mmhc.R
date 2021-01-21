@@ -55,3 +55,4 @@ adjmat <- as(gnel_dag, "matrix")
 colnames(adjmat) <- header
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+write(totaltime, file = snakemake@output[["time"]])
