@@ -1,38 +1,49 @@
-library(argparser)
 library(pcalg)
 library(bnlearn)
 library(RBGL)
 
-library(bnlearn)
 source("resources/code_for_binary_simulations/make_var_names.R")
 
-p <- arg_parser("A program for running GS algorithm and save to file.")
-
-p <- add_argument(p, "--filename", help = "output filename")
-p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
-p <- add_argument(p, "--filename_data", help = "Dataset filename")
-p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--alpha", help = "Parameter", type="numeric")
-
-argv <- parse_args(p)
-
-directory <- argv$output_dir
-filename <- file.path(argv$filename)
-filename_data <- argv$filename_data
-seed <- argv$seed
+filename <- file.path(snakemake@output[["adjmat"]])
+filename_data <- snakemake@input[["data"]]
+seed <- as.integer(snakemake@wildcards[["replicate"]])
 
 data <- read.csv(filename_data, sep=" ")
-data <- data[-1,] # Remove range header
+
+header <- names(data)
+if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi", 
+                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
+                                         "jt", "mc-jt", "smc-jt")){
+    data <- data[-1,] # Remove range header
+    data <- matrixToDataframe(data, header)
+}
+
 set.seed(seed)
+B = NULL
+if(snakemake@wildcards[["B"]] != "None"){
+    B <- as.integer(snakemake@wildcards[["B"]])
+}
+max.sx = NULL
+if(snakemake@wildcards[["maxsx"]] != "None"){
+    max.sx <- as.integer(snakemake@wildcards[["maxsx"]])
+}
 
-datanew <- matrixToDataframe(data, names(data))
-
-output <- gs(datanew, alpha=argv$alpha)
+start <- proc.time()[1]
+output <- gs(data, 
+                     alpha=as.numeric(snakemake@wildcards[["alpha"]]),
+                     test=snakemake@wildcards[["test"]],
+                     B=B,
+                     max.sx=max.sx,
+                     debug=as.logical(snakemake@wildcards[["debug"]]),
+                     undirected=as.logical(snakemake@wildcards[["undirected"]])
+                     )
+totaltime <- proc.time()[1] - start
 ## convert to graphneldag
 gnel_dag <- as.graphNEL(output)
 
 adjmat <- as(gnel_dag, "matrix")
-colnames(adjmat) <- names(data)
+colnames(adjmat) <- header
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+write(totaltime, file = snakemake@output[["time"]])
 

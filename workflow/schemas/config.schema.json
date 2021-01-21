@@ -1039,12 +1039,37 @@
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
-                }
+                },
+                "test":{
+                    "type":"string",
+                    "enum": ["mi", "mi-adf", "mc-mi", "smc-mi", 
+                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
+                                         "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
+                                        "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
+                                    "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                },
+                "B":{
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx":{
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug":{
+                    "type":"boolean"
+                },
+                "undirected":{
+                    "type":"boolean"
+                } 
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected"
             ]
         },
         "gs": {
@@ -1058,12 +1083,38 @@
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
+                },
+                "test":{
+                    "type":"string",
+                    "enum": ["mi", "mi-adf", "mc-mi", "smc-mi", 
+                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
+                                         "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
+                                        "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
+                                    "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                },
+                "B":{
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx":{
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug":{
+                    "type":"boolean"
+                },
+                "undirected":{
+                    "type":"boolean"
                 }
+
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected"
             ]
         },
         "tabu": {

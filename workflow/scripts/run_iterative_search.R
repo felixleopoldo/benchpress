@@ -5,15 +5,14 @@ source("resources/code_for_binary_simulations/df_fns.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
-
 seed <- snakemake@wildcards[["replicate"]]
+
+
 map <- snakemake@wildcards[["MAP"]]
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
 
-# if discrete data
-data <- data[-1,] # Remove range header
 # Iterative search
 
 plus1it <- NULL
@@ -46,11 +45,17 @@ if (snakemake@wildcards[["am"]] != "None") {
   am <- as.numeric(snakemake@wildcards[["am"]])
 }
 if(snakemake@wildcards[["scoretype"]] == "bdecat"){
+  # if discrete data
+  data <- data[-1,] # Remove range header
+
     myscore <- scoreparameters(dim(data)[2], "bdecat", data, 
                                 bdecatpar = list(chi = chi,
                                                  edgepf = edgepf))
 } 
 if(snakemake@wildcards[["scoretype"]] == "bde"){
+  # if discrete data
+  data <- data[-1,] # Remove range header
+
     myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
                                                                         edgepf = edgepf))
 } 

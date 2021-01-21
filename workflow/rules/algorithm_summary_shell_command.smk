@@ -250,11 +250,11 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname cluster          --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist        --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname blacklist        --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval false " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval false " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
                 
@@ -275,11 +275,11 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname cluster          --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist        --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname blacklist        --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval false " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval null " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval false " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
     elif algorithm == "fges":

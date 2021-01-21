@@ -142,8 +142,10 @@ rule interiamb:
         time = alg_output_time_path("interiamb")
     message:
         "Executing interiamb algorithm on the following files: {input}."
-    shell:
-        alg_shell("interiamb")
+    script:
+        "../scripts/run_inter-iamb.R"
+    #shell:
+    #    alg_shell("interiamb")
 
 rule summarise_interiamb:
     input:
@@ -175,8 +177,10 @@ rule gs:
         time = alg_output_time_path("gs")
     message:
         "Executing gs algorithm on the following files: {input}."
-    shell:
-        alg_shell("gs")
+    script:
+        "../scripts/run_gs.R"
+#    shell:
+#        alg_shell("gs")
 
 rule summarise_gs:
     input:
