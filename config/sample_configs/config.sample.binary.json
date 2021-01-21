@@ -71,20 +71,8 @@
                     "curve_variable": "chi"
                 },
                 {
-                    "algorithm_id": "order_mcmc_itsample_chi1",
-                    "curve_variable": "threshold"
-                },
-                {
-                    "algorithm_id": "order_mcmc_itsample_chi10",
-                    "curve_variable": "threshold"
-                },
-                {
-                    "algorithm_id": "order_mcmc_itsample_chi50",
-                    "curve_variable": "threshold"
-                },
-                {
-                    "algorithm_id": "order_mcmc_itsample_chi100",
-                    "curve_variable": "threshold"
+                    "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
+                    "curve_variable": "chi"
                 }
             ]
         }
@@ -557,7 +545,7 @@
                 },
                 {
                     "id": "itsearch_sample_chi1",
-                   "estimate": "endspace", 
+                    "estimate": "endspace", 
                         "MAP": false,
                         "plus1it": 6,
                         "posterior": 0.5,
@@ -566,14 +554,12 @@
                         "edgepf": 2,
                         "am": null,
                         "aw": null,
-                                            "softlimit":9,
+                        "softlimit":9,
                     "hardlimit":12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype":"skeleton"
-
-                    
                 },
                 {
                     "id": "itsearch_sample_chi10",
@@ -720,6 +706,24 @@
                         0.3,
                         0.2
                     ],
+                    "burnin": 0
+                },
+                {
+                    "id": "order_mcmc_itsample_chi1_thresh05",
+                    "startspace_algorithm": "itsearch_sample_chi1",
+                    "plus1": true,
+                    "scoretype": "bdecat",
+                    "chi": [0.01, 0.1, 1, 10, 50, 100],
+                    "edgepf": 2,
+                    "aw": null,
+                    "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations":null,
+                    "MAP":true,
+                    "threshold": 0.5,
                     "burnin": 0
                 },
                 {
