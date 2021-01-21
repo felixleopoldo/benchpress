@@ -207,6 +207,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug       --colval false " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maximize.args   --colval null " \

@@ -313,8 +313,10 @@ rule mmhc:
         time = alg_output_time_path("mmhc")
     message:
         "Executing the mmhc algorithm on the following files: {input}."
-    shell:
-        alg_shell("mmhc")
+    script:
+        "../scripts/run_mmhc.R"
+    #shell:
+    #    alg_shell("mmhc")
 
 rule summarise_mmhc:
     input:
