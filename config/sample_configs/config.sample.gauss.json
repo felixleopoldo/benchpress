@@ -6,6 +6,12 @@
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
                 "seed_range": [1, 10]
+            },
+            {
+                "graph_id": "fixed_edges80",
+                "parameters_id": "rand_sem_gauss",
+                "data_id": "iid_cont_study_p80",
+                "seed_range": [1, 10]
             }
         ],
         "evaluation": {
@@ -72,6 +78,11 @@
                     "id": "independent_samples",
                     "sample_sizes": 
                         [80, 160]
+                },
+                {
+                    "id": "iid_cont_study_p80",
+                    "sample_sizes": 
+                        [320, 640]
                 },
                 {
                     "id": "standard_sampling2000",
