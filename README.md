@@ -6,8 +6,6 @@
 [![Documentation Status](https://readthedocs.org/projects/benchpressx/badge/?version=latest)](https://benchpressx.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-
-
 #  
 # Benchpress
 
@@ -36,9 +34,9 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run the simulation setup in config.json type
 
-`$ snakemake roc --cores 20 --use-singularity --configfile config.sample.json`
+`$ snakemake roc --cores 20 --use-singularity --configfile config/config.sample.docs.json`
 
-A roc curve defined by [config.sample.json](config.sample.json) is found in the file [results/ROC.eps](results/ROC.eps) and can be viewed with e.g. evince as
+A roc curve defined by [config/config.sample.docs.json](config/config.sample.docs.json) is found in the file [results/ROC.eps]() and can be viewed with e.g. evince as
 
 `$ evince results/ROC.eps`
 
