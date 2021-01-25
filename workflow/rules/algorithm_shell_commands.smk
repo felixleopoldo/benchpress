@@ -68,72 +68,6 @@ def alg_shell(algorithm):
                 "--alpha {wildcards.alpha} " \
                 "--verbose {wildcards.verbose} " \
                 "--filename {output.adjmat} " 
-                
-    elif algorithm == "itsearch":
-        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_iterative_search.R "\
-                "--filename_data {input.data} "\
-                "--filename {output.adjmat} " \
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--map {wildcards.MAP} "\
-                "--scoretype {wildcards.scoretype} " \
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
-                "--am {wildcards.am} " \
-                "--aw {wildcards.aw} " \
-                "--plus1it {wildcards.plus1it} " \
-                "--posterior {wildcards.posterior} " \
-                "--title itsearch"
-
-    elif algorithm == "pcalg":
-        return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_pcalg.R " \
-                "--filename_data {input.data} "\
-                "--alpha {wildcards.alpha} "\
-                "--NAdelete {wildcards.NAdelete} "\
-                "--mmax {wildcards.mmax} "\
-                "--u2pd {wildcards.u2pd} "\
-                "--skelmethod {wildcards.skelmethod} "\
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--filename {output.adjmat} "
-
-    elif algorithm == "mmhc":
-        return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_mmhc.R "\
-                "--filename_data {input.data} "\
-                "--alpha {wildcards.alpha} "\
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--filename {output.adjmat} "
-
-    elif algorithm == "h2pc":
-        return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_h2pc.R "\
-                "--filename_data {input.data} "\
-                "--alpha {wildcards.alpha} "\
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--filename {output.adjmat} "
-
-    elif algorithm == "interiamb":
-        return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_inter-iamb.R "\
-                "--filename_data {input.data} "\
-                "--alpha {wildcards.alpha} "\
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--filename {output.adjmat} "
-
-    elif algorithm == "gs":
-        return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_gs.R "\
-                "--filename_data {input.data} "\
-                "--alpha {wildcards.alpha} "\
-                "--output_dir {wildcards.output_dir} "\
-                "--seed {wildcards.replicate} "\
-                "--filename {output.adjmat} "
 
     elif algorithm == "gobnilp":
         return "touch {output.adjmat}.gobnilp.set && " \   
@@ -148,28 +82,6 @@ def alg_shell(algorithm):
                 " && rm {output.adjmat}.bn.mat " \
                 " && rm {output.adjmat}.score_and_time.txt " \
                 " && rm {output.adjmat}.gobnilp.set"
-
-    elif algorithm ==  "fges":
-        #wrap in python to get variables
-        #print("{wildcards.datatype}" == "continuous" ) 
-        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm fges "\
-                "--data-type {wildcards.datatype} "\
-                "--dataset {input.data} "\
-                "--delimiter space " \
-                "--score {wildcards.score} "\
-                "--json-graph "\
-                "--structurePrior {wildcards.structurePrior} " \
-                "--samplePrior {wildcards.samplePrior} " \
-                "--prefix {output.adjmat} " \
-                '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
-                '--jsongraph {output.adjmat}_graph.json ' \
-                '--filename {output.adjmat} ' \
-                '&& ' \
-                'rm {output.adjmat}_graph.json ' \
-                '&& ' \
-                'rm {output.adjmat}.txt'
 
     elif algorithm ==  "fci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
@@ -229,20 +141,6 @@ def alg_shell(algorithm):
                 'rm {output.adjmat}_graph.json ' \
                 '&& ' \
                 'rm {output.adjmat}.txt'
-
-    elif algorithm == "order_mcmc":
-        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-                "Rscript workflow/scripts/run_order_mcmc.R " \
-                "--filename {output.adjvecs} " \
-                "--filename_data {input.data} " \
-                "--filename_startspace {input.startspace} " \   
-                "--scoretype {wildcards.scoretype} " \
-                "--chi {wildcards.chi} " \
-                "--edgepf {wildcards.edgepf} " \
-                "--aw {wildcards.aw} " \
-                "--am {wildcards.am} " \
-                "--output_dir {wildcards.output_dir} " \
-                "--seed {wildcards.replicate} "
 
     elif algorithm == "trilearn_loglin":
         return "cp {input} {input}.tmp.csv " \

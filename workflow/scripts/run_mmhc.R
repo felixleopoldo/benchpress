@@ -1,29 +1,8 @@
-#library(argparser)
 library(pcalg)
 library(RBGL)
 library(bnlearn)
 
 source("resources/code_for_binary_simulations/make_var_names.R")
-
-# p <- arg_parser("A program for running Max-Min hill-climbing algorithm and save to file.")
-
-# p <- add_argument(p, "--filename", help = "output filename")
-# p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
-# p <- add_argument(p, "--filename_data", help = "Dataset filename")
-# p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-# p <- add_argument(p, "--alpha", help = "Alpha parameter", type = "numeric")
-
-# argv <- parse_args(p)
-
-# directory <- argv$output_dir
-# filename <- file.path(argv$filename)
-# filename_data <- argv$filename_data
-# seed <- argv$seed
-# alpha <- argv$alpha
-# data <- read.csv(filename_data, sep=" ")
-# data <- data[-1,] # Remove range header
-# set.seed(seed)
-
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
@@ -39,8 +18,6 @@ if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi",
     data <- matrixToDataframe(data, header)
 }
 set.seed(seed)
-
-#datanew <- matrixToDataframe(data, names(data))
 
 start <- proc.time()[1]
 mmoutput <- mmhc(data, restrict.args = list(alpha = as.numeric(snakemake@wildcards[["alpha"]]),

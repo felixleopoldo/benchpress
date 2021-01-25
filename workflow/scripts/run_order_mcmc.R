@@ -8,7 +8,7 @@ seed <- snakemake@wildcards[["replicate"]]
 
 set.seed(seed)
 data <- read.csv(filename_data, sep=" ")
-data <- data[-1,] # Remove range header
+
 startspace <- read.csv(snakemake@input[["startspace"]])
 rownames(startspace) <- seq(dim(data)[2])
 colnames(startspace) <- seq(dim(data)[2])
@@ -48,10 +48,12 @@ if (snakemake@wildcards[["stepsave"]] != "None") {
 }
 
 if(snakemake@wildcards[["scoretype"]] == "bdecat"){
+  data <- data[-1,] # Remove range header
     myscore <- scoreparameters(dim(data)[2], "bdecat", data, bdecatpar = list(chi = chi,
                             edgepf = edgepf))
 } 
 if(snakemake@wildcards[["scoretype"]] == "bde"){
+  data <- data[-1,] # Remove range header
     myscore <- scoreparameters(dim(data)[2], "bde", data, bdepar = list(chi = chi,
                                                                         edgepf = edgepf))
 } 

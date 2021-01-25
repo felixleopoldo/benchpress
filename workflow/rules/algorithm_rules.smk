@@ -412,8 +412,10 @@ rule fci:
         time = alg_output_time_path("fci")
     message:
         "Executing fci algorithm on the following files: {input}."
-    shell:
-        alg_shell("fci")
+    script:
+        "../scripts/run_fci.py"
+    #shell:
+    #    alg_shell("fci")
 
 rule summarise_fci:
     input:
@@ -445,9 +447,11 @@ rule gfci:
         time = alg_output_time_path("gfci")
     message:
         "Executing gfci algorithm on the following files: {input}."
-    shell:
-        alg_shell("gfci")
-
+    #shell:
+    #    alg_shell("gfci")
+    script:
+        "../scripts/run_gfci.py"
+        
 rule summarise_gfci:
     input:
         data = summarise_alg_input_data_path(),

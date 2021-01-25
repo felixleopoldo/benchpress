@@ -881,7 +881,8 @@
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
-                    "type": "string"
+                    "type": "string",
+                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
                 },
                 "datatype": {
                     "type": "string"
@@ -907,7 +908,8 @@
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
-                    "type": "string"
+                    "type": "string",
+                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
                 },
                 "score": {
                     "type": "string"
@@ -940,7 +942,8 @@
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
-                    "type": "string"
+                    "type": "string",
+                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
                 },
                 "datatype": {
                     "type": "string"
