@@ -44,7 +44,7 @@
                 },
                 {
                     "algorithm_id": "order_mcmc_itsample",
-                    "curve_variable": "chi"
+                    "curve_variable": "threshold"
                 }
             ]
         }
