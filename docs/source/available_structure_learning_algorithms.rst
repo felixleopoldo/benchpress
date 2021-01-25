@@ -5,6 +5,11 @@ structure_learning_algorithms
 gobnilp
 -------
 
+GOBNILP v1.63 C implementation.
+
+`https://www.cs.york.ac.uk/aig/sw/gobnilp/ <https://www.cs.york.ac.uk/aig/sw/gobnilp/>`_
+
+
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gobnilp-algorithm.md>`_
 
 
@@ -24,6 +29,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 blip
 ----
 
+r.blip v1.1 package in R.
+
+`https://cran.r-project.org/web/packages/r.blip/index.html <https://cran.r-project.org/web/packages/r.blip/index.html>`_
+
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-blip-instantiation.md>`_
 
 
@@ -33,9 +42,9 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "blip",
+        "id": "asobs",
         "scorer.method": "is",
-        "solver.method": "winasobs",
+        "solver.method": "asobs",
         "indeg": 80,
         "time": [
             20,
@@ -50,6 +59,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 notears
 -------
+
+No tears Python implementation.
+
+`https://github.com/jmoss20/notears <https://github.com/jmoss20/notears>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears.md>`_
 
@@ -68,8 +81,17 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "loss_grad": "least_squares_loss_grad"
     }
 
+
 fges
 ----
+
+Fast greedy equivalence earch (fges) method from command line interface of Tetrad (causal-cmd v1.1.3).
+
+
+`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
+
+`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fast-greedy-equivalent-search-fges.md>`_
 
@@ -83,11 +105,26 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "id": "fges",
         "faithfulnessAssumed": true,
         "score": "bdeu-score",
-        "data-type": "discrete"
+        "datatype": "discrete",
+        "samplePrior": [
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
+        "structurePrior": 1
     }
 
 fci
 ---
+
+fci method from command line interface of Tetrad (causal-cmd v1.1.3).
+
+
+`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
+
+`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fci.md>`_
 
@@ -108,11 +145,18 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
             0.45
         ],
         "test": "chi-square-test",
-        "data-type": "discrete"
+        "datatype": "discrete"
     }
 
 gfci
 ----
+
+gfci method from command line interface of Tetrad (causal-cmd v1.1.3).
+
+
+`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
+
+`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gfci-parameter-setting.md>`_
 
@@ -134,11 +178,20 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         ],
         "score": "bdeu-score",
         "test": "chi-square-test",
-        "data-type": "discrete"
+        "datatype": "discrete",
+        "structurePrior": 1
     }
 
 rcfi
 ----
+
+rfci method from command line interface of Tetrad (causal-cmd v1.1.3).
+
+
+`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
+
+`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-rfci.md>`_
 
@@ -159,11 +212,15 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
             0.45
         ],
         "test": "chi-square-test",
-        "data-type": "discrete"
+        "datatype": "discrete"
     }
 
 pcalg
 -----
+
+PC algorithm from the pcalg v2.6-10 package R.
+
+`https://cran.r-project.org/web/packages/pcalg/index.html <https://cran.r-project.org/web/packages/pcalg/index.html>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-pc-algorithm.md>`_
 
@@ -182,11 +239,25 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
             0.2,
             0.35,
             0.45
-        ]
+        ],
+        "NAdelete": true,
+        "mmax": "Inf",
+        "u2pd": "relaxed",
+        "skelmethod": "stable",
+        "conservative": false,
+        "majrule": false,
+        "solveconfl": false,
+        "numCores": 1,
+        "verbose": false,
+        "indepTest": "binCItest"
     }
 
 mmhc
 ----
+
+Max-min hill-climbing implementation in bnlearn R.
+
+`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_
 
@@ -199,50 +270,32 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     {
         "id": "mmhc",
         "plot_legend": "MMHC",
-        "restrict.args": {
-            "alpha": [
-                0.01,
-                0.05,
-                0.1,
-                0.2,
-                0.35,
-                0.45
-            ]
-        }
-    }
-
-h2pc
-----
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-h2pc-algorithm.md>`_
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    {
-        "id": "h2pc",
-        "restrict.args": {
-            "alpha": [
-                0.01,
-                0.05,
-                0.1,
-                0.2,
-                0.35,
-                0.45
-            ]
-        }
+        
+        "alpha": [
+            0.01,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.45
+        ],
+        "test":"mi"
     }
 
 interiamb
 ---------
 
+Inter-IAMB implementation in bnlearn R.
+
+`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
+
+
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
 
 
 .. rubric:: Example
+
+An example
 
 
 .. code-block:: json
@@ -256,11 +309,22 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
             0.2,
             0.35,
             0.45
-        ]
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false
     }
+
 
 gs
 ---
+
+Greedy search (gs) implementation in bnlearn R.
+
+`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
 
@@ -279,11 +343,21 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
             0.2,
             0.35,
             0.45
-        ]
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false
     }
 
 tabu
 ----
+
+Tabu implementation in bnlearn R.
+
+`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tabu-search-parameter-setting.md>`_
 
@@ -304,33 +378,13 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "beta": 1
     }
 
-h2pc
-----
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-h2pc-algorithm.md>`_
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    {
-        "id": "h2pc",
-        "restrict.args": {
-            "alpha": [
-                0.01,
-                0.05,
-                0.1,
-                0.2,
-                0.35,
-                0.45
-            ]
-        }
-    }
 
 itsearch
 ---------
+
+Iterative search implementation in BiDAG v1.2.0 R.
+
+`https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-iterative-search-paramter-setting.md>`_
 
@@ -342,20 +396,30 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "itsearch_map",
-        "optional": {
-            "MAP": true,
-            "plus1it": null,
-            "posterior": null,
-            "scoretype": "bdecat",
-            "chi": 0.5,
-            "edgepf": 2,
-            "am": null,
-            "aw": null
-        }
+        "estimate": "map",
+        "MAP": true,
+        "plus1it": null,
+        "posterior": null,
+        "scoretype": "bdecat",
+        "chi": 0.5,
+        "edgepf": 2,
+        "am": null,
+        "aw": null,
+        "softlimit": 9,
+        "hardlimit": 12,
+        "alpha": 0.05,
+        "gamma": 1,
+        "cpdag": false,
+        "mergetype": "skeleton"
     }
 
 order_mcmc
 ----------
+
+Order MCMC implementation in BiDAG v1.2.0 R.
+
+`https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-order-mcmc-paramter-setting--.md>`_
 
@@ -368,14 +432,18 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     {
         "id": "order_mcmc_itmap",
         "startspace": "itsearch_map",
-        "optional": {
-            "plus1": true
-        },
+        "plus1": true,
         "scoretype": "bdecat",
         "chi": 1,
         "edgepf": 1,
         "aw": null,
         "am": null,
+        "alpha": 0.05,
+        "gamma": 1,
+        "stepsave": null,
+        "iterations": null,
+        "MAP": true,
+        "cpdag": false,
         "threshold": [
             0.99,
             0.95,

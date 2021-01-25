@@ -5,19 +5,25 @@
                 "graph_id": "fixed_edges40",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "independent_samples",
-                "seed_range": [1, 10]
+                "seed_range": [
+                    1,
+                    10
+                ]
             },
             {
                 "graph_id": "fixed_edges80",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "iid_cont_study_p80",
-                "seed_range": [1, 10]
+                "seed_range": [
+                    1,
+                    10
+                ]
             }
         ],
         "evaluation": {
             "ROC": [
                 {
-                    "algorithm_id": "notears", 
+                    "algorithm_id": "notears",
                     "curve_variable": "penalty_growth_rate"
                 },
                 {
@@ -76,13 +82,17 @@
             "standard_sampling": [
                 {
                     "id": "independent_samples",
-                    "sample_sizes": 
-                        [80, 160]
+                    "sample_sizes": [
+                        80,
+                        160
+                    ]
                 },
                 {
                     "id": "iid_cont_study_p80",
-                    "sample_sizes": 
-                        [320, 640]
+                    "sample_sizes": [
+                        320,
+                        640
+                    ]
                 },
                 {
                     "id": "standard_sampling2000",
@@ -109,7 +119,7 @@
                     "num_nodes": 30,
                     "num_edges": 150
                 },
-                                {
+                {
                     "id": "fixed_edges40",
                     "num_nodes": 40,
                     "num_edges": 100
@@ -124,7 +134,6 @@
                     "num_nodes": 80,
                     "num_edges": 200
                 }
-
             ],
             "generateDAGMaxParents": [
                 {
@@ -165,7 +174,7 @@
                     "radii": 80,
                     "N": 50,
                     "M": 10,
-                    "pseudo_obs": 10.0,
+                    "pseudo_obs": 10,
                     "threshold": [
                         0.7,
                         0.6
@@ -179,7 +188,7 @@
                     "radii": 80,
                     "N": 50,
                     "M": 300,
-                    "pseudo_obs": 1.0,
+                    "pseudo_obs": 1,
                     "threshold": 0.5,
                     "burnin": 0
                 }
@@ -195,11 +204,18 @@
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
-                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
+                    "alpha": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "cores": 1,
                     "verbose": 0
                 },
-                                {
+                {
                     "id": "asobs",
                     "scorermethod": "is",
                     "solvermethod": "asobs",
@@ -209,7 +225,14 @@
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
-                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
+                    "alpha": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "cores": 1,
                     "verbose": 0
                 }
@@ -219,7 +242,7 @@
                     "id": "notears",
                     "min_rate_of_progress": 0.25,
                     "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
+                    "optimation_accuracy": 1e-8,
                     "loss": "least_squares_loss",
                     "loss_grad": "least_squares_loss_grad"
                 }
@@ -229,7 +252,14 @@
                     "id": "gobnilp",
                     "plot": false,
                     "palim": 2,
-                    "alpha": [0.01, 0.1, 1, 10, 50, 100],
+                    "alpha": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "prune": true
                 }
             ],
@@ -247,17 +277,27 @@
                     "faithfulnessAssumed": true,
                     "score": "cg-bic-score",
                     "datatype": "continuous",
-                    "samplePrior": [1, 10, 50, 100],
+                    "samplePrior": [
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "structurePrior": 1
-                },                                {
+                },
+                {
                     "id": "fges-bdeu",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
                     "datatype": "discrete",
-                    "samplePrior": [1, 10, 50, 100],
+                    "samplePrior": [
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "structurePrior": 1
                 }
-
             ],
             "fci": [
                 {
@@ -286,7 +326,6 @@
                     "test": "chi-square-test",
                     "datatype": "discrete"
                 }
-
             ],
             "gfci": [
                 {
@@ -319,7 +358,6 @@
                     "datatype": "continuous",
                     "structurePrior": 1
                 }
-
             ],
             "rfci": [
                 {
@@ -361,14 +399,14 @@
                         0.45,
                         0.5
                     ],
-                    "NAdelete": true, 
+                    "NAdelete": true,
                     "mmax": "Inf",
                     "u2pd": "relaxed",
                     "skelmethod": "stable",
                     "conservative": false,
-                    "majrule": false, 
+                    "majrule": false,
                     "solveconfl": false,
-                    "numCores": 1, 
+                    "numCores": 1,
                     "verbose": false,
                     "indepTest": "binCItest"
                 },
@@ -383,28 +421,28 @@
                         0.45,
                         0.5
                     ],
-                    "NAdelete": true, 
+                    "NAdelete": true,
                     "mmax": "Inf",
                     "u2pd": "relaxed",
                     "skelmethod": "stable",
                     "conservative": false,
-                    "majrule": false, 
+                    "majrule": false,
                     "solveconfl": false,
-                    "numCores": 1, 
+                    "numCores": 1,
                     "verbose": false,
                     "indepTest": "gaussCItest"
                 },
                 {
                     "id": "pcalg005-bin",
                     "alpha": 0.05,
-                    "NAdelete": true, 
+                    "NAdelete": true,
                     "mmax": "Inf",
                     "u2pd": "relaxed",
                     "skelmethod": "stable",
                     "conservative": false,
-                    "majrule": false, 
+                    "majrule": false,
                     "solveconfl": false,
-                    "numCores": 1, 
+                    "numCores": 1,
                     "verbose": false,
                     "indepTest": "binCItest"
                 }
@@ -420,7 +458,7 @@
                         0.35,
                         0.45
                     ],
-                    "test":"cor"
+                    "test": "cor"
                 }
             ],
             "interiamb": [
@@ -434,11 +472,11 @@
                         0.35,
                         0.45
                     ],
-                    "test":"cor",
-                    "B":null,
-                    "maxsx":null,
-                    "debug":false,
-                    "undirected":false
+                    "test": "cor",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false
                 }
             ],
             "gs": [
@@ -452,18 +490,25 @@
                         0.35,
                         0.45
                     ],
-                    "test":"cor",
-                    "B":null,
-                    "maxsx":null,
-                    "debug":false,
-                    "undirected":false
+                    "test": "cor",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false
                 }
             ],
             "tabu": [
                 {
                     "id": "tabu-bde",
                     "score": "bde",
-                    "iss": [0.01, 0.1, 1, 10, 50, 100],
+                    "iss": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "issmu": 1,
                     "l": 5,
                     "k": 1,
@@ -480,13 +525,19 @@
                     "prior": "uniform",
                     "beta": 1
                 }
-
             ],
             "hc": [
                 {
                     "id": "hc-bde",
                     "score": "bde",
-                    "iss": [0.01, 0.1, 1, 10, 50, 100],
+                    "iss": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "issmu": 1,
                     "l": 5,
                     "k": 1,
@@ -507,49 +558,59 @@
                     "restart": 0,
                     "perturb": 1
                 }
-
             ],
             "itsearch": [
                 {
-                    "id": "itsearch_map",                    
-                    "estimate": "map", 
+                    "id": "itsearch_map",
+                    "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
                     "scoretype": "bdecat",
-                    "chi": [0.01, 0.1, 1, 10, 50, 100],
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "edgepf": 2,
                     "am": null,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_map_cont",
-                    "estimate": "map", 
+                    "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
-                    "am": [0.01, 0.1, 1, 10],
+                    "am": [
+                        0.01,
+                        0.1,
+                        1,
+                        10
+                    ],
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
-                    
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_map_cont_am01_endspace",
-                    "estimate": "endspace", 
+                    "estimate": "endspace",
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
@@ -558,34 +619,41 @@
                     "edgepf": null,
                     "am": 1,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_sample",
-                    "estimate": "map", 
+                    "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
                     "scoretype": "bdecat",
-                    "chi": [0.01, 0.1, 1, 10, 50, 100],
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "edgepf": 2,
                     "am": null,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_sample_cont_am01",
-                    "estimate": "endspace", 
+                    "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
@@ -594,16 +662,16 @@
                     "edgepf": null,
                     "am": 0.1,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_map_cont_am01",
-                    "estimate": "endspace", 
+                    "estimate": "endspace",
                     "MAP": true,
                     "plus1it": 6,
                     "posterior": 0.5,
@@ -612,17 +680,16 @@
                     "edgepf": null,
                     "am": 0.1,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 },
-
                 {
                     "id": "itsearch_sample_chi1",
-                    "estimate": "endspace", 
+                    "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
@@ -631,72 +698,66 @@
                     "edgepf": 2,
                     "am": null,
                     "aw": null,
-                    "softlimit":9,
-                    "hardlimit":12,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
-
-                    
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_sample_chi10",
-                   "estimate": "endspace", 
-                        "MAP": false,
-                        "plus1it": 6,
-                        "posterior": 0.5,
-                        "scoretype": "bdecat",
-                        "chi": 10,
-                        "edgepf": 2,
-                        "am": null,
-                        "aw": null,
-                        "softlimit":9,
-                    "hardlimit":12,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bdecat",
+                    "chi": 10,
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
-
-                    
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_sample_chi50",
-                   "estimate": "endspace", 
-                        "MAP": false,
-                        "plus1it": 6,
-                        "posterior": 0.5,
-                        "scoretype": "bdecat",
-                        "chi": 50,
-                        "edgepf": 2,
-                        "am": null,
-                        "aw": null,
-                        "softlimit":9,
-                    "hardlimit":12,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bdecat",
+                    "chi": 50,
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
-
-                    
+                    "mergetype": "skeleton"
                 },
                 {
                     "id": "itsearch_sample_chi100",
-                   "estimate": "endspace", 
-                        "MAP": false,
-                        "plus1it": 6,
-                        "posterior": 0.5,
-                        "scoretype": "bdecat",
-                        "chi": 100,
-                        "edgepf": 2,
-                        "am": null,
-                        "aw": null,
-                        "softlimit":9,
-                    "hardlimit":12,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bdecat",
+                    "chi": 100,
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype":"skeleton"
+                    "mergetype": "skeleton"
                 }
             ],
             "order_mcmc": [
@@ -705,15 +766,22 @@
                     "startspace_algorithm": "itsearch_map",
                     "plus1": true,
                     "scoretype": "bdecat",
-                    "chi": [0.01, 0.1, 1, 10, 50, 100],
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "cpdag": false,
                     "threshold": [
                         0.99,
@@ -741,8 +809,8 @@
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "cpdag": false,
                     "threshold": [
                         0.99,
@@ -770,8 +838,8 @@
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":false,
+                    "iterations": null,
+                    "MAP": false,
                     "cpdag": false,
                     "threshold": [
                         0.99,
@@ -787,13 +855,19 @@
                     ],
                     "burnin": 0
                 },
-
                 {
                     "id": "order_mcmc_itsample",
                     "startspace_algorithm": "itsearch_sample",
                     "plus1": true,
                     "scoretype": "bdecat",
-                    "chi": [0.01, 0.1, 1, 10, 50, 100],
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10,
+                        50,
+                        100
+                    ],
                     "edgepf": 2,
                     "aw": null,
                     "am": null,
@@ -801,10 +875,10 @@
                     "gamma": 1,
                     "cpdag": false,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "threshold": [
-                         0.99,
+                        0.99,
                         0.95,
                         0.9,
                         0.8,
@@ -830,10 +904,10 @@
                     "gamma": 1,
                     "cpdag": false,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "threshold": [
-                         0.99,
+                        0.99,
                         0.95,
                         0.9,
                         0.8,
@@ -859,10 +933,10 @@
                     "gamma": 1,
                     "cpdag": false,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "threshold": [
-                         0.99,
+                        0.99,
                         0.95,
                         0.9,
                         0.8,
@@ -888,10 +962,10 @@
                     "gamma": 1,
                     "cpdag": false,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "threshold": [
-                         0.99,
+                        0.99,
                         0.95,
                         0.9,
                         0.8,
@@ -917,10 +991,10 @@
                     "gamma": 1,
                     "cpdag": false,
                     "stepsave": null,
-                    "iterations":null,
-                    "MAP":true,
+                    "iterations": null,
+                    "MAP": true,
                     "threshold": [
-                         0.99,
+                        0.99,
                         0.95,
                         0.9,
                         0.8,
@@ -933,7 +1007,6 @@
                     ],
                     "burnin": 0
                 }
-
             ]
         }
     }

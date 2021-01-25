@@ -7,14 +7,14 @@ This example plots ROC curves (see :ref:`rocdef`) for some of the available stru
 
 Fully sampled model
 *************************************
-This example is based on the config file is found in :download:`config.sample.binary.json <../../config/config.sample.binary.json>`.
+This example is based on the config file is found in :download:`config.sample.conf.json <../../config/config.sample.conf.json>`.
 
 
 Run the snakemake rule roc with 2 cores by:
 
 .. code-block:: bash
 
-    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.binary.json
+    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.conf.json
 
 This will produce the plot below 
 
@@ -22,9 +22,9 @@ This will produce the plot below
 .. code-block:: json
 
     {
-        "graph_id": "generateDAGMaxParents",
-        "parameters_id": "generateBinaryBN",
-        "data_id": "standard_sampling",
+        "graph_id": "DAGavpar2p80",
+        "parameters_id": "binary_bn",
+        "data_id": "iid_n60",
         "seed_range": [1, 10]
     }
 
@@ -35,11 +35,13 @@ This will produce the plot below
 Fixed graph
 ****************************************
 
+Fixed graphs should be placed in the folder `resources/adjmat/myadjmats`.
+
 .. code-block:: json
     
     {
         "graph_id": "hepar2.csv",
-        "parameters_id": "generateBinaryBN" ,
+        "parameters_id": "binary_bn" ,
         "data_id": "standard_sampling",
         "seed_range": [1, 10]
     }
@@ -58,7 +60,7 @@ Fixed graph and parameters
     {
         "graph_id": "hepar2.csv",
         "parameters_id": "hepar2.rds",
-        "data_id": "standard_sampling2000",
+        "data_id": "iid_n2000",
         "seed_range": [1, 10]
     }
     
