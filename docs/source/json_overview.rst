@@ -60,14 +60,9 @@ evaluation
 
 ROC
 ---
-The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called pattern graph of a DAG.
-Let the graph be a tuple of nodes and edges as
+The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called pattern graph of a DAG :math:`G=(V,E)`, where :math:`V` is the node set and :math:`E` is the edge set.
 
-.. math::
-
-    G=(V,E).
-
-The true and false positives are then defined as
+If :math:`G'=(V',E')` regarded as an estimate of :math:`G=(V,E)`, these metrics are defined as
 
 .. math::
     
