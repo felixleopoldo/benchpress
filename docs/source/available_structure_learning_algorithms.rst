@@ -1,11 +1,18 @@
-structure_learning_algorithms
-==============================
+``structure_learning_algorithms``
+==================================
 
+For explanations of the parametrisations of each algorithm see the corresponding documentations.
+However, some parametrers might be missing for some algorithms though.
+To see which parameters are available review the JSON schemas.
 
-gobnilp
--------
+.. note::
+    
+    Note that in the parameter names, dots (.) are omitted for implementational reasons.
 
-GOBNILP v1.63 C implementation.
+``gobnilp``
+------------
+
+*GOBNILP v1.63* C implementation.
 
 `https://www.cs.york.ac.uk/aig/sw/gobnilp/ <https://www.cs.york.ac.uk/aig/sw/gobnilp/>`_
 
@@ -26,10 +33,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "prune": true
     }
 
-blip
-----
+``blip``
+-----------
 
-r.blip v1.1 package in R.
+*r.blip v1.1* package in R.
 
 `https://cran.r-project.org/web/packages/r.blip/index.html <https://cran.r-project.org/web/packages/r.blip/index.html>`_
 
@@ -43,8 +50,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "asobs",
-        "scorer.method": "is",
-        "solver.method": "asobs",
+        "scorermethod": "is",
+        "solvermethod": "asobs",
         "indeg": 80,
         "time": [
             20,
@@ -57,10 +64,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "verbose": 0
     }
 
-notears
--------
+``notears``
+------------
 
-No tears Python implementation.
+*No tears* Python implementation.
 
 `https://github.com/jmoss20/notears <https://github.com/jmoss20/notears>`_
 
@@ -82,10 +89,11 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-fges
-----
+``fges``
+---------
 
-Fast greedy equivalence earch (fges) method from command line interface of Tetrad (causal-cmd v1.1.3).
+
+*Fast greedy equivalence search* (FGES) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
 
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
@@ -115,10 +123,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "structurePrior": 1
     }
 
-fci
----
+``fci``
+-------
 
-fci method from command line interface of Tetrad (causal-cmd v1.1.3).
+*Fast causal inferece* (FCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
 
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
@@ -148,10 +156,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "datatype": "discrete"
     }
 
-gfci
-----
+``gfci``
+--------
 
-gfci method from command line interface of Tetrad (causal-cmd v1.1.3).
+*Greedy fast causal inference* (GFCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
 
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
@@ -182,10 +190,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "structurePrior": 1
     }
 
-rcfi
-----
+``rcfi``
+---------
 
-rfci method from command line interface of Tetrad (causal-cmd v1.1.3).
+*Re-sample fast causal inference* (RFCI) method from command line interface of Tetrad (causal-cmd v1.1.3).
 
 
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
@@ -215,10 +223,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "datatype": "discrete"
     }
 
-pcalg
------
+``pcalg``
+---------
 
-PC algorithm from the pcalg v2.6-10 package R.
+PC algorithm from the *pcalg v2.6-10* package R.
 
 `https://cran.r-project.org/web/packages/pcalg/index.html <https://cran.r-project.org/web/packages/pcalg/index.html>`_
 
@@ -252,10 +260,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "indepTest": "binCItest"
     }
 
-mmhc
-----
+``mmhc``
+---------
 
-Max-min hill-climbing implementation in bnlearn R.
+*Max-min hill-climbing* implementation in bnlearn R.
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
@@ -269,8 +277,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
     {
         "id": "mmhc",
-        "plot_legend": "MMHC",
-        
         "alpha": [
             0.01,
             0.05,
@@ -282,10 +288,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "test":"mi"
     }
 
-interiamb
----------
+``interiamb``
+-------------
 
-Inter-IAMB implementation in bnlearn R.
+*Incremental association Markov blanket* (Inter-IAMB) from *bnlearn R*.
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
@@ -318,10 +324,10 @@ An example
     }
 
 
-gs
----
+``gs``
+------
 
-Greedy search (gs) implementation in bnlearn R.
+*Greedy search* (GS) from  *bnlearn R*.
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
@@ -351,10 +357,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "undirected": false
     }
 
-tabu
-----
+``tabu``
+---------
 
-Tabu implementation in bnlearn R.
+*Tabu* search from *bnlearn R*.
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
@@ -379,10 +385,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-itsearch
----------
+``itsearch``
+------------
 
-Iterative search implementation in BiDAG v1.2.0 R.
+*Iterative MCMC* implementation in *BiDAG v1.2.0 R*.
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 
@@ -413,10 +419,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "mergetype": "skeleton"
     }
 
-order_mcmc
-----------
+``order_mcmc``
+---------------
 
-Order MCMC implementation in BiDAG v1.2.0 R.
+*Order MCMC* implementation in *BiDAG v1.2.0 R*.
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 

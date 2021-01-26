@@ -1,11 +1,11 @@
-graph
+``graph``
 ========================
 
 
-generateDAGMaxParents
-----------------------
+``generateDAGMaxParents``
+-------------------------
 
-This methods generates a random DAG with agiven number of nodes and limited average nuber of parents per node.
+This methods generates a random DAG with a given number of nodes ``dims`` and limited average number of parents per node ``av_parents``.
 
 `See code <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -24,10 +24,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-notears
--------
+``notears``
+-----------
 
-This method generated a random DAG with a given number of nodes and edges using a triangular array.
+This method generated a random DAG with a given number of nodes ``num_nodes`` and edges ``num_edges`` using a triangular array.
 
 See
 
@@ -43,8 +43,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "notears_dag_sampling",
-        "num_nodes":40,
+        "id": "randdag_p40_e80",
+        "num_nodes": 40,
         "num_edges": 80
     }
 
