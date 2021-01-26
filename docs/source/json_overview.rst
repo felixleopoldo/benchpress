@@ -19,8 +19,8 @@ The configuration file consists of two main categories ``benchmark_setup`` and `
 * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their ``id``.
 
     
-benchmark_setup
-***************
+``benchmark_setup``
+********************
 
 This defines the benchmark setup in four main categories, see :numref:`benchmark_setup`.
 
@@ -35,17 +35,32 @@ This defines the benchmark setup in four main categories, see :numref:`benchmark
 
 
 
-data
-====
+``data``
+========
+This is a list of dictionaries. The elements in the dict defines the data setup as below:
+
+* ``graph_id`` is one of the id´s defined in the ``resources->data`` section or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph`.
+* ``parameters_id`` is one of the id´s defined in the ``resources->parameters`` section or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters`.
+* ``data_id`` is one of the id´s defined in the ``resources->data`` section or a ``.csv`` file in ``resources/data/mydatasets``. See :ref:`data`.
+* ``seed_range`` defines the number of sample replicates of the model. One model and corresponding dataset is sampled for each random seed. 
+
+.. note:: 
+
+    If a ``.csv`` file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* but ``graph_id`` should be the true graphs that generated the dataset.
+    
+.. note::
+
+    If a ``.rds`` file is specified as ``parameters_id``, the true graph should be specified as a ``.csv`` file as ``graph_id``.
+
 
 .. rubric:: Example
 
 .. code-block:: json
 
     [{
-        "graph_id": "generateDAGMaxParents",
-        "parameters_id": "generateBinaryBN",
-        "data_id": "standard_sampling",
+        "graph_id": "myrandomdag",
+        "parameters_id": "binarybn",
+        "data_id": "iid_100",
         "seed_range": [
             1,
             10
@@ -53,13 +68,15 @@ data
     }]
 
 
-evaluation
-==========
+``evaluation``
+===============
+
+This section contains the available evaluation methods. (currently containing only ROC curve estimation)
 
 .. _rocdef:
 
-ROC
----
+``ROC``
+-------
 The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called pattern graph of a DAG :math:`G=(V,E)`, where :math:`V` is the node set and :math:`E` is the edge set.
 
 If :math:`G'=(V',E')` regarded as an estimate of :math:`G=(V,E)`, these metrics are defined as
@@ -85,7 +102,7 @@ List of algorithm to be included in roc curve estimation.
 
     [
         {
-            "algorithm_id": "blip",
+            "algorithm_id": "asobs",
             "curve_variable": "time"
         },
         {
@@ -116,12 +133,12 @@ List of algorithm to be included in roc curve estimation.
 
 
 
-resources
-*********
+``resources``
+*************
 
 
 The first catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contains the available algorithms for models, data, and structure learning algorihtms.
+contain the available models, data, and structure learning algorithms.
 
 
 .. _resources:

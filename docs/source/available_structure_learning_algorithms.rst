@@ -3,11 +3,12 @@
 
 For explanations of the parametrisations of each algorithm see the corresponding documentations.
 However, some parametrers might be missing for some algorithms though.
+Most of the parameters can be given as either a single value or a list.
 To see which parameters are available review the JSON schemas.
 
 .. note::
     
-    Note that in the parameter names, dots (.) are omitted for implementational reasons.
+    Note that dots (.) in the original parameter names are omitted for implementational reasons.
 
 ``gobnilp``
 ------------

@@ -1,3 +1,5 @@
+.. _graph:
+
 ``graph``
 ========================
 
@@ -7,7 +9,7 @@
 
 This methods generates a random DAG with a given number of nodes ``dims`` and limited average number of parents per node ``av_parents``.
 
-`See code <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
+`https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
 
@@ -53,7 +55,7 @@ Adjacency matrix
 ----------------
 
 
-Adjacency matrix in .csv format should be stored in the directory ``resources/adjmats/myadjmats`.
+Adjacency matrix in .csv format should be stored in the directory ``resources/adjmats/myadjmats``.
 The graph is referenced by the corresponding filename of the adjacency matrix.
 
 * The first row should contain the labels of the variables.
