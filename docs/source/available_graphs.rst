@@ -2,12 +2,12 @@
 
 ``graph``
 ========================
-
+This section contains the algorithm for sampling graphs and shows how to provide a fixed graph in ``.csv`` format.
 
 ``generateDAGMaxParents``
 -------------------------
 
-This methods generates a random DAG with a given number of nodes ``dims`` and limited average number of parents per node ``av_parents``.
+Samples a random DAG with a given number of nodes (``dims``) and limited average number of parents per node (``av_parents``).
 
 `https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -29,7 +29,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 ``notears``
 -----------
 
-This method generated a random DAG with a given number of nodes ``num_nodes`` and edges ``num_edges`` using a triangular array.
+Samples a random DAG with a given number of nodes (``num_nodes``) and edges (``num_edges``) using a triangular array.
 
 See
 
@@ -55,8 +55,9 @@ Adjacency matrix
 ----------------
 
 
-Adjacency matrix in .csv format should be stored in the directory ``resources/adjmats/myadjmats``.
-The graph is referenced by the corresponding filename of the adjacency matrix.
+Adjacency matrix of a graph in ``.csv`` format. 
+Must be stored in the directory ``resources/adjmats/myadjmats``.
+The graph is referenced by the corresponding filename.
 
 * The first row should contain the labels of the variables.
 * The columns should be separated by a comma (,).

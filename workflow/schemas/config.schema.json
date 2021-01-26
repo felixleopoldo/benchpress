@@ -248,14 +248,6 @@
                                 "$ref": "#/definitions/hc"
                             }
                         },
-                        "h2pc": {
-                            "description": "H2PC instatiations",
-                            "title": "H2PC id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/h2pc"
-                            }
-                        },
                         "greenthomas": {
                             "description": "Green & Thomas instatiations",
                             "title": "Green & Thomas id's",

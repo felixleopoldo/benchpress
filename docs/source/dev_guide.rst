@@ -1,5 +1,5 @@
 Contributing
 #################
 
-You are very welcome to add more algorithms, datasets or functionalities.
-Instruction for this will come, until then you can email me at felix leopoldo rios gmail com.
+
+To add more algorithms, datasets or functionalities fork the repository https://github.com/felixleopoldo/benchpress and create a pull request.

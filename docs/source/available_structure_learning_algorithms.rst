@@ -8,7 +8,8 @@ To see which parameters are available review the JSON schemas.
 
 .. note::
     
-    Note that dots (.) in the original parameter names are omitted for implementational reasons.
+    Dots (.) in the original parameter names are omitted for implementational reasons.
+
 
 ``gobnilp``
 ------------

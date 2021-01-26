@@ -3,10 +3,12 @@
 ``parameters``
 ==============================
 
+Samples the parameters for a graphical model with a given graph (specified in the ``data`` section).
+
 ``generateBinaryBN``
 --------------------
 
-Samples gonditional probability tables in a limited range (``min`` to ``max``) for a binary Bayesian network.
+Samples conditional probability tables in a limited range (``min`` to ``max``) for a binary Bayesian network.
 
 `https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generatebinaryBNf.r <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generatebinaryBNf.r>`_
 
@@ -29,7 +31,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 Samples parameters for a Gaussian structural equation model (SEM) type Bayesian network.
 Coefficients are sampled in the range ``edge_coefficient_range_from`` to ``edge_coefficient_range_to``.
-Noise is sampled trom a normal distribution with mean ``mean`` and variance ``variance``.
+Noise is sampled from a normal distribution with mean ``mean`` and variance ``variance``.
 
 `https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_random_dag_parameters.py <https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_random_dag_parameters.py>`_
 
@@ -38,7 +40,7 @@ Noise is sampled trom a normal distribution with mean ``mean`` and variance ``va
 
 .. note::
 
-    Note that this can only be combined with graphs from ``notears``.
+    Note that this can only be combined with graphs from the section ``graph->notears``.
 
 
 See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_

@@ -2,51 +2,51 @@
 JSON config file
 ##################
 
-This overview is based on the sample config file :download:`config.sample.binary.json <../../config/config.sample.binary.json>`. 
-The `JSON schema <json-schema.org>`_ for the config file is found here `here <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config.md>`_.
+This overview is based on the sample config file :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/workflow/schemas/docs/config.md>`_.
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
-The configuration file consists of two main categories ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
+The configuration file consists of two main sections ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
 
 
 .. _maincats:
 .. figure:: _static/maincats_exp.png
     :width: 400
 
-    Main categories in :download:`config.sample.binary.json <../../config/config.sample.binary.json>`.
+    Main sections in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`.
 
-* ``resources`` contains the available resources by means of graphs, parameters, data and structure learning algorithms.
-* ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their ``id``.
+* ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
+* ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
 
     
 ``benchmark_setup``
 ********************
 
-This defines the benchmark setup in four main categories, see :numref:`benchmark_setup`.
+This defines the benchmark setup in two main sections, see :numref:`benchmark_setup`.
 
-* ``data`` is a list of the data simulation setups.
-* ``evaluation`` is a list of evaluation metrics (currently only ROC available).
+* ``data``:  a list of the data simulation setups.
+* ``evaluation``: a list of evaluation metrics (currently only ROC available).
 
 .. _benchmark_setup:
 .. figure:: _static/benchmark_setup.png
     :width: 400
 
-    Expanded ``benchmark_setup`` in :download:`config.sample.binary.json <../../config/config.sample.binary.json>`. 
+    Expanded ``benchmark_setup`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
 
 
 
 ``data``
 ========
-This is a list of dictionaries. The elements in the dict defines the data setup as below:
+This is a list of dictionaries, where the elements in the dictionaries defines the data setup as:
 
-* ``graph_id`` is one of the id´s defined in the ``resources->data`` section or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph`.
-* ``parameters_id`` is one of the id´s defined in the ``resources->parameters`` section or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters`.
-* ``data_id`` is one of the id´s defined in the ``resources->data`` section or a ``.csv`` file in ``resources/data/mydatasets``. See :ref:`data`.
-* ``seed_range`` defines the number of sample replicates of the model. One model and corresponding dataset is sampled for each random seed. 
+* ``graph_id``:  one of the id´s defined in the ``resources->data`` section, or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph` section.
+* ``parameters_id``:  one of the id´s defined in the ``resources->parameters`` section, or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters` section.
+* ``data_id``:  one of the id´s defined in the ``resources->data`` section or a ``.csv`` file in ``resources/data/mydatasets``. See :ref:`data` section.
+* ``seed_range``:  the number of sample replicates of the model. One model and corresponding dataset is sampled for each seed number. 
 
 .. note:: 
 
-    If a ``.csv`` file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* but ``graph_id`` should be the true graphs that generated the dataset.
+    If a ``.csv`` file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
     
 .. note::
 
@@ -78,7 +78,7 @@ Note that the results are also stored in the ``results`` directory as ``.csv`` f
 
 ``ROC``
 -------
-The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called pattern graph of a DAG :math:`G=(V,E)`, where :math:`V` is the node set and :math:`E` is the edge set.
+The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called *pattern graph* of a DAG :math:`G=(V,E)`, where :math:`V` is the node set and :math:`E` is the edge set.
 
 If :math:`G'=(V',E')` regarded as an estimate of :math:`G=(V,E)`, these metrics are defined as
 
@@ -92,8 +92,8 @@ where
 
     P:=|E|, \quad TP := |E \cap E'|, \quad FP:=|\bar E \cap E'|.
 
-``algorithm_id`` is the current algorithm and ``curve_variable`` is the varuing vaiable in the plot.
-In order to get the curve like form in the plot, you need to make sure that ``curve_variable`` is given as a list in the algorithm definition.
+``algorithm_id`` is the current algorithm and ``curve_variable`` is the varying parameter in the plot.
+In order to get the curve like form in the plot, you need to make sure that ``curve_variable`` is given as a list in the corresponding algorithm's section.
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
 
@@ -148,20 +148,20 @@ contain the available models, data, and structure learning algorithms.
 .. figure:: _static/resources.png
     :width: 400
 
-    Expanded ``resources`` in :download:`config.sample.binary.json <../../config/config.sample.binary.json>`. 
+    Expanded ``resources`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
 
 
-    Each algorithm has a unique id in its own category.
+    Each algorithm has a unique id in its own section.
 
 
 .. _setup:
 .. figure:: _static/setup.png
     :width: 400
 
-    Expanded ``data`` in :download:`config.sample.binary.json <../../config/config.sample.binary.json>`. 
+    Expanded ``data`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
 
 
-    Each algorithm has a unique id in its own category.
+    Each algorithm has a unique id in its own section.
 
 .. include:: available_graphs.rst
 .. include:: available_parameters.rst

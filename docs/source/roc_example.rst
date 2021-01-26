@@ -7,14 +7,14 @@ This example plots ROC curves (see :ref:`rocdef`) for some of the available stru
 
 Fully sampled model
 *************************************
-This example is based on the config file is found in :download:`config.sample.conf.json <../../config/config.sample.conf.json>`.
+This example is based on the config file is found in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`.
 
 
 Run the snakemake rule roc with 2 cores by:
 
 .. code-block:: bash
 
-    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.conf.json
+    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.json
 
 This will produce the plot below 
 
@@ -24,7 +24,7 @@ This will produce the plot below
     {
         "graph_id": "DAGavpar2p80",
         "parameters_id": "binary_bn",
-        "data_id": "iid_n60",
+        "data_id": "iid_n100",
         "seed_range": [1, 10]
     }
 
