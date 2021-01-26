@@ -22,6 +22,14 @@
     :caption: Configuration
     
     json_overview
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+    :name: Developers guide
+    :caption: Developers guide
+
+    dev_guide
     
 ##################################
 Benchpress's documentation

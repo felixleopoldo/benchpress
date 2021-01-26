@@ -71,7 +71,8 @@ This is a list of dictionaries. The elements in the dict defines the data setup 
 ``evaluation``
 ===============
 
-This section contains the available evaluation methods. (currently containing only ROC curve estimation)
+This section contains the available evaluation methods. (currently containing only ROC curve estimation).
+Note that the results are also stored in the ``results`` directory as ``.csv`` files and can be analysed separately.
 
 .. _rocdef:
 
@@ -91,6 +92,8 @@ where
 
     P:=|E|, \quad TP := |E \cap E'|, \quad FP:=|\bar E \cap E'|.
 
+``algorithm_id`` is the current algorithm and ``curve_variable`` is the varuing vaiable in the plot.
+In order to get the curve like form in the plot, you need to make sure that ``curve_variable`` is given as a list in the algorithm definition.
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
 
