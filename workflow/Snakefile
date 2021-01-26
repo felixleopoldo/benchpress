@@ -176,7 +176,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
             p=adjmat_dict["dims"],
             seed=seed)
 
-    elif Path("files/adjmat/myadjmats/"+adjmat_id).is_file():
+    elif Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
@@ -207,7 +207,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         max=curconf["max"],
                         seed=seed)
 
-    elif Path("files/bn/bn.fit_networks/"+gen_method_id).is_file():
+    elif Path("resources/bn/bn.fit_networks/"+gen_method_id).is_file():
         return  "bn.fit_networks/" + gen_method_id # this could be hepar2.rds e.g.
 
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:
@@ -229,7 +229,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
 
 def gen_data_string_from_conf(data_id, seed):
 
-    if Path("files/data/mydatasets/"+data_id).is_file():
+    if Path("resources/data/mydatasets/"+data_id).is_file():
         return "fixed" + \
             "/filename="+data_id + \
             "/n="+str(None) + \ 
