@@ -1,4 +1,8 @@
 
+cleanres:
+		rm -f results/*.csv
+		rm -f results/*.eps
+
 clean: 
 		rm -r results
 
