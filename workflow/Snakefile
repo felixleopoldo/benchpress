@@ -3,15 +3,32 @@ from jsonschema import validate
 import snakemake.utils
 import sys, getopt
 import shutil
+import filecmp
 
+from dirsync import sync
 from pathlib import Path
 
 args = sys.argv
 
-# copy data adjmats and parameters into the results folder
-shutil.copytree("resources/data", "results/data",dirs_exist_ok=True)
-shutil.copytree("resources/bn", "results/bn",dirs_exist_ok=True)
-shutil.copytree("resources/adjmat", "results/adjmat",dirs_exist_ok=True)
+# Copy data adjmats and parameters into the results folder.
+# Sync folders to not alter the timestamps for the files.
+
+if os.path.isdir("results/data/mydatasets"):
+    sync("resources/data/mydatasets", "results/data/mydatasets", "sync")
+else:
+    shutil.copytree("resources/data", "results/data",dirs_exist_ok=True)
+
+if os.path.isdir("results/bn/bn.fit_networks"):
+    sync("resources/bn/bn.fit_networks", "results/bn/bn.fit_networks", "sync")
+else:
+    shutil.copytree("resources/bn", "results/bn",dirs_exist_ok=True)
+
+if os.path.isdir("results/adjmat/myadjmats"):
+    sync("resources/adjmat/myadjmats", "results/adjmat/myadjmats", "sync")
+else:
+    shutil.copytree("resources/adjmat", "results/adjmat",dirs_exist_ok=True)
+
+
 configfilename="config/config.json"
 i=0
 for arg in args:
