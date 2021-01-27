@@ -44,7 +44,7 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "independent_samples",
+                    "id": "iid160",
                     "sample_sizes": [
                         160
                     ]
