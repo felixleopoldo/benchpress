@@ -38,7 +38,7 @@ This defines the benchmark setup in two main sections, see :numref:`benchmark_se
 
 ``data``
 ========
-This is a list of dictionaries, where the elements in the dictionaries defines the data setup as:
+This is a list of dictionaries, where each dictionary defines the data setup as:
 
 * ``graph_id``:  one of the id´s defined in the ``resources->data`` section, or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph` section.
 * ``parameters_id``:  one of the id´s defined in the ``resources->parameters`` section, or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters` section.
@@ -59,9 +59,9 @@ This is a list of dictionaries, where the elements in the dictionaries defines t
 .. code-block:: json
 
     [{
-        "graph_id": "myrandomdag",
-        "parameters_id": "binarybn",
-        "data_id": "iid_100",
+        "graph_id": "DAGavpar2p80",
+        "parameters_id": "binary_bn",
+        "data_id": "iid160",
         "seed_range": [
             1,
             10
@@ -106,32 +106,28 @@ List of algorithm to be included in roc curve estimation.
 
     [
         {
-            "algorithm_id": "asobs",
-            "curve_variable": "time"
+            "algorithm_id": "pcalg-bin",
+            "curve_variable": "alpha"
         },
         {
-            "algorithm_id": "order_mcmc",
-            "curve_variable": "threshold"
-        },
-        {
-            "algorithm_id": "gobnilp",
-            "curve_variable": "palim"
-        },
-        {
-            "algorithm_id": "fges",
-            "curve_variable": "faithfulnessAssumed"
-        },
-        {
-            "algorithm_id": "tabu",
-            "curve_variable": "beta"
-        },
-        {
-            "algorithm_id": "hc",
-            "curve_variable": "restart"
+            "algorithm_id": "tabu-bde",
+            "curve_variable": "iss"
         },
         {
             "algorithm_id": "mmhc",
             "curve_variable": "alpha"
+        },
+        {
+            "algorithm_id": "fges-bdeu",
+            "curve_variable": "samplePrior"
+        },
+        {
+            "algorithm_id": "itsearch_sample",
+            "curve_variable": "chi"
+        },
+        {
+            "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
+            "curve_variable": "chi"
         }
     ]
 
