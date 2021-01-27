@@ -34,13 +34,13 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run the simulation setup in config.json type
 
-`$ snakemake roc --cores 20 --use-singularity --configfile config/config.sample.docs.json`
+`$ snakemake roc --cores 20 --use-singularity --configfile config/config.sample.docs.fullysampled.json`
 
-A roc curve defined by [config/config.sample.docs.json](config/config.sample.docs.json) is found in the file [results/ROC.eps]() and can be viewed with e.g. evince as
+A roc curve defined by [config/config.sample.docs.fullysampled.json](config/config.sample.docs.fullysampled.json) is found in the file [results/ROC.eps]() and can be viewed with e.g. evince as
 
 `$ evince results/ROC.eps`
 
-![ROC](docs/source/_static/ROC.png)
+![ROC](docs/source/_static/ROC_fullysampled.png)
 
 ## Contributing
 
