@@ -159,7 +159,7 @@ contain the available models, data, and structure learning algorithms.
 .. figure:: _static/setup.png
     :width: 400
 
-    Expanded ``data`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
+    Expanded ``resources`` and ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
     Each algorithm has a unique id in its own section.
