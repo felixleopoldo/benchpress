@@ -224,7 +224,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
                         max=curconf["max"],
                         seed=seed)
 
-    elif Path("resources/bn/bn.fit_networks/"+gen_method_id).is_file():
+    elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # this could be hepar2.rds e.g.
 
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:

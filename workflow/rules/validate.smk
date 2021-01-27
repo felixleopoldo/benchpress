@@ -56,7 +56,7 @@ def validate_data_setup(config, dict):
     available_conf_ids += os.listdir("results/bn/bn.fit_networks")
 
     if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:
-        raise Exception(dict["parameters_id"] + 
+        raise Exception(str(dict["parameters_id"])+ 
                         " is not an available parameter id.\n"
                         "The available paremeter id´s are:\n" + str(sorted(available_conf_ids)))
 
