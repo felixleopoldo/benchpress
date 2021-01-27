@@ -21,7 +21,7 @@ The documentation is found here https://benchpressx.readthedocs.io.
 - Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
 ## Installation
 
-### Cloning the repository
+### Clone and install
 
 `$ git clone https://github.com/felixleopoldo/benchpress.git && cd benchpress && pip install -r requirements.txt`
 
