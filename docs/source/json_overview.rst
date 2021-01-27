@@ -137,8 +137,9 @@ List of algorithm to be included in roc curve estimation.
 *************
 
 
-The first catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available models, data, and structure learning algorithms.
+The  catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
+contain the available models, data, and structure learning algorithms, see :numref:`resources`.
+Each algorithm has a unique id in its own section which may be referenced from the ``benchmark_setup->data`` and ``benchmark_setup->evaluation``  sections, see :numref:`setup`.
 
 
 .. _resources:
@@ -148,7 +149,6 @@ contain the available models, data, and structure learning algorithms.
     Expanded ``resources`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
-    Each algorithm has a unique id in its own section.
 
 
 .. _setup:
@@ -157,8 +157,6 @@ contain the available models, data, and structure learning algorithms.
 
     Expanded ``resources`` and ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
-
-    Each algorithm has a unique id in its own section.
 
 .. include:: available_graphs.rst
 .. include:: available_parameters.rst
