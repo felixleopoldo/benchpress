@@ -14,7 +14,7 @@
         "evaluation": {
             "ROC": [
                 {
-                    "algorithm_id": "pcalg",
+                    "algorithm_id": "pcalg-bin",
                     "curve_variable": "alpha"
                 },
                 {
