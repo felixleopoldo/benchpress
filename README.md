@@ -23,7 +23,7 @@ The documentation is found here https://benchpressx.readthedocs.io.
 
 ### Cloning the repository
 
-`$ git clone https://github.com/felixleopoldo/benchpress.git && cd benchpress`
+`$ git clone https://github.com/felixleopoldo/benchpress.git && cd benchpress && pip install -r requirements.txt`
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as

@@ -16,17 +16,17 @@ args = sys.argv
 if os.path.isdir("results/data/mydatasets"):
     sync("resources/data/mydatasets", "results/data/mydatasets", "sync")
 else:
-    shutil.copytree("resources/data", "results/data",dirs_exist_ok=True)
+    shutil.copytree("resources/data", "results/data")
 
 if os.path.isdir("results/bn/bn.fit_networks"):
     sync("resources/bn/bn.fit_networks", "results/bn/bn.fit_networks", "sync")
 else:
-    shutil.copytree("resources/bn", "results/bn",dirs_exist_ok=True)
+    shutil.copytree("resources/bn", "results/bn")
 
 if os.path.isdir("results/adjmat/myadjmats"):
     sync("resources/adjmat/myadjmats", "results/adjmat/myadjmats", "sync")
 else:
-    shutil.copytree("resources/adjmat", "results/adjmat",dirs_exist_ok=True)
+    shutil.copytree("resources/adjmat", "results/adjmat")
 
 
 configfilename="config/config.json"
