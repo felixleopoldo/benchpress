@@ -2,18 +2,19 @@
 JSON config file
 ##################
 
-This overview is based on the sample config file :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+This overview is based on the sample config file :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/workflow/schemas/docs/config.md>`_.
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
 The configuration file consists of two main sections ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
 
 
+
 .. _maincats:
 .. figure:: _static/maincats_exp.png
     :width: 400
 
-    Main sections in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`.
+    Main sections in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`.
 
 * ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
 * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
@@ -31,7 +32,7 @@ This defines the benchmark setup in two main sections, see :numref:`benchmark_se
 .. figure:: _static/benchmark_setup.png
     :width: 400
 
-    Expanded ``benchmark_setup`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
 
@@ -148,7 +149,7 @@ contain the available models, data, and structure learning algorithms.
 .. figure:: _static/resources.png
     :width: 400
 
-    Expanded ``resources`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``resources`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
     Each algorithm has a unique id in its own section.
@@ -158,7 +159,7 @@ contain the available models, data, and structure learning algorithms.
 .. figure:: _static/setup.png
     :width: 400
 
-    Expanded ``data`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``data`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
     Each algorithm has a unique id in its own section.
