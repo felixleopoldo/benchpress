@@ -17,7 +17,7 @@ Requirements
     
         $ conda install -c conda-forge squash-tools
 
-Cloning the repository
+Installation
 **********************
 
 
