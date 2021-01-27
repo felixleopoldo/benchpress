@@ -2,69 +2,102 @@ Examples
 ###############
 
 This example plots ROC curves (see :ref:`rocdef`) for some of the available structure learning algorithms.
-
+The plot is stored in ``results/ROC.eps``. 
+The data for the plot is stored in ``results/ROC_data.csv``. 
 
 
 Fully sampled model
 *************************************
-This example is based on the config file is found in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`.
+This example is based on the config file :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`.
+The model is fully random Bayesian network model in the sense that both the DAG and the parameters are random.
 
-
-Run the snakemake rule roc with 2 cores by:
-
-.. code-block:: bash
-
-    $ snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.json
-
-This will produce the plot below 
-
+From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
-
+    
     {
         "graph_id": "DAGavpar2p80",
         "parameters_id": "binary_bn",
-        "data_id": "iid_n100",
-        "seed_range": [1, 10]
+        "data_id": "iid160",
+        "seed_range": [
+            1,
+            5
+        ]
     }
 
-.. image:: _static/ROC.png
+
+Run the following command to produce the plot below.
+
+.. code-block:: bash
+
+    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fullysampled.json
+
+
+.. image:: _static/ROC_fullysampled.png
    :width: 400
 
 
 Fixed graph
 ****************************************
 
-Fixed graphs should be placed in the folder `resources/adjmat/myadjmats`.
+This example is based on the config file :download:`config.sample.docs.fixedgraph.json <../../config/config.sample.docs.fixedgraph.json>`.
+I this model, the DAG is specified as a ``.csv`` and parameters for a binary Bayesian network is random.
+
+From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
-    
+
     {
         "graph_id": "hepar2.csv",
-        "parameters_id": "binary_bn" ,
-        "data_id": "standard_sampling",
-        "seed_range": [1, 10]
+        "parameters_id": "binary_bn",
+        "data_id": "iid160",
+        "seed_range": [
+            1,
+            5
+        ]
     }
 
-.. figure:: _static/ROC2.png
+
+Run the following command to produce the plot below.
+
+.. code-block:: bash
+
+    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixedgraph.json
+
+
+.. figure:: _static/ROC_fixedgraph.png
    :width: 400
 
 Fixed graph and parameters
 ***************************************
 
 
+This example is based on the config file :download:`config.sample.docs.fixedgraphparams.json <../../config/config.sample.docs.fixedgraphparams.json>`.
+This is a fixed *bnlearn* Bayesian network specified as a ``.rds`` file.
 
+From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
 
     {
         "graph_id": "hepar2.csv",
         "parameters_id": "hepar2.rds",
-        "data_id": "iid_n2000",
-        "seed_range": [1, 10]
+        "data_id": "iid2000",
+        "seed_range": [
+            1,
+            5
+        ]
     }
+
+
+Run the following command to produce the plot below.
+
+.. code-block:: bash
+
+    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixedgraphparams.json
+
     
-.. figure:: _static/ROC3.png
+.. figure:: _static/ROC_fixedgraphparams.png
     :width: 400
 
 
@@ -72,6 +105,10 @@ Fixed graph and data
 ************************************
 
 
+This example is based on the config file :download:`config.sample.docs.fixeddata.json <../../config/config.sample.docs.fixeddata.json>`.
+In this example, the data is fixed and specified as a ``.csv`` file and the underlying graph (DAG) is specified as a ``.csv`` file.
+
+From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
 
@@ -82,5 +119,12 @@ Fixed graph and data
         "seed_range": null
     }
 
-.. figure:: _static/ROC4.png
+Run the following command to produce the plot below.
+
+.. code-block:: bash
+
+    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixeddata.json
+
+
+.. figure:: _static/ROC_fixeddata.png
     :width: 400

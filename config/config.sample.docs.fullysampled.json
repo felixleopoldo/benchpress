@@ -3,7 +3,7 @@
         "data": [
             {
                 "graph_id": "DAGavpar2p80",
-                "parameters_id": "generateBinaryBN",
+                "parameters_id": "binary_bn",
                 "data_id": "iid160",
                 "seed_range": [
                     1,
@@ -80,7 +80,7 @@
         "parameters": {
             "generateBinaryBN": [
                 {
-                    "id": "generateBinaryBN",
+                    "id": "binary_bn",
                     "min": 0.1,
                     "max": 0.9
                 }
