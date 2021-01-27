@@ -1,7 +1,7 @@
 {
     "benchmark_setup": {
         "data": [
-{
+            {
                 "graph_id": "hepar2.csv",
                 "parameters_id": null,
                 "data_id": "myhepar2data2000.csv",
@@ -13,6 +13,22 @@
                 {
                     "algorithm_id": "tabu-bde",
                     "curve_variable": "iss"
+                },
+                {
+                    "algorithm_id": "mmhc",
+                    "curve_variable": "alpha"
+                },
+                {
+                    "algorithm_id": "fges-bdeu",
+                    "curve_variable": "samplePrior"
+                },
+                {
+                    "algorithm_id": "itsearch_sample",
+                    "curve_variable": "chi"
+                },
+                {
+                    "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
+                    "curve_variable": "chi"
                 }
             ]
         }
@@ -21,16 +37,13 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "independent_samples",
+                    "id": "iid160",
                     "sample_sizes": [
-                        80,
-                        160,
-                        320,
-                        640
+                        160
                     ]
                 },
                 {
-                    "id": "standard_sampling2000",
+                    "id": "iid2000",
                     "sample_sizes": [
                         2000
                     ]
