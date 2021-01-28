@@ -2,18 +2,19 @@
 JSON config file
 ##################
 
-This overview is based on the sample config file :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+This overview is based on the sample config file :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/workflow/schemas/docs/config.md>`_.
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
 The configuration file consists of two main sections ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
 
 
+
 .. _maincats:
 .. figure:: _static/maincats_exp.png
     :width: 400
 
-    Main sections in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`.
+    Main sections in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`.
 
 * ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
 * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
@@ -31,13 +32,13 @@ This defines the benchmark setup in two main sections, see :numref:`benchmark_se
 .. figure:: _static/benchmark_setup.png
     :width: 400
 
-    Expanded ``benchmark_setup`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
 
 ``data``
 ========
-This is a list of dictionaries, where the elements in the dictionaries defines the data setup as:
+This is a list of dictionaries, where each dictionary defines the data setup as:
 
 * ``graph_id``:  one of the id´s defined in the ``resources->data`` section, or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph` section.
 * ``parameters_id``:  one of the id´s defined in the ``resources->parameters`` section, or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters` section.
@@ -58,9 +59,9 @@ This is a list of dictionaries, where the elements in the dictionaries defines t
 .. code-block:: json
 
     [{
-        "graph_id": "myrandomdag",
-        "parameters_id": "binarybn",
-        "data_id": "iid_100",
+        "graph_id": "DAGavpar2p80",
+        "parameters_id": "binary_bn",
+        "data_id": "iid160",
         "seed_range": [
             1,
             10
@@ -105,32 +106,28 @@ List of algorithm to be included in roc curve estimation.
 
     [
         {
-            "algorithm_id": "asobs",
-            "curve_variable": "time"
+            "algorithm_id": "pcalg-bin",
+            "curve_variable": "alpha"
         },
         {
-            "algorithm_id": "order_mcmc",
-            "curve_variable": "threshold"
-        },
-        {
-            "algorithm_id": "gobnilp",
-            "curve_variable": "palim"
-        },
-        {
-            "algorithm_id": "fges",
-            "curve_variable": "faithfulnessAssumed"
-        },
-        {
-            "algorithm_id": "tabu",
-            "curve_variable": "beta"
-        },
-        {
-            "algorithm_id": "hc",
-            "curve_variable": "restart"
+            "algorithm_id": "tabu-bde",
+            "curve_variable": "iss"
         },
         {
             "algorithm_id": "mmhc",
             "curve_variable": "alpha"
+        },
+        {
+            "algorithm_id": "fges-bdeu",
+            "curve_variable": "samplePrior"
+        },
+        {
+            "algorithm_id": "itsearch_sample",
+            "curve_variable": "chi"
+        },
+        {
+            "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
+            "curve_variable": "chi"
         }
     ]
 
@@ -140,28 +137,26 @@ List of algorithm to be included in roc curve estimation.
 *************
 
 
-The first catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available models, data, and structure learning algorithms.
+The  catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
+contain the available models, data, and structure learning algorithms, see :numref:`resources`.
+Each algorithm has a unique id in its own section which may be referenced from the ``benchmark_setup->data`` and ``benchmark_setup->evaluation``  sections, see :numref:`setup`.
 
 
 .. _resources:
 .. figure:: _static/resources.png
     :width: 400
 
-    Expanded ``resources`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``resources`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
 
-    Each algorithm has a unique id in its own section.
 
 
 .. _setup:
 .. figure:: _static/setup.png
     :width: 400
 
-    Expanded ``data`` in :download:`config.sample.docs.json <../../config/config.sample.docs.json>`. 
+    Expanded ``resources`` and ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
 
-
-    Each algorithm has a unique id in its own section.
 
 .. include:: available_graphs.rst
 .. include:: available_parameters.rst
