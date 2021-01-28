@@ -22,10 +22,6 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gobnilp",
-                    "curve_variable": "alpha"
-                },
-                {
                     "algorithm_id": "tabu-bde",
                     "curve_variable": "iss"
                 },

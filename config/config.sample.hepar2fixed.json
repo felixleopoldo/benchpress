@@ -3,8 +3,8 @@
         "data": [
             {
                 "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "standard_sampling2000",
+                "parameters_id": null,
+                "data_id": "myhepar2data2000.csv",
                 "seed_range": [
                     1,
                     10
@@ -13,66 +13,12 @@
         ],
         "evaluation": {
             "ROC": [
-                {
-                    "algorithm_id": "winasobs",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "asobs",
-                    "curve_variable": "alpha"
-                },
+
                 {
                     "algorithm_id": "gobnilp",
                     "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "tabu-bde",
-                    "curve_variable": "iss"
-                },
-                {
-                    "algorithm_id": "mmhc",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "hc-bde",
-                    "curve_variable": "iss"
-                },
-                {
-                    "algorithm_id": "gs",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "interiamb",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "fci-disc",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "rfci-disc",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "gfci-bdeu",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "fges-bdeu",
-                    "curve_variable": "samplePrior"
-                },
-                {
-                    "algorithm_id": "itsearch_map",
-                    "curve_variable": "chi"
-                },
-                {
-                    "algorithm_id": "itsearch_sample",
-                    "curve_variable": "chi"
-                },
-                {
-                    "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
-                    "curve_variable": "chi"
                 }
+                
             ]
         }
     },

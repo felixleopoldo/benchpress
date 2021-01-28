@@ -7,16 +7,16 @@
                 "data_id": "independent_samples",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             },
             {
-                "graph_id": "fixed_edges80",
+                "graph_id": "fixed_edges60",
                 "parameters_id": "rand_sem_gauss",
                 "data_id": "iid_cont_study_p80",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             }
         ],
@@ -493,7 +493,7 @@
                     "test": "cor",
                     "B": null,
                     "maxsx": null,
-                    "debug": false,
+                    "debug": true,
                     "undirected": false
                 }
             ],
