@@ -3,12 +3,9 @@
         "data": [
             {
                 "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "standard_sampling2000",
-                "seed_range": [
-                    1,
-                    10
-                ]
+                "parameters_id": null,
+                "data_id": "myhepar2data2000.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
@@ -73,6 +70,7 @@
                     "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
                     "curve_variable": "chi"
                 }
+                
             ]
         }
     },
