@@ -40,10 +40,10 @@ This defines the benchmark setup in two main sections, see :numref:`benchmark_se
 ========
 This is a list of dictionaries, where each dictionary defines the data setup as:
 
-* ``graph_id``:  one of the id´s defined in the ``resources->data`` section, or an adjacecy matrix ``.csv`` file in ``resources/adjmat/myadjmats``. See :ref:`graph` section.
-* ``parameters_id``:  one of the id´s defined in the ``resources->parameters`` section, or a ``.rds`` file in ``resources/parameters/bn.fit_networks``. See :ref:`parameters` section.
-* ``data_id``:  one of the id´s defined in the ``resources->data`` section or a ``.csv`` file in ``resources/data/mydatasets``. See :ref:`data` section.
-* ``seed_range``:  the number of sample replicates of the model. One model and corresponding dataset is sampled for each seed number. 
+* ``graph_id``:  an id from the ``resources->data`` section or a ``.csv`` file; see :ref:`graph`.
+* ``parameters_id``:  an id from the ``resources->parameters`` section or a ``.rds`` file; see :ref:`parameters` .
+* ``data_id``:  an id from the ``resources->data`` section or a ``.csv`` file; see :ref:`data`.
+* ``seed_range``:  the number of seeds used for sampling models and datasets.  
 
 .. note:: 
 
