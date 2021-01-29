@@ -5,6 +5,7 @@ import pandas as pd
 
 def main(n_samples, mean, variance, filename, weighted_adjmat_filename, seed):
     adjmat_df = pd.read_csv(weighted_adjmat_filename)
+    np.random.seed(seed)
     data = np.array(notears.utils.simulate_from_dag_lg(adjmat_df.values, 
                                                         n_samples, 
                                                         mean=mean, 
