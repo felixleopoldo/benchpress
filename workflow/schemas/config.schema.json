@@ -1139,7 +1139,7 @@
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "issmu": {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "l": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1188,7 +1188,7 @@
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "issmu": {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
                 "l": {
                     "$ref": "#/definitions/flexnonnegint"
