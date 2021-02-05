@@ -1,5 +1,6 @@
 rule sample_notears_linear_gaussian_data:
     input:
+        script="workflow/scripts/notears/simulate_from_dag_lg.py",
         bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
