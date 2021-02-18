@@ -76,6 +76,7 @@ def alg_shell(algorithm):
                 "echo 'gobnilp/scoring/palim = {wildcards.palim} ' >> {output.adjmat}.gobnilp.set && " \     
                 "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set && " \
                 "echo 'gobnilp/scoring/prune = {wildcards.prune} ' >> {output.adjmat}.gobnilp.set && " \     
+                "echo 'gobnilp/delimiter = \"whitespace\" ' >> {output.adjmat}.gobnilp.set && " \     
                 "/myappdir/gobnilp163/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \
                 " && cat {output.adjmat}.bn.mat > {output.adjmat} " \
                 " && cat {output.adjmat}.score_and_time.txt > {output.time} " \ 

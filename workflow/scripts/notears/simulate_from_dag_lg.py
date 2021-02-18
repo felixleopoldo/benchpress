@@ -10,7 +10,7 @@ def main(n_samples, mean, variance, filename, weighted_adjmat_filename, seed):
                                                         n_samples, 
                                                         mean=mean, 
                                                         variance=variance))
-    pd.DataFrame(data).to_csv(filename, header=adjmat_df.columns, sep=" ", index=False)
+    pd.DataFrame(data).to_csv(filename, header=adjmat_df.columns, sep=",", index=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("Sample DAG.")

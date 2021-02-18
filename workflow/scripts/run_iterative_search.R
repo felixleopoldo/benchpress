@@ -11,7 +11,7 @@ seed <- snakemake@wildcards[["replicate"]]
 map <- snakemake@wildcards[["MAP"]]
 
 set.seed(seed)
-data <- read.csv(filename_data, sep=" ")
+data <- read.csv(filename_data, sep=",")
 
 # Iterative search
 

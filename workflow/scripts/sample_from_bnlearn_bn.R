@@ -42,6 +42,4 @@ if("bn.fit.dnet" %in% class(bn)){
     data <- data.frame(rbind(header, data))
 }
 
-
-#write.csv(data, file = filename, row.names = FALSE,)
-write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE)
+write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")

@@ -7,7 +7,7 @@ filename_data <- snakemake@input[["data"]]
 seed <- snakemake@wildcards[["replicate"]]
 
 set.seed(seed)
-data <- read.csv(filename_data, sep=" ")
+data <- read.csv(filename_data, sep=",")
 
 startspace <- read.csv(snakemake@input[["startspace"]])
 rownames(startspace) <- seq(dim(data)[2])

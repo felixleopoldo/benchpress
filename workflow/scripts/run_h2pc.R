@@ -18,7 +18,7 @@ filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 seed <- argv$seed
 alpha <- argv$alpha
-data <- read.csv(filename_data, sep=" ")
+data <- read.csv(filename_data, sep=",")
 data <- data[-1,] # Remove range header
 set.seed(seed)
 

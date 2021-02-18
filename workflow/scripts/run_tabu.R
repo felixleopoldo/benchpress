@@ -31,7 +31,7 @@ filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 seed <- argv$seed
 
-data <- read.csv(filename_data, sep=" ")
+data <- read.csv(filename_data, sep=",")
 
 names <-names(data)
 if (argv$score %in% c("bde", "bic")){

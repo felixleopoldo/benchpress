@@ -8,7 +8,7 @@ filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["replicate"]])
 
-data <- read.csv(filename_data, sep=" ")
+data <- read.csv(filename_data, sep=",")
 
 header <- names(data)
 if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi", 
