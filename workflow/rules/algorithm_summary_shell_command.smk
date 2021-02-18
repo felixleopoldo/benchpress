@@ -32,7 +32,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname iss.mu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
@@ -42,8 +42,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname blacklist       --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug           --colval false " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname tabu            --colval 10 " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.tabu        --colval tabu " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.iter        --colval Inf " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maxtabu        --colval tabu " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maxiter        --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxp            --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
@@ -85,7 +85,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname iss.mu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
@@ -96,7 +96,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug           --colval false " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname perturb         --colval {wildcards.perturb} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname restart         --colval {wildcards.restart} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.iter        --colval Inf " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maxiter        --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxp            --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
@@ -116,8 +116,8 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval {wildcards.time} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname scorer.method   --colval {wildcards.scorermethod} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname solver.method   --colval {wildcards.solvermethod} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname scorermethod   --colval {wildcards.scorermethod} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname solvermethod   --colval {wildcards.solvermethod} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname indeg           --colval {wildcards.indeg} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname cores           --colval {wildcards.cores} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname allocated       --colval {wildcards.allocated} " \
@@ -184,10 +184,10 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname fixedGaps   --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname fixedEdges  --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname NAdelete    --colval {wildcards.NAdelete} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname m.max       --colval {wildcards.mmax} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname mmax       --colval {wildcards.mmax} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname conservative --colval {wildcards.conservative} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname maj.rule     --colval {wildcards.majrule} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname solve.confl  --colval {wildcards.solveconfl} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname majrule     --colval {wildcards.majrule} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname solveconfl  --colval {wildcards.solveconfl} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname numCores     --colval {wildcards.numCores} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose      --colval {wildcards.verbose} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
@@ -210,7 +210,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug       --colval false " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname maximize.args   --colval null " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maximizeargs   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
 
 
@@ -230,7 +230,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug       --colval false " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname maximize.args   --colval null " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maximizeargs   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
 
 
@@ -254,7 +254,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
@@ -279,7 +279,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname max.sx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
