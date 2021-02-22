@@ -2,18 +2,9 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "fixed_edges40",
-                "parameters_id": "rand_sem_gauss",
+                "graph_id": "DAG",
+                "parameters_id": "SEM",
                 "data_id": "independent_samples",
-                "seed_range": [
-                    1,
-                    1
-                ]
-            },
-            {
-                "graph_id": "fixed_edges60",
-                "parameters_id": "rand_sem_gauss",
-                "data_id": "iid_cont_study_p80",
                 "seed_range": [
                     1,
                     1
@@ -103,6 +94,17 @@
             ]
         },
         "graph": {
+            "DAGavparents": [
+                {
+                    "id": "DAG",
+                    "av_parents": [
+                        2
+                    ],
+                    "dim": [
+                       40
+                    ]
+                }
+            ],
             "notears": [
                 {
                     "id": "notears12",
@@ -153,6 +155,13 @@
                     "id": "generateBinaryBN",
                     "min": 0.1,
                     "max": 0.9
+                }
+            ],
+            "pcalg_sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
                 }
             ],
             "notears_parameters_sampling": [

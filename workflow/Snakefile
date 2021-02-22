@@ -177,20 +177,14 @@ def gen_model_strings_from_conf(models, seed, setup):
     pass
 
 def gen_adjmat_string_from_conf(adjmat_id, seed):
-    #with open(configfilename) as json_file:
-    #    conf = json.load(json_file)
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
     
     if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
-        return expand("generateDAGMaxParents" + \
-            "/p={p}" + \
-            "/avpar={av_parents}" + \
-            "/seed={seed}",
-            av_parents=adjmat_dict["av_parents"], 
-            p=adjmat_dict["dims"],
+        return expand(pattern_strings["generateDAGMaxParents"] +   "/seed={seed}",
+            **adjmat_dict,
             seed=seed)
 
     elif Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
@@ -199,14 +193,18 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
 
     elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["notears"]]: 
         adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
-        return expand("notears/" \
-                        "num_nodes={num_nodes}/" \
-                        "num_edges={num_edges}/"\
-                        "seed={seed}",
-                        num_nodes=adjmat_dict["num_nodes"],
-                        num_edges=adjmat_dict["num_edges"],
+        return expand(pattern_strings["notears_dag"] + \
+                        "/seed={seed}",
+                        **adjmat_dict,
                         seed=seed)
-                        
+
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
+        return expand(
+                    pattern_strings["DAGavparents"] + "/seed={seed}",
+                    **adjmat_dict,
+                    seed=seed)
+
     elif adjmat_id is None:
         return None
 
@@ -216,30 +214,27 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
 
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["generateBinaryBN"] if item["id"] == gen_method_id)
-        return expand("generateBinaryBN" + \
-                        "/min={min}" + \
-                        "/max={max}" + \
+        return expand(pattern_strings["generateBinaryBN"] + \
                         "/seed={seed}",
-                        min=curconf["min"], 
-                        max=curconf["max"],
+                        **curconf,
+                        seed=seed)
+
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["pcalg_sem_params"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["pcalg_sem_params"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["pcalg_sem_params"] + 
+                        "/seed={seed}",
+                        **curconf,
                         seed=seed)
 
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
-        return  "bn.fit_networks/" + gen_method_id # this could be hepar2.rds e.g.
+        return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:
         curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
-        return expand("notears/" \
-                      "edge_coefficient_range_from={edge_coefficient_range_from}/"\
-                      "edge_coefficient_range_to={edge_coefficient_range_to}/"\
-                      "mean={mean}/" + \
-                      "variance={variance}/" + \
-                      "seed={seed}",
-                        edge_coefficient_range_from=curconf["edge_coefficient_range_from"],
-                        edge_coefficient_range_to=curconf["edge_coefficient_range_to"],
-                        mean = curconf["mean"],
-                        variance = curconf["variance"],
-                        seed=seed)
+        return expand(pattern_strings["notears_parameters_sampling"] + \
+                      "/seed={seed}",
+                      **curconf,
+                      seed=seed)
 
     elif gen_method_id is None:
         return None

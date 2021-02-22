@@ -11,14 +11,10 @@ rule sample_linear_gaussian_parameters_notears:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:        
-        bn = "{output_dir}/bn/" \
-            "notears/" \
-            "edge_coefficient_range_from={edge_coefficient_range_from}/"\
-            "edge_coefficient_range_to={edge_coefficient_range_to}/"\
-            "mean={mean}/" \
-            "variance={variance}/" \
+        bn = "{output_dir}/bn/" + pattern_strings["notears_parameters_sampling"] + "/" \
             "seed={seed}/" \            
             "adjmat=/{adjmat}.csv"
+
     singularity:
         docker_image("notears")
     shell:
@@ -33,7 +29,10 @@ rule sample_binary_bn:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        bn = "{output_dir}/bn/generateBinaryBN/min={min}/max={max}/seed={seed}/adjmat=/{adjmat}.rds"
+        bn = "{output_dir}/bn/" + \
+            pattern_strings["generateBinaryBN"] + "/" \
+            "seed={seed}/adjmat=/{adjmat}.rds"
+
     shell:
         "Rscript workflow/scripts/sample_bayesian_network_for_dag.R " \
         "--filename_dag {input.adjmat} " \
@@ -41,3 +40,15 @@ rule sample_binary_bn:
         "--min {wildcards.min} " \
         "--max {wildcards.max} " \
         "--seed {wildcards.seed} "
+
+rule sample_pcalg_sem_params:
+    input:
+        adjmat = "{output_dir}/adjmat/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv" 
+    output:
+        bn =    "{output_dir}/bn/" + \
+                pattern_strings["pcalg_sem_params"] + "/" \
+                "seed={seed}/"+\
+                "adjmat=/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv"
+    script:
+        "../scripts/sample_pcalg_semparams.R" 
+

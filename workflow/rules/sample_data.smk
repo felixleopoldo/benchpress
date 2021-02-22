@@ -23,6 +23,20 @@ rule sample_notears_linear_gaussian_data:
         "--n_samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
 
+rule sample_pcalg_sem_data:
+    input:
+        script="workflow/scripts/sample_pcalg_sem_data.R",
+        bn="{output_dir}/bn/"+pattern_strings["pcalg_sem_params"]+"/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/bn=/" + pattern_strings["pcalg_sem_params"] + "/" \
+             "data=/standard_sampling/" \
+             "n={n}/" \
+             "seed={replicate}.csv"
+    script:
+        "../scripts/sample_pcalg_sem_data.R" 
+
 rule sample_bindata:
     input:
         bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"

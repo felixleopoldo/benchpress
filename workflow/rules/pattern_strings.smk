@@ -1,6 +1,6 @@
 def dict_to_path(d):
     # id should be dropped first
-    c = d[0].copy()
+    c = d[0].copy() # take the first element in the list.
     c.pop("id") # Remove id from the string as only the parameters should identify the computation.
     if "burnin" in c:
         c.pop("burnin")
@@ -54,3 +54,15 @@ pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \
                    "chi={chi}/" \
                    "edgepf={edgepf}" 
+
+# graph sampling
+pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
+print(pattern_strings["DAGavparents"])
+pattern_strings["generateDAGMaxParents"] = "generateDAGMaxParents/" + dict_to_path(config["resources"]["graph"]["generateDAGMaxParents"])
+pattern_strings["notears_dag"] = "notears/" + dict_to_path(config["resources"]["graph"]["notears"])
+
+# parameters sampling
+pattern_strings["pcalg_sem_params"] = "pcalg_sem_params/" + dict_to_path(config["resources"]["parameters"]["pcalg_sem_params"])
+pattern_strings["generateBinaryBN"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["generateBinaryBN"])
+pattern_strings["notears_parameters_sampling"] = "notears/" + dict_to_path(config["resources"]["parameters"]["notears_parameters_sampling"])
+

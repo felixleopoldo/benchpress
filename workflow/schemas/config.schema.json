@@ -85,6 +85,14 @@
                                 "$ref": "#/definitions/notears_dag_sampling"
                             },
                             "uniqueItems": true
+                        },
+                        "DAGavparents": {
+                            "title": "DAGavparents DAG sampling id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DAGavparents"
+                            },
+                            "uniqueItems": true
                         }
                     },
                     "additionalProperties": false
@@ -108,6 +116,15 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/notears_parameters_sampling"
+                            },
+                            "uniqueItems": true
+                        },
+                        "pcalg_sem_params": {
+                            "title": "List of pcalg_sem_params id's",
+                            "description": "List of pcalg_sem_params id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/pcalg_sem_params"
                             },
                             "uniqueItems": true
                         }
@@ -459,6 +476,29 @@
             ],
             "additionalProperties": false
         },
+         "DAGavparents": {
+            "title": "DAGavparents",
+            "description": "An instance of pcalg DAG sampling. Sampling of a DAG with specified  averge number for parents for the nodes.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "av_parents": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "dim": {
+                    "$ref": "#/definitions/flexnonnegint"
+                }
+            },
+            "required": [
+                "av_parents",
+                "dim",
+                "id"
+            ],
+            "additionalProperties": false
+        }
+        ,
         "generateBinaryBN": {
             "title": "generateBinaryBN",
             "description": "Parameter setting for generateBinaryBN",
@@ -478,6 +518,27 @@
                 "min",
                 "max",
                 "id"
+            ],
+            "additionalProperties": false
+        },
+        "pcalg_sem_params": {
+            "title": "PCalg SEM params",
+            "description": "Parameter setting for PC alg DAG sampling",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "min": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "max": {
+                    "$ref": "#/definitions/flexprob"
+                }            },
+            "required": [
+                "min",
+                "max",
+                "id"                
             ],
             "additionalProperties": false
         },

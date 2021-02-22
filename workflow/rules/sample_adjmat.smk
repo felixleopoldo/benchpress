@@ -1,12 +1,22 @@
 rule sample_adjmat:
     output:        
-        adjmat = "{output_dir}/adjmat/generateDAGMaxParents/p={p}/avpar={avparents}/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" +
+                "generateDAGMaxParents/" +
+                "p={p}/" +
+                "avpar={avparents}/" +
+                "seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_dags.R " \
         "--filename {output.adjmat} " \ 
         "--nodes {wildcards.p} " \
         "--parents {wildcards.avparents} " \
         "--seed {wildcards.replicate}"
+
+rule sample_adjmat_pcalg:
+    output:
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["DAGavparents"] + "/seed={replicate}.csv"
+    script:
+        "../scripts/sample_pcalg_dag.R" 
 
 rule sample_adjmat_notears:
     output:        
