@@ -18,7 +18,7 @@ def main(loss, loss_grad, min_rate_of_progress, penalty_growth_rate,
     elif loss_grad == "least_squares_loss_cov_grad":
         loss_grad_func = notears.loss.least_squares_loss_cov_grad
 
-    data_df = pd.read_csv(data_filename, sep=" ")
+    data_df = pd.read_csv(data_filename, sep=",")
 
     output_dict = notears.run(
         notears.notears_standard,

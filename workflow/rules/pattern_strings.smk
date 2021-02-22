@@ -57,7 +57,6 @@ pattern_strings["evaluation"] = "evaluation/" \
 
 # graph sampling
 pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
-print(pattern_strings["DAGavparents"])
 pattern_strings["generateDAGMaxParents"] = "generateDAGMaxParents/" + dict_to_path(config["resources"]["graph"]["generateDAGMaxParents"])
 pattern_strings["notears_dag"] = "notears/" + dict_to_path(config["resources"]["graph"]["notears"])
 
