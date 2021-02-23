@@ -38,6 +38,7 @@ if snakemake.wildcards["score"] == "sem-bic":
                     "--score {score} " 
                     "--json-graph "
                     "--structurePrior {structurePrior} " 
+                    "--penaltyDiscount {penaltyDiscount} "
                     "--prefix {adjmat} " 
                     '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' 
                     '--jsongraph {adjmat}_graph.json ' 

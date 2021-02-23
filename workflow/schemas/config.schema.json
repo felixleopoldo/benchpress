@@ -907,6 +907,9 @@
                 "samplePrior":{
                     "$ref": "#/definitions/flexnonnegnum"
                 },
+                "penaltyDiscount":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
                 "structurePrior":{
                     "$ref": "#/definitions/flexnonnegnum"
                 }
@@ -971,6 +974,9 @@
                     "type": "string"
                 },
                 "structurePrior":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "penaltyDiscount":{
                     "$ref": "#/definitions/flexnonnegnum"
                 }
             },

@@ -278,13 +278,9 @@
                     "faithfulnessAssumed": true,
                     "score": "sem-bic",
                     "datatype": "continuous",
-                    "samplePrior": [
-                        1,
-                        10,
-                        50,
-                        100
-                    ],
-                    "structurePrior": 1
+                    "samplePrior": 1,
+                    "structurePrior": 1,
+                    "penaltyDiscount": [0,0.5,0.1]
                 },
                 {
                     "id": "fges-bdeu",
@@ -297,7 +293,8 @@
                         50,
                         100
                     ],
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "penaltyDiscount": [0,0.5,0.1]
                 }
             ],
             "fci": [
@@ -342,7 +339,8 @@
                     "score": "bdeu-score",
                     "test": "chi-square-test",
                     "datatype": "discrete",
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "penaltyDiscount": [0,0.5,0.1]
                 },
                 {
                     "id": "gfci-sem-bic",
@@ -357,7 +355,8 @@
                     "score": "sem-bic",
                     "test": "cg-lr-test",
                     "datatype": "continuous",
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "penaltyDiscount": [0,0.5,0.1]
                 }
             ],
             "rfci": [
