@@ -2,9 +2,9 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "DAG",
+                "graph_id": "DAG80",
                 "parameters_id": "SEM",
-                "data_id": "independent_samples",
+                "data_id": "iid_cont_study_p80",
                 "seed_range": [
                     1,
                     5
@@ -13,10 +13,6 @@
         ],
         "evaluation": {
             "ROC": [
-                {
-                    "algorithm_id": "notears",
-                    "curve_variable": "penalty_growth_rate"
-                },
                 {
                     "algorithm_id": "tabu-bge",
                     "curve_variable": "iss"
@@ -42,7 +38,7 @@
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "pcalg-gauss",
+                    "algorithm_id": "pcalg-gaussCItest",
                     "curve_variable": "alpha"
                 },
                 {
@@ -88,12 +84,12 @@
         "graph": {
             "DAGavparents": [
                 {
-                    "id": "DAG",
+                    "id": "DAG80",
                     "av_parents": [
                         2
                     ],
                     "dim": [
-                       40
+                       80
                     ]
                 }
             ],
@@ -280,7 +276,7 @@
                     "datatype": "continuous",
                     "samplePrior": 1,
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5, 1]
+                    "penaltyDiscount": [0,0.5, 1, 1.5]
                 },
                 {
                     "id": "fges-bdeu",
@@ -411,7 +407,7 @@
                     "indepTest": "binCItest"
                 },
                 {
-                    "id": "pcalg-gauss",
+                    "id": "pcalg-gaussCItest",
                     "alpha": [
                         0.01,
                         0.05,
