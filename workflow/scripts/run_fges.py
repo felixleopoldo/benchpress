@@ -28,7 +28,7 @@ if snakemake.wildcards["score"] == "bdeu-score":
                     'rm {adjmat}.txt'
                     ).format(dataset=snakemake.input["data"], **snakemake.output, **snakemake.wildcards)
 
-if snakemake.wildcards["score"] == "cg-bic-score":
+if snakemake.wildcards["score"] == "sem-bic":
     command = ("/usr/bin/time -f \"%e\" -o {time} "  
             "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " 
                     "--algorithm fges "
