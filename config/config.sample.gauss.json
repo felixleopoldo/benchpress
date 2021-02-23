@@ -30,15 +30,15 @@
                     "curve_variable": "issmu"
                 },
                 {
-                    "algorithm_id": "fci-cont",
+                    "algorithm_id": "fci-cg-lr",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "rfci-cont",
+                    "algorithm_id": "rfci-cg-lr",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci-sem-bic",
+                    "algorithm_id": "gfci-sem-bic-cg-lr",
                     "curve_variable": "alpha"
                 },
                 {
@@ -50,7 +50,7 @@
                     "curve_variable": "samplePrior"
                 },
                 {
-                    "algorithm_id": "itsearch_map_cont",
+                    "algorithm_id": "itsearch_map-bge",
                     "curve_variable": "chi"
                 },
                 {
@@ -280,7 +280,7 @@
                     "datatype": "continuous",
                     "samplePrior": 1,
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5,0.1]
+                    "penaltyDiscount": [0,0.5, 1]
                 },
                 {
                     "id": "fges-bdeu",
@@ -294,12 +294,12 @@
                         100
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5,0.1]
+                    "penaltyDiscount": 1
                 }
             ],
             "fci": [
                 {
-                    "id": "fci-cont",
+                    "id": "fci-cg-lr",
                     "alpha": [
                         0.01,
                         0.05,
@@ -312,7 +312,7 @@
                     "datatype": "continuous"
                 },
                 {
-                    "id": "fci-disc",
+                    "id": "fci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -340,10 +340,10 @@
                     "test": "chi-square-test",
                     "datatype": "discrete",
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5,0.1]
+                    "penaltyDiscount": 1
                 },
                 {
-                    "id": "gfci-sem-bic",
+                    "id": "gfci-sem-bic-cg-lr",
                     "alpha": [
                         0.01,
                         0.05,
@@ -356,12 +356,12 @@
                     "test": "cg-lr-test",
                     "datatype": "continuous",
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5,0.1]
+                    "penaltyDiscount": 1
                 }
             ],
             "rfci": [
                 {
-                    "id": "rfci-cont",
+                    "id": "rfci-cg-lr",
                     "alpha": [
                         0.01,
                         0.05,
@@ -592,7 +592,7 @@
                     "mergetype": "skeleton"
                 },
                 {
-                    "id": "itsearch_map_cont",
+                    "id": "itsearch_map-bge",
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
