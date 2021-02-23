@@ -15,7 +15,7 @@
             "ROC": [
                 {
                     "algorithm_id": "tabu-bge",
-                    "curve_variable": "iss"
+                    "curve_variable": "issmu"
                 },
                 {
                     "algorithm_id": "mmhc",
