@@ -11,15 +11,15 @@
         "evaluation": {
             "ROC": [
                 {
-                    "algorithm_id": "winasobs",
+                    "algorithm_id": "winasobs-bdeu",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "asobs",
+                    "algorithm_id": "asobs-bdeu",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gobnilp",
+                    "algorithm_id": "gobnilp-bde",
                     "curve_variable": "alpha"
                 },
                 {
@@ -27,7 +27,7 @@
                     "curve_variable": "iss"
                 },
                 {
-                    "algorithm_id": "mmhc",
+                    "algorithm_id": "mmhc-mi",
                     "curve_variable": "alpha"
                 },
                 {
@@ -35,23 +35,23 @@
                     "curve_variable": "iss"
                 },
                 {
-                    "algorithm_id": "gs",
+                    "algorithm_id": "gs-mi",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "interiamb",
+                    "algorithm_id": "interiamb-mi",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "fci-disc",
+                    "algorithm_id": "fci-chi-square",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "rfci-disc",
+                    "algorithm_id": "rfci-chi-square",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci-bdeu",
+                    "algorithm_id": "gfci-bdeu-chi-square",
                     "curve_variable": "alpha"
                 },
                 {
@@ -70,7 +70,6 @@
                     "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
                     "curve_variable": "chi"
                 }
-                
             ]
         }
     },
@@ -95,6 +94,17 @@
             ]
         },
         "graph": {
+            "DAGavparents": [
+                {
+                    "id": "DAG80",
+                    "av_parents": [
+                        2
+                    ],
+                    "dim": [
+                       80
+                    ]
+                }
+            ],
             "notears": [
                 {
                     "id": "notears",
@@ -130,6 +140,13 @@
                     "mean": 0,
                     "variance": 1
                 }
+            ],
+            "pcalg_sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
             ]
         },
         "structure_learning_algorithms": {
@@ -162,7 +179,7 @@
             ],
             "blip": [
                 {
-                    "id": "winasobs",
+                    "id": "winasobs-bdeu",
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
@@ -183,7 +200,7 @@
                     "verbose": 0
                 },
                 {
-                    "id": "asobs",
+                    "id": "asobs-bdeu",
                     "scorermethod": "is",
                     "solvermethod": "asobs",
                     "indeg": 80,
@@ -216,7 +233,7 @@
             ],
             "gobnilp": [
                 {
-                    "id": "gobnilp",
+                    "id": "gobnilp-bde",
                     "plot": false,
                     "palim": 2,
                     "alpha": [
@@ -240,19 +257,6 @@
             ],
             "fges": [
                 {
-                    "id": "fges-cgbic",
-                    "faithfulnessAssumed": true,
-                    "score": "cg-bic-score",
-                    "datatype": "continuous",
-                    "samplePrior": [
-                        1,
-                        10,
-                        50,
-                        100
-                    ],
-                    "structurePrior": 1
-                },
-                {
                     "id": "fges-bdeu",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
@@ -263,25 +267,13 @@
                         50,
                         100
                     ],
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "penaltyDiscount": null
                 }
             ],
             "fci": [
                 {
-                    "id": "fci-cont",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.35,
-                        0.45
-                    ],
-                    "test": "cg-lr-test",
-                    "datatype": "continuous"
-                },
-                {
-                    "id": "fci-disc",
+                    "id": "fci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -296,7 +288,7 @@
             ],
             "gfci": [
                 {
-                    "id": "gfci-bdeu",
+                    "id": "gfci-bdeu-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -308,40 +300,13 @@
                     "score": "bdeu-score",
                     "test": "chi-square-test",
                     "datatype": "discrete",
-                    "structurePrior": 1
-                },
-                {
-                    "id": "gfci-cgbic",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.35,
-                        0.45
-                    ],
-                    "score": "cg-bic-score",
-                    "test": "cg-lr-test",
-                    "datatype": "continuous",
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "penaltyDiscount": null
                 }
             ],
             "rfci": [
                 {
-                    "id": "rfci-cont",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.35,
-                        0.45
-                    ],
-                    "test": "cg-lr-test",
-                    "datatype": "continuous"
-                },
-                {
-                    "id": "rfci-disc",
+                    "id": "rfci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -356,7 +321,7 @@
             ],
             "pcalg": [
                 {
-                    "id": "pcalg-bin",
+                    "id": "pcalg-disCItest",
                     "alpha": [
                         0.01,
                         0.05,
@@ -375,48 +340,12 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "binCItest"
-                },
-                {
-                    "id": "pcalg-gauss",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.35,
-                        0.45,
-                        0.5
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest"
-                },
-                {
-                    "id": "pcalg005-bin",
-                    "alpha": 0.05,
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest"
+                    "indepTest": "disCItest"
                 }
             ],
             "mmhc": [
                 {
-                    "id": "mmhc",
+                    "id": "mmhc-mi",
                     "alpha": [
                         0.01,
                         0.05,
@@ -430,7 +359,7 @@
             ],
             "interiamb": [
                 {
-                    "id": "interiamb",
+                    "id": "interiamb-mi",
                     "alpha": [
                         0.01,
                         0.05,
@@ -448,7 +377,7 @@
             ],
             "gs": [
                 {
-                    "id": "gs",
+                    "id": "gs-mi",
                     "alpha": [
                         0.01,
                         0.05,
@@ -505,18 +434,6 @@
                         50,
                         100
                     ],
-                    "issmu": 1,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1
-                },
-                {
-                    "id": "hc-bge",
-                    "score": "bge",
-                    "iss": 1,
                     "issmu": 1,
                     "l": 5,
                     "k": 1,

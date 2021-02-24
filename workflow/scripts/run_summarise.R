@@ -110,12 +110,10 @@ p <- add_argument(p,
 argv <- parse_args(p)
 
 data <- NULL
+data <- read.csv(argv$filename_data, sep = ",") 
 if (argv$range_header_data == 1) {
-  data <- read.csv(argv$filename_data, sep = " ") # this is gobnilp data
   data <- data[-1,]
-} else {
-  data <- read.csv(argv$filename_data) # this is different with gobnilp data
-}
+} 
 
 n <- dim(data)[2]
 
@@ -128,7 +126,6 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-# print(dim(data))
 #print("True adjmat")
 #print(true_adjmat)
 #print("Estimated adjmat")
