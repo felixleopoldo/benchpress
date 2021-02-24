@@ -1,15 +1,11 @@
 rule sample_adjmat:
     output:        
-        adjmat = "{output_dir}/adjmat/" +
-                "generateDAGMaxParents/" +
-                "p={p}/" +
-                "avpar={avparents}/" +
-                "seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["generateDAGMaxParents"] + "/seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_dags.R " \
         "--filename {output.adjmat} " \ 
-        "--nodes {wildcards.p} " \
-        "--parents {wildcards.avparents} " \
+        "--nodes {wildcards.dims} " \
+        "--parents {wildcards.av_parents} " \
         "--seed {wildcards.replicate}"
 
 rule sample_adjmat_pcalg:
@@ -41,6 +37,6 @@ rule bnlearn_adjmat:
         "{output_dir}/adjmat/bn.fit_adjmats/{name}.csv"
     shell:
         "mkdir -p {wildcards.output_dir}" + "/adjmat/bn.fit_adjmats/ " \
-        "&& Rscript workflow/scripts/bnlearn_bn_to_adjmat.R " 
-        "--filename_graph {output} "
+        "&& Rscript workflow/scripts/bnlearn_bn_to_adjmat.R " \
+        "--filename_graph {output} " \
         "--filename_bn {input}"
