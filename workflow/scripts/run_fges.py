@@ -4,7 +4,7 @@ cmd = ""
 if snakemake.wildcards["datatype"] == "discrete":
     cmd += "sed '2d' {dataset} > {adjmat}.no_range_header && "
 
-cmd = "/usr/bin/time -f \"%e\" -o {time} "  
+cmd += "/usr/bin/time -f \"%e\" -o {time} "  
 cmd += "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " 
 cmd += "--algorithm fges "
 cmd += "--data-type {datatype} "
