@@ -18,7 +18,7 @@
                     "curve_variable": "issmu"
                 },
                 {
-                    "algorithm_id": "mmhc",
+                    "algorithm_id": "mmhc-zf",
                     "curve_variable": "alpha"
                 },
                 {
@@ -46,11 +46,11 @@
                     "curve_variable": "samplePrior"
                 },
                 {
-                    "algorithm_id": "itsearch_map-bge",
-                    "curve_variable": "chi"
+                    "algorithm_id": "itsample-bge",
+                    "curve_variable": "am"
                 },
                 {
-                    "algorithm_id": "order_mcmc_itsample_cont_am01",
+                    "algorithm_id": "omcmc_itsample-bge",
                     "curve_variable": "threshold"
                 }
             ]
@@ -444,7 +444,7 @@
             ],
             "mmhc": [
                 {
-                    "id": "mmhc",
+                    "id": "mmhc-cor",
                     "alpha": [
                         0.01,
                         0.05,
@@ -454,11 +454,23 @@
                         0.45
                     ],
                     "test": "cor"
+                },
+                {
+                    "id": "mmhc-zf",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2,
+                        0.35,
+                        0.45
+                    ],
+                    "test": "zf"
                 }
             ],
             "interiamb": [
                 {
-                    "id": "interiamb",
+                    "id": "interiamb-cor",
                     "alpha": [
                         0.01,
                         0.05,
@@ -476,7 +488,7 @@
             ],
             "gs": [
                 {
-                    "id": "gs",
+                    "id": "gs-cor",
                     "alpha": [
                         0.01,
                         0.05,
@@ -653,7 +665,7 @@
                     "mergetype": "skeleton"
                 },
                 {
-                    "id": "itsearch_sample_cont_am01",
+                    "id": "itsample-bge",
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -828,8 +840,8 @@
                     "burnin": 0
                 },
                 {
-                    "id": "order_mcmc_itsample_cont_am01",
-                    "startspace_algorithm": "itsearch_sample_cont_am01",
+                    "id": "omcmc_itsample-bge",
+                    "startspace_algorithm": "itsample-bge",
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
