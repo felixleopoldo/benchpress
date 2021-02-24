@@ -17,7 +17,7 @@ else:
 cmd +="--delimiter comma " 
 cmd +="--test {test} " 
 
-if snakemake.wildcards["test"] in ["fisher-z-test"]:
+if snakemake.wildcards["test"] in ["fisher-z-test", "chi-square-test"]:
     cmd +="--alpha {alpha} " 
 
 cmd +="--json-graph "
