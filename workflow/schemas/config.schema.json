@@ -740,8 +740,8 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "title": "Unique idenfifier",
-                    "description": "Unique idenfifier for that can be used as reference in the benchmark_setup."
+                    "title": "Unique identifier",
+                    "description": "Unique identifier for that can be used as reference in the benchmark_setup."
                 },
                 "scorermethod": {
                     "type": "string"
@@ -792,7 +792,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "min_rate_of_progress": {
                     "$ref": "#/definitions/flexprob"
@@ -835,7 +835,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "plot": {
                     "type": "boolean"
@@ -866,7 +866,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -893,7 +893,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "faithfulnessAssumed": {
                     "type": "boolean"
@@ -908,7 +908,7 @@
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "penaltyDiscount":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "structurePrior":{
                     "$ref": "#/definitions/flexnonnegnum"
@@ -921,7 +921,8 @@
                 "score",
                 "datatype",
                 "samplePrior",
-                "structurePrior"
+                "structurePrior",
+                "penaltyDiscount"
             ]
         },
         "fci": {
@@ -931,24 +932,23 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
+                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
                 },
                 "datatype": {
                     "type": "string"
                 }
-            },
-            "additionalProperties": false,
+            },            
             "required": [
                 "id",
-                "alpha",
-                "test"
+                "test",
+                "alpha"
             ]
         },
         "gfci": {
@@ -958,17 +958,18 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
+                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
                 },
                 "score": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["bdeu-score", "cci-score", "cg-bic-score", "d-sep-score", "disc-bic-score", "sem-bic"]
                 },
                 "datatype": {
                     "type": "string"
@@ -977,15 +978,14 @@
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "penaltyDiscount":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
-            "additionalProperties": false,
             "required": [
                 "id",
-                "alpha",
                 "test",
-                "structurePrior"
+                "structurePrior",
+                "penaltyDiscount"
             ]
         },
         "rfci": {
@@ -995,23 +995,21 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cg-lr-test", "chi-square-test", "disc-bic-test", "g-square-test", "prob-test"]
+                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
                 },
                 "datatype": {
                     "type": "string"
                 }
             },
-            "additionalProperties": false,
             "required": [
-                "id",
-                "alpha",
+                "id",                
                 "test"
             ]
         },
@@ -1074,7 +1072,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
@@ -1101,7 +1099,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "plot_legend": {
                     "description": "Legend to show in plotting",
@@ -1149,7 +1147,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
@@ -1237,7 +1235,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "perturb": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1288,7 +1286,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Unique idenfifier"
+                    "description": "Unique identifier"
                 },
                 "estimate": {
                     "type": "string",

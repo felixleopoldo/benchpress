@@ -26,15 +26,15 @@
                     "curve_variable": "issmu"
                 },
                 {
-                    "algorithm_id": "fci-cg-lr",
+                    "algorithm_id": "fci-fisher-z",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "rfci-cg-lr",
+                    "algorithm_id": "rfci-fisher-z",
                     "curve_variable": "alpha"
                 },
                 {
-                    "algorithm_id": "gfci-sem-bic-cg-lr",
+                    "algorithm_id": "gfci-sem-bic-fisher-z",
                     "curve_variable": "alpha"
                 },
                 {
@@ -290,12 +290,11 @@
                         100
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": 1
-                }
+                    "penaltyDiscount": null               }
             ],
             "fci": [
                 {
-                    "id": "fci-cg-lr",
+                    "id": "fci-fisher-z",
                     "alpha": [
                         0.01,
                         0.05,
@@ -304,7 +303,7 @@
                         0.35,
                         0.45
                     ],
-                    "test": "cg-lr-test",
+                    "test": "fisher-z-test",
                     "datatype": "continuous"
                 },
                 {
@@ -335,11 +334,11 @@
                     "score": "bdeu-score",
                     "test": "chi-square-test",
                     "datatype": "discrete",
-                    "structurePrior": 1,
-                    "penaltyDiscount": 1
+                    "penaltyDiscount": null,
+                    "structurePrior": 1
                 },
                 {
-                    "id": "gfci-sem-bic-cg-lr",
+                    "id": "gfci-sem-bic-fisher-z",
                     "alpha": [
                         0.01,
                         0.05,
@@ -349,15 +348,15 @@
                         0.45
                     ],
                     "score": "sem-bic",
-                    "test": "cg-lr-test",
+                    "test": "fisher-z-test",
                     "datatype": "continuous",
-                    "structurePrior": 1,
-                    "penaltyDiscount": 1
+                    "penaltyDiscount": 1,
+                    "structurePrior": 1
                 }
             ],
             "rfci": [
                 {
-                    "id": "rfci-cg-lr",
+                    "id": "rfci-fisher-z",
                     "alpha": [
                         0.01,
                         0.05,
@@ -366,7 +365,7 @@
                         0.35,
                         0.45
                     ],
-                    "test": "cg-lr-test",
+                    "test": "fisher-z-test",
                     "datatype": "continuous"
                 },
                 {

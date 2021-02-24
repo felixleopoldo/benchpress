@@ -1,7 +1,6 @@
 def dict_to_path(d):
-    # id should be dropped first
-    c = d[0].copy() # take the first element in the list.
-    c.pop("id") # Remove id from the string as only the parameters should identify the computation.
+    c = d[0].copy() # take the first element in the list. BUG
+    c.pop("id") # remove id from the string as only the parameters should identify the computation.
     if "burnin" in c:
         c.pop("burnin")
     if "threshold" in c:        
@@ -12,6 +11,7 @@ def dict_to_path(d):
 
 pattern_strings = {}
 
+# structure learning algorithms
 pattern_strings["greenthomas"] = "greenthomas/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["greenthomas"])
 
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
@@ -36,10 +36,6 @@ pattern_strings["itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resou
 
 pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["order_mcmc"])
 
-pattern_strings["mcmc_est"] = "estimation_method/"\
-                            "threshold={threshold}/"\
-                            "burnin={burnin}"
-
 pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
 
 pattern_strings["fges"] = "fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fges"])
@@ -49,6 +45,10 @@ pattern_strings["fci"] = "fci/alg_params=/"+dict_to_path(config["resources"]["st
 pattern_strings["gfci"] = "gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gfci"])
 
 pattern_strings["rfci"] = "rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rfci"])
+
+pattern_strings["mcmc_est"] = "estimation_method/"\
+                            "threshold={threshold}/"\
+                            "burnin={burnin}"
 
 pattern_strings["evaluation"] = "evaluation/" \
                    "score_type={score_type}/" \
