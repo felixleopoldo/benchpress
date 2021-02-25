@@ -299,6 +299,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname faithfulnessAssumed       --colval {wildcards.faithfulnessAssumed} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -337,6 +338,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname score       --colval {wildcards.score} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\                
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "
 
     elif algorithm == "rfci":
         return  "Rscript workflow/scripts/run_summarise.R " \
