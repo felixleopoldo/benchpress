@@ -972,6 +972,9 @@
                 "datatype": {
                     "type": "string"
                 },
+                "samplePrior":{
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "structurePrior":{
                     "$ref": "#/definitions/flexnonnegnum"
                 },

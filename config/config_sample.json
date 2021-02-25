@@ -262,6 +262,7 @@
                     "test": "chi-square-test",
                     "datatype": "discrete",
                     "penaltyDiscount": null,
+                    "samplePrior": 1,
                     "structurePrior": 1
                 },
                 {
@@ -271,6 +272,7 @@
                     "test": "fisher-z-test",
                     "datatype": "continuous",
                     "penaltyDiscount": [0, 0.5, 1, 1.5],
+                    "samplePrior": null,
                     "structurePrior": 1
                 }
             ],

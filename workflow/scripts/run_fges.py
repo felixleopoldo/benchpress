@@ -22,6 +22,9 @@ cmd += "--structurePrior {structurePrior} "
 if snakemake.wildcards["score"] in ["sem-bic"]:
     cmd += "--penaltyDiscount {penaltyDiscount} "
 
+if snakemake.wildcards["score"] in ["bdeu-score"]:
+    cmd += "--samplePrior {samplePrior} "
+
 cmd += "--prefix {adjmat} " 
 cmd += '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' 
 cmd += '--jsongraph {adjmat}_graph.json ' 

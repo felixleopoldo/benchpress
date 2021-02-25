@@ -340,6 +340,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\                
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "
 
     elif algorithm == "rfci":
