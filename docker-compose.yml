@@ -4,8 +4,8 @@ services:
     image: onceltuca/gobnilp:1.6.3
     command: tail -f /dev/null
     volumes: 
-        - ./scripts/run_gobnilp.R:/myappdir/run_gobnilp.R
-        - ./simresults:/myappdir/simresults
+        - ./workflow/scripts/run_gobnilp.R:/myappdir/run_gobnilp.R
+        - ./results:/myappdir/simresults
   trilearn:
     image: onceltuca/trilearn
     volumes: 
