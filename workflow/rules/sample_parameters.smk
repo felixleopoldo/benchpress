@@ -7,13 +7,13 @@ rule bnlearn_networks:
     #    "--output-document {output}"
 
 
-rule sample_linear_gaussian_parameters_notears:
-    input:
-        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
-    output:        
-        bn = "{output_dir}/bn/" + pattern_strings["notears_parameters_sampling"] + "/" \
-            "seed={seed}/" \            
-            "adjmat=/{adjmat}.csv"
+# rule sample_linear_gaussian_parameters_notears:
+#     input:
+#         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
+#     output:        
+#         bn = "{output_dir}/bn/" + pattern_strings["notears_parameters_sampling"] + "/" \
+#             "seed={seed}/" \            
+#             "adjmat=/{adjmat}.csv"
 
     singularity:
         docker_image("notears")

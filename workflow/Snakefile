@@ -191,9 +191,9 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
-    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["notears"]]: 
-        adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["notears_dag"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    # elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["notears"]]: 
+    #     adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
+    #     return expand(pattern_strings["notears_dag"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
@@ -217,9 +217,9 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
-    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:
-        curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["notears_parameters_sampling"] + "/seed={seed}", **curconf, seed=seed)
+    # elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:
+    #     curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
+    #     return expand(pattern_strings["notears_parameters_sampling"] + "/seed={seed}", **curconf, seed=seed)
 
     elif gen_method_id is None:
         return None
@@ -241,13 +241,13 @@ def gen_data_string_from_conf(data_id, seed):
                         n = data["sample_sizes"],
                         seed = seed)
 
-    elif data_id in [c["id"] for c in config["resources"]["data"]["notears_linear_gaussian_sampling"]]:
-        data = next(item for item in config["resources"]["data"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
-        return expand("notears_linear_gaussian_sampling" +\
-                        "/n={n}" + \
-                        "/seed={seed}", 
-                        n = data["sample_sizes"],
-                        seed = seed)
+    # elif data_id in [c["id"] for c in config["resources"]["data"]["notears_linear_gaussian_sampling"]]:
+    #     data = next(item for item in config["resources"]["data"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
+    #     return expand("notears_linear_gaussian_sampling" +\
+    #                     "/n={n}" + \
+    #                     "/seed={seed}", 
+    #                     n = data["sample_sizes"],
+    #                     seed = seed)
 
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:

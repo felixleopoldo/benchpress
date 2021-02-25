@@ -58,10 +58,10 @@ pattern_strings["evaluation"] = "evaluation/" \
 # graph sampling
 pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
 pattern_strings["generateDAGMaxParents"] = "generateDAGMaxParents/" + dict_to_path(config["resources"]["graph"]["generateDAGMaxParents"])
-pattern_strings["notears_dag"] = "notears/" + dict_to_path(config["resources"]["graph"]["notears"])
+#pattern_strings["notears_dag"] = "notears/" + dict_to_path(config["resources"]["graph"]["notears"])
 
 # parameters sampling
 pattern_strings["pcalg_sem_params"] = "pcalg_sem_params/" + dict_to_path(config["resources"]["parameters"]["pcalg_sem_params"])
 pattern_strings["generateBinaryBN"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["generateBinaryBN"])
-pattern_strings["notears_parameters_sampling"] = "notears/" + dict_to_path(config["resources"]["parameters"]["notears_parameters_sampling"])
+#pattern_strings["notears_parameters_sampling"] = "notears/" + dict_to_path(config["resources"]["parameters"]["notears_parameters_sampling"])
 

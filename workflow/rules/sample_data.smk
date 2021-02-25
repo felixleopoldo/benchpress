@@ -1,27 +1,27 @@
-rule sample_notears_linear_gaussian_data:
-    input:
-        script="workflow/scripts/notears/simulate_from_dag_lg.py",
-        bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/bn=/notears/{edge_params}/" \
-             "mean={mean}/" \
-             "variance={variance}/" \
-             "{rest}/"
-             "data=/standard_sampling/" \
-             "n={n}/" \
-             "seed={replicate}.csv"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python workflow/scripts/notears/simulate_from_dag_lg.py " \
-        "--filename {output.data} " \
-        "--weighted_adjmat_filename {input.bn} " \        
-        "--mean {wildcards.mean} " \
-        "--variance {wildcards.variance} " \
-        "--n_samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
+# rule sample_notears_linear_gaussian_data:
+#     input:
+#         script="workflow/scripts/notears/simulate_from_dag_lg.py",
+#         bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
+#     output:
+#         data="{output_dir}/data" \
+#              "/adjmat=/{adjmat}"\
+#              "/bn=/notears/{edge_params}/" \
+#              "mean={mean}/" \
+#              "variance={variance}/" \
+#              "{rest}/"
+#              "data=/standard_sampling/" \
+#              "n={n}/" \
+#              "seed={replicate}.csv"
+#     singularity:
+#         docker_image("notears")
+#     shell:
+#         "python workflow/scripts/notears/simulate_from_dag_lg.py " \
+#         "--filename {output.data} " \
+#         "--weighted_adjmat_filename {input.bn} " \        
+#         "--mean {wildcards.mean} " \
+#         "--variance {wildcards.variance} " \
+#         "--n_samples {wildcards.n} " \
+#         "--seed {wildcards.replicate}"
 
 rule sample_pcalg_sem_data:
     input:

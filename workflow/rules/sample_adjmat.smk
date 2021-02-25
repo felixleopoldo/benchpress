@@ -14,21 +14,21 @@ rule sample_adjmat_pcalg:
     script:
         "../scripts/sample_pcalg_dag.R" 
 
-rule sample_adjmat_notears:
-    output:        
-        adjmat = "{output_dir}/adjmat/" \
-                "notears/" \
-                "num_nodes={num_nodes}/" \
-                "num_edges={num_edges}/"\
-                "seed={seed}.csv"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python workflow/scripts/notears/generate_random_dag.py " \
-        "--num_nodes {wildcards.num_nodes} " \
-        "--num_edges {wildcards.num_edges} " \
-        "--filename {output.adjmat} " \
-        "--seed {wildcards.seed}"
+# rule sample_adjmat_notears:
+#     output:        
+#         adjmat = "{output_dir}/adjmat/" \
+#                 "notears/" \
+#                 "num_nodes={num_nodes}/" \
+#                 "num_edges={num_edges}/"\
+#                 "seed={seed}.csv"
+#     singularity:
+#         docker_image("notears")
+#     shell:
+#         "python workflow/scripts/notears/generate_random_dag.py " \
+#         "--num_nodes {wildcards.num_nodes} " \
+#         "--num_edges {wildcards.num_edges} " \
+#         "--filename {output.adjmat} " \
+#         "--seed {wildcards.seed}"
 
 rule bnlearn_adjmat:
     input:
