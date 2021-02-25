@@ -116,7 +116,8 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for roc
     """
-    roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    #roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
@@ -134,6 +135,7 @@ def join_string_sampled_model(algorithm, mode="result"):
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
+            #for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
     
     # # Every algorithm should have this as output, where the parameters are added to the csv.
     # # A general rule should handle output e.g. SHD or TP, FP...
@@ -259,7 +261,8 @@ def active_algorithms():
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = []
-    roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    #roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
     for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
         for alg_conf_id in roc_alg_ids:        
             if alg_conf_id in [ac["id"] for ac in alg_conf_list]:

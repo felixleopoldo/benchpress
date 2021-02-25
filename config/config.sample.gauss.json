@@ -13,46 +13,16 @@
         ],
         "evaluation": {
             "ROC": [
-                {
-                    "algorithm_id": "tabu-bge",
-                    "curve_variable": "issmu"
-                },
-                {
-                    "algorithm_id": "mmhc-zf",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "hc-bge",
-                    "curve_variable": "issmu"
-                },
-                {
-                    "algorithm_id": "fci-fisher-z",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "rfci-fisher-z",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "gfci-sem-bic-fisher-z",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "pcalg-gaussCItest",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "fges-sem-bic",
-                    "curve_variable": "samplePrior"
-                },
-                {
-                    "algorithm_id": "itsample-bge",
-                    "curve_variable": "am"
-                },
-                {
-                    "algorithm_id": "omcmc_itsample-bge",
-                    "curve_variable": "threshold"
-                }
+                    "tabu-bge",
+                    "mmhc-zf",
+                    "hc-bge",
+                    "fci-fisher-z",
+                    "rfci-fisher-z",
+                    "gfci-sem-bic-fisher-z",
+                    "pcalg-gaussCItest",
+                    "fges-sem-bic",
+                    "itsample-bge",
+                    "omcmc_itsample-bge"
             ]
         }
     },

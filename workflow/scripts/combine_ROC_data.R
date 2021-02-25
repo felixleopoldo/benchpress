@@ -24,11 +24,22 @@ rocalgs <- config$benchmark_setup$evaluation$ROC
 for (alg in rocalgs){
     # get the algorithm from the ROC section in the json file.
     
-    algorithm = NULL
-    for (active in active_algorithms){
-        for(a in config$resources$structure_learning_algorithms[[active]]){
-            if (a$id == alg$algorithm_id) {
-                algorithm = active
+    algorithm <- NULL
+    curve_param <- NULL
+    for (active_algorithm in active_algorithms){
+        for(a in config$resources$structure_learning_algorithms[[active_algorithm]]){
+            if (a$id == alg) {
+                algorithm = active_algorithm
+                # Find the varying curve automatically as the one which is an array.
+                curve_param <- a[[2]]
+                for (key in names(a)){
+                    if (is.vector(a[[key]])){
+                        if (length(a[[key]]) > 1) {
+                            curve_param <- key
+                            break
+                        }
+                    }
+                }
             }
         }
     }
@@ -38,7 +49,7 @@ for (alg in rocalgs){
         # It is fixed by running the distinct funtion in the end...
         ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = ""))) 
         sumROC = ROCdf %>%
-        group_by(id, adjmat, bn, data, !!as.symbol(alg$curve_variable)) %>% 
+        group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
                     TPR_pattern_mean = mean(TPR_pattern), 
                     TPR_pattern_median = median(TPR_pattern), 

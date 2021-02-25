@@ -13,66 +13,22 @@
         ],
         "evaluation": {
             "ROC": [
-                {
-                    "algorithm_id": "winasobs-bdeu",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "asobs-bdeu",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "tabu-bde",
-                    "curve_variable": "iss"
-                },
-                {
-                    "algorithm_id": "mmhc-mi",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "hc-bde",
-                    "curve_variable": "iss"
-                },
-                {
-                    "algorithm_id": "gs-mi",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "interiamb-mi",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "fci-chi-square",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "rfci-chi-square",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "gfci-bdeu-chi-square",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "pcalg-binCItest",
-                    "curve_variable": "alpha"
-                },
-                {
-                    "algorithm_id": "fges-bdeu",
-                    "curve_variable": "samplePrior"
-                },
-                {
-                    "algorithm_id": "itsearch_map",
-                    "curve_variable": "chi"
-                },
-                {
-                    "algorithm_id": "itsearch_sample",
-                    "curve_variable": "chi"
-                },
-                {
-                    "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
-                    "curve_variable": "chi"
-                }
+                   "winasobs-bdeu",
+                    "asobs-bdeu",
+                    "tabu-bde",
+                    "iss"
+                    "mmhc-mi",
+                    "hc-bde",
+                    "gs-mi",
+                    "interiamb-mi",
+                    "fci-chi-square",
+                    "rfci-chi-square",
+                    "gfci-bdeu-chi-square",
+                    "pcalg-binCItest",
+                    "fges-bdeu",
+                    "itsearch_map",
+                    "itsearch_sample",
+                    "order_mcmc_itsample_chi1_thresh05"
             ]
         }
     },

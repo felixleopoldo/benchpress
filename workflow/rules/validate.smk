@@ -8,8 +8,8 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
 
 # Check that all ids in the ROC section actually exist.
 for rocitem in config["benchmark_setup"]["evaluation"]["ROC"]:
-    if rocitem["algorithm_id"] not in available_conf_ids:
-        raise Exception(rocitem["algorithm_id"] + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
+    if rocitem not in available_conf_ids:
+        raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that the startspace fr order mcmc exist.
 for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:

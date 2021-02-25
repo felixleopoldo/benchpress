@@ -25,9 +25,7 @@
                             "title": "ROC",
                             "description": "Algorithm id's for ROC evaluation.",
                             "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/roc_item"
-                            },
+
                             "uniqueItems": true
                         }
                     },
