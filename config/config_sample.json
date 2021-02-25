@@ -4,30 +4,25 @@
             {
                 "graph_id": "DAG80",
                 "parameters_id": "SEM",
-                "data_id": "binary_bn",
+                "data_id": "sem",
                 "seed_range": [
-                    1,
-                    5
+                    1,10
+                    
                 ]
             }
         ],
         "evaluation": {
             "ROC": [
-                     "winasobs-bdeu",
-                     "asobs-bdeu",
-                     "gobnilp-bde",
-                     "tabu-bde",
-                     "mmhc-mi",
-                     "hc-bde",
-                     "gs-mi",
-                     "interiamb-mi",
-                     "fci-chi-square",
-                     "rfci-chi-square",
-                     "gfci-bdeu-chi-square",
-                     "fges-bdeu",
-                     "itsearch_map-bde",
-                     "itsearch_sample-bde",
-                     "omcmc_itsample-bde_chi1"
+            "fci-fisher-z",
+            "fges-sem-bic",
+            "gfci-sem-bic-fisher-z",
+            "hc-bge",
+            "itsearch_sample-bge",
+            "mmhc-zf",
+            "omcmc_itsample-bge",
+            "pcalg-gaussCItest",
+            "rfci-fisher-z",
+            "tabu-bge"
             ]
         }
     },

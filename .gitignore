@@ -3,16 +3,7 @@ config/config.json
 .devcontainer
 .snakemake
 .vscode
-results/data/adjmat=/
-results/result
-results/time
-results/adjvecs
-results/adjmat_estimate
-results/heatmap_estimate
-results/*.csv
-results/*.eps
-results/bn/generateBinaryBN
-results/adjmat/generateDAGMaxParents
+results
 docs/build
 .DS_Store
 .R*
