@@ -160,6 +160,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname addspace      --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretable    --colval null " \
         " && python workflow/scripts/add_column.py --filename {output} --colname startorder    --colval null " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname estimate          --colval {wildcards.estimate} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scoretype    --colval {wildcards.scoretype} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname chi          --colval {wildcards.chi} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
