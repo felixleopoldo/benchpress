@@ -13,22 +13,9 @@
         ],
         "evaluation": {
             "ROC": [
-                "winasobs-bdeu",
-                "asobs-bdeu",
-                "gobnilp-bde",
-                "tabu-bde",
-                "mmhc-mi",
-                "hc-bde",
-                "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "pcalg-binCItest",
-                "fges-bdeu",
-                "itsearch_map-bde",
-                "itsearch_sample-bde",
-                "omcmc_itsample-bde"
+
+
+                "rfci-chi-square"
             ]
         }
     },
