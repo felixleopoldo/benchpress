@@ -202,8 +202,7 @@
                         0.5,
                         1,
                         1.5
-                    ],
-                    "equivalentSamplelSize":1
+                    ]
                 },
                 {
                     "id": "fges-bdeu",
@@ -217,8 +216,7 @@
                         100
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": null,
-                    "equivalentSamplelSize":1
+                    "penaltyDiscount": null
                 }
             ],
             "fci": [
@@ -264,7 +262,6 @@
                     "test": "chi-square-test",
                     "datatype": "discrete",
                     "penaltyDiscount": null,
-                    "equivalentSamplelSize":1,
                     "structurePrior": 1
                 },
                 {
@@ -274,8 +271,7 @@
                     "test": "fisher-z-test",
                     "datatype": "continuous",
                     "penaltyDiscount": [0, 0.5, 1, 1.5],
-                    "structurePrior": 1,
-                    "equivalentSamplelSize":1,
+                    "structurePrior": 1
                 }
             ],
             "rfci": [
