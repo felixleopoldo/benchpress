@@ -202,7 +202,8 @@
                         0.5,
                         1,
                         1.5
-                    ]
+                    ],
+                    "equivalentSamplelSize":1
                 },
                 {
                     "id": "fges-bdeu",
@@ -216,7 +217,8 @@
                         100
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": null
+                    "penaltyDiscount": null,
+                    "equivalentSamplelSize":1
                 }
             ],
             "fci": [
@@ -262,23 +264,18 @@
                     "test": "chi-square-test",
                     "datatype": "discrete",
                     "penaltyDiscount": null,
+                    "equivalentSamplelSize":1,
                     "structurePrior": 1
                 },
                 {
                     "id": "gfci-sem-bic-fisher-z",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.35,
-                        0.45
-                    ],
+                    "alpha": 0.05,
                     "score": "sem-bic",
                     "test": "fisher-z-test",
                     "datatype": "continuous",
-                    "penaltyDiscount": 1,
-                    "structurePrior": 1
+                    "penaltyDiscount": [0, 0.5, 1, 1.5],
+                    "structurePrior": 1,
+                    "equivalentSamplelSize":1,
                 }
             ],
             "rfci": [
