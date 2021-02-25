@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "graph_id": "DAG80",
+            "parameters_id": "SEM",
+            "data_id": "binary_bn",
+            "seed_range": [
+                1,
+                10
+            ]
+        },
+        {
+            "graph_id": "generateDAGMaxParents",
+            "parameters_id": "generateBinaryBN",
+            "data_id": "binary_bn",
+            "seed_range": [
+                1,
+                10
+            ]
+        },
+        {
+            "graph_id": "hepar2.csv",
+            "parameters_id": "hepar2.rds",
+            "data_id": "standard_sampling2000",
+            "seed_range": [
+                1,
+                10
+            ]
+        },
+        {
+            "graph_id": "hepar2.csv",
+            "parameters_id": "generateBinaryBN",
+            "data_id": "binary_bn",
+            "seed_range": [
+                1,
+                10
+            ]
+        },
+        {
+            "graph_id": "hepar2.csv",
+            "parameters_id": null,
+            "data_id": "myhepar2data2000.csv",
+            "seed_range": null
+        }
+    ],
+    "ROC_sem": [
+        "fci-fisher-z",
+        "fges-sem-bic",
+        "gfci-sem-bic-fisher-z",
+        "hc-bge",
+        "itsearch_sample-bge",
+        "mmhc-zf",
+        "omcmc_itsample-bge",
+        "pcalg-gaussCItest",
+        "rfci-fisher-z",
+        "tabu-bge"
+    ],
+    "ROC_disc": [
+        "winasobs-bdeu",
+        "asobs-bdeu",
+        "gobnilp-bde",
+        "tabu-bde",
+        "mmhc-mi",
+        "hc-bde",
+        "gs-mi",
+        "interiamb-mi",
+        "fci-chi-square",
+        "rfci-chi-square",
+        "gfci-bdeu-chi-square",
+        "fges-bdeu",
+        "itsearch_map-bde",
+        "itsearch_sample-bde",
+        "pcalg-disCItest",
+        "omcmc_itsample-bde_chi1"
+    ]
+}

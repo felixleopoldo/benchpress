@@ -6,23 +6,23 @@
                 "parameters_id": "SEM",
                 "data_id": "sem",
                 "seed_range": [
-                    1,10
-                    
+                    1,
+                    10
                 ]
             }
         ],
         "evaluation": {
             "ROC": [
-            "fci-fisher-z",
-            "fges-sem-bic",
-            "gfci-sem-bic-fisher-z",
-            "hc-bge",
-            "itsearch_sample-bge",
-            "mmhc-zf",
-            "omcmc_itsample-bge",
-            "pcalg-gaussCItest",
-            "rfci-fisher-z",
-            "tabu-bge"
+                "fci-fisher-z",
+                "fges-sem-bic",
+                "gfci-sem-bic-fisher-z",
+                "hc-bge",
+                "itsearch_sample-bge",
+                "mmhc-zf",
+                "omcmc_itsample-bge",
+                "pcalg-gaussCItest",
+                "rfci-fisher-z",
+                "tabu-bge"
             ]
         }
     },
@@ -197,7 +197,12 @@
                     "datatype": "continuous",
                     "samplePrior": 1,
                     "structurePrior": 1,
-                    "penaltyDiscount": [0,0.5, 1, 1.5]
+                    "penaltyDiscount": [
+                        0,
+                        0.5,
+                        1,
+                        1.5
+                    ]
                 },
                 {
                     "id": "fges-bdeu",
@@ -211,7 +216,8 @@
                         100
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": null               }
+                    "penaltyDiscount": null
+                }
             ],
             "fci": [
                 {
@@ -487,10 +493,12 @@
                     "id": "tabu-bge",
                     "score": "bge",
                     "iss": 1,
-                    "issmu": [1,
+                    "issmu": [
+                        1,
                         10,
                         50,
-                        100],
+                        100
+                    ],
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -521,10 +529,12 @@
                     "id": "hc-bge",
                     "score": "bge",
                     "iss": 1,
-                    "issmu": [1,
+                    "issmu": [
+                        1,
                         10,
                         50,
-                        100],
+                        100
+                    ],
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
