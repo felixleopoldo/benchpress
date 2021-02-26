@@ -37,7 +37,8 @@ def main(data_filename, n_particles, trajectory_lengths, pseudo_observations,
         os.mkdir(dir)
 
     filename = dir + "/" + str(graph_trajectory) +"_"+ date + ".json"
-    graph_trajectory.write_file(filename=filename)                                                    output_directory=output_directory)
+    graph_trajectory.write_file(filename=filename)   
+    output_directory=output_directory)
 
 if __name__ == "__main__":
     import argparse
