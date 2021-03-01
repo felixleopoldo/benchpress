@@ -20,8 +20,16 @@ if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi",
 set.seed(seed)
 
 start <- proc.time()[1]
-mmoutput <- mmhc(data, restrict.args = list(alpha = as.numeric(snakemake@wildcards[["alpha"]]),
-                                            test=snakemake@wildcards[["test"]]))
+mmoutput <- mmhc(data, restrict.args = list(    
+    as.numeric(snakemake@wildcards[["iss"]),
+    as.numeric(snakemake@wildcards[["iss.mu"]),
+    as.numeric(snakemake@wildcards[["l"]),
+    as.numeric(snakemake@wildcards[["k"]),
+    snakemake@wildcards[["prior"]),
+    as.numeric(snakemake@wildcards[["beta"]),
+    score = snakemake@wildcards[["score"]]
+    alpha = as.numeric(snakemake@wildcards[["alpha"]]),
+    test=snakemake@wildcards[["test"]])
 
 totaltime <- proc.time()[1] - start
 

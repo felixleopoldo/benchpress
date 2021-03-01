@@ -1085,6 +1085,27 @@
                                          "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
                                         "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
                                     "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                },
+                "beta": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "iss": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "issmu": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "l": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "k": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "prior": {
+                    "type": "string"
                 }
             },
             "additionalProperties": false,

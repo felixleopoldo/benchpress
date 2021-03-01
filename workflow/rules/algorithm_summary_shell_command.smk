@@ -209,6 +209,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname beta            --colval {wildcards.beta} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug       --colval false " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maximizeargs   --colval null " \

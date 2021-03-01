@@ -18,7 +18,7 @@
                 "gfci-sem-bic-fisher-z",
                 "hc-bge",
                 "itsearch_sample-bge",
-                "mmhc-zf",
+                "mmhc-bge-zf",
                 "omcmc_itsample-bge",
                 "pcalg-gaussCItest",
                 "rfci-fisher-z",
@@ -374,7 +374,7 @@
             ],
             "mmhc": [
                 {
-                    "id": "mmhc-mi",
+                    "id": "mmhc-bde-mi",
                     "alpha": [
                         0.01,
                         0.05,
@@ -383,10 +383,17 @@
                         0.35,
                         0.45
                     ],
-                    "test": "mi"
+                    "test": "mi",
+                    "score": "bde",
+                    "iss": 1,
+                    "issmu": 1,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1
                 },
                 {
-                    "id": "mmhc-zf",
+                    "id": "mmhc-bge-zf",
                     "alpha": [
                         0.01,
                         0.05,
@@ -395,7 +402,14 @@
                         0.35,
                         0.45
                     ],
-                    "test": "zf"
+                    "score": "bge",
+                    "test": "zf",
+                    "iss": 1,
+                    "issmu": 1,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1
                 }
             ],
             "interiamb": [

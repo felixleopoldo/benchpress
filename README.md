@@ -15,9 +15,9 @@ A [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow for flexible
 The documentation is found here https://benchpressx.readthedocs.io.
 
 ## Reqirements
-- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://docs.docker.com/engine/install/))
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Docker](https://www.docker.com/) ([installation instructions](https://docs.docker.com/engine/install/))
-- [Singularity](https://sylabs.io/guides/3.6/admin-guide/installation.html) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
+- [Singularity](https://sylabs.io/docs/) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
 - Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
 ## Installation
 
