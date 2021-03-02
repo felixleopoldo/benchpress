@@ -13,6 +13,7 @@ rule greenthomas:
 
 rule summarise_greenthomas:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("greenthomas"),
@@ -46,6 +47,7 @@ rule tabu:
 
 rule summarise_tabu:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("tabu"),
@@ -81,6 +83,7 @@ rule notears:
 
 rule summarise_notears:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("notears"),
@@ -114,6 +117,7 @@ rule hc:
 
 rule summarise_hc:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("hc"),
@@ -149,6 +153,7 @@ rule interiamb:
 
 rule summarise_interiamb:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("interiamb"),
@@ -184,6 +189,7 @@ rule gs:
 
 rule summarise_gs:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gs"),
@@ -217,6 +223,7 @@ rule blip:
 
 rule summarise_blip:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("blip"),
@@ -250,6 +257,7 @@ rule itsearch:
 
 rule summarise_itsearch:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("itsearch"),
@@ -280,11 +288,10 @@ rule pcalg:
         "Executing order PC algorithm on the following files: {input}."
     script:
         "../scripts/run_pcalg.R"
-    #shell:
-    #   alg_shell("pcalg")
 
 rule summarise_pcalg:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("pcalg"),
@@ -306,8 +313,7 @@ rule join_summaries_pcalg:
         "../scripts/join_csv_files.R"
 
 rule mmhc:
-    input:
-        "../scripts/run_summarise.R",
+    input:        
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("mmhc"),
@@ -319,6 +325,7 @@ rule mmhc:
 
 rule summarise_mmhc:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("mmhc"),
@@ -350,6 +357,7 @@ rule gobnilp:
 
 rule summarise_gobnilp:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gobnilp"),
@@ -383,6 +391,7 @@ rule fges:
 
 rule summarise_fges:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("fges"),
@@ -413,11 +422,10 @@ rule fci:
         "Executing fci algorithm on the following files: {input}."
     script:
         "../scripts/run_fci.py"
-    #shell:
-    #    alg_shell("fci")
 
 rule summarise_fci:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("fci"),
@@ -453,6 +461,7 @@ rule gfci:
         
 rule summarise_gfci:
     input:
+        "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gfci"),
@@ -520,6 +529,7 @@ rule order_mcmc:
 
 rule summarise_order_mcmc:
     input:
+        "workflow/scripts/run_summarise.R",
         data = data_path(),
         adjmat_true = adjmat_true_path(),
         adjmat_est = adjmat_estimate_path_mcmc("order_mcmc"),
@@ -555,6 +565,7 @@ rule trilearn_loglin:
 
 rule summarise_trilearn_loglin:
     input:
+        "workflow/scripts/run_summarise.R",
         data = data_path(),
         adjmat_true = adjmat_true_path(),
         adjmat_est = adjmat_estimate_path_mcmc("trilearn_loglin"),

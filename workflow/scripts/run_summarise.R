@@ -15,7 +15,6 @@ EGskel <- function(incidence) {
 }
 
 ### This function compares an estimated EG to the true one
-
 compareEGs <- function (estEG, trueEG) {
   estSkel <- EGskel(estEG) # estimated skeleton
   trueSkel <- EGskel(trueEG) # true skeleton
@@ -127,51 +126,11 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-rownames(true_adjmat) <- seq(n)
-colnames(true_adjmat) <- seq(n)
-rownames(estimated_adjmat) <- seq(n)
-colnames(estimated_adjmat) <- seq(n)
-
-logscore <- 100
-
-# Statistics on getPattern graph#
-#compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
-
 compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 
 df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
-                 FPßRn_pattern = compres["FPR_P"],
-                 logscore = logscore,
+                 FPRn_pattern = compres["FPR_P"],
+                 logscore = 100,
                  SHD_pattern = compres["SHD"])
 
-# names(compres) <- c("SHD", "TP", "FP")
-# true_nedges <- sum(getPattern(true_adjmat))
-
-# df <- data.frame(TPR_pattern = compres["TP"] / true_nedges, # should be for all times
-#                  FPRn_pattern = compres["FP"] / true_nedges,
-#                  logscore = logscore,
-#                  SHD_pattern = compres["SHD"])
-
-# Essential graph (CPDAG)
-# true_dag <- as(t(true_adjmat), "graphNEL") # TODO: should it be transpose here?
-# estimated_dag <- as(t(estimated_adjmat), "graphNEL")
-
-# cpdag_true <- pcalg::dag2cpdag(true_dag)
-# cpdag_est <- pcalg::dag2cpdag(estimated_dag) # bug here
-# cpdag_adjmat_true = as(cpdag_true, "matrix") != 0
-# cpdag_adjmat_est = as(cpdag_est, "matrix") != 0
-
-# compres <- compareEGs(cpdag_adjmat_est, cpdag_adjmat_true)
-
-# df["TPR_cpdag"] = compres["TPR"]
-# df["FPRn_cpdag"] = compres["FPR_P"]
-# df["SHD_cpdag"] = compres["SHD"]
-
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
-
-
-# Compute number of correct Markov blankets
-
-# Cannot convert graphnel to bn. These functions are for grain networks.
-# true_dag_bn.fit <- as.bn.fit(true_dag)
-# est_dag_bn.fit <- as.bn.fit(estimated_dag)
