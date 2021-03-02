@@ -307,6 +307,7 @@ rule join_summaries_pcalg:
 
 rule mmhc:
     input:
+        "../scripts/run_summarise.R",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("mmhc"),
@@ -315,8 +316,6 @@ rule mmhc:
         "Executing the mmhc algorithm on the following files: {input}."
     script:
         "../scripts/run_mmhc.R"
-    #shell:
-    #    alg_shell("mmhc")
 
 rule summarise_mmhc:
     input:

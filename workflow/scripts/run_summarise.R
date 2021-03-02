@@ -60,6 +60,7 @@ compareEGs <- function (estEG, trueEG) {
 ## and returns the pattern of this pdag in the Meek sense, that is,
 ## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
 ## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
+## this is from the PC-alg package.
 getPattern <- function(amat) {
 
   ## makes the whole graph undirected
@@ -126,33 +127,30 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-#print("True adjmat")
-#print(true_adjmat)
-#print("Estimated adjmat")
-#print(estimated_adjmat)
-
 rownames(true_adjmat) <- seq(n)
 colnames(true_adjmat) <- seq(n)
 rownames(estimated_adjmat) <- seq(n)
 colnames(estimated_adjmat) <- seq(n)
 
-true_patterngraph <- adjacency2dag(getPattern(true_adjmat))
-estimated_patterngraph <- adjacency2dag(getPattern(estimated_adjmat))
-true_nedges <- sum(getPattern(true_adjmat))
-
 logscore <- 100
 
-# Statistics on getPattern graph
-compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
-names(compres) <- c("SHD", "TP", "FP")
-true_nedges <- sum(getPattern(true_adjmat))
+# Statistics on getPattern graph#
+#compres <- compareDAGs(estimated_patterngraph, true_patterngraph)
 
-df <- data.frame(TPR_pattern = compres["TP"] / true_nedges, # should be for all times
-                 FPRn_pattern = compres["FP"] / true_nedges,
+compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
+
+df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
+                 FPßRn_pattern = compres["FPR_P"],
                  logscore = logscore,
                  SHD_pattern = compres["SHD"])
 
+# names(compres) <- c("SHD", "TP", "FP")
+# true_nedges <- sum(getPattern(true_adjmat))
 
+# df <- data.frame(TPR_pattern = compres["TP"] / true_nedges, # should be for all times
+#                  FPRn_pattern = compres["FP"] / true_nedges,
+#                  logscore = logscore,
+#                  SHD_pattern = compres["SHD"])
 
 # Essential graph (CPDAG)
 # true_dag <- as(t(true_adjmat), "graphNEL") # TODO: should it be transpose here?
@@ -168,7 +166,6 @@ df <- data.frame(TPR_pattern = compres["TP"] / true_nedges, # should be for all 
 # df["TPR_cpdag"] = compres["TPR"]
 # df["FPRn_cpdag"] = compres["FPR_P"]
 # df["SHD_cpdag"] = compres["SHD"]
-
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
 
