@@ -7,22 +7,13 @@
                 "data_id": "sem",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "fci-fisher-z",
-                "fges-sem-bic",
-                "gfci-sem-bic-fisher-z",
-                "hc-bge",
-                "itsearch_sample-bge",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pcalg-gaussCItest",
-                "rfci-fisher-z",
-                "tabu-bge"
+                "mmhc-bge-zf"
             ]
         }
     },
@@ -409,7 +400,7 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": null
                 }
             ],
             "interiamb": [
