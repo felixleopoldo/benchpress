@@ -13,7 +13,7 @@
         ],
         "evaluation": {
             "ROC": [
-                "fges-bdeu"
+                "trilearn_loglin"
             ],
             "mcmc_traj":[
                 "trilearn_loglin"

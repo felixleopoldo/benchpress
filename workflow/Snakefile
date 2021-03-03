@@ -59,8 +59,8 @@ rule heatmap_from_adjmat_trajectory:
         adjvecs = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.json"
     output:
         heatmap = "{output_dir}/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
-    message:
-        "Estimating heatmap from graph trajectory"
+    #message:
+    #    "Estimating heatmap from graph trajectory"
     shell:
         "Rscript workflow/scripts/run_estimate_heatmap_from_traj.R " \
         "--adjvectraj {input.adjvecs} " \
@@ -84,8 +84,8 @@ rule adjmat_from_heatmap:
         adjmat_est="{output_dir}/adjmat_estimate/"\
                     "{something}/" + pattern_strings["mcmc_est"] + "/{somethingelse}/"\
                     "adjmat.csv"
-    message:
-        "Estimating adjmat from heatmap"
+    #message:
+    #    "Estimating adjmat from heatmap"
     shell:
         "Rscript workflow/scripts/run_threshold_heatmap.R " \
         "--heatmap {input.heatmap} " \

@@ -16,6 +16,7 @@ def alg_output_adjvecs_path(algorithm):
 
 
 def alg_input_data():
+    #return "{output_dir}/data/{data}.csv"
     return "{output_dir}/data/{data}/seed={replicate}.csv"
 
 def time_path(algorithm):
@@ -46,7 +47,8 @@ def summarise_alg_output_res_path(algorithm):
             "seed={replicate}/" \
             "id={id}/" \        
             "result.csv"
-
+    # this seed belongs to data actually, and gets stripped from data after.
+    # this is a build in hack to allow for fixed data, I think..
 
 def result_path_mcmc(algorithm):
     res = "{output_dir}/result/"\
@@ -84,11 +86,8 @@ def join_string_sampled_model(algorithm, mode="result"):
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
-            #"seed={seed}/"
             "bn=/{param_string}/"
-            #"seed={seed}/"
             "data=/{data_string}/"
-            "seed={seed}/"
             "id={id}/" \        
             + mode + ".csv",
             output_dir="results",
@@ -192,7 +191,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     elif gen_method_id is None:
         return None
 
-def gen_data_string_from_conf(data_id, seed):
+def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
 
     if Path("resources/data/mydatasets/"+data_id).is_file():
         #return "fixed" + \
@@ -207,11 +206,16 @@ def gen_data_string_from_conf(data_id, seed):
     elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
         # Find the data entry from the resources
         data = next(item for item in config["resources"]["data"]["standard_sampling"] if item["id"] == data_id)
-        return expand("standard_sampling" +\
-                        "/n={n}" + \
-                        "/seed={seed}", 
-                        n = data["sample_sizes"],
-                        seed = seed)
+        if seed_in_path:
+            return expand("standard_sampling" +\
+                            "/n={n}" + \
+                            "/seed={seed}", 
+                            n = data["sample_sizes"],
+                            seed = seed)
+        else:
+            return expand("standard_sampling" +\
+                            "/n={n}",
+                            n = data["sample_sizes"])
         #return expand("standard_sampling" +\
         #                "/n={n}",
         #                n = data["sample_sizes"],

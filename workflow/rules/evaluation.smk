@@ -69,11 +69,11 @@ rule roc_cpdag:
 # It use to be matched out from data.
 def myfunc():
     # Everythihng may have seed depending on the source.
-    ret = [[[expand("{output_dir}/adjvecs/"\                    
+    ret = [[[expand("{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
-            "data=/{data_string}/"\           
-            "algorithm=/{alg_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
             "adjvecs.json",
             output_dir="results",
@@ -82,20 +82,21 @@ def myfunc():
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
 
+    print(ret)
     return ret
 
-
-rule plot_mcmc_traj:
-    input: myfunc()
+rule mcmc_traj:
+    input: 
+        adjvecs=myfunc()
     output:
-        "results/mcmc_traj.eps"
+        traj="results/mcmc_traj.csv"
     script:
-        "../script/plot_mcmc_traj.py"
+        "../scripts/plot_mcmc_traj.py"
 
 
 rule plot_autocorrelation:
