@@ -2,9 +2,9 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "DAG80",
-                "parameters_id": "SEM",
-                "data_id": "sem",
+                "graph_id": "generateDAGMaxParents",
+                "parameters_id": "generateBinaryBN",
+                "data_id": "binary_bn",
                 "seed_range": [
                     1,
                     1
@@ -13,7 +13,10 @@
         ],
         "evaluation": {
             "ROC": [
-                "mmhc-bge-zf"
+                "fges-bdeu"
+            ],
+            "mcmc_traj":[
+                "trilearn_loglin"
             ]
         }
     },
@@ -54,7 +57,7 @@
                 {
                     "id": "generateDAGMaxParents",
                     "av_parents": 2,
-                    "dims": 80
+                    "dims": 10
                 }
             ]
         },

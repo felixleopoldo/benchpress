@@ -32,7 +32,7 @@
                     "required": [
                         "ROC"
                     ],
-                    "additionalProperties": false
+                    "additionalProperties": true
                 }
             },
             "required": [

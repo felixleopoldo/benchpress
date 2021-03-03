@@ -54,6 +54,16 @@ json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pa
                     )
                for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
 
+json_string.update({val["id"]+"_noest": expand(pattern_strings["trilearn_loglin"], 
+                    alpha=val["alpha"],
+                    beta=val["beta"],
+                    N=val["N"],
+                    M=val["M"],
+                    pseudo_obs=val["pseudo_obs"],
+                    radii=val["radii"]
+                    )
+               for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
+
 json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
                 for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 

@@ -20,9 +20,11 @@ def main(data_filename, n_particles, trajectory_lengths, pseudo_observations,
         np.random.seed(seed)
 
     df = pd.read_csv(data_filename, sep=',', header=[0, 1])
+
+    print("HEJ")
     n_levels = [int(a[1]) for a in list(df.columns)]
     levels = np.array([range(l) for l in n_levels])
-
+    
 
     trilearn.pgibbs.sample_trajectories_loglin_to_file(df, n_particles, trajectory_lengths,
                                                         pseudo_observations=pseudo_observations, alphas=alphas, betas=betas,
@@ -30,8 +32,6 @@ def main(data_filename, n_particles, trajectory_lengths, pseudo_observations,
     
     graph_trajectory = sample_trajectory(n_particles, alpha, beta, radius, n_samples, seqdist, reset_cache=reset_cache)
     adjtraj = graph_trajectory.get_adjmat_trajectory()
-
-    
 
     if not os.path.exists(dir):
         os.mkdir(dir)
