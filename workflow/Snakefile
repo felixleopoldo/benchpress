@@ -54,7 +54,7 @@ include: "rules/algorithm_summary_shell_command.smk"
 singularity:
     "docker://onceltuca/benchmark:1.0.7"
 
-rule heatmap_from_adjmat_trajectory:
+rule heatmap_from_adjvec_trajectory:
     input:
         adjvecs = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.json"
     output:

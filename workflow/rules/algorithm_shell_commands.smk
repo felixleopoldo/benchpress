@@ -145,8 +145,8 @@ def alg_shell(algorithm):
                 'rm {output.adjmat}.txt'
 
     elif algorithm == "trilearn_loglin":
-        return "cp {input} {input}.tmp.csv " \
-                "&& sed --in-place 's/\ /,/g' {input.data}.tmp.csv " \
-                "&& pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input.data}.tmp.csv -o . -F {output.adjvecs} " \
-                "&& rm {input.data}.tmp.csv " \
+        return "cp {input} {output.adjvecs}.tmp " \
+                "&& sed --in-place 's/\ /,/g' {output.adjvecs}.tmp " \
+                "&& pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {output.adjvecs}.tmp -o . -F {output.adjvecs} " \
+                "&& rm {output.adjvecs}.tmp " \
                 "&& echo '1' > {output.time} "

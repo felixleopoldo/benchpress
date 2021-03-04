@@ -67,7 +67,7 @@ rule roc_cpdag:
 # problem with seeds. The seed is in cluden in graph, bn and data. but not in algorithm.
 # When the order ord the data,bn and data is changed, the seed is lost. 
 # It use to be matched out from data.
-def myfunc():
+def adjvecs():
     # Everythihng may have seed depending on the source.
     ret = [[[expand("{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
@@ -90,18 +90,104 @@ def myfunc():
     print(ret)
     return ret
 
-rule mcmc_traj:
+def traj_plots():
+    ret = [[[expand("{output_dir}/traj_plot/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "traj_plot.eps",
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]+"_noest"],
+            **alg_conf,
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
+    return ret
+
+def heatmap_plots():
+    ret = [[[expand("{output_dir}/heatmap_plot/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "heatmap_plot.eps",
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
+    return ret
+
+rule mcmc_traj_plot:
     input: 
-        adjvecs=myfunc()
+         traj="{output_dir}/adjvecs/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "adjvecs.json"        
     output:
-        traj="results/mcmc_traj.csv"
+        plot="{output_dir}/traj_plot/"\               
+        "adjmat=/{adjmat_string}/"\            
+        "bn=/{param_string}/"\
+        "data=/{data_string}/"\            
+        "algorithm=/{alg_string}/"\                            
+        "seed={seed}/"
+        "traj_plot.eps"
+    singularity:
+        "docker://civisanalytics/datascience-python:latest"
     script:
         "../scripts/plot_mcmc_traj.py"
 
+rule mcmc_heatmap_plot:
+    input: 
+        matrix_filename="{output_dir}/heatmap_estimate/"\               
+        "adjmat=/{adjmat_string}/"\            
+        "bn=/{param_string}/"\
+        "data=/{data_string}/"\            
+        "algorithm=/{alg_string}/"\                            
+        "seed={seed}/"
+        "heatmap.csv"        
+    output:
+        plot_filename="{output_dir}/heatmap_plot/"\               
+        "adjmat=/{adjmat_string}/"\            
+        "bn=/{param_string}/"\
+        "data=/{data_string}/"\            
+        "algorithm=/{alg_string}/"\                            
+        "seed={seed}/"
+        "heatmap_plot.eps"
+    singularity:
+        "docker://civisanalytics/datascience-python:latest"
+    script:
+        "../scripts/plot_matrix_as_heatmap.py"
+
+
+rule heatmap_plots:
+    input:
+        heatmap_plots()
+
+
+rule trajectory_plots:
+    input:
+        traj_plots()
+        
 
 rule plot_autocorrelation:
     input:
-
+        
     output:
         "results/autocorrelation."
 
