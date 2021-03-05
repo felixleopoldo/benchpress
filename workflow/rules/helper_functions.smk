@@ -237,16 +237,17 @@ def active_algorithm_files(wildcards):
     
     return alg_filenames
 
-def active_algorithms():
+def active_algorithms(eval_method="ROC"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = []
-    #roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
-    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    print(eval_method)
+    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
     for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
         for alg_conf_id in roc_alg_ids:        
             if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
+
     return algs
 
 def alg_output_adjmat_path(algorithm):

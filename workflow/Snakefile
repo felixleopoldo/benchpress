@@ -92,16 +92,6 @@ rule adjmat_from_heatmap:
         "--filename {output.adjmat_est} " \
         "--threshold {wildcards.threshold}"
 
-rule plot_matrix:
-    input:
-        adjmat = "{output_dir}/adjmat_estimate/{something}/adjmat.csv"
-    output:
-        plot = "{output_dir}/adjmat_plots/{something}/adjmat.eps"
-    singularity:
-        docker_image("trilearn")
-    shell:
-        "python workflow/scripts/plot_heatmap.py -o {output.plot} -f {input.adjmat}"
-
 include: "rules/sample_adjmat.smk"
 include: "rules/sample_parameters.smk"
 include: "rules/sample_data.smk"

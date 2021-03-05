@@ -42,19 +42,19 @@ json_string.update({val["id"]:  expand(pattern_strings["tabu"], **val)
 json_string.update({val["id"]:  expand(pattern_strings["hc"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["hc"]})
 
-json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
-                    alpha=val["alpha"],
-                    beta=val["beta"],
-                    N=val["N"],
-                    M=val["M"],
-                    pseudo_obs=val["pseudo_obs"],
-                    radii=val["radii"],
-                    threshold=val["threshold"],
-                    burnin=val["burnin"],
-                    )
-               for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
+# json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"] +"/"+pattern_strings["mcmc_est"], 
+#                     alpha=val["alpha"],
+#                     beta=val["beta"],
+#                     N=val["N"],
+#                     M=val["M"],
+#                     pseudo_obs=val["pseudo_obs"],
+#                     radii=val["radii"],
+#                     threshold=val["threshold"],
+#                     burnin=val["burnin"],
+#                     )
+#                for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
 
-json_string.update({val["id"]+"_noest": expand(pattern_strings["trilearn_loglin"], 
+json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"], 
                     alpha=val["alpha"],
                     beta=val["beta"],
                     N=val["N"],

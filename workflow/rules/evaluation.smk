@@ -38,7 +38,7 @@ rule roc_data:
     input:
         conf=configfilename,
         snake="workflow/Snakefile",
-        algs=active_algorithm_files # It should maybe be stated there which kind of roc to be considered..
+        algs=active_algorithm_files("ROC") # It should maybe be stated there which kind of roc to be considered..
     output:
         csv="results/ROC_data.csv"
     shell:
@@ -86,12 +86,10 @@ def adjvecs():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
-
-    print(ret)
     return ret
 
 def traj_plots():
-    ret = [[[expand("{output_dir}/traj_plot/"\               
+    ret = [[[[expand("{output_dir}/traj_plot/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
@@ -99,7 +97,7 @@ def traj_plots():
             "seed={seed}/"
             "traj_plot.eps",
             output_dir="results",
-            alg_string=json_string[alg_conf["id"]+"_noest"],
+            alg_string=json_string[alg_conf["id"]],
             **alg_conf,
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
@@ -107,11 +105,12 @@ def traj_plots():
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]]
+            for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
 def heatmap_plots():
-    ret = [[[expand("{output_dir}/heatmap_plot/"\               
+    ret = [[[[expand("{output_dir}/heatmap_plot/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
@@ -127,7 +126,8 @@ def heatmap_plots():
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]]
+            for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
 rule mcmc_traj_plot:
@@ -174,16 +174,24 @@ rule mcmc_heatmap_plot:
     script:
         "../scripts/plot_matrix_as_heatmap.py"
 
+rule adjmat_plot:
+    input:
+        matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv"
+    output:
+        plot_filename = "{output_dir}/adjmat_plot/{something}/adjmat.eps"
+    singularity:
+        "docker://civisanalytics/datascience-python:latest"
+    script:
+        "../scripts/plot_matrix_as_heatmap.py"
+        "python workflow/scripts/plot_heatmap.py -o {output.plot} -f {input.adjmat}"
 
-rule heatmap_plots:
+rule mcmc_heatmaps:
     input:
         heatmap_plots()
 
-
-rule trajectory_plots:
+rule mcmc_traj_plots:
     input:
         traj_plots()
-        
 
 rule plot_autocorrelation:
     input:

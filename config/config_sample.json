@@ -2,21 +2,24 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "generateDAGMaxParents",
-                "parameters_id": "generateBinaryBN",
-                "data_id": "binary_bn",
-                "seed_range": [
-                    1,
-                    1
-                ]
+                "graph_id": "jonesp15.csv",
+                "parameters_id": null,
+                "data_id": "jonesp15_discrete_loglin.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
             "ROC": [
+                "greenthomas"
+            ],
+            "mcmc_traj_plots":[
                 "trilearn_loglin"
             ],
-            "mcmc_traj":[
+            "mcmc_heatmaps":[
                 "trilearn_loglin"
+            ],
+            "adjmat_plots":[
+                "greenthomas"
             ]
         }
     },
@@ -26,10 +29,7 @@
                 {
                     "id": "binary_bn",
                     "sample_sizes": [
-                        80,
-                        160,
-                        320,
-                        640
+                        160
                     ]
                 },
                 {
@@ -84,14 +84,9 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": 50,
-                    "M": 10,
-                    "pseudo_obs": 10,
-                    "threshold": [
-                        0.7,
-                        0.6
-                    ],
-                    "burnin": 0
+                    "N": [20, 30, 50],
+                    "M": 500,
+                    "pseudo_obs": 1
                 },
                 {
                     "id": "trilearn_loglin05",
@@ -100,9 +95,7 @@
                     "radii": 80,
                     "N": 50,
                     "M": 300,
-                    "pseudo_obs": 1,
-                    "threshold": 0.5,
-                    "burnin": 0
+                    "pseudo_obs": 1
                 }
             ],
             "blip": [
@@ -178,8 +171,8 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "n_samples": 10000,
-                    "randomits": 1000,
+                    "n_samples": 1000,
+                    "randomits": 100,
                     "penalty": 0
                 }
             ],

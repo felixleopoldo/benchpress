@@ -705,18 +705,6 @@
                 },
                 "radii": {
                     "$ref": "#/definitions/flexnonnegint"
-                },
-                "N": {
-                    "$ref": "#/definitions/flexnatnum"
-                },
-                "M": {
-                    "$ref": "#/definitions/flexnatnum"
-                },
-                "burnin": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "threshold": {
-                    "$ref": "#/definitions/flexprob"
                 }
             },
             "required": [
@@ -726,9 +714,7 @@
                 "radii",
                 "N",
                 "M",
-                "pseudo_obs",
-                "burnin",
-                "threshold"
+                "pseudo_obs"
             ]
         },
         "blip": {
