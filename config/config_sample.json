@@ -10,7 +10,7 @@
         ],
         "evaluation": {
             "ROC": [
-                "greenthomas"
+                "greenthomas", "guidicigreen"
             ],
             "mcmc_traj_plots":[
                 "trilearn_loglin"
@@ -171,8 +171,16 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "n_samples": 1000,
-                    "randomits": 100,
+                    "n_samples": 100000,
+                    "randomits": 1000,
+                    "penalty": 0
+                }
+            ],
+            "gg_singlepair": [
+                {
+                    "id": "guidicigreen",
+                    "n_samples": 100000,
+                    "randomits": 1000,
                     "penalty": 0
                 }
             ],

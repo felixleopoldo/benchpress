@@ -68,8 +68,8 @@
                     "type": "object",
                     "properties": {
                         "generateDAGMaxParents": {
-                            "title": "List of generateDAGMaxParents instatiations",
-                            "description": "List of generateDAGMaxParents instatiations",
+                            "title": "List of generateDAGMaxParents instantiations",
+                            "description": "List of generateDAGMaxParents instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/generateDAGMaxParents"
@@ -101,7 +101,7 @@
                     "type": "object",
                     "properties": {
                         "generateBinaryBN": {
-                            "description": "List of generateBinayBN instatiations",
+                            "description": "List of generateBinayBN instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/generateBinaryBN"
@@ -135,8 +135,8 @@
                     "type": "object",
                     "properties": {
                         "trilearn_loglin": {
-                            "title": "List of trilearn_loglin instatiations",
-                            "description": "List of trilearn_loglin instatiations",
+                            "title": "List of trilearn_loglin instantiations",
+                            "description": "List of trilearn_loglin instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/trilearn_loglin"
@@ -144,133 +144,142 @@
                             "uniqueItems": true
                         },
                         "blip": {
-                            "title": "List of blip instatiations",
-                            "description": "List of blip instatiations",
+                            "title": "List of blip instantiations",
+                            "description": "List of blip instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/blip"
                             }
                         },
                         "notears": {
-                            "title": "Notears instatiations",
-                            "description": "Notears instatiations",
+                            "title": "Notears instantiations",
+                            "description": "Notears instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/notears"
                             }
                         },
                         "gobnilp": {
-                            "title": "Gobnilp instatiations",
-                            "description": "Gobnilp instatiations",
+                            "title": "Gobnilp instantiations",
+                            "description": "Gobnilp instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/gobnilp"
                             }
                         },
                         "fges": {
-                            "title": "fGES instatiations",
-                            "description": "fGES instatiations",
+                            "title": "fGES instantiations",
+                            "description": "fGES instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/fges"
                             }
                         },
                         "fci": {
-                            "description": "FCI instatiations",
-                            "title": "FCI instatiations",
+                            "description": "FCI instantiations",
+                            "title": "FCI instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/fci"
                             }
                         },
                         "rfci": {
-                            "description": "RFCI instatiations",
-                            "title": "RFCI instatiations",
+                            "description": "RFCI instantiations",
+                            "title": "RFCI instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/rfci"
                             }
                         },
                         "gfci": {
-                            "description": "GFCI instatiations",
-                            "title": "GFCI instatiations",
+                            "description": "GFCI instantiations",
+                            "title": "GFCI instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/gfci"
                             }
                         },
                         "pcalg": {
-                            "description": "PC algorithm instatiations",
-                            "title": "PC algorithm instatiations",
+                            "description": "PC algorithm instantiations",
+                            "title": "PC algorithm instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/pcalg"
                             }
                         },
                         "mmhc": {
-                            "description": "MMHC instatiations",
-                            "title": "MMHC instatiations",
+                            "description": "MMHC instantiations",
+                            "title": "MMHC instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/mmhc"
                             }
                         },
                         "tabu": {
-                            "description": "Tabu search instatiations",
-                            "title": "Tabu search instatiations",
+                            "description": "Tabu search instantiations",
+                            "title": "Tabu search instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/tabu"
                             }
                         },
                         "itsearch": {
-                            "description": "Iterative +1 search instatiations",
-                            "title": "Iterative +1 search instatiations",
+                            "description": "Iterative +1 search instantiations",
+                            "title": "Iterative +1 search instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/itsearch"
                             }
                         },
                         "order_mcmc": {
-                            "description": "Order MCMC instatiations",
-                            "title": "Order MCMC instatiations",
+                            "description": "Order MCMC instantiations",
+                            "title": "Order MCMC instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/order_mcmc"
                             }
                         },
                         "interiamb": {
-                            "description": "Inter-IAMB instatiations",
-                            "title": "Inter-IAMB instatiations",
+                            "description": "Inter-IAMB instantiations",
+                            "title": "Inter-IAMB instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/interiamb"
                             }
                         },
                         "gs": {
-                            "description": "GS instatiations",
-                            "title": "GS instatiations",
+                            "description": "GS instantiations",
+                            "title": "GS instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/interiamb"
                             }
                         },
                         "hc": {
-                            "description": "HC instatiations",
-                            "title": "HC instatiations",
+                            "description": "HC instantiations",
+                            "title": "HC instantiations",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/hc"
                             }
                         },
                         "greenthomas": {
-                            "description": "Green & Thomas instatiations",
+                            "description": "Green & Thomas instantiations",
                             "title": "Green & Thomas id's",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/greenthomas"
                             }
+                        },
+                        "gg_singlepair": {
+                            "description": "Guidici & Green parametrisarion",
+                            "title": "Guidici & Green id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/gg_singlepair"
+                            }
                         }
+                        
                     },
                     "additionalProperties": false
                 }
@@ -846,6 +855,33 @@
         "greenthomas": {
             "title": "Green & Thomas algorithm for sampling from decomposable graph distributions",
             "description": "Green & Thomas algorithm for learning decomopasble graphs.\n Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "n_samples": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "penalty": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "randomits": {
+                    "$ref": "#/definitions/flexnonnegint"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "n_samples",
+                "penalty",
+                "randomits"
+            ]
+        },
+        "gg_singlepair": {
+            "title": "Guidici & Green algorithm for sampling from decomposable graph distributions",
+            "description": "Guidici & Green algorithm for learning decomopasble graphs.",
             "type": "object",
             "properties": {
                 "id": {

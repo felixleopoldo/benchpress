@@ -59,8 +59,6 @@ rule heatmap_from_adjvec_trajectory:
         adjvecs = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.json"
     output:
         heatmap = "{output_dir}/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
-    #message:
-    #    "Estimating heatmap from graph trajectory"
     shell:
         "Rscript workflow/scripts/run_estimate_heatmap_from_traj.R " \
         "--adjvectraj {input.adjvecs} " \
@@ -84,8 +82,6 @@ rule adjmat_from_heatmap:
         adjmat_est="{output_dir}/adjmat_estimate/"\
                     "{something}/" + pattern_strings["mcmc_est"] + "/{somethingelse}/"\
                     "adjmat.csv"
-    #message:
-    #    "Estimating adjmat from heatmap"
     shell:
         "Rscript workflow/scripts/run_threshold_heatmap.R " \
         "--heatmap {input.heatmap} " \
@@ -97,21 +93,3 @@ include: "rules/sample_parameters.smk"
 include: "rules/sample_data.smk"
 include: "rules/algorithm_rules.smk"
 include: "rules/evaluation.smk"
-    
-# def adjmat_plots(algorithm, mode="result"):
-#     ret = [[[expand(config["benchmark_setup"]["output_dir"] + "/adjmat_plots/"\
-#             "adjmat=/{adjmat_string}/"
-#             "bn=/{param_string}/"
-#             "data=/{data_string}/"
-#             "algorithm=/{alg_string}/"
-#             "adjmat.eps",
-#             alg_string=json_string[alg_conf["id"]],
-#             #plot_legend=alg_conf["plot_legend"],
-#             #seed=seed,
-#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph"], seed), 
-#             param_string=gen_parameter_string_from_conf(sim_setup["parameters"], seed),
-#             data_string=gen_data_string_from_conf(sim_setup["data"], seed))
-#             for seed in get_seed_range(sim_setup["seed_range"])]
-#             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
-#     return ret

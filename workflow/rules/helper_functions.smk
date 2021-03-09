@@ -241,7 +241,6 @@ def active_algorithms(eval_method="ROC"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = []
-    print(eval_method)
     roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
     for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
         for alg_conf_id in roc_alg_ids:        

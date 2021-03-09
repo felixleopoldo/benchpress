@@ -14,6 +14,8 @@ pattern_strings = {}
 # structure learning algorithms
 pattern_strings["greenthomas"] = "greenthomas/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["greenthomas"])
 
+pattern_strings["gg_singlepair"] = "gg_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg_singlepair"])
+
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
 
 pattern_strings["blip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["blip"])

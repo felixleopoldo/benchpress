@@ -17,6 +17,24 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \                
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
+    elif algorithm == "gg_singlepair":
+        return  "Rscript workflow/scripts/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename_data {input.data} " \
+                "--range_header_data 1 " \ 
+                "--filename {output.res} " \ 
+                " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname algorithm       --colval gg_singlepair " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+                " && python workflow/scripts/add_column.py --filename {output} --colname n_samples       --colval {wildcards.n_samples} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname randomits       --colval {wildcards.randomits} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \                
+                " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+
     elif algorithm == "tabu":
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \

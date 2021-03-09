@@ -1,16 +1,5 @@
 def alg_shell(algorithm):
     if algorithm == "greenthomas":
-        #"&& /usr/bin/time -f \"%e\" -o {output.time} " \  
-        # return "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
-        #     "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
-        #     "&& cd workflow/scripts/thomasgreen && java EstimateMultinomialGM -v 0 " \
-        #     "-s 0 "\
-        #     "-n {wildcards.n_samples} "\
-        #     "-r {wildcards.randomits} "\
-        #     "-p {wildcards.penalty} < ../../../{output.adjmat}.noheader > ../../../{output.adjmat}.adjlist " \            
-        #     "&& python adjlist_to_adjmat.py ../../../{output.adjmat}.adjlist ../../../{output.adjmat} " \
-        #     "&& rm ../../../{output.adjmat}.adjlist ../../../{output.adjmat}.noheader "\
-        #     "&& echo 1 > ../../../{output.time}"
         return "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
             "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
             "&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
@@ -21,6 +10,20 @@ def alg_shell(algorithm):
             "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
             "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
             "&& echo 1 > {output.time}"
+            #"&& /usr/bin/time -f \"%e\" -o {output.time} " \
+
+    elif algorithm == "gg_singlepair":
+        return "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
+            "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
+            "&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
+            "-s 2 "\
+            "-n {wildcards.n_samples} "\
+            "-r {wildcards.randomits} "\
+            "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
+            "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
+            "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+            "&& echo 1 > {output.time}"
+            #"&& /usr/bin/time -f \"%e\" -o {output.time} " \
 
     elif algorithm == "notears":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  

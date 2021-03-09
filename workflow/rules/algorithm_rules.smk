@@ -34,6 +34,44 @@ rule join_summaries_greenthomas:
     script:
         "../scripts/join_csv_files.R"
 
+rule gg_singlepair:
+    input:
+        data = alg_input_data()
+    output:
+        adjmat = alg_output_adjmat_path("gg_singlepair"),
+        time = alg_output_time_path("gg_singlepair")
+    singularity:
+        docker_image("greenthomas")
+    message:
+        "Executing gg_singlepair algorithm on the following files: {input}."
+    shell:
+        alg_shell("gg_singlepair")
+
+rule summarise_gg_singlepair:
+    input:
+        "workflow/scripts/run_summarise.R",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("gg_singlepair"),
+        time = summarise_alg_input_time_path("gg_singlepair")
+    output:
+        res = summarise_alg_output_res_path("gg_singlepair")
+    message:
+        "Summarising gg_singlepair results based on the files: {input}."
+    shell:
+        summarise_alg_shell("gg_singlepair")
+       
+rule join_summaries_gg_singlepair:
+    input:
+        conf=configfilename,
+        res=join_string_sampled_model("gg_singlepair")
+    output:
+        join_summaries_output("gg_singlepair")
+    script:
+        "../scripts/join_csv_files.R"
+
+
+
 rule tabu:
     input:
         data = alg_input_data()

@@ -3,6 +3,9 @@ json_string = {}
 json_string = {val["id"]: expand(pattern_strings["greenthomas"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["greenthomas"]}
 
+json_string.update({val["id"]: expand(pattern_strings["gg_singlepair"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gg_singlepair"]})
+
 json_string.update({val["id"]: expand(pattern_strings["itsearch"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["itsearch"]})
 
