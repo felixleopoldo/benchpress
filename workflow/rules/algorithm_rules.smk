@@ -5,7 +5,7 @@ rule greenthomas:
         adjmat = alg_output_adjmat_path("greenthomas"),
         time = alg_output_time_path("greenthomas")
     singularity:
-        docker_image("greenthomas")
+        docker_image("thomasjava")
     message:
         "Executing greenthomas algorithm on the following files: {input}."
     shell:
@@ -41,7 +41,7 @@ rule gg_singlepair:
         adjmat = alg_output_adjmat_path("gg_singlepair"),
         time = alg_output_time_path("gg_singlepair")
     singularity:
-        docker_image("greenthomas")
+        docker_image("thomasjava")
     message:
         "Executing gg_singlepair algorithm on the following files: {input}."
     shell:

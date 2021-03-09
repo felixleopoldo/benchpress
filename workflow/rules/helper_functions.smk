@@ -281,7 +281,7 @@ def docker_image(algorithm):
         return "docker://onceltuca/trilearn:1.1"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:1.6.3"
-    elif algorithm == "greenthomas":
+    elif algorithm == "thomasjava":
         return "docker://onceltuca/thomasgreen:1.0"
     elif algorithm == "notears":
         return "docker://onceltuca/jmoss20notears:1.4"
