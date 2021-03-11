@@ -19,7 +19,10 @@
                 "trilearn_loglin"
             ],
             "adjmat_plots":[
-                "greenthomas"
+                "greenthomas", "guidicigreen"
+            ],
+            "autocorr_plots":[
+                "trilearn_loglin"
             ]
         }
     },
@@ -84,7 +87,7 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [20, 30, 50],
+                    "N": [50],
                     "M": 500,
                     "pseudo_obs": 1
                 },
@@ -171,7 +174,7 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "n_samples": 100000,
+                    "n_samples": [100000, 10000000],
                     "randomits": 1000,
                     "penalty": 0
                 }
@@ -179,7 +182,7 @@
             "gg_singlepair": [
                 {
                     "id": "guidicigreen",
-                    "n_samples": 100000,
+                    "n_samples": 10000000,
                     "randomits": 1000,
                     "penalty": 0
                 }
