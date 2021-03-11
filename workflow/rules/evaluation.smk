@@ -269,18 +269,3 @@ rule autocorr_plots:
 rule adjmat_plots:
     input:
         adjmat_plots()
-
-        
-# rule adjmat_plot:
-#     input:
-#         configfilename,
-#         itsearch=adjmat_plots("itsearch"),
-        #gobnilp=adjmat_plots("gobnilp", seed)
-#    output:
-#        config["benchmark_setup"]["output_dir"] + "/adjmat_plots",
-#        plots="{output_dir}/adjmat_plots/itsearch_map.eps", #"adjmat_plots/gobnilp_seed={seed}/gobnilp.eps", "fges_seed.eps"
-        # For the output, all the parameters are not that important
-        # If there is a true graph, plot it
-#    shell:
-#        "cp {input.gobnilp} adjmat_plots/gobnilp_seed={seed}/gobnilp.eps"\
-#        " && cp {input.itsearch} adjmat_plots/itsearch_seed={seed}/itsearch.eps"\
