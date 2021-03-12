@@ -110,14 +110,23 @@ def traj_plots():
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
+
+def adjmat_true_plots():
+    return [[expand("{output_dir}/adjmat/{adjmat_string}.eps",
+            output_dir="results",
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
+            for seed in get_seed_range(sim_setup["seed_range"]) ]
+            for sim_setup in config["benchmark_setup"]["data"] ]
+
 def adjmat_plots():
-    ret = [[[[expand("{output_dir}/adjmat_plot/"\               
+    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjmat_plot.eps",
+            "adjmat.eps",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
@@ -223,13 +232,24 @@ rule mcmc_heatmap_plot:
 
 rule adjmat_plot:
     input:
-        matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv"
+        matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv",
     output:
-        plot_filename = "{output_dir}/adjmat_plot/{something}/adjmat_plot.eps"
+        plot_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.eps"
     singularity:
         "docker://civisanalytics/datascience-python:latest"
     script:
         "../scripts/plot_matrix_as_heatmap.py"
+
+rule adjmat_true_plot:
+    input:
+        matrix_filename="{output_dir}/adjmat/{adjmat}.csv" 
+    output:
+        plot_filename = "{output_dir}/adjmat/{adjmat}.eps"
+    singularity:
+        "docker://civisanalytics/datascience-python:latest"
+    script:
+        "../scripts/plot_matrix_as_heatmap.py"
+
 
 rule autocorr_plot:
     input: 
@@ -269,3 +289,7 @@ rule autocorr_plots:
 rule adjmat_plots:
     input:
         adjmat_plots()
+
+rule adjmat_true_plots:
+    input:
+        adjmat_true_plots()

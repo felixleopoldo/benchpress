@@ -6,11 +6,16 @@
                 "parameters_id": null,
                 "data_id": "jonesp15_discrete_loglin.csv",
                 "seed_range": null
+            },            {
+                "graph_id": "generateDAGMaxParents",
+                "parameters_id": "generateBinaryBN",
+                "data_id": "binary_bn",
+                "seed_range": [1,1]
             }
         ],
         "evaluation": {
             "ROC": [
-                "greenthomas", "guidicigreen"
+                "greenthomas"
             ],
             "mcmc_traj_plots":[
                 "trilearn_loglin"
@@ -19,7 +24,7 @@
                 "trilearn_loglin"
             ],
             "adjmat_plots":[
-                "greenthomas", "guidicigreen"
+                "greenthomas", "guidicigreen", "fges-bdeu"
             ],
             "autocorr_plots":[
                 "trilearn_loglin"
@@ -174,7 +179,7 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "n_samples": [100000, 10000000],
+                    "n_samples": [10000],
                     "randomits": 1000,
                     "penalty": 0
                 }
@@ -182,7 +187,7 @@
             "gg_singlepair": [
                 {
                     "id": "guidicigreen",
-                    "n_samples": 10000000,
+                    "n_samples": 10000,
                     "randomits": 1000,
                     "penalty": 0
                 }

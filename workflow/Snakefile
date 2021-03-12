@@ -7,6 +7,7 @@ import filecmp
 
 from dirsync import sync
 from pathlib import Path
+import os
 
 args = sys.argv
 
@@ -23,10 +24,13 @@ if os.path.isdir("results/bn/bn.fit_networks"):
 else:
     shutil.copytree("resources/bn", "results/bn")
 
-if os.path.isdir("results/adjmat/myadjmats"):
-    sync("resources/adjmat/myadjmats", "results/adjmat/myadjmats", "sync")
-else:
-    shutil.copytree("resources/adjmat", "results/adjmat")
+
+#if os.path.isdir("results/adjmat/myadjmats"):
+#    pass
+    #sync("resources/adjmat/myadjmats", "results/adjmat/myadjmats", "sync")
+#else:
+#    os.makedirs('results/adjmat/myadjmats')
+    #shutil.copytree("resources/adjmat", "results/adjmat")
 
 
 configfilename="config/config.json"

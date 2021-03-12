@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 heatmap = pd.read_csv(snakemake.input["matrix_filename"])
-print(heatmap)
+
 heatmap.index = heatmap.columns
 #    aux.plot_heatmap(heatmap, cbar=False, annot=False,
 #                     xticklabels=1,

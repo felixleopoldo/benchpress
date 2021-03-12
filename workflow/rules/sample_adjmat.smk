@@ -14,6 +14,14 @@ rule sample_adjmat_pcalg:
     script:
         "../scripts/sample_pcalg_dag.R" 
 
+rule fixed_adjmat:
+    input:
+        "resources/adjmat/myadjmats/{adjmat}.csv"
+    output:
+        "{output_dir}/adjmat/myadjmats/{adjmat}.csv"        
+    shell:       
+        "cp {input} {output}"
+        
 # rule sample_adjmat_notears:
 #     output:        
 #         adjmat = "{output_dir}/adjmat/" \

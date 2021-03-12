@@ -23,7 +23,8 @@ def validate_data_setup(config, dict):
     for alg, alg_conf_avail in config["resources"]["graph"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir( "results/adjmat/myadjmats")
+    available_conf_ids += os.listdir( "resources/adjmat/myadjmats")
+    #available_conf_ids += os.listdir( "results/adjmat/myadjmats")
 
 
     if not dict["graph_id"] in available_conf_ids:
