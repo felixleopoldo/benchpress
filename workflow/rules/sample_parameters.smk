@@ -52,3 +52,17 @@ rule sample_pcalg_sem_params:
     script:
         "../scripts/sample_pcalg_semparams.R" 
 
+rule hyper_dir:
+    input:
+        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+    output:
+        bn =    "{output_dir}/bn/" + \
+                pattern_strings["hyper-dir"] + "/" \
+                "seed={seed}/"+\
+                "adjmat=/{adjmat}/seed={seed}.json"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
+#    script:
+#        "../scripts/trilearn/sample_hyper-dir.py" 

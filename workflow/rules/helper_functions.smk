@@ -150,8 +150,19 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
     
     if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["generateDAGMaxParents"] +   "/seed={seed}", **adjmat_dict, seed=seed)
-        #return expand(pattern_strings["generateDAGMaxParents"], **adjmat_dict, seed=seed)
+        return expand(pattern_strings["generateDAGMaxParents"] + "/seed={seed}", **adjmat_dict, seed=seed)
+
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["cta"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["cta"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["cta"] + "/seed={seed}", **adjmat_dict, seed=seed)
+
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bandmat"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["bandmat"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
+
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["rand_bandmat"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["rand_bandmat"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["rand_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
@@ -180,6 +191,10 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["pcalg_sem_params"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["pcalg_sem_params"] if item["id"] == gen_method_id)
         return expand(pattern_strings["pcalg_sem_params"] + "/seed={seed}", **curconf, seed=seed)
+
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["hyper-dir"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["hyper-dir"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["hyper-dir"] + "/seed={seed}", **curconf, seed=seed)
 
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
@@ -265,7 +280,7 @@ def summarise_alg_input_data_path():
     return "{output_dir}/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
 
 def summarise_alg_input_adjmat_true_path():
-    return "{output_dir}/adjmat/{adjmat}.csv" # This will probably be buq with fixed data
+    return "{output_dir}/adjmat/{adjmat}.csv" 
 
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\

@@ -2,31 +2,27 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "jonesp15.csv",
-                "parameters_id": null,
-                "data_id": "jonesp15_discrete_loglin.csv",
-                "seed_range": null
-            },            {
-                "graph_id": "generateDAGMaxParents",
-                "parameters_id": "generateBinaryBN",
-                "data_id": "binary_bn",
-                "seed_range": [1,1]
+                "graph_id": "AR2",
+                "parameters_id": "disc-loglin",
+                "data_id": "iid100",
+                "seed_range": [1, 1]
             }
         ],
         "evaluation": {
             "ROC": [
                 "greenthomas"
             ],
-            "mcmc_traj_plots":[
+            "mcmc_traj_plots": [
                 "trilearn_loglin"
             ],
-            "mcmc_heatmaps":[
+            "mcmc_heatmaps": [
                 "trilearn_loglin"
             ],
-            "adjmat_plots":[
-                "greenthomas", "guidicigreen", "fges-bdeu"
+            "adjmat_plots": [
+                "greenthomas",
+                "guidicigreen"
             ],
-            "autocorr_plots":[
+            "autocorr_plots": [
                 "trilearn_loglin"
             ]
         }
@@ -34,6 +30,12 @@
     "resources": {
         "data": {
             "standard_sampling": [
+                {
+                    "id": "iid100",
+                    "sample_sizes": [
+                        200
+                    ]
+                },
                 {
                     "id": "binary_bn",
                     "sample_sizes": [
@@ -67,6 +69,28 @@
                     "av_parents": 2,
                     "dims": 10
                 }
+            ],
+            "cta": [
+                {
+                    "id": "cta-chordal",
+                    "order": 10,
+                    "alpha": 0.5,
+                    "beta": 0.5
+                }
+            ],
+            "bandmat": [
+                {
+                    "id": "AR2",
+                    "bandwidth": 2,
+                    "dim": 10
+                }
+            ],
+            "rand_bandmat": [
+                {
+                    "id": "AR1-5",
+                    "max_bandwidth": 5,
+                    "dim": 10
+                }
             ]
         },
         "parameters": {
@@ -83,6 +107,13 @@
                     "min": 0.25,
                     "max": 1
                 }
+            ],
+            "hyper-dir": [
+                {
+                    "id": "disc-loglin",
+                    "n_levels": 2,
+                    "pseudo_obs": 1.0
+                }
             ]
         },
         "structure_learning_algorithms": {
@@ -92,7 +123,9 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [50],
+                    "N": [
+                        50
+                    ],
                     "M": 500,
                     "pseudo_obs": 1
                 },
@@ -179,7 +212,9 @@
             "greenthomas": [
                 {
                     "id": "greenthomas",
-                    "n_samples": [10000],
+                    "n_samples": [
+                        1000000
+                    ],
                     "randomits": 1000,
                     "penalty": 0
                 }
@@ -187,7 +222,7 @@
             "gg_singlepair": [
                 {
                     "id": "guidicigreen",
-                    "n_samples": 10000,
+                    "n_samples": 100000,
                     "randomits": 1000,
                     "penalty": 0
                 }
@@ -274,7 +309,12 @@
                     "score": "sem-bic",
                     "test": "fisher-z-test",
                     "datatype": "continuous",
-                    "penaltyDiscount": [0, 0.5, 1, 1.5],
+                    "penaltyDiscount": [
+                        0,
+                        0.5,
+                        1,
+                        1.5
+                    ],
                     "samplePrior": null,
                     "structurePrior": 1
                 }

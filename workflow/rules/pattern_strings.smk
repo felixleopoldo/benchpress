@@ -60,10 +60,14 @@ pattern_strings["evaluation"] = "evaluation/" \
 # graph sampling
 pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
 pattern_strings["generateDAGMaxParents"] = "generateDAGMaxParents/" + dict_to_path(config["resources"]["graph"]["generateDAGMaxParents"])
+pattern_strings["cta"] = "cta/" + dict_to_path(config["resources"]["graph"]["cta"])
+pattern_strings["bandmat"] = "bandmat/" + dict_to_path(config["resources"]["graph"]["bandmat"])
+pattern_strings["rand_bandmat"] = "rand_bandmat/" + dict_to_path(config["resources"]["graph"]["rand_bandmat"])
 #pattern_strings["notears_dag"] = "notears/" + dict_to_path(config["resources"]["graph"]["notears"])
 
 # parameters sampling
 pattern_strings["pcalg_sem_params"] = "pcalg_sem_params/" + dict_to_path(config["resources"]["parameters"]["pcalg_sem_params"])
 pattern_strings["generateBinaryBN"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["generateBinaryBN"])
+pattern_strings["hyper-dir"] = "hyper-dir/" + dict_to_path(config["resources"]["parameters"]["hyper-dir"])
 #pattern_strings["notears_parameters_sampling"] = "notears/" + dict_to_path(config["resources"]["parameters"]["notears_parameters_sampling"])
 

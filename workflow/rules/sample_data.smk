@@ -52,6 +52,21 @@ rule sample_bindata:
         "--samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
 
+rule sample_loglindata:
+    input:
+        bn="{output_dir}/bn/hyper-dir/{bn}/adjmat=/{adjmat}.json"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/bn=/hyper-dir/{bn}"\
+             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
+#    script:
+#        "../scripts/trilearn/sample_loglin_data.py"
+
 rule copy_fixed_data:
     input:
         "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.

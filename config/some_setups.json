@@ -1,6 +1,18 @@
 {
     "data": [
         {
+            "graph_id": "AR2",
+            "parameters_id": "disc-loglin",
+            "data_id": "iid100",
+            "seed_range": [1, 1]
+        },
+        {
+            "graph_id": "jonesp15.csv",
+            "parameters_id": null,
+            "data_id": "jonesp15_discrete_loglin.csv",
+            "seed_range": null
+        },
+        {
             "graph_id": "DAG80",
             "parameters_id": "SEM",
             "data_id": "binary_bn",

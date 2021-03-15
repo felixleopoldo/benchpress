@@ -93,7 +93,7 @@
                             "uniqueItems": true
                         }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": true
                 },
                 "parameters": {
                     "title": "Parameters sampling algorithm",
@@ -127,7 +127,7 @@
                             "uniqueItems": true
                         }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": true
                 },
                 "structure_learning_algorithms": {
                     "title": "Available structure learning algorithms",

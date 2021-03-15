@@ -14,6 +14,32 @@ rule sample_adjmat_pcalg:
     script:
         "../scripts/sample_pcalg_dag.R" 
 
+rule sample_adjmat_cta:
+    output:
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["cta"] + "/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    script:
+        "../scripts/trilearn/sample_cta.py" 
+
+rule gen_bandmat:
+    output:
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["bandmat"] + "/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
+#    script:
+#        "../scripts/trilearn/gen_bandmat.py" 
+
+rule rand_bandmat:
+    output:
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["rand_bandmat"] + "/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    script:
+        "../scripts/trilearn/rand_bandmat.py" 
+
 rule fixed_adjmat:
     input:
         "resources/adjmat/myadjmats/{adjmat}.csv"
