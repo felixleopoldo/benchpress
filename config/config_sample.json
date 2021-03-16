@@ -22,6 +22,10 @@
                 "greenthomas",
                 "guidicigreen"
             ],
+            "graph_plots": [
+                "greenthomas",
+                "guidicigreen"
+            ],
             "autocorr_plots": [
                 "trilearn_loglin"
             ]

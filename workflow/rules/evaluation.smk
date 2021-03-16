@@ -141,6 +141,36 @@ def adjmat_plots():
             for alg in active_algorithms("adjmat_plots")]
     return ret
 
+def graph_true_plots():
+    return [[expand("{output_dir}/adjmat/{adjmat_string}.ps",
+            output_dir="results",
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
+            for seed in get_seed_range(sim_setup["seed_range"]) ]
+            for sim_setup in config["benchmark_setup"]["data"] ]
+
+def graph_plots():
+    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "adjmat.ps",
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+            for alg in active_algorithms("graph_plots")]
+    return ret
+
 def autocorr_plots():
     ret = [[[[expand("{output_dir}/autocorr_plot/"\
             "adjmat=/{adjmat_string}/"\            
@@ -250,6 +280,27 @@ rule adjmat_true_plot:
     script:
         "../scripts/plot_matrix_as_heatmap.py"
 
+# This rule is very generally specified ad relies on that it is called in  the right way.
+# I.e with the path of an adjaceny matrix.
+rule adjmat_to_dot:
+    input:
+        filename="{output_dir}/{something}.csv" 
+    output:
+        filename = "{output_dir}/{something}.dot"
+    singularity:
+        "docker://onceltuca/trilearn:1.1"
+    shell:
+        "python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}"
+
+rule plot_dot:
+    input:
+        filename="{output_dir}/{something}.dot" 
+    output:
+        filename="{output_dir}/{something}.ps" 
+    singularity:
+        "docker://onceltuca/trilearn:1.1"
+    shell:
+        "dot -T ps {input.filename} > {output.filename}"
 
 rule autocorr_plot:
     input: 
@@ -293,3 +344,11 @@ rule adjmat_plots:
 rule adjmat_true_plots:
     input:
         adjmat_true_plots()
+
+rule graph_plots:
+    input:
+        graph_plots()
+
+rule graph_true_plots:
+    input:
+        graph_true_plots()
