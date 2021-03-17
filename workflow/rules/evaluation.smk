@@ -216,14 +216,14 @@ def heatmap_plots():
 
 rule mcmc_traj_plot:
     input: 
-        "workflow/scripts/plot_mcmc_traj.py",
+        "workflow/scripts/plot_graph_traj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjvecs.json"        
+            "adjvecs.csv"        
     output:
         plot="{output_dir}/traj_plot/"\               
         "adjmat=/{adjmat_string}/"\            
@@ -233,22 +233,22 @@ rule mcmc_traj_plot:
         "seed={seed}/"
         "traj_plot.eps"
     singularity:
-        "docker://civisanalytics/datascience-python:latest"
-    script:
-        "../scripts/plot_mcmc_traj.py"
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/plot_graph_traj.py {input.traj} {output.plot}"
 
 rule mcmc_heatmap_plot:
     input: 
-        "workflow/scripts/plot_mcmc_heatmap.py",
+        "workflow/scripts/plot_heatmap_from_graphtraj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjvecs.json"       
+            "adjvecs.csv"       
     output:
-        plot_filename="{output_dir}/heatmap_plot/"\               
+        filename="{output_dir}/heatmap_plot/"\               
         "adjmat=/{adjmat_string}/"\            
         "bn=/{param_string}/"\
         "data=/{data_string}/"\            
@@ -256,9 +256,9 @@ rule mcmc_heatmap_plot:
         "seed={seed}/"
         "heatmap_plot.eps"
     singularity:
-        "docker://civisanalytics/datascience-python:latest"
-    script:
-        "../scripts/plot_mcmc_heatmap.py"
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/plot_heatmap_from_graphtraj.py {input.traj} {output.filename}"
 
 rule adjmat_plot:
     input:
@@ -288,7 +288,7 @@ rule adjmat_to_dot:
     output:
         filename = "{output_dir}/{something}.dot"
     singularity:
-        "docker://onceltuca/trilearn:1.1"
+        docker_image("trilearn_loglin")
     shell:
         "python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}"
 
@@ -298,20 +298,20 @@ rule plot_dot:
     output:
         filename="{output_dir}/{something}.ps" 
     singularity:
-        "docker://onceltuca/trilearn:1.1"
+        docker_image("trilearn_loglin")
     shell:
         "dot -T ps {input.filename} > {output.filename}"
 
 rule autocorr_plot:
     input: 
-         "workflow/scripts/plot_autocorr.py",
+         "workflow/scripts/plot_autocorr_from_traj.py",
          traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjvecs.json"        
+            "adjvecs.csv"        
     output:
         plot="{output_dir}/autocorr_plot/"\               
         "adjmat=/{adjmat_string}/"\            
@@ -321,9 +321,9 @@ rule autocorr_plot:
         "seed={seed}/"
         "autocorr_plot.eps"
     singularity:
-        "docker://civisanalytics/datascience-python:latest"
-    script:
-        "../scripts/plot_autocorr.py"
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/plot_autocorr_from_traj.py {input.traj} {output.plot}"
 
 rule mcmc_heatmaps:
     input:

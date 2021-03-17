@@ -11,7 +11,7 @@ with open(snakemake.input["traj"]) as f:
     data = json.load(f)
 
 T = len(data)
-print(T)
+
 # create adjmats
 for adjvec in data:
     l = int(np.sqrt(len(adjvec)))
@@ -23,7 +23,6 @@ heatmap = matrices[0]
 for i in range(1, T):
     heatmap += matrices[i]
 
-print(heatmap)
 heatmap = heatmap / T
 
 #    aux.plot_heatmap(heatmap, cbar=False, annot=False,

@@ -12,7 +12,7 @@ def alg_output_adjvecs_path(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
                 "algorithm=/"  + pattern_strings[algorithm] + "/"  + \
                 "seed={replicate}/" \
-                "adjvecs.json"
+                "adjvecs.csv"
 
 
 def alg_input_data():
@@ -293,7 +293,7 @@ def summarise_alg_input_adjmat_est_path(algorithm):
 
 def docker_image(algorithm):
     if algorithm == "trilearn_loglin":
-        return "docker://onceltuca/trilearn:1.1"
+        return "docker://onceltuca/trilearn:1.2"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:1.6.3"
     elif algorithm == "thomasjava":
