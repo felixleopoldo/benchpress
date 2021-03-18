@@ -23,4 +23,4 @@ pd.plotting.autocorrelation_plot(size_traj)
 
 plt.savefig(snakemake.output["plot"])
 
-size_traj.to_csv(snakemake.output["plot"] +".csv", index=False, header=False)
+#size_traj.to_csv(snakemake.output["plot"] +".csv", index=False, header=False)
