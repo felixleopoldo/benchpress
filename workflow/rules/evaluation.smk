@@ -328,27 +328,50 @@ rule autocorr_plot:
 rule mcmc_heatmaps:
     input:
         heatmap_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/heatmap_" +str(i) +".eps")
+
 
 rule mcmc_traj_plots:
     input:
         traj_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/trajplot_" +str(i) +".eps")
 
 rule autocorr_plots:
     input:
         autocorr_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/autocorr_" +str(i) +".eps")
 
 rule adjmat_plots:
     input:
         adjmat_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/adjmat_" +str(i) +".eps")
 
 rule adjmat_true_plots:
     input:
         adjmat_true_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/adjmat_true_" +str(i) +".eps")
 
 rule graph_plots:
     input:
         graph_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/graph_" +str(i) +".ps")
 
 rule graph_true_plots:
     input:
         graph_true_plots()
+    run:
+        for i,f in enumerate(input):
+            shell("cp "+f+" results/graph_true_" +str(i) +".eps")
+
