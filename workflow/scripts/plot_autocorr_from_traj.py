@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
-import networkx as nx                                                  
+import networkx as nx          
+import matplotlib
+matplotlib.use('Agg')                                        
 import matplotlib.pyplot as plt
 from pandas.plotting import autocorrelation_plot
 import seaborn as sns
