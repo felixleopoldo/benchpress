@@ -39,4 +39,4 @@ pd.plotting.autocorrelation_plot(df2["size"])
 plt.savefig(sys.argv[2])
 plt.clf()
 df2["size"].plot()
-plt.savefig("sizetraj.png")
+
