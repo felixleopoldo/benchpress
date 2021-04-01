@@ -278,6 +278,14 @@
                             "items": {
                                 "$ref": "#/definitions/gg_singlepair"
                             }
+                        },
+                        "gg_singlepair_fortran": {
+                            "description": "Guidici & Green Fortran implementation",
+                            "title": "Guidici & Green id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/gg_singlepair_fortran"
+                            }
                         }
                         
                     },
@@ -904,6 +912,25 @@
                 "n_samples",
                 "penalty",
                 "randomits"
+            ]
+        },
+        "gg_singlepair_fortran": {
+            "title": "Guidici & Green algorithm for sampling from decomposable graph distributions",
+            "description": "Guidici & Green algorithm for learning decomopasble graphs.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "n": {
+                    "$ref": "#/definitions/flexnonnegint"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "n"
             ]
         },
         "fges": {

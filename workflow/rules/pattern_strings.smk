@@ -16,6 +16,8 @@ pattern_strings["greenthomas"] = "greenthomas/alg_params=/"+dict_to_path(config[
 
 pattern_strings["gg_singlepair"] = "gg_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg_singlepair"])
 
+pattern_strings["gg_singlepair_fortran"] = "gg_singlepair_fortran/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg_singlepair_fortran"])
+
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
 
 pattern_strings["blip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["blip"])

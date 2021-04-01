@@ -47,6 +47,7 @@ rule gg_singlepair:
     shell:
         alg_shell("gg_singlepair")
 
+
 rule summarise_gg_singlepair:
     input:
         "workflow/scripts/run_summarise.R",
@@ -625,3 +626,14 @@ rule join_summaries_trilearn_loglin:
         "Input: {input}"
     script:
         "../scripts/join_csv_files.R"
+
+rule gg_singlepair_fortran:
+    input:
+        data = alg_input_data()
+    output:
+        adjvecs = alg_output_adjvecs_path("gg_singlepair_fortran"),
+        time = alg_output_time_path("gg_singlepair_fortran")
+    singularity:
+        docker_image("greenfortran")
+    shell:
+        alg_shell("gg_singlepair_fortran")

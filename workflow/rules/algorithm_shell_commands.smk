@@ -23,7 +23,6 @@ def alg_shell(algorithm):
             "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
             "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
             "&& echo 1 > {output.time}"
-            #"&& /usr/bin/time -f \"%e\" -o {output.time} " \
 
     elif algorithm == "notears":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
@@ -163,3 +162,13 @@ def alg_shell(algorithm):
                 "&& pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {output.adjvecs}.tmp -o . -F {output.adjvecs} " \
                 "&& rm {output.adjvecs}.tmp " \
                 "&& echo '1' > {output.time} "
+
+
+    elif algorithm == "gg_singlepair_fortran":
+        return  "out=$RANDOM.csv " \
+                "&& data=$RANDOM.csv " \
+                "&& cp {input.data} $data " \
+                "&& /ggsampler/jt -v`head -1 {input.data} | sed 's/[^,]//g' | wc -c` -n{wildcards.n} -b0 -m3 $data -pfx $out -s1 " \
+                "&& mv $out {output.adjvecs} "\
+                "&& rm $data "\
+                "&& echo 1 > {output.time}"

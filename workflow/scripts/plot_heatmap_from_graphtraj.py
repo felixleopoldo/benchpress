@@ -9,11 +9,11 @@ import sys
 sns.set_style("whitegrid")
 
 def edges_str_to_list(str):
-    edges_str = str[1:-1].split(",")
+    edges_str = str[1:-1].split(";")
     edges = [(int(edge.split("-")[0]), int(edge.split("-")[1])) for edge in edges_str if len(edge.split("-"))==2]
     return edges
 
-df = pd.read_csv(sys.argv[1], sep=";")
+df = pd.read_csv(sys.argv[1], sep=",")
 
 adjmat = None
 g = nx.Graph()
