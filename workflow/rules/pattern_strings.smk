@@ -50,6 +50,8 @@ pattern_strings["gfci"] = "gfci/alg_params=/"+dict_to_path(config["resources"]["
 
 pattern_strings["rfci"] = "rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rfci"])
 
+pattern_strings["glasso"] = "glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["glasso"])
+
 pattern_strings["mcmc_est"] = "estimation_method/"\
                             "threshold={threshold}/"\
                             "burnin={burnin}"

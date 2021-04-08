@@ -24,3 +24,10 @@ services:
         - ./:/myappdir/benchmark_local
     ports:
         - "8080:8080"
+  datascience-python:
+    image: civisanalytics/datascience-python
+    volumes: 
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: $DISPLAY
+      MPLBACKEND: Agg

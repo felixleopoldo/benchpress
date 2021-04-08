@@ -163,7 +163,6 @@ def alg_shell(algorithm):
                 "&& rm {output.adjvecs}.tmp " \
                 "&& echo '1' > {output.time} "
 
-
     elif algorithm == "gg_singlepair_fortran":
         return  "out=$RANDOM.csv " \
                 "&& data=$RANDOM.csv " \

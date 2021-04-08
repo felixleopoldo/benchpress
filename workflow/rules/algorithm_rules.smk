@@ -1,3 +1,42 @@
+rule glasso:
+    input:
+        data = alg_input_data()
+    output:
+        adjmat = alg_output_adjmat_path("glasso"),
+        time = alg_output_time_path("glasso")
+    singularity:
+        docker_image("pydatascience")
+    message:
+        "Executing glasso algorithm on the following files: {input}."
+    script:
+        "../scripts/glasso.py"
+    #shell:
+    #    alg_shell("glasso")
+
+rule summarise_glasso:
+    input:
+        "workflow/scripts/run_summarise.R",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("glasso"),
+        time = summarise_alg_input_time_path("glasso")
+    output:
+        res = summarise_alg_output_res_path("glasso")
+    message:
+        "Summarising glasso results based on the files: {input}."
+    shell:
+        summarise_alg_shell("glasso")
+       
+rule join_summaries_glasso:
+    input:
+        conf=configfilename,
+        res=join_string_sampled_model("glasso")
+    output:
+        join_summaries_output("glasso")
+    script:
+        "../scripts/join_csv_files.R"
+
+
 rule greenthomas:
     input:
         data = alg_input_data()

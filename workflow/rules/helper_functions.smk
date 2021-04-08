@@ -302,3 +302,5 @@ def docker_image(algorithm):
         return "docker://onceltuca/jmoss20notears:1.4"
     elif algorithm == "greenfortran":
         return "docker://onceltuca/guidicigreen1999"
+    elif algorithm ==  "pydatascience":
+        return "docker://civisanalytics/datascience-python"

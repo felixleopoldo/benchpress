@@ -48,6 +48,9 @@ json_string.update({val["id"]:  expand(pattern_strings["tabu"], **val)
 json_string.update({val["id"]:  expand(pattern_strings["hc"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["hc"]})
 
+json_string.update({val["id"]:  expand(pattern_strings["glasso"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["glasso"]})
+
 json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"], 
                     alpha=val["alpha"],
                     beta=val["beta"],

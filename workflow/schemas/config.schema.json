@@ -286,7 +286,16 @@
                             "items": {
                                 "$ref": "#/definitions/gg_singlepair_fortran"
                             }
+                        },
+                        "glasso": {
+                            "description": "GLasso scikit-learn implementation",
+                            "title": "GLasso",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/glasso"
+                            }
                         }
+
                         
                     },
                     "additionalProperties": false
@@ -858,6 +867,51 @@
                 "palim",
                 "alpha",
                 "prune"
+            ]
+        },
+        "glasso": {
+            "title": "GLasso algorithm",
+            "description": "GLasso instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "mode": {
+                    "type": "string",
+                    "enum": ["cd", "lars"]
+                },
+                "max_iter": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "tol": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "enet_tol": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "verbose": {
+                    "type": "boolean"
+                },
+                "assume_centered": {
+                    "type": "boolean"
+                }
+
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "mode",
+                "max_iter",
+                "alpha",
+                "tol",
+                "enet_tol",
+                "verbose",
+                "assume_centered"
             ]
         },
         "greenthomas": {

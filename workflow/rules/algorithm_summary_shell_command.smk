@@ -87,6 +87,26 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname loss_grad           --colval {wildcards.loss_grad} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
+    elif algorithm == "glasso":
+        return  "Rscript workflow/scripts/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename_data {input.data} " \
+        "--range_header_data 1 " \ 
+        "--filename {output.res} " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname algorithm       --colval glasso " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+        " && python workflow/scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname mode            --colval {wildcards.mode} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname tol             --colval {wildcards.tol} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname enet_tol        --colval {wildcards.enet_tol} " \ 
+        " && python workflow/scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname assume_centered --colval {wildcards.assume_centered} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     if algorithm == "hc":
         return  "Rscript workflow/scripts/run_summarise.R " \
