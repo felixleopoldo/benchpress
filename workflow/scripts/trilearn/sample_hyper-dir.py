@@ -26,8 +26,8 @@ parameters = loglin.sample_hyper_consistent_parameters(graph, pseudo_obs,
 parameters_flattened = {}
 parameters_flattened["no_levels"] = n_levels
 for key, val in parameters.iteritems():
-    props = {}    
-    props["parameters"] = list(val.reshape(np.prod(val.shape)))
+    props = {}
+    props["parameters"] = list(val.reshape(int(np.prod(val.shape))))
     props["clique_nodes"] = list(key)
     parameters_flattened[str(list(key))] = props
 

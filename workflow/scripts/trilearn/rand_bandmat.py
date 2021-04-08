@@ -2,11 +2,12 @@ from trilearn.graph import decomposable as dlib
 import networkx as nx
 import numpy as np
 import pandas as pd
+import sys
 
-seed = int(snakemake.wildcards["seed"])
-dim = int(snakemake.wildcards["dim")]
-max_bandwidth = int(snakemake.wildcards["max_bandwidth"])
-filename = snakemake.output["adjmat"]
+seed = int(sys.argv[2])
+dim = int(sys.argv[3])
+max_bandwidth = int(sys.argv[4])
+filename = sys.argv[1]
 
 np.random.seed(seed)
 g = dlib.sample_random_AR_graph(dim, max_bandwidth)

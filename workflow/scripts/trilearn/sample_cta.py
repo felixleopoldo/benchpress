@@ -2,12 +2,13 @@ from trilearn.graph import decomposable as dlib
 import networkx as nx
 import numpy as np
 import pandas as pd
+import sys
 
-seed = int(snakemake.wildcards["seed"])
-dim = int(snakemake.wildcards["dim"])
-alpha = float(snakemake.wildcards["alpha"])
-beta = float(snakemake.wildcards["beta"])
-filename = snakemake.output["adjmat"]
+seed = int(sys.argv[2])
+dim = int(sys.argv[3])
+alpha = float(sys.argv[4])
+beta = float(sys.argv[5])
+filename = sys.argv[1]
 
 np.random.seed(seed)
 g = dlib.sample(dim, alpha=alpha, beta=beta)

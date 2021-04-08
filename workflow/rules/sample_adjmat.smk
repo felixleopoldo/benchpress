@@ -19,8 +19,8 @@ rule sample_adjmat_cta:
         adjmat = "{output_dir}/adjmat/" + pattern_strings["cta"] + "/seed={replicate}.csv"
     singularity:
         docker_image("trilearn_loglin")
-    script:
-        "../scripts/trilearn/sample_cta.py" 
+    shell:
+        "python workflow/scripts/trilearn/sample_cta.py {output.adjmat} {wildcards.replicate} {wildcards.order} {wildcards.alpha} {wildcards.beta} "
 
 rule gen_bandmat:
     output:
@@ -29,16 +29,14 @@ rule gen_bandmat:
         docker_image("trilearn_loglin")
     shell:
         "python workflow/scripts/trilearn/gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
-#    script:
-#        "../scripts/trilearn/gen_bandmat.py" 
 
 rule rand_bandmat:
     output:
         adjmat = "{output_dir}/adjmat/" + pattern_strings["rand_bandmat"] + "/seed={replicate}.csv"
     singularity:
         docker_image("trilearn_loglin")
-    script:
-        "../scripts/trilearn/rand_bandmat.py" 
+    shell:
+        "python workflow/scripts/trilearn/rand_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.max_bandwidth}"
 
 rule fixed_adjmat:
     input:

@@ -2,10 +2,10 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "jonesp15.csv",
-                "parameters_id": null,
-                "data_id": "jonesp15_discrete_loglin.csv",
-                "seed_range": null
+                "graph_id": "cta",
+                "parameters_id": "disc-loglin",
+                "data_id": "iid1000",
+                "seed_range": [1,1]
             }
         ],
         "evaluation": {
@@ -19,11 +19,10 @@
                 "gg99_fortran","trilearn_loglin"
             ],
             "adjmat_plots": [
-
-                "glasso"
+                "greenthomas",
+                "guidicigreen"                
             ],
             "graph_plots": [
-                "glasso",
                 "greenthomas",
                 "guidicigreen"
             ],
@@ -36,9 +35,9 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "iid100",
+                    "id": "iid1000",
                     "sample_sizes": [
-                        200
+                        1000
                     ]
                 },
                 {
@@ -77,10 +76,10 @@
             ],
             "cta": [
                 {
-                    "id": "cta-chordal",
+                    "id": "cta",
                     "order": 10,
                     "alpha": 0.5,
-                    "beta": 0.5
+                    "beta": 0.9
                 }
             ],
             "bandmat": [
