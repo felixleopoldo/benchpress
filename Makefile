@@ -2,6 +2,7 @@
 cleanres:
 		rm -f results/*.csv
 		rm -f results/*.eps
+		rm -f results/*.ps
 
 clean: 
 		rm -r results

@@ -1,6 +1,7 @@
 def alg_shell(algorithm):
     if algorithm == "greenthomas":
-        return "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
+        return "if [ {wildcards.datatype} = \"discrete\"  ]; then " \            
+            "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
             "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
             "&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
             "-s 0 "\
@@ -9,11 +10,24 @@ def alg_shell(algorithm):
             "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
             "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
             "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
-            "&& echo 1 > {output.time}"
+            "&& echo 1 > {output.time} ;"\
+            "elif [ {wildcards.datatype} = \"continuous\"  ]; then  " \
+            "tail -n +2 {input.data} > {output.adjmat}.noheader " \ 
+            "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
+            "&& java -classpath /thomasgreen EstimateGaussianGM -v 0 " \
+            "-s 0 "\
+            "-n {wildcards.n_samples} "\
+            "-r {wildcards.randomits} "\
+            "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
+            "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
+            "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+            "&& echo 1 > {output.time} ;"\
+            "fi " 
             #"&& /usr/bin/time -f \"%e\" -o {output.time} " \
 
     elif algorithm == "gg_singlepair":
-        return "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
+        return "if [ {wildcards.datatype} = \"discrete\"  ]; then " \
+            "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
             "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
             "&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
             "-s 2 "\
@@ -22,7 +36,19 @@ def alg_shell(algorithm):
             "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
             "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
             "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
-            "&& echo 1 > {output.time}"
+            "&& echo 1 > {output.time} ;" \
+            "elif [ {wildcards.datatype} = \"continuous\"  ]; then  " \
+            "tail -n +2 {input.data} > {output.adjmat}.noheader " \ 
+            "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
+            "&& java -classpath /thomasgreen EstimateGaussianGM -v 0 " \
+            "-s 2 "\
+            "-n {wildcards.n_samples} "\
+            "-r {wildcards.randomits} "\
+            "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
+            "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
+            "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+            "&& echo 1 > {output.time} ;" \
+            "fi"
 
     elif algorithm == "notears":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
@@ -49,6 +75,7 @@ def alg_shell(algorithm):
             "--prior {wildcards.prior} " \
             "--beta {wildcards.beta} " \
             "--filename {output.adjmat} " 
+            
 
     if algorithm == "hc":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  

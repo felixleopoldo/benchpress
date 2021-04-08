@@ -2,15 +2,15 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "cta",
-                "parameters_id": "disc-loglin",
-                "data_id": "iid1000",
-                "seed_range": [1,1]
+                "graph_id": "greenthomas2013_ar2.csv",
+                "parameters_id": null,
+                "data_id": "greenthomas2013_decomposable_gic_n50_p400.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
             "ROC": [
-                "greenthomas", "glasso"
+                "greenthomas-cont", "glasso"
             ],
             "mcmc_traj_plots": [
                 "gg99_fortran", "trilearn_loglin"
@@ -19,12 +19,11 @@
                 "gg99_fortran","trilearn_loglin"
             ],
             "adjmat_plots": [
-                "greenthomas",
-                "guidicigreen"                
+                "glasso", "greenthomas-cont", "guidicigreen-cont"
             ],
             "graph_plots": [
-                "greenthomas",
-                "guidicigreen"
+                "greenthomas-cont",
+                "guidicigreen-cont"
             ],
             "autocorr_plots": [
                 "gg99_fortran","trilearn_loglin"
@@ -77,23 +76,23 @@
             "cta": [
                 {
                     "id": "cta",
-                    "order": 10,
+                    "order": 50,
                     "alpha": 0.5,
-                    "beta": 0.9
+                    "beta": 0.7
                 }
             ],
             "bandmat": [
                 {
                     "id": "AR2",
-                    "bandwidth": 3,
-                    "dim": 10
+                    "bandwidth": 2,
+                    "dim": 50
                 }
             ],
             "rand_bandmat": [
                 {
                     "id": "AR1-5",
                     "max_bandwidth": 5,
-                    "dim": 10
+                    "dim": 50
                 }
             ]
         },
@@ -117,6 +116,19 @@
                     "id": "disc-loglin",
                     "n_levels": 2,
                     "pseudo_obs": 1.0
+                }
+            ],
+            "intra-class":[
+                {
+                    "id":"intra-class",
+                    "rho": 0.51,
+                    "sigma2": 1.0
+                }
+            ],
+            "g_inv_wishart":[
+                {
+                    "id":"giw",
+                    "dof": 1
                 }
             ]
         },
@@ -147,7 +159,7 @@
                 {
                     "id":"glasso",
                     "mode":"cd",
-                    "alpha": 0.01,
+                    "alpha": [0.05, 0.2],
                     "tol": 0.0004,
                     "enet_tol": 0.0004,
                     "max_iter": 100,
@@ -227,17 +239,19 @@
             ],
             "greenthomas": [
                 {
-                    "id": "greenthomas",
+                    "id": "greenthomas-cont",
                     "n_samples": [
                         1000000
                     ],
+                    "datatype":"continuous",
                     "randomits": 1000,
                     "penalty": 0
                 }
             ],
             "gg_singlepair": [
                 {
-                    "id": "guidicigreen",
+                    "id": "guidicigreen-cont",
+                    "datatype":"continuous",
                     "n_samples": 100000,
                     "randomits": 1000,
                     "penalty": 0

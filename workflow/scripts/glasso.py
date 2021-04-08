@@ -13,7 +13,8 @@ X = df.values
 
 start = time.clock()
 cov = GraphicalLasso().fit(X)
-adjmat = (np.around(np.abs(cov.precision_), decimals=3) > 0) * 1
+adjmat = (np.around(np.abs(cov.precision_), decimals=3) > 0.01) * 1
+
 tottime = time.clock() - start
 
 time_filename = snakemake.output["time"]

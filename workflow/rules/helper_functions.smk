@@ -196,6 +196,14 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         curconf = next(item for item in config["resources"]["parameters"]["hyper-dir"] if item["id"] == gen_method_id)
         return expand(pattern_strings["hyper-dir"] + "/seed={seed}", **curconf, seed=seed)
 
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["intra-class"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["intra-class"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["intra-class"] + "/seed={seed}", **curconf, seed=seed)
+
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["g_inv_wishart"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["g_inv_wishart"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["g_inv_wishart"] + "/seed={seed}", **curconf, seed=seed)
+
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 

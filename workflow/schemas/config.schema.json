@@ -91,7 +91,32 @@
                                 "$ref": "#/definitions/DAGavparents"
                             },
                             "uniqueItems": true
+                        },
+                        "cta": {
+                            "title": "Christmas tree algorithm id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/cta"
+                            },
+                            "uniqueItems": true
+                        },
+                        "bandmat": {
+                            "title": "Band matrix id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bandmat"
+                            },
+                            "uniqueItems": true
+                        },
+                        "rand_bandmat": {
+                            "title": "Random sized band matrix id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/rand_bandmat"
+                            },
+                            "uniqueItems": true
                         }
+
                     },
                     "additionalProperties": true
                 },
@@ -123,6 +148,33 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/pcalg_sem_params"
+                            },
+                            "uniqueItems": true
+                        },
+                        "hyper-dir": {
+                            "title": "List of Hyper-Dirichlet id's",
+                            "description": "List of hyper-dir id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/hyper-dir"
+                            },
+                            "uniqueItems": true
+                        },
+                        "intra-class": {
+                            "title": "List of graph intra-class id's",
+                            "description": "List of intra-class id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/intra-class"
+                            },
+                            "uniqueItems": true
+                        },
+                        "g_inv_wishart": {
+                            "title": "List of graph inverse-Wishart id's",
+                            "description": "List of graph inverse-Wishart id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/g_inv_wishart"
                             },
                             "uniqueItems": true
                         }
@@ -381,6 +433,77 @@
             ],
             "additionalProperties": false
         },
+        "cta": {
+            "title": "CTA decomposable graph sampling",
+            "description": "Graph sampling method provided by the trilearn package. \n Documentation: https://github.com/felixleopoldo/trilearn",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "order": {
+                    "$ref": "#definitions/flexnonnegint"
+                },
+                "alpha": {
+                    "$ref": "#definitions/flexprob"
+                },
+                "beta": {
+                    "$ref": "#definitions/flexprob"
+                }
+            },
+            "required": [
+                "id",
+                "order",
+                "alpha",
+                "beta"
+            ],
+            "additionalProperties": false
+        },
+        "bandmat": {
+            "title": "Band matrix",
+            "description": "A graph with a band structured adjacency matrix",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "dim": {
+                    "$ref": "#definitions/flexnonnegint"
+                },
+                "bandwidth": {
+                    "$ref": "#definitions/flexnonnegint"
+                }
+            },
+            "required": [
+                "id",
+                "dim",
+                "bandwidth"
+            ],
+            "additionalProperties": false
+        },
+        "rand_bandmat": {
+            "title": "Random band matrix",
+            "description": "A graph with a band structured adjacency matrix with random width",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "dim": {
+                    "$ref": "#definitions/flexnonnegint"
+                },
+                "max_bandwidth": {
+                    "$ref": "#definitions/flexnonnegint"
+                }
+            },
+            "required": [
+                "id",
+                "dim",
+                "max_bandwidth"
+            ],
+            "additionalProperties": false
+        },
+
         "roc_item": {
             "title": "ROC item",
             "description": "ROC item",
@@ -545,6 +668,70 @@
             ],
             "additionalProperties": false
         },
+        "hyper-dir": {
+            "title": "Hyper-Dirichlet",
+            "description": "Parameter setting for a hyper Dirichlet distribution",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "n_levels": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "pseudo_obs": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                }
+            },
+            "required": [
+                "n_levels",
+                "pseudo_obs",
+                "id"
+            ],
+            "additionalProperties": false
+        },
+        "intra-class": {
+            "title": "Graph intra-class model",
+            "description": "Parameter setting for a graph intra-class model",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "rho": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "sigma2": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                }
+            },
+            "required": [
+                "rho",
+                "sigma2",
+                "id"
+            ],
+            "additionalProperties": false
+        },
+        "g_inv_wishart": {
+            "title": "Graph graph inverse-Wishart model",
+            "description": "Parameter setting for a graph inverse-Wishart model",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "dof": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                }
+            },
+            "required": [
+                "dof",
+                "id"
+            ],
+            "additionalProperties": false
+        },
+
+
         "pcalg_sem_params": {
             "title": "PCalg SEM params",
             "description": "Parameter setting for PC alg DAG sampling",
@@ -923,6 +1110,10 @@
                     "type": "string",
                     "description": "Unique identifier"
                 },
+                "datatype":{
+                    "type":"string",
+                    "enum": ["discrete", "continuous"]
+                },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
@@ -949,6 +1140,10 @@
                 "id": {
                     "type": "string",
                     "description": "Unique identifier"
+                },
+                "datatype":{
+                    "type":"string",
+                    "enum": ["discrete", "continuous"]
                 },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"

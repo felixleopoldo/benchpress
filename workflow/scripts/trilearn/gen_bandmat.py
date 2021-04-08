@@ -15,5 +15,4 @@ g = dlib.gen_AR_graph(dim, width=bandwidth)
 m = nx.to_numpy_matrix(g)
 
 df = pd.DataFrame(m, dtype=int)
-
 df.to_csv(filename, index=None)

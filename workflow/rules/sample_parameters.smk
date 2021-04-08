@@ -64,5 +64,29 @@ rule hyper_dir:
         docker_image("trilearn_loglin")
     shell:
         "python workflow/scripts/trilearn/sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
-#    script:
-#        "../scripts/trilearn/sample_hyper-dir.py" 
+
+rule intra_class_cov:
+    input:
+        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+    output:
+        params = "{output_dir}/bn/" + \
+                pattern_strings["intra-class"] + "/" \
+                "seed={seed}/"+\
+                "adjmat=/{adjmat}/seed={seed}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
+
+rule g_inv_wishart:
+    input:
+        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+    output:
+        params = "{output_dir}/bn/" + \
+                pattern_strings["g_inv_wishart"] + "/" \
+                "seed={seed}/"+\
+                "adjmat=/{adjmat}/seed={seed}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"

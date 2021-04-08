@@ -73,5 +73,7 @@ pattern_strings["rand_bandmat"] = "rand_bandmat/" + dict_to_path(config["resourc
 pattern_strings["pcalg_sem_params"] = "pcalg_sem_params/" + dict_to_path(config["resources"]["parameters"]["pcalg_sem_params"])
 pattern_strings["generateBinaryBN"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["generateBinaryBN"])
 pattern_strings["hyper-dir"] = "hyper-dir/" + dict_to_path(config["resources"]["parameters"]["hyper-dir"])
+pattern_strings["intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["intra-class"])
+pattern_strings["g_inv_wishart"] = "g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["g_inv_wishart"])
 #pattern_strings["notears_parameters_sampling"] = "notears/" + dict_to_path(config["resources"]["parameters"]["notears_parameters_sampling"])
 

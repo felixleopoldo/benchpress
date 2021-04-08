@@ -64,8 +64,33 @@ rule sample_loglindata:
         docker_image("trilearn_loglin")
     shell:
         "python workflow/scripts/trilearn/sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
-#    script:
-#        "../scripts/trilearn/sample_loglin_data.py"
+
+rule sample_intra_class_data:
+    input:
+        cov="{output_dir}/bn/intra-class/{bn}/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/bn=/intra-class/{bn}"\
+             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+
+rule sample_g_inverse_wishart:
+    input:
+        cov="{output_dir}/bn/g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/bn=/g_inv_wishart/{bn}"\
+             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn_loglin")
+    shell:
+        "python workflow/scripts/trilearn/sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+
 
 rule copy_fixed_data:
     input:
