@@ -907,6 +907,10 @@
                     "desciption": "Algorithm identifier",
                     "type": "string"
                 },
+                "datatype":{
+                    "type":"string",
+                    "enum": ["discrete", "continuous"]
+                },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
@@ -922,6 +926,7 @@
             },
             "required": [
                 "id",
+                "datatype",
                 "alpha",
                 "beta",
                 "radii",

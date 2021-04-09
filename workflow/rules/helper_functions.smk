@@ -301,7 +301,7 @@ def summarise_alg_input_adjmat_est_path(algorithm):
 
 def docker_image(algorithm):
     if algorithm == "trilearn_loglin":
-        return "docker://onceltuca/trilearn:1.21"
+        return "docker://onceltuca/trilearn:1.22"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:1.6.3"
     elif algorithm == "thomasjava":

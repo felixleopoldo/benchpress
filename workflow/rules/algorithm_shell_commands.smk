@@ -184,11 +184,12 @@ def alg_shell(algorithm):
                 'rm {output.adjmat}.txt'
 
     elif algorithm == "trilearn_loglin":
-        return "cp {input} {output.adjvecs}.tmp " \
-                "&& sed --in-place 's/\ /,/g' {output.adjvecs}.tmp " \
-                "&& pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {output.adjvecs}.tmp -o . -F {output.adjvecs} " \
-                "&& rm {output.adjvecs}.tmp " \
-                "&& echo '1' > {output.time} "
+        return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\
+                "pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs}; " \  
+                "elif [ {wildcards.datatype} = \"continuous\" ]; then " \
+                "pgibbs_ggm_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs}; " \  
+                "fi " \
+                "&& echo '1' > {output.time} " 
 
     elif algorithm == "gg_singlepair_fortran":
         return  "out=$RANDOM.csv " \

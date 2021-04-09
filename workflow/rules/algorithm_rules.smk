@@ -1,6 +1,7 @@
 rule glasso:
     input:
-        data = alg_input_data()
+        data = alg_input_data(),
+        glasso="workflow/scripts/glasso.py"
     output:
         adjmat = alg_output_adjmat_path("glasso"),
         time = alg_output_time_path("glasso")

@@ -51,18 +51,11 @@ json_string.update({val["id"]:  expand(pattern_strings["hc"], **val)
 json_string.update({val["id"]:  expand(pattern_strings["glasso"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["glasso"]})
 
-json_string.update({val["id"]: expand(pattern_strings["trilearn_loglin"], 
-                    alpha=val["alpha"],
-                    beta=val["beta"],
-                    N=val["N"],
-                    M=val["M"],
-                    pseudo_obs=val["pseudo_obs"],
-                    radii=val["radii"]
-                    )
-               for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
+json_string.update({val["id"]:  expand(pattern_strings["trilearn_loglin"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
 
 json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
-                for val in config["resources"]["structure_learning_algorithms"]["blip"]})
+                    for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...\
 json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 

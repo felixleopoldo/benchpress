@@ -12,7 +12,7 @@ filename = sys.argv[1] #snakemake.output["adjmat"]
 np.random.seed(seed)
 g = dlib.gen_AR_graph(dim, width=bandwidth)
 
-m = nx.to_numpy_matrix(g)
+m = nx.to_numpy_matrix(g) - np.identity(g.order())
 
 df = pd.DataFrame(m, dtype=int)
 df.to_csv(filename, index=None)
