@@ -35,18 +35,21 @@
             "standard_sampling": [
                 {
                     "id": "iid1000",
+                    "standardized":true,
                     "sample_sizes": [
                         1000
                     ]
                 },
                 {
                     "id": "binary_bn",
+                    "standardized":false,
                     "sample_sizes": [
                         160
                     ]
                 },
                 {
                     "id": "sem",
+                    "standardized":false,
                     "sample_sizes": [
                         320,
                         640
@@ -54,6 +57,7 @@
                 },
                 {
                     "id": "hepar2",
+                    "standardized":false,
                     "sample_sizes": 2000
                 }
             ]

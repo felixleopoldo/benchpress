@@ -231,13 +231,17 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
         data = next(item for item in config["resources"]["data"]["standard_sampling"] if item["id"] == data_id)
         if seed_in_path:
             return expand("standard_sampling" +\
+                            "/standardized={standardized}" + \ 
                             "/n={n}" + \
                             "/seed={seed}", 
                             n = data["sample_sizes"],
+                            standardized = data["standardized"],
                             seed = seed)
         else:
             return expand("standard_sampling" +\
+                        "/standardized={standardized}" + \ 
                             "/n={n}",
+                            standardized = data["standardized"],
                             n = data["sample_sizes"])
         #return expand("standard_sampling" +\
         #                "/n={n}",

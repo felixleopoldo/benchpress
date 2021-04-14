@@ -91,6 +91,17 @@ rule sample_g_inverse_wishart:
     shell:
         "python workflow/scripts/trilearn/sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
+rule standardize:
+    input:
+        data="{output_dir}/data" \
+             "/{model}"\
+             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/{model}"\
+             "/data=/standard_sampling/standardized={standardized}/n={n}/seed={replicate}.csv"
+    script:
+        "../scripts/standardize.R"
 
 rule copy_fixed_data:
     input:

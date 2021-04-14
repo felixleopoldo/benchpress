@@ -593,11 +593,15 @@
                 },
                 "sample_sizes": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "standardized":{
+                    "type":"boolean"
                 }
             },
             "required": [
                 "id",
-                "sample_sizes"
+                "sample_sizes",
+                "standardized"
             ],
             "additionalProperties": false
         },
