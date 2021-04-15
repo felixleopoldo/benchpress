@@ -10,7 +10,6 @@ argv <- parse_args(p)
 fges_result_to_matrix <- function(graph) {
   nodes <- c()
   for (node in graph$nodes) {
-    #print(node$name)
     nodes <- c(nodes, node$name)
   }
   p <- length(nodes)

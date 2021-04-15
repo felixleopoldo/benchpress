@@ -84,14 +84,6 @@
                             },
                             "uniqueItems": true
                         },
-                        "DAGavparents": {
-                            "title": "DAGavparents DAG sampling id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/DAGavparents"
-                            },
-                            "uniqueItems": true
-                        },
                         "cta": {
                             "title": "Christmas tree algorithm id's",
                             "type": "array",

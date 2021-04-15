@@ -262,9 +262,26 @@ rule mcmc_heatmap_plot:
 
 rule adjmat_plot:
     input:
-        matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv",
+        "workflow/scripts/plot_matrix_as_heatmap.py",
+        #matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv",
+        matrix_filename="{output_dir}/adjmat_estimate/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "adjmat.csv"
     output:
-        plot_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.eps"
+        #plot_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.eps"
+        plot_filename="{output_dir}/adjmat_estimate/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "bn=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "adjmat.eps"
+    params:
+        title="{adjmat_string}\n{param_string}\n{data_string}\n{alg_string}"
     singularity:
         "docker://civisanalytics/datascience-python:latest"
     script:
@@ -272,9 +289,12 @@ rule adjmat_plot:
 
 rule adjmat_true_plot:
     input:
-        matrix_filename="{output_dir}/adjmat/{adjmat}.csv" 
+        "workflow/scripts/plot_matrix_as_heatmap.py",
+        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
     output:
-        plot_filename = "{output_dir}/adjmat/{adjmat}.eps"
+        plot_filename = "{output_dir}/adjmat/{adjmat_string}.eps"
+    params:
+        title="{adjmat_string}.csv"
     singularity:
         "docker://civisanalytics/datascience-python:latest"
     script:
@@ -348,14 +368,14 @@ rule autocorr_plots:
             shell("cp "+f+" results/autocorr_" +str(i) +".eps")
 
 rule adjmat_plots:
-    input:
+    input:        
         adjmat_plots()
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/adjmat_" +str(i) +".eps")
 
 rule adjmat_true_plots:
-    input:
+    input:        
         adjmat_true_plots()
     run:
         for i,f in enumerate(input):

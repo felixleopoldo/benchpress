@@ -3,7 +3,7 @@
         "data": [
             {
                 "graph_id": "maxparents4",
-                "parameters_id": "binbn",
+                "parameters_id": "SEM",
                 "data_id": "standardized160",
                 "seed_range": [
                     1,
@@ -13,8 +13,11 @@
         ],
         "evaluation": {
             "ROC": [
-                "tabu-bde",
-                "mmhc-bde-mi"
+                "fci-fisher-z",
+                "fges-sem-bic",
+                "gfci-sem-bic-fisher-z",
+                "pcalg-gaussCItest"
+                
             ],
             "mcmc_traj_plots": [
                 "trilearn-disc"
@@ -23,8 +26,10 @@
                 "trilearn-cont"
             ],
             "adjmat_plots": [
-                "tabu-bde",
-                "mmhc-bde-mi"
+                "fci-fisher-z",
+        "fges-sem-bic",
+        "gfci-sem-bic-fisher-z",
+        "pcalg-gaussCItest"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -49,7 +54,7 @@
                     "id": "standardized160",
                     "standardized":true,
                     "sample_sizes": [
-                        162
+                        150
                     ]
                 },
                 {
@@ -75,6 +80,13 @@
             ]
         },
         "graph": {
+            "DAGavparents": [
+                {
+                    "id": "DAG80",
+                    "av_parents": 2,
+                    "dim": 80
+                }
+            ],
             "generateDAGMaxParents": [
                 {
                     "id": "maxparents4",
@@ -436,6 +448,7 @@
                 {
                     "id": "pcalg-gaussCItest",
                     "alpha": [
+                        0.001,
                         0.01,
                         0.05,
                         0.1,
