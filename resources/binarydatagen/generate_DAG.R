@@ -33,18 +33,19 @@ generateDAGs <- function(n, e, n_dags) {
 #' @return
 #' @export
 #'
-#' @examples
-generateDAGMaxParents <- function(n, d, maxneib = 5){
-
+#' @examples 
+#' 
+randDAGMaxParents <- function(n, d, method ="er", par1=NULL, par2=NULL,
+                                 DAG = TRUE, weighted = TRUE, max_parents = 5){
   mydag <- NULL
-  while (maxneib > 4) {
+  parents <- Inf
+  adj <- NULL
+  while (parents > max_parents) {
     # here we make sure graphs do not have to big parent sets
     # here we can define the type of the graph
-    # mydag<-randDAG(n, d=2, method ="er")
-    mydag <- randDAG(n, d = d, method = "barabasi", par1 = 0.3)
-    # mydag<-randDAG(n, d=2, method ="power")
+    mydag <- randDAG(n, d = d, method = method, par1 = par1, par2=par2)
     adj <- dag2adjacencymatrix(mydag)
-    maxneib <- max(apply(adj, 2, sum))
+    parents <- max(apply(adj, 2, sum))
   }
-  return(mydag)
+  return(adj)
 }

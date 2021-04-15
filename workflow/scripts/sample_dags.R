@@ -1,34 +1,19 @@
 # Samples dags and saves to file
-library(argparser)
 library(BiDAG)
 library(gRbase)
 source("resources/binarydatagen/generate_DAG.R")
 source("resources/code_for_binary_simulations/make_name.R")
-p <- arg_parser("A program for generating a random directed acyclic graph.")
 
-p <- add_argument(p, "--filename", help = "output filename", default = "dag.rds")
-p <- add_argument(p, "--nodes", help = "Number of nodes", type = "numeric")
-p <- add_argument(p, "--parents", help = "Average number of parents", type = "numeric")
-p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
+filename <- snakemake@output[["adjmat"]] 
+n <- as.integer(snakemake@wildcards[["n"]]) 
+d <- as.integer(snakemake@wildcards[["d"]]) 
+par1 <- as.numeric(snakemake@wildcards[["par1"]]) 
+par2  <- as.numeric(snakemake@wildcards[["par2"]]) 
+method <- snakemake@wildcards[["method"]]
+max_parents <- as.integer(snakemake@wildcards[["max_parents"]]) 
+seed_number <- as.integer(snakemake@wildcards[["replicate"]]) 
 
-argv <- parse_args(p)
-
-dir <- argv$output_dir
-
-filename <- file.path(argv$filename)
-
-n <- argv$nodes
-avParents <- argv$parents
-seed_number <- argv$seed
 set.seed(seed_number)
-DAG <- generateDAGMaxParents(n = n, d = avParents)
-
-adjmat <- graphNEL2adjMAT(DAG)
-
-#varnames <- varnames.make(n)
-#rownames(adjmat) <- seq(n)
-#colnames(adjmat) <- seq(n)
-
-
+adjmat <- randDAGMaxParents(n = n, d = d, par1=par1, par2=par2, method=method, max_parents=max_parents)
 write.csv(adjmat, file = filename, quote = FALSE, row.names = FALSE)
 

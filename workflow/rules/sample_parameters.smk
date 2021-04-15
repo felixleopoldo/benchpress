@@ -43,14 +43,25 @@ rule sample_binary_bn:
 
 rule sample_pcalg_sem_params:
     input:
-        adjmat = "{output_dir}/adjmat/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv" 
+        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
     output:
         bn =    "{output_dir}/bn/" + \
                 pattern_strings["pcalg_sem_params"] + "/" \
                 "seed={seed}/"+\
-                "adjmat=/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv"
+                "adjmat=/{adjmat}/seed={seed}.csv"
     script:
         "../scripts/sample_pcalg_semparams.R" 
+
+# rule sample_pcalg_sem_params:
+#     input:
+#         adjmat = "{output_dir}/adjmat/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv" 
+#     output:
+#         bn =    "{output_dir}/bn/" + \
+#                 pattern_strings["pcalg_sem_params"] + "/" \
+#                 "seed={seed}/"+\
+#                 "adjmat=/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv"
+#     script:
+#         "../scripts/sample_pcalg_semparams.R" 
 
 rule hyper_dir:
     input:

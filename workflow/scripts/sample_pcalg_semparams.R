@@ -9,17 +9,15 @@ wFUN <- function(m, lb, ub){ # function for edge weights
 seed <- as.integer(snakemake@wildcards[["seed"]])
 min <- as.integer(snakemake@wildcards[["min"]])
 max <- as.integer(snakemake@wildcards[["max"]])
+
 filename <- snakemake@output[["bn"]] 
+adjmat <- as.matrix(read.csv(snakemake@input[["adjmat"]]))
 
-n <- as.integer(snakemake@wildcards[["dim"]])
-exp_parents <- as.integer(snakemake@wildcards[["av_parents"]])
+weight_mat <- adjmat
+colnames(weight_mat) <- seq(dim(adjmat)[1]) #colnames(adjmat)
 
-set.seed(seed)
-trueDAGedges <- as(pcalg::randDAG(  n = n, 
-                                    d = 2*exp_parents, 
-                                    wFUN = list(wFUN, min, max)), 
-                                    "matrix")
+n_edges <- sum(adjmat)
 
-colnames(trueDAGedges) <- seq(n)
+weight_mat[which(weight_mat==1)] <- wFUN(n_edges, min, max)
 
-write.csv(trueDAGedges, file = filename, row.names = FALSE, quote = FALSE)
+write.csv(weight_mat, file = filename, row.names = FALSE, quote = FALSE)

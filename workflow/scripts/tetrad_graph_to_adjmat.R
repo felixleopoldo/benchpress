@@ -32,7 +32,7 @@ fges_result_to_matrix <- function(graph) {
     }
 
   }
-  colnames(m) <- nodes # seq(p)
+  colnames(m) <- nodes 
   return(m)
 }
 graph <- fromJSON(file = argv$jsongraph)

@@ -2,15 +2,19 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "AR1-5",
-                "parameters_id": "intra-class",
-                "data_id": "iid1000",
-                "seed_range": [1, 1]
+                "graph_id": "maxparents4",
+                "parameters_id": "binbn",
+                "data_id": "standardized160",
+                "seed_range": [
+                    1,
+                    1
+                ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "greenthomas-cont", "glasso"
+                "tabu-bde",
+                "mmhc-bde-mi"
             ],
             "mcmc_traj_plots": [
                 "trilearn-disc"
@@ -19,7 +23,8 @@
                 "trilearn-cont"
             ],
             "adjmat_plots": [
-                "glasso", "greenthomas-cont", "guidicigreen-cont"
+                "tabu-bde",
+                "mmhc-bde-mi"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -34,14 +39,21 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "iid1000",
+                    "id": "iid1000std",
                     "standardized":true,
                     "sample_sizes": [
                         1000
                     ]
                 },
                 {
-                    "id": "binary_bn",
+                    "id": "standardized160",
+                    "standardized":true,
+                    "sample_sizes": [
+                        162
+                    ]
+                },
+                {
+                    "id": "discrete160",
                     "standardized":false,
                     "sample_sizes": [
                         160
@@ -63,18 +75,15 @@
             ]
         },
         "graph": {
-            "DAGavparents": [
-                {
-                    "id": "DAG80",
-                    "av_parents": 2,
-                    "dim": 80
-                }
-            ],
             "generateDAGMaxParents": [
                 {
-                    "id": "generateDAGMaxParents",
-                    "av_parents": 2,
-                    "dims": 10
+                    "id": "maxparents4",
+                    "max_parents": 4,
+                    "n": 80,
+                    "d": 3,
+                    "par1": 1,
+                    "par2": 1,
+                    "method": "er"
                 }
             ],
             "cta": [
@@ -103,7 +112,7 @@
         "parameters": {
             "generateBinaryBN": [
                 {
-                    "id": "generateBinaryBN",
+                    "id": "binbn",
                     "min": 0.1,
                     "max": 0.9
                 }

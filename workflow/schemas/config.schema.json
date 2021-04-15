@@ -613,43 +613,37 @@
                 "id": {
                     "type": "string"
                 },
-                "av_parents": {
+                "n": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "dims": {
+                "d": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "par1": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "par2": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "method": {
+                    "type":"string"
+                },
+                "max_parents": {
                     "$ref": "#/definitions/flexnonnegint"
                 }
+
             },
             "required": [
-                "av_parents",
-                "dims",
-                "id"
+                "id",
+                "max_parents",
+                "d",
+                "n",
+                "par1",
+                "par2",
+                "method"
             ],
             "additionalProperties": false
         },
-         "DAGavparents": {
-            "title": "DAGavparents",
-            "description": "An instance of pcalg DAG sampling. Sampling of a DAG with specified  averge number for parents for the nodes.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "av_parents": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "dim": {
-                    "$ref": "#/definitions/flexnonnegint"
-                }
-            },
-            "required": [
-                "av_parents",
-                "dim",
-                "id"
-            ],
-            "additionalProperties": false
-        }
-        ,
         "generateBinaryBN": {
             "title": "generateBinaryBN",
             "description": "Parameter setting for generateBinaryBN",
