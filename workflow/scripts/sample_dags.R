@@ -15,5 +15,8 @@ seed_number <- as.integer(snakemake@wildcards[["replicate"]])
 
 set.seed(seed_number)
 adjmat <- randDAGMaxParents(n = n, d = d, par1=par1, par2=par2, method=method, max_parents=max_parents)
-write.csv(adjmat, file = filename, quote = FALSE, row.names = FALSE)
+
+#write.csv(adjmat, file = filename, quote = FALSE, row.names = FALSE)
+
+write.table(adjmat, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
 

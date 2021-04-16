@@ -4,20 +4,16 @@
             {
                 "graph_id": "maxparents4",
                 "parameters_id": "SEM",
-                "data_id": "standardized160",
+                "data_id": "standardized",
                 "seed_range": [
                     1,
-                    1
+                    5
                 ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "fci-fisher-z",
-                "fges-sem-bic",
-                "gfci-sem-bic-fisher-z",
-                "pcalg-gaussCItest"
-                
+                "pcalg-gaussCItest"                
             ],
             "mcmc_traj_plots": [
                 "trilearn-disc"
@@ -26,10 +22,7 @@
                 "trilearn-cont"
             ],
             "adjmat_plots": [
-                "fci-fisher-z",
-        "fges-sem-bic",
-        "gfci-sem-bic-fisher-z",
-        "pcalg-gaussCItest"
+                "pcalg-gaussCItest"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -51,10 +44,10 @@
                     ]
                 },
                 {
-                    "id": "standardized160",
+                    "id": "standardized",
                     "standardized":true,
                     "sample_sizes": [
-                        150
+                        800
                     ]
                 },
                 {
@@ -91,7 +84,7 @@
                 {
                     "id": "maxparents4",
                     "max_parents": 4,
-                    "n": 80,
+                    "n": 12,
                     "d": 3,
                     "par1": 1,
                     "par2": 1,
@@ -453,9 +446,7 @@
                         0.05,
                         0.1,
                         0.2,
-                        0.35,
-                        0.45,
-                        0.5
+                        0.35
                     ],
                     "NAdelete": true,
                     "mmax": "Inf",

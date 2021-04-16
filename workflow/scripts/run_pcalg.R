@@ -30,19 +30,17 @@ if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
 } else {
   n <- dim(data)[1]
   suffStat <- list(C = cor(data), n = n)
-
+    
 }
 
-#print(data)
 p <- dim(data)[2]
 
-#print(p)
 start <- proc.time()[1]
 
 pc.fit <- pc(suffStat = suffStat,
             indepTest = indepTest,
             alpha = alpha,
-            labels = sapply(c(1:p), toString),
+            labels = colnames(data),
             fixedGaps = NULL,
               fixedEdges = NULL,
               NAdelete = NAdelete,
