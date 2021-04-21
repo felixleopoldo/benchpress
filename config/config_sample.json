@@ -2,6 +2,15 @@
     "benchmark_setup": {
         "data": [
             {
+                "graph_id": "maxparents4",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
+                "seed_range": [
+                    1,
+                    2
+                ]
+            },
+            {
                 "graph_id": "jackdag.csv",
                 "parameters_id": null,
                 "data_id": "jackdata.csv",
@@ -81,7 +90,7 @@
                 {
                     "id": "maxparents4",
                     "max_parents": 40,
-                    "n": 80,
+                    "n": 100,
                     "d": 4,
                     "par1": 1,
                     "par2": 1,

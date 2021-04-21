@@ -147,10 +147,6 @@ for (i in seq(2,m)) {
     res <- rbind(res, df)
 
     prevmat <- adjmat_traj[[i]]
-
-    if(i%%100 == 0) {
-        print(i)
-    }
 }
 
 write.csv(x=res, file = filename, row.names = FALSE, quote = FALSE)
