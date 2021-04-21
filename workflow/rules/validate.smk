@@ -12,10 +12,10 @@ for rocitem in config["benchmark_setup"]["evaluation"]["ROC"]:
         raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that the startspace fr order mcmc exist.
-for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
-    if alg_conf["startspace_algorithm"] not in set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
-        raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc.\n"\
-                        "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}))))
+#for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
+#    if alg_conf["startspace_algorithm"] not in set(available_conf_ids + [None]) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
+#        raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc.\n"\
+#                        "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}))))
 
 def validate_data_setup(config, dict):
     # Check that adjmat exists

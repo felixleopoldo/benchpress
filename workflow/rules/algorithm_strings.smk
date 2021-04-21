@@ -1,3 +1,9 @@
+def idtopath(mylist, json_string):
+    if isinstance(mylist, list):
+        return [json_string[startalg][0] for startalg in mylist]
+    else:
+        return json_string[str(mylist)]
+
 json_string = {}
 
 json_string = {val["id"]: expand(pattern_strings["greenthomas"], **val)
@@ -58,21 +64,13 @@ json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
 # This has to be the last one since it takes input strings as start space...\
-json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], 
-                                            scoretype=val["scoretype"],
-                                            chi=val["chi"],
-                                            edgepf=val["edgepf"],
-                                            am=val["am"],
-                                            aw=val["aw"],
-                                            alpha=val["alpha"],
-                                            gamma=val["gamma"],
-                                            iterations=val["iterations"],
-                                            stepsave=val["stepsave"],
-                                            MAP=val["MAP"],
-                                            cpdag=val["cpdag"],
-                                            startspace_algorithm=json_string[val["startspace_algorithm"]],
-                                            threshold=val["threshold"],
-                                            plus1=val["plus1"],
-                                            burnin=val["burnin"],)  
-                    for val in config["resources"]["structure_learning_algorithms"]["order_mcmc"] } )
 
+order_mcmc_list = config["resources"]["structure_learning_algorithms"]["order_mcmc"]
+for items in order_mcmc_list:    
+    items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
+
+json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
+                    for val in order_mcmc_list } )
+
+#json_string.update({val["id"]: expand(pattern_strings["order_mcmc"], **val,) 
+#                    for val in order_mcmc_list } )

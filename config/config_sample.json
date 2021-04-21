@@ -2,27 +2,24 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "maxparents4",
-                "parameters_id": "SEM",
-                "data_id": "standardized",
-                "seed_range": [
-                    1,
-                    5
-                ]
+                "graph_id": "jackdag.csv",
+                "parameters_id": null,
+                "data_id": "jackdata.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
             "ROC": [
-                "pcalg-gaussCItest"                
+                "omcmc_itmap-bge", "itsearch_map-bge_am01"
             ],
             "mcmc_traj_plots": [
-                "trilearn-disc"
+                "omcmc_itmap-bge"
             ],
             "mcmc_heatmaps": [
                 "trilearn-cont"
             ],
             "adjmat_plots": [
-                "pcalg-gaussCItest"
+                "itsearch_map-bge_am01", "omcmc_itmap-bge"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -47,7 +44,7 @@
                     "id": "standardized",
                     "standardized":true,
                     "sample_sizes": [
-                        800
+                        400
                     ]
                 },
                 {
@@ -83,9 +80,9 @@
             "generateDAGMaxParents": [
                 {
                     "id": "maxparents4",
-                    "max_parents": 4,
-                    "n": 12,
-                    "d": 3,
+                    "max_parents": 40,
+                    "n": 80,
+                    "d": 4,
                     "par1": 1,
                     "par2": 1,
                     "method": "er"
@@ -460,6 +457,20 @@
                     "indepTest": "gaussCItest"
                 },
                 {
+                    "id": "pcalg005",
+                    "alpha": 0.05,
+                    "NAdelete": true,
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false,
+                    "solveconfl": false,
+                    "numCores": 1,
+                    "verbose": false,
+                    "indepTest": "gaussCItest"
+                },  
+                {
                     "id": "pcalg-disCItest",
                     "alpha": [
                         0.01,
@@ -698,10 +709,7 @@
                     "chi": null,
                     "edgepf": null,
                     "am": [
-                        0.01,
-                        0.1,
-                        1,
-                        10
+                        0.000248, 0.022300, 0.100000, 0.448000, 0.739000
                     ],
                     "aw": null,
                     "softlimit": 9,
@@ -720,7 +728,7 @@
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
-                    "am": 1,
+                    "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
                     "hardlimit": 12,
@@ -729,6 +737,24 @@
                     "cpdag": false,
                     "mergetype": "skeleton"
                 },
+                {
+                    "id": "itsearch_map-bge_am01",
+                    "estimate": "map",
+                    "MAP": true,
+                    "plus1it": null,
+                    "posterior": null,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": 0.1,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },                
                 {
                     "id": "itsearch_sample-bde",
                     "estimate": "map",
@@ -920,7 +946,7 @@
             "order_mcmc": [
                 {
                     "id": "omcmc_itmap-bde",
-                    "startspace_algorithm": "itsearch_map-bde",
+                    "startspace_algorithm": ["itsearch_map-bde"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": [
@@ -955,19 +981,47 @@
                     "burnin": 0
                 },
                 {
-                    "id": "omcmc_itmap-bge_am01_endspace",
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                    "id": "omcmc_itmap-bge",
+                    "startspace_algorithm": ["itsearch_map-bge_am01_endspace"],
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
                     "aw": null,
-                    "am": 1,
+                    "am": 0.1,
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "cpdag": false,
+                    "threshold": [
+                        0.9,
+                        0.8,
+                        0.7,
+                        0.6,
+                        0.5,
+                        0.4,
+                        0.3,
+                        0.2,
+                        0.1
+                    ],
+                    "burnin": 0
+                },
+                {
+                    "id": "omcmc_pcalg005-bge",
+                    "startspace_algorithm": "pcalg005",
+                    "plus1": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": 0.1,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": false,
                     "cpdag": false,
                     "threshold": [
                         0.99,
@@ -985,7 +1039,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": "itsample-bge_am1_endspace",
+                    "startspace_algorithm": ["itsample-bge_am1_endspace"],
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
@@ -1014,7 +1068,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bde",
-                    "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
+                    "startspace_algorithm": ["itsearch_sample-bde_chi01_endspace"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": [
@@ -1050,7 +1104,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bde_chi1",
-                    "startspace_algorithm": "itsearch_sample-bde_chi1_endspace",
+                    "startspace_algorithm": ["itsearch_sample-bde_chi1_endspace"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": 1,
@@ -1079,7 +1133,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bde_chi10",
-                    "startspace_algorithm": "itsearch_sample-bde_chi10_endspace",
+                    "startspace_algorithm": ["itsearch_sample-bde_chi10_endspace"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": 10,
@@ -1108,7 +1162,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bde_chi50",
-                    "startspace_algorithm": "itsearch_sample-bde_chi50_endspace",
+                    "startspace_algorithm": ["itsearch_sample-bde_chi50_endspace"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": 50,
@@ -1137,7 +1191,7 @@
                 },
                 {
                     "id": "omcmc_itsample-bde_chi100",
-                    "startspace_algorithm": "itsearch_sample-bde_chi100_endspace",
+                    "startspace_algorithm": ["itsearch_sample-bde_chi100_endspace"],
                     "plus1": true,
                     "scoretype": "bdecat",
                     "chi": 100,

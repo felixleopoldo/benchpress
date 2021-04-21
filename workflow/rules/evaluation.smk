@@ -263,7 +263,6 @@ rule mcmc_heatmap_plot:
 rule adjmat_plot:
     input:
         "workflow/scripts/plot_matrix_as_heatmap.py",
-        #matrix_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.csv",
         matrix_filename="{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
@@ -272,7 +271,6 @@ rule adjmat_plot:
             "seed={seed}/"
             "adjmat.csv"
     output:
-        #plot_filename = "{output_dir}/adjmat_estimate/{something}/adjmat.eps"
         plot_filename="{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
             "bn=/{param_string}/"\
@@ -283,7 +281,7 @@ rule adjmat_plot:
     params:
         title="{adjmat_string}\n{param_string}\n{data_string}\n{alg_string}"
     singularity:
-        "docker://civisanalytics/datascience-python:latest"
+        docker_image("pydatascience")
     script:
         "../scripts/plot_matrix_as_heatmap.py"
 
@@ -296,7 +294,7 @@ rule adjmat_true_plot:
     params:
         title="{adjmat_string}.csv"
     singularity:
-        "docker://civisanalytics/datascience-python:latest"
+        docker_image("pydatascience")
     script:
         "../scripts/plot_matrix_as_heatmap.py"
 
@@ -351,7 +349,6 @@ rule mcmc_heatmaps:
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/heatmap_" +str(i) +".eps")
-
 
 rule mcmc_traj_plots:
     input:

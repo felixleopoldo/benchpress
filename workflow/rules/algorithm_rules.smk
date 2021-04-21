@@ -325,12 +325,15 @@ rule join_summaries_blip:
 
 rule itsearch:
     input:
-        data = alg_input_data()
+        "workflow/scripts/run_iterative_search.R",
+        data = alg_input_data(),
     output:
         adjmat = alg_output_adjmat_path("itsearch"),
         time = alg_output_time_path("itsearch")
     message:
         "Executing iterative search algorithm with wildcards {wildcards} on the following data: {input}"
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/run_iterative_search.R"
 
@@ -596,15 +599,31 @@ rule join_summaries_rfci:
 
 rule order_mcmc:
     input:
+        "workflow/scripts/run_order_mcmc.R",
         data = alg_input_data(),
         startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
     output:
-        adjvecs = alg_output_adjvecs_path("order_mcmc"),
+        #adjvecs = alg_output_adjvecs_path("order_mcmc"),
+        seqgraph = alg_output_seqgraph_path("order_mcmc"),
         time = alg_output_time_path("order_mcmc")
     message:
         "Executing order mcmc algorithm with startspace on the following files: {input}.\n Output: {output}"
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/run_order_mcmc.R"
+
+# rule order_mcmc_est:
+#     input:
+#         "workflow/scripts/run_order_mcmc.R",
+#         seqgraph = alg_output_seqgraph_path("order_mcmc")
+#     output:
+#         #adjmat = alg_output_adjmat_path("order_mcmc"),
+#         adjmat_est = adjmat_estimate_path_mcmc("order_mcmc")
+#     singularity:
+#         docker_image("trilearn")
+#     script:
+#         "../scripts/est_from_graphseq.py"
 
 rule summarise_order_mcmc:
     input:

@@ -1680,7 +1680,14 @@
                     "description": "Unique identifier"
                 },
                 "startspace_algorithm": {
-                    "type": "string"
+                    "anyOf":[
+                        {"type": "string"},
+                        {"type": "null"},
+                        {"type": "array",
+                        "items": {
+                            "type":"string"
+                        }}
+                    ]
                 },
                 "plus1": {
                     "type": "boolean"

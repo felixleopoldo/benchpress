@@ -93,6 +93,11 @@ getPattern <- function(amat) {
     t(tmp)
 }
 
+### This function turns an adjacancy matrix incidence DAG into an adjacancy matric of the EG
+DAG2EG <- function(incidence) {
+  as(dag2essgraph(as(incidence, "graphNEL")), "matrix")
+}
+
 p <- arg_parser("A program for summarising and save to file.")
 p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
 p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
@@ -126,7 +131,8 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
+#compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
+compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat))
 
 df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  FPRn_pattern = compres["FPR_P"],

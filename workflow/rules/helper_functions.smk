@@ -10,13 +10,18 @@ def adjmat_estimate_path_mcmc(algorithm):
 
 def alg_output_adjvecs_path(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
-                "algorithm=/"  + pattern_strings[algorithm] + "/"  + \
+                "algorithm=/" + pattern_strings[algorithm] + "/"  + \
+                "seed={replicate}/" \
+                "adjvecs.json"
+
+def alg_output_seqgraph_path(algorithm):
+    return "{output_dir}/adjvecs/{data}/"\
+                "algorithm=/" + pattern_strings[algorithm] + "/"  + \
                 "seed={replicate}/" \
                 "adjvecs.csv"
 
 
 def alg_input_data():
-    #return "{output_dir}/data/{data}.csv"
     return "{output_dir}/data/{data}/seed={replicate}.csv"
 
 def time_path(algorithm):
@@ -80,7 +85,6 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for roc
     """
-    #roc_alg_ids = [roc_dict["algorithm_id"] for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
     roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        
@@ -100,7 +104,6 @@ def join_string_sampled_model(algorithm, mode="result"):
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
-            #for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
     
     # # Every algorithm should have this as output, where the parameters are added to the csv.
     # # A general rule should handle output e.g. SHD or TP, FP...
@@ -168,10 +171,6 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
-    # elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["notears"]]: 
-    #     adjmat_dict = next(item for item in config["resources"]["graph"]["notears"] if item["id"] == adjmat_id)
-    #     return expand(pattern_strings["notears_dag"] + "/seed={seed}", **adjmat_dict, seed=seed)
-
     elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
         return expand(pattern_strings["DAGavparents"] + "/seed={seed}", **adjmat_dict, seed=seed)
@@ -186,8 +185,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["generateBinaryBN"] if item["id"] == gen_method_id)
         return expand(pattern_strings["generateBinaryBN"] + "/seed={seed}", **curconf, seed=seed)
-        #return expand(pattern_strings["generateBinaryBN"], **curconf, seed=seed)
-
+       
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["pcalg_sem_params"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["pcalg_sem_params"] if item["id"] == gen_method_id)
         return expand(pattern_strings["pcalg_sem_params"] + "/seed={seed}", **curconf, seed=seed)
@@ -207,24 +205,16 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
-    # elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["notears_parameters_sampling"]]:
-    #     curconf = next(item for item in config["resources"]["parameters"]["notears_parameters_sampling"] if item["id"] == gen_method_id)
-    #     return expand(pattern_strings["notears_parameters_sampling"] + "/seed={seed}", **curconf, seed=seed)
-
     elif gen_method_id is None:
         return None
 
 def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
 
     if Path("resources/data/mydatasets/"+data_id).is_file():
-        #return "fixed" + \
-        #    "/filename="+data_id + \
-        #    "/n="+str(None)  # TODO: this may cause som error with seed somewhere
         return "fixed" + \
             "/filename="+data_id + \
             "/n="+str(None) + \ 
             "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
-
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
         # Find the data entry from the resources
@@ -243,18 +233,6 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             "/n={n}",
                             standardized = data["standardized"],
                             n = data["sample_sizes"])
-        #return expand("standard_sampling" +\
-        #                "/n={n}",
-        #                n = data["sample_sizes"],
-        #                seed = seed)
-
-    # elif data_id in [c["id"] for c in config["resources"]["data"]["notears_linear_gaussian_sampling"]]:
-    #     data = next(item for item in config["resources"]["data"]["notears_linear_gaussian_sampling"] if item["id"] == data_id)
-    #     return expand("notears_linear_gaussian_sampling" +\
-    #                     "/n={n}" + \
-    #                     "/seed={seed}", 
-    #                     n = data["sample_sizes"],
-    #                     seed = seed)
 
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:
@@ -303,16 +281,3 @@ def summarise_alg_input_adjmat_est_path(algorithm):
             "seed={replicate}/" \
             "adjmat.csv"
 
-def docker_image(algorithm):
-    if algorithm == "trilearn_loglin":
-        return "docker://onceltuca/trilearn:1.22"
-    elif algorithm == "gobnilp":
-        return "docker://onceltuca/gobnilp:1.6.3"
-    elif algorithm == "thomasjava":
-        return "docker://onceltuca/thomasgreen:1.0"
-    elif algorithm == "notears":
-        return "docker://onceltuca/jmoss20notears:1.4"
-    elif algorithm == "greenfortran":
-        return "docker://onceltuca/guidicigreen1999"
-    elif algorithm ==  "pydatascience":
-        return "docker://civisanalytics/datascience-python"

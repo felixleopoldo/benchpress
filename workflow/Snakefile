@@ -46,34 +46,32 @@ configfile:
 
 snakemake.utils.validate(config, 'schemas/config.schema.json')
 
+include: "rules/docker_images.smk"
+
 include: "rules/validate.smk"
 include: "rules/pattern_strings.smk"
 include: "rules/algorithm_strings.smk"
 include: "rules/helper_functions.smk"
 include: "rules/algorithm_shell_commands.smk"
-
 include: "rules/algorithm_summary_shell_command.smk"
-# TODO: All filenames should be generated from the config file.
 
 singularity:
-    "docker://onceltuca/benchmark:1.0.7"
+    docker_image("benchmark")
 
 rule heatmap_from_adjvec_trajectory:
     input:
-        adjvecs = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.json"
+        "workflow/scripts/graphtraj_est.py",
+        traj = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.csv"
     output:
         heatmap = "{output_dir}/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
-    shell:
-        "Rscript workflow/scripts/run_estimate_heatmap_from_traj.R " \
-        "--adjvectraj {input.adjvecs} " \
-        "--filename {output.heatmap} " \
-        "--tosymmetric 0"
-
-rule size_autocorrelation_from_trajectory:
-   input:
-       adjvecs = "{output_dir}/adjvecs/{something}/adjvecs.json" 
-   output:
-       autocorr = "{output_dir}/autocorr_estimate/{something}/burnin={burnin}/autocorr.csv" 
+    params:
+        estimator="heatmap",
+        burnin="{burnin}",
+        graph_type="dag"
+    singularity:
+        docker_image("networkx")
+    script: 
+        "scripts/graphtraj_est.py"    
 
 rule adjmat_from_heatmap:
     input:
