@@ -2,8 +2,8 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "maxparents4",
-                "parameters_id": "SEM",
+                "graph_id": "greenthomas2013_ar2.csv",
+                "parameters_id": "intra-class",
                 "data_id": "standardized",
                 "seed_range": [
                     1,

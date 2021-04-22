@@ -1,16 +1,3 @@
-# rule bnlearn_networks:
-#     output:
-#         "{output_dir}/bn/bn.fit_networks/{bn}"
-#     singularity:
-#         docker_image("notears")
-#     shell:
-#         "python workflow/scripts/notears/generate_random_dag_parameters.py " \
-#         "--edge_coefficient_range_from {wildcards.edge_coefficient_range_from} " \
-#         "--edge_coefficient_range_to {wildcards.edge_coefficient_range_to} " \
-#         "--filename {output.bn} " \
-#         "--dag_filename {input.adjmat} " \
-#         "--seed {wildcards.seed}"
-
 rule sample_binary_bn:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
@@ -28,12 +15,12 @@ rule sample_binary_bn:
 
 rule sample_pcalg_sem_params:
     input:
-        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/bn/" + \
                 pattern_strings["pcalg_sem_params"] + "/" \
                 "seed={seed}/"+\
-                "adjmat=/{adjmat}/seed={seed}.csv"
+                "adjmat=/{adjmat}.csv"
     singularity:
         docker_image("bidag")
     script:
@@ -41,12 +28,12 @@ rule sample_pcalg_sem_params:
 
 rule hyper_dir:
     input:
-        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/bn/" + \
                 pattern_strings["hyper-dir"] + "/" \
                 "seed={seed}/"+\
-                "adjmat=/{adjmat}/seed={seed}.json"
+                "adjmat=/{adjmat}.json"
     singularity:
         docker_image("trilearn_loglin")
     shell:
@@ -54,12 +41,12 @@ rule hyper_dir:
 
 rule intra_class_cov:
     input:
-        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         params = "{output_dir}/bn/" + \
                 pattern_strings["intra-class"] + "/" \
                 "seed={seed}/"+\
-                "adjmat=/{adjmat}/seed={seed}.csv"
+                "adjmat=/{adjmat}.csv"
     singularity:
         docker_image("trilearn_loglin")
     shell:
@@ -67,12 +54,12 @@ rule intra_class_cov:
 
 rule g_inv_wishart:
     input:
-        adjmat = "{output_dir}/adjmat/{adjmat}/seed={seed}.csv" 
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         params = "{output_dir}/bn/" + \
                 pattern_strings["g_inv_wishart"] + "/" \
                 "seed={seed}/"+\
-                "adjmat=/{adjmat}/seed={seed}.csv"
+                "adjmat=/{adjmat}.csv"
     singularity:
         docker_image("trilearn_loglin")
     shell:
