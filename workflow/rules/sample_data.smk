@@ -1,28 +1,3 @@
-# rule sample_notears_linear_gaussian_data:
-#     input:
-#         script="workflow/scripts/notears/simulate_from_dag_lg.py",
-#         bn="{output_dir}/bn/notears/{edge_params}/mean={mean}/variance={variance}/{rest}/adjmat=/{adjmat}.csv"
-#     output:
-#         data="{output_dir}/data" \
-#              "/adjmat=/{adjmat}"\
-#              "/bn=/notears/{edge_params}/" \
-#              "mean={mean}/" \
-#              "variance={variance}/" \
-#              "{rest}/"
-#              "data=/standard_sampling/" \
-#              "n={n}/" \
-#              "seed={replicate}.csv"
-#     singularity:
-#         docker_image("notears")
-#     shell:
-#         "python workflow/scripts/notears/simulate_from_dag_lg.py " \
-#         "--filename {output.data} " \
-#         "--weighted_adjmat_filename {input.bn} " \        
-#         "--mean {wildcards.mean} " \
-#         "--variance {wildcards.variance} " \
-#         "--n_samples {wildcards.n} " \
-#         "--seed {wildcards.replicate}"
-
 rule sample_pcalg_sem_data:
     input:
         script="workflow/scripts/sample_pcalg_sem_data.R",
@@ -34,6 +9,8 @@ rule sample_pcalg_sem_data:
              "data=/standard_sampling/" \
              "n={n}/" \
              "seed={replicate}.csv"
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/sample_pcalg_sem_data.R" 
 
@@ -123,3 +100,17 @@ rule sample_bnfit_data:
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
         "--seed {wildcards.replicate}"
+
+"""
+This for the case when te sem parameters are gicen as a matrix in 
+a .csv file in bn/sem_params.
+"""
+rule sample_fixed_sem_params_data:
+    input:        
+        bn="{output_dir}/bn/sem_params/{bn}"        
+    output:
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/sem_params/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("bidag")
+    script:
+        "../scripts/sample_pcalg_sem_data.R" 

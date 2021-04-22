@@ -1,20 +1,6 @@
 rule bnlearn_networks:
     output:
         "{output_dir}/bn/bn.fit_networks/{bn}"
-    #shell:
-    #    "mkdir -p {wildcards.output_dir}" + "/bn/bn.fit_networks/ " \
-    #    "&& wget https://www.bnlearn.com/bnrepository/{wildcards.bn}/{wildcards.bn}.rds "
-    #    "--output-document {output}"
-
-
-# rule sample_linear_gaussian_parameters_notears:
-#     input:
-#         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
-#     output:        
-#         bn = "{output_dir}/bn/" + pattern_strings["notears_parameters_sampling"] + "/" \
-#             "seed={seed}/" \            
-#             "adjmat=/{adjmat}.csv"
-
     singularity:
         docker_image("notears")
     shell:
@@ -32,7 +18,6 @@ rule sample_binary_bn:
         bn = "{output_dir}/bn/" + \
             pattern_strings["generateBinaryBN"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
-
     shell:
         "Rscript workflow/scripts/sample_bayesian_network_for_dag.R " \
         "--filename_dag {input.adjmat} " \
@@ -49,19 +34,10 @@ rule sample_pcalg_sem_params:
                 pattern_strings["pcalg_sem_params"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}/seed={seed}.csv"
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/sample_pcalg_semparams.R" 
-
-# rule sample_pcalg_sem_params:
-#     input:
-#         adjmat = "{output_dir}/adjmat/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv" 
-#     output:
-#         bn =    "{output_dir}/bn/" + \
-#                 pattern_strings["pcalg_sem_params"] + "/" \
-#                 "seed={seed}/"+\
-#                 "adjmat=/"+pattern_strings["DAGavparents"]+"/seed={seed}.csv"
-#     script:
-#         "../scripts/sample_pcalg_semparams.R" 
 
 rule hyper_dir:
     input:

@@ -55,6 +55,7 @@ def validate_data_setup(config, dict):
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += os.listdir("results/bn/bn.fit_networks")
+    available_conf_ids += os.listdir("results/bn/sem_params")
 
     if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:
         raise Exception(str(dict["parameters_id"])+ 

@@ -205,6 +205,9 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
+    elif Path("resources/bn/sem_params/"+str(gen_method_id)).is_file():
+        return  "sem_params/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
+
     elif gen_method_id is None:
         return None
 

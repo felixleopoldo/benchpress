@@ -1,6 +1,8 @@
 rule sample_adjmat:
     output:        
         adjmat = "{output_dir}/adjmat/" + pattern_strings["generateDAGMaxParents"] + "/seed={replicate}.csv"
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/sample_dags.R"
 
