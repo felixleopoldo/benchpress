@@ -37,14 +37,15 @@ generateDAGs <- function(n, e, n_dags) {
 #' 
 randDAGMaxParents <- function(n, d, method ="er", par1=NULL, par2=NULL,
                                  DAG = TRUE, weighted = TRUE, max_parents = 5){
-  #mydag <- NULL
+
   parents <- Inf
   adj <- NULL
   while (parents > max_parents) {
     # here we make sure graphs do not have to big parent sets
     # here we can define the type of the graph
-    adj <- as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2=par2), "matrix")
+    adj <- 1 * (as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2=par2), "matrix") != 0)
     parents <- max(apply(adj, 2, sum))
+  
   }
   return(adj)
 }

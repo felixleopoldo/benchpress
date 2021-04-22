@@ -9,17 +9,11 @@
                     1,
                     1
                 ]
-            },
-            {
-                "graph_id": "jackdag.csv",
-                "parameters_id": "jackparams.csv",
-                "data_id": "standardized",
-                "seed_range": [1, 1]
             }
         ],
         "evaluation": {
             "ROC": [
-                "omcmc_itmap-bge", "itsearch_map-bge_am01"
+               "itsearch_map-bge_am01"
             ],
             "mcmc_traj_plots": [
                 "omcmc_itmap-bge"
@@ -28,7 +22,7 @@
                 "trilearn-cont"
             ],
             "adjmat_plots": [
-                "itsearch_map-bge_am01", "omcmc_itmap-bge"
+         "itsearch_map-bge_am01"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -991,7 +985,7 @@
                 },
                 {
                     "id": "omcmc_itmap-bge",
-                    "startspace_algorithm": ["itsearch_map-bge_am01_endspace"],
+                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
@@ -1004,17 +998,9 @@
                     "iterations": null,
                     "MAP": true,
                     "cpdag": false,
-                    "threshold": [
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2,
-                        0.1
-                    ],
+                    "threshold": 
+                        0.5
+                    ,
                     "burnin": 0
                 },
                 {

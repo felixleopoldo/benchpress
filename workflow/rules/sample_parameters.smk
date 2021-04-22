@@ -1,15 +1,15 @@
-rule bnlearn_networks:
-    output:
-        "{output_dir}/bn/bn.fit_networks/{bn}"
-    singularity:
-        docker_image("notears")
-    shell:
-        "python workflow/scripts/notears/generate_random_dag_parameters.py " \
-        "--edge_coefficient_range_from {wildcards.edge_coefficient_range_from} " \
-        "--edge_coefficient_range_to {wildcards.edge_coefficient_range_to} " \
-        "--filename {output.bn} " \
-        "--dag_filename {input.adjmat} " \
-        "--seed {wildcards.seed}"
+# rule bnlearn_networks:
+#     output:
+#         "{output_dir}/bn/bn.fit_networks/{bn}"
+#     singularity:
+#         docker_image("notears")
+#     shell:
+#         "python workflow/scripts/notears/generate_random_dag_parameters.py " \
+#         "--edge_coefficient_range_from {wildcards.edge_coefficient_range_from} " \
+#         "--edge_coefficient_range_to {wildcards.edge_coefficient_range_to} " \
+#         "--filename {output.bn} " \
+#         "--dag_filename {input.adjmat} " \
+#         "--seed {wildcards.seed}"
 
 rule sample_binary_bn:
     input:

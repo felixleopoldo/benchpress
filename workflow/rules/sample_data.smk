@@ -1,18 +1,4 @@
-rule sample_pcalg_sem_data:
-    input:
-        script="workflow/scripts/sample_pcalg_sem_data.R",
-        bn="{output_dir}/bn/"+pattern_strings["pcalg_sem_params"]+"/adjmat=/{adjmat}.csv"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/bn=/" + pattern_strings["pcalg_sem_params"] + "/" \
-             "data=/standard_sampling/" \
-             "n={n}/" \
-             "seed={replicate}.csv"
-    singularity:
-        docker_image("bidag")
-    script:
-        "../scripts/sample_pcalg_sem_data.R" 
+
 
 rule sample_bindata:
     input:
@@ -109,7 +95,26 @@ rule sample_fixed_sem_params_data:
     input:        
         bn="{output_dir}/bn/sem_params/{bn}"        
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/sem_params/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"
+        data="{output_dir}/data/" \
+             "adjmat=/{adjmat}/" \
+             "bn=/sem_params/{bn}/" \
+             "data=/standard_sampling/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("bidag")
+    script:
+        "../scripts/sample_pcalg_sem_data.R" 
+
+rule sample_pcalg_sem_data:
+    input:
+        script="workflow/scripts/sample_pcalg_sem_data.R",
+        bn="{output_dir}/bn/"+pattern_strings["pcalg_sem_params"]+"/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/bn=/" + pattern_strings["pcalg_sem_params"] + "/" \
+             "data=/standard_sampling/" \
+             "n={n}/" \
+             "seed={replicate}.csv"
     singularity:
         docker_image("bidag")
     script:
