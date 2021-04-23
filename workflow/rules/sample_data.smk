@@ -30,6 +30,7 @@ rule sample_loglindata:
 
 rule sample_intra_class_data:
     input:
+        "workflow/scripts/trilearn/sample_mvn_data.py",
         cov="{output_dir}/bn/intra-class/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
@@ -43,6 +44,7 @@ rule sample_intra_class_data:
 
 rule sample_g_inverse_wishart:
     input:
+        "workflow/scripts/trilearn/sample_mvn_data.py",
         cov="{output_dir}/bn/g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \

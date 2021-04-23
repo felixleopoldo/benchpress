@@ -2,13 +2,10 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "greenthomas2013_ar2.csv",
-                "parameters_id": "intra-class",
-                "data_id": "standardized",
-                "seed_range": [
-                    1,
-                    1
-                ]
+                "graph_id": "jonesp15.csv",
+                "parameters_id": null,
+                "data_id": "jonesp15_discrete_loglin.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
@@ -16,13 +13,13 @@
                "itsearch_map-bge_am01"
             ],
             "mcmc_traj_plots": [
-                "omcmc_itmap-bge"
+                "trilearn-disc", "gg99_fortran"
             ],
             "mcmc_heatmaps": [
-                "trilearn-cont"
+                "trilearn-disc", "gg99_fortran"
             ],
             "adjmat_plots": [
-         "itsearch_map-bge_am01"
+                "itsearch_map-bge_am01"
             ],
             "graph_plots": [
                 "greenthomas-cont",
@@ -162,7 +159,8 @@
                         50
                     ],
                     "M": 100,
-                    "pseudo_obs": 1
+                    "pseudo_obs": 1,
+                    "mcmc_seed": 1
                 },
                 {
                     "id": "trilearn-disc",
@@ -171,10 +169,11 @@
                     "beta": 0.5,
                     "radii": 80,
                     "N": [
-                        30, 50
+                        50
                     ],
-                    "M": 100,
-                    "pseudo_obs": 1
+                    "M": 20000,
+                    "pseudo_obs": 1,
+                    "mcmc_seed": [1,2]
                 },
                 {
                     "id": "trilearn05-disc",
@@ -184,7 +183,8 @@
                     "radii": 80,
                     "N": 50,
                     "M": 300,
-                    "pseudo_obs": 1
+                    "pseudo_obs": 1,
+                    "mcmc_seed": 1
                 }
             ],
             "glasso":[

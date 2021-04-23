@@ -441,8 +441,7 @@
                 },
                 "beta": {
                     "$ref": "#definitions/flexprob"
-                }
-            },
+                }            },
             "required": [
                 "id",
                 "order",
@@ -912,7 +911,11 @@
                 },
                 "radii": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "mcmc_seed":{
+                    "$ref": "#definitions/flexnonnegint"
                 }
+
             },
             "required": [
                 "id",
@@ -922,7 +925,8 @@
                 "radii",
                 "N",
                 "M",
-                "pseudo_obs"
+                "pseudo_obs",
+                "mcmc_seed"
             ]
         },
         "blip": {

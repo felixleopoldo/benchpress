@@ -111,8 +111,6 @@ rule join_summaries_gg_singlepair:
     script:
         "../scripts/join_csv_files.R"
 
-
-
 rule tabu:
     input:
         data = alg_input_data()
@@ -652,7 +650,7 @@ rule trilearn_loglin:
     input:
         data=alg_input_data()
     output:
-        adjvecs = alg_output_adjvecs_path("trilearn_loglin"),
+        adjvecs = alg_output_seqgraph_path("trilearn_loglin"),
         time = alg_output_time_path("trilearn_loglin")
     message:
         "Executing trilearn algorithm on the following files: {input}, output: {output}. wildcards {wildcards}"
@@ -690,7 +688,7 @@ rule gg_singlepair_fortran:
     input:
         data = alg_input_data()
     output:
-        adjvecs = alg_output_adjvecs_path("gg_singlepair_fortran"),
+        adjvecs = alg_output_seqgraph_path("gg_singlepair_fortran"),
         time = alg_output_time_path("gg_singlepair_fortran")
     singularity:
         docker_image("greenfortran")

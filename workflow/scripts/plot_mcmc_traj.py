@@ -22,5 +22,3 @@ size_traj = pd.Series([np.sum(m)/2 for m in all_trajs])
 size_traj.plot()
 
 plt.savefig(snakemake.output["plot"])
-
-#size_traj.to_csv(snakemake.output["plot"] +".csv", index=False, header=False)

@@ -185,9 +185,9 @@ def alg_shell(algorithm):
 
     elif algorithm == "trilearn_loglin":
         return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\
-                "pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs}; " \  
+                "pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}; " \  
                 "elif [ {wildcards.datatype} = \"continuous\" ]; then " \
-                "pgibbs_ggm_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs}; " \  
+                "pgibbs_ggm_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}; " \  
                 "fi " \
                 "&& echo '1' > {output.time} " 
 
@@ -195,7 +195,7 @@ def alg_shell(algorithm):
         return  "out=$RANDOM.csv " \
                 "&& data=$RANDOM.csv " \
                 "&& cp {input.data} $data " \
-                "&& /ggsampler/jt -v`head -1 {input.data} | sed 's/[^,]//g' | wc -c` -n{wildcards.n} -b0 -m3 $data -pfx $out -s1 " \
+                "&& /ggsampler/jt -v`head -1 {input.data} | sed 's/[^,]//g' | wc -c` -n{wildcards.n} -b0 -m3 $data -pfx $out -s {wildcards.replicate} " \
                 "&& mv $out {output.adjvecs} "\
                 "&& rm $data "\
                 "&& echo 1 > {output.time}"

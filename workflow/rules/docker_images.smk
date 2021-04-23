@@ -1,6 +1,6 @@
 def docker_image(algorithm):
     if algorithm == "trilearn_loglin":
-        return "docker://onceltuca/trilearn:1.22"
+        return "docker://onceltuca/trilearn:1.23"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:1.6.3"
     elif algorithm == "thomasjava":
