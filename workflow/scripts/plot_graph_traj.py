@@ -39,7 +39,7 @@ df2["size"].plot()
 
 plt.savefig(sys.argv[2])
 
-df_noburnin = df2
+df_noburnin = df2[int(T*0.3):]
 
 traj_length = len(df_noburnin)
 
