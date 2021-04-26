@@ -19,7 +19,7 @@ rule TP:
 rule FP:
     input:
         true_graph="{adjmat_string}.csv",
-        est_graph="{est_graph}.csv"
+        est_graph="{est_graph}. csv"
     output:
         tp="{output_dir}/"\
             "evaluation=/FP/graph_type={graph_type}/"\
@@ -302,6 +302,7 @@ rule adjmat_true_plot:
 # I.e with the path of an adjaceny matrix.
 rule adjmat_to_dot:
     input:
+        "workflow/scripts/trilearn/adjmat_to_dot.py",
         filename="{output_dir}/{something}.csv" 
     output:
         filename = "{output_dir}/{something}.dot"

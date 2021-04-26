@@ -1,28 +1,36 @@
 def alg_shell(algorithm):
     if algorithm == "greenthomas":
         return "if [ {wildcards.datatype} = \"discrete\"  ]; then " \            
-            "tail -n +3 {input.data} > {output.adjmat}.noheader " \ 
-            "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
-            "&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
-            "-s 0 "\
-            "-n {wildcards.n_samples} "\
-            "-r {wildcards.randomits} "\
-            "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
-            "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
-            "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+            "tail -n +3 {input.data} > {output.seqgraph}.noheader " \ 
+            "&& sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
+            " && java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -p 0 -prior bc -ascore 1 -bscore 4 -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}" \            
             "&& echo 1 > {output.time} ;"\
             "elif [ {wildcards.datatype} = \"continuous\"  ]; then  " \
-            "tail -n +2 {input.data} > {output.adjmat}.noheader " \ 
-            "&& sed --in-place 's/,/\ /g' {output.adjmat}.noheader " \
-            "&& java -classpath /thomasgreen EstimateGaussianGM -v 0 " \
-            "-s 0 "\
-            "-n {wildcards.n_samples} "\
-            "-r {wildcards.randomits} "\
-            "-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
-            "&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
-            "&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+            "tail -n +2 {input.data} > {output.seqgraph}.noheader " \ 
+            "&& sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
+            "&& java -classpath classes FitGaussianGM -n {wildcards.n_samples} " \
+            "-s 2 "\
+            "-p 0 "\
+            "-prior bc -ascore 1 -bscore 4 -seed {wildcards.replicate} -v 0 < {output.seqgraph}.noheader > {output.seqgraph}" \
+             "&& rm {output.seqgraph}.adjlist {output.seqgraph}.noheader "\
             "&& echo 1 > {output.time} ;"\
             "fi " 
+
+            #"&& java -classpath /thomasgreen EstimateMultinomialGM -v 0 " \
+            #"-s 0 "\
+            #"-n {wildcards.n_samples} "\
+            #"-r {wildcards.randomits} "\
+            #"-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
+            #"&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
+            #"&& rm {output.adjmat}.adjlist {output.adjmat}.noheader "\
+
+            #"&& java -classpath /thomasgreen EstimateGaussianGM -v 0 " \
+            #"-s 0 "\
+            #"-n {wildcards.n_samples} "\
+            #"-r {wildcards.randomits} "\
+            #"-p {wildcards.penalty} < {output.adjmat}.noheader > {output.adjmat}.adjlist " \            
+            #"&& python workflow/scripts/thomasgreen/adjlist_to_adjmat.py {output.adjmat}.adjlist {output.adjmat} " \
+    
             #"&& /usr/bin/time -f \"%e\" -o {output.time} " \
 
     elif algorithm == "gg_singlepair":

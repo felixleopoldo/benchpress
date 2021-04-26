@@ -17,6 +17,8 @@ def edges_str_to_list(str):
     return edges
 
 df = pd.read_csv(sys.argv[1], sep=",")
+
+
 g = nx.Graph()
 size = []
 
@@ -31,19 +33,23 @@ df["size"] = size
 T= df["index"].iloc[-1] # approximate length
 
 newindex = pd.Series(range(T))
-df2 = df[["index","size", "score"]][2:].set_index("index") # removes the two first rows.
+df2 = df[["index","size","score"]][2:].set_index("index") # removes the two first rows.
 
 df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
 
-df2["size"].plot()
+
+df_noburnin = df2[int(T*0.3):]
+df_noburnin["size"].plot()
 
 plt.savefig(sys.argv[2])
 
-df_noburnin = df2[int(T*0.3):]
+
 
 traj_length = len(df_noburnin)
 
+print(sys.argv[1])
 print("Traj length " +str(traj_length))
+
 B = 10000
 sizes = np.zeros(B)
 for i in range(B):

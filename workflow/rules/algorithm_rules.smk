@@ -38,41 +38,7 @@ rule join_summaries_glasso:
         "../scripts/join_csv_files.R"
 
 
-rule greenthomas:
-    input:
-        data = alg_input_data()
-    output:
-        adjmat = alg_output_adjmat_path("greenthomas"),
-        time = alg_output_time_path("greenthomas")
-    singularity:
-        docker_image("thomasjava")
-    message:
-        "Executing greenthomas algorithm on the following files: {input}."
-    shell:
-        alg_shell("greenthomas")
 
-rule summarise_greenthomas:
-    input:
-        "workflow/scripts/run_summarise.R",
-        data = summarise_alg_input_data_path(),
-        adjmat_true = summarise_alg_input_adjmat_true_path(),
-        adjmat_est = summarise_alg_input_adjmat_est_path("greenthomas"),
-        time = summarise_alg_input_time_path("greenthomas")
-    output:
-        res = summarise_alg_output_res_path("greenthomas")
-    message:
-        "Summarising greenthomas results based on the files: {input}."
-    shell:
-        summarise_alg_shell("greenthomas")
-       
-rule join_summaries_greenthomas:
-    input:
-        conf=configfilename,
-        res=join_string_sampled_model("greenthomas")
-    output:
-        join_summaries_output("greenthomas")
-    script:
-        "../scripts/join_csv_files.R"
 
 rule gg_singlepair:
     input:
@@ -694,3 +660,40 @@ rule gg_singlepair_fortran:
         docker_image("greenfortran")
     shell:
         alg_shell("gg_singlepair_fortran")
+
+rule greenthomas:
+    input:
+        data = alg_input_data()
+    output:
+        #adjmat = alg_output_adjmat_path("greenthomas"),
+        seqgraph = alg_output_seqgraph_path("greenthomas"),
+        time = alg_output_time_path("greenthomas")
+    singularity:
+        docker_image("thomasjava")
+    message:
+        "Executing greenthomas algorithm on the following files: {input}."
+    shell:
+        alg_shell("greenthomas")
+
+# rule summarise_greenthomas:
+#     input:
+#         "workflow/scripts/run_summarise.R",
+#         data = summarise_alg_input_data_path(),
+#         adjmat_true = summarise_alg_input_adjmat_true_path(),
+#         adjmat_est = summarise_alg_input_adjmat_est_path("greenthomas"),
+#         time = summarise_alg_input_time_path("greenthomas")
+#     output:
+#         res = summarise_alg_output_res_path("greenthomas")
+#     message:
+#         "Summarising greenthomas results based on the files: {input}."
+#     shell:
+#         summarise_alg_shell("greenthomas")
+       
+# rule join_summaries_greenthomas:
+#     input:
+#         conf=configfilename,
+#         res=join_string_sampled_model("greenthomas")
+#     output:
+#         join_summaries_output("greenthomas")
+#     script:
+#         "../scripts/join_csv_files.R"

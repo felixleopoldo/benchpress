@@ -2,31 +2,30 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "jonesp15.csv",
-                "parameters_id": null,
-                "data_id": "jonesp15_discrete_loglin.csv",
-                "seed_range": null
+                "graph_id": "maxparents4",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
+                "seed_range": [1,1]
             }
         ],
         "evaluation": {
             "ROC": [
-               "itsearch_map-bge_am01"
+                "itsearch_map-bge", "glasso"
             ],
             "mcmc_traj_plots": [
-                "trilearn-disc", "gg99_fortran"
+                "gg99_fortran", "greenthomas-disc"
             ],
             "mcmc_heatmaps": [
-                "trilearn-disc", "gg99_fortran"
+                "gg99_fortran"
             ],
             "adjmat_plots": [
-                "itsearch_map-bge_am01"
+                "itsearch_map-bge","glasso"
             ],
             "graph_plots": [
-                "greenthomas-cont",
-                "guidicigreen-cont"
+                "itsearch_map-bge","glasso"
             ],
             "autocorr_plots": [
-                "gg99_fortran","trilearn-disc"
+              
             ]
         }
     },
@@ -81,7 +80,7 @@
                 {
                     "id": "maxparents4",
                     "max_parents": 40,
-                    "n": 100,
+                    "n": 20,
                     "d": 4,
                     "par1": 1,
                     "par2": 1,
@@ -100,7 +99,7 @@
                 {
                     "id": "AR2",
                     "bandwidth": 2,
-                    "dim": 5
+                    "dim": 50
                 }
             ],
             "rand_bandmat": [
@@ -171,7 +170,7 @@
                     "N": [
                         50
                     ],
-                    "M": 20000,
+                    "M": 1000,
                     "pseudo_obs": 1,
                     "mcmc_seed": [1,2]
                 },
@@ -191,7 +190,7 @@
                 {
                     "id":"glasso",
                     "mode":"cd",
-                    "alpha": [0.05, 0.2],
+                    "alpha": [0.05],
                     "tol": 0.0004,
                     "enet_tol": 0.0004,
                     "max_iter": 100,
@@ -278,6 +277,15 @@
                     "datatype":"continuous",
                     "randomits": 1000,
                     "penalty": 0
+                },
+                {
+                    "id": "greenthomas-disc",
+                    "n_samples": [
+                        1000000
+                    ],
+                    "datatype":"discrete",
+                    "randomits": 1000,
+                    "penalty": 0
                 }
             ],
             "gg_singlepair": [
@@ -287,12 +295,20 @@
                     "n_samples": 100000,
                     "randomits": 1000,
                     "penalty": 0
+                },
+                {
+                    "id": "guidicigreen-disc",
+                    "datatype":"discrete",
+                    "n_samples": 100000,
+                    "randomits": 1000,
+                    "penalty": 0
                 }
+
             ],
             "gg_singlepair_fortran": [
                 {
                     "id": "gg99_fortran",
-                    "n": 100000
+                    "n": 1000000
                 }
             ],
             "fges": [

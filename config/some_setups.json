@@ -58,6 +58,7 @@
     "ROC_sem": [
         "fci-fisher-z",
         "fges-sem-bic",
+        "gfci-sem-bic-fisher-z",
         "hc-bge",
         "itsearch_sample-bge",
         "mmhc-bge-zf",

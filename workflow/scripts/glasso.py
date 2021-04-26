@@ -13,10 +13,10 @@ X = df.values
 
 start = time.perf_counter()
 cov = GraphicalLasso().fit(X)
-adjmat = (np.around(np.abs(cov.precision_), decimals=3) > 0 ) * 1 - np.identity(X.shape[1])
+adjmat = (np.around(np.abs(cov.precision_), decimals=3) > 0.01 ) * 1 - np.identity(X.shape[1])
 
 tottime = time.perf_counter() - start
 
 time_filename = snakemake.output["time"]
 np.savetxt(time_filename, [tottime])
-pd.DataFrame(adjmat).to_csv(filename, index=False)
+pd.DataFrame(adjmat).to_csv(filename, index=False, columns=df.columns)
