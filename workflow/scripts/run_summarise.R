@@ -131,8 +131,8 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
-#compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
-compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat))
+compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
+#compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
 
 df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  FPRn_pattern = compres["FPR_P"],
