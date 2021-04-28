@@ -2,9 +2,9 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "maxneigs4",
-                "parameters_id": "binbn",
-                "data_id": "example1",
+                "graph_id": "hepar2.csv",
+                "parameters_id": "hepar2.rds",
+                "data_id": "example3",
                 "seed_range": [
                     1,
                     1
@@ -26,9 +26,8 @@
                 "fges-bdeu",
                 "itsearch_map-bde",
                 "itsearch_sample-bde",
-                "pcalg-binCItest",
+                "pcalg-disCItest",
                 "omcmc_itsample-bde_chi1"
-
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas-cont"
@@ -69,6 +68,13 @@
                     "standardized":true,
                     "sample_sizes": [
                          160
+                    ]
+                },
+                {
+                    "id": "example4",
+                    "standardized":true,
+                    "sample_sizes": [
+                         400
                     ]
                 },
                 {
@@ -784,7 +790,7 @@
                     ],
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 12,
+                    "hardlimit": 15,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
@@ -863,7 +869,7 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 12,
+                    "hardlimit": 20,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
