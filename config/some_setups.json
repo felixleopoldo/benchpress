@@ -49,7 +49,7 @@
     "data_example1":[
         {
         "graph_id": "maxneigs4",
-        "parameters_id": "generateBinaryBN",
+        "parameters_id": "binbn",
         "data_id": "example1",
         "seed_range": [
             1,
@@ -61,7 +61,7 @@
             {
             "graph_id": "maxneigs4",
             "parameters_id": "SEM",
-            "data_id": "example3",
+            "data_id": "example2",
             "seed_range": [
                 1,
                 10
@@ -123,7 +123,6 @@
     "ROC_example3": [
         "winasobs-bdeu",
         "asobs-bdeu",
-        "gobnilp-bde",
         "tabu-bde",
         "mmhc-bde-mi",
         "hc-bde",

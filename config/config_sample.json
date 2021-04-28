@@ -4,10 +4,10 @@
             {
                 "graph_id": "hepar2.csv",
                 "parameters_id": "hepar2.rds",
-                "data_id": "example3",
+                "data_id": "example2",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             }
         ],
@@ -106,7 +106,7 @@
             "generateDAGMaxParents": [
                 {
                     "id": "maxneigs4",
-                    "max_parents": 40,
+                    "max_parents": 5,
                     "n": 80,
                     "d": 4,
                     "par1": 1,
@@ -883,7 +883,7 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 12,
+                    "hardlimit": 20,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
@@ -955,7 +955,7 @@
                     "am": null,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 12,
+                    "hardlimit": 20,
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
@@ -1104,13 +1104,13 @@
                 },
                 {
                     "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": ["itsample-bge_am1_endspace"],
+                    "startspace_algorithm": ["itsample-bge_am01_endspace"],
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
                     "aw": null,
-                    "am": 1,
+                    "am": 0.1,
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
@@ -1118,16 +1118,7 @@
                     "MAP": false,
                     "cpdag": false,
                     "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
+                        0.5
                     ],
                     "burnin": 0
                 },
@@ -1183,16 +1174,7 @@
                     "iterations": null,
                     "MAP": true,
                     "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
+                        0.5
                     ],
                     "burnin": 0
                 },
