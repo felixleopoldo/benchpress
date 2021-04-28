@@ -24,8 +24,11 @@ data <- read.csv(filename_data, check.names=FALSE)
 
 suffStat = NULL
 if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
+    
+  nlev <- data[1,]
+  
   data <- data[-1,] # Remove range header
-   suffStat <- list(dm = data,
+   suffStat <- list(dm = data, nlev=nlev,
             adaptDF = FALSE)
 } else {
   n <- dim(data)[1]

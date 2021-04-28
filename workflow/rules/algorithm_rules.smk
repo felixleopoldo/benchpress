@@ -292,6 +292,8 @@ rule pcalg:
         time = alg_output_time_path("pcalg")
     message:
         "Executing order PC algorithm on the following files: {input}."
+    singularity:
+        docker_image("bidag")
     script:
         "../scripts/run_pcalg.R"
 

@@ -3,23 +3,32 @@
         "data": [
             {
                 "graph_id": "maxneigs4",
-                "parameters_id": "SEM",
-                "data_id": "standardized",
-                "seed_range": [1, 1]
+                "parameters_id": "binbn",
+                "data_id": "example1",
+                "seed_range": [
+                    1,
+                    1
+                ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "fci-fisher-z",
-                "fges-sem-bic",
-                "gfci-sem-bic-fisher-z",
-                "hc-bge",
-                "itsearch_sample-bge",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pcalg-gaussCItest",
-                "rfci-fisher-z",
-                "tabu-bge"
+                "winasobs-bdeu",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "interiamb-mi",
+                "fci-chi-square",
+                "rfci-chi-square",
+                "gfci-bdeu-chi-square",
+                "fges-bdeu",
+                "itsearch_map-bde",
+                "itsearch_sample-bde",
+                "pcalg-binCItest",
+                "omcmc_itsample-bde_chi1"
+
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas-cont"
@@ -49,10 +58,17 @@
                     ]
                 },
                 {
-                    "id": "standardized",
+                    "id": "example1",
+                    "standardized":false,
+                    "sample_sizes": [
+                        80
+                    ]
+                },
+                {
+                    "id": "example2",
                     "standardized":true,
                     "sample_sizes": [
-                        400
+                         160
                     ]
                 },
                 {
@@ -89,7 +105,7 @@
                 {
                     "id": "maxneigs4",
                     "max_parents": 40,
-                    "n": 20,
+                    "n": 80,
                     "d": 4,
                     "par1": 1,
                     "par2": 1,
