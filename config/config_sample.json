@@ -2,27 +2,32 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "example2",
+                "graph_id": "maxneigs4",
+                "parameters_id": "binbn",
+                "data_id": "example1",
                 "seed_range": [
                     1,
                     1
-                ]
-            }
+                    ]
+                }
         ],
         "evaluation": {
             "ROC": [
-                "fci-fisher-z",
-                "fges-sem-bic",
-                "gfci-sem-bic-fisher-z",
-                "hc-bge",
-                "itsearch_sample-bge",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pcalg-gaussCItest",
-                "rfci-fisher-z",
-                "tabu-bge"
+                "winasobs-bdeu",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "interiamb-mi",
+                "fci-chi-square",
+                "rfci-chi-square",
+                "gfci-bdeu-chi-square",
+                "fges-bdeu",
+                "itsearch_map-bde",
+                "itsearch_sample-bde",
+                "pcalg-binCItest",
+                "omcmc_itsample-bde_chi1"
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas-cont"
