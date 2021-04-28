@@ -7,27 +7,22 @@
                 "data_id": "example3",
                 "seed_range": [
                     1,
-                    1
+                    10
                 ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "winasobs-bdeu",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "fges-bdeu",
-                "itsearch_map-bde",
-                "itsearch_sample-bde",
-                "pcalg-disCItest",
-                "omcmc_itsample-bde_chi1"
+                "fci-fisher-z",
+                "fges-sem-bic",
+                "gfci-sem-bic-fisher-z",
+                "hc-bge",
+                "itsearch_sample-bge",
+                "mmhc-bge-zf",
+                "omcmc_itsample-bge",
+                "pcalg-gaussCItest",
+                "rfci-fisher-z",
+                "tabu-bge"
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas-cont"
@@ -60,21 +55,26 @@
                     "id": "example1",
                     "standardized":false,
                     "sample_sizes": [
-                        80
+                        80, 640
                     ]
                 },
                 {
                     "id": "example2",
                     "standardized":true,
                     "sample_sizes": [
-                         160
+                         320
                     ]
+                },
+                {
+                    "id": "example3",
+                    "standardized":false,
+                    "sample_sizes": 2000
                 },
                 {
                     "id": "example4",
                     "standardized":true,
                     "sample_sizes": [
-                         400
+                         80,640
                     ]
                 },
                 {
@@ -91,12 +91,8 @@
                         320,
                         640
                     ]
-                },
-                {
-                    "id": "hepar2",
-                    "standardized":false,
-                    "sample_sizes": 2000
                 }
+
             ]
         },
         "graph": {

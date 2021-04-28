@@ -32,15 +32,6 @@
         },
         {
             "graph_id": "hepar2.csv",
-            "parameters_id": "hepar2.rds",
-            "data_id": "hepar2",
-            "seed_range": [
-                1,
-                10
-            ]
-        },
-        {
-            "graph_id": "hepar2.csv",
             "parameters_id": "generateBinaryBN",
             "data_id": "binary_bn",
             "seed_range": [
@@ -55,7 +46,69 @@
             "seed_range": null
         }
     ],
-    "ROC_sem": [
+    "data_example1":[
+        {
+        "graph_id": "maxneigs4",
+        "parameters_id": "generateBinaryBN",
+        "data_id": "example1",
+        "seed_range": [
+            1,
+            10
+            ]
+        }
+    ],
+    "data_example2":[
+            {
+            "graph_id": "maxneigs4",
+            "parameters_id": "SEM",
+            "data_id": "example3",
+            "seed_range": [
+                1,
+                10
+                ]
+            }],
+    "data_example3":[
+        {
+            "graph_id": "hepar2.csv",
+            "parameters_id": "hepar2.rds",
+            "data_id": "example3",
+            "seed_range": [
+                1,
+                10
+            ]
+        }
+    ],
+    "data_example4":[
+        {
+            "graph_id": "hepar2.csv",
+            "parameters_id": "SEM",
+            "data_id": "example4",
+            "seed_range": [
+                1,
+                10
+            ]
+        }
+    ],
+
+
+    "ROC_example1": [
+        "winasobs-bdeu",
+        "asobs-bdeu",
+        "tabu-bde",
+        "mmhc-bde-mi",
+        "hc-bde",
+        "gs-mi",
+        "interiamb-mi",
+        "fci-chi-square",
+        "rfci-chi-square",
+        "gfci-bdeu-chi-square",
+        "fges-bdeu",
+        "itsearch_map-bde",
+        "itsearch_sample-bde",
+        "pcalg-binCItest",
+        "omcmc_itsample-bde_chi1"
+    ],
+    "ROC_example2": [
         "fci-fisher-z",
         "fges-sem-bic",
         "gfci-sem-bic-fisher-z",
@@ -67,7 +120,7 @@
         "rfci-fisher-z",
         "tabu-bge"
     ],
-    "ROC_disc": [
+    "ROC_example3": [
         "winasobs-bdeu",
         "asobs-bdeu",
         "gobnilp-bde",
@@ -84,5 +137,18 @@
         "itsearch_sample-bde",
         "pcalg-disCItest",
         "omcmc_itsample-bde_chi1"
+    ],
+    "ROC_example4": [
+        "fci-fisher-z",
+        "fges-sem-bic",
+        "gfci-sem-bic-fisher-z",
+        "hc-bge",
+        "itsearch_sample-bge",
+        "mmhc-bge-zf",
+        "omcmc_itsample-bge",
+        "pcalg-gaussCItest",
+        "rfci-fisher-z",
+        "tabu-bge"
     ]
+
 }
