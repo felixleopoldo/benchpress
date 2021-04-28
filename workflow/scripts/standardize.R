@@ -1,6 +1,6 @@
 input_filename <- snakemake@input[["data"]]
 output_filename <- snakemake@output[["data"]]
-data <- read.csv(input_filename)
+data <- read.csv(input_filename, check.names=FALSE)
 data_scaled <- scale(data)
 
 if(as.logical(snakemake@wildcards[["standardized"]]) == TRUE){

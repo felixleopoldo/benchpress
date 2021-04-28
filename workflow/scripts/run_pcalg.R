@@ -20,7 +20,7 @@ verbose <- as.logical(snakemake@wildcards[["verbose"]])
 indepTest = match.fun(snakemake@wildcards[["indepTest"]])
 
 set.seed(seed)
-data <- read.csv(filename_data, sep=",")
+data <- read.csv(filename_data, check.names=FALSE)
 
 suffStat = NULL
 if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){

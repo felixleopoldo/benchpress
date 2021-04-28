@@ -17,6 +17,18 @@ df = pd.read_csv(snakemake.input["traj"], sep=",")
 
 if snakemake.params["graph_type"]== "dag":
     g = nx.DiGraph()
+else:
+    g = nx.Graph()
+
+if snakemake.params["estimator"] == "map":
+    maxind = df[3:]["score"].idxmax()    
+    for index, row in df[:maxind+1].iterrows():
+        added = edges_str_to_list(row["added"])
+        removed = edges_str_to_list(row["removed"])
+        g.add_edges_from(added)
+        g.remove_edges_from(removed)
+        
+    pd.DataFrame(nx.to_numpy_array(g)).to_csv(snakemake.output["adjmat"], index=False)
 
 if snakemake.params["estimator"] == "heatmap":
     heatmap = None
@@ -37,7 +49,7 @@ if snakemake.params["estimator"] == "heatmap":
 
     heatmap = heatmap / df["index"].iloc[-1] # almost right
 
-df = pd.DataFrame(heatmap)
-df.columns = g.nodes()
-df.to_csv(snakemake.output["heatmap"], index=False)
+    df = pd.DataFrame(heatmap)
+    df.columns = g.nodes()
+    df.to_csv(snakemake.output["heatmap"], index=False)
 

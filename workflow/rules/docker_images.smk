@@ -4,7 +4,7 @@ def docker_image(algorithm):
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:1.6.3"
     elif algorithm == "thomasjava":
-        return "docker://onceltuca/thomasgreen:1.14"
+        return "docker://onceltuca/thomasgreen:1.18"
     elif algorithm == "notears":
         return "docker://onceltuca/jmoss20notears:1.4"
     elif algorithm == "greenfortran":

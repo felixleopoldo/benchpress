@@ -18,5 +18,7 @@ adjmat <- randDAGMaxParents(n = n, d = d, par1=par1, par2=par2, method=method, m
 
 #write.csv(adjmat, file = filename, quote = FALSE, row.names = FALSE)
 
-write.table(adjmat, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
+colnames(adjmat) <- as.character(colnames(adjmat))
 
+write.table(adjmat, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
+#write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)

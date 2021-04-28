@@ -15,6 +15,7 @@ rule sample_binary_bn:
 
 rule sample_pcalg_sem_params:
     input:
+        "workflow/scripts/sample_pcalg_semparams.R", 
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/bn/" + \

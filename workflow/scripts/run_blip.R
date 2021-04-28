@@ -32,7 +32,7 @@ dir.create(directory, showWarnings=FALSE)
 filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 
-data <- read.csv(filename_data, sep=",")
+data <- read.csv(filename_data, check.names=FALSE)
 data <- data[-1,] # Remove range header
 data_dim <- dim(data)[2]
 

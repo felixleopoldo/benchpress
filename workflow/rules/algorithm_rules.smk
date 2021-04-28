@@ -37,46 +37,6 @@ rule join_summaries_glasso:
     script:
         "../scripts/join_csv_files.R"
 
-
-
-
-rule gg_singlepair:
-    input:
-        data = alg_input_data()
-    output:
-        adjmat = alg_output_adjmat_path("gg_singlepair"),
-        time = alg_output_time_path("gg_singlepair")
-    singularity:
-        docker_image("thomasjava")
-    message:
-        "Executing gg_singlepair algorithm on the following files: {input}."
-    shell:
-        alg_shell("gg_singlepair")
-
-
-rule summarise_gg_singlepair:
-    input:
-        "workflow/scripts/run_summarise.R",
-        data = summarise_alg_input_data_path(),
-        adjmat_true = summarise_alg_input_adjmat_true_path(),
-        adjmat_est = summarise_alg_input_adjmat_est_path("gg_singlepair"),
-        time = summarise_alg_input_time_path("gg_singlepair")
-    output:
-        res = summarise_alg_output_res_path("gg_singlepair")
-    message:
-        "Summarising gg_singlepair results based on the files: {input}."
-    shell:
-        summarise_alg_shell("gg_singlepair")
-       
-rule join_summaries_gg_singlepair:
-    input:
-        conf=configfilename,
-        res=join_string_sampled_model("gg_singlepair")
-    output:
-        join_summaries_output("gg_singlepair")
-    script:
-        "../scripts/join_csv_files.R"
-
 rule tabu:
     input:
         data = alg_input_data()
@@ -625,6 +585,19 @@ rule trilearn_loglin:
     shell:
         alg_shell("trilearn_loglin")
 
+rule trilearn_loglin_est:
+    input:
+        traj = alg_output_seqgraph_path("trilearn_loglin"),
+    output:
+        adjmat = alg_output_adjmat_path("trilearn_loglin")
+    params:
+        graph_type="chordal",
+        estimator="map"
+    singularity:
+        docker_image("networkx")
+    script:
+        "../scripts/graphtraj_est.py"
+
 rule summarise_trilearn_loglin:
     input:
         "workflow/scripts/run_summarise.R",
@@ -661,6 +634,19 @@ rule gg_singlepair_fortran:
     shell:
         alg_shell("gg_singlepair_fortran")
 
+rule gg_singlepair_fortran_est:
+    input:
+        traj = alg_output_seqgraph_path("gg_singlepair_fortran"),
+    output:
+        adjmat = alg_output_adjmat_path("gg_singlepair_fortran")
+    params:
+        graph_type="chordal",
+        estimator="map"
+    singularity:
+        docker_image("networkx")
+    script:
+        "../scripts/graphtraj_est.py"
+
 rule greenthomas:
     input:
         data = alg_input_data()
@@ -674,6 +660,66 @@ rule greenthomas:
         "Executing greenthomas algorithm on the following files: {input}."
     shell:
         alg_shell("greenthomas")
+
+rule greenthomas_est:
+    input:
+        traj = alg_output_seqgraph_path("greenthomas"),
+    output:
+        adjmat = alg_output_adjmat_path("greenthomas")
+    params:
+        graph_type="chordal",
+        estimator="map"
+    singularity:
+        docker_image("networkx")
+    script:
+        "../scripts/graphtraj_est.py"
+
+rule gg_singlepair:
+    input:
+        data = alg_input_data()
+    output:
+        seqgraph = alg_output_seqgraph_path("gg_singlepair"),
+        time = alg_output_time_path("gg_singlepair")
+    singularity:
+        docker_image("thomasjava")
+    shell:
+        alg_shell("gg_singlepair")
+
+rule gg_singlepair_est:
+    input:
+        traj = alg_output_seqgraph_path("gg_singlepair"),
+    output:
+        adjmat = alg_output_adjmat_path("gg_singlepair")
+    params:
+        graph_type="chordal",
+        estimator="map"
+    singularity:
+        docker_image("networkx")
+    script:
+        "../scripts/graphtraj_est.py"
+
+rule summarise_gg_singlepair:
+    input:
+        "workflow/scripts/run_summarise.R",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("gg_singlepair"),
+        time = summarise_alg_input_time_path("gg_singlepair")
+    output:
+        res = summarise_alg_output_res_path("gg_singlepair")
+    message:
+        "Summarising gg_singlepair results based on the files: {input}."
+    shell:
+        summarise_alg_shell("gg_singlepair")
+       
+rule join_summaries_gg_singlepair:
+    input:
+        conf=configfilename,
+        res=join_string_sampled_model("gg_singlepair")
+    output:
+        join_summaries_output("gg_singlepair")
+    script:
+        "../scripts/join_csv_files.R"
 
 # rule summarise_greenthomas:
 #     input:

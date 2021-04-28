@@ -9,6 +9,7 @@ np.random.seed(seed)
 data = snakemake.input["data"]
 filename = snakemake.output["adjmat"]
 df = pd.read_csv(data)
+
 X = df.values
 
 start = time.perf_counter()
@@ -19,4 +20,7 @@ tottime = time.perf_counter() - start
 
 time_filename = snakemake.output["time"]
 np.savetxt(time_filename, [tottime])
-pd.DataFrame(adjmat).to_csv(filename, index=False, columns=df.columns)
+dfadj = pd.DataFrame(adjmat)
+dfadj.columns = df.columns
+
+dfadj.to_csv(filename, index=False)

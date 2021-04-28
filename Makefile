@@ -5,7 +5,7 @@ cleanres:
 		rm -f results/*.ps
 
 clean: 
-		rm -r results
+		rm -rf results
 
 docs:	docs/source
 		cd docs && make html

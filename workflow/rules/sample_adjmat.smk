@@ -1,4 +1,6 @@
 rule sample_adjmat:
+    input:
+        "workflow/scripts/sample_dags.R"
     output:        
         adjmat = "{output_dir}/adjmat/" + pattern_strings["generateDAGMaxParents"] + "/seed={replicate}.csv"
     singularity:

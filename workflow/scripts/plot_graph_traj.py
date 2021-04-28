@@ -33,17 +33,14 @@ df["size"] = size
 T= df["index"].iloc[-1] # approximate length
 
 newindex = pd.Series(range(T))
-df2 = df[["index","size","score"]][2:].set_index("index") # removes the two first rows.
+df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
 
 df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
-
 
 df_noburnin = df2[int(T*0.3):]
 df_noburnin["size"].plot()
 
 plt.savefig(sys.argv[2])
-
-
 
 traj_length = len(df_noburnin)
 

@@ -9,7 +9,8 @@ lb <- as.numeric(snakemake@wildcards[["min"]])
 ub <- as.numeric(snakemake@wildcards[["max"]])
 
 filename <- snakemake@output[["bn"]] 
-df <- read.csv(snakemake@input[["adjmat"]], header=TRUE)
+df <- read.csv(snakemake@input[["adjmat"]], header=TRUE, check.names = FALSE )
+
 adjmat <- as.matrix(df)
 
 weight_mat <- adjmat

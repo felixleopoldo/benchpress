@@ -78,7 +78,8 @@ rule copy_fixed_data:
         "cp {input} {output.data}"
 
 rule sample_bnfit_data:
-    input:        
+    input:
+        "workflow/scripts/sample_from_bnlearn_bn.R",
         bn="{output_dir}/bn/bn.fit_networks/{bn}"        
     output:
         data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"

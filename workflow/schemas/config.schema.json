@@ -1121,13 +1121,32 @@
                 },
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "prior":{
+                    "type": "string"    
+                },
+                "ascore":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "bscore":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "clq":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "sep":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "mcmc_seed":{
+                    "$ref": "#definitions/flexnonnegint"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
                 "n_samples",
-                "penalty",
+                "prior",
+                "mcmc_seed",
                 "randomits"
             ]
         },
@@ -1152,13 +1171,32 @@
                 },
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "prior":{
+                    "type": "string"    
+                },
+                "ascore":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "bscore":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "clq":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "sep":{
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "mcmc_seed":{
+                    "$ref": "#definitions/flexnonnegint"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
                 "n_samples",
-                "penalty",
+                "prior",
+                "mcmc_seed",
                 "randomits"
             ]
         },

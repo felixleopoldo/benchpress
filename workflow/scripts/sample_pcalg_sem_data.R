@@ -27,11 +27,12 @@ N <- as.integer(snakemake@wildcards[["n"]])
 seed <- as.integer(snakemake@wildcards[["replicate"]])
 filename <- snakemake@output[["data"]]
 
-trueDAGedges <- as.matrix(read.csv(weight_mat_filename))
+trueDAGedges <- as.matrix(read.csv(weight_mat_filename, check.names=FALSE))
 
 set.seed(seed)
 
 data <- rmvDAG(trueDAGedges, N)
+
 colnames(data) <- colnames(trueDAGedges)
 
 write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
