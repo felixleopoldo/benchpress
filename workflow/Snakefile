@@ -47,7 +47,6 @@ include: "rules/docker_images.smk"
 singularity:
     docker_image("benchmark")
 
-
 include: "rules/validate.smk"
 include: "rules/pattern_strings.smk"
 include: "rules/algorithm_strings.smk"
