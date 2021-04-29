@@ -24,7 +24,6 @@ RUN apt install -y libreadline-dev
 WORKDIR /myappdir/scipoptsuite-3.2.1
 RUN make
 
-#RUN apt install -y git
 # Installing GOBNILP (instructions from https://bitbucket.org/jamescussens/gobnilp/src/master)
 WORKDIR /myappdir/
 

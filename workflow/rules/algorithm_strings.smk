@@ -63,14 +63,11 @@ json_string.update({val["id"]:  expand(pattern_strings["trilearn_loglin"], **val
 json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["blip"]})
 
-# This has to be the last one since it takes input strings as start space...\
-
+# Order mcmc is special and has to be the last one since it takes input strings as start space...\
+# Also, the start space path has to be extracted first.
 order_mcmc_list = config["resources"]["structure_learning_algorithms"]["order_mcmc"]
 for items in order_mcmc_list:    
     items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
 
 json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                     for val in order_mcmc_list } )
-
-#json_string.update({val["id"]: expand(pattern_strings["order_mcmc"], **val,) 
-#                    for val in order_mcmc_list } )

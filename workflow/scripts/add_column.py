@@ -3,12 +3,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('--filename')
-parser.add_argument('--colname', 
-                    help="Name of the new column")
+parser.add_argument('--colname', help="Name of the new column")
 parser.add_argument('--colval')
-
-
-
 args = parser.parse_args()
 
 colval = args.colval

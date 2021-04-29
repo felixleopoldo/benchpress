@@ -5,7 +5,6 @@ p <- arg_parser("A program for thresholding a heatmap matrix to an adjacency mat
 p <- add_argument(p, "--filename", help = "Filename")
 p <- add_argument(p, "--heatmap", help = "Heatmap", default = ".")
 p <- add_argument(p, "--threshold", help = "Threshold", type = "numeric", default = 0.5)
-
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)

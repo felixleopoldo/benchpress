@@ -7,12 +7,12 @@ import networkx as nx
 import json
 import sys
 
-seed = int(sys.argv[1])#int(snakemake.wildcards["seed"])
+seed = int(sys.argv[1])
 
 np.random.seed(seed)
-param_filename = sys.argv[2]#snakemake.input["bn"]
-data_samples = int(sys.argv[4])#int(snakemake.wildcards["sample_size"])
-data_filename = sys.argv[3]#snakemake.output["data"]
+param_filename = sys.argv[2]
+data_samples = int(sys.argv[4])
+data_filename = sys.argv[3]
 
 parameters = loglin.read_local_hyper_consistent_parameters_from_json_file(param_filename)
 with open(param_filename) as data_file:

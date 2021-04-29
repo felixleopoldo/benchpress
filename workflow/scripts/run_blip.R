@@ -1,11 +1,7 @@
-## Simulate rblip
-
 library(argparser)
 library(RBGL)
 library(r.blip)
-#source("lib/code_for_binary_simulations/rblip.R")
 source("resources/code_for_binary_simulations/df_fns.R")
-#source("lib/code_for_binary_simulations/algorithm_wrappers.R")
 source("resources/code_for_binary_simulations/make_var_names.R")
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 

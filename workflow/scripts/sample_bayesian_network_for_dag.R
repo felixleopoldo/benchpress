@@ -4,13 +4,11 @@ library(argparser)
 source("resources/binarydatagen/generatebinaryBNf.r")
 
 p <- arg_parser("A program for generating a random directed acyclig graph.")
-
 p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--filename_dag", help = "Filename for DAG")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric")
 p <- add_argument(p, "--min", help = "Random seed", type = "numeric")
 p <- add_argument(p, "--max", help = "Random seed", type = "numeric")
-
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)

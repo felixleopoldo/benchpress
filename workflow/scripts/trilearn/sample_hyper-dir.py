@@ -7,12 +7,12 @@ from trilearn.distributions import discrete_dec_log_linear as loglin
 import pandas as pd
 import sys
 
-seed = int(sys.argv[2]) #int(snakemake.wildcards["seed"])
-adjmat_filename = sys.argv[5] #snakemake.input["adjmat"]
+seed = int(sys.argv[2]) 
+adjmat_filename = sys.argv[5]
 adjmat = pd.read_csv(adjmat_filename, dtype=int).values
-parameters_filename = sys.argv[1] #"params.json"
-l = int(sys.argv[3]) #int(snakemake.wildcards["n_levels"])
-pseudo_obs = float(sys.argv[4])#float(snakemake.wildcards["pseudo_obs"])
+parameters_filename = sys.argv[1]
+l = int(sys.argv[3])
+pseudo_obs = float(sys.argv[4])
 
 np.random.seed(seed)
 graph = nx.from_numpy_array(adjmat)

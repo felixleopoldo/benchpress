@@ -29,8 +29,6 @@ if os.path.isdir("results/bn/sem_params"):
 else:
     shutil.copytree("resources/bn/sem_params", "results/bn/sem_params")
 
-
-
 configfilename="config/config.json"
 i=0
 for arg in args:
@@ -46,15 +44,21 @@ snakemake.utils.validate(config, 'schemas/config.schema.json')
 
 include: "rules/docker_images.smk"
 
+singularity:
+    docker_image("benchmark")
+
+
 include: "rules/validate.smk"
 include: "rules/pattern_strings.smk"
 include: "rules/algorithm_strings.smk"
 include: "rules/helper_functions.smk"
 include: "rules/algorithm_shell_commands.smk"
 include: "rules/algorithm_summary_shell_command.smk"
-
-singularity:
-    docker_image("benchmark")
+include: "rules/sample_adjmat.smk"
+include: "rules/sample_parameters.smk"
+include: "rules/sample_data.smk"
+include: "rules/algorithm_rules.smk"
+include: "rules/evaluation.smk"
 
 rule heatmap_from_adjvec_trajectory:
     input:
@@ -87,9 +91,3 @@ rule adjmat_from_heatmap:
         "--heatmap {input.heatmap} " \
         "--filename {output.adjmat_est} " \
         "--threshold {wildcards.threshold}"
-
-include: "rules/sample_adjmat.smk"
-include: "rules/sample_parameters.smk"
-include: "rules/sample_data.smk"
-include: "rules/algorithm_rules.smk"
-include: "rules/evaluation.smk"

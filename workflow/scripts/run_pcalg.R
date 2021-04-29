@@ -19,7 +19,6 @@ numCores <- as.integer(snakemake@wildcards[["numCores"]])
 verbose <- as.logical(snakemake@wildcards[["verbose"]])
 indepTest = match.fun(snakemake@wildcards[["indepTest"]])
 
-set.seed(seed)
 data <- read.csv(filename_data, check.names=FALSE)
 
 suffStat = NULL
@@ -39,7 +38,7 @@ if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
 p <- dim(data)[2]
 
 start <- proc.time()[1]
-
+set.seed(seed)
 pc.fit <- pc(suffStat = suffStat,
             indepTest = indepTest,
             alpha = alpha,
@@ -62,9 +61,6 @@ graph <- pc.fit@graph
 
 adjmat <- as(graph, "matrix")
 colnames(adjmat) <- names(data)
-
-#blipadj <- bnfit2matrix(blipfit)
-#blipadj <- rearrangeMatrix(blipadj, varnames)
 
 write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 

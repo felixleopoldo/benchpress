@@ -3,7 +3,6 @@ from sklearn.covariance import GraphicalLasso
 import pandas as pd
 import time
 
-
 seed = int(snakemake.wildcards["replicate"])
 np.random.seed(seed)
 data = snakemake.input["data"]

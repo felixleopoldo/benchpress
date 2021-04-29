@@ -5,9 +5,7 @@ library(RBGL)
 
 source("resources/code_for_binary_simulations/make_var_names.R")
 
-
 p <- arg_parser("A program for running hill-climbing algorithm and save to file.")
-
 p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
@@ -21,9 +19,7 @@ p <- add_argument(p, "--l", help = "Score parameter", type="numeric")
 p <- add_argument(p, "--k", help = "Score parameter", type="numeric")
 p <- add_argument(p, "--prior", help = "Score parameter")
 p <- add_argument(p, "--beta", help = "Score parameter", type="numeric")
-
 argv <- parse_args(p)
-
 
 filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
@@ -36,7 +32,6 @@ if (argv$score %in% c("bde", "bic")){
     data <- matrixToDataframe(data, names)
 }
 set.seed(seed)
-
 
 output <- hc(data, 
             restart=argv$restart,

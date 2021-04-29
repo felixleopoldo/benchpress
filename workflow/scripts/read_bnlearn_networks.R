@@ -1,20 +1,8 @@
 library(bnlearn)
 library(graph)
 
-asia <- readRDS("standard_graphs/bayesian_networks/asia.rds")
+filename <- "standard_graphs/bayesian_networks/asia"
+asia <- readRDS(paste(filename , ".rds", sep=""))
 asiagnel <- as.graphNEL(asia)
 adjmat <- as(asiagnel, "matrix")
-write.csv(adjmat, file = "asiaadjmat.csv", row.names = FALSE, quote = FALSE)
-
-adjmat
-asia
-data <- rbn(asia, n=3)
-data
-numdata <- data.matrix(data)
-
-is(numdata)
-numdataframe <- data.frame(numdata)
-is(numdataframe)
-
-
-print(header)
+write.csv(adjmat, file = paste(filename , ".csv", sep=""), row.names = FALSE, quote = FALSE)

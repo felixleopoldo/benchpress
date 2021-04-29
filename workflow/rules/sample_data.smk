@@ -1,5 +1,3 @@
-
-
 rule sample_bindata:
     input:
         bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"

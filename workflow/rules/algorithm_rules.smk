@@ -187,8 +187,6 @@ rule gs:
         "Executing gs algorithm on the following files: {input}."
     script:
         "../scripts/run_gs.R"
-#    shell:
-#        alg_shell("gs")
 
 rule summarise_gs:
     input:
@@ -388,14 +386,12 @@ rule fges:
     input:
         data = alg_input_data()
     output:
-        adjmat = alg_output_adjmat_path("fges"), # maybe fges-cont...
-        time = alg_output_time_path("fges") # maybe fges-cont...
+        adjmat = alg_output_adjmat_path("fges"),
+        time = alg_output_time_path("fges") 
     message:
         "Executing fges algorithm on the following files: {input}."
     script:
         "../scripts/run_fges.py"
-    #shell:
-    #    alg_shell("fges") # maybe fges-cont...
 
 rule summarise_fges:
     input:
@@ -446,7 +442,7 @@ rule summarise_fci:
         summarise_alg_shell("fci")
 
 rule join_summaries_fci:
-    input: # This could be a funciton since no pattern mathing is going on here
+    input: 
         conf=configfilename,
         res=join_string_sampled_model("fci")
     output:
@@ -462,8 +458,6 @@ rule gfci:
         time = alg_output_time_path("gfci")
     message:
         "Executing gfci algorithm on the following files: {input}."
-    #shell:
-    #    alg_shell("gfci")
     script:
         "../scripts/run_gfci.py"
         
@@ -482,7 +476,7 @@ rule summarise_gfci:
         summarise_alg_shell("gfci")
 
 rule join_summaries_gfci:
-    input: # This could be a funciton since no pattern mathing is going on here
+    input: 
         conf=configfilename,
         res=join_string_sampled_model("gfci")
     output:
@@ -515,7 +509,7 @@ rule summarise_rfci:
         summarise_alg_shell("rfci")
 
 rule join_summaries_rfci:
-    input: # This could be a funciton since no pattern mathing is going on here
+    input: 
         conf=configfilename,
         res=join_string_sampled_model("rfci")
     output:
@@ -529,7 +523,6 @@ rule order_mcmc:
         data = alg_input_data(),
         startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
     output:
-        #adjvecs = alg_output_adjvecs_path("order_mcmc"),
         seqgraph = alg_output_seqgraph_path("order_mcmc"),
         time = alg_output_time_path("order_mcmc")
     message:
@@ -538,18 +531,6 @@ rule order_mcmc:
         docker_image("bidag")
     script:
         "../scripts/run_order_mcmc.R"
-
-# rule order_mcmc_est:
-#     input:
-#         "workflow/scripts/run_order_mcmc.R",
-#         seqgraph = alg_output_seqgraph_path("order_mcmc")
-#     output:
-#         #adjmat = alg_output_adjmat_path("order_mcmc"),
-#         adjmat_est = adjmat_estimate_path_mcmc("order_mcmc")
-#     singularity:
-#         docker_image("trilearn")
-#     script:
-#         "../scripts/est_from_graphseq.py"
 
 rule summarise_order_mcmc:
     input:
@@ -653,7 +634,6 @@ rule greenthomas:
     input:
         data = alg_input_data()
     output:
-        #adjmat = alg_output_adjmat_path("greenthomas"),
         seqgraph = alg_output_seqgraph_path("greenthomas"),
         time = alg_output_time_path("greenthomas")
     singularity:
@@ -722,26 +702,3 @@ rule join_summaries_gg_singlepair:
         join_summaries_output("gg_singlepair")
     script:
         "../scripts/join_csv_files.R"
-
-# rule summarise_greenthomas:
-#     input:
-#         "workflow/scripts/run_summarise.R",
-#         data = summarise_alg_input_data_path(),
-#         adjmat_true = summarise_alg_input_adjmat_true_path(),
-#         adjmat_est = summarise_alg_input_adjmat_est_path("greenthomas"),
-#         time = summarise_alg_input_time_path("greenthomas")
-#     output:
-#         res = summarise_alg_output_res_path("greenthomas")
-#     message:
-#         "Summarising greenthomas results based on the files: {input}."
-#     shell:
-#         summarise_alg_shell("greenthomas")
-       
-# rule join_summaries_greenthomas:
-#     input:
-#         conf=configfilename,
-#         res=join_string_sampled_model("greenthomas")
-#     output:
-#         join_summaries_output("greenthomas")
-#     script:
-#         "../scripts/join_csv_files.R"

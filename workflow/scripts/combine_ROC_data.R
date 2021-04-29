@@ -6,7 +6,6 @@ p <- arg_parser("A program for combining roc data from differents sources.")
 p <- add_argument(p, "--filename", help = "Filename")
 p <- add_argument(p, "--config_filename", help = "Filename config file")
 p <- add_argument(p, "--algorithms", help = "Algorithms", nargs=Inf)
-
 argv <- parse_args(p)
 
 config <- fromJSON(file = argv$config_filename)
@@ -23,14 +22,13 @@ rocalgs <- config$benchmark_setup$evaluation$ROC
 
 for (alg in rocalgs){
     # get the algorithm from the ROC section in the json file.
-    
     algorithm <- NULL
     curve_param <- NULL
     for (active_algorithm in active_algorithms){
         for(a in config$resources$structure_learning_algorithms[[active_algorithm]]){
             if (a$id == alg) {
                 algorithm = active_algorithm
-                # Find the varying curve automatically as the one which is an array.
+                # Finds the varying curve automatically as the one which is an array.
                 curve_param <- names(a)[[2]]
                 for (key in names(a)){
                     if (is.vector(a[[key]])){
@@ -56,16 +54,9 @@ for (alg in rocalgs){
                     FPRn_pattern_median = median(FPRn_pattern), 
                     TPR_pattern_q1 = quantile(TPR_pattern, probs = c(0.05)), 
                     TPR_pattern_q3 = quantile(TPR_pattern, probs = c(0.95)),
-                    #SHD_cpdag_mean = mean(SHD_cpdag),
-                    #TPR_cpdag_mean = mean(TPR_cpdag), 
-                    #TPR_cpdag_median = median(TPR_cpdag), 
-                    #FPRn_cpdag_median = median(FPRn_cpdag), 
-                    #TPR_cpdag_q1 = quantile(TPR_cpdag, probs = c(0.05)), 
-                    #TPR_cpdag_q3 = quantile(TPR_cpdag, probs = c(0.95)),
                     time_mean = mean(time),
                     logscore_mean = mean(logscore),
-                    N = n()) #%>%
-        #filter(N %in% length(replicates))
+                    N = n())
         sumROC["labels"] <- NA
         toplot <- dplyr::bind_rows(toplot, sumROC)
     }

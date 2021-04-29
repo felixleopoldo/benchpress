@@ -111,7 +111,6 @@ order_mcmc_res <- orderMCMC(myscore,
 totaltime <- proc.time()[1] - start
 endspace <- order_mcmc_res$space$adjacency # This might not be what we want
 
-
 # This returns a string which is a list of flattened adjacency matrices.
 
 labels <- colnames(data)
@@ -150,8 +149,5 @@ for (i in seq(2,m)) {
 }
 
 write.csv(x=res, file = filename, row.names = FALSE, quote = FALSE)
-
-#adjvecliststr <- rjson::toJSON(order_mcmc_res$chain$incidence)
-#write(adjvecliststr, file = filename)
 
 write(totaltime, file = snakemake@output[["time"]])

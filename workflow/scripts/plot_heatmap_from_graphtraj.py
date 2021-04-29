@@ -45,5 +45,4 @@ cax.tick_params(labelsize=6)
 cax = plt.gcf().axes[-1]
 cax.tick_params(labelsize=6)
 
-#plt.savefig(snakemake.output["plot_filename"])
 plt.savefig(sys.argv[2])

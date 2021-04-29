@@ -4,7 +4,6 @@ library(rjson)
 p <- arg_parser("A program for generating a Tetrad graph to JSON.")
 p <- add_argument(p, "--jsongraph", help = "Tetrad graph in json format")
 p <- add_argument(p, "--filename", help = "Output filename")
-
 argv <- parse_args(p)
 
 fges_result_to_matrix <- function(graph) {
@@ -36,6 +35,5 @@ fges_result_to_matrix <- function(graph) {
 }
 graph <- fromJSON(file = argv$jsongraph)
 adjmat <- fges_result_to_matrix(graph)
-
 
 write.csv(adjmat, file = argv$filename, row.names = FALSE, quote = FALSE)

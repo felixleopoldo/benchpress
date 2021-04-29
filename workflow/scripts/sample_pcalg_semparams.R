@@ -1,6 +1,6 @@
 # This function gives edges weights between the bounds
 # with both positive and negative signs
-wFUN <- function(m, lb, ub){ # function for edge weights
+wFUN <- function(m, lb, ub){ 
     runif(m, lb, ub)*sample(c(-1, 1), m, replace = TRUE)
 }
 
@@ -21,4 +21,3 @@ n_edges <- sum(adjmat)
 weight_mat[which(weight_mat==1)] <- wFUN(n_edges, lb=lb, ub=ub)
 
 write.table(weight_mat, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
-#write.csv(weight_mat, file = filename, row.names = FALSE, col.names=TRUE, quote = FALSE)

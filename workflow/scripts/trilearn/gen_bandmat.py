@@ -5,9 +5,9 @@ import pandas as pd
 import sys 
 
 seed = int(sys.argv[2])
-dim = int(sys.argv[3])#int(snakemake.wildcards["dim"])
-bandwidth = int(sys.argv[4])#int(snakemake.wildcards["bandwidth"])
-filename = sys.argv[1] #snakemake.output["adjmat"]
+dim = int(sys.argv[3])
+bandwidth = int(sys.argv[4])
+filename = sys.argv[1]
 
 np.random.seed(seed)
 g = dlib.gen_AR_graph(dim, width=bandwidth)
