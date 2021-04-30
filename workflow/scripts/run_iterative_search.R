@@ -6,8 +6,6 @@ source("resources/code_for_binary_simulations/df_fns.R")
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 seed <- snakemake@wildcards[["replicate"]]
-
-
 map <- snakemake@wildcards[["MAP"]]
 
 set.seed(seed)
@@ -47,22 +45,16 @@ if (snakemake@wildcards[["am"]] != "None") {
 
 if(snakemake@wildcards[["scoretype"]] == "bdecat"){
   # if discrete data
-  data <- data[-1,] # Remove range header
-
-    myscore <- scoreparameters("bdecat", data, 
-                                bdecatpar = list(chi = chi,
-                                                 edgepf = edgepf))
+    data <- data[-1,] # Remove range header
+    myscore <- scoreparameters("bdecat", data, bdecatpar = list(chi = chi, edgepf = edgepf))
 } 
 if(snakemake@wildcards[["scoretype"]] == "bde"){
   # if discrete data
-  data <- data[-1,] # Remove range header
-
-    myscore <- scoreparameters("bde", data, bdepar = list(chi = chi,
-                                                                        edgepf = edgepf))
+    data <- data[-1,] # Remove range header
+    myscore <- scoreparameters("bde", data, bdepar = list(chi = chi,edgepf = edgepf))
 } 
 if(snakemake@wildcards[["scoretype"]] == "bge"){
-    myscore <- scoreparameters("bge", data, bgepar = list(am = am,
-                                                                        aw = aw))
+    myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
 
 start <- proc.time()[1]
@@ -87,11 +79,9 @@ totaltime <- proc.time()[1] - start
 adjmat <- NULL
 
 if (snakemake@wildcards[["estimate"]] == "map"){
-  #adjmat <- itsearch_res$max$DAG
   adjmat <- itsearch_res$DAG
 }
 if (snakemake@wildcards[["estimate"]] == "endspace"){
-  #adjmat <- itsearch_res$space$adjacency # this is the space, not the estimate
   adjmat <- itsearch_res$endspace # this is the space, not the estimate
 }
 

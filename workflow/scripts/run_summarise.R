@@ -131,12 +131,28 @@ if (argv$adjmat_header == 1) {
   estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
 }
 
+skel_true <- (true_adjmat | t(true_adjmat)) * 1
+skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
+
+TP <- sum(skel_true * skel_est) / 2
+FN <- sum((1-skel_true) * (1-skel_est)) / 2
+FP <- sum((1-skel_true) * skel_est) / 2
+FN <- sum(skel_true * (1-skel_est)) / 2
+
+n_edges <- sum(skel_true) / 2
+n_nonedges <- sum(1-skel_true) / 2
+
+#print(skel_true)
+
 compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
 
 df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  FPRn_pattern = compres["FPR_P"],
                  logscore = 100,
-                 SHD_pattern = compres["SHD"])
+                 SHD_pattern = compres["SHD"],
+                 FPR_skel = FP / n_edges,
+                 FNR_skel = FN / n_nonedges
+                 )
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

@@ -1433,6 +1433,9 @@
                 "issmu": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+                "issw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "l": {
                     "$ref": "#/definitions/flexnonnegintnull"
                 },
@@ -1563,6 +1566,9 @@
                 "issmu": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
+                "issw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "l": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
@@ -1611,6 +1617,9 @@
                 },
                 "issmu": {
                     "$ref": "#/definitions/flexnonnegnum"
+                },
+                "issw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "l": {
                     "$ref": "#/definitions/flexnonnegint"

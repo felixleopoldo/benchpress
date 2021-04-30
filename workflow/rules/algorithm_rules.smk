@@ -43,8 +43,6 @@ rule tabu:
     output:
         adjmat = alg_output_adjmat_path("tabu"),
         time = alg_output_time_path("tabu")
-    message:
-        "Executing tabu algorithm on the following files: {input}."
     shell:
         alg_shell("tabu")
 
@@ -113,8 +111,6 @@ rule hc:
     output:
         adjmat = alg_output_adjmat_path("hc"),
         time = alg_output_time_path("hc")
-    message:
-        "Executing hc algorithm on the following files: {input}."
     shell:
         alg_shell("hc")
 
@@ -570,6 +566,7 @@ rule trilearn_loglin:
 
 rule trilearn_loglin_est:
     input:
+       "workflow/scripts/graphtraj_est.py",
         traj = alg_output_seqgraph_path("trilearn_loglin"),
     output:
         adjmat = alg_output_adjmat_path("trilearn_loglin")
@@ -581,30 +578,52 @@ rule trilearn_loglin_est:
     script:
         "../scripts/graphtraj_est.py"
 
+# rule summarise_trilearn_loglin:
+#     input:
+#         "workflow/scripts/run_summarise.R",
+#         data = data_path(),
+#         adjmat_true = adjmat_true_path(),
+#         adjmat_est = adjmat_estimate_path_mcmc("trilearn_loglin"),
+#         time = time_path("trilearn_loglin")
+#     output:
+#         res = result_path_mcmc("trilearn_loglin")
+#     message:
+#         "Summarizing trilearn algorithm with startspace on the following files: {input}, output: {output}."
+#     shell: 
+#         summarise_alg_shell("trilearn_loglin")
+
+# rule join_summaries_trilearn_loglin:
+#     input: 
+#         conf=configfilename,
+#         res=join_string_sampled_model("trilearn_loglin")
+#     output:
+#         join_summaries_output("trilearn_loglin")
+#     script:
+#         "../scripts/join_csv_files.R"
+
+
+
 rule summarise_trilearn_loglin:
     input:
         "workflow/scripts/run_summarise.R",
-        data = data_path(),
-        adjmat_true = adjmat_true_path(),
-        adjmat_est = adjmat_estimate_path_mcmc("trilearn_loglin"),
-        time = time_path("trilearn_loglin")
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("trilearn_loglin"),
+        time = summarise_alg_input_time_path("trilearn_loglin")
     output:
-        res = result_path_mcmc("trilearn_loglin")
-    message:
-        "Summarizing trilearn algorithm with startspace on the following files: {input}, output: {output}."
-    shell: 
+        res = summarise_alg_output_res_path("trilearn_loglin")
+    shell:
         summarise_alg_shell("trilearn_loglin")
-
+       
 rule join_summaries_trilearn_loglin:
-    input: 
+    input:
         conf=configfilename,
         res=join_string_sampled_model("trilearn_loglin")
     output:
         join_summaries_output("trilearn_loglin")
-    message:
-        "Input: {input}"
     script:
         "../scripts/join_csv_files.R"
+
 
 rule gg_singlepair_fortran:
     input:
@@ -619,6 +638,7 @@ rule gg_singlepair_fortran:
 
 rule gg_singlepair_fortran_est:
     input:
+        "workflow/scripts/graphtraj_est.py",
         traj = alg_output_seqgraph_path("gg_singlepair_fortran"),
     output:
         adjmat = alg_output_adjmat_path("gg_singlepair_fortran")
@@ -645,6 +665,7 @@ rule greenthomas:
 
 rule greenthomas_est:
     input:
+        "workflow/scripts/graphtraj_est.py",
         traj = alg_output_seqgraph_path("greenthomas"),
     output:
         adjmat = alg_output_adjmat_path("greenthomas")
@@ -655,6 +676,27 @@ rule greenthomas_est:
         docker_image("networkx")
     script:
         "../scripts/graphtraj_est.py"
+
+rule summarise_greenthomas:
+    input:
+        "workflow/scripts/run_summarise.R",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = summarise_alg_input_adjmat_est_path("greenthomas"),
+        time = summarise_alg_input_time_path("greenthomas")
+    output:
+        res = summarise_alg_output_res_path("greenthomas")
+    shell:
+        summarise_alg_shell("greenthomas")
+       
+rule join_summaries_greenthomas:
+    input:
+        conf=configfilename,
+        res=join_string_sampled_model("greenthomas")
+    output:
+        join_summaries_output("greenthomas")
+    script:
+        "../scripts/join_csv_files.R"
 
 rule gg_singlepair:
     input:
@@ -669,6 +711,7 @@ rule gg_singlepair:
 
 rule gg_singlepair_est:
     input:
+        "workflow/scripts/graphtraj_est.py",
         traj = alg_output_seqgraph_path("gg_singlepair"),
     output:
         adjmat = alg_output_adjmat_path("gg_singlepair")

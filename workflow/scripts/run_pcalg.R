@@ -5,7 +5,6 @@ source("resources/code_for_binary_simulations/make_name.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
-
 seed <- as.integer(snakemake@wildcards[["replicate"]])
 alpha <- as.numeric(snakemake@wildcards[["alpha"]])
 NAdelete <- as.logical(snakemake@wildcards[["NAdelete"]])
@@ -23,19 +22,13 @@ data <- read.csv(filename_data, check.names=FALSE)
 
 suffStat = NULL
 if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
-    
-  nlev <- as.numeric(data[1,])
-  
-  data <- data[-1,] # Remove range header
-   suffStat <- list(dm = data, nlev=nlev,
-            adaptDF = FALSE)
+    nlev <- as.numeric(data[1,])
+    data <- data[-1,] # Remove range header
+    suffStat <- list(dm = data, nlev=nlev, adaptDF = FALSE)
 } else {
-  n <- dim(data)[1]
-  suffStat <- list(C = cor(data), n = n)
-    
+    n <- dim(data)[1]
+    suffStat <- list(C = cor(data), n = n)
 }
-
-p <- dim(data)[2]
 
 start <- proc.time()[1]
 set.seed(seed)

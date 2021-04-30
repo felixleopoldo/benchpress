@@ -1,3 +1,10 @@
+def dict_to_summary(d):
+    s = ""
+    for key, val in d.items():
+        s += " && python workflow/scripts/add_column.py --filename {output} --colname "+key+" --colval {wildcards."+key+"} "
+    ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
+    return ret
+
 def summarise_alg_shell(algorithm):
     if algorithm == "greenthomas":
         return  "Rscript workflow/scripts/run_summarise.R " \
@@ -14,7 +21,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname n_samples       --colval {wildcards.n_samples} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname randomits       --colval {wildcards.randomits} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \                
+                " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \ 
+                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname ascore          --colval {wildcards.ascore} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname bscore          --colval {wildcards.bscore} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \               
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     elif algorithm == "gg_singlepair":
@@ -32,8 +45,14 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname n_samples       --colval {wildcards.n_samples} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname randomits       --colval {wildcards.randomits} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \                
-                " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname ascore          --colval {wildcards.ascore} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname bscore          --colval {wildcards.bscore} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " 
 
     elif algorithm == "tabu":
         return  "Rscript workflow/scripts/run_summarise.R " \
@@ -51,6 +70,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issw          --colval {wildcards.issw} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
@@ -124,6 +144,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issw          --colval {wildcards.issw} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
@@ -250,6 +271,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname issw          --colval {wildcards.issw} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
@@ -425,28 +447,29 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time} | grep -Eo '[0-9]\.[0-9]*$'` " \
 
 
-    # elif algorithm == "trilearn_loglin":
-    #     return "Rscript workflow/scripts/run_summarise.R " \
-    #             "--adjmat_true {input.adjmat_true} " \
-    #             "--adjmat_est {input.adjmat_est} " \
-    #             "--filename_data {input.data} " \
-    #             "--range_header_data 1 " \ 
-    #             "--filename {output} " \ 
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval trilearn_loglin "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname adjmat      --colval {wildcards.adjmat} "  \       
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname bn          --colval {wildcards.bn} "  \       
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname data        --colval {wildcards.data} "  \
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname beta        --colval {wildcards.beta} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname radii       --colval {wildcards.radii} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname N           --colval {wildcards.N} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname M           --colval {wildcards.M} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname pseudo_obs  --colval {wildcards.pseudo_obs} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname threshold   --colval {wildcards.threshold} "\
-    #             " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
+    elif algorithm == "trilearn_loglin":
+        return "Rscript workflow/scripts/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename_data {input.data} " \
+                "--range_header_data 1 " \ 
+                "--filename {output} " \ 
+                " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval trilearn_loglin "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname adjmat      --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/add_column.py --filename {output} --colname bn          --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/add_column.py --filename {output} --colname data        --colval {wildcards.data} "  \
+                " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname beta        --colval {wildcards.beta} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname radii       --colval {wildcards.radii} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname N           --colval {wildcards.N} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname M           --colval {wildcards.M} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname pseudo_obs  --colval {wildcards.pseudo_obs} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname datatype   --colval {wildcards.datatype} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
 
 
     elif algorithm == "order_mcmc":

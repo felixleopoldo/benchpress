@@ -17,6 +17,26 @@ if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi",
                                          "jt", "mc-jt", "smc-jt")){
     data <- data[-1,] # Remove range header
     data <- matrixToDataframe(data, header)
+    args <- list(
+                iss = ifelse(snakemake@wildcards[["iss"]]=="None", 1, as.numeric(snakemake@wildcards[["iss"]])),
+                l = ifelse(snakemake@wildcards[["l"]]=="None", 5, as.numeric(snakemake@wildcards[["l"]])),
+                k = ifelse(snakemake@wildcards[["k"]]=="None", 1, as.numeric(snakemake@wildcards[["k"]])),                                
+                prior = snakemake@wildcards[["prior"]],
+                beta = as.numeric(snakemake@wildcards[["beta"]]),
+                score = snakemake@wildcards[["score"]]
+            )
+} else {    
+    iss.w <- ifelse(snakemake@wildcards[["issw"]]=="None", 2, as.numeric(snakemake@wildcards[["issw"]]))
+    args <- list(
+                iss.w = iss.w,
+                iss.mu = ifelse(snakemake@wildcards[["issmu"]]=="None", 1, as.numeric(snakemake@wildcards[["issmu"]])),
+                l = ifelse(snakemake@wildcards[["l"]]=="None", 5, as.numeric(snakemake@wildcards[["l"]])),
+                k = ifelse(snakemake@wildcards[["k"]]=="None", 1, as.numeric(snakemake@wildcards[["k"]])),                                
+                prior = snakemake@wildcards[["prior"]],
+                beta = as.numeric(snakemake@wildcards[["beta"]]),
+                score = snakemake@wildcards[["score"]]
+            )
+
 }
 set.seed(seed)
 
@@ -25,15 +45,7 @@ mmoutput <- mmhc(data,
                 restrict.args = list(    
                     alpha = ifelse(snakemake@wildcards[["alpha"]]=="None", NULL, as.numeric(snakemake@wildcards[["alpha"]])),
                     test = snakemake@wildcards[["test"]]),
-                maximize.args =  list(
-                    iss = ifelse(snakemake@wildcards[["iss"]]=="None", 1, as.numeric(snakemake@wildcards[["iss"]])),
-                    iss.mu = ifelse(snakemake@wildcards[["issmu"]]=="None", 1, as.numeric(snakemake@wildcards[["issmu"]])),
-                    l = ifelse(snakemake@wildcards[["l"]]=="None", 5, as.numeric(snakemake@wildcards[["l"]])),
-                    k = ifelse(snakemake@wildcards[["k"]]=="None", 1, as.numeric(snakemake@wildcards[["k"]])),                                
-                    prior = snakemake@wildcards[["prior"]],
-                    beta = as.numeric(snakemake@wildcards[["beta"]]),
-                    score = snakemake@wildcards[["score"]]
-                    )
+                    maximize.args = args
                 )
 totaltime <- proc.time()[1] - start
 

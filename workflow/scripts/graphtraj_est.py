@@ -21,12 +21,14 @@ else:
     g = nx.Graph()
 
 if snakemake.params["estimator"] == "map":
-    maxind = df[3:]["score"].idxmax()    
-    for index, row in df[:maxind+1].iterrows():
+    maxscore = df[3:]["score"].max()    
+    for index, row in df.iterrows():
         added = edges_str_to_list(row["added"])
         removed = edges_str_to_list(row["removed"])
         g.add_edges_from(added)
         g.remove_edges_from(removed)
+        if row["score"] == maxscore:
+            break
         
     pd.DataFrame(nx.to_numpy_array(g)).to_csv(snakemake.output["adjmat"], index=False)
 

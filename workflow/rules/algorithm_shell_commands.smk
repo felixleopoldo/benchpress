@@ -82,6 +82,7 @@ def alg_shell(algorithm):
             "--score {wildcards.score} " \
             "--iss {wildcards.iss} " \
             "--iss.mu {wildcards.issmu} " \
+            "--iss.w {wildcards.issw} " \
             "--l {wildcards.l} " \
             "--k {wildcards.k} " \
             "--prior {wildcards.prior} " \
@@ -99,6 +100,7 @@ def alg_shell(algorithm):
             "--score {wildcards.score} " \
             "--iss {wildcards.iss} " \
             "--iss.mu {wildcards.issmu} " \
+            "--iss.w {wildcards.issw} " \
             "--l {wildcards.l} " \
             "--k {wildcards.k} " \
             "--prior {wildcards.prior} " \

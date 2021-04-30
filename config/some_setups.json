@@ -1,54 +1,7 @@
 {
-    "data": [
-        {
-            "graph_id": "AR2",
-            "parameters_id": "disc-loglin",
-            "data_id": "iid100",
-            "seed_range": [1, 1]
-        },
-        {
-            "graph_id": "jonesp15.csv",
-            "parameters_id": null,
-            "data_id": "jonesp15_discrete_loglin.csv",
-            "seed_range": null
-        },
-        {
-            "graph_id": "DAG80",
-            "parameters_id": "SEM",
-            "data_id": "binary_bn",
-            "seed_range": [
-                1,
-                10
-            ]
-        },
-        {
-            "graph_id": "generateDAGMaxParents",
-            "parameters_id": "generateBinaryBN",
-            "data_id": "binary_bn",
-            "seed_range": [
-                1,
-                10
-            ]
-        },
-        {
-            "graph_id": "hepar2.csv",
-            "parameters_id": "generateBinaryBN",
-            "data_id": "binary_bn",
-            "seed_range": [
-                1,
-                10
-            ]
-        },
-        {
-            "graph_id": "hepar2.csv",
-            "parameters_id": null,
-            "data_id": "myhepar2data2000.csv",
-            "seed_range": null
-        }
-    ],
     "data_example1":[
         {
-        "graph_id": "maxneigs4",
+        "graph_id": "avneigs4",
         "parameters_id": "binbn",
         "data_id": "example1",
         "seed_range": [
@@ -59,7 +12,7 @@
     ],
     "data_example2":[
             {
-            "graph_id": "maxneigs4",
+            "graph_id": "avneigs4",
             "parameters_id": "SEM",
             "data_id": "example2",
             "seed_range": [
@@ -101,7 +54,6 @@
         "rfci-chi-square",
         "gfci-bdeu-chi-square",
         "fges-bdeu",
-        "itsearch_map-bde",
         "itsearch_sample-bde",
         "pcalg-binCItest",
         "omcmc_itsample-bde_chi1"
@@ -130,15 +82,13 @@
         "rfci-chi-square",
         "gfci-bdeu-chi-square",
         "fges-bdeu",
-        "itsearch_map-bde",
-        "itsearch_sample-bde",
+        "itsearch_sample-bdecat",
         "pcalg-disCItest",
-        "omcmc_itsample-bde_chi1"
+        "omcmc_itsample-bdecat_chi1"
     ],
     "ROC_example4": [
         "fci-fisher-z",
         "fges-sem-bic",
-        "gfci-sem-bic-fisher-z",
         "hc-bge",
         "itsearch_sample-bge",
         "mmhc-bge-zf",
@@ -147,5 +97,4 @@
         "rfci-fisher-z",
         "tabu-bge"
     ]
-
 }

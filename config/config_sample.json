@@ -2,44 +2,34 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "maxneigs4",
-                "parameters_id": "binbn",
-                "data_id": "example1",
+                "graph_id": "avneigs4",
+                "parameters_id": "SEM",
+                "data_id": "example2",
                 "seed_range": [
                     1,
-                    1
+                    10
                     ]
                 }
+            
         ],
         "evaluation": {
             "ROC": [
-                "winasobs-bdeu",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "fges-bdeu",
-                "itsearch_map-bde",
-                "itsearch_sample-bde",
-                "pcalg-binCItest",
-                "omcmc_itsample-bde_chi1"
+
+        "hc-bge",
+        "mmhc-bge-zf",
+        "tabu-bge"
             ],
             "mcmc_traj_plots": [
-                 "guidicigreen-cont", "greenthomas-cont"
+                 "guidicigreen-cont", "greenthomas_bc-cont"
             ],
             "mcmc_heatmaps": [
-                "guidicigreen-cont", "greenthomas-cont"
+                "guidicigreen-cont", "greenthomas_bc-cont"
             ],
             "adjmat_plots": [
-                "guidicigreen-cont", "greenthomas-cont"
+                "guidicigreen-cont", "greenthomas_bc-cont", "trilearn-cont"
             ],
             "graph_plots": [
-                "guidicigreen-cont", "greenthomas-cont"
+                "guidicigreen-cont", "greenthomas_bc-cont"
             ],
             "autocorr_plots": [
               
@@ -50,7 +40,7 @@
         "data": {
             "standard_sampling": [
                 {
-                    "id": "iid1000std",
+                    "id": "standardized",
                     "standardized":true,
                     "sample_sizes": [
                         1000
@@ -60,7 +50,7 @@
                     "id": "example1",
                     "standardized":false,
                     "sample_sizes": [
-                        80, 640
+                        160, 640
                     ]
                 },
                 {
@@ -73,31 +63,15 @@
                 {
                     "id": "example3",
                     "standardized":false,
-                    "sample_sizes": 2000
+                    "sample_sizes": 3000
                 },
                 {
                     "id": "example4",
                     "standardized":true,
                     "sample_sizes": [
-                         80,640
-                    ]
-                },
-                {
-                    "id": "discrete160",
-                    "standardized":false,
-                    "sample_sizes": [
-                        160
-                    ]
-                },
-                {
-                    "id": "sem",
-                    "standardized":false,
-                    "sample_sizes": [
-                        320,
-                        640
+                         160, 640
                     ]
                 }
-
             ]
         },
         "graph": {
@@ -110,7 +84,7 @@
             ],
             "generateDAGMaxParents": [
                 {
-                    "id": "maxneigs4",
+                    "id": "avneigs4",
                     "max_parents": 5,
                     "n": 80,
                     "d": 4,
@@ -167,7 +141,7 @@
             "intra-class":[
                 {
                     "id":"intra-class",
-                    "rho": 0.51,
+                    "rho": 0.4,
                     "sigma2": 1.0
                 }
             ],
@@ -245,9 +219,7 @@
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "cores": 1,
                     "verbose": 0
@@ -266,9 +238,7 @@
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "cores": 1,
                     "verbose": 0
@@ -302,14 +272,14 @@
             ],
             "greenthomas": [
                 {
-                    "id": "greenthomas-cont",
+                    "id": "greenthomas_bc-cont",
                     "n_samples": [
                         1000000
                     ],
                     "datatype":"continuous",
                     "randomits": 1000,
                     "prior":"bc",
-                    "ascore":0.1,
+                    "ascore":[0.1,10],
                     "bscore":0.001,
                     "clq": 2,
                     "sep":4,
@@ -341,7 +311,7 @@
                     "datatype":"continuous",
                     "randomits": 1000,
                     "prior":"bc",
-                    "ascore":0.1,
+                    "ascore":[0.1,0.9],
                     "bscore":0.001,
                     "clq": 2,
                     "sep":4,
@@ -578,14 +548,12 @@
                         0.01,
                         0.05,
                         0.1,
-                        0.2,
-                        0.35,
-                        0.45
-                    ],
+                        0.2                    ],
                     "test": "mi",
                     "score": "bde",
                     "iss": 1,
                     "issmu": 1,
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -605,6 +573,7 @@
                     "test": "zf",
                     "iss": 1,
                     "issmu": 1,
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -634,9 +603,7 @@
                         0.01,
                         0.05,
                         0.1,
-                        0.2,
-                        0.35,
-                        0.45
+                        0.2
                     ],
                     "test": "mi",
                     "B": null,
@@ -687,11 +654,10 @@
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "issmu": 1,
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -707,6 +673,7 @@
                         50,
                         100
                     ],
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -721,11 +688,10 @@
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "issmu": 1,
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -743,6 +709,7 @@
                         50,
                         100
                     ],
+                    "issw": null,
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
@@ -758,14 +725,35 @@
                     "MAP": true,
                     "plus1it": null,
                     "posterior": null,
+                    "scoretype": "bde",
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10
+                    ],
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsearch_map-bdecat",
+                    "estimate": "map",
+                    "MAP": true,
+                    "plus1it": null,
+                    "posterior": null,
                     "scoretype": "bdecat",
                     "chi": [
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "edgepf": 2,
                     "am": null,
@@ -839,14 +827,58 @@
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
+                    "scoretype": "bde",
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10
+                    ],
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsearch_sample-bdecat",
+                    "estimate": "map",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
                     "scoretype": "bdecat",
                     "chi": [
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
+                    ],
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsearch_sample-bdecat",
+                    "estimate": "map",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bdecat",
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1,
+                        10
                     ],
                     "edgepf": 2,
                     "am": null,
@@ -870,8 +902,8 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
+                    "hardlimit": 13,
+                    "alpha": 0.01,
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
@@ -888,8 +920,8 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
+                    "hardlimit": 13,
+                    "alpha": 0.01,
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
@@ -936,6 +968,24 @@
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
+                    "scoretype": "bde",
+                    "chi": 0.1,
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsearch_sample-bdecat_chi01_endspace",
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
                     "scoretype": "bdecat",
                     "chi": 0.1,
                     "edgepf": 2,
@@ -950,6 +1000,24 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi1_endspace",
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bde",
+                    "chi": 1,
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 20,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsearch_sample-bdecat_chi1_endspace",
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -972,44 +1040,8 @@
                     "MAP": false,
                     "plus1it": 6,
                     "posterior": 0.5,
-                    "scoretype": "bdecat",
+                    "scoretype": "bde",
                     "chi": 10,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde_chi50_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 50,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde_chi100_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 100,
                     "edgepf": 2,
                     "am": null,
                     "aw": null,
@@ -1026,14 +1058,12 @@
                     "id": "omcmc_itmap-bde",
                     "startspace_algorithm": ["itsearch_map-bde"],
                     "plus1": true,
-                    "scoretype": "bdecat",
+                    "scoretype": "bde",
                     "chi": [
                         0.01,
                         0.1,
                         1,
-                        10,
-                        50,
-                        100
+                        10
                     ],
                     "edgepf": 2,
                     "aw": null,
@@ -1067,7 +1097,7 @@
                     "edgepf": null,
                     "aw": null,
                     "am": 0.1,
-                    "alpha": 0.05,
+                    "alpha": 0.01,
                     "gamma": 1,
                     "stepsave": null,
                     "iterations": null,
@@ -1131,7 +1161,7 @@
                     "id": "omcmc_itsample-bde",
                     "startspace_algorithm": ["itsearch_sample-bde_chi01_endspace"],
                     "plus1": true,
-                    "scoretype": "bdecat",
+                    "scoretype": "bde",
                     "chi": [
                         0.01,
                         0.1,
@@ -1158,6 +1188,26 @@
                     "id": "omcmc_itsample-bde_chi1",
                     "startspace_algorithm": ["itsearch_sample-bde_chi1_endspace"],
                     "plus1": true,
+                    "scoretype": "bde",
+                    "chi": 1,
+                    "edgepf": 2,
+                    "aw": null,
+                    "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": true,
+                    "threshold": [
+                        0.5
+                    ],
+                    "burnin": 0
+                },
+                {
+                    "id": "omcmc_itsample-bdecat_chi1",
+                    "startspace_algorithm": ["itsearch_sample-bdecat_chi1_endspace"],
+                    "plus1": true,
                     "scoretype": "bdecat",
                     "chi": 1,
                     "edgepf": 2,
@@ -1178,66 +1228,8 @@
                     "id": "omcmc_itsample-bde_chi10",
                     "startspace_algorithm": ["itsearch_sample-bde_chi10_endspace"],
                     "plus1": true,
-                    "scoretype": "bdecat",
+                    "scoretype": "bde",
                     "chi": 10,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi50",
-                    "startspace_algorithm": ["itsearch_sample-bde_chi50_endspace"],
-                    "plus1": true,
-                    "scoretype": "bdecat",
-                    "chi": 50,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi100",
-                    "startspace_algorithm": ["itsearch_sample-bde_chi100_endspace"],
-                    "plus1": true,
-                    "scoretype": "bdecat",
-                    "chi": 100,
                     "edgepf": 2,
                     "aw": null,
                     "am": null,

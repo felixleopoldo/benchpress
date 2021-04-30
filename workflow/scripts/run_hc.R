@@ -15,6 +15,7 @@ p <- add_argument(p, "--perturb", help = "HC parameter", type = "numeric", defau
 p <- add_argument(p, "--score", help = "parameter")
 p <- add_argument(p, "--iss", help = "Score parameter", type="numeric")
 p <- add_argument(p, "--iss.mu", help = "Score parameter", type="numeric")
+p <- add_argument(p, "--iss.w", help = "Score parameter")
 p <- add_argument(p, "--l", help = "Score parameter", type="numeric")
 p <- add_argument(p, "--k", help = "Score parameter", type="numeric")
 p <- add_argument(p, "--prior", help = "Score parameter")
@@ -33,12 +34,15 @@ if (argv$score %in% c("bde", "bic")){
 }
 set.seed(seed)
 
+iss.w <- ifelse(argv$iss.w=="None", dim(data)[2]+2, as.numeric(argv$iss.w))
+
 output <- hc(data, 
             restart=argv$restart,
             perturb=argv$perturb,
             score=argv$score, 
             iss=argv$iss,
             iss.mu=argv$iss.mu,
+            iss.w=iss.w,
             l=argv$l,
             k=argv$k,
             prior=argv$prior,
