@@ -7,12 +7,8 @@ rule glasso:
         time = alg_output_time_path("glasso")
     singularity:
         docker_image("pydatascience")
-    message:
-        "Executing glasso algorithm on the following files: {input}."
     script:
         "../scripts/glasso.py"
-    #shell:
-    #    alg_shell("glasso")
 
 rule summarise_glasso:
     input:
@@ -23,8 +19,6 @@ rule summarise_glasso:
         time = summarise_alg_input_time_path("glasso")
     output:
         res = summarise_alg_output_res_path("glasso")
-    message:
-        "Summarising glasso results based on the files: {input}."
     shell:
         summarise_alg_shell("glasso")
        
@@ -55,8 +49,6 @@ rule summarise_tabu:
         time = summarise_alg_input_time_path("tabu")
     output:
         res = summarise_alg_output_res_path("tabu")
-    message:
-        "Summarising tabu results based on the files: {input}."
     shell:
         summarise_alg_shell("tabu")
        
@@ -77,8 +69,6 @@ rule notears:
         time = alg_output_time_path("notears")
     singularity:
         docker_image("notears")
-    message:
-        "Executing notears algorithm on the following files: {input}."
     shell:
         alg_shell("notears")
 
@@ -91,8 +81,6 @@ rule summarise_notears:
         time = summarise_alg_input_time_path("notears")
     output:
         res = summarise_alg_output_res_path("notears")
-    message:
-        "Summarising notears results based on the files: {input}."
     shell:
         summarise_alg_shell("notears")
        
@@ -123,8 +111,6 @@ rule summarise_hc:
         time = summarise_alg_input_time_path("hc")
     output:
         res = summarise_alg_output_res_path("hc")
-    message:
-        "Summarising hc results based on the files: {input}."
     shell:
         summarise_alg_shell("hc")
        
@@ -143,12 +129,8 @@ rule interiamb:
     output:
         adjmat = alg_output_adjmat_path("interiamb"),
         time = alg_output_time_path("interiamb")
-    message:
-        "Executing interiamb algorithm on the following files: {input}."
     script:
         "../scripts/run_inter-iamb.R"
-    #shell:
-    #    alg_shell("interiamb")
 
 rule summarise_interiamb:
     input:
@@ -159,8 +141,6 @@ rule summarise_interiamb:
         time = summarise_alg_input_time_path("interiamb")
     output:
         res = summarise_alg_output_res_path("interiamb")
-    message:
-        "Summarising interiamb results based on the files: {input}."
     shell:
         summarise_alg_shell("interiamb")
        
@@ -179,8 +159,6 @@ rule gs:
     output:
         adjmat = alg_output_adjmat_path("gs"),
         time = alg_output_time_path("gs")
-    message:
-        "Executing gs algorithm on the following files: {input}."
     script:
         "../scripts/run_gs.R"
 
@@ -193,8 +171,6 @@ rule summarise_gs:
         time = summarise_alg_input_time_path("gs")
     output:
         res = summarise_alg_output_res_path("gs")
-    message:
-        "Summarising gs results based on the files: {input}."
     shell:
         summarise_alg_shell("gs")
        
@@ -213,8 +189,6 @@ rule blip:
     output:
         adjmat = alg_output_adjmat_path("blip"),
         time = alg_output_time_path("blip")
-    message:
-        "Executing blip algorithm on the following files: {input}."
     shell:        
         alg_shell("blip")
 
@@ -227,8 +201,6 @@ rule summarise_blip:
         time = summarise_alg_input_time_path("blip")
     output:
         res = summarise_alg_output_res_path("blip")
-    message:
-        "Summarising blip results based on the files: {input}."
     shell:
         summarise_alg_shell("blip")
 
@@ -248,8 +220,6 @@ rule itsearch:
     output:
         adjmat = alg_output_adjmat_path("itsearch"),
         time = alg_output_time_path("itsearch")
-    message:
-        "Executing iterative search algorithm with wildcards {wildcards} on the following data: {input}"
     singularity:
         docker_image("bidag")
     script:
@@ -264,8 +234,6 @@ rule summarise_itsearch:
         time = summarise_alg_input_time_path("itsearch")
     output:
         res = summarise_alg_output_res_path("itsearch")
-    message:
-        "Summarising iterative search algorithm with wildcards: {wildcards} on the following files: {input}"
     shell:
         summarise_alg_shell("itsearch")
 
@@ -284,8 +252,6 @@ rule pcalg:
     output:
         adjmat = alg_output_adjmat_path("pcalg"),
         time = alg_output_time_path("pcalg")
-    message:
-        "Executing order PC algorithm on the following files: {input}."
     singularity:
         docker_image("bidag")
     script:
@@ -300,8 +266,6 @@ rule summarise_pcalg:
         time = summarise_alg_input_time_path("pcalg")
     output:
         res = summarise_alg_output_res_path("pcalg")
-    message:
-        "Summarising pc algorithm based on the following files: {input}."
     shell:
         summarise_alg_shell("pcalg")
 
@@ -320,8 +284,6 @@ rule mmhc:
     output:
         adjmat = alg_output_adjmat_path("mmhc"),
         time = alg_output_time_path("mmhc")
-    message:
-        "Executing the mmhc algorithm on the following files: {input}."
     script:
         "../scripts/run_mmhc.R"
 
@@ -384,8 +346,6 @@ rule fges:
     output:
         adjmat = alg_output_adjmat_path("fges"),
         time = alg_output_time_path("fges") 
-    message:
-        "Executing fges algorithm on the following files: {input}."
     script:
         "../scripts/run_fges.py"
 
@@ -398,8 +358,6 @@ rule summarise_fges:
         time = summarise_alg_input_time_path("fges")
     output:
         res = summarise_alg_output_res_path("fges")
-    message:
-        "Summarising fges results based on the files: {input}."
     shell:
         summarise_alg_shell("fges")
 
@@ -418,8 +376,6 @@ rule fci:
     output:
         adjmat = alg_output_adjmat_path("fci"),
         time = alg_output_time_path("fci")
-    message:
-        "Executing fci algorithm on the following files: {input}."
     script:
         "../scripts/run_fci.py"
 
@@ -432,8 +388,6 @@ rule summarise_fci:
         time = summarise_alg_input_time_path("fci")
     output:
         res = summarise_alg_output_res_path("fci")
-    message:
-        "Summarising fci results based on the files: {input}."
     shell:
         summarise_alg_shell("fci")
 
@@ -452,8 +406,6 @@ rule gfci:
     output:
         adjmat = alg_output_adjmat_path("gfci"),
         time = alg_output_time_path("gfci")
-    message:
-        "Executing gfci algorithm on the following files: {input}."
     script:
         "../scripts/run_gfci.py"
         
@@ -466,8 +418,6 @@ rule summarise_gfci:
         time = summarise_alg_input_time_path("gfci")
     output:
         res = summarise_alg_output_res_path("gfci")
-    message:
-        "Summarising gfci results based on the files: {input}."
     shell:
         summarise_alg_shell("gfci")
 
@@ -486,8 +436,6 @@ rule rfci:
     output:
         adjmat = alg_output_adjmat_path("rfci"),
         time = alg_output_time_path("rfci")
-    message:
-        "Executing rfci algorithm on the following files: {input}."
     shell:
         alg_shell("rfci")
 
@@ -499,8 +447,6 @@ rule summarise_rfci:
         time = summarise_alg_input_time_path("rfci")
     output:
         res = summarise_alg_output_res_path("rfci")
-    message:
-        "Summarising rfci results based on the files: {input}."
     shell:
         summarise_alg_shell("rfci")
 
@@ -521,8 +467,6 @@ rule order_mcmc:
     output:
         seqgraph = alg_output_seqgraph_path("order_mcmc"),
         time = alg_output_time_path("order_mcmc")
-    message:
-        "Executing order mcmc algorithm with startspace on the following files: {input}.\n Output: {output}"
     singularity:
         docker_image("bidag")
     script:
@@ -537,8 +481,6 @@ rule summarise_order_mcmc:
         time = time_path("order_mcmc")
     output:
         res = result_path_mcmc("order_mcmc")
-    message:
-        "Summarizing order mcmc algorithm with startspace on the following files: {input}."
     shell: 
         summarise_alg_shell("order_mcmc")
 
@@ -557,8 +499,6 @@ rule trilearn_loglin:
     output:
         adjvecs = alg_output_seqgraph_path("trilearn_loglin"),
         time = alg_output_time_path("trilearn_loglin")
-    message:
-        "Executing trilearn algorithm on the following files: {input}, output: {output}. wildcards {wildcards}"
     singularity:
         docker_image("trilearn_loglin")
     shell:
@@ -577,32 +517,6 @@ rule trilearn_loglin_est:
         docker_image("networkx")
     script:
         "../scripts/graphtraj_est.py"
-
-# rule summarise_trilearn_loglin:
-#     input:
-#         "workflow/scripts/run_summarise.R",
-#         data = data_path(),
-#         adjmat_true = adjmat_true_path(),
-#         adjmat_est = adjmat_estimate_path_mcmc("trilearn_loglin"),
-#         time = time_path("trilearn_loglin")
-#     output:
-#         res = result_path_mcmc("trilearn_loglin")
-#     message:
-#         "Summarizing trilearn algorithm with startspace on the following files: {input}, output: {output}."
-#     shell: 
-#         summarise_alg_shell("trilearn_loglin")
-
-# rule join_summaries_trilearn_loglin:
-#     input: 
-#         conf=configfilename,
-#         res=join_string_sampled_model("trilearn_loglin")
-#     output:
-#         join_summaries_output("trilearn_loglin")
-#     script:
-#         "../scripts/join_csv_files.R"
-
-
-
 rule summarise_trilearn_loglin:
     input:
         "workflow/scripts/run_summarise.R",
@@ -623,7 +537,6 @@ rule join_summaries_trilearn_loglin:
         join_summaries_output("trilearn_loglin")
     script:
         "../scripts/join_csv_files.R"
-
 
 rule gg_singlepair_fortran:
     input:
@@ -658,8 +571,6 @@ rule greenthomas:
         time = alg_output_time_path("greenthomas")
     singularity:
         docker_image("thomasjava")
-    message:
-        "Executing greenthomas algorithm on the following files: {input}."
     shell:
         alg_shell("greenthomas")
 
@@ -732,8 +643,6 @@ rule summarise_gg_singlepair:
         time = summarise_alg_input_time_path("gg_singlepair")
     output:
         res = summarise_alg_output_res_path("gg_singlepair")
-    message:
-        "Summarising gg_singlepair results based on the files: {input}."
     shell:
         summarise_alg_shell("gg_singlepair")
        
