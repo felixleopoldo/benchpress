@@ -26,7 +26,8 @@ if(snakemake@wildcards[["test"]] %in% c("mi", "mi-adf", "mc-mi", "smc-mi",
                 score = snakemake@wildcards[["score"]]
             )
 } else {    
-    iss.w <- ifelse(snakemake@wildcards[["issw"]]=="None", 2, as.numeric(snakemake@wildcards[["issw"]]))
+
+    iss.w <- ifelse(snakemake@wildcards[["issw"]]=="None", dim(data)[2] + 2, as.numeric(snakemake@wildcards[["issw"]]))
     args <- list(
                 iss.w = iss.w,
                 iss.mu = ifelse(snakemake@wildcards[["issmu"]]=="None", 1, as.numeric(snakemake@wildcards[["issmu"]])),
