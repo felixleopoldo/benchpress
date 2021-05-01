@@ -3,21 +3,30 @@
         "data": [
             {
                 "graph_id": "avneigs4",
-                "parameters_id": "SEM",
-                "data_id": "example2",
+                "parameters_id": "binbn",
+                "data_id": "example1",
                 "seed_range": [
                     1,
                     10
                     ]
-                }
-            
+                }        
         ],
         "evaluation": {
             "ROC": [
-
-        "hc-bge",
-        "mmhc-bge-zf",
-        "tabu-bge"
+                "winasobs-bdeu",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "interiamb-mi",
+                "fci-chi-square",
+                "rfci-chi-square",
+                "gfci-bdeu-chi-square",
+                "fges-bdeu",
+                "itsearch_sample-bde",
+                "pcalg-binCItest",
+                "omcmc_itsample-bde_chi1"
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas_bc-cont"
@@ -347,7 +356,6 @@
                     "samplePrior": 1,
                     "structurePrior": 1,
                     "penaltyDiscount": [
-                        0.1,
                         0.5,
                         1,
                         1.5
@@ -372,8 +380,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "test": "fisher-z-test",
                     "datatype": "continuous"
@@ -383,8 +390,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "test": "chi-square-test",
                     "datatype": "discrete"
@@ -396,8 +402,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "score": "bdeu-score",
                     "test": "chi-square-test",
@@ -413,7 +418,7 @@
                     "test": "fisher-z-test",
                     "datatype": "continuous",
                     "penaltyDiscount": [
-                        0.1,
+                        
                         0.5,
                         1,
                         1.5
@@ -428,8 +433,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "test": "fisher-z-test",
                     "datatype": "continuous"
@@ -439,8 +443,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "test": "chi-square-test",
                     "datatype": "discrete"
@@ -452,8 +455,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "NAdelete": true,
                     "mmax": "Inf",
@@ -472,8 +474,7 @@
                         0.001,
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "NAdelete": true,
                     "mmax": "Inf",
@@ -505,8 +506,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "NAdelete": true,
                     "mmax": "Inf",
@@ -526,8 +526,8 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2                    ],
+                        0.1
+                                        ],
                     "test": "mi",
                     "score": "bde",
                     "iss": 1,
@@ -541,10 +541,10 @@
                 {
                     "id": "mmhc-bge-zf",
                     "alpha": [
+                        0.001,
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "score": "bge",
                     "test": "zf",
@@ -563,8 +563,7 @@
                     "alpha": [
                         0.01,
                         0.05,
-                        0.1,
-                        0.2
+                        0.1
                     ],
                     "test": "zf",
                     "B": null,
@@ -642,8 +641,7 @@
                         0.0001,
                         0.001,
                         0.01,
-                        0.1,
-                        1
+                        0.05
                     ],
                     "issw": null,
                     "l": 5,
@@ -676,10 +674,10 @@
                     "score": "bge",
                     "iss": 1,
                     "issmu": [
+                        0.0001,
                         0.001,
                         0.01,
-                        0.1,
-                        1],
+                        0.05],
                     "issw": null,
                     "l": 5,
                     "k": 1,
