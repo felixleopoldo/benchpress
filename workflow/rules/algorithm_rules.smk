@@ -279,13 +279,14 @@ rule join_summaries_pcalg:
         "../scripts/join_csv_files.R"
 
 rule mmhc:
-    input:        
+    input:
+        "workflow/scripts/run_mmhc.R",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("mmhc"),
         time = alg_output_time_path("mmhc")
     script:
-        "../scripts/run_mmhc.R"
+        
 
 rule summarise_mmhc:
     input:
