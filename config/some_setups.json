@@ -56,7 +56,7 @@
         "fges-bdeu",
         "itsearch_sample-bde",
         "pcalg-binCItest",
-        "omcmc_itsample-bde_chi1"
+        "omcmc_itsample-bde"
     ],
     "ROC_example2": [
         "fci-fisher-z",
@@ -84,7 +84,7 @@
         "fges-bdeu",
         "itsearch_sample-bdecat",
         "pcalg-disCItest",
-        "omcmc_itsample-bdecat_chi1"
+        "omcmc_itsample-bdecat"
     ],
     "ROC_example4": [
         "fci-fisher-z",

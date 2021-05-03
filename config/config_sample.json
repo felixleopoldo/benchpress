@@ -2,14 +2,14 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4",
-                "parameters_id": "binbn",
-                "data_id": "example1",
+                "graph_id": "hepar2.csv",
+                "parameters_id": "hepar2.rds",
+                "data_id": "example3",
                 "seed_range": [
                     1,
                     10
-                    ]
-                }        
+                ]
+            }
         ],
         "evaluation": {
             "ROC": [
@@ -24,9 +24,9 @@
                 "rfci-chi-square",
                 "gfci-bdeu-chi-square",
                 "fges-bdeu",
-                "itsearch_sample-bde",
-                "pcalg-binCItest",
-                "omcmc_itsample-bde_chi1"
+                "itsearch_sample-bdecat",
+                "pcalg-disCItest",
+                "omcmc_itsample-bdecat"
             ],
             "mcmc_traj_plots": [
                  "guidicigreen-cont", "greenthomas_bc-cont"
@@ -220,15 +220,14 @@
                     "solvermethod": "winasobs",
                     "indeg": 80,
                     "time": [
-                        60
+                        180
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
+                        0.001,
                         0.01,
-                        0.1,
-                        1,
-                        10
+                        0.1
                     ],
                     "cores": 1,
                     "verbose": 0
@@ -239,15 +238,14 @@
                     "solvermethod": "asobs",
                     "indeg": 80,
                     "time": [
-                        60
+                        180
                     ],
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
+                        0.001,
                         0.01,
-                        0.1,
-                        1,
-                        2
+                        0.1
                     ],
                     "cores": 1,
                     "verbose": 0
@@ -269,10 +267,9 @@
                     "plot": false,
                     "palim": 2,
                     "alpha": [
+                        0.001,
                         0.01,
-                        0.1,
-                        1,
-                        2
+                        0.1
                     ],
                     "prune": true
                 }
@@ -356,7 +353,8 @@
                     "samplePrior": 1,
                     "structurePrior": 1,
                     "penaltyDiscount": [
-                        0.5,
+                     
+                        0.8,
                         1,
                         1.5
                     ]
@@ -378,9 +376,9 @@
                 {
                     "id": "fci-fisher-z",
                     "alpha": [
+                        0.001,
                         0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "test": "fisher-z-test",
                     "datatype": "continuous"
@@ -431,9 +429,9 @@
                 {
                     "id": "rfci-fisher-z",
                     "alpha": [
+                        0.001,
                         0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "test": "fisher-z-test",
                     "datatype": "continuous"
@@ -530,7 +528,7 @@
                                         ],
                     "test": "mi",
                     "score": "bde",
-                    "iss": 1,
+                    "iss": 0.1,
                     "issmu": 1,
                     "issw": null,
                     "l": 5,
@@ -621,10 +619,9 @@
                     "id": "tabu-bde",
                     "score": "bde",
                     "iss": [
+                        0.001,
                         0.01,
-                        0.1,
-                        1,
-                        2
+                        0.1
                     ],
                     "issmu": 1,
                     "issw": null,
@@ -655,10 +652,9 @@
                     "id": "hc-bde",
                     "score": "bde",
                     "iss": [
+                        0.001,
                         0.01,
-                        0.1,
-                        1,
-                        2
+                        0.1
                     ],
                     "issmu": 1,
                     "issw": null,
@@ -698,8 +694,7 @@
                     "chi": [
                         0.01,
                         0.1,
-                        1,
-                        2
+                        1
                     ],
                     "edgepf": 2,
                     "am": null,
@@ -800,8 +795,7 @@
                     "chi": [
                         0.01,
                         0.1,
-                        1,
-                        2
+                        1
                     ],
                     "edgepf": 2,
                     "am": null,
@@ -871,7 +865,7 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 13,
+                    "hardlimit": 14,
                     "alpha": 0.01,
                     "gamma": 1,
                     "cpdag": false,
@@ -889,7 +883,7 @@
                     "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
-                    "hardlimit": 13,
+                    "hardlimit": 14,
                     "alpha": 0.01,
                     "gamma": 1,
                     "cpdag": false,
@@ -1132,9 +1126,29 @@
                     "plus1": true,
                     "scoretype": "bde",
                     "chi": [
-                        0.01,
-                        0.1,
-                        1
+                        0.1
+                    ],
+                    "edgepf": 2,
+                    "aw": null,
+                    "am": null,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": true,
+                    "threshold": [
+                        0.5
+                    ],
+                    "burnin": 0
+                },
+                {
+                    "id": "omcmc_itsample-bdecat",
+                    "startspace_algorithm": ["itsearch_sample-bdecat_chi01_endspace"],
+                    "plus1": true,
+                    "scoretype": "bdecat",
+                    "chi": [
+                        0.1
                     ],
                     "edgepf": 2,
                     "aw": null,
@@ -1187,35 +1201,6 @@
                     "MAP": true,
                     "threshold": [
                         0.5
-                    ],
-                    "burnin": 0
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi10",
-                    "startspace_algorithm": ["itsearch_sample-bde_chi10_endspace"],
-                    "plus1": true,
-                    "scoretype": "bde",
-                    "chi": 10,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
                     ],
                     "burnin": 0
                 }

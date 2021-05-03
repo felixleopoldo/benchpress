@@ -32,8 +32,9 @@ geom_point(data = toplot,
 #           nudge_x=-0.02,
 #          nudge_y=0.02
 #          )
-facet_wrap(. ~ adjmat+bn+data, scales="free_x", nrow = 2) +
+facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
 # Titles etc
+#  scales="free_x",
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("ROC (pattern graph)") +
