@@ -8,7 +8,7 @@ filename_data <- snakemake@input[["data"]]
 seed <- snakemake@wildcards[["replicate"]]
 map <- snakemake@wildcards[["MAP"]]
 
-set.seed(seed)
+
 data <- read.csv(filename_data, check.names=FALSE)
 
 # Iterative search
@@ -58,6 +58,7 @@ if(snakemake@wildcards[["scoretype"]] == "bge"){
 }
 
 start <- proc.time()[1]
+set.seed(seed)
 itsearch_res <- iterativeMCMC(
                                 myscore,
                                 chainout = FALSE,

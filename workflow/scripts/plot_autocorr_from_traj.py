@@ -11,18 +11,26 @@ import sys
 
 sns.set_style("whitegrid")
 
-def edges_str_to_list(str):
+def edges_str_to_list(str, edgesymb="-"):
     edges_str = str[1:-1].split(";")
-    edges = [(int(edge.split("-")[0]), int(edge.split("-")[1])) for edge in edges_str if len(edge.split("-"))==2]
+    edges = [(edge.split(edgesymb)[0], edge.split(edgesymb)[1]) for edge in edges_str if len(edge.split(edgesymb))==2]
     return edges
 
+
 df = pd.read_csv(sys.argv[1], sep=",")
-g = nx.Graph()
+
+edges = edges_str_to_list(df["added"][0], edgesymb="->")
+if len(edges) != 0:
+    g = nx.DiGraph()
+    edgesymb="->"
+else:
+    g = nx.Graph()    
+
 size = []
 
 for index, row in df.iterrows():
-    added = edges_str_to_list(row["added"])
-    removed = edges_str_to_list(row["removed"])
+    added = edges_str_to_list(row["added"], edgesymb)
+    removed = edges_str_to_list(row["removed"], edgesymb)
     g.add_edges_from(added)
     g.remove_edges_from(removed)
     size.append(g.size())

@@ -31,3 +31,5 @@ services:
     environment:
       DISPLAY: $DISPLAY
       MPLBACKEND: Agg
+  bidag:
+    image: onceltuca/bidag:2.0.0

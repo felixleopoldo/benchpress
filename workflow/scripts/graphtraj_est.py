@@ -8,15 +8,18 @@ import seaborn as sns
 import sys
 sns.set_style("whitegrid")
 
-def edges_str_to_list(str):
+
+def edges_str_to_list(str, edgesymb="-"):
     edges_str = str[1:-1].split(";")
-    edges = [(edge.split("-")[0], edge.split("-")[1]) for edge in edges_str if len(edge.split("-"))==2]
+    edges = [(edge.split(edgesymb)[0], edge.split(edgesymb)[1]) for edge in edges_str if len(edge.split(edgesymb))==2]
     return edges
+
 
 df = pd.read_csv(snakemake.input["traj"], sep=",")
 
 if snakemake.params["graph_type"]== "dag":
     g = nx.DiGraph()
+    edgesymb="->"
 else:
     g = nx.Graph()
 
@@ -44,8 +47,8 @@ if snakemake.params["estimator"] == "heatmap":
             reps = cur_index - prev_index        
             heatmap += nx.to_numpy_matrix(g) * reps
 
-        added = edges_str_to_list(row["added"])
-        removed = edges_str_to_list(row["removed"])
+        added = edges_str_to_list(row["added"], edgesymb)
+        removed = edges_str_to_list(row["removed"], edgesymb)
         g.add_edges_from(added)
         g.remove_edges_from(removed)
 

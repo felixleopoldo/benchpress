@@ -20,7 +20,6 @@ def alg_output_seqgraph_path(algorithm):
                 "seed={replicate}/" \
                 "adjvecs.csv"
 
-
 def alg_input_data():
     return "{output_dir}/data/{data}/seed={replicate}.csv"
 
@@ -240,6 +239,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
+    
     algs = active_algorithms()
     alg_filenames = ["results/" + alg + ".csv" for alg in algs]
     

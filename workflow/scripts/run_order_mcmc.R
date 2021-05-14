@@ -7,7 +7,7 @@ adjmatToEdgeString <- function(adjmat, labels){
     edges <- "["
     firstrow <- TRUE
     for(i in rownames(df)) { 
-        edge <- paste(labels[df[i, "row"]], labels[df[i, "col"]], sep="-")
+        edge <- paste(labels[df[i, "row"]], labels[df[i, "col"]], sep="->")
         if(firstrow){
             sep <- ""
             firstrow <- FALSE
@@ -25,7 +25,7 @@ dummyEdges <- function(labels){
     n <- length(labels)
     added <- "["
     for (i in 2:n){
-        edge <- paste(labels[1], labels[i], sep="-")
+        edge <- paste(labels[1], labels[i], sep="->")
         if(i==2){
             sep <- ""
         } else {
@@ -42,7 +42,7 @@ filename_data <- snakemake@input[["data"]]
 
 seed <- snakemake@wildcards[["replicate"]]
 
-set.seed(seed)
+
 data <- read.csv(filename_data, check.names=FALSE)
 
 startspace <- read.csv(snakemake@input[["startspace"]])
@@ -95,6 +95,7 @@ if(snakemake@wildcards[["scoretype"]] == "bge"){
     myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
 start <- proc.time()[1]
+set.seed(seed)
 order_mcmc_res <- orderMCMC(myscore,
                             startspace = startspace,
                             plus1 = as.logical(snakemake@wildcards[["plus1"]]),

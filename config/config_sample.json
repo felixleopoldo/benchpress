@@ -2,46 +2,30 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "hepar2.csv",
-                "parameters_id": "hepar2.rds",
-                "data_id": "example3",
-                "seed_range": [
-                    1,
-                    10
-                ]
+                "graph_id": "asia.csv",
+                "parameters_id": null,
+                "data_id": "myasiandata.csv",
+                "seed_range": null
             }
         ],
         "evaluation": {
             "ROC": [
-                "winasobs-bdeu",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "fges-bdeu",
-                "itsearch_sample-bdecat",
-                "pcalg-disCItest",
-                "omcmc_itsample-bdecat"
+                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest"
             ],
             "mcmc_traj_plots": [
-                 "guidicigreen-cont", "greenthomas_bc-cont"
+                "omcmc_itsample-bde"
             ],
             "mcmc_heatmaps": [
-                "guidicigreen-cont", "greenthomas_bc-cont"
+                "omcmc_itsample-bde", "gg99_fortran"
             ],
             "adjmat_plots": [
-                "guidicigreen-cont", "greenthomas_bc-cont", "trilearn-cont"
+                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest", "gg99_fortran"
             ],
             "graph_plots": [
-                "guidicigreen-cont", "greenthomas_bc-cont"
+                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest", "gg99_fortran"
             ],
             "autocorr_plots": [
-              
+                "omcmc_itsample-bde"
             ]
         }
     },
@@ -66,7 +50,7 @@
                     "id": "example2",
                     "standardized":true,
                     "sample_sizes": [
-                         160, 640
+                          640
                     ]
                 },
                 {
@@ -256,7 +240,7 @@
                     "id": "notears",
                     "min_rate_of_progress": 0.25,
                     "penalty_growth_rate": 10,
-                    "optimation_accuracy": 1e-8,
+                    "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss",
                     "loss_grad": "least_squares_loss_grad"
                 }
@@ -353,7 +337,6 @@
                     "samplePrior": 1,
                     "structurePrior": 1,
                     "penaltyDiscount": [
-                     
                         0.8,
                         1,
                         1.5

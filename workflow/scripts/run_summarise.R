@@ -114,13 +114,11 @@ p <- add_argument(p,
 
 argv <- parse_args(p)
 
-data <- NULL
-data <- read.csv(argv$filename_data, sep = ",") 
+
+data <- read.csv(argv$filename_data) 
 if (argv$range_header_data == 1) {
   data <- data[-1,]
 } 
-
-n <- dim(data)[2]
 
 true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
 
