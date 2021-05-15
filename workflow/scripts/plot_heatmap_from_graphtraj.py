@@ -62,7 +62,7 @@ heatmap = adjmat / df["index"].iloc[-1] # almost right
 
 # need to reorganze matrix according to node orders..
 with sns.axes_style("white"):
-    sns.heatmap(heatmap,  annot=True,
+    sns.heatmap(heatmap,  annot=True, fmt=".2f",
                 cmap="Blues",
                 vmin=0.0, vmax=1.0, square=True,
                 cbar=True,
@@ -70,7 +70,7 @@ with sns.axes_style("white"):
 #                xticklabels=1, yticklabels=1)
 cax = plt.gcf().axes[-1]
 cax.tick_params(labelsize=6)
-cax = plt.gcf().axes[-1]
-cax.tick_params(labelsize=6)
+#cax = plt.gcf().axes[-1]
+#cax.tick_params(labelsize=6)
 
 plt.savefig(sys.argv[2])

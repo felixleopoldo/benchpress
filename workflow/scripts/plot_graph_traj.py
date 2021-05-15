@@ -50,8 +50,8 @@ plt.savefig(sys.argv[2])
 
 traj_length = len(df_noburnin)
 
-print(sys.argv[1])
-print("Traj length " +str(traj_length))
+#print(sys.argv[1])
+#print("Traj length " +str(traj_length))
 
 B = 10000
 sizes = np.zeros(B)
@@ -61,9 +61,9 @@ for i in range(B):
 
 
 boot_mean = sizes.mean()
-print("boot mean: " + str(boot_mean))
+#print("boot mean: " + str(boot_mean))
 
 boot_stderr = np.sqrt(sum((sizes - boot_mean)**2) / (B-1))
 
-print("boot stderr: " + str(boot_stderr))
+#print("boot stderr: " + str(boot_stderr))
 

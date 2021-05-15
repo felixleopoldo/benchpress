@@ -4,25 +4,25 @@
             {
                 "graph_id": "asia.csv",
                 "parameters_id": null,
-                "data_id": "myasiandata.csv",
+                "data_id": "myasiadata.csv",
                 "seed_range": null
             }
         ],
         "evaluation": {
             "ROC": [
-                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest"
+                "omcmc_itsample-bde", "pcalg-binCItest"
+            ],
+            "adjmat_plots": [
+                "omcmc_itsample-bde", "pcalg-binCItest"
+            ],
+            "graph_plots": [
+                "omcmc_itsample-bde", "pcalg-binCItest"
             ],
             "mcmc_traj_plots": [
                 "omcmc_itsample-bde"
             ],
             "mcmc_heatmaps": [
-                "omcmc_itsample-bde", "gg99_fortran"
-            ],
-            "adjmat_plots": [
-                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest", "gg99_fortran"
-            ],
-            "graph_plots": [
-                "omcmc_itsample-bde", "gfci-bdeu-chi-square", "fges-bdeu", "pcalg-binCItest", "gg99_fortran"
+                "omcmc_itsample-bde"
             ],
             "autocorr_plots": [
                 "omcmc_itsample-bde"

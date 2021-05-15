@@ -527,7 +527,15 @@
                 "graph_id": {
                     "title": "Graph",
                     "description": "ID of the graph instantiation.",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+
                 },
                 "parameters_id": {
                     "title": "Parameters",

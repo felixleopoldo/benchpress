@@ -15,7 +15,6 @@ with sns.axes_style("white"):
                 xticklabels=1, yticklabels=1)
 cax = plt.gcf().axes[-1]
 cax.tick_params(labelsize=6)
-
 plt.title(snakemake.params["title"], fontsize=6)
 plt.savefig(snakemake.output["plot_filename"])
 plt.clf()

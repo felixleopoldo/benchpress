@@ -166,7 +166,7 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         adjmat_dict = next(item for item in config["resources"]["graph"]["rand_bandmat"] if item["id"] == adjmat_id)
         return expand(pattern_strings["rand_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
-    elif Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
+    elif adjmat_id is not None and Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
