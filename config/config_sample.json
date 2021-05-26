@@ -2,15 +2,26 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "asia.csv",
-                "parameters_id": null,
-                "data_id": "myasiadata.csv",
-                "seed_range": null
+                "graph_id": "hepar2.csv",
+                "parameters_id": "SEM",
+                "data_id": "example4",
+                "seed_range": [
+                    1,
+                    50
+                ]
             }
         ],
         "evaluation": {
             "ROC": [
-                "omcmc_itsample-bde", "pcalg-binCItest"
+                "fci-fisher-z",
+                "fges-sem-bic",
+                "hc-bge",
+                "itsearch_sample-bge",
+                "mmhc-bge-zf",
+                "omcmc_itsample-bge",
+                "pcalg-gaussCItest",
+                "rfci-fisher-z",
+                "tabu-bge"
             ],
             "adjmat_plots": [
                 "omcmc_itsample-bde", "pcalg-binCItest"
@@ -43,26 +54,26 @@
                     "id": "example1",
                     "standardized":false,
                     "sample_sizes": [
-                        160, 640
+                        320, 640
                     ]
                 },
                 {
                     "id": "example2",
                     "standardized":true,
                     "sample_sizes": [
-                          640
+                          320, 640
                     ]
                 },
                 {
                     "id": "example3",
                     "standardized":false,
-                    "sample_sizes": [2000,3000]
+                    "sample_sizes": [5000,10000]
                 },
                 {
                     "id": "example4",
                     "standardized":true,
                     "sample_sizes": [
-                         160, 640
+                         320, 640
                     ]
                 }
             ]

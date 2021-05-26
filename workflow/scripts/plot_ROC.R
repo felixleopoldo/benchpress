@@ -1,13 +1,10 @@
 library(ggplot2)
 library("rjson")
-library(argparser)
 
-p <- arg_parser("A program for plotting ROC data.")
-p <- add_argument(p, "--input_filename", help = "Input filename")
-p <- add_argument(p, "--output_filename", help = "Output filename")
-argv <- parse_args(p)
 
-toplot <- read.csv(argv$input_filename)
+toplot <- read.csv(snakemake@input[["csv"]])
+
+
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_pattern_median,
                   ymin = TPR_pattern_q1, 
@@ -24,20 +21,59 @@ geom_point(data = toplot,
                col = id, 
                shape = id), 
                size = 1) +
-#geom_text(data = toplot,
-#            aes(x = FPRn_median, 
-#                y = TPR_q3,               
-#                label=alpha, col=legend),
-#          check_overlap = TRUE,
-#           nudge_x=-0.02,
-#          nudge_y=0.02
-#          )
+
 facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
-# Titles etc
-#  scales="free_x",
 xlab("FPRp") +
 ylab("TPR") +
-ggtitle("ROC (pattern graph)") +
+ggtitle("FPRp/TPR (pattern graph)") +
 theme(plot.title = element_text(hjust = 0.5)) +
+ggsave(file=snakemake@output[["eps"]])
 
-ggsave(file=argv$output_filename)
+
+ggplot() + geom_errorbar(data = toplot,
+              aes(x = FPRn_skel_median,
+                  ymin = TPR_skel_q1, 
+                  ymax = TPR_skel_q3, 
+                  col = id), 
+              width = 0.01) +
+geom_path(data = toplot,
+          aes(x = FPRn_skel_median, 
+              y = TPR_skel_median,
+              col = id)) +
+geom_point(data = toplot,
+           aes(x = FPRn_skel_median, 
+               y = TPR_skel_median,               
+               col = id, 
+               shape = id), 
+               size = 1) +
+
+facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+xlab("FPRp") +
+ylab("TPR") +
+ggtitle("FPRp/TPR (undirected skeleton)") +
+theme(plot.title = element_text(hjust = 0.5)) +
+ggsave(file=snakemake@output[["roc_FPRp_TPR_skel"]])
+
+
+ggplot() + geom_errorbar(data = toplot,
+              aes(x = FPR_skel_mean,
+                  ymin = FNR_skel_q1, 
+                  ymax = FNR_skel_q3, 
+                  col = id), 
+              width = 0.01) +
+geom_path(data = toplot,
+          aes(x = FPR_skel_mean, 
+              y = FNR_skel_mean,
+              col = id)) +
+geom_point(data = toplot,
+           aes(x = FPR_skel_mean, 
+               y = FNR_skel_mean,               
+               col = id, 
+               shape = id), 
+               size = 1) +
+facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+xlab("FPR") +
+ylab("FNR") +
+ggtitle("FPR/FNR (undirected skeleton)") +
+theme(plot.title = element_text(hjust = 0.5)) +
+ggsave(file=snakemake@output[["roc_skel"]])

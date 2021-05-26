@@ -6,7 +6,7 @@
         "data_id": "example1",
         "seed_range": [
             1,
-            10
+            50
             ]
         }
     ],
@@ -17,7 +17,7 @@
             "data_id": "example2",
             "seed_range": [
                 1,
-                10
+                50
                 ]
             }],
     "data_example3":[
@@ -27,7 +27,7 @@
             "data_id": "example3",
             "seed_range": [
                 1,
-                10
+                50
             ]
         }
     ],
@@ -38,7 +38,7 @@
             "data_id": "example4",
             "seed_range": [
                 1,
-                10
+                50
             ]
         }
     ],

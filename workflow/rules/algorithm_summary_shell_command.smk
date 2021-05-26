@@ -22,12 +22,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname n_samples       --colval {wildcards.n_samples} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname randomits       --colval {wildcards.randomits} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname penalty         --colval {wildcards.penalty} " \ 
-                 " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname ascore          --colval {wildcards.ascore} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname bscore          --colval {wildcards.bscore} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \               
+                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \               
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     elif algorithm == "gg_singlepair":
@@ -52,6 +53,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \               
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " 
 
     elif algorithm == "tabu":

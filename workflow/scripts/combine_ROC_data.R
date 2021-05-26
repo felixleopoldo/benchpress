@@ -50,10 +50,22 @@ for (alg in rocalgs){
         group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
                     TPR_pattern_mean = mean(TPR_pattern), 
+                    
                     TPR_pattern_median = median(TPR_pattern), 
                     FPRn_pattern_median = median(FPRn_pattern), 
                     TPR_pattern_q1 = quantile(TPR_pattern, probs = c(0.05)), 
                     TPR_pattern_q3 = quantile(TPR_pattern, probs = c(0.95)),
+
+                    TPR_skel_median = median(TP_skel / true_n_edges_skel), 
+                    FPRn_skel_median = median(FP_skel / true_n_edges_skel), 
+                    TPR_skel_q1 = quantile(TP_skel / true_n_edges_skel, probs = c(0.05)), 
+                    TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95)),
+
+                    FPR_skel_mean = mean(FPR_skel), 
+                    FNR_skel_mean = mean(FNR_skel), 
+                    FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05)), 
+                    FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
+
                     time_mean = mean(time),
                     logscore_mean = mean(logscore),
                     N = n())

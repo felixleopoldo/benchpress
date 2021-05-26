@@ -126,7 +126,6 @@ def join_string_sampled_model(algorithm, mode="result"):
     return ret
 
 def join_summaries_shell(algorithm):
-    #    "Rscript scripts/join_csv_files.R --filename {output} --files {input.res} "  \
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):

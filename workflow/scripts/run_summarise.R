@@ -133,7 +133,7 @@ skel_true <- (true_adjmat | t(true_adjmat)) * 1
 skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
 
 TP <- sum(skel_true * skel_est) / 2
-FN <- sum((1-skel_true) * (1-skel_est)) / 2
+TN <- sum((1-skel_true) * (1-skel_est)) / 2
 FP <- sum((1-skel_true) * skel_est) / 2
 FN <- sum(skel_true * (1-skel_est)) / 2
 
@@ -150,7 +150,12 @@ df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  logscore = 100,
                  SHD_pattern = compres["SHD"],
                  FPR_skel = FP / n_edges,
-                 FNR_skel = FN / n_nonedges
+                 FNR_skel = FN / n_nonedges,
+                 TP_skel = TP,
+                 FN_skel = FN,
+                 FP_skel = FP,
+                 TN_skel = TN,
+                 true_n_edges_skel = n_edges
                  )
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

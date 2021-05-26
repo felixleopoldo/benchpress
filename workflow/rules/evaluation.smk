@@ -50,9 +50,11 @@ rule roc:
         "workflow/Snakefile",
         csv="results/ROC_data.csv" 
     output:
-        eps="results/ROC.eps"
-    shell:
-        "Rscript workflow/scripts/plot_ROC.R --input_filename {input.csv} --output_filename {output.eps}"
+        eps="results/ROC.eps",
+        roc_skel="results/ROC_skel.eps",
+        roc_FPRp_TPR_skel="results/ROC_FPRp_TPR_skel.eps"
+    script:
+        "../scripts/plot_ROC.R"
 
 rule roc_cpdag:
     input:
@@ -69,10 +71,10 @@ rule roc_cpdag:
 # It use to be matched out from data.
 def adjvecs():
     # Everythihng may have seed depending on the source.
-    ret = [[[expand("{output_dir}/adjvecs/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[[expand("{output_dir}/adjvecs/"\
+            "adjmat=/{adjmat_string}/"\
             "bn=/{param_string}/"\
-            "data=/{data_string}/"\            
+            "data=/{data_string}/"\
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
             "adjvecs.json",
@@ -89,11 +91,11 @@ def adjvecs():
     return ret
 
 def traj_plots():
-    ret = [[[[expand("{output_dir}/traj_plot/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[[[expand("{output_dir}/traj_plot/"\
+            "adjmat=/{adjmat_string}/"\
             "bn=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/" \
             "seed={seed}/"
             "traj_plot.eps",
             output_dir="results",
