@@ -48,6 +48,7 @@ rule roc_data:
 
 rule roc:
     input:
+        "workflow/scripts/plot_ROC.R",
         "workflow/scripts/run_summarise.R",
         configfilename,
         "workflow/Snakefile",
