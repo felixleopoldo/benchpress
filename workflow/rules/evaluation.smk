@@ -36,6 +36,7 @@ rule FP:
 
 rule roc_data:
     input:
+        "workflow/scripts/combine_ROC_data.R",
         "workflow/scripts/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
