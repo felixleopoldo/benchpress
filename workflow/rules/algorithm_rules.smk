@@ -24,6 +24,7 @@ rule summarise_glasso:
        
 rule join_summaries_glasso:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("glasso")
     output:
@@ -54,6 +55,7 @@ rule summarise_tabu:
        
 rule join_summaries_tabu:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("tabu")
     output:
@@ -86,6 +88,7 @@ rule summarise_notears:
        
 rule join_summaries_notears:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("notears")
     output:
@@ -116,6 +119,7 @@ rule summarise_hc:
        
 rule join_summaries_hc:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("hc")
     output:
@@ -146,6 +150,7 @@ rule summarise_interiamb:
        
 rule join_summaries_interiamb:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("interiamb")
     output:
@@ -176,6 +181,7 @@ rule summarise_gs:
        
 rule join_summaries_gs:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gs")
     output:
@@ -206,6 +212,7 @@ rule summarise_blip:
 
 rule join_summaries_blip:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("blip")
     output:
@@ -239,6 +246,7 @@ rule summarise_itsearch:
 
 rule join_summaries_itsearch:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("itsearch")
     output:
@@ -271,6 +279,7 @@ rule summarise_pcalg:
 
 rule join_summaries_pcalg:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("pcalg")
     output:
@@ -302,6 +311,7 @@ rule summarise_mmhc:
 
 rule join_summaries_mmhc:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("mmhc")
     output:
@@ -334,6 +344,7 @@ rule summarise_gobnilp:
 
 rule join_summaries_gobnilp:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gobnilp")
     output:
@@ -364,6 +375,7 @@ rule summarise_fges:
 
 rule join_summaries_fges:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("fges")
     output:
@@ -394,6 +406,7 @@ rule summarise_fci:
 
 rule join_summaries_fci:
     input: 
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("fci")
     output:
@@ -424,6 +437,7 @@ rule summarise_gfci:
 
 rule join_summaries_gfci:
     input: 
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gfci")
     output:
@@ -453,6 +467,7 @@ rule summarise_rfci:
 
 rule join_summaries_rfci:
     input: 
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("rfci")
     output:
@@ -487,6 +502,7 @@ rule summarise_order_mcmc:
 
 rule join_summaries_order_mcmc:
     input: 
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("order_mcmc")
     output:
@@ -532,6 +548,7 @@ rule summarise_trilearn_loglin:
        
 rule join_summaries_trilearn_loglin:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("trilearn_loglin")
     output:
@@ -603,6 +620,7 @@ rule summarise_greenthomas:
        
 rule join_summaries_greenthomas:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("greenthomas")
     output:
@@ -649,6 +667,7 @@ rule summarise_gg_singlepair:
        
 rule join_summaries_gg_singlepair:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gg_singlepair")
     output:
