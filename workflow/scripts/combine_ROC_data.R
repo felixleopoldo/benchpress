@@ -61,7 +61,7 @@ for (alg in rocalgs){
                     TPR_skel_q1 = quantile(TP_skel / true_n_edges_skel, probs = c(0.05)), 
                     TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95)),
 
-                    FPR_skel_mean = mean(FPR_skel), 
+                    FPRp_skel_mean = mean(FPR_skel), 
                     FNR_skel_mean = mean(FNR_skel), 
                     FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05)), 
                     FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),

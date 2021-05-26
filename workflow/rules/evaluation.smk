@@ -36,6 +36,7 @@ rule FP:
 
 rule roc_data:
     input:
+        "workflow/scripts/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
         algs=active_algorithm_files("ROC") # It should maybe be stated there which kind of roc to be considered..
@@ -46,6 +47,7 @@ rule roc_data:
 
 rule roc:
     input:
+        "workflow/scripts/run_summarise.R",
         configfilename,
         "workflow/Snakefile",
         csv="results/ROC_data.csv" 

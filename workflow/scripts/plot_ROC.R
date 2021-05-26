@@ -56,23 +56,23 @@ ggsave(file=snakemake@output[["roc_FPRp_TPR_skel"]])
 
 
 ggplot() + geom_errorbar(data = toplot,
-              aes(x = FPR_skel_mean,
+              aes(x = FPRp_skel_mean,
                   ymin = FNR_skel_q1, 
                   ymax = FNR_skel_q3, 
                   col = id), 
               width = 0.01) +
 geom_path(data = toplot,
-          aes(x = FPR_skel_mean, 
+          aes(x = FPRp_skel_mean, 
               y = FNR_skel_mean,
               col = id)) +
 geom_point(data = toplot,
-           aes(x = FPR_skel_mean, 
+           aes(x = FPRp_skel_mean, 
                y = FNR_skel_mean,               
                col = id, 
                shape = id), 
                size = 1) +
 facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
-xlab("FPR") +
+xlab("FPRp") +
 ylab("FNR") +
 ggtitle("FPR/FNR (undirected skeleton)") +
 theme(plot.title = element_text(hjust = 0.5)) +
