@@ -74,6 +74,6 @@ geom_point(data = toplot,
 facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
 xlab("FPRp") +
 ylab("FNR") +
-ggtitle("FPR/FNR (undirected skeleton)") +
+ggtitle("FPRp/FNR (undirected skeleton)") +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["roc_skel"]])

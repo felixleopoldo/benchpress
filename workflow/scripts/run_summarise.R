@@ -140,8 +140,6 @@ FN <- sum(skel_true * (1-skel_est)) / 2
 n_edges <- sum(skel_true) / 2
 n_nonedges <- sum(1-skel_true) / 2
 
-#print(skel_true)
-
 compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
 
@@ -155,7 +153,8 @@ df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  FN_skel = FN,
                  FP_skel = FP,
                  TN_skel = TN,
-                 true_n_edges_skel = n_edges
+                 true_n_edges_skel = n_edges,
+                 true_n_non_edges_skel = n_nonedges
                  )
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
