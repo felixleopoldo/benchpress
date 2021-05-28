@@ -1,3 +1,4 @@
+from numpy import column_stack
 import notears
 import argparse
 import pandas as pd
@@ -31,7 +32,10 @@ def main(loss, loss_grad, min_rate_of_progress, penalty_growth_rate,
         verbose=False)
 
     adjmat = notears.utils.threshold_output(output_dict['W'])
-    pd.DataFrame(adjmat).to_csv(filename, index=False)
+
+    adjmat_df = pd.DataFrame(adjmat)
+    adjmat_df.columns = data_df.columns
+    adjmat_df.to_csv(filename, index=False)
 
 
 if __name__ == "__main__":
