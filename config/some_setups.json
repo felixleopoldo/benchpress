@@ -89,6 +89,7 @@
         "omcmc_itsample-bdecat"
     ],
     "ROC_example4": [
+        "gfci-sem-bic-fisher-z",
         "interiamb-zf",
         "gs-zf",
         "fci-fisher-z",
