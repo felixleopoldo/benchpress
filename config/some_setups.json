@@ -43,7 +43,7 @@
         }
     ],
     "ROC_example1": [
-        "winasobs-bdeu",
+        "gobnilp-bde",
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",
@@ -59,6 +59,8 @@
         "omcmc_itsample-bde"
     ],
     "ROC_example2": [
+        "interiamb-zf",
+        "gs-zf",
         "fci-fisher-z",
         "fges-sem-bic",
         "gfci-sem-bic-fisher-z",
@@ -71,7 +73,7 @@
         "tabu-bge"
     ],
     "ROC_example3": [
-        "winasobs-bdeu",
+        "gobnilp-bde",
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",
@@ -87,6 +89,8 @@
         "omcmc_itsample-bdecat"
     ],
     "ROC_example4": [
+        "interiamb-zf",
+        "gs-zf",
         "fci-fisher-z",
         "fges-sem-bic",
         "hc-bge",

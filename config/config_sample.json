@@ -2,17 +2,20 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "hepar2.csv",
+                "graph_id": "avneigs4",
                 "parameters_id": "SEM",
-                "data_id": "example4",
+                "data_id": "example2",
                 "seed_range": [
                     1,
                     50
-                ]
-            }
+                    ]
+                }
         ],
         "evaluation": {
             "ROC": [
+                "gfci-sem-bic-fisher-z",
+                "interiamb-zf",
+                "gs-zf",
                 "fci-fisher-z",
                 "fges-sem-bic",
                 "hc-bge",
@@ -22,9 +25,10 @@
                 "pcalg-gaussCItest",
                 "rfci-fisher-z",
                 "tabu-bge"
+        
             ],
             "adjmat_plots": [
-                "omcmc_itsample-bde", "pcalg-binCItest"
+                "fges-sem-bic", "notears"
             ],
             "graph_plots": [
                 "omcmc_itsample-bde", "pcalg-binCItest"
@@ -252,15 +256,15 @@
                     "min_rate_of_progress": 0.25,
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss",
-                    "loss_grad": "least_squares_loss_grad"
+                    "loss": "least_squares_loss_cov",
+                    "loss_grad": "least_squares_loss_cov_grad"
                 }
             ],
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",
                     "plot": false,
-                    "palim": 2,
+                    "palim": 3,
                     "alpha": [
                         0.001,
                         0.01,
@@ -554,8 +558,7 @@
                     "id": "interiamb-zf",
                     "alpha": [
                         0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "test": "zf",
                     "B": null,
@@ -597,14 +600,12 @@
                     "id": "gs-zf",
                     "alpha": [
                         0.01,
-                        0.05,
-                        0.1,
-                        0.2
+                        0.05
                     ],
                     "test": "zf",
                     "B": null,
                     "maxsx": null,
-                    "debug": true,
+                    "debug": false,
                     "undirected": false
                 }
             ],
