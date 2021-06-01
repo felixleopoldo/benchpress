@@ -35,7 +35,7 @@ def validate_data_setup(config, dict):
                             " is not an available graph id.\n"
                             "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
-    available_data_files = os.listdir("results/data/mydatasets")
+    available_data_files = os.listdir("resources/data/mydatasets")
 
     # Check that data exists
     available_conf_ids = []
@@ -56,8 +56,8 @@ def validate_data_setup(config, dict):
     for alg, alg_conf_avail in config["resources"]["parameters"].items():
         for alg_conf in alg_conf_avail:
             available_conf_ids.append(alg_conf["id"])
-    available_conf_ids += os.listdir("results/bn/bn.fit_networks")
-    available_conf_ids += os.listdir("results/bn/sem_params")
+    available_conf_ids += os.listdir("resources/bn/bn.fit_networks")
+    available_conf_ids += os.listdir("resources/bn/sem_params")
 
     if dict["data_id"] not in available_data_files and dict["parameters_id"] not in available_conf_ids:
         raise Exception(str(dict["parameters_id"])+ 

@@ -43,7 +43,10 @@
         }
     ],
     "ROC_example1": [
+<<<<<<< Updated upstream
         "gobnilp-bde",
+=======
+>>>>>>> Stashed changes
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",
@@ -73,7 +76,10 @@
         "tabu-bge"
     ],
     "ROC_example3": [
+<<<<<<< Updated upstream
         "gobnilp-bde",
+=======
+>>>>>>> Stashed changes
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",

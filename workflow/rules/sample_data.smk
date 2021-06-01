@@ -1,4 +1,4 @@
-rule sample_bindata:
+rule sample_bin_bn_data:
     input:
         bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"
     output:
@@ -66,19 +66,26 @@ rule standardize:
     script:
         "../scripts/standardize.R"
 
+# rule copy_from_resources:
+#     input:        
+#         "resources/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
+#     output:
+#         "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
+#     shell:
+#         "cp {input} {output}"
+
 rule copy_fixed_data:
-    input:
-        "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
+    input:        
+        "resources/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
     output:
         data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
-    shell:\
-        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
+    shell:
         "cp {input} {output.data}"
-
-rule sample_bnfit_data:
+#        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
+rule sample_data_fixed_bnfit:
     input:
         "workflow/scripts/sample_from_bnlearn_bn.R",
-        bn="{output_dir}/bn/bn.fit_networks/{bn}"        
+        bn="resources/bn/bn.fit_networks/{bn}"        
     output:
         data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"
     shell:
@@ -94,7 +101,7 @@ a .csv file in bn/sem_params.
 """
 rule sample_fixed_sem_params_data:
     input:        
-        bn="{output_dir}/bn/sem_params/{bn}"        
+        bn="resources/bn/sem_params/{bn}"        
     output:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \

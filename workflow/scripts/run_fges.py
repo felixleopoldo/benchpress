@@ -33,8 +33,8 @@ cmd += '--filename {adjmat} '
 if snakemake.wildcards["datatype"] == "discrete":
     cmd += "&& rm -f {adjmat}.no_range_header "
 
-cmd += '&& ' 
-cmd += 'rm {adjmat}_graph.json ' 
+##cmd += '&& ' 
+##cmd += 'rm {adjmat}_graph.json ' 
 cmd += '&& ' 
 cmd += 'rm {adjmat}.txt'
 

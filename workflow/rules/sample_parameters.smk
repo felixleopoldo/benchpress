@@ -14,6 +14,7 @@ rule sample_binary_bn:
         "--max {wildcards.max} " \
         "--seed {wildcards.seed} "
 
+
 rule sample_pcalg_sem_params:
     input:
         "workflow/scripts/sample_pcalg_semparams.R", 
@@ -66,3 +67,11 @@ rule g_inv_wishart:
         docker_image("trilearn_loglin")
     shell:
         "python workflow/scripts/trilearn/g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
+
+rule copy_bnfit:
+    input:
+        "resources/bn/bn.fit_networks/{filename}.rds"
+    output:
+        "{output_dir}/bn/bn.fit_networks/{filename}.rds"
+    shell:       
+        "cp {input} {output}"

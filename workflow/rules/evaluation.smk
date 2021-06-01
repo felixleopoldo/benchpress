@@ -54,21 +54,14 @@ rule roc:
         "workflow/Snakefile",
         csv="results/ROC_data.csv" 
     output:
+        touch("results/ROC.done"),
         eps="results/ROC.eps",
         roc_skel="results/ROC_skel.eps",
-        roc_FPRp_TPR_skel="results/ROC_FPRp_TPR_skel.eps"
+        roc_FPRp_TPR_skel="results/ROC_FPRp_TPR_skel.eps",
+        
     script:
         "../scripts/plot_ROC.R"
 
-rule roc_cpdag:
-    input:
-        configfilename,
-        "workflow/Snakefile",
-        csv="results/ROC_data.csv" 
-    output:
-        eps="results/ROC_essential_graph.eps"
-    shell:
-        "Rscript scripts/plot_cpdag_roc.R --input_filename {input.csv} --output_filename {output.eps}"
 
 # problem with seeds. The seed is in cluden in graph, bn and data. but not in algorithm.
 # When the order ord the data,bn and data is changed, the seed is lost. 
@@ -352,49 +345,70 @@ rule autocorr_plot:
 
 rule mcmc_heatmaps:
     input:
+        configfilename,
         heatmap_plots()
+    output:
+        touch("results/mcmc_heatmaps.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/heatmap_" +str(i) +".eps")
 
 rule mcmc_traj_plots:
     input:
+        configfilename,
         traj_plots()
+    output: 
+        touch("results/mcmc_traj_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/trajplot_" +str(i) +".eps")
 
 rule autocorr_plots:
     input:
+        configfilename,
         autocorr_plots()
+    output:
+        touch("results/autocorr_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/autocorr_" +str(i) +".eps")
 
 rule adjmat_plots:
     input:        
+        configfilename,
         adjmat_plots()
+    output:
+        touch("results/adjmat_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/adjmat_" +str(i) +".eps")
 
 rule adjmat_true_plots:
-    input:        
+    input:  
+        configfilename,      
         adjmat_true_plots()
+    output:
+        touch("results/adjmat_true_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/adjmat_true_" +str(i) +".eps")
 
 rule graph_plots:
     input:
+        configfilename,
         graph_plots()
+    output:
+        touch("results/graph_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/graph_" +str(i) +".ps")
 
 rule graph_true_plots:
     input:
+        configfilename,
         graph_true_plots()
+    output:
+        touch("results/graph_true_plots.done")
     run:
         for i,f in enumerate(input):
             shell("cp "+f+" results/graph_true_" +str(i) +".eps")

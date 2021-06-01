@@ -1,3 +1,4 @@
+
 def adjmat_estimate_path_mcmc(algorithm):
     ret = "{output_dir}/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\

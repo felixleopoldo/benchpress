@@ -11,28 +11,11 @@ import os
 
 args = sys.argv
 
-# Copy data adjmats and parameters into the results folder.
-# Sync folders to not alter the timestamps for the files.
-
-if os.path.isdir("results/data/mydatasets"):
-    sync("resources/data/mydatasets", "results/data/mydatasets", "sync")
-else:
-    shutil.copytree("resources/data", "results/data")
-
-if os.path.isdir("results/bn/bn.fit_networks"):
-    sync("resources/bn/bn.fit_networks", "results/bn/bn.fit_networks", "sync")
-else:
-    shutil.copytree("resources/bn", "results/bn")
-
-if os.path.isdir("results/bn/sem_params"):
-    sync("resources/bn/sem_params", "results/bn/sem_params", "sync")
-else:
-    shutil.copytree("resources/bn/sem_params", "results/bn/sem_params")
-
 configfilename="config/config.json"
+
 i=0
 for arg in args:
-    if arg=="--configfile":
+    if arg=="--configfile" or arg=="--configfiles": # This is strange
         configfilename = args[i+1]
         break
     i+=1
@@ -46,6 +29,19 @@ include: "rules/docker_images.smk"
 
 singularity:
     docker_image("benchmark")
+
+
+def get_active_rules(wildcards):
+    rules = []
+    for key, val in config["benchmark_setup"]["evaluation"].items():
+        if isinstance(val, bool) and val is True:
+            rules.append("results/"+key+".done")
+        if isinstance(val, list) and val != []:
+            rules.append("results/"+key+".done")
+    return rules
+
+rule all:
+    input: get_active_rules
 
 include: "rules/validate.smk"
 include: "rules/pattern_strings.smk"

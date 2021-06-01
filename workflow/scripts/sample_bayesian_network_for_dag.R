@@ -21,6 +21,8 @@ rownames(adjmat) <- seq(n)
 colnames(adjmat) <- seq(n)
 
 DAG <- adjacency2dag(adjmat)
+
+## TODO: This should pass the column names as well.
 set.seed(seed_number)
 binBN <- generateBinaryBN(DAG, c(argv$min, argv$max))
 

@@ -1,8 +1,8 @@
-
 cleanres:
 		rm -f results/*.csv
 		rm -f results/*.eps
 		rm -f results/*.ps
+		rm -f results/*.done
 
 clean: 
 		rm -rf results
