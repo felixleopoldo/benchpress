@@ -18,12 +18,12 @@ def alg_shell(algorithm):
             "   tail -n +2 {input.data} > {output.seqgraph}.noheader " \ 
             "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
             "   && " \
-            "   if [ {wildcards.prior} = \"mbc\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGaussianGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
+            "   if [ {wildcards.prior} = \"mbc\" ]; then " \       
+            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
             "   elif [ {wildcards.prior} = \"bc\" ]; then " \
-            "       java -classpath /jtsampler/classes FitGaussianGM -v 0 -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \
+            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \
             "   elif [ {wildcards.prior} = \"ep\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGaussianGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
+            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
             "   else  " \
             "   echo prior not exist ; " \
             "   fi "\
@@ -51,11 +51,11 @@ def alg_shell(algorithm):
             "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
             "   && " \
             "   if [ {wildcards.prior} = \"mbc\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGaussianGM -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
+            "       java -classpath /jtsampler/classes FitGaussianGM -v -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
             "   elif [ {wildcards.prior} = \"bc\" ]; then " \
-            "       java -classpath /jtsampler/classes FitGaussianGM -v 0 -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \
+            "       java -classpath /jtsampler/classes FitGaussianGM -v -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph}; " \
             "   elif [ {wildcards.prior} = \"ep\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGaussianGM -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
+            "       java -classpath /jtsampler/classes FitGaussianGM -v -n {wildcards.n_samples} -s 1 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.replicate} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
             "   else  " \
             "   echo prior not exist ; " \
             "   fi "\
