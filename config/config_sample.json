@@ -2,26 +2,25 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "asia.csv",
-                "parameters_id": "SEM",
+                "graph_id": "avneigs4",
+                "parameters_id": "binbn",
                 "data_id": "example1",
                 "seed_range": [
                     1,
-                    1
+                    50
                     ]
                 }
         ],
         "evaluation": {
             "ROC": [        
-
+               
             ],
             "adjmat_true_plots":true,
             "graph_true_plots":true,
             "adjmat_plots": [
-                "fges-sem-bic"
+                
             ],
-            "graph_plots": [
-                "fges-sem-bic"               
+            "graph_plots": [         
             ],
             "mcmc_traj_plots": [
                 
@@ -44,6 +43,14 @@
                         1000
                     ]
                 },
+                {
+                    "id": "nonstandardized",
+                    "standardized":false,
+                    "sample_sizes": [
+                        1000
+                    ]
+                },
+                
                 {
                     "id": "example1",
                     "standardized":false,
@@ -266,17 +273,41 @@
             "greenthomas": [
                 {
                     "id": "greenthomas_bc-cont",
-                    "n_samples": [
-                        1000000
-                    ],
+                    "n_samples": 1000000,
                     "datatype":"continuous",
                     "randomits": 1000,
                     "prior":"bc",
-                    "ascore":[0.1,10],
+                    "ascore":[0.1, 10],
                     "bscore":0.001,
-                    "clq": 2,
-                    "sep":4,
-                    "penalty":1.5,
+                    "clq": null,
+                    "sep":null,
+                    "penalty":null,
+                    "mcmc_seed": 1
+                },
+                {
+                    "id": "greenthomas_ep-cont",
+                    "n_samples": 1000000,
+                    "datatype":"continuous",
+                    "randomits": 1000,
+                    "prior":"ep",
+                    "ascore":null,
+                    "bscore":null,
+                    "clq": null,
+                    "sep":null,
+                    "penalty":[1.5, 5],
+                    "mcmc_seed": 1
+                },
+                {
+                    "id": "greenthomas_mbc-cont",
+                    "n_samples": 1000000,
+                    "datatype":"continuous",
+                    "randomits": 1000,
+                    "prior":"mbc",
+                    "ascore":null,
+                    "bscore":null,
+                    "clq": 1,
+                    "sep":1,
+                    "penalty":null,
                     "mcmc_seed": 1
                 },
                 {

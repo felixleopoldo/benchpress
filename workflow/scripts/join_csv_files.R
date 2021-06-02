@@ -9,6 +9,15 @@ fix_columns <- function(df){
   if("posterior" %in% colnames(df)) {
       df["posterior"] <- as.numeric(df["posterior"])
   }
+  if("penalty" %in% colnames(df)) {
+      df["penalty"] <- as.numeric(df["penalty"])
+  }
+  if("clq" %in% colnames(df)) {
+      df["clq"] <- as.numeric(df["clq"])
+  }
+  if("sep" %in% colnames(df)) {
+      df["sep"] <- as.numeric(df["sep"])
+  }
   return(df)
 }
 

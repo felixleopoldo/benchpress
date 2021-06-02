@@ -31,7 +31,7 @@ for (alg in rocalgs){
                 # Finds the varying curve automatically as the one which is an array.
                 curve_param <- names(a)[[2]]
                 for (key in names(a)){
-                    if (is.vector(a[[key]])  && key != "mcmc_seed"){
+                    if (is.vector(a[[key]]) ){ ## && key != "mcmc_seed"
                         if (length(a[[key]]) > 1) {
                             curve_param <- key
                             break

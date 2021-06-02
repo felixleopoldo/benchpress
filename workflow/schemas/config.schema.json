@@ -1125,25 +1125,26 @@
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "penalty": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "prior":{
-                    "type": "string"    
+                    "type": "string",
+                    "enum": ["bc","mbc","ep"]    
                 },
                 "ascore":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "bscore":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "clq":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "sep":{
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "mcmc_seed":{
                     "$ref": "#definitions/flexnonnegint"
