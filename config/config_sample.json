@@ -12,8 +12,8 @@
                 }
         ],
         "evaluation": {
-            "ROC": [        
-               
+            "ROC": [
+
             ],
             "adjmat_true_plots":true,
             "graph_true_plots":true,

@@ -4,6 +4,7 @@ library("rjson")
 
 toplot <- read.csv(snakemake@input[["csv"]])
 
+# Might have to go through all one by aone to get the ponit text.
 
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_pattern_median,
@@ -21,14 +22,24 @@ geom_point(data = toplot,
                col = id, 
                shape = id), 
                size = 1) +
+#directlabels::geom_dl(aes(label = class), method = "smart.grid") +
+#geom_text(data = toplot,
+#            aes(x = FPRn_median, 
+#                y = TPR_q3,               
+#                label=alpha, col=legend),
+#          check_overlap = TRUE,
+#           nudge_x=-0.02,
+#          nudge_y=0.02
+#          )
 
-facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+facet_wrap(. ~ data + adjmat+bn, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("FPRp/TPR (pattern graph)") +
+theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["eps"]])
-
+# annotate
 
 ggplot() + geom_errorbar(data = toplot,
               aes(x = FPRn_skel_median,
@@ -47,10 +58,11 @@ geom_point(data = toplot,
                shape = id), 
                size = 1) +
 
-facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+facet_wrap(. ~ data + adjmat+bn, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("FPRp/TPR (undirected skeleton)") +
+theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["roc_FPRp_TPR_skel"]])
 
@@ -76,4 +88,5 @@ xlab("FPRp") +
 ylab("FNR") +
 ggtitle("FPRp/FNR (undirected skeleton)") +
 theme(plot.title = element_text(hjust = 0.5)) +
+theme_bw() +
 ggsave(file=snakemake@output[["roc_skel"]])

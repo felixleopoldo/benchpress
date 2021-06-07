@@ -18,20 +18,27 @@ for (file in argv$algorithms){
     active_algorithms <- c(active_algorithms, tools::file_path_sans_ext(basename(file)))
 }
 
+active_algorithms <- unique(active_algorithms)
+
 rocalgs <- config$benchmark_setup$evaluation$ROC
 
-for (alg in rocalgs){
-    # get the algorithm from the ROC section in the json file.
-    algorithm <- NULL
-    curve_param <- NULL
-    for (active_algorithm in active_algorithms){
-        for(a in config$resources$structure_learning_algorithms[[active_algorithm]]){
-            if (a$id == alg) {
-                algorithm = active_algorithm
-                # Finds the varying curve automatically as the one which is an array.
-                curve_param <- names(a)[[2]]
+for (algorithm in active_algorithms){
+    # This reads all ids of one algorithm so that the same coud be read more than once. 
+    # The problem is that the curve variable is needed.
+    # It is fixed by running the distinct funtion in the end...
+    ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = ""))) 
+    unique_ids <- ROCdf %>% distinct(id)
+    
+    for(params_id in unique_ids$id){
+
+        # Find curve param
+        # Finds the varying curve automatically as the one which is an array.
+        curve_param <- NULL
+        for(a in config$resources$structure_learning_algorithms[[algorithm]]){
+            if (a$id == params_id) {             
+                curve_param <- names(a)[[2]] # Since 1 use to be id :)
                 for (key in names(a)){
-                    if (is.vector(a[[key]]) ){ ## && key != "mcmc_seed"
+                    if (is.vector(a[[key]]) && key != "mcmc_seed" && key != "id"){ 
                         if (length(a[[key]]) > 1) {
                             curve_param <- key
                             break
@@ -40,13 +47,9 @@ for (alg in rocalgs){
                 }
             }
         }
-    }
 
-    if(algorithm %in% active_algorithms) { 
-        # This reads all ids of one algorithm so that the same coud be read more than once. The problem is that the curve variable is needed.
-        # It is fixed by running the distinct funtion in the end...
-        ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = ""))) 
         sumROC = ROCdf %>%
+        filter(id == params_id) %>% # Extract only the rows for the actual id 
         group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
                     TPR_pattern_mean = mean(TPR_pattern), 
