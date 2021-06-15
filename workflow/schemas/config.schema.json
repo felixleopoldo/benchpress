@@ -1041,6 +1041,13 @@
                     "type": "string",
                     "description": "Unique identifier"
                 },
+                "continuous":{
+                    "type":"boolean"
+                },
+                "score_type":{
+                    "type":"string",
+                    "enum": ["BGe", "BDeu", "BIC"]
+                },
                 "plot": {
                     "type": "boolean"
                 },
@@ -1048,7 +1055,13 @@
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "alpha": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "alpha_omega_minus_nvars": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "alpha_mu": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "prune": {
                     "type": "boolean"

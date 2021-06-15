@@ -127,15 +127,27 @@ def alg_shell(algorithm):
         return "touch {output.adjmat}.gobnilp.set && " \   
                 "echo 'gobnilp/outputfile/adjacencymatrix = \"{output.adjmat}.bn.mat\" ' > {output.adjmat}.gobnilp.set &&" \
                 "echo 'gobnilp/outputfile/scoreandtime = \"{output.adjmat}.score_and_time.txt\" ' >> {output.adjmat}.gobnilp.set &&" \
+                "if [ {wildcards.continuous} = \"True\" ]; then "\
+                "echo 'gobnilp/scoring/continuous = TRUE ' >> {output.adjmat}.gobnilp.set && " \
+                "echo 'gobnilp/scoring/score_type = \"{wildcards.score_type}\" ' >> {output.adjmat}.gobnilp.set && " \     
+                "echo 'gobnilp/scoring/alpha_mu = {wildcards.alpha_mu} ' >> {output.adjmat}.gobnilp.set && " \
+                "echo 'gobnilp/scoring/alpha_omega_minus_nvars = {wildcards.alpha_omega_minus_nvars} ' >> {output.adjmat}.gobnilp.set ; " \
+                "fi && " \
+                "if [ {wildcards.continuous} = \"False\" ]; then "\
+                "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set ; " \
+                "fi && " \
                 "echo 'gobnilp/scoring/palim = {wildcards.palim} ' >> {output.adjmat}.gobnilp.set && " \     
-                "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set && " \
                 "echo 'gobnilp/scoring/prune = {wildcards.prune} ' >> {output.adjmat}.gobnilp.set && " \     
                 "echo 'gobnilp/delimiter = \",\" ' >> {output.adjmat}.gobnilp.set && " \     
-                "/myappdir/gobnilp163/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \
+                "/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \
                 " && cat {output.adjmat}.bn.mat > {output.adjmat} " \
-                " && cat {output.adjmat}.score_and_time.txt > {output.time} " \ 
-                " && rm {output.adjmat}.bn.mat " \
+                " && sed --in-place 's/\ /,/g' {output.adjmat} " \
+                " && head -n 1 {input.data} > {output.adjmat}.header " \
+                " && cat {output.adjmat} >> {output.adjmat}.header " \
+                " && mv {output.adjmat}.header {output.adjmat} " \ 
+                " && cat {output.adjmat}.score_and_time.txt > {output.time} " \                 
                 " && rm {output.adjmat}.score_and_time.txt " \
+                " && rm {output.adjmat}.bn.mat " \
                 " && rm {output.adjmat}.gobnilp.set"
 
     elif algorithm ==  "fci":

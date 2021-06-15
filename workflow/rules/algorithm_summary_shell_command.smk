@@ -436,7 +436,6 @@ def summarise_alg_shell(algorithm):
                 "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
                 "--range_header_data 1 " \ 
-                "--adjmat_header 0 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "\
@@ -444,10 +443,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \
                 " && python workflow/scripts/add_column.py --filename {output} --colname palim       --colval {wildcards.palim} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname alpha_mu       --colval {wildcards.alpha_mu} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname alpha_omega_minus_nvars       --colval {wildcards.alpha_omega_minus_nvars} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname continuous       --colval {wildcards.continuous} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname score_type       --colval {wildcards.score_type} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname prune       --colval {wildcards.prune} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time} | grep -Eo '[0-9]\.[0-9]*$'` " \
-
 
     elif algorithm == "trilearn_loglin":
         return "Rscript workflow/scripts/run_summarise.R " \

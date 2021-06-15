@@ -2,23 +2,23 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4",
-                "parameters_id": "binbn",
-                "data_id": "example1",
+                "graph_id": "asia.csv",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
                 "seed_range": [
                     1,
-                    50
+                    1
                     ]
                 }
         ],
         "evaluation": {
             "ROC": [
-
+                "gobnilp-bge"
             ],
             "adjmat_true_plots":true,
             "graph_true_plots":true,
             "adjmat_plots": [
-                
+                "gobnilp-bge"
             ],
             "graph_plots": [         
             ],
@@ -260,15 +260,31 @@
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",
+                    "continuous":false,
+                    "score_type":"BDeu",
                     "plot": false,
                     "palim": 3,
+                    "alpha_mu": null,
+                    "alpha_omega_minus_nvars": null,
                     "alpha": [
                         0.001,
                         0.01,
                         0.1
                     ],
                     "prune": true
+                },
+                {
+                    "id": "gobnilp-bge",
+                    "continuous":true,
+                    "score_type":"BGe",
+                    "plot": false,
+                    "palim": 2,
+                    "alpha_mu": 1.0,
+                    "alpha_omega_minus_nvars": 2,
+                    "alpha": null,
+                    "prune": true
                 }
+
             ],
             "greenthomas": [
                 {
