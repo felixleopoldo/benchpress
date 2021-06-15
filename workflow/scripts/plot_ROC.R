@@ -35,7 +35,7 @@ geom_point(data = toplot,
 facet_wrap(. ~ data + adjmat+bn, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
-ggtitle("FPRp/TPR (pattern graph)") +
+ggtitle("Median FPRp/TPR (pattern graph)") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["eps"]])
@@ -61,7 +61,7 @@ geom_point(data = toplot,
 facet_wrap(. ~ data + adjmat+bn, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
-ggtitle("FPRp/TPR (undirected skeleton)") +
+ggtitle("Median FPRp/TPR (undirected skeleton)") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["roc_FPRp_TPR_skel"]])
@@ -86,7 +86,7 @@ geom_point(data = toplot,
 facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
 xlab("FPRp") +
 ylab("FNR") +
-ggtitle("FPRp/FNR (undirected skeleton)") +
-theme(plot.title = element_text(hjust = 0.5)) +
+ggtitle("Mean FPRp/FNR (undirected skeleton)") +
 theme_bw() +
+theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["roc_skel"]])
