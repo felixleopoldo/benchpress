@@ -194,9 +194,9 @@
 
 *   [generateBinaryBN](./config-1-definitions-generatebinarybn.md "Parameter setting for generateBinaryBN") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN`
 
-*   [generateBinaryBN](./config-1-properties-resources-properties-parameters-sampling-algorithm-properties-generatebinarybn-generatebinarybn.md "Parameter setting for generateBinaryBN") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/generateBinaryBN/items`
+*   [generateBinaryBN](./config-1-properties-resources-properties-parameters-sampling-algorithm-properties-generatebinarybn-generatebinarybn.md "Parameter setting for generateBinaryBN") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bin_bn/items`
 
-*   [generateBinaryBN](./config-properties-resources-properties-parameters-sampling-algorithm-properties-generatebinarybn-generatebinarybn.md "Parameter setting for generateBinaryBN") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/generateBinaryBN/items`
+*   [generateBinaryBN](./config-properties-resources-properties-parameters-sampling-algorithm-properties-generatebinarybn-generatebinarybn.md "Parameter setting for generateBinaryBN") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bin_bn/items`
 
 *   [generateDAGMaxParents](./config-1-definitions-generatedagmaxparents.md "An instance of generateDAGMaxParents") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateDAGMaxParents`
 

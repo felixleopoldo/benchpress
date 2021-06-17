@@ -67,7 +67,7 @@ Bnlearn objects `bn.fit` objects are stored in ``.rds`` format in the directory 
 
 .. rubric:: Example
 
-Example standard networks (mostly from `https://www.bnlearn.com/bnrepository/ <https://www.bnlearn.com/bnrepository/>`_) are found at `https://github.com/felixleopoldo/benchpress/tree/master/resources/bn/bn.fit_networks <https://github.com/felixleopoldo/benchpress/tree/master/resources/bn/bn.fit_networks>`_.
+Example standard networks (mostly from `https://www.bnlearn.com/bnrepository/ <https://www.bnlearn.com/bnrepository/>`_) are found at `https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
 
 
 

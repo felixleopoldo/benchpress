@@ -42,7 +42,7 @@ rule fixed_adjmat:
 
 rule bnlearn_adjmat:
     input:
-        "{output_dir}/bn/bn.fit_networks/{name}"
+        "{output_dir}/parameters/myparams/bn.fit_networks/{name}"
     output:
         "{output_dir}/adjmat/bn.fit_adjmats/{name}.csv"
     shell:

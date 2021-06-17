@@ -1,10 +1,10 @@
 rule sample_bin_bn_data:
     input:
-        bn="{output_dir}/bn/generateBinaryBN/{bn}/adjmat=/{adjmat}.rds"
+        bn="{output_dir}/parameters/bin_bn/{bn}/adjmat=/{adjmat}.rds"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/generateBinaryBN/{bn}"\
+             "/parameters=/bin_bn/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_data_with_range_header.R " \
@@ -15,11 +15,11 @@ rule sample_bin_bn_data:
 
 rule sample_loglindata:
     input:
-        bn="{output_dir}/bn/hyper-dir/{bn}/adjmat=/{adjmat}.json"
+        bn="{output_dir}/parameters/hyper-dir/{bn}/adjmat=/{adjmat}.json"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/hyper-dir/{bn}"\
+             "/parameters=/hyper-dir/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("trilearn")
@@ -29,11 +29,11 @@ rule sample_loglindata:
 rule sample_intra_class_data:
     input:
         "workflow/scripts/trilearn/sample_mvn_data.py",
-        cov="{output_dir}/bn/intra-class/{bn}/adjmat=/{adjmat}.csv"
+        cov="{output_dir}/parameters/intra-class/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/intra-class/{bn}"\
+             "/parameters=/intra-class/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("trilearn")
@@ -43,11 +43,11 @@ rule sample_intra_class_data:
 rule sample_g_inverse_wishart:
     input:
         "workflow/scripts/trilearn/sample_mvn_data.py",
-        cov="{output_dir}/bn/g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
+        cov="{output_dir}/parameters/g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/g_inv_wishart/{bn}"\
+             "/parameters=/g_inv_wishart/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("trilearn")
@@ -78,16 +78,16 @@ rule copy_fixed_data:
     input:        
         "resources/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/parameters=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
     shell:
         "cp {input} {output.data}"
-#        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/bn=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
+#        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/parameters=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
 rule sample_data_fixed_bnfit:
     input:
         "workflow/scripts/sample_from_bnlearn_bn.R",
-        bn="resources/bn/bn.fit_networks/{bn}"        
+        bn="resources/parameters/myparams/bn.fit_networks/{bn}"        
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/iid/n={n}/seed={replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/iid/n={n}/seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
@@ -101,11 +101,11 @@ a .csv file in bn/sem_params.
 """
 rule sample_fixed_sem_params_data:
     input:        
-        bn="resources/bn/sem_params/{bn}"        
+        bn="resources/parameters/myparams/sem_params/{bn}"        
     output:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
-             "bn=/sem_params/{bn}/" \
+             "parameters=/{bn}/" \
              "data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("bidag")
@@ -115,11 +115,11 @@ rule sample_fixed_sem_params_data:
 rule sample_sem_data:
     input:
         script="workflow/scripts/sample_pcalg_sem_data.R",
-        bn="{output_dir}/bn/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
+        bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/" + pattern_strings["sem_params"] + "/" \
+             "/parameters=/" + pattern_strings["sem_params"] + "/" \
              "data=/iid/" \
              "n={n}/" \
              "seed={replicate}.csv"

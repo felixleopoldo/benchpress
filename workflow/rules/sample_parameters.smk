@@ -3,7 +3,7 @@ rule sample_binary_bn:
         "workflow/scripts/sample_bayesian_network_for_dag.R",
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        bn = "{output_dir}/bn/" + \
+        bn = "{output_dir}/parameters/" + \
             pattern_strings["bin_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
     shell:
@@ -20,7 +20,7 @@ rule sample_pcalg_sem_params:
         "workflow/scripts/sample_pcalg_semparams.R", 
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        bn =    "{output_dir}/bn/" + \
+        bn =    "{output_dir}/parameters/" + \
                 pattern_strings["sem_params"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
@@ -33,7 +33,7 @@ rule hyper_dir:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        bn =    "{output_dir}/bn/" + \
+        bn =    "{output_dir}/parameters/" + \
                 pattern_strings["hyper-dir"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.json"
@@ -46,7 +46,7 @@ rule intra_class_cov:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        params = "{output_dir}/bn/" + \
+        params = "{output_dir}/parameters/" + \
                 pattern_strings["intra-class"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
@@ -59,7 +59,7 @@ rule g_inv_wishart:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
-        params = "{output_dir}/bn/" + \
+        params = "{output_dir}/parameters/" + \
                 pattern_strings["g_inv_wishart"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
@@ -70,8 +70,8 @@ rule g_inv_wishart:
 
 rule copy_bnfit:
     input:
-        "resources/bn/bn.fit_networks/{filename}.rds"
+        "resources/parameters/myparams/bn.fit_networks/{filename}.rds"
     output:
-        "{output_dir}/bn/bn.fit_networks/{filename}.rds"
+        "{output_dir}/parameters/myparams/bn.fit_networks/{filename}.rds"
     shell:       
         "cp {input} {output}"

@@ -26,7 +26,7 @@ for (algorithm in active_algorithms){
     # This reads all ids of one algorithm so that the same coud be read more than once. 
     # The problem is that the curve variable is needed.
     # It is fixed by running the distinct funtion in the end...
-    ROCdf <- read.csv(file.path("results", paste(algorithm ,".csv", sep = ""))) 
+    ROCdf <- read.csv(file.path("results/output/roc/", paste(algorithm ,".csv", sep = ""))) 
     unique_ids <- ROCdf %>% distinct(id)
     
     for(params_id in unique_ids$id){

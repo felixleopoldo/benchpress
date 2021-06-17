@@ -1,10 +1,7 @@
 cleanres:
-		rm -f results/*.csv
-		rm -f results/*.eps
-		rm -f results/*.ps
-		rm -f results/*.done
+		rm -rf results/output
 
-clean: 
+cleanall: 
 		rm -rf results
 
 docs:	docs/source

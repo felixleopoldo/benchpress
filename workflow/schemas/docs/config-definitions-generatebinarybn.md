@@ -19,9 +19,9 @@ Parameter setting for generateBinaryBN
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                              |
 | :---------- | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-generatebinarybn-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/id") |
-| [min](#min) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/min")       |
-| [max](#max) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/max")       |
+| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-generatebinarybn-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id") |
+| [min](#min) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/min")       |
+| [max](#max) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/max")       |
 
 ## id
 
@@ -33,7 +33,7 @@ Parameter setting for generateBinaryBN
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-generatebinarybn-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-generatebinarybn-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id")
 
 ### id Type
 
@@ -49,7 +49,7 @@ Parameter setting for generateBinaryBN
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/min")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/min")
 
 ### min Type
 
@@ -70,7 +70,7 @@ any of
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties/max")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/max")
 
 ### max Type
 

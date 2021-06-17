@@ -18,12 +18,12 @@ The documentation is found here https://benchpressx.readthedocs.io.
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Docker](https://www.docker.com/) ([installation instructions](https://docs.docker.com/engine/install/))
 - [Singularity](https://sylabs.io/docs/) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
-- Linux/Unix (Singularity currently only has a Beta release for OSX which is not enough)
+- Linux (Singularity currently only has a Beta release for OSX which is not enough)
 ## Installation
 
 ### Clone and install
 
-`$ git clone https://github.com/felixleopoldo/benchpress.git && cd benchpress && pip install -r requirements.txt`
+`$ git clone https://github.com/felixleopoldo/benchpress.git`
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
@@ -34,13 +34,13 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run the simulation setup in config.json type
 
-`$ snakemake roc --cores 20 --use-singularity --configfile config/config.sample.docs.fullysampled.json`
+`$ snakemake --cores 20 --use-singularity --configfile config/config_sample.json`
 
-A roc curve defined by [config/config.sample.docs.fullysampled.json](config/config.sample.docs.fullysampled.json) is found in the file [results/ROC.eps]() and can be viewed with e.g. evince as
+A roc curve defined by [config/config_sample.json](config/config.sample.docs.fullysampled.json) is found in the file [results/ROC.eps]() and can be viewed with e.g. evince as
 
 `$ evince results/ROC.eps`
 
-![ROC](docs/source/_static/ROC_fullysampled.png)
+<!-- ![ROC](docs/source/_static/ROC_fullysampled.png)-->
 
 ## Contributing
 

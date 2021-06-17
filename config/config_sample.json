@@ -2,9 +2,9 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "hepar2.csv",
+                "graph_id": "avneigs4",
                 "parameters_id": "binbn",
-                "data_id": "example3",
+                "data_id": "nonstandardized",
                 "seed_range": [
                     1,
                     1
@@ -13,26 +13,17 @@
             ],
         "evaluation": {
             "roc": [
-                "gobnilp-bde",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "bnlearn_interiamb-mi",
-                "tetrad_fci-chi-square",
-                "tetrad_rfci-chi-square",
-                "tetrad_gfci-bdeu-chi-square",
-                "tetrad_fges-bdeu",
-                "itsearch_sample-bde",
-                "pcalg-binCItest",
-                "omcmc_itsample-bde"
+
+                "tabu-bde"
+
             ],
-            "adjmat_true_plots":false,
-            "graph_true_plots":false,
+            "adjmat_true_plots":true,
+            "graph_true_plots":true,
             "adjmat_plots": [
+                "tabu-bde"
             ],
             "graph_plots": [         
+                "tabu-bde"
             ],
             "mcmc_traj_plots": [
                 
@@ -97,11 +88,11 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4",
-                    "max_parents": 5,
+                    "max_parents": 6,
                     "n": 80,
                     "d": 4,
-                    "par1": 1,
-                    "par2": 1,
+                    "par1": null,
+                    "par2": null,
                     "method": "er"
                 }
             ],

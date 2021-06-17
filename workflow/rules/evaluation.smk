@@ -7,7 +7,7 @@ rule TP:
             "evaluation=/TP/graph_type={graph_type}/"\
             "algorithm=/{alg_string}/"\
             "adjmat=/{adjmat_string}/"\
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\
             "TP.csv"
     script:
@@ -25,7 +25,7 @@ rule FP:
             "evaluation=/FP/graph_type={graph_type}/"\
             "algorithm=/{alg_string}/"\
             "adjmat=/{adjmat_string}/"\
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\
             "FP.csv"
     script:
@@ -42,7 +42,7 @@ rule roc_data:
         snake="workflow/Snakefile",
         algs=active_algorithm_files("ROC") # It should maybe be stated there which kind of roc to be considered..
     output:
-        csv="results/ROC_data.csv"
+        csv="results/output/roc/ROC_data.csv"
     shell:
         "Rscript workflow/scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
@@ -52,12 +52,12 @@ rule roc:
         "workflow/scripts/run_summarise.R",
         configfilename,
         "workflow/Snakefile",
-        csv="results/ROC_data.csv" 
+        csv="results/output/roc/ROC_data.csv" 
     output:
-        touch("results/roc.done"),
-        eps="results/ROC.eps",
-        roc_skel="results/ROC_skel.eps",
-        roc_FPRp_TPR_skel="results/ROC_FPRp_TPR_skel.eps",
+        touch("results/output/roc/roc.done"),
+        eps="results/output/roc/ROC.eps",
+        roc_skel="results/output/roc/ROC_skel.eps",
+        roc_FPRp_TPR_skel="results/output/roc/ROC_FPRp_TPR_skel.eps",
         
     script:
         "../scripts/plot_ROC.R"
@@ -70,7 +70,7 @@ def adjvecs():
     # Everythihng may have seed depending on the source.
     ret = [[[expand("{output_dir}/adjvecs/"\
             "adjmat=/{adjmat_string}/"\
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -90,7 +90,7 @@ def adjvecs():
 def traj_plots():
     ret = [[[[expand("{output_dir}/traj_plot/"\
             "adjmat=/{adjmat_string}/"\
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\
             "algorithm=/{alg_string}/" \
             "seed={seed}/"
@@ -121,7 +121,7 @@ def adjmat_true_plots():
 def adjmat_plots():
     ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -151,7 +151,7 @@ def graph_true_plots():
 def graph_plots():
     ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -173,7 +173,7 @@ def graph_plots():
 def autocorr_plots():
     ret = [[[[expand("{output_dir}/autocorr_plot/"\
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -195,7 +195,7 @@ def autocorr_plots():
 def heatmap_plots():
     ret = [[[[expand("{output_dir}/heatmap_plot/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -218,7 +218,7 @@ rule mcmc_traj_plot:
         "workflow/scripts/plot_graph_traj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -226,7 +226,7 @@ rule mcmc_traj_plot:
     output:
         plot="{output_dir}/traj_plot/"\               
         "adjmat=/{adjmat_string}/"\            
-        "bn=/{param_string}/"\
+        "parameters=/{param_string}/"\
         "data=/{data_string}/"\            
         "algorithm=/{alg_string}/"\                            
         "seed={seed}/"
@@ -241,7 +241,7 @@ rule mcmc_heatmap_plot:
         "workflow/scripts/plot_heatmap_from_graphtraj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -249,7 +249,7 @@ rule mcmc_heatmap_plot:
     output:
         filename="{output_dir}/heatmap_plot/"\               
         "adjmat=/{adjmat_string}/"\            
-        "bn=/{param_string}/"\
+        "parameters=/{param_string}/"\
         "data=/{data_string}/"\            
         "algorithm=/{alg_string}/"\                            
         "seed={seed}/"
@@ -264,7 +264,7 @@ rule adjmat_plot:
         "workflow/scripts/plot_matrix_as_heatmap.py",
         matrix_filename="{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -272,7 +272,7 @@ rule adjmat_plot:
     output:
         plot_filename="{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -325,7 +325,7 @@ rule autocorr_plot:
          "workflow/scripts/plot_autocorr_from_traj.py",
          traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
-            "bn=/{param_string}/"\
+            "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
@@ -333,7 +333,7 @@ rule autocorr_plot:
     output:
         plot="{output_dir}/autocorr_plot/"\               
         "adjmat=/{adjmat_string}/"\            
-        "bn=/{param_string}/"\
+        "parameters=/{param_string}/"\
         "data=/{data_string}/"\            
         "algorithm=/{alg_string}/"\                            
         "seed={seed}/"
@@ -348,68 +348,70 @@ rule mcmc_heatmaps:
         configfilename,
         heatmap_plots()
     output:
-        touch("results/mcmc_heatmaps.done")
+        touch("results/output/mcmc_heatmaps/mcmc_heatmaps.done")
     run:
         for i,f in enumerate(input):
-            shell("cp "+f+" results/heatmap_" +str(i) +".eps")
+            shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i) +".eps")
 
 rule mcmc_traj_plots:
     input:
         configfilename,
         traj_plots()
     output: 
-        touch("results/mcmc_traj_plots.done")
+        touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
     run:
         for i,f in enumerate(input):
-            shell("cp "+f+" results/trajplot_" +str(i) +".eps")
+            shell("cp "+f+" results/output/mcmc_traj_plots/trajplot_" +str(i) +".eps")
 
 rule autocorr_plots:
     input:
         configfilename,
         autocorr_plots()
     output:
-        touch("results/autocorr_plots.done")
+        touch("results/output/autocorr_plots.done")
     run:
         for i,f in enumerate(input):
-            shell("cp "+f+" results/autocorr_" +str(i) +".eps")
+            shell("cp "+f+" results/output/autocorr_plots/autocorr_" +str(i) +".eps")
 
 rule adjmat_plots:
     input:        
         configfilename,
-        adjmat_plots()
+        adjmats=adjmat_plots()
     output:
-        touch("results/adjmat_plots.done")
+        touch("results/output/adjmat_plots/adjmat_plots.done")
     run:
-        for i,f in enumerate(input):
-            shell("cp "+f+" results/adjmat_" +str(i) +".eps")
+        for i,f in enumerate(input.adjmats):
+            shell("cp "+f+" results/output/adjmat_plots/adjmat_" +str(i) +".eps")
 
 rule adjmat_true_plots:
     input:  
         configfilename,      
-        adjmat_true_plots()
+        adjmats=adjmat_true_plots()
     output:
-        touch("results/adjmat_true_plots.done")
+        touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
     run:
-        for i,f in enumerate(input):
-            shell("cp "+f+" results/adjmat_true_" +str(i) +".eps")
+        for i,f in enumerate(input.adjmats):
+            shell("cp "+f+" results/output/adjmat_true_plots/adjmat_true_" +str(i) +".eps")
 
 rule graph_plots:
     input:
-        configfilename,
-        graph_plots()
+        conf=configfilename,
+        graphs=graph_plots()
     output:
-        touch("results/graph_plots.done")
+        touch("results/output/graph_plots/graph_plots.done")
     run:
-        for i,f in enumerate(input):
-            shell("cp "+f+" results/graph_" +str(i) +".ps")
+        
+        for i,f in enumerate(input.graphs):
+            shell("cp "+f+" results/output/graph_plots/graph_" +str(i) +".ps")
 
 rule graph_true_plots:
     input:
-        configfilename,
-        graph_true_plots()
+        conf=configfilename,
+        graphs=graph_true_plots()
     output:
-        touch("results/graph_true_plots.done")
+        touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
-        for i,f in enumerate(input):
-            shell("cp "+f+" results/graph_true_" +str(i) +".eps")
+        print(input.graphs)
+        for i,f in enumerate(input.graphs):
+            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i) +".eps")
 

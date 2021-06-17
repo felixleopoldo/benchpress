@@ -1,7 +1,7 @@
 # Untitled undefined type in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/generateBinaryBN/properties
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties
 ```
 
 

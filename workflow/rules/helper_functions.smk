@@ -2,7 +2,7 @@
 def adjmat_estimate_path_mcmc(algorithm):
     ret = "{output_dir}/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\
-                        "bn=/{bn}/"\
+                        "parameters=/{bn}/"\
                         "data=/{data}/"\
                         "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/" \
                         "seed={replicate}/" \
@@ -27,7 +27,7 @@ def alg_input_data():
 def time_path(algorithm):
     ret = "{output_dir}/time/"\
                     "adjmat=/{adjmat}/"\
-                    "bn=/{bn}/"\
+                    "parameters=/{bn}/"\
                     "data=/{data}/"\
                     "algorithm=/" + pattern_strings[algorithm] + "/" + \
                     "seed={replicate}/" \
@@ -37,7 +37,7 @@ def time_path(algorithm):
 def summarise_alg_input_time_path(algorithm):
     return "{output_dir}/time/"\
                     "adjmat=/{adjmat}/"\
-                    "bn=/{bn}/"\
+                    "parameters=/{bn}/"\
                     "data=/{data}/" \ 
                     "algorithm=/" + pattern_strings[algorithm] + "/" + \
                     "seed={replicate}/" \
@@ -47,7 +47,7 @@ def summarise_alg_output_res_path(algorithm):
     return "{output_dir}/result/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + \
             "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
+            "parameters=/{bn}/"\
             "data=/{data}/"\
             "seed={replicate}/" \
             "id={id}/" \        
@@ -59,7 +59,7 @@ def result_path_mcmc(algorithm):
     res = "{output_dir}/result/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
             "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
+            "parameters=/{bn}/"\
             "data=/{data}/"\   
             "seed={replicate}/" \
             "id={id}/" \             
@@ -67,7 +67,7 @@ def result_path_mcmc(algorithm):
     return res
 
 def data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
 
 def adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv",
@@ -90,7 +90,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
-            "bn=/{param_string}/"
+            "parameters=/{param_string}/"
             "data=/{data_string}/"
             "id={id}/" \        
             + mode + ".csv",
@@ -111,7 +111,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     #         "evaluation=/{evaluation_string}"\
     #         "algorithm=/{alg_string}/"
     #         "adjmat=/{adjmat_string}/"
-    #         "bn=/{param_string}/"
+    #         "parameters=/{param_string}/"
     #         "data=/{data_string}/"
     #         + eval_method + ".csv",
     #         output_dir=config["benchmark_setup"]["output_dir"],
@@ -130,7 +130,7 @@ def join_summaries_shell(algorithm):
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
-    return "{output_dir}/"+algorithm+".csv"
+    return "{output_dir}/output/roc/"+algorithm+".csv"
 
 def gen_model_strings_from_conf(models, seed, setup):
     """
@@ -178,16 +178,13 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return None
 
 def gen_parameter_string_from_conf(gen_method_id, seed):
-    #with open(configfilename) as json_file:
-    #    conf = json.load(json_file)
-
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bin_bn"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["bin_bn"] if item["id"] == gen_method_id)
         return expand(pattern_strings["bin_bn"] + "/seed={seed}", **curconf, seed=seed)
        
-    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["pcalg_sem_params"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["pcalg_sem_params"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["pcalg_sem_params"] + "/seed={seed}", **curconf, seed=seed)
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["sem_params"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["sem_params"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["sem_params"] + "/seed={seed}", **curconf, seed=seed)
 
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["hyper-dir"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["hyper-dir"] if item["id"] == gen_method_id)
@@ -201,10 +198,10 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         curconf = next(item for item in config["resources"]["parameters"]["g_inv_wishart"] if item["id"] == gen_method_id)
         return expand(pattern_strings["g_inv_wishart"] + "/seed={seed}", **curconf, seed=seed)
 
-    elif Path("resources/bn/bn.fit_networks/"+str(gen_method_id)).is_file():
+    elif Path("resources/parameters/myparams/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
-    elif Path("resources/bn/sem_params/"+str(gen_method_id)).is_file():
+    elif Path("resources/parameters/myparams/sem_params/"+str(gen_method_id)).is_file():
         return  "sem_params/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
     elif gen_method_id is None:
@@ -216,7 +213,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
         return "fixed" + \
             "/filename="+data_id + \
             "/n="+str(None) + \ 
-            "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
+            "/seed="+str(seed) 
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
         # Find the data entry from the resources
@@ -241,7 +238,7 @@ def active_algorithm_files(wildcards):
         conf = json.load(json_file)
     
     algs = active_algorithms()
-    alg_filenames = ["results/" + alg + ".csv" for alg in algs]
+    alg_filenames = ["results/output/roc/" + alg + ".csv" for alg in algs]
     
     return alg_filenames
 
@@ -270,7 +267,7 @@ def alg_output_time_path(algorithm):
                 "time.txt"
 
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/bn=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
 
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv" 
@@ -278,7 +275,7 @@ def summarise_alg_input_adjmat_true_path():
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat}/"\
-            "bn=/{bn}/"\
+            "parameters=/{bn}/"\
             "data=/{data}/"\
             "algorithm=/" + pattern_strings[algorithm] + "/" + \
             "seed={replicate}/" \

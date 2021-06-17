@@ -34,10 +34,11 @@ singularity:
 def get_active_rules(wildcards):
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
+        # Check if boolean or list. 
         if isinstance(val, bool) and val is True:
-            rules.append("results/"+key+".done")
+            rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, list) and val != []:
-            rules.append("results/"+key+".done")
+            rules.append("results/output/"+key+"/"+key+".done")
     return rules
 
 rule all:

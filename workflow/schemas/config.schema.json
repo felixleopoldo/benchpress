@@ -628,7 +628,7 @@
                     "type":"string"
                 },
                 "max_parents": {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegintnull"
                 }
 
             },
