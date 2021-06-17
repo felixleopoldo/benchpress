@@ -385,6 +385,7 @@ rule join_summaries_tetrad_fges:
 
 rule tetrad_fci:
     input:
+        "workflow/scripts/run_tetrad_fci.py",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("tetrad_fci"),
@@ -416,6 +417,7 @@ rule join_summaries_tetrad_fci:
 
 rule tetrad_gfci:
     input:
+        "workflow/scripts/run_tetrad_gfci.py",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("tetrad_gfci"),
@@ -451,8 +453,10 @@ rule tetrad_rfci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_rfci"),
         time = alg_output_time_path("tetrad_rfci")
-    shell:
-        alg_shell("tetrad_rfci")
+    script:
+        "../scripts/run_tetrad_rfci.py"
+    #shell:
+    #    alg_shell("tetrad_rfci")
 
 rule summarise_tetrad_rfci:
     input:
