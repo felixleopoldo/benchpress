@@ -97,7 +97,7 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4",
-                    "max_parents": 6,
+                    "max_parents": 5,
                     "n": 80,
                     "d": 4,
                     "par1": null,
