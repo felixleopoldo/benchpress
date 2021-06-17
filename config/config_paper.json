@@ -1,29 +1,38 @@
 {
     "benchmark_setup": {
         "data": [
-            {
+                {
                 "graph_id": "avneigs4",
                 "parameters_id": "binbn",
-                "data_id": "nonstandardized",
+                "data_id": "example1",
                 "seed_range": [
                     1,
-                    1
-                ]
-            }
+                    50
+                    ]
+                }
             ],
         "evaluation": {
             "roc": [
-
-                "tabu-bde"
-
+                "gobnilp-bde",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "bnlearn_interiamb-mi",
+                "tetrad_fci-chi-square",
+                "tetrad_rfci-chi-square",
+                "tetrad_gfci-bdeu-chi-square",
+                "tetrad_fges-bdeu",
+                "itsearch_sample-bde",
+                "pcalg-binCItest",
+                "omcmc_itsample-bde"
             ],
             "adjmat_true_plots":true,
             "graph_true_plots":true,
             "adjmat_plots": [
-                "tabu-bde"
             ],
             "graph_plots": [         
-                "tabu-bde"
             ],
             "mcmc_traj_plots": [
                 
