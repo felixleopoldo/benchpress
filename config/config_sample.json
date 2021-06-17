@@ -2,23 +2,35 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "asia.csv",
-                "parameters_id": "SEM",
-                "data_id": "standardized",
+                "graph_id": "hepar2.csv",
+                "parameters_id": "binbn",
+                "data_id": "example3",
                 "seed_range": [
                     1,
-                    1
-                    ]
-                }
-        ],
+                    50
+                ]
+            }
+            ],
         "evaluation": {
             "ROC": [
-                "gobnilp-bge"
+                "gobnilp-bde",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "interiamb-mi",
+                "fci-chi-square",
+                "rfci-chi-square",
+                "gfci-bdeu-chi-square",
+                "fges-bdeu",
+                "itsearch_sample-bde",
+                "pcalg-binCItest",
+                "omcmc_itsample-bde"
             ],
-            "adjmat_true_plots":true,
-            "graph_true_plots":true,
+            "adjmat_true_plots":false,
+            "graph_true_plots":false,
             "adjmat_plots": [
-                "gobnilp-bge"
             ],
             "graph_plots": [         
             ],
@@ -68,7 +80,9 @@
                 {
                     "id": "example3",
                     "standardized":false,
-                    "sample_sizes": [5000,10000]
+                    "sample_sizes": [
+                        320, 640
+                    ]
                 },
                 {
                     "id": "example4",

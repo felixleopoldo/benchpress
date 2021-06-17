@@ -23,7 +23,7 @@
     "data_example3":[
         {
             "graph_id": "hepar2.csv",
-            "parameters_id": "hepar2.rds",
+            "parameters_id": "binbn",
             "data_id": "example3",
             "seed_range": [
                 1,
@@ -43,10 +43,7 @@
         }
     ],
     "ROC_example1": [
-<<<<<<< Updated upstream
         "gobnilp-bde",
-=======
->>>>>>> Stashed changes
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",
@@ -62,6 +59,7 @@
         "omcmc_itsample-bde"
     ],
     "ROC_example2": [
+        "gobnilp-bge",
         "interiamb-zf",
         "gs-zf",
         "fci-fisher-z",
@@ -76,10 +74,7 @@
         "tabu-bge"
     ],
     "ROC_example3": [
-<<<<<<< Updated upstream
         "gobnilp-bde",
-=======
->>>>>>> Stashed changes
         "asobs-bdeu",
         "tabu-bde",
         "mmhc-bde-mi",
@@ -90,11 +85,12 @@
         "rfci-chi-square",
         "gfci-bdeu-chi-square",
         "fges-bdeu",
-        "itsearch_sample-bdecat",
-        "pcalg-disCItest",
-        "omcmc_itsample-bdecat"
+        "itsearch_sample-bde",
+        "pcalg-binCItest",
+        "omcmc_itsample-bde"
     ],
     "ROC_example4": [
+        "gobnilp-bge",
         "gfci-sem-bic-fisher-z",
         "interiamb-zf",
         "gs-zf",
