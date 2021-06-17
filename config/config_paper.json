@@ -28,8 +28,8 @@
                 "pcalg-binCItest",
                 "omcmc_itsample-bde"
             ],
-            "adjmat_true_plots":true,
-            "graph_true_plots":true,
+            "adjmat_true_plots":false,
+            "graph_true_plots":false,
             "adjmat_plots": [
             ],
             "graph_plots": [         
