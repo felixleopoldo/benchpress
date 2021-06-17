@@ -1,7 +1,7 @@
 # Untitled string in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/data-type
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/data-type
 ```
 
 

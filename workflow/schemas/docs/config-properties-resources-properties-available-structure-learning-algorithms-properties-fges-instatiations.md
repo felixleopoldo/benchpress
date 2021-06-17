@@ -1,7 +1,7 @@
 # fGES instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges
 ```
 
 fGES instatiations
@@ -11,6 +11,6 @@ fGES instatiations
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## fges Type
+## tetrad_fges Type
 
-`object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
+`object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-tetrad_fges.md))

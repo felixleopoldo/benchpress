@@ -1732,21 +1732,21 @@ any of
 
 `boolean`
 
-## Definitions group greenthomas
+## Definitions group gt13_multipair
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair"}
 ```
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                     |
 | :-------------------------- | -------- | -------- | -------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/plot_legend") |
-| [n_samples](#n_samples)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/n_samples")                                                                               |
-| [penalty](#penalty)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/penalty")                                                                                         |
-| [randomits](#randomits)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/randomits")                                                                               |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/plot_legend") |
+| [n_samples](#n_samples)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/n_samples")                                                                               |
+| [penalty](#penalty)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/penalty")                                                                                         |
+| [randomits](#randomits)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/randomits")                                                                               |
 
 ### id
 
@@ -1758,7 +1758,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")
 
 #### id Type
 
@@ -1774,7 +1774,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/plot_legend")
 
 #### plot_legend Type
 
@@ -1790,7 +1790,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 -   is required
 -   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/n_samples")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/n_samples")
 
 #### n_samples Type
 
@@ -1811,7 +1811,7 @@ Non-negative number(s).
 -   is required
 -   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/penalty")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/penalty")
 
 #### penalty Type
 
@@ -1832,7 +1832,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 -   is required
 -   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/randomits")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/randomits")
 
 #### randomits Type
 
@@ -1843,21 +1843,21 @@ any of
 -   [Non-negative integer](config-definitions-non-negative-integers-anyof-non-negative-integer.md "check type definition")
 -   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
-## Definitions group fges
+## Definitions group tetrad_fges
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges"}
 ```
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                      |
 | :------------------------------------------ | --------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/id")                                   |
-| [plot_legend](#plot_legend)                 | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/plot_legend")                 |
-| [faithfulnessAssumed](#faithfulnessAssumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/faithfulnessAssumed") |
-| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/score")                             |
-| [data-type](#data-type)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/data-type")                     |
+| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
+| [plot_legend](#plot_legend)                 | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/plot_legend")                 |
+| [faithfulnessAssumed](#faithfulnessAssumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed") |
+| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")                             |
+| [data-type](#data-type)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/data-type")                     |
 
 ### id
 
@@ -1869,7 +1869,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")
 
 #### id Type
 
@@ -1885,7 +1885,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/plot_legend")
 
 #### plot_legend Type
 
@@ -1901,7 +1901,7 @@ Legend to show in plotting
 -   is required
 -   Type: `boolean`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/faithfulnessAssumed")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed")
 
 #### faithfulnessAssumed Type
 
@@ -1917,7 +1917,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/score")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")
 
 #### score Type
 
@@ -1933,7 +1933,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/data-type")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/data-type")
 
 #### data-type Type
 
@@ -2450,19 +2450,19 @@ Legend to show in plotting
 
 `object` ([Paramters for h2pc](config-definitions-h2pc-algorithm-properties-paramters-for-h2pc.md))
 
-## Definitions group interiamb
+## Definitions group bnlearn_interiamb
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb"}
 ```
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
 | :-------------------------- | -------- | -------- | -------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/plot_legend") |
-| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/alpha")                           |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/plot_legend") |
+| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/alpha")                           |
 
 ### id
 
@@ -2474,7 +2474,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/id")
 
 #### id Type
 
@@ -2490,7 +2490,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/plot_legend")
 
 #### plot_legend Type
 
@@ -2506,7 +2506,7 @@ Legend to show in plotting
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb/properties/alpha")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/alpha")
 
 #### alpha Type
 

@@ -91,7 +91,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-``fges``
+``tetrad_fges``
 ---------
 
 
@@ -103,7 +103,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fast-greedy-equivalent-search-fges.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fast-greedy-equivalent-search-tetrad_fges.md>`_
 
 
 .. rubric:: Example
@@ -112,7 +112,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
     
     {
-        "id": "fges",
+        "id": "tetrad_fges",
         "faithfulnessAssumed": true,
         "score": "bdeu-score",
         "datatype": "discrete",
@@ -125,7 +125,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "structurePrior": 1
     }
 
-``fci``
+``tetrad_fci``
 -------
 
 *Fast causal inferece* (FCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
@@ -136,7 +136,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fci.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_fci.md>`_
 
 
 .. rubric:: Example
@@ -145,7 +145,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "fci",
+        "id": "tetrad_fci",
         "alpha": [
             0.01,
             0.05,
@@ -158,7 +158,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "datatype": "discrete"
     }
 
-``gfci``
+``tetrad_gfci``
 --------
 
 *Greedy fast causal inference* (GFCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
@@ -168,7 +168,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gfci-parameter-setting.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_gfci-parameter-setting.md>`_
 
 
 .. rubric:: Example
@@ -177,7 +177,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "gfci",
+        "id": "tetrad_gfci",
         "alpha": [
             0.01,
             0.05,
@@ -203,7 +203,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-rfci.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_rfci.md>`_
 
 
 .. rubric:: Example
@@ -212,7 +212,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "rfci",
+        "id": "tetrad_rfci",
         "alpha": [
             0.01,
             0.05,
@@ -241,7 +241,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "pcalg",
+        "id": "pcalg_pc",
         "alpha": [
             0.01,
             0.05,
@@ -278,7 +278,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "mmhc",
+        "id": "bnlearn_mmhc",
         "alpha": [
             0.01,
             0.05,
@@ -290,7 +290,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "test":"mi"
     }
 
-``interiamb``
+``bnlearn_interiamb``
 -------------
 
 *Incremental association Markov blanket* (Inter-IAMB) from *bnlearn R*.
@@ -309,7 +309,7 @@ An example
 .. code-block:: json
 
     {
-        "id": "interiamb",
+        "id": "bnlearn_interiamb",
         "alpha": [
             0.01,
             0.05,
@@ -343,7 +343,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "gs",
+        "id": "bnlearn_gs",
         "alpha": [
             0.01,
             0.05,
@@ -376,7 +376,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "tabu",
+        "id": "bnlearn_tabu",
         "score": "bde",
         "iss": 1,
         "iss.mu": 1,

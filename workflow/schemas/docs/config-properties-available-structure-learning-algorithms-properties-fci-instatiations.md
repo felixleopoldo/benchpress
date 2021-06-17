@@ -1,7 +1,7 @@
 # FCI instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms/properties/fci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms/properties/tetrad_fci
 ```
 
 FCI instatiations
@@ -11,6 +11,6 @@ FCI instatiations
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## fci Type
+## tetrad_fci Type
 
-`object[]` ([FCI](config-definitions-fci.md))
+`object[]` ([FCI](config-definitions-tetrad_fci.md))

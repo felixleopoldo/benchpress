@@ -1,7 +1,7 @@
 # Untitled string in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/id
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id
 ```
 
 Unique idenfifier

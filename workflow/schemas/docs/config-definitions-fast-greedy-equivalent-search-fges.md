@@ -1,7 +1,7 @@
 # Fast greedy equivalent search (fGES) Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges
 ```
 
 fGES instance
@@ -11,19 +11,19 @@ fGES instance
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## fges Type
+## tetrad_fges Type
 
-`object` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
+`object` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-tetrad_fges.md))
 
 # Fast greedy equivalent search (fGES) Properties
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                      |
 | :------------------------------------------ | --------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/id")                                   |
-| [plot_legend](#plot_legend)                 | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/plot_legend")                 |
-| [faithfulnessAssumed](#faithfulnessAssumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/faithfulnessAssumed") |
-| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/score")                             |
-| [data-type](#data-type)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/data-type")                     |
+| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
+| [plot_legend](#plot_legend)                 | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/plot_legend")                 |
+| [faithfulnessAssumed](#faithfulnessAssumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed") |
+| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")                             |
+| [data-type](#data-type)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/data-type")                     |
 
 ## id
 
@@ -35,7 +35,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")
 
 ### id Type
 
@@ -51,7 +51,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/plot_legend")
 
 ### plot_legend Type
 
@@ -67,7 +67,7 @@ Legend to show in plotting
 -   is required
 -   Type: `boolean`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/faithfulnessAssumed")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-faithfulnessassumed.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed")
 
 ### faithfulnessAssumed Type
 
@@ -83,7 +83,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/score")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")
 
 ### score Type
 
@@ -99,7 +99,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges/properties/data-type")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-tetrad_fges-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/data-type")
 
 ### data-type Type
 

@@ -5,7 +5,7 @@ rule sample_bin_bn_data:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/bn=/generateBinaryBN/{bn}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "/data=/iid/n={n}/seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_data_with_range_header.R " \
         "--filename {output.data} " \
@@ -20,9 +20,9 @@ rule sample_loglindata:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/bn=/hyper-dir/{bn}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
 
@@ -34,9 +34,9 @@ rule sample_intra_class_data:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/bn=/intra-class/{bn}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
@@ -48,9 +48,9 @@ rule sample_g_inverse_wishart:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/bn=/g_inv_wishart/{bn}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
@@ -58,11 +58,11 @@ rule standardize:
     input:
         data="{output_dir}/data" \
              "/{model}"\
-             "/data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "/data=/iid/n={n}/seed={replicate}.csv"
     output:
         data="{output_dir}/data" \
              "/{model}"\
-             "/data=/standard_sampling/standardized={standardized}/n={n}/seed={replicate}.csv"
+             "/data=/iid/standardized={standardized}/n={n}/seed={replicate}.csv"
     script:
         "../scripts/standardize.R"
 
@@ -87,7 +87,7 @@ rule sample_data_fixed_bnfit:
         "workflow/scripts/sample_from_bnlearn_bn.R",
         bn="resources/bn/bn.fit_networks/{bn}"        
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/standard_sampling/n={n}/seed={replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/bn=/bn.fit_networks/{bn}/data=/iid/n={n}/seed={replicate}.csv"
     shell:
         "Rscript workflow/scripts/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
@@ -106,21 +106,21 @@ rule sample_fixed_sem_params_data:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
              "bn=/sem_params/{bn}/" \
-             "data=/standard_sampling/n={n}/seed={replicate}.csv"
+             "data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("bidag")
     script:
         "../scripts/sample_pcalg_sem_data.R" 
 
-rule sample_pcalg_sem_data:
+rule sample_sem_data:
     input:
         script="workflow/scripts/sample_pcalg_sem_data.R",
-        bn="{output_dir}/bn/"+pattern_strings["pcalg_sem_params"]+"/adjmat=/{adjmat}.csv"
+        bn="{output_dir}/bn/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/bn=/" + pattern_strings["pcalg_sem_params"] + "/" \
-             "data=/standard_sampling/" \
+             "/bn=/" + pattern_strings["sem_params"] + "/" \
+             "data=/iid/" \
              "n={n}/" \
              "seed={replicate}.csv"
     singularity:

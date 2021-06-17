@@ -6,16 +6,16 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
     for alg_conf in alg_conf_avail:
         available_conf_ids.append(alg_conf["id"])   
 
-# Check that all ids in the ROC section actually exist.
-for rocitem in config["benchmark_setup"]["evaluation"]["ROC"]:
+# Check that all ids in the roc section actually exist.
+for rocitem in config["benchmark_setup"]["evaluation"]["roc"]:
     if rocitem not in available_conf_ids:
         raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that the startspace for order mcmc exist.
-#for alg_conf in config["resources"]["structure_learning_algorithms"]["order_mcmc"]:
-#    if alg_conf["startspace_algorithm"] not in set(available_conf_ids + [None]) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}:
+#for alg_conf in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]:
+#    if alg_conf["startspace_algorithm"] not in set(available_conf_ids + [None]) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}:
 #        raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc.\n"\
-#                        "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["order_mcmc"]}))))
+#                        "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}))))
 
 def validate_data_setup(config, dict):
     # Check that adjmat exists
@@ -25,7 +25,7 @@ def validate_data_setup(config, dict):
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += os.listdir("resources/adjmat/myadjmats")
 
-    if config["benchmark_setup"]["evaluation"]["ROC"] != []:
+    if config["benchmark_setup"]["evaluation"]["roc"] != []:
         if dict["graph_id"] is None:
             raise Exception("ROC evaluation requires graph_id.\n"
                             "The available graph id´s are:\n" + str(sorted(available_conf_ids)))

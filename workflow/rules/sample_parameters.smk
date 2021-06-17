@@ -4,7 +4,7 @@ rule sample_binary_bn:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn = "{output_dir}/bn/" + \
-            pattern_strings["generateBinaryBN"] + "/" \
+            pattern_strings["bin_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
     shell:
         "Rscript workflow/scripts/sample_bayesian_network_for_dag.R " \
@@ -21,7 +21,7 @@ rule sample_pcalg_sem_params:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/bn/" + \
-                pattern_strings["pcalg_sem_params"] + "/" \
+                pattern_strings["sem_params"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     singularity:
@@ -38,7 +38,7 @@ rule hyper_dir:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.json"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
 
@@ -51,7 +51,7 @@ rule intra_class_cov:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
 
@@ -64,7 +64,7 @@ rule g_inv_wishart:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
 

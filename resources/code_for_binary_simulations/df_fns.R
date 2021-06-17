@@ -103,7 +103,7 @@ BlipScoresToDf <- function(newrep, repl) {
 
   scoredf <- rbind(scoredf, data.frame(
     logscore = newrep$blip$res[3, 6], # 3 is ? and 6 is the score column
-    algo = "blip",
+    algo = "rblip",
     ss = newrep$sampsize / newrep$n,
     replicate = repl,
     time = newrep$blip$res[3, 8] # 3 is ? and 8 is the time column
@@ -113,10 +113,10 @@ BlipScoresToDf <- function(newrep, repl) {
 
 
 scoredf.add <- function(newrep, scoredf, algo, repl) {
-  if (algo == "blip") {
+  if (algo == "rblip") {
     scoredf <- rbind(scoredf, data.frame(
       logscore = newrep$blip$res[3, 6], # 3 is ? and 6 is the score column
-      algo = "blip",
+      algo = "rblip",
       ss = newrep$sampsize / newrep$n,
       replicate = repl,
       time = newrep$blip$res[3, 8] # 3 is ? and 8 is the time column
@@ -143,12 +143,12 @@ scoredf.add <- function(newrep, scoredf, algo, repl) {
 
 ROCdf.add <- function(newrep, ROCdf, algo, repl) {
 
-  if (algo == "blip") {
+  if (algo == "rblip") {
     ROCdf <- rbind(ROCdf, data.frame(
       TPR = newrep$blip$res[, 4],
       FPRn = newrep$blip$res[, 5],
       threshold = newrep$blip$res[, 8],
-      algorithm = "blip",
+      algorithm = "rblip",
       ss = newrep$sampsize / newrep$n,
       replicate = repl
     ))
@@ -180,7 +180,7 @@ BlipResultsToROC <- function(newrep, repl) {
     TPR = newrep$blip$res[, 4],
     FPRn = newrep$blip$res[, 5],
     threshold = newrep$blip$res[, 8],
-    algorithm = "blip",
+    algorithm = "rblip",
     ss = newrep$sampsize / newrep$n,
     replicate = repl
   ))
@@ -238,7 +238,7 @@ BlipResultsToSHD <- function(newrep, repl) {
   SHDdf <- SHDdf.init()
   SHDdf <- rbind(SHDdf, data.frame(
     SHD = newrep$blip$res[3, 3],
-    algorithm = "blip",
+    algorithm = "rblip",
     ss = newrep$sampsize / newrep$n,
     replicate = repl,
     time = newrep$blip$res[3, 8]
@@ -248,10 +248,10 @@ BlipResultsToSHD <- function(newrep, repl) {
 }
 
 SHDdf.add <- function(newrep, SHDdf, algo, repl) {
-  if (algo == "blip") {
+  if (algo == "rblip") {
     SHDdf <- rbind(SHDdf, data.frame(
       SHD = newrep$blip$res[3, 3],
-      algorithm = "blip",
+      algorithm = "rblip",
       ss = newrep$sampsize / newrep$n,
       replicate = repl,
       time = newrep$blip$res[3, 8]

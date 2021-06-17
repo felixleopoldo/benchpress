@@ -1,7 +1,7 @@
 # RFCI Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci
 ```
 
 RFCI instance
@@ -11,19 +11,19 @@ RFCI instance
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## rfci Type
+## tetrad_rfci Type
 
-`object` ([RFCI](config-definitions-rfci.md))
+`object` ([RFCI](config-definitions-tetrad_rfci.md))
 
 # RFCI Properties
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                        |
 | :-------------------------- | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/plot_legend") |
-| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/alpha")           |
-| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/test")               |
-| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/data-type")     |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/plot_legend") |
+| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/alpha")           |
+| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/test")               |
+| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/data-type")     |
 
 ## id
 
@@ -35,7 +35,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")
 
 ### id Type
 
@@ -51,7 +51,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/plot_legend")
 
 ### plot_legend Type
 
@@ -67,7 +67,7 @@ Legend to show in plotting
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/alpha")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/alpha")
 
 ### alpha Type
 
@@ -88,7 +88,7 @@ any of
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/test")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/test")
 
 ### test Type
 
@@ -104,7 +104,7 @@ any of
 -   is optional
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rfci/properties/data-type")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_rfci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/data-type")
 
 ### data-type Type
 

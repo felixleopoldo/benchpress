@@ -85,7 +85,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for roc
     """
-    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["ROC"]]
+    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["roc"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
@@ -150,13 +150,13 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
     
-    if adjmat_id in [c["id"] for c in config["resources"]["graph"]["generateDAGMaxParents"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["generateDAGMaxParents"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["generateDAGMaxParents"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    if adjmat_id in [c["id"] for c in config["resources"]["graph"]["pcalg_randdag"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["pcalg_randdag"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["pcalg_randdag"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
-    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["cta"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["cta"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["cta"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_cta"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_cta"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["trilearn_cta"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bandmat"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["bandmat"] if item["id"] == adjmat_id)
@@ -181,9 +181,9 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     #with open(configfilename) as json_file:
     #    conf = json.load(json_file)
 
-    if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["generateBinaryBN"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["generateBinaryBN"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["generateBinaryBN"] + "/seed={seed}", **curconf, seed=seed)
+    if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bin_bn"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["bin_bn"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["bin_bn"] + "/seed={seed}", **curconf, seed=seed)
        
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["pcalg_sem_params"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["pcalg_sem_params"] if item["id"] == gen_method_id)
@@ -218,11 +218,11 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
             "/n="+str(None) + \ 
             "/seed="+str(seed) # TODO: this may cause som error with seed somewhere
 
-    elif data_id in [c["id"] for c in config["resources"]["data"]["standard_sampling"]]:
+    elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
         # Find the data entry from the resources
-        data = next(item for item in config["resources"]["data"]["standard_sampling"] if item["id"] == data_id)
+        data = next(item for item in config["resources"]["data"]["iid"] if item["id"] == data_id)
         if seed_in_path:
-            return expand("standard_sampling" +\
+            return expand("iid" +\
                             "/standardized={standardized}" + \ 
                             "/n={n}" + \
                             "/seed={seed}", 
@@ -230,7 +230,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             standardized = data["standardized"],
                             seed = seed)
         else:
-            return expand("standard_sampling" +\
+            return expand("iid" +\
                         "/standardized={standardized}" + \ 
                             "/n={n}",
                             standardized = data["standardized"],
@@ -245,7 +245,7 @@ def active_algorithm_files(wildcards):
     
     return alg_filenames
 
-def active_algorithms(eval_method="ROC"):
+def active_algorithms(eval_method="roc"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
     algs = []

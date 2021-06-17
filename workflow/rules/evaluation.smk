@@ -54,7 +54,7 @@ rule roc:
         "workflow/Snakefile",
         csv="results/ROC_data.csv" 
     output:
-        touch("results/ROC.done"),
+        touch("results/roc.done"),
         eps="results/ROC.eps",
         roc_skel="results/ROC_skel.eps",
         roc_FPRp_TPR_skel="results/ROC_FPRp_TPR_skel.eps",
@@ -84,7 +84,7 @@ def adjvecs():
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
     return ret
 
 def traj_plots():
@@ -232,7 +232,7 @@ rule mcmc_traj_plot:
         "seed={seed}/"
         "traj_plot.eps"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/plot_graph_traj.py {input.traj} {output.plot}"
 
@@ -255,7 +255,7 @@ rule mcmc_heatmap_plot:
         "seed={seed}/"
         "heatmap_plot.eps"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/plot_heatmap_from_graphtraj.py {input.traj} {output.filename}"
 
@@ -306,7 +306,7 @@ rule adjmat_to_dot:
     output:
         filename = "{output_dir}/{something}.dot"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}"
 
@@ -316,7 +316,7 @@ rule plot_dot:
     output:
         filename="{output_dir}/{something}.ps" 
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "dot -T ps {input.filename} > {output.filename}"
 
@@ -339,7 +339,7 @@ rule autocorr_plot:
         "seed={seed}/"
         "autocorr_plot.eps"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/plot_autocorr_from_traj.py {input.traj} {output.plot}"
 

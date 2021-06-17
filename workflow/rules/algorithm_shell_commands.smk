@@ -1,5 +1,5 @@
 def alg_shell(algorithm):
-    if algorithm == "greenthomas":
+    if algorithm == "gt13_multipair":
         return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            
             "   tail -n +3 {input.data} > {output.seqgraph}.noheader " \ 
             "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
@@ -31,7 +31,7 @@ def alg_shell(algorithm):
             "&& echo 1 > {output.time} "
 
 
-    elif algorithm == "gg_singlepair":
+    elif algorithm == "gg99_singlepair":
             return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            
             "   tail -n +3 {input.data} > {output.seqgraph}.noheader " \ 
             "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
@@ -74,7 +74,7 @@ def alg_shell(algorithm):
             "--filename {output.adjmat} " \     
             "--seed {wildcards.replicate}"        
 
-    elif algorithm == "tabu":
+    elif algorithm == "bnlearn_tabu":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript workflow/scripts/run_tabu.R " \
             "--filename_data {input.data} " \
@@ -90,7 +90,7 @@ def alg_shell(algorithm):
             "--filename {output.adjmat} " 
             
 
-    if algorithm == "hc":
+    if algorithm == "bnlearn_hc":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript workflow/scripts/run_hc.R " \
             "--filename_data {input.data} " \
@@ -107,7 +107,7 @@ def alg_shell(algorithm):
             "--beta {wildcards.beta} " \
             "--filename {output.adjmat} " 
 
-    elif algorithm == "blip":
+    elif algorithm == "rblip":
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "Rscript workflow/scripts/run_blip.R " \
                 "--filename_data {input.data} " \
@@ -150,10 +150,10 @@ def alg_shell(algorithm):
                 " && rm {output.adjmat}.bn.mat " \
                 " && rm {output.adjmat}.gobnilp.set"
 
-    elif algorithm ==  "fci":
+    elif algorithm ==  "tetrad_fci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm fci "\
+                "--algorithm tetrad_fci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
@@ -169,10 +169,10 @@ def alg_shell(algorithm):
                 '&& ' \
                 'rm {output.adjmat}.txt'
                 
-    elif algorithm ==  "gfci":
+    elif algorithm ==  "tetrad_gfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm gfci "\
+                "--algorithm tetrad_gfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
@@ -190,10 +190,10 @@ def alg_shell(algorithm):
                 '&& ' \
                 'rm {output.adjmat}.txt'
 
-    elif algorithm ==  "rfci":
+    elif algorithm ==  "tetrad_rfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm rfci "\
+                "--algorithm tetrad_rfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
@@ -209,7 +209,7 @@ def alg_shell(algorithm):
                 '&& ' \
                 'rm {output.adjmat}.txt'
 
-    elif algorithm == "trilearn_loglin":
+    elif algorithm == "trilearn_pgibbs":
         return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\
                 "pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}; " \  
                 "elif [ {wildcards.datatype} = \"continuous\" ]; then " \
@@ -217,7 +217,7 @@ def alg_shell(algorithm):
                 "fi " \
                 "&& echo '1' > {output.time} " 
 
-    elif algorithm == "gg_singlepair_fortran":
+    elif algorithm == "gg99_singlepair_fortran":
         return  "out=$RANDOM.csv " \
                 "&& data=$RANDOM.csv " \
                 "&& cp {input.data} $data " \

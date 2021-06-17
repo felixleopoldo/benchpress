@@ -1,7 +1,7 @@
 # Untitled string in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/plot_legend
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/plot_legend
 ```
 
 Legend to show in plotting

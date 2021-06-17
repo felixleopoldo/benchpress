@@ -1,7 +1,7 @@
 # FCI Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci
 ```
 
 FCI instance
@@ -11,19 +11,19 @@ FCI instance
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## fci Type
+## tetrad_fci Type
 
-`object` ([FCI](config-definitions-fci.md))
+`object` ([FCI](config-definitions-tetrad_fci.md))
 
 # FCI Properties
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                      |
 | :-------------------------- | -------- | -------- | -------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/plot_legend") |
-| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/alpha")          |
-| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/test")               |
-| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/data-type")     |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/plot_legend") |
+| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/alpha")          |
+| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/test")               |
+| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/data-type")     |
 
 ## id
 
@@ -35,7 +35,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/id")
 
 ### id Type
 
@@ -51,7 +51,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/plot_legend")
 
 ### plot_legend Type
 
@@ -67,7 +67,7 @@ Legend to show in plotting
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/alpha")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/alpha")
 
 ### alpha Type
 
@@ -88,7 +88,7 @@ any of
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/test")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/test")
 
 ### test Type
 
@@ -104,7 +104,7 @@ any of
 -   is optional
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-fci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fci/properties/data-type")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_fci-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/data-type")
 
 ### data-type Type
 

@@ -23,7 +23,7 @@ The available structure learning algorithms
 | [blip](#blip)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-list-of-blip-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/blip")                       |
 | [notears](#notears)                 | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-notears-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears")                         |
 | [gobnilp](#gobnilp)                 | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-gobnilp-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp")                         |
-| [fges](#fges)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges")                               |
+| [tetrad_fges](#tetrad_fges)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges")                               |
 | [fci](#fci)                         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-fci-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fci")                                 |
 | [rfci](#rfci)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-rfci-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rfci")                               |
 | [gfci](#gfci)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-gfci-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gfci")                               |
@@ -32,11 +32,11 @@ The available structure learning algorithms
 | [tabu](#tabu)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-tabu-search-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tabu")                        |
 | [itsearch](#itsearch)               | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-iterative-1-search-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/itsearch")             |
 | [order_mcmc](#order_mcmc)           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-order-mcmc-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/order_mcmc")                   |
-| [interiamb](#interiamb)             | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb")                    |
+| [bnlearn_interiamb](#bnlearn_interiamb)             | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb")                    |
 | [gs](#gs)                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-gs-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gs")                                   |
 | [hc](#hc)                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-hc-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/hc")                                   |
 | [h2pc](#h2pc)                       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-h2pc-ids.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/h2pc")                                         |
-| [greenthomas](#greenthomas)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas")                         |
+| [gt13_multipair](#gt13_multipair)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")                         |
 
 ## trilearn_loglin
 
@@ -106,21 +106,21 @@ Gobnilp instatiations
 
 `object[]` ([Gobnilp algorithm](config-definitions-gobnilp-algorithm.md))
 
-## fges
+## tetrad_fges
 
 fGES instatiations
 
 
-`fges`
+`tetrad_fges`
 
 -   is optional
--   Type: `object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
+-   Type: `object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-tetrad_fges.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges")
+-   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges")
 
-### fges Type
+### tetrad_fges Type
 
-`object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
+`object[]` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-tetrad_fges.md))
 
 ## fci
 
@@ -250,19 +250,19 @@ Order MCMC instatiations
 
 `object[]` ([Order MCMC (paramter setting  )](config-definitions-order-mcmc-paramter-setting--.md))
 
-## interiamb
+## bnlearn_interiamb
 
 Inter-IAMB instatiations
 
 
-`interiamb`
+`bnlearn_interiamb`
 
 -   is optional
 -   Type: `object[]` ([Inter-IAMB algorithm](config-definitions-inter-iamb-algorithm.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb")
+-   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb")
 
-### interiamb Type
+### bnlearn_interiamb Type
 
 `object[]` ([Inter-IAMB algorithm](config-definitions-inter-iamb-algorithm.md))
 
@@ -314,18 +314,18 @@ H2PC instatiations
 
 `object[]` ([H2PC algorithm](config-definitions-h2pc-algorithm.md))
 
-## greenthomas
+## gt13_multipair
 
 Green & Thomas instatiations
 
 
-`greenthomas`
+`gt13_multipair`
 
 -   is optional
 -   Type: `object[]` ([Green & Thomas algorithm for sampling from decomposable graph distributions](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas")
+-   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")
 
-### greenthomas Type
+### gt13_multipair Type
 
 `object[]` ([Green & Thomas algorithm for sampling from decomposable graph distributions](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md))

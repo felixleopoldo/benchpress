@@ -6,68 +6,68 @@ def idtopath(mylist, json_string):
 
 json_string = {}
 
-json_string = {val["id"]: expand(pattern_strings["greenthomas"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["greenthomas"]}
+json_string = {val["id"]: expand(pattern_strings["gt13_multipair"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gt13_multipair"]}
 
-json_string.update({val["id"]: expand(pattern_strings["gg_singlepair"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["gg_singlepair"]})
+json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gg_singlepair_fortran"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["gg_singlepair_fortran"]})
+json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair_fortran"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"]})
 
-json_string.update({val["id"]: expand(pattern_strings["itsearch"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["itsearch"]})
+json_string.update({val["id"]: expand(pattern_strings["bidag_itsearch"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bidag_itsearch"]})
 
-json_string.update({val["id"]: expand(pattern_strings["fges"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["fges"]})
+json_string.update({val["id"]: expand(pattern_strings["tetrad_fges"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["tetrad_fges"]})
 
 json_string.update({val["id"]: expand(pattern_strings["notears"], **val) 
                     for val in config["resources"]["structure_learning_algorithms"]["notears"]})
 
-json_string.update({val["id"]: expand(pattern_strings["fci"], **val) 
-                    for val in config["resources"]["structure_learning_algorithms"]["fci"]})
+json_string.update({val["id"]: expand(pattern_strings["tetrad_fci"], **val) 
+                    for val in config["resources"]["structure_learning_algorithms"]["tetrad_fci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gfci"], **val) 
-                    for val in config["resources"]["structure_learning_algorithms"]["gfci"]})
+json_string.update({val["id"]: expand(pattern_strings["tetrad_gfci"], **val) 
+                    for val in config["resources"]["structure_learning_algorithms"]["tetrad_gfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["rfci"], **val) 
-                    for val in config["resources"]["structure_learning_algorithms"]["rfci"]})
+json_string.update({val["id"]: expand(pattern_strings["tetrad_rfci"], **val) 
+                    for val in config["resources"]["structure_learning_algorithms"]["tetrad_rfci"]})
 
-json_string.update({val["id"]: expand(pattern_strings["pcalg"], **val)  
-                    for val in config["resources"]["structure_learning_algorithms"]["pcalg"]})
+json_string.update({val["id"]: expand(pattern_strings["pcalg_pc"], **val)  
+                    for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})
 
-json_string.update({val["id"]: expand(pattern_strings["mmhc"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["mmhc"]} )
+json_string.update({val["id"]: expand(pattern_strings["bnlearn_mmhc"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["interiamb"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["interiamb"]} )
+json_string.update({val["id"]: expand(pattern_strings["bnlearn_interiamb"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bnlearn_interiamb"]} )
 
-json_string.update({val["id"]: expand(pattern_strings["gs"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["gs"]} )
+json_string.update({val["id"]: expand(pattern_strings["bnlearn_gs"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bnlearn_gs"]} )
 
 json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["tabu"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["tabu"]})
+json_string.update({val["id"]:  expand(pattern_strings["bnlearn_tabu"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["hc"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["hc"]})
+json_string.update({val["id"]:  expand(pattern_strings["bnlearn_hc"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["bnlearn_hc"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["glasso"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["glasso"]})
+json_string.update({val["id"]:  expand(pattern_strings["sklearn_glasso"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["sklearn_glasso"]})
 
-json_string.update({val["id"]:  expand(pattern_strings["trilearn_loglin"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["trilearn_loglin"]})
+json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
 
-json_string.update({val["id"]: expand(pattern_strings["blip"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["blip"]})
+json_string.update({val["id"]: expand(pattern_strings["rblip"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["rblip"]})
 
 # Order mcmc is special and has to be the last one since it takes input strings as start space...\
 # Also, the start space path has to be extracted first.
-order_mcmc_list = config["resources"]["structure_learning_algorithms"]["order_mcmc"]
+order_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]
 for items in order_mcmc_list:    
     items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
 
-json_string.update({val["id"]: expand(pattern_strings["order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
+json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                     for val in order_mcmc_list } )

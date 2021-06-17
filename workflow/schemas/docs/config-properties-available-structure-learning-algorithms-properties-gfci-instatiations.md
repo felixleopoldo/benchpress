@@ -1,7 +1,7 @@
 # GFCI instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms/properties/gfci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/structure_learning_algorithms/properties/tetrad_gfci
 ```
 
 GFCI instatiations
@@ -11,6 +11,6 @@ GFCI instatiations
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## gfci Type
+## tetrad_gfci Type
 
-`object[]` ([GFCI (parameter setting)](config-definitions-gfci-parameter-setting.md))
+`object[]` ([GFCI (parameter setting)](config-definitions-tetrad_gfci-parameter-setting.md))

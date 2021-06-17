@@ -12,45 +12,45 @@ def dict_to_path(d):
 pattern_strings = {}
 
 # structure learning algorithms
-pattern_strings["greenthomas"] = "greenthomas/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["greenthomas"])
+pattern_strings["gt13_multipair"] = "gt13_multipair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gt13_multipair"])
 
-pattern_strings["gg_singlepair"] = "gg_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg_singlepair"])
+pattern_strings["gg99_singlepair"] = "gg99_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair"])
 
-pattern_strings["gg_singlepair_fortran"] = "gg_singlepair_fortran/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg_singlepair_fortran"])
+pattern_strings["gg99_singlepair_fortran"] = "gg99_singlepair_fortran/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"])
 
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
 
-pattern_strings["blip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["blip"])
+pattern_strings["rblip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip"])
 
-pattern_strings["pcalg"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg"])
+pattern_strings["pcalg_pc"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
 
-pattern_strings["mmhc"] = "mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["mmhc"])
+pattern_strings["bnlearn_mmhc"] = "mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
 
-pattern_strings["interiamb"] = "interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["interiamb"])
+pattern_strings["bnlearn_interiamb"] = "bnlearn_interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_interiamb"])
 
-pattern_strings["gs"] = "gs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gs"])
+pattern_strings["bnlearn_gs"] = "gs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_gs"])
 
-pattern_strings["tabu"] = "tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tabu"])
+pattern_strings["bnlearn_tabu"] = "tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"])
 
-pattern_strings["hc"] = "hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["hc"])
+pattern_strings["bnlearn_hc"] = "hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hc"])
 
 pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gobnilp"])
 
-pattern_strings["itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["itsearch"])
+pattern_strings["bidag_itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_itsearch"])
 
-pattern_strings["order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["order_mcmc"])
+pattern_strings["bidag_order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"])
 
-pattern_strings["trilearn_loglin"] = "trilearn_loglin/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_loglin"])
+pattern_strings["trilearn_pgibbs"] = "trilearn/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"])
 
-pattern_strings["fges"] = "fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fges"])
+pattern_strings["tetrad_fges"] = "tetrad_fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fges"])
 
-pattern_strings["fci"] = "fci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["fci"])
+pattern_strings["tetrad_fci"] = "tetrad_fci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fci"])
 
-pattern_strings["gfci"] = "gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gfci"])
+pattern_strings["tetrad_gfci"] = "tetrad_gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_gfci"])
 
-pattern_strings["rfci"] = "rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rfci"])
+pattern_strings["tetrad_rfci"] = "tetrad_rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_rfci"])
 
-pattern_strings["glasso"] = "glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["glasso"])
+pattern_strings["sklearn_glasso"] = "sklearn_glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["sklearn_glasso"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
                             "threshold={threshold}/"\
@@ -62,15 +62,15 @@ pattern_strings["evaluation"] = "evaluation/" \
                    "edgepf={edgepf}" 
 
 # graph sampling
-pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
-pattern_strings["generateDAGMaxParents"] = "generateDAGMaxParents/" + dict_to_path(config["resources"]["graph"]["generateDAGMaxParents"])
-pattern_strings["cta"] = "cta/" + dict_to_path(config["resources"]["graph"]["cta"])
+#pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
+pattern_strings["pcalg_randdag"] = "pcalg_randdag/" + dict_to_path(config["resources"]["graph"]["pcalg_randdag"])
+pattern_strings["trilearn_cta"] = "cta/" + dict_to_path(config["resources"]["graph"]["trilearn_cta"])
 pattern_strings["bandmat"] = "bandmat/" + dict_to_path(config["resources"]["graph"]["bandmat"])
 pattern_strings["rand_bandmat"] = "rand_bandmat/" + dict_to_path(config["resources"]["graph"]["rand_bandmat"])
 
 # parameters sampling
-pattern_strings["pcalg_sem_params"] = "pcalg_sem_params/" + dict_to_path(config["resources"]["parameters"]["pcalg_sem_params"])
-pattern_strings["generateBinaryBN"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["generateBinaryBN"])
+pattern_strings["sem_params"] = "sem_params/" + dict_to_path(config["resources"]["parameters"]["sem_params"])
+pattern_strings["bin_bn"] = "generateBinaryBN/" + dict_to_path(config["resources"]["parameters"]["bin_bn"])
 pattern_strings["hyper-dir"] = "hyper-dir/" + dict_to_path(config["resources"]["parameters"]["hyper-dir"])
 pattern_strings["intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["intra-class"])
 pattern_strings["g_inv_wishart"] = "g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["g_inv_wishart"])

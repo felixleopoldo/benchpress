@@ -46,13 +46,13 @@
 
 *   [FCI](./config-properties-resources-properties-available-structure-learning-algorithms-properties-fci-instatiations-fci.md "FCI instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fci/items`
 
-*   [Fast greedy equivalent search (fGES)](./config-1-definitions-fast-greedy-equivalent-search-fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges`
+*   [Fast greedy equivalent search (fGES)](./config-1-definitions-fast-greedy-equivalent-search-tetrad_fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges`
 
-*   [Fast greedy equivalent search (fGES)](./config-definitions-fast-greedy-equivalent-search-fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/fges`
+*   [Fast greedy equivalent search (fGES)](./config-definitions-fast-greedy-equivalent-search-tetrad_fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges`
 
-*   [Fast greedy equivalent search (fGES)](./config-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations-fast-greedy-equivalent-search-fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges/items`
+*   [Fast greedy equivalent search (fGES)](./config-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations-fast-greedy-equivalent-search-tetrad_fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges/items`
 
-*   [Fast greedy equivalent search (fGES)](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations-fast-greedy-equivalent-search-fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges/items`
+*   [Fast greedy equivalent search (fGES)](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations-fast-greedy-equivalent-search-tetrad_fges.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges/items`
 
 *   [GFCI (parameter setting)](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-gfci-instatiations-gfci-parameter-setting.md "GFCI instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gfci/items`
 
@@ -74,13 +74,13 @@
 
 *   [Graph sampling algorithms](./config-1-properties-resources-properties-graph-sampling-algorithms.md "The available graph sampling algorithms") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph`
 
-*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas`
+*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair`
 
-*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas/items`
+*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair/items`
 
-*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-1-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas`
+*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-1-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair`
 
-*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas/items`
+*   [Green & Thomas algorithm for sampling from decomposable graph distributions](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md "Green & Thomas algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair/items`
 
 *   [Grow shrink (GS) algorithm (paramter setting)](./config-1-definitions-grow-shrink-gs-algorithm-paramter-setting.md "Grow shrink (GS) algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gs`
 
@@ -94,17 +94,17 @@
 
 *   [HC algorithm (parameter setting)](./config-definitions-hc-algorithm-parameter-setting.md "HC algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/hc`
 
-*   [Inter-IAMB algorithm](./config-1-definitions-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb`
+*   [Inter-IAMB algorithm](./config-1-definitions-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb`
 
 *   [Inter-IAMB algorithm](./config-properties-resources-properties-available-structure-learning-algorithms-properties-gs-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gs/items`
 
 *   [Inter-IAMB algorithm](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-gs-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gs/items`
 
-*   [Inter-IAMB algorithm](./config-definitions-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/interiamb`
+*   [Inter-IAMB algorithm](./config-definitions-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb`
 
-*   [Inter-IAMB algorithm](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb/items`
+*   [Inter-IAMB algorithm](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb/items`
 
-*   [Inter-IAMB algorithm](./config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb/items`
+*   [Inter-IAMB algorithm](./config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations-inter-iamb-algorithm.md "Inter-IAMB algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb/items`
 
 *   [Iterative search (paramter setting)](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-iterative-1-search-instatiations-iterative-search-paramter-setting.md "Iterative search +1 algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/itsearch/items`
 
@@ -228,17 +228,17 @@
 
 *   [Gobnilp instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-gobnilp-instatiations.md "Gobnilp instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp`
 
-*   [Green & Thomas id's](./config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "Green & Thomas instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas`
+*   [Green & Thomas id's](./config-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "Green & Thomas instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair`
 
-*   [Green & Thomas id's](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "Green & Thomas instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/greenthomas`
+*   [Green & Thomas id's](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-green--thomas-ids.md "Green & Thomas instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair`
 
 *   [HC instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-hc-instatiations.md "HC instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/hc`
 
 *   [HC instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-hc-instatiations.md "HC instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/hc`
 
-*   [Inter-IAMB instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "Inter-IAMB instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb`
+*   [Inter-IAMB instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "Inter-IAMB instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb`
 
-*   [Inter-IAMB instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "Inter-IAMB instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb`
+*   [Inter-IAMB instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instatiations.md "Inter-IAMB instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb`
 
 *   [Iterative +1 search instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-iterative-1-search-instatiations.md "Iterative +1 search instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/itsearch`
 
@@ -952,9 +952,9 @@
 
 *   [Untitled array in JSON schema for BenchPress config file.](./config-1-properties-resources-properties-parameters-sampling-algorithm-properties-generatebinarybn.md "List of generateBinayBN instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/generateBinaryBN`
 
-*   [fGES instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations.md "fGES instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges`
+*   [fGES instatiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations.md "fGES instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges`
 
-*   [fGES instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-fges-instatiations.md "fGES instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/fges`
+*   [fGES instatiations](./config-1-properties-resources-properties-available-structure-learning-algorithms-properties-tetrad_fges-instatiations.md "fGES instatiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges`
 
 ## Version Note
 

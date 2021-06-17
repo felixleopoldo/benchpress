@@ -1,7 +1,7 @@
 # Green & Thomas algorithm for sampling from decomposable graph distributions Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair
 ```
 
 Green & Thomas algorithm for learning decomopasble graphs.
@@ -12,7 +12,7 @@ Green & Thomas algorithm for learning decomopasble graphs.
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## greenthomas Type
+## gt13_multipair Type
 
 `object` ([Green & Thomas algorithm for sampling from decomposable graph distributions](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md))
 
@@ -20,11 +20,11 @@ Green & Thomas algorithm for learning decomopasble graphs.
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                     |
 | :-------------------------- | -------- | -------- | -------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/plot_legend") |
-| [n_samples](#n_samples)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/n_samples")                                                                               |
-| [penalty](#penalty)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/penalty")                                                                                         |
-| [randomits](#randomits)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/randomits")                                                                               |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/plot_legend") |
+| [n_samples](#n_samples)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/n_samples")                                                                               |
+| [penalty](#penalty)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/penalty")                                                                                         |
+| [randomits](#randomits)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/randomits")                                                                               |
 
 ## id
 
@@ -36,7 +36,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/plot_legend")
 
 ### plot_legend Type
 
@@ -68,7 +68,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 -   is required
 -   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/n_samples")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/n_samples")
 
 ### n_samples Type
 
@@ -89,7 +89,7 @@ Non-negative number(s).
 -   is required
 -   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/penalty")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/penalty")
 
 ### penalty Type
 
@@ -110,7 +110,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 -   is required
 -   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/greenthomas/properties/randomits")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/randomits")
 
 ### randomits Type
 

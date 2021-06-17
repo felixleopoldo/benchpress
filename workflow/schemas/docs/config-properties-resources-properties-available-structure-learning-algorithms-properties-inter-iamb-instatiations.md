@@ -1,7 +1,7 @@
 # Inter-IAMB instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/interiamb
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb
 ```
 
 Inter-IAMB instatiations
@@ -11,6 +11,6 @@ Inter-IAMB instatiations
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## interiamb Type
+## bnlearn_interiamb Type
 
 `object[]` ([Inter-IAMB algorithm](config-definitions-inter-iamb-algorithm.md))

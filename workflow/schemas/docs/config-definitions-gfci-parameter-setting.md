@@ -1,7 +1,7 @@
 # GFCI (parameter setting) Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci
 ```
 
 GFCI instance
@@ -11,20 +11,20 @@ GFCI instance
 | :------------------ | ---------- | -------------- | ------------ | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## gfci Type
+## tetrad_gfci Type
 
-`object` ([GFCI (parameter setting)](config-definitions-gfci-parameter-setting.md))
+`object` ([GFCI (parameter setting)](config-definitions-tetrad_gfci-parameter-setting.md))
 
 # GFCI (parameter setting) Properties
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :-------------------------- | -------- | -------- | -------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/id")                   |
-| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/plot_legend") |
-| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/alpha")                             |
-| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/test")               |
-| [score](#score)             | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/score")             |
-| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/data-type")     |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/id")                   |
+| [plot_legend](#plot_legend) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/plot_legend") |
+| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/alpha")                             |
+| [test](#test)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/test")               |
+| [score](#score)             | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/score")             |
+| [data-type](#data-type)     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/data-type")     |
 
 ## id
 
@@ -36,7 +36,7 @@ Unique idenfifier
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/id")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-id.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Legend to show in plotting
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/plot_legend")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-plot_legend.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/plot_legend")
 
 ### plot_legend Type
 
@@ -68,7 +68,7 @@ Legend to show in plotting
 -   is required
 -   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/alpha")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/alpha")
 
 ### alpha Type
 
@@ -89,7 +89,7 @@ any of
 -   is required
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/test")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-test.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/test")
 
 ### test Type
 
@@ -105,7 +105,7 @@ any of
 -   is optional
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/score")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-score.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/score")
 
 ### score Type
 
@@ -121,7 +121,7 @@ any of
 -   is optional
 -   Type: `string`
 -   cannot be null
--   defined in: [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gfci/properties/data-type")
+-   defined in: [JSON schema for BenchPress config file.](config-definitions-tetrad_gfci-parameter-setting-properties-data-type.md "http&#x3A;//github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/data-type")
 
 ### data-type Type
 

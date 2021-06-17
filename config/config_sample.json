@@ -7,23 +7,23 @@
                 "data_id": "example3",
                 "seed_range": [
                     1,
-                    50
+                    1
                 ]
             }
             ],
         "evaluation": {
-            "ROC": [
+            "roc": [
                 "gobnilp-bde",
                 "asobs-bdeu",
                 "tabu-bde",
                 "mmhc-bde-mi",
                 "hc-bde",
                 "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "fges-bdeu",
+                "bnlearn_interiamb-mi",
+                "tetrad_fci-chi-square",
+                "tetrad_rfci-chi-square",
+                "tetrad_gfci-bdeu-chi-square",
+                "tetrad_fges-bdeu",
                 "itsearch_sample-bde",
                 "pcalg-binCItest",
                 "omcmc_itsample-bde"
@@ -47,7 +47,7 @@
     },
     "resources": {
         "data": {
-            "standard_sampling": [
+            "iid": [
                 {
                     "id": "standardized",
                     "standardized":true,
@@ -94,14 +94,7 @@
             ]
         },
         "graph": {
-            "DAGavparents": [
-                {
-                    "id": "DAG80",
-                    "av_parents": 2,
-                    "dim": 80
-                }
-            ],
-            "generateDAGMaxParents": [
+            "pcalg_randdag": [
                 {
                     "id": "avneigs4",
                     "max_parents": 5,
@@ -112,9 +105,9 @@
                     "method": "er"
                 }
             ],
-            "cta": [
+            "trilearn_cta": [
                 {
-                    "id": "cta",
+                    "id": "trilearn_cta",
                     "order": 50,
                     "alpha": 0.5,
                     "beta": 0.7
@@ -136,14 +129,14 @@
             ]
         },
         "parameters": {
-            "generateBinaryBN": [
+            "bin_bn": [
                 {
                     "id": "binbn",
                     "min": 0.1,
                     "max": 0.9
                 }
             ],
-            "pcalg_sem_params": [
+            "sem_params": [
                 {
                     "id": "SEM",
                     "min": 0.25,
@@ -172,7 +165,7 @@
             ]
         },
         "structure_learning_algorithms": {
-            "trilearn_loglin": [
+            "trilearn_pgibbs": [
                 {
                     "id": "trilearn-cont",
                     "datatype": "continuous",
@@ -211,9 +204,9 @@
                     "mcmc_seed": 1
                 }
             ],
-            "glasso":[
+            "sklearn_glasso":[
                 {
-                    "id":"glasso",
+                    "id":"sklearn_glasso",
                     "mode":"cd",
                     "alpha": [0.05],
                     "tol": 0.0004,
@@ -223,7 +216,7 @@
                     "assume_centered":false
                 }
             ],
-            "blip": [
+            "rblip": [
                 {
                     "id": "winasobs-bdeu",
                     "scorermethod": "is",
@@ -300,9 +293,9 @@
                 }
 
             ],
-            "greenthomas": [
+            "gt13_multipair": [
                 {
-                    "id": "greenthomas_bc-cont",
+                    "id": "gt13_multipair_bc-cont",
                     "n_samples": 1000000,
                     "datatype":"continuous",
                     "randomits": 1000,
@@ -315,7 +308,7 @@
                     "mcmc_seed": 1
                 },
                 {
-                    "id": "greenthomas_ep-cont",
+                    "id": "gt13_multipair_ep-cont",
                     "n_samples": 1000000,
                     "datatype":"continuous",
                     "randomits": 1000,
@@ -328,7 +321,7 @@
                     "mcmc_seed": 1
                 },
                 {
-                    "id": "greenthomas_mbc-cont",
+                    "id": "gt13_multipair_mbc-cont",
                     "n_samples": 1000000,
                     "datatype":"continuous",
                     "randomits": 1000,
@@ -341,7 +334,7 @@
                     "mcmc_seed": 1
                 },
                 {
-                    "id": "greenthomas-disc",
+                    "id": "gt13_multipair-disc",
                     "n_samples": [
                         100000
                     ],
@@ -356,7 +349,7 @@
                     "penalty":1.5
                 }
             ],
-            "gg_singlepair": [
+            "gg99_singlepair": [
                 {
                     "id": "guidicigreen-cont",
                     "n_samples": [
@@ -388,15 +381,15 @@
                     "mcmc_seed": 1
                 }
             ],
-            "gg_singlepair_fortran": [
+            "gg99_singlepair_fortran": [
                 {
                     "id": "gg99_fortran",
                     "n": 1000000
                 }
             ],
-            "fges": [
+            "tetrad_fges": [
                 {
-                    "id": "fges-sem-bic",
+                    "id": "tetrad_fges-sem-bic",
                     "faithfulnessAssumed": true,
                     "score": "sem-bic",
                     "datatype": "continuous",
@@ -409,7 +402,7 @@
                     ]
                 },
                 {
-                    "id": "fges-bdeu",
+                    "id": "tetrad_fges-bdeu",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
                     "datatype": "discrete",
@@ -421,9 +414,9 @@
                     "penaltyDiscount": null
                 }
             ],
-            "fci": [
+            "tetrad_fci": [
                 {
-                    "id": "fci-fisher-z",
+                    "id": "tetrad_fci-fisher-z",
                     "alpha": [
                         0.001,
                         0.01,
@@ -433,7 +426,7 @@
                     "datatype": "continuous"
                 },
                 {
-                    "id": "fci-chi-square",
+                    "id": "tetrad_fci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -443,9 +436,9 @@
                     "datatype": "discrete"
                 }
             ],
-            "gfci": [
+            "tetrad_gfci": [
                 {
-                    "id": "gfci-bdeu-chi-square",
+                    "id": "tetrad_gfci-bdeu-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -459,7 +452,7 @@
                     "structurePrior": 1
                 },
                 {
-                    "id": "gfci-sem-bic-fisher-z",
+                    "id": "tetrad_gfci-sem-bic-fisher-z",
                     "alpha": 0.05,
                     "score": "sem-bic",
                     "test": "fisher-z-test",
@@ -474,9 +467,9 @@
                     "structurePrior": 1
                 }
             ],
-            "rfci": [
+            "tetrad_rfci": [
                 {
-                    "id": "rfci-fisher-z",
+                    "id": "tetrad_rfci-fisher-z",
                     "alpha": [
                         0.001,
                         0.01,
@@ -486,7 +479,7 @@
                     "datatype": "continuous"
                 },
                 {
-                    "id": "rfci-chi-square",
+                    "id": "tetrad_rfci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -496,7 +489,7 @@
                     "datatype": "discrete"
                 }
             ],
-            "pcalg": [
+            "pcalg_pc": [
                 {
                     "id": "pcalg-binCItest",
                     "alpha": [
@@ -567,7 +560,7 @@
                     "indepTest": "disCItest"
                 }
             ],
-            "mmhc": [
+            "bnlearn_mmhc": [
                 {
                     "id": "mmhc-bde-mi",
                     "alpha": [
@@ -604,9 +597,9 @@
                     "beta": null
                 }
             ],
-            "interiamb": [
+            "bnlearn_interiamb": [
                 {
-                    "id": "interiamb-zf",
+                    "id": "bnlearn_interiamb-zf",
                     "alpha": [
                         0.01,
                         0.05
@@ -618,7 +611,7 @@
                     "undirected": false
                 },
                 {
-                    "id": "interiamb-mi",
+                    "id": "bnlearn_interiamb-mi",
                     "alpha": [
                         0.01,
                         0.05,
@@ -632,7 +625,7 @@
                     "undirected": false
                 }
             ],
-            "gs": [
+            "bnlearn_gs": [
                 {
                     "id": "gs-mi",
                     "alpha": [
@@ -660,7 +653,7 @@
                     "undirected": false
                 }
             ],
-            "tabu": [
+            "bnlearn_tabu": [
                 {
                     "id": "tabu-bde",
                     "score": "bde",
@@ -693,7 +686,7 @@
                     "beta": 1
                 }
             ],
-            "hc": [
+            "bnlearn_hc": [
                 {
                     "id": "hc-bde",
                     "score": "bde",
@@ -729,7 +722,7 @@
                     "perturb": 1
                 }
             ],
-            "itsearch": [
+            "bidag_itsearch": [
                 {
                     "id": "itsearch_map-bde",
                     "estimate": "map",
@@ -1062,7 +1055,7 @@
                     "mergetype": "skeleton"
                 }
             ],
-            "order_mcmc": [
+            "bidag_order_mcmc": [
                 {
                     "id": "omcmc_itmap-bde",
                     "startspace_algorithm": ["itsearch_map-bde"],

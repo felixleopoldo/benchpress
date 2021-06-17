@@ -1,7 +1,7 @@
 # RFCI instatiations Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rfci
+http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci
 ```
 
 RFCI instatiations
@@ -11,6 +11,6 @@ RFCI instatiations
 | :------------------ | ---------- | -------------- | ----------------------- | :---------------- | --------------------- | ------------------- | --------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](../../out/config.schema.json "open original schema") |
 
-## rfci Type
+## tetrad_rfci Type
 
-`object[]` ([RFCI](config-definitions-rfci.md))
+`object[]` ([RFCI](config-definitions-tetrad_rfci.md))

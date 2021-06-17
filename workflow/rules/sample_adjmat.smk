@@ -2,7 +2,7 @@ rule sample_adjmat:
     input:
         "workflow/scripts/sample_dags.R"
     output:        
-        adjmat = "{output_dir}/adjmat/" + pattern_strings["generateDAGMaxParents"] + "/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["pcalg_randdag"] + "/seed={replicate}.csv"
     singularity:
         docker_image("bidag")
     script:
@@ -10,9 +10,9 @@ rule sample_adjmat:
 
 rule sample_adjmat_cta:
     output:
-        adjmat = "{output_dir}/adjmat/" + pattern_strings["cta"] + "/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["trilearn_cta"] + "/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/sample_cta.py {output.adjmat} {wildcards.replicate} {wildcards.order} {wildcards.alpha} {wildcards.beta} "
 
@@ -20,7 +20,7 @@ rule gen_bandmat:
     output:
         adjmat = "{output_dir}/adjmat/" + pattern_strings["bandmat"] + "/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
 
@@ -28,7 +28,7 @@ rule rand_bandmat:
     output:
         adjmat = "{output_dir}/adjmat/" + pattern_strings["rand_bandmat"] + "/seed={replicate}.csv"
     singularity:
-        docker_image("trilearn_loglin")
+        docker_image("trilearn")
     shell:
         "python workflow/scripts/trilearn/rand_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.max_bandwidth}"
 

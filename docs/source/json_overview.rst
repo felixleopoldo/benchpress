@@ -114,11 +114,11 @@ List of algorithm to be included in roc curve estimation.
             "curve_variable": "iss"
         },
         {
-            "algorithm_id": "mmhc",
+            "algorithm_id": "bnlearn_mmhc",
             "curve_variable": "alpha"
         },
         {
-            "algorithm_id": "fges-bdeu",
+            "algorithm_id": "tetrad_fges-bdeu",
             "curve_variable": "samplePrior"
         },
         {
