@@ -153,7 +153,7 @@ def alg_shell(algorithm):
     elif algorithm ==  "tetrad_fci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm tetrad_fci "\
+                "--algorithm fci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
@@ -172,7 +172,7 @@ def alg_shell(algorithm):
     elif algorithm ==  "tetrad_gfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm tetrad_gfci "\
+                "--algorithm gfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
@@ -193,7 +193,7 @@ def alg_shell(algorithm):
     elif algorithm ==  "tetrad_rfci":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-                "--algorithm tetrad_rfci "\
+                "--algorithm rfci "\
                 "--data-type {wildcards.datatype} "\
                 "--dataset {input.data} "\
                 "--delimiter comma " \
