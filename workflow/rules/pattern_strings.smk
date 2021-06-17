@@ -71,7 +71,7 @@ pattern_strings["rand_bandmat"] = "rand_bandmat/" + dict_to_path(config["resourc
 # parameters sampling
 pattern_strings["sem_params"] = "sem_params/" + dict_to_path(config["resources"]["parameters"]["sem_params"])
 pattern_strings["bin_bn"] = "bin_bn/" + dict_to_path(config["resources"]["parameters"]["bin_bn"])
-pattern_strings["hyper-dir"] = "hyper-dir/" + dict_to_path(config["resources"]["parameters"]["hyper-dir"])
-pattern_strings["intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["intra-class"])
-pattern_strings["g_inv_wishart"] = "g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["g_inv_wishart"])
+pattern_strings["trilearn_hyper-dir"] = "trilearn_hyper-dir/" + dict_to_path(config["resources"]["parameters"]["trilearn_hyper-dir"])
+pattern_strings["trilearn_intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["trilearn_intra-class"])
+pattern_strings["trilearn_g_inv_wishart"] = "trilearn_g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["trilearn_g_inv_wishart"])
 

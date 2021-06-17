@@ -34,7 +34,7 @@ rule hyper_dir:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/parameters/" + \
-                pattern_strings["hyper-dir"] + "/" \
+                pattern_strings["trilearn_hyper-dir"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.json"
     singularity:
@@ -47,7 +47,7 @@ rule intra_class_cov:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         params = "{output_dir}/parameters/" + \
-                pattern_strings["intra-class"] + "/" \
+                pattern_strings["trilearn_intra-class"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     singularity:
@@ -55,12 +55,12 @@ rule intra_class_cov:
     shell:
         "python workflow/scripts/trilearn/g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
 
-rule g_inv_wishart:
+rule trilearn_g_inv_wishart:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         params = "{output_dir}/parameters/" + \
-                pattern_strings["g_inv_wishart"] + "/" \
+                pattern_strings["trilearn_g_inv_wishart"] + "/" \
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     singularity:

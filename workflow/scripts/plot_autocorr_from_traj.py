@@ -24,6 +24,7 @@ if len(edges) != 0:
     g = nx.DiGraph()
     edgesymb="->"
 else:
+    edgesymb="-"
     g = nx.Graph()    
 
 size = []

@@ -1,7 +1,7 @@
 {
     "benchmark_setup": {
         "data": [
-                {
+            {
                 "graph_id": "avneigs4",
                 "parameters_id": "binbn",
                 "data_id": "example1",
@@ -35,13 +35,11 @@
             "graph_plots": [         
             ],
             "mcmc_traj_plots": [
-                
             ],
             "mcmc_heatmaps": [
-                
             ],
             "autocorr_plots": [
-                
+               
             ]
         }
     },
@@ -143,21 +141,21 @@
                     "max": 1
                 }
             ],
-            "hyper-dir": [
+            "trilearn_hyper-dir": [
                 {
                     "id": "disc-loglin",
                     "n_levels": 2,
                     "pseudo_obs": 1.0
                 }
             ],
-            "intra-class":[
+            "trilearn_intra-class":[
                 {
                     "id":"intra-class",
                     "rho": 0.4,
                     "sigma2": 1.0
                 }
             ],
-            "g_inv_wishart":[
+            "trilearn_g_inv_wishart":[
                 {
                     "id":"giw",
                     "dof": 1

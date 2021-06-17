@@ -346,31 +346,31 @@ rule autocorr_plot:
 rule mcmc_heatmaps:
     input:
         configfilename,
-        heatmap_plots()
+        plots=heatmap_plots()
     output:
         touch("results/output/mcmc_heatmaps/mcmc_heatmaps.done")
     run:
-        for i,f in enumerate(input):
+        for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i) +".eps")
 
 rule mcmc_traj_plots:
     input:
         configfilename,
-        traj_plots()
+        plots=traj_plots()
     output: 
         touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
     run:
-        for i,f in enumerate(input):
+        for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_traj_plots/trajplot_" +str(i) +".eps")
 
 rule autocorr_plots:
     input:
         configfilename,
-        autocorr_plots()
+        plots=autocorr_plots()
     output:
-        touch("results/output/autocorr_plots.done")
+        touch("results/output/autocorr_plots/autocorr_plots.done")
     run:
-        for i,f in enumerate(input):
+        for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/autocorr_plots/autocorr_" +str(i) +".eps")
 
 rule adjmat_plots:

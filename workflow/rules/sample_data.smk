@@ -15,11 +15,11 @@ rule sample_bin_bn_data:
 
 rule sample_loglindata:
     input:
-        bn="{output_dir}/parameters/hyper-dir/{bn}/adjmat=/{adjmat}.json"
+        bn="{output_dir}/parameters/trilearn_hyper-dir/{bn}/adjmat=/{adjmat}.json"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/parameters=/hyper-dir/{bn}"\
+             "/parameters=/trilearn_hyper-dir/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("trilearn")
@@ -43,11 +43,11 @@ rule sample_intra_class_data:
 rule sample_g_inverse_wishart:
     input:
         "workflow/scripts/trilearn/sample_mvn_data.py",
-        cov="{output_dir}/parameters/g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
+        cov="{output_dir}/parameters/trilearn_g_inv_wishart/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/parameters=/g_inv_wishart/{bn}"\
+             "/parameters=/trilearn_g_inv_wishart/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     singularity:
         docker_image("trilearn")

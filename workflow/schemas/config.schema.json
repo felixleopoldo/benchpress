@@ -143,30 +143,30 @@
                             },
                             "uniqueItems": true
                         },
-                        "hyper-dir": {
+                        "trilearn_hyper-dir": {
                             "title": "List of Hyper-Dirichlet id's",
-                            "description": "List of hyper-dir id's",
+                            "description": "List of trilearn_hyper-dir id's",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/hyper-dir"
+                                "$ref": "#/definitions/trilearn_hyper-dir"
                             },
                             "uniqueItems": true
                         },
-                        "intra-class": {
+                        "trilearn_intra-class": {
                             "title": "List of graph intra-class id's",
                             "description": "List of intra-class id's",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/intra-class"
+                                "$ref": "#/definitions/trilearn_intra-class"
                             },
                             "uniqueItems": true
                         },
-                        "g_inv_wishart": {
+                        "trilearn_g_inv_wishart": {
                             "title": "List of graph inverse-Wishart id's",
                             "description": "List of graph inverse-Wishart id's",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/g_inv_wishart"
+                                "$ref": "#/definitions/trilearn_g_inv_wishart"
                             },
                             "uniqueItems": true
                         }
@@ -665,7 +665,7 @@
             ],
             "additionalProperties": false
         },
-        "hyper-dir": {
+        "trilearn_hyper-dir": {
             "title": "Hyper-Dirichlet",
             "description": "Parameter setting for a hyper Dirichlet distribution",
             "type": "object",
@@ -687,7 +687,7 @@
             ],
             "additionalProperties": false
         },
-        "intra-class": {
+        "trilearn_intra-class": {
             "title": "Graph intra-class model",
             "description": "Parameter setting for a graph intra-class model",
             "type": "object",
@@ -709,7 +709,7 @@
             ],
             "additionalProperties": false
         },
-        "g_inv_wishart": {
+        "trilearn_g_inv_wishart": {
             "title": "Graph graph inverse-Wishart model",
             "description": "Parameter setting for a graph inverse-Wishart model",
             "type": "object",
