@@ -411,7 +411,6 @@ rule graph_true_plots:
     output:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
-        print(input.graphs)
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i) +".eps")
 
