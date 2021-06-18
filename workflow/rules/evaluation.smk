@@ -278,7 +278,11 @@ rule adjmat_plot:
             "seed={seed}/"
             "adjmat.eps"
     params:
-        title="{adjmat_string}\n{param_string}\n{data_string}\n{alg_string}"
+        title="Graph: {adjmat_string}\nParameters: {param_string}\nData: {data_string}",
+        adjmat_string="{adjmat_string}",
+        param_string="{param_string}",
+        data_string="{data_string}",
+        alg_string="{alg_string}"
     singularity:
         docker_image("pydatascience")
     script:
