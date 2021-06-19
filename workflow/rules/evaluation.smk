@@ -55,9 +55,10 @@ rule roc:
         csv="results/output/roc/ROC_data.csv" 
     output:
         touch("results/output/roc/roc.done"),
-        eps="results/output/roc/ROC.eps",
-        roc_skel="results/output/roc/ROC_skel.eps",
-        roc_FPRp_TPR_skel="results/output/roc/ROC_FPRp_TPR_skel.eps",
+        eps="results/output/roc/FPR_TPR_pattern.eps",
+        roc_skel="results/output/roc/FPRp_FNR_skel.eps",
+        fnr_fprp_skel="results/output/roc/FNR_FPR_skel.eps",
+        roc_FPRp_TPR_skel="results/output/roc/FPR_TPR_skel.eps"
         
     script:
         "../scripts/plot_ROC.R"

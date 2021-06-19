@@ -65,13 +65,17 @@ for (algorithm in active_algorithms){
                     TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95)),
 
                     FPRp_skel_mean = mean(FPR_skel), 
+                    FPR_skel_q1 = quantile(FPR_skel, probs = c(0.05)), 
+                    FPR_skel_q3 = quantile(FPR_skel, probs = c(0.95)),
+                    
                     FNR_skel_mean = mean(FNR_skel), 
                     FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05)), 
                     FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
 
                     time_mean = mean(time),
                     logscore_mean = mean(logscore),
-                    N = n())
+                    N = n(),
+                    curve_vals=mean(!!as.symbol(curve_param)))
         sumROC["labels"] <- NA
         toplot <- dplyr::bind_rows(toplot, sumROC)
     }
