@@ -32,7 +32,7 @@ geom_point(data = toplot,
         #nudge_x=-0.02,
           nudge_y=0.01
           )}} +
-facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (pattern graph)") +
@@ -65,7 +65,7 @@ geom_point(data = toplot,
         nudge_x=-0.02,
           nudge_y=0.01
           )}} +
-facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (undirected skeleton)") +
@@ -99,7 +99,7 @@ geom_point(data = toplot,
           nudge_y=0.001
           )}} +
 
-facet_wrap(. ~ adjmat+bn+data, nrow = 2) +
+facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
 xlab("FPRp") +
 ylab("FNR") +
 ggtitle("Mean FPRp/FNR (undirected skeleton)") +
