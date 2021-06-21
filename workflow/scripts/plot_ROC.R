@@ -28,9 +28,9 @@ geom_point(data = toplot,
             aes(x = FPRn_pattern_median, 
                 y = TPR_pattern_q3,               
                 label=curve_vals, col=id, shape=id),
-          check_overlap = TRUE,
-        #nudge_x=-0.02,
-          nudge_y=0.01
+          check_overlap = TRUE
+        #,nudge_x=-0.02,
+#          nudge_y=0.01
           )}} +
 facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
 xlab("FPRp") +
@@ -59,11 +59,11 @@ geom_point(data = toplot,
                size = 1) +
 {if(param_annot ){geom_text(data = toplot,
             aes(x = FPRn_skel_median, 
-                y = TPR_skel_median,               
+                y = TPR_skel_q3,               
                 label=curve_vals, col=id, shape=id),
           check_overlap = TRUE,
-        nudge_x=-0.02,
-          nudge_y=0.01
+#          ,nudge_x=-0.02,
+#          nudge_y=0.01
           )}} +
 facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
 xlab("FPRp") +
@@ -94,9 +94,9 @@ geom_point(data = toplot,
             aes(y = FNR_skel_q3, 
                 x = FPRp_skel_mean,               
                 label=curve_vals, col=id, shape=id),
-          check_overlap = TRUE,
-        nudge_x=-0.02,
-          nudge_y=0.001
+          check_overlap = TRUE
+        #,nudge_x=-0.02,
+        #  nudge_y=0.001
           )}} +
 
 facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
@@ -116,7 +116,7 @@ ggplot() + geom_errorbar(data = toplot,
 geom_path(data = toplot,
           aes(y = FPRp_skel_mean, 
               x = FNR_skel_mean,
-              col = id)) +
+              col = id), alpha=0.5) +
 geom_point(data = toplot,
            aes(y = FPRp_skel_mean, 
                x = FNR_skel_mean,               
@@ -129,9 +129,9 @@ geom_point(data = toplot,
         aes(x = FNR_skel_mean, 
         y = FPR_skel_q3,               
         label=curve_vals, col=id, shape=id),
-        check_overlap = TRUE,
-        nudge_x=-0.02,
-        nudge_y=0.01
+        check_overlap = TRUE
+#        ,nudge_x=-0.02,
+#        nudge_y=0.01
         )} 
 }+
 facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
