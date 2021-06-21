@@ -116,7 +116,7 @@ ggplot() + geom_errorbar(data = toplot,
 geom_path(data = toplot,
           aes(y = FPRp_skel_mean, 
               x = FNR_skel_mean,
-              col = id), alpha=0.5) +
+              col = id)) +
 geom_point(data = toplot,
            aes(y = FPRp_skel_mean, 
                x = FNR_skel_mean,               
