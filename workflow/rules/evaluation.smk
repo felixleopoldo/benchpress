@@ -389,8 +389,8 @@ rule adjmat_plots:
             shell("cp "+f+" results/output/adjmat_plots/adjmat_" +str(i) +".eps")
 
 rule adjmat_true_plots:
-    input:  
-        configfilename,      
+    input:
+        configfilename,
         adjmats=adjmat_true_plots()
     output:
         touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
