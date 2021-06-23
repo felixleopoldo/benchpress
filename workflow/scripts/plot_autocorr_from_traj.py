@@ -92,20 +92,40 @@ df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
 
 df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
 
-dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):]
-pd.plotting.autocorrelation_plot(dfplot)
-#sm.graphics.tsa.plot_acf(df2["size"][int(snakemake.wildcards["burn_in"]):], lags=int(snakemake.wildcards["lags"]))
+
+if snakemake.wildcards["thinning"] != "None":
+    dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):].iloc[::int(snakemake.wildcards["thinning"])]
+else:
+    dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):]
+#pd.plotting.autocorrelation_plot(dfplot.iloc[::int(snakemake.wildcards["thinning"])]) 
+
+if snakemake.wildcards["lags"] != "None":
+    sm.graphics.tsa.plot_acf(dfplot, lags=int(snakemake.wildcards["lags"]))
+else:
+    sm.graphics.tsa.plot_acf(dfplot)
 #autocorrelation_plot(df2["size"][int(snakemake.wildcards["burn_in"]):], n_samples=int(snakemake.wildcards["lags"]))
 
 # nlags = int(snakemake.wildcards["lags"])
-# lags = []
-# for l in range(1,nlags + 1):
-#     print(dfplot.autocorr(lag=l))
-#     lags.append(dfplot.autocorr(lag=l))
+# lags = [dfplot.autocorr(lag=l) for l in range(1, nlags + 1)]
 
-# plt.plot(range(1, nlags + 1), lags)
+# df = pd.DataFrame({"autocorr":lags, "nlags":range(1, nlags + 1) })
 
-plt.savefig(snakemake.output["plot"])
+# df.dropna().plot(x="nlags", y="autocorr")
+
+#plt.acorr(dfplot.values, usevlines=True, normed=True, maxlags=nlags)
+plt.title("Graph: "+snakemake.params["adjmat_string"] +"\nParameters: " +snakemake.params["param_string"] +"\nData: " +snakemake.params["data_string"], fontsize=6, ha="center")
+plt.ylabel(
+    #"Graph: \n"+snakemake.params["adjmat_string"].replace("/","\n") + "\n\n" +
+    #"Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
+    #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
+    "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + 
+    "\n\nPlot:\n\nburn_in="+snakemake.wildcards["burn_in"] + 
+    "\nthinning="+snakemake.wildcards["thinning"] +
+    "\nlags="+snakemake.wildcards["lags"]
+    , rotation="horizontal", fontsize=6, ha="right", va="center")
+
+plt.tight_layout()
+plt.savefig(snakemake.output["plot"], dpi=300)
 plt.clf()
 
 

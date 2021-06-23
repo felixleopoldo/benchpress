@@ -45,7 +45,10 @@ df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
 
 df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
 
-df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
+if snakemake.wildcards["thinning"] != "None":
+    df_noburnin = df2[int(snakemake.wildcards["burn_in"]):][::int(snakemake.wildcards["thinning"])]
+else:
+    df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
 df_noburnin["size"].plot()
 
 plt.title("Graph: "+snakemake.params["adjmat_string"] +"\nParameters: " +snakemake.params["param_string"] +"\nData: " +snakemake.params["data_string"], fontsize=6, ha="center")
@@ -53,7 +56,9 @@ plt.ylabel(
     #"Graph: \n"+snakemake.params["adjmat_string"].replace("/","\n") + "\n\n" +
     #"Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
     #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
-    "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + "\n\nburn_in="+snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
+    "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + 
+    "\n\nPlot: burn_in="+snakemake.wildcards["burn_in"] + 
+    "\nthinning="+snakemake.wildcards["thinning"], rotation="horizontal", fontsize=6, ha="right", va="center")
 
 plt.tight_layout()
 plt.savefig(snakemake.output["plot"])

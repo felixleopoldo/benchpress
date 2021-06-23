@@ -180,7 +180,7 @@ def autocorr_plots():
             "data=/{data_string}/"\
             "algorithm=/{alg_string}/" \
             "seed={seed}/"
-            "autocorr_plot.eps",
+            "autocorr_plot.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
@@ -362,7 +362,13 @@ rule mcmc_autocorr_plot:
         "data=/{data_string}/"\            
         "algorithm=/{alg_string}/"\                            
         "seed={seed}/"
-        "autocorr_plot.eps"
+        "autocorr_plot.png"
+    params:
+        title="Graph: {adjmat_string}\nParameters: {param_string}\nData: {data_string}",
+        adjmat_string="{adjmat_string}",
+        param_string="{param_string}",
+        data_string="{data_string}",
+        alg_string="{alg_string}"
     singularity:
         docker_image("networkx")
     script:
@@ -396,7 +402,7 @@ rule mcmc_autocorr_plots:
         touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done")
     run:
         for i,f in enumerate(input.plots):
-            shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".eps")
+            shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".png")
 
 rule adjmat_plots:
     input:        
