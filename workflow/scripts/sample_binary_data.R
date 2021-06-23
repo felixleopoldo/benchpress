@@ -20,6 +20,6 @@ n = numNodes(bn$DAG)
 set.seed(seed)
 bindata <- generatebinaryBN.data(n = n, binaryBN = bn, samplesize = samples)
 
-write.csv(bindata, file = filename, row.names = FALSE, sep=",")
+write.csv(bindata, file = filename, row.names = FALSE, sep = ",")
 
 

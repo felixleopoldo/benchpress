@@ -8,7 +8,7 @@ p <- add_argument(p, "--threshold", help = "Threshold", type = "numeric", defaul
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)
-heatmap <- read.csv(argv$heatmap, header=TRUE, check.names=FALSE)
+heatmap <- read.csv(argv$heatmap, header = TRUE, check.names = FALSE)
 
 adjmat <- (heatmap > argv$threshold) * 1
 

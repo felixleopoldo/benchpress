@@ -24,11 +24,11 @@ p <- add_argument(p, "--verbose", help = "see r.blip doc", type = "numeric", def
 argv <- parse_args(p)
 
 directory <- argv$output_dir
-dir.create(directory, showWarnings=FALSE)
+dir.create(directory, showWarnings = FALSE)
 filename <- file.path(argv$filename)
 filename_data <- argv$filename_data
 
-data <- read.csv(filename_data, check.names=FALSE)
+data <- read.csv(filename_data, check.names = FALSE)
 data <- data[-1,] # Remove range header
 data_dim <- dim(data)[2]
 

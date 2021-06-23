@@ -18,16 +18,16 @@ numCores <- as.integer(snakemake@wildcards[["numCores"]])
 verbose <- as.logical(snakemake@wildcards[["verbose"]])
 indepTest = match.fun(snakemake@wildcards[["indepTest"]])
 
-data <- read.csv(filename_data, check.names=FALSE)
+data <- read.csv(filename_data, check.names = FALSE)
 
 suffStat = NULL
-if (snakemake@wildcards[["indepTest"]] != "gaussCItest"){
-    nlev <- as.numeric(data[1,])
-    data <- data[-1,] # Remove range header
-    suffStat <- list(dm = data, nlev=nlev, adaptDF = FALSE)
+if (snakemake@wildcards[["indepTest"]] != "gaussCItest") {
+  nlev <- as.numeric(data[1,])
+  data <- data[-1,] # Remove range header
+  suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
 } else {
-    n <- dim(data)[1]
-    suffStat <- list(C = cor(data), n = n)
+  n <- dim(data)[1]
+  suffStat <- list(C = cor(data), n = n)
 }
 
 start <- proc.time()[1]

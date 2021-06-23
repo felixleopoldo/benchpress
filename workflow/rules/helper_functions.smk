@@ -85,7 +85,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for roc
     """
-    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["roc"]]
+    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["roc"]["ids"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
@@ -104,26 +104,6 @@ def join_string_sampled_model(algorithm, mode="result"):
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
-    
-    # # Every algorithm should have this as output, where the parameters are added to the csv.
-    # # A general rule should handle output e.g. SHD or TP, FP...
-    # ret = [[[expand("{output_dir}/"
-    #         "evaluation=/{evaluation_string}"\
-    #         "algorithm=/{alg_string}/"
-    #         "adjmat=/{adjmat_string}/"
-    #         "parameters=/{param_string}/"
-    #         "data=/{data_string}/"
-    #         + eval_method + ".csv",
-    #         output_dir=config["benchmark_setup"]["output_dir"],
-    #         alg_string=json_string[alg_conf["id"]],
-    #         plot_legend=alg_conf["plot_legend"],
-    #         evaluation_string=get_eval_string(eval_method),
-    #         adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
-    #         param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-    #         data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
-    #         for seed in get_seed_range(sim_setup["seed_range"])]
-    #         for sim_setup in config["benchmark_setup"]["data"]]
-    #         for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in config["benchmark_setup"]["algorithm_ids"]],
     return ret
 
 def join_summaries_shell(algorithm):
@@ -250,10 +230,16 @@ def active_algorithm_files(wildcards):
 def active_algorithms(eval_method="roc"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
-    
+
     algs = []
     if eval_method == "mcmc_traj_plots" or eval_method == "mcmc_autocorr_plots" or eval_method == "mcmc_heatmaps":
         roc_alg_ids = [roc_dict["id"] for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
+            for alg_conf_id in roc_alg_ids:        
+                if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
+                        algs.append( alg )
+    elif eval_method == "roc":
+        roc_alg_ids = config["benchmark_setup"]["evaluation"]["roc"]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in roc_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:

@@ -34,7 +34,9 @@ singularity:
 def get_active_rules(wildcards):
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
-        # Check if boolean or list. 
+        # Check if boolean or list or object wirh nonempty ids field. 
+        if isinstance(val, OrderedDict) and val["ids"] != []:
+            rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, bool) and val is True:
             rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, list) and val != []:

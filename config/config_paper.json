@@ -12,22 +12,29 @@
                 }
             ],
         "evaluation": {
-            "roc": [
-                "gobnilp-bde",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "bnlearn_interiamb-mi",
-                "tetrad_fci-chi-square",
-                "tetrad_rfci-chi-square",
-                "tetrad_gfci-bdeu-chi-square",
-                "tetrad_fges-bdeu",
-                "itsearch_sample-bde",
-                "pcalg-binCItest",
-                "omcmc_itsample-bde"
-            ],
+            "roc": {
+                "filename_prefix":"",
+                "point":true,
+                "errorbar":true,
+                "path":true,
+                "text":false,
+                "ids":[
+                    "gobnilp-bde",
+                    "asobs-bdeu",
+                    "tabu-bde",
+                    "mmhc-bde-mi",
+                    "hc-bde",
+                    "gs-mi",
+                    "bnlearn_interiamb-mi",
+                    "tetrad_fci-chi-square",
+                    "tetrad_rfci-chi-square",
+                    "tetrad_gfci-bdeu-chi-square",
+                    "tetrad_fges-bdeu",
+                    "itsearch_sample-bde",
+                    "pcalg-binCItest",
+                    "omcmc_itsample-bde"
+                ]
+            },
             "adjmat_true_plots":false,
             "graph_true_plots":false,
             "adjmat_plots": [
@@ -38,8 +45,7 @@
             ],
             "mcmc_heatmaps": [
             ],
-            "autocorr_plots": [
-               
+            "mcmc_autocorr_plots": [
             ]
         }
     },

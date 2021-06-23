@@ -15,7 +15,7 @@ filename <- file.path(argv$filename)
 seed_number <- argv$seed
 filename_dag <- argv$filename_dag
 
-adjmat <- read.csv(filename_dag, check.names=FALSE)
+adjmat <- read.csv(filename_dag, check.names = FALSE)
 n <- dim(adjmat)[2]
 rownames(adjmat) <- seq(n)
 colnames(adjmat) <- seq(n)

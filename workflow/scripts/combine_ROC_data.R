@@ -20,7 +20,7 @@ for (file in argv$algorithms){
 
 active_algorithms <- unique(active_algorithms)
 
-rocalgs <- config$benchmark_setup$evaluation$roc
+rocalgs <- config$benchmark_setup$evaluation$roc$ids
 
 for (algorithm in active_algorithms){
     # This reads all ids of one algorithm so that the same coud be read more than once. 

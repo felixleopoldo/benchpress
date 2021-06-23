@@ -7,7 +7,7 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
         available_conf_ids.append(alg_conf["id"])   
 
 # Check that all ids in the roc section actually exist.
-for rocitem in config["benchmark_setup"]["evaluation"]["roc"]:
+for rocitem in config["benchmark_setup"]["evaluation"]["roc"]["ids"]:
     if rocitem not in available_conf_ids:
         raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
@@ -25,7 +25,7 @@ def validate_data_setup(config, dict):
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += os.listdir("resources/adjmat/myadjmats")
 
-    if config["benchmark_setup"]["evaluation"]["roc"] != []:
+    if config["benchmark_setup"]["evaluation"]["roc"]["ids"] != []:
         if dict["graph_id"] is None:
             raise Exception("ROC evaluation requires graph_id.\n"
                             "The available graph id´s are:\n" + str(sorted(available_conf_ids)))

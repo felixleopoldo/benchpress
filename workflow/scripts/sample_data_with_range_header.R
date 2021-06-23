@@ -25,5 +25,5 @@ bindata_range_header <- data.frame(rbind(myrow, as.matrix(bindata)))
 
 # TODO: Should take the colun names from bn
 colnames(bindata_range_header) <- seq(n)
-write.table(bindata_range_header, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
+write.table(bindata_range_header, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")
 

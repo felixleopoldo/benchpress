@@ -1,4 +1,7 @@
 def dict_to_path(d):
+    if len(d) == 0:
+        return ""
+
     c = d[0].copy() # take the first element in the list. BUG
     c.pop("id") # remove id from the string as only the parameters should identify the computation.
     if "burnin" in c:
@@ -56,7 +59,7 @@ pattern_strings["trilearn_hyper-dir"] = "trilearn_hyper-dir/" + dict_to_path(con
 pattern_strings["trilearn_intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["trilearn_intra-class"])
 pattern_strings["trilearn_g_inv_wishart"] = "trilearn_g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["trilearn_g_inv_wishart"])
 
-# Evaluation strings
+# Evaluation strings. These have not exactly the same logic as the above, but it works.
 pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
 pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"])
 pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])

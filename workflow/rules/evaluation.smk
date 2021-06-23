@@ -40,7 +40,7 @@ rule roc_data:
         "workflow/scripts/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
-        algs=active_algorithm_files("ROC") # It should maybe be stated there which kind of roc to be considered..
+        algs=active_algorithm_files("roc") # It should maybe be stated there which kind of roc to be considered..
     output:
         csv="results/output/roc/ROC_data.csv"
     shell:
@@ -50,19 +50,18 @@ rule roc:
     input:
         "workflow/scripts/plot_ROC.R",
         "workflow/scripts/run_summarise.R",
-        configfilename,
         "workflow/Snakefile",
+        config=configfilename,
         csv="results/output/roc/ROC_data.csv" 
     output:
         touch("results/output/roc/roc.done"),
-        eps="results/output/roc/FPR_TPR_pattern.eps",
-        roc_skel="results/output/roc/FPRp_FNR_skel.eps",
-        fnr_fprp_skel="results/output/roc/FNR_FPR_skel.eps",
-        roc_FPRp_TPR_skel="results/output/roc/FPR_TPR_skel.eps"
+        fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.eps",
+        FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.eps",
+        fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.eps",
+        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps"
         
     script:
         "../scripts/plot_ROC.R"
-
 
 # problem with seeds. The seed is in cluden in graph, bn and data. but not in algorithm.
 # When the order ord the data,bn and data is changed, the seed is lost. 
@@ -219,24 +218,6 @@ def heatmap_plots():
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
                 if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]]]                
             for alg in active_algorithms("mcmc_heatmaps")]
-    # ret = [[[[expand("{output_dir}/heatmap_plot/"\               
-    #         "adjmat=/{adjmat_string}/"\            
-    #         "parameters=/{param_string}/"\
-    #         "data=/{data_string}/"\            
-    #         "algorithm=/{alg_string}/"\                            
-    #         "seed={seed}/"
-    #         "heatmap_plot.eps",
-    #         output_dir="results",
-    #         alg_string=json_string[alg_conf["id"]],
-    #         **alg_conf,
-    #         seed=seed,
-    #         adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
-    #         param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-    #         data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-    #         for seed in get_seed_range(sim_setup["seed_range"])]
-    #         for sim_setup in config["benchmark_setup"]["data"]]
-    #         for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]]
-    #         for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
 rule mcmc_traj_plot:

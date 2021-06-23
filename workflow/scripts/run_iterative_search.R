@@ -9,7 +9,7 @@ seed <- snakemake@wildcards[["replicate"]]
 map <- snakemake@wildcards[["MAP"]]
 
 
-data <- read.csv(filename_data, check.names=FALSE)
+data <- read.csv(filename_data, check.names = FALSE)
 
 # Iterative search
 
@@ -43,18 +43,18 @@ if (snakemake@wildcards[["am"]] != "None") {
   am <- as.numeric(snakemake@wildcards[["am"]])
 }
 
-if(snakemake@wildcards[["scoretype"]] == "bdecat"){
+if (snakemake@wildcards[["scoretype"]] == "bdecat") {
   # if discrete data
-    data <- data[-1,] # Remove range header
-    myscore <- scoreparameters("bdecat", data, bdecatpar = list(chi = chi, edgepf = edgepf))
-} 
-if(snakemake@wildcards[["scoretype"]] == "bde"){
+  data <- data[-1,] # Remove range header
+  myscore <- scoreparameters("bdecat", data, bdecatpar = list(chi = chi, edgepf = edgepf))
+}
+if (snakemake@wildcards[["scoretype"]] == "bde") {
   # if discrete data
-    data <- data[-1,] # Remove range header
-    myscore <- scoreparameters("bde", data, bdepar = list(chi = chi,edgepf = edgepf))
-} 
-if(snakemake@wildcards[["scoretype"]] == "bge"){
-    myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
+  data <- data[-1,] # Remove range header
+  myscore <- scoreparameters("bde", data, bdepar = list(chi = chi, edgepf = edgepf))
+}
+if (snakemake@wildcards[["scoretype"]] == "bge") {
+  myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
 
 start <- proc.time()[1]
@@ -66,12 +66,12 @@ itsearch_res <- iterativeMCMC(
                                 posterior = posterior,
                                 scoreout = TRUE,
                                 plus1it = plus1it,
-                                hardlimit=as.integer(snakemake@wildcards[["hardlimit"]]),
-                                softlimit=as.integer(snakemake@wildcards[["softlimit"]]),
-                                alpha=as.numeric(snakemake@wildcards[["alpha"]]),
-                                gamma=as.numeric(snakemake@wildcards[["gamma"]]),
-                                cpdag=as.logical(snakemake@wildcards[["cpdag"]]),
-                                mergetype=snakemake@wildcards[["mergetype"]]
+                                hardlimit = as.integer(snakemake@wildcards[["hardlimit"]]),
+                                softlimit = as.integer(snakemake@wildcards[["softlimit"]]),
+                                alpha = as.numeric(snakemake@wildcards[["alpha"]]),
+                                gamma = as.numeric(snakemake@wildcards[["gamma"]]),
+                                cpdag = as.logical(snakemake@wildcards[["cpdag"]]),
+                                mergetype = snakemake@wildcards[["mergetype"]]
                                 ) # 1 and loop
 # How to get number of iterations (it)?
 # output a csv file with "additional statistics" eg
@@ -79,10 +79,10 @@ totaltime <- proc.time()[1] - start
 
 adjmat <- NULL
 
-if (snakemake@wildcards[["estimate"]] == "map"){
+if (snakemake@wildcards[["estimate"]] == "map") {
   adjmat <- itsearch_res$DAG
 }
-if (snakemake@wildcards[["estimate"]] == "endspace"){
+if (snakemake@wildcards[["estimate"]] == "endspace") {
   adjmat <- itsearch_res$endspace # this is the space, not the estimate
 }
 

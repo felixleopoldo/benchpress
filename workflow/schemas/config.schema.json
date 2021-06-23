@@ -23,10 +23,8 @@
                     "properties": {
                         "roc": {
                             "title": "roc",
-                            "description": "Algorithm id's for ROC evaluation.",
-                            "type": "array",
+                            "description": "Algorithm id's for ROC evaluation."
 
-                            "uniqueItems": true
                         }
                     },
                     "required": [
@@ -500,8 +498,8 @@
             "description": "ROC item",
             "type": "object",
             "properties": {
-                "algorithm_id": {
-                    "type": "string"
+                "is": {
+                    "list": "string"
                 },
                 "curve_variable": {
                     "title": "Curve variable",

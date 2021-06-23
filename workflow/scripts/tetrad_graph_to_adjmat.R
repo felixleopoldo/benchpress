@@ -12,7 +12,7 @@ fges_result_to_matrix <- function(graph) {
     nodes <- c(nodes, node$name)
   }
   p <- length(nodes)
-  m = matrix(0, p, p)
+  m <- matrix(0, p, p)
 
   for (e in graph$edgesSet) {
     node1 <- e$node1$name
@@ -30,7 +30,7 @@ fges_result_to_matrix <- function(graph) {
     }
 
   }
-  colnames(m) <- nodes 
+  colnames(m) <- nodes
   return(m)
 }
 graph <- fromJSON(file = argv$jsongraph)

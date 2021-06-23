@@ -17,16 +17,16 @@ bn <- readRDS(filename_bn)
 samples <- argv$samples
 
 set.seed(seed)
-data <- rbn(bn, n=samples)
-data <- data.matrix(data)-1 # Since starting from 1 otherwise
+data <- rbn(bn, n = samples)
+data <- data.matrix(data) - 1 # Since starting from 1 otherwise
 
 # Range headers if discrete nodes
-if("bn.fit.dnet" %in% class(bn)){
-    header <- c()
-    for (i in seq(length(nodes(bn)))) {
-        header[i] <- dim(bn[[i]][["prob"]])[1]
-    }
-    data <- data.frame(rbind(header, data))
+if ("bn.fit.dnet" %in% class(bn)) {
+  header <- c()
+  for (i in seq(length(nodes(bn)))) {
+    header[i] <- dim(bn[[i]][["prob"]])[1]
+  }
+  data <- data.frame(rbind(header, data))
 }
 
-write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names=TRUE, sep=",")
+write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")
