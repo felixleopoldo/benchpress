@@ -154,9 +154,9 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
-    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["DAGavparents"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    # elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
+    #     adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
+    #     return expand(pattern_strings["DAGavparents"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id is None:
         return None
@@ -192,13 +192,20 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return None
 
 def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
-
-    # TODO: extend to support directories
     if Path("resources/data/mydatasets/"+data_id).is_file():
         return "fixed" + \
             "/filename="+data_id + \
             "/n="+str(None) + \ 
             "/seed="+str(seed) 
+
+    elif Path("resources/data/mydatasets/"+data_id).exists():        
+        paths = Path("resources/data/mydatasets/").glob(data_id+'/*.csv')
+        files = [x.name for x in paths if x.is_file()]
+
+        return ["fixed" + \
+                "/filename="+data_id + "/"+ f + \
+                "/n="+str(None) + \ 
+                "/seed="+str(seed) for f in files]
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
         # Find the data entry from the resources

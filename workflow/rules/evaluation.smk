@@ -396,7 +396,7 @@ rule mcmc_autocorr_plots:
         touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done")
     run:
         for i,f in enumerate(input.plots):
-            shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i) +".eps")
+            shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".eps")
 
 rule adjmat_plots:
     input:        
@@ -406,7 +406,7 @@ rule adjmat_plots:
         touch("results/output/adjmat_plots/adjmat_plots.done")
     run:
         for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/adjmat_plots/adjmat_" +str(i) +".eps")
+            shell("cp "+f+" results/output/adjmat_plots/adjmat_" +str(i+1) +".eps")
 
 rule adjmat_true_plots:
     input:
@@ -416,7 +416,7 @@ rule adjmat_true_plots:
         touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
     run:
         for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/adjmat_true_plots/adjmat_true_" +str(i) +".eps")
+            shell("cp "+f+" results/output/adjmat_true_plots/adjmat_true_" +str(i+1) +".eps")
 
 rule graph_plots:
     input:
@@ -427,7 +427,7 @@ rule graph_plots:
     run:
         
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_plots/graph_" +str(i) +".ps")
+            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".ps")
 
 rule graph_true_plots:
     input:
@@ -437,5 +437,5 @@ rule graph_true_plots:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i) +".eps")
+            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".eps")
 
