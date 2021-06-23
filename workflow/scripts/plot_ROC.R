@@ -107,16 +107,17 @@ theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["roc_skel"]])
 
-ggplot() + geom_errorbar(data = toplot,
+ggplot() + 
+geom_errorbar(data = toplot,
               aes(x = FNR_skel_mean,
                   ymin = FPR_skel_q1, 
                   ymax = FPR_skel_q3, 
                   col = id), 
               width = 0.01) +
-geom_path(data = toplot,
-          aes(y = FPRp_skel_mean, 
-              x = FNR_skel_mean,
-              col = id)) +
+ geom_path(data = toplot,
+           aes(y = FPRp_skel_mean, 
+               x = FNR_skel_mean,
+               col = id),check_overlap = TRUE) +
 geom_point(data = toplot,
            aes(y = FPRp_skel_mean, 
                x = FNR_skel_mean,               
@@ -127,11 +128,11 @@ geom_point(data = toplot,
     if(param_annot) {
         geom_text(data = toplot,
         aes(x = FNR_skel_mean, 
-        y = FPR_skel_q3,               
-        label=curve_vals, col=id, shape=id),
-        check_overlap = TRUE
-#        ,nudge_x=-0.02,
-#        nudge_y=0.01
+        y = FPRp_skel_mean,               
+        label=curve_vals, col=id, shape=id)
+        #,check_overlap = TRUE
+        #,nudge_x=-0.02,
+        #nudge_y=0.01
         )} 
 }+
 facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
@@ -141,3 +142,41 @@ ggtitle("Mean FNR/FPRp (undirected skeleton)") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file=snakemake@output[["fnr_fprp_skel"]])
+
+
+# ggplot() + geom_errorbar(data = toplot,
+#               aes(x = log(FNR_skel_mean),
+#                   ymin = log(FPR_skel_q1), 
+#                   ymax = log(FPR_skel_q3), 
+#                   col = id), 
+#               width = 0.01) +
+# geom_path(data = toplot,
+#           aes(y = log(FPRp_skel_mean), 
+#               x = log(FNR_skel_mean),
+#               col = id)) +
+# geom_point(data = toplot,
+#            aes(y = log(FPRp_skel_mean), 
+#                x = log(FNR_skel_mean),               
+#                col = id, 
+#                shape = id), 
+#                size = 1) +
+# {
+#     if(param_annot) {
+#         geom_text(data = toplot,
+#         aes(x = log(FNR_skel_mean), 
+#         y = log(FPR_skel_q3),               
+#         label=curve_vals, col=id, shape=id),
+#         check_overlap = TRUE
+# #        ,nudge_x=-0.02,
+# #        nudge_y=0.01
+#         )} 
+# }+
+# facet_wrap(. ~ adjmat+bn+data+N, nrow = 2) +
+# ylab("log FPR") +
+# xlab("log FNR") +
+# ggtitle("Mean log FNR/FPRp (undirected skeleton)") +
+# theme_bw() +
+# theme(plot.title = element_text(hjust = 0.5)) +
+# ggsave(file=snakemake@output[["log_fnr_fprp_skel"]])
+
+# Add support in config for path, errorbar, text, point

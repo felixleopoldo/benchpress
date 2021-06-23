@@ -6,7 +6,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from pandas.plotting import autocorrelation_plot
 import seaborn as sns
-from trilearn.graph import trajectory
+#from trilearn.graph import trajectory
 import sys
 
 sns.set_style("whitegrid")
@@ -16,7 +16,8 @@ def edges_str_to_list(str, edgesymb="-"):
     edges = [(edge.split(edgesymb)[0], edge.split(edgesymb)[1]) for edge in edges_str if len(edge.split(edgesymb))==2]
     return edges
 
-df = pd.read_csv(sys.argv[1], sep=",")
+
+df = pd.read_csv(snakemake.input["traj"], sep=",")
 
 edges = edges_str_to_list(df["added"][0], edgesymb="->")
 
@@ -44,20 +45,25 @@ df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
 
 df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
 
-df_noburnin = df2[int(T*0.3):]
+df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
 df_noburnin["size"].plot()
 
-plt.savefig(sys.argv[2])
+plt.title("Graph: "+snakemake.params["adjmat_string"] +"\nParameters: " +snakemake.params["param_string"] +"\nData: " +snakemake.params["data_string"], fontsize=6, ha="center")
+plt.ylabel(
+    #"Graph: \n"+snakemake.params["adjmat_string"].replace("/","\n") + "\n\n" +
+    #"Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
+    #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
+    "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + "\n\nburn_in="+snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
+
+plt.tight_layout()
+plt.savefig(snakemake.output["plot"])
 
 traj_length = len(df_noburnin)
-
-#print(sys.argv[1])
-#print("Traj length " +str(traj_length))
 
 B = 10000
 sizes = np.zeros(B)
 for i in range(B):
-    tmpdf = df_noburnin.sample(n=T/4, replace=True)["size"]
+    tmpdf = df_noburnin.sample(n=int(T/4), replace=True)["size"]
     sizes[i] = tmpdf.mean()
 
 

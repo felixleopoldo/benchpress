@@ -13,43 +13,24 @@ pattern_strings = {}
 
 # structure learning algorithms
 pattern_strings["gt13_multipair"] = "gt13_multipair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gt13_multipair"])
-
 pattern_strings["gg99_singlepair"] = "gg99_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair"])
-
 pattern_strings["gg99_singlepair_fortran"] = "gg99_singlepair_fortran/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"])
-
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
-
 pattern_strings["rblip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip"])
-
 pattern_strings["pcalg_pc"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
-
 pattern_strings["bnlearn_mmhc"] = "mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
-
 pattern_strings["bnlearn_interiamb"] = "bnlearn_interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_interiamb"])
-
 pattern_strings["bnlearn_gs"] = "gs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_gs"])
-
 pattern_strings["bnlearn_tabu"] = "tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"])
-
 pattern_strings["bnlearn_hc"] = "hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hc"])
-
 pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gobnilp"])
-
 pattern_strings["bidag_itsearch"] = "itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_itsearch"])
-
 pattern_strings["bidag_order_mcmc"] = "order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"])
-
 pattern_strings["trilearn_pgibbs"] = "trilearn/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"])
-
 pattern_strings["tetrad_fges"] = "tetrad_fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fges"])
-
 pattern_strings["tetrad_fci"] = "tetrad_fci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fci"])
-
 pattern_strings["tetrad_gfci"] = "tetrad_gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_gfci"])
-
 pattern_strings["tetrad_rfci"] = "tetrad_rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_rfci"])
-
 pattern_strings["sklearn_glasso"] = "sklearn_glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["sklearn_glasso"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
@@ -75,3 +56,7 @@ pattern_strings["trilearn_hyper-dir"] = "trilearn_hyper-dir/" + dict_to_path(con
 pattern_strings["trilearn_intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["trilearn_intra-class"])
 pattern_strings["trilearn_g_inv_wishart"] = "trilearn_g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["trilearn_g_inv_wishart"])
 
+# Evaluation strings
+pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
+pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"])
+pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])

@@ -145,6 +145,10 @@ def gen_model_strings_from_conf(models, seed, setup):
     """
     pass
 
+def gen_evaluation_string_from_conf(method, alg_id):
+    eval_dict = next(item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
+    return expand(pattern_strings[method], **eval_dict)
+
 def gen_adjmat_string_from_conf(adjmat_id, seed):
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
@@ -209,6 +213,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
 
 def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
 
+    # TODO: extend to support directories
     if Path("resources/data/mydatasets/"+data_id).is_file():
         return "fixed" + \
             "/filename="+data_id + \
@@ -245,12 +250,20 @@ def active_algorithm_files(wildcards):
 def active_algorithms(eval_method="roc"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
+    
     algs = []
-    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
-    for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-        for alg_conf_id in roc_alg_ids:        
-            if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                    algs.append( alg )
+    if eval_method == "mcmc_traj_plots" or eval_method == "mcmc_autocorr_plots" or eval_method == "mcmc_heatmaps":
+        roc_alg_ids = [roc_dict["id"] for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
+            for alg_conf_id in roc_alg_ids:        
+                if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
+                        algs.append( alg )
+    else:
+        roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
+            for alg_conf_id in roc_alg_ids:        
+                if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
+                        algs.append( alg )
 
     return algs
 
