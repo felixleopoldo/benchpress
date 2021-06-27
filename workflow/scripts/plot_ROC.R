@@ -187,16 +187,16 @@ theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file = snakemake@output[["fnr_fprp_skel"]])
 
-ggplot() +
-geom_col(data = toplot,
-    aes(x=id + curve_vals,y=SHD_pattern_mean)) + 
-ggtitle("Mean SHD (pattern graph)") +
-facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
-ylab("Alg") +
-xlab("SHD") +
-theme_bw() +
-theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file = snakemake@output[["shd_pattern"]])
+# ggplot() +
+# geom_col(data = toplot,
+#     aes(x=id + curve_vals,y=SHD_pattern_mean)) + 
+# ggtitle("Mean SHD (pattern graph)") +
+# facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
+# ylab("Alg") +
+# xlab("SHD") +
+# theme_bw() +
+# theme(plot.title = element_text(hjust = 0.5)) +
+# ggsave(file = snakemake@output[["shd_pattern"]])
 
 # ggplot() + geom_errorbar(data = toplot,
 #               aes(x = log(FNR_skel_mean),
