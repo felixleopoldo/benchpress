@@ -49,7 +49,7 @@ ggplot() + {
           )
   }
 } +
-facet_wrap(. ~ adjmat + bn + data + N, nrow = 2) +
+facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (pattern graph)") +
@@ -92,7 +92,7 @@ ggplot() + {
           )
   }
  } +
-facet_wrap(. ~ adjmat + bn + data + N, nrow = 2) +
+facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (undirected skeleton)") +
@@ -136,7 +136,7 @@ ggplot() + {
           )
   }
 } +
-facet_wrap(. ~ adjmat + bn + data + N, nrow = 2) +
+facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
 xlab("FPRp") +
 ylab("FNR") +
 ggtitle("Mean FPRp/FNR (undirected skeleton)") +
@@ -179,7 +179,7 @@ ggplot() + {
         )
   }
 } +
-facet_wrap(. ~ adjmat + bn + data + N, nrow = 2) +
+facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
 ylab("FPR") +
 xlab("FNR") +
 ggtitle("Mean FNR/FPRp (undirected skeleton)") +
@@ -187,6 +187,16 @@ theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file = snakemake@output[["fnr_fprp_skel"]])
 
+ggplot() +
+geom_col(data = toplot,
+    aes(x=id + curve_vals,y=SHD_pattern_mean)) + 
+ggtitle("Mean SHD (pattern graph)") +
+facet_wrap(. ~ adjmat + bn + data, nrow = 2) +
+ylab("Alg") +
+xlab("SHD") +
+theme_bw() +
+theme(plot.title = element_text(hjust = 0.5)) +
+ggsave(file = snakemake@output[["shd_pattern"]])
 
 # ggplot() + geom_errorbar(data = toplot,
 #               aes(x = log(FNR_skel_mean),
