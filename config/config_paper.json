@@ -7,13 +7,13 @@
                 "data_id": "example1",
                 "seed_range": [
                     1,
-                    50
+                    1
                     ]
                 }
             ],
         "evaluation": {
             "roc": {
-                "filename_prefix":"",
+                "filename_prefix":"section6.1/",
                 "point":true,
                 "errorbar":true,
                 "path":true,
@@ -25,13 +25,13 @@
                     "mmhc-bde-mi",
                     "hc-bde",
                     "gs-mi",
-                    "bnlearn_interiamb-mi",
-                    "tetrad_fci-chi-square",
-                    "tetrad_rfci-chi-square",
-                    "tetrad_gfci-bdeu-chi-square",
-                    "tetrad_fges-bdeu",
+                    "interiamb-mi",
+                    "fci-chi-square",
+                    "rfci-chi-square",
+                    "gfci-bdeu-chi-square",
+                    "fges-bdeu",
                     "itsearch_sample-bde",
-                    "pcalg-binCItest",
+                    "pc-binCItest",
                     "omcmc_itsample-bde"
                 ]
             },
@@ -393,7 +393,7 @@
             ],
             "tetrad_fges": [
                 {
-                    "id": "tetrad_fges-sem-bic",
+                    "id": "fges-sem-bic",
                     "faithfulnessAssumed": true,
                     "score": "sem-bic",
                     "datatype": "continuous",
@@ -406,7 +406,7 @@
                     ]
                 },
                 {
-                    "id": "tetrad_fges-bdeu",
+                    "id": "fges-bdeu",
                     "faithfulnessAssumed": true,
                     "score": "bdeu-score",
                     "datatype": "discrete",
@@ -420,7 +420,7 @@
             ],
             "tetrad_fci": [
                 {
-                    "id": "tetrad_fci-fisher-z",
+                    "id": "fci-fisher-z",
                     "alpha": [
                         0.001,
                         0.01,
@@ -430,7 +430,7 @@
                     "datatype": "continuous"
                 },
                 {
-                    "id": "tetrad_fci-chi-square",
+                    "id": "fci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -442,7 +442,7 @@
             ],
             "tetrad_gfci": [
                 {
-                    "id": "tetrad_gfci-bdeu-chi-square",
+                    "id": "gfci-bdeu-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -456,7 +456,7 @@
                     "structurePrior": 1
                 },
                 {
-                    "id": "tetrad_gfci-sem-bic-fisher-z",
+                    "id": "gfci-sem-bic-fisher-z",
                     "alpha": 0.05,
                     "score": "sem-bic",
                     "test": "fisher-z-test",
@@ -473,7 +473,7 @@
             ],
             "tetrad_rfci": [
                 {
-                    "id": "tetrad_rfci-fisher-z",
+                    "id": "rfci-fisher-z",
                     "alpha": [
                         0.001,
                         0.01,
@@ -483,7 +483,7 @@
                     "datatype": "continuous"
                 },
                 {
-                    "id": "tetrad_rfci-chi-square",
+                    "id": "rfci-chi-square",
                     "alpha": [
                         0.01,
                         0.05,
@@ -495,7 +495,7 @@
             ],
             "pcalg_pc": [
                 {
-                    "id": "pcalg-binCItest",
+                    "id": "pc-binCItest",
                     "alpha": [
                         0.01,
                         0.05,
@@ -513,7 +513,7 @@
                     "indepTest": "binCItest"
                 },
                 {
-                    "id": "pcalg-gaussCItest",
+                    "id": "pc-gaussCItest",
                     "alpha": [
                         0.001,
                         0.01,
@@ -603,7 +603,7 @@
             ],
             "bnlearn_interiamb": [
                 {
-                    "id": "bnlearn_interiamb-zf",
+                    "id": "interiamb-zf",
                     "alpha": [
                         0.01,
                         0.05
@@ -615,7 +615,7 @@
                     "undirected": false
                 },
                 {
-                    "id": "bnlearn_interiamb-mi",
+                    "id": "interiamb-mi",
                     "alpha": [
                         0.01,
                         0.05,
