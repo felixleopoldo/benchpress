@@ -67,37 +67,52 @@ def edges_str_to_list(str, edgesymb="-"):
 
 df = pd.read_csv(snakemake.input["traj"], sep=",")
 
-edges = edges_str_to_list(df["added"][0], edgesymb="->")
-if len(edges) != 0:
-    g = nx.DiGraph()
-    edgesymb="->"
-else:
-    edgesymb="-"
-    g = nx.Graph()    
+if snakemake.wildcards["functional"] == "size":
 
-size = []
+    edges = edges_str_to_list(df["added"][0], edgesymb="->")
+    if len(edges) != 0:
+        g = nx.DiGraph()
+        edgesymb="->"
+    else:
+        edgesymb="-"
+        g = nx.Graph()    
 
-for index, row in df.iterrows():
-    added = edges_str_to_list(row["added"], edgesymb)
-    removed = edges_str_to_list(row["removed"], edgesymb)
-    g.add_edges_from(added)
-    g.remove_edges_from(removed)
-    size.append(g.size())
+    size = []
 
-df["size"] = size
-T= df["index"].iloc[-1] # approximate length
+    for index, row in df.iterrows():
+        added = edges_str_to_list(row["added"], edgesymb)
+        removed = edges_str_to_list(row["removed"], edgesymb)
+        g.add_edges_from(added)
+        g.remove_edges_from(removed)
+        size.append(g.size())
 
-newindex = pd.Series(range(T))
-df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
+    df["size"] = size
+    T= df["index"].iloc[-1] # approximate length
 
-df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
+    newindex = pd.Series(range(T))
+    df2 = df[["index","size"]][2:].set_index("index") # removes the two first rows.
+
+    df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
 
 
-if snakemake.wildcards["thinning"] != "None":
-    dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):].iloc[::int(snakemake.wildcards["thinning"])]
-else:
-    dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):]
-#pd.plotting.autocorrelation_plot(dfplot.iloc[::int(snakemake.wildcards["thinning"])]) 
+    if snakemake.wildcards["thinning"] != "None":
+        dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):].iloc[::int(snakemake.wildcards["thinning"])]
+    else:
+        dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):]
+    #pd.plotting.autocorrelation_plot(dfplot.iloc[::int(snakemake.wildcards["thinning"])]) 
+
+elif snakemake.wildcards["functional"] == "score":
+    T = df["index"].iloc[-1] # approximate length
+
+    newindex = pd.Series(range(T))
+
+    df2 = df[["index","score"]][2:].set_index("index") # removes the two first rows.
+    df2 = df2.reindex(newindex).reset_index().reindex(columns=df2.columns).fillna(method="ffill")
+
+    if snakemake.wildcards["thinning"] != "None":
+        dfplot = df2[int(snakemake.wildcards["burn_in"]):][::int(snakemake.wildcards["thinning"])]
+    else:
+        dfplot = df2[int(snakemake.wildcards["burn_in"]):]
 
 if snakemake.wildcards["lags"] != "None":
     sm.graphics.tsa.plot_acf(dfplot, lags=int(snakemake.wildcards["lags"]))
@@ -115,13 +130,11 @@ else:
 #plt.acorr(dfplot.values, usevlines=True, normed=True, maxlags=nlags)
 plt.title("Graph: "+snakemake.params["adjmat_string"] +"\nParameters: " +snakemake.params["param_string"] +"\nData: " +snakemake.params["data_string"], fontsize=6, ha="center")
 plt.ylabel(
-    #"Graph: \n"+snakemake.params["adjmat_string"].replace("/","\n") + "\n\n" +
-    #"Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
-    #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
     "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + 
     "\n\nPlot:\n\nburn_in="+snakemake.wildcards["burn_in"] + 
     "\nthinning="+snakemake.wildcards["thinning"] +
-    "\nlags="+snakemake.wildcards["lags"]
+    "\nlags="+snakemake.wildcards["lags"] +
+     "\nfunctional="+snakemake.wildcards["functional"]
     , rotation="horizontal", fontsize=6, ha="right", va="center")
 
 plt.tight_layout()
