@@ -30,7 +30,6 @@ include: "rules/docker_images.smk"
 singularity:
     docker_image("benchmark")
 
-
 def get_active_rules(wildcards):
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
@@ -57,35 +56,3 @@ include: "rules/sample_parameters.smk"
 include: "rules/sample_data.smk"
 include: "rules/algorithm_rules.smk"
 include: "rules/evaluation.smk"
-
-rule heatmap_from_adjvec_trajectory:
-    input:
-        "workflow/scripts/graphtraj_est.py",
-        traj = "{output_dir}/adjvecs/{something}/seed={seed}/adjvecs.csv"
-    output:
-        heatmap = "{output_dir}/heatmap_estimate/{something}/burnin={burnin}/seed={seed}/heatmap.csv" 
-    params:
-        estimator="heatmap",
-        burnin="{burnin}",
-        graph_type="dag"
-    singularity:
-        docker_image("networkx")
-    script: 
-        "scripts/graphtraj_est.py"    
-
-rule adjmat_from_heatmap:
-    input:
-        heatmap="{output_dir}/heatmap_estimate/"\ 
-                "{something}/"\
-                "burnin={burnin}/"\
-                "{somethingelse}/" \
-                "heatmap.csv"
-    output:
-        adjmat_est="{output_dir}/adjmat_estimate/"\
-                    "{something}/" + pattern_strings["mcmc_est"] + "/{somethingelse}/"\
-                    "adjmat.csv"
-    shell:
-        "Rscript workflow/scripts/run_threshold_heatmap.R " \
-        "--heatmap {input.heatmap} " \
-        "--filename {output.adjmat_est} " \
-        "--threshold {wildcards.threshold}"

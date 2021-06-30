@@ -1799,6 +1799,9 @@
                 },
                 "burnin": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
                 }
             },
             "additionalProperties": false,

@@ -1,7 +1,7 @@
 library(RBGL)
 library(BiDAG)
 
-source("resources/code_for_binary_simulations/df_fns.R")
+#source("resources/code_for_binary_simulations/df_fns.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]

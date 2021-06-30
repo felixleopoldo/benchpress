@@ -1,26 +1,50 @@
 
+def summarise_alg_input_adjmat_est_path(algorithm):
+    return "{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat}/"\
+            "parameters=/{bn}/"\
+            "data=/{data}/"\
+            "algorithm=/" + pattern_strings[algorithm] + "/" + \
+            "seed={replicate}/" \
+            "adjmat.csv"
+
 def adjmat_estimate_path_mcmc(algorithm):
     ret = "{output_dir}/adjmat_estimate/"\
                         "adjmat=/{adjmat}/"\
                         "parameters=/{bn}/"\
-                        "data=/{data}/"\
+                        "data=/{data}/"\ 
                         "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/" \
                         "seed={replicate}/" \
                         "adjmat.csv"
     return ret
 
-def alg_output_adjvecs_path(algorithm):
-    return "{output_dir}/adjvecs/{data}/"\
-                "algorithm=/" + pattern_strings[algorithm] + "/"  + \
-                "seed={replicate}/" \
-                "adjvecs.json"
-
-def alg_output_seqgraph_path(algorithm):
-    return "{output_dir}/adjvecs/{data}/"\
+def alg_output_seqgraph_path_fine_match(algorithm):
+    return "{output_dir}/adjvecs/"\
+                "adjmat=/{adjmat}/"\
+                "parameters=/{bn}/"\
+                "data=/{data}/"\ 
                 "algorithm=/" + pattern_strings[algorithm] + "/"  + \
                 "seed={replicate}/" \
                 "adjvecs.csv"
 
+
+def alg_output_seqgraph_path(algorithm):
+    return "{output_dir}/adjvecs/{data}/"\
+               "algorithm=/" + pattern_strings[algorithm] + "/"  + \
+               "seed={replicate}/" \
+               "adjvecs.csv"
+ 
+def alg_output_adjmat_path(algorithm):
+    return "{output_dir}/adjmat_estimate/{data}/"\
+                "algorithm=/" + pattern_strings[algorithm] + "/" +\
+                "seed={replicate}/" \
+                "adjmat.csv"
+
+def alg_output_time_path(algorithm):
+    return "{output_dir}/time/{data}/"\
+                "algorithm=/" + pattern_strings[algorithm] + "/" +\
+                "seed={replicate}/" \
+                "time.txt"
 def alg_input_data():
     return "{output_dir}/data/{data}/seed={replicate}.csv"
 
@@ -60,7 +84,7 @@ def result_path_mcmc(algorithm):
             "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
             "adjmat=/{adjmat}/"\
             "parameters=/{bn}/"\
-            "data=/{data}/"\   
+            "data=/{data}/"\           
             "seed={replicate}/" \
             "id={id}/" \             
             "result.csv"
@@ -103,7 +127,7 @@ def join_string_sampled_model(algorithm, mode="result"):
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids],
+            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids]
     return ret
 
 def join_summaries_shell(algorithm):
@@ -260,17 +284,7 @@ def active_algorithms(eval_method="roc"):
 
     return algs
 
-def alg_output_adjmat_path(algorithm):
-    return "{output_dir}/adjmat_estimate/{data}/"\
-                "algorithm=/" + pattern_strings[algorithm] + "/" +\
-                "seed={replicate}/" \
-                "adjmat.csv"
 
-def alg_output_time_path(algorithm):
-    return "{output_dir}/time/{data}/"\
-                "algorithm=/" + pattern_strings[algorithm] + "/" +\
-                "seed={replicate}/" \
-                "time.txt"
 
 def summarise_alg_input_data_path():
     return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
@@ -278,12 +292,4 @@ def summarise_alg_input_data_path():
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv" 
 
-def summarise_alg_input_adjmat_est_path(algorithm):
-    return "{output_dir}/adjmat_estimate/"\
-            "adjmat=/{adjmat}/"\
-            "parameters=/{bn}/"\
-            "data=/{data}/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + \
-            "seed={replicate}/" \
-            "adjmat.csv"
 

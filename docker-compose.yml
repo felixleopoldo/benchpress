@@ -17,7 +17,7 @@ services:
     image: onceltuca/jmoss20notears:1.4
     command: tail -f /dev/null
   benchmark:
-    image: onceltuca/benchmark:1.0.7
+    image: onceltuca/benchmark:1.0.8
     working_dir: /myappdir
     command: jupyter lab --port 8080 --ip 0.0.0.0 --allow-root --no-browser
     volumes: 
@@ -32,4 +32,4 @@ services:
       DISPLAY: $DISPLAY
       MPLBACKEND: Agg
   bidag:
-    image: onceltuca/bidag:2.0.0
+    image: onceltuca/bidag:2.0.2

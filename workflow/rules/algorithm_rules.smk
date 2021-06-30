@@ -306,6 +306,8 @@ rule summarise_mmhc:
         time = summarise_alg_input_time_path("bnlearn_mmhc")
     output:
         res = summarise_alg_output_res_path("bnlearn_mmhc")
+    #singularity:
+    #    docker_image("bidag")
     shell:
        summarise_alg_shell("bnlearn_mmhc")
 
@@ -484,13 +486,29 @@ rule order_mcmc:
         "workflow/scripts/run_order_mcmc.R",
         data = alg_input_data(),
         startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
-    output:
+    output: # data seems to be matched wrongly
         seqgraph = alg_output_seqgraph_path("bidag_order_mcmc"),
         time = alg_output_time_path("bidag_order_mcmc")
     singularity:
         docker_image("bidag")
     script:
         "../scripts/run_order_mcmc.R"
+
+rule order_mcmc_est:
+    input:
+        "workflow/scripts/graphtraj_est.py",
+        traj = alg_output_seqgraph_path_fine_match("bidag_order_mcmc")
+    output:
+        adjmat = adjmat_estimate_path_mcmc("bidag_order_mcmc")
+    params:
+        graph_type="dag",
+        estimator="threshold",
+        threshold="{threshold}",
+        burnin="{burnin}"
+    singularity:
+        docker_image("networkx")
+    script:
+        "../scripts/graphtraj_est.py"
 
 rule summarise_order_mcmc:
     input:
@@ -500,10 +518,12 @@ rule summarise_order_mcmc:
         adjmat_est = adjmat_estimate_path_mcmc("bidag_order_mcmc"),
         time = time_path("bidag_order_mcmc")
     output:
-        res = result_path_mcmc("bidag_order_mcmc")
+        res = result_path_mcmc("bidag_order_mcmc") # {data} is used for the data module here. not as the whole datamodel
     shell: 
         summarise_alg_shell("bidag_order_mcmc")
 
+""" This should be OK
+"""
 rule join_summaries_order_mcmc:
     input: 
         "workflow/scripts/run_summarise.R",
@@ -530,7 +550,7 @@ rule trilearn_est:
        "workflow/scripts/graphtraj_est.py",
         traj = alg_output_seqgraph_path("trilearn_pgibbs"),
     output:
-        adjmat = alg_output_adjmat_path("trilearn_pgibbs")
+        adjmat = alg_output_adjmat_path("trilearn_pgibbs") #here is the difference from order_mcmc. matching diffferently.
     params:
         graph_type="chordal",
         estimator="map"
@@ -538,6 +558,7 @@ rule trilearn_est:
         docker_image("networkx")
     script:
         "../scripts/graphtraj_est.py"
+
 rule summarise_trilearn:
     input:
         "workflow/scripts/run_summarise.R",

@@ -40,8 +40,7 @@ dummyEdges <- function(labels) {
 filename <- file.path(snakemake@output[["seqgraph"]])
 filename_data <- snakemake@input[["data"]]
 
-seed <- snakemake@wildcards[["replicate"]]
-
+seed <- as.integer(snakemake@wildcards[["mcmc_seed"]])
 
 data <- read.csv(filename_data, check.names = FALSE)
 

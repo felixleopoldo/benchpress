@@ -71,3 +71,24 @@ for items in order_mcmc_list:
 
 json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                     for val in order_mcmc_list } )
+
+# Another dict for the non mcmc chains? 
+# Since we dont want the  mcmc_est when we call the trajectory directly.
+json_string_mcmc_noest = {}
+
+json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"], **val,) 
+                    for val in order_mcmc_list } )
+
+json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
+
+json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gt13_multipair"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gt13_multipair"]})
+
+json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
+
+json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair_fortran"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"]})
+#print(json_string_mcmc_noest)
+#print(json_string)

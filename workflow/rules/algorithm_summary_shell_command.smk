@@ -511,5 +511,6 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname verbose     --colval false "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname threshold   --colval {wildcards.threshold} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname startspace_algorithm   --colval {wildcards.startspace_algorithm} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
 

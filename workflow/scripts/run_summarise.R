@@ -1,7 +1,7 @@
 library(argparser)
 library(BiDAG)
 library(pcalg)
-library(bnlearn)
+#library(bnlearn)
 
 
 ### This function extracts directed edges from an EG
@@ -117,19 +117,19 @@ p <- add_argument(p,
 argv <- parse_args(p)
 
 
-data <- read.csv(argv$filename_data)
-if (argv$range_header_data == 1) {
-  data <- data[-1,]
-}
+# data <- read.csv(argv$filename_data)
+# if (argv$range_header_data == 1) {
+#   data <- data[-1,]
+# }
 
 true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
 
-estimated_adjmat <- NULL
-if (argv$adjmat_header == 1) {
-  estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
-} else {
-  estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
-}
+#estimated_adjmat <- NULL
+#if (argv$adjmat_header == 1) {
+estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+#} else {
+#  estimated_adjmat <- as.matrix(read.table(argv$adjmat_est, header = FALSE))
+#}
 
 skel_true <- (true_adjmat | t(true_adjmat)) * 1
 skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
@@ -145,10 +145,32 @@ n_nonedges <- sum(1 - skel_true) / 2
 compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
 
+if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
+  true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
+  true_cpdag <- dag2cpdag(true_graphnel)
+  estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
+  estimated_cpdag <- dag2cpdag(estimated_graphnel)
+  print("Its a dag")
+  compres_cpdag <- compareDAGs(estimated_cpdag, true_cpdag)
+  print(compres_cpdag)
+} else if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {
+
+  print("Its a cpdag")
+  compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat)
+  print(compres_cpdag)
+  #   TP_cpdag <- sum(skel_true * skel_est) / 2
+  #   TN_cpdag <- sum((1 - skel_true) * (1 - skel_est)) / 2
+  #   FP_cpdag <- sum((1 - skel_true) * skel_est) / 2
+  #   FN_cpdag <- sum(skel_true * (1 - skel_est)) / 2
+  #   n_edges_cpdag <- sum(skel_true) / 2
+  #   n_nonedges_cpdag <- sum(1 - skel_true) / 2
+}
+
+
 df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  FPRn_pattern = compres["FPR_P"],
-                 logscore = 100,
                  SHD_pattern = compres["SHD"],
+                 logscore = 100,
                  FPR_skel = FP / n_edges,
                  FNR_skel = FN / n_nonedges,
                  TP_skel = TP,
@@ -157,6 +179,8 @@ df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                  TN_skel = TN,
                  true_n_edges_skel = n_edges,
                  true_n_non_edges_skel = n_nonedges
+
+#                 ,SHD_cpdag = compres_cpdag["SHD"]
                  )
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
