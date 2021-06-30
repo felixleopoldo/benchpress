@@ -1,7 +1,7 @@
 library(argparser)
 library(RBGL)
 library(r.blip)
-source("resources/code_for_binary_simulations/df_fns.R")
+
 source("resources/code_for_binary_simulations/make_var_names.R")
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 

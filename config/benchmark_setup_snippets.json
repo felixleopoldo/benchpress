@@ -75,7 +75,7 @@
         "gfci-bdeu-chi-square",
         "fges-bdeu",
         "itsearch_sample-bde",
-        "pcalg-binCItest",
+        "pc-binCItest",
         "omcmc_itsample-bde"
     ],
     "ROC_example2": [
@@ -89,7 +89,7 @@
         "itsearch_sample-bge",
         "mmhc-bge-zf",
         "omcmc_itsample-bge",
-        "pcalg-gaussCItest",
+        "pc-gaussCItest",
         "rfci-fisher-z",
         "tabu-bge"
     ],
@@ -106,7 +106,7 @@
         "gfci-bdeu-chi-square",
         "fges-bdeu",
         "itsearch_sample-bde",
-        "pcalg-binCItest",
+        "pc-binCItest",
         "omcmc_itsample-bde"
     ],
     "ROC_example4": [
@@ -120,7 +120,7 @@
         "itsearch_sample-bge",
         "mmhc-bge-zf",
         "omcmc_itsample-bge",
-        "pcalg-gaussCItest",
+        "pc-gaussCItest",
         "rfci-fisher-z",
         "tabu-bge"
     ]
