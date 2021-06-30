@@ -1080,6 +1080,7 @@
                     "iterations": null,
                     "MAP": true,
                     "cpdag": false,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.99,
                         0.95,
@@ -1109,6 +1110,7 @@
                     "iterations": null,
                     "MAP": true,
                     "cpdag": false,
+                    "mcmc_seed":1,
                     "threshold": 
                         0.5
                     ,
@@ -1129,6 +1131,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.99,
                         0.95,
@@ -1158,6 +1161,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.5
                     ],
@@ -1180,6 +1184,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.5
                     ],
@@ -1202,6 +1207,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.5
                     ],
@@ -1222,6 +1228,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.5
                     ],
@@ -1242,6 +1249,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "mcmc_seed":1,
                     "threshold": [
                         0.5
                     ],
