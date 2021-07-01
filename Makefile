@@ -8,4 +8,5 @@ docs:	docs/source
 		cd docs && make html
 
 docsjson:	workflow/schemas
-		jsonschema2md -d workflow/schemas/ -o workflow/schemas/docs/ -v 04
+		jsonschema2md -d workflow/schemas/ -o docs/source/json_schema -v 04
+

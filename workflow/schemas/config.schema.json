@@ -22,15 +22,41 @@
                     "title": "Evaluation methods",
                     "properties": {
                         "roc": {
-                            "title": "roc",
-                            "description": "Algorithm id's for ROC evaluation."
-
+                            "$ref": "#/definitions/roc"
+                        },
+                        "adjmat_true_plots": {
+                            "type": "boolean"
+                        },
+                        "graph_true_plots": {
+                            "type": "boolean"
+                        },
+                        "adjmat_plots": {
+                            "type": "array"
+                        },
+                        "graph_plots": {
+                            "type": "array"
+                        },
+                        "mcmc_traj_plots": {
+                            "$ref": "#/definitions/mcmc_traj_plots"
+                        },
+                        "mcmc_heatmaps": {
+                            "$ref": "#/definitions/mcmc_heatmaps"
+                        },
+                        "mcmc_autocorr_plots": {
+                            "$ref": "#/definitions/mcmc_autocorr_plots"
                         }
                     },
                     "required": [
-                        "roc"
+                        "roc",
+                        "adjmat_true_plots",
+                        "graph_true_plots",
+                        "adjmat_plots",
+                        "graph_plots",
+                        "mcmc_traj_plots",
+                        "mcmc_heatmaps",
+                        "mcmc_autocorr_plots"
                     ],
-                    "additionalProperties": true
+                    "additionalProperties": false
                 }
             },
             "required": [
@@ -56,7 +82,7 @@
                                 "$ref": "#/definitions/iid"
                             },
                             "uniqueItems": true
-                        }   
+                        }
                     },
                     "additionalProperties": false
                 },
@@ -106,7 +132,6 @@
                             },
                             "uniqueItems": true
                         }
-
                     },
                     "additionalProperties": true
                 },
@@ -337,8 +362,6 @@
                                 "$ref": "#/definitions/sklearn_glasso"
                             }
                         }
-
-                        
                     },
                     "additionalProperties": false
                 }
@@ -353,6 +376,96 @@
         }
     },
     "definitions": {
+        "mcmc_autocorr_plots": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "burn_in": {
+                        "$ref": "#/definitions/flexnonnegint"
+                    },
+                    "thinning": {
+                        "$ref": "#/definitions/flexnonnegintnull"
+                    },
+                    "lags": {
+                        "$ref": "#/definitions/flexnonnegintnull"
+                    },
+                    "functional": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "score",
+                                    "size"
+                                ]
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "score",
+                                        "size"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "mcmc_traj_plots": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "burn_in": {
+                        "$ref": "#/definitions/flexnonnegint"
+                    },
+                    "thinning": {
+                        "$ref": "#/definitions/flexnonnegintnull"
+                    },
+                    "functional": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "score",
+                                    "size"
+                                ]
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "score",
+                                        "size"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "mcmc_heatmaps": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "burn_in": {
+                        "$ref": "#/definitions/flexnonnegint"
+                    }
+                }
+            }
+        },
         "notears_parameters_sampling": {
             "title": "Notears parameter sampling for Gaissian Bayesian networks",
             "description": "Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling",
@@ -402,10 +515,10 @@
                     "type": "string"
                 },
                 "num_nodes": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 },
                 "num_edges": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 },
                 "mean": {
                     "title": "Mean",
@@ -432,14 +545,15 @@
                     "type": "string"
                 },
                 "order": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 },
                 "alpha": {
-                    "$ref": "#definitions/flexprob"
+                    "$ref": "#/definitions/flexprob"
                 },
                 "beta": {
-                    "$ref": "#definitions/flexprob"
-                }            },
+                    "$ref": "#/definitions/flexprob"
+                }
+            },
             "required": [
                 "id",
                 "order",
@@ -457,10 +571,10 @@
                     "type": "string"
                 },
                 "dim": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 },
                 "bandwidth": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 }
             },
             "required": [
@@ -479,10 +593,10 @@
                     "type": "string"
                 },
                 "dim": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 },
                 "max_bandwidth": {
-                    "$ref": "#definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexnonnegint"
                 }
             },
             "required": [
@@ -492,28 +606,28 @@
             ],
             "additionalProperties": false
         },
-
-        "roc_item": {
+        "roc": {
             "title": "ROC item",
             "description": "ROC item",
             "type": "object",
             "properties": {
-                "is": {
+                "ids": {
                     "list": "string"
                 },
-                "curve_variable": {
-                    "title": "Curve variable",
-                    "description": "The varying parameter in the roc curve. This must be one of the parameters for the actual algorithm.",
-                    "anyOf": [
-                        {
-                            "title": "Curve variable",
-                            "description": "The varying parameter in the roc curve. This must be one of the parameters for the actual algorithm.",
-                            "type": "string"
-                        },
-                        {
-                            "type": "number"
-                        }
-                    ]
+                "filename_prefix": {
+                    "type": "string"
+                },
+                "point": {
+                    "type": "boolean"
+                },
+                "text": {
+                    "type": "boolean"
+                },
+                "path": {
+                    "type": "boolean"
+                },
+                "errorbar": {
+                    "type": "boolean"
                 }
             }
         },
@@ -533,7 +647,6 @@
                             "type": "null"
                         }
                     ]
-
                 },
                 "parameters_id": {
                     "title": "Parameters",
@@ -591,8 +704,8 @@
                 "sample_sizes": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "standardized":{
-                    "type":"boolean"
+                "standardized": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -623,12 +736,11 @@
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "method": {
-                    "type":"string"
+                    "type": "string"
                 },
                 "max_parents": {
                     "$ref": "#/definitions/flexnonnegintnull"
                 }
-
             },
             "required": [
                 "id",
@@ -738,11 +850,12 @@
                 },
                 "max": {
                     "$ref": "#/definitions/flexprob"
-                }            },
+                }
+            },
             "required": [
                 "min",
                 "max",
-                "id"                
+                "id"
             ],
             "additionalProperties": false
         },
@@ -834,10 +947,12 @@
                 },
                 {
                     "type": "string",
-                    "enum": "Inf"
+                    "enum": [
+                        "Inf"
+                    ]
                 }
             ]
-        },        
+        },
         "flexnatnum": {
             "title": "Non-negative integer(s)",
             "anyOf": [
@@ -900,9 +1015,12 @@
                     "desciption": "Algorithm identifier",
                     "type": "string"
                 },
-                "datatype":{
-                    "type":"string",
-                    "enum": ["discrete", "continuous"]
+                "datatype": {
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "continuous"
+                    ]
                 },
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
@@ -916,10 +1034,9 @@
                 "radii": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "mcmc_seed":{
-                    "$ref": "#definitions/flexnonnegint"
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
                 }
-
             },
             "required": [
                 "id",
@@ -1037,12 +1154,16 @@
                     "type": "string",
                     "description": "Unique identifier"
                 },
-                "continuous":{
-                    "type":"boolean"
+                "continuous": {
+                    "type": "boolean"
                 },
-                "score_type":{
-                    "type":"string",
-                    "enum": ["BGe", "BDeu", "BIC"]
+                "score_type": {
+                    "type": "string",
+                    "enum": [
+                        "BGe",
+                        "BDeu",
+                        "BIC"
+                    ]
                 },
                 "plot": {
                     "type": "boolean"
@@ -1083,7 +1204,10 @@
                 },
                 "mode": {
                     "type": "string",
-                    "enum": ["cd", "lars"]
+                    "enum": [
+                        "cd",
+                        "lars"
+                    ]
                 },
                 "max_iter": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1103,7 +1227,6 @@
                 "assume_centered": {
                     "type": "boolean"
                 }
-
             },
             "additionalProperties": false,
             "required": [
@@ -1126,9 +1249,12 @@
                     "type": "string",
                     "description": "Unique identifier"
                 },
-                "datatype":{
-                    "type":"string",
-                    "enum": ["discrete", "continuous"]
+                "datatype": {
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "continuous"
+                    ]
                 },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1139,24 +1265,28 @@
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "prior":{
+                "prior": {
                     "type": "string",
-                    "enum": ["bc","mbc","ep"]    
+                    "enum": [
+                        "bc",
+                        "mbc",
+                        "ep"
+                    ]
                 },
-                "ascore":{
+                "ascore": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "bscore":{
+                "bscore": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "clq":{
+                "clq": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "sep":{
+                "sep": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "mcmc_seed":{
-                    "$ref": "#definitions/flexnonnegint"
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
                 }
             },
             "additionalProperties": false,
@@ -1177,9 +1307,12 @@
                     "type": "string",
                     "description": "Unique identifier"
                 },
-                "datatype":{
-                    "type":"string",
-                    "enum": ["discrete", "continuous"]
+                "datatype": {
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "continuous"
+                    ]
                 },
                 "n_samples": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1190,23 +1323,23 @@
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "prior":{
-                    "type": "string"    
+                "prior": {
+                    "type": "string"
                 },
-                "ascore":{
+                "ascore": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "bscore":{
+                "bscore": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "clq":{
+                "clq": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "sep":{
+                "sep": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "mcmc_seed":{
-                    "$ref": "#definitions/flexnonnegint"
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
                 }
             },
             "additionalProperties": false,
@@ -1255,13 +1388,13 @@
                 "datatype": {
                     "type": "string"
                 },
-                "samplePrior":{
+                "samplePrior": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "penaltyDiscount":{
+                "penaltyDiscount": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "structurePrior":{
+                "structurePrior": {
                     "$ref": "#/definitions/flexnonnegnum"
                 }
             },
@@ -1290,12 +1423,23 @@
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
+                    "enum": [
+                        "bdeu-test",
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "d-sep-test",
+                        "disc-bic-test",
+                        "fisher-z-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
                 },
                 "datatype": {
                     "type": "string"
                 }
-            },            
+            },
             "required": [
                 "id",
                 "test",
@@ -1316,22 +1460,40 @@
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
+                    "enum": [
+                        "bdeu-test",
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "d-sep-test",
+                        "disc-bic-test",
+                        "fisher-z-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
                 },
                 "score": {
                     "type": "string",
-                    "enum": ["bdeu-score", "cci-score", "cg-bic-score", "d-sep-score", "disc-bic-score", "sem-bic"]
+                    "enum": [
+                        "bdeu-score",
+                        "cci-score",
+                        "cg-bic-score",
+                        "d-sep-score",
+                        "disc-bic-score",
+                        "sem-bic"
+                    ]
                 },
                 "datatype": {
                     "type": "string"
                 },
-                "samplePrior":{
+                "samplePrior": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "structurePrior":{
+                "structurePrior": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "penaltyDiscount":{
+                "penaltyDiscount": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
@@ -1356,14 +1518,25 @@
                 },
                 "test": {
                     "type": "string",
-                    "enum":["bdeu-test", "cci-test", "cg-lr-test", "chi-square-test", "d-sep-test", "disc-bic-test", "fisher-z-test", "g-square-test", "kci-test", "prob-test"]
+                    "enum": [
+                        "bdeu-test",
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "d-sep-test",
+                        "disc-bic-test",
+                        "fisher-z-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
                 },
                 "datatype": {
                     "type": "string"
                 }
             },
             "required": [
-                "id",                
+                "id",
                 "test"
             ]
         },
@@ -1379,38 +1552,51 @@
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "indepTest":{
+                "indepTest": {
                     "type": "string",
-                    "enum": ["binCItest", "gaussCItest", "dsepTest", "disCItest"]
+                    "enum": [
+                        "binCItest",
+                        "gaussCItest",
+                        "dsepTest",
+                        "disCItest"
+                    ]
                 },
-                "numCores":{
+                "numCores": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "verbose": {
-                    "type":"boolean"
+                    "type": "boolean"
                 },
                 "NAdelete": {
-                    "type":"boolean"
+                    "type": "boolean"
                 },
-                "mmax":{
+                "mmax": {
                     "$ref": "#/definitions/flexnonnegintstring"
                 },
-                "u2pd":{
-                    "type":"string",
-                    "enum": ["relaxed", "rand", "retry"]
-                },
-                "skelmethod":{
+                "u2pd": {
                     "type": "string",
-                    "enum": ["stable","original", "stable.fast"]
+                    "enum": [
+                        "relaxed",
+                        "rand",
+                        "retry"
+                    ]
                 },
-                "conservative":{
-                    "type":"boolean"
+                "skelmethod": {
+                    "type": "string",
+                    "enum": [
+                        "stable",
+                        "original",
+                        "stable.fast"
+                    ]
                 },
-                "majrule":{
-                    "type":"boolean"
+                "conservative": {
+                    "type": "boolean"
                 },
-                "solveconfl":{
-                    "type":"boolean"
+                "majrule": {
+                    "type": "boolean"
+                },
+                "solveconfl": {
+                    "type": "boolean"
                 }
             },
             "additionalProperties": false,
@@ -1431,13 +1617,33 @@
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "test":{
-                    "type":"string",
-                    "enum": ["mi", "mi-adf", "mc-mi", "smc-mi", 
-                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
-                                         "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
-                                        "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
-                                    "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
                 },
                 "beta": {
                     "$ref": "#/definitions/flexnonnegnumnull"
@@ -1486,26 +1692,46 @@
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "test":{
-                    "type":"string",
-                    "enum": ["mi", "mi-adf", "mc-mi", "smc-mi", 
-                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
-                                         "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
-                                        "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
-                                    "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
                 },
-                "B":{
+                "B": {
                     "$ref": "#/definitions/flexnatnumnull"
                 },
-                "maxsx":{
+                "maxsx": {
                     "$ref": "#/definitions/flexnatnumnull"
                 },
-                "debug":{
-                    "type":"boolean"
+                "debug": {
+                    "type": "boolean"
                 },
-                "undirected":{
-                    "type":"boolean"
-                } 
+                "undirected": {
+                    "type": "boolean"
+                }
             },
             "additionalProperties": false,
             "required": [
@@ -1530,27 +1756,46 @@
                 "alpha": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "test":{
-                    "type":"string",
-                    "enum": ["mi", "mi-adf", "mc-mi", "smc-mi", 
-                                         "sp-mi", "mi-sh", "x2", "x2-adf", "sp-x2",
-                                         "jt", "mc-jt", "smc-jt", "cor", "mc-cor",
-                                        "smc-cor", "zf", "mc-zf", "smc-zf", "mi-g",
-                                    "mc-mi-g", "smc-mi-g", "mi-g-sh", "mi-cg"]
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
                 },
-                "B":{
+                "B": {
                     "$ref": "#/definitions/flexnatnumnull"
                 },
-                "maxsx":{
+                "maxsx": {
                     "$ref": "#/definitions/flexnatnumnull"
                 },
-                "debug":{
-                    "type":"boolean"
+                "debug": {
+                    "type": "boolean"
                 },
-                "undirected":{
-                    "type":"boolean"
+                "undirected": {
+                    "type": "boolean"
                 }
-
             },
             "additionalProperties": false,
             "required": [
@@ -1674,7 +1919,10 @@
                 },
                 "estimate": {
                     "type": "string",
-                    "enum": ["map", "endspace"]
+                    "enum": [
+                        "map",
+                        "endspace"
+                    ]
                 },
                 "MAP": {
                     "type": "boolean"
@@ -1685,24 +1933,26 @@
                 "posterior": {
                     "$ref": "#/definitions/flexprobnull"
                 },
-                "softlimit":{
-                    "$ref": "#/definitions/flexnonnegint"    
+                "softlimit": {
+                    "$ref": "#/definitions/flexnonnegint"
                 },
-                "hardlimit":{
-                    "$ref": "#/definitions/flexnonnegint"    
+                "hardlimit": {
+                    "$ref": "#/definitions/flexnonnegint"
                 },
-                "alpha":{
-                    "$ref": "#/definitions/flexprob"    
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
                 },
-                "gamma":{
-                    "$ref": "#/definitions/flexnonnegnum"    
+                "gamma": {
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
-                "cpdag":{
-                    "type":"boolean"
+                "cpdag": {
+                    "type": "boolean"
                 },
-                "mergetype":{
-                    "type":"string",
-                    "enum":["skeleton"]
+                "mergetype": {
+                    "type": "string",
+                    "enum": [
+                        "skeleton"
+                    ]
                 },
                 "scoretype": {
                     "type": "string"
@@ -1737,7 +1987,7 @@
                 "cpdag",
                 "mergetype",
                 "estimate"
-            ]            
+            ]
         },
         "bidag_order_mcmc": {
             "title": "Order MCMC (parameter setting)",
@@ -1749,13 +1999,19 @@
                     "description": "Unique identifier"
                 },
                 "startspace_algorithm": {
-                    "anyOf":[
-                        {"type": "string"},
-                        {"type": "null"},
-                        {"type": "array",
-                        "items": {
-                            "type":"string"
-                        }}
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
                     ]
                 },
                 "plus1": {
@@ -1785,14 +2041,14 @@
                 "stepsave": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-                "alpha":{
-                    "$ref": "#/definitions/flexprobnull"    
+                "alpha": {
+                    "$ref": "#/definitions/flexprobnull"
                 },
-                "gamma":{
-                    "$ref": "#/definitions/flexnonnegnum"    
+                "gamma": {
+                    "$ref": "#/definitions/flexnonnegnum"
                 },
-                "cpdag":{
-                    "type":"boolean"
+                "cpdag": {
+                    "type": "boolean"
                 },
                 "threshold": {
                     "$ref": "#/definitions/flexprob"

@@ -150,14 +150,14 @@ if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
   true_cpdag <- dag2cpdag(true_graphnel)
   estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
   estimated_cpdag <- dag2cpdag(estimated_graphnel)
-  print("Its a dag")
+
   compres_cpdag <- compareDAGs(estimated_cpdag, true_cpdag)
-  print(compres_cpdag)
+
 } else if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {
 
-  print("Its a cpdag")
+
   compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat)
-  print(compres_cpdag)
+
   #   TP_cpdag <- sum(skel_true * skel_est) / 2
   #   TN_cpdag <- sum((1 - skel_true) * (1 - skel_est)) / 2
   #   FP_cpdag <- sum((1 - skel_true) * skel_est) / 2
