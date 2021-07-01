@@ -11,8 +11,31 @@
 
 ![Benchpress](images/benchpress.jpg)
 
-A [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow for flexible and reproducible benchmarks of structure learning algorithms for graphical models.
-The documentation is found here https://benchpressx.readthedocs.io.
+Benchpress is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow  where structure learning algorithms, implented in possibly different laguages, can be executed and compared on the same grounds.
+The computationens scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
+
+The currently supported algorithms are
+- FGES (Tetrad)
+- FCI (Tetrad)
+- RFCI (Tetrad)
+- GFCI (Tetrad)
+- PC (pcalg)
+- MMHC (bnlearn)
+- HC (bnlearn)
+- GS (bnlearn)
+- Tabu (bnlearn)
+- Inter-IAMB (bnlearn)
+- ASOBS (r.blip)
+- GOBNILP (GOBNILP C)
+- No tears (jmoss20)
+- Order MCMC (BiDAG)
+- Iterative MCMC (BiDAG)
+- PGibbs (trilearn)
+- gg99_singlepair (A. Thomas)
+- gt99_multipair (A. Thomas)
+- gLasso (Scikit-learn)
+
+The documentation is found at https://benchpressdocs.readthedocs.io.
 
 ## Reqirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
@@ -36,11 +59,11 @@ To run the simulation setup in [config/config_paper.json](config/config_paper.js
 
 `$ snakemake --cores 20 --use-singularity --configfile config/config_paper.json`
 
-A roc curve is found in the file [results/output/roc/ROC.eps]() and can be viewed with e.g. evince as
+A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
 
-`$ evince results/output/roc/ROC.eps`
+`$ evince results/output/roc/FPRp_TRP_pattern.eps`
 
-<!-- ![ROC](docs/source/_static/ROC_fullysampled.png)-->
+![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
 
 ## Contributing
 
