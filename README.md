@@ -13,6 +13,7 @@
 
 Benchpress is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow  where structure learning algorithms, implented in possibly different laguages, can be executed and compared on the same grounds.
 The computationens scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
+The documentation is found at https://benchpressdocs.readthedocs.io.
 
 The currently supported algorithms are
 - FGES (Tetrad)
@@ -32,10 +33,8 @@ The currently supported algorithms are
 - Iterative MCMC (BiDAG)
 - PGibbs (trilearn)
 - gg99_singlepair (A. Thomas)
-- gt99_multipair (A. Thomas)
+- gt13_multipair (A. Thomas)
 - gLasso (Scikit-learn)
-
-The documentation is found at https://benchpressdocs.readthedocs.io.
 
 ## Reqirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
