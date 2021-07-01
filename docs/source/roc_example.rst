@@ -8,7 +8,7 @@ The data for the plot is stored in ``results/ROC_data.csv``.
 
 Fully sampled model
 *************************************
-This example is based on the config file :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`.
+This example is based on the config file :download:`config_paper.json <../../config/config_paper.json>`.
 The model is fully random Bayesian network model in the sense that both the DAG and the parameters are random.
 
 From the config file´s ``benchmark_setup->data`` section:
@@ -30,7 +30,7 @@ Run the following command to produce the plot below.
 
 .. code-block:: bash
 
-    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fullysampled.json
+    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config_paper.json
 
 
 .. image:: _static/ROC_fullysampled.png

@@ -4,7 +4,7 @@ cleanres:
 cleanall: 
 		rm -rf results
 
-docs:	docs/source
+docs:	docs/source/*
 		cd docs && make html
 
 docsjson:	workflow/schemas

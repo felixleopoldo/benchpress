@@ -2,8 +2,8 @@
 JSON config file
 ##################
 
-This overview is based on the sample config file :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
-The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/workflow/schemas/docs/config.md>`_.
+This overview is based on the sample config file :download:`config.paper.json <../../config/config_paper.json>`. 
+The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config.md>`_.
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
 The configuration file consists of two main sections ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
@@ -14,7 +14,7 @@ The configuration file consists of two main sections ``benchmark_setup`` and ``r
 .. figure:: _static/maincats_exp.png
     :width: 400
 
-    Main sections in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`.
+    Main sections in :download:`config_paper.json <../../config/config_paper.json>`.
 
 * ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
 * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
@@ -32,7 +32,7 @@ This defines the benchmark setup in two main sections, see :numref:`benchmark_se
 .. figure:: _static/benchmark_setup.png
     :width: 400
 
-    Expanded ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
+    Expanded ``benchmark_setup`` in :download:`config_paper.json <../../config/config_paper.json>`. 
 
 
 
@@ -146,7 +146,7 @@ Each algorithm has a unique id in its own section which may be referenced from t
 .. figure:: _static/resources.png
     :width: 400
 
-    Expanded ``resources`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
+    Expanded ``resources`` in :download:`config_paper.json <../../config/config_paper.json>`. 
 
 
 
@@ -155,7 +155,7 @@ Each algorithm has a unique id in its own section which may be referenced from t
 .. figure:: _static/setup.png
     :width: 400
 
-    Expanded ``resources`` and ``benchmark_setup`` in :download:`config.sample.docs.fullysampled.json <../../config/config.sample.docs.fullysampled.json>`. 
+    Expanded ``resources`` and ``benchmark_setup`` in :download:`config_paper.json <../../config/config_paper.json>`. 
 
 
 .. include:: available_graphs.rst

@@ -14,7 +14,7 @@ To see which parameters are available review the JSON schemas.
 ``gobnilp``
 ------------
 
-*GOBNILP v1.63* C implementation.
+*GOBNILP C implementation (https://bitbucket.org/jamescussens/gobnilp/src/master/ commit #e60ef14).
 
 `https://www.cs.york.ac.uk/aig/sw/gobnilp/ <https://www.cs.york.ac.uk/aig/sw/gobnilp/>`_
 
@@ -35,7 +35,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "prune": true
     }
 
-``blip``
+``rblip``
 -----------
 
 *r.blip v1.1* package in R.
@@ -92,7 +92,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 
 ``tetrad_fges``
----------
+----------------
 
 
 *Fast greedy equivalence search* (FGES) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
@@ -126,7 +126,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 ``tetrad_fci``
--------
+---------------
 
 *Fast causal inferece* (FCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
@@ -159,7 +159,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 ``tetrad_gfci``
---------
+-----------------
 
 *Greedy fast causal inference* (GFCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
@@ -181,10 +181,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "score": "bdeu-score",
         "test": "chi-square-test",
@@ -192,8 +189,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "structurePrior": 1
     }
 
-``rcfi``
----------
+``tetrad_rcfi``
+----------------
 
 *Re-sample fast causal inference* (RFCI) method from command line interface of Tetrad (causal-cmd v1.1.3).
 
@@ -216,17 +213,14 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "test": "chi-square-test",
         "datatype": "discrete"
     }
 
-``pcalg``
----------
+``pcalg_pc``
+--------------
 
 PC algorithm from the *pcalg v2.6-10* package R.
 
@@ -262,8 +256,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "indepTest": "binCItest"
     }
 
-``mmhc``
----------
+``bnlearn_mmhc``
+-------------------
 
 *Max-min hill-climbing* implementation in bnlearn R.
 
@@ -282,16 +276,13 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "test":"mi"
     }
 
 ``bnlearn_interiamb``
--------------
+------------------------
 
 *Incremental association Markov blanket* (Inter-IAMB) from *bnlearn R*.
 
@@ -313,10 +304,7 @@ An example
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "test": "mi",
         "B": null,
@@ -326,8 +314,8 @@ An example
     }
 
 
-``gs``
-------
+``bnlearn_gs``
+----------------
 
 *Greedy search* (GS) from  *bnlearn R*.
 
@@ -347,10 +335,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "test": "mi",
         "B": null,
@@ -359,8 +344,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "undirected": false
     }
 
-``tabu``
----------
+``bnlearn_tabu``
+------------------
 
 *Tabu* search from *bnlearn R*.
 
@@ -387,10 +372,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
     }
 
 
-``itsearch``
-------------
+``bidag_itsearch``
+-------------------
 
-*Iterative MCMC* implementation in *BiDAG v1.2.0 R*.
+*Iterative MCMC* implementation in *BiDAG v2.0.2 R*.
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 
@@ -421,10 +406,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "mergetype": "skeleton"
     }
 
-``order_mcmc``
----------------
+``bidag_order_mcmc``
+-----------------------
 
-*Order MCMC* implementation in *BiDAG v1.2.0 R*.
+*Order MCMC* implementation in *BiDAG v2.0.2 R*.
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 
@@ -452,6 +437,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "iterations": null,
         "MAP": true,
         "cpdag": false,
+        "mcmc_seed": 1,
         "threshold": [
             0.99,
             0.95,
