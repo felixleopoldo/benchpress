@@ -419,7 +419,6 @@
         },
         "mcmc_traj_plots": {
             "type": "array",
-            "additionalItems": false,
             "items": {
                 "properties": {
                     "id": {
@@ -453,7 +452,8 @@
                         ]
                     }
                 }
-            }
+            },
+            "additionalItems": false
         },
         "mcmc_heatmaps": {
             "type": "array",
