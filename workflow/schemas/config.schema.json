@@ -414,7 +414,8 @@
                             }
                         ]
                     }
-                }
+                },
+                "required":["id", "burn_in", "thinning", "functional", "lags"]
             }
         },
         "mcmc_traj_plots": {
@@ -467,7 +468,8 @@
                     "burn_in": {
                         "$ref": "#/definitions/flexnonnegint"
                     }
-                }
+                },
+                "required":["id", "burn_in"]
             }
         },
         "notears_parameters_sampling": {
