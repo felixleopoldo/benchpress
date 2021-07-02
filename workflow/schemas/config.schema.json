@@ -1324,7 +1324,7 @@
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "penalty": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "randomits": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1333,16 +1333,16 @@
                     "type": "string"
                 },
                 "ascore": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "bscore": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "clq": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "sep": {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
