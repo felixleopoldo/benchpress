@@ -378,6 +378,7 @@
     "definitions": {
         "mcmc_autocorr_plots": {
             "type": "array",
+            "additionalItems": false,
             "items": {
                 "properties": {
                     "id": {
@@ -418,6 +419,7 @@
         },
         "mcmc_traj_plots": {
             "type": "array",
+            "additionalItems": false,
             "items": {
                 "properties": {
                     "id": {
@@ -455,6 +457,7 @@
         },
         "mcmc_heatmaps": {
             "type": "array",
+            "additionalItems": false,
             "items": {
                 "properties": {
                     "id": {
