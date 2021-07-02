@@ -451,7 +451,8 @@
                             }
                         ]
                     }
-                }
+                },
+                "required":["id", "burn_in", "thinning", "functional"]
             },
             "additionalItems": false
         },
