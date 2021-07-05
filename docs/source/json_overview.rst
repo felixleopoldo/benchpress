@@ -2,7 +2,7 @@
 JSON config file
 ##################
 
-This overview is based on the sample config file :download:`config.paper.json <../../config/config_paper.json>`. 
+This overview is based on the sample config file :download:`config_paper.json <../../config/config_paper.json>`. 
 The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config.md>`_.
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
@@ -59,12 +59,12 @@ This is a list of dictionaries, where each dictionary defines the data setup as:
 .. code-block:: json
 
     [{
-        "graph_id": "DAGavpar2p80",
-        "parameters_id": "binary_bn",
-        "data_id": "iid160",
+        "graph_id": "avneigs4",
+        "parameters_id": "binbn",
+        "data_id": "example1",
         "seed_range": [
             1,
-            10
+            50
         ]
     }]
 
@@ -104,33 +104,37 @@ List of algorithm to be included in roc curve estimation.
 
 .. code-block:: json
 
-    [
-        {
-            "algorithm_id": "pcalg-bin",
-            "curve_variable": "alpha"
+    {
+        "filename_prefix": "section6.1/",
+        "point": true,
+        "errorbar": true,
+        "path": true,
+        "text": false,
+        "ids": [
+            "gobnilp-bde",
+            "asobs-bdeu",
+            "tabu-bde",
+            "mmhc-bde-mi",
+            "hc-bde",
+            "gs-mi",
+            "interiamb-mi",
+            "fci-chi-square",
+            "rfci-chi-square",
+            "gfci-bdeu-chi-square",
+            "fges-bdeu",
+            "itsearch_sample-bde",
+            "pc-binCItest",
+            "omcmc_itsample-bde"
+        ]
         },
-        {
-            "algorithm_id": "tabu-bde",
-            "curve_variable": "iss"
-        },
-        {
-            "algorithm_id": "bnlearn_mmhc",
-            "curve_variable": "alpha"
-        },
-        {
-            "algorithm_id": "tetrad_fges-bdeu",
-            "curve_variable": "samplePrior"
-        },
-        {
-            "algorithm_id": "itsearch_sample",
-            "curve_variable": "chi"
-        },
-        {
-            "algorithm_id": "order_mcmc_itsample_chi1_thresh05",
-            "curve_variable": "chi"
-        }
-    ]
-
+        "adjmat_true_plots": false,
+        "graph_true_plots": false,
+        "adjmat_plots": [],
+        "graph_plots": [],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+    }
 
 
 ``resources``

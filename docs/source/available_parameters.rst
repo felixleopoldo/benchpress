@@ -5,7 +5,7 @@
 
 Samples the parameters for a graphical model with a given graph (specified in the ``data`` section).
 
-``generateBinaryBN``
+``bin_bn``
 --------------------
 
 Samples conditional probability tables in a limited range (``min`` to ``max``) for a binary Bayesian network.
@@ -20,13 +20,13 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id":"binarybn",
-        "min":0.1,
-        "max":0.9
+        "id": "binbn",
+        "min": 0.1,
+        "max": 0.9
     }
 
 
-``notears_parameters_sampling``
+``sem_params``
 -------------------------------
 
 Samples parameters for a Gaussian structural equation model (SEM) type Bayesian network.
@@ -51,11 +51,9 @@ See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schem
 .. code-block:: json
 
     {
-        "id": "gauss_sem",
-        "edge_coefficient_range_from": 0.5,
-        "edge_coefficient_range_to": 2,
-        "mean": 0,
-        "variance": 1.0
+        "id": "SEM",
+        "min": 0.25,
+        "max": 1
     }
 
 

@@ -17,12 +17,15 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 
 .. code-block:: json
-
+    
     {
-        "id":"iid_100",
-        "sample_sizes": [100]
+        "id": "example1",
+        "standardized": false,
+        "sample_sizes": [
+            320,
+            640
+        ]
     }
-
 
 Data files 
 ----------

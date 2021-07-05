@@ -3,7 +3,7 @@ Examples
 
 This example plots ROC curves (see :ref:`rocdef`) for some of the available structure learning algorithms.
 The plot is stored in ``results/ROC.eps``. 
-The data for the plot is stored in ``results/ROC_data.csv``. 
+The data for the plot is stored in ``results/output/roc/ROC_data.csv``. 
 
 
 Fully sampled model
@@ -30,7 +30,7 @@ Run the following command to produce the plot below.
 
 .. code-block:: bash
 
-    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config_paper.json
+    $ snakemake --cores 2 --use-singularity --configfile config_paper.json
 
 
 .. image:: _static/ROC_fullysampled.png

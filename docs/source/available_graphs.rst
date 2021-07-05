@@ -4,7 +4,7 @@
 ========================
 This section contains the algorithm for sampling graphs and shows how to provide a fixed graph in ``.csv`` format.
 
-``generateDAGMaxParents``
+``pcalg_randdag``
 -------------------------
 
 Samples a random DAG with a given number of nodes (``dims``) and limited average number of parents per node (``av_parents``).
@@ -20,35 +20,39 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "myrandomdag",
-        "av_parents": 2,
-        "dims": 80
+        "id": "avneigs4",
+        "max_parents": 5,
+        "n": 80,
+        "d": 4,
+        "par1": null,
+        "par2": null,
+        "method": "er"
     }
 
 
-``notears``
------------
+.. ``notears``
+.. -----------
 
-Samples a random DAG with a given number of nodes (``num_nodes``) and edges (``num_edges``) using a triangular array.
+.. Samples a random DAG with a given number of nodes (``num_nodes``) and edges (``num_edges``) using a triangular array.
 
-See
+.. See
 
-`https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_randomdag.py <https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_randomdag.py>`_ 
-`https://github.com/jmoss20/notears/blob/master/notears/utils.py <https://github.com/jmoss20/notears/blob/master/notears/utils.py>`_.
+.. `https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_randomdag.py <https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/notears/generate_randomdag.py>`_ 
+.. `https://github.com/jmoss20/notears/blob/master/notears/utils.py <https://github.com/jmoss20/notears/blob/master/notears/utils.py>`_.
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-dag-sampling.md>`_
-
-
-.. rubric:: Example
+.. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-dag-sampling.md>`_
 
 
-.. code-block:: json
+.. .. rubric:: Example
 
-    {
-        "id": "randdag_p40_e80",
-        "num_nodes": 40,
-        "num_edges": 80
-    }
+
+.. .. code-block:: json
+
+..     {
+..         "id": "randdag_p40_e80",
+..         "num_nodes": 40,
+..         "num_edges": 80
+..     }
 
 
 Adjacency matrix 

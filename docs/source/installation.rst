@@ -23,4 +23,4 @@ Installation
 
 .. code-block:: bash
 
-    $ git clone https://github.com/felixleopoldo/benchpress.git && cd benchpress && pip install -r requirements.txt
+    $ git clone https://github.com/felixleopoldo/benchpress.git 

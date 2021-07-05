@@ -28,10 +28,18 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "gobnilp",
+        "id": "gobnilp-bde",
+        "continuous": false,
+        "score_type": "BDeu",
         "plot": false,
-        "palim": 2,
-        "alpha": 1,
+        "palim": 3,
+        "alpha_mu": null,
+        "alpha_omega_minus_nvars": null,
+        "alpha": [
+            0.001,
+            0.01,
+            0.1
+        ],
         "prune": true
     }
 
@@ -51,17 +59,18 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "asobs",
+        "id": "asobs-bdeu",
         "scorermethod": "is",
         "solvermethod": "asobs",
         "indeg": 80,
-        "time": [
-            20,
-            60
-        ],
+        "time": 180 ,
         "allocated": 80,
         "scorefunction": "bdeu",
-        "alpha": 1,
+        "alpha": [
+            0.001,
+            0.01,
+            0.1
+        ],
         "cores": 1,
         "verbose": 0
     }
@@ -112,17 +121,17 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
     
     {
-        "id": "tetrad_fges",
+        "id": "fges-sem-bic",
         "faithfulnessAssumed": true,
-        "score": "bdeu-score",
-        "datatype": "discrete",
-        "samplePrior": [
-                        1,
-                        10,
-                        50,
-                        100
-                    ],
-        "structurePrior": 1
+        "score": "sem-bic",
+        "datatype": "continuous",
+        "samplePrior": 1,
+        "structurePrior": 1,
+        "penaltyDiscount": [
+            0.8,
+            1,
+            1.5
+        ]
     }
 
 ``tetrad_fci``
@@ -145,17 +154,14 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "tetrad_fci",
+        "id": "fci-fisher-z",
         "alpha": [
+            0.001,
             0.01,
-            0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.05
         ],
-        "test": "chi-square-test",
-        "datatype": "discrete"
+        "test": "fisher-z-test",
+        "datatype": "continuous"
     }
 
 ``tetrad_gfci``
@@ -177,7 +183,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "tetrad_gfci",
+        "id": "gfci-bdeu-chi-square",
         "alpha": [
             0.01,
             0.05,
@@ -186,6 +192,8 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "score": "bdeu-score",
         "test": "chi-square-test",
         "datatype": "discrete",
+        "penaltyDiscount": null,
+        "samplePrior": 1,
         "structurePrior": 1
     }
 
@@ -209,7 +217,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "tetrad_rfci",
+        "id": "rfci-chi-square",
         "alpha": [
             0.01,
             0.05,
@@ -235,14 +243,11 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "pcalg_pc",
+        "id": "pc-binCItest",
         "alpha": [
             0.01,
             0.05,
-            0.1,
-            0.2,
-            0.35,
-            0.45
+            0.1
         ],
         "NAdelete": true,
         "mmax": "Inf",
@@ -254,6 +259,39 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "numCores": 1,
         "verbose": false,
         "indepTest": "binCItest"
+    }
+
+``bnlearn_hc``
+-------------------
+
+*Hill-climbing* implementation in bnlearn R.
+
+`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
+
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-hill-climbing-algorithm-hc.md>`_
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "hc-bde",
+        "score": "bde",
+        "iss": [
+            0.001,
+            0.01,
+            0.1
+        ],
+        "issmu": 1,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": 1,
+        "restart": 0,
+        "perturb": 1
     }
 
 ``bnlearn_mmhc``
@@ -272,13 +310,21 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "bnlearn_mmhc",
+        "id": "mmhc-bde-mi",
         "alpha": [
             0.01,
             0.05,
             0.1
         ],
-        "test":"mi"
+        "test": "mi",
+        "score": "bde",
+        "iss": 0.1,
+        "issmu": 1,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": 1
     }
 
 ``bnlearn_interiamb``
@@ -300,7 +346,7 @@ An example
 .. code-block:: json
 
     {
-        "id": "bnlearn_interiamb",
+        "id": "interiamb-mi",
         "alpha": [
             0.01,
             0.05,
@@ -331,7 +377,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "bnlearn_gs",
+        "id": "gs-mi",
         "alpha": [
             0.01,
             0.05,
@@ -361,10 +407,15 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "bnlearn_tabu",
+        "id": "tabu-bde",
         "score": "bde",
-        "iss": 1,
-        "iss.mu": 1,
+        "iss": [
+            0.001,
+            0.01,
+            0.1
+        ],
+        "issmu": 1,
+        "issw": null,
         "l": 5,
         "k": 1,
         "prior": "uniform",
@@ -388,13 +439,17 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "itsearch_map",
+        "id": "itsearch_sample-bde",
         "estimate": "map",
-        "MAP": true,
-        "plus1it": null,
-        "posterior": null,
-        "scoretype": "bdecat",
-        "chi": 0.5,
+        "MAP": false,
+        "plus1it": 6,
+        "posterior": 0.5,
+        "scoretype": "bde",
+        "chi": [
+            0.01,
+            0.1,
+            1
+        ],
         "edgepf": 2,
         "am": null,
         "aw": null,
@@ -423,32 +478,27 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 .. code-block:: json
 
     {
-        "id": "order_mcmc_itmap",
-        "startspace": "itsearch_map",
+        "id": "omcmc_itsample-bde",
+        "startspace_algorithm": [
+            "itsearch_sample-bde_chi01_endspace"
+        ],
         "plus1": true,
-        "scoretype": "bdecat",
-        "chi": 1,
-        "edgepf": 1,
+        "scoretype": "bde",
+        "chi": [
+            0.1
+        ],
+        "edgepf": 2,
         "aw": null,
         "am": null,
         "alpha": 0.05,
         "gamma": 1,
+        "cpdag": false,
         "stepsave": null,
         "iterations": null,
         "MAP": true,
-        "cpdag": false,
         "mcmc_seed": 1,
         "threshold": [
-            0.99,
-            0.95,
-            0.9,
-            0.8,
-            0.7,
-            0.6,
-            0.5,
-            0.4,
-            0.3,
-            0.2
+            0.5
         ],
         "burnin": 0
     }
