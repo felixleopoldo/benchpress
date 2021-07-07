@@ -3,7 +3,7 @@
 # ${1:Systematic benchmarks of structure learning algorithms for graphical models}
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
-[![Documentation Status](https://readthedocs.org/projects/benchpressx/badge/?version=latest)](https://benchpressx.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 #  
