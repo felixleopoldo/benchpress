@@ -17,7 +17,6 @@ pattern_strings = {}
 # structure learning algorithms
 pattern_strings["gt13_multipair"] = "gt13_multipair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gt13_multipair"])
 pattern_strings["gg99_singlepair"] = "gg99_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair"])
-pattern_strings["gg99_singlepair_fortran"] = "gg99_singlepair_fortran/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"])
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
 pattern_strings["rblip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip"])
 pattern_strings["pcalg_pc"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])

@@ -581,31 +581,6 @@ rule join_summaries_trilearn:
     script:
         "../scripts/join_csv_files.R"
 
-rule gg99_singlepair_fortran:
-    input:
-        data = alg_input_data()
-    output:
-        adjvecs = alg_output_seqgraph_path("gg99_singlepair_fortran"),
-        time = alg_output_time_path("gg99_singlepair_fortran")
-    singularity:
-        docker_image("greenfortran")
-    shell:
-        alg_shell("gg99_singlepair_fortran")
-
-rule gg99_singlepair_fortran_est:
-    input:
-        "workflow/scripts/graphtraj_est.py",
-        traj = alg_output_seqgraph_path("gg99_singlepair_fortran"),
-    output:
-        adjmat = alg_output_adjmat_path("gg99_singlepair_fortran")
-    params:
-        graph_type="chordal",
-        estimator="map"
-    singularity:
-        docker_image("networkx")
-    script:
-        "../scripts/graphtraj_est.py"
-
 rule gt13_multipair:
     input:
         data = alg_input_data()

@@ -12,9 +12,6 @@ json_string = {val["id"]: expand(pattern_strings["gt13_multipair"], **val)
 json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
 
-json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair_fortran"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"]})
-
 json_string.update({val["id"]: expand(pattern_strings["bidag_itsearch"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["bidag_itsearch"]})
 
@@ -87,8 +84,3 @@ json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gt13_multipair
 
 json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
-
-json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair_fortran"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair_fortran"]})
-#print(json_string_mcmc_noest)
-#print(json_string)

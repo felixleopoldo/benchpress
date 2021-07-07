@@ -396,12 +396,6 @@
                     "mcmc_seed": 1
                 }
             ],
-            "gg99_singlepair_fortran": [
-                {
-                    "id": "gg99_fortran",
-                    "n": 1000000
-                }
-            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
