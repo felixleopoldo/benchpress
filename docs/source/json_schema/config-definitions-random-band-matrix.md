@@ -14,7 +14,7 @@ A graph with a band structured adjacency matrix with random width
 
 unknown ([Random band matrix](config-definitions-random-band-matrix.md))
 
-# rand_bandmat Properties
+# Random band matrix Properties
 
 | Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                       |
 | :------------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

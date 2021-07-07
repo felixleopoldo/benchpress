@@ -14,7 +14,7 @@ A graph with a band structured adjacency matrix
 
 unknown ([Band matrix](config-definitions-band-matrix.md))
 
-# bandmat Properties
+# Band matrix Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                              |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

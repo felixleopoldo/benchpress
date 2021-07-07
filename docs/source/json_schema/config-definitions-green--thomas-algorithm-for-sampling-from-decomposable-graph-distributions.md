@@ -15,7 +15,7 @@ Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a 
 
 `object` ([Green & Thomas algorithm for sampling from decomposable graph distributions](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md))
 
-# gt13\_multipair Properties
+# Green & Thomas algorithm for sampling from decomposable graph distributions Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                             |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

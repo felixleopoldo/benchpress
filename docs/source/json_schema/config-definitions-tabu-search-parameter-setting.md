@@ -14,7 +14,7 @@ TABU algorithm instance
 
 `object` ([TABU search (parameter setting)](config-definitions-tabu-search-parameter-setting.md))
 
-# bnlearn_tabu Properties
+# TABU search (parameter setting) Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                        |
 | :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

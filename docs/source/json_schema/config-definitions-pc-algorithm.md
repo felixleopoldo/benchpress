@@ -14,7 +14,7 @@ PC algorithm instance
 
 `object` ([PC algorithm](config-definitions-pc-algorithm.md))
 
-# pcalg_pc Properties
+# PC algorithm Properties
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
 | :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -17,10 +17,15 @@ Requirements
     
         $ conda install -c conda-forge squash-tools
 
-Installation
+Installation and usage
 **********************
 
+To download and run benchpress with the config file :download:`config/sec6.1.json <../../config/sec6.1.json>` type
 
 .. code-block:: bash
 
-    $ git clone https://github.com/felixleopoldo/benchpress.git 
+    $ git clone https://github.com/felixleopoldo/benchpress.git     
+    $ cd benchpress
+    $ snakemake --cores 70 --use-singularity --configfile config/sec6.1.json
+
+

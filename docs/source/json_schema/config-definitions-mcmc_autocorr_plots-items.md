@@ -14,15 +14,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 unknown
 
-# items Properties
+# undefined Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                           |
 | :------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                 | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_autocorr_plots-items-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/id")                 |
-| [burn_in](#burn_in)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/burn_in")                              |
-| [thinning](#thinning)     | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/thinning")                     |
-| [lags](#lags)             | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/lags")                         |
-| [functional](#functional) | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_autocorr_plots-items-properties-functional.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/functional") |
+| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_autocorr_plots-items-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/id")                 |
+| [burn_in](#burn_in)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/burn_in")                              |
+| [thinning](#thinning)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/thinning")                     |
+| [lags](#lags)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/lags")                         |
+| [functional](#functional) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_autocorr_plots-items-properties-functional.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_autocorr_plots/items/properties/functional") |
 
 ## id
 
@@ -30,7 +30,7 @@ unknown
 
 `id`
 
-*   is optional
+*   is required
 
 *   Type: `string`
 
@@ -48,7 +48,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 `burn_in`
 
-*   is optional
+*   is required
 
 *   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 
@@ -72,7 +72,7 @@ any of
 
 `thinning`
 
-*   is optional
+*   is required
 
 *   Type: merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
 
@@ -100,7 +100,7 @@ any of
 
 `lags`
 
-*   is optional
+*   is required
 
 *   Type: merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
 
@@ -128,7 +128,7 @@ any of
 
 `functional`
 
-*   is optional
+*   is required
 
 *   Type: merged type ([Details](config-definitions-mcmc_autocorr_plots-items-properties-functional.md))
 

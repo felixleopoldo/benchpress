@@ -5,11 +5,50 @@ For explanations of the parametrisations of each algorithm see the corresponding
 However, some parametrers might be missing for some algorithms though.
 Most of the parameters can be given as either a single value or a list.
 To see which parameters are available review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
 
-.. note::
-    
-    Dots (.) in the original parameter names are omitted for implementational reasons.
 
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Algorithm        | Graph | Language | Library                                                                                                                                      | Version  | JSON key          | JSON schema                                                                                                                                                                                 |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GOBNILP          | DAG   | C        | `GOBNILP <https://bitbucket.org/jamescussens/gobnilp/src/master/>`_                                                                          | #e60ef14 | gobnilp           | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gobnilp-algorithm.md>`_                                                           |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASOBS            | DAG   | R/Java   | `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`_                                                                        | 1.1      | rblip_asobs       | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-blip-instantiation.md>`_                                                          |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| FGES             | CPDAG | Java     | `TETRAD (causal-cmd) <https://www.ccd.pitt.edu/data-science/>`_                                                                              | 1.1.3    | tetrad_fges       | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-fast-greedy-equivalent-search-fges.md>`_                                          |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| FCI              | DAG   | Java     | `TETRAD (causal-cmd) <https://www.ccd.pitt.edu/data-science/>`_                                                                              | 1.1.3    | tetrad_fci        | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-fci.md>`_                                                                         |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| RFCI             | DAG   | Java     | `TETRAD (causal-cmd) <https://www.ccd.pitt.edu/data-science/>`_                                                                              | 1.1.3    | tetrad_rfci       | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-rfci.md>`_                                                                        |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GFCI             | DAG   | Java     | `TETRAD (causal-cmd) <https://www.ccd.pitt.edu/data-science/>`_                                                                              | 1.1.3    | tetrad_gfci       | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gfci-parameter-setting.md>`_                                                      |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PC               | CPDAG | R        | `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_                                                                          | 2.6-10   | pcalg_pc          | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pc-algorithm.md>`_                                                                |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| No tears         | DAG   | Python   | `jmoss20/notears <https://github.com/jmoss20/notears>`_                                                                                      | #0c032a0 | notears           | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-notears.md>`_                                                                     |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| HC               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | bnlearn_hc        | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-hc-algorithm-parameter-setting.md>`_                                              |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| MMHC             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | bnlearn_mmhc      | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_                                        |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Inter-IAMB       | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | bnlearn_interiamb | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                        |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GS               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | bnlearn_gs        | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                        |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Tabu             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | bnlearn_tabu      | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tabu-search-parameter-setting.md>`_                                               |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Iterative MCMC   | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.2    | bidag_itsearch    | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-iterative-search-paramter-setting.md>`_                                           |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Order MCMC       | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.2    | bidag_order_mcmc  | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-order-mcmc-parameter-setting.md>`_                                                |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PGibbs           | DG    | Python   | `Trilearn <https://github.com/felixleopoldo/trilearn>`_                                                                                      | 1.2.3    | trilearn_pgibbs   | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn.md>`_                                                                    |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GG99 single pair | DG    | Java     | A. Thomas                                                                                                                                    | -        | gg99_singlepair   | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions.md>`_ |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GT13 multi pair  | DG    | Java     | A. Thomas                                                                                                                                    | -        | gt13_multipair    | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions.md>`_  |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GLasso           | UG    | Python   | `scikit-learn <https://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphicalLasso.html#sklearn.covariance.GraphicalLasso>`_ | 0.22.1   | sklearn_glasso    | `link <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-glasso-algorithm.md>`_                                                            |
++------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+-------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ``gobnilp``
 ------------
@@ -17,9 +56,6 @@ To see which parameters are available review the JSON schemas.
 *GOBNILP C implementation (https://bitbucket.org/jamescussens/gobnilp/src/master/ commit #e60ef14).
 
 `https://www.cs.york.ac.uk/aig/sw/gobnilp/ <https://www.cs.york.ac.uk/aig/sw/gobnilp/>`_
-
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gobnilp-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -47,10 +83,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 -----------
 
 *r.blip v1.1* package in R.
-
-`https://cran.r-project.org/web/packages/r.blip/index.html <https://cran.r-project.org/web/packages/r.blip/index.html>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-blip-instantiation.md>`_
 
 
 .. rubric:: Example
@@ -80,10 +112,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 *No tears* Python implementation.
 
-`https://github.com/jmoss20/notears <https://github.com/jmoss20/notears>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears.md>`_
-
 
 .. rubric:: Example
 
@@ -106,13 +134,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 *Fast greedy equivalence search* (FGES) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
-
-`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
-
-`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
-
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-fast-greedy-equivalent-search-tetrad_fges.md>`_
 
 
 .. rubric:: Example
@@ -139,13 +160,10 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 *Fast causal inferece* (FCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
-
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
 
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_fci.md>`_
 
 
 .. rubric:: Example
@@ -173,8 +191,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
 
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_gfci-parameter-setting.md>`_
 
 
 .. rubric:: Example
@@ -208,8 +224,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tetrad_rfci.md>`_
-
 
 .. rubric:: Example
 
@@ -231,10 +245,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 --------------
 
 PC algorithm from the *pcalg v2.6-10* package R.
-
-`https://cran.r-project.org/web/packages/pcalg/index.html <https://cran.r-project.org/web/packages/pcalg/index.html>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-pc-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -264,11 +274,9 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 ``bnlearn_hc``
 -------------------
 
-*Hill-climbing* implementation in bnlearn R.
+*Hill-climbing* implementation in bnlearn 4.5  R.
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-hill-climbing-algorithm-hc.md>`_
 
 
 .. rubric:: Example
@@ -301,7 +309,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_
+
 
 
 .. rubric:: Example
@@ -334,8 +342,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
 
 
 .. rubric:: Example
@@ -398,8 +404,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 `https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-tabu-search-parameter-setting.md>`_
-
 
 .. rubric:: Example
 
@@ -429,8 +433,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 *Iterative MCMC* implementation in *BiDAG v2.0.2 R*.
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-iterative-search-paramter-setting.md>`_
 
 
 .. rubric:: Example
@@ -468,8 +470,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 
 `https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
 
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-order-mcmc-paramter-setting--.md>`_
 
 
 .. rubric:: Example

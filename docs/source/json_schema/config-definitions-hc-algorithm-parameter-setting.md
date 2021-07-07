@@ -14,7 +14,7 @@ HC algorithm instance
 
 `object` ([HC algorithm (parameter setting)](config-definitions-hc-algorithm-parameter-setting.md))
 
-# bnlearn_hc Properties
+# HC algorithm (parameter setting) Properties
 
 | Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                       |
 | :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

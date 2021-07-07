@@ -14,7 +14,7 @@ Grow shrink (GS) algorithm instance
 
 `object` ([Grow shrink (GS) algorithm (paramter setting)](config-definitions-grow-shrink-gs-algorithm-paramter-setting.md))
 
-# bnlearn_gs Properties
+# Grow shrink (GS) algorithm (paramter setting) Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
 | :------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

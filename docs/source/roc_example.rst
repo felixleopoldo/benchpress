@@ -1,17 +1,20 @@
-Examples
-###############
+Examples of data models
+########################
 
-This example plots ROC curves (see :ref:`rocdef`) for some of the available structure learning algorithms.
-The plot is stored in ``results/ROC.eps``. 
-The data for the plot is stored in ``results/output/roc/ROC_data.csv``. 
+.. This example plots ROC curves (see :ref:`rocdef`) for some of the available structure learning algorithms.
 
+.. The plot is stored in ``results/ROC.eps``. 
+.. The data for the plot is stored in ``results/output/roc/ROC_data.csv``. 
+
+Examples of different setups of the ``benchmark_setup->data`` section.
 
 Fully sampled model
 *************************************
-This example is based on the config file :download:`config_paper.json <../../config/config_paper.json>`.
+.. This example is based on the config file :download:`config/sec6.1.json <../../config/sec6.1.json>`.
+
 The model is fully random Bayesian network model in the sense that both the DAG and the parameters are random.
 
-From the config file´s ``benchmark_setup->data`` section:
+
 
 .. code-block:: json
     
@@ -25,25 +28,15 @@ From the config file´s ``benchmark_setup->data`` section:
         ]
     }
 
-
-Run the following command to produce the plot below.
-
-.. code-block:: bash
-
-    $ snakemake --cores 2 --use-singularity --configfile config_paper.json
-
-
-.. image:: _static/ROC_fullysampled.png
-   :width: 400
+.. .. image:: _static/ROC_fullysampled.png
+..    :width: 400
 
 
 Fixed graph
 ****************************************
 
-This example is based on the config file :download:`config.sample.docs.fixedgraph.json <../../config/config.sample.docs.fixedgraph.json>`.
-I this model, the DAG is specified as a ``.csv`` and parameters for a binary Bayesian network is random.
 
-From the config file´s ``benchmark_setup->data`` section:
+I this model, the DAG is specified as a ``.csv`` and parameters for a binary Bayesian network is random.
 
 .. code-block:: json
 
@@ -58,24 +51,11 @@ From the config file´s ``benchmark_setup->data`` section:
     }
 
 
-Run the following command to produce the plot below.
-
-.. code-block:: bash
-
-    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixedgraph.json
-
-
-.. figure:: _static/ROC_fixedgraph.png
-   :width: 400
 
 Fixed graph and parameters
 ***************************************
 
-
-This example is based on the config file :download:`config.sample.docs.fixedgraphparams.json <../../config/config.sample.docs.fixedgraphparams.json>`.
 This is a fixed *bnlearn* Bayesian network specified as a ``.rds`` file.
-
-From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
 
@@ -89,26 +69,16 @@ From the config file´s ``benchmark_setup->data`` section:
         ]
     }
 
-
-Run the following command to produce the plot below.
-
-.. code-block:: bash
-
-    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixedgraphparams.json
-
     
-.. figure:: _static/ROC_fixedgraphparams.png
-    :width: 400
+.. .. figure:: _static/ROC_fixedgraphparams.png
+..     :width: 400
 
 
 Fixed graph and data
 ************************************
 
 
-This example is based on the config file :download:`config.sample.docs.fixeddata.json <../../config/config.sample.docs.fixeddata.json>`.
 In this example, the data is fixed and specified as a ``.csv`` file and the underlying graph (DAG) is specified as a ``.csv`` file.
-
-From the config file´s ``benchmark_setup->data`` section:
 
 .. code-block:: json
 
@@ -119,12 +89,5 @@ From the config file´s ``benchmark_setup->data`` section:
         "seed_range": null
     }
 
-Run the following command to produce the plot below.
-
-.. code-block:: bash
-
-    $ make cleanres && snakemake roc --cores 2 --use-singularity --configfile config.sample.docs.fixeddata.json
-
-
-.. figure:: _static/ROC_fixeddata.png
-    :width: 400
+.. .. figure:: _static/ROC_fixeddata.png
+..     :width: 400

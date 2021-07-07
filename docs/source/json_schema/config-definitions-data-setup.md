@@ -14,7 +14,7 @@ Description of the data model and sampling setup. Make sure that the id's are pr
 
 `object` ([Data setup](config-definitions-data-setup.md))
 
-# data_setup_dict Properties
+# Data setup Properties
 
 | Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                     |
 | :------------------------------ | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

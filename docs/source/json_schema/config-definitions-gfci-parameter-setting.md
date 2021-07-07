@@ -14,7 +14,7 @@ GFCI instance
 
 `object` ([GFCI (parameter setting)](config-definitions-gfci-parameter-setting.md))
 
-# tetrad_gfci Properties
+# GFCI (parameter setting) Properties
 
 | Property                            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :---------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

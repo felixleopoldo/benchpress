@@ -14,7 +14,7 @@ Data sampling setup.
 
 `object` ([Data sampling algorithms](config-properties-resources-properties-data-sampling-algorithms.md))
 
-# data Properties
+# Data sampling algorithms Properties
 
 | Property    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                              |
 | :---------- | :------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

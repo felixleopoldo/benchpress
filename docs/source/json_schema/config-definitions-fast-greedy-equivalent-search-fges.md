@@ -14,7 +14,7 @@ fGES instance
 
 `object` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
 
-# tetrad_fges Properties
+# Fast greedy equivalent search (fGES) Properties
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                        |
 | :------------------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

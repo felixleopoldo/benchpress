@@ -14,7 +14,7 @@ Iterative search +1 algorithm instance
 
 `object` ([Iterative search (paramter setting)](config-definitions-iterative-search-paramter-setting.md))
 
-# bidag_itsearch Properties
+# Iterative search (paramter setting) Properties
 
 | Property                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                      |
 | :---------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

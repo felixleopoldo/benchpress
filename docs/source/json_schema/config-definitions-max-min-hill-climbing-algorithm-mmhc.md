@@ -14,7 +14,7 @@ MMHC algorithm instance
 
 `object` ([Max-min hill climbing algorithm (MMHC)](config-definitions-max-min-hill-climbing-algorithm-mmhc.md))
 
-# bnlearn_mmhc Properties
+# Max-min hill climbing algorithm (MMHC) Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                               |
 | :-------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -14,7 +14,7 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties
 
 unknown ([Evaluation methods](config-properties-benchmark-setup-properties-evaluation-methods.md))
 
-# evaluation Properties
+# Evaluation methods Properties
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                       |
 | :------------------------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

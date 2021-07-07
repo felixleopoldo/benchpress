@@ -14,7 +14,7 @@ Inter-IAMB algorithm instance
 
 `object` ([Inter-IAMB algorithm](config-definitions-inter-iamb-algorithm.md))
 
-# bnlearn_interiamb Properties
+# Inter-IAMB algorithm Properties
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -14,7 +14,7 @@ Order MCMC algorithm instance
 
 `object` ([Order MCMC (parameter setting)](config-definitions-order-mcmc-parameter-setting.md))
 
-# bidag_order_mcmc Properties
+# Order MCMC (parameter setting) Properties
 
 | Property                                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                         |
 | :-------------------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

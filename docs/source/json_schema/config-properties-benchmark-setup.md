@@ -14,7 +14,7 @@ Description of the benchmarking setup.
 
 `object` ([Benchmark setup](config-properties-benchmark-setup.md))
 
-# benchmark_setup Properties
+# Benchmark setup Properties
 
 | Property                  | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
 | :------------------------ | :------------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

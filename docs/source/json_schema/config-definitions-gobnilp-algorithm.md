@@ -14,7 +14,7 @@ Gobnilp instance
 
 `object` ([Gobnilp algorithm](config-definitions-gobnilp-algorithm.md))
 
-# gobnilp Properties
+# Gobnilp algorithm Properties
 
 | Property                                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                   |
 | :-------------------------------------------------- | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

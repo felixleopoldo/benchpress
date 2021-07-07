@@ -15,7 +15,7 @@ Documentation: <https://github.com/felixleopoldo/trilearn>
 
 unknown ([CTA decomposable graph sampling](config-definitions-cta-decomposable-graph-sampling.md))
 
-# trilearn_cta Properties
+# CTA decomposable graph sampling Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :-------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

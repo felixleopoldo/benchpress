@@ -14,7 +14,7 @@ Parameter setting for a graph intra-class model
 
 `object` ([Graph intra-class model](config-definitions-graph-intra-class-model.md))
 
-# trilearn_intra-class Properties
+# Graph intra-class model Properties
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :---------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

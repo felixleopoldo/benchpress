@@ -14,7 +14,7 @@ Parameter setting for PC alg DAG sampling
 
 `object` ([PCalg SEM params](config-definitions-pcalg-sem-params.md))
 
-# sem_params Properties
+# PCalg SEM params Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                   |
 | :---------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

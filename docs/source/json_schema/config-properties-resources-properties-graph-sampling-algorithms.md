@@ -14,7 +14,7 @@ The available graph sampling algorithms.
 
 `object` ([Graph sampling algorithms](config-properties-resources-properties-graph-sampling-algorithms.md))
 
-# graph Properties
+# Graph sampling algorithms Properties
 
 | Property                        | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                            |
 | :------------------------------ | :------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

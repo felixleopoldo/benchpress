@@ -14,7 +14,7 @@ Data sampling from disctete Bayesian network.
 
 `object` ([Standard sampling](config-definitions-standard-sampling.md))
 
-# iid Properties
+# Standard sampling Properties
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
 | :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

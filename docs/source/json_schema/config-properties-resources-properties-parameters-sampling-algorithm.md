@@ -14,7 +14,7 @@ The available parameter sampling algorithms
 
 `object` ([Parameters sampling algorithm](config-properties-resources-properties-parameters-sampling-algorithm.md))
 
-# parameters Properties
+# Parameters sampling algorithm Properties
 
 | Property                                                    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                           |
 | :---------------------------------------------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

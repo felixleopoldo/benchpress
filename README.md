@@ -15,7 +15,8 @@ Benchpress is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflo
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
 The documentation is found at https://benchpressdocs.readthedocs.io.
 
-The currently supported algorithms are
+The currently supported algorithms are tabulated below.
+Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 | Algorithm        | Graph | Language | Library             | Version  | 
 |------------------|-------|----------|---------------------|----------|

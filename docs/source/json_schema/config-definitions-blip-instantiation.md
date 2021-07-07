@@ -14,7 +14,7 @@ Blip instantiation
 
 `object` ([Blip instantiation](config-definitions-blip-instantiation.md))
 
-# rblip Properties
+# Blip instantiation Properties
 
 | Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :------------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

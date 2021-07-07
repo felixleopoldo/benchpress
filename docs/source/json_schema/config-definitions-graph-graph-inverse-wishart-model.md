@@ -14,7 +14,7 @@ Parameter setting for a graph inverse-Wishart model
 
 `object` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model.md))
 
-# trilearn_g_inv_wishart Properties
+# Graph graph inverse-Wishart model Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :---------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

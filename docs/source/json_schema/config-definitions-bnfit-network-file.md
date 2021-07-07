@@ -14,7 +14,7 @@ Bayesian network in bn.fit type serialised as .rds file.
 
 unknown ([Bn.fit network file](config-definitions-bnfit-network-file.md))
 
-# bn.fit_networks Properties
+# Bn.fit network file Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                  |
 | :-------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

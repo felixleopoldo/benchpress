@@ -15,7 +15,7 @@ Documentation: <https://github.com/jmoss20/notears>
 
 unknown ([Notears DAG sampling](config-definitions-notears-dag-sampling.md))
 
-# notears_dag_sampling Properties
+# Notears DAG sampling Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

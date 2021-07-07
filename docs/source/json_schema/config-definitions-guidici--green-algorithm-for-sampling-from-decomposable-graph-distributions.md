@@ -14,20 +14,20 @@ Guidici & Green algorithm for learning decomopasble graphs.
 
 `object` ([Guidici & Green algorithm for sampling from decomposable graph distributions](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions.md))
 
-# gg99\_singlepair Properties
+# Guidici & Green algorithm for sampling from decomposable graph distributions Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                               |
 | :---------------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [id](#id)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/id")             |
 | [datatype](#datatype)   | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/datatype") |
 | [n_samples](#n_samples) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/n_samples")                                                                          |
-| [penalty](#penalty)     | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/penalty")                                                                                    |
+| [penalty](#penalty)     | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/penalty")                                                                     |
 | [randomits](#randomits) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/randomits")                                                                          |
 | [prior](#prior)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-prior.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/prior")       |
-| [ascore](#ascore)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/ascore")                                                                                     |
-| [bscore](#bscore)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/bscore")                                                                                     |
-| [clq](#clq)             | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/clq")                                                                                        |
-| [sep](#sep)             | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/sep")                                                                                        |
+| [ascore](#ascore)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/ascore")                                                                      |
+| [bscore](#bscore)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/bscore")                                                                      |
+| [clq](#clq)             | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/clq")                                                                         |
+| [sep](#sep)             | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/sep")                                                                         |
 | [mcmc_seed](#mcmc_seed) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/mcmc_seed")                                                                          |
 
 ## id
@@ -101,27 +101,31 @@ any of
 
 ## penalty
 
-Non-negative number(s).
+E.g. 1.5 or \[1.6, 3.8] or null.
 
 `penalty`
 
 *   is optional
 
-*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/penalty")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/penalty")
 
 ### penalty Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   any of
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+
+    *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## randomits
 
@@ -167,99 +171,115 @@ any of
 
 ## ascore
 
-Non-negative number(s).
+E.g. 1.5 or \[1.6, 3.8] or null.
 
 `ascore`
 
 *   is optional
 
-*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/ascore")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/ascore")
 
 ### ascore Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   any of
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+
+    *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## bscore
 
-Non-negative number(s).
+E.g. 1.5 or \[1.6, 3.8] or null.
 
 `bscore`
 
 *   is optional
 
-*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/bscore")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/bscore")
 
 ### bscore Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   any of
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+
+    *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## clq
 
-Non-negative number(s).
+E.g. 1.5 or \[1.6, 3.8] or null.
 
 `clq`
 
 *   is optional
 
-*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/clq")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/clq")
 
 ### clq Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   any of
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+
+    *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## sep
 
-Non-negative number(s).
+E.g. 1.5 or \[1.6, 3.8] or null.
 
 `sep`
 
 *   is optional
 
-*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/sep")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99\_singlepair/properties/sep")
 
 ### sep Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   any of
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+
+    *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## mcmc_seed
 

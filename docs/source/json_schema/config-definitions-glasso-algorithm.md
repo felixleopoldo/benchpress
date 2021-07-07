@@ -14,7 +14,7 @@ GLasso instance
 
 `object` ([GLasso algorithm](config-definitions-glasso-algorithm.md))
 
-# sklearn_glasso Properties
+# GLasso algorithm Properties
 
 | Property                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
 | :---------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

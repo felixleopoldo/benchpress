@@ -14,7 +14,7 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 `object` ([Trilearn](config-definitions-trilearn.md))
 
-# trilearn_pgibbs Properties
+# Trilearn Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                            |
 | :------------------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

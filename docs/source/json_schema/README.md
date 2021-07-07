@@ -60,11 +60,7 @@
 
 *   [Guidici & Green algorithm for sampling from decomposable graph distributions](./config-properties-resources-properties-available-structure-learning-algorithms-properties-guidici--green-ids-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair/items`
 
-*   [Guidici & Green algorithm for sampling from decomposable graph distributions](./config-properties-resources-properties-available-structure-learning-algorithms-properties-guidici--green-ids-1-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair_fortran/items`
-
 *   [Guidici & Green algorithm for sampling from decomposable graph distributions](./config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair`
-
-*   [Guidici & Green algorithm for sampling from decomposable graph distributions](./config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-1.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair_fortran`
 
 *   [HC algorithm (parameter setting)](./config-properties-resources-properties-available-structure-learning-algorithms-properties-hc-instantiations-hc-algorithm-parameter-setting.md "HC algorithm instance") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hc/items`
 
@@ -156,8 +152,6 @@
 
 *   [Guidici & Green id's](./config-properties-resources-properties-available-structure-learning-algorithms-properties-guidici--green-ids.md "Guidici & Green parametrisarion") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair`
 
-*   [Guidici & Green id's](./config-properties-resources-properties-available-structure-learning-algorithms-properties-guidici--green-ids-1.md "Guidici & Green Fortran implementation") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair_fortran`
-
 *   [HC instantiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-hc-instantiations.md "HC instantiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hc`
 
 *   [Inter-IAMB instantiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-inter-iamb-instantiations.md "Inter-IAMB instantiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb`
@@ -187,10 +181,6 @@
 *   [List of trilearn instantiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-list-of-trilearn-instantiations.md "List of trilearn instantiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs`
 
 *   [MMHC instantiations](./config-properties-resources-properties-available-structure-learning-algorithms-properties-mmhc-instantiations.md "MMHC instantiations") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmhc`
-
-*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
-
-*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 

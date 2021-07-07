@@ -14,7 +14,7 @@ Parameter setting for a hyper Dirichlet distribution
 
 `object` ([Hyper-Dirichlet](config-definitions-hyper-dirichlet.md))
 
-# trilearn_hyper-dir Properties
+# Hyper-Dirichlet Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                          |
 | :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
