@@ -66,26 +66,6 @@ rule roc:
 # Problem with seeds. The seed is includen in graph, bn and data, but not in algorithm.
 # When the order of the data, parameters and data is changed, the seed is lost.
 # It use to be matched out from data.
-# def adjvecs():
-#     # Everythihng may have seed depending on the source.
-#     ret = [[[expand("{output_dir}/adjvecs/"\
-#             "adjmat=/{adjmat_string}/"\
-#             "parameters=/{param_string}/"\
-#             "data=/{data_string}/"\
-#             "algorithm=/{alg_string}/"\                            
-#             "seed={seed}/"
-#             "adjvecs.json",
-#             output_dir="results",
-#             alg_string=json_string[alg_conf["id"]+"_noest"],
-#             **alg_conf,
-#             seed=seed,
-#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
-#             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-#             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-#             for seed in get_seed_range(sim_setup["seed_range"])]
-#             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"] if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["mcmc_traj"]]
-#     return ret
 
 def traj_plots():
     ret = [[[[expand("{output_dir}/" \
