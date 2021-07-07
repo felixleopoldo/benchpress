@@ -23,7 +23,7 @@ The currently supported algorithms are
 | ASOBS            | DAG   | rblip_asobs       | R/Java   | r.blip              | 1.1      |
 | FGES             | CPDAG | tetrad_fges       | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | FCI              | DAG   | tetrad_fci        | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| RFCI             | DAG   | tetrad_fci        | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| RFCI             | DAG   | tetrad_rfci       | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | GFCI             | DAG   | tetrad_gfci       | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | PC               | CPDAG | pcalg_pc          | R        | pcalg               | 2.6-10   |
 | No tears         | DAG   | notears           | Python   | jmoss20 (github)    | #0c032a0 |
