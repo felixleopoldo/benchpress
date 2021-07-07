@@ -31,7 +31,7 @@ The currently supported algorithms are
 | MMHC             | DAG   | bnlearn_mmhc      | R        | bnlearn             | 4.5      |
 | Inter-IAMB       | DAG   | bnlearn_interiamb | R        | bnlearn             | 4.5      |
 | GS               | DAG   | bnlearn_gs        | R        | bnlearn             | 4.5      |
-| Tabu             | DAG   | bnlearn_gs        | R        | bnlearn             | 4.5      |
+| Tabu             | DAG   | bnlearn_tabu      | R        | bnlearn             | 4.5      |
 | Iterative MCMC   | DAG   | bidag_itsearch    | R        | BiDAG               | 2.0.2    |
 | Order MCMC       | DAG   | bidag_order_mcmc  | R        | BiDAG               | 2.0.2    |
 | PGibbs           | DG    | trilearn_pgibbs   | Python   | Trilearn            | 1.2.3    |
