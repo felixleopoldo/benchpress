@@ -53,10 +53,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 ``gobnilp``
 ------------
 
-*GOBNILP C implementation (https://bitbucket.org/jamescussens/gobnilp/src/master/ commit #e60ef14).
-
-`https://www.cs.york.ac.uk/aig/sw/gobnilp/ <https://www.cs.york.ac.uk/aig/sw/gobnilp/>`_
-
+*GOBNILP C implementation
 
 .. rubric:: Example
 
@@ -160,11 +157,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 *Fast causal inferece* (FCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
-`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
-
-`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
-
-
 
 .. rubric:: Example
 
@@ -187,10 +179,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 *Greedy fast causal inference* (GFCI) method from command line interface of *Tetrad (causal-cmd v1.1.3)*.
 
-
-`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
-
-`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
 
 
 .. rubric:: Example
@@ -216,12 +204,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 ``tetrad_rcfi``
 ----------------
 
-*Re-sample fast causal inference* (RFCI) method from command line interface of Tetrad (causal-cmd v1.1.3).
-
-
-`https://www.ccd.pitt.edu/ <https://www.ccd.pitt.edu/>`_
-
-`https://bd2kccd.github.io/docs/causal-cmd/ <https://bd2kccd.github.io/docs/causal-cmd/>`_
+*Really fast causal inference* (RFCI) method from command line interface of Tetrad (causal-cmd v1.1.3).
 
 
 
@@ -276,9 +259,6 @@ PC algorithm from the *pcalg v2.6-10* package R.
 
 *Hill-climbing* implementation in bnlearn 4.5  R.
 
-`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
-
 .. rubric:: Example
 
 
@@ -306,10 +286,6 @@ PC algorithm from the *pcalg v2.6-10* package R.
 -------------------
 
 *Max-min hill-climbing* implementation in bnlearn R.
-
-`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
-
 
 
 .. rubric:: Example
@@ -340,9 +316,6 @@ PC algorithm from the *pcalg v2.6-10* package R.
 
 *Incremental association Markov blanket* (Inter-IAMB) from *bnlearn R*.
 
-`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
-
 
 .. rubric:: Example
 
@@ -371,12 +344,6 @@ An example
 
 *Greedy search* (GS) from  *bnlearn R*.
 
-`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-inter-iamb-algorithm.md>`_
-
-
 .. rubric:: Example
 
 
@@ -400,9 +367,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 ------------------
 
 *Tabu* search from *bnlearn R*.
-
-`https://www.bnlearn.com/ <https://www.bnlearn.com/>`_
-
 
 
 .. rubric:: Example
@@ -431,9 +395,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 -------------------
 
 *Iterative MCMC* implementation in *BiDAG v2.0.2 R*.
-
-`https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
-
 
 .. rubric:: Example
 
@@ -467,9 +428,6 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
 -----------------------
 
 *Order MCMC* implementation in *BiDAG v2.0.2 R*.
-
-`https://cran.r-project.org/web/packages/BiDAG/index.html <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
-
 
 
 .. rubric:: Example
