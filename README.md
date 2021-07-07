@@ -17,27 +17,27 @@ The documentation is found at https://benchpressdocs.readthedocs.io.
 
 The currently supported algorithms are
 
-| Algorithm        | Graph | JSON key          | Language | Library             | Version  |
-|------------------|-------|-------------------|----------|---------------------|----------|
-| GOBNILP          | DAG   | gobnilp           | C        | GOBNILP (bitbucket) | #e60ef14 |
-| ASOBS            | DAG   | rblip_asobs       | R/Java   | r.blip              | 1.1      |
-| FGES             | CPDAG | tetrad_fges       | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| FCI              | DAG   | tetrad_fci        | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| RFCI             | DAG   | tetrad_rfci       | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| GFCI             | DAG   | tetrad_gfci       | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| PC               | CPDAG | pcalg_pc          | R        | pcalg               | 2.6-10   |
-| No tears         | DAG   | notears           | Python   | jmoss20 (github)    | #0c032a0 |
-| HC               | DAG   | bnlearn_hc        | R        | bnlearn             | 4.5      |
-| MMHC             | DAG   | bnlearn_mmhc      | R        | bnlearn             | 4.5      |
-| Inter-IAMB       | DAG   | bnlearn_interiamb | R        | bnlearn             | 4.5      |
-| GS               | DAG   | bnlearn_gs        | R        | bnlearn             | 4.5      |
-| Tabu             | DAG   | bnlearn_tabu      | R        | bnlearn             | 4.5      |
-| Iterative MCMC   | DAG   | bidag_itsearch    | R        | BiDAG               | 2.0.2    |
-| Order MCMC       | DAG   | bidag_order_mcmc  | R        | BiDAG               | 2.0.2    |
-| PGibbs           | DG    | trilearn_pgibbs   | Python   | Trilearn            | 1.2.3    |
-| GG99 single pair | DG    | gg99_singlepair   | Java     | A. Thomas           | -        |
-| GT13 multi pair  | DG    | gt13_multipair    | Java     | A. Thomas           | -        |
-| GLasso           | UG    | sklearn_glasso    | Python   | scikit-learn        | 0.22.1   |
+| Algorithm        | Graph | Language | Library             | Version  | 
+|------------------|-------|----------|---------------------|----------|
+| GOBNILP          | DAG   | C        | GOBNILP (bitbucket) | #e60ef14 |
+| ASOBS            | DAG   | R/Java   | r.blip              | 1.1      |
+| FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| RFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| PC               | CPDAG | R        | pcalg               | 2.6-10   |
+| No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
+| HC               | DAG   | R        | bnlearn             | 4.5      |
+| MMHC             | DAG   | R        | bnlearn             | 4.5      |
+| Inter-IAMB       | DAG   | R        | bnlearn             | 4.5      |
+| GS               | DAG   | R        | bnlearn             | 4.5      |
+| Tabu             | DAG   | R        | bnlearn             | 4.5      |
+| Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.2    |
+| Order MCMC       | DAG   | R        | BiDAG               | 2.0.2    |
+| PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
+| GG99 single pair | DG    | Java     | A. Thomas           | -        |
+| GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
+| GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
 
 ## Reqirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
