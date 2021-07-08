@@ -2,16 +2,17 @@
 
 ``graph``
 ========================
-This section contains the algorithm for sampling graphs and shows how to provide a fixed graph in ``.csv`` format.
+
+This section contains the availabele graph modules.
 
 ``pcalg_randdag``
 -------------------------
 
-Samples a random DAG with a given number of nodes (``dims``) and limited average number of parents per node (``av_parents``).
+This is the randDAG from the *pcalg* R package with the extra feature that the maximuma averagr numbr of parents can be set by (``max_parents``).
 
-`https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
+Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
+.. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
 
 
 .. rubric:: Example
@@ -28,6 +29,56 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         "par2": null,
         "method": "er"
     }
+
+``trilearn_cta``
+-------------------
+This is the Christmas tree algorithm for generating decomposable graph implemented in the *trilearn* PyPi package.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "trilearn_cta",
+        "order": 50,
+        "alpha": 0.5,
+        "beta": 0.7
+    }
+
+
+``bandmat``
+-------------------
+An object of the bandmat module specifies a decomposable graphs with adjacency matrix
+with given bandwidth (bandwith).
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "AR2",
+        "bandwidth": 2,
+        "dim": 50
+    }
+    
+``rand_bandmat``
+-------------------
+An object of the max bandwith module specifies a decomposable graph with band structured adjacency matrix of a given maximum width (max bandwith).
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "AR1-5",
+        "max_bandwidth": 5,
+        "dim": 50
+    }
+    
 
 
 .. ``notears``
