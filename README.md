@@ -9,7 +9,6 @@
 #  
 # Benchpress
 
-![Benchpress](images/benchpress.jpg)
 
 Benchpress is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different laguages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
