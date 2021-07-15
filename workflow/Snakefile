@@ -4,8 +4,6 @@ import snakemake.utils
 import sys, getopt
 import shutil
 import filecmp
-
-from dirsync import sync
 from pathlib import Path
 import os
 
