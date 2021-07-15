@@ -10,12 +10,11 @@
 # Benchpress
 
 
-Benchpress is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different laguages, can be executed and compared.
+Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different laguages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
 The documentation is found at https://benchpressdocs.readthedocs.io.
 
 The currently supported algorithms are tabulated below.
-Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 | Algorithm        | Graph | Language | Library             | Version  | 
 |------------------|-------|----------|---------------------|----------|
@@ -39,6 +38,8 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 | GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
 | GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
 
+Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
+
 ## Reqirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Docker](https://www.docker.com/) ([installation instructions](https://docs.docker.com/engine/install/))
@@ -59,6 +60,7 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run the simulation setup in [config/sec6.1.json](config/sec6.1.json) type
 
+`$ cd benchpress`
 `$ snakemake --cores 20 --use-singularity --configfile config/sec6.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
@@ -66,6 +68,22 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 `$ evince results/output/roc/FPRp_TRP_pattern.eps`
 
 ![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
+
+## Citing
+
+```
+@misc{rios2021benchpress,
+      title={Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models}, 
+      author={Felix L. Rios and Giusi Moffa and Jack Kuipers},
+      year={2021},
+      eprint={2107.03863},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+```
+
+## References
+* <a id="1">[1]</a> [Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models. *ArXiv eprints.*, 2107.03863, 2021.](https://arxiv.org/abs/2107.03863)
 
 
 
