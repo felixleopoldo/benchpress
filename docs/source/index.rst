@@ -35,8 +35,6 @@
 Benchpress's documentation
 ##################################
 
-.. image:: ../../images/benchpress.jpg
-   :width: 600
 
 Benchpress is a `Snakemake <https://snakemake.readthedocs.io>`_ workflow for systematic benchmarking of algorithms for learning graphical models.
 It provides a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file in a probabilistic programming fashion.
