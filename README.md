@@ -23,13 +23,13 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 | ASOBS            | DAG   | R/Java   | r.blip              | 1.1      |
 | FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| RFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | PC               | CPDAG | R        | pcalg               | 2.6-10   |
 | No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
 | HC               | DAG   | R        | bnlearn             | 4.5      |
 | MMHC             | DAG   | R        | bnlearn             | 4.5      |
-| Inter-IAMB       | DAG   | R        | bnlearn             | 4.5      |
+| Inter-IAMB       | CPDAG | R        | bnlearn             | 4.5      |
 | GS               | DAG   | R        | bnlearn             | 4.5      |
 | Tabu             | DAG   | R        | bnlearn             | 4.5      |
 | Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.2    |
