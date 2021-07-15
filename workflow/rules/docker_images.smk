@@ -17,3 +17,5 @@ def docker_image(algorithm):
         return "docker://onceltuca/benchmark:1.0.8"
     elif algorithm ==  "networkx":
         return "docker://onceltuca/networkx:2.5.1"
+    elif algorithm ==  "bdgraph":
+        return "docker://onceltuca/bdgraph:2.64"

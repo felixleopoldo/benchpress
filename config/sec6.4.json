@@ -127,6 +127,16 @@
                     "max_bandwidth": 5,
                     "dim": 50
                 }
+            ],
+            "bdgraph_graphsim": [
+                {
+                    "id": "circle",
+                    "p": 50,
+                    "graph": "circle",
+                    "class": null,
+                    "size": null,
+                    "prob": 0.2
+                }
             ]
         },
         "parameters": {
@@ -162,6 +172,13 @@
                 {
                     "id": "giw",
                     "dof": 1
+                }
+            ],
+            "bdgraph_rgwish": [
+                {
+                    "id": "gwi",
+                    "b": 3,
+                    "threshold": 0.00000001
                 }
             ]
         },
@@ -217,6 +234,7 @@
                     ],
                     "tol": 0.0004,
                     "enet_tol": 0.0004,
+                    "precmat_threshold": 0.1,
                     "max_iter": 100,
                     "verbose": false,
                     "assume_centered": false

@@ -131,9 +131,17 @@
                                 "$ref": "#/definitions/rand_bandmat"
                             },
                             "uniqueItems": true
+                        },
+                        "bdgraph_graphsim": {
+                            "title": "BDgraph graph.sim",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bdgraph_graphsim"
+                            },
+                            "uniqueItems": true
                         }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                 },
                 "parameters": {
                     "title": "Parameters sampling algorithm",
@@ -192,7 +200,17 @@
                                 "$ref": "#/definitions/trilearn_g_inv_wishart"
                             },
                             "uniqueItems": true
+                        },
+                        "bdgraph_rgwish": {
+                            "title": "List of graph inverse-Wishart id's",
+                            "description": "List of graph inverse-Wishart id's",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bdgraph_rgwish"
+                            },
+                            "uniqueItems": true
                         }
+
                     },
                     "additionalProperties": true
                 },
@@ -407,7 +425,13 @@
                         ]
                     }
                 },
-                "required":["id", "burn_in", "thinning", "functional", "lags"]
+                "required": [
+                    "id",
+                    "burn_in",
+                    "thinning",
+                    "functional",
+                    "lags"
+                ]
             }
         },
         "mcmc_traj_plots": {
@@ -445,7 +469,12 @@
                         ]
                     }
                 },
-                "required":["id", "burn_in", "thinning", "functional"]
+                "required": [
+                    "id",
+                    "burn_in",
+                    "thinning",
+                    "functional"
+                ]
             },
             "additionalItems": false
         },
@@ -461,7 +490,10 @@
                         "$ref": "#/definitions/flexnonnegint"
                     }
                 },
-                "required":["id", "burn_in"]
+                "required": [
+                    "id",
+                    "burn_in"
+                ]
             }
         },
         "notears_parameters_sampling": {
@@ -579,6 +611,49 @@
                 "id",
                 "dim",
                 "bandwidth"
+            ],
+            "additionalProperties": false
+        },
+        "bdgraph_graphsim": {
+            "title": "Random undirected graph",
+            "description": "BDgraph graph.sim",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "p": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "prob": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "graph": {
+                    "type": "string",
+                    "enum": [
+                        "random",
+                        "cluster",
+                        "scale-free",
+                        "hub",
+                        "circle",
+                        "star",
+                        "lattice"
+                    ]
+                },
+                "class": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "size": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                }
+            },
+            "required": [
+                "p",
+                "graph",
+                "class",
+                "size",
+                "id",
+                "prob"
             ],
             "additionalProperties": false
         },
@@ -835,6 +910,30 @@
             ],
             "additionalProperties": false
         },
+        "bdgraph_rgwish": {
+            "title": "Graph graph inverse-Wishart model",
+            "description": "Parameter setting for a graph inverse-Wishart model. Works for all undirected graphs.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "b": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "threshold": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                }
+
+            },
+            "required": [
+                "b",
+                "id",
+                "threshold"
+            ],
+            "additionalProperties": false
+        },
+
         "sem_params": {
             "title": "PCalg SEM params",
             "description": "Parameter setting for PC alg DAG sampling",
@@ -1219,6 +1318,9 @@
                 "enet_tol": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
+                "precmat_threshold": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
                 "verbose": {
                     "type": "boolean"
                 },
@@ -1235,6 +1337,7 @@
                 "tol",
                 "enet_tol",
                 "verbose",
+                "precmat_threshold",
                 "assume_centered"
             ]
         },

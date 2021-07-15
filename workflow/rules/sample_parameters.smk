@@ -68,6 +68,19 @@ rule trilearn_g_inv_wishart:
     shell:
         "python workflow/scripts/trilearn/g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
 
+rule bdgraph_rgwish:
+    input:
+        adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
+    output:
+        params = "{output_dir}/parameters/" + \
+                pattern_strings["bdgraph_rgwish"] + "/" \
+                "seed={seed}/"+\
+                "adjmat=/{adjmat}.csv"
+    singularity:
+        docker_image("bdgraph")
+    script:
+        "../scripts/bdgraph_rgwish.R"
+
 rule copy_bnfit:
     input:
         "resources/parameters/myparams/bn.fit_networks/{filename}.rds"

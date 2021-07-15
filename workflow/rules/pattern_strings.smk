@@ -50,6 +50,7 @@ pattern_strings["pcalg_randdag"] = "pcalg_randdag/" + dict_to_path(config["resou
 pattern_strings["trilearn_cta"] = "cta/" + dict_to_path(config["resources"]["graph"]["trilearn_cta"])
 pattern_strings["bandmat"] = "bandmat/" + dict_to_path(config["resources"]["graph"]["bandmat"])
 pattern_strings["rand_bandmat"] = "rand_bandmat/" + dict_to_path(config["resources"]["graph"]["rand_bandmat"])
+pattern_strings["bdgraph_graphsim"] = "bdgraph_graphsim/" + dict_to_path(config["resources"]["graph"]["bdgraph_graphsim"])
 
 # parameters sampling
 pattern_strings["sem_params"] = "sem_params/" + dict_to_path(config["resources"]["parameters"]["sem_params"])
@@ -57,6 +58,7 @@ pattern_strings["bin_bn"] = "bin_bn/" + dict_to_path(config["resources"]["parame
 pattern_strings["trilearn_hyper-dir"] = "trilearn_hyper-dir/" + dict_to_path(config["resources"]["parameters"]["trilearn_hyper-dir"])
 pattern_strings["trilearn_intra-class"] = "intra-class/" + dict_to_path(config["resources"]["parameters"]["trilearn_intra-class"])
 pattern_strings["trilearn_g_inv_wishart"] = "trilearn_g_inv_wishart/" + dict_to_path(config["resources"]["parameters"]["trilearn_g_inv_wishart"])
+pattern_strings["bdgraph_rgwish"] = "bdgraph_rgwish/" + dict_to_path(config["resources"]["parameters"]["bdgraph_rgwish"])
 
 # Evaluation strings. These have not exactly the same logic as the above, but it works.
 pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])

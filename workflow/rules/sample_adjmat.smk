@@ -8,6 +8,16 @@ rule sample_adjmat:
     script:
         "../scripts/sample_dags.R"
 
+rule bdgraph_graphsim:
+    input:
+        "workflow/scripts/bdgraph_graphsim.R"
+    output:        
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["bdgraph_graphsim"] + "/seed={replicate}.csv"
+    singularity:
+        docker_image("bdgraph")
+    script:
+        "../scripts/bdgraph_graphsim.R"
+
 rule sample_adjmat_cta:
     output:
         adjmat = "{output_dir}/adjmat/" + pattern_strings["trilearn_cta"] + "/seed={replicate}.csv"

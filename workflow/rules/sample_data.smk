@@ -54,6 +54,20 @@ rule sample_g_inverse_wishart:
     shell:
         "python workflow/scripts/trilearn/sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
+rule sample_rgwish_data:
+    input:
+        "workflow/scripts/trilearn/sample_mvn_data.py",
+        cov="{output_dir}/parameters/bdgraph_rgwish/{bn}/adjmat=/{adjmat}.csv" # This could probably be relaxed
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/parameters=/bdgraph_rgwish/{bn}"\
+             "/data=/iid/n={n}/seed={replicate}.csv"
+    singularity:
+        docker_image("trilearn")
+    shell:
+        "python workflow/scripts/trilearn/sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+
 rule standardize:
     input:
         data="{output_dir}/data" \

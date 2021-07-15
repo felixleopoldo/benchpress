@@ -1,39 +1,3 @@
-rule TP:
-    input:
-        true_graph="{adjmat_string}.csv",
-        est_graph="{est_graph}.csv"
-    output:
-        tp="{output_dir}/"\
-            "evaluation=/TP/graph_type={graph_type}/"\
-            "algorithm=/{alg_string}/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "TP.csv"
-    script:
-        "Rscript run_summary.R "\
-        "--true_graph {input.true_graph} "\
-        "--est_graph {input_est_graph} "\
-        "--filename {output.tp}"
-
-rule FP:
-    input:
-        true_graph="{adjmat_string}.csv",
-        est_graph="{est_graph}. csv"
-    output:
-        tp="{output_dir}/"\
-            "evaluation=/FP/graph_type={graph_type}/"\
-            "algorithm=/{alg_string}/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "FP.csv"
-    script:
-        "Rscript run_summary.R "\
-        "--true_graph {input.true_graph} "\
-        "--est_graph {input_est_graph} "\
-        "--filename {output.tp}"
-
 rule roc_data:
     input:
         "workflow/scripts/combine_ROC_data.R",

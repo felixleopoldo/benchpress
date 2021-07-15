@@ -178,9 +178,9 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
 
-    # elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["DAGavparents"]]:
-    #     adjmat_dict = next(item for item in config["resources"]["graph"]["DAGavparents"] if item["id"] == adjmat_id)
-    #     return expand(pattern_strings["DAGavparents"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    elif adjmat_id in [c["id"] for c in config["resources"]["graph"]["bdgraph_graphsim"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["bdgraph_graphsim"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["bdgraph_graphsim"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id is None:
         return None
@@ -189,7 +189,11 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
     if gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bin_bn"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["bin_bn"] if item["id"] == gen_method_id)
         return expand(pattern_strings["bin_bn"] + "/seed={seed}", **curconf, seed=seed)
-       
+
+    elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bdgraph_rgwish"]]:        
+        curconf = next(item for item in config["resources"]["parameters"]["bdgraph_rgwish"] if item["id"] == gen_method_id)
+        return expand(pattern_strings["bdgraph_rgwish"] + "/seed={seed}", **curconf, seed=seed)
+
     elif gen_method_id in [c["id"] for c in config["resources"]["parameters"]["sem_params"]]:        
         curconf = next(item for item in config["resources"]["parameters"]["sem_params"] if item["id"] == gen_method_id)
         return expand(pattern_strings["sem_params"] + "/seed={seed}", **curconf, seed=seed)
