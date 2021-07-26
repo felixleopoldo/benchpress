@@ -10,7 +10,7 @@
 # Benchpress
 
 
-Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different laguages, can be executed and compared.
+Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different languages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
 The documentation is found at https://benchpressdocs.readthedocs.io.
 
@@ -40,7 +40,7 @@ The currently supported algorithms are tabulated below.
 
 Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
-## Reqirements
+## Requirements
 - [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Singularity](https://sylabs.io/docs/) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
 - Linux (Singularity currently only has a Beta release for OSX which is not enough)
@@ -91,12 +91,7 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## History
-
-This is the first program of its kind.
+4. Contact me at felix leopoldo rios at gmail com
 
 
 ## License
