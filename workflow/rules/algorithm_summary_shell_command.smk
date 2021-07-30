@@ -127,6 +127,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname tol             --colval {wildcards.tol} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname enet_tol        --colval {wildcards.enet_tol} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname precmat_threshold        --colval {wildcards.precmat_threshold} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname assume_centered --colval {wildcards.assume_centered} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
