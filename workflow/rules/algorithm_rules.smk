@@ -541,7 +541,7 @@ rule trilearn:
         adjvecs = alg_output_seqgraph_path("trilearn_pgibbs"),
         time = alg_output_time_path("trilearn_pgibbs")
     singularity:
-        docker_image("trilearn_pgibbs")
+        docker_image("trilearn")
     shell:
         alg_shell("trilearn_pgibbs")
 
