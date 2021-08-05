@@ -4,10 +4,12 @@ def dict_to_path(d):
 
     c = d[0].copy() # take the first element in the list. BUG
     c.pop("id") # remove id from the string as only the parameters should identify the computation.
-    if "burnin" in c:
+    if "burnin" in c: 
         c.pop("burnin")
-    if "threshold" in c:        
+    if "threshold" in c:      
         c.pop("threshold")
+    if "active" in c:
+        c.pop("active")
     sep = "/"
     ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
     return ret

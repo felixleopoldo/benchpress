@@ -47,13 +47,15 @@
                     "functional": [
                         "score",
                         "size"
-                    ]
+                    ],
+                    "active": true
                 }
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "omcmc_itsample-bge",
-                    "burn_in": 0
+                    "burn_in": 0,
+                    "active": true
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -65,7 +67,8 @@
                     "functional": [
                         "score",
                         "size"
-                    ]
+                    ],
+                    "active": true
                 }
             ]
         }

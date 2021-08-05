@@ -210,7 +210,6 @@
                             },
                             "uniqueItems": true
                         }
-
                     },
                     "additionalProperties": true
                 },
@@ -400,6 +399,9 @@
                     "thinning": {
                         "$ref": "#/definitions/flexnonnegintnull"
                     },
+                    "active": {
+                        "type": "boolean"
+                    },
                     "lags": {
                         "$ref": "#/definitions/flexnonnegintnull"
                     },
@@ -430,7 +432,8 @@
                     "burn_in",
                     "thinning",
                     "functional",
-                    "lags"
+                    "lags",
+                    "active"
                 ]
             }
         },
@@ -446,6 +449,9 @@
                     },
                     "thinning": {
                         "$ref": "#/definitions/flexnonnegintnull"
+                    },
+                    "active": {
+                        "type": "boolean"
                     },
                     "functional": {
                         "anyOf": [
@@ -473,7 +479,8 @@
                     "id",
                     "burn_in",
                     "thinning",
-                    "functional"
+                    "functional",
+                    "active"
                 ]
             },
             "additionalItems": false
@@ -486,13 +493,17 @@
                     "id": {
                         "type": "string"
                     },
+                    "active": {
+                        "type": "boolean"
+                    },
                     "burn_in": {
                         "$ref": "#/definitions/flexnonnegint"
                     }
                 },
                 "required": [
                     "id",
-                    "burn_in"
+                    "burn_in",
+                    "active"
                 ]
             }
         },
@@ -924,7 +935,6 @@
                 "threshold": {
                     "$ref": "#/definitions/flexnonnegnum"
                 }
-
             },
             "required": [
                 "b",
@@ -933,7 +943,6 @@
             ],
             "additionalProperties": false
         },
-
         "sem_params": {
             "title": "PCalg SEM params",
             "description": "Parameter setting for PC alg DAG sampling",
