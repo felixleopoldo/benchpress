@@ -286,7 +286,7 @@ def active_algorithms(eval_method="roc"):
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                         algs.append( alg )
 
-    return algs
+    return list(set(algs))
 
 
 
