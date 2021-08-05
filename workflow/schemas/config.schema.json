@@ -432,8 +432,7 @@
                     "burn_in",
                     "thinning",
                     "functional",
-                    "lags",
-                    "active"
+                    "lags"
                 ]
             }
         },
@@ -479,8 +478,7 @@
                     "id",
                     "burn_in",
                     "thinning",
-                    "functional",
-                    "active"
+                    "functional"
                 ]
             },
             "additionalItems": false
@@ -502,8 +500,7 @@
                 },
                 "required": [
                     "id",
-                    "burn_in",
-                    "active"
+                    "burn_in"
                 ]
             }
         },

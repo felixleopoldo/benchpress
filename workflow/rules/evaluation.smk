@@ -51,7 +51,8 @@ def traj_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] if mcmc_traj_conf["active"] == True] ]
+                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
+                                                            if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
@@ -136,7 +137,8 @@ def autocorr_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"] if conf["active"] == True] ]
+                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"] 
+                                                    if ("active" not in conf) or (conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_autocorr_plots")]
     return ret
 
@@ -160,7 +162,8 @@ def heatmap_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"] if conf["active"] == True] ]
+                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"] 
+                                                    if ("active" not in conf) or (conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
