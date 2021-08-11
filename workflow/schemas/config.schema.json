@@ -1283,6 +1283,12 @@
                 "alpha_mu": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+		"time": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "gap": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "prune": {
                     "type": "boolean"
                 }
