@@ -60,6 +60,7 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 To run the simulation setup in [config/sec6.1.json](config/sec6.1.json) type
 
 `$ cd benchpress`
+
 `$ snakemake --cores 20 --use-singularity --configfile config/sec6.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
