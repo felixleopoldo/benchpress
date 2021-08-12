@@ -303,6 +303,8 @@
                         0.01,
                         0.1
                     ],
+		    "time_limit": null,
+		    "gap_limit": null,
                     "prune": true
                 },
                 {

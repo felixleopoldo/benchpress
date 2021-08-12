@@ -137,8 +137,12 @@ def alg_shell(algorithm):
                 "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set ; " \
                 "fi && " \
                 "echo 'gobnilp/scoring/palim = {wildcards.palim} ' >> {output.adjmat}.gobnilp.set && " \
-		"echo 'limits/time = {wildcards.time} ' >>   {output.adjmat}.gobnilp.set && " \
-		"echo 'limits/gap = {wildcards.gap} ' >> {output.adjmat}.gobnilp.set && " \	
+                "if [ {wildcards.time_limit} != \"None\" ]; then "\
+		"echo 'limits/time = {wildcards.time_limit} ' >>   {output.adjmat}.gobnilp.set ; " \
+                "fi && " \
+                "if [ {wildcards.gap_limit} != \"None\" ]; then "\
+		"echo 'limits/gap = {wildcards.gap_limit} ' >>   {output.adjmat}.gobnilp.set ; " \
+                "fi && " \
                 "echo 'gobnilp/scoring/prune = {wildcards.prune} ' >> {output.adjmat}.gobnilp.set && " \     
                 "echo 'gobnilp/delimiter = \",\" ' >> {output.adjmat}.gobnilp.set && " \     
                 "/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \

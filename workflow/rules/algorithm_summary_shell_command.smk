@@ -449,6 +449,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname continuous       --colval {wildcards.continuous} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname score_type       --colval {wildcards.score_type} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname time_limit       --colval {wildcards.time_limit} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname gap_limit       --colval {wildcards.gap_limit} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname prune       --colval {wildcards.prune} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time} | grep -Eo '[0-9]\.[0-9]*$'` " \
 
