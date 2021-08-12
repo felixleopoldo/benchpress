@@ -59,7 +59,7 @@ if snakemake.wildcards["functional"] == "size":
         #"Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
         #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
         "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/","\n") + 
-        "\n\nPlot: burn_in="+snakemake.wildcards["burn_in"] + 
+        "\n\nPlot:\n\nburn_in="+snakemake.wildcards["burn_in"] + 
         "\nthinning="+snakemake.wildcards["thinning"] +
         "\nfunctional="+snakemake.wildcards["functional"]
         , rotation="horizontal", fontsize=6, ha="right", va="center")
