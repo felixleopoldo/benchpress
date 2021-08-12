@@ -1,0 +1,93 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" height="60" width="135" y="81" x="127" stroke="#000" fill="#fff"/>
+  <rect id="svg_19" height="60" width="135" y="183" x="125" stroke="#000" fill="#fff"/>
+  <rect id="svg_20" height="60" width="135" y="292" x="126" stroke="#000" fill="#fff"/>
+  <rect id="svg_21" height="60" width="135" y="405" x="124" stroke="#000" fill="#fff"/>
+  <path id="svg_23" d="m171,92" opacity="NaN" stroke="#000" fill="#000000"/>
+  <path id="svg_25" d="m243.27499,113.24118l0.38197,0l0.11803,-0.76394l0.11803,0.76394l0.38197,0l-0.30902,0.47213l0.11804,0.76394l-0.30902,-0.47215l-0.30902,0.47215l0.11804,-0.76394l-0.30902,-0.47213z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_26" d="m211.43,112.85921l0.76394,0l0.23606,-0.38197l0.23606,0.38197l0.76394,0l-0.61804,0.23607l0.23607,0.38197l-0.61804,-0.23607l-0.61804,0.23607l0.23607,-0.38197l-0.61804,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_27" d="m146.27,104.89921l0.56913,0l0.17587,-0.38197l0.17587,0.38197l0.56913,0l-0.46044,0.23607l0.17588,0.38197l-0.46044,-0.23607l-0.46044,0.23607l0.17588,-0.38197l-0.46044,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_29" y="118" x="150" stroke="#000" fill="#000000">Graph</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_30" y="224" x="139" stroke="#000" fill="#000000">Parameters</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_31" y="326" x="145" stroke="#000" fill="#000000">Data</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_32" y="441" x="145" stroke="#000" fill="#000000">Learning</text>
+  <rect id="svg_33" height="60" width="135" y="505" x="312" stroke="#000" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_34" y="543" x="317" stroke="#000" fill="#000000">Evaluation</text>
+  <path id="svg_36" d="m178,174" opacity="NaN" stroke-width="0" stroke="#000" fill="#000000"/>
+  <path d="m185,139c0,1 -0.80617,2.03044 -2,9c-0.86089,5.02582 -3.49345,12.87856 -4,16c-0.32036,1.97418 0,3 -1,3c0,0 0,1 0,1l0,2l0,0" id="svg_38" stroke-width="0" stroke="#000" fill="none"/>
+  <path stroke="#000" d="m184,190c1,0 1,-10.33333 1,-10.33333c0,-10.33333 -2,-20.66667 -2,-20.66667c-1,0 -2,0 -3,0l0,0" id="svg_39" stroke-width="0" fill="none"/>
+  <path id="svg_41" d="m323,239" opacity="NaN" stroke-width="0" stroke="#000" fill="none"/>
+  <line id="svg_43" y2="184" x2="189" y1="141" x1="189" stroke="#000" fill="none"/>
+  <line id="svg_44" y2="294" x2="189" y1="242" x1="189" stroke="#000" fill="none"/>
+  <line id="svg_45" y2="403" x2="189" y1="351" x1="188" stroke="#000" fill="none"/>
+  <line id="svg_48" y2="184" x2="189" y1="169" x1="175" stroke="#000" fill="none"/>
+  <line id="svg_49" y2="184" x2="188" y1="168" x1="204" stroke="#000" fill="none"/>
+  <line id="svg_50" y2="291" x2="201" y1="290" x1="201" stroke="#000" fill="none"/>
+  <line id="svg_51" y2="292" x2="189" y1="276" x1="173" stroke="#000" fill="none"/>
+  <line id="svg_52" y2="291" x2="189" y1="275" x1="207" stroke="#000" fill="none"/>
+  <line id="svg_53" y2="404" x2="189" y1="388" x1="173" stroke="#000" fill="none"/>
+  <line id="svg_54" y2="404" x2="189" y1="387" x1="209" stroke="#000" fill="none"/>
+  <rect id="svg_57" height="60" width="135" y="85" x="316" stroke="#000" fill="#fff"/>
+  <rect id="svg_58" height="60" width="135" y="187" x="314" stroke="#000" fill="#fff"/>
+  <rect id="svg_59" height="60" width="135" y="296" x="315" stroke="#000" fill="#fff"/>
+  <rect id="svg_60" height="60" width="135" y="409" x="313" stroke="#000" fill="#fff"/>
+  <path id="svg_61" d="m360,96" opacity="NaN" stroke="#000" fill="#000000"/>
+  <path id="svg_62" d="m432.27499,117.24118l0.38197,0l0.11803,-0.76394l0.11804,0.76394l0.38197,0l-0.30902,0.47213l0.11804,0.76394l-0.30903,-0.47215l-0.30902,0.47215l0.11804,-0.76394l-0.30902,-0.47213z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_63" d="m400.43,116.85921l0.76394,0l0.23606,-0.38196l0.23607,0.38196l0.76393,0l-0.61803,0.23607l0.23607,0.38197l-0.61804,-0.23607l-0.61803,0.23607l0.23607,-0.38197l-0.61804,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_64" d="m335.27,108.89921l0.56913,0l0.17587,-0.38197l0.17587,0.38197l0.56913,0l-0.46044,0.23607l0.17588,0.38196l-0.46044,-0.23607l-0.46044,0.23607l0.17588,-0.38196l-0.46044,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_65" y="122" x="339" stroke="#000" fill="#000000">Graph</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_66" y="228" x="328" stroke="#000" fill="#000000">Parameters</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_67" y="330" x="334" stroke="#000" fill="#000000">Data</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_68" y="445" x="334" stroke="#000" fill="#000000">Learning</text>
+  <path id="svg_69" d="m367,178" opacity="NaN" stroke-width="0" stroke="#000" fill="#000000"/>
+  <path d="m374,143c0,1 -0.80617,2.03044 -2,9c-0.86089,5.02582 -3.49345,12.87856 -4,16c-0.32036,1.97418 0,3 -1,3c0,0 0,1 0,1l0,2l0,0" id="svg_70" stroke-width="0" stroke="#000" fill="none"/>
+  <path stroke="#000" d="m373,194c1,0 1,-10.33333 1,-10.33333c0,-10.33334 -2,-20.66667 -2,-20.66667c-1,0 -2,0 -3,0l0,0" id="svg_71" stroke-width="0" fill="none"/>
+  <line id="svg_72" y2="188" x2="378" y1="145" x1="378" stroke="#000" fill="none"/>
+  <line id="svg_73" y2="298" x2="378" y1="246" x1="378" stroke="#000" fill="none"/>
+  <line id="svg_74" y2="407" x2="378" y1="355" x1="377" stroke="#000" fill="none"/>
+  <line id="svg_75" y2="188" x2="378" y1="173" x1="364" stroke="#000" fill="none"/>
+  <line id="svg_76" y2="188" x2="377" y1="172" x1="393" stroke="#000" fill="none"/>
+  <line id="svg_77" y2="295" x2="390" y1="294" x1="390" stroke="#000" fill="none"/>
+  <line id="svg_78" y2="296" x2="378" y1="280" x1="362" stroke="#000" fill="none"/>
+  <line id="svg_79" y2="295" x2="378" y1="279" x1="396" stroke="#000" fill="none"/>
+  <line id="svg_80" y2="408" x2="378" y1="392" x1="362" stroke="#000" fill="none"/>
+  <line id="svg_81" y2="408" x2="378" y1="391" x1="398" stroke="#000" fill="none"/>
+  <rect id="svg_82" height="60" width="135" y="85" x="545" stroke="#000" fill="#fff"/>
+  <rect id="svg_83" height="60" width="135" y="187" x="543" stroke="#000" fill="#fff"/>
+  <rect id="svg_84" height="60" width="135" y="296" x="544" stroke="#000" fill="#fff"/>
+  <rect id="svg_85" height="60" width="135" y="409" x="542" stroke="#000" fill="#fff"/>
+  <path id="svg_86" d="m589,96" opacity="NaN" stroke="#000" fill="#000000"/>
+  <path id="svg_87" d="m661.27499,117.24118l0.38197,0l0.11803,-0.76394l0.11804,0.76394l0.38197,0l-0.30902,0.47213l0.11804,0.76394l-0.30903,-0.47215l-0.30902,0.47215l0.11804,-0.76394l-0.30902,-0.47213z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_88" d="m629.43,116.85921l0.76394,0l0.23606,-0.38196l0.23607,0.38196l0.76393,0l-0.61803,0.23607l0.23607,0.38197l-0.61804,-0.23607l-0.61803,0.23607l0.23607,-0.38197l-0.61804,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <path id="svg_89" d="m564.27,108.89921l0.56913,0l0.17587,-0.38197l0.17587,0.38197l0.56913,0l-0.46044,0.23607l0.17588,0.38196l-0.46044,-0.23607l-0.46044,0.23607l0.17588,-0.38196l-0.46044,-0.23607z" stroke="#ffffff" fill="#000"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_90" y="122" x="568" stroke="#000" fill="#000000">Graph</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_91" y="228" x="557" stroke="#000" fill="#000000">Parameters</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_92" y="330" x="563" stroke="#000" fill="#000000">Data</text>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" stroke-width="0" id="svg_93" y="445" x="563" stroke="#000" fill="#000000">Learning</text>
+  <path id="svg_94" d="m596,178" opacity="NaN" stroke-width="0" stroke="#000" fill="#000000"/>
+  <path d="m603,143c0,1 -0.80617,2.03044 -2,9c-0.86089,5.02582 -3.49345,12.87856 -4,16c-0.32036,1.97418 0,3 -1,3c0,0 0,1 0,1l0,2l0,0" id="svg_95" stroke-width="0" stroke="#000" fill="none"/>
+  <path stroke="#000" d="m602,194c1,0 1,-10.33333 1,-10.33333c0,-10.33334 -2,-20.66667 -2,-20.66667c-1,0 -2,0 -3,0l0,0" id="svg_96" stroke-width="0" fill="none"/>
+  <line id="svg_97" y2="188" x2="607" y1="145" x1="607" stroke="#000" fill="none"/>
+  <line id="svg_98" y2="298" x2="607" y1="246" x1="607" stroke="#000" fill="none"/>
+  <line id="svg_99" y2="407" x2="607" y1="355" x1="606" stroke="#000" fill="none"/>
+  <line id="svg_100" y2="188" x2="607" y1="173" x1="593" stroke="#000" fill="none"/>
+  <line id="svg_101" y2="188" x2="606" y1="172" x1="622" stroke="#000" fill="none"/>
+  <line id="svg_102" y2="295" x2="619" y1="294" x1="619" stroke="#000" fill="none"/>
+  <line id="svg_103" y2="296" x2="607" y1="280" x1="591" stroke="#000" fill="none"/>
+  <line id="svg_104" y2="295" x2="607" y1="279" x1="625" stroke="#000" fill="none"/>
+  <line id="svg_105" y2="408" x2="607" y1="392" x1="591" stroke="#000" fill="none"/>
+  <line id="svg_106" y2="408" x2="607" y1="391" x1="627" stroke="#000" fill="none"/>
+  <line id="svg_107" y2="537" x2="312" y1="465" x1="194" stroke="#000" fill="none"/>
+  <line id="svg_108" y2="538" x2="314" y1="516" x1="301" stroke="#000" fill="none"/>
+  <line id="svg_109" y2="537" x2="311" y1="543" x1="286" stroke="#000" fill="none"/>
+  <line id="svg_110" y2="502" x2="372" y1="469" x1="372" stroke="#000" fill="none"/>
+  <line id="svg_111" y2="502" x2="370" y1="494" x1="364" stroke="#000" fill="none"/>
+  <line id="svg_112" y2="503" x2="372" y1="494" x1="381" stroke="#000" fill="none"/>
+  <line id="svg_113" y2="537" x2="448" y1="468" x1="591" stroke="#000" fill="none"/>
+  <line id="svg_114" y2="536" x2="449" y1="511" x1="466" stroke="#000" fill="none"/>
+  <line id="svg_115" y2="537" x2="449" y1="546" x1="489" stroke="#000" fill="none"/>
+ </g>
+</svg>
