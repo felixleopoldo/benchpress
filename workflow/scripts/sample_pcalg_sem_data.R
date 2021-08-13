@@ -1,5 +1,5 @@
-### This function generates Gaussian data from a DAG
-# following the topological order
+# This function generates Gaussian data from a DAG
+# following the topological order.
 
 rmvDAG <- function(trueDAGedges, N) {
   trueDAG <- 1 * (trueDAGedges != 0) # the edge presence in the DAG

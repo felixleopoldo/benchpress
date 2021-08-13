@@ -1,3 +1,5 @@
+# Samples and inverts a precision matrics from the G-Wishart distribution.
+
 library(BDgraph)
 
 seed <- as.integer(snakemake@wildcards[["seed"]])

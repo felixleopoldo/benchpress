@@ -1,3 +1,5 @@
+# Extracts the graph (as adjacency matrix) ffrom a bn.fit network
+
 library(argparser)
 library(bnlearn)
 source("resources/binarydatagen/generatebinaryBNf.r")

@@ -1,3 +1,4 @@
+# A hardcoded script for extracting the graph component of a bn.fit network.
 library(bnlearn)
 library(graph)
 

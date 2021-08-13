@@ -34,7 +34,7 @@ Data files should be saved as ``.csv`` files in the ``resources/data/mydatasets`
 A dataset is referenced by its filename.
 
 
-* Columns should be separated by a blank space ( ).
+* Columns should be separated by a blank space.
 * First row should contain labels.
 * For discrete data, the second row should contain the cardinalities of each variable.
 
@@ -42,4 +42,4 @@ A dataset is referenced by its filename.
 .. rubric:: Example
 
 
-Example of a discrete dataset from the Asia network `https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv>`_
+Example of a discrete dataset from the `Asia network <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv>`_

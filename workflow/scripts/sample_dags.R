@@ -1,4 +1,5 @@
-# Samples dags and saves to file
+# Samples dags using a modified vrsion of pcalg's randDAG, where
+# the maximum average number of parents can be specified.
 library(BiDAG)
 library(gRbase)
 source("resources/binarydatagen/generate_DAG.R")

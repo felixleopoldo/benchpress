@@ -1,3 +1,5 @@
+# Standardises a given dataset.
+
 input_filename <- snakemake@input[["data"]]
 output_filename <- snakemake@output[["data"]]
 data <- read.csv(input_filename, check.names = FALSE)

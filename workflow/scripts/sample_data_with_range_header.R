@@ -1,3 +1,5 @@
+# Samples daata from a binary Bayesian network and also writes the range header.
+
 library(argparser)
 
 source("resources/binarydatagen/generatebinaryBNf.r")

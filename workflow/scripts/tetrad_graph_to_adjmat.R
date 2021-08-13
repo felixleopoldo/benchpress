@@ -1,3 +1,5 @@
+# Converts a graph in TETRAD format into an adjacency matrix.
+
 library(argparser)
 library(rjson)
 

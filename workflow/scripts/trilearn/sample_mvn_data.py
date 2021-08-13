@@ -1,3 +1,4 @@
+# Samples from the multivariate normal distribution with 0 mean and given covariance matrix.
 import sys
 import numpy as np
 import pandas as pd

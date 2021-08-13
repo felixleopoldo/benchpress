@@ -3,12 +3,12 @@
 ``graph``
 ========================
 
-This section contains the availabele graph modules.
+This section contains the available graph modules.
 
 ``pcalg_randdag``
 -------------------------
 
-This is the randDAG from the *pcalg* R package with the extra feature that the maximuma averagr numbr of parents can be set by (``max_parents``).
+This is the randDAG from the *pcalg* R package with the extra feature that the maximum average number of parents can be set by (``max_parents``).
 
 Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -121,5 +121,4 @@ The graph is referenced by the corresponding filename.
 
 .. Example::
 
-Examples are found here
-`https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_
+Examples are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.

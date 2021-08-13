@@ -1,3 +1,5 @@
+# Samples a graph using graph.sim frm th BDgraph package
+
 library(BDgraph)
 
 set.seed(as.integer(snakemake@wildcards[["replicate"]]))

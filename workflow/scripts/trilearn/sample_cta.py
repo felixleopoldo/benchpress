@@ -1,3 +1,5 @@
+# Samples a decomposable graph from the Christma tree algorithm.
+
 from trilearn.graph import decomposable as dlib
 import networkx as nx
 import numpy as np
