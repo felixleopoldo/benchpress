@@ -360,6 +360,8 @@ rule tetrad_fges:
     output:
         adjmat = alg_output_adjmat_path("tetrad_fges"),
         time = alg_output_time_path("tetrad_fges") 
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_fges.py"
 
@@ -392,6 +394,8 @@ rule tetrad_fci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_fci"),
         time = alg_output_time_path("tetrad_fci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_fci.py"
 
@@ -424,6 +428,8 @@ rule tetrad_gfci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_gfci"),
         time = alg_output_time_path("tetrad_gfci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_gfci.py"
         
@@ -455,6 +461,8 @@ rule tetrad_rfci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_rfci"),
         time = alg_output_time_path("tetrad_rfci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_rfci.py"
     #shell:

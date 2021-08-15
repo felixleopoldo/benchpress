@@ -9,13 +9,15 @@ def docker_image(algorithm):
         return "docker://onceltuca/jmoss20notears:1.4"
     elif algorithm == "greenfortran":
         return "docker://onceltuca/guidicigreen1999"
-    elif algorithm ==  "pydatascience":
+    elif algorithm == "pydatascience":
         return "docker://civisanalytics/datascience-python"
-    elif algorithm ==  "bidag":
+    elif algorithm == "bidag":
         return "docker://onceltuca/bidag:2.0.2"
-    elif algorithm ==  "benchmark":
+    elif algorithm == "benchmark":
         return "docker://onceltuca/benchmark:1.0.8"
-    elif algorithm ==  "networkx":
+    elif algorithm == "networkx":
         return "docker://onceltuca/networkx:2.5.1"
-    elif algorithm ==  "bdgraph":
+    elif algorithm == "bdgraph":
         return "docker://onceltuca/bdgraph:2.64"
+    elif algorithm == "tetrad":
+        return "docker://onceltuca/causal-cmd:1.1.3"
