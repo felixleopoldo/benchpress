@@ -1,3 +1,7 @@
+# Rules for sampling data. Each models (graph, param) may have
+# a unique way of sampling. This is hidden for the user but
+# treated here.
+
 rule sample_bin_bn_data:
     input:
         bn="{output_dir}/parameters/bin_bn/{bn}/adjmat=/{adjmat}.rds"
@@ -80,14 +84,6 @@ rule standardize:
     script:
         "../scripts/standardize.R"
 
-# rule copy_from_resources:
-#     input:        
-#         "resources/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
-#     output:
-#         "{output_dir}/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
-#     shell:
-#         "cp {input} {output}"
-
 rule copy_fixed_data:
     input:        
         "resources/data/mydatasets/{filename}" # this ensures that the file exists and is copied again if changed.
@@ -95,7 +91,7 @@ rule copy_fixed_data:
         data="{output_dir}/data/adjmat=/{adjmat}/parameters=/None/data=/fixed/filename={filename}/n={n}/seed={replicate}.csv"
     shell:
         "cp {input} {output.data}"
-#        "mkdir -p {wildcards.output_dir}/data/adjmat=/{wildcards.adjmat}/parameters=/None/data=/fixed/filename={wildcards.filename}/n={wildcards.n} && "\
+
 rule sample_data_fixed_bnfit:
     input:
         "workflow/scripts/sample_from_bnlearn_bn.R",

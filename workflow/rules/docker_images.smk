@@ -1,3 +1,5 @@
+# Docker images used in benchpress.
+
 def docker_image(algorithm):
     if algorithm == "trilearn":
         return "docker://onceltuca/trilearn:1.23"
@@ -20,4 +22,4 @@ def docker_image(algorithm):
     elif algorithm == "bdgraph":
         return "docker://onceltuca/bdgraph:2.64"
     elif algorithm == "tetrad":
-        return "docker://onceltuca/causal-cmd:1.1.3"
+        return "docker://onceltuca/causal-cmd:1.3.0"

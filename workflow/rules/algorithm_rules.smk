@@ -1,3 +1,12 @@
+# This file contains the rules for all structure learning algorithm 
+# along with rules for summarising (benchmarking) results in terms of TPR, FPR etc. 
+# It also has a rule for each algorithms that joins all the benchmarks into one file.
+#
+# MCMC methods are special since the output is not an adjacency matrix but 
+# a trajectory of graphs (see formatting in the paper).
+# Therefore these algorithms has an additional rule which creates a estimate based on
+# the trajectory,
+
 rule sklearn_glasso:
     input:
         data = alg_input_data(),
@@ -306,8 +315,6 @@ rule summarise_mmhc:
         time = summarise_alg_input_time_path("bnlearn_mmhc")
     output:
         res = summarise_alg_output_res_path("bnlearn_mmhc")
-    #singularity:
-    #    docker_image("bidag")
     shell:
        summarise_alg_shell("bnlearn_mmhc")
 
@@ -465,8 +472,6 @@ rule tetrad_rfci:
         docker_image("tetrad")
     script:
         "../scripts/run_tetrad_rfci.py"
-    #shell:
-    #    alg_shell("tetrad_rfci")
 
 rule summarise_tetrad_rfci:
     input:

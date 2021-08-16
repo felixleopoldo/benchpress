@@ -1,3 +1,6 @@
+# This file contains the shell commands from each structure learning for saving 
+# its benchmarks in a csv file along with the parameter setings.
+
 def dict_to_summary(d):
     s = ""
     for key, val in d.items():

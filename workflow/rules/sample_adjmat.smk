@@ -1,3 +1,6 @@
+# Rules for sampling graphs (adjacancy matrices). 
+
+
 rule sample_adjmat:
     input:
         "workflow/scripts/sample_dags.R"

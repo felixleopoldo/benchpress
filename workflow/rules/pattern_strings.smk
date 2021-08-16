@@ -1,3 +1,14 @@
+# This file essentially defines the pattern strings for all algorithms, 
+# 
+# 
+# TODO: It would be if good one could have different patterns for the same algorithm, 
+# so that one could omit some paramters e.g.
+#
+
+
+
+# This function takes the first element in a JSON object and creates a
+# pattern string based on the keys. 
 def dict_to_path(d):
     if len(d) == 0:
         return ""

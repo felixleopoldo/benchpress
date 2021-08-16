@@ -1,3 +1,6 @@
+# This is a function which returns the shell commands for most of the algorithms.
+# It could also had been a dict.
+
 def alg_shell(algorithm):
     if algorithm == "gt13_multipair":
         return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            

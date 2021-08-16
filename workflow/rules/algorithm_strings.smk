@@ -1,3 +1,12 @@
+# This file pricudes a dict where the paths for all alforithms are generated based on the
+# algorithm pattern strings and the values in the config file.
+#
+# MCMC methods are special since the the estimation parameters should not mix with the 
+# parameters that define the run.
+#
+# Order MCMC is special in the sense that it can define a startspace by means 
+# of the id of some algorithm. Thus the id has to be exptracted into a path string first.
+
 def idtopath(mylist, json_string):
     if isinstance(mylist, list):
         return [json_string[startalg][0] for startalg in mylist]
@@ -69,8 +78,7 @@ for items in order_mcmc_list:
 json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                     for val in order_mcmc_list } )
 
-# Another dict for the non mcmc chains? 
-# Since we dont want the  mcmc_est when we call the trajectory directly.
+# Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}
 
 json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"], **val,) 
