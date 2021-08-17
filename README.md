@@ -78,7 +78,8 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 
 ![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
 
-However the this study is probably too large (~8000 jobs) for a laptop user. It took about 2h on a 80 cores machine.
+This study took about 2h to finish on a 80 cores machine and is probably too large (~8000 jobs) for a laptop user.
+
 ## Citing
 
 ```
