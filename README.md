@@ -48,7 +48,10 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 
 ### Clone and install
 
-`$ git clone https://github.com/felixleopoldo/benchpress.git`
+```
+$ git clone https://github.com/felixleopoldo/benchpress.git
+$ cd benchpress
+```
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
@@ -57,11 +60,17 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ## Usage
 
-To run the simulation setup in [config/sec6.1.json](config/sec6.1.json) type
+### Example study
 
-`$ cd benchpress`
+To run a small study (266 jobs) run you may use [config/ex.json](config/ex.json) and type
 
-`$ snakemake --cores 20 --use-singularity --configfile config/sec6.1.json`
+`$ snakemake --cores 2 --use-singularity --configfile config/ex.json`
+
+The results are found in *results/output/*.
+### Paper study
+To run the simulation setup in Section 6.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
+
+`$ snakemake --cores 80 --use-singularity --configfile config/sec6.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
 
@@ -69,6 +78,7 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 
 ![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
 
+However the this study is probably too large (~8000 jobs) for a laptop user. It took about 2h on a 80 cores machine.
 ## Citing
 
 ```
