@@ -241,7 +241,7 @@
                     "assume_centered": false
                 }
             ],
-            "rblip": [
+            "rblip_asobs": [
                 {
                     "id": "winasobs-bdeu",
                     "scorermethod": "is",

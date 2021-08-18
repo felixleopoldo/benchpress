@@ -1,7 +1,7 @@
 # Probability list Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexprob/anyOf/1
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1
 ```
 
 
@@ -12,4 +12,4 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 ## 1 Type
 
-`number[]` ([Probabaility](config-definitions-probabaility.md))
+`number[]` ([prob type](config-definitions-prob-type.md))

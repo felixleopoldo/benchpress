@@ -1,17 +1,17 @@
 {
-    "title": "JSON schema for BenchPress config file.",
+    "title": "JSON schema for Benchpress config file.",
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "$id": "http://github.com/felixleopoldo/benchpress/schema/config.schema.json",
+    "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
     "type": "object",
     "properties": {
         "benchmark_setup": {
-            "title": "Benchmark setup",
+            "title": "benchmark_setup",
             "description": "Description of the benchmarking setup.",
             "type": "object",
             "properties": {
                 "data": {
-                    "title": "Data setup",
-                    "description": "A list of data setup instantiations.",
+                    "title": "data",
+                    "description": "The data setup for the study.",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/data_setup_dict"
@@ -19,31 +19,65 @@
                     "uniqueItems": true
                 },
                 "evaluation": {
-                    "title": "Evaluation methods",
+                    "title": "evaluation",
                     "properties": {
                         "roc": {
+                            "title": "roc",
+                            "description": "ROC plots and other benchmarking statistics.",
                             "$ref": "#/definitions/roc"
                         },
                         "adjmat_true_plots": {
+                            "title": "adjmat_true_plots",
+                            "description": "Plots the adjacency matrices of the true graphs.",
                             "type": "boolean"
                         },
                         "graph_true_plots": {
+                            "title": "graph_true_plots",
+                            "description": "Plots the true graphs.",
                             "type": "boolean"
                         },
                         "adjmat_plots": {
-                            "type": "array"
+                            "title": "adjmat_plots",
+                            "description": "Plots the adjacency matrices of the estimated graphs.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         },
                         "graph_plots": {
-                            "type": "array"
+                            "title": "graph_plots",
+                            "description": "Plots the estimated graphs",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         },
                         "mcmc_traj_plots": {
-                            "$ref": "#/definitions/mcmc_traj_plots"
+                            "title": "mcmc_traj_plots",
+                            "description": "Plots the functional value of each graph in a MCMC trajctory.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mcmc_traj_plots_item"
+                            },
+                            "additionalItems": false
                         },
                         "mcmc_heatmaps": {
-                            "$ref": "#/definitions/mcmc_heatmaps"
+                            "title": "mcmc_heatmaps",
+                            "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mcmc_heatmaps_item"
+                            },
+                            "additionalItems": false
                         },
                         "mcmc_autocorr_plots": {
-                            "$ref": "#/definitions/mcmc_autocorr_plots"
+                            "title": "mcmc_autocorr_plots",
+                            "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mcmc_autocorr_plots_item"
+                            },
+                            "additionalItems": false
                         }
                     },
                     "required": [
@@ -66,11 +100,11 @@
             "additionalProperties": false
         },
         "resources": {
-            "title": "Resources",
-            "description": "Algorithms and files available for benchmarking.",
+            "title": "resources",
+            "description": "Module available for benchmarking.",
             "properties": {
                 "data": {
-                    "title": "Data sampling algorithms",
+                    "title": "data",
                     "description": "Data sampling setup.",
                     "type": "object",
                     "properties": {
@@ -87,13 +121,13 @@
                     "additionalProperties": false
                 },
                 "graph": {
-                    "title": "Graph sampling algorithms",
+                    "title": "graph",
                     "description": "The available graph sampling algorithms.",
                     "type": "object",
                     "properties": {
                         "pcalg_randdag": {
-                            "title": "List of pcalg_randdag instantiations",
-                            "description": "List of pcalg_randdag instantiations",
+                            "title": "pcalg_randdag",
+                            "description": "Sampling graph using randDAG from the pcalg package.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/pcalg_randdag"
@@ -101,7 +135,7 @@
                             "uniqueItems": true
                         },
                         "notears": {
-                            "title": "Notears DAG sampling id's",
+                            "title": "notears",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/notears_dag_sampling"
@@ -109,7 +143,8 @@
                             "uniqueItems": true
                         },
                         "trilearn_cta": {
-                            "title": "Christmas tree algorithm id's",
+                            "title": "trilearn_cta",
+                            "description": "Sample decomposable graph using the Christmas tree algorithm (CTA) from the trilearn package.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/trilearn_cta"
@@ -117,7 +152,8 @@
                             "uniqueItems": true
                         },
                         "bandmat": {
-                            "title": "Band matrix id's",
+                            "title": "bandmat",
+                            "description": "Generates a graph with band structured adjacency matrix.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bandmat"
@@ -125,7 +161,8 @@
                             "uniqueItems": true
                         },
                         "rand_bandmat": {
-                            "title": "Random sized band matrix id's",
+                            "title": "rand_bandmat",
+                            "description": "Generates a graph with band structured adjacency matrix of varying with.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/rand_bandmat"
@@ -133,7 +170,8 @@
                             "uniqueItems": true
                         },
                         "bdgraph_graphsim": {
-                            "title": "BDgraph graph.sim",
+                            "title": "bdgraph_graphsim",
+                            "description": "Generates an undirected graph using graph.sim from the R package BDgraph.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bdgraph_graphsim"
@@ -144,12 +182,13 @@
                     "additionalProperties": false
                 },
                 "parameters": {
-                    "title": "Parameters sampling algorithm",
+                    "title": "parameters",
                     "description": "The available parameter sampling algorithms",
                     "type": "object",
                     "properties": {
                         "bin_bn": {
-                            "description": "List of generateBinayBN instantiations",
+                            "title": "bin_bn",
+                            "description": "List of generateBinayBN objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bin_bn"
@@ -157,7 +196,7 @@
                             "uniqueItems": true
                         },
                         "notears_parameters_sampling": {
-                            "title": "List of notears id's",
+                            "title": "notears_parameters_sampling",
                             "description": "List of notears id's",
                             "type": "array",
                             "items": {
@@ -166,7 +205,7 @@
                             "uniqueItems": true
                         },
                         "sem_params": {
-                            "title": "List of sem_params id's",
+                            "title": "sem_params",
                             "description": "List of sem_params id's",
                             "type": "array",
                             "items": {
@@ -175,7 +214,7 @@
                             "uniqueItems": true
                         },
                         "trilearn_hyper-dir": {
-                            "title": "List of Hyper-Dirichlet id's",
+                            "title": "trilearn_hyper-dir",
                             "description": "List of trilearn_hyper-dir id's",
                             "type": "array",
                             "items": {
@@ -184,7 +223,7 @@
                             "uniqueItems": true
                         },
                         "trilearn_intra-class": {
-                            "title": "List of graph intra-class id's",
+                            "title": "trilearn_intra-class",
                             "description": "List of intra-class id's",
                             "type": "array",
                             "items": {
@@ -193,7 +232,7 @@
                             "uniqueItems": true
                         },
                         "trilearn_g_inv_wishart": {
-                            "title": "List of graph inverse-Wishart id's",
+                            "title": "trilearn_g_inv_wishart",
                             "description": "List of graph inverse-Wishart id's",
                             "type": "array",
                             "items": {
@@ -202,7 +241,7 @@
                             "uniqueItems": true
                         },
                         "bdgraph_rgwish": {
-                            "title": "List of graph inverse-Wishart id's",
+                            "title": "bdgraph_rgwish",
                             "description": "List of graph inverse-Wishart id's",
                             "type": "array",
                             "items": {
@@ -214,142 +253,142 @@
                     "additionalProperties": true
                 },
                 "structure_learning_algorithms": {
-                    "title": "Available structure learning algorithms",
+                    "title": "structure_learning_algorithms",
                     "description": "The available structure learning algorithms",
                     "type": "object",
                     "properties": {
                         "trilearn_pgibbs": {
-                            "title": "List of trilearn instantiations",
-                            "description": "List of trilearn instantiations",
+                            "title": "trilearn_pgibbs",
+                            "description": "List of trilearn objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/trilearn_pgibbs"
                             },
                             "uniqueItems": true
                         },
-                        "rblip": {
-                            "title": "List of blip instantiations",
-                            "description": "List of blip instantiations",
+                        "rblip_asobs": {
+                            "title": "rblip_asobs",
+                            "description": "List of blip objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/rblip"
                             }
                         },
                         "notears": {
-                            "title": "Notears instantiations",
-                            "description": "Notears instantiations",
+                            "title": "notears",
+                            "description": "Notears objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/notears"
                             }
                         },
                         "gobnilp": {
-                            "title": "Gobnilp instantiations",
-                            "description": "Gobnilp instantiations",
+                            "title": "gobnilp",
+                            "description": "Gobnilp objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/gobnilp"
                             }
                         },
                         "tetrad_fges": {
-                            "title": "fGES instantiations",
-                            "description": "fGES instantiations",
+                            "title": "tetrad_fges",
+                            "description": "fGES objects",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/tetrad_fges"
                             }
                         },
                         "tetrad_fci": {
-                            "description": "FCI instantiations",
-                            "title": "FCI instantiations",
+                            "description": "FCI fast causal inference.",
+                            "title": "tetrad_fci",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/tetrad_fci"
                             }
                         },
                         "tetrad_rfci": {
-                            "description": "RFCI instantiations",
-                            "title": "RFCI instantiations",
+                            "description": "RFCI Really fast causal inference",
+                            "title": "tetrad_rfci",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/tetrad_rfci"
                             }
                         },
                         "tetrad_gfci": {
-                            "description": "GFCI instantiations",
-                            "title": "GFCI instantiations",
+                            "description": "GFCI",
+                            "title": "tetrad_gfci",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/tetrad_gfci"
                             }
                         },
                         "pcalg_pc": {
-                            "description": "PC algorithm instantiations",
-                            "title": "PC algorithm instantiations",
+                            "description": "PC algorithm objects",
+                            "title": "pcalg_pc",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/pcalg_pc"
                             }
                         },
                         "bnlearn_mmhc": {
-                            "description": "MMHC instantiations",
-                            "title": "MMHC instantiations",
+                            "description": "MMHC objects",
+                            "title": "bnlearn_mmhc",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_mmhc"
                             }
                         },
                         "bnlearn_tabu": {
-                            "description": "Tabu search instantiations",
-                            "title": "Tabu search instantiations",
+                            "description": "Tabu search objects",
+                            "title": "bnlearn_tabu",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_tabu"
                             }
                         },
                         "bidag_itsearch": {
-                            "description": "Iterative +1 search instantiations",
-                            "title": "Iterative +1 search instantiations",
+                            "description": "Iterative +1 search objects",
+                            "title": "bidag_itsearch",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bidag_itsearch"
                             }
                         },
                         "bidag_order_mcmc": {
-                            "description": "Order MCMC instantiations",
-                            "title": "Order MCMC instantiations",
+                            "description": "Order MCMC objects",
+                            "title": "bidag_order_mcmc",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bidag_order_mcmc"
                             }
                         },
                         "bnlearn_interiamb": {
-                            "description": "Inter-IAMB instantiations",
-                            "title": "Inter-IAMB instantiations",
+                            "description": "Inter-IAMB objects",
+                            "title": "bnlearn_interiamb",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_interiamb"
                             }
                         },
                         "bnlearn_gs": {
-                            "description": "GS instantiations",
-                            "title": "GS instantiations",
+                            "description": "GS objects",
+                            "title": "bnlearn_gs",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_interiamb"
                             }
                         },
                         "bnlearn_hc": {
-                            "description": "HC instantiations",
-                            "title": "HC instantiations",
+                            "description": "HC objects",
+                            "title": "bnlearn_hc",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_hc"
                             }
                         },
                         "gt13_multipair": {
-                            "description": "Green & Thomas instantiations",
-                            "title": "Green & Thomas id's",
+                            "description": "Green & Thomas objects",
+                            "title": "gt13_multipair",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/gt13_multipair"
@@ -357,7 +396,7 @@
                         },
                         "gg99_singlepair": {
                             "description": "Guidici & Green parametrisarion",
-                            "title": "Guidici & Green id's",
+                            "title": "gg99_singlepair",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/gg99_singlepair"
@@ -365,7 +404,7 @@
                         },
                         "sklearn_glasso": {
                             "description": "GLasso scikit-learn implementation",
-                            "title": "GLasso",
+                            "title": "sklearn_glasso",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/sklearn_glasso"
@@ -386,126 +425,125 @@
     },
     "definitions": {
         "mcmc_autocorr_plots": {
-            "type": "array",
-            "additionalItems": false,
-            "items": {
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "burn_in": {
-                        "$ref": "#/definitions/flexnonnegint"
-                    },
-                    "thinning": {
-                        "$ref": "#/definitions/flexnonnegintnull"
-                    },
-                    "active": {
-                        "type": "boolean"
-                    },
-                    "lags": {
-                        "$ref": "#/definitions/flexnonnegintnull"
-                    },
-                    "functional": {
-                        "anyOf": [
-                            {
+            "title": "mcmc_autocorr_plots item",
+            "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "burn_in": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "thinning": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "lags": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "functional": {
+                    "title": "stringorlist",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "score",
+                                "size"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
                                 "type": "string",
                                 "enum": [
                                     "score",
                                     "size"
                                 ]
-                            },
-                            {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "enum": [
-                                        "score",
-                                        "size"
-                                    ]
-                                }
                             }
-                        ]
-                    }
-                },
-                "required": [
-                    "id",
-                    "burn_in",
-                    "thinning",
-                    "functional",
-                    "lags"
-                ]
-            }
-        },
-        "mcmc_traj_plots": {
-            "type": "array",
-            "items": {
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "burn_in": {
-                        "$ref": "#/definitions/flexnonnegint"
-                    },
-                    "thinning": {
-                        "$ref": "#/definitions/flexnonnegintnull"
-                    },
-                    "active": {
-                        "type": "boolean"
-                    },
-                    "functional": {
-                        "anyOf": [
-                            {
-                                "type": "string",
-                                "enum": [
-                                    "score",
-                                    "size"
-                                ]
-                            },
-                            {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "enum": [
-                                        "score",
-                                        "size"
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                },
-                "required": [
-                    "id",
-                    "burn_in",
-                    "thinning",
-                    "functional"
-                ]
+                        }
+                    ]
+                }
             },
+            "required": [
+                "id",
+                "burn_in",
+                "thinning",
+                "functional",
+                "lags"
+            ]
+        },
+        "mcmc_traj_plots_item": {
+            "title": "mcmc_traj_plots item",
+            "description": "Plots the functional value of each graph in a MCMC trajctory.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "burn_in": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "thinning": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "functional": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "score",
+                                "size"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "score",
+                                    "size"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "burn_in",
+                "thinning",
+                "functional"
+            ],
             "additionalItems": false
         },
-        "mcmc_heatmaps": {
-            "type": "array",
-            "additionalItems": false,
-            "items": {
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "active": {
-                        "type": "boolean"
-                    },
-                    "burn_in": {
-                        "$ref": "#/definitions/flexnonnegint"
-                    }
+        "mcmc_heatmaps_item": {
+            "title": "MCMC mean graph plot",
+            "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+            "properties": {
+                "id": {
+                    "type": "string"
                 },
-                "required": [
-                    "id",
-                    "burn_in"
-                ]
-            }
+                "active": {
+                    "description": "Set to false if you dont want to plot it.",
+                    "type": "boolean"
+                },
+                "burn_in": {
+                    "title": "Burn-in start index.",
+                    "$ref": "#/definitions/flexnonnegint"
+                }
+            },
+            "required": [
+                "id",
+                "burn_in"
+            ]
         },
         "notears_parameters_sampling": {
-            "title": "Notears parameter sampling for Gaissian Bayesian networks",
+            "title": "notears_parameters_sampling item",
             "description": "Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling",
             "properties": {
                 "id": {
@@ -520,32 +558,8 @@
                 }
             }
         },
-        "bn.fit_networks": {
-            "title": "Bn.fit network file",
-            "description": "Bayesian network in bn.fit type serialised as .rds file.",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "filename": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "source": {
-                    "title": "Source",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "filename",
-                "source"
-            ],
-            "additionalProperties": false
-        },
         "notears_dag_sampling": {
-            "title": "Notears DAG sampling",
+            "title": "notears_dag_sampling item",
             "description": "Graph sampling method provided by the notears package. \n Documentation: https://github.com/jmoss20/notears",
             "properties": {
                 "id": {
@@ -575,7 +589,7 @@
             "additionalProperties": false
         },
         "trilearn_cta": {
-            "title": "CTA decomposable graph sampling",
+            "title": "trilearn_cta item",
             "description": "Graph sampling method provided by the trilearn package. \n Documentation: https://github.com/felixleopoldo/trilearn",
             "properties": {
                 "id": {
@@ -601,7 +615,7 @@
             "additionalProperties": false
         },
         "bandmat": {
-            "title": "Band matrix",
+            "title": "bandmat item",
             "description": "A graph with a band structured adjacency matrix",
             "properties": {
                 "id": {
@@ -623,7 +637,7 @@
             "additionalProperties": false
         },
         "bdgraph_graphsim": {
-            "title": "Random undirected graph",
+            "title": "bdgraph_graphsim item",
             "description": "BDgraph graph.sim",
             "properties": {
                 "id": {
@@ -666,8 +680,8 @@
             "additionalProperties": false
         },
         "rand_bandmat": {
-            "title": "Random band matrix",
-            "description": "A graph with a band structured adjacency matrix with random width",
+            "title": "rand_bandmat item",
+            "description": "A graph with a band structured adjacency matrix with random width.",
             "properties": {
                 "id": {
                     "title": "ID",
@@ -688,7 +702,7 @@
             "additionalProperties": false
         },
         "roc": {
-            "title": "ROC item",
+            "title": "roc item",
             "description": "ROC item",
             "type": "object",
             "properties": {
@@ -714,12 +728,12 @@
         },
         "data_setup_dict": {
             "type": "object",
-            "title": "Data setup",
+            "title": "data item",
             "description": "Description of the data model and sampling setup. Make sure that the id's are properly combined.",
             "properties": {
                 "graph_id": {
-                    "title": "Graph",
-                    "description": "ID of the graph instantiation.",
+                    "title": "graph_id",
+                    "description": "ID of the graph object.",
                     "anyOf": [
                         {
                             "type": "string"
@@ -730,8 +744,8 @@
                     ]
                 },
                 "parameters_id": {
-                    "title": "Parameters",
-                    "description": "Parameters ID.",
+                    "title": "parameters_id",
+                    "description": "ID of a module object in the parameters section.",
                     "anyOf": [
                         {
                             "type": "string"
@@ -742,16 +756,17 @@
                     ]
                 },
                 "data_id": {
-                    "title": "Data",
+                    "title": "data_id",
                     "description": "Data sampling method ID.",
                     "type": "string"
                 },
                 "seed_range": {
-                    "title": "Seed range",
+                    "title": "seed_range",
                     "description": "This data setup will be simulated for this range of seeds. E.g. seed_range:[1,3] will generate 3 datsets (and corresponding models) with seeds 1,2,3.",
                     "anyOf": [
                         {
-                            "title": "List of 2 integers [a, b], where a<=b.",
+                            "title": "range",
+                            "description": "List of 2 integers [a, b], where a<=b.",
                             "type": "array",
                             "items": {
                                 "type": "integer"
@@ -774,7 +789,7 @@
             "additionalProperties": false
         },
         "iid": {
-            "title": "Standard sampling",
+            "title": "iid",
             "description": "Data sampling from disctete Bayesian network.",
             "type": "object",
             "properties": {
@@ -797,7 +812,7 @@
             "additionalProperties": false
         },
         "pcalg_randdag": {
-            "title": "pcalg randDAG",
+            "title": "pcalg_randdag item",
             "description": "An instance of pcalg randdag. Sampling of a DAG with specified maximum averge number for parents for the nodes.",
             "type": "object",
             "properties": {
@@ -835,7 +850,7 @@
             "additionalProperties": false
         },
         "bin_bn": {
-            "title": "bin_bn",
+            "title": "bin_bn item",
             "description": "Parameter setting for generateBinaryBN",
             "type": "object",
             "properties": {
@@ -857,7 +872,7 @@
             "additionalProperties": false
         },
         "trilearn_hyper-dir": {
-            "title": "Hyper-Dirichlet",
+            "title": "trilearn_hyper-dir item",
             "description": "Parameter setting for a hyper Dirichlet distribution",
             "type": "object",
             "properties": {
@@ -879,7 +894,7 @@
             "additionalProperties": false
         },
         "trilearn_intra-class": {
-            "title": "Graph intra-class model",
+            "title": "trilearn_intra-class item",
             "description": "Parameter setting for a graph intra-class model",
             "type": "object",
             "properties": {
@@ -901,7 +916,7 @@
             "additionalProperties": false
         },
         "trilearn_g_inv_wishart": {
-            "title": "Graph graph inverse-Wishart model",
+            "title": "trilearn_g_inv_wishart item",
             "description": "Parameter setting for a graph inverse-Wishart model",
             "type": "object",
             "properties": {
@@ -919,8 +934,8 @@
             "additionalProperties": false
         },
         "bdgraph_rgwish": {
-            "title": "Graph graph inverse-Wishart model",
-            "description": "Parameter setting for a graph inverse-Wishart model. Works for all undirected graphs.",
+            "title": "bdgraph_rgwish item",
+            "description": "Parameter setting for a G-Wishart model. Works for undirected graphs.",
             "type": "object",
             "properties": {
                 "id": {
@@ -941,8 +956,8 @@
             "additionalProperties": false
         },
         "sem_params": {
-            "title": "PCalg SEM params",
-            "description": "Parameter setting for PC alg DAG sampling",
+            "title": "sem_params item",
+            "description": "Parameter setting for sampling SEM params.",
             "type": "object",
             "properties": {
                 "id": {
@@ -963,29 +978,45 @@
             "additionalProperties": false
         },
         "prob": {
-            "title": "Probabaility",
+            "title": "prob type",
             "description": "Number in the range [0,1].",
             "type": "number",
             "minimum": 0,
             "maximum": 1
         },
+        "problist": {
+            "title": "problist type",
+            "type": "array",
+            "description": "Probability list",
+            "items": {
+                "$ref": "#/definitions/prob"
+            }
+        },
         "natnum": {
-            "title": "Positive integer",
+            "title": "natnum type",
             "description": "Positive integer",
             "type": "integer",
             "minimum": 1
         },
         "nonnegint": {
-            "title": "Non-negative integer",
+            "title": "nonnegint type",
             "description": "Non-negative integer, 0,1,2,...",
             "type": "integer",
             "minimum": 0
         },
         "nonnegnum": {
-            "title": "Non-negative number",
+            "title": "nonnegnum type",
             "description": "Non-negative number",
             "type": "number",
             "minimum": 0
+        },
+        "nonnegnumlist": {
+            "title": "nonnegnumlist",
+            "type": "array",
+            "description": "List of non-negative numbers",
+            "items": {
+                "$ref": "#/definitions/nonnegnum"
+            }
         },
         "flexnonnegnum": {
             "description": "Non-negative number(s).",
@@ -994,12 +1025,7 @@
                     "$ref": "#/definitions/nonnegnum"
                 },
                 {
-                    "type": "array",
-                    "title": "Non-negative number list",
-                    "description": "List of non-negative numbers",
-                    "items": {
-                        "$ref": "#/definitions/nonnegnum"
-                    }
+                    "$ref": "#/definitions/nonnegnumlist"
                 }
             ]
         },
@@ -1023,13 +1049,17 @@
                     "$ref": "#/definitions/nonnegint"
                 },
                 {
-                    "type": "array",
-                    "title": "Non-negative integer list",
-                    "items": {
-                        "$ref": "#/definitions/nonnegint"
-                    }
+                    "$ref": "#/definitions/nonnegintlist"
                 }
             ]
+        },
+        "nonegintlist": {
+            "type": "array",
+            "title": "nonnegint list",
+            "description": "Non-negative integer list",
+            "items": {
+                "$ref": "#/definitions/nonnegint"
+            }
         },
         "flexnonnegintnull": {
             "title": "Non-negative integer(s), or null.",
@@ -1043,7 +1073,8 @@
             ]
         },
         "flexnonnegintstring": {
-            "title": "Non-negative integer(s), or Inf string.",
+            "title": "flexnonnegintstring",
+            "description": "Non-negative integer(s), or Inf string.",
             "anyOf": [
                 {
                     "$ref": "#/definitions/flexnonnegint"
@@ -1083,22 +1114,18 @@
             ]
         },
         "flexprob": {
-            "title": "Number(s) in the range [0,1].",
+            "description": "Number(s) in the range [0,1].",
             "anyOf": [
                 {
                     "$ref": "#/definitions/prob"
                 },
                 {
-                    "type": "array",
-                    "title": "Probability list",
-                    "items": {
-                        "$ref": "#/definitions/prob"
-                    }
+                    "$ref": "#/definitions/problist"
                 }
             ]
         },
         "flexprobnull": {
-            "title": "Number(s) in the range [0,1], or null.",
+            "title": "flexprobnull",
             "description": "Number(s) in the range [0,1], or null.",
             "anyOf": [
                 {
@@ -1110,7 +1137,7 @@
             ]
         },
         "trilearn_pgibbs": {
-            "title": "Trilearn",
+            "title": "trilearn_pgibbs item",
             "description": "Parameter setting for trilearn with log-linear decomposable model.",
             "type": "object",
             "properties": {
@@ -1153,9 +1180,9 @@
                 "mcmc_seed"
             ]
         },
-        "rblip": {
-            "title": "Blip instantiation",
-            "description": "Blip instantiation",
+        "rblip_asobs": {
+            "title": "rblip_asobs item",
+            "description": "Blip object",
             "type": "object",
             "properties": {
                 "id": {
@@ -1206,8 +1233,8 @@
             ]
         },
         "notears": {
-            "title": "Notears",
-            "description": "Notears instantiation",
+            "title": "notears item",
+            "description": "Notears object",
             "type": "object",
             "properties": {
                 "id": {
@@ -1249,7 +1276,7 @@
             ]
         },
         "gobnilp": {
-            "title": "Gobnilp algorithm",
+            "title": "gobnilp item",
             "description": "Gobnilp instance",
             "type": "object",
             "properties": {
@@ -1297,7 +1324,7 @@
             ]
         },
         "sklearn_glasso": {
-            "title": "GLasso algorithm",
+            "title": "sklearn_glasso item",
             "description": "GLasso instance",
             "type": "object",
             "properties": {
@@ -1348,7 +1375,7 @@
             ]
         },
         "gt13_multipair": {
-            "title": "Green & Thomas algorithm for sampling from decomposable graph distributions",
+            "title": "gt13_multipair item",
             "description": "Green & Thomas algorithm for learning decomopasble graphs.\n Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.",
             "type": "object",
             "properties": {
@@ -1406,7 +1433,7 @@
             ]
         },
         "gg99_singlepair": {
-            "title": "Guidici & Green algorithm for sampling from decomposable graph distributions",
+            "title": "gg99_singlepair item",
             "description": "Guidici & Green algorithm for learning decomopasble graphs.",
             "type": "object",
             "properties": {
@@ -1459,7 +1486,7 @@
             ]
         },
         "tetrad_fges": {
-            "title": "Fast greedy equivalent search (fGES)",
+            "title": "tetrad_fges item",
             "description": "fGES instance",
             "type": "object",
             "properties": {
@@ -1498,7 +1525,7 @@
             ]
         },
         "tetrad_fci": {
-            "title": "FCI",
+            "title": "tetrad_fci item",
             "description": "FCI instance",
             "type": "object",
             "properties": {
@@ -1535,7 +1562,7 @@
             ]
         },
         "tetrad_gfci": {
-            "title": "GFCI (parameter setting)",
+            "title": "tetrad_gfci item",
             "description": "GFCI instance",
             "type": "object",
             "properties": {
@@ -1593,7 +1620,7 @@
             ]
         },
         "tetrad_rfci": {
-            "title": "RFCI",
+            "title": "tetrad_rfci item",
             "description": "RFCI instance",
             "type": "object",
             "properties": {
@@ -1629,7 +1656,7 @@
             ]
         },
         "pcalg_pc": {
-            "title": "PC algorithm",
+            "title": "pcalg_pc item",
             "description": "PC algorithm instance",
             "type": "object",
             "properties": {
@@ -1694,7 +1721,7 @@
             ]
         },
         "bnlearn_mmhc": {
-            "title": "Max-min hill climbing algorithm (MMHC)",
+            "title": "bnlearn_mmhc item",
             "description": "MMHC algorithm instance",
             "type": "object",
             "properties": {
@@ -1765,8 +1792,8 @@
             ]
         },
         "bnlearn_interiamb": {
-            "title": "Inter-IAMB algorithm",
-            "description": "Inter-IAMB algorithm instance",
+            "title": "bnlearn_interiamb item",
+            "description": "Inter-IAMB algorithm object",
             "type": "object",
             "properties": {
                 "id": {
@@ -1833,7 +1860,7 @@
             ]
         },
         "bnlearn_gs": {
-            "title": "Grow shrink (GS) algorithm (paramter setting)",
+            "title": "bnlearn_gs item",
             "description": "Grow shrink (GS) algorithm instance",
             "type": "object",
             "properties": {
@@ -1897,7 +1924,7 @@
             ]
         },
         "bnlearn_tabu": {
-            "title": "TABU search (parameter setting)",
+            "title": "bnlearn_tabu item",
             "description": "TABU algorithm instance",
             "type": "object",
             "properties": {
@@ -1943,7 +1970,7 @@
             ]
         },
         "bnlearn_hc": {
-            "title": "HC algorithm (parameter setting)",
+            "title": "bnlearn_hc item",
             "description": "HC algorithm instance",
             "type": "object",
             "properties": {
@@ -1997,7 +2024,7 @@
             ]
         },
         "bidag_itsearch": {
-            "title": "Iterative search (paramter setting)",
+            "title": "bidag_itsearch item",
             "description": "Iterative search +1 algorithm instance",
             "type": "object",
             "properties": {
@@ -2078,7 +2105,7 @@
             ]
         },
         "bidag_order_mcmc": {
-            "title": "Order MCMC (parameter setting)",
+            "title": "bidag_order_mcmc item",
             "description": "Order MCMC algorithm instance",
             "type": "object",
             "properties": {

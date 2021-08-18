@@ -7,7 +7,8 @@
 ``iid``
 ---------------------
 
-Indepentently identically distributed (IID) samples of a given size ``sample_sizes``.
+Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+The data may be standardized by setting ``standardized`` to true. 
 
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_

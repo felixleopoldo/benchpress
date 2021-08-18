@@ -1,7 +1,7 @@
 # List of Hyper-Dirichlet id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_hyper-dir
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_hyper-dir
 ```
 
 List of trilearn_hyper-dir id's

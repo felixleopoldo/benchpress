@@ -1,7 +1,7 @@
 # Probabaility Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexprob/anyOf/1/items
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1/items
 ```
 
 Number in the range \[0,1].

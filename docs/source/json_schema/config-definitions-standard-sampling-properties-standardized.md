@@ -1,7 +1,7 @@
 # Untitled boolean in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/standardized
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/standardized
 ```
 
 

@@ -14,5 +14,9 @@ docs:	docs/source/*
 # Install by:
 # $ npm install -g @adobe/jsonschema2md
 docsjson:	workflow/schemas
-		jsonschema2md -d workflow/schemas/ -o docs/source/json_schema -x docs/source/json_schema -v 04 --property title description
-
+		jsonschema2md -d workflow/schemas/ -o docs/source/json_schema -x docs/source/json_schema -v 04 --property title description 
+# Use grip 
+# $ grip docs/source/json_schema/config.md -b 
+# to view it.
+# install it by 
+# $ pip install grip

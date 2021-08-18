@@ -1,7 +1,7 @@
 # List of graph inverse-Wishart id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart
 ```
 
 List of graph inverse-Wishart id's

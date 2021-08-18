@@ -1,7 +1,7 @@
 # Untitled boolean in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/undirected
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_gs/properties/undirected
 ```
 
 

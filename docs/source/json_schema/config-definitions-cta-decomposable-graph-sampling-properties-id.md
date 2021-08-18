@@ -1,7 +1,7 @@
 # ID Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/id
+myid#/definitions/trilearn_cta/properties/id
 ```
 
 

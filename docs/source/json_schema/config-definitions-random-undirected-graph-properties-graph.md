@@ -1,7 +1,7 @@
 # Untitled string in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/graph
+myid#/definitions/bdgraph_graphsim/properties/graph
 ```
 
 

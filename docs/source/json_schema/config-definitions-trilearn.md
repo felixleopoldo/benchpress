@@ -1,7 +1,7 @@
 # Trilearn Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs
 ```
 
 Parameter setting for trilearn with log-linear decomposable model.
@@ -16,15 +16,15 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 # trilearn_pgibbs Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                            |
-| :------------------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
-| [datatype](#datatype)     | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype") |
-| [alpha](#alpha)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")         |
-| [beta](#beta)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")          |
-| [pseudo_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")              |
-| [radii](#radii)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")           |
-| [mcmc_seed](#mcmc_seed)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")       |
+| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
+| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
+| [datatype](#datatype)     | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype") |
+| [alpha](#alpha)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")         |
+| [beta](#beta)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")          |
+| [pseudo_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")              |
+| [radii](#radii)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")           |
+| [mcmc_seed](#mcmc_seed)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")       |
 
 ## id
 
@@ -38,7 +38,7 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/id")
 
 ### id Type
 
@@ -56,7 +56,7 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype")
 
 ### datatype Type
 
@@ -83,7 +83,7 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")
 
 ### alpha Type
 
@@ -91,7 +91,7 @@ merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the
 
 any of
 
-*   [Probabaility](config-definitions-probabaility.md "check type definition")
+*   [prob type](config-definitions-prob-type.md "check type definition")
 
 *   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
 
@@ -107,7 +107,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")
 
 ### beta Type
 
@@ -115,7 +115,7 @@ merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the
 
 any of
 
-*   [Probabaility](config-definitions-probabaility.md "check type definition")
+*   [prob type](config-definitions-prob-type.md "check type definition")
 
 *   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
 
@@ -131,7 +131,7 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")
 
 ### pseudo_obs Type
 
@@ -139,7 +139,7 @@ merged type ([Details](config-definitions-flexnonnegnum.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
 *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
@@ -155,7 +155,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")
 
 ### radii Type
 
@@ -163,7 +163,7 @@ merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.
 
 any of
 
-*   [Non-negative integer](config-definitions-non-negative-integer.md "check type definition")
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
@@ -179,7 +179,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")
 
 ### mcmc_seed Type
 
@@ -187,6 +187,6 @@ merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.
 
 any of
 
-*   [Non-negative integer](config-definitions-non-negative-integer.md "check type definition")
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")

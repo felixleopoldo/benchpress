@@ -1,7 +1,7 @@
-# Untitled undefined type in JSON schema for BenchPress config file. Schema
+# Untitled undefined type in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties
 ```
 
 

@@ -19,9 +19,9 @@ More specifically, the conditional probability tables for each variable :math:`Y
 where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the uniform distribution on the set :math:`c`.
 
 
-Source: `resources/binarydatagen/generatebinaryBNf.r <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generatebinaryBNf.r>`_
+.. Source: `resources/binarydatagen/generatebinaryBNf.r <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generatebinaryBNf.r>`_
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
+.. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatebinarybn.md>`_
 
 
 .. rubric:: Example
@@ -56,12 +56,8 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
     \end{cases}
     
 
-.. note::
 
-    Note that this can only be combined with graphs from the section ``graph->notears``.
-
-
-See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
 
 .. rubric:: Example
@@ -80,12 +76,7 @@ See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schem
 An object of the trilearn hyper-dir module defines a catagorical decomposable model by sampling the parameters from the hyper Dirichlet distribution (Dawid and Lauritzen, 1993), with specified equivalent sample size (pseudo obs) and number of levels per variable (n levels).
 
 
-.. note::
-
-    Note that this can only be combined with graphs from the section ``graph->notears``.
-
-
-See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
 
 .. rubric:: Example
@@ -104,13 +95,7 @@ See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schem
 
 An object of the trilearn hyper inv wishart module defines a zero-mean Gaussian decomposable model by sampling the covariance matrix from the Hyper inverse-Wishart distribution (Dawid and Lauritzen, 1993) according to the pro- cedure outlined by Carvalho et al. (2007). The clique-wise scale matrices are fixed to the identity matrix and the degrees of freedom (dof) should be specified by the user.
 
-
-.. note::
-
-    Note that this can only be combined with graphs from the section ``graph->notears``.
-
-
-See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
 
 .. rubric:: Example
@@ -142,12 +127,7 @@ and :math:`\Sigma^{−1}_{ij} = 0 \text{ if } (i, j) \in  E \text{, where } \sig
 Using an object id of this module in the parameters id field of the data section re- quires that graph id represents a decomposable graph.
 
 
-.. note::
-
-    Note that this can only be combined with graphs from the section ``graph->notears``.
-
-
-See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
 
 .. rubric:: Example
@@ -160,6 +140,8 @@ See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schem
         "sigma2": 1.0
     }
 
+``bdgraph_rgwish``
+------------------
 
 Fixed parameters
 -------------------------

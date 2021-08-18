@@ -1,7 +1,7 @@
 # Untitled undefined type in JSON schema for BenchPress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears_dag_sampling/properties
+myid#/definitions/notears_dag_sampling/properties
 ```
 
 

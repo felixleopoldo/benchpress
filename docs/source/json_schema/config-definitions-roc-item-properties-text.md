@@ -1,7 +1,7 @@
-# Untitled boolean in JSON schema for BenchPress config file. Schema
+# Untitled boolean in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/text
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/text
 ```
 
 

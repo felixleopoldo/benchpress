@@ -1,7 +1,7 @@
 # Standard sampling Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid
 ```
 
 Data sampling from disctete Bayesian network.
@@ -16,11 +16,11 @@ Data sampling from disctete Bayesian network.
 
 # iid Properties
 
-| Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
-| :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/id")              |
-| [sample_sizes](#sample_sizes) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/sample_sizes")                     |
-| [standardized](#standardized) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-standardized.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/standardized") |
+| Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                           |
+| :---------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/id")              |
+| [sample_sizes](#sample_sizes) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/sample_sizes")                     |
+| [standardized](#standardized) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-standardized.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/standardized") |
 
 ## id
 
@@ -34,7 +34,7 @@ Data sampling from disctete Bayesian network.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/sample_sizes")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/sample_sizes")
 
 ### sample_sizes Type
 
@@ -76,7 +76,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-standardized.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/standardized")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-standardized.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/standardized")
 
 ### standardized Type
 

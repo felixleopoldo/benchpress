@@ -1,7 +1,7 @@
 # Non-negative integer Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/0
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/0
 ```
 
 Non-negative integer, 0,1,2,...

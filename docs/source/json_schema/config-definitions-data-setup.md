@@ -1,7 +1,7 @@
 # Data setup Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict
 ```
 
 Description of the data model and sampling setup. Make sure that the id's are properly combined.
@@ -16,16 +16,16 @@ Description of the data model and sampling setup. Make sure that the id's are pr
 
 # data_setup_dict Properties
 
-| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                     |
-| :------------------------------ | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [graph_id](#graph_id)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")           |
-| [parameters_id](#parameters_id) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id") |
-| [data_id](#data_id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")             |
-| [seed_range](#seed_range)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range")    |
+| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                               |
+| :------------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [graph_id](#graph_id)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/graph_id")           |
+| [parameters_id](#parameters_id) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/parameters_id") |
+| [data_id](#data_id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/data_id")             |
+| [seed_range](#seed_range)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/seed_range")    |
 
 ## graph_id
 
-ID of the graph instantiation.
+ID of the graph object.
 
 `graph_id`
 
@@ -35,7 +35,7 @@ ID of the graph instantiation.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/graph_id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/graph_id")
 
 ### graph_id Type
 
@@ -49,7 +49,7 @@ any of
 
 ## parameters_id
 
-Parameters ID.
+ID of a module object in the parameters section.
 
 `parameters_id`
 
@@ -59,7 +59,7 @@ Parameters ID.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/parameters_id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-parameters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/parameters_id")
 
 ### parameters_id Type
 
@@ -83,7 +83,7 @@ Data sampling method ID.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/data_id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-data.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/data_id")
 
 ### data_id Type
 
@@ -101,7 +101,7 @@ This data setup will be simulated for this range of seeds. E.g. seed_range:\[1,3
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/data_setup_dict/properties/seed_range")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-data-setup-properties-seed-range.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/seed_range")
 
 ### seed_range Type
 

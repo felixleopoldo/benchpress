@@ -64,13 +64,13 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 To run a small study (266 jobs) run you may use [config/ex.json](config/ex.json) and type
 
-`$ snakemake --cores 2 --use-singularity --configfile config/ex.json`
+`$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
 The results are found in *results/output/*.
 ### Paper study
 To run the simulation setup in Section 6.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
 
-`$ snakemake --cores 80 --use-singularity --configfile config/sec6.1.json`
+`$ snakemake --cores all --use-singularity --configfile config/sec6.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
 

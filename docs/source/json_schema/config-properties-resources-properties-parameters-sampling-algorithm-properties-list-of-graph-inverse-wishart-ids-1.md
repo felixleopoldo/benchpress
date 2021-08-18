@@ -1,7 +1,7 @@
 # List of graph inverse-Wishart id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish
 ```
 
 List of graph inverse-Wishart id's
@@ -12,7 +12,7 @@ List of graph inverse-Wishart id's
 
 ## bdgraph_rgwish Type
 
-`object[]` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model-1.md))
+`object[]` ([Inverse of G-Wishart sample](config-definitions-inverse-of-g-wishart-sample.md))
 
 ## bdgraph_rgwish Constraints
 

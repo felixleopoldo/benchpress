@@ -1,7 +1,7 @@
 # Graph graph inverse-Wishart model Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart
 ```
 
 Parameter setting for a graph inverse-Wishart model
@@ -16,10 +16,10 @@ Parameter setting for a graph inverse-Wishart model
 
 # trilearn_g_inv_wishart Properties
 
-| Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
-| :---------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id") |
-| [dof](#dof) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/dof")                                  |
+| Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                          |
+| :---------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id") |
+| [dof](#dof) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/dof")                                  |
 
 ## id
 
@@ -33,7 +33,7 @@ Parameter setting for a graph inverse-Wishart model
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id")
 
 ### id Type
 
@@ -51,7 +51,7 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/dof")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/dof")
 
 ### dof Type
 

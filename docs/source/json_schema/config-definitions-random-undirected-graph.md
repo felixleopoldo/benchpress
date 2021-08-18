@@ -1,7 +1,7 @@
 # Random undirected graph Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim
+myid#/definitions/bdgraph_graphsim
 ```
 
 BDgraph graph.sim
@@ -16,14 +16,14 @@ unknown ([Random undirected graph](config-definitions-random-undirected-graph.md
 
 # bdgraph_graphsim Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
-| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/id")       |
-| [p](#p)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/p")                        |
-| [prob](#prob)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/prob")                   |
-| [graph](#graph) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/graph") |
-| [class](#class) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/class")            |
-| [size](#size)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/size")             |
+| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                      |
+| :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "myid#/definitions/bdgraph_graphsim/properties/id")       |
+| [p](#p)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bdgraph_graphsim/properties/p")                        |
+| [prob](#prob)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/bdgraph_graphsim/properties/prob")                   |
+| [graph](#graph) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "myid#/definitions/bdgraph_graphsim/properties/graph") |
+| [class](#class) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "myid#/definitions/bdgraph_graphsim/properties/class")            |
+| [size](#size)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "myid#/definitions/bdgraph_graphsim/properties/size")             |
 
 ## id
 
@@ -37,7 +37,7 @@ unknown ([Random undirected graph](config-definitions-random-undirected-graph.md
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "myid#/definitions/bdgraph_graphsim/properties/id")
 
 ### id Type
 
@@ -55,7 +55,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/p")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bdgraph_graphsim/properties/p")
 
 ### p Type
 
@@ -79,7 +79,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/prob")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/bdgraph_graphsim/properties/prob")
 
 ### prob Type
 
@@ -103,7 +103,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/graph")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "myid#/definitions/bdgraph_graphsim/properties/graph")
 
 ### graph Type
 
@@ -135,7 +135,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/class")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "myid#/definitions/bdgraph_graphsim/properties/class")
 
 ### class Type
 
@@ -163,7 +163,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/size")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "myid#/definitions/bdgraph_graphsim/properties/size")
 
 ### size Type
 

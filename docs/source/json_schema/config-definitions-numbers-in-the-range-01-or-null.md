@@ -1,7 +1,7 @@
 # Number(s) in the range \[0,1], or null. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/alpha
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/alpha
 ```
 
 Number(s) in the range \[0,1], or null.
@@ -18,8 +18,8 @@ any of
 
 *   any of
 
-    *   [Probabaility](config-definitions-probabaility.md "check type definition")
+    *   [prob type](config-definitions-prob-type.md "check type definition")
 
-    *   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
+    *   [problist type](config-definitions-problist-type.md "check type definition")
 
 *   [Untitled null in JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01-or-null-anyof-1.md "check type definition")

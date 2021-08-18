@@ -8,9 +8,9 @@ This section contains the available graph modules.
 ``pcalg_randdag``
 -------------------------
 
-This is the randDAG from the *pcalg* R package with the extra feature that the maximum average number of parents can be set by (``max_parents``).
+This is the randDAG from the R package *pcalg* with the extra feature that the maximum average number of parents can be set by (``max_parents``).
 
-Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
+.. Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
 .. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-generatedagmaxparents.md>`_ 
 
@@ -46,6 +46,8 @@ This is the Christmas tree algorithm for generating decomposable graph implement
         "beta": 0.7
     }
 
+``bdgraph_graphsim``
+--------------------
 
 ``bandmat``
 -------------------

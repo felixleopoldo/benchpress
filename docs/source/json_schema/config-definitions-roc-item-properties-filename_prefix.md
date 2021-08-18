@@ -1,7 +1,7 @@
-# Untitled string in JSON schema for BenchPress config file. Schema
+# Untitled string in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/filename_prefix
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/filename_prefix
 ```
 
 

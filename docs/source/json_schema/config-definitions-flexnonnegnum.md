@@ -1,7 +1,7 @@
-# Untitled undefined type in JSON schema for BenchPress config file. Schema
+# Untitled undefined type in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/gamma
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/gamma
 ```
 
 Non-negative number(s).
@@ -16,6 +16,6 @@ merged type ([Details](config-definitions-flexnonnegnum.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
-*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+*   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")

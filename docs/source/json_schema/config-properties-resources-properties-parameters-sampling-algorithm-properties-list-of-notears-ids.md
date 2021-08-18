@@ -1,7 +1,7 @@
 # List of notears id's Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling
 ```
 
 List of notears id's
@@ -12,7 +12,7 @@ List of notears id's
 
 ## notears_parameters_sampling Type
 
-unknown\[] ([Notears parameter sampling for Gaissian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md))
+unknown\[] ([Notears parameter sampling for Gaussian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaussian-bayesian-networks.md))
 
 ## notears_parameters_sampling Constraints
 

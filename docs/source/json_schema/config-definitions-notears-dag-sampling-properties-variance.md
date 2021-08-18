@@ -1,7 +1,7 @@
 # Variance Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears_dag_sampling/properties/variance
+myid#/definitions/notears_dag_sampling/properties/variance
 ```
 
 

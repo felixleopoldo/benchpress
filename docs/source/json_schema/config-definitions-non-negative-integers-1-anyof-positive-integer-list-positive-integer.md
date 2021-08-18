@@ -1,7 +1,7 @@
 # Positive integer Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnatnum/anyOf/1/items
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnum/anyOf/1/items
 ```
 
 Positive integer

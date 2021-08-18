@@ -1,7 +1,7 @@
 # Number(s) in the range \[0,1]. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/threshold
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/threshold
 ```
 
 
@@ -16,6 +16,6 @@ merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the
 
 any of
 
-*   [Probabaility](config-definitions-probabaility.md "check type definition")
+*   [prob type](config-definitions-prob-type.md "check type definition")
 
-*   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
+*   [problist type](config-definitions-problist-type.md "check type definition")

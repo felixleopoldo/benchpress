@@ -4,10 +4,8 @@ JSON config file
 
 This overview is based on the sample config file :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
 The JSON schema for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config.md>`_.
-
-The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
-
 The configuration file consists of two main sections ``benchmark_setup`` and ``resources``
+
 ..  , see :numref:`maincats`.
 
 
@@ -130,7 +128,7 @@ where
 ``algorithm_id`` is the current algorithm and ``curve_variable`` is the varying parameter in the plot.
 In order to get the curve like form in the plot, you need to make sure that ``curve_variable`` is given as a list in the corresponding algorithm's section.
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
+.. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
 
 
 
@@ -140,40 +138,30 @@ List of algorithm to be included in roc curve estimation.
 
 .. code-block:: json
 
-    {
-    
-        "roc":
-        {   
-            "filename_prefix": "section6.1/",
-            "point": true,
-            "errorbar": true,
-            "path": true,
-            "text": false,
-            "ids": [
-                "gobnilp-bde",
-                "asobs-bdeu",
-                "tabu-bde",
-                "mmhc-bde-mi",
-                "hc-bde",
-                "gs-mi",
-                "interiamb-mi",
-                "fci-chi-square",
-                "rfci-chi-square",
-                "gfci-bdeu-chi-square",
-                "fges-bdeu",
-                "itsearch_sample-bde",
-                "pc-binCItest",
-                "omcmc_itsample-bde"
-            ]
-        },
-        "adjmat_true_plots": false,
-        "graph_true_plots": false,
-        "adjmat_plots": [],
-        "graph_plots": [],
-        "mcmc_traj_plots": [],
-        "mcmc_heatmaps": [],
-        "mcmc_autocorr_plots": []
+    {   
+        "filename_prefix": "section6.1/",
+        "point": true,
+        "errorbar": true,
+        "path": true,
+        "text": false,
+        "ids": [
+            "gobnilp-bde",
+            "asobs-bdeu",
+            "tabu-bde",
+            "mmhc-bde-mi",
+            "hc-bde",
+            "gs-mi",
+            "interiamb-mi",
+            "fci-chi-square",
+            "rfci-chi-square",
+            "gfci-bdeu-chi-square",
+            "fges-bdeu",
+            "itsearch_sample-bde",
+            "pc-binCItest",
+            "omcmc_itsample-bde"
+        ]
     }
+    
 
 ``adjmat_true_plots``
 -------------------------
@@ -203,25 +191,75 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_pl
 ``mcmc_heatmaps``
 -------------------------
 
-As mentioned in Section 3, for Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
-Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math: `b` samples are disregarded as a burn-in period.
+For Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
+Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math:`b` samples are disregarded as a burn-in period.
 
 This module has a list of objects, where each object has an id field for the algorithm object id and a field (``burn_in``) for specifying the burn-in period. 
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
 
+.. rubric:: Example
+
+.. code-block:: json
+
+    [
+        {
+            "id": "omcmc_itsample-bge",
+            "burn_in": 0,
+            "active": true
+        }
+    ]
 
 ``mcmc_autocorr``
 -------------------------
 
 The ``mcmc_autocorr`` module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
-Similar to the *mcmc_traj_plots* module, the *mcmc_autocorr* module has a list of objects, where each object has an id, ``burn_in``, ``thinning``, and a ``functional`` field. 
+Similar to the ``mcmc_traj_plots`` module, the ``mcmc_autocorr`` module has a list of objects, where each object has an id, ``burn_in``, ``thinning``, and a ``functional`` field. 
 The maximum number of lags after thinning, is specified by the lags field. 
 The plots are saved in *results/mcmc_autocorr/* and copied to *results/output/mcmc_autocorr/*.
+
+.. rubric:: Example
+
+.. code-block:: json
+    
+    [
+        {
+            "id": "omcmc_itsample-bge",
+            "burn_in": 0,
+            "thinning": 1,
+            "lags": 50,
+            "functional": [
+                "score",
+                "size"
+            ],
+            "active": true
+        }
+    ]
 
 ``mcmc_traj_plots``
 -------------------------
 
-The mcmc_traj_plots module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/m- cmc traj plots/ and copied to results/output/mcmc traj plots/.
+This module plots the so called score values in the trajectory or the value of a given functional. 
+The currently supported functionals are the number of edges for the graphs (``size``) and the graph score. 
+The ``mcmc_traj_plots`` module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (``burn_in``) and a field specifying the functional to be considered (``functional``). 
+Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. 
+The plots are saved in *results/mcmc_traj_plots/* and copied to *results/output/mcmc_traj_plots/*.
+
+.. rubric:: Example
+
+.. code-block:: json
+        
+    [
+        {
+            "id": "omcmc_itsample-bge",
+            "burn_in": 0,
+            "thinning": 1,
+            "functional": [
+                "score",
+                "size"
+            ],
+            "active": true
+        }
+    ]
 
 
 ``resources``

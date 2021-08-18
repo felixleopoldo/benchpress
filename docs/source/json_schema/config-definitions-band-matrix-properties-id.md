@@ -1,7 +1,7 @@
 # ID Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/id
+myid#/definitions/bandmat/properties/id
 ```
 
 

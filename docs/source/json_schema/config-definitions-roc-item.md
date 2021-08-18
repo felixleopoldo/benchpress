@@ -1,7 +1,7 @@
-# ROC item Schema
+# roc item Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc
 ```
 
 ROC item
@@ -12,18 +12,18 @@ ROC item
 
 ## roc Type
 
-`object` ([ROC item](config-definitions-roc-item.md))
+`object` ([roc item](config-definitions-roc-item.md))
 
 # roc Properties
 
-| Property                            | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                              |
-| :---------------------------------- | :------------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ids](#ids)                         | Not specified | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/ids")                         |
-| [filename_prefix](#filename_prefix) | `string`      | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-filename_prefix.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/filename_prefix") |
-| [point](#point)                     | `boolean`     | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/point")                     |
-| [text](#text)                       | `boolean`     | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-text.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/text")                       |
-| [path](#path)                       | `boolean`     | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-path.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/path")                       |
-| [errorbar](#errorbar)               | `boolean`     | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-errorbar.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/errorbar")               |
+| Property                            | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                        |
+| :---------------------------------- | :------------ | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ids](#ids)                         | Not specified | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/ids")                         |
+| [filename_prefix](#filename_prefix) | `string`      | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-filename_prefix.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/filename_prefix") |
+| [point](#point)                     | `boolean`     | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/point")                     |
+| [text](#text)                       | `boolean`     | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-text.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/text")                       |
+| [path](#path)                       | `boolean`     | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-path.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/path")                       |
+| [errorbar](#errorbar)               | `boolean`     | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-errorbar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/errorbar")               |
 
 ## ids
 
@@ -37,7 +37,7 @@ ROC item
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/ids")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/ids")
 
 ### ids Type
 
@@ -55,7 +55,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-filename_prefix.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/filename_prefix")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-filename_prefix.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/filename_prefix")
 
 ### filename_prefix Type
 
@@ -73,7 +73,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/point")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/point")
 
 ### point Type
 
@@ -91,7 +91,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-text.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/text")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-text.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/text")
 
 ### text Type
 
@@ -109,7 +109,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-path.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/path")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-path.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/path")
 
 ### path Type
 
@@ -127,7 +127,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-roc-item-properties-errorbar.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/roc/properties/errorbar")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-errorbar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/errorbar")
 
 ### errorbar Type
 

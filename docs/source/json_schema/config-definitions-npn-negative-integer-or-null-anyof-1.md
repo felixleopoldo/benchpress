@@ -1,7 +1,7 @@
-# Untitled null in JSON schema for BenchPress config file. Schema
+# Untitled null in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnatnumnull/anyOf/1
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnumnull/anyOf/1
 ```
 
 

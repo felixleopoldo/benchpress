@@ -1,7 +1,7 @@
 # Non-negative number list Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1
 ```
 
 List of non-negative numbers
@@ -12,4 +12,4 @@ List of non-negative numbers
 
 ## 1 Type
 
-`number[]` ([Non-negative number](config-definitions-non-negative-number.md))
+`number[]` ([nonnegnum type](config-definitions-nonnegnum-type.md))

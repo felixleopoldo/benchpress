@@ -1,7 +1,7 @@
 # Data sampling algorithms Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/data
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data
 ```
 
 Data sampling setup.
@@ -16,9 +16,9 @@ Data sampling setup.
 
 # data Properties
 
-| Property    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                              |
-| :---------- | :------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [iid](#iid) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-data-sampling-algorithms-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/data/properties/iid") |
+| Property    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                        |
+| :---------- | :------ | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [iid](#iid) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-data-sampling-algorithms-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid") |
 
 ## iid
 
@@ -28,15 +28,15 @@ List of iid setups.
 
 *   is optional
 
-*   Type: `object[]` ([Standard sampling](config-definitions-standard-sampling.md))
+*   Type: `object[]` ([iid](config-definitions-iid.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-data-sampling-algorithms-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/data/properties/iid")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-data-sampling-algorithms-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid")
 
 ### iid Type
 
-`object[]` ([Standard sampling](config-definitions-standard-sampling.md))
+`object[]` ([iid](config-definitions-iid.md))
 
 ### iid Constraints
 

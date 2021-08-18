@@ -1,7 +1,7 @@
 # Graph sampling algorithms Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph
 ```
 
 The available graph sampling algorithms.
@@ -16,18 +16,18 @@ The available graph sampling algorithms.
 
 # graph Properties
 
-| Property                              | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                            |
-| :------------------------------------ | :------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [pcalg_randdag](#pcalg_randdag)       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-list-of-pcalg_randdag-instantiations.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag") |
-| [notears](#notears)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-notears-dag-sampling-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/notears")                   |
-| [trilearn_cta](#trilearn_cta)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-christmas-tree-algorithm-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")          |
-| [bandmat](#bandmat)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bandmat")                            |
-| [rand_bandmat](#rand_bandmat)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-random-sized-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")          |
-| [bdgraph_graphsim](#bdgraph_graphsim) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-bdgraph-graphsim.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")                  |
+| Property                              | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                               |
+| :------------------------------------ | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [pcalg_randdag](#pcalg_randdag)       | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-list-of-pcalg_randdag-objects.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag") |
+| [notears](#notears)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-notears-dag-sampling-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears")            |
+| [trilearn_cta](#trilearn_cta)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-christmas-tree-algorithm-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")   |
+| [bandmat](#bandmat)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat")                     |
+| [rand_bandmat](#rand_bandmat)         | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-random-sized-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")   |
+| [bdgraph_graphsim](#bdgraph_graphsim) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-bdgraph-graphsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")           |
 
 ## pcalg_randdag
 
-List of pcalg_randdag instantiations
+List of pcalg_randdag objects
 
 `pcalg_randdag`
 
@@ -37,7 +37,7 @@ List of pcalg_randdag instantiations
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-list-of-pcalg_randdag-instantiations.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-list-of-pcalg_randdag-objects.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag")
 
 ### pcalg_randdag Type
 
@@ -59,7 +59,7 @@ List of pcalg_randdag instantiations
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-notears-dag-sampling-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/notears")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-notears-dag-sampling-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears")
 
 ### notears Type
 
@@ -81,7 +81,7 @@ unknown\[] ([Notears DAG sampling](config-definitions-notears-dag-sampling.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-christmas-tree-algorithm-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-christmas-tree-algorithm-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")
 
 ### trilearn_cta Type
 
@@ -103,7 +103,7 @@ unknown\[] ([CTA decomposable graph sampling](config-definitions-cta-decomposabl
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bandmat")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat")
 
 ### bandmat Type
 
@@ -125,7 +125,7 @@ unknown\[] ([Band matrix](config-definitions-band-matrix.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-random-sized-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-random-sized-band-matrix-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")
 
 ### rand_bandmat Type
 
@@ -147,7 +147,7 @@ unknown\[] ([Random band matrix](config-definitions-random-band-matrix.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-bdgraph-graphsim.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-graph-sampling-algorithms-properties-bdgraph-graphsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")
 
 ### bdgraph_graphsim Type
 

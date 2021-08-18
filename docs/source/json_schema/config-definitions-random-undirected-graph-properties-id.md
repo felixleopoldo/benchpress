@@ -1,7 +1,7 @@
 # ID Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/id
+myid#/definitions/bdgraph_graphsim/properties/id
 ```
 
 

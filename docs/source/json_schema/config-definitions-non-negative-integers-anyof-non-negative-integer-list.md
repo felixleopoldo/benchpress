@@ -1,7 +1,7 @@
 # Non-negative integer list Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1
 ```
 
 
@@ -12,4 +12,4 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 ## 1 Type
 
-`integer[]` ([Non-negative integer](config-definitions-non-negative-integer.md))
+`integer[]` ([nonnegint type](config-definitions-nonnegint-type.md))
