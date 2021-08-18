@@ -271,7 +271,7 @@
                             "description": "List of blip objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/rblip"
+                                "$ref": "#/definitions/rblip_asobs"
                             }
                         },
                         "notears": {
@@ -424,7 +424,7 @@
         }
     },
     "definitions": {
-        "mcmc_autocorr_plots": {
+        "mcmc_autocorr_plots_item": {
             "title": "mcmc_autocorr_plots item",
             "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
             "properties": {
@@ -1053,7 +1053,7 @@
                 }
             ]
         },
-        "nonegintlist": {
+        "nonnegintlist": {
             "type": "array",
             "title": "nonnegint list",
             "description": "Non-negative integer list",

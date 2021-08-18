@@ -202,30 +202,30 @@ rule blip:
     input:
         data = alg_input_data()
     output:
-        adjmat = alg_output_adjmat_path("rblip"),
-        time = alg_output_time_path("rblip")
+        adjmat = alg_output_adjmat_path("rblip_asobs"),
+        time = alg_output_time_path("rblip_asobs")
     shell:        
-        alg_shell("rblip")
+        alg_shell("rblip_asobs")
 
 rule summarise_blip:
     input:
         "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
-        adjmat_est = summarise_alg_input_adjmat_est_path("rblip"),
-        time = summarise_alg_input_time_path("rblip")
+        adjmat_est = summarise_alg_input_adjmat_est_path("rblip_asobs"),
+        time = summarise_alg_input_time_path("rblip_asobs")
     output:
-        res = summarise_alg_output_res_path("rblip")
+        res = summarise_alg_output_res_path("rblip_asobs")
     shell:
-        summarise_alg_shell("rblip")
+        summarise_alg_shell("rblip_asobs")
 
 rule join_summaries_blip:
     input:
         "workflow/scripts/run_summarise.R",
         conf=configfilename,
-        res=join_string_sampled_model("rblip")
+        res=join_string_sampled_model("rblip_asobs")
     output:
-        join_summaries_output("rblip")
+        join_summaries_output("rblip_asobs")
     script:
         "../scripts/join_csv_files.R"
 

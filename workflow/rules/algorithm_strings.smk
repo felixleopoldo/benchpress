@@ -66,8 +66,8 @@ json_string.update({val["id"]:  expand(pattern_strings["sklearn_glasso"], **val)
 json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                     for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
 
-json_string.update({val["id"]: expand(pattern_strings["rblip"], **val)
-                    for val in config["resources"]["structure_learning_algorithms"]["rblip"]})
+json_string.update({val["id"]: expand(pattern_strings["rblip_asobs"], **val)
+                    for val in config["resources"]["structure_learning_algorithms"]["rblip_asobs"]})
 
 # Order mcmc is special and has to be the last one since it takes input strings as start space...\
 # Also, the start space path has to be extracted first.

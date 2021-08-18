@@ -109,7 +109,7 @@ def alg_shell(algorithm):
             "--beta {wildcards.beta} " \
             "--filename {output.adjmat} " 
 
-    elif algorithm == "rblip":
+    elif algorithm == "rblip_asobs":
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "Rscript workflow/scripts/run_blip.R " \
                 "--filename_data {input.data} " \
