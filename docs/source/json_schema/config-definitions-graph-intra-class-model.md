@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 Parameter setting for a graph intra-class model
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## trilearn_intra-class Type
 
 `object` ([Graph intra-class model](config-definitions-graph-intra-class-model.md))
 
-# Graph intra-class model Properties
+# trilearn_intra-class Properties
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :---------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

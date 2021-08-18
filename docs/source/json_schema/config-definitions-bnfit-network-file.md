@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 Bayesian network in bn.fit type serialised as .rds file.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## bn.fit_networks Type
 
 unknown ([Bn.fit network file](config-definitions-bnfit-network-file.md))
 
-# Bn.fit network file Properties
+# bn.fit_networks Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                  |
 | :-------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

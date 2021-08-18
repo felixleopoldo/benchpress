@@ -14,5 +14,5 @@ docs:	docs/source/*
 # Install by:
 # $ npm install -g @adobe/jsonschema2md
 docsjson:	workflow/schemas
-		jsonschema2md -d workflow/schemas/ -o docs/source/json_schema -v 04
+		jsonschema2md -d workflow/schemas/ -o docs/source/json_schema -x docs/source/json_schema -v 04 --property title description
 

@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties
 
 The available structure learning algorithms
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## structure_learning_algorithms Type
 
 `object` ([Available structure learning algorithms](config-properties-resources-properties-available-structure-learning-algorithms.md))
 
-# Available structure learning algorithms Properties
+# structure_learning_algorithms Properties
 
 | Property                                | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                                |
 | :-------------------------------------- | :------ | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

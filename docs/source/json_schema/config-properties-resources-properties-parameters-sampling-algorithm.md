@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties
 
 The available parameter sampling algorithms
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## parameters Type
 
 `object` ([Parameters sampling algorithm](config-properties-resources-properties-parameters-sampling-algorithm.md))
 
-# Parameters sampling algorithm Properties
+# parameters Properties
 
 | Property                                                    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                           |
 | :---------------------------------------------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,6 +24,7 @@ The available parameter sampling algorithms
 | [trilearn_hyper-dir](#trilearn_hyper-dir)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-hyper-dirichlet-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_hyper-dir")           |
 | [trilearn_intra-class](#trilearn_intra-class)               | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-intra-class-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_intra-class")       |
 | [trilearn_g_inv_wishart](#trilearn_g_inv_wishart)           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart") |
+| [bdgraph_rgwish](#bdgraph_rgwish)                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish")       |
 | Additional Properties                                       | Any     | Optional | can be null    |                                                                                                                                                                                                                                                                                                                      |
 
 ## bin_bn
@@ -155,6 +156,28 @@ List of graph inverse-Wishart id's
 `object[]` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model.md))
 
 ### trilearn_g_inv_wishart Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## bdgraph_rgwish
+
+List of graph inverse-Wishart id's
+
+`bdgraph_rgwish`
+
+*   is optional
+
+*   Type: `object[]` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model-1.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish")
+
+### bdgraph_rgwish Type
+
+`object[]` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model-1.md))
+
+### bdgraph_rgwish Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 

@@ -6,22 +6,23 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 
 
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## items Type
 
 unknown
 
-# undefined Properties
+# items Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                   |
-| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/id")                 |
-| [burn_in](#burn_in)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/burn_in")                          |
-| [thinning](#thinning)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/thinning")                 |
-| [functional](#functional) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-functional.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/functional") |
+| Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                   |
+| :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                 | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/id")                 |
+| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/burn_in")                          |
+| [thinning](#thinning)     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/thinning")                 |
+| [active](#active)         | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-active.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/active")         |
+| [functional](#functional) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-functional.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/functional") |
 
 ## id
 
@@ -92,6 +93,24 @@ any of
     *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
 *   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
+
+## active
+
+
+
+`active`
+
+*   is optional
+
+*   Type: `boolean`
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-mcmc_traj_plots-items-properties-active.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/mcmc_traj_plots/items/properties/active")
+
+### active Type
+
+`boolean`
 
 ## functional
 

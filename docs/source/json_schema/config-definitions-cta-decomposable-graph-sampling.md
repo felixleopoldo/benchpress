@@ -7,15 +7,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 Graph sampling method provided by the trilearn package.
 Documentation: <https://github.com/felixleopoldo/trilearn>
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## trilearn_cta Type
 
 unknown ([CTA decomposable graph sampling](config-definitions-cta-decomposable-graph-sampling.md))
 
-# CTA decomposable graph sampling Properties
+# trilearn_cta Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :-------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

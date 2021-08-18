@@ -4,7 +4,7 @@
 ========
 
 
-``standard_sampling``
+``iid``
 ---------------------
 
 Indepentently identically distributed (IID) samples of a given size ``sample_sizes``.

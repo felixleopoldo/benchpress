@@ -6,9 +6,9 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json
 
 
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                   |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------------------- |
-| Can be instantiated | Yes        | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                      |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :-------------------------------------------------------------- |
+| Can be instantiated | Yes        | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json](config.schema.json "open original schema") |
 
 ## JSON schema for BenchPress config file. Type
 
@@ -539,6 +539,177 @@ any of
 
 *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
+## Definitions group bdgraph_graphsim
+
+Reference this group by using
+
+```json
+{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim"}
+```
+
+| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                               |
+| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-5)     | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/id")                                |
+| [p](#p)         | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/p")                                                 |
+| [prob](#prob)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/prob")                                            |
+| [graph](#graph) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/graph")                          |
+| [class](#class) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/class")  |
+| [size](#size)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/size") |
+
+### id
+
+
+
+`id`
+
+*   is required
+
+*   Type: `string` ([ID](config-definitions-random-undirected-graph-properties-id.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/id")
+
+#### id Type
+
+`string` ([ID](config-definitions-random-undirected-graph-properties-id.md))
+
+### p
+
+Non-negative integers, (0,1,2,...), or array of the same.
+
+`p`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/p")
+
+#### p Type
+
+merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
+
+any of
+
+*   [Non-negative integer](config-definitions-non-negative-integers-anyof-non-negative-integer.md "check type definition")
+
+*   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
+
+### prob
+
+
+
+`prob`
+
+*   is required
+
+*   Type: merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/prob")
+
+#### prob Type
+
+merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the-range-01.md))
+
+any of
+
+*   [Probabaility](config-definitions-numbers-in-the-range-01-anyof-probabaility.md "check type definition")
+
+*   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
+
+### graph
+
+
+
+`graph`
+
+*   is required
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-graph.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/graph")
+
+#### graph Type
+
+`string`
+
+#### graph Constraints
+
+**enum**: the value of this property must be equal to one of the following values:
+
+| Value          | Explanation |
+| :------------- | :---------- |
+| `"random"`     |             |
+| `"cluster"`    |             |
+| `"scale-free"` |             |
+| `"hub"`        |             |
+| `"circle"`     |             |
+| `"star"`       |             |
+| `"lattice"`    |             |
+
+### class
+
+
+
+`class`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s), or null.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/class")
+
+#### class Type
+
+merged type ([Non-negative integer(s), or null.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null.md))
+
+any of
+
+*   any of
+
+    *   [Non-negative integer](config-definitions-non-negative-integers-anyof-non-negative-integer.md "check type definition")
+
+    *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
+
+### size
+
+
+
+`size`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s), or null.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null-1.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_graphsim/properties/size")
+
+#### size Type
+
+merged type ([Non-negative integer(s), or null.](config-definitions-random-undirected-graph-properties-non-negative-integers-or-null-1.md))
+
+any of
+
+*   any of
+
+    *   [Non-negative integer](config-definitions-non-negative-integers-anyof-non-negative-integer.md "check type definition")
+
+    *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
+
+*   [Untitled null in JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
+
 ## Definitions group rand_bandmat
 
 Reference this group by using
@@ -549,7 +720,7 @@ Reference this group by using
 
 | Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                       |
 | :------------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-5)                     | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/id") |
+| [id](#id-6)                     | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/id") |
 | [dim](#dim-1)                   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/dim")           |
 | [max_bandwidth](#max_bandwidth) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/max_bandwidth") |
 
@@ -859,7 +1030,7 @@ Reference this group by using
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
 | :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-6)                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/id")              |
+| [id](#id-7)                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/id")              |
 | [sample_sizes](#sample_sizes) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/sample_sizes")                     |
 | [standardized](#standardized) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-standard-sampling-properties-standardized.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/iid/properties/standardized") |
 
@@ -931,15 +1102,15 @@ Reference this group by using
 {"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag"}
 ```
 
-| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                       |
-| :-------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-7)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/id")                                     |
-| [n](#n)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/n")                                            |
-| [d](#d)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/d")                                            |
-| [par1](#par1)               | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/par1")         |
-| [par2](#par2)               | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-numbers-or-null-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/par2")       |
-| [method](#method)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-method.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/method")                             |
-| [max_parents](#max_parents) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/max_parents") |
+| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
+| :-------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-8)                 | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/id")                               |
+| [n](#n)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/n")                                      |
+| [d](#d)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/d")                                      |
+| [par1](#par1)               | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/par1")   |
+| [par2](#par2)               | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-numbers-or-null-1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/par2") |
+| [method](#method)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-method.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/method")                       |
+| [max_parents](#max_parents) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/max_parents")                    |
 
 ### id
 
@@ -1089,15 +1260,15 @@ any of
 
 *   is required
 
-*   Type: merged type ([Non-negative integer(s), or null.](config-definitions-pcalg-randdag-properties-non-negative-integers-or-null.md))
+*   Type: merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pcalg-randdag-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/max_parents")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_randdag/properties/max_parents")
 
 #### max_parents Type
 
-merged type ([Non-negative integer(s), or null.](config-definitions-pcalg-randdag-properties-non-negative-integers-or-null.md))
+merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
 
 any of
 
@@ -1119,7 +1290,7 @@ Reference this group by using
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                         |
 | :---------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-8) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id")     |
+| [id](#id-9) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id")     |
 | [min](#min) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/min") |
 | [max](#max) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/max") |
 
@@ -1199,7 +1370,7 @@ Reference this group by using
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                          |
 | :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id-9)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-hyper-dirichlet-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_hyper-dir/properties/id") |
+| [id](#id-10)              | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-hyper-dirichlet-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_hyper-dir/properties/id") |
 | [n_levels](#n_levels)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_hyper-dir/properties/n_levels")   |
 | [pseudo_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_hyper-dir/properties/pseudo_obs")         |
 
@@ -1279,7 +1450,7 @@ Reference this group by using
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :---------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-10)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/id") |
+| [id](#id-11)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/id") |
 | [rho](#rho)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/rho")              |
 | [sigma2](#sigma2) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/sigma2")                     |
 
@@ -1359,7 +1530,7 @@ Reference this group by using
 
 | Property     | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :----------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-11) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id") |
+| [id](#id-12) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/id") |
 | [dof](#dof)  | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart/properties/dof")                                  |
 
 ### id
@@ -1404,6 +1575,86 @@ any of
 
 *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
+## Definitions group bdgraph_rgwish
+
+Reference this group by using
+
+```json
+{"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish"}
+```
+
+| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-13)            | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-1-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/id") |
+| [b](#b)                 | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/b")                                      |
+| [threshold](#threshold) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold")                              |
+
+### id
+
+
+
+`id`
+
+*   is required
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-graph-graph-inverse-wishart-model-1-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/id")
+
+#### id Type
+
+`string`
+
+### b
+
+Non-negative number(s).
+
+`b`
+
+*   is required
+
+*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/b")
+
+#### b Type
+
+merged type ([Details](config-definitions-flexnonnegnum.md))
+
+any of
+
+*   [Non-negative number](config-definitions-flexnonnegnum-anyof-non-negative-number.md "check type definition")
+
+*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
+### threshold
+
+Non-negative number(s).
+
+`threshold`
+
+*   is required
+
+*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold")
+
+#### threshold Type
+
+merged type ([Details](config-definitions-flexnonnegnum.md))
+
+any of
+
+*   [Non-negative number](config-definitions-flexnonnegnum-anyof-non-negative-number.md "check type definition")
+
+*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
 ## Definitions group sem_params
 
 Reference this group by using
@@ -1414,7 +1665,7 @@ Reference this group by using
 
 | Property      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                   |
 | :------------ | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-12)  | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-sem-params-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sem_params/properties/id") |
+| [id](#id-14)  | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pcalg-sem-params-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sem_params/properties/id") |
 | [min](#min-1) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sem_params/properties/min")       |
 | [max](#max-1) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sem_params/properties/max")       |
 
@@ -1637,7 +1888,7 @@ Reference this group by using
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                            |
 | :-------------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-13)                | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
+| [id](#id-15)                | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
 | [datatype](#datatype)       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-trilearn-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype") |
 | [alpha](#alpha-1)           | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")         |
 | [beta](#beta-1)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")          |
@@ -1820,7 +2071,7 @@ Reference this group by using
 
 | Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                       |
 | :------------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-14)                    | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-blip-instantiation-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rblip/properties/id")         |
+| [id](#id-16)                    | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-blip-instantiation-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rblip/properties/id")         |
 | [scorermethod](#scorermethod)   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-blip-instantiation-properties-scorermethod.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rblip/properties/scorermethod")    |
 | [solvermethod](#solvermethod)   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-blip-instantiation-properties-solvermethod.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rblip/properties/solvermethod")    |
 | [indeg](#indeg)                 | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rblip/properties/indeg")                                |
@@ -2055,7 +2306,7 @@ Reference this group by using
 
 | Property                                      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                           |
 | :-------------------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-15)                                  | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-notears-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears/properties/id")                     |
+| [id](#id-17)                                  | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-notears-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears/properties/id")                     |
 | [min_rate_of_progress](#min_rate_of_progress) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears/properties/min_rate_of_progress") |
 | [penalty_growth_rate](#penalty_growth_rate)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears/properties/penalty_growth_rate")            |
 | [optimation_accuracy](#optimation_accuracy)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/notears/properties/optimation_accuracy")            |
@@ -2216,7 +2467,7 @@ Reference this group by using
 
 | Property                                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                |
 | :-------------------------------------------------- | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-16)                                        | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/id")                                                |
+| [id](#id-18)                                        | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/id")                                                |
 | [continuous](#continuous)                           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-continuous.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/continuous")                                |
 | [score_type](#score_type)                           | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-score_type.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/score_type")                                |
 | [plot](#plot)                                       | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-plot.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/plot")                                            |
@@ -2442,16 +2693,17 @@ Reference this group by using
 {"$ref":"http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso"}
 ```
 
-| Property                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
-| :---------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-17)                        | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/id")                           |
-| [mode](#mode)                       | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-mode.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/mode")                       |
-| [max_iter](#max_iter)               | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/max_iter")                              |
-| [alpha](#alpha-4)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/alpha")                                         |
-| [tol](#tol)                         | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/tol")                                           |
-| [enet_tol](#enet_tol)               | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")                                      |
-| [verbose](#verbose-1)               | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
-| [assume_centered](#assume_centered) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
+| Property                                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
+| :-------------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-19)                            | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/id")                           |
+| [mode](#mode)                           | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-mode.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/mode")                       |
+| [max_iter](#max_iter)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/max_iter")                              |
+| [alpha](#alpha-4)                       | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/alpha")                                         |
+| [tol](#tol)                             | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/tol")                                           |
+| [enet_tol](#enet_tol)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")                                      |
+| [precmat_threshold](#precmat_threshold) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")                             |
+| [verbose](#verbose-1)                   | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
+| [assume_centered](#assume_centered)     | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-glasso-algorithm-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
 
 ### id
 
@@ -2594,6 +2846,30 @@ any of
 
 *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
+### precmat_threshold
+
+Non-negative number(s).
+
+`precmat_threshold`
+
+*   is required
+
+*   Type: merged type ([Details](config-definitions-flexnonnegnum.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")
+
+#### precmat_threshold Type
+
+merged type ([Details](config-definitions-flexnonnegnum.md))
+
+any of
+
+*   [Non-negative number](config-definitions-flexnonnegnum-anyof-non-negative-number.md "check type definition")
+
+*   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
+
 ### verbose
 
 
@@ -2640,7 +2916,7 @@ Reference this group by using
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                             |
 | :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-18)              | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")             |
+| [id](#id-20)              | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/id")             |
 | [datatype](#datatype-1)   | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-green--thomas-algorithm-for-sampling-from-decomposable-graph-distributions-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/datatype") |
 | [n_samples](#n_samples)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/n_samples")                                                                         |
 | [penalty](#penalty)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gt13_multipair/properties/penalty")                                                                    |
@@ -2947,7 +3223,7 @@ Reference this group by using
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                               |
 | :------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-19)              | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/id")             |
+| [id](#id-21)              | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/id")             |
 | [datatype](#datatype-2)   | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-guidici--green-algorithm-for-sampling-from-decomposable-graph-distributions-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/datatype") |
 | [n_samples](#n_samples-1) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/n_samples")                                                                          |
 | [penalty](#penalty-1)     | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gg99_singlepair/properties/penalty")                                                                     |
@@ -3244,7 +3520,7 @@ Reference this group by using
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                        |
 | :------------------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-20)                                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
+| [id](#id-22)                                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
 | [faithfulnessAssumed](#faithfulnessassumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed") |
 | [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")                             |
 | [datatype](#datatype-3)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/datatype")                       |
@@ -3410,7 +3686,7 @@ Reference this group by using
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                  |
 | :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-21)            | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/id")             |
+| [id](#id-23)            | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/id")             |
 | [alpha](#alpha-5)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/alpha")    |
 | [test](#test)           | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/test")         |
 | [datatype](#datatype-4) | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fci/properties/datatype") |
@@ -3520,7 +3796,7 @@ Reference this group by using
 
 | Property                              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :------------------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id-22)                          | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/id")             |
+| [id](#id-24)                          | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/id")             |
 | [alpha](#alpha-6)                     | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/alpha")                       |
 | [test](#test-1)                       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/test")         |
 | [score](#score-1)                     | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gfci-parameter-setting-properties-score.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_gfci/properties/score")       |
@@ -3745,7 +4021,7 @@ Reference this group by using
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                    |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id-23)            | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")             |
+| [id](#id-25)            | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")             |
 | [alpha](#alpha-7)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/alpha")     |
 | [test](#test-2)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/test")         |
 | [datatype](#datatype-6) | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/datatype") |
@@ -3855,7 +4131,7 @@ Reference this group by using
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :---------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-24)                  | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/id")                                    |
+| [id](#id-26)                  | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/id")                                    |
 | [alpha](#alpha-8)             | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/alpha")                                    |
 | [indepTest](#indeptest)       | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/indepTest")                      |
 | [numCores](#numcores)         | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/numCores")                                   |
@@ -4147,7 +4423,7 @@ Reference this group by using
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                               |
 | :---------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-25)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-max-min-hill-climbing-algorithm-mmhc-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_mmhc/properties/id")       |
+| [id](#id-27)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-max-min-hill-climbing-algorithm-mmhc-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_mmhc/properties/id")       |
 | [alpha](#alpha-9) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_mmhc/properties/alpha")                               |
 | [test](#test-3)   | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-max-min-hill-climbing-algorithm-mmhc-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_mmhc/properties/test")   |
 | [beta](#beta-2)   | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_mmhc/properties/beta")                           |
@@ -4463,11 +4739,11 @@ Reference this group by using
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-26)                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/id")                   |
+| [id](#id-28)                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/id")                   |
 | [plot_legend](#plot_legend) | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-plot_legend.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/plot_legend") |
 | [alpha](#alpha-10)          | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/alpha")                           |
 | [test](#test-4)             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/test")               |
-| [B](#b)                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/B")                          |
+| [B](#b-1)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/B")                          |
 | [maxsx](#maxsx)             | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/maxsx")                      |
 | [debug](#debug)             | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-debug.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/debug")             |
 | [undirected](#undirected)   | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-inter-iamb-algorithm-properties-undirected.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_interiamb/properties/undirected")   |
@@ -4682,10 +4958,10 @@ Reference this group by using
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
 | :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-27)                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-grow-shrink-gs-algorithm-paramter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/id")                 |
+| [id](#id-29)                | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-grow-shrink-gs-algorithm-paramter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/id")                 |
 | [alpha](#alpha-11)          | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/alpha")                                              |
 | [test](#test-5)             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-grow-shrink-gs-algorithm-paramter-setting-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/test")             |
-| [B](#b-1)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/B")                                             |
+| [B](#b-2)                   | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/B")                                             |
 | [maxsx](#maxsx-1)           | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/maxsx")                                         |
 | [debug](#debug-1)           | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-grow-shrink-gs-algorithm-paramter-setting-properties-debug.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/debug")           |
 | [undirected](#undirected-1) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-grow-shrink-gs-algorithm-paramter-setting-properties-undirected.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_gs/properties/undirected") |
@@ -4882,7 +5158,7 @@ Reference this group by using
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                        |
 | :---------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-28)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tabu-search-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_tabu/properties/id")       |
+| [id](#id-30)      | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tabu-search-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_tabu/properties/id")       |
 | [beta](#beta-3)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_tabu/properties/beta")                                   |
 | [score](#score-3) | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-tabu-search-parameter-setting-properties-score.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_tabu/properties/score") |
 | [iss](#iss-1)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_tabu/properties/iss")                                    |
@@ -5104,7 +5380,7 @@ Reference this group by using
 
 | Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                       |
 | :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-29)        | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-hc-algorithm-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_hc/properties/id")       |
+| [id](#id-31)        | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-hc-algorithm-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_hc/properties/id")       |
 | [perturb](#perturb) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_hc/properties/perturb")                         |
 | [restart](#restart) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_hc/properties/restart")                         |
 | [beta](#beta-4)     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bnlearn_hc/properties/beta")                                    |
@@ -5376,7 +5652,7 @@ Reference this group by using
 
 | Property                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                            |
 | :---------------------- | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-30)            | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-iterative-search-paramter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_itsearch/properties/id")                                     |
+| [id](#id-32)            | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-iterative-search-paramter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_itsearch/properties/id")                                     |
 | [estimate](#estimate)   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-iterative-search-paramter-setting-properties-estimate.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_itsearch/properties/estimate")                         |
 | [MAP](#map)             | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-iterative-search-paramter-setting-properties-map.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_itsearch/properties/MAP")                                   |
 | [plus1it](#plus1it)     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_itsearch/properties/plus1it")                                                  |
@@ -5792,7 +6068,7 @@ Reference this group by using
 
 | Property                                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                         |
 | :-------------------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-31)                                  | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/id")                                     |
+| [id](#id-33)                                  | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/id")                                     |
 | [startspace_algorithm](#startspace_algorithm) | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-startspace_algorithm.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/startspace_algorithm") |
 | [plus1](#plus1)                               | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-plus1.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/plus1")                               |
 | [scoretype](#scoretype-1)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-scoretype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/scoretype")                       |
@@ -5806,7 +6082,7 @@ Reference this group by using
 | [alpha](#alpha-13)                            | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/alpha")                                             |
 | [gamma](#gamma-1)                             | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/gamma")                                                               |
 | [cpdag](#cpdag-1)                             | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-order-mcmc-parameter-setting-properties-cpdag.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/cpdag")                               |
-| [threshold](#threshold)                       | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/threshold")                                                 |
+| [threshold](#threshold-1)                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/threshold")                                                 |
 | [burnin](#burnin)                             | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/burnin")                                                      |
 | [mcmc_seed](#mcmc_seed-3)                     | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bidag_order_mcmc/properties/mcmc_seed")                                                   |
 

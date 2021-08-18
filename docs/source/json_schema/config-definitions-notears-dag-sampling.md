@@ -7,15 +7,15 @@ http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definition
 Graph sampling method provided by the notears package.
 Documentation: <https://github.com/jmoss20/notears>
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## notears_dag_sampling Type
 
 unknown ([Notears DAG sampling](config-definitions-notears-dag-sampling.md))
 
-# Notears DAG sampling Properties
+# notears_dag_sampling Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -44,7 +44,11 @@
 
 *   [Graph graph inverse-Wishart model](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids-graph-graph-inverse-wishart-model.md "Parameter setting for a graph inverse-Wishart model") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart/items`
 
+*   [Graph graph inverse-Wishart model](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids-1-graph-graph-inverse-wishart-model.md "Parameter setting for a graph inverse-Wishart model") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish/items`
+
 *   [Graph graph inverse-Wishart model](./config-definitions-graph-graph-inverse-wishart-model.md "Parameter setting for a graph inverse-Wishart model") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_g_inv_wishart`
+
+*   [Graph graph inverse-Wishart model](./config-definitions-graph-graph-inverse-wishart-model-1.md "Parameter setting for a graph inverse-Wishart model") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bdgraph_rgwish`
 
 *   [Graph intra-class model](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-intra-class-ids-graph-intra-class-model.md "Parameter setting for a graph intra-class model") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_intra-class/items`
 
@@ -132,6 +136,8 @@
 
 ### Arrays
 
+*   [BDgraph graph.sim](./config-properties-resources-properties-graph-sampling-algorithms-properties-bdgraph-graphsim.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim`
+
 *   [Band matrix id's](./config-properties-resources-properties-graph-sampling-algorithms-properties-band-matrix-ids.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/bandmat`
 
 *   [Christmas tree algorithm id's](./config-properties-resources-properties-graph-sampling-algorithms-properties-christmas-tree-algorithm-ids.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta`
@@ -169,6 +175,8 @@
 *   [List of graph intra-class id's](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-intra-class-ids.md "List of intra-class id's") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_intra-class`
 
 *   [List of graph inverse-Wishart id's](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids.md "List of graph inverse-Wishart id's") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart`
+
+*   [List of graph inverse-Wishart id's](./config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids-1.md "List of graph inverse-Wishart id's") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish`
 
 *   [List of iid setups.](./config-properties-resources-properties-data-sampling-algorithms-properties-list-of-iid-setups.md "List of iid setups") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/data/properties/iid`
 
@@ -371,6 +379,30 @@
 *   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative integer list](./config-definitions-non-negative-integers-anyof-non-negative-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [Non-negative number list](./config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
@@ -627,6 +659,10 @@
 *   [Positive integer list](./config-definitions-non-negative-integers-1-anyof-positive-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnatnum/anyOf/1`
 
 *   [Positive integer list](./config-definitions-non-negative-integers-1-anyof-positive-integer-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexnatnum/anyOf/1`
+
+*   [Probability list](./config-definitions-numbers-in-the-range-01-anyof-probability-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexprob/anyOf/1`
+
+*   [Probability list](./config-definitions-numbers-in-the-range-01-anyof-probability-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexprob/anyOf/1`
 
 *   [Probability list](./config-definitions-numbers-in-the-range-01-anyof-probability-list.md) – `http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/flexprob/anyOf/1`
 

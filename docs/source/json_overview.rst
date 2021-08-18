@@ -3,18 +3,20 @@ JSON config file
 ##################
 
 This overview is based on the sample config file :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-The `JSON schema <json-schema.org>`_ for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config.md>`_.
+The JSON schema for the config file is found `here <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config.md>`_.
+
 The figures are generated using `JSON Editor Online <https://jsoneditoronline.org>`_.
 
-The configuration file consists of two main sections ``benchmark_setup`` and ``resources``, see :numref:`maincats`.
+The configuration file consists of two main sections ``benchmark_setup`` and ``resources``
+..  , see :numref:`maincats`.
 
 
 
-.. _maincats:
-.. figure:: _static/maincats_exp.png
-    :width: 400
+.. .. _maincats:
+.. .. figure:: _static/maincats_exp.png
+..     :width: 400
 
-    Main sections in :download:`config/sec6.1.json <../../config/sec6.1.json>`.
+..     Main sections in :download:`config/sec6.1.json <../../config/sec6.1.json>`.
 
 * ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
 * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
@@ -45,11 +47,11 @@ This is a list of dictionaries, where each dictionary defines the data setup as:
 * ``data_id``:  an id from the ``resources->data`` section or a ``.csv`` file; see :ref:`data`.
 * ``seed_range``:  the number of seeds used for sampling models and datasets.  
 
-.. note:: 
+.. important:: 
 
     If a ``.csv`` file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
     
-.. note::
+.. important::
 
     If a ``.rds`` file is specified as ``parameters_id``, the true graph should be specified as a ``.csv`` file as ``graph_id``.
 
@@ -77,8 +79,40 @@ Note that the results are also stored in the ``results`` directory as ``.csv`` f
 
 .. _rocdef:
 
-``ROC``
+``roc``
 -------
+This module defines a metric for comparing graphs which may also be applied to *mixed graphs*, having a combination of edges oriented in different ways (directed or undirected), thus we distinguish between the orientations.
+
+
+We assign to every edge :math:`e \in E'` the true positive score :math:`TP(e)=1` if :math:`e` is contained in :math:`E` with the same orientation (:math:`e` being undirected in both :math:`E` and :math:`E'` or :math:`e` having the same direction in both :math:`E` and :math:`E'`), :math:`TP(e)=1/2` if :math:`e` is contained in :math:`E` with a different orientation, otherwise :math:`TP(e)=0`.
+The false positive score :math:`FP(e)` is defined analogously.
+First let :math:` \bar E` denote the complementary set of :math:`E` in the sense that directed edges are reversed and undirected edges (non-edge) are removed (added).
+For every edge :math:`e \in \bar E'`, :math:`FP(e)=1` if :math:`e` is contained in :math:` \bar E` with the same orientation 
+and :math:`FP(e)=1/2` if :math:`e` is contained in :math:` \bar E`  with a different orientation, otherwise :math:`FP(e)=0`.
+
+The total true and false positive edges (TP and FP) are obtained  as the sum of the individual edge scores, *i.e.*
+
+.. math::
+
+    TP := \sum_{e\in E} TP(e), \quad FP := \sum_{e\in E} FP(e).
+
+We define the true and false positive rates (FPRp and TPR) as
+
+.. math::
+    FPRp := \frac{FP}{P},\quad TPR := \frac{TP}{P},
+
+where :math:`P:=|E|` denotes the total number of edges in :math:`G`.
+Note that TP and FP reduces to the ordinary counting true and false positives when all edges are undirected in both :math:`G` and :math:`G'`.
+
+The ``roc`` module evaluates the TPR and FPRp for each seed in ``seed_range`` and the median (mean) FPRp is plotted against the median (mean) TPR in ROC type sub figures using *ggplot2*  based on the graph, parameters and data modules used.
+The top three title rows of each sub figure describe, from top to bottom, the objects from the graph, parameters and data modules.
+The varying parameter forming the curve should be given as a list of values in the corresponding algorithm object.
+A parameter could for example be the significance level in a test procedure of a constraint-based algorithm, or a parameter of the score function in a score-based method.
+
+The ``id``'s for the objects that should be part of the evaluation should be placed in a list called ``ids``.
+The ``filename_prefix`` field specifies a prefix of the produced files.
+The user can choose to show points (``points``), parameter values (``text``), lines between the points or values (``path``), and error bars showing the 5% and 95% quantiles of the TPR (``errorbar``).
+
 The ROC evaluation metric plots the number of false postive (FPRp) and true postive (TPR) edge rates, in the so called *pattern graph* of a DAG :math:`G=(V,E)`, where :math:`V` is the node set and :math:`E` is the edge set.
 
 If :math:`G'=(V',E')` regarded as an estimate of :math:`G=(V,E)`, these metrics are defined as
@@ -98,6 +132,8 @@ In order to get the curve like form in the plot, you need to make sure that ``cu
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
 
+
+
 .. rubric:: Example
 
 List of algorithm to be included in roc curve estimation.
@@ -105,27 +141,30 @@ List of algorithm to be included in roc curve estimation.
 .. code-block:: json
 
     {
-        "filename_prefix": "section6.1/",
-        "point": true,
-        "errorbar": true,
-        "path": true,
-        "text": false,
-        "ids": [
-            "gobnilp-bde",
-            "asobs-bdeu",
-            "tabu-bde",
-            "mmhc-bde-mi",
-            "hc-bde",
-            "gs-mi",
-            "interiamb-mi",
-            "fci-chi-square",
-            "rfci-chi-square",
-            "gfci-bdeu-chi-square",
-            "fges-bdeu",
-            "itsearch_sample-bde",
-            "pc-binCItest",
-            "omcmc_itsample-bde"
-        ]
+    
+        "roc":
+        {   
+            "filename_prefix": "section6.1/",
+            "point": true,
+            "errorbar": true,
+            "path": true,
+            "text": false,
+            "ids": [
+                "gobnilp-bde",
+                "asobs-bdeu",
+                "tabu-bde",
+                "mmhc-bde-mi",
+                "hc-bde",
+                "gs-mi",
+                "interiamb-mi",
+                "fci-chi-square",
+                "rfci-chi-square",
+                "gfci-bdeu-chi-square",
+                "fges-bdeu",
+                "itsearch_sample-bde",
+                "pc-binCItest",
+                "omcmc_itsample-bde"
+            ]
         },
         "adjmat_true_plots": false,
         "graph_true_plots": false,
@@ -135,6 +174,54 @@ List of algorithm to be included in roc curve estimation.
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
     }
+
+``adjmat_true_plots``
+-------------------------
+
+This module plots the adjacency matrices of the true graphs. 
+The plots are saved in sub directories of *results/adjmat/* and copied to *results/output/adjmat_true_plots/* for easy reference.
+
+``adjmat_plots``
+-------------------------
+
+This module plots the adjacency matrices of the estimated graphs. 
+The figures are saved in *results/adjmat* and copied to *results/output/adjmat_plots/*.
+
+``graph_true_plots``
+-------------------------
+
+This module plots the true underlying graphs. 
+The figures are saved in *results/adjmat* and copied to *results/output/graph_true_plots/*.
+
+
+``graph_plots``
+-------------------------
+
+This module plots and saves the estimated graphs in dot-format. 
+The figures are saved in *results/adjmat* and copied to *results/output/graph_plots/*.
+
+``mcmc_heatmaps``
+-------------------------
+
+As mentioned in Section 3, for Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
+Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math: `b` samples are disregarded as a burn-in period.
+
+This module has a list of objects, where each object has an id field for the algorithm object id and a field (``burn_in``) for specifying the burn-in period. 
+The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
+
+
+``mcmc_autocorr``
+-------------------------
+
+The ``mcmc_autocorr`` module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
+Similar to the *mcmc_traj_plots* module, the *mcmc_autocorr* module has a list of objects, where each object has an id, ``burn_in``, ``thinning``, and a ``functional`` field. 
+The maximum number of lags after thinning, is specified by the lags field. 
+The plots are saved in *results/mcmc_autocorr/* and copied to *results/output/mcmc_autocorr/*.
+
+``mcmc_traj_plots``
+-------------------------
+
+The mcmc_traj_plots module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/m- cmc traj plots/ and copied to results/output/mcmc traj plots/.
 
 
 ``resources``
