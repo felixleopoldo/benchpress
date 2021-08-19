@@ -1385,7 +1385,7 @@
                 }
             ]
         },
-        "nonegintlist": {
+        "nonnegintlist": {
             "type": "array",
             "title": "nonnegint list",
             "description": "Non-negative integer list",

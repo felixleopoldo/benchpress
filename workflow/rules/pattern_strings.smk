@@ -31,7 +31,7 @@ pattern_strings = {}
 pattern_strings["gt13_multipair"] = "gt13_multipair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gt13_multipair"])
 pattern_strings["gg99_singlepair"] = "gg99_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair"])
 pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
-pattern_strings["rblip"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip"])
+pattern_strings["rblip_asobs"] = "blip/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip_asobs"])
 pattern_strings["pcalg_pc"] = "pcalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
 pattern_strings["bnlearn_mmhc"] = "mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
 pattern_strings["bnlearn_interiamb"] = "bnlearn_interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_interiamb"])

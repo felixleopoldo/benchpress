@@ -167,7 +167,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
 
-    elif algorithm == "rblip":
+    elif algorithm == "rblip_asobs":
         return "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
@@ -176,7 +176,7 @@ def summarise_alg_shell(algorithm):
         "--filename {output.res} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname algorithm       --colval blip " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname algorithm       --colval rblip_asobs " \
         " && python workflow/scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
