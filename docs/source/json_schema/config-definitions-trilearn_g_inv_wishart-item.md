@@ -14,6 +14,15 @@ Parameter setting for a graph inverse-Wishart model
 
 `object` ([trilearn_g_inv_wishart item](config-definitions-trilearn_g_inv_wishart-item.md))
 
+## trilearn_g_inv_wishart Examples
+
+```json
+{
+  "id": "giw",
+  "dof": 1
+}
+```
+
 # trilearn_g_inv_wishart Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                    |

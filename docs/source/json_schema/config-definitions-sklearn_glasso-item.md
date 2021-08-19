@@ -14,6 +14,24 @@ GLasso instance
 
 `object` ([sklearn_glasso item](config-definitions-sklearn_glasso-item.md))
 
+## sklearn_glasso Examples
+
+```json
+{
+  "id": "sklearn_glasso",
+  "mode": "cd",
+  "alpha": [
+    0.05
+  ],
+  "tol": 0.0004,
+  "enet_tol": 0.0004,
+  "precmat_threshold": 0.1,
+  "max_iter": 100,
+  "verbose": false,
+  "assume_centered": false
+}
+```
+
 # sklearn_glasso Properties
 
 | Property                                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                              |

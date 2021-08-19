@@ -14,6 +14,16 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 unknown ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 
+## mcmc_heatmaps_item Examples
+
+```json
+{
+  "id": "omcmc_itsample-bge",
+  "burn_in": 0,
+  "active": true
+}
+```
+
 # mcmc_heatmaps_item Properties
 
 | Property            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |

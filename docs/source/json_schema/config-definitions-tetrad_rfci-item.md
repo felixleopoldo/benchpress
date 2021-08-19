@@ -14,6 +14,21 @@ RFCI instance
 
 `object` ([tetrad_rfci item](config-definitions-tetrad_rfci-item.md))
 
+## tetrad_rfci Examples
+
+```json
+{
+  "id": "rfci-fisher-z",
+  "alpha": [
+    0.001,
+    0.01,
+    0.05
+  ],
+  "test": "fisher-z-test",
+  "datatype": "continuous"
+}
+```
+
 # tetrad_rfci Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |

@@ -14,6 +14,21 @@ FCI instance
 
 `object` ([tetrad_fci item](config-definitions-tetrad_fci-item.md))
 
+## tetrad_fci Examples
+
+```json
+{
+  "id": "fci-fisher-z",
+  "alpha": [
+    0.001,
+    0.01,
+    0.05
+  ],
+  "test": "fisher-z-test",
+  "datatype": "continuous"
+}
+```
+
 # tetrad_fci Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                        |

@@ -14,6 +14,23 @@ Grow shrink (GS) algorithm instance
 
 `object` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
 
+## bnlearn_gs Examples
+
+```json
+{
+  "id": "gs-zf",
+  "alpha": [
+    0.01,
+    0.05
+  ],
+  "test": "zf",
+  "B": null,
+  "maxsx": null,
+  "debug": false,
+  "undirected": false
+}
+```
+
 # bnlearn_gs Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                            |

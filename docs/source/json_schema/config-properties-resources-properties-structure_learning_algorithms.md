@@ -68,7 +68,7 @@ List of blip objects
 
 *   is optional
 
-*   Type: unknown\[]
+*   Type: `object[]` ([rblip_asobs item](config-definitions-rblip_asobs-item.md))
 
 *   cannot be null
 
@@ -76,7 +76,7 @@ List of blip objects
 
 ### rblip_asobs Type
 
-unknown\[]
+`object[]` ([rblip_asobs item](config-definitions-rblip_asobs-item.md))
 
 ## notears
 

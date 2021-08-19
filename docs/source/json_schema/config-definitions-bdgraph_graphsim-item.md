@@ -14,6 +14,19 @@ BDgraph graph.sim
 
 unknown ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 
+## bdgraph_graphsim Examples
+
+```json
+{
+  "id": "circle",
+  "p": 50,
+  "graph": "circle",
+  "class": null,
+  "size": null,
+  "prob": 0.2
+}
+```
+
 # bdgraph_graphsim Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                              |

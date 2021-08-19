@@ -14,6 +14,16 @@ Parameter setting for sampling SEM params.
 
 `object` ([sem_params item](config-definitions-sem_params-item.md))
 
+## sem_params Examples
+
+```json
+{
+  "id": "SEM",
+  "min": 0.25,
+  "max": 1
+}
+```
+
 # sem_params Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                            |

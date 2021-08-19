@@ -14,6 +14,19 @@ Notears object
 
 `object` ([notears item](config-definitions-notears-item.md))
 
+## notears Examples
+
+```json
+{
+  "id": "notears",
+  "min_rate_of_progress": 0.25,
+  "penalty_growth_rate": 10,
+  "optimation_accuracy": 1e-8,
+  "loss": "least_squares_loss_cov",
+  "loss_grad": "least_squares_loss_cov_grad"
+}
+```
+
 # notears Properties
 
 | Property                                      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |

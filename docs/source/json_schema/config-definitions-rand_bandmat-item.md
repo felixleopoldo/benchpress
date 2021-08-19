@@ -14,6 +14,16 @@ A graph with a band structured adjacency matrix with random width.
 
 unknown ([rand_bandmat item](config-definitions-rand_bandmat-item.md))
 
+## rand_bandmat Examples
+
+```json
+{
+  "id": "AR1-5",
+  "max_bandwidth": 5,
+  "dim": 50
+}
+```
+
 # rand_bandmat Properties
 
 | Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                   |

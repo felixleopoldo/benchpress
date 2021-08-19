@@ -14,6 +14,16 @@ Parameter setting for a hyper Dirichlet distribution
 
 `object` ([trilearn_hyper-dir item](config-definitions-trilearn_hyper-dir-item.md))
 
+## trilearn_hyper-dir Examples
+
+```json
+{
+  "id": "disc-loglin",
+  "n_levels": 2,
+  "pseudo_obs": 1
+}
+```
+
 # trilearn_hyper-dir Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                            |

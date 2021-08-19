@@ -14,6 +14,34 @@ Order MCMC algorithm instance
 
 `object` ([bidag_order_mcmc item](config-definitions-bidag_order_mcmc-item.md))
 
+## bidag_order_mcmc Examples
+
+```json
+{
+  "id": "omcmc_itmap-bge",
+  "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+  "plus1": true,
+  "scoretype": "bge",
+  "chi": null,
+  "edgepf": null,
+  "aw": null,
+  "am": [
+    0.01,
+    0.1,
+    0.05
+  ],
+  "alpha": 0.01,
+  "gamma": 1,
+  "stepsave": null,
+  "iterations": null,
+  "MAP": true,
+  "cpdag": false,
+  "mcmc_seed": 1,
+  "threshold": 0.5,
+  "burnin": 0
+}
+```
+
 # bidag_order_mcmc Properties
 
 | Property                                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                            |

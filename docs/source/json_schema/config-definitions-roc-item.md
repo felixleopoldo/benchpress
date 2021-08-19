@@ -14,6 +14,24 @@ ROC item
 
 `object` ([roc item](config-definitions-roc-item.md))
 
+## roc Examples
+
+```json
+{
+  "filename_prefix": "example/",
+  "point": true,
+  "errorbar": true,
+  "path": true,
+  "text": false,
+  "ids": [
+    "fges-sem-bic",
+    "mmhc-bge-zf",
+    "omcmc_itsample-bge",
+    "pc-gaussCItest"
+  ]
+}
+```
+
 # roc Properties
 
 | Property                            | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                        |

@@ -5,6 +5,7 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 ```
 
 Description of the data model and sampling setup. Make sure that the id's are properly combined.
+If a CSV file is specified as data_id then parameters_id and seed_range should be null whereas graph_id should be the true graphs that generated the dataset.
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -13,6 +14,20 @@ Description of the data model and sampling setup. Make sure that the id's are pr
 ## data_setup_dict Type
 
 `object` ([data item](config-definitions-data-item.md))
+
+## data_setup_dict Examples
+
+```json
+{
+  "graph_id": "avneigs4_p20",
+  "parameters_id": "SEM",
+  "data_id": "standardized",
+  "seed_range": [
+    1,
+    3
+  ]
+}
+```
 
 # data_setup_dict Properties
 

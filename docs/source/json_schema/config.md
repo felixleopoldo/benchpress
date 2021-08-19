@@ -23,7 +23,7 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json
 
 ## benchmark_setup
 
-Description of the benchmarking setup.
+Defines the actual benchmarking setup, where the resources are references by their corresponding id.
 
 `benchmark_setup`
 
@@ -41,7 +41,7 @@ Description of the benchmarking setup.
 
 ## resources
 
-Module available for benchmarking.
+The available modules for generating graphs, parameters, data and structure learning algorithms.
 
 `resources`
 
@@ -59,22 +59,22 @@ unknown ([resources](config-properties-resources.md))
 
 # JSON schema for Benchpress config file. Definitions
 
-## Definitions group mcmc_autocorr_plots
+## Definitions group mcmc_autocorr_plots_item
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item"}
 ```
 
-| Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                               |
-| :------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                 | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/id")                                  |
-| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/burn_in")          |
-| [thinning](#thinning)     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/thinning") |
-| [active](#active)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/active")                          |
-| [lags](#lags)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/lags")   |
-| [functional](#functional) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-stringorlist.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/functional")                |
+| Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                    |
+| :------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                 | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/id")                                  |
+| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")          |
+| [thinning](#thinning)     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/thinning") |
+| [active](#active)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/active")                          |
+| [lags](#lags)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/lags")   |
+| [functional](#functional) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-stringorlist.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional")                |
 
 ### id
 
@@ -88,7 +88,7 @@ Reference this group by using
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/id")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/id")
 
 #### id Type
 
@@ -106,7 +106,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/burn_in")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")
 
 #### burn_in Type
 
@@ -130,7 +130,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/thinning")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/thinning")
 
 #### thinning Type
 
@@ -158,7 +158,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/active")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/active")
 
 #### active Type
 
@@ -176,7 +176,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/lags")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/lags")
 
 #### lags Type
 
@@ -204,7 +204,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-stringorlist.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/functional")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-stringorlist.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional")
 
 #### functional Type
 

@@ -1,7 +1,7 @@
 # Untitled string in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/functional/anyOf/0
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional/anyOf/0
 ```
 
 

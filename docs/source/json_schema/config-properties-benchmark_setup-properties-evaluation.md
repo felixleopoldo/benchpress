@@ -4,7 +4,7 @@
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation
 ```
 
-
+This section contains the available evaluation methods.
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -13,6 +13,72 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 ## evaluation Type
 
 unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md))
+
+## evaluation Examples
+
+```json
+{
+  "roc": {
+    "filename_prefix": "example/",
+    "point": true,
+    "errorbar": true,
+    "path": true,
+    "text": false,
+    "ids": [
+      "fges-sem-bic",
+      "mmhc-bge-zf",
+      "omcmc_itsample-bge",
+      "pc-gaussCItest"
+    ]
+  },
+  "adjmat_true_plots": true,
+  "graph_true_plots": true,
+  "adjmat_plots": [
+    "fges-sem-bic",
+    "mmhc-bge-zf",
+    "omcmc_itsample-bge",
+    "pc-gaussCItest"
+  ],
+  "graph_plots": [
+    "fges-sem-bic",
+    "mmhc-bge-zf",
+    "omcmc_itsample-bge",
+    "pc-gaussCItest"
+  ],
+  "mcmc_traj_plots": [
+    {
+      "id": "omcmc_itsample-bge",
+      "burn_in": 0,
+      "thinning": 1,
+      "functional": [
+        "score",
+        "size"
+      ],
+      "active": true
+    }
+  ],
+  "mcmc_heatmaps": [
+    {
+      "id": "omcmc_itsample-bge",
+      "burn_in": 0,
+      "active": true
+    }
+  ],
+  "mcmc_autocorr_plots": [
+    {
+      "id": "omcmc_itsample-bge",
+      "burn_in": 0,
+      "thinning": 1,
+      "lags": 50,
+      "functional": [
+        "score",
+        "size"
+      ],
+      "active": true
+    }
+  ]
+}
+```
 
 # evaluation Properties
 
@@ -45,9 +111,27 @@ ROC item
 
 `object` ([roc item](config-definitions-roc-item.md))
 
+### roc Examples
+
+```json
+{
+  "filename_prefix": "example/",
+  "point": true,
+  "errorbar": true,
+  "path": true,
+  "text": false,
+  "ids": [
+    "fges-sem-bic",
+    "mmhc-bge-zf",
+    "omcmc_itsample-bge",
+    "pc-gaussCItest"
+  ]
+}
+```
+
 ## adjmat_true_plots
 
-Plots the adjacency matrices of the true graphs.
+This module plots the adjacency matrices of the true graphs. The plots are saved in sub directories of results/adjmat/ and copied to results/output/adjmat_true_plots/ for easy reference.
 
 `adjmat_true_plots`
 
@@ -63,9 +147,17 @@ Plots the adjacency matrices of the true graphs.
 
 `boolean` ([adjmat_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_true_plots.md))
 
+### adjmat_true_plots Examples
+
+```json
+{
+  "adjmat_true_plots": true
+}
+```
+
 ## graph_true_plots
 
-Plots the true graphs.
+This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph_true_plots/.
 
 `graph_true_plots`
 
@@ -81,9 +173,17 @@ Plots the true graphs.
 
 `boolean` ([graph_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md))
 
+### graph_true_plots Examples
+
+```json
+{
+  "graph_true_plots": true
+}
+```
+
 ## adjmat_plots
 
-Plots the adjacency matrices of the estimated graphs.
+This module plots the adjacency matrices of the estimated graphs. The figures are saved in results/adjmat and copied to results/output/adjmat_plots/.
 
 `adjmat_plots`
 
@@ -99,9 +199,20 @@ Plots the adjacency matrices of the estimated graphs.
 
 `string[]`
 
+### adjmat_plots Examples
+
+```json
+[
+  "fges-sem-bic",
+  "mmhc-bge-zf",
+  "omcmc_itsample-bge",
+  "pc-gaussCItest"
+]
+```
+
 ## graph_plots
 
-Plots the estimated graphs
+This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph_plots/.
 
 `graph_plots`
 
@@ -117,9 +228,20 @@ Plots the estimated graphs
 
 `string[]`
 
+### graph_plots Examples
+
+```json
+[
+  "fges-sem-bic",
+  "mmhc-bge-zf",
+  "omcmc_itsample-bge",
+  "pc-gaussCItest"
+]
+```
+
 ## mcmc_traj_plots
 
-Plots the functional value of each graph in a MCMC trajctory.
+This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.
 
 `mcmc_traj_plots`
 
@@ -134,6 +256,23 @@ Plots the functional value of each graph in a MCMC trajctory.
 ### mcmc_traj_plots Type
 
 `object[]` ([mcmc_traj_plots item](config-definitions-mcmc_traj_plots-item.md))
+
+### mcmc_traj_plots Examples
+
+```json
+[
+  {
+    "id": "omcmc_itsample-bge",
+    "burn_in": 0,
+    "thinning": 1,
+    "functional": [
+      "score",
+      "size"
+    ],
+    "active": true
+  }
+]
+```
 
 ## mcmc_heatmaps
 
@@ -153,6 +292,18 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 unknown\[] ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 
+### mcmc_heatmaps Examples
+
+```json
+[
+  {
+    "id": "omcmc_itsample-bge",
+    "burn_in": 0,
+    "active": true
+  }
+]
+```
+
 ## mcmc_autocorr_plots
 
 Plots mean graph as a heatmap from an MCMC trajectory of graphs.
@@ -161,7 +312,7 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 *   is required
 
-*   Type: unknown\[]
+*   Type: unknown\[] ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
 
 *   cannot be null
 
@@ -169,4 +320,22 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 ### mcmc_autocorr_plots Type
 
-unknown\[]
+unknown\[] ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
+
+### mcmc_autocorr_plots Examples
+
+```json
+[
+  {
+    "id": "omcmc_itsample-bge",
+    "burn_in": 0,
+    "thinning": 1,
+    "lags": 50,
+    "functional": [
+      "score",
+      "size"
+    ],
+    "active": true
+  }
+]
+```

@@ -14,6 +14,29 @@ Blip object
 
 `object` ([rblip_asobs item](config-definitions-rblip_asobs-item.md))
 
+## rblip_asobs Examples
+
+```json
+{
+  "id": "winasobs-bdeu",
+  "scorermethod": "is",
+  "solvermethod": "winasobs",
+  "indeg": 80,
+  "time": [
+    180
+  ],
+  "allocated": 80,
+  "scorefunction": "bdeu",
+  "alpha": [
+    0.001,
+    0.01,
+    0.1
+  ],
+  "cores": 1,
+  "verbose": 0
+}
+```
+
 # rblip_asobs Properties
 
 | Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                    |

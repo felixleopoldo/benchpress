@@ -12,7 +12,7 @@
 
 *   [bdgraph_rgwish item](./config-definitions-bdgraph_rgwish-item.md "Parameter setting for a G-Wishart model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish`
 
-*   [benchmark_setup](./config-properties-benchmark_setup.md "Description of the benchmarking setup") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup`
+*   [benchmark_setup](./config-properties-benchmark_setup.md "Defines the actual benchmarking setup, where the resources are references by their corresponding id") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup`
 
 *   [bidag_itsearch item](./config-properties-resources-properties-structure_learning_algorithms-properties-bidag_itsearch-bidag_itsearch-item.md "Iterative search +1 algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_itsearch/items`
 
@@ -70,9 +70,9 @@
 
 *   [iid](./config-definitions-iid.md "Data sampling from disctete Bayesian network") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid`
 
-*   [mcmc_traj_plots item](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots-mcmc_traj_plots-item.md "Plots the functional value of each graph in a MCMC trajctory") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots/items`
+*   [mcmc_traj_plots item](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots-mcmc_traj_plots-item.md "This module plots the so called score values in the trajectory or the value of a given functional") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots/items`
 
-*   [mcmc_traj_plots item](./config-definitions-mcmc_traj_plots-item.md "Plots the functional value of each graph in a MCMC trajctory") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item`
+*   [mcmc_traj_plots item](./config-definitions-mcmc_traj_plots-item.md "This module plots the so called score values in the trajectory or the value of a given functional") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item`
 
 *   [notears item](./config-properties-resources-properties-structure_learning_algorithms-properties-notears-notears-item.md "Notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears/items`
 
@@ -87,6 +87,8 @@
 *   [pcalg_randdag item](./config-properties-resources-properties-graph-properties-pcalg_randdag-pcalg_randdag-item.md "An instance of pcalg randdag") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag/items`
 
 *   [pcalg_randdag item](./config-definitions-pcalg_randdag-item.md "An instance of pcalg randdag") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag`
+
+*   [rblip_asobs item](./config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs-rblip_asobs-item.md "Blip object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs/items`
 
 *   [rblip_asobs item](./config-definitions-rblip_asobs-item.md "Blip object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs`
 
@@ -166,15 +168,17 @@
 
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_traj_plots-item-properties-functional-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item/properties/functional/anyOf/1`
 
+*   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_autocorr_plots-item-properties-stringorlist-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional/anyOf/1`
+
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-bidag_order_mcmc-item-properties-startspace_algorithm-anyof-2.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/startspace_algorithm/anyOf/2`
 
-*   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_autocorr_plots-item-properties-stringorlist-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots/properties/functional/anyOf/1`
+*   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_autocorr_plots-item-properties-stringorlist-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional/anyOf/1`
 
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_traj_plots-item-properties-functional-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item/properties/functional/anyOf/1`
 
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-bidag_order_mcmc-item-properties-startspace_algorithm-anyof-2.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/startspace_algorithm/anyOf/2`
 
-*   [adjmat_plots](./config-properties-benchmark_setup-properties-evaluation-properties-adjmat_plots.md "Plots the adjacency matrices of the estimated graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots`
+*   [adjmat_plots](./config-properties-benchmark_setup-properties-evaluation-properties-adjmat_plots.md "This module plots the adjacency matrices of the estimated graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots`
 
 *   [bandmat](./config-properties-resources-properties-graph-properties-bandmat.md "Generates a graph with band structured adjacency matrix") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat`
 
@@ -204,7 +208,7 @@
 
 *   [gobnilp](./config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp.md "Gobnilp objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp`
 
-*   [graph_plots](./config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "Plots the estimated graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots`
+*   [graph_plots](./config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "This module plots and saves the estimated graphs in dot-format") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots`
 
 *   [gt13\_multipair](./config-properties-resources-properties-structure_learning_algorithms-properties-gt13\_multipair.md "Green & Thomas objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair`
 
@@ -212,9 +216,13 @@
 
 *   [mcmc_heatmaps](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "Plots mean graph as a heatmap from an MCMC trajectory of graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps`
 
-*   [mcmc_traj_plots](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "Plots the functional value of each graph in a MCMC trajctory") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots`
+*   [mcmc_traj_plots](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "This module plots the so called score values in the trajectory or the value of a given functional") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots`
 
 *   [nonnegint list](./config-definitions-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonegintlist`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
@@ -586,4 +594,4 @@
 
 ## Version Note
 
-The schemas linked above follow the JSON Schema Spec version: `http://json-schema.org/draft-04/schema#`
+The schemas linked above follow the JSON Schema Spec version: `http://json-schema.org/draft-06/schema#`

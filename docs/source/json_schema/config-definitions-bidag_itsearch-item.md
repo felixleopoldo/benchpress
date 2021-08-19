@@ -14,6 +14,35 @@ Iterative search +1 algorithm instance
 
 `object` ([bidag_itsearch item](config-definitions-bidag_itsearch-item.md))
 
+## bidag_itsearch Examples
+
+```json
+{
+  "id": "itsearch_map-bge",
+  "estimate": "map",
+  "MAP": true,
+  "plus1it": null,
+  "posterior": null,
+  "scoretype": "bge",
+  "chi": null,
+  "edgepf": null,
+  "am": [
+    0.000248,
+    0.0223,
+    0.1,
+    0.448,
+    0.739
+  ],
+  "aw": null,
+  "softlimit": 9,
+  "hardlimit": 15,
+  "alpha": 0.05,
+  "gamma": 1,
+  "cpdag": false,
+  "mergetype": "skeleton"
+}
+```
+
 # bidag_itsearch Properties
 
 | Property                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |

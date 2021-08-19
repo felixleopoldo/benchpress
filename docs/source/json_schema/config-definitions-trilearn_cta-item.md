@@ -15,6 +15,17 @@ Documentation: <https://github.com/felixleopoldo/trilearn>
 
 unknown ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
 
+## trilearn_cta Examples
+
+```json
+{
+  "id": "trilearn_cta",
+  "order": 50,
+  "alpha": 0.5,
+  "beta": 0.7
+}
+```
+
 # trilearn_cta Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                |

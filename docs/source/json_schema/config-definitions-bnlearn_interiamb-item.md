@@ -14,6 +14,23 @@ Inter-IAMB algorithm object
 
 `object` ([bnlearn_interiamb item](config-definitions-bnlearn_interiamb-item.md))
 
+## bnlearn_interiamb Examples
+
+```json
+{
+  "id": "interiamb-zf",
+  "alpha": [
+    0.01,
+    0.05
+  ],
+  "test": "zf",
+  "B": null,
+  "maxsx": null,
+  "debug": false,
+  "undirected": false
+}
+```
+
 # bnlearn_interiamb Properties
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |

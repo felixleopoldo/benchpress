@@ -14,6 +14,25 @@ GFCI instance
 
 `object` ([tetrad_gfci item](config-definitions-tetrad_gfci-item.md))
 
+## tetrad_gfci Examples
+
+```json
+{
+  "id": "gfci-sem-bic-fisher-z",
+  "alpha": 0.05,
+  "score": "sem-bic",
+  "test": "fisher-z-test",
+  "datatype": "continuous",
+  "penaltyDiscount": [
+    0.5,
+    1,
+    1.5
+  ],
+  "samplePrior": null,
+  "structurePrior": 1
+}
+```
+
 # tetrad_gfci Properties
 
 | Property                            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |

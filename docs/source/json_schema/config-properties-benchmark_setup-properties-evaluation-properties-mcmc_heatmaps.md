@@ -13,3 +13,15 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 ## mcmc_heatmaps Type
 
 unknown\[] ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
+
+## mcmc_heatmaps Examples
+
+```json
+[
+  {
+    "id": "omcmc_itsample-bge",
+    "burn_in": 0,
+    "active": true
+  }
+]
+```

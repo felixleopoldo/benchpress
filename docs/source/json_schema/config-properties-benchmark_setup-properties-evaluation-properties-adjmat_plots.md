@@ -4,7 +4,7 @@
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots
 ```
 
-Plots the adjacency matrices of the estimated graphs.
+This module plots the adjacency matrices of the estimated graphs. The figures are saved in results/adjmat and copied to results/output/adjmat_plots/.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -13,3 +13,14 @@ Plots the adjacency matrices of the estimated graphs.
 ## adjmat_plots Type
 
 `string[]`
+
+## adjmat_plots Examples
+
+```json
+[
+  "fges-sem-bic",
+  "mmhc-bge-zf",
+  "omcmc_itsample-bge",
+  "pc-gaussCItest"
+]
+```

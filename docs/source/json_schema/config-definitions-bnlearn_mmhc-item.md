@@ -14,6 +14,29 @@ MMHC algorithm instance
 
 `object` ([bnlearn_mmhc item](config-definitions-bnlearn_mmhc-item.md))
 
+## bnlearn_mmhc Examples
+
+```json
+{
+  "id": "mmhc-bge-zf",
+  "alpha": [
+    0.001,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "score": "bge",
+  "test": "zf",
+  "iss": 1,
+  "issmu": 1,
+  "issw": null,
+  "l": 5,
+  "k": 1,
+  "prior": "uniform",
+  "beta": null
+}
+```
+
 # bnlearn_mmhc Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |

@@ -12,4 +12,4 @@ List of blip objects
 
 ## rblip_asobs Type
 
-unknown\[]
+`object[]` ([rblip_asobs item](config-definitions-rblip_asobs-item.md))

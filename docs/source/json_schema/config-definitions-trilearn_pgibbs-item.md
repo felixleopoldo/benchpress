@@ -14,6 +14,24 @@ Parameter setting for trilearn with log-linear decomposable model.
 
 `object` ([trilearn_pgibbs item](config-definitions-trilearn_pgibbs-item.md))
 
+## trilearn_pgibbs Examples
+
+```json
+{
+  "id": "trilearn-cont",
+  "datatype": "continuous",
+  "alpha": 0.5,
+  "beta": 0.5,
+  "radii": 80,
+  "N": [
+    50
+  ],
+  "M": 100,
+  "pseudo_obs": 1,
+  "mcmc_seed": 1
+}
+```
+
 # trilearn_pgibbs Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |

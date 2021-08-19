@@ -14,6 +14,16 @@ Parameter setting for generateBinaryBN
 
 `object` ([bin_bn item](config-definitions-bin_bn-item.md))
 
+## bin_bn Examples
+
+```json
+{
+  "id": "binbn",
+  "min": 0.1,
+  "max": 0.9
+}
+```
+
 # bin_bn Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                    |

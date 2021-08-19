@@ -14,6 +14,29 @@ HC algorithm instance
 
 `object` ([bnlearn_hc item](config-definitions-bnlearn_hc-item.md))
 
+## bnlearn_hc Examples
+
+```json
+{
+  "id": "hc-bge",
+  "score": "bge",
+  "iss": 1,
+  "issmu": [
+    0.0001,
+    0.001,
+    0.01,
+    0.05
+  ],
+  "issw": null,
+  "l": 5,
+  "k": 1,
+  "prior": "uniform",
+  "beta": 1,
+  "restart": 0,
+  "perturb": 1
+}
+```
+
 # bnlearn_hc Properties
 
 | Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                  |

@@ -14,6 +14,24 @@ Guidici & Green algorithm for learning decomopasble graphs.
 
 `object` ([gg99\_singlepair item](config-definitions-gg99\_singlepair-item.md))
 
+## gg99\_singlepair Examples
+
+```json
+{
+  "id": "guidicigreen-cont",
+  "n_samples": 1000000,
+  "datatype": "continuous",
+  "randomits": 1000,
+  "prior": "bc",
+  "ascore": 0.9,
+  "bscore": 0.001,
+  "clq": 2,
+  "sep": 4,
+  "penalty": 1.5,
+  "mcmc_seed": 1
+}
+```
+
 # gg99\_singlepair Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |

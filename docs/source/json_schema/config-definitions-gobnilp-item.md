@@ -14,6 +14,22 @@ Gobnilp instance
 
 `object` ([gobnilp item](config-definitions-gobnilp-item.md))
 
+## gobnilp Examples
+
+```json
+{
+  "id": "gobnilp-bge",
+  "continuous": true,
+  "score_type": "BGe",
+  "plot": false,
+  "palim": 2,
+  "alpha_mu": 1,
+  "alpha_omega_minus_nvars": 2,
+  "alpha": null,
+  "prune": true
+}
+```
+
 # gobnilp Properties
 
 | Property                                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                             |

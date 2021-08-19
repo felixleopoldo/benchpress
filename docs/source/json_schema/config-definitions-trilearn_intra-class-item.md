@@ -14,6 +14,16 @@ Parameter setting for a graph intra-class model
 
 `object` ([trilearn_intra-class item](config-definitions-trilearn_intra-class-item.md))
 
+## trilearn_intra-class Examples
+
+```json
+{
+  "id": "intra-class",
+  "rho": 0.4,
+  "sigma2": 1
+}
+```
+
 # trilearn_intra-class Properties
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |

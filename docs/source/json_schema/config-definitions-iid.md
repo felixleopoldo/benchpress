@@ -14,6 +14,18 @@ Data sampling from disctete Bayesian network.
 
 `object` ([iid](config-definitions-iid.md))
 
+## iid Examples
+
+```json
+{
+  "id": "standardized",
+  "standardized": true,
+  "sample_sizes": [
+    100
+  ]
+}
+```
+
 # iid Properties
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                             |

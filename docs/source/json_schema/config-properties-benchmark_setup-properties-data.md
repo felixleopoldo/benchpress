@@ -17,3 +17,19 @@ The data setup for the study.
 ## data Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## data Examples
+
+```json
+[
+  {
+    "graph_id": "avneigs4_p20",
+    "parameters_id": "SEM",
+    "data_id": "standardized",
+    "seed_range": [
+      1,
+      3
+    ]
+  }
+]
+```

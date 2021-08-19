@@ -14,6 +14,28 @@ Data sampling setup.
 
 `object` ([data](config-properties-resources-properties-data.md))
 
+## data Examples
+
+```json
+{
+  "id": "standardized",
+  "standardized": true,
+  "sample_sizes": [
+    100
+  ]
+}
+```
+
+```json
+{
+  "id": "nonstandardized",
+  "standardized": false,
+  "sample_sizes": [
+    1000
+  ]
+}
+```
+
 # data Properties
 
 | Property    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                    |

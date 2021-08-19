@@ -15,6 +15,24 @@ Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a 
 
 `object` ([gt13\_multipair item](config-definitions-gt13\_multipair-item.md))
 
+## gt13\_multipair Examples
+
+```json
+{
+  "id": "gt13_multipair_bc-cont",
+  "n_samples": 1000000,
+  "datatype": "continuous",
+  "randomits": 1000,
+  "prior": "bc",
+  "ascore": 0.1,
+  "bscore": 0.001,
+  "clq": null,
+  "sep": null,
+  "penalty": null,
+  "mcmc_seed": 1
+}
+```
+
 # gt13\_multipair Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |

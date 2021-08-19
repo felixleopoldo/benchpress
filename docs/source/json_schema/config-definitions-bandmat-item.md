@@ -14,6 +14,16 @@ A graph with a band structured adjacency matrix
 
 unknown ([bandmat item](config-definitions-bandmat-item.md))
 
+## bandmat Examples
+
+```json
+{
+  "id": "AR2",
+  "bandwidth": 2,
+  "dim": 50
+}
+```
+
 # bandmat Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                          |

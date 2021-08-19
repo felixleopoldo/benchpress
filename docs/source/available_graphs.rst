@@ -124,3 +124,8 @@ The graph is referenced by the corresponding filename.
 .. Example::
 
 Examples are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
+
+.. important:: 
+
+    If a CSV file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
+    

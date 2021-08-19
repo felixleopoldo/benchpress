@@ -12,4 +12,22 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 ## mcmc_autocorr_plots Type
 
-unknown\[]
+unknown\[] ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
+
+## mcmc_autocorr_plots Examples
+
+```json
+[
+  {
+    "id": "omcmc_itsample-bge",
+    "burn_in": 0,
+    "thinning": 1,
+    "lags": 50,
+    "functional": [
+      "score",
+      "size"
+    ],
+    "active": true
+  }
+]
+```

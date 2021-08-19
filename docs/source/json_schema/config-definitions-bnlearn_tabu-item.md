@@ -14,6 +14,27 @@ TABU algorithm instance
 
 `object` ([bnlearn_tabu item](config-definitions-bnlearn_tabu-item.md))
 
+## bnlearn_tabu Examples
+
+```json
+{
+  "id": "tabu-bge",
+  "score": "bge",
+  "iss": 1,
+  "issmu": [
+    0.0001,
+    0.001,
+    0.01,
+    0.05
+  ],
+  "issw": null,
+  "l": 5,
+  "k": 1,
+  "prior": "uniform",
+  "beta": 1
+}
+```
+
 # bnlearn_tabu Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |

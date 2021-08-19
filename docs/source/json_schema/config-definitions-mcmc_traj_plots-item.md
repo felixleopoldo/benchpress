@@ -4,7 +4,7 @@
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item
 ```
 
-Plots the functional value of each graph in a MCMC trajctory.
+This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -13,6 +13,21 @@ Plots the functional value of each graph in a MCMC trajctory.
 ## mcmc_traj_plots_item Type
 
 `object` ([mcmc_traj_plots item](config-definitions-mcmc_traj_plots-item.md))
+
+## mcmc_traj_plots_item Examples
+
+```json
+{
+  "id": "omcmc_itsample-bge",
+  "burn_in": 0,
+  "thinning": 1,
+  "functional": [
+    "score",
+    "size"
+  ],
+  "active": true
+}
+```
 
 # mcmc_traj_plots_item Properties
 

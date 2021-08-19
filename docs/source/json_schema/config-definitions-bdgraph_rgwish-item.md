@@ -14,6 +14,16 @@ Parameter setting for a G-Wishart model. Works for undirected graphs.
 
 `object` ([bdgraph_rgwish item](config-definitions-bdgraph_rgwish-item.md))
 
+## bdgraph_rgwish Examples
+
+```json
+{
+  "id": "gwi",
+  "b": 3,
+  "threshold": 1e-8
+}
+```
+
 # bdgraph_rgwish Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |

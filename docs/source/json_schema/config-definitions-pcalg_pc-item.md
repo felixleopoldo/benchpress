@@ -14,6 +14,30 @@ PC algorithm instance
 
 `object` ([pcalg_pc item](config-definitions-pcalg_pc-item.md))
 
+## pcalg_pc Examples
+
+```json
+{
+  "id": "pc-gaussCItest",
+  "alpha": [
+    0.001,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "NAdelete": true,
+  "mmax": "Inf",
+  "u2pd": "relaxed",
+  "skelmethod": "stable",
+  "conservative": false,
+  "majrule": false,
+  "solveconfl": false,
+  "numCores": 1,
+  "verbose": false,
+  "indepTest": "gaussCItest"
+}
+```
+
 # pcalg_pc Properties
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                            |

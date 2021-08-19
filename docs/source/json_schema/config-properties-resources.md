@@ -4,7 +4,7 @@
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources
 ```
 
-Module available for benchmarking.
+The available modules for generating graphs, parameters, data and structure learning algorithms.
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -40,6 +40,28 @@ Data sampling setup.
 ### data Type
 
 `object` ([data](config-properties-resources-properties-data.md))
+
+### data Examples
+
+```json
+{
+  "id": "standardized",
+  "standardized": true,
+  "sample_sizes": [
+    100
+  ]
+}
+```
+
+```json
+{
+  "id": "nonstandardized",
+  "standardized": false,
+  "sample_sizes": [
+    1000
+  ]
+}
+```
 
 ## graph
 

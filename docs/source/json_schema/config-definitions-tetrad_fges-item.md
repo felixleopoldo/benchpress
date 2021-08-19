@@ -14,6 +14,24 @@ fGES instance
 
 `object` ([tetrad_fges item](config-definitions-tetrad_fges-item.md))
 
+## tetrad_fges Examples
+
+```json
+{
+  "id": "fges-sem-bic",
+  "faithfulnessAssumed": true,
+  "score": "sem-bic",
+  "datatype": "continuous",
+  "samplePrior": 1,
+  "structurePrior": 1,
+  "penaltyDiscount": [
+    0.8,
+    1,
+    1.5
+  ]
+}
+```
+
 # tetrad_fges Properties
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                |
