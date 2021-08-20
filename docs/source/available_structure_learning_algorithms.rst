@@ -47,6 +47,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | GLasso           | UG    | Python   | `scikit-learn <https://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphicalLasso.html#sklearn.covariance.GraphicalLasso>`_ | 0.22.1   | `sklearn_glasso <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-glasso-algorithm.md>`_                                                             |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 ``gobnilp``
 ------------
 
@@ -453,3 +454,54 @@ An example
         ],
         "burnin": 0
     }
+
+
+``gg99_singlepair``
+------------------------
+
+MCMC algorithm for decomposable models [1]_.
+
+.. rubric:: Example
+
+.. code-block:: json
+
+    {
+        "id": "guidicigreen-cont",
+        "n_samples": 1000000,
+        "datatype": "continuous",
+        "randomits": 1000,
+        "prior": "bc",
+        "ascore": 0.9,
+        "bscore": 0.001,
+        "clq": 2,
+        "sep": 4,
+        "penalty": 1.5,
+        "mcmc_seed": 1
+    }
+
+``gt13_multipair``
+--------------------
+
+MCMC algorithm for decomposable models [2]_.
+
+.. rubric:: Example
+
+.. code-block:: json
+
+    {
+        "id": "gt13_multipair_bc-cont",
+        "n_samples": 1000000,
+        "datatype": "continuous",
+        "randomits": 1000,
+        "prior": "bc",
+        "ascore": 0.1,
+        "bscore": 0.001,
+        "clq": null,
+        "sep": null,
+        "penalty": null,
+        "mcmc_seed": 1
+    }
+
+.. [1] P. Giudici and P. J. Green. Decomposable graphical Gaussian model determination. Biometrika, 86(4):785–801, 1999.
+
+.. [2] P. J. Green and A. Thomas. Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1):91–110, 2013.

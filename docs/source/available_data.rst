@@ -28,7 +28,7 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         ]
     }
 
-Data files 
+Fixed dataset 
 ----------
 
 Data files should be saved as ``.csv`` files in the ``resources/data/mydatasets`` directory.
@@ -43,13 +43,23 @@ A dataset is referenced by its filename.
 .. rubric:: Example
 
 
-Example of a discrete dataset from the `Asia network <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv>`_
+Example of a fixed dataset with and without the true graph. 
+Note that the true graph is needed for the ``roc`` module.
 
 .. code-block:: json
 
     {
-        "graph_id": "asia.csv",
+        "graph_id": null,
         "parameters_id": null,
-        "data_id": "myasiadata.csv",
+        "data_id": "olsson2019_p15_n1000.csv",
+        "seed_range": null
+    }
+
+.. code-block:: json
+
+    {
+        "graph_id": "jonesp15.csv",
+        "parameters_id": null,
+        "data_id": "olsson2019_p15_n1000.csv",
         "seed_range": null
     }

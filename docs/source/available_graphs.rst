@@ -111,7 +111,7 @@ An object of the max bandwith module specifies a decomposable graph with band st
 ..     }
 
 
-Adjacency matrix 
+Fixed graph
 ----------------
 
 
