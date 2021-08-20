@@ -5,7 +5,7 @@ JSON config file
 .. This overview is based on the sample config file :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
 .. The configuration file consists of two main sections ``benchmark_setup`` and ``resources``.
 An overview of how the config file is structured can be read about in the paper [3]_.
-For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema>`_.
+For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
 
 
 
