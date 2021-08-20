@@ -37,7 +37,7 @@ MMHC algorithm instance
 }
 ```
 
-# bnlearn_mmhc Properties
+# bnlearn_mmhc item Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -297,7 +297,7 @@ any of
 
     *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -325,7 +325,7 @@ any of
 
     *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 

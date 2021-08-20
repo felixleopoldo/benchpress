@@ -218,7 +218,209 @@
 
 *   [mcmc_traj_plots](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "This module plots the so called score values in the trajectory or the value of a given functional") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots`
 
-*   [nonnegint list](./config-definitions-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonegintlist`
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonnegintlist`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 

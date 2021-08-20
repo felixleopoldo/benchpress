@@ -1,4 +1,4 @@
-Installation
+Installation and usage
 ###############
 
 
@@ -12,7 +12,7 @@ Requirements
 
 .. note:: 
 
-    Some systems require explicit installation of squash-tools in order to run docker with singularity. 
+    Some systems require explicit installation of *squash-tools* in order to run docker with singularity. 
     This can be done using conda by
     
         $ conda install -c conda-forge squash-tools
@@ -20,12 +20,12 @@ Requirements
 Installation and usage
 **********************
 
-To download and run benchpress with the config file :download:`config/sec6.1.json <../../config/sec6.1.json>` type
+To download and run benchpress with the config file :download:`config/ex.json <../../config/ex.json>` type
 
 .. code-block:: bash
 
     $ git clone https://github.com/felixleopoldo/benchpress.git     
     $ cd benchpress
-    $ snakemake --cores all --use-singularity --configfile config/sec6.1.json
+    $ snakemake --cores all --use-singularity --configfile config/ex.json
 
 

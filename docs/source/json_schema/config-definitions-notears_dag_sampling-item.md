@@ -15,7 +15,7 @@ Documentation: <https://github.com/jmoss20/notears>
 
 unknown ([notears_dag_sampling item](config-definitions-notears_dag_sampling-item.md))
 
-# notears_dag_sampling Properties
+# notears_dag_sampling item Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
 | :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -65,7 +65,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## num_edges
 
@@ -89,7 +89,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## mean
 

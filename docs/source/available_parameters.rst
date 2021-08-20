@@ -73,7 +73,7 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 ``trilearn_hyper-dir``
 -------------------------------
 
-An object of the trilearn hyper-dir module defines a catagorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (pseudo obs) and number of levels per variable (n levels).
+An object of the trilearn hyper-dir module defines a catagorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
 
 
 .. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
@@ -93,7 +93,7 @@ An object of the trilearn hyper-dir module defines a catagorical decomposable mo
 ``trilearn_g_inv_wishart``
 -------------------------------
 
-An object of the trilearn hyper inv wishart module defines a zero-mean Gaussian decomposable model by sampling the covariance matrix from the Hyper inverse-Wishart distribution [1]_ according to the pro- cedure outlined by [2]_. 
+An object of the trilearn hyper inv wishart module defines a zero-mean Gaussian decomposable model by sampling the covariance matrix from the *hyper inverse-Wishart* distribution [1]_ according to the procedure outlined by [2]_. 
 The clique-wise scale matrices are fixed to the identity matrix and the degrees of freedom (``dof``) should be specified by the user.
 
 .. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
@@ -148,26 +148,33 @@ Samples G-Wishart matrix given an undirected graph using the *rgwish* function f
 Fixed parameters
 -------------------------
 
-Bnlearn objects `bn.fit` objects should be stored in ``.rds`` format in the directory ``resources/bn.fit_networks``.
+* Bnlearn objects `bn.fit` objects should be stored in `RDS` format in the directory *resources/myparams/bn.fit_networks*.
+* Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
 
 
+.. code-block:: json
+
+    {
+        "graph_id": "hepar2.csv",
+        "parameters_id": "hepar2.rds",
+        "data_id": "iid2000",
+        "seed_range": [
+            1,
+            5
+        ]
+    }
+    
 .. rubric:: Example
 
-Example standard networks (mostly from `https://www.bnlearn.com/bnrepository/ <https://www.bnlearn.com/bnrepository/>`_) are found at `resources/parameters/myparams/bn.fit_networks <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
-
-
-
-.. note::
-
-    This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
+Example standard networks mostly from the `bnlearn repository <https://www.bnlearn.com/bnrepository/>`_ are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
 
 
 .. important::
 
-    If an RDS file is specified as ``parameters_id``, the true graph should be specified as a ``.csv`` file as ``graph_id``.
+    This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
 
 
-A weight matrix for the SEM may be stored in ``resources/sem_params``.
+
 
 .. [1] A. P. Dawid and S. L. Lauritzen. Hyper Markov laws in the statistical analysis of decomposable graphical models. The Annals of Statistics, 21(3):1272–1317, 1993.
 

@@ -8,7 +8,7 @@ This section contains the available graph modules.
 ``pcalg_randdag``
 -------------------------
 
-This is the randDAG from the R package *pcalg* with the extra feature that the maximum average number of parents can be set by (``max_parents``).
+This is the randDAG from the R package `pcalg <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`_  with the extra feature that the maximum average number of parents can be set by (``max_parents``).
 
 .. Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -32,7 +32,7 @@ This is the randDAG from the R package *pcalg* with the extra feature that the m
 
 ``trilearn_cta``
 -------------------
-This is the Christmas tree algorithm for generating decomposable graph implemented in the *trilearn* PyPi package.
+This is the Christmas tree algorithm for generating decomposable graph implemented in the PyPi package `trilearn <https://pypi.org/project/trilearn/>`_.
 
 .. rubric:: Example
 
@@ -48,6 +48,9 @@ This is the Christmas tree algorithm for generating decomposable graph implement
 
 ``bdgraph_graphsim``
 --------------------
+
+Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [4]_ [5]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
+The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
 
 ``bandmat``
 -------------------
@@ -67,7 +70,7 @@ with given bandwidth (bandwith).
     
 ``rand_bandmat``
 -------------------
-An object of the max bandwith module specifies a decomposable graph with band structured adjacency matrix of a given maximum width (max bandwith).
+An object of the max bandwith module specifies a decomposable graph with band structured adjacency matrix of a given maximum width (``max_bandwith``).
 
 
 .. rubric:: Example
@@ -125,7 +128,25 @@ The graph is referenced by the corresponding filename.
 
 Examples are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
 
+.. code-block:: json
+
+    {
+        "graph_id": "asia.csv",
+        "parameters_id": "binbn",
+        "data_id": "nonstandardized",
+        "seed_range": [
+            1,
+            5
+        ]
+    }
+
+
+
+
 .. important:: 
 
     If a CSV file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
     
+
+.. [4] A. Atay-Kayis and H. Massam. A Monte Carlo method for computing the marginal likelihood in non decomposable Gaussian graphical models. Biometrika, 92(2):317–335, 2005.
+.. [5] A. Lenkoski. A direct sampler for g-wishart variates. Stat, 2(1):119–128, 2013.

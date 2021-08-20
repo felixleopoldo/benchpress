@@ -32,7 +32,7 @@ Guidici & Green algorithm for learning decomopasble graphs.
 }
 ```
 
-# gg99\_singlepair Properties
+# gg99\_singlepair item Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -115,7 +115,7 @@ any of
 
 *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## penalty
 
@@ -167,7 +167,7 @@ any of
 
 *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## prior
 
@@ -321,4 +321,4 @@ any of
 
 *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")

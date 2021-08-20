@@ -4,8 +4,8 @@ JSON config file
 
 .. This overview is based on the sample config file :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
 .. The configuration file consists of two main sections ``benchmark_setup`` and ``resources``.
-An overview of how the config file is structured can be read about in the paper [3]_ .
-For specific information about each element in the JSON files see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema>`_.
+An overview of how the config file is structured can be read about in the paper [3]_.
+For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema>`_.
 
 
 
@@ -26,7 +26,7 @@ For specific information about each element in the JSON files see the documentat
 ``benchmark_setup``
 ********************
 
-This section contains two main sections ``data`` and ``evaluation`` described below.
+This section contains two sub sections ``data`` and ``evaluation`` described below.
 
 .. _benchmark_setup:
 .. .. figure:: _static/benchmark_setup.png
@@ -50,16 +50,17 @@ A list where each item defines a certain data setup with the following fields.
 
 .. code-block:: json
 
-    [{
-        "graph_id": "avneigs4",
-        "parameters_id": "binbn",
-        "data_id": "example1",
-        "seed_range": [
-            1,
-            50
-        ]
-    }]
-
+    [
+        {
+            "graph_id": "avneigs4_p20",
+            "parameters_id": "SEM",
+            "data_id": "standardized",
+            "seed_range": [
+                1,
+                3
+            ]
+        }
+    ]
 
 ``evaluation``
 ===============
@@ -155,6 +156,14 @@ The plots are saved in sub directories of *results/adjmat/* and copied to *resul
 This module plots the adjacency matrices of the estimated graphs. 
 The figures are saved in *results/adjmat* and copied to *results/output/adjmat_plots/*.
 
+.. code-block:: json
+    [
+        "fges-sem-bic",
+        "mmhc-bge-zf",
+        "omcmc_itsample-bge",
+        "pc-gaussCItest"
+    ]
+
 ``graph_true_plots``
 -------------------------
 
@@ -167,6 +176,14 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_tr
 
 This module plots and saves the estimated graphs in dot-format. 
 The figures are saved in *results/adjmat* and copied to *results/output/graph_plots/*.
+
+.. code-block:: json
+    [
+        "fges-sem-bic",
+        "mmhc-bge-zf",
+        "omcmc_itsample-bge",
+        "pc-gaussCItest"
+    ]
 
 ``mcmc_heatmaps``
 -------------------------
@@ -246,9 +263,9 @@ The plots are saved in *results/mcmc_traj_plots/* and copied to *results/output/
 *************
 
 
-The  catergories ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available models, data, and structure learning algorithms, see :numref:`resources`.
-Each algorithm has a unique id in its own section which may be referenced from the ``benchmark_setup->data`` and ``benchmark_setup->evaluation``  sections, see :numref:`setup`.
+The  sections ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
+contain the available modules in benchpress.
+Each object in a module algorithm has a unique `id` which can be referenced in the `benchmark_setup` section.
 
 
 .. _resources:

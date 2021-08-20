@@ -44,3 +44,12 @@ A dataset is referenced by its filename.
 
 
 Example of a discrete dataset from the `Asia network <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv>`_
+
+.. code-block:: json
+
+    {
+        "graph_id": "asia.csv",
+        "parameters_id": null,
+        "data_id": "myasiadata.csv",
+        "seed_range": null
+    }

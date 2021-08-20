@@ -1,10 +1,9 @@
 ``structure_learning_algorithms``
 ==================================
 
-For explanations of the parametrisations of each algorithm see the corresponding documentations.
-However, some parametrers might be missing for some algorithms though.
+For explanations of the parametrisations of each algorithm see the documentation for the corresponding algorithms.
 Most of the parameters can be given as either a single value or a list.
-To see which parameters are available review the JSON schemas.
+However, some parametrers might be missing for some algorithms, to see which parameters are available please review the JSON schema.
 Dots (.) in the original parameter names are omitted for implementational reasons.
 
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

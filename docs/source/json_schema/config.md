@@ -70,7 +70,7 @@ Reference this group by using
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                    |
 | :------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [id](#id)                 | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/id")                                  |
-| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")          |
+| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")                                            |
 | [thinning](#thinning)     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/thinning") |
 | [active](#active)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/active")                          |
 | [lags](#lags)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers-or-null-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/lags")   |
@@ -102,21 +102,21 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   is required
 
-*   Type: merged type ([Non-negative integer(s)](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md))
+*   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")
 
 #### burn_in Type
 
-merged type ([Non-negative integer(s)](config-definitions-mcmc_autocorr_plots-item-properties-non-negative-integers.md))
+merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
 any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### thinning
 
@@ -142,7 +142,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -188,7 +188,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -272,7 +272,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### thinning
 
@@ -298,7 +298,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -416,7 +416,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group notears_parameters_sampling
 
@@ -550,7 +550,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### num_edges
 
@@ -574,7 +574,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### mean
 
@@ -667,7 +667,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### alpha
 
@@ -771,7 +771,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### bandwidth
 
@@ -795,7 +795,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group bdgraph_graphsim
 
@@ -854,7 +854,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### prob
 
@@ -936,7 +936,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -964,7 +964,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -1022,7 +1022,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### max_bandwidth
 
@@ -1046,7 +1046,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group roc
 
@@ -1332,7 +1332,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### standardized
 
@@ -1410,7 +1410,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### d
 
@@ -1434,7 +1434,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### par1
 
@@ -1534,7 +1534,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -1672,7 +1672,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### pseudo_obs
 
@@ -2092,12 +2092,12 @@ Reference this group by using
 | Property | Type | Required | Nullable | Defined by |
 | :------- | :--- | :------- | :------- | :--------- |
 
-## Definitions group nonegintlist
+## Definitions group nonnegintlist
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonegintlist"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonnegintlist"}
 ```
 
 | Property | Type | Required | Nullable | Defined by |
@@ -2326,7 +2326,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### mcmc_seed
 
@@ -2350,7 +2350,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group rblip_asobs
 
@@ -2449,7 +2449,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### time
 
@@ -2497,7 +2497,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### scorefunction
 
@@ -2563,7 +2563,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### verbose
 
@@ -2872,7 +2872,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### alpha
 
@@ -3063,7 +3063,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### alpha
 
@@ -3286,7 +3286,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### penalty
 
@@ -3338,7 +3338,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### prior
 
@@ -3502,7 +3502,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group gg99\_singlepair
 
@@ -3593,7 +3593,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### penalty
 
@@ -3645,7 +3645,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### prior
 
@@ -3799,7 +3799,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ## Definitions group tetrad_fges
 
@@ -4528,7 +4528,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### verbose
 
@@ -4590,7 +4590,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled string in JSON schema for Benchpress config file.](config-definitions-flexnonnegintstring-anyof-1.md "check type definition")
 
@@ -4970,7 +4970,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -4998,7 +4998,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -5617,7 +5617,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### k
 
@@ -5641,7 +5641,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### prior
 
@@ -5723,7 +5723,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### restart
 
@@ -5747,7 +5747,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### beta
 
@@ -5889,7 +5889,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### k
 
@@ -5913,7 +5913,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### prior
 
@@ -6047,7 +6047,7 @@ any of
 
     *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-    *   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
 
@@ -6101,7 +6101,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### hardlimit
 
@@ -6125,7 +6125,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### alpha
 
@@ -6759,7 +6759,7 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 ### mcmc_seed
 
@@ -6783,4 +6783,4 @@ any of
 
 *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
-*   [Untitled undefined type in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1-anyof-1.md "check type definition")
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
