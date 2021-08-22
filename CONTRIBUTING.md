@@ -34,7 +34,7 @@ MCMC methods are different from point estimators since the graph trajectory is s
 - [workflow/rules/algorithm_shell_commands.smk](workflow/rules/algorithm_shell_commands.smk)
 - [workflow/rules/algorithm_summary_shell_commands.smk](workflow/rules/algorithm_summary_shell_commands.smk)
 
-## Adding evaluation method
+## Adding a new evaluation method
 
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
