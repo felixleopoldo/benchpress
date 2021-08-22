@@ -62,7 +62,7 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ### Example study
 
-To run a small study (266 jobs) run you may use [config/ex.json](config/ex.json) and type
+To run a small study (266 jobs) you can use [config/ex.json](config/ex.json) and type
 
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
