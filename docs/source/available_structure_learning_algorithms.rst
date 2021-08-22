@@ -502,6 +502,29 @@ MCMC algorithm for decomposable models [2]_.
         "mcmc_seed": 1
     }
 
+
+``sklearn_glasso``
+--------------------
+
+Graphical lasso from scikit-learn.
+
+.. rubric:: Example
+
+.. code-block:: json
+
+    {
+        "id": "sklearn_glasso",
+        "mode": "cd",
+        "alpha": 0.05,
+        "tol": 0.0004,
+        "enet_tol": 0.0004,
+        "precmat_threshold": 0.1,
+        "max_iter": 100,
+        "verbose": false,
+        "assume_centered": false
+    }
+
+
 .. [1] P. Giudici and P. J. Green. Decomposable graphical Gaussian model determination. Biometrika, 86(4):785–801, 1999.
 
 .. [2] P. J. Green and A. Thomas. Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1):91–110, 2013.
