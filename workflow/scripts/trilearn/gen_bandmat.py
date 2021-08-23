@@ -1,8 +1,10 @@
+# Generated a graph with band adjacency matrix.
+
 from trilearn.graph import decomposable as dlib
 import networkx as nx
 import numpy as np
 import pandas as pd
-import sys 
+import sys
 
 seed = int(sys.argv[2])
 dim = int(sys.argv[3])

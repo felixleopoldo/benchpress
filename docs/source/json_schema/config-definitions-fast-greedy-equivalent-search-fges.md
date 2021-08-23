@@ -1,30 +1,30 @@
 # Fast greedy equivalent search (fGES) Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges
 ```
 
 fGES instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## tetrad_fges Type
 
 `object` ([Fast greedy equivalent search (fGES)](config-definitions-fast-greedy-equivalent-search-fges.md))
 
-# Fast greedy equivalent search (fGES) Properties
+# tetrad_fges Properties
 
-| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                        |
-| :------------------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
-| [faithfulnessAssumed](#faithfulnessassumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed") |
-| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")                             |
-| [datatype](#datatype)                       | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/datatype")                       |
-| [samplePrior](#sampleprior)                 | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/samplePrior")                                                             |
-| [penaltyDiscount](#penaltydiscount)         | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/penaltyDiscount")                                          |
-| [structurePrior](#structureprior)           | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/structurePrior")                                                          |
+| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                  |
+| :------------------------------------------ | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                                   | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/id")                                   |
+| [faithfulnessAssumed](#faithfulnessassumed) | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed") |
+| [score](#score)                             | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/score")                             |
+| [datatype](#datatype)                       | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/datatype")                       |
+| [samplePrior](#sampleprior)                 | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/samplePrior")                                                             |
+| [penaltyDiscount](#penaltydiscount)         | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/penaltyDiscount")                                          |
+| [structurePrior](#structureprior)           | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/structurePrior")                                                          |
 
 ## id
 
@@ -38,7 +38,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/id")
 
 ### id Type
 
@@ -56,7 +56,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-faithfulnessassumed.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/faithfulnessAssumed")
 
 ### faithfulnessAssumed Type
 
@@ -74,7 +74,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/score")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-score.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/score")
 
 ### score Type
 
@@ -92,7 +92,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/datatype")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-fast-greedy-equivalent-search-fges-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/datatype")
 
 ### datatype Type
 
@@ -110,7 +110,7 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/samplePrior")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/samplePrior")
 
 ### samplePrior Type
 
@@ -118,7 +118,7 @@ merged type ([Details](config-definitions-flexnonnegnum.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
 *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
@@ -134,7 +134,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/penaltyDiscount")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/penaltyDiscount")
 
 ### penaltyDiscount Type
 
@@ -144,7 +144,7 @@ any of
 
 *   any of
 
-    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
     *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
@@ -162,7 +162,7 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_fges/properties/structurePrior")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges/properties/structurePrior")
 
 ### structurePrior Type
 
@@ -170,6 +170,6 @@ merged type ([Details](config-definitions-flexnonnegnum.md))
 
 any of
 
-*   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+*   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
 *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")

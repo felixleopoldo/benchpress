@@ -1,14 +1,14 @@
 # bin_bn Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn
 ```
 
 Parameter setting for generateBinaryBN
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## bin_bn Type
 
@@ -16,11 +16,11 @@ Parameter setting for generateBinaryBN
 
 # bin_bn Properties
 
-| Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                         |
-| :---------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id")     |
-| [min](#min) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/min") |
-| [max](#max) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/max") |
+| Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                   |
+| :---------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)   | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/id")     |
+| [min](#min) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/min") |
+| [max](#max) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/max") |
 
 ## id
 
@@ -34,7 +34,7 @@ Parameter setting for generateBinaryBN
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-bin_bn-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Parameter setting for generateBinaryBN
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/min")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/min")
 
 ### min Type
 
@@ -76,7 +76,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bin_bn/properties/max")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn/properties/max")
 
 ### max Type
 

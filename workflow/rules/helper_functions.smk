@@ -1,3 +1,5 @@
+# A number of code snippets, just to reduce duplication.
+# The function names are sometimes a bit misleading.
 
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\
@@ -135,19 +137,6 @@ def join_summaries_shell(algorithm):
 
 def join_summaries_output(algorithm):
     return "{output_dir}/output/roc/"+algorithm+".csv"
-
-def gen_model_strings_from_conf(models, seed, setup):
-    """
-    Generate the graphs and paremeters simulatnepusly since we do not want 
-    every combiantion of graphs and paramters.
-    Maybe this should be part of the setup? -No, this part belongs to the method step, 
-    not the model/data simulation step.
-    There are 3 steps.
-    1. Specify the models.
-    2. Generate data sets from the models.
-    3. Run a nunmber of structure learningn algortithms on th dataset.
-    """
-    pass
 
 def gen_evaluation_string_from_conf(method, alg_id):
     eval_dict = next(item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)

@@ -1,3 +1,12 @@
+# This file contains the rules for all structure learning algorithm 
+# along with rules for summarising (benchmarking) results in terms of TPR, FPR etc. 
+# It also has a rule for each algorithms that joins all the benchmarks into one file.
+#
+# MCMC methods are special since the output is not an adjacency matrix but 
+# a trajectory of graphs (see formatting in the paper).
+# Therefore these algorithms has an additional rule which creates a estimate based on
+# the trajectory,
+
 rule sklearn_glasso:
     input:
         data = alg_input_data(),
@@ -193,30 +202,30 @@ rule blip:
     input:
         data = alg_input_data()
     output:
-        adjmat = alg_output_adjmat_path("rblip"),
-        time = alg_output_time_path("rblip")
+        adjmat = alg_output_adjmat_path("rblip_asobs"),
+        time = alg_output_time_path("rblip_asobs")
     shell:        
-        alg_shell("rblip")
+        alg_shell("rblip_asobs")
 
 rule summarise_blip:
     input:
         "workflow/scripts/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
-        adjmat_est = summarise_alg_input_adjmat_est_path("rblip"),
-        time = summarise_alg_input_time_path("rblip")
+        adjmat_est = summarise_alg_input_adjmat_est_path("rblip_asobs"),
+        time = summarise_alg_input_time_path("rblip_asobs")
     output:
-        res = summarise_alg_output_res_path("rblip")
+        res = summarise_alg_output_res_path("rblip_asobs")
     shell:
-        summarise_alg_shell("rblip")
+        summarise_alg_shell("rblip_asobs")
 
 rule join_summaries_blip:
     input:
         "workflow/scripts/run_summarise.R",
         conf=configfilename,
-        res=join_string_sampled_model("rblip")
+        res=join_string_sampled_model("rblip_asobs")
     output:
-        join_summaries_output("rblip")
+        join_summaries_output("rblip_asobs")
     script:
         "../scripts/join_csv_files.R"
 
@@ -306,8 +315,6 @@ rule summarise_mmhc:
         time = summarise_alg_input_time_path("bnlearn_mmhc")
     output:
         res = summarise_alg_output_res_path("bnlearn_mmhc")
-    #singularity:
-    #    docker_image("bidag")
     shell:
        summarise_alg_shell("bnlearn_mmhc")
 
@@ -360,6 +367,8 @@ rule tetrad_fges:
     output:
         adjmat = alg_output_adjmat_path("tetrad_fges"),
         time = alg_output_time_path("tetrad_fges") 
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_fges.py"
 
@@ -392,6 +401,8 @@ rule tetrad_fci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_fci"),
         time = alg_output_time_path("tetrad_fci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_fci.py"
 
@@ -424,6 +435,8 @@ rule tetrad_gfci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_gfci"),
         time = alg_output_time_path("tetrad_gfci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_gfci.py"
         
@@ -455,10 +468,10 @@ rule tetrad_rfci:
     output:
         adjmat = alg_output_adjmat_path("tetrad_rfci"),
         time = alg_output_time_path("tetrad_rfci")
+    singularity:
+        docker_image("tetrad")
     script:
         "../scripts/run_tetrad_rfci.py"
-    #shell:
-    #    alg_shell("tetrad_rfci")
 
 rule summarise_tetrad_rfci:
     input:

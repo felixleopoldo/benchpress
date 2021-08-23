@@ -4,10 +4,11 @@
 ========
 
 
-``standard_sampling``
+``iid``
 ---------------------
 
-Indepentently identically distributed (IID) samples of a given size ``sample_sizes``.
+Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+The data may be standardized by setting ``standardized`` to true. 
 
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
@@ -27,14 +28,14 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         ]
     }
 
-Data files 
+Fixed dataset 
 ----------
 
 Data files should be saved as ``.csv`` files in the ``resources/data/mydatasets`` directory.
 A dataset is referenced by its filename.
 
 
-* Columns should be separated by a blank space ( ).
+* Columns should be separated by a blank space.
 * First row should contain labels.
 * For discrete data, the second row should contain the cardinalities of each variable.
 
@@ -42,4 +43,23 @@ A dataset is referenced by its filename.
 .. rubric:: Example
 
 
-Example of a discrete dataset from the Asia network `https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/myasiandata.csv>`_
+Example of a fixed dataset with and without the true graph. 
+Note that the true graph is needed for the ``roc`` module.
+
+.. code-block:: json
+
+    {
+        "graph_id": null,
+        "parameters_id": null,
+        "data_id": "olsson2019_p15_n1000.csv",
+        "seed_range": null
+    }
+
+.. code-block:: json
+
+    {
+        "graph_id": "jonesp15.csv",
+        "parameters_id": null,
+        "data_id": "olsson2019_p15_n1000.csv",
+        "seed_range": null
+    }

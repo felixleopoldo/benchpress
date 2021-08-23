@@ -1,3 +1,4 @@
+# Converts categorical data into numerical
 import pandas as pd
 
 df = pd.read_csv()

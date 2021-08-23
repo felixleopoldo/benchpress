@@ -1,35 +1,35 @@
 # PC algorithm Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc
 ```
 
 PC algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## pcalg_pc Type
 
 `object` ([PC algorithm](config-definitions-pc-algorithm.md))
 
-# PC algorithm Properties
+# pcalg_pc Properties
 
-| Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
-| :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/id")                     |
-| [alpha](#alpha)               | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/alpha")                     |
-| [indepTest](#indeptest)       | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/indepTest")       |
-| [numCores](#numcores)         | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/numCores")                    |
-| [verbose](#verbose)           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/verbose")           |
-| [NAdelete](#nadelete)         | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-nadelete.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/NAdelete")         |
-| [mmax](#mmax)                 | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-inf-string.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/mmax")          |
-| [u2pd](#u2pd)                 | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-u2pd.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/u2pd")                 |
-| [skelmethod](#skelmethod)     | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-skelmethod.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/skelmethod")     |
-| [conservative](#conservative) | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-conservative.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/conservative") |
-| [majrule](#majrule)           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-majrule.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/majrule")           |
-| [solveconfl](#solveconfl)     | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-solveconfl.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/solveconfl")     |
+| Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                           |
+| :---------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                     | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/id")                     |
+| [alpha](#alpha)               | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/alpha")                     |
+| [indepTest](#indeptest)       | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/indepTest")       |
+| [numCores](#numcores)         | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/numCores")                    |
+| [verbose](#verbose)           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/verbose")           |
+| [NAdelete](#nadelete)         | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-nadelete.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/NAdelete")         |
+| [mmax](#mmax)                 | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-inf-string.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/mmax")          |
+| [u2pd](#u2pd)                 | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-u2pd.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/u2pd")                 |
+| [skelmethod](#skelmethod)     | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-skelmethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/skelmethod")     |
+| [conservative](#conservative) | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-conservative.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/conservative") |
+| [majrule](#majrule)           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-majrule.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/majrule")           |
+| [solveconfl](#solveconfl)     | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-solveconfl.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/solveconfl")     |
 
 ## id
 
@@ -43,7 +43,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/id")
 
 ### id Type
 
@@ -61,7 +61,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/alpha")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/alpha")
 
 ### alpha Type
 
@@ -69,7 +69,7 @@ merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the
 
 any of
 
-*   [Probabaility](config-definitions-probabaility.md "check type definition")
+*   [prob type](config-definitions-prob-type.md "check type definition")
 
 *   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
 
@@ -85,7 +85,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/indepTest")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/indepTest")
 
 ### indepTest Type
 
@@ -114,7 +114,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/numCores")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/numCores")
 
 ### numCores Type
 
@@ -122,7 +122,7 @@ merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.
 
 any of
 
-*   [Non-negative integer](config-definitions-non-negative-integer.md "check type definition")
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
@@ -138,7 +138,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/verbose")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/verbose")
 
 ### verbose Type
 
@@ -156,7 +156,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-nadelete.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/NAdelete")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-nadelete.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/NAdelete")
 
 ### NAdelete Type
 
@@ -174,7 +174,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-inf-string.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/mmax")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers-or-inf-string.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/mmax")
 
 ### mmax Type
 
@@ -184,7 +184,7 @@ any of
 
 *   any of
 
-    *   [Non-negative integer](config-definitions-non-negative-integer.md "check type definition")
+    *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
     *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
@@ -202,7 +202,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-u2pd.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/u2pd")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-u2pd.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/u2pd")
 
 ### u2pd Type
 
@@ -230,7 +230,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-skelmethod.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/skelmethod")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-skelmethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/skelmethod")
 
 ### skelmethod Type
 
@@ -258,7 +258,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-conservative.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/conservative")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-conservative.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/conservative")
 
 ### conservative Type
 
@@ -276,7 +276,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-majrule.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/majrule")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-majrule.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/majrule")
 
 ### majrule Type
 
@@ -294,7 +294,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-solveconfl.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/pcalg_pc/properties/solveconfl")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-pc-algorithm-properties-solveconfl.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/solveconfl")
 
 ### solveconfl Type
 

@@ -1,3 +1,6 @@
+# This is a function which returns the shell commands for most of the algorithms.
+# It could also had been a dict.
+
 def alg_shell(algorithm):
     if algorithm == "gt13_multipair":
         return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            
@@ -89,7 +92,6 @@ def alg_shell(algorithm):
             "--beta {wildcards.beta} " \
             "--filename {output.adjmat} " 
             
-
     if algorithm == "bnlearn_hc":
         return "/usr/bin/time -f \"%e\" -o {output.time} " \  
             "Rscript workflow/scripts/run_hc.R " \
@@ -107,7 +109,7 @@ def alg_shell(algorithm):
             "--beta {wildcards.beta} " \
             "--filename {output.adjmat} " 
 
-    elif algorithm == "rblip":
+    elif algorithm == "rblip_asobs":
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "Rscript workflow/scripts/run_blip.R " \
                 "--filename_data {input.data} " \
@@ -155,65 +157,6 @@ def alg_shell(algorithm):
                 " && rm {output.adjmat}.score_and_time.txt " \
                 " && rm {output.adjmat}.bn.mat " \
                 " && rm {output.adjmat}.gobnilp.set"
-
-    # elif algorithm ==  "tetrad_fci":
-    #     return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-    #             "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-    #             "--algorithm fci "\
-    #             "--data-type {wildcards.datatype} "\
-    #             "--dataset {input.data} "\
-    #             "--delimiter comma " \
-    #             "--test {wildcards.test} "\
-    #             "--alpha {wildcards.alpha} "\
-    #             "--json-graph "\                
-    #             "--prefix {output.adjmat} " \
-    #             '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
-    #             '--jsongraph {output.adjmat}_graph.json ' \
-    #             '--filename {output.adjmat} ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}_graph.json ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}.txt'
-                
-    # elif algorithm ==  "tetrad_gfci":
-    #     return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-    #             "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-    #             "--algorithm gfci "\
-    #             "--data-type {wildcards.datatype} "\
-    #             "--dataset {input.data} "\
-    #             "--delimiter comma " \
-    #             "--test {wildcards.test} "\
-    #             "--alpha {wildcards.alpha} "\
-    #             "--score {wildcards.score} "\
-    #             "--structurePrior 1 "\
-    #             "--json-graph "\ 
-    #             "--prefix {output.adjmat} " \
-    #             '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
-    #             '--jsongraph {output.adjmat}_graph.json ' \
-    #             '--filename {output.adjmat} ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}_graph.json ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}.txt'
-
-    # elif algorithm ==  "tetrad_rfci":
-    #     return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-    #             "java -jar workflow/scripts/tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " \
-    #             "--algorithm rfci "\
-    #             "--data-type {wildcards.datatype} "\
-    #             "--dataset {input.data} "\
-    #             "--delimiter comma " \
-    #             "--test {wildcards.test} "\
-    #             "--alpha {wildcards.alpha} "\
-    #             "--json-graph "\                
-    #             "--prefix {output.adjmat} " \
-    #             '&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' \
-    #             '--jsongraph {output.adjmat}_graph.json ' \
-    #             '--filename {output.adjmat} ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}_graph.json ' \
-    #             '&& ' \
-    #             'rm {output.adjmat}.txt'
 
     elif algorithm == "trilearn_pgibbs":
         return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\

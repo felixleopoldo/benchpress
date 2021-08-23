@@ -6,6 +6,9 @@ Examples of data models
 .. The plot is stored in ``results/ROC.eps``. 
 .. The data for the plot is stored in ``results/output/roc/ROC_data.csv``. 
 
+Example JSON file are found under *config/*.
+
+
 Examples of different setups of the ``benchmark_setup->data`` section.
 
 Fully sampled model

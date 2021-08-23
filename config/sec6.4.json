@@ -229,9 +229,7 @@
                 {
                     "id": "sklearn_glasso",
                     "mode": "cd",
-                    "alpha": [
-                        0.05
-                    ],
+                    "alpha": 0.05,
                     "tol": 0.0004,
                     "enet_tol": 0.0004,
                     "precmat_threshold": 0.1,
@@ -240,15 +238,13 @@
                     "assume_centered": false
                 }
             ],
-            "rblip": [
+            "rblip_asobs": [
                 {
                     "id": "winasobs-bdeu",
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "time": 180,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [

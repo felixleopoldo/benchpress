@@ -1,3 +1,5 @@
+# Joins the benchmark results from an algorithms into one file
+
 library(dplyr)
 
 fix_columns <- function(df) {

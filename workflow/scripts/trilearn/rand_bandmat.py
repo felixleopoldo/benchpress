@@ -1,3 +1,5 @@
+# Generated a graph with band adjacency matrix with maximum bandwith.
+
 from trilearn.graph import decomposable as dlib
 import networkx as nx
 import numpy as np

@@ -1,3 +1,5 @@
+# Rules for sampling parameters gicen a graph.
+
 rule sample_binary_bn:
     input:
         "workflow/scripts/sample_bayesian_network_for_dag.R",

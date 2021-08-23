@@ -4,7 +4,7 @@
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 #  
 # Benchpress
@@ -48,7 +48,10 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 
 ### Clone and install
 
-`$ git clone https://github.com/felixleopoldo/benchpress.git`
+```
+$ git clone https://github.com/felixleopoldo/benchpress.git
+$ cd benchpress
+```
 
 #### Notes
 On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
@@ -57,16 +60,25 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ## Usage
 
-To run the simulation setup in [config/sec6.1.json](config/sec6.1.json) type
+### Example study
 
-`$ cd benchpress`
-`$ snakemake --cores 20 --use-singularity --configfile config/sec6.1.json`
+To run a small study (266 jobs) you can use [config/ex.json](config/ex.json) and type
+
+`$ snakemake --cores all --use-singularity --configfile config/ex.json`
+
+The results are found in *results/output/*.
+### Paper study
+To run the simulation setup in Section 6.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
+
+`$ snakemake --cores all --use-singularity --configfile config/sec6.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and can be viewed with e.g. evince as
 
 `$ evince results/output/roc/FPRp_TRP_pattern.eps`
 
 ![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
+
+This study took about 2h to finish on a 80 cores machine and is probably too large (~8000 jobs) for a laptop user.
 
 ## Citing
 
@@ -96,7 +108,7 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the GPL-2.0 License - see the [LICENSE](LICENSE) file for details
 
 </content>
   <tabTrigger></tabTrigger>

@@ -1,27 +1,27 @@
 # RFCI Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci
 ```
 
 RFCI instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## tetrad_rfci Type
 
 `object` ([RFCI](config-definitions-rfci.md))
 
-# RFCI Properties
+# tetrad_rfci Properties
 
-| Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                    |
-| :-------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")             |
-| [alpha](#alpha)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/alpha")     |
-| [test](#test)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/test")         |
-| [datatype](#datatype) | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/datatype") |
+| Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                              |
+| :-------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)             | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/id")             |
+| [alpha](#alpha)       | Merged   | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/alpha")     |
+| [test](#test)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/test")         |
+| [datatype](#datatype) | `string` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-rfci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/datatype") |
 
 ## id
 
@@ -35,7 +35,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/id")
 
 ### id Type
 
@@ -53,7 +53,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/alpha")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/alpha")
 
 ### alpha Type
 
@@ -61,7 +61,7 @@ merged type ([Number(s) in the range \[0,1\].](config-definitions-numbers-in-the
 
 any of
 
-*   [Probabaility](config-definitions-probabaility.md "check type definition")
+*   [prob type](config-definitions-prob-type.md "check type definition")
 
 *   [Probability list](config-definitions-numbers-in-the-range-01-anyof-probability-list.md "check type definition")
 
@@ -77,7 +77,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/test")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-test.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/test")
 
 ### test Type
 
@@ -112,7 +112,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/tetrad_rfci/properties/datatype")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-rfci-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_rfci/properties/datatype")
 
 ### datatype Type
 

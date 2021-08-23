@@ -1,26 +1,26 @@
 # Band matrix Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat
+myid#/definitions/bandmat
 ```
 
 A graph with a band structured adjacency matrix
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## bandmat Type
 
 unknown ([Band matrix](config-definitions-band-matrix.md))
 
-# Band matrix Properties
+# bandmat Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                              |
-| :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/id")    |
-| [dim](#dim)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/dim")       |
-| [bandwidth](#bandwidth) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/bandwidth") |
+| Property                | Type     | Required | Nullable       | Defined by                                                                                                                              |
+| :---------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)               | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-band-matrix-properties-id.md "myid#/definitions/bandmat/properties/id")    |
+| [dim](#dim)             | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bandmat/properties/dim")       |
+| [bandwidth](#bandwidth) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bandmat/properties/bandwidth") |
 
 ## id
 
@@ -34,7 +34,7 @@ unknown ([Band matrix](config-definitions-band-matrix.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-band-matrix-properties-id.md "myid#/definitions/bandmat/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/dim")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bandmat/properties/dim")
 
 ### dim Type
 
@@ -76,7 +76,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/bandmat/properties/bandwidth")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/bandmat/properties/bandwidth")
 
 ### bandwidth Type
 

@@ -1,3 +1,6 @@
+# Some validation of the values privoded in the JSON file.
+# TODO: This should be extended to avoid errors.
+
 # Check that algorithm exists
 
 # Available algorithm ids

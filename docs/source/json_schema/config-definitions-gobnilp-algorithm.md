@@ -1,32 +1,32 @@
 # Gobnilp algorithm Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp
 ```
 
 Gobnilp instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## gobnilp Type
 
 `object` ([Gobnilp algorithm](config-definitions-gobnilp-algorithm.md))
 
-# Gobnilp algorithm Properties
+# gobnilp Properties
 
-| Property                                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                   |
-| :-------------------------------------------------- | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                                           | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/id")                   |
-| [continuous](#continuous)                           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-continuous.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/continuous")   |
-| [score_type](#score_type)                           | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-score_type.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/score_type")   |
-| [plot](#plot)                                       | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-plot.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/plot")               |
-| [palim](#palim)                                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/palim")                          |
-| [alpha](#alpha)                                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha")                   |
-| [alpha_omega_minus_nvars](#alpha_omega_minus_nvars) | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha_omega_minus_nvars") |
-| [alpha_mu](#alpha_mu)                               | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha_mu")                |
-| [prune](#prune)                                     | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-prune.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/prune")             |
+| Property                                            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                             |
+| :-------------------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                                           | `string`  | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/id")                   |
+| [continuous](#continuous)                           | `boolean` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-continuous.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/continuous")   |
+| [score_type](#score_type)                           | `string`  | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-score_type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/score_type")   |
+| [plot](#plot)                                       | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-plot.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/plot")               |
+| [palim](#palim)                                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/palim")                          |
+| [alpha](#alpha)                                     | Merged    | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha")                   |
+| [alpha_omega_minus_nvars](#alpha_omega_minus_nvars) | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha_omega_minus_nvars") |
+| [alpha_mu](#alpha_mu)                               | Merged    | Optional | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha_mu")                |
+| [prune](#prune)                                     | `boolean` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-prune.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/prune")             |
 
 ## id
 
@@ -40,7 +40,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/id")
 
 ### id Type
 
@@ -58,7 +58,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-continuous.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/continuous")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-continuous.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/continuous")
 
 ### continuous Type
 
@@ -76,7 +76,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-score_type.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/score_type")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-score_type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/score_type")
 
 ### score_type Type
 
@@ -104,7 +104,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-plot.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/plot")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-plot.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/plot")
 
 ### plot Type
 
@@ -122,7 +122,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/palim")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/palim")
 
 ### palim Type
 
@@ -130,7 +130,7 @@ merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.
 
 any of
 
-*   [Non-negative integer](config-definitions-non-negative-integer.md "check type definition")
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [Non-negative integer list](config-definitions-non-negative-integers-anyof-non-negative-integer-list.md "check type definition")
 
@@ -146,7 +146,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha")
 
 ### alpha Type
 
@@ -156,7 +156,7 @@ any of
 
 *   any of
 
-    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
     *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
@@ -174,7 +174,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha_omega_minus_nvars")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha_omega_minus_nvars")
 
 ### alpha_omega_minus_nvars Type
 
@@ -184,7 +184,7 @@ any of
 
 *   any of
 
-    *   [Positive integer](config-definitions-positive-integer.md "check type definition")
+    *   [natnum type](config-definitions-natnum-type.md "check type definition")
 
     *   [Positive integer list](config-definitions-non-negative-integers-1-anyof-positive-integer-list.md "check type definition")
 
@@ -202,7 +202,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/alpha_mu")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/alpha_mu")
 
 ### alpha_mu Type
 
@@ -212,7 +212,7 @@ any of
 
 *   any of
 
-    *   [Non-negative number](config-definitions-non-negative-number.md "check type definition")
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
 
     *   [Non-negative number list](config-definitions-flexnonnegnum-anyof-non-negative-number-list.md "check type definition")
 
@@ -230,7 +230,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-prune.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/gobnilp/properties/prune")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-gobnilp-algorithm-properties-prune.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/prune")
 
 ### prune Type
 

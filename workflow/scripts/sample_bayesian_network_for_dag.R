@@ -1,8 +1,7 @@
-# Samples dags and saves to file
+# Samples a binary Bayesian network given a DAG.
 library(argparser)
 
 source("resources/binarydatagen/generatebinaryBNf.r")
-
 
 adjacency2dag <- function (adj, nodes = NULL) 
 {

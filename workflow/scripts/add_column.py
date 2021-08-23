@@ -1,3 +1,5 @@
+# Adds a columns corresponding values to a csv file
+
 import pandas as pd
 import argparse
 
@@ -17,4 +19,3 @@ if not column_name in df.columns:
     df[column_name] = colval
 
 df.to_csv(filename, index=False)
-

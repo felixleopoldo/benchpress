@@ -1,34 +1,35 @@
 # Parameters sampling algorithm Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters
+myid#/properties/resources/properties/parameters
 ```
 
 The available parameter sampling algorithms
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## parameters Type
 
 `object` ([Parameters sampling algorithm](config-properties-resources-properties-parameters-sampling-algorithm.md))
 
-# Parameters sampling algorithm Properties
+# parameters Properties
 
-| Property                                                    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                           |
-| :---------------------------------------------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [bin_bn](#bin_bn)                                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bin_bn.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bin_bn")                                            |
-| [notears_parameters_sampling](#notears_parameters_sampling) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-notears-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling")          |
-| [sem_params](#sem_params)                                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-sem_params-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/sem_params")                        |
-| [trilearn_hyper-dir](#trilearn_hyper-dir)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-hyper-dirichlet-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_hyper-dir")           |
-| [trilearn_intra-class](#trilearn_intra-class)               | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-intra-class-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_intra-class")       |
-| [trilearn_g_inv_wishart](#trilearn_g_inv_wishart)           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart") |
-| Additional Properties                                       | Any     | Optional | can be null    |                                                                                                                                                                                                                                                                                                                      |
+| Property                                                    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                          |
+| :---------------------------------------------------------- | :------ | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [bin_bn](#bin_bn)                                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bin_bn.md "myid#/properties/resources/properties/parameters/properties/bin_bn")                                           |
+| [notears_parameters_sampling](#notears_parameters_sampling) | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-notears_parameters_sampling.md "myid#/properties/resources/properties/parameters/properties/notears_parameters_sampling") |
+| [sem_params](#sem_params)                                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-sem_params.md "myid#/properties/resources/properties/parameters/properties/sem_params")                                   |
+| [trilearn_hyper-dir](#trilearn_hyper-dir)                   | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_hyper-dir.md "myid#/properties/resources/properties/parameters/properties/trilearn_hyper-dir")                   |
+| [trilearn_intra-class](#trilearn_intra-class)               | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_intra-class.md "myid#/properties/resources/properties/parameters/properties/trilearn_intra-class")               |
+| [trilearn_g_inv_wishart](#trilearn_g_inv_wishart)           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_g_inv_wishart.md "myid#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart")           |
+| [bdgraph_rgwish](#bdgraph_rgwish)                           | `array` | Optional | cannot be null | [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bdgraph_rgwish.md "myid#/properties/resources/properties/parameters/properties/bdgraph_rgwish")                           |
+| Additional Properties                                       | Any     | Optional | can be null    |                                                                                                                                                                                                                                                     |
 
 ## bin_bn
 
-List of generateBinayBN instantiations
+List of generateBinayBN objects
 
 `bin_bn`
 
@@ -38,7 +39,7 @@ List of generateBinayBN instantiations
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bin_bn.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/bin_bn")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bin_bn.md "myid#/properties/resources/properties/parameters/properties/bin_bn")
 
 ### bin_bn Type
 
@@ -56,15 +57,15 @@ List of notears id's
 
 *   is optional
 
-*   Type: unknown\[] ([Notears parameter sampling for Gaissian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md))
+*   Type: unknown\[] ([Notears parameter sampling for Gaussian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaussian-bayesian-networks.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-notears-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-notears_parameters_sampling.md "myid#/properties/resources/properties/parameters/properties/notears_parameters_sampling")
 
 ### notears_parameters_sampling Type
 
-unknown\[] ([Notears parameter sampling for Gaissian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md))
+unknown\[] ([Notears parameter sampling for Gaussian Bayesian networks](config-definitions-notears-parameter-sampling-for-gaussian-bayesian-networks.md))
 
 ### notears_parameters_sampling Constraints
 
@@ -78,15 +79,15 @@ List of sem_params id's
 
 *   is optional
 
-*   Type: `object[]` ([PCalg SEM params](config-definitions-pcalg-sem-params.md))
+*   Type: `object[]` ([SEM params](config-definitions-sem-params.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-sem_params-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/sem_params")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-sem_params.md "myid#/properties/resources/properties/parameters/properties/sem_params")
 
 ### sem_params Type
 
-`object[]` ([PCalg SEM params](config-definitions-pcalg-sem-params.md))
+`object[]` ([SEM params](config-definitions-sem-params.md))
 
 ### sem_params Constraints
 
@@ -104,7 +105,7 @@ List of trilearn_hyper-dir id's
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-hyper-dirichlet-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_hyper-dir")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_hyper-dir.md "myid#/properties/resources/properties/parameters/properties/trilearn_hyper-dir")
 
 ### trilearn_hyper-dir Type
 
@@ -126,7 +127,7 @@ List of intra-class id's
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-intra-class-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_intra-class")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_intra-class.md "myid#/properties/resources/properties/parameters/properties/trilearn_intra-class")
 
 ### trilearn_intra-class Type
 
@@ -148,13 +149,35 @@ List of graph inverse-Wishart id's
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-list-of-graph-inverse-wishart-ids.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart")
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-trilearn_g_inv_wishart.md "myid#/properties/resources/properties/parameters/properties/trilearn_g_inv_wishart")
 
 ### trilearn_g_inv_wishart Type
 
 `object[]` ([Graph graph inverse-Wishart model](config-definitions-graph-graph-inverse-wishart-model.md))
 
 ### trilearn_g_inv_wishart Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## bdgraph_rgwish
+
+List of graph inverse-Wishart id's
+
+`bdgraph_rgwish`
+
+*   is optional
+
+*   Type: `object[]` ([Inverse of G-Wishart sample](config-definitions-inverse-of-g-wishart-sample.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for BenchPress config file.](config-properties-resources-properties-parameters-sampling-algorithm-properties-bdgraph_rgwish.md "myid#/properties/resources/properties/parameters/properties/bdgraph_rgwish")
+
+### bdgraph_rgwish Type
+
+`object[]` ([Inverse of G-Wishart sample](config-definitions-inverse-of-g-wishart-sample.md))
+
+### bdgraph_rgwish Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 

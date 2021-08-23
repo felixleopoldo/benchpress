@@ -1,26 +1,26 @@
 # Graph intra-class model Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class
 ```
 
 Parameter setting for a graph intra-class model
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## trilearn_intra-class Type
 
 `object` ([Graph intra-class model](config-definitions-graph-intra-class-model.md))
 
-# Graph intra-class model Properties
+# trilearn_intra-class Properties
 
-| Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
-| :---------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/id") |
-| [rho](#rho)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/rho")              |
-| [sigma2](#sigma2) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/sigma2")                     |
+| Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                              |
+| :---------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)         | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/id") |
+| [rho](#rho)       | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/rho")              |
+| [sigma2](#sigma2) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/sigma2")                     |
 
 ## id
 
@@ -34,7 +34,7 @@ Parameter setting for a graph intra-class model
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-graph-intra-class-model-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Parameter setting for a graph intra-class model
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/rho")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/rho")
 
 ### rho Type
 
@@ -76,7 +76,7 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_intra-class/properties/sigma2")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class/properties/sigma2")
 
 ### sigma2 Type
 

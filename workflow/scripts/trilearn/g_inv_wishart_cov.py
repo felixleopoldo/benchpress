@@ -1,3 +1,6 @@
+# Given a decomposable graph (adjacency matrix) samples a covariance matrix from the
+# graph inverse Wishart distribution.
+
 import sys
 import numpy as np
 import pandas as pd
@@ -8,7 +11,7 @@ adjmat = sys.argv[1]
 
 df = pd.read_csv(adjmat)
 
-graph =  nx.from_numpy_array(df.values)
+graph = nx.from_numpy_array(df.values)
 filename = sys.argv[2]
 
 p = graph.order()

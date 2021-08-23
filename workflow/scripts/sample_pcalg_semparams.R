@@ -1,6 +1,8 @@
-# This function gives edges weights between the bounds
-# with both positive and negative signs
+# Samples a matrix of weights for a structueal equation model (SEM).
+
 wFUN <- function(m, lb, ub) {
+  # This function gives edges weights between the bounds
+  # with both positive and negative signs
   runif(m, lb, ub) * sample(c(-1, 1), m, replace = TRUE)
 }
 

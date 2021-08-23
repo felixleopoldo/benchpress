@@ -1,3 +1,5 @@
+# This file contains rules for the different evaluation types.
+
 rule roc_data:
     input:
         "workflow/scripts/combine_ROC_data.R",

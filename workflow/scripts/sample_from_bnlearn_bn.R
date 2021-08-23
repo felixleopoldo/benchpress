@@ -1,3 +1,5 @@
+# Samples data from a bn.fit network.
+
 library(argparser)
 library(bnlearn)
 source("resources/binarydatagen/generatebinaryBNf.r")

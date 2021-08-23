@@ -1,28 +1,28 @@
 # CTA decomposable graph sampling Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta
+myid#/definitions/trilearn_cta
 ```
 
 Graph sampling method provided by the trilearn package.
 Documentation: <https://github.com/felixleopoldo/trilearn>
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## trilearn_cta Type
 
 unknown ([CTA decomposable graph sampling](config-definitions-cta-decomposable-graph-sampling.md))
 
-# CTA decomposable graph sampling Properties
+# trilearn_cta Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
-| :-------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-cta-decomposable-graph-sampling-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/id") |
-| [order](#order) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/order")                      |
-| [alpha](#alpha) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/alpha")                    |
-| [beta](#beta)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/beta")                     |
+| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                    |
+| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-cta-decomposable-graph-sampling-properties-id.md "myid#/definitions/trilearn_cta/properties/id") |
+| [order](#order) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/trilearn_cta/properties/order")                      |
+| [alpha](#alpha) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/trilearn_cta/properties/alpha")                    |
+| [beta](#beta)   | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/trilearn_cta/properties/beta")                     |
 
 ## id
 
@@ -36,7 +36,7 @@ unknown ([CTA decomposable graph sampling](config-definitions-cta-decomposable-g
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-cta-decomposable-graph-sampling-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-cta-decomposable-graph-sampling-properties-id.md "myid#/definitions/trilearn_cta/properties/id")
 
 ### id Type
 
@@ -54,7 +54,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/order")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "myid#/definitions/trilearn_cta/properties/order")
 
 ### order Type
 
@@ -78,7 +78,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/alpha")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/trilearn_cta/properties/alpha")
 
 ### alpha Type
 
@@ -102,7 +102,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/trilearn_cta/properties/beta")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-numbers-in-the-range-01.md "myid#/definitions/trilearn_cta/properties/beta")
 
 ### beta Type
 

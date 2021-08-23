@@ -1,26 +1,26 @@
 # Random band matrix Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat
 ```
 
-A graph with a band structured adjacency matrix with random width
+A graph with a band structured adjacency matrix with random width.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                    |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](../../../out/config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## rand_bandmat Type
 
 unknown ([Random band matrix](config-definitions-random-band-matrix.md))
 
-# Random band matrix Properties
+# rand_bandmat Properties
 
-| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                       |
-| :------------------------------ | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/id") |
-| [dim](#dim)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/dim")           |
-| [max_bandwidth](#max_bandwidth) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/max_bandwidth") |
+| Property                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                 |
+| :------------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                       | `string` | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/id") |
+| [dim](#dim)                     | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/dim")           |
+| [max_bandwidth](#max_bandwidth) | Merged   | Required | cannot be null | [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/max_bandwidth") |
 
 ## id
 
@@ -34,7 +34,7 @@ unknown ([Random band matrix](config-definitions-random-band-matrix.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/id")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-random-band-matrix-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/id")
 
 ### id Type
 
@@ -52,7 +52,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/dim")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/dim")
 
 ### dim Type
 
@@ -76,7 +76,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/schema/config.schema.json#/definitions/rand_bandmat/properties/max_bandwidth")
+*   defined in: [JSON schema for BenchPress config file.](config-definitions-non-negative-integers.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rand_bandmat/properties/max_bandwidth")
 
 ### max_bandwidth Type
 
