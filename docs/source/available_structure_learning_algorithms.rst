@@ -83,6 +83,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
             0.01,
             0.1
         ],
+        "time_limit": null,
+        "gap_limit": null,
         "prune": true
     }
 
