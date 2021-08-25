@@ -53,6 +53,18 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 *Globally optimal Bayesian network learning using integer linear programming (GOBNILP)*
 
+
+
+.. important::
+
+    GOBNILP uses SCIP optimization suite 7.0.3. From `SCIPs homepage <https://www.scipopt.org/index.php#license>`_:
+
+    *SCIP is distributed under the ZIB Academic License. You are allowed to retrieve SCIP for research purposes as a member of a non-commercial or academic institution.*
+    
+    *If you want to use SCIP commercially or if you are interested in maintenance and support, please contact licenses@zib.de.*
+
+
+
 .. rubric:: Example
 
 
