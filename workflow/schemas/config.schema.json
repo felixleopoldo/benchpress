@@ -1687,6 +1687,12 @@
                 "alpha_mu": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+		"time_limit": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "gap_limit": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "prune": {
                     "type": "boolean"
                 }
