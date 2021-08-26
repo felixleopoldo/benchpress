@@ -41,8 +41,8 @@ The currently supported algorithms are tabulated below.
 Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 ## Requirements
-- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
-- [Singularity](https://sylabs.io/docs/) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
+- [Snakemake ≥ 5.2](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
+- [Singularity ≥ 3.2](https://sylabs.io/docs/) ([installation instructions](https://sylabs.io/guides/3.6/admin-guide/installation.html))
 - Linux (Singularity currently only has a Beta release for OSX which is not enough)
 ## Installation
 
@@ -62,13 +62,36 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ### Example study
 
-To run a small study (266 jobs) you can use [config/ex.json](config/ex.json) and type
+This study is based on three continuous datasets corresponing to three realisations of a random structural equation model (SEM) with random DAG. The DAGs are sampled from Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly on the interval [-1, -0.25] U [0.25, 1] using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
+
+To run this study (266 jobs ~ 10 minutes on a laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
-The results are found in *results/output/*.
+#### Sample output
+Below we show output corresponding to one dataset produced by the order MCMC algorithm. Below is some of the output produced by the modules **adjmat_true_plots**, **adjmat_plots**, **heatmap_plots**, **autocorr_plots**, **mcmc_plot_traj**, and **roc** for the order MCMC algorithm (**order_mcmc** module). The results are saved in *results/output/*. 
+
+##### True adjacency matrix (adjmat_true_plots)
+<img src="images/adjmat_true_1.png" alt="drawing" width="600"/>
+
+##### Estimated adjacency matrix (adjmat_plots)
+<img src="images/adjmat_14.png" alt="drawing" width="600"/>
+
+##### Estimated mean graph (heatmap_plots)
+<img src="images/heatmap_1.png" alt="drawing" width="600"/>
+
+##### Estimated auto-correlation of graph posterior (autocorr_plots)
+<img src="images/mcmc_autocorr_1.png" alt="drawing" width="600"/>
+
+##### Plot of the graph posterior trajectory (mcmc_traj_plots)
+<img src="images/trajplot_1.png" alt="drawing" width="600"/>
+
+##### ROC plot (roc)
+<img src="images/FPR_TPR_skel.png" alt="drawing" width="600"/>
+
+
 ### Paper study
-To run the simulation setup in Section 6.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
+To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
 
 `$ snakemake --cores all --use-singularity --configfile config/sec6.1.json`
 
@@ -76,9 +99,13 @@ A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps]() and
 
 `$ evince results/output/roc/FPRp_TRP_pattern.eps`
 
-![ROC](docs/source/_static/ROC_randbinarybnreps50.png)
+<!-- ![ROC](docs/source/_static/ROC_randbinarybnreps50.png) -->
+<img src="docs/source/_static/ROC_randbinarybnreps50.png" alt="drawing" width="600"/>
+
 
 This study took about 2h to finish on a 80 cores machine and is probably too large (~8000 jobs) for a laptop user.
+
+
 
 ## Citing
 
