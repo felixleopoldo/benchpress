@@ -62,7 +62,7 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ### Example study
 
-This study is based on three continuous datasets corresponing to three realisations of a random structural equation model (SEM) with random DAG. The DAGs are sampled from Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly on the interval [-1, -0.25] U [0.25, 1] using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
+This study is based on three continuous datasets corresponing to three realisations of a random structural equation model (SEM) with random DAG. The DAGs are sampled from the Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly on the interval [-1, -0.25] U [0.25, 1] using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
 
 To run this study (266 jobs ~ 10 minutes on a laptop) type
 
