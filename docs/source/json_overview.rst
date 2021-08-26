@@ -206,11 +206,11 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
         }
     ]
 
-``mcmc_autocorr``
+``mcmc_autocorr_plots``
 -------------------------
 
-The ``mcmc_autocorr`` module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
-Similar to the ``mcmc_traj_plots`` module, the ``mcmc_autocorr`` module has a list of objects, where each object has an id, ``burn_in``, ``thinning``, and a ``functional`` field. 
+The ``mcmc_autocorr_plots`` module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
+Similar to the ``mcmc_traj_plots`` module, the ``mcmc_autocorr_plots`` module has a list of objects, where each object has an id, ``burn_in``, ``thinning``, and a ``functional`` field. 
 The maximum number of lags after thinning, is specified by the lags field. 
 The plots are saved in *results/mcmc_autocorr/* and copied to *results/output/mcmc_autocorr/*.
 

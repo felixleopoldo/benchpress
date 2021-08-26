@@ -69,7 +69,7 @@ To run this study (266 jobs ~ 10 minutes on a laptop) type
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
 #### Sample output
-Below we show output corresponding to one dataset produced by the order MCMC algorithm. Below is some of the output produced by the modules **adjmat_true_plots**, **adjmat_plots**, **heatmap_plots**, **autocorr_plots**, **mcmc_plot_traj**, and **roc** for the order MCMC algorithm (**order_mcmc** module). The results are saved in *results/output/*. 
+Below we show output corresponding to one dataset produced by the order MCMC algorithm. Below is some of the output produced by the modules **adjmat_true_plots**, **adjmat_plots**, **mcmc_heatmaps**, **mcmc_autocorr_plots**, **mcmc_traj_plots**, and **roc** for the order MCMC algorithm (**order_mcmc** module). The results are saved in *results/output/*. 
 
 ##### True adjacency matrix (adjmat_true_plots)
 <img src="images/adjmat_true_1.png" alt="drawing" width="600"/>
@@ -77,10 +77,10 @@ Below we show output corresponding to one dataset produced by the order MCMC alg
 ##### Estimated adjacency matrix (adjmat_plots)
 <img src="images/adjmat_14.png" alt="drawing" width="600"/>
 
-##### Estimated mean graph (heatmap_plots)
+##### Estimated mean graph (mcmc_heatmaps)
 <img src="images/heatmap_1.png" alt="drawing" width="600"/>
 
-##### Estimated auto-correlation of graph posterior (autocorr_plots)
+##### Estimated auto-correlation of graph posterior (mcmc_autocorr_plots)
 <img src="images/mcmc_autocorr_1.png" alt="drawing" width="600"/>
 
 ##### Plot of the graph posterior trajectory (mcmc_traj_plots)
