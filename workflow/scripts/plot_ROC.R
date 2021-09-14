@@ -188,6 +188,22 @@ theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) +
 ggsave(file = snakemake@output[["fnr_fprp_skel"]])
 
+
+ggplot() + {
+
+    geom_bar(data = toplot, stat="identity",
+             aes(x=interaction(curve_param,curve_vals), 
+             y = time_mean) )
+
+} +
+  facet_wrap(. ~ adjmat + bn + data + id, nrow = 2, scales="free_x") +
+  ggtitle("Mean ellapsed time") +
+  theme_bw() +
+  xlab("Parameter.value") +
+  ylab("Time (s.)") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  ggsave(file = snakemake@output[["ellapsed_time"]])
+
 # ggplot() +
 # geom_col(data = toplot,
 #     aes(x=id + curve_vals,y=SHD_pattern_mean)) + 

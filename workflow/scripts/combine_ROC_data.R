@@ -82,6 +82,7 @@ for (algorithm in active_algorithms){
                     N = n(),
                     curve_vals=mean(!!as.symbol(curve_param)))
         sumROC["labels"] <- NA
+        sumROC["curve_param"] <- curve_param
         toplot <- dplyr::bind_rows(toplot, sumROC)
     }
 }

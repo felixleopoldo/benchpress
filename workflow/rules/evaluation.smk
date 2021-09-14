@@ -24,7 +24,9 @@ rule roc:
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.eps",
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.eps",
         fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.eps",
-        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps"
+        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps",
+        ellapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.eps",
+
         
     script:
         "../scripts/plot_ROC.R"
