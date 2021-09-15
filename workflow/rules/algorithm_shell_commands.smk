@@ -126,37 +126,49 @@ def alg_shell(algorithm):
                 "--filename {output.adjmat} " 
 
     elif algorithm == "gobnilp":
-        return "touch {output.adjmat}.gobnilp.set && " \   
-                "echo 'gobnilp/outputfile/adjacencymatrix = \"{output.adjmat}.bn.mat\" ' > {output.adjmat}.gobnilp.set &&" \
-                "echo 'gobnilp/outputfile/scoreandtime = \"{output.adjmat}.score_and_time.txt\" ' >> {output.adjmat}.gobnilp.set &&" \
-                "if [ {wildcards.continuous} = \"True\" ]; then "\
-                "echo 'gobnilp/scoring/continuous = TRUE ' >> {output.adjmat}.gobnilp.set && " \
-                "echo 'gobnilp/scoring/score_type = \"{wildcards.score_type}\" ' >> {output.adjmat}.gobnilp.set && " \     
-                "echo 'gobnilp/scoring/alpha_mu = {wildcards.alpha_mu} ' >> {output.adjmat}.gobnilp.set && " \
-                "echo 'gobnilp/scoring/alpha_omega_minus_nvars = {wildcards.alpha_omega_minus_nvars} ' >> {output.adjmat}.gobnilp.set ; " \
-                "fi && " \
-                "if [ {wildcards.continuous} = \"False\" ]; then "\
-                "echo 'gobnilp/scoring/alpha = {wildcards.alpha} ' >> {output.adjmat}.gobnilp.set ; " \
-                "fi && " \
-                "echo 'gobnilp/scoring/palim = {wildcards.palim} ' >> {output.adjmat}.gobnilp.set && " \
-                "if [ {wildcards.time_limit} != \"None\" ]; then "\
-		"echo 'limits/time = {wildcards.time_limit} ' >>   {output.adjmat}.gobnilp.set ; " \
-                "fi && " \
-                "if [ {wildcards.gap_limit} != \"None\" ]; then "\
-		"echo 'limits/gap = {wildcards.gap_limit} ' >>   {output.adjmat}.gobnilp.set ; " \
-                "fi && " \
-                "echo 'gobnilp/scoring/prune = {wildcards.prune} ' >> {output.adjmat}.gobnilp.set && " \     
-                "echo 'gobnilp/delimiter = \",\" ' >> {output.adjmat}.gobnilp.set && " \     
-                "/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data} " \
-                " && cat {output.adjmat}.bn.mat > {output.adjmat} " \
-                " && sed --in-place 's/\ /,/g' {output.adjmat} " \
-                " && head -n 1 {input.data} > {output.adjmat}.header " \
-                " && cat {output.adjmat} >> {output.adjmat}.header " \
-                " && mv {output.adjmat}.header {output.adjmat} " \ 
-                " && cat {output.adjmat}.score_and_time.txt > {output.time} " \                 
-                " && rm {output.adjmat}.score_and_time.txt " \
-                " && rm {output.adjmat}.bn.mat " \
-                " && rm {output.adjmat}.gobnilp.set"
+        # Configure the gobnilp.set
+        command= """touch {output.adjmat}.gobnilp.set 
+                echo -e gobnilp/outputfile/adjacencymatrix = \134\\042{output.adjmat}\134\\042 > {output.adjmat}.gobnilp.set 
+                echo -e gobnilp/outputfile/scoreandtime = \134\\042{output.adjmat}.scoretime\134\\042 >> {output.adjmat}.gobnilp.set
+                echo -e gobnilp/dagconstraintsfile = \134\\042{input.constraints}\134\\042 >> {output.adjmat}.gobnilp.set 
+                if [ {wildcards.continuous} = \"True\" ]; then 
+                    echo -e gobnilp/scoring/continuous = TRUE >> {output.adjmat}.gobnilp.set
+                    echo -e gobnilp/scoring/score_type = \134\\042{wildcards.score_type}\134\\042 >> {output.adjmat}.gobnilp.set 
+                    echo -e gobnilp/scoring/alpha_mu = {wildcards.alpha_mu} >> {output.adjmat}.gobnilp.set 
+                    echo -e gobnilp/scoring/alpha_omega_minus_nvars = {wildcards.alpha_omega_minus_nvars} >> {output.adjmat}.gobnilp.set ; 
+                fi 
+                if [ {wildcards.continuous} = \"False\" ]; then 
+                    echo -e gobnilp/scoring/alpha = {wildcards.alpha} >> {output.adjmat}.gobnilp.set ; 
+                fi 
+                echo -e gobnilp/scoring/palim = {wildcards.palim} >> {output.adjmat}.gobnilp.set 
+                if [ {wildcards.time_limit} != \"None\" ]; then 
+		            echo -e limits/time = {wildcards.time_limit} >> {output.adjmat}.gobnilp.set ; 
+                fi 
+                if [ {wildcards.gap_limit} != \"None\" ]; then 
+                    echo -e limits/gap = {wildcards.gap_limit} >> {output.adjmat}.gobnilp.set ; 
+                fi 
+                echo -e gobnilp/scoring/prune = {wildcards.prune} >> {output.adjmat}.gobnilp.set 
+                echo -e gobnilp/delimiter = \134\042,\134\042 >> {output.adjmat}.gobnilp.set 
+                cat resources/extra_args/{wildcards.extra_args} >> {output.adjmat}.gobnilp.set 
+                cat {output.adjmat}.gobnilp.set
+                if [ {wildcards.timeout} != \"None\" ]; then 
+                    timeout --signal=SIGINT {wildcards.timeout} bash -c '/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data}';
+                else 
+                    /myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data};
+                fi 
+                if [ -f {output.adjmat} ]; then                     
+                    sed --in-place s/\ /,/g {output.adjmat}  
+                    head -n 1 {input.data} > {output.adjmat}.header  
+                    cat {output.adjmat} >> {output.adjmat}.header  
+                    awk '{{print $2}}' {output.adjmat}.scoretime > {output.time}  
+                    mv {output.adjmat}.header {output.adjmat} 
+                    rm -f {output.adjmat}.scoretime; 
+                else
+                    touch {output.adjmat}
+                    echo None > {output.time};
+                fi 
+                rm -f {output.adjmat}.gobnilp.set """ 
+        return command
 
     elif algorithm == "trilearn_pgibbs":
         return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\

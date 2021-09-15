@@ -1672,6 +1672,18 @@
                         "BIC"
                     ]
                 },
+                "extra_args":{
+                    "anyOf":[
+                        {"type":"string"},
+                        {"type":"null"}
+                    ]                    
+                },
+                "constraints":{
+                    "anyOf":[
+                        {"type":"string"},
+                        {"type":"null"}
+                    ]
+                },
                 "plot": {
                     "type": "boolean"
                 },
@@ -1687,7 +1699,10 @@
                 "alpha_mu": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-		"time_limit": {
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+        		"time_limit": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "gap_limit": {
@@ -1703,7 +1718,8 @@
                 "plot",
                 "palim",
                 "alpha",
-                "prune"
+                "prune",
+                "timeout"
             ],
             "examples": [
                 {

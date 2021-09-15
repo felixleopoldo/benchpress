@@ -7,7 +7,7 @@
                 "data_id": "standardized",
                 "seed_range": [
                     1,
-                    3
+                    1
                 ]
             }
         ],
@@ -19,25 +19,17 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "fges-sem-bic",
-                    "mmhc-bge-zf",
-                    "omcmc_itsample-bge",
-                    "pc-gaussCItest"
+
+                    "gobnilp-bge"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
             "adjmat_plots": [
-                "fges-sem-bic",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pc-gaussCItest"
+
             ],
             "graph_plots": [
-                "fges-sem-bic",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pc-gaussCItest"
+
             ],
             "mcmc_traj_plots": [
                 {
@@ -48,14 +40,14 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -68,7 +60,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ]
         }
@@ -129,7 +121,7 @@
                 {
                     "id": "avneigs4_p20",
                     "max_parents": 5,
-                    "n": 20,
+                    "n": 15,
                     "d": 4,
                     "par1": null,
                     "par2": null,
@@ -330,10 +322,12 @@
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",
+                    "extra_args": "myargs.txt",
+                    "constraints": null,
                     "continuous": false,
                     "score_type": "BDeu",
                     "plot": false,
-                    "palim": 3,
+                    "palim": [2,3],
                     "alpha_mu": null,
                     "alpha_omega_minus_nvars": null,
                     "alpha": [
@@ -341,21 +335,25 @@
                         0.01,
                         0.1
                     ],
-		    "time_limit": null,
-		    "gap_limit": null,
+                    "timeout": 5,
+		            "time_limit": null,
+		            "gap_limit": null,
                     "prune": true
                 },
                 {
                     "id": "gobnilp-bge",
+                    "extra_args": null,
+                    "constraints": null,
                     "continuous": true,
                     "score_type": "BGe",
                     "plot": false,
-                    "palim": 2,
+                    "palim": [2, 3, 4, 5],
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-		    "time_limit": null,
-		    "gap_limit": null,
+                    "timeout": 11,
+		            "time_limit": null,
+		            "gap_limit": null,
                     "prune": true
                 }
             ],

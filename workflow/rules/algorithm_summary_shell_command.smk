@@ -455,7 +455,10 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname time_limit       --colval {wildcards.time_limit} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname gap_limit       --colval {wildcards.gap_limit} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname prune       --colval {wildcards.prune} "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time} | grep -Eo '[0-9]\.[0-9]*$'` " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname constraints       --colval {wildcards.constraints} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname extra_args       --colval {wildcards.extra_args} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
     elif algorithm == "trilearn_pgibbs":
         return "Rscript workflow/scripts/run_summarise.R " \

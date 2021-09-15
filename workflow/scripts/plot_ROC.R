@@ -3,7 +3,16 @@
 library(ggplot2)
 library("rjson")
 
-toplot <- read.csv(snakemake@input[["csv"]])
+if (file.info(snakemake@input[["csv"]])$size == 0) { 
+     file.create(snakemake@output[["fpr_tpr_pattern"]])
+     file.create(snakemake@output[["roc_FPRp_TPR_skel"]])
+     file.create(snakemake@output[["FPRp_FNR_skel"]])
+     #file.create(snakemake@output[["fnr_fprp_skel"]])
+     #file.create(snakemake@output[["elapsed_time"]])
+     cat("Time-out",file=snakemake@output[["elapsed_time"]],sep="\n") # Copy time-out figure
+     cat("Time-out",file=snakemake@output[["fnr_fprp_skel"]],sep="\n")
+} else {
+    toplot <- read.csv(snakemake@input[["csv"]])
 
 config <- fromJSON(file = snakemake@input[["config"]])
 
@@ -197,13 +206,13 @@ ggplot() + {
 
 } +
   facet_wrap(. ~ adjmat + bn + data + id, nrow = 2, scales="free_x") +
-  ggtitle("Mean ellapsed time") +
+  ggtitle("Mean elapsed time") +
   theme_bw() +
   xlab("Parameter.value") +
   ylab("Time (s.)") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  ggsave(file = snakemake@output[["ellapsed_time"]])
-
+  ggsave(file = snakemake@output[["elapsed_time"]])
+}
 # ggplot() +
 # geom_col(data = toplot,
 #     aes(x=id + curve_vals,y=SHD_pattern_mean)) + 

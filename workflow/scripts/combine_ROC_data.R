@@ -28,12 +28,19 @@ active_algorithms <- unique(active_algorithms)
 rocalgs <- config$benchmark_setup$evaluation$roc$ids
 
 for (algorithm in active_algorithms){
-    # This reads all ids of one algorithm so that the same coud be read more than once. 
+    # This reads all object ids of one algorithm so that the same coud be read more than once. 
     # The problem is that the curve variable is needed.
-    # It is fixed by running the distinct funtion in the end...
+    # It is fixed by running the distinct function.
     ROCdf <- read.csv(file.path("results/output/roc/", paste(algorithm ,".csv", sep = ""))) 
     unique_ids <- ROCdf %>% distinct(id)
     
+    
+    if (sum(is.na(ROCdf[,"true_n_edges_skel"])) == nrow(ROCdf)){
+        # Only NAs. This happens if all instatitiations of the algorithm was timed out.
+        print("Nothing interesting")
+        next
+    }
+
     for(params_id in unique_ids$id){
 
         # Find curve param
@@ -53,8 +60,11 @@ for (algorithm in active_algorithms){
             }
         }
 
+
+
         sumROC = ROCdf %>%
-        filter(id == params_id) %>% # Extract only the rows for the actual id 
+        filter(!is.na(true_n_edges_skel)) %>%
+        filter(id == params_id) %>% # Extract only the rows for the actual id         
         group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
                     TPR_pattern_mean = mean(TPR_pattern), 
@@ -78,7 +88,6 @@ for (algorithm in active_algorithms){
                     FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
 
                     time_mean = mean(time),
-                    logscore_mean = mean(logscore),
                     N = n(),
                     curve_vals=mean(!!as.symbol(curve_param)))
         sumROC["labels"] <- NA
@@ -89,5 +98,10 @@ for (algorithm in active_algorithms){
 
 toplot <- toplot %>% distinct()
 
-write.csv(toplot,  argv$filename)
+if(nrow(toplot)>0){
+    write.csv(toplot, argv$filename)
+} else{
 
+    print("Creating empty file.")
+    file.create(argv$filename)
+}

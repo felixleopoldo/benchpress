@@ -27,13 +27,20 @@ df <- data.frame()
 
 for (filename in snakemake@input[["res"]]) {
   tmpdf <- read.csv(filename)
-  tmpdf <- fix_columns(tmpdf)
+  #if(nrow(tmpdf) > 0) {
+    tmpdf <- fix_columns(tmpdf)
+  #}
   df <- dplyr::bind_rows(df, tmpdf)
 }
 
 output = snakemake@output[[1]]
-
-write.csv(df, file = output, row.names = FALSE)
+if (nrow(df) > 0){
+    write.csv(df, file = output, row.names = FALSE)
+} else {
+    print(df)
+    print("Creating empty file.")
+    file.create(output)
+}
 
 # This removes the seed from the adjmat and bn columns to enable proper grouping 
 # when plotting. Otherwise every seed gets its own group which is not meaningful.
