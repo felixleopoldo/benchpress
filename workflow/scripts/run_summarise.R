@@ -163,35 +163,15 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
                     FP_skel = FP,
                     TN_skel = TN,
                     true_n_edges_skel = n_edges,
-                    true_n_non_edges_skel = n_nonedges
-
-    #                 ,SHD_cpdag = compres_cpdag["SHD"]
-                    )
+                    true_n_non_edges_skel = n_nonedges)
     return(df)
 }
-
-
-
 
 if (file.info(argv$adjmat_est)$size > 0) { 
     true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
     estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
     df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
-    # df <- data.frame(matrix(ncol = 12, nrow = 0))
-    # colnames(df) <- c("TPR_pattern", 
-    #                 "FPRn_pattern",
-    #                 "SHD_pattern",
-    #                 "logscore",
-    #                 "FPR_skel",
-    #                 "FNR_skel",
-    #                 "TP_skel",
-    #                 "FN_skel",
-    #                 "FP_skel",
-    #                 "TN_skel",
-    #                 "true_n_edges_skel",
-    #                 "true_n_non_edges_skel"
-    #                 )
     df <- data.frame(TPR_pattern = "None", # should be for all times
                     FPRn_pattern = "None",
                     SHD_pattern = "None",
@@ -202,11 +182,10 @@ if (file.info(argv$adjmat_est)$size > 0) {
                     FP_skel = "None",
                     TN_skel = "None",
                     true_n_edges_skel = "None",
-                    true_n_non_edges_skel = "None"
-    #                 ,SHD_cpdag = compres_cpdag["SHD"]
-                    )
+                    true_n_non_edges_skel = "None")
 }
 
+print("In run_summarise.R")
 print(df)
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

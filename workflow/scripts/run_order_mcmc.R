@@ -1,5 +1,4 @@
 library(BiDAG)
-#library(rjson)
 
 adjmatToEdgeString <- function(adjmat, labels) {
   edgeinds <- which(adjmat == 1, arr.ind = TRUE)

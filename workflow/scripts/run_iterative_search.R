@@ -1,7 +1,6 @@
 library(RBGL)
 library(BiDAG)
-
-#source("resources/code_for_binary_simulations/df_fns.R")
+library(R.utils)
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
@@ -57,36 +56,55 @@ if (snakemake@wildcards[["scoretype"]] == "bge") {
   myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
 
-start <- proc.time()[1]
-set.seed(seed)
-itsearch_res <- iterativeMCMC(
-                                myscore,
-                                chainout = FALSE,
-                                MAP = as.logical(map),
-                                posterior = posterior,
-                                scoreout = TRUE,
-                                plus1it = plus1it,
-                                hardlimit = as.integer(snakemake@wildcards[["hardlimit"]]),
-                                softlimit = as.integer(snakemake@wildcards[["softlimit"]]),
-                                alpha = as.numeric(snakemake@wildcards[["alpha"]]),
-                                gamma = as.numeric(snakemake@wildcards[["gamma"]]),
-                                cpdag = as.logical(snakemake@wildcards[["cpdag"]]),
-                                mergetype = snakemake@wildcards[["mergetype"]]
-                                ) # 1 and loop
-# How to get number of iterations (it)?
-# output a csv file with "additional statistics" eg
-totaltime <- proc.time()[1] - start
+wrapper <- function(){
+    start <- proc.time()[1]
+    set.seed(seed)
+    itsearch_res <- iterativeMCMC(
+                                    myscore,
+                                    chainout = FALSE,
+                                    MAP = as.logical(map),
+                                    posterior = posterior,
+                                    scoreout = TRUE,
+                                    plus1it = plus1it,
+                                    hardlimit = as.integer(snakemake@wildcards[["hardlimit"]]),
+                                    softlimit = as.integer(snakemake@wildcards[["softlimit"]]),
+                                    alpha = as.numeric(snakemake@wildcards[["alpha"]]),
+                                    gamma = as.numeric(snakemake@wildcards[["gamma"]]),
+                                    cpdag = as.logical(snakemake@wildcards[["cpdag"]]),
+                                    mergetype = snakemake@wildcards[["mergetype"]]
+                                    ) # 1 and loop
+    # How to get number of iterations (it)?
+    # output a csv file with "additional statistics" eg
+    totaltime <- proc.time()[1] - start
 
-adjmat <- NULL
+    adjmat <- NULL
 
-if (snakemake@wildcards[["estimate"]] == "map") {
-  adjmat <- itsearch_res$DAG
+    if (snakemake@wildcards[["estimate"]] == "map") {
+    adjmat <- itsearch_res$DAG
+    }
+    if (snakemake@wildcards[["estimate"]] == "endspace") {
+    adjmat <- itsearch_res$endspace # this is the space, not the estimate
+    }
+
+    colnames(adjmat) <- names(data)
+
+    write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+    write(totaltime, file = snakemake@output[["time"]])
 }
-if (snakemake@wildcards[["estimate"]] == "endspace") {
-  adjmat <- itsearch_res$endspace # this is the space, not the estimate
+
+if(snakemake@wildcards[["timeout"]] == "None"){
+    wrapper()
+} else {
+    res <- NULL
+    tryCatch({
+    res <- withTimeout({
+        wrapper()
+    }, timeout = snakemake@wildcards[["timeout"]])
+    }, TimeoutException = function(ex) {
+        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty grape and time files.", sep=""))
+    file.create(filename)
+    cat("None",file=snakemake@output[["time"]],sep="\n")
+    
+    })
+
 }
-
-colnames(adjmat) <- names(data)
-
-write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
-write(totaltime, file = snakemake@output[["time"]])

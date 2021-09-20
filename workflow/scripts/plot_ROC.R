@@ -205,7 +205,7 @@ ggplot() + {
              y = time_mean) )
 
 } +
-  facet_wrap(. ~ adjmat + bn + data + id, nrow = 2, scales="free_x") +
+  facet_wrap(. ~ adjmat + bn + data + id, ncol = 2, scales="free_x") +
   ggtitle("Mean elapsed time") +
   theme_bw() +
   xlab("Parameter.value") +

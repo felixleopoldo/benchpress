@@ -231,6 +231,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname am           --colval {wildcards.am} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname aw           --colval {wildcards.aw} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname timeout      --colval {wildcards.timeout} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname time         --colval `cat {input.time}` "  \
 
     elif algorithm == "pcalg_pc":

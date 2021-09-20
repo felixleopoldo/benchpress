@@ -19,8 +19,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
-
-                    "gobnilp-bge"
+                    "gobnilp-bge", "itsearch_sample-bge"
                 ]
             },
             "adjmat_true_plots": true,
@@ -351,7 +350,7 @@
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-                    "timeout": 11,
+                    "timeout": 5,
 		            "time_limit": null,
 		            "gap_limit": null,
                     "prune": true
@@ -751,6 +750,7 @@
             "bidag_itsearch": [
                 {
                     "id": "itsearch_map-bde",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -773,6 +773,7 @@
                 },
                 {
                     "id": "itsearch_map-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -796,6 +797,7 @@
                 },
                 {
                     "id": "itsearch_map-bge",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -820,6 +822,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": true,
                     "plus1it": null,
@@ -838,6 +841,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -856,6 +860,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -878,6 +883,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -901,6 +907,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -924,6 +931,7 @@
                 },
                 {
                     "id": "itsearch_sample-bge",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -942,6 +950,7 @@
                 },
                 {
                     "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -960,6 +969,7 @@
                 },
                 {
                     "id": "itsample-bge_am1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -978,6 +988,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": true,
                     "plus1it": 6,
@@ -996,6 +1007,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1014,6 +1026,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat_chi01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1032,6 +1045,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1050,6 +1064,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat_chi1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1068,6 +1083,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi10_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,

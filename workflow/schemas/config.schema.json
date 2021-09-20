@@ -2702,6 +2702,9 @@
                 },
                 "aw": {
                     "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2720,7 +2723,8 @@
                 "gamma",
                 "cpdag",
                 "mergetype",
-                "estimate"
+                "estimate",
+                "timeout"
             ],
             "examples": [
                 {

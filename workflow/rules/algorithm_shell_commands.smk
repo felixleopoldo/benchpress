@@ -131,6 +131,7 @@ def alg_shell(algorithm):
                 echo -e gobnilp/outputfile/adjacencymatrix = \134\\042{output.adjmat}\134\\042 > {output.adjmat}.gobnilp.set 
                 echo -e gobnilp/outputfile/scoreandtime = \134\\042{output.adjmat}.scoretime\134\\042 >> {output.adjmat}.gobnilp.set
                 echo -e gobnilp/dagconstraintsfile = \134\\042{input.constraints}\134\\042 >> {output.adjmat}.gobnilp.set 
+                echo -e misc/catchctrlc = FALSE >> {output.adjmat}.gobnilp.set 
                 if [ {wildcards.continuous} = \"True\" ]; then 
                     echo -e gobnilp/scoring/continuous = TRUE >> {output.adjmat}.gobnilp.set
                     echo -e gobnilp/scoring/score_type = \134\\042{wildcards.score_type}\134\\042 >> {output.adjmat}.gobnilp.set 

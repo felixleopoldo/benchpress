@@ -31,8 +31,8 @@ The currently supported algorithms are tabulated below.
 | Inter-IAMB       | CPDAG | R        | bnlearn             | 4.5      |
 | GS               | DAG   | R        | bnlearn             | 4.5      |
 | Tabu             | DAG   | R        | bnlearn             | 4.5      |
-| Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.2    |
-| Order MCMC       | DAG   | R        | BiDAG               | 2.0.2    |
+| Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    |
+| Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    |
 | PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
 | GG99 single pair | DG    | Java     | A. Thomas           | -        |
 | GT13 multi pair  | DG    | Java     | A. Thomas           | -        |

@@ -14,9 +14,9 @@ def docker_image(algorithm):
     elif algorithm == "pydatascience":
         return "docker://civisanalytics/datascience-python"
     elif algorithm == "bidag":
-        return "docker://onceltuca/bidag:2.0.2"
+        return "docker://onceltuca/bidag:2.0.3"
     elif algorithm == "benchmark":
-        return "docker://onceltuca/benchmark:1.0.8"
+        return "docker://onceltuca/benchpress"
     elif algorithm == "networkx":
         return "docker://onceltuca/networkx:2.5.1"
     elif algorithm == "bdgraph":
