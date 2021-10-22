@@ -15,7 +15,7 @@ errorbar <- config$benchmark_setup$evaluation$roc$errorbar
 
 # Might have to go through all one by aone to get the ponit text.
 # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
-ggplot() + {
+gg  <- ggplot() + {
   if (errorbar) {
     geom_errorbar(data = toplot,
                 aes(x = FPRn_pattern_median,
@@ -55,10 +55,10 @@ xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (pattern graph)") +
 theme_bw() +
-theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file = snakemake@output[["fpr_tpr_pattern"]])
+theme(plot.title = element_text(hjust = 0.5)) 
+ggsave(file = snakemake@output[["fpr_tpr_pattern"]],plot=gg)
 
-ggplot() + {
+gg  <- ggplot() + {
   if (errorbar) {
     geom_errorbar(data = toplot,
               aes(x = FPRn_skel_median,
@@ -98,11 +98,11 @@ xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (undirected skeleton)") +
 theme_bw() +
-theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file = snakemake@output[["roc_FPRp_TPR_skel"]])
+theme(plot.title = element_text(hjust = 0.5))
+ggsave(file = snakemake@output[["roc_FPRp_TPR_skel"]],plot=gg)
 
 
-ggplot() + {
+gg  <- ggplot() + {
   if (errorbar) {
     geom_errorbar(data = toplot,
               aes(x = FPRp_skel_mean,
@@ -142,10 +142,10 @@ xlab("FPRp") +
 ylab("FNR") +
 ggtitle("Mean FPRp/FNR (undirected skeleton)") +
 theme_bw() +
-theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file = snakemake@output[["FPRp_FNR_skel"]])
+theme(plot.title = element_text(hjust = 0.5)) 
+ggsave(file = snakemake@output[["FPRp_FNR_skel"]],plot=gg)
 
-ggplot() + {
+gg  <- ggplot() + {
   if (errorbar) {
     geom_errorbar(data = toplot,
               aes(x = FNR_skel_mean,
@@ -185,8 +185,8 @@ ylab("FPR") +
 xlab("FNR") +
 ggtitle("Mean FNR/FPRp (undirected skeleton)") +
 theme_bw() +
-theme(plot.title = element_text(hjust = 0.5)) +
-ggsave(file = snakemake@output[["fnr_fprp_skel"]])
+theme(plot.title = element_text(hjust = 0.5))
+ggsave(file = snakemake@output[["fnr_fprp_skel"]],plot=gg)
 
 # ggplot() +
 # geom_col(data = toplot,

@@ -108,8 +108,8 @@ This study took about 2h to finish on a 80-cores machine and is probably too lar
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
-4. Contact me at felix leopoldo rios at gmail com
-
+4. Push to the branch (`git push origin my-new-feature`)
+5. Open a pull request
 
 ## License
 
