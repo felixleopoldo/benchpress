@@ -185,7 +185,7 @@ if (file.info(argv$adjmat_est)$size > 0) {
                     true_n_non_edges_skel = "None")
 }
 
-print("In run_summarise.R")
-print(df)
+#print("In run_summarise.R")
+#print(df)
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

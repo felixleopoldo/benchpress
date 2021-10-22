@@ -19,7 +19,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gobnilp-bge", "itsearch_sample-bge"
+                    "gobnilp-bge", "omcmc_itsample-bge","itsearch_sample-bge"
                 ]
             },
             "adjmat_true_plots": true,
@@ -346,11 +346,11 @@
                     "continuous": true,
                     "score_type": "BGe",
                     "plot": false,
-                    "palim": [2, 3, 4, 5],
+                    "palim": [3],
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-                    "timeout": 5,
+                    "timeout": 8,
 		            "time_limit": null,
 		            "gap_limit": null,
                     "prune": true
@@ -931,7 +931,7 @@
                 },
                 {
                     "id": "itsearch_sample-bge",
-                    "timeout": null,
+                    "timeout": 50,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -1137,7 +1137,8 @@
                         0.3,
                         0.2
                     ],
-                    "burnin": 0
+                    "burnin": 0,
+                    "timeout": null
                 },
                 {
                     "id": "omcmc_itmap-bge",
@@ -1160,7 +1161,8 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0
+                    "burnin": 0,
+                    "timeout": null
                 },
                 {
                     "id": "omcmc_pcalg005-bge",
@@ -1177,6 +1179,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.99,
@@ -1209,6 +1212,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "timeout": 10,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.2,
@@ -1236,6 +1240,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1261,6 +1266,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1284,6 +1290,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1307,6 +1314,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5

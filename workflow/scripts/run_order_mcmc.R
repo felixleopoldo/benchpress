@@ -1,4 +1,5 @@
 library(BiDAG)
+library(R.utils)
 
 adjmatToEdgeString <- function(adjmat, labels) {
   edgeinds <- which(adjmat == 1, arr.ind = TRUE)
@@ -92,61 +93,79 @@ if (snakemake@wildcards[["scoretype"]] == "bde") {
 if (snakemake@wildcards[["scoretype"]] == "bge") {
   myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
-start <- proc.time()[1]
-set.seed(seed)
-order_mcmc_res <- orderMCMC(myscore,
-                            startspace = startspace,
-                            plus1 = as.logical(snakemake@wildcards[["plus1"]]),
-                            MAP = as.logical(snakemake@wildcards[["MAP"]]),
-                            chainout = TRUE,
-                            scoreout = TRUE,
-                            alpha = alpha,
-                            iterations = iterations,
-                            stepsave = stepsave,
-                            gamma = as.numeric(snakemake@wildcards[["gamma"]]),
-                            cpdag = as.logical(snakemake@wildcards[["cpdag"]])
-                            )
 
-totaltime <- proc.time()[1] - start
-endspace <- order_mcmc_res$space$adjacency # This might not be what we want
+wrapper <- function(){
+  start <- proc.time()[1]
+  set.seed(seed)
+  order_mcmc_res <- orderMCMC(myscore,
+                              startspace = startspace,
+                              plus1 = as.logical(snakemake@wildcards[["plus1"]]),
+                              MAP = as.logical(snakemake@wildcards[["MAP"]]),
+                              chainout = TRUE,
+                              scoreout = TRUE,
+                              alpha = alpha,
+                              iterations = iterations,
+                              stepsave = stepsave,
+                              gamma = as.numeric(snakemake@wildcards[["gamma"]]),
+                              cpdag = as.logical(snakemake@wildcards[["cpdag"]])
+                              )
 
-# This returns a string which is a list of flattened adjacency matrices.
+  totaltime <- proc.time()[1] - start
+  endspace <- order_mcmc_res$space$adjacency # This might not be what we want
 
-labels <- colnames(data)
-added <- dummyEdges(labels)
+  # This returns a string which is a list of flattened adjacency matrices.
 
-start_edges <- adjmatToEdgeString(order_mcmc_res$traceadd$incidence[[1]], labels)
+  labels <- colnames(data)
+  added <- dummyEdges(labels)
 
-res <- data.frame("index" = c(-2, -1, 0),
-                  "score" = c(0, 0, order_mcmc_res$trace[[1]]),
-                  "added" = c(added, "[]", start_edges),
-                  "removed" = c("[]", added, "[]"))
+  start_edges <- adjmatToEdgeString(order_mcmc_res$traceadd$incidence[[1]], labels)
 
-adjmat_traj <- order_mcmc_res$traceadd$incidence
-m <- length(adjmat_traj)
+  res <- data.frame("index" = c(-2, -1, 0),
+                    "score" = c(0, 0, order_mcmc_res$trace[[1]]),
+                    "added" = c(added, "[]", start_edges),
+                    "removed" = c("[]", added, "[]"))
 
-prevmat <- order_mcmc_res$traceadd$incidence[[1]]
-for (i in seq(2, m)) {
-  if (all(adjmat_traj[[i]] == prevmat)) {
-    next
+  adjmat_traj <- order_mcmc_res$traceadd$incidence
+  m <- length(adjmat_traj)
+
+  prevmat <- order_mcmc_res$traceadd$incidence[[1]]
+  for (i in seq(2, m)) {
+    if (all(adjmat_traj[[i]] == prevmat)) {
+      next
+    }
+
+    removed_edge_mat <- prevmat - (prevmat & adjmat_traj[[i]]) * 1
+    added_edge_mat <- adjmat_traj[[i]] - (prevmat & adjmat_traj[[i]]) * 1
+
+    added_edges <- adjmatToEdgeString(added_edge_mat, labels)
+    removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
+
+    df <- data.frame("index" = i,
+                      "score" = order_mcmc_res$trace[i],
+                      "added" = added_edges,
+                      "removed" = removed_edges)
+
+    res <- rbind(res, df)
+
+    prevmat <- adjmat_traj[[i]]
   }
 
-  removed_edge_mat <- prevmat - (prevmat & adjmat_traj[[i]]) * 1
-  added_edge_mat <- adjmat_traj[[i]] - (prevmat & adjmat_traj[[i]]) * 1
+  write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
 
-  added_edges <- adjmatToEdgeString(added_edge_mat, labels)
-  removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
-
-  df <- data.frame("index" = i,
-                    "score" = order_mcmc_res$trace[i],
-                    "added" = added_edges,
-                    "removed" = removed_edges)
-
-  res <- rbind(res, df)
-
-  prevmat <- adjmat_traj[[i]]
+  write(totaltime, file = snakemake@output[["time"]])
 }
 
-write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
-
-write(totaltime, file = snakemake@output[["time"]])
+if(snakemake@wildcards[["timeout"]] == "None"){
+    wrapper()
+} else {
+    res <- NULL
+    tryCatch({
+    res <- withTimeout({
+        wrapper()
+    }, timeout = snakemake@wildcards[["timeout"]])
+    }, TimeoutException = function(ex) {
+        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty grape and time files.", sep=""))
+        file.create(filename)
+        cat("None",file=snakemake@output[["time"]],sep="\n")    
+    })
+}

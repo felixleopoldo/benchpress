@@ -37,7 +37,7 @@ for (algorithm in active_algorithms){
     
     if (sum(is.na(ROCdf[,"true_n_edges_skel"])) == nrow(ROCdf)){
         # Only NAs. This happens if all instatitiations of the algorithm was timed out.
-        print("Nothing interesting")
+        # print("Nothing interesting")
         next
     }
 

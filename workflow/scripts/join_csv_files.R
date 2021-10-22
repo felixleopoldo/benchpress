@@ -36,8 +36,7 @@ for (filename in snakemake@input[["res"]]) {
 output = snakemake@output[[1]]
 if (nrow(df) > 0){
     write.csv(df, file = output, row.names = FALSE)
-} else {
-    print(df)
+} else {    
     print("Creating empty file.")
     file.create(output)
 }
