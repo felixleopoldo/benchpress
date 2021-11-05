@@ -90,7 +90,7 @@ def adjmat_plots():
     return ret
 
 def graph_true_plots():
-    return [[expand("{output_dir}/adjmat/{adjmat_string}.ps",
+    return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -104,7 +104,7 @@ def graph_plots():
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjmat.ps",
+            "adjmat.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
@@ -287,11 +287,11 @@ rule plot_dot:
     input:
         filename="{output_dir}/{something}.dot" 
     output:
-        filename="{output_dir}/{something}.ps" 
+        filename="{output_dir}/{something}.png" 
     singularity:
         docker_image("trilearn")
     shell:
-        "dot -T ps {input.filename} > {output.filename}"
+        "dot -T png {input.filename} -o {output.filename}"
 
 rule mcmc_autocorr_plot:
     input: 
@@ -382,7 +382,7 @@ rule graph_plots:
     run:
         
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".ps")
+            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".png")
 
 rule graph_true_plots:
     input:
@@ -392,5 +392,5 @@ rule graph_true_plots:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".eps")
+            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")
 
