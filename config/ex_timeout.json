@@ -2,7 +2,7 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4_p20",
+                "graph_id": "avneigs4",
                 "parameters_id": "SEM",
                 "data_id": "standardized",
                 "seed_range": [
@@ -19,16 +19,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gobnilp-bge", "omcmc_itsample-bge","itsearch_sample-bge"
+                    "fci-fisher-z","gfci-sem-bic-fisher-z", "rfci-fisher-z", "fges-sem-bic"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
-            "adjmat_plots": [
-
-            ],
+            "adjmat_plots": [],
             "graph_plots": [
-
+                "fci-fisher-z"
             ],
             "mcmc_traj_plots": [
                 {
@@ -129,7 +127,7 @@
                 {
                     "id": "avneigs4",
                     "max_parents": 5,
-                    "n": 80,
+                    "n": 30,
                     "d": 4,
                     "par1": null,
                     "par2": null,
@@ -326,7 +324,10 @@
                     "continuous": false,
                     "score_type": "BDeu",
                     "plot": false,
-                    "palim": [2,3],
+                    "palim": [
+                        2,
+                        3
+                    ],
                     "alpha_mu": null,
                     "alpha_omega_minus_nvars": null,
                     "alpha": [
@@ -335,8 +336,8 @@
                         0.1
                     ],
                     "timeout": 5,
-		            "time_limit": null,
-		            "gap_limit": null,
+                    "time_limit": null,
+                    "gap_limit": null,
                     "prune": true
                 },
                 {
@@ -346,13 +347,15 @@
                     "continuous": true,
                     "score_type": "BGe",
                     "plot": false,
-                    "palim": [3],
+                    "palim": [
+                        3
+                    ],
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-                    "timeout": 8,
-		            "time_limit": null,
-		            "gap_limit": null,
+                    "timeout": null,
+                   "time_limit": null,
+                    "gap_limit": null,
                     "prune": true
                 }
             ],
@@ -424,7 +427,8 @@
                         0.8,
                         1,
                         1.5
-                    ]
+                    ],
+                    "timeout": null
                 },
                 {
                     "id": "fges-bdeu",
@@ -436,7 +440,8 @@
                         2
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": null
+                    "penaltyDiscount": null,
+                    "timeout": null
                 }
             ],
             "tetrad_fci": [
@@ -448,7 +453,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 },
                 {
                     "id": "fci-chi-square",
@@ -458,7 +464,8 @@
                         0.1
                     ],
                     "test": "chi-square-test",
-                    "datatype": "discrete"
+                    "datatype": "discrete",
+                    "timeout": null
                 }
             ],
             "tetrad_gfci": [
@@ -474,7 +481,8 @@
                     "datatype": "discrete",
                     "penaltyDiscount": null,
                     "samplePrior": 1,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 },
                 {
                     "id": "gfci-sem-bic-fisher-z",
@@ -488,7 +496,8 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 }
             ],
             "tetrad_rfci": [
@@ -500,7 +509,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 },
                 {
                     "id": "rfci-chi-square",
@@ -510,7 +520,8 @@
                         0.1
                     ],
                     "test": "chi-square-test",
-                    "datatype": "discrete"
+                    "datatype": "discrete",
+                    "timeout": null
                 }
             ],
             "pcalg_pc": [
@@ -530,7 +541,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "binCItest"
+                    "indepTest": "binCItest",
+                    "timeout": null
                 },
                 {
                     "id": "pc-gaussCItest",
@@ -549,7 +561,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": 1
                 },
                 {
                     "id": "pcalg005",
@@ -563,7 +576,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 },
                 {
                     "id": "pcalg-disCItest",
@@ -581,7 +595,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "disCItest"
+                    "indepTest": "disCItest",
+                    "timeout": null
                 }
             ],
             "bnlearn_mmhc": [
@@ -632,7 +647,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 },
                 {
                     "id": "interiamb-mi",
@@ -646,7 +662,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ],
             "bnlearn_gs": [
@@ -662,7 +679,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 },
                 {
                     "id": "gs-zf",
@@ -674,7 +692,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ],
             "bnlearn_tabu": [
@@ -691,7 +710,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 },
                 {
                     "id": "tabu-bge",
@@ -707,7 +727,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 }
             ],
             "bnlearn_hc": [
@@ -726,7 +747,8 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timeout": null
                 },
                 {
                     "id": "hc-bge",
@@ -744,7 +766,8 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timeout": null
                 }
             ],
             "bidag_itsearch": [
@@ -931,7 +954,7 @@
                 },
                 {
                     "id": "itsearch_sample-bge",
-                    "timeout": 50,
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,

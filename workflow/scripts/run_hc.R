@@ -1,57 +1,55 @@
-library(argparser)
-library(pcalg)
 library(bnlearn)
-library(RBGL)
-
 source("resources/code_for_binary_simulations/make_var_names.R")
 
-p <- arg_parser("A program for running hill-climbing algorithm and save to file.")
-p <- add_argument(p, "--filename", help = "output filename")
-p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
-p <- add_argument(p, "--filename_data", help = "Dataset filename")
-p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--restart", help = "HC parameter", type = "numeric", default = 0)
-p <- add_argument(p, "--perturb", help = "HC parameter", type = "numeric", default = 1)
-p <- add_argument(p, "--score", help = "parameter")
-p <- add_argument(p, "--iss", help = "Score parameter", type = "numeric")
-p <- add_argument(p, "--iss.mu", help = "Score parameter", type = "numeric")
-p <- add_argument(p, "--iss.w", help = "Score parameter")
-p <- add_argument(p, "--l", help = "Score parameter", type = "numeric")
-p <- add_argument(p, "--k", help = "Score parameter", type = "numeric")
-p <- add_argument(p, "--prior", help = "Score parameter")
-p <- add_argument(p, "--beta", help = "Score parameter", type = "numeric")
-argv <- parse_args(p)
+filename <- file.path(snakemake@output[["adjmat"]])
+filename_data <- snakemake@input[["data"]]
 
-filename <- file.path(argv$filename)
-filename_data <- argv$filename_data
-seed <- argv$seed
+wrapper <- function() {
+    seed <- as.integer(snakemake@wildcards[["replicate"]])
+    data <- read.csv(filename_data, check.names = FALSE)
+    names <- names(data)
+    if (snakemake@wildcards[["score"]] %in% c("bde", "bic")) {
+        data <- data[-1,] # Remove range header
+        data <- matrixToDataframe(data, names)
+    }
+    set.seed(seed)
 
-data <- read.csv(filename_data, check.names = FALSE)
-names <- names(data)
-if (argv$score %in% c("bde", "bic")) {
-  data <- data[-1,] # Remove range header
-  data <- matrixToDataframe(data, names)
+    iss.w <- ifelse(snakemake@wildcards[["issw"]] == "None", dim(data)[2] + 2, as.numeric(snakemake@wildcards[["issw"]]))
+    start <- proc.time()[1]
+    output <- hc(data,
+                restart = as.numeric(snakemake@wildcards[["restart"]]),
+                perturb = as.numeric(snakemake@wildcards[["perturb"]]),
+                score = snakemake@wildcards[["score"]],
+                iss = as.numeric(snakemake@wildcards[["iss"]]),
+                iss.mu = as.numeric(snakemake@wildcards[["issmu"]]),
+                iss.w = iss.w,
+                l = as.numeric(snakemake@wildcards[["l"]]),
+                k = as.numeric(snakemake@wildcards[["k"]]),
+                prior = snakemake@wildcards[["prior"]],
+                beta = as.numeric(snakemake@wildcards[["beta"]])
+                )
+    totaltime <- proc.time()[1] - start
+ 
+    ## convert to graphneldag
+    gnel_dag <- as.graphNEL(output)
+    adjmat <- as(gnel_dag, "matrix")
+    colnames(adjmat) <- names
+
+    write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+    write(totaltime, file = snakemake@output[["time"]])
 }
-set.seed(seed)
 
-iss.w <- ifelse(argv$iss.w == "None", dim(data)[2] + 2, as.numeric(argv$iss.w))
-
-output <- hc(data,
-            restart = argv$restart,
-            perturb = argv$perturb,
-            score = argv$score,
-            iss = argv$iss,
-            iss.mu = argv$iss.mu,
-            iss.w = iss.w,
-            l = argv$l,
-            k = argv$k,
-            prior = argv$prior,
-            beta = argv$beta
-            )
-## convert to graphneldag
-gnel_dag <- as.graphNEL(output)
-
-adjmat <- as(gnel_dag, "matrix")
-colnames(adjmat) <- names
-
-write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+if(snakemake@wildcards[["timeout"]] == "None"){
+    wrapper()
+} else {
+    res <- NULL
+    tryCatch({
+    res <- withTimeout({
+        wrapper()
+    }, timeout = snakemake@wildcards[["timeout"]])
+    }, TimeoutException = function(ex) {
+        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep=""))
+        file.create(filename)
+        cat("None",file=snakemake@output[["time"]],sep="\n")    
+    })
+}

@@ -47,8 +47,10 @@ rule tabu:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_tabu"),
         time = alg_output_time_path("bnlearn_tabu")
-    shell:
-        alg_shell("bnlearn_tabu")
+    singularity:
+        docker_image("bnlearn")
+    script:
+        "../scripts/run_tabu.R"
 
 rule summarise_tabu:
     input:
@@ -111,8 +113,10 @@ rule hc:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_hc"),
         time = alg_output_time_path("bnlearn_hc")
-    shell:
-        alg_shell("bnlearn_hc")
+    singularity:
+        docker_image("bnlearn")
+    script:
+        "../scripts/run_hc.R"
 
 rule summarise_hc:
     input:
@@ -142,6 +146,8 @@ rule bnlearn_interiamb:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_interiamb"),
         time = alg_output_time_path("bnlearn_interiamb")
+    singularity:
+        docker_image("bnlearn")
     script:
         "../scripts/run_inter-iamb.R"
 
@@ -173,6 +179,8 @@ rule gs:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_gs"),
         time = alg_output_time_path("bnlearn_gs")
+    singularity:
+        docker_image("bnlearn")
     script:
         "../scripts/run_gs.R"
 
@@ -270,7 +278,7 @@ rule pcalg:
         adjmat = alg_output_adjmat_path("pcalg_pc"),
         time = alg_output_time_path("pcalg_pc")
     singularity:
-        docker_image("bidag")
+        docker_image("pcalg")
     script:
         "../scripts/run_pcalg.R"
 

@@ -281,7 +281,13 @@ rule adjmat_to_dot:
     singularity:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}"
+        """
+        if [ -s {input.filename} ]; then
+            python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
 
 rule plot_dot:
     input:
@@ -291,7 +297,13 @@ rule plot_dot:
     singularity:
         docker_image("trilearn")
     shell:
-        "dot -T png {input.filename} -o {output.filename}"
+        """
+        if [ -s {input.filename} ]; then
+            dot -T png {input.filename} -o {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
 
 rule mcmc_autocorr_plot:
     input: 

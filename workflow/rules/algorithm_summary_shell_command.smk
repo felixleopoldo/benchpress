@@ -13,8 +13,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -38,8 +36,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -63,8 +59,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -89,15 +83,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxiter        --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxp            --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname optimized       --colval true " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " 
 
     elif algorithm == "notears":
         return  "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
-        "--filename_data {input.data} " \
-        "--range_header_data 1 " \ 
         "--filename {output.res} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -116,8 +108,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
-        "--filename_data {input.data} " \
-        "--range_header_data 1 " \ 
         "--filename {output.res} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -138,8 +128,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -164,6 +152,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxiter        --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxp            --colval Inf " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname optimized       --colval true " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
 
@@ -171,8 +160,6 @@ def summarise_alg_shell(algorithm):
         return "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
-        "--filename_data {input.data} " \
-        "--range_header_data 1 " \ 
         "--filename {output.res} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
@@ -196,9 +183,7 @@ def summarise_alg_shell(algorithm):
         return "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
-        "--filename_data {input.data} " \
         "--filename {output} " \ 
-        "--range_header_data 1 " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate     --colval {wildcards.replicate} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname algorithm     --colval itsearch "\
@@ -238,9 +223,7 @@ def summarise_alg_shell(algorithm):
         return "Rscript workflow/scripts/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
-        "--filename_data {input.data} " \
         "--filename {output} " \ 
-        "--range_header_data 1 " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
@@ -257,6 +240,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname solveconfl  --colval {wildcards.solveconfl} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname numCores     --colval {wildcards.numCores} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose      --colval {wildcards.verbose} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
 
 
@@ -264,9 +248,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
@@ -286,16 +268,14 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug       --colval false " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maximizeargs   --colval null " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
-
 
     elif algorithm == "h2pc":
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval h2pc "\
@@ -313,9 +293,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm        --colval bnlearn_interiamb "\
@@ -331,6 +309,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
                 
@@ -338,9 +317,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm        --colval gs "\
@@ -356,15 +333,14 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
 
     elif algorithm == "tetrad_fges":
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval tetrad_fges "\
@@ -375,6 +351,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -382,9 +359,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval tetrad_fci "\
@@ -393,6 +368,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
 
@@ -400,9 +376,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval tetrad_gfci "\
@@ -411,7 +385,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname score       --colval {wildcards.score} "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\                
+                " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\      
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\          
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
@@ -421,9 +396,7 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval tetrad_rfci "\
@@ -432,15 +405,14 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
 
     elif algorithm=="gobnilp":
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
                 "--filename {output.res} " \ 
-                "--range_header_data 1 " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname algorithm   --colval gobnilp "\
@@ -465,8 +437,6 @@ def summarise_alg_shell(algorithm):
         return "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
@@ -490,8 +460,6 @@ def summarise_alg_shell(algorithm):
         return  "Rscript workflow/scripts/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename_data {input.data} " \
-                "--range_header_data 1 " \ 
                 "--filename {output} " \ 
                 " && python workflow/scripts/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\

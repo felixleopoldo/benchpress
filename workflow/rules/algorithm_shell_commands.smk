@@ -107,6 +107,7 @@ def alg_shell(algorithm):
             "--k {wildcards.k} " \
             "--prior {wildcards.prior} " \
             "--beta {wildcards.beta} " \
+            "--timeout {wildcards.timeout} " \
             "--filename {output.adjmat} " 
 
     elif algorithm == "rblip_asobs":
@@ -152,7 +153,7 @@ def alg_shell(algorithm):
                 echo -e gobnilp/delimiter = \134\042,\134\042 >> {output.adjmat}.gobnilp.set 
                 cat resources/extra_args/{wildcards.extra_args} >> {output.adjmat}.gobnilp.set 
                 if [ {wildcards.timeout} != \"None\" ]; then 
-                    timeout --signal=SIGINT {wildcards.timeout} bash -c '/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data}';
+                    timeout --signal=SIGKILL {wildcards.timeout} bash -c '/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data}';
                 else 
                     /myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data};
                 fi 

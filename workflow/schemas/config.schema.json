@@ -547,7 +547,7 @@
                             "title": "bnlearn_gs",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/bnlearn_interiamb"
+                                "$ref": "#/definitions/bnlearn_gs"
                             }
                         },
                         "bnlearn_hc": {
@@ -1672,16 +1672,24 @@
                         "BIC"
                     ]
                 },
-                "extra_args":{
-                    "anyOf":[
-                        {"type":"string"},
-                        {"type":"null"}
-                    ]                    
+                "extra_args": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
-                "constraints":{
-                    "anyOf":[
-                        {"type":"string"},
-                        {"type":"null"}
+                "constraints": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "plot": {
@@ -1702,7 +1710,7 @@
                 "timeout": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-        		"time_limit": {
+                "time_limit": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "gap_limit": {
@@ -1965,6 +1973,8 @@
                 },
                 "penaltyDiscount": {
                     "$ref": "#/definitions/flexnonnegnumnull"
+                },"timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "structurePrior": {
                     "$ref": "#/definitions/flexnonnegnum"
@@ -1978,7 +1988,8 @@
                 "datatype",
                 "samplePrior",
                 "structurePrior",
-                "penaltyDiscount"
+                "penaltyDiscount",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2025,6 +2036,9 @@
                 },
                 "datatype": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "required": [
@@ -2082,6 +2096,9 @@
                         "disc-bic-score",
                         "sem-bic"
                     ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "datatype": {
                     "type": "string"
@@ -2145,6 +2162,9 @@
                         "kci-test",
                         "prob-test"
                     ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "datatype": {
                     "type": "string"
@@ -2224,12 +2244,16 @@
                 },
                 "solveconfl": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2249,7 +2273,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 }
             ]
         },
@@ -2399,6 +2424,9 @@
                 },
                 "undirected": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2409,7 +2437,8 @@
                 "B",
                 "maxsx",
                 "debug",
-                "undirected"
+                "undirected",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2477,6 +2506,9 @@
                 },
                 "undirected": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2487,7 +2519,8 @@
                 "B",
                 "maxsx",
                 "debug",
-                "undirected"
+                "undirected",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2500,7 +2533,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ]
         },
@@ -2536,6 +2570,9 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2547,7 +2584,8 @@
                 "issmu",
                 "l",
                 "k",
-                "prior"
+                "prior",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2606,6 +2644,9 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2619,7 +2660,8 @@
                 "k",
                 "prior",
                 "perturb",
-                "restart"
+                "restart",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2638,7 +2680,8 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timout": null
                 }
             ]
         },

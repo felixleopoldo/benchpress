@@ -5,7 +5,11 @@ if snakemake.wildcards["datatype"] == "discrete":
     cmd += "sed '2d' {dataset} > {adjmat}.no_range_header && "
 
 cmd += "/usr/bin/time -f \"%e\" -o {time} "  
-cmd += "java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " 
+if snakemake.wildcards["timeout"] != "None":
+    cmd += "timeout --signal SIGKILL {timeout} bash -c 'java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " 
+else:
+    cmd += "bash -c 'java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar " 
+
 cmd += "--algorithm rfci "
 cmd +="--data-type {datatype} "
 
@@ -21,20 +25,23 @@ if snakemake.wildcards["test"] in ["fisher-z-test", "chi-square-test"]:
     cmd +="--alpha {alpha} " 
 
 cmd +="--json-graph "
-cmd +="--prefix {adjmat} " 
-cmd +='&& Rscript workflow/scripts/tetrad_graph_to_adjmat.R ' 
-cmd +='--jsongraph {adjmat}_graph.json ' 
-cmd +='--filename {adjmat} ' 
+cmd +="--prefix {adjmat} '"
 
-if snakemake.wildcards["datatype"] == "discrete":
-    cmd += "&& rm -f {adjmat}.no_range_header "
-
-cmd +='&& ' 
-cmd +='rm {adjmat}_graph.json ' 
-cmd +='&& ' 
-cmd +='rm {adjmat}.txt'
-
-command = (cmd).format(dataset=snakemake.input["data"], **snakemake.output, **snakemake.wildcards)
+command = cmd.format(dataset=snakemake.input["data"], **snakemake.output, **snakemake.wildcards)
 
 os.system(command)
 
+cmd = """
+        if [ -f {adjmat}_graph.json ]; then 
+            Rscript workflow/scripts/tetrad_graph_to_adjmat.R --jsongraph {adjmat}_graph.json --filename {adjmat}  
+            rm -f {adjmat}.no_range_header 
+            rm {adjmat}_graph.json 
+            rm {adjmat}.txt; 
+        else
+            touch {adjmat}
+            echo None > {time}
+        fi
+       """
+command = cmd.format(dataset=snakemake.input["data"], **snakemake.output, **snakemake.wildcards)
+
+os.system(command)

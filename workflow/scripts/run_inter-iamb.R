@@ -1,6 +1,4 @@
-library(pcalg)
 library(bnlearn)
-library(RBGL)
 
 source("resources/code_for_binary_simulations/make_var_names.R")
 
@@ -28,22 +26,38 @@ if (snakemake@wildcards[["maxsx"]] != "None") {
   max.sx <- as.integer(snakemake@wildcards[["maxsx"]])
 }
 
-start <- proc.time()[1]
-output <- inter.iamb(data,
-                     alpha = as.numeric(snakemake@wildcards[["alpha"]]),
-                     test = snakemake@wildcards[["test"]],
-                     B = B,
-                     max.sx = max.sx,
-                     debug = as.logical(snakemake@wildcards[["debug"]]),
-                     undirected = as.logical(snakemake@wildcards[["undirected"]])
-                     )
-totaltime <- proc.time()[1] - start
-## convert to graphneldag
-gnel_dag <- as.graphNEL(output)
+wrapper <- function() {
+    start <- proc.time()[1]
+    output <- inter.iamb(data,
+                        alpha = as.numeric(snakemake@wildcards[["alpha"]]),
+                        test = snakemake@wildcards[["test"]],
+                        B = B,
+                        max.sx = max.sx,
+                        debug = as.logical(snakemake@wildcards[["debug"]]),
+                        undirected = as.logical(snakemake@wildcards[["undirected"]])
+                        )
+    totaltime <- proc.time()[1] - start
+    ## convert to graphneldag
+    gnel_dag <- as.graphNEL(output)
 
-adjmat <- as(gnel_dag, "matrix")
-colnames(adjmat) <- header
+    adjmat <- as(gnel_dag, "matrix")
+    colnames(adjmat) <- header
 
-write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
-write(totaltime, file = snakemake@output[["time"]])
+    write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+    write(totaltime, file = snakemake@output[["time"]])
+}
 
+if(snakemake@wildcards[["timeout"]] == "None"){
+    wrapper()
+} else {
+    res <- NULL
+    tryCatch({
+    res <- withTimeout({
+        wrapper()
+    }, timeout = snakemake@wildcards[["timeout"]])
+    }, TimeoutException = function(ex) {
+        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep=""))
+        file.create(filename)
+        cat("None",file=snakemake@output[["time"]],sep="\n")    
+    })
+}

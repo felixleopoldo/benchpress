@@ -1,8 +1,6 @@
 library(argparser)
 library(BiDAG)
 library(pcalg)
-#library(bnlearn)
-
 
 ### This function extracts directed edges from an EG
 EGdedges <- function(incidence) {
@@ -103,19 +101,8 @@ DAG2EG <- function(incidence) {
 p <- arg_parser("A program for summarising and save to file.")
 p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
 p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
-p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--filename", help = "Output filename")
-p <- add_argument(p,
-                  "--range_header_data",
-                  help = "1 if the second row of the data indicates the variable ranges.",
-                  default = 0)
-p <- add_argument(p,
-                  "--adjmat_header",
-                  help = "1 if the first row in the estimated adjaceny matrix are the variable names.",
-                  default = 1)
-
 argv <- parse_args(p)
-
 
 benchmarks <- function(true_adjmat, estimated_adjmat){
 
@@ -153,6 +140,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
     }
 
 
+
     df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                     FPRn_pattern = compres["FPR_P"],
                     SHD_pattern = compres["SHD"],
@@ -184,8 +172,5 @@ if (file.info(argv$adjmat_est)$size > 0) {
                     true_n_edges_skel = "None",
                     true_n_non_edges_skel = "None")
 }
-
-#print("In run_summarise.R")
-#print(df)
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)
