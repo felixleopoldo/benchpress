@@ -211,6 +211,8 @@ ggplot() + {
   xlab("Parameter.value") +
   ylab("Time (s.)") +
   theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_discrete(guide = guide_axis(angle=5))
+#scale_x_discrete(guide = guide_axis(n.dodge=2))
   ggsave(file = snakemake@output[["elapsed_time"]])
 }
 # ggplot() +

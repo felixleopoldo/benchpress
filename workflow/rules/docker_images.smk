@@ -2,11 +2,11 @@
 
 def docker_image(algorithm):
     if algorithm == "trilearn":
-        return "docker://onceltuca/trilearn:1.23"
+        return "docker://onceltuca/trilearn:1.23-bp"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:master_e60ef14"
     elif algorithm == "thomasjava":
-        return "docker://onceltuca/thomasgreen:1.19"
+        return "docker://onceltuca/thomasgreen:1.19-bp"
     elif algorithm == "notears":
         return "docker://onceltuca/jmoss20notears:1.4"
     elif algorithm == "greenfortran":

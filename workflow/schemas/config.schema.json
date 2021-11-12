@@ -1496,8 +1496,17 @@
                 "radii": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
+                "n_particles": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "M": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "required": [
@@ -1506,10 +1515,11 @@
                 "alpha",
                 "beta",
                 "radii",
-                "N",
+                "n_particles",
                 "M",
                 "pseudo_obs",
-                "mcmc_seed"
+                "mcmc_seed",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1518,12 +1528,13 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
+                    "n_particles": [
                         50
                     ],
                     "M": 100,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -1546,7 +1557,7 @@
                 "indeg": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "time": {
+                "timeout": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "allocated": {
@@ -1571,7 +1582,7 @@
                 "scorermethod",
                 "solvermethod",
                 "indeg",
-                "time",
+                "timeout",
                 "allocated",
                 "scorefunction",
                 "alpha",
@@ -1584,7 +1595,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "time": [
+                    "timeout": [
                         180
                     ],
                     "allocated": 80,
@@ -1854,6 +1865,9 @@
                 "sep": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
                 }
@@ -1864,7 +1878,8 @@
                 "n_samples",
                 "prior",
                 "mcmc_seed",
-                "randomits"
+                "randomits",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1878,7 +1893,8 @@
                     "clq": null,
                     "sep": null,
                     "penalty": null,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout":null
                 }
             ]
         },

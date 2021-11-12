@@ -3,8 +3,8 @@
         "data": [
             {
                 "graph_id": "avneigs4",
-                "parameters_id": "SEM",
-                "data_id": "standardized",
+                "parameters_id": "binbn",
+                "data_id": "nonstandardized",
                 "seed_range": [
                     1,
                     1
@@ -19,14 +19,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "fci-fisher-z","gfci-sem-bic-fisher-z", "rfci-fisher-z", "fges-sem-bic"
+                    "gt13_multipair-disc"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
             "adjmat_plots": [],
             "graph_plots": [
-                "fci-fisher-z"
+                
             ],
             "mcmc_traj_plots": [
                 {
@@ -69,14 +69,14 @@
                     "id": "standardized",
                     "standardized": true,
                     "sample_sizes": [
-                        100
+                        300
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
                     "sample_sizes": [
-                        1000
+                        300
                     ]
                 },
                 {
@@ -218,12 +218,13 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
-                        50
+                    "n_particles": [
+                        30, 20
                     ],
-                    "M": 100,
+                    "M": 50,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "trilearn-disc",
@@ -231,7 +232,7 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
+                    "n_particles": [
                         50
                     ],
                     "M": 1000,
@@ -239,7 +240,8 @@
                     "mcmc_seed": [
                         1,
                         2
-                    ]
+                    ],
+                    "timeout": null
                 },
                 {
                     "id": "trilearn05-disc",
@@ -247,10 +249,11 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": 50,
+                    "n_particles": 50,
                     "M": 300,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ],
             "sklearn_glasso": [
@@ -274,9 +277,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "timeout": 10,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -292,9 +293,7 @@
                     "scorermethod": "is",
                     "solvermethod": "asobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "timeout": 10,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -371,7 +370,8 @@
                     "clq": null,
                     "sep": null,
                     "penalty": null,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "gt13_multipair-disc",
@@ -384,7 +384,8 @@
                     "mcmc_seed": 1,
                     "clq": 2,
                     "sep": 4,
-                    "penalty": 1.5
+                    "penalty": 1.5,
+                    "timeout": 5
                 }
             ],
             "gg99_singlepair": [
@@ -562,7 +563,7 @@
                     "numCores": 1,
                     "verbose": false,
                     "indepTest": "gaussCItest",
-                    "timeout": 1
+                    "timeout": null
                 },
                 {
                     "id": "pcalg005",

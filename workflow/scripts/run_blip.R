@@ -11,7 +11,7 @@ p <- add_argument(p, "--output_dir", help = "output dir", default = ".")
 p <- add_argument(p, "--filename", help = "Output filename")
 p <- add_argument(p, "--filename_data", help = "Dataset filename")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
-p <- add_argument(p, "--time", help = "Blip max time", type = "numeric")
+p <- add_argument(p, "--time", help = "Blip max time")
 p <- add_argument(p, "--scorer.method", help = "scorer.method", default = "is")
 p <- add_argument(p, "--solver.method", help = "solver.method", default = "winasobs")
 p <- add_argument(p, "--indeg", help = "in degree", type = "numeric", default = 5)
@@ -22,7 +22,6 @@ p <- add_argument(p, "--alpha", help = "alpha", type = "numeric", default = 1.0)
 p <- add_argument(p, "--verbose", help = "see r.blip doc", type = "numeric", default = 0)
 
 argv <- parse_args(p)
-
 directory <- argv$output_dir
 dir.create(directory, showWarnings = FALSE)
 filename <- file.path(argv$filename)
@@ -38,12 +37,16 @@ set.seed(seed)
 varnames <- varnames.make(data_dim)
 datadf <- matrixToDataframe(data, varnames = varnames)
 
+#timeout <- 360000 # Indicates infinity since we dont use timeout here
+#if (argv$time != "None") {
+timeout <- as.numeric(argv$time)
+#}
 blipfit <- blip.learn(datadf,
                         scorer.method = argv$scorer.method,
                         solver.method = argv$solver.method,
                         indeg = argv$indeg,
                         cores = argv$cores,
-                        time = argv$time,
+                        time = timeout,
                         allocated = argv$allocated,
                         scorefunction = argv$scorefunction,
                         alpha = argv$alpha,

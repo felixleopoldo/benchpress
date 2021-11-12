@@ -29,7 +29,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \               
-                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \               
+                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} " \               
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     elif algorithm == "gg99_singlepair":
@@ -52,7 +53,8 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname clq             --colval {wildcards.clq} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname sep             --colval {wildcards.sep} " \
                 " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed       --colval {wildcards.mcmc_seed} " \
-                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \               
+                " && python workflow/scripts/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} " \               
                 " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " 
 
     elif algorithm == "bnlearn_tabu":
@@ -167,7 +169,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python workflow/scripts/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
-        " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval {wildcards.time} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname timeout            --colval {wildcards.timeout} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname scorermethod   --colval {wildcards.scorermethod} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname solvermethod   --colval {wildcards.solvermethod} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname indeg           --colval {wildcards.indeg} " \ 
@@ -176,7 +178,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname scorefunction   --colval {wildcards.scorefunction} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
-        " && python workflow/scripts/add_column.py --filename {output} --colname totaltime            --colval `cat {input.time}` " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
 
     elif algorithm == "bidag_itsearch":
@@ -447,12 +449,13 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname beta        --colval {wildcards.beta} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname radii       --colval {wildcards.radii} "\
-                " && python workflow/scripts/add_column.py --filename {output} --colname N           --colval {wildcards.N} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname n_particles           --colval {wildcards.n_particles} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname M           --colval {wildcards.M} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname pseudo_obs  --colval {wildcards.pseudo_obs} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname datatype   --colval {wildcards.datatype} "\
+                " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
 
 

@@ -3,36 +3,62 @@
 
 def alg_shell(algorithm):
     if algorithm == "gt13_multipair":
-        return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            
-            "   tail -n +3 {input.data} > {output.seqgraph}.noheader " \ 
-            "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
-            "   && " \
-            "   if [ {wildcards.prior} = \"mbc\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
-            "   elif [ {wildcards.prior} = \"bc\" ]; then " \
-            "       java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; " \
-            "   elif [ {wildcards.prior} = \"ep\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
-            "   else  " \
-            "       echo prior not exist ; " \
-            "   fi " \
-            " fi && " \
-            "if [ {wildcards.datatype} = \"continuous\" ]; then  \n " \
-            "   tail -n +2 {input.data} > {output.seqgraph}.noheader " \ 
-            "   && sed --in-place 's/,/\ /g' {output.seqgraph}.noheader " \
-            "   && " \
-            "   if [ {wildcards.prior} = \"mbc\" ]; then " \       
-            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; " \  
-            "   elif [ {wildcards.prior} = \"bc\" ]; then " \
-            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; " \
-            "   elif [ {wildcards.prior} = \"ep\" ]; then " \            
-            "       java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph} ;" \
-            "   else  " \
-            "   echo prior not exist ; " \
-            "   fi "\
-            "fi " \
-            "&& echo 1 > {output.time} "
+        return """if [ {wildcards.datatype} = \"discrete\" ]; then 
+               tail -n +3 {input.data} > {output.seqgraph}.noheader 
+               sed --in-place 's/,/\ /g' {output.seqgraph}.noheader 
+        
+               if [ {wildcards.prior} = \"mbc\" ]; then 
+                    if [ {wildcards.timeout} = \"None\" ]; then 
+                        /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; 
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}'; 
+                    fi
+               elif [ {wildcards.prior} = \"bc\" ]; then 
+                    if [ {wildcards.timeout} = \"None\" ]; then 
+                        /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; 
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}';
+                    fi
+               elif [ {wildcards.prior} = \"ep\" ]; then 
+                   if [ {wildcards.timeout} = \"None\" ]; then 
+                       /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph} ;
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGM -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}' ;
+                    fi
+               fi 
+             fi
+            if [ {wildcards.datatype} = \"continuous\" ]; then  
+               tail -n +2 {input.data} > {output.seqgraph}.noheader 
+               sed --in-place 's/,/\ /g' {output.seqgraph}.noheader 
+               if [ {wildcards.prior} = \"mbc\" ]; then 
+                   if [ {wildcards.timeout} = \"None\" ]; then 
+                       /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; 
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior mbc -clq {wildcards.clq} -sep {wildcards.sep} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}'; 
+                    fi
+               elif [ {wildcards.prior} = \"bc\" ]; then 
+                   if [ {wildcards.timeout} = \"None\" ]; then 
+                       /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}; 
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior bc -ascore {wildcards.ascore} -bscore {wildcards.bscore} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}'; 
+                    fi
+               elif [ {wildcards.prior} = \"ep\" ]; then 
+                   if [ {wildcards.timeout} = \"None\" ]; then 
+                       /usr/bin/time -q -f \"%e\" -o {output.time} java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph} ;
+                    else
+                        /usr/bin/time -q -f \"%e\" -o {output.time} timeout -s SIGINT {wildcards.timeout} bash -c  'java -classpath /jtsampler/classes FitGaussianGM -v  -n {wildcards.n_samples} -s 2 -r {wildcards.randomits} -prior ep -pen {wildcards.penalty} -seed {wildcards.mcmc_seed} < {output.seqgraph}.noheader > {output.seqgraph}';
+                    fi
+               fi 
+            fi 
+            
+            if [ -f {output.seqgraph} ]; then
+                sleep 1
+            else
+                touch {output.seqgraph}
+                echo None > {output.time};
+            fi
 
+            """
 
     elif algorithm == "gg99_singlepair":
             return "if [ {wildcards.datatype} = \"discrete\" ]; then \n " \            
@@ -77,45 +103,12 @@ def alg_shell(algorithm):
             "--filename {output.adjmat} " \     
             "--seed {wildcards.replicate}"        
 
-    elif algorithm == "bnlearn_tabu":
-        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-            "Rscript workflow/scripts/run_tabu.R " \
-            "--filename_data {input.data} " \
-            "--output_dir {wildcards.output_dir} " \
-            "--score {wildcards.score} " \
-            "--iss {wildcards.iss} " \
-            "--iss.mu {wildcards.issmu} " \
-            "--iss.w {wildcards.issw} " \
-            "--l {wildcards.l} " \
-            "--k {wildcards.k} " \
-            "--prior {wildcards.prior} " \
-            "--beta {wildcards.beta} " \
-            "--filename {output.adjmat} " 
-            
-    if algorithm == "bnlearn_hc":
-        return "/usr/bin/time -f \"%e\" -o {output.time} " \  
-            "Rscript workflow/scripts/run_hc.R " \
-            "--filename_data {input.data} " \
-            "--output_dir {wildcards.output_dir} " \
-            "--perturb {wildcards.perturb} " \
-            "--restart {wildcards.restart} " \
-            "--score {wildcards.score} " \
-            "--iss {wildcards.iss} " \
-            "--iss.mu {wildcards.issmu} " \
-            "--iss.w {wildcards.issw} " \
-            "--l {wildcards.l} " \
-            "--k {wildcards.k} " \
-            "--prior {wildcards.prior} " \
-            "--beta {wildcards.beta} " \
-            "--timeout {wildcards.timeout} " \
-            "--filename {output.adjmat} " 
-
     elif algorithm == "rblip_asobs":
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \  
                 "Rscript workflow/scripts/run_blip.R " \
                 "--filename_data {input.data} " \
                 "--output_dir {wildcards.output_dir} " \
-                "--time {wildcards.time} " \
+                "--time {wildcards.timeout} " \
                 "--scorer.method {wildcards.scorermethod} " \
                 "--solver.method {wildcards.solvermethod} " \
                 "--indeg {wildcards.indeg} " \  
@@ -172,12 +165,28 @@ def alg_shell(algorithm):
         return command
 
     elif algorithm == "trilearn_pgibbs":
-        return  "if [ {wildcards.datatype} = \"discrete\" ]; then "\
-                "pgibbs_loglinear_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}; " \  
-                "elif [ {wildcards.datatype} = \"continuous\" ]; then " \
-                "pgibbs_ggm_sample -N {wildcards.N} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}; " \  
-                "fi " \
-                "&& echo '1' > {output.time} " 
+        return  """
+                if [ {wildcards.timeout} = \"None\" ]; then                     
+                    if [ {wildcards.datatype} = \"discrete\" ]; then                         
+                        /usr/bin/time -f \"%e\" -o {output.time} pgibbs_loglinear_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}; 
+                    elif [ {wildcards.datatype} = \"continuous\" ]; then 
+                        /usr/bin/time -f \"%e\" -o {output.time} pgibbs_ggm_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}; 
+                    fi
+                else
+                     if [ {wildcards.datatype} = \"discrete\" ]; then 
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'pgibbs_loglinear_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}'; 
+                    elif [ {wildcards.datatype} = \"continuous\" ]; then 
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'pgibbs_ggm_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}'; 
+                    fi
+                fi
+
+                if [ -f {output.adjvecs} ]; then
+                    sleep 1
+                else
+                    touch {output.adjvecs}
+                    echo None > {output.time};
+                fi
+                """ 
 
     elif algorithm == "gg99_singlepair_fortran":
         return  "out=$RANDOM.csv " \
