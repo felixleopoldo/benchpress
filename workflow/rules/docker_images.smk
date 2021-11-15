@@ -8,11 +8,11 @@ def docker_image(algorithm):
     elif algorithm == "thomasjava":
         return "docker://onceltuca/thomasgreen:1.19-bp"
     elif algorithm == "notears":
-        return "docker://onceltuca/jmoss20notears:1.4"
+        return "docker://onceltuca/jmoss20notears:1.4-bp"
     elif algorithm == "greenfortran":
         return "docker://onceltuca/guidicigreen1999"
     elif algorithm == "pydatascience":
-        return "docker://civisanalytics/datascience-python"
+        return "docker://onceltuca/datascience-python"
     elif algorithm == "bidag":
         return "docker://onceltuca/bidag:2.0.3"
     elif algorithm == "bnlearn":

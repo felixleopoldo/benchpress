@@ -2,8 +2,8 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4",
-                "parameters_id": "binbn",
+                "graph_id": "trilearn_cta",
+                "parameters_id": "intra-class",
                 "data_id": "nonstandardized",
                 "seed_range": [
                     1,
@@ -19,14 +19,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gt13_multipair-disc"
+                    "sklearn_glasso"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
             "adjmat_plots": [],
             "graph_plots": [
-                
+                "sklearn_glasso"
             ],
             "mcmc_traj_plots": [
                 {
@@ -137,7 +137,7 @@
             "trilearn_cta": [
                 {
                     "id": "trilearn_cta",
-                    "order": 50,
+                    "order": 500,
                     "alpha": 0.5,
                     "beta": 0.7
                 }
@@ -244,8 +244,7 @@
                     "timeout": null
                 },
                 {
-                    "id": "trilearn05-disc",
-                    "datatype": "discrete",
+                    "id": "trilearn05-disc",                    "datatype": "discrete",
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
@@ -268,7 +267,8 @@
                     "precmat_threshold": 0.1,
                     "max_iter": 100,
                     "verbose": false,
-                    "assume_centered": false
+                    "assume_centered": false,
+                    "timeout": 1
                 }
             ],
             "rblip_asobs": [
@@ -312,7 +312,8 @@
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad"
+                    "loss_grad": "least_squares_loss_cov_grad",
+                    "timeout": 5
                 }
             ],
             "gobnilp": [
@@ -400,7 +401,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "guidicigreen-disc",
@@ -413,7 +415,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ],
             "tetrad_fges": [

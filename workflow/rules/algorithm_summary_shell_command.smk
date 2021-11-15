@@ -104,6 +104,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname optimation_accuracy         --colval {wildcards.optimation_accuracy} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname loss                        --colval {wildcards.loss} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname loss_grad           --colval {wildcards.loss_grad} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     elif algorithm == "sklearn_glasso":
@@ -124,6 +125,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
         " && python workflow/scripts/add_column.py --filename {output} --colname precmat_threshold        --colval {wildcards.precmat_threshold} " \ 
         " && python workflow/scripts/add_column.py --filename {output} --colname assume_centered --colval {wildcards.assume_centered} " \
+        " && python workflow/scripts/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
 
     if algorithm == "bnlearn_hc":

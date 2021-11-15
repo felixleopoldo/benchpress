@@ -1119,26 +1119,7 @@
                 "method"
             ],
             "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "pc-binCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest"
-                }
-            ]
+            "examples": []
         },
         "bin_bn": {
             "title": "bin_bn item",
@@ -1595,9 +1576,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
+                    "timeout": 180,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -1641,6 +1620,9 @@
                         "least_squares_loss_grad",
                         "least_squares_loss_cov_grad"
                     ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -1650,7 +1632,8 @@
                 "penalty_growth_rate",
                 "optimation_accuracy",
                 "loss",
-                "loss_grad"
+                "loss_grad",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1659,7 +1642,8 @@
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad"
+                    "loss_grad": "least_squares_loss_cov_grad",
+                    "timeout": null
                 }
             ]
         },
@@ -1750,7 +1734,8 @@
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-                    "prune": true
+                    "prune": true,
+                    "timeout": null
                 }
             ]
         },
@@ -1790,11 +1775,15 @@
                 },
                 "assume_centered": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegintnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
+                "timeout",
                 "mode",
                 "max_iter",
                 "alpha",
@@ -1894,7 +1883,7 @@
                     "sep": null,
                     "penalty": null,
                     "mcmc_seed": 1,
-                    "timeout":null
+                    "timeout": null
                 }
             ]
         },
@@ -1940,6 +1929,9 @@
                 },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -1948,7 +1940,8 @@
                 "n_samples",
                 "prior",
                 "mcmc_seed",
-                "randomits"
+                "randomits",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1962,7 +1955,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -1989,7 +1983,8 @@
                 },
                 "penaltyDiscount": {
                     "$ref": "#/definitions/flexnonnegnumnull"
-                },"timeout": {
+                },
+                "timeout": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "structurePrior": {
@@ -2019,7 +2014,8 @@
                         0.8,
                         1,
                         1.5
-                    ]
+                    ],
+                    "timeout": null
                 }
             ]
         },
@@ -2071,7 +2067,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 }
             ]
         },
@@ -2148,7 +2145,8 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -2199,7 +2197,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 }
             ]
         },
@@ -2381,7 +2380,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": null
+                    "beta": null,
+                    "timeout": null
                 }
             ]
         },
@@ -2467,7 +2467,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ]
         },
@@ -2618,7 +2619,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -2697,7 +2699,7 @@
                     "beta": 1,
                     "restart": 0,
                     "perturb": 1,
-                    "timout": null
+                    "timeout": null
                 }
             ]
         },
@@ -2808,7 +2810,8 @@
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype": "skeleton"
+                    "mergetype": "skeleton",
+                    "timeout": null
                 }
             ]
         },
@@ -2922,6 +2925,7 @@
                     "iterations": null,
                     "MAP": true,
                     "cpdag": false,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
                     "burnin": 0
