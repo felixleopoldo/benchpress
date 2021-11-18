@@ -123,7 +123,7 @@ def alg_shell(algorithm):
     elif algorithm == "notears":
         return  """ 
                 /usr/bin/time -f \"%e\" -o {output.time}  \
-                python workflow/scripts/notears/run_notears.py  \
+                python workflow/scripts/structure_learning_algorithms/jmoss20_notears.py  \
                 --data_filename {input.data}  \
                 --min_rate_of_progress {wildcards.min_rate_of_progress}  \
                 --penalty_growth_rate {wildcards.penalty_growth_rate}  \
@@ -137,7 +137,7 @@ def alg_shell(algorithm):
 
     elif algorithm == "rblip_asobs":
         return  "/usr/bin/time -f \"%e\" -o {output.time} " \
-                "Rscript workflow/scripts/run_blip.R " \
+                "Rscript workflow/scripts/structure_learning_algorithms/rblip_asobs.R " \
                 "--filename_data {input.data} " \
                 "--output_dir {wildcards.output_dir} " \
                 "--time {wildcards.timeout} " \

@@ -2,8 +2,8 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "trilearn_cta",
-                "parameters_id": "intra-class",
+                "graph_id": "avneigs4",
+                "parameters_id": "SEM",
                 "data_id": "nonstandardized",
                 "seed_range": [
                     1,
@@ -19,14 +19,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "sklearn_glasso"
+                    "pc-gaussCItest", "omcmc_itsample-bge", "itsample-bge_am01_endspace"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
-            "adjmat_plots": [],
+            "adjmat_plots": ["pc-gaussCItest"],
             "graph_plots": [
-                "sklearn_glasso"
+                "pc-gaussCItest"
             ],
             "mcmc_traj_plots": [
                 {
@@ -37,14 +37,14 @@
                         "score",
                         "size"
                     ],
-                    "active": false
+                    "active": true
                 }
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
-                    "active": false
+                    "active": true
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -57,7 +57,7 @@
                         "score",
                         "size"
                     ],
-                    "active": false
+                    "active": true
                 }
             ]
         }
