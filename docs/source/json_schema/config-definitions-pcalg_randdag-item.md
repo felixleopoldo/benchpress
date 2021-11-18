@@ -14,30 +14,7 @@ An instance of pcalg randdag. Sampling of a DAG with specified maximum averge nu
 
 `object` ([pcalg_randdag item](config-definitions-pcalg_randdag-item.md))
 
-## pcalg_randdag Examples
-
-```json
-{
-  "id": "pc-binCItest",
-  "alpha": [
-    0.01,
-    0.05,
-    0.1
-  ],
-  "NAdelete": true,
-  "mmax": "Inf",
-  "u2pd": "relaxed",
-  "skelmethod": "stable",
-  "conservative": false,
-  "majrule": false,
-  "solveconfl": false,
-  "numCores": 1,
-  "verbose": false,
-  "indepTest": "binCItest"
-}
-```
-
-# pcalg_randdag item Properties
+# pcalg_randdag Properties
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :-------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

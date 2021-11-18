@@ -14,7 +14,7 @@ Notears parameter sampling for Gaissian Bayesian networks. This requires that th
 
 unknown ([notears_parameters_sampling item](config-definitions-notears_parameters_sampling-item.md))
 
-# notears_parameters_sampling item Properties
+# notears_parameters_sampling Properties
 
 | Property                                                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                   |
 | :---------------------------------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

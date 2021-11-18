@@ -2356,12 +2356,16 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "timeout"
             ],
             "examples": [
                 {

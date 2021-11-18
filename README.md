@@ -24,13 +24,13 @@ The currently supported algorithms are tabulated below.
 | FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
 | GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| PC               | CPDAG | R        | pcalg               | 2.6-10   |
+| PC               | CPDAG | R        | pcalg               | 2.7-3   |
 | No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
-| HC               | DAG   | R        | bnlearn             | 4.5      |
-| MMHC             | DAG   | R        | bnlearn             | 4.5      |
-| Inter-IAMB       | CPDAG | R        | bnlearn             | 4.5      |
-| GS               | DAG   | R        | bnlearn             | 4.5      |
-| Tabu             | DAG   | R        | bnlearn             | 4.5      |
+| HC               | DAG   | R        | bnlearn             | 4.7      |
+| MMHC             | DAG   | R        | bnlearn             | 4.7      |
+| Inter-IAMB       | CPDAG | R        | bnlearn             | 4.7      |
+| GS               | DAG   | R        | bnlearn             | 4.7      |
+| Tabu             | DAG   | R        | bnlearn             | 4.7      |
 | Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    |
 | Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    |
 | PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
@@ -69,9 +69,9 @@ To run this study (266 jobs ~ 10 minutes on a 2-cores laptop) type
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
 ### Paper study
-To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec6.1.json](config/sec6.1.json) and type
+To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec5.1.json](config/sec5.1.json) and type
 
-`$ snakemake --cores all --use-singularity --configfile config/sec6.1.json`
+`$ snakemake --cores all --use-singularity --configfile config/sec5.1.json`
 
 A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps](docs/source/_static/ROC_randbinarybnreps50.png) and can be viewed with e.g. evince as
 

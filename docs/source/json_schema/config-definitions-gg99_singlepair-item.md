@@ -28,11 +28,12 @@ Guidici & Green algorithm for learning decomopasble graphs.
   "clq": 2,
   "sep": 4,
   "penalty": 1.5,
-  "mcmc_seed": 1
+  "mcmc_seed": 1,
+  "timeout": null
 }
 ```
 
-# gg99\_singlepair item Properties
+# gg99\_singlepair Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
 | :---------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -47,6 +48,7 @@ Guidici & Green algorithm for learning decomopasble graphs.
 | [clq](#clq)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair/properties/clq")                  |
 | [sep](#sep)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair/properties/sep")                  |
 | [mcmc_seed](#mcmc_seed) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair/properties/mcmc_seed")                 |
+| [timeout](#timeout)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair/properties/timeout")              |
 
 ## id
 
@@ -322,3 +324,31 @@ any of
 *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
+
+## timeout
+
+E.g. 1.5 or \[1.6, 3.8] or null.
+
+`timeout`
+
+*   is required
+
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99\_singlepair/properties/timeout")
+
+### timeout Type
+
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+any of
+
+*   any of
+
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
+
+    *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")

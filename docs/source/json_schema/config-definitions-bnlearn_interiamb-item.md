@@ -27,11 +27,12 @@ Inter-IAMB algorithm object
   "B": null,
   "maxsx": null,
   "debug": false,
-  "undirected": false
+  "undirected": false,
+  "timeout": null
 }
 ```
 
-# bnlearn_interiamb item Properties
+# bnlearn_interiamb Properties
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
 | :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,6 +44,7 @@ Inter-IAMB algorithm object
 | [maxsx](#maxsx)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_interiamb/properties/maxsx")                        |
 | [debug](#debug)             | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_interiamb-item-properties-debug.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_interiamb/properties/debug")             |
 | [undirected](#undirected)   | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_interiamb-item-properties-undirected.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_interiamb/properties/undirected")   |
+| [timeout](#timeout)         | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_interiamb/properties/timeout")                      |
 
 ## id
 
@@ -243,3 +245,31 @@ any of
 ### undirected Type
 
 `boolean`
+
+## timeout
+
+
+
+`timeout`
+
+*   is required
+
+*   Type: merged type ([Npn-negative integer or null](config-definitions-npn-negative-integer-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_interiamb/properties/timeout")
+
+### timeout Type
+
+merged type ([Npn-negative integer or null](config-definitions-npn-negative-integer-or-null.md))
+
+any of
+
+*   any of
+
+    *   [natnum type](config-definitions-natnum-type.md "check type definition")
+
+    *   [Positive integer list](config-definitions-non-negative-integers-anyof-positive-integer-list.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null-anyof-1.md "check type definition")

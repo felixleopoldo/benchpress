@@ -23,7 +23,7 @@ Place your script in workflow/scripts and edit the files
 - [workflow/rules/pattern_strings.smk](workflow/rules/pattern_strings.smk)
 - [docs/source/available_parameters.rst](docs/source/available_parameters.rst)
 
-## Adding a new structure learning algorithms
+## Adding a new structure learning algorithm
 
 Place your script in workflow/scripts and edit the files. 
 MCMC methods are different from point estimators since the graph trajectory is saved and the graph is estmated from there, see e.g. gt13_multipair.
@@ -32,6 +32,7 @@ MCMC methods are different from point estimators since the graph trajectory is s
 - config/*
 - [workflow/rules/docker_images.smk](workflow/rules/docker_images.smk)
 - [workflow/rules/pattern_strings.smk](workflow/rules/pattern_strings.smk)
+- [workflow/rules/algorithm_rules.smk](workflow/rules/algorithm_rules.smk)
 - [workflow/rules/algorithm_strings.smk](workflow/rules/algorithm_strings.smk)
 - [workflow/rules/algorithm_shell_commands.smk](workflow/rules/algorithm_shell_commands.smk)
 - [workflow/rules/algorithm_summary_shell_command.smk](workflow/rules/algorithm_summary_shell_command.smk)

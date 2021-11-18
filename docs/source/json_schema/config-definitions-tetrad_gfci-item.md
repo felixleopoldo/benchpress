@@ -29,11 +29,12 @@ GFCI instance
     1.5
   ],
   "samplePrior": null,
-  "structurePrior": 1
+  "structurePrior": 1,
+  "timeout": null
 }
 ```
 
-# tetrad_gfci item Properties
+# tetrad_gfci Properties
 
 | Property                            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :---------------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,6 +42,7 @@ GFCI instance
 | [alpha](#alpha)                     | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/alpha")                                |
 | [test](#test)                       | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-tetrad_gfci-item-properties-test.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/test")         |
 | [score](#score)                     | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-tetrad_gfci-item-properties-score.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/score")       |
+| [timeout](#timeout)                 | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/timeout")          |
 | [datatype](#datatype)               | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-tetrad_gfci-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/datatype") |
 | [samplePrior](#sampleprior)         | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/samplePrior")      |
 | [structurePrior](#structureprior)   | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/structurePrior")                  |
@@ -153,6 +155,34 @@ any of
 | `"d-sep-score"`    |             |
 | `"disc-bic-score"` |             |
 | `"sem-bic"`        |             |
+
+## timeout
+
+E.g. 1.5 or \[1.6, 3.8] or null.
+
+`timeout`
+
+*   is optional
+
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci/properties/timeout")
+
+### timeout Type
+
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+any of
+
+*   any of
+
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
+
+    *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
 ## datatype
 

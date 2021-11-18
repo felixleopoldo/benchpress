@@ -2,12 +2,12 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4",
+                "graph_id": "avneigs4_p20",
                 "parameters_id": "SEM",
-                "data_id": "nonstandardized",
+                "data_id": "standardized",
                 "seed_range": [
                     1,
-                    1
+                    50
                 ]
             }
         ],
@@ -19,13 +19,24 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "pc-gaussCItest", "omcmc_itsample-bge", "itsample-bge_am01_endspace"
+                    "fges-sem-bic",
+                    "mmhc-bge-zf",
+                    "omcmc_itsample-bge",
+                    "pc-gaussCItest"
                 ]
             },
             "adjmat_true_plots": true,
             "graph_true_plots": true,
-            "adjmat_plots": ["pc-gaussCItest"],
+            "adjmat_plots": [
+                "fges-sem-bic",
+                "mmhc-bge-zf",
+                "omcmc_itsample-bge",
+                "pc-gaussCItest"
+            ],
             "graph_plots": [
+                "fges-sem-bic",
+                "mmhc-bge-zf",
+                "omcmc_itsample-bge",
                 "pc-gaussCItest"
             ],
             "mcmc_traj_plots": [
@@ -118,7 +129,7 @@
                 {
                     "id": "avneigs4_p20",
                     "max_parents": 5,
-                    "n": 15,
+                    "n": 20,
                     "d": 4,
                     "par1": null,
                     "par2": null,
@@ -219,7 +230,8 @@
                     "beta": 0.5,
                     "radii": 80,
                     "n_particles": [
-                        30, 20
+                        30,
+                        20
                     ],
                     "M": 50,
                     "pseudo_obs": 1,
@@ -244,7 +256,8 @@
                     "timeout": null
                 },
                 {
-                    "id": "trilearn05-disc",                    "datatype": "discrete",
+                    "id": "trilearn05-disc",
+                    "datatype": "discrete",
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
@@ -319,7 +332,7 @@
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",
-                    "extra_args": "myargs.txt",
+                    "extra_args": null,
                     "constraints": null,
                     "continuous": false,
                     "score_type": "BDeu",
@@ -354,7 +367,7 @@
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
                     "timeout": null,
-                   "time_limit": null,
+                    "time_limit": null,
                     "gap_limit": null,
                     "prune": true
                 }
@@ -619,7 +632,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 },
                 {
                     "id": "mmhc-bge-zf",
@@ -637,7 +651,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": null
+                    "beta": null,
+                    "timeout": null
                 }
             ],
             "bnlearn_interiamb": [

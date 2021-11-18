@@ -33,7 +33,7 @@ os.system(command)
 
 cmd = """
         if [ -f {adjmat}_graph.json ]; then 
-            Rscript workflow/scripts/utlis/tetrad_graph_to_adjmat.R --jsongraph {adjmat}_graph.json --filename {adjmat}  
+            Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph {adjmat}_graph.json --filename {adjmat}  
             rm -f {adjmat}.no_range_header 
             rm {adjmat}_graph.json 
             rm {adjmat}.txt; 

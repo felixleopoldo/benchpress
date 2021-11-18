@@ -1,5 +1,5 @@
 library(bnlearn)
-
+source("resources/code_for_binary_simulations/make_var_names.R")
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 

@@ -23,26 +23,30 @@ Parameter setting for trilearn with log-linear decomposable model.
   "alpha": 0.5,
   "beta": 0.5,
   "radii": 80,
-  "N": [
+  "n_particles": [
     50
   ],
   "M": 100,
   "pseudo_obs": 1,
-  "mcmc_seed": 1
+  "mcmc_seed": 1,
+  "timeout": null
 }
 ```
 
-# trilearn_pgibbs item Properties
+# trilearn_pgibbs Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
-| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_pgibbs-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
-| [datatype](#datatype)     | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_pgibbs-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype") |
-| [alpha](#alpha)           | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")                                    |
-| [beta](#beta)             | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")                                     |
-| [pseudo_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")                          |
-| [radii](#radii)           | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")                     |
-| [mcmc_seed](#mcmc_seed)   | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")                 |
+| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
+| :-------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_pgibbs-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/id")             |
+| [datatype](#datatype)       | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_pgibbs-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/datatype") |
+| [alpha](#alpha)             | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/alpha")                                    |
+| [beta](#beta)               | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/beta")                                     |
+| [pseudo_obs](#pseudo_obs)   | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/pseudo_obs")                          |
+| [radii](#radii)             | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/radii")                     |
+| [n_particles](#n_particles) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/n_particles")               |
+| [M](#m)                     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/M")                         |
+| [mcmc_seed](#mcmc_seed)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/mcmc_seed")                 |
+| [timeout](#timeout)         | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/timeout")              |
 
 ## id
 
@@ -185,6 +189,54 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
+## n_particles
+
+Non-negative integers, (0,1,2,...), or array of the same.
+
+`n_particles`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/n_particles")
+
+### n_particles Type
+
+merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
+
+any of
+
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
+
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
+
+## M
+
+Non-negative integers, (0,1,2,...), or array of the same.
+
+`M`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/M")
+
+### M Type
+
+merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
+
+any of
+
+*   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
+
+*   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
+
 ## mcmc_seed
 
 Non-negative integers, (0,1,2,...), or array of the same.
@@ -208,3 +260,31 @@ any of
 *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
+
+## timeout
+
+E.g. 1.5 or \[1.6, 3.8] or null.
+
+`timeout`
+
+*   is required
+
+*   Type: merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_pgibbs/properties/timeout")
+
+### timeout Type
+
+merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
+
+any of
+
+*   any of
+
+    *   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
+
+    *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")

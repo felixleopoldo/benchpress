@@ -1,10 +1,10 @@
-# Untitled undefined type in JSON schema for Benchpress config file. Schema
+# Untitled string in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnumnull/anyOf/0
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gobnilp/properties/extra_args/anyOf/0
 ```
 
-Non-negative number(s).
+
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
@@ -12,10 +12,4 @@ Non-negative number(s).
 
 ## 0 Type
 
-merged type ([Details](config-definitions-flexnonnegnum.md))
-
-any of
-
-*   [nonnegnum type](config-definitions-nonnegnum-type.md "check type definition")
-
-*   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
+`string`
