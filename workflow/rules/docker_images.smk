@@ -20,7 +20,7 @@ def docker_image(algorithm):
     elif algorithm == "pcalg":
         return "docker://onceltuca/pcalg:2.7-3"
     elif algorithm == "benchmark":
-        return "docker://onceltuca/benchpress"
+        return "docker://onceltuca/benchpress:1.0.1"
     elif algorithm == "networkx":
         return "docker://onceltuca/networkx:2.5.1"
     elif algorithm == "bdgraph":

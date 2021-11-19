@@ -27,7 +27,6 @@ Place your script in workflow/scripts and edit the files
 
 Place your script in workflow/scripts and edit the files. 
 MCMC methods are different from point estimators since the graph trajectory is saved and the graph is estmated from there, see e.g. gt13_multipair.
-
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
 - [workflow/rules/docker_images.smk](workflow/rules/docker_images.smk)
