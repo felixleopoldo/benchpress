@@ -1,7 +1,7 @@
 # Non-negative number(s) or null Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/stepsave
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/timeout
 ```
 
 E.g. 1.5 or \[1.6, 3.8] or null.
@@ -10,7 +10,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
-## stepsave Type
+## timeout Type
 
 merged type ([Non-negative number(s) or null](config-definitions-non-negative-numbers-or-null.md))
 

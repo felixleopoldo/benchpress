@@ -12,4 +12,4 @@ GS objects
 
 ## bnlearn_gs Type
 
-`object[]` ([bnlearn_interiamb item](config-definitions-bnlearn_interiamb-item.md))
+`object[]` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))

@@ -33,11 +33,12 @@ MMHC algorithm instance
   "l": 5,
   "k": 1,
   "prior": "uniform",
-  "beta": null
+  "beta": null,
+  "timeout": null
 }
 ```
 
-# bnlearn_mmhc item Properties
+# bnlearn_mmhc Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

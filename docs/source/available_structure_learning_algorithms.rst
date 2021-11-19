@@ -21,23 +21,23 @@ Dots (.) in the original parameter names are omitted for implementational reason
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | GFCI             | DAG   | Java     | `TETRAD (causal-cmd) <https://www.ccd.pitt.edu/data-science/>`_                                                                              | 1.1.3    | `tetrad_gfci <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gfci-parameter-setting.md>`_                                                          |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| PC               | CPDAG | R        | `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_                                                                          | 2.6-10   | `pcalg_pc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pc-algorithm.md>`_                                                                       |
+| PC               | CPDAG | R        | `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_                                                                          | 2.7-3   | `pcalg_pc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pc-algorithm.md>`_                                                                       |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | No tears         | DAG   | Python   | `jmoss20/notears <https://github.com/jmoss20/notears>`_                                                                                      | #0c032a0 | `notears <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-notears.md>`_                                                                             |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| HC               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | `bnlearn_hc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-hc-algorithm-parameter-setting.md>`_                                                   |
+| HC               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.7      | `bnlearn_hc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-hc-algorithm-parameter-setting.md>`_                                                   |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| MMHC             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_                                           |
+| MMHC             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.7      | `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-max-min-hill-climbing-algorithm-mmhc.md>`_                                           |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Inter-IAMB       | CPDAG | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                      |
+| Inter-IAMB       | CPDAG | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.7      | `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                      |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GS               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | `bnlearn_gs <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                             |
+| GS               | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.7      | `bnlearn_gs <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-inter-iamb-algorithm.md>`_                                                             |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Tabu             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.5      | `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tabu-search-parameter-setting.md>`_                                                  |
+| Tabu             | DAG   | R        | `bnlearn <https://www.bnlearn.com/>`_                                                                                                        | 4.7      | `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tabu-search-parameter-setting.md>`_                                                  |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Iterative MCMC   | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.2    | `bidag_itsearch <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-iterative-search-paramter-setting.md>`_                                            |
+| Iterative MCMC   | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.3    | `bidag_itsearch <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-iterative-search-paramter-setting.md>`_                                            |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Order MCMC       | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.2    | `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-order-mcmc-parameter-setting.md>`_                                               |
+| Order MCMC       | DAG   | R        | `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_                                                                          | 2.0.3    | `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-order-mcmc-parameter-setting.md>`_                                               |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | PGibbs           | DG    | Python   | `Trilearn <https://github.com/felixleopoldo/trilearn>`_                                                                                      | 1.2.3    | `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn.md>`_                                                                    |
 +------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -57,7 +57,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. important::
 
-    GOBNILP uses SCIP optimization suite 7.0.3. From `SCIPs homepage <https://www.scipopt.org/index.php#license>`_:
+    GOBNILP uses SCIP optimization suite 7.0.1. From `SCIPs homepage <https://www.scipopt.org/index.php#license>`_:
 
     *SCIP is distributed under the ZIB Academic License. You are allowed to retrieve SCIP for research purposes as a member of a non-commercial or academic institution.*
     
@@ -74,6 +74,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "id": "gobnilp-bde",
         "continuous": false,
         "score_type": "BDeu",
+        "extra_args": null,
+        "constraints": null,
         "plot": false,
         "palim": 3,
         "alpha_mu": null,
@@ -85,7 +87,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
         ],
         "time_limit": null,
         "gap_limit": null,
-        "prune": true
+        "prune": true,
+        "timeout": null
     }
 
 ``rblip_asobs``
@@ -105,7 +108,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "scorermethod": "is",
         "solvermethod": "asobs",
         "indeg": 80,
-        "time": 180 ,
+        "timeout": 180 ,
         "allocated": 80,
         "scorefunction": "bdeu",
         "alpha": [
@@ -134,7 +137,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "penalty_growth_rate": 10,
         "optimation_accuracy": 0.00000001,
         "loss": "least_squares_loss",
-        "loss_grad": "least_squares_loss_grad"
+        "loss_grad": "least_squares_loss_grad",
+        "timeout": null
     }
 
 
@@ -160,7 +164,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
             0.8,
             1,
             1.5
-        ]
+        ],
+        "timeout": null
     }
 
 ``tetrad_fci``
@@ -181,7 +186,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
             0.05
         ],
         "test": "fisher-z-test",
-        "datatype": "continuous"
+        "datatype": "continuous",
+        "timeout": null
     }
 
 ``tetrad_gfci``
@@ -207,7 +213,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "datatype": "discrete",
         "penaltyDiscount": null,
         "samplePrior": 1,
-        "structurePrior": 1
+        "structurePrior": 1,
+        "timeout": null
     }
 
 ``tetrad_rcfi``
@@ -230,7 +237,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
             0.1
         ],
         "test": "chi-square-test",
-        "datatype": "discrete"
+        "datatype": "discrete",
+        "timeout": null
     }
 
 ``pcalg_pc``
@@ -260,7 +268,8 @@ PC algorithm
         "solveconfl": false,
         "numCores": 1,
         "verbose": false,
-        "indepTest": "binCItest"
+        "indepTest": "binCItest",
+        "timeout": null
     }
 
 ``bnlearn_hc``
@@ -288,7 +297,8 @@ PC algorithm
         "prior": "uniform",
         "beta": 1,
         "restart": 0,
-        "perturb": 1
+        "perturb": 1,
+        "timeout": null
     }
 
 ``bnlearn_mmhc``
@@ -316,7 +326,8 @@ PC algorithm
         "l": 5,
         "k": 1,
         "prior": "uniform",
-        "beta": 1
+        "beta": 1,
+        "timeout": null
     }
 
 ``bnlearn_interiamb``
@@ -343,7 +354,8 @@ An example
         "B": null,
         "maxsx": null,
         "debug": false,
-        "undirected": false
+        "undirected": false,
+        "timeout": null
     }
 
 
@@ -368,7 +380,8 @@ An example
         "B": null,
         "maxsx": null,
         "debug": false,
-        "undirected": false
+        "undirected": false,
+        "timeout": null
     }
 
 ``bnlearn_tabu``
@@ -395,7 +408,8 @@ An example
         "l": 5,
         "k": 1,
         "prior": "uniform",
-        "beta": 1
+        "beta": 1,
+        "timeout": null
     }
 
 
@@ -429,7 +443,8 @@ An example
         "alpha": 0.05,
         "gamma": 1,
         "cpdag": false,
-        "mergetype": "skeleton"
+        "mergetype": "skeleton",
+        "timeout": null
     }
 
 ``bidag_order_mcmc``
@@ -466,7 +481,8 @@ An example
         "threshold": [
             0.5
         ],
-        "burnin": 0
+        "burnin": 0,
+        "timeout": null
     }
 
 
@@ -490,7 +506,8 @@ MCMC algorithm for decomposable models [1]_.
         "clq": 2,
         "sep": 4,
         "penalty": 1.5,
-        "mcmc_seed": 1
+        "mcmc_seed": 1,
+        "timeout": null
     }
 
 ``gt13_multipair``
@@ -513,7 +530,8 @@ MCMC algorithm for decomposable models [2]_.
         "clq": null,
         "sep": null,
         "penalty": null,
-        "mcmc_seed": 1
+        "mcmc_seed": 1,
+        "timeout": null
     }
 
 
@@ -535,7 +553,8 @@ Graphical lasso from scikit-learn.
         "precmat_threshold": 0.1,
         "max_iter": 100,
         "verbose": false,
-        "assume_centered": false
+        "assume_centered": false,
+        "timeout": null
     }
 
 

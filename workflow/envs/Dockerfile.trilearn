@@ -1,0 +1,3 @@
+FROM onceltuca/trilearn:1.23
+
+RUN apt install time

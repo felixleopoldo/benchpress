@@ -1,0 +1,7 @@
+FROM r-base
+
+RUN R -e "if (!requireNamespace(\"BiocManager\", quietly = TRUE)) {install.packages(\"BiocManager\", repo=\"http://cran.rstudio.com/\")}" --no-save 
+RUN R -e "BiocManager::install()"  --no-save 
+RUN R -e "BiocManager::install(c(\"gRbase\", \"RBGL\", \"Rgraphviz\", \"gRain\"))" --no-save 
+RUN R -e "install.packages(\"pcalg\")" --no-save
+RUN R -e "install.packages(\"R.utils\", repos=\"https://cran.rstudio.com\")" --no-save

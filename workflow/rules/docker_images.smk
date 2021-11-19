@@ -2,19 +2,23 @@
 
 def docker_image(algorithm):
     if algorithm == "trilearn":
-        return "docker://onceltuca/trilearn:1.23"
+        return "docker://onceltuca/trilearn:1.23-bp"
     elif algorithm == "gobnilp":
         return "docker://onceltuca/gobnilp:master_e60ef14"
     elif algorithm == "thomasjava":
-        return "docker://onceltuca/thomasgreen:1.19"
+        return "docker://onceltuca/thomasgreen:1.19-bp"
     elif algorithm == "notears":
-        return "docker://onceltuca/jmoss20notears:1.4"
+        return "docker://onceltuca/jmoss20notears:1.4-bp"
     elif algorithm == "greenfortran":
         return "docker://onceltuca/guidicigreen1999"
     elif algorithm == "pydatascience":
-        return "docker://civisanalytics/datascience-python"
+        return "docker://onceltuca/datascience-python"
     elif algorithm == "bidag":
-        return "docker://onceltuca/bidag:2.0.2"
+        return "docker://onceltuca/bidag:2.0.3"
+    elif algorithm == "bnlearn":
+        return "docker://onceltuca/bnlearn:4.7"
+    elif algorithm == "pcalg":
+        return "docker://onceltuca/pcalg:2.7-3"
     elif algorithm == "benchmark":
         return "docker://onceltuca/benchpress:1.0.1"
     elif algorithm == "networkx":

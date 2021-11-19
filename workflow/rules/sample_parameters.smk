@@ -2,14 +2,14 @@
 
 rule sample_binary_bn:
     input:
-        "workflow/scripts/sample_bayesian_network_for_dag.R",
+        "workflow/scripts/parameters_sampling/sample_bayesian_network_for_dag.R",
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn = "{output_dir}/parameters/" + \
             pattern_strings["bin_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
     shell:
-        "Rscript workflow/scripts/sample_bayesian_network_for_dag.R " \
+        "Rscript workflow/scripts/parameters_sampling/sample_bayesian_network_for_dag.R " \
         "--filename_dag {input.adjmat} " \
         "--filename {output} "  \
         "--min {wildcards.min} " \
@@ -19,7 +19,7 @@ rule sample_binary_bn:
 
 rule sample_pcalg_sem_params:
     input:
-        "workflow/scripts/sample_pcalg_semparams.R", 
+        "workflow/scripts/parameters_sampling/sample_semparams.R", 
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn =    "{output_dir}/parameters/" + \
@@ -29,7 +29,7 @@ rule sample_pcalg_sem_params:
     singularity:
         docker_image("bidag")
     script:
-        "../scripts/sample_pcalg_semparams.R" 
+        "../scripts/parameters_sampling/sample_semparams.R" 
 
 rule hyper_dir:
     input:
@@ -42,7 +42,7 @@ rule hyper_dir:
     singularity:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/trilearn/sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
+        "python workflow/scripts/parameters_sampling/trilearn_sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
 
 rule intra_class_cov:
     input:
@@ -55,7 +55,7 @@ rule intra_class_cov:
     singularity:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/trilearn/g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
+        "python workflow/scripts/parameters_sampling/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
 
 rule trilearn_g_inv_wishart:
     input:
@@ -68,7 +68,7 @@ rule trilearn_g_inv_wishart:
     singularity:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/trilearn/g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
+        "python workflow/scripts/parameters_sampling/trilearn_g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
 
 rule bdgraph_rgwish:
     input:
@@ -81,7 +81,7 @@ rule bdgraph_rgwish:
     singularity:
         docker_image("bdgraph")
     script:
-        "../scripts/bdgraph_rgwish.R"
+        "../scripts/parameters_sampling/bdgraph_rgwish.R"
 
 rule copy_bnfit:
     input:

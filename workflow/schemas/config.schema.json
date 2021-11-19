@@ -547,7 +547,7 @@
                             "title": "bnlearn_gs",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/bnlearn_interiamb"
+                                "$ref": "#/definitions/bnlearn_gs"
                             }
                         },
                         "bnlearn_hc": {
@@ -1119,26 +1119,7 @@
                 "method"
             ],
             "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "pc-binCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest"
-                }
-            ]
+            "examples": []
         },
         "bin_bn": {
             "title": "bin_bn item",
@@ -1496,8 +1477,17 @@
                 "radii": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
+                "n_particles": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "M": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "required": [
@@ -1506,10 +1496,11 @@
                 "alpha",
                 "beta",
                 "radii",
-                "N",
+                "n_particles",
                 "M",
                 "pseudo_obs",
-                "mcmc_seed"
+                "mcmc_seed",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1518,12 +1509,13 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
+                    "n_particles": [
                         50
                     ],
                     "M": 100,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -1546,7 +1538,7 @@
                 "indeg": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "time": {
+                "timeout": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
                 "allocated": {
@@ -1571,7 +1563,7 @@
                 "scorermethod",
                 "solvermethod",
                 "indeg",
-                "time",
+                "timeout",
                 "allocated",
                 "scorefunction",
                 "alpha",
@@ -1584,9 +1576,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "timeout": 180,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -1630,6 +1620,9 @@
                         "least_squares_loss_grad",
                         "least_squares_loss_cov_grad"
                     ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -1639,7 +1632,8 @@
                 "penalty_growth_rate",
                 "optimation_accuracy",
                 "loss",
-                "loss_grad"
+                "loss_grad",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1648,7 +1642,8 @@
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad"
+                    "loss_grad": "least_squares_loss_cov_grad",
+                    "timeout": null
                 }
             ]
         },
@@ -1672,6 +1667,26 @@
                         "BIC"
                     ]
                 },
+                "extra_args": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "constraints": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "plot": {
                     "type": "boolean"
                 },
@@ -1687,7 +1702,10 @@
                 "alpha_mu": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
-		"time_limit": {
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "time_limit": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
                 "gap_limit": {
@@ -1703,7 +1721,8 @@
                 "plot",
                 "palim",
                 "alpha",
-                "prune"
+                "prune",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1715,7 +1734,8 @@
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-                    "prune": true
+                    "prune": true,
+                    "timeout": null
                 }
             ]
         },
@@ -1755,11 +1775,15 @@
                 },
                 "assume_centered": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegintnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
+                "timeout",
                 "mode",
                 "max_iter",
                 "alpha",
@@ -1830,6 +1854,9 @@
                 "sep": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
                 }
@@ -1840,7 +1867,8 @@
                 "n_samples",
                 "prior",
                 "mcmc_seed",
-                "randomits"
+                "randomits",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1854,7 +1882,8 @@
                     "clq": null,
                     "sep": null,
                     "penalty": null,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -1900,6 +1929,9 @@
                 },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -1908,7 +1940,8 @@
                 "n_samples",
                 "prior",
                 "mcmc_seed",
-                "randomits"
+                "randomits",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1922,7 +1955,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -1950,6 +1984,9 @@
                 "penaltyDiscount": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "structurePrior": {
                     "$ref": "#/definitions/flexnonnegnum"
                 }
@@ -1962,7 +1999,8 @@
                 "datatype",
                 "samplePrior",
                 "structurePrior",
-                "penaltyDiscount"
+                "penaltyDiscount",
+                "timeout"
             ],
             "examples": [
                 {
@@ -1976,7 +2014,8 @@
                         0.8,
                         1,
                         1.5
-                    ]
+                    ],
+                    "timeout": null
                 }
             ]
         },
@@ -2009,6 +2048,9 @@
                 },
                 "datatype": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "required": [
@@ -2025,7 +2067,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 }
             ]
         },
@@ -2067,6 +2110,9 @@
                         "sem-bic"
                     ]
                 },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "datatype": {
                     "type": "string"
                 },
@@ -2099,7 +2145,8 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -2130,6 +2177,9 @@
                         "prob-test"
                     ]
                 },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
                 "datatype": {
                     "type": "string"
                 }
@@ -2147,7 +2197,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 }
             ]
         },
@@ -2208,12 +2259,16 @@
                 },
                 "solveconfl": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2233,7 +2288,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 }
             ]
         },
@@ -2300,12 +2356,16 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
                 }
             },
             "additionalProperties": false,
             "required": [
                 "id",
-                "alpha"
+                "alpha",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2324,7 +2384,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": null
+                    "beta": null,
+                    "timeout": null
                 }
             ]
         },
@@ -2383,6 +2444,9 @@
                 },
                 "undirected": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2393,7 +2457,8 @@
                 "B",
                 "maxsx",
                 "debug",
-                "undirected"
+                "undirected",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2406,7 +2471,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ]
         },
@@ -2461,6 +2527,9 @@
                 },
                 "undirected": {
                     "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2471,7 +2540,8 @@
                 "B",
                 "maxsx",
                 "debug",
-                "undirected"
+                "undirected",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2484,7 +2554,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ]
         },
@@ -2520,6 +2591,9 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2531,7 +2605,8 @@
                 "issmu",
                 "l",
                 "k",
-                "prior"
+                "prior",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2548,7 +2623,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -2590,6 +2666,9 @@
                 },
                 "prior": {
                     "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2603,7 +2682,8 @@
                 "k",
                 "prior",
                 "perturb",
-                "restart"
+                "restart",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2622,7 +2702,8 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timeout": null
                 }
             ]
         },
@@ -2686,6 +2767,9 @@
                 },
                 "aw": {
                     "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2704,7 +2788,8 @@
                 "gamma",
                 "cpdag",
                 "mergetype",
-                "estimate"
+                "estimate",
+                "timeout"
             ],
             "examples": [
                 {
@@ -2729,7 +2814,8 @@
                     "alpha": 0.05,
                     "gamma": 1,
                     "cpdag": false,
-                    "mergetype": "skeleton"
+                    "mergetype": "skeleton",
+                    "timeout": null
                 }
             ]
         },
@@ -2802,6 +2888,9 @@
                 },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,
@@ -2840,6 +2929,7 @@
                     "iterations": null,
                     "MAP": true,
                     "cpdag": false,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
                     "burnin": 0

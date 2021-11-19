@@ -23,7 +23,7 @@ Parameter setting for a graph inverse-Wishart model
 }
 ```
 
-# trilearn_g_inv_wishart item Properties
+# trilearn_g_inv_wishart Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                    |
 | :---------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

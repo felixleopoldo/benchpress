@@ -80,14 +80,14 @@
                     "id": "standardized",
                     "standardized": true,
                     "sample_sizes": [
-                        100
+                        300
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
                     "sample_sizes": [
-                        1000
+                        300
                     ]
                 },
                 {
@@ -138,7 +138,7 @@
                 {
                     "id": "avneigs4",
                     "max_parents": 5,
-                    "n": 80,
+                    "n": 30,
                     "d": 4,
                     "par1": null,
                     "par2": null,
@@ -148,7 +148,7 @@
             "trilearn_cta": [
                 {
                     "id": "trilearn_cta",
-                    "order": 50,
+                    "order": 500,
                     "alpha": 0.5,
                     "beta": 0.7
                 }
@@ -229,12 +229,14 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
-                        50
+                    "n_particles": [
+                        30,
+                        20
                     ],
-                    "M": 100,
+                    "M": 50,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "trilearn-disc",
@@ -242,7 +244,7 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": [
+                    "n_particles": [
                         50
                     ],
                     "M": 1000,
@@ -250,7 +252,8 @@
                     "mcmc_seed": [
                         1,
                         2
-                    ]
+                    ],
+                    "timeout": null
                 },
                 {
                     "id": "trilearn05-disc",
@@ -258,10 +261,11 @@
                     "alpha": 0.5,
                     "beta": 0.5,
                     "radii": 80,
-                    "N": 50,
+                    "n_particles": 50,
                     "M": 300,
                     "pseudo_obs": 1,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ],
             "sklearn_glasso": [
@@ -276,7 +280,8 @@
                     "precmat_threshold": 0.1,
                     "max_iter": 100,
                     "verbose": false,
-                    "assume_centered": false
+                    "assume_centered": false,
+                    "timeout": 1
                 }
             ],
             "rblip_asobs": [
@@ -285,9 +290,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "timeout": 10,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -303,9 +306,7 @@
                     "scorermethod": "is",
                     "solvermethod": "asobs",
                     "indeg": 80,
-                    "time": [
-                        180
-                    ],
+                    "timeout": 10,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -324,16 +325,22 @@
                     "penalty_growth_rate": 10,
                     "optimation_accuracy": 0.00000001,
                     "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad"
+                    "loss_grad": "least_squares_loss_cov_grad",
+                    "timeout": 5
                 }
             ],
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",
+                    "extra_args": null,
+                    "constraints": null,
                     "continuous": false,
                     "score_type": "BDeu",
                     "plot": false,
-                    "palim": 3,
+                    "palim": [
+                        2,
+                        3
+                    ],
                     "alpha_mu": null,
                     "alpha_omega_minus_nvars": null,
                     "alpha": [
@@ -341,21 +348,27 @@
                         0.01,
                         0.1
                     ],
-		    "time_limit": null,
-		    "gap_limit": null,
+                    "timeout": 5,
+                    "time_limit": null,
+                    "gap_limit": null,
                     "prune": true
                 },
                 {
                     "id": "gobnilp-bge",
+                    "extra_args": null,
+                    "constraints": null,
                     "continuous": true,
                     "score_type": "BGe",
                     "plot": false,
-                    "palim": 2,
+                    "palim": [
+                        3
+                    ],
                     "alpha_mu": 1.0,
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
-		    "time_limit": null,
-		    "gap_limit": null,
+                    "timeout": null,
+                    "time_limit": null,
+                    "gap_limit": null,
                     "prune": true
                 }
             ],
@@ -371,7 +384,8 @@
                     "clq": null,
                     "sep": null,
                     "penalty": null,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "gt13_multipair-disc",
@@ -384,7 +398,8 @@
                     "mcmc_seed": 1,
                     "clq": 2,
                     "sep": 4,
-                    "penalty": 1.5
+                    "penalty": 1.5,
+                    "timeout": 5
                 }
             ],
             "gg99_singlepair": [
@@ -399,7 +414,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 },
                 {
                     "id": "guidicigreen-disc",
@@ -412,7 +428,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": 1.5,
-                    "mcmc_seed": 1
+                    "mcmc_seed": 1,
+                    "timeout": null
                 }
             ],
             "tetrad_fges": [
@@ -427,7 +444,8 @@
                         0.8,
                         1,
                         1.5
-                    ]
+                    ],
+                    "timeout": null
                 },
                 {
                     "id": "fges-bdeu",
@@ -439,7 +457,8 @@
                         2
                     ],
                     "structurePrior": 1,
-                    "penaltyDiscount": null
+                    "penaltyDiscount": null,
+                    "timeout": null
                 }
             ],
             "tetrad_fci": [
@@ -451,7 +470,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 },
                 {
                     "id": "fci-chi-square",
@@ -461,7 +481,8 @@
                         0.1
                     ],
                     "test": "chi-square-test",
-                    "datatype": "discrete"
+                    "datatype": "discrete",
+                    "timeout": null
                 }
             ],
             "tetrad_gfci": [
@@ -477,7 +498,8 @@
                     "datatype": "discrete",
                     "penaltyDiscount": null,
                     "samplePrior": 1,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 },
                 {
                     "id": "gfci-sem-bic-fisher-z",
@@ -491,7 +513,8 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1
+                    "structurePrior": 1,
+                    "timeout": null
                 }
             ],
             "tetrad_rfci": [
@@ -503,7 +526,8 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
-                    "datatype": "continuous"
+                    "datatype": "continuous",
+                    "timeout": null
                 },
                 {
                     "id": "rfci-chi-square",
@@ -513,7 +537,8 @@
                         0.1
                     ],
                     "test": "chi-square-test",
-                    "datatype": "discrete"
+                    "datatype": "discrete",
+                    "timeout": null
                 }
             ],
             "pcalg_pc": [
@@ -533,7 +558,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "binCItest"
+                    "indepTest": "binCItest",
+                    "timeout": null
                 },
                 {
                     "id": "pc-gaussCItest",
@@ -552,7 +578,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 },
                 {
                     "id": "pcalg005",
@@ -566,7 +593,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 },
                 {
                     "id": "pcalg-disCItest",
@@ -584,7 +612,8 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "disCItest"
+                    "indepTest": "disCItest",
+                    "timeout": null
                 }
             ],
             "bnlearn_mmhc": [
@@ -603,7 +632,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 },
                 {
                     "id": "mmhc-bge-zf",
@@ -621,7 +651,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": null
+                    "beta": null,
+                    "timeout": null
                 }
             ],
             "bnlearn_interiamb": [
@@ -635,7 +666,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 },
                 {
                     "id": "interiamb-mi",
@@ -649,7 +681,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ],
             "bnlearn_gs": [
@@ -665,7 +698,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 },
                 {
                     "id": "gs-zf",
@@ -677,7 +711,8 @@
                     "B": null,
                     "maxsx": null,
                     "debug": false,
-                    "undirected": false
+                    "undirected": false,
+                    "timeout": null
                 }
             ],
             "bnlearn_tabu": [
@@ -694,7 +729,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 },
                 {
                     "id": "tabu-bge",
@@ -710,7 +746,8 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
+                    "beta": 1,
+                    "timeout": null
                 }
             ],
             "bnlearn_hc": [
@@ -729,7 +766,8 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timeout": null
                 },
                 {
                     "id": "hc-bge",
@@ -747,12 +785,14 @@
                     "prior": "uniform",
                     "beta": 1,
                     "restart": 0,
-                    "perturb": 1
+                    "perturb": 1,
+                    "timeout": null
                 }
             ],
             "bidag_itsearch": [
                 {
                     "id": "itsearch_map-bde",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -775,6 +815,7 @@
                 },
                 {
                     "id": "itsearch_map-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -798,6 +839,7 @@
                 },
                 {
                     "id": "itsearch_map-bge",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -822,6 +864,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": true,
                     "plus1it": null,
@@ -840,6 +883,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": true,
                     "plus1it": null,
@@ -858,6 +902,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -880,6 +925,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -903,6 +949,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -926,6 +973,7 @@
                 },
                 {
                     "id": "itsearch_sample-bge",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -944,6 +992,7 @@
                 },
                 {
                     "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -962,6 +1011,7 @@
                 },
                 {
                     "id": "itsample-bge_am1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -980,6 +1030,7 @@
                 },
                 {
                     "id": "itsearch_map-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": true,
                     "plus1it": 6,
@@ -998,6 +1049,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1016,6 +1068,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat_chi01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1034,6 +1087,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1052,6 +1106,7 @@
                 },
                 {
                     "id": "itsearch_sample-bdecat_chi1_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1070,6 +1125,7 @@
                 },
                 {
                     "id": "itsearch_sample-bde_chi10_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
                     "plus1it": 6,
@@ -1123,7 +1179,8 @@
                         0.3,
                         0.2
                     ],
-                    "burnin": 0
+                    "burnin": 0,
+                    "timeout": null
                 },
                 {
                     "id": "omcmc_itmap-bge",
@@ -1146,7 +1203,8 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0
+                    "burnin": 0,
+                    "timeout": null
                 },
                 {
                     "id": "omcmc_pcalg005-bge",
@@ -1163,6 +1221,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.99,
@@ -1195,6 +1254,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "timeout": 10,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.2,
@@ -1222,6 +1282,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1247,6 +1308,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1270,6 +1332,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5
@@ -1293,6 +1356,7 @@
                     "stepsave": null,
                     "iterations": null,
                     "MAP": true,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.5

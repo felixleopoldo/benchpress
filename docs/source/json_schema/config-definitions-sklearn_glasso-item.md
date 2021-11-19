@@ -32,7 +32,7 @@ GLasso instance
 }
 ```
 
-# sklearn_glasso item Properties
+# sklearn_glasso Properties
 
 | Property                                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                              |
 | :-------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -45,6 +45,7 @@ GLasso instance
 | [precmat_threshold](#precmat_threshold) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")                                |
 | [verbose](#verbose)                     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
 | [assume_centered](#assume_centered)     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
+| [timeout](#timeout)                     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/timeout")                          |
 
 ## id
 
@@ -246,3 +247,31 @@ any of
 ### assume_centered Type
 
 `boolean`
+
+## timeout
+
+
+
+`timeout`
+
+*   is required
+
+*   Type: merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/timeout")
+
+### timeout Type
+
+merged type ([Non-negative integer(s), or null.](config-definitions-non-negative-integers-or-null.md))
+
+any of
+
+*   any of
+
+    *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
+
+    *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")

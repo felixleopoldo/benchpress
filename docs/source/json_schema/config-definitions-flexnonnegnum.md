@@ -1,7 +1,7 @@
 # Untitled undefined type in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/gamma
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnumnull/anyOf/0
 ```
 
 Non-negative number(s).
@@ -10,7 +10,7 @@ Non-negative number(s).
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
-## gamma Type
+## 0 Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 

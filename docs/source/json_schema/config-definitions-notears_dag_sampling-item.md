@@ -15,7 +15,7 @@ Documentation: <https://github.com/jmoss20/notears>
 
 unknown ([notears_dag_sampling item](config-definitions-notears_dag_sampling-item.md))
 
-# notears_dag_sampling item Properties
+# notears_dag_sampling Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
 | :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

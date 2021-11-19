@@ -2,20 +2,20 @@
 
 rule roc_data:
     input:
-        "workflow/scripts/combine_ROC_data.R",
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/combine_ROC_data.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
         algs=active_algorithm_files("roc") # It should maybe be stated there which kind of roc to be considered..
     output:
         csv="results/output/roc/ROC_data.csv"
     shell:
-        "Rscript workflow/scripts/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+        "Rscript workflow/scripts/evaluation/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule roc:
     input:
-        "workflow/scripts/plot_ROC.R",
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/plot_ROC.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         "workflow/Snakefile",
         config=configfilename,
         csv="results/output/roc/ROC_data.csv" 
@@ -24,10 +24,10 @@ rule roc:
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.eps",
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.eps",
         fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.eps",
-        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps"
-        
+        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps",
+        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.eps"
     script:
-        "../scripts/plot_ROC.R"
+        "../scripts/evaluation/plot_ROC.R"
 
 # Problem with seeds. The seed is includen in graph, bn and data, but not in algorithm.
 # When the order of the data, parameters and data is changed, the seed is lost.
@@ -90,7 +90,7 @@ def adjmat_plots():
     return ret
 
 def graph_true_plots():
-    return [[expand("{output_dir}/adjmat/{adjmat_string}.ps",
+    return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -104,7 +104,7 @@ def graph_plots():
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
             "seed={seed}/"
-            "adjmat.ps",
+            "adjmat.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
@@ -171,7 +171,7 @@ def heatmap_plots():
 
 rule mcmc_traj_plot:
     input: 
-        "workflow/scripts/plot_graph_traj.py",
+        "workflow/scripts/evaluation/plot_graph_traj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
@@ -196,11 +196,11 @@ rule mcmc_traj_plot:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/plot_graph_traj.py"
+        "../scripts/evaluation/plot_graph_traj.py"
 
 rule mcmc_heatmap_plot:
     input: 
-        "workflow/scripts/plot_heatmap_from_graphtraj.py",
+        "workflow/scripts/evaluation/plot_heatmap_from_graphtraj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
@@ -225,11 +225,11 @@ rule mcmc_heatmap_plot:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/plot_heatmap_from_graphtraj.py"
+        "../scripts/evaluation/plot_heatmap_from_graphtraj.py"
 
 rule adjmat_plot:
     input:
-        "workflow/scripts/plot_matrix_as_heatmap.py",
+        "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
         matrix_filename="{output_dir}/adjmat_estimate/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
@@ -254,11 +254,11 @@ rule adjmat_plot:
     singularity:
         docker_image("pydatascience")
     script:
-        "../scripts/plot_matrix_as_heatmap.py"
+        "../scripts/evaluation/plot_matrix_as_heatmap.py"
 
 rule adjmat_true_plot:
     input:
-        "workflow/scripts/plot_matrix_as_heatmap.py",
+        "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
         matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
     output:
         plot_filename = "{output_dir}/adjmat/{adjmat_string}.eps"
@@ -268,34 +268,46 @@ rule adjmat_true_plot:
     singularity:
         docker_image("pydatascience")
     script:
-        "../scripts/plot_matrix_as_heatmap.py"
+        "../scripts/evaluation/plot_matrix_as_heatmap.py"
 
 # This rule is very generally specified ad relies on that it is called in  the right way.
 # I.e with the path of an adjaceny matrix.
 rule adjmat_to_dot:
     input:
-        "workflow/scripts/trilearn/adjmat_to_dot.py",
+        "workflow/scripts/utils/adjmat_to_dot.py",
         filename="{output_dir}/{something}.csv" 
     output:
         filename = "{output_dir}/{something}.dot"
     singularity:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/trilearn/adjmat_to_dot.py {input.filename} {output.filename}"
+        """
+        if [ -s {input.filename} ]; then
+            python workflow/scripts/utils/adjmat_to_dot.py {input.filename} {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
 
 rule plot_dot:
     input:
         filename="{output_dir}/{something}.dot" 
     output:
-        filename="{output_dir}/{something}.ps" 
+        filename="{output_dir}/{something}.png" 
     singularity:
         docker_image("trilearn")
     shell:
-        "dot -T ps {input.filename} > {output.filename}"
+        """
+        if [ -s {input.filename} ]; then
+            dot -T png {input.filename} -o {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
 
 rule mcmc_autocorr_plot:
     input: 
-         "workflow/scripts/plot_autocorr_from_traj.py",
+         "workflow/scripts/evaluation/plot_autocorr_from_traj.py",
          traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
@@ -321,7 +333,7 @@ rule mcmc_autocorr_plot:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/plot_autocorr_from_traj.py"
+        "../scripts/evaluation/plot_autocorr_from_traj.py"
 
 rule mcmc_heatmaps:
     input:
@@ -382,7 +394,7 @@ rule graph_plots:
     run:
         
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".ps")
+            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".png")
 
 rule graph_true_plots:
     input:
@@ -392,5 +404,5 @@ rule graph_true_plots:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".eps")
+            shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")
 

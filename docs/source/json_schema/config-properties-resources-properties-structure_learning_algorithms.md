@@ -302,7 +302,7 @@ GS objects
 
 *   is optional
 
-*   Type: `object[]` ([bnlearn_interiamb item](config-definitions-bnlearn_interiamb-item.md))
+*   Type: `object[]` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
 
 *   cannot be null
 
@@ -310,7 +310,7 @@ GS objects
 
 ### bnlearn_gs Type
 
-`object[]` ([bnlearn_interiamb item](config-definitions-bnlearn_interiamb-item.md))
+`object[]` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
 
 ## bnlearn_hc
 

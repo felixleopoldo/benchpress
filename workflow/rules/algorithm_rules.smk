@@ -10,18 +10,18 @@
 rule sklearn_glasso:
     input:
         data = alg_input_data(),
-        sklearn_glasso="workflow/scripts/sklearn_glasso.py"
+        sklearn_glasso="workflow/scripts/structure_learning_algorithms/sklearn_glasso.py"
     output:
         adjmat = alg_output_adjmat_path("sklearn_glasso"),
         time = alg_output_time_path("sklearn_glasso")
     singularity:
         docker_image("pydatascience")
     script:
-        "../scripts/sklearn_glasso.py"
+        "../scripts/structure_learning_algorithms/sklearn_glasso.py"
 
 rule summarise_sklearn_glasso:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("sklearn_glasso"),
@@ -33,13 +33,13 @@ rule summarise_sklearn_glasso:
        
 rule join_summaries_sklearn_glasso:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("sklearn_glasso")
     output:
         join_summaries_output("sklearn_glasso")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule tabu:
     input:
@@ -47,12 +47,14 @@ rule tabu:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_tabu"),
         time = alg_output_time_path("bnlearn_tabu")
-    shell:
-        alg_shell("bnlearn_tabu")
+    singularity:
+        docker_image("bnlearn")
+    script:
+        "../scripts/structure_learning_algorithms/bnlearn_tabu.R"
 
 rule summarise_tabu:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_tabu"),
@@ -64,13 +66,13 @@ rule summarise_tabu:
        
 rule join_summaries_tabu:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bnlearn_tabu")
     output:
         join_summaries_output("bnlearn_tabu")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule notears:
     input:
@@ -85,7 +87,7 @@ rule notears:
 
 rule summarise_notears:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("notears"),
@@ -97,13 +99,13 @@ rule summarise_notears:
        
 rule join_summaries_notears:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("notears")
     output:
         join_summaries_output("notears")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule hc:
     input:
@@ -111,12 +113,14 @@ rule hc:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_hc"),
         time = alg_output_time_path("bnlearn_hc")
-    shell:
-        alg_shell("bnlearn_hc")
+    singularity:
+        docker_image("bnlearn")
+    script:
+        "../scripts/structure_learning_algorithms/bnlearn_hc.R"
 
 rule summarise_hc:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_hc"),
@@ -128,13 +132,13 @@ rule summarise_hc:
        
 rule join_summaries_hc:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bnlearn_hc")
     output:
         join_summaries_output("bnlearn_hc")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule bnlearn_interiamb:
     input:
@@ -142,12 +146,14 @@ rule bnlearn_interiamb:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_interiamb"),
         time = alg_output_time_path("bnlearn_interiamb")
+    singularity:
+        docker_image("bnlearn")
     script:
-        "../scripts/run_inter-iamb.R"
+        "../scripts/structure_learning_algorithms/bnlearn_inter-iamb.R"
 
 rule summarise_bnlearn_interiamb:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_interiamb"),
@@ -159,13 +165,13 @@ rule summarise_bnlearn_interiamb:
        
 rule join_summaries_bnlearn_interiamb:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bnlearn_interiamb")
     output:
         join_summaries_output("bnlearn_interiamb")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule gs:
     input:
@@ -173,12 +179,14 @@ rule gs:
     output:
         adjmat = alg_output_adjmat_path("bnlearn_gs"),
         time = alg_output_time_path("bnlearn_gs")
+    singularity:
+        docker_image("bnlearn")
     script:
-        "../scripts/run_gs.R"
+        "../scripts/structure_learning_algorithms/bnlearn_gs.R"
 
 rule summarise_gs:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_gs"),
@@ -190,13 +198,13 @@ rule summarise_gs:
        
 rule join_summaries_gs:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bnlearn_gs")
     output:
         join_summaries_output("bnlearn_gs")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule blip:
     input:
@@ -209,7 +217,7 @@ rule blip:
 
 rule summarise_blip:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("rblip_asobs"),
@@ -221,17 +229,17 @@ rule summarise_blip:
 
 rule join_summaries_blip:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("rblip_asobs")
     output:
         join_summaries_output("rblip_asobs")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule itsearch:
     input:
-        "workflow/scripts/run_iterative_search.R",
+        "workflow/scripts/structure_learning_algorithms/bidag_iterative_search.R",
         data = alg_input_data(),
     output:
         adjmat = alg_output_adjmat_path("bidag_itsearch"),
@@ -239,11 +247,11 @@ rule itsearch:
     singularity:
         docker_image("bidag")
     script:
-        "../scripts/run_iterative_search.R"
+        "../scripts/structure_learning_algorithms/bidag_iterative_search.R"
 
 rule summarise_itsearch:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bidag_itsearch"),
@@ -255,13 +263,13 @@ rule summarise_itsearch:
 
 rule join_summaries_itsearch:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bidag_itsearch")
     output:
         join_summaries_output("bidag_itsearch")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule pcalg:
     input:
@@ -270,13 +278,13 @@ rule pcalg:
         adjmat = alg_output_adjmat_path("pcalg_pc"),
         time = alg_output_time_path("pcalg_pc")
     singularity:
-        docker_image("bidag")
+        docker_image("pcalg")
     script:
-        "../scripts/run_pcalg.R"
+        "../scripts/structure_learning_algorithms/pcalg_pc.R"
 
 rule summarise_pcalg:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("pcalg_pc"),
@@ -288,27 +296,27 @@ rule summarise_pcalg:
 
 rule join_summaries_pcalg:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("pcalg_pc")
     output:
         join_summaries_output("pcalg_pc")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule mmhc:
     input:        
-        "workflow/scripts/run_mmhc.R",
+        "workflow/scripts/structure_learning_algorithms/bnlearn_mmhc.R",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("bnlearn_mmhc"),
         time = alg_output_time_path("bnlearn_mmhc")
     script:
-        "../scripts/run_mmhc.R"
+        "../scripts/structure_learning_algorithms/bnlearn_mmhc.R"
 
 rule summarise_mmhc:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_mmhc"),
@@ -320,17 +328,19 @@ rule summarise_mmhc:
 
 rule join_summaries_mmhc:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bnlearn_mmhc")
     output:
         join_summaries_output("bnlearn_mmhc")  
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule gobnilp:
     input:
-        data = alg_input_data()
+        data = alg_input_data(),
+        extra_args = "resources/extra_args/{extra_args}",
+        constraints = "resources/constraints/{constraints}"
     output:
         adjmat = alg_output_adjmat_path("gobnilp"),
         time = alg_output_time_path("gobnilp")
@@ -341,7 +351,7 @@ rule gobnilp:
 
 rule summarise_gobnilp:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gobnilp"),
@@ -353,13 +363,13 @@ rule summarise_gobnilp:
 
 rule join_summaries_gobnilp:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gobnilp")
     output:
         join_summaries_output("gobnilp")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule tetrad_fges:
     input:
@@ -370,11 +380,11 @@ rule tetrad_fges:
     singularity:
         docker_image("tetrad")
     script:
-        "../scripts/run_tetrad_fges.py"
+        "../scripts/structure_learning_algorithms/tetrad_fges.py"
 
 rule summarise_tetrad_fges:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("tetrad_fges"),
@@ -386,17 +396,17 @@ rule summarise_tetrad_fges:
 
 rule join_summaries_tetrad_fges:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("tetrad_fges")
     output:
         join_summaries_output("tetrad_fges")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule tetrad_fci:
     input:
-        "workflow/scripts/run_tetrad_fci.py",
+        "workflow/scripts/structure_learning_algorithms/tetrad_fci.py",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("tetrad_fci"),
@@ -404,11 +414,11 @@ rule tetrad_fci:
     singularity:
         docker_image("tetrad")
     script:
-        "../scripts/run_tetrad_fci.py"
+        "../scripts/structure_learning_algorithms/tetrad_fci.py"
 
 rule summarise_tetrad_fci:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("tetrad_fci"),
@@ -420,17 +430,17 @@ rule summarise_tetrad_fci:
 
 rule join_summaries_tetrad_fci:
     input: 
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("tetrad_fci")
     output:
         join_summaries_output("tetrad_fci")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule tetrad_gfci:
     input:
-        "workflow/scripts/run_tetrad_gfci.py",
+        "workflow/scripts/structure_learning_algorithms/tetrad_gfci.py",
         data = alg_input_data()
     output:
         adjmat = alg_output_adjmat_path("tetrad_gfci"),
@@ -438,11 +448,11 @@ rule tetrad_gfci:
     singularity:
         docker_image("tetrad")
     script:
-        "../scripts/run_tetrad_gfci.py"
+        "../scripts/structure_learning_algorithms/tetrad_gfci.py"
         
 rule summarise_tetrad_gfci:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("tetrad_gfci"),
@@ -454,13 +464,13 @@ rule summarise_tetrad_gfci:
 
 rule join_summaries_tetrad_gfci:
     input: 
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("tetrad_gfci")
     output:
         join_summaries_output("tetrad_gfci")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule tetrad_rfci:
     input:
@@ -471,7 +481,7 @@ rule tetrad_rfci:
     singularity:
         docker_image("tetrad")
     script:
-        "../scripts/run_tetrad_rfci.py"
+        "../scripts/structure_learning_algorithms/tetrad_rfci.py"
 
 rule summarise_tetrad_rfci:
     input:
@@ -486,17 +496,17 @@ rule summarise_tetrad_rfci:
 
 rule join_summaries_tetrad_rfci:
     input: 
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("tetrad_rfci")
     output:
         join_summaries_output("tetrad_rfci")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule order_mcmc:
     input:
-        "workflow/scripts/run_order_mcmc.R",
+        "workflow/scripts/structure_learning_algorithms/bidag_order_mcmc.R",
         data = alg_input_data(),
         startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
     output: # data seems to be matched wrongly
@@ -505,11 +515,11 @@ rule order_mcmc:
     singularity:
         docker_image("bidag")
     script:
-        "../scripts/run_order_mcmc.R"
+        "../scripts/structure_learning_algorithms/bidag_order_mcmc.R"
 
 rule order_mcmc_est:
     input:
-        "workflow/scripts/graphtraj_est.py",
+        "workflow/scripts/evaluation/graphtraj_est.py",
         traj = alg_output_seqgraph_path_fine_match("bidag_order_mcmc")
     output:
         adjmat = adjmat_estimate_path_mcmc("bidag_order_mcmc")
@@ -521,11 +531,11 @@ rule order_mcmc_est:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/graphtraj_est.py"
+        "../scripts/evaluation/graphtraj_est.py"
 
 rule summarise_order_mcmc:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = data_path(),
         adjmat_true = adjmat_true_path(),
         adjmat_est = adjmat_estimate_path_mcmc("bidag_order_mcmc"),
@@ -539,13 +549,13 @@ rule summarise_order_mcmc:
 """
 rule join_summaries_order_mcmc:
     input: 
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("bidag_order_mcmc")
     output:
         join_summaries_output("bidag_order_mcmc")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule trilearn:
     input:
@@ -560,7 +570,7 @@ rule trilearn:
 
 rule trilearn_est:
     input:
-       "workflow/scripts/graphtraj_est.py",
+       "workflow/scripts/evaluation/graphtraj_est.py",
         traj = alg_output_seqgraph_path("trilearn_pgibbs"),
     output:
         adjmat = alg_output_adjmat_path("trilearn_pgibbs") #here is the difference from order_mcmc. matching diffferently.
@@ -570,11 +580,11 @@ rule trilearn_est:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/graphtraj_est.py"
+        "../scripts/evaluation/graphtraj_est.py"
 
 rule summarise_trilearn:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("trilearn_pgibbs"),
@@ -586,13 +596,13 @@ rule summarise_trilearn:
        
 rule join_summaries_trilearn:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("trilearn_pgibbs")
     output:
         join_summaries_output("trilearn_pgibbs")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule gt13_multipair:
     input:
@@ -607,7 +617,7 @@ rule gt13_multipair:
 
 rule gt13_multipair_est:
     input:
-        "workflow/scripts/graphtraj_est.py",
+        "workflow/scripts/evaluation/graphtraj_est.py",
         traj = alg_output_seqgraph_path("gt13_multipair"),
     output:
         adjmat = alg_output_adjmat_path("gt13_multipair")
@@ -617,11 +627,11 @@ rule gt13_multipair_est:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/graphtraj_est.py"
+        "../scripts/evaluation/graphtraj_est.py"
 
 rule summarise_gt13_multipair:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gt13_multipair"),
@@ -633,13 +643,13 @@ rule summarise_gt13_multipair:
        
 rule join_summaries_gt13_multipair:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gt13_multipair")
     output:
         join_summaries_output("gt13_multipair")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
 
 rule gg99_singlepair:
     input:
@@ -654,7 +664,7 @@ rule gg99_singlepair:
 
 rule gg99_singlepair_est:
     input:
-        "workflow/scripts/graphtraj_est.py",
+        "workflow/scripts/evaluation/graphtraj_est.py",
         traj = alg_output_seqgraph_path("gg99_singlepair"),
     output:
         adjmat = alg_output_adjmat_path("gg99_singlepair")
@@ -664,11 +674,11 @@ rule gg99_singlepair_est:
     singularity:
         docker_image("networkx")
     script:
-        "../scripts/graphtraj_est.py"
+        "../scripts/evaluation/graphtraj_est.py"
 
 rule summarise_gg99_singlepair:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         data = summarise_alg_input_data_path(),
         adjmat_true = summarise_alg_input_adjmat_true_path(),
         adjmat_est = summarise_alg_input_adjmat_est_path("gg99_singlepair"),
@@ -680,10 +690,10 @@ rule summarise_gg99_singlepair:
        
 rule join_summaries_gg99_singlepair:
     input:
-        "workflow/scripts/run_summarise.R",
+        "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         res=join_string_sampled_model("gg99_singlepair")
     output:
         join_summaries_output("gg99_singlepair")
     script:
-        "../scripts/join_csv_files.R"
+        "../scripts/evaluation/join_csv_files.R"
