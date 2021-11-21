@@ -10,7 +10,7 @@ heatmap = pd.read_csv(snakemake.input["matrix_filename"])
 heatmap.index = heatmap.columns
 
 with sns.axes_style("white"):
-    sns.heatmap(heatmap,  annot=False,
+    sns.heatmap(heatmap,  annot=False, linewidth=1,
                 cmap="Blues",
                 vmin=0.0, vmax=1.0, square=True,
                 cbar=False,

@@ -52,7 +52,7 @@ A list where each item defines a certain data setup with the following fields.
 
     [
         {
-            "graph_id": "avneigs4_p20",
+            "graph_id": "alarm.csv",
             "parameters_id": "SEM",
             "data_id": "standardized",
             "seed_range": [
@@ -76,7 +76,7 @@ This module defines a metric for comparing graphs which may also be applied to *
 
 We assign to every edge :math:`e \in E'` the true positive score :math:`TP(e)=1` if :math:`e` is contained in :math:`E` with the same orientation (:math:`e` being undirected in both :math:`E` and :math:`E'` or :math:`e` having the same direction in both :math:`E` and :math:`E'`), :math:`TP(e)=1/2` if :math:`e` is contained in :math:`E` with a different orientation, otherwise :math:`TP(e)=0`.
 The false positive score :math:`FP(e)` is defined analogously.
-First let :math:` \bar E` denote the complementary set of :math:`E` in the sense that directed edges are reversed and undirected edges (non-edge) are removed (added).
+First let :math:`\bar E` denote the complementary set of :math:`E` in the sense that directed edges are reversed and undirected edges (non-edge) are removed (added).
 For every edge :math:`e \in \bar E'`, :math:`FP(e)=1` if :math:`e` is contained in :math:` \bar E` with the same orientation 
 and :math:`FP(e)=1/2` if :math:`e` is contained in :math:` \bar E`  with a different orientation, otherwise :math:`FP(e)=0`.
 
@@ -138,17 +138,35 @@ Note that TP and FP reduces to the ordinary counting true and false positives wh
         "ids": [
             "fges-sem-bic",
             "mmhc-bge-zf",
-            "omcmc_itsample-bge",
+            "gfci-sem-bic-fisher-z",
             "pc-gaussCItest"
         ]
     }
     
+..  figure:: _static/FPR_TPR_skelex.png
+    :alt: ROC plot 
+    :width: 500
+
+    ROC plot
+
+This module also plots timing of the algorithms and creates a plot as below.
+
+..  figure:: _static/elapsed_time.png
+    :alt: Timing 
+    :width: 500
+
+    Timing
 
 ``adjmat_true_plots``
 -------------------------
 
 This module plots the adjacency matrices of the true graphs. 
 The plots are saved in sub directories of *results/adjmat/* and copied to *results/output/adjmat_true_plots/* for easy reference.
+
+..  figure:: _static/alarmadjmat.png
+    :alt: The Alarm network 
+
+    The Alarm network as adjacency matrix
 
 ``adjmat_plots``
 -------------------------
@@ -164,12 +182,21 @@ The figures are saved in *results/adjmat* and copied to *results/output/adjmat_p
         "pc-gaussCItest"
     ]
 
+..  figure:: _static/alarmpcest.png
+    :alt: The Alarm network 
+
+    Estimate of the Alarm network using PC algorithm
+
 ``graph_true_plots``
 -------------------------
 
 This module plots the true underlying graphs. 
 The figures are saved in *results/adjmat* and copied to *results/output/graph_true_plots/*.
 
+..  figure:: _static/alarm.png
+    :alt: The Alarm network 
+
+    The Alarm network
 
 ``graph_plots``
 -------------------------
@@ -184,6 +211,11 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_pl
         "omcmc_itsample-bge",
         "pc-gaussCItest"
     ]
+
+..  figure:: _static/alarmpcgraph.png
+    :alt: The Alarm network 
+
+    Estimate of the Alarm network using PC algorithm
 
 ``mcmc_heatmaps``
 -------------------------
@@ -205,6 +237,12 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
             "active": true
         }
     ]
+
+..  figure:: _static/alarmordermcmc.png
+    :alt: The Alarm network 
+
+    Mean graph estimate of the Alarm network using order MCMC with startspace from iterative MCMC 
+
 
 ``mcmc_autocorr_plots``
 -------------------------
@@ -232,6 +270,12 @@ The plots are saved in *results/mcmc_autocorr/* and copied to *results/output/mc
         }
     ]
 
+..  figure:: _static/omcmcscoreautocorr.png
+    :alt: Score trajectory of order MCMC
+
+    Auto-correlation of the scores in trajectory of order MCMC
+
+
 ``mcmc_traj_plots``
 -------------------------
 
@@ -257,6 +301,11 @@ The plots are saved in *results/mcmc_traj_plots/* and copied to *results/output/
             "active": true
         }
     ]
+
+..  figure:: _static/omcmcscoretraj.png
+    :alt: Score trajectory of order MCMC
+
+    Score trajectory of order MCMC
 
 
 ``resources``
