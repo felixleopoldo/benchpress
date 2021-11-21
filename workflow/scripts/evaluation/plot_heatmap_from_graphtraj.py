@@ -1,15 +1,12 @@
 # Reads a grap trajectory and plots a heatmap of the expected graph.
 
+import networkx as nx
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
-import networkx as nx
-import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-
-sns.set_style("whitegrid")
-
 
 def edges_str_to_list(str, edgesymb="-"):
     edges_str = str[1:-1].split(";")
@@ -26,9 +23,7 @@ if len(edges) != 0:
     g = nx.DiGraph()
     edgesymb = "->"
     nodeorder = []
-
     tmpedges = edges_str_to_list(df["added"][0], edgesymb="->")
-
     nodeorder.append(tmpedges[0][0])
     for edge in tmpedges:
         nodeorder.append(edge[1])
@@ -37,9 +32,7 @@ else:
     g = nx.Graph()
     edgesymb = "-"
     nodeorder = []
-
     tmpedges = edges_str_to_list(df["added"][0], edgesymb)
-
     nodeorder.append(tmpedges[0][0])
     for edge in tmpedges:
         nodeorder.append(edge[1])
@@ -71,25 +64,22 @@ heatmap = adjmat / (df["index"].iloc[-1] -
 
 # need to reorganze matrix according to node orders..
 with sns.axes_style("white"):
-    sns.heatmap(heatmap,  annot=False, fmt=".2f",
+    sns.heatmap(heatmap, annot=False,
+                # fmt=".2f",
                 cmap="Blues",
                 vmin=0.0, vmax=1.0, square=True,
-                cbar=True,
-                xticklabels=nodeorder, yticklabels=nodeorder)
-#                xticklabels=1, yticklabels=1)
+                cbar=False,
+                xticklabels=nodeorder,
+                yticklabels=nodeorder)
+
 cax = plt.gcf().axes[-1]
 cax.tick_params(labelsize=6)
-#cax = plt.gcf().axes[-1]
-# cax.tick_params(labelsize=6)
 
 plt.title("Graph: "+snakemake.params["adjmat_string"] + "\nParameters: " +
           snakemake.params["param_string"] + "\nData: " + snakemake.params["data_string"], fontsize=6, ha="center")
-plt.ylabel(
-    # "Graph: \n"+snakemake.params["adjmat_string"].replace("/","\n") + "\n\n" +
-    # "Parameters: \n"+snakemake.params["param_string"].replace("/","\n") + "\n\n" +
-    #"Data: \n"+snakemake.params["data_string"].replace("/","\n")  + "\n\n"
-    "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\nburn_in="+snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
+plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\nburn_in=" +
+           snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
 
 plt.tight_layout()
-
 plt.savefig(snakemake.output["filename"])
+plt.clf()
