@@ -1254,7 +1254,7 @@
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
-                    "timeout": 10,
+                    "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": [
                         0.2,
