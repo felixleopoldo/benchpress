@@ -12,7 +12,8 @@
 
 Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different languages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
-The documentation is found at https://benchpressdocs.readthedocs.io.
+The documentation is found at https://benchpressdocs.readthedocs.io. 
+[This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) sections shows an overview of the supported evaluation methods.
 
 The currently supported algorithms are tabulated below.
 
@@ -108,7 +109,7 @@ This study took about 2h to finish on a 80-cores machine and is probably too lar
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch (`git push origin my-new-feature`)
+4. Push to the branch: `git push origin my-new-feature`
 5. Open a pull request
 
 ## License
