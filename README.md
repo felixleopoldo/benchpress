@@ -2,13 +2,22 @@
   <content><![CDATA[
 # ${1:Systematic benchmarks of structure learning algorithms for graphical models}
 
+
+<p align="center"><a href="https://benchpressdocs.readthedocs.io/" target="_blank" rel="noopener noreferrer">
+
+<img width="248"  src="https://user-images.githubusercontent.com/34372003/144749355-634bf303-7020-4054-b6c8-952ccfc623ca.png" alt="Benchpress logo">
+
+</a>
+
+
+</p>
+
+
 [![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-#  
-# Benchpress
-
+---
 
 Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different languages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
