@@ -39,6 +39,7 @@ Benchpress [1]_ is a `Snakemake <https://snakemake.readthedocs.io>`_ workflow fo
 It provides a simple interface via a `JSON <https://www.json.org/json-en.html>`_ configuration file in a probabilistic programming fashion.
 Benchpress implements a number of the state-of-the-art algorithms available in the literature, as well as data, parameter sampling algorithms and benchmarking metrics.
 
+`View on Github <https://github.com/felixleopoldo/benchpress>`_.
 
 
 .. [1] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
