@@ -69,6 +69,27 @@ The documentation is found at https://benchpressdocs.readthedocs.io.
 | gt13_multipair    | GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
 | sklearn_glasso    | GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
 
+
+#### Data modules
+| Module id | Method             | Language |
+|-----------|--------------------|----------|
+| iid       | I.I.D data samples | -        |
+| -         | Fixed data file    | .csv     |
+
+#### Evalutation modules
+
+| Module id           | Function                                  | Language | Library  |
+|---------------------|-------------------------------------------|----------|----------|
+| graph_true_plots    | Plots true graphs                         | -        | graphviz |
+| graph_plots         | Plots estimated graphs                    | -        | graphviz |
+| adjmat_true_plots   | Plots true adjacency matrices             | Python   | seaborn  |
+| adjmat_plots        | Plots estimated adjacency matrices        | Python   | seaborn  |
+| roc                 | Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  |
+| mcmc_heatmaps       | MCMC mean graph                           | Python   | seaborn  |
+| mcmc_autocorr_plots | MCMC auto-correlation                     | Python   | pandas   |
+| mcmc_traj_plots     | MCMC trajectory                           | Python   | pandas   |
+
+
 Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 ## Requirements
