@@ -24,7 +24,28 @@ The computations scale seamlessly on multiple cores or *"... to server, cluster,
 The documentation is found at https://benchpressdocs.readthedocs.io. 
 [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods.
 
-The currently supported algorithms are tabulated below.
+The currently supported graph modules are
+| Method                 | Graph | Language | Library  | Version |
+|------------------------|-------|----------|----------|---------|
+| randDAG                | DAG   | R        | pcalg    | 2.7-3   |
+| graph.sim              | DG,UG | R        | BDgraph  | 2.64    |
+| Christmas Tree         | DG    | Python   | trilearn | 1.2.3   |
+| AR                     | DG    | Python   | trilearn | 1.2.3   |
+| AR random lag          | DG    | Python   | trilearn | 1.2.3   |
+| Fixed adjacency matrix | *     | .csv     | -        | -       |
+
+The currently supported parameter modules are
+| Method | Distribution                                           | Graph  | Language | Library  | Version |
+|--------|--------------------------------------------------------|--------|----------|----------|---------|
+| rgwish | Graph Wishart                                          | DG, UG | R        | BDgraph  | 2.64    |
+| -      | Hyper Dirichlet                                        | DG     | Python   | trilearn | 1.2.3   |
+| -      | Graph intra-class                                      | DG     | Python   | trilearn | 1.2.3   |
+| -      | Random SEM parameters                                  | DAG    | R        | -        | -       |
+| -      | Random probability tables for binary Bayesian networks | DAG    | R        | -        | -       |
+| -      | Fixed bn.fit object                                    | DAG    | .rds     | -        | -       |
+| -      | Fixed SEM parameter matrix                             | DAG    | .csv     | -        | -       |
+
+The currently supported algorithms are 
 
 | Algorithm        | Graph | Language | Library             | Version  | 
 |------------------|-------|----------|---------------------|----------|
