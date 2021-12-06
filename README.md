@@ -25,25 +25,25 @@ The documentation is found at https://benchpressdocs.readthedocs.io.
 [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods.
 
 #### Graph modules
-| Method                 | Graph | Language | Library  | Version |
-|------------------------|-------|----------|----------|---------|
-| randDAG                | DAG   | R        | pcalg    | 2.7-3   |
-| graph.sim              | DG,UG | R        | BDgraph  | 2.64    |
-| Christmas Tree         | DG    | Python   | trilearn | 1.2.3   |
-| AR                     | DG    | Python   | trilearn | 1.2.3   |
-| AR random lag          | DG    | Python   | trilearn | 1.2.3   |
-| Fixed adjacency matrix | *     | .csv     | -        | -       |
+| Module id        | Method                 | Graph | Language | Library  | Version |
+|------------------|------------------------|-------|----------|----------|---------|
+| pcalg_randdag    | randDAG                | DAG   | R        | pcalg    | 2.7-3   |
+| bdgraph_graphsim | graph.sim              | DG,UG | R        | BDgraph  | 2.64    |
+| trilearn_cta     | Christmas tree         | DG    | Python   | trilearn | 1.2.3   |
+| bandmat          | AR                     | DG    | Python   | trilearn | 1.2.3   |
+| rand_bandmat     | AR random lag          | DG    | Python   | trilearn | 1.2.3   |
+| -                | Fixed adjacency matrix | *     | .csv     | -        | -       |
 
 #### Parameter modules
-| Method | Distribution               | Graph  | Language | Library  | Version |
-|--------|----------------------------|--------|----------|----------|---------|
-| rgwish | Graph Wishart              | DG, UG | R        | BDgraph  | 2.64    |
-| -      | Hyper Dirichlet            | DG     | Python   | trilearn | 1.2.3   |
-| -      | Graph intra-class          | DG     | Python   | trilearn | 1.2.3   |
-| -      | Random SEM parameters      | DAG    | R        | -        | -       |
-| -      | Random probability tables  | DAG    | R        | -        | -       |
-| -      | Fixed bn.fit object        | DAG    | .rds     | -        | -       |
-| -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
+| Module id            | Method | Distribution               | Graph  | Language | Library  | Version |
+|----------------------|--------|----------------------------|--------|----------|----------|---------|
+| bdgraph_rgwish       | rgwish | Graph Wishart              | DG, UG | R        | BDgraph  | 2.64    |
+| trielarn_hyper-dir   | -      | Hyper Dirichlet            | DG     | Python   | trilearn | 1.2.3   |
+| trilearn_intra-class | -      | Graph intra-class          | DG     | Python   | trilearn | 1.2.3   |
+| sem_params           | -      | Random SEM parameters      | DAG    | R        | -        | -       |
+| bin_bn               | -      | Random probability tables  | DAG    | R        | -        | -       |
+| -                    | -      | Fixed bn.fit object        | DAG    | .rds     | R        | -       |
+| -                    | -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
 
 #### Structure learning algorithms
 
