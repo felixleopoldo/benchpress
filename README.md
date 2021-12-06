@@ -24,7 +24,7 @@ The computations scale seamlessly on multiple cores or *"... to server, cluster,
 The documentation is found at https://benchpressdocs.readthedocs.io. 
 [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods.
 
-The currently supported graph modules are
+#### Graph modules
 | Method                 | Graph | Language | Library  | Version |
 |------------------------|-------|----------|----------|---------|
 | randDAG                | DAG   | R        | pcalg    | 2.7-3   |
@@ -34,7 +34,7 @@ The currently supported graph modules are
 | AR random lag          | DG    | Python   | trilearn | 1.2.3   |
 | Fixed adjacency matrix | *     | .csv     | -        | -       |
 
-The currently supported parameter modules are
+#### Parameter modules
 | Method | Distribution               | Graph  | Language | Library  | Version |
 |--------|----------------------------|--------|----------|----------|---------|
 | rgwish | Graph Wishart              | DG, UG | R        | BDgraph  | 2.64    |
@@ -45,7 +45,7 @@ The currently supported parameter modules are
 | -      | Fixed bn.fit object        | DAG    | .rds     | -        | -       |
 | -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
 
-The currently supported algorithms are 
+#### Structure learning algorithms
 
 | Algorithm        | Graph | Language | Library             | Version  | 
 |------------------|-------|----------|---------------------|----------|
