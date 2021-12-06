@@ -42,32 +42,32 @@ The documentation is found at https://benchpressdocs.readthedocs.io.
 | trilearn_intra-class | -      | Graph intra-class          | DG     | Python   | trilearn | 1.2.3   |
 | sem_params           | -      | Random SEM parameters      | DAG    | R        | -        | -       |
 | bin_bn               | -      | Random probability tables  | DAG    | R        | -        | -       |
-| -                    | -      | Fixed bn.fit object        | DAG    | .rds     | R        | -       |
+| -                    | -      | Fixed bn.fit object        | DAG    | .rds     | bnlearn  | -       |
 | -                    | -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
 
 #### Structure learning algorithms
 
-| Algorithm        | Graph | Language | Library             | Version  | 
-|------------------|-------|----------|---------------------|----------|
-| GOBNILP          | DAG   | C        | GOBNILP (bitbucket) | #e60ef14 |
-| ASOBS            | DAG   | R/Java   | r.blip              | 1.1      |
-| FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| PC               | CPDAG | R        | pcalg               | 2.7-3   |
-| No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
-| HC               | DAG   | R        | bnlearn             | 4.7      |
-| MMHC             | DAG   | R        | bnlearn             | 4.7      |
-| Inter-IAMB       | CPDAG | R        | bnlearn             | 4.7      |
-| GS               | DAG   | R        | bnlearn             | 4.7      |
-| Tabu             | DAG   | R        | bnlearn             | 4.7      |
-| Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    |
-| Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    |
-| PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
-| GG99 single pair | DG    | Java     | A. Thomas           | -        |
-| GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
-| GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
+| Module id         |     Algorithm    | Graph | Language |       Library       |  Version |
+|-------------------|:----------------:|:-----:|:--------:|:-------------------:|:--------:|
+| gobnilp           | GOBNILP          | DAG   | C        | GOBNILP (bitbucket) | #e60ef14 |
+| rblip_asobs       | ASOBS            | DAG   | R/Java   | r.blip              | 1.1      |
+| tetrad_fges       | FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| tetrad_fci        | FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| tetrad_rfci       | RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| tetrad_gfci       | GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
+| pcalg_pc          | PC               | CPDAG | R        | pcalg               | 2.7-3    |
+| notears           | No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
+| bnlearn_hc        | HC               | DAG   | R        | bnlearn             | 4.7      |
+| bnlearn_mmhc      | MMHC             | DAG   | R        | bnlearn             | 4.7      |
+| bnlearn_interiamb | Inter-IAMB       | CPDAG | R        | bnlearn             | 4.7      |
+| bnlearn_gs        | GS               | DAG   | R        | bnlearn             | 4.7      |
+| bnlearn_tabu      | Tabu             | DAG   | R        | bnlearn             | 4.7      |
+| bidag_itsearch    | Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    |
+| bidag_order_mcmc  | Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    |
+| trilearn_pgibbs   | PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
+| gg99_singlepair   | GG99 single pair | DG    | Java     | A. Thomas           | -        |
+| gt13_multipair    | GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
+| sklearn_glasso    | GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
 
 Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
