@@ -35,15 +35,15 @@ The currently supported graph modules are
 | Fixed adjacency matrix | *     | .csv     | -        | -       |
 
 The currently supported parameter modules are
-| Method | Distribution                                           | Graph  | Language | Library  | Version |
-|--------|--------------------------------------------------------|--------|----------|----------|---------|
-| rgwish | Graph Wishart                                          | DG, UG | R        | BDgraph  | 2.64    |
-| -      | Hyper Dirichlet                                        | DG     | Python   | trilearn | 1.2.3   |
-| -      | Graph intra-class                                      | DG     | Python   | trilearn | 1.2.3   |
-| -      | Random SEM parameters                                  | DAG    | R        | -        | -       |
-| -      | Random probability tables for binary Bayesian networks | DAG    | R        | -        | -       |
-| -      | Fixed bn.fit object                                    | DAG    | .rds     | -        | -       |
-| -      | Fixed SEM parameter matrix                             | DAG    | .csv     | -        | -       |
+| Method | Distribution               | Graph  | Language | Library  | Version |
+|--------|----------------------------|--------|----------|----------|---------|
+| rgwish | Graph Wishart              | DG, UG | R        | BDgraph  | 2.64    |
+| -      | Hyper Dirichlet            | DG     | Python   | trilearn | 1.2.3   |
+| -      | Graph intra-class          | DG     | Python   | trilearn | 1.2.3   |
+| -      | Random SEM parameters      | DAG    | R        | -        | -       |
+| -      | Random probability tables  | DAG    | R        | -        | -       |
+| -      | Fixed bn.fit object        | DAG    | .rds     | -        | -       |
+| -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
 
 The currently supported algorithms are 
 
