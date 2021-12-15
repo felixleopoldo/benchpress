@@ -21,16 +21,7 @@ The computations scale seamlessly on multiple cores or *"... to server, cluster,
 The documentation is found at https://benchpressdocs.readthedocs.io. 
 [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods.
 
-#### Data scenarios
-Benchpress supports five different data scenarios built from combining different sources of graph parameters and data.
 
-|     | Graph     | Parameters | Data      |
-|-----|-----------|------------|-----------|
-| I   | -         | -          | Fixed     |
-| II  | Fixed     | -          | Fixed     |
-| III | Fixed     | Fixed      | Generated |
-| IV  | Fixed     | Generated  | Generated |
-| V   | Generated | Generated  | Generated |
 
 
 ## Requirements
@@ -53,31 +44,30 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ## Usage
 
-### Example study
+Benchpress supports five different data scenarios built from combining different sources of graph parameters and data.
 
-This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
+
+|     | Graph     | Parameters | Data      |
+|-----|-----------|------------|-----------|
+| I   | -         | -          | Fixed     |
+| II  | Fixed     | -          | Fixed     |
+| III | Fixed     | Fixed      | Generated |
+| IV  | Fixed     | Generated  | Generated |
+| V   | Generated | Generated  | Generated |
+
+
+
+#### Example study
+This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**bidag_itsearch**, **tetrad_fges**, **bnlearn_tabu**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
 
 To run this study (300 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
-The following plots are from the roc module
+The following plots are from the **roc** module
 <img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="500"/>
 
 <img src="docs/source/_static/ellapsed_time.png" alt="drawing" width="500"/>
 
- ### Paper study
-To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec5.1.json](config/sec5.1.json) and type
-
-`$ snakemake --cores all --use-singularity --configfile config/sec5.1.json`
-
-A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps](docs/source/_static/ROC_randbinarybnreps50.png) and can be viewed with e.g. evince as
-
-`$ evince results/output/roc/FPRp_TRP_pattern.eps`
-
-<img src="docs/source/_static/ROC_randbinarybnreps50.png" alt="drawing" width="500"/>
-
-
-This study took about 2h to finish on a 80-cores machine and is probably too large (~8000 jobs) for a laptop user. -->
 
 ### Available modules
 
@@ -85,7 +75,7 @@ This study took about 2h to finish on a 80-cores machine and is probably too lar
 | Method                 | Graph | Language | Library  | Version | Module id        |
 |------------------------|-------|----------|----------|---------|------------------|
 | randDAG                | DAG   | R        | pcalg    | 2.7-3   | pcalg_randdag    |
-| graph.sim              | DG,UG | R        | BDgraph  | 2.64    | bdgraph_graphsim |
+| graph.sim              | DG, UG| R        | BDgraph  | 2.64    | bdgraph_graphsim |
 | CTA                    | DG    | Python   | trilearn | 1.2.3   | trilearn_cta     |
 | AR                     | DG    | Python   | trilearn | 1.2.3   | bandmat          |
 | AR random lag          | DG    | Python   | trilearn | 1.2.3   | rand_bandmat     |
