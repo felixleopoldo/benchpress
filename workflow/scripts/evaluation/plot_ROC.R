@@ -1,16 +1,15 @@
 # Reads joint csv file with summaries from all algorithms and computes plots of e.g. TPR and FPR
 # in a ROC plot. 
 library(ggplot2)
+library(dplyr, warn.conflicts = FALSE)
 library("rjson")
 
 if (file.info(snakemake@input[["csv"]])$size == 0) { 
      file.create(snakemake@output[["fpr_tpr_pattern"]])
      file.create(snakemake@output[["roc_FPRp_TPR_skel"]])
      file.create(snakemake@output[["FPRp_FNR_skel"]])
-     #file.create(snakemake@output[["fnr_fprp_skel"]])
-     #file.create(snakemake@output[["elapsed_time"]])
-     cat("Time-out",file=snakemake@output[["elapsed_time"]],sep="\n") # Copy time-out figure
-     cat("Time-out",file=snakemake@output[["fnr_fprp_skel"]],sep="\n")
+     cat("Time-out",file=snakemake@output[["elapsed_time"]], sep="\n") # Copy time-out figure
+     cat("Time-out",file=snakemake@output[["fnr_fprp_skel"]], sep="\n")
 } else {
     toplot <- read.csv(snakemake@input[["csv"]])
 
@@ -198,6 +197,39 @@ theme(plot.title = element_text(hjust = 0.5))
 ggsave(file = snakemake@output[["fnr_fprp_skel"]],plot=gg)
 
 
+# adjmats <- unique(toplot["adjmat"])
+# bns <- unique(toplot["bn"])
+# datas <- unique(toplot["data"])
+# ids <- unique(toplot["id"])
+
+# for (adjmat in adjmats){
+#     for (bn in bns){
+#         for (data in datas) {
+#             for (id in ids) {
+#                 dftmp <- toplot %>% 
+#                         filter(adjmat == adjmat) %>%
+#                         filter(bn == bn) %>%
+#                         filter(data == data) %>%
+#                         filter(id == id)
+
+#                 param <- unlist(unique(dftmp["curve_param"]))
+#                 print(paste(c(unlist(adjmat), unlist(bn), unlist(data))))
+#                 print(data[1])
+#                 print(unlist(bn))
+#                 print(unlist(adjmat))
+
+#                 ggplot() + geom_bar(data = dftmp, stat="identity", aes(x=as.factor(curve_vals), y = time_mean)) +
+#                   ggtitle(id) +
+#                   theme_bw() +
+#                   xlab(param) +
+#                   ylab("Mean time (s.)") 
+#                 ggsave(file = snakemake@output[["elapsed_time"]])
+
+#             }
+#         }
+#     }
+# }
+
 ggplot() + {
 
     geom_bar(data = toplot, stat="identity",
@@ -211,7 +243,7 @@ ggplot() + {
   xlab("Parameter.value") +
   ylab("Time (s.)") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_discrete(guide = guide_axis(angle=5))
+  scale_x_discrete(guide = guide_axis(angle=7))
 #scale_x_discrete(guide = guide_axis(n.dodge=2))
   ggsave(file = snakemake@output[["elapsed_time"]])
 }

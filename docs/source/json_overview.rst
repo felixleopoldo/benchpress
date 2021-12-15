@@ -8,20 +8,6 @@ An overview of how the config file is structured can be read about in the paper 
 For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
 
 
-
-..  , see :numref:`maincats`.
-
-
-
-.. .. _maincats:
-.. .. figure:: _static/maincats_exp.png
-..     :width: 400
-
-..     Main sections in :download:`config/sec6.1.json <../../config/sec6.1.json>`.
-
-.. * ``resources`` contains the available resources in terms of graphs, parameters, data and structure learning algorithms.
-.. * ``benchmark_setup`` defines the actual benchmarking setup, where the resourses are references by their corresponding ``id``.
-
     
 ``benchmark_setup``
 ********************
@@ -157,35 +143,7 @@ This module also plots timing of the algorithms and creates a plot as below.
 
     Timing
 
-``adjmat_true_plots``
--------------------------
 
-This module plots the adjacency matrices of the true graphs. 
-The plots are saved in sub directories of *results/adjmat/* and copied to *results/output/adjmat_true_plots/* for easy reference.
-
-..  figure:: _static/alarmadjmat.png
-    :alt: The Alarm network 
-
-    The Alarm network as adjacency matrix
-
-``adjmat_plots``
--------------------------
-
-This module plots the adjacency matrices of the estimated graphs. 
-The figures are saved in *results/adjmat* and copied to *results/output/adjmat_plots/*.
-
-.. code-block:: json
-    [
-        "fges-sem-bic",
-        "mmhc-bge-zf",
-        "omcmc_itsample-bge",
-        "pc-gaussCItest"
-    ]
-
-..  figure:: _static/alarmpcest.png
-    :alt: The Alarm network 
-
-    Estimate of the Alarm network using PC algorithm
 
 ``graph_true_plots``
 -------------------------
@@ -198,10 +156,15 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_tr
 
     The Alarm network
 
+..  figure:: _static/alarmadjmat.png
+    :alt: The Alarm network 
+
+    The Alarm network as adjacency matrix
+
 ``graph_plots``
 -------------------------
 
-This module plots and saves the estimated graphs in dot-format. 
+This module plots and saves the estimated graphs in dot-format and adjacency matrix. 
 The figures are saved in *results/adjmat* and copied to *results/output/graph_plots/*.
 
 .. code-block:: json
@@ -213,6 +176,11 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_pl
     ]
 
 ..  figure:: _static/alarmpcgraph.png
+    :alt: The Alarm network 
+
+    Estimate of the Alarm network using PC algorithm
+
+..  figure:: _static/alarmpcest.png
     :alt: The Alarm network 
 
     Estimate of the Alarm network using PC algorithm

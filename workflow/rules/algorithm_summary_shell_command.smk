@@ -64,7 +64,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval tabu " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval bnlearn_tabu " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
@@ -135,7 +135,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output.res} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval hc " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval bnlearn_hc " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
@@ -190,7 +190,7 @@ def summarise_alg_shell(algorithm):
         "--filename {output} " \ 
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate     --colval {wildcards.replicate} "\
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm     --colval itsearch "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm     --colval bidag_itsearch "\
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \
@@ -230,7 +230,7 @@ def summarise_alg_shell(algorithm):
         "--filename {output} " \ 
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval pcalg "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval pcalg_pc "\
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
@@ -255,7 +255,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval mmhc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval bnlearn_mmhc "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
@@ -324,7 +324,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval gs "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval bnlearn_gs "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
@@ -444,7 +444,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval trilearn "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval trilearn_pgibbs "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat      --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn          --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data        --colval {wildcards.data} "  \
@@ -468,7 +468,7 @@ def summarise_alg_shell(algorithm):
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval order_mcmc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval bidag_order_mcmc "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \

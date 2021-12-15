@@ -20,6 +20,7 @@ colnames(weight_mat) <- colnames(df)
 
 n_edges <- sum(adjmat)
 
+set.seed(seed)
 weight_mat[which(weight_mat == 1)] <- wFUN(n_edges, lb = lb, ub = ub)
 
 write.table(weight_mat, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")

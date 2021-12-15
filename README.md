@@ -3,13 +3,10 @@
 # ${1:Systematic benchmarks of structure learning algorithms for graphical models}
 
 
-<p align="center"><a href="https://benchpressdocs.readthedocs.io/" target="_blank" rel="noopener noreferrer">
-
-<img width="248"  src="https://user-images.githubusercontent.com/34372003/144749355-634bf303-7020-4054-b6c8-952ccfc623ca.png" alt="Benchpress logo">
-
+<p align="center">
+<a href="https://benchpressdocs.readthedocs.io/" target="_blank" rel="noopener noreferrer">
+<img width="248"  src="docs/source/_static/benchpress-logo.png" alt="Benchpress logo">
 </a>
-
-
 </p>
 
 
@@ -24,73 +21,17 @@ The computations scale seamlessly on multiple cores or *"... to server, cluster,
 The documentation is found at https://benchpressdocs.readthedocs.io. 
 [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods.
 
-#### Graph modules
-| Module id        | Method                 | Graph | Language | Library  | Version |
-|------------------|------------------------|-------|----------|----------|---------|
-| pcalg_randdag    | randDAG                | DAG   | R        | pcalg    | 2.7-3   |
-| bdgraph_graphsim | graph.sim              | DG,UG | R        | BDgraph  | 2.64    |
-| trilearn_cta     | Christmas tree         | DG    | Python   | trilearn | 1.2.3   |
-| bandmat          | AR                     | DG    | Python   | trilearn | 1.2.3   |
-| rand_bandmat     | AR random lag          | DG    | Python   | trilearn | 1.2.3   |
-| -                | Fixed adjacency matrix | *     | .csv     | -        | -       |
+#### Data scenarios
+Benchpress supports five different data scenarios built from combining different sources of graph parameters and data.
 
-#### Parameter modules
-| Module id            | Method | Distribution               | Graph  | Language | Library  | Version |
-|----------------------|--------|----------------------------|--------|----------|----------|---------|
-| bdgraph_rgwish       | rgwish | Graph Wishart              | DG, UG | R        | BDgraph  | 2.64    |
-| trielarn_hyper-dir   | -      | Hyper Dirichlet            | DG     | Python   | trilearn | 1.2.3   |
-| trilearn_intra-class | -      | Graph intra-class          | DG     | Python   | trilearn | 1.2.3   |
-| sem_params           | -      | Random SEM parameters      | DAG    | R        | -        | -       |
-| bin_bn               | -      | Random probability tables  | DAG    | R        | -        | -       |
-| -                    | -      | Fixed bn.fit object        | DAG    | .rds     | bnlearn  | -       |
-| -                    | -      | Fixed SEM parameter matrix | DAG    | .csv     | -        | -       |
+|     | Graph     | Parameters | Data      |
+|-----|-----------|------------|-----------|
+| I   | -         | -          | Fixed     |
+| II  | Fixed     | -          | Fixed     |
+| III | Fixed     | Fixed      | Generated |
+| IV  | Fixed     | Generated  | Generated |
+| V   | Generated | Generated  | Generated |
 
-#### Structure learning algorithms
-
-| Module id         |     Algorithm    | Graph | Language |       Library       |  Version |
-|-------------------|:----------------:|:-----:|:--------:|:-------------------:|:--------:|
-| gobnilp           | GOBNILP          | DAG   | C        | GOBNILP (bitbucket) | #e60ef14 |
-| rblip_asobs       | ASOBS            | DAG   | R/Java   | r.blip              | 1.1      |
-| tetrad_fges       | FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| tetrad_fci        | FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| tetrad_rfci       | RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| tetrad_gfci       | GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    |
-| pcalg_pc          | PC               | CPDAG | R        | pcalg               | 2.7-3    |
-| notears           | No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 |
-| bnlearn_hc        | HC               | DAG   | R        | bnlearn             | 4.7      |
-| bnlearn_mmhc      | MMHC             | DAG   | R        | bnlearn             | 4.7      |
-| bnlearn_interiamb | Inter-IAMB       | CPDAG | R        | bnlearn             | 4.7      |
-| bnlearn_gs        | GS               | DAG   | R        | bnlearn             | 4.7      |
-| bnlearn_tabu      | Tabu             | DAG   | R        | bnlearn             | 4.7      |
-| bidag_itsearch    | Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    |
-| bidag_order_mcmc  | Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    |
-| trilearn_pgibbs   | PGibbs           | DG    | Python   | Trilearn            | 1.2.3    |
-| gg99_singlepair   | GG99 single pair | DG    | Java     | A. Thomas           | -        |
-| gt13_multipair    | GT13 multi pair  | DG    | Java     | A. Thomas           | -        |
-| sklearn_glasso    | GLasso           | UG    | Python   | scikit-learn        | 0.22.1   |
-
-
-#### Data modules
-| Module id | Method             | Language |
-|-----------|--------------------|----------|
-| iid       | I.I.D data samples | -        |
-| -         | Fixed data file    | .csv     |
-
-#### Evalutation modules
-
-| Module id           | Function                                  | Language | Library  |
-|---------------------|-------------------------------------------|----------|----------|
-| graph_true_plots    | Plots true graphs                         | -        | graphviz |
-| graph_plots         | Plots estimated graphs                    | -        | graphviz |
-| adjmat_true_plots   | Plots true adjacency matrices             | Python   | seaborn  |
-| adjmat_plots        | Plots estimated adjacency matrices        | Python   | seaborn  |
-| roc                 | Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  |
-| mcmc_heatmaps       | MCMC mean graph                           | Python   | seaborn  |
-| mcmc_autocorr_plots | MCMC auto-correlation                     | Python   | pandas   |
-| mcmc_traj_plots     | MCMC trajectory                           | Python   | pandas   |
-
-
-Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 ## Requirements
 - [Snakemake ≥ 5.2](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
@@ -99,7 +40,7 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 ## Installation
 
 ### Clone and install
-
+As benchpress is a snakemake workflow, once the requirements are installed it requires no further installation but cloning the repository as
 ```
 $ git clone https://github.com/felixleopoldo/benchpress.git
 $ cd benchpress
@@ -114,28 +55,84 @@ On some systems, you might also have to explicitly install squash-tools. This ca
 
 ### Example study
 
-This study is based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly on the interval [-1, -0.25] U [0.25, 1] using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
+This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**order_mcmc**, **tetrad_fges**, **bnlearn_mmhc**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/ex.json](config/ex.json).
 
-To run this study (266 jobs ~ 10 minutes on a 2-cores laptop) type
+To run this study (300 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
 
-### Paper study
-To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec5.1.json](config/sec5.1.json) and type
+<img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="400"/> 
 
-`$ snakemake --cores all --use-singularity --configfile config/sec5.1.json`
-
-A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps](docs/source/_static/ROC_randbinarybnreps50.png) and can be viewed with e.g. evince as
-
-`$ evince results/output/roc/FPRp_TRP_pattern.eps`
-
-<!-- ![ROC](docs/source/_static/ROC_randbinarybnreps50.png) -->
-<img src="docs/source/_static/ROC_randbinarybnreps50.png" alt="drawing" width="600"/>
+<img src="docs/source/_static/ellapsed_time.png" alt="drawing" width="400"/>
 
 
-This study took about 2h to finish on a 80-cores machine and is probably too large (~8000 jobs) for a laptop user.
+### Available modules
+
+#### Graph modules
+| Method                 | Graph | Language | Library  | Version | Module id        |
+|------------------------|-------|----------|----------|---------|------------------|
+| randDAG                | DAG   | R        | pcalg    | 2.7-3   | pcalg_randdag    |
+| graph.sim              | DG,UG | R        | BDgraph  | 2.64    | bdgraph_graphsim |
+| CTA                    | DG    | Python   | trilearn | 1.2.3   | trilearn_cta     |
+| AR                     | DG    | Python   | trilearn | 1.2.3   | bandmat          |
+| AR random lag          | DG    | Python   | trilearn | 1.2.3   | rand_bandmat     |
+| Fixed adjacency matrix | *     | .csv     | -        | -       | -                |
+
+#### Parameter modules
+
+| Distribution               | Method | Graph  | Language | Library  | Version | Module id            |
+|----------------------------|--------|--------|----------|----------|---------|----------------------|
+| Graph Wishart              | rgwish | DG, UG | R        | BDgraph  | 2.64    | bdgraph_rgwish       |
+| Hyper Dirichlet            | -      | DG     | Python   | trilearn | 1.2.3   | trielarn_hyper-dir   |
+| Graph intra-class          | -      | DG     | Python   | trilearn | 1.2.3   | trilearn_intra-class |
+| Random SEM parameters      | -      | DAG    | R        | -        | -       | sem_params           |
+| Random probability tables  | -      | DAG    | R        | -        | -       | bin_bn               |
+| Fixed bn.fit object        | -      | DAG    | .rds     | bnlearn  | -       | -                    |
+| Fixed SEM parameter matrix | -      | DAG    | .csv     | -        | -       | -                    |
+
+#### Structure learning algorithms
+
+| Algorithm        | Graph | Language | Library             | Version  | Module id         |
+|------------------|-------|----------|---------------------|----------|-------------------|
+| GOBNILP          | DAG   | C        | GOBNILP (bitbucket) | #e60ef14 | gobnilp           |
+| ASOBS            | DAG   | R/Java   | r.blip              | 1.1      | rblip_asobs       |
+| FGES             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_fges       |
+| FCI              | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_fci        |
+| RFCI             | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_rfci       |
+| GFCI             | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_gfci       |
+| PC               | CPDAG | R        | pcalg               | 2.7-3    | pcalg_pc          |
+| No tears         | DAG   | Python   | jmoss20 (github)    | #0c032a0 | notears           |
+| HC               | DAG   | R        | bnlearn             | 4.7      | bnlearn_hc        |
+| MMHC             | DAG   | R        | bnlearn             | 4.7      | bnlearn_mmhc      |
+| Inter-IAMB       | CPDAG | R        | bnlearn             | 4.7      | bnlearn_interiamb |
+| GS               | DAG   | R        | bnlearn             | 4.7      | bnlearn_gs        |
+| Tabu             | DAG   | R        | bnlearn             | 4.7      | bnlearn_tabu      |
+| Iterative MCMC   | DAG   | R        | BiDAG               | 2.0.3    | bidag_itsearch    |
+| Order MCMC       | DAG   | R        | BiDAG               | 2.0.3    | bidag_order_mcmc  |
+| PGibbs           | DG    | Python   | Trilearn            | 1.2.3    | trilearn_pgibbs   |
+| GG99 single pair | DG    | Java     | A. Thomas           | -        | gg99_singlepair   |
+| GT13 multi pair  | DG    | Java     | A. Thomas           | -        | gt13_multipair    |
+| GLasso           | UG    | Python   | scikit-learn        | 0.22.1   | sklearn_glasso    |
 
 
+#### Data modules
+| Method              | Language | Module id |
+|---------------------|----------|-----------|
+| I.I.D. data samples | -        | iid       |
+| Fixed data file     | .csv     | -         |
+
+#### Evalutation modules
+
+| Function                                  | Language | Library  | Module id           |
+|-------------------------------------------|----------|----------|---------------------|
+| Plots true graphs                         | -        | graphviz | graph_true_plots    |
+| Plots estimated graphs                    | -        | graphviz | graph_plots         |
+| Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  | roc                 |
+| MCMC mean graph                           | Python   | seaborn  | mcmc_heatmaps       |
+| MCMC auto-correlation                     | Python   | pandas   | mcmc_autocorr_plots |
+| MCMC trajectory                           | Python   | pandas   | mcmc_traj_plots     |
+
+Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
 ## Citing
 
@@ -156,6 +153,7 @@ This study took about 2h to finish on a 80-cores machine and is probably too lar
 
 
 ## Contributing
+Contrubutions are very welcomed
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

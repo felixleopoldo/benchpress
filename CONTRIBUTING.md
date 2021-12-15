@@ -1,3 +1,11 @@
+## Adding a new data set
+
+Place your data sets in resources/data/mydatasets.
+
+## Adding a new graph
+
+Place the adjacency matrix of the graph in a .csv file in resources/graph/myadjmats.
+
 ## Adding a new graph module
 
 Place your script in workflow/scripts and edit the files 

@@ -55,16 +55,6 @@
                                 }
                             ]
                         },
-                        "adjmat_true_plots": {
-                            "title": "adjmat_true_plots",
-                            "description": "This module plots the adjacency matrices of the true graphs. The plots are saved in sub directories of results/adjmat/ and copied to results/output/adjmat_true_plots/ for easy reference.",
-                            "type": "boolean",
-                            "examples": [
-                                {
-                                    "adjmat_true_plots": true
-                                }
-                            ]
-                        },
                         "graph_true_plots": {
                             "title": "graph_true_plots",
                             "description": "This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph_true_plots/.",
@@ -73,22 +63,6 @@
                                 {
                                     "graph_true_plots": true
                                 }
-                            ]
-                        },
-                        "adjmat_plots": {
-                            "title": "adjmat_plots",
-                            "description": "This module plots the adjacency matrices of the estimated graphs. The figures are saved in results/adjmat and copied to results/output/adjmat_plots/.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            },
-                            "examples": [
-                                [
-                                    "fges-sem-bic",
-                                    "mmhc-bge-zf",
-                                    "omcmc_itsample-bge",
-                                    "pc-gaussCItest"
-                                ]
                             ]
                         },
                         "graph_plots": {
@@ -175,9 +149,7 @@
                     },
                     "required": [
                         "roc",
-                        "adjmat_true_plots",
                         "graph_true_plots",
-                        "adjmat_plots",
                         "graph_plots",
                         "mcmc_traj_plots",
                         "mcmc_heatmaps",

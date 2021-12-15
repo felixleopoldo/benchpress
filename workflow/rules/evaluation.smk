@@ -85,8 +85,30 @@ def adjmat_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["adjmat_plots"]]
-            for alg in active_algorithms("adjmat_plots")]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+            for alg in active_algorithms("graph_plots")]
+    return ret
+
+def adjmats():
+    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\            
+            "algorithm=/{alg_string}/"\                            
+            "seed={seed}/"
+            "adjmat.csv",
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+            for alg in active_algorithms("graph_plots")]
     return ret
 
 def graph_true_plots():
@@ -365,44 +387,35 @@ rule mcmc_autocorr_plots:
         for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".png")
 
-rule adjmat_plots:
-    input:        
-        configfilename,
-        adjmats=adjmat_plots()
-    output:
-        touch("results/output/adjmat_plots/adjmat_plots.done")
-    run:
-        for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/adjmat_plots/adjmat_" +str(i+1) +".eps")
-
-rule adjmat_true_plots:
-    input:
-        configfilename,
-        adjmats=adjmat_true_plots()
-    output:
-        touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
-    run:
-        for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/adjmat_true_plots/adjmat_true_" +str(i+1) +".eps")
-
 rule graph_plots:
     input:
         conf=configfilename,
-        graphs=graph_plots()
+        graphs=graph_plots(),
+        adjmats=adjmat_plots(),
+        csv_adjmats=adjmats()
     output:
-        touch("results/output/graph_plots/graph_plots.done")
+        touch("results/output/graph_plots/graph_plots.done"),
+        touch("results/output/graph_plots/adjmat_plots.done"),
+        touch("results/output/graph_plots/adjmat_csv.done")
     run:
-        
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".png")
+        for i,f in enumerate(input.adjmats):
+            shell("cp "+f+" results/output/graph_plots/adjmat_plot_" +str(i+1) +".eps")
+        for i,f in enumerate(input.csv_adjmats):
+            shell("cp "+f+" results/output/graph_plots/adjmat_" +str(i+1) +".csv")
 
 rule graph_true_plots:
     input:
         conf=configfilename,
-        graphs=graph_true_plots()
+        graphs=graph_true_plots(),
+        adjmats=adjmat_true_plots()
     output:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
+        touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
     run:
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")
+        for i,f in enumerate(input.adjmats):
+            shell("cp "+f+" results/output/graph_true_plots/adjmat_true_" +str(i+1) +".eps")
 

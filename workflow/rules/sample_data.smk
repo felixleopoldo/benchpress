@@ -122,18 +122,19 @@ rule sample_fixed_sem_params_data:
     script:
         "../scripts/data_sampling/sample_sem_data.R" 
 
-rule sample_sem_data:
-    input:
-        script="workflow/scripts/data_sampling/sample_sem_data.R",
-        bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/parameters=/" + pattern_strings["sem_params"] + "/" \
-             "data=/iid/" \
-             "n={n}/" \
-             "seed={replicate}.csv"
-    singularity:
-        docker_image("bidag")
-    script:
-        "../scripts/data_sampling/sample_sem_data.R" 
+if "sem_params" in pattern_strings:
+    rule sample_sem_data:
+        input:
+            script="workflow/scripts/data_sampling/sample_sem_data.R",
+            bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
+        output:
+            data="{output_dir}/data" \
+                "/adjmat=/{adjmat}"\
+                "/parameters=/" + pattern_strings["sem_params"] + "/" \
+                "data=/iid/" \
+                "n={n}/" \
+                "seed={replicate}.csv"
+        singularity:
+            docker_image("bidag")
+        script:
+            "../scripts/data_sampling/sample_sem_data.R" 

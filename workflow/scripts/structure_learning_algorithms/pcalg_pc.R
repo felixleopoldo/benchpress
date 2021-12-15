@@ -18,23 +18,23 @@ solveconfl <- as.logical(snakemake@wildcards[["solveconfl"]])
 numCores <- as.integer(snakemake@wildcards[["numCores"]])
 verbose <- as.logical(snakemake@wildcards[["verbose"]])
 indepTest = match.fun(snakemake@wildcards[["indepTest"]])
- 
-wrapper <- function(){
-    data <- read.csv(filename_data, check.names = FALSE)
 
-    suffStat = NULL
-    if (snakemake@wildcards[["indepTest"]] != "gaussCItest") {
+wrapper <- function() {
+  data <- read.csv(filename_data, check.names = FALSE)
+  
+  suffStat = NULL
+  if (snakemake@wildcards[["indepTest"]] != "gaussCItest") {
     nlev <- as.numeric(data[1,])
     data <- data[-1,] # Remove range header
     suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
-    } else {
+  } else {
     n <- dim(data)[1]
     suffStat <- list(C = cor(data), n = n)
-    }
+  }
 
-    start <- proc.time()[1]
-    set.seed(seed)
-    pc.fit <- pc(suffStat = suffStat,
+  start <- proc.time()[1]
+  set.seed(seed)
+  pc.fit <- pc(suffStat = suffStat,
                 indepTest = indepTest,
                 alpha = alpha,
                 labels = colnames(data),
@@ -50,29 +50,28 @@ wrapper <- function(){
                 numCores = numCores,
                 verbose = verbose)
 
-    totaltime <- proc.time()[1] - start
+  totaltime <- proc.time()[1] - start
 
-    graph <- pc.fit@graph
+  graph <- pc.fit@graph
 
-    adjmat <- as(graph, "matrix")
-    colnames(adjmat) <- names(data)
+  adjmat <- as(graph, "matrix")
+  colnames(adjmat) <- names(data)
+  write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 
-    write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
-
-    write(totaltime, file = snakemake@output[["time"]])
+  write(totaltime, file = snakemake@output[["time"]])
 }
 
-if(snakemake@wildcards[["timeout"]] == "None"){
-    wrapper()
+if (snakemake@wildcards[["timeout"]] == "None") {
+  wrapper()
 } else {
-    res <- NULL
-    tryCatch({
+  res <- NULL
+  tryCatch({
     res <- withTimeout({
-        wrapper()
+      wrapper()
     }, timeout = snakemake@wildcards[["timeout"]])
-    }, TimeoutException = function(ex) {
-        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep=""))
-        file.create(filename)
-        cat("None",file=snakemake@output[["time"]],sep="\n")    
-    })
+  }, TimeoutException = function(ex) {
+    message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep = ""))
+    file.create(filename)
+    cat("None", file = snakemake@output[["time"]], sep = "\n")
+  })
 }
