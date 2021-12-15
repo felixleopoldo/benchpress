@@ -159,6 +159,27 @@
                     "timeout": null
                 }
             ],
+            "bnlearn_mmhc": [
+                {
+                    "id": "mmhc-bge-zf",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "score": "bge",
+                    "test": "zf",
+                    "iss": 1,
+                    "issmu": 1,
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": null,
+                    "timeout": null
+                }
+            ],
             "bidag_itsearch": [
                 {
                     "id": "itsearch_sample-bge",
@@ -178,6 +199,53 @@
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": 0.1,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 14,
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                }
+            ],
+            "bidag_order_mcmc": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "startspace_algorithm": [
+                        "itsample-bge_am01_endspace"
+                    ],
+                    "plus1": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": 0.1,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": false,
+                    "cpdag": false,
+                    "timeout": null,
+                    "mcmc_seed": 1,
+                    "threshold": [
+                        0.2,
+                        0.5,
+                        0.7
+                    ],
+                    "burnin": 0
                 }
             ]
         }

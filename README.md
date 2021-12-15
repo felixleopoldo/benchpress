@@ -5,7 +5,7 @@
 
 <p align="center">
 <a href="https://benchpressdocs.readthedocs.io/" target="_blank" rel="noopener noreferrer">
-<img width="248"  src="docs/source/_static/benchpress-logo.png" alt="Benchpress logo">
+<img width="248"  src="docs/source/_static/benchpress-logo-white-bg.png" alt="Benchpress logo">
 </a>
 </p>
 
@@ -60,11 +60,24 @@ This study is an example of data scenario V based on three continuous datasets c
 To run this study (300 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/ex.json`
+The following plots are from the roc module
+<img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="500"/>
 
-<img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="400"/> 
+<img src="docs/source/_static/ellapsed_time.png" alt="drawing" width="500"/>
 
-<img src="docs/source/_static/ellapsed_time.png" alt="drawing" width="400"/>
+ ### Paper study
+To run the simulation setup in Section 5.1 of [[1]](#1) use [config/sec5.1.json](config/sec5.1.json) and type
 
+`$ snakemake --cores all --use-singularity --configfile config/sec5.1.json`
+
+A roc curve is found in the file [results/output/roc/FPRp_TRP_pattern.eps](docs/source/_static/ROC_randbinarybnreps50.png) and can be viewed with e.g. evince as
+
+`$ evince results/output/roc/FPRp_TRP_pattern.eps`
+
+<img src="docs/source/_static/ROC_randbinarybnreps50.png" alt="drawing" width="500"/>
+
+
+This study took about 2h to finish on a 80-cores machine and is probably too large (~8000 jobs) for a laptop user. -->
 
 ### Available modules
 
