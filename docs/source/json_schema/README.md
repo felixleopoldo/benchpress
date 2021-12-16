@@ -170,6 +170,10 @@
 
 *   [Positive integer list](./config-definitions-non-negative-integers-anyof-positive-integer-list.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnum/anyOf/1`
 
+*   [Positive integer list](./config-definitions-non-negative-integers-anyof-positive-integer-list.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnum/anyOf/1`
+
+*   [Positive integer list](./config-definitions-non-negative-integers-anyof-positive-integer-list.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnum/anyOf/1`
+
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_traj_plots-item-properties-functional-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item/properties/functional/anyOf/1`
 
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_autocorr_plots-item-properties-stringorlist-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/functional/anyOf/1`
@@ -181,8 +185,6 @@
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-mcmc_traj_plots-item-properties-functional-anyof-1.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_traj_plots_item/properties/functional/anyOf/1`
 
 *   [Untitled array in JSON schema for Benchpress config file.](./config-definitions-bidag_order_mcmc-item-properties-startspace_algorithm-anyof-2.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/startspace_algorithm/anyOf/2`
-
-*   [adjmat_plots](./config-properties-benchmark_setup-properties-evaluation-properties-adjmat_plots.md "This module plots the adjacency matrices of the estimated graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots`
 
 *   [bandmat](./config-properties-resources-properties-graph-properties-bandmat.md "Generates a graph with band structured adjacency matrix") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat`
 

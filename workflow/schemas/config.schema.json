@@ -1079,6 +1079,9 @@
                 },
                 "max_parents": {
                     "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "DAG": {
+                    "type":"boolean"
                 }
             },
             "required": [
@@ -1088,7 +1091,8 @@
                 "n",
                 "par1",
                 "par2",
-                "method"
+                "method",
+                "DAG"
             ],
             "additionalProperties": false,
             "examples": []

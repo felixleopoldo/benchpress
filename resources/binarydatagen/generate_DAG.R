@@ -14,11 +14,11 @@ generateDAG <- function(n, e) {
 }
 
 generateDAGs <- function(n, e, n_dags) {
-  if (n_dags == 1){
+  if (n_dags == 1) {
     return(generateDAGn(n, e))
   }
   dags <- c()
-  for (i  in seq(n_dags)) {
+  for (i in seq(n_dags)) {
     dags[i] <- generateDAGn(n, e)
   }
   return(dags)
@@ -34,21 +34,20 @@ generateDAGs <- function(n, e, n_dags) {
 #'
 #' @examples 
 #' 
-randDAGMaxParents <- function(n, d, method ="er", par1=NULL, par2=NULL,
-                                 DAG = TRUE, weighted = TRUE, max_parents = 5){
-    if(is.null(max_parents)){
-        adj <- 1 * (as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2=par2), "matrix") != 0)
-    } 
-    else 
-    {
-        adj <- NULL
-        parents <- Inf
-        while (parents > max_parents) {
-            # here we make sure graphs do not have to big parent sets
-            # here we can define the type of the graph
-            adj <- 1 * (as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2=par2), "matrix") != 0)
-            parents <- max(apply(adj, 2, sum))
-        }
+randDAGMaxParents <- function(n, d, method = "er", par1 = NULL, par2 = NULL,
+                                 DAG = TRUE, weighted = TRUE, max_parents = 5) {
+  if (is.null(max_parents)) {
+    adj <- 1 * (as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2 = par2, DAG = DAG), "matrix") != 0)
+  }
+  else {
+    adj <- NULL
+    parents <- Inf
+    while (parents > max_parents) {
+      # here we make sure graphs do not have to big parent sets
+      # here we can define the type of the graph
+      adj <- 1 * (as(pcalg::randDAG(n, d = d, method = method, par1 = par1, par2 = par2, DAG = DAG), "matrix") != 0)
+      parents <- max(apply(adj, 2, sum))
     }
-    return(adj)
+  }
+  return(adj)
 }

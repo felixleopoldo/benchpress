@@ -104,7 +104,8 @@
                     "d": 4,
                     "par1": null,
                     "par2": null,
-                    "method": "er"
+                    "method": "er",
+                    "DAG": true
                 }
             ],
             "trilearn_cta": [

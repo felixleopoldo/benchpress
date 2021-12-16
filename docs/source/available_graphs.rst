@@ -27,7 +27,8 @@ This is the randDAG from the R package `pcalg <https://cran.r-project.org/web/pa
         "d": 4,
         "par1": null,
         "par2": null,
-        "method": "er"
+        "method": "er",
+        "DAG": true
     }
 
 ``trilearn_cta``

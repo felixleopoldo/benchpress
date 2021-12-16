@@ -21,11 +21,11 @@ rule roc:
         csv="results/output/roc/ROC_data.csv" 
     output:
         touch("results/output/roc/roc.done"),
-        fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.eps",
-        FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.eps",
-        fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.eps",
-        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.eps",
-        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.eps"
+        fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",
+        FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
+        fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.png",
+        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.png",
+        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png"
     script:
         "../scripts/evaluation/plot_ROC.R"
 

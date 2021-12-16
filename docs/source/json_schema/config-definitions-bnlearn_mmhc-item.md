@@ -40,19 +40,20 @@ MMHC algorithm instance
 
 # bnlearn_mmhc Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
-| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)       | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/id")       |
-| [alpha](#alpha) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/alpha")                           |
-| [test](#test)   | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-test.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/test")   |
-| [beta](#beta)   | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/beta")        |
-| [score](#score) | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-score.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/score") |
-| [iss](#iss)     | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/iss")         |
-| [issmu](#issmu) | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/issmu")       |
-| [issw](#issw)   | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/issw")        |
-| [l](#l)         | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/l")          |
-| [k](#k)         | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/k")          |
-| [prior](#prior) | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/prior") |
+| Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
+| :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)           | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/id")       |
+| [alpha](#alpha)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/alpha")                           |
+| [test](#test)       | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-test.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/test")   |
+| [beta](#beta)       | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/beta")        |
+| [score](#score)     | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-score.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/score") |
+| [iss](#iss)         | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/iss")         |
+| [issmu](#issmu)     | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/issmu")       |
+| [issw](#issw)       | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/issw")        |
+| [l](#l)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/l")          |
+| [k](#k)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/k")          |
+| [prior](#prior)     | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bnlearn_mmhc-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/prior") |
+| [timeout](#timeout) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/timeout")     |
 
 ## id
 
@@ -347,3 +348,31 @@ any of
 ### prior Type
 
 `string`
+
+## timeout
+
+
+
+`timeout`
+
+*   is required
+
+*   Type: merged type ([Npn-negative integer or null](config-definitions-npn-negative-integer-or-null.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmhc/properties/timeout")
+
+### timeout Type
+
+merged type ([Npn-negative integer or null](config-definitions-npn-negative-integer-or-null.md))
+
+any of
+
+*   any of
+
+    *   [natnum type](config-definitions-natnum-type.md "check type definition")
+
+    *   [Positive integer list](config-definitions-non-negative-integers-anyof-positive-integer-list.md "check type definition")
+
+*   [Untitled null in JSON schema for Benchpress config file.](config-definitions-npn-negative-integer-or-null-anyof-1.md "check type definition")

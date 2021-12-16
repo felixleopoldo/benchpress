@@ -87,7 +87,8 @@
                     "d": 4,
                     "par1": null,
                     "par2": null,
-                    "method": "er"
+                    "method": "er",
+                    "DAG": true
                 }
             ]
         },
@@ -191,7 +192,11 @@
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": 2,
-                    "am": [0.01, 0.1, 1],
+                    "am": [
+                        0.01,
+                        0.1,
+                        1
+                    ],
                     "aw": null,
                     "softlimit": 9,
                     "hardlimit": 14,

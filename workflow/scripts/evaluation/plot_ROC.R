@@ -68,7 +68,7 @@ ggsave(file = snakemake@output[["fpr_tpr_pattern"]],plot=gg)
 
 gg  <- ggplot() + {
   if (errorbar) {
-    geom_errorbar(data = toplot,
+    geom_errorbar(data = toplot, alpha=1.0,
               aes(x = FPRn_skel_median,
                   ymin = TPR_skel_q1,
                   ymax = TPR_skel_q3,
@@ -77,7 +77,7 @@ gg  <- ggplot() + {
   }
 } + {
   if (path) {
-    geom_path(data = toplot,
+    geom_path(data = toplot, alpha=1.0, 
           aes(x = FPRn_skel_median,
               y = TPR_skel_median,
               col = id))

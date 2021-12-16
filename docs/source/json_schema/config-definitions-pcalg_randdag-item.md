@@ -16,15 +16,16 @@ An instance of pcalg randdag. Sampling of a DAG with specified maximum averge nu
 
 # pcalg_randdag Properties
 
-| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
-| :-------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/id")         |
-| [n](#n)                     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/n")                   |
-| [d](#d)                     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/d")                   |
-| [par1](#par1)               | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/par1")           |
-| [par2](#par2)               | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/par2")           |
-| [method](#method)           | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-method.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/method") |
-| [max_parents](#max_parents) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/max_parents")   |
+| Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                   | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/id")         |
+| [n](#n)                     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/n")                   |
+| [d](#d)                     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/d")                   |
+| [par1](#par1)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/par1")           |
+| [par2](#par2)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/par2")           |
+| [method](#method)           | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-method.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/method") |
+| [max_parents](#max_parents) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/max_parents")   |
+| [DAG](#dag)                 | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-dag.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/DAG")       |
 
 ## id
 
@@ -193,3 +194,21 @@ any of
     *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null-anyof-1.md "check type definition")
+
+## DAG
+
+
+
+`DAG`
+
+*   is required
+
+*   Type: `boolean`
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-pcalg_randdag-item-properties-dag.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_randdag/properties/DAG")
+
+### DAG Type
+
+`boolean`

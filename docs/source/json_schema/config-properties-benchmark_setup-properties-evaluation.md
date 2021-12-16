@@ -85,9 +85,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                             |
 | :------------------------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [roc](#roc)                                 | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")                                                                            |
-| [adjmat_true_plots](#adjmat_true_plots)     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_true_plots")     |
 | [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
-| [adjmat_plots](#adjmat_plots)               | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots")               |
 | [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
 | [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
 | [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
@@ -129,32 +127,6 @@ ROC item
 }
 ```
 
-## adjmat_true_plots
-
-This module plots the adjacency matrices of the true graphs. The plots are saved in sub directories of results/adjmat/ and copied to results/output/adjmat_true_plots/ for easy reference.
-
-`adjmat_true_plots`
-
-*   is required
-
-*   Type: `boolean` ([adjmat_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_true_plots.md))
-
-*   cannot be null
-
-*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_true_plots")
-
-### adjmat_true_plots Type
-
-`boolean` ([adjmat_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_true_plots.md))
-
-### adjmat_true_plots Examples
-
-```json
-{
-  "adjmat_true_plots": true
-}
-```
-
 ## graph_true_plots
 
 This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph_true_plots/.
@@ -179,35 +151,6 @@ This module plots the true underlying graphs. The figures are saved in results/a
 {
   "graph_true_plots": true
 }
-```
-
-## adjmat_plots
-
-This module plots the adjacency matrices of the estimated graphs. The figures are saved in results/adjmat and copied to results/output/adjmat_plots/.
-
-`adjmat_plots`
-
-*   is required
-
-*   Type: `string[]`
-
-*   cannot be null
-
-*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-adjmat_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/adjmat_plots")
-
-### adjmat_plots Type
-
-`string[]`
-
-### adjmat_plots Examples
-
-```json
-[
-  "fges-sem-bic",
-  "mmhc-bge-zf",
-  "omcmc_itsample-bge",
-  "pc-gaussCItest"
-]
 ```
 
 ## graph_plots
