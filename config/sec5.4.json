@@ -34,9 +34,7 @@
                     "tabu-bge"
                 ]
             },
-            "adjmat_true_plots": false,
             "graph_true_plots": false,
-            "adjmat_plots": [],
             "graph_plots": [],
             "mcmc_traj_plots": [],
             "mcmc_heatmaps": [],
