@@ -1,9 +1,8 @@
 <snippet>
-  <content><![CDATA[
-# ${1:Systematic benchmarks of structure learning algorithms for graphical models}
+  <content>
 
 
-<p align="center">
+<p align="left">
 <a href="https://benchpressdocs.readthedocs.io/" target="_blank" rel="noopener noreferrer">
 <img width="248"  src="docs/source/_static/benchpress-logo-white-bg.png" alt="Benchpress logo">
 </a>
