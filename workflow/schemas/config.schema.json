@@ -43,7 +43,10 @@
                                 {
                                     "filename_prefix": "example/",
                                     "point": true,
+                                    "show_seed": false,
                                     "errorbar": true,
+                                    "errorbarh": false,
+                                    "scatter": true,
                                     "path": true,
                                     "text": false,
                                     "ids": [
@@ -62,6 +65,16 @@
                             "examples": [
                                 {
                                     "graph_true_plots": true
+                                }
+                            ]
+                        },
+                        "graph_true_stats": {
+                            "title": "graph_true_stats",
+                            "description": "This module plots statistics of the true underlying graphs. The figures are saved in to results/output/graph_true_stats/.",
+                            "type": "boolean",
+                            "examples": [
+                                {
+                                    "graph_true_stats": true
                                 }
                             ]
                         },
@@ -150,6 +163,7 @@
                     "required": [
                         "roc",
                         "graph_true_plots",
+                        "graph_true_stats",
                         "graph_plots",
                         "mcmc_traj_plots",
                         "mcmc_heatmaps",
@@ -161,7 +175,10 @@
                             "roc": {
                                 "filename_prefix": "example/",
                                 "point": true,
+                                "show_seed": false,
                                 "errorbar": true,
+                                "errorbarh": false,
+                                "scatter": true,
                                 "path": true,
                                 "text": false,
                                 "ids": [
@@ -923,16 +940,36 @@
                 "point": {
                     "type": "boolean"
                 },
+                "show_seed": {
+                    "type": "boolean"
+                },
+                "scatter": {
+                    "type": "boolean"
+                },
+                "errorbar": {
+                    "type": "boolean"
+                },
+                "errorbarh": {
+                    "type": "boolean"
+                },
                 "text": {
                     "type": "boolean"
                 },
                 "path": {
                     "type": "boolean"
-                },
-                "errorbar": {
-                    "type": "boolean"
                 }
             },
+            "required": [
+                "ids",
+                "filename_prefix",
+                "point",
+                "show_seed",
+                "scatter",
+                "path",
+                "errorbar",
+                "errorbarh",
+                "text"
+            ],
             "examples": [
                 {
                     "filename_prefix": "example/",
@@ -1081,7 +1118,7 @@
                     "$ref": "#/definitions/flexnonnegintnull"
                 },
                 "DAG": {
-                    "type":"boolean"
+                    "type": "boolean"
                 }
             },
             "required": [

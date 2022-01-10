@@ -101,7 +101,7 @@ if (snakemake@wildcards[["timeout"]] == "None") {
       wrapper()
     }, timeout = snakemake@wildcards[["timeout"]])
   }, TimeoutException = function(ex) {
-    message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty grape and time files.", sep = ""))
+    message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep = ""))
     file.create(filename)
     cat("None", file = snakemake@output[["time"]], sep = "\n")
 

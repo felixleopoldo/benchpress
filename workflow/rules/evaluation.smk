@@ -8,9 +8,10 @@ rule roc_data:
         snake="workflow/Snakefile",
         algs=active_algorithm_files("roc") # It should maybe be stated there which kind of roc to be considered..
     output:
-        csv="results/output/roc/ROC_data.csv"
+        csv="results/output/roc/ROC_data.csv",
+        joint="results/output/roc/joint_benchmarks.csv"
     shell:
-        "Rscript workflow/scripts/evaluation/combine_ROC_data.R --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+        "Rscript workflow/scripts/evaluation/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule roc:
     input:
@@ -18,14 +19,20 @@ rule roc:
         "workflow/scripts/evaluation/run_summarise.R",
         "workflow/Snakefile",
         config=configfilename,
-        csv="results/output/roc/ROC_data.csv" 
+        csv="results/output/roc/ROC_data.csv",
+        raw_bench="results/output/roc/joint_benchmarks.csv"
     output:
         touch("results/output/roc/roc.done"),
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
         fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.png",
         roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.png",
-        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png"
+        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png",
+        elapsed_time_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time_joint.png",
+        elapsed_time_fine="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time_fine.png",
+        SHD_cpdag="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag.png",
+        SHD_cpdag_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag_joint.png",
+        ntests="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests.png"
     script:
         "../scripts/evaluation/plot_ROC.R"
 
@@ -61,6 +68,14 @@ def traj_plots():
 
 def adjmat_true_plots():
     return [[expand("{output_dir}/adjmat/{adjmat_string}.eps",
+            output_dir="results",
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
+            for seed in get_seed_range(sim_setup["seed_range"]) ]
+            for sim_setup in config["benchmark_setup"]["data"] ]
+
+def adjmat_true_stats():
+    return [[expand("{output_dir}/adjmatstats/{adjmat_string}/stats.csv",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -292,6 +307,17 @@ rule adjmat_true_plot:
     script:
         "../scripts/evaluation/plot_matrix_as_heatmap.py"
 
+rule adjmat_true_stats:
+    input:
+        "workflow/scripts/evaluation/graph_stats.R",
+        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
+    output:
+        stats_filename = "{output_dir}/adjmatstats/{adjmat_string}/stats.csv"
+    params:
+        title="{adjmat_string}.csv",
+    script:
+        "../scripts/evaluation/graph_stats.R"
+
 # This rule is very generally specified ad relies on that it is called in  the right way.
 # I.e with the path of an adjaceny matrix.
 rule adjmat_to_dot:
@@ -386,6 +412,28 @@ rule mcmc_autocorr_plots:
     run:
         for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".png")
+
+rule join_adjmat_stats:
+    input:
+        conf=configfilename,
+        res=adjmat_true_stats()
+    output:
+        "results/output/graph_true_stats/joint_stats.csv"
+    script:
+        "../scripts/evaluation/join_csv_files.R"
+
+
+rule plot_adjmat_stats:
+    input:    
+        "workflow/scripts/evaluation/graph_stats_plot.R",
+        conf=configfilename,
+        joint_stats="results/output/graph_true_stats/joint_stats.csv"
+    output:
+        touch("results/output/graph_true_stats/graph_true_stats.done"),
+        n_edges_plot="results/output/graph_true_stats/n_edges.png"
+        
+    script:
+        "../scripts/evaluation/graph_stats_plot.R"
 
 rule graph_plots:
     input:

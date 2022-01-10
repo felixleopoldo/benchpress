@@ -15,7 +15,10 @@
             "roc": {
                 "filename_prefix": "example/",
                 "point": true,
+                "show_seed": false,
                 "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
@@ -26,10 +29,11 @@
                 ]
             },
             "graph_true_plots": true,
+            "graph_true_stats": true,
             "graph_plots": [
                 "fges-sem-bic",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
+                "tabu-bge",
+                "itsearch_sample-bge",
                 "pc-gaussCItest"
             ],
             "mcmc_traj_plots": [
@@ -102,6 +106,77 @@
             ]
         },
         "structure_learning_algorithms": {
+            "bnlearn_gs": [
+                {
+                    "id": "gs-mi",
+                    "alpha": [
+                        0.01,
+                        0.05,
+                        0.1,
+                        0.2
+                    ],
+                    "test": "mi",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                },
+                {
+                    "id": "gs-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ],
+            "gobnilp": [
+                {
+                    "id": "gobnilp-bde",
+                    "continuous": false,
+                    "score_type": "BDeu",
+                    "extra_args": null,
+                    "constraints": null,
+                    "plot": false,
+                    "palim": 3,
+                    "alpha_mu": null,
+                    "alpha_omega_minus_nvars": null,
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.1
+                    ],
+                    "time_limit": null,
+                    "gap_limit": null,
+                    "prune": true,
+                    "timeout": null
+                },
+                {
+                    "id": "gobnilp-bge",
+                    "continuous": true,
+                    "score_type": "BGe",
+                    "extra_args": null,
+                    "constraints": null,
+                    "plot": false,
+                    "palim": [
+                        2,
+                        3
+                    ],
+                    "alpha_mu": 1.0,
+                    "alpha_omega_minus_nvars": 2,
+                    "alpha": null,
+                    "time_limit": null,
+                    "gap_limit": null,
+                    "prune": true,
+                    "timeout": null
+                }
+            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",

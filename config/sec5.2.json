@@ -15,7 +15,10 @@
             "roc": {
                 "filename_prefix": "section5.2/",
                 "point": true,
+                "show_seed": false,
                 "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
@@ -34,6 +37,7 @@
                     "tabu-bge"
                 ]
             },
+            "graph_true_stats": true,
             "adjmat_true_plots": false,
             "graph_true_plots": false,
             "adjmat_plots": [],

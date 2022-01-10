@@ -84,7 +84,10 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
   "roc": {
     "filename_prefix": "example/",
     "point": true,
+    "show_seed": false,
     "errorbar": true,
+    "errorbarh": false,
+    "scatter": true,
     "path": true,
     "text": false,
     "ids": [

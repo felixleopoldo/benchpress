@@ -21,7 +21,10 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
   "roc": {
     "filename_prefix": "example/",
     "point": true,
+    "show_seed": false,
     "errorbar": true,
+    "errorbarh": false,
+    "scatter": true,
     "path": true,
     "text": false,
     "ids": [
@@ -86,6 +89,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 | :------------------------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [roc](#roc)                                 | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")                                                                            |
 | [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
+| [graph_true_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
 | [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
 | [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
 | [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
@@ -150,6 +154,32 @@ This module plots the true underlying graphs. The figures are saved in results/a
 ```json
 {
   "graph_true_plots": true
+}
+```
+
+## graph_true_stats
+
+This module plots statistics of the true underlying graphs. The figures are saved in to results/output/graph_true_stats/.
+
+`graph_true_stats`
+
+*   is required
+
+*   Type: `boolean` ([graph_true_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")
+
+### graph_true_stats Type
+
+`boolean` ([graph_true_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
+
+### graph_true_stats Examples
+
+```json
+{
+  "graph_true_stats": true
 }
 ```
 

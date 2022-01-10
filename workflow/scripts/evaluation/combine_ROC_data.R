@@ -9,6 +9,7 @@ library(argparser)
 
 p <- arg_parser("A program for combining roc data from differents sources.")
 p <- add_argument(p, "--filename", help = "Filename")
+p <- add_argument(p, "--joint_bench", help = "Joint")
 p <- add_argument(p, "--config_filename", help = "Filename config file")
 p <- add_argument(p, "--algorithms", help = "Algorithms", nargs=Inf)
 argv <- parse_args(p)
@@ -16,12 +17,17 @@ argv <- parse_args(p)
 config <- fromJSON(file = argv$config_filename)
 
 toplot <- data.frame()
+
 # argv$algorithms is a list of paths such as results/order_mcmc.csv.
 # This loop gets the active algorithms from the filenames. It is a bit ugly.
 active_algorithms <- c()
-for (file in argv$algorithms){
+for (file in argv$algorithms){    
     active_algorithms <- c(active_algorithms, tools::file_path_sans_ext(basename(file)))
 }
+
+
+joint_df <- data.frame()
+
 
 active_algorithms <- unique(active_algorithms)
 
@@ -60,34 +66,47 @@ for (algorithm in active_algorithms){
             }
         }
 
-
+        # Creating the raw file and inlcuding the curve parameter and value.
+        tmpdf <- ROCdf %>% filter(id == params_id)
+        tmpdf["curve_param"] <- curve_param
+        tmpdf["curve_value"] <- tmpdf[curve_param]
+        joint_df <- dplyr::bind_rows(joint_df, tmpdf)
 
         sumROC = ROCdf %>%
         filter(!is.na(true_n_edges_skel)) %>%
         filter(id == params_id) %>% # Extract only the rows for the actual id         
         group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
-                    TPR_pattern_mean = mean(TPR_pattern), 
-                    
-                    TPR_pattern_median = median(TPR_pattern), 
-                    FPRn_pattern_median = median(FPRn_pattern), 
+
+                    TPR_pattern_mean = mean(TPR_pattern),                     
+                    TPR_pattern_median = median(TPR_pattern),                     
                     TPR_pattern_q1 = quantile(TPR_pattern, probs = c(0.05)), 
                     TPR_pattern_q3 = quantile(TPR_pattern, probs = c(0.95)),
+                    
+                    FPR_pattern_mean = mean(FPRn_pattern), 
+                    FPR_pattern_median = median(FPRn_pattern), 
+                    FPR_pattern_q1 = quantile(FPRn_pattern, probs = c(0.05)), 
+                    FPR_pattern_q3 = quantile(FPRn_pattern, probs = c(0.95)), 
 
+                    TPR_skel_mean = mean(TP_skel / true_n_edges_skel),                     
                     TPR_skel_median = median(TP_skel / true_n_edges_skel), 
-                    FPRn_skel_median = median(FP_skel / true_n_edges_skel), 
                     TPR_skel_q1 = quantile(TP_skel / true_n_edges_skel, probs = c(0.05)), 
                     TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95)),
 
-                    FPRp_skel_mean = mean(FPR_skel), 
+                    FPR_skel_mean = mean(FPR_skel), 
+                    FPR_skel_median = median(FP_skel / true_n_edges_skel),                     
                     FPR_skel_q1 = quantile(FPR_skel, probs = c(0.05)), 
                     FPR_skel_q3 = quantile(FPR_skel, probs = c(0.95)),
                     
                     FNR_skel_mean = mean(FNR_skel), 
+                    FNR_skel_median = median(FNR_skel), 
                     FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05)), 
                     FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
 
                     time_mean = mean(time),
+                    time_median = median(time),
+                    time_q1 = quantile(time, probs = c(0.05)), 
+                    time_q3 = quantile(time, probs = c(0.95)), 
                     N = n(),
                     curve_vals=mean(!!as.symbol(curve_param)))
         sumROC["labels"] <- NA
@@ -99,9 +118,11 @@ for (algorithm in active_algorithms){
 toplot <- toplot %>% distinct()
 
 if(nrow(toplot)>0){
+    write.csv(joint_df, argv$joint_bench) # Should also add curve param to this data
     write.csv(toplot, argv$filename)
 } else{
 
-    print("Creating empty file.")
+    print("Creating empty files.")
     file.create(argv$filename)
+    file.create(argv$joint_bench)
 }

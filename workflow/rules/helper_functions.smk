@@ -47,6 +47,14 @@ def alg_output_time_path(algorithm):
                 "algorithm=/" + pattern_strings[algorithm] + "/" +\
                 "seed={replicate}/" \
                 "time.txt"
+
+# This is code repetition, yes...
+def alg_output_ntests_path(algorithm):
+    return "{output_dir}/ntests/{data}/"\
+                "algorithm=/" + pattern_strings[algorithm] + "/" +\
+                "seed={replicate}/" \
+                "ntests.txt"
+
 def alg_input_data():
     return "{output_dir}/data/{data}/seed={replicate}.csv"
 
@@ -68,6 +76,16 @@ def summarise_alg_input_time_path(algorithm):
                     "algorithm=/" + pattern_strings[algorithm] + "/" + \
                     "seed={replicate}/" \
                     "time.txt"
+
+# This is code repetition, yes...
+def summarise_alg_input_ntests_path(algorithm):
+    return "{output_dir}/ntests/"\
+                    "adjmat=/{adjmat}/"\
+                    "parameters=/{bn}/"\
+                    "data=/{data}/" \ 
+                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
+                    "seed={replicate}/" \
+                    "ntests.txt"
 
 def summarise_alg_output_res_path(algorithm):
     return "{output_dir}/result/"\

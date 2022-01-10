@@ -182,7 +182,8 @@ if "bnlearn_gs" in pattern_strings:
             data = alg_input_data()
         output:
             adjmat = alg_output_adjmat_path("bnlearn_gs"),
-            time = alg_output_time_path("bnlearn_gs")
+            time = alg_output_time_path("bnlearn_gs"),
+            ntests = alg_output_ntests_path("bnlearn_gs")
         singularity:
             docker_image("bnlearn")
         script:
@@ -194,7 +195,8 @@ if "bnlearn_gs" in pattern_strings:
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_gs"),
-            time = summarise_alg_input_time_path("bnlearn_gs")
+            time = summarise_alg_input_time_path("bnlearn_gs"),
+            ntests = summarise_alg_input_ntests_path("bnlearn_gs")
         output:
             res = summarise_alg_output_res_path("bnlearn_gs")
         shell:

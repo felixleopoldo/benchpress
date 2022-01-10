@@ -116,40 +116,39 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
 
     n_edges <- sum(skel_true) / 2
     n_nonedges <- sum(1 - skel_true) / 2
+    n_nodes <- ncol(skel_true)
 
     compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
     #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
+    SHD_cpdag <- "None"
+    
+    if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {        
+        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
 
-    if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
+        SHD_cpdag = compres_cpdag["SHD"]
+    }
+
+    else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
         true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
         true_cpdag <- dag2cpdag(true_graphnel)
         estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
         estimated_cpdag <- dag2cpdag(estimated_graphnel)
 
-        compres_cpdag <- compareDAGs(estimated_cpdag, true_cpdag)
+        compres_cpdag <- compareDAGs(estimated_graphnel, true_graphnel, cpdag=TRUE)
+        SHD_cpdag = compres_cpdag["SHD"]
 
-    } else if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {
-        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat)
-
-        #   TP_cpdag <- sum(skel_true * skel_est) / 2
-        #   TN_cpdag <- sum((1 - skel_true) * (1 - skel_est)) / 2
-        #   FP_cpdag <- sum((1 - skel_true) * skel_est) / 2
-        #   FN_cpdag <- sum(skel_true * (1 - skel_est)) / 2
-        #   n_edges_cpdag <- sum(skel_true) / 2
-        #   n_nonedges_cpdag <- sum(1 - skel_true) / 2
-    }
-
-
-
+    } 
     df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                     FPRn_pattern = compres["FPR_P"],
                     SHD_pattern = compres["SHD"],
+                    SHD_cpdag = SHD_cpdag,
                     FPR_skel = FP / n_edges,
                     FNR_skel = FN / n_edges,
                     TP_skel = TP,
                     FN_skel = FN,
                     FP_skel = FP,
                     TN_skel = TN,
+                    n_nodes = n_nodes,
                     true_n_edges_skel = n_edges,
                     true_n_non_edges_skel = n_nonedges)
     return(df)
@@ -163,12 +162,14 @@ if (file.info(argv$adjmat_est)$size > 0) {
     df <- data.frame(TPR_pattern = "None", # should be for all times
                     FPRn_pattern = "None",
                     SHD_pattern = "None",
+                    SHD_cpdag = "None",
                     FPR_skel = "None",
                     FNR_skel = "None",
                     TP_skel = "None",
                     FN_skel = "None",
                     FP_skel = "None",
                     TN_skel = "None",
+                    n_nodes = "None",
                     true_n_edges_skel = "None",
                     true_n_non_edges_skel = "None")
 }

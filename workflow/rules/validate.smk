@@ -28,6 +28,7 @@ def validate_data_setup(config, dict):
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += os.listdir("resources/adjmat/myadjmats")
 
+    # Roc rewuires a true graph
     if config["benchmark_setup"]["evaluation"]["roc"]["ids"] != []:
         if dict["graph_id"] is None:
             raise Exception("ROC evaluation requires graph_id.\n"
@@ -37,6 +38,18 @@ def validate_data_setup(config, dict):
             raise Exception(dict["graph_id"] + 
                             " is not an available graph id.\n"
                             "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+
+    # Roc rewuires a true graph
+    if config["benchmark_setup"]["evaluation"]["graph_true_stats"] == True:
+        if dict["graph_id"] is None:
+            raise Exception("graph_true_stats requires graph_id.\n"
+                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+
+        if not dict["graph_id"] in available_conf_ids:
+            raise Exception(dict["graph_id"] + 
+                            " is not an available graph id.\n"
+                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+
 
     available_data_files = os.listdir("resources/data/mydatasets")
 
