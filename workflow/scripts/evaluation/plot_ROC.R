@@ -24,8 +24,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     config <- fromJSON(file = snakemake@input[["config"]])
 
     param_annot <- config$benchmark_setup$evaluation$roc$text
-    path <- config$benchmark_setup$evaluation$roc$path
-    point <- config$benchmark_setup$evaluation$roc$point
+    path <- config$benchmark_setup$evaluation$roc$path    
     errorbar <- config$benchmark_setup$evaluation$roc$errorbar
     scatter <- config$benchmark_setup$evaluation$roc$scatter
     errorbarh <- config$benchmark_setup$evaluation$roc$errorbarh
@@ -59,7 +58,7 @@ gg  <- ggplot() + {
               col = id))
   }
 } + {
-  if (point) {
+  if (!param_annot) {
     geom_point(data = toplot, alpha=0.5,
     aes(x = FPR_pattern_median,
         y = TPR_pattern_median,
@@ -430,7 +429,6 @@ ggplot() + {
   ylab("SHD") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(guide = guide_axis(angle=10))
-#scale_x_discrete(guide = guide_axis(n.dodge=2))
   ggsave(file = snakemake@output[["SHD_cpdag"]])
 
 ggplot() + {
@@ -459,6 +457,62 @@ ggplot() + {
   scale_x_discrete(guide = guide_axis(angle=90))
 #scale_x_discrete(guide = guide_axis(n.dodge=2))
   ggsave(file = snakemake@output[["SHD_cpdag_joint"]])
+
+# F1 score
+ggplot() + {
+    geom_boxplot(data = joint_bench, alpha=0.2,
+             aes(x=interaction(curve_param,curve_value), 
+             y = TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel)), col=id) ) 
+}  + {
+    if(show_seed){
+        geom_text(data=dat,
+            aes(y=TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel)), x=interaction(curve_param,curve_value),
+                label=is_outlier, col=id),na.rm=TRUE,nudge_x=0.0)
+    }
+}  + {
+    if(show_seed){
+        stat_summary(data = joint_bench, alpha=0.5,
+                aes(x=interaction(curve_param,curve_value), 
+                y = TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))), fun.data=f, geom="text", vjust=-0.5, col="black") 
+    }
+}+
+  facet_wrap(. ~ adjmat + bn + data + id, ncol = 2, scales="free_x") +
+  ggtitle("F1 (undirected skeleton)") +
+  theme_bw() +
+  xlab("Parameter.value") +
+  ylab("F1") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_discrete(guide = guide_axis(angle=10))
+  ggsave(file = snakemake@output[["f1_skel"]])
+
+ggplot() + {
+    geom_boxplot(data = joint_bench, alpha=0.2,
+             aes(x=interaction(curve_param,curve_value, id), 
+             y = TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel)), col=id) ) 
+}  + {
+    if(show_seed){
+        geom_text(data=dat,
+            aes(y=TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel)), x=interaction(curve_param,curve_value,id),
+                label=is_outlier, col=id),na.rm=TRUE,nudge_x=0.0)
+    }
+}  + {
+    if(show_seed){
+        stat_summary(data = joint_bench, alpha=0.5,
+                aes(x=interaction(curve_param,curve_value, id), 
+                y = TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))), fun.data=f, geom="text", vjust=-0.5, col="black") 
+    }
+}+
+  facet_wrap(. ~ adjmat + bn + data , ncol = 2, scales="free_x") +
+  ggtitle("F1 (undirected skeleton)") +
+  theme_bw() +
+  xlab("Parameter.value") +
+  ylab("F1") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_discrete(guide = guide_axis(angle=90))
+#scale_x_discrete(guide = guide_axis(n.dodge=2))
+  ggsave(file = snakemake@output[["f1_skel_joint"]])
+
+
 
   ggplot() + {
     geom_boxplot(data = joint_bench, 

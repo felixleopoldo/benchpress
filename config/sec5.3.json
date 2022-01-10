@@ -14,7 +14,6 @@
         "evaluation": {
             "roc": {
                 "filename_prefix": "section5.3/",
-                "point": true,
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
@@ -38,7 +37,7 @@
                     "omcmc_itsample-bde"
                 ]
             },
-            "graph_true_stats": true,
+            "graph_true_stats": false,
             "graph_true_plots": false,
             "graph_plots": [],
             "mcmc_traj_plots": [],

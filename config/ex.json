@@ -14,8 +14,7 @@
         "evaluation": {
             "roc": {
                 "filename_prefix": "example/",
-                "point": true,
-                "show_seed": false,
+                "show_seed": true,
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,

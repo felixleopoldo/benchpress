@@ -14,7 +14,6 @@
         "evaluation": {
             "roc": {
                 "filename_prefix": "section5.4/",
-                "point": true,
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
@@ -37,7 +36,7 @@
                     "tabu-bge"
                 ]
             },
-            "graph_true_stats": true,
+            "graph_true_stats": false,
             "graph_true_plots": false,
             "graph_plots": [],
             "mcmc_traj_plots": [],

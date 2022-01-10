@@ -32,6 +32,8 @@ rule roc:
         elapsed_time_fine="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time_fine.png",
         SHD_cpdag="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag.png",
         SHD_cpdag_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag_joint.png",
+        f1_skel_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel_joint.png",
+        f1_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel.png",
         ntests="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests.png"
     script:
         "../scripts/evaluation/plot_ROC.R"

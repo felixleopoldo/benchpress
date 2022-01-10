@@ -42,7 +42,6 @@
                             "examples": [
                                 {
                                     "filename_prefix": "example/",
-                                    "point": true,
                                     "show_seed": false,
                                     "errorbar": true,
                                     "errorbarh": false,
@@ -174,7 +173,6 @@
                         {
                             "roc": {
                                 "filename_prefix": "example/",
-                                "point": true,
                                 "show_seed": false,
                                 "errorbar": true,
                                 "errorbarh": false,
@@ -188,14 +186,8 @@
                                     "pc-gaussCItest"
                                 ]
                             },
-                            "adjmat_true_plots": true,
                             "graph_true_plots": true,
-                            "adjmat_plots": [
-                                "fges-sem-bic",
-                                "mmhc-bge-zf",
-                                "omcmc_itsample-bge",
-                                "pc-gaussCItest"
-                            ],
+                            "graph_true_stats": true,
                             "graph_plots": [
                                 "fges-sem-bic",
                                 "mmhc-bge-zf",
@@ -937,9 +929,6 @@
                 "filename_prefix": {
                     "type": "string"
                 },
-                "point": {
-                    "type": "boolean"
-                },
                 "show_seed": {
                     "type": "boolean"
                 },
@@ -962,7 +951,6 @@
             "required": [
                 "ids",
                 "filename_prefix",
-                "point",
                 "show_seed",
                 "scatter",
                 "path",
