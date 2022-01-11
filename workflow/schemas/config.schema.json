@@ -1554,7 +1554,7 @@
                 "cores": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "verbose": {
+                "verbose_level": {
                     "$ref": "#/definitions/nonnegint"
                 }
             },
@@ -1569,7 +1569,7 @@
                 "scorefunction",
                 "alpha",
                 "cores",
-                "verbose"
+                "verbose_level"
             ],
             "examples": [
                 {

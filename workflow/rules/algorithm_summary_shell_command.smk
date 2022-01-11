@@ -32,7 +32,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} " \               
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "gg99_singlepair":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -57,7 +57,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname datatype       --colval {wildcards.datatype} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} " \               
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "bnlearn_tabu":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -89,7 +89,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "notears":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -109,7 +109,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname loss_grad           --colval {wildcards.loss_grad} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "sklearn_glasso":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -131,7 +131,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname assume_centered --colval {wildcards.assume_centered} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     if algorithm == "bnlearn_hc":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -163,7 +163,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "rblip_asobs":
@@ -185,9 +185,9 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname allocated       --colval {wildcards.allocated} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname scorefunction   --colval {wildcards.scorefunction} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha           --colval {wildcards.alpha} " \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname verbose         --colval {wildcards.verbose} " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname verbose_level         --colval {wildcards.verbose_level} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "bidag_itsearch":
@@ -229,7 +229,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname aw           --colval {wildcards.aw} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout      --colval {wildcards.timeout} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time         --colval `cat {input.time}` "  \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "pcalg_pc":
         return "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -254,7 +254,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname verbose      --colval {wildcards.verbose} " \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
-        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "bnlearn_mmhc":
@@ -283,7 +283,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname maximizeargs   --colval null " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "h2pc":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -301,7 +301,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug       --colval false " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname maximizeargs   --colval null " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "bnlearn_interiamb":
@@ -326,7 +326,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
                 
     elif algorithm == "bnlearn_gs":
@@ -370,7 +370,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "tetrad_fci":
@@ -388,7 +388,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "tetrad_gfci":
@@ -410,7 +410,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname penaltyDiscount       --colval {wildcards.penaltyDiscount} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname samplePrior       --colval {wildcards.samplePrior} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname structurePrior       --colval {wildcards.structurePrior} " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "tetrad_rfci":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -427,7 +427,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm=="gobnilp":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -453,7 +453,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname constraints       --colval {wildcards.constraints} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname extra_args       --colval {wildcards.extra_args} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "trilearn_pgibbs":
         return "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -477,7 +477,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname datatype   --colval {wildcards.datatype} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
 
     elif algorithm == "bidag_order_mcmc":
@@ -516,5 +516,5 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout      --colval {wildcards.timeout} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 

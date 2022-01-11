@@ -70,6 +70,8 @@ for (algorithm in active_algorithms){
         tmpdf <- ROCdf %>% filter(id == params_id)
         tmpdf["curve_param"] <- curve_param
         tmpdf["curve_value"] <- tmpdf[curve_param]
+        tmpdf <- mutate_at(tmpdf, vars(curve_value), as.factor) 
+        
         joint_df <- dplyr::bind_rows(joint_df, tmpdf)
 
         sumROC = ROCdf %>%

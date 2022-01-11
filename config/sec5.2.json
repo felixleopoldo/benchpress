@@ -51,7 +51,7 @@
                     "id": "standardized",
                     "standardized": true,
                     "sample_sizes": [
-                        1000
+                        300
                     ]
                 },
                 {
@@ -101,6 +101,16 @@
                     "id": "avneigs4",
                     "max_parents": 5,
                     "n": 80,
+                    "d": 4,
+                    "par1": null,
+                    "par2": null,
+                    "method": "er",
+                    "DAG": true
+                },
+                {
+                    "id": "avneigs4_p20",
+                    "max_parents": 5,
+                    "n": 20,
                     "d": 4,
                     "par1": null,
                     "par2": null,
@@ -1150,10 +1160,8 @@
             "bidag_order_mcmc": [
                 {
                     "id": "omcmc_itmap-bde",
-                    "startspace_algorithm": [
-                        "itsearch_map-bde"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_map-bde",
                     "scoretype": "bde",
                     "chi": [
                         0.01,
@@ -1188,8 +1196,8 @@
                 },
                 {
                     "id": "omcmc_itmap-bge",
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -1208,8 +1216,8 @@
                 },
                 {
                     "id": "omcmc_pcalg005-bge",
-                    "startspace_algorithm": "pcalg005",
                     "plus1": true,
+                    "startspace_algorithm": "pcalg005",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -1239,10 +1247,8 @@
                 },
                 {
                     "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": [
-                        "itsample-bge_am01_endspace"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsample-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -1263,10 +1269,8 @@
                 },
                 {
                     "id": "omcmc_itsample-bde",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bde_chi01_endspace"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
                     "scoretype": "bde",
                     "chi": [
                         0.1
@@ -1289,10 +1293,8 @@
                 },
                 {
                     "id": "omcmc_itsample-bdecat",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bdecat_chi01_endspace"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_sample-bdecat_chi01_endspace",
                     "scoretype": "bdecat",
                     "chi": [
                         0.1
@@ -1315,10 +1317,8 @@
                 },
                 {
                     "id": "omcmc_itsample-bde_chi1",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bde_chi1_endspace"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_sample-bde_chi1_endspace",
                     "scoretype": "bde",
                     "chi": 1,
                     "edgepf": 2,
@@ -1339,10 +1339,8 @@
                 },
                 {
                     "id": "omcmc_itsample-bdecat_chi1",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bdecat_chi1_endspace"
-                    ],
                     "plus1": true,
+                    "startspace_algorithm": "itsearch_sample-bdecat_chi1_endspace",
                     "scoretype": "bdecat",
                     "chi": 1,
                     "edgepf": 2,

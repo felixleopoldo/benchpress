@@ -148,7 +148,7 @@ def alg_shell(algorithm):
                 "--allocated {wildcards.allocated} " \
                 "--scorefunction {wildcards.scorefunction} " \
                 "--alpha {wildcards.alpha} " \
-                "--verbose {wildcards.verbose} " \
+                "--verbose {wildcards.verbose_level} " \
                 "--filename {output.adjmat} "
 
     elif algorithm == "gobnilp":
