@@ -122,10 +122,17 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
     #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
     SHD_cpdag <- "None"
     
-    if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {        
+    iscpdag <- FALSE
+    isdag <- FALSE
+    isug <- FALSE
+    if(isSymmetric(estimated_adjmat)){
+        isug <- TRUE
+    }
+     if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {        
         compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
 
         SHD_cpdag = compres_cpdag["SHD"]
+        iscpdag <- TRUE
     }
 
     else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
@@ -136,7 +143,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
 
         compres_cpdag <- compareDAGs(estimated_graphnel, true_graphnel, cpdag=TRUE)
         SHD_cpdag = compres_cpdag["SHD"]
-
+        isdag <- TRUE
     } 
     df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
                     FPRn_pattern = compres["FPR_P"],
@@ -150,7 +157,10 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
                     TN_skel = TN,
                     n_nodes = n_nodes,
                     true_n_edges_skel = n_edges,
-                    true_n_non_edges_skel = n_nonedges)
+                    true_n_non_edges_skel = n_nonedges,
+                    DAG=isdag,
+                    CPDAG=iscpdag,
+                    UG=isug)
     return(df)
 }
 
@@ -171,7 +181,11 @@ if (file.info(argv$adjmat_est)$size > 0) {
                     TN_skel = "None",
                     n_nodes = "None",
                     true_n_edges_skel = "None",
-                    true_n_non_edges_skel = "None")
+                    true_n_non_edges_skel = "None",
+                    DAG="None",
+                    CPDAG="None",
+                    UG="None"
+                    )
 }
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

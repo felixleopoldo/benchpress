@@ -313,6 +313,42 @@ if "pcalg_pc" in pattern_strings:
         script:
             "../scripts/evaluation/join_csv_files.R"
 
+if "guidice_dualpc" in pattern_strings:
+    rule guidice_dualpc:
+        input:
+            "workflow/scripts/structure_learning_algorithms/guidice_dualpc.R",
+            data = alg_input_data()
+        output:
+            adjmat = alg_output_adjmat_path("guidice_dualpc"),
+            time = alg_output_time_path("guidice_dualpc")
+        container:
+            docker_image("dualpc")
+        script:
+            "../scripts/structure_learning_algorithms/guidice_dualpc.R"
+
+    rule summarise_guidice_dualpc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data = summarise_alg_input_data_path(),
+            adjmat_true = summarise_alg_input_adjmat_true_path(),
+            adjmat_est = summarise_alg_input_adjmat_est_path("guidice_dualpc"),
+            time = summarise_alg_input_time_path("guidice_dualpc")
+        output:
+            res = summarise_alg_output_res_path("guidice_dualpc")
+        shell:
+            summarise_alg_shell("guidice_dualpc")
+
+    rule join_summaries_guidice_dualpc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("guidice_dualpc")
+        output:
+            join_summaries_output("guidice_dualpc")
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
 if "bnlearn_mmhc" in pattern_strings:
     rule mmhc:
         input:        

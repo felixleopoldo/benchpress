@@ -36,6 +36,8 @@ if "rblip_asobs" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["rblip_asobs"] = "rblip_asobs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip_asobs"])
 if "pcalg_pc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["pcalg_pc"] = "pcalg_pc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
+if "guidice_dualpc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["guidice_dualpc"] = "guidice_dualpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["guidice_dualpc"])
 if "bnlearn_mmhc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bnlearn_mmhc"] = "bnlearn_mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
 if "bnlearn_interiamb" in config["resources"]["structure_learning_algorithms"]:

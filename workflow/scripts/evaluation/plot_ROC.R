@@ -52,7 +52,7 @@ gg  <- ggplot() + {
   }
 } + {
   if (path) {
-    geom_path(data = toplot, alpha=0.7,
+    geom_path(data = toplot, alpha=0.8,
           aes(x = FPR_pattern_median,
               y = TPR_pattern_median,
               col = id))
@@ -68,7 +68,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.3,
+        geom_point(data = joint_bench, alpha=0.15,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 col = id), shape=20,
@@ -76,7 +76,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.3,
+    geom_text(data = joint_bench, alpha=0.15,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 label = replicate, col = id, shape = id),
@@ -121,7 +121,7 @@ gg  <- ggplot() + {
   }
 } + {
   if (path) {
-    geom_path(data = toplot, alpha=0.7, 
+    geom_path(data = toplot, alpha=0.8, 
           aes(x = FPR_skel_median,
               y = TPR_skel_median,
               col = id))
@@ -137,7 +137,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.3,
+        geom_point(data = joint_bench, alpha=0.15,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 col = id),
@@ -146,7 +146,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.3,
+    geom_text(data = joint_bench, alpha=0.15,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 label = replicate, col = id, shape = id),

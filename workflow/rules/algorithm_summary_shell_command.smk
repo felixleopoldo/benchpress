@@ -256,6 +256,23 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
+    elif algorithm == "guidice_dualpc":
+        return "Rscript workflow/scripts/evaluation/run_summarise.R " \
+        "--adjmat_true {input.adjmat_true} " \
+        "--adjmat_est {input.adjmat_est} " \
+        "--filename {output} " \ 
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval "+algorithm+" "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname max_ord       --colval {wildcards.max_ord} " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname skeleton  --colval {wildcards.skeleton} " \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
+        " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "bnlearn_mmhc":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \

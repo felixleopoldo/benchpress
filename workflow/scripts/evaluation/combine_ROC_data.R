@@ -120,8 +120,8 @@ for (algorithm in active_algorithms){
 toplot <- toplot %>% distinct()
 
 if(nrow(toplot)>0){
-    write.csv(joint_df, argv$joint_bench) # Should also add curve param to this data
-    write.csv(toplot, argv$filename)
+    write.csv(joint_df, argv$joint_bench, quote=FALSE) # Should also add curve param to this data
+    write.csv(toplot, argv$filename, quote=FALSE)
 } else{
 
     print("Creating empty files.")

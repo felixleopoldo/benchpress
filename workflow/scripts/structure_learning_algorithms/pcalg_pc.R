@@ -54,6 +54,8 @@ wrapper <- function() {
 
   graph <- pc.fit@graph
 
+    
+
   adjmat <- as(graph, "matrix")
   colnames(adjmat) <- names(data)
   write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)

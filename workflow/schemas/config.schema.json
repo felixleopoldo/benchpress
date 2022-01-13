@@ -483,6 +483,14 @@
                                 "$ref": "#/definitions/pcalg_pc"
                             }
                         },
+                        "guidice_dualpc": {
+                            "description": "Dual PC algorithm objects",
+                            "title": "guidice_dualpc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/guidice_dualpc"
+                            }
+                        },
                         "bnlearn_mmhc": {
                             "description": "MMHC objects",
                             "title": "bnlearn_mmhc",
@@ -2290,6 +2298,54 @@
                     "numCores": 1,
                     "verbose": false,
                     "indepTest": "gaussCItest",
+                    "timeout": null
+                }
+            ]
+        },
+        "guidice_dualpc": {
+            "title": "guidice_dualpc item",
+            "description": "Dual PC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "max_ord": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "skeleton": {
+                    "type": "boolean"
+                },
+                "pattern_graph": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "skeleton",
+                "max_ord",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "dualpc",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "skeleton": false,
+                    "max_ord": null,
                     "timeout": null
                 }
             ]

@@ -27,3 +27,5 @@ def docker_image(algorithm):
         return "docker://onceltuca/bdgraph:2.64"
     elif algorithm == "tetrad":
         return "docker://onceltuca/causal-cmd:1.1.3"
+    elif algorithm == "dualpc":
+        return "docker://onceltuca/dualpc"
