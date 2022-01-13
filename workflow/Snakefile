@@ -27,7 +27,7 @@ snakemake.utils.validate(config, 'schemas/config.schema.json')
 
 include: "rules/docker_images.smk"
 
-singularity:
+container:
     docker_image("benchmark")
 
 # This function returns empty "trigger files" for the type of evaluations

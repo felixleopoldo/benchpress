@@ -27,7 +27,7 @@ if "sem_params" in pattern_strings:
                     pattern_strings["sem_params"] + "/" \
                     "seed={seed}/"+\
                     "adjmat=/{adjmat}.csv"
-        singularity:
+        container:
             docker_image("bidag")
         script:
             "../scripts/parameters_sampling/sample_semparams.R" 
@@ -41,7 +41,7 @@ if "trilearn_hyper-dir" in pattern_strings:
                     pattern_strings["trilearn_hyper-dir"] + "/" \
                     "seed={seed}/"+\
                     "adjmat=/{adjmat}.json"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/parameters_sampling/trilearn_sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 
@@ -55,7 +55,7 @@ if "trilearn_intra-class" in pattern_strings:
                     pattern_strings["trilearn_intra-class"] + "/" \
                     "seed={seed}/"+\
                     "adjmat=/{adjmat}.csv"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/parameters_sampling/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
@@ -69,7 +69,7 @@ if "trilearn_g_inv_wishart" in pattern_strings:
                     pattern_strings["trilearn_g_inv_wishart"] + "/" \
                     "seed={seed}/"+\
                     "adjmat=/{adjmat}.csv"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/parameters_sampling/trilearn_g_inv_wishart_cov.py {input.adjmat} {output.params} {wildcards.dof} {wildcards.seed}"
@@ -83,7 +83,7 @@ if "bdgraph_rgwish" in pattern_strings:
                     pattern_strings["bdgraph_rgwish"] + "/" \
                     "seed={seed}/"+\
                     "adjmat=/{adjmat}.csv"
-        singularity:
+        container:
             docker_image("bdgraph")
         script:
             "../scripts/parameters_sampling/bdgraph_rgwish.R"

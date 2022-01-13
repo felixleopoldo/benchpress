@@ -6,7 +6,7 @@ if "pcalg_randdag" in pattern_strings:
             "workflow/scripts/graph_sampling/sample_dags.R"
         output:        
             adjmat = "{output_dir}/adjmat/" + pattern_strings["pcalg_randdag"] + "/seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("bidag")
         script:
             "../scripts/graph_sampling/sample_dags.R"
@@ -17,7 +17,7 @@ if "bdgraph_graphsim" in pattern_strings:
             "workflow/scripts/graph_sampling/bdgraph_graphsim.R"
         output:        
             adjmat = "{output_dir}/adjmat/" + pattern_strings["bdgraph_graphsim"] + "/seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("bdgraph")
         script:
             "../scripts/graph_sampling/bdgraph_graphsim.R"
@@ -26,7 +26,7 @@ if "trilearn_cta" in pattern_strings:
     rule sample_adjmat_cta:
         output:
             adjmat = "{output_dir}/adjmat/" + pattern_strings["trilearn_cta"] + "/seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/graph_sampling/trilearn_sample_cta.py {output.adjmat} {wildcards.replicate} {wildcards.order} {wildcards.alpha} {wildcards.beta} "
@@ -35,7 +35,7 @@ if "bandmat" in pattern_strings:
     rule gen_bandmat:
         output:
             adjmat = "{output_dir}/adjmat/" + pattern_strings["bandmat"] + "/seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/graph_sampling/trilearn_gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
@@ -44,7 +44,7 @@ if "rand_bandmat" in pattern_strings:
     rule rand_bandmat:
         output:
             adjmat = "{output_dir}/adjmat/" + pattern_strings["rand_bandmat"] + "/seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             "python workflow/scripts/graph_sampling/trilearn_rand_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.max_bandwidth}"

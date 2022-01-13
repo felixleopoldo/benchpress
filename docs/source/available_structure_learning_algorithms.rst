@@ -117,7 +117,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
             0.1
         ],
         "cores": 1,
-        "verbose": 0
+        "verbose_level": 0
     }
 
 ``notears``
@@ -460,10 +460,8 @@ An example
 
     {
         "id": "omcmc_itsample-bde",
-        "startspace_algorithm": [
-            "itsearch_sample-bde_chi01_endspace"
-        ],
         "plus1": true,
+        "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
         "scoretype": "bde",
         "chi": [
             0.1

@@ -144,6 +144,11 @@ This module also plots timing of the algorithms and creates a plot as below.
     Timing
 
 
+``graph_true_stats``
+-------------------------
+
+This module plots properties of the true graphs such as graph density.
+
 
 ``graph_true_plots``
 -------------------------

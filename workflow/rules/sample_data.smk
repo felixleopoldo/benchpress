@@ -25,7 +25,7 @@ rule sample_loglindata:
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_hyper-dir/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
@@ -39,7 +39,7 @@ rule sample_intra_class_data:
              "/adjmat=/{adjmat}"\
              "/parameters=/intra-class/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
@@ -53,7 +53,7 @@ rule sample_g_inverse_wishart:
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_g_inv_wishart/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
@@ -67,7 +67,7 @@ rule sample_rgwish_data:
              "/adjmat=/{adjmat}"\
              "/parameters=/bdgraph_rgwish/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
@@ -117,7 +117,7 @@ rule sample_fixed_sem_params_data:
              "adjmat=/{adjmat}/" \
              "parameters=/{bn}/" \
              "data=/iid/n={n}/seed={replicate}.csv"
-    singularity:
+    container:
         docker_image("bidag")
     script:
         "../scripts/data_sampling/sample_sem_data.R" 
@@ -134,7 +134,7 @@ if "sem_params" in pattern_strings:
                 "data=/iid/" \
                 "n={n}/" \
                 "seed={replicate}.csv"
-        singularity:
+        container:
             docker_image("bidag")
         script:
             "../scripts/data_sampling/sample_sem_data.R" 

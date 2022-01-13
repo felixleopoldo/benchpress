@@ -68,7 +68,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.5,
+        geom_point(data = joint_bench, alpha=0.3,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 col = id), shape=20,
@@ -76,7 +76,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.5,
+    geom_text(data = joint_bench, alpha=0.3,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 label = replicate, col = id, shape = id),
@@ -137,7 +137,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.5,
+        geom_point(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 col = id),
@@ -146,7 +146,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.5,
+    geom_text(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 label = replicate, col = id, shape = id),
@@ -199,7 +199,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.5,
+        geom_point(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = FNR_skel,
                 col = id),
@@ -208,7 +208,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.5,
+    geom_text(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = FNR_skel,
                 label = replicate, col = id, shape = id),
@@ -260,7 +260,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.5,
+        geom_point(data = joint_bench, alpha=0.3,
             aes(y = FPR_skel,
                 x = FNR_skel,
                 col = id),
@@ -269,7 +269,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.5,
+    geom_text(data = joint_bench, alpha=0.3,
             aes(y = FPR_skel,
                 x = FNR_skel,
                 label = replicate, col = id, shape = id),

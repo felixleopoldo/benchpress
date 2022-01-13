@@ -1060,7 +1060,6 @@ Reference this group by using
 | :---------------------------------- | :------------ | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [ids](#ids)                         | Not specified | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-ids.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/ids")                         |
 | [filename_prefix](#filename_prefix) | `string`      | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-filename_prefix.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/filename_prefix") |
-| [point](#point)                     | `boolean`     | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/point")                     |
 | [show_seed](#show_seed)             | `boolean`     | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-show_seed.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/show_seed")             |
 | [scatter](#scatter)                 | `boolean`     | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-scatter.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/scatter")                 |
 | [errorbar](#errorbar)               | `boolean`     | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-errorbar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/errorbar")               |
@@ -1103,24 +1102,6 @@ unknown
 #### filename_prefix Type
 
 `string`
-
-### point
-
-
-
-`point`
-
-*   is required
-
-*   Type: `boolean`
-
-*   cannot be null
-
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item-properties-point.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc/properties/point")
-
-#### point Type
-
-`boolean`
 
 ### show_seed
 
@@ -2515,18 +2496,18 @@ Reference this group by using
 {"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs"}
 ```
 
-| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                    |
-| :------------------------------ | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-18)                    | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/id")        |
-| [scorermethod](#scorermethod)   | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-scorermethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/scorermethod")   |
-| [solvermethod](#solvermethod)   | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-solvermethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/solvermethod")   |
-| [indeg](#indeg)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/indeg")                           |
-| [timeout](#timeout-1)           | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/timeout")                                   |
-| [allocated](#allocated)         | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/allocated")                       |
-| [scorefunction](#scorefunction) | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-scorefunction.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/scorefunction") |
-| [alpha](#alpha-2)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/alpha")                                     |
-| [cores](#cores)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/cores")                           |
-| [verbose](#verbose)             | `integer` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose")      |
+| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                     |
+| :------------------------------ | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-18)                    | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/id")         |
+| [scorermethod](#scorermethod)   | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-scorermethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/scorermethod")    |
+| [solvermethod](#solvermethod)   | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-solvermethod.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/solvermethod")    |
+| [indeg](#indeg)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/indeg")                            |
+| [timeout](#timeout-1)           | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/timeout")                                    |
+| [allocated](#allocated)         | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/allocated")                        |
+| [scorefunction](#scorefunction) | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-scorefunction.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/scorefunction")  |
+| [alpha](#alpha-2)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/alpha")                                      |
+| [cores](#cores)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/cores")                            |
+| [verbose_level](#verbose_level) | `integer` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose_level") |
 
 ### id
 
@@ -2720,11 +2701,11 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-### verbose
+### verbose_level
 
 Non-negative integer, 0,1,2,...
 
-`verbose`
+`verbose_level`
 
 *   is required
 
@@ -2732,13 +2713,13 @@ Non-negative integer, 0,1,2,...
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose_level")
 
-#### verbose Type
+#### verbose_level Type
 
 `integer` ([nonnegint type](config-definitions-rblip_asobs-item-properties-nonnegint-type.md))
 
-#### verbose Constraints
+#### verbose_level Constraints
 
 **minimum**: the value of this number must greater than or equal to: `0`
 
@@ -3314,7 +3295,7 @@ Reference this group by using
 | [tol](#tol)                             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/tol")                                              |
 | [enet_tol](#enet_tol)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")                                         |
 | [precmat_threshold](#precmat_threshold) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")                                |
-| [verbose](#verbose-1)                   | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
+| [verbose](#verbose)                     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
 | [assume_centered](#assume_centered)     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
 | [timeout](#timeout-4)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/timeout")                          |
 
@@ -4950,7 +4931,7 @@ Reference this group by using
 | [alpha](#alpha-8)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/alpha")                                     |
 | [indepTest](#indeptest)       | `string`  | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-indeptest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/indepTest")       |
 | [numCores](#numcores)         | Merged    | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/numCores")                   |
-| [verbose](#verbose-2)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/verbose")           |
+| [verbose](#verbose-1)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/verbose")           |
 | [NAdelete](#nadelete)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-nadelete.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/NAdelete")         |
 | [mmax](#mmax)                 | Merged    | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-flexnonnegintstring.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/mmax")  |
 | [u2pd](#u2pd)                 | `string`  | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-pcalg_pc-item-properties-u2pd.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc/properties/u2pd")                 |

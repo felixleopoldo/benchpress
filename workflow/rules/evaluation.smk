@@ -232,7 +232,7 @@ rule mcmc_traj_plot:
         adjmat_string="{adjmat_string}",
         param_string="{param_string}",
         alg_string="{alg_string}"
-    singularity:
+    container:
         docker_image("networkx")
     script:
         "../scripts/evaluation/plot_graph_traj.py"
@@ -261,7 +261,7 @@ rule mcmc_heatmap_plot:
         adjmat_string="{adjmat_string}",
         param_string="{param_string}",
         alg_string="{alg_string}"
-    singularity:
+    container:
         docker_image("networkx")
     script:
         "../scripts/evaluation/plot_heatmap_from_graphtraj.py"
@@ -290,7 +290,7 @@ rule adjmat_plot:
         param_string="{param_string}",
         data_string="{data_string}",
         alg_string="{alg_string}"
-    singularity:
+    container:
         docker_image("pydatascience")
     script:
         "../scripts/evaluation/plot_matrix_as_heatmap.py"
@@ -304,7 +304,7 @@ rule adjmat_true_plot:
     params:
         title="{adjmat_string}.csv",
         alg_string=""
-    singularity:
+    container:
         docker_image("pydatascience")
     script:
         "../scripts/evaluation/plot_matrix_as_heatmap.py"
@@ -328,7 +328,7 @@ rule adjmat_to_dot:
         filename="{output_dir}/{something}.csv" 
     output:
         filename = "{output_dir}/{something}.dot"
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         """
@@ -344,7 +344,7 @@ rule plot_dot:
         filename="{output_dir}/{something}.dot" 
     output:
         filename="{output_dir}/{something}.png" 
-    singularity:
+    container:
         docker_image("trilearn")
     shell:
         """
@@ -380,7 +380,7 @@ rule mcmc_autocorr_plot:
         param_string="{param_string}",
         data_string="{data_string}",
         alg_string="{alg_string}"
-    singularity:
+    container:
         docker_image("networkx")
     script:
         "../scripts/evaluation/plot_autocorr_from_traj.py"

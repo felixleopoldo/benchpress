@@ -14,7 +14,7 @@ if "sklearn_glasso" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("sklearn_glasso"),
             time = alg_output_time_path("sklearn_glasso")
-        singularity:
+        container:
             docker_image("pydatascience")
         script:
             "../scripts/structure_learning_algorithms/sklearn_glasso.py"
@@ -48,7 +48,7 @@ if "bnlearn_tabu" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("bnlearn_tabu"),
             time = alg_output_time_path("bnlearn_tabu")
-        singularity:
+        container:
             docker_image("bnlearn")
         script:
             "../scripts/structure_learning_algorithms/bnlearn_tabu.R"
@@ -82,7 +82,7 @@ if "notears" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("notears"),
             time = alg_output_time_path("notears")
-        singularity:
+        container:
             docker_image("notears")
         shell:
             alg_shell("notears")
@@ -115,7 +115,7 @@ if "bnlearn_hc" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("bnlearn_hc"),
             time = alg_output_time_path("bnlearn_hc")
-        singularity:
+        container:
             docker_image("bnlearn")
         script:
             "../scripts/structure_learning_algorithms/bnlearn_hc.R"
@@ -149,7 +149,7 @@ if "bnlearn_interiamb" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("bnlearn_interiamb"),
             time = alg_output_time_path("bnlearn_interiamb")
-        singularity:
+        container:
             docker_image("bnlearn")
         script:
             "../scripts/structure_learning_algorithms/bnlearn_inter-iamb.R"
@@ -184,7 +184,7 @@ if "bnlearn_gs" in pattern_strings:
             adjmat = alg_output_adjmat_path("bnlearn_gs"),
             time = alg_output_time_path("bnlearn_gs"),
             ntests = alg_output_ntests_path("bnlearn_gs")
-        singularity:
+        container:
             docker_image("bnlearn")
         script:
             "../scripts/structure_learning_algorithms/bnlearn_gs.R"
@@ -252,7 +252,7 @@ if "bidag_itsearch" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("bidag_itsearch"),
             time = alg_output_time_path("bidag_itsearch")
-        singularity:
+        container:
             docker_image("bidag")
         script:
             "../scripts/structure_learning_algorithms/bidag_iterative_search.R"
@@ -286,7 +286,7 @@ if "pcalg_pc" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("pcalg_pc"),
             time = alg_output_time_path("pcalg_pc")
-        singularity:
+        container:
             docker_image("pcalg")
         script:
             "../scripts/structure_learning_algorithms/pcalg_pc.R"
@@ -355,7 +355,7 @@ if "gobnilp" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("gobnilp"),
             time = alg_output_time_path("gobnilp")
-        singularity:
+        container:
             docker_image("gobnilp")        
         shell: 
             alg_shell("gobnilp")
@@ -389,7 +389,7 @@ if "tetrad_fges" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("tetrad_fges"),
             time = alg_output_time_path("tetrad_fges") 
-        singularity:
+        container:
             docker_image("tetrad")
         script:
             "../scripts/structure_learning_algorithms/tetrad_fges.py"
@@ -424,7 +424,7 @@ if "tetrad_fci" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("tetrad_fci"),
             time = alg_output_time_path("tetrad_fci")
-        singularity:
+        container:
             docker_image("tetrad")
         script:
             "../scripts/structure_learning_algorithms/tetrad_fci.py"
@@ -459,7 +459,7 @@ if "tetrad_gfci" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("tetrad_gfci"),
             time = alg_output_time_path("tetrad_gfci")
-        singularity:
+        container:
             docker_image("tetrad")
         script:
             "../scripts/structure_learning_algorithms/tetrad_gfci.py"
@@ -493,7 +493,7 @@ if "tetrad_rfci" in pattern_strings:
         output:
             adjmat = alg_output_adjmat_path("tetrad_rfci"),
             time = alg_output_time_path("tetrad_rfci")
-        singularity:
+        container:
             docker_image("tetrad")
         script:
             "../scripts/structure_learning_algorithms/tetrad_rfci.py"
@@ -528,7 +528,7 @@ if "bidag_order_mcmc" in pattern_strings:
         output: # data seems to be matched wrongly
             seqgraph = alg_output_seqgraph_path("bidag_order_mcmc"),
             time = alg_output_time_path("bidag_order_mcmc")
-        singularity:
+        container:
             docker_image("bidag")
         script:
             "../scripts/structure_learning_algorithms/bidag_order_mcmc.R"
@@ -544,7 +544,7 @@ if "bidag_order_mcmc" in pattern_strings:
             estimator="threshold",
             threshold="{threshold}",
             burnin="{burnin}"
-        singularity:
+        container:
             docker_image("networkx")
         script:
             "../scripts/evaluation/graphtraj_est.py"
@@ -580,7 +580,7 @@ if "trilearn_pgibbs" in pattern_strings:
         output:
             adjvecs = alg_output_seqgraph_path("trilearn_pgibbs"),
             time = alg_output_time_path("trilearn_pgibbs")
-        singularity:
+        container:
             docker_image("trilearn")
         shell:
             alg_shell("trilearn_pgibbs")
@@ -594,7 +594,7 @@ if "trilearn_pgibbs" in pattern_strings:
         params:
             graph_type="chordal",
             estimator="map"
-        singularity:
+        container:
             docker_image("networkx")
         script:
             "../scripts/evaluation/graphtraj_est.py"
@@ -628,7 +628,7 @@ if "gt13_multipair" in pattern_strings:
         output:
             seqgraph = alg_output_seqgraph_path("gt13_multipair"),
             time = alg_output_time_path("gt13_multipair")
-        singularity:
+        container:
             docker_image("thomasjava")
         shell:
             alg_shell("gt13_multipair")
@@ -642,7 +642,7 @@ if "gt13_multipair" in pattern_strings:
         params:
             graph_type="chordal",
             estimator="map"
-        singularity:
+        container:
             docker_image("networkx")
         script:
             "../scripts/evaluation/graphtraj_est.py"
@@ -676,7 +676,7 @@ if "gg99_singlepair" in pattern_strings:
         output:
             seqgraph = alg_output_seqgraph_path("gg99_singlepair"),
             time = alg_output_time_path("gg99_singlepair")
-        singularity:
+        container:
             docker_image("thomasjava")
         shell:
             alg_shell("gg99_singlepair")
@@ -690,7 +690,7 @@ if "gg99_singlepair" in pattern_strings:
         params:
             graph_type="chordal",
             estimator="map"
-        singularity:
+        container:
             docker_image("networkx")
         script:
             "../scripts/evaluation/graphtraj_est.py"

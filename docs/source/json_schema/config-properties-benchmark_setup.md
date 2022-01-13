@@ -83,7 +83,6 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 {
   "roc": {
     "filename_prefix": "example/",
-    "point": true,
     "show_seed": false,
     "errorbar": true,
     "errorbarh": false,
@@ -97,14 +96,8 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
       "pc-gaussCItest"
     ]
   },
-  "adjmat_true_plots": true,
   "graph_true_plots": true,
-  "adjmat_plots": [
-    "fges-sem-bic",
-    "mmhc-bge-zf",
-    "omcmc_itsample-bge",
-    "pc-gaussCItest"
-  ],
+  "graph_true_stats": true,
   "graph_plots": [
     "fges-sem-bic",
     "mmhc-bge-zf",

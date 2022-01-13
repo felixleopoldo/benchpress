@@ -48,7 +48,7 @@ Blip object
 | [scorefunction](#scorefunction) | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-rblip_asobs-item-properties-scorefunction.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/scorefunction") |
 | [alpha](#alpha)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/alpha")                                     |
 | [cores](#cores)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/cores")                           |
-| [verbose](#verbose)             | `integer` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose")                                  |
+| [verbose_level](#verbose_level) | `integer` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose_level")                            |
 
 ## id
 
@@ -242,11 +242,11 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-## verbose
+## verbose_level
 
 Non-negative integer, 0,1,2,...
 
-`verbose`
+`verbose_level`
 
 *   is required
 
@@ -254,12 +254,12 @@ Non-negative integer, 0,1,2,...
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-nonnegint-type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs/properties/verbose_level")
 
-### verbose Type
+### verbose_level Type
 
 `integer` ([nonnegint type](config-definitions-nonnegint-type.md))
 
-### verbose Constraints
+### verbose_level Constraints
 
 **minimum**: the value of this number must greater than or equal to: `0`
