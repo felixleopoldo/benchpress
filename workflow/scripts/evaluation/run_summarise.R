@@ -138,21 +138,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
         SHD_cpdag = compres_cpdag["SHD"]
         iscpdag <- TRUE
 
-        true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
-        true_cpdag <- dag2cpdag(true_graphnel)
-        true_cpdag_bn <- as.bn(true_cpdag) ## convert to graph
-       
-        estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
-        estimated_cpdag <- dag2cpdag(estimated_graphnel)
-        estimated_cpdag_bn <- as.bn(estimated_cpdag) ## convert to graph
-        
-        pdf(file="comp.pdf")
-        graphviz.compare(true_cpdag_bn, estimated_cpdag_bn, layout="dot",
-            main=c(argv$adjmat_true, argv$adjmat_est)
-            #main=c("a","b")
-        )
-    
-        dev.off()
+     
     }  
     else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
         #true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
