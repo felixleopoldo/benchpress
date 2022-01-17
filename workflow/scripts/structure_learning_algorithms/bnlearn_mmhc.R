@@ -53,12 +53,13 @@ wrapper <- function() {
 
     ## convert to graphneldag
     gnel_dag <- as.graphNEL(mmoutput)
-
+    ntests <- mmoutput$learning$ntests
     adjmat <- as(gnel_dag, "matrix")
     colnames(adjmat) <- header
 
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
     write(totaltime, file = snakemake@output[["time"]])
+    write(ntests, file = snakemake@output[["ntests"]])
 }
 
 if(snakemake@wildcards[["timeout"]] == "None"){
@@ -73,5 +74,6 @@ if(snakemake@wildcards[["timeout"]] == "None"){
         message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty grape and time files.", sep=""))
         file.create(filename)
         cat("None",file=snakemake@output[["time"]],sep="\n")    
+        cat("None", file = snakemake@output[["ntests"]], sep = "\n")
     })
 }

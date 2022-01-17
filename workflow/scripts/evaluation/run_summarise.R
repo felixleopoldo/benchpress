@@ -1,6 +1,7 @@
 library(argparser)
 library(BiDAG)
 library(pcalg)
+library(bnlearn)
 
 ### This function extracts directed edges from an EG
 EGdedges <- function(incidence) {
@@ -125,6 +126,9 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
     iscpdag <- FALSE
     isdag <- FALSE
     isug <- FALSE
+
+   
+
     if(isSymmetric(estimated_adjmat)){
         isug <- TRUE
     }
@@ -133,15 +137,27 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
 
         SHD_cpdag = compres_cpdag["SHD"]
         iscpdag <- TRUE
-    }
 
-    else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
         true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
         true_cpdag <- dag2cpdag(true_graphnel)
+        true_cpdag_bn <- as.bn(true_cpdag) ## convert to graph
+       
         estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
         estimated_cpdag <- dag2cpdag(estimated_graphnel)
-
-        compres_cpdag <- compareDAGs(estimated_graphnel, true_graphnel, cpdag=TRUE)
+        estimated_cpdag_bn <- as.bn(estimated_cpdag) ## convert to graph
+        
+        pdf(file="comp.pdf")
+        graphviz.compare(true_cpdag_bn, estimated_cpdag_bn, layout="dot",
+            main=c(argv$adjmat_true, argv$adjmat_est)
+            #main=c("a","b")
+        )
+    
+        dev.off()
+    }  
+    else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
+        #true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
+        #estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
+        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
         SHD_cpdag = compres_cpdag["SHD"]
         isdag <- TRUE
     } 
@@ -165,8 +181,8 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
 }
 
 if (file.info(argv$adjmat_est)$size > 0) { 
-    true_adjmat <- as.matrix(read.csv(argv$adjmat_true))
-    estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est))
+    true_adjmat <- as.matrix(read.csv(argv$adjmat_true, check.names=FALSE))
+    estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est, check.names=FALSE))
     df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
     df <- data.frame(TPR_pattern = "None", # should be for all times

@@ -89,7 +89,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
     elif algorithm == "notears":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -163,7 +163,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname optimized       --colval true " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
 
     elif algorithm == "rblip_asobs":
@@ -256,7 +256,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
-    elif algorithm == "guidice_dualpc":
+    elif algorithm == "giudice_dualpc":
         return "Rscript workflow/scripts/evaluation/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \
@@ -300,26 +300,63 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname maximizeargs   --colval null " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
-    elif algorithm == "h2pc":
+    elif algorithm == "bnlearn_h2pc":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval h2pc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval " + algorithm +" "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname issw          --colval {wildcards.issw} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname beta            --colval {wildcards.beta} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist   --colval null " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug       --colval false " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname maximizeargs   --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
+    elif algorithm == "bnlearn_rsmax2":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval " + algorithm +" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha       --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname score           --colval {wildcards.score} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname iss             --colval {wildcards.iss} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname issmu          --colval {wildcards.issmu} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname issw          --colval {wildcards.issw} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname l               --colval {wildcards.l} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname k               --colval {wildcards.k} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname prior           --colval {wildcards.prior} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname beta            --colval {wildcards.beta} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist   --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug       --colval false " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maximizeargs   --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
     elif algorithm == "bnlearn_interiamb":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
@@ -343,7 +380,7 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
 
                 
     elif algorithm == "bnlearn_gs":
@@ -353,7 +390,175 @@ def summarise_alg_shell(algorithm):
                 "--filename {output} " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval bnlearn_gs "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_pcstable":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_iamb":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_fastiamb":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_iambfdr":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_mmpc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_sihitonpc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname alpha            --colval {wildcards.alpha} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname cluster          --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname whitelist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist        --colval null " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test             --colval {wildcards.test} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname B                --colval {wildcards.B} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname debug            --colval {wildcards.debug} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname maxsx           --colval {wildcards.maxsx} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname undirected       --colval {wildcards.undirected} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time             --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval `cat {input.ntests}` " \
+
+    elif algorithm == "bnlearn_hpc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate        --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm        --colval " +algorithm+" "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn               --colval {wildcards.bn} "  \       
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname data             --colval {wildcards.data} "  \       
@@ -526,9 +731,40 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname gamma       --colval {wildcards.gamma} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname hardlimit   --colval 15 "\      
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname chainout    --colval true "\   
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname scoreout    --colval false "\   
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname scoreout    --colval true "\   
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname verbose     --colval false "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname threshold   --colval {wildcards.threshold} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname startspace_algorithm   --colval {wildcards.startspace_algorithm} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout      --colval {wildcards.timeout} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
+    elif algorithm == "bidag_partition_mcmc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output} " \ 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval bidag_partition_mcmc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname bn              --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname scoretype    --colval {wildcards.scoretype} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname chi          --colval {wildcards.chi} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname edgepf       --colval {wildcards.edgepf} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname am           --colval {wildcards.am} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname aw           --colval {wildcards.aw} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname blacklist   --colval None "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname scoretable  --colval None "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname moveprobs   --colval None "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname startDAG    --colval None "\                
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname iterations  --colval {wildcards.iterations} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname stepsave    --colval {wildcards.stepsave} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname gamma       --colval {wildcards.gamma} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname scoreout    --colval true "\   
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname verbose     --colval {wildcards.verbose} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname startspace_algorithm   --colval {wildcards.startspace_algorithm} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout      --colval {wildcards.timeout} " \

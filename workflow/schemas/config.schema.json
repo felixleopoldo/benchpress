@@ -483,12 +483,12 @@
                                 "$ref": "#/definitions/pcalg_pc"
                             }
                         },
-                        "guidice_dualpc": {
+                        "giudice_dualpc": {
                             "description": "Dual PC algorithm objects",
-                            "title": "guidice_dualpc",
+                            "title": "giudice_dualpc",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/guidice_dualpc"
+                                "$ref": "#/definitions/giudice_dualpc"
                             }
                         },
                         "bnlearn_mmhc": {
@@ -523,6 +523,14 @@
                                 "$ref": "#/definitions/bidag_order_mcmc"
                             }
                         },
+                        "bidag_partition_mcmc": {
+                            "description": "Partition MCMC objects",
+                            "title": "bidag_partition_mcmc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bidag_partition_mcmc"
+                            }
+                        },
                         "bnlearn_interiamb": {
                             "description": "Inter-IAMB objects",
                             "title": "bnlearn_interiamb",
@@ -539,12 +547,84 @@
                                 "$ref": "#/definitions/bnlearn_gs"
                             }
                         },
+                        "bnlearn_pcstable": {
+                            "description": "PC stable objects",
+                            "title": "bnlearn_pcstable",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_pcstable"
+                            }
+                        },
+                        "bnlearn_iamb": {
+                            "description": "IAMB objects",
+                            "title": "bnlearn_iamb",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_iamb"
+                            }
+                        },
+                        "bnlearn_fastiamb": {
+                            "description": "Fast IAMB objects",
+                            "title": "bnlearn_fastiamb",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_fastiamb"
+                            }
+                        },
+                        "bnlearn_iambfdr": {
+                            "description": "Incremental Association with FDR Correction (IAMB FDR) objects",
+                            "title": "bnlearn_iambfdr",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_iambfdr"
+                            }
+                        },
+                        "bnlearn_mmpc": {
+                            "description": "MM PC objects",
+                            "title": "bnlearn_mmpc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_mmpc"
+                            }
+                        },
+                        "bnlearn_sihitonpc": {
+                            "description": "Semi-Interleaved Hiton-PC (sihiton) objects",
+                            "title": "bnlearn_sihitonpc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_sihitonpc"
+                            }
+                        },
+                        "bnlearn_hpc": {
+                            "description": "bnlearn_hpc objects",
+                            "title": "bnlearn_hpc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_hpc"
+                            }
+                        },
                         "bnlearn_hc": {
                             "description": "HC objects",
                             "title": "bnlearn_hc",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bnlearn_hc"
+                            }
+                        },
+                        "bnlearn_h2pc": {
+                            "description": "H2PC objects",
+                            "title": "bnlearn_h2pc",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_h2pc"
+                            }
+                        },
+                        "bnlearn_rsmax2": {
+                            "description": "bnlearn_rsmax2 objects",
+                            "title": "bnlearn_rsmax2",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bnlearn_rsmax2"
                             }
                         },
                         "gt13_multipair": {
@@ -2302,8 +2382,8 @@
                 }
             ]
         },
-        "guidice_dualpc": {
-            "title": "guidice_dualpc item",
+        "giudice_dualpc": {
+            "title": "giudice_dualpc item",
             "description": "Dual PC algorithm instance",
             "type": "object",
             "properties": {
@@ -2427,6 +2507,206 @@
             "examples": [
                 {
                     "id": "mmhc-bge-zf",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "score": "bge",
+                    "test": "zf",
+                    "iss": 1,
+                    "issmu": 1,
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": null,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_h2pc": {
+            "title": "bnlearn_h2pc item",
+            "description": "H2PC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "beta": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "iss": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "issmu": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "issw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "l": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "k": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "prior": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "h2pc-bge-zf",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "score": "bge",
+                    "test": "zf",
+                    "iss": 1,
+                    "issmu": 1,
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": null,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_rsmax2": {
+            "title": "bnlearn_rsmax2 item",
+            "description": "2-phase Restricted Maximization algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "beta": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "restrict": {
+                    "type": "string"
+                },
+                "maximize": {
+                    "type": "string"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "iss": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "issmu": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "issw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "l": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "k": {
+                    "$ref": "#/definitions/flexnonnegintnull"
+                },
+                "prior": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "rsmax2-bge-zf",
+                    "restrict": "si.hiton.pc",
+                    "maximize": "hc",
                     "alpha": [
                         0.001,
                         0.01,
@@ -2603,6 +2883,587 @@
             "examples": [
                 {
                     "id": "gs-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_pcstable": {
+            "title": "bnlearn_pcstable item",
+            "description": "PC satble algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "pcstable-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_iamb": {
+            "title": "bnlearn_iamb item",
+            "description": "IAMB algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "iamb-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_fastiamb": {
+            "title": "bnlearn_fastiamb item",
+            "description": "Fast IAMB algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fastiamb-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_iambfdr": {
+            "title": "bnlearn_iambfdr item",
+            "description": "IAMB FDR algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "iambfdr-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_mmpc": {
+            "title": "bnlearn_mmpc item",
+            "description": "MMPC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "mmpc-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_sihitonpc": {
+            "title": "bnlearn_sihitonpc item",
+            "description": "Semi-Interleaved Hiton-PC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "sihitonpc-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        },
+        "bnlearn_hpc": {
+            "title": "bnlearn_hpc item",
+            "description": "Hybrid PC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "hpc-zf",
                     "alpha": [
                         0.01,
                         0.05
@@ -2989,6 +3850,110 @@
                     "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
+                    "burnin": 0
+                }
+            ]
+        },
+
+        "bidag_partition_mcmc": {
+            "title": "bidag_partition_mcmc item",
+            "description": "Partition MCMC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "startspace_algorithm": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "scoretype": {
+                    "type": "string"
+                },
+                
+                "verbose": {
+                    "type": "boolean"
+                },
+                
+                "chi": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "edgepf": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "am": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "aw": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "iterations": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "stepsave": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "gamma": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "burnin": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "scoretype",
+                "chi",
+                "edgepf",
+                "am",
+  
+                "aw",
+                "burnin",
+                "startspace_algorithm",
+                "verbose",
+                "stepsave",
+                "iterations",
+                "gamma"
+            ],
+            "examples": [
+                {
+                    "id": "partition_itmap-bge",
+                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                    "verbose": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": [
+                        0.01,
+                        0.1,
+                        0.05
+                    ],
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations": null,
+                    "timeout": null,
+                    "mcmc_seed": 1,
+                    
                     "burnin": 0
                 }
             ]

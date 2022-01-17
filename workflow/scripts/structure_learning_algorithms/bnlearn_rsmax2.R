@@ -43,7 +43,9 @@ wrapper <- function() {
     set.seed(seed)
 
     start <- proc.time()[1]
-    mmoutput <- h2pc(data,
+    mmoutput <- rsmax2(data,
+                        restrict =snakemake@wildcards[["restrict"]],
+                        maximize =snakemake@wildcards[["maximize"]],
                      restrict.args = list(
                                             alpha = ifelse(snakemake@wildcards[["alpha"]] == "None", NULL, as.numeric(snakemake@wildcards[["alpha"]])),
                                             test = snakemake@wildcards[["test"]]),
@@ -57,7 +59,6 @@ wrapper <- function() {
     adjmat <- as(gnel_dag, "matrix")
     colnames(adjmat) <- header
 
-    print(adjmat)
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
     write(totaltime, file = snakemake@output[["time"]])
     write(ntests, file = snakemake@output[["ntests"]])

@@ -36,8 +36,8 @@ if "rblip_asobs" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["rblip_asobs"] = "rblip_asobs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip_asobs"])
 if "pcalg_pc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["pcalg_pc"] = "pcalg_pc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
-if "guidice_dualpc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["guidice_dualpc"] = "guidice_dualpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["guidice_dualpc"])
+if "giudice_dualpc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["giudice_dualpc"] = "giudice_dualpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["giudice_dualpc"])
 if "bnlearn_mmhc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bnlearn_mmhc"] = "bnlearn_mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
 if "bnlearn_interiamb" in config["resources"]["structure_learning_algorithms"]:
@@ -48,12 +48,32 @@ if "bnlearn_tabu" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bnlearn_tabu"] = "bnlearn_tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"])
 if "bnlearn_hc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bnlearn_hc"] = "bnlearn_hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hc"])
+if "bnlearn_pcstable" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_pcstable"] = "bnlearn_pcstable/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_pcstable"])
+if "bnlearn_iamb" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_iamb"] = "bnlearn_iamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_iamb"])
+if "bnlearn_fastiamb" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_fastiamb"] = "bnlearn_fastiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_fastiamb"])
+if "bnlearn_iambfdr" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_iambfdr"] = "bnlearn_iambfdr/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_iambfdr"])
+if "bnlearn_mmpc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_mmpc"] = "bnlearn_mmpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmpc"])
+if "bnlearn_sihitonpc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_sihitonpc"] = "bnlearn_sihitonpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_sihitonpc"])
+if "bnlearn_hpc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_hpc"] = "bnlearn_hpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hpc"])
+if "bnlearn_h2pc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_h2pc"] = "bnlearn_h2pc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_h2pc"])
+if "bnlearn_rsmax2" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bnlearn_rsmax2"] = "bnlearn_rsmax2/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_rsmax2"])
 if "gobnilp" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gobnilp"])
 if "bidag_itsearch" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bidag_itsearch"] = "bidag_itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_itsearch"])
 if "bidag_order_mcmc" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["bidag_order_mcmc"] = "bidag_order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"])
+if "bidag_partition_mcmc" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["bidag_partition_mcmc"] = "bidag_partition_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"])
 if "trilearn_pgibbs" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["trilearn_pgibbs"] = "trilearn_pgibbs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"])
 if "tetrad_fges" in config["resources"]["structure_learning_algorithms"]:

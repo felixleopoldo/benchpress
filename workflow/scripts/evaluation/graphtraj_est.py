@@ -54,15 +54,16 @@ if os.stat(snakemake.input["traj"]).st_size > 0:
     if snakemake.params["estimator"] == "map":
         maxscore = df[3:]["score"].max()
         for index, row in df.iterrows():
-            added = edges_str_to_list(row["added"])
-            removed = edges_str_to_list(row["removed"])
+            added = edges_str_to_list(row["added"], edgesymb=edgesymb)
+            removed = edges_str_to_list(row["removed"], edgesymb=edgesymb)
             g.add_edges_from(added)
             g.remove_edges_from(removed)
             if row["score"] == maxscore:
                 break
 
-        pd.DataFrame(nx.to_numpy_array(g)).to_csv(
-            snakemake.output["adjmat"], index=False)
+        df_adjmat = pd.DataFrame(nx.to_numpy_array(g), dtype=int)
+        df_adjmat.columns = g.nodes()
+        df_adjmat.to_csv(snakemake.output["adjmat"], index=False)
 
     if snakemake.params["estimator"] == "heatmap":
 

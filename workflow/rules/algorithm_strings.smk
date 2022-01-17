@@ -42,9 +42,9 @@ if "tetrad_rfci" in pattern_strings:
 if "pcalg_pc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["pcalg_pc"], **val)  
                         for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})
-if "guidice_dualpc" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["guidice_dualpc"], **val)  
-                        for val in config["resources"]["structure_learning_algorithms"]["guidice_dualpc"]})
+if "giudice_dualpc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["giudice_dualpc"], **val)  
+                        for val in config["resources"]["structure_learning_algorithms"]["giudice_dualpc"]})
 if "bnlearn_mmhc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bnlearn_mmhc"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"]} )
@@ -54,20 +54,45 @@ if "bnlearn_interiamb" in pattern_strings:
 if "bnlearn_gs" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bnlearn_gs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_gs"]} )
-if "gobnilp" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})
 if "bnlearn_tabu" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["bnlearn_tabu"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"]})
 if "bnlearn_hc" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["bnlearn_hc"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_hc"]})
-
+if "bnlearn_pcstable" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_pcstable"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_pcstable"]})
+if "bnlearn_iamb" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_iamb"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_iamb"]})
+if "bnlearn_fastiamb" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_fastiamb"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_fastiamb"]})
+if "bnlearn_iambfdr" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_iambfdr"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_iambfdr"]})
+if "bnlearn_mmpc" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_mmpc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_mmpc"]})
+if "bnlearn_sihitonpc" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_sihitonpc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_sihitonpc"]})
+if "bnlearn_hpc" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_hpc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_hpc"]})
+if "bnlearn_h2pc" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_h2pc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_h2pc"]})
+if "bnlearn_rsmax2" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["bnlearn_rsmax2"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bnlearn_rsmax2"]})
 if "sklearn_glasso" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["sklearn_glasso"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["sklearn_glasso"]})
-                        
+if "gobnilp" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})                      
 if "trilearn_pgibbs" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
@@ -85,12 +110,24 @@ if "bidag_order_mcmc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in order_mcmc_list } )
 
+if "bidag_partition_mcmc" in pattern_strings:
+    bidag_partition_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"]
+    for items in bidag_partition_mcmc_list:    
+        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
+
+    #json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
+    #                    for val in bidag_partition_mcmc_list } )
+    json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
+                        for val in bidag_partition_mcmc_list } )
+
 # Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}
 if "bidag_order_mcmc" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"], **val,) 
                         for val in order_mcmc_list } )
-
+if "bidag_partition_mcmc" in pattern_strings:
+    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
+                        for val in bidag_partition_mcmc_list } )
 if "trilearn_pgibbs" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
