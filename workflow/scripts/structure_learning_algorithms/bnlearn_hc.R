@@ -29,13 +29,11 @@ wrapper <- function() {
                 beta = as.numeric(snakemake@wildcards[["beta"]])
                 )
     totaltime <- proc.time()[1] - start
- 
     ## convert to graphneldag
     gnel_dag <- as.graphNEL(output)
     adjmat <- as(gnel_dag, "matrix")
     colnames(adjmat) <- names
     ntests <- output$learning$ntests
-
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
     write(totaltime, file = snakemake@output[["time"]])
     write(ntests, file = snakemake@output[["ntests"]])

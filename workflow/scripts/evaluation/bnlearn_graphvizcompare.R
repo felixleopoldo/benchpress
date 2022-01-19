@@ -99,94 +99,50 @@ DAG2EG <- function(incidence) {
   as(dag2essgraph(as(incidence, "graphNEL")), "matrix")
 }
 
-p <- arg_parser("A program for summarising and save to file.")
-p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
-p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
-p <- add_argument(p, "--filename", help = "Output filename")
-argv <- parse_args(p)
+myFun <- function(n = 5000) {
+  a <- do.call(paste0, replicate(5, sample(LETTERS, n, TRUE), FALSE))
+  paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
+}
 
 benchmarks <- function(true_adjmat, estimated_adjmat){
 
-    skel_true <- (true_adjmat | t(true_adjmat)) * 1
-    skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
+    if (isSymmetric(estimated_adjmat) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+        pattern_true = getPattern(true_adjmat)
+        pattern_true_gnel = as(pattern_true, "graphNEL") ## convert to graph
+        pattern_true_bn = as.bn(pattern_true_gnel)
 
-    TP <- sum(skel_true * skel_est) / 2
-    TN <- sum((1 - skel_true) * (1 - skel_est)) / 2
-    FP <- sum((1 - skel_true) * skel_est) / 2
-    FN <- sum(skel_true * (1 - skel_est)) / 2
+        pattern_estimated = getPattern(estimated_adjmat)
+        pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph
+        pattern_estimated_bn = as.bn(pattern_estimated_gnel)
 
-    n_edges <- sum(skel_true) / 2
-    n_nonedges <- sum(1 - skel_true) / 2
-    n_nodes <- ncol(skel_true)
+        filename <- myFun(n=1)
+        filename <- filename[1]        
+        
+        # true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
+        # true_cpdag <- dag2cpdag(true_graphnel)
+        # true_cpdag_bn <- as.bn(true_cpdag) ## convert to graph
+       
+        # estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
+        # estimated_cpdag <- dag2cpdag(estimated_graphnel)
+        # estimated_cpdag_bn <- as.bn(estimated_cpdag) ## convert to graph
 
-    compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
-    #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
-    SHD_cpdag <- "None"
-    
-    iscpdag <- FALSE
-    isdag <- FALSE
-    isug <- FALSE
-
-   
-
-    if(isSymmetric(estimated_adjmat)){
-        isug <- TRUE
+        pdf(file=filename)
+        graphviz.compare(pattern_true_bn, pattern_estimated_bn, layout="dot", 
+                         main=c("True pattern graph","Estimated pattern graph"))
+        dev.off()
+        file.copy(filename, snakemake@output[["filename"]])
+        unlink(filename)
+    } else {
+        file.create(snakemake@output[["filename"]])
     }
-     if (isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {        
-        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
-
-        SHD_cpdag = compres_cpdag["SHD"]
-        iscpdag <- TRUE
-
-    }  
-    else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
-        #true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
-        #estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
-        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
-        SHD_cpdag = compres_cpdag["SHD"]
-        isdag <- TRUE
-    } 
-    df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
-                    FPRn_pattern = compres["FPR_P"],
-                    SHD_pattern = compres["SHD"],
-                    SHD_cpdag = SHD_cpdag,
-                    FPR_skel = FP / n_edges,
-                    FNR_skel = FN / n_edges,
-                    TP_skel = TP,
-                    FN_skel = FN,
-                    FP_skel = FP,
-                    TN_skel = TN,
-                    n_nodes = n_nodes,
-                    true_n_edges_skel = n_edges,
-                    true_n_non_edges_skel = n_nonedges,
-                    DAG=isdag,
-                    CPDAG=iscpdag,
-                    UG=isug)
-    return(df)
 }
 
-if (file.info(argv$adjmat_est)$size > 0) { 
-    true_adjmat <- as.matrix(read.csv(argv$adjmat_true, check.names=FALSE))
-    estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est, check.names=FALSE))
-    df <- benchmarks(true_adjmat, estimated_adjmat)
+if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
+    true_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_true"]], check.names=FALSE))
+    estimated_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_est"]], check.names=FALSE))
+
+    benchmarks(true_adjmat, estimated_adjmat)
 } else {
-    df <- data.frame(TPR_pattern = "None", # should be for all times
-                    FPRn_pattern = "None",
-                    SHD_pattern = "None",
-                    SHD_cpdag = "None",
-                    FPR_skel = "None",
-                    FNR_skel = "None",
-                    TP_skel = "None",
-                    FN_skel = "None",
-                    FP_skel = "None",
-                    TN_skel = "None",
-                    n_nodes = "None",
-                    true_n_edges_skel = "None",
-                    true_n_non_edges_skel = "None",
-                    DAG="None",
-                    CPDAG="None",
-                    UG="None"
-                    )
+    file.create(snakemake@output[["filename"]])
 }
 
-write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

@@ -15,7 +15,6 @@ def edges_str_to_list(str, edgesymb="-"):
              for edge in edges_str if len(edge.split(edgesymb)) == 2]
     return edges
 
-
 # Treating the case when empty files are created. Such files
 # are created if the algorithm was timed out.
 if os.stat(snakemake.input["traj"]).st_size== 0:

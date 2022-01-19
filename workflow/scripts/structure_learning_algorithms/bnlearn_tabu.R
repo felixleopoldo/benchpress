@@ -32,7 +32,6 @@ wrapper <- function(){
     adjmat <- as(gnel_dag, "matrix")
     colnames(adjmat) <- names
     ntests <- output$learning$ntests
-
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
     write(totaltime, file = snakemake@output[["time"]])
     write(ntests, file = snakemake@output[["ntests"]])

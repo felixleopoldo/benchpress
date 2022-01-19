@@ -49,6 +49,7 @@ if os.stat(snakemake.input["traj"]).st_size > 0:
         g = nx.DiGraph()
         edgesymb = "->"
     else:
+        edgesymb = "-"
         g = nx.Graph()
 
     if snakemake.params["estimator"] == "map":

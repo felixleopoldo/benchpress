@@ -47,7 +47,8 @@ if "bnlearn_tabu" in pattern_strings:
             data = alg_input_data()
         output:
             adjmat = alg_output_adjmat_path("bnlearn_tabu"),
-            time = alg_output_time_path("bnlearn_tabu")
+            time = alg_output_time_path("bnlearn_tabu"),
+            ntests = alg_output_ntests_path("bnlearn_tabu")
         container:
             docker_image("bnlearn")
         script:
@@ -59,7 +60,8 @@ if "bnlearn_tabu" in pattern_strings:
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_tabu"),
-            time = summarise_alg_input_time_path("bnlearn_tabu")
+            time = summarise_alg_input_time_path("bnlearn_tabu"),
+            ntests = summarise_alg_input_ntests_path("bnlearn_tabu")
         output:
             res = summarise_alg_output_res_path("bnlearn_tabu")
         shell:
@@ -114,7 +116,8 @@ if "bnlearn_hc" in pattern_strings:
             data = alg_input_data()
         output:
             adjmat = alg_output_adjmat_path("bnlearn_hc"),
-            time = alg_output_time_path("bnlearn_hc")
+            time = alg_output_time_path("bnlearn_hc"),
+            ntests = alg_output_ntests_path("bnlearn_hc")
         container:
             docker_image("bnlearn")
         script:
@@ -126,7 +129,8 @@ if "bnlearn_hc" in pattern_strings:
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_hc"),
-            time = summarise_alg_input_time_path("bnlearn_hc")
+            time = summarise_alg_input_time_path("bnlearn_hc"),
+            ntests = summarise_alg_input_ntests_path("bnlearn_hc")
         output:
             res = summarise_alg_output_res_path("bnlearn_hc")
         shell:
@@ -148,7 +152,8 @@ if "bnlearn_interiamb" in pattern_strings:
             data = alg_input_data()
         output:
             adjmat = alg_output_adjmat_path("bnlearn_interiamb"),
-            time = alg_output_time_path("bnlearn_interiamb")
+            time = alg_output_time_path("bnlearn_interiamb"),
+            ntests = alg_output_ntests_path("bnlearn_interiamb")
         container:
             docker_image("bnlearn")
         script:
@@ -160,7 +165,8 @@ if "bnlearn_interiamb" in pattern_strings:
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_interiamb"),
-            time = summarise_alg_input_time_path("bnlearn_interiamb")
+            time = summarise_alg_input_time_path("bnlearn_interiamb"),
+            ntests = summarise_alg_input_ntests_path("bnlearn_interiamb")
         output:
             res = summarise_alg_output_res_path("bnlearn_interiamb")
         shell:
@@ -682,7 +688,8 @@ if "bnlearn_mmhc" in pattern_strings:
             data = alg_input_data()
         output:
             adjmat = alg_output_adjmat_path("bnlearn_mmhc"),
-            time = alg_output_time_path("bnlearn_mmhc")
+            time = alg_output_time_path("bnlearn_mmhc"),
+            ntests = alg_output_ntests_path("bnlearn_mmhc")
         script:
             "../scripts/structure_learning_algorithms/bnlearn_mmhc.R"
 
@@ -692,7 +699,8 @@ if "bnlearn_mmhc" in pattern_strings:
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("bnlearn_mmhc"),
-            time = summarise_alg_input_time_path("bnlearn_mmhc")
+            time = summarise_alg_input_time_path("bnlearn_mmhc"),
+            ntests = summarise_alg_input_ntests_path("bnlearn_mmhc")
         output:
             res = summarise_alg_output_res_path("bnlearn_mmhc")
         shell:
@@ -935,76 +943,7 @@ if "bidag_order_mcmc" in pattern_strings:
         script:
             "../scripts/evaluation/join_csv_files.R"
 
-# if "bidag_partition_mcmc" in pattern_strings:
-#     rule bidag_partition_mcmc:
-#         input:
-#             "workflow/scripts/structure_learning_algorithms/bidag_partition_mcmc.R",
-#             data = alg_input_data(),
-#             startspace = "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
-#         output: # data seems to be matched wrongly
-#             seqgraph = alg_output_seqgraph_path("bidag_partition_mcmc"),
-#             time = alg_output_time_path("bidag_partition_mcmc")
-#         container:
-#             docker_image("bidag")
-#         script:
-#             "../scripts/structure_learning_algorithms/bidag_partition_mcmc.R"
-
-#     rule bidag_partition_mcmc_est:
-#         input:
-#             "workflow/scripts/evaluation/graphtraj_est.py",
-#             traj = alg_output_seqgraph_path("bidag_partition_mcmc") #here is the difference from order_mcmc. matching diffferently.
-#             #traj = alg_output_seqgraph_path_fine_match("bidag_partition_mcmc") 
-#         output:
-#             #adjmat = adjmat_estimate_path_mcmc("bidag_partition_mcmc")
-#             adjmat = alg_output_adjmat_path("bidag_partition_mcmc") #here is the difference from order_mcmc. matching diffferently.
-#         params:
-#             graph_type="dag",
-#             estimator="threshold",
-#             threshold="{threshold}",
-#             burnin="{burnin}"
-#         container:
-#             docker_image("networkx")
-#         script:
-#             "../scripts/evaluation/graphtraj_est.py"
-
-#     rule summarise_bidag_partition_mcmc:
-#         input:
-#             "workflow/scripts/evaluation/run_summarise.R",
-#             data = data_path(),
-#             adjmat_true = adjmat_true_path(),
-#             adjmat_est = adjmat_estimate_path_mcmc("bidag_partition_mcmc"),
-#             time = time_path("bidag_partition_mcmc")
-#         output:
-#             res = result_path_mcmc("bidag_partition_mcmc") # {data} is used for the data module here. not as the whole datamodel
-#         shell: 
-#             summarise_alg_shell("bidag_partition_mcmc")
-
-#     """ This should be OK
-#     """
-#     rule join_summaries_bidag_partition_mcmc:
-#         input: 
-#             "workflow/scripts/evaluation/run_summarise.R",
-#             conf=configfilename,
-#             res=join_string_sampled_model("bidag_partition_mcmc")
-#         output:
-#             join_summaries_output("bidag_partition_mcmc")
-#         script:
-#             "../scripts/evaluation/join_csv_files.R"
-
-
-
 if "bidag_partition_mcmc" in pattern_strings:
-    # rule bidag_partition_mcmc:
-    #     input:
-    #         data=alg_input_data()
-    #     output:
-    #         adjvecs = alg_output_seqgraph_path("bidag_partition_mcmc"),
-    #         time = alg_output_time_path("bidag_partition_mcmc")
-    #     container:
-    #         docker_image("bidag")
-    #     script:
-    #          "../scripts/structure_learning_algorithms/bidag_partition_mcmc.R"
-
     rule bidag_partition_mcmc:
         input:
             "workflow/scripts/structure_learning_algorithms/bidag_partition_mcmc.R",
@@ -1054,14 +993,6 @@ if "bidag_partition_mcmc" in pattern_strings:
             join_summaries_output("bidag_partition_mcmc")
         script:
             "../scripts/evaluation/join_csv_files.R"
-
-
-
-
-
-
-
-
 
 
 if "trilearn_pgibbs" in pattern_strings:

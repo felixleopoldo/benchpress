@@ -67,6 +67,29 @@ def traj_plots():
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
+def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
+    ret = [[[[expand("{output_dir}/" \
+            "evaluation=/{evaluation_string}/"\
+            "adjmat=/{adjmat_string}/"\
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/" \
+            "seed={seed}/" + \
+            filename + "." + ext,
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            evaluation_string="graphvizcompare/layout=True",
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+            for alg in active_algorithms("graph_plots")]
+    return ret
 
 def adjmat_true_plots():
     return [[expand("{output_dir}/adjmat/{adjmat_string}.eps",
@@ -425,6 +448,7 @@ rule join_adjmat_stats:
         "../scripts/evaluation/join_csv_files.R"
 
 
+
 rule plot_adjmat_stats:
     input:    
         "workflow/scripts/evaluation/graph_stats_plot.R",
@@ -437,23 +461,57 @@ rule plot_adjmat_stats:
     script:
         "../scripts/evaluation/graph_stats_plot.R"
 
+# This is actually a quite general rule.
+rule bnlearn_graphvizcompare:
+    input:
+        "workflow/scripts/evaluation/bnlearn_graphvizcompare.R",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = "{output_dir}/adjmat_estimate/"\
+                    "adjmat=/{adjmat}/"\
+                    "parameters=/{bn}/"\
+                    "data=/{data}/"\
+                    "algorithm=/{alg_string}/"  \
+                    "seed={replicate}/" \
+                    "adjmat.csv"
+    output:
+        filename="{output_dir}/" \
+        "evaluation=/graphvizcompare/layout={layout}/"\
+        "adjmat=/{adjmat}/"\
+        "parameters=/{bn}/"\
+        "data=/{data}/"\
+        "algorithm=/{alg_string}/" \
+        "seed={replicate}/{filename}"
+    script:
+        "../scripts/evaluation/bnlearn_graphvizcompare.R"
+
 rule graph_plots:
     input:
         conf=configfilename,
         graphs=graph_plots(),
         adjmats=adjmat_plots(),
+        graphvizcompare=bnlearn_graphvizcompare_plots(),
         csv_adjmats=adjmats()
     output:
+        directory("results/output/graph_plots/graphs"),
+        directory("results/output/graph_plots/adjmats"),
+        directory("results/output/graph_plots/csvs"),
+        
+        directory("results/output/graph_plots/graphvizcompare"),
         touch("results/output/graph_plots/graph_plots.done"),
-        touch("results/output/graph_plots/adjmat_plots.done"),
-        touch("results/output/graph_plots/adjmat_csv.done")
+
     run:
         for i,f in enumerate(input.graphs):
-            shell("cp "+f+" results/output/graph_plots/graph_" +str(i+1) +".png")
+            shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/graph_plots/adjmat_plot_" +str(i+1) +".eps")
+            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
         for i,f in enumerate(input.csv_adjmats):
-            shell("cp "+f+" results/output/graph_plots/adjmat_" +str(i+1) +".csv")
+            shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
+        if True:
+            shell("mkdir -p results/output/graph_plots/graphvizcompare")
+            for i,f in enumerate(input.graphvizcompare):
+                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+
 
 rule graph_true_plots:
     input:
@@ -461,8 +519,7 @@ rule graph_true_plots:
         graphs=graph_true_plots(),
         adjmats=adjmat_true_plots()
     output:
-        touch("results/output/graph_true_plots/graph_true_plots.done"),
-        touch("results/output/adjmat_true_plots/adjmat_true_plots.done")
+        touch("results/output/graph_true_plots/graph_true_plots.done"),        
     run:
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")

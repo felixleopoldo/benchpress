@@ -112,11 +112,10 @@ if "bidag_order_mcmc" in pattern_strings:
 
 if "bidag_partition_mcmc" in pattern_strings:
     bidag_partition_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"]
+    # The path to the startspace algorithm is extended here
     for items in bidag_partition_mcmc_list:    
         items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
 
-    #json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
-    #                    for val in bidag_partition_mcmc_list } )
     json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
                         for val in bidag_partition_mcmc_list } )
 

@@ -6,7 +6,9 @@ import shutil
 import filecmp
 from pathlib import Path
 import os
+from snakemake.utils import min_version
 
+min_version("5.2")
 args = sys.argv
 
 

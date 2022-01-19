@@ -14,11 +14,16 @@ for rocitem in config["benchmark_setup"]["evaluation"]["roc"]["ids"]:
     if rocitem not in available_conf_ids:
         raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
+# Check that all ids in the graph_plots actually exist.
+for rocitem in config["benchmark_setup"]["evaluation"]["graph_plots"]:
+    if rocitem not in available_conf_ids:
+        raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
+
 # Check that the startspace for order mcmc exist.
-#for alg_conf in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]:
-#    if alg_conf["startspace_algorithm"] not in set(available_conf_ids + [None]) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}:
-#        raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc.\n"\
-#                        "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}))))
+# for alg_conf in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]:
+#     if alg_conf["startspace_algorithm"] not in set(available_conf_ids + [None]) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}:
+#         raise Exception(alg_conf["startspace_algorithm"] + " not available startspace for order_mcmc.\n"\
+#                         "The available are:\n"+str(sorted(list(set(available_conf_ids) - {c["id"] for c in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]}))))
 
 def validate_data_setup(config, dict):
     # Check that adjmat exists
