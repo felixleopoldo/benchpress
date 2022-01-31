@@ -182,7 +182,7 @@ machine learning research, 3(Nov), 507–554.]
 * <a id="11">[11]</a> [Ogarrio JM, Spirtes P, Ramsey J (2016). “A hybrid causal search algorithm for latent variable models.” In Conference on Probabilistic Graphical Models, pp. 368–379.]
 * <a id="12">[12]</a> [Kuipers J, Suter P, Moffa G (2018a). “Efficient structure learning and sampling of Bayesian networks.” arXiv preprint arXiv:1803.07859.]
 * <a id="13">[13]</a> [Margaritis D (2003). “Learning Bayesian network model structure from data.” Technical report, Carnegie-Mellon Univ Pittsburgh Pa School of Computer Science.]
-* <a id="14">[15]</a> [Tsamardinos I, Aliferis CF, Statnikov AR, Statnikov E (2003). “Algorithms for large scale
+* <a id="14">[14]</a> [Tsamardinos I, Aliferis CF, Statnikov AR, Statnikov E (2003). “Algorithms for large scale
 Markov blanket discovery.” In FLAIRS conference, volume 2, pp. 376–380.]
 * <a id="15">[15]</a> [Tsamardinos I, Brown LE, Aliferis CF (2006). “The max-min hill-climbing Bayesian network
 structure learning algorithm.” Machine learning, 65(1), 31–78.]
