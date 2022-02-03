@@ -116,7 +116,7 @@ Note that TP and FP reduces to the ordinary counting true and false positives wh
 .. code-block:: json
 
     {   
-        "filename_prefix": "example/",
+        "filename_prefix": "docs/",
         "point": true,
         "errorbar": true,
         "path": true,
@@ -129,19 +129,40 @@ Note that TP and FP reduces to the ordinary counting true and false positives wh
         ]
     }
     
-..  figure:: _static/FPR_TPR_skelex.png
+..  figure:: _static/alarm/FPR_TPR_skel.png
     :alt: ROC plot 
     :width: 500
 
     ROC plot
 
-This module also plots timing of the algorithms and creates a plot as below.
+The following plots are also produced
 
-..  figure:: _static/elapsed_time.png
+..  figure:: _static/alarm/elapsed_time_joint.png
     :alt: Timing 
     :width: 500
 
     Timing
+
+..  figure:: _static/alarm/f1_skel_joint.png
+    :alt: F1 
+    :width: 500
+
+    F1
+
+..  figure:: _static/alarm/graph_type.png
+    :alt: Graph type 
+    :width: 500
+
+    Graph type
+
+
+
+``pairs_plots``
+-------------------------
+
+This module writes ggpairs plots using the GGally package. 
+Be careful that this can be slow and the variable names may not fit into the figure if the dimension is too large.
+However, you can always alter the script as you like it.
 
 
 ``graph_true_stats``
@@ -169,7 +190,8 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_tr
 ``graph_plots``
 -------------------------
 
-This module plots and saves the estimated graphs in dot-format and adjacency matrix. 
+This module plots and saves the estimated graphs in dot-format and adjacency matrix.
+It also plots graph comparison using graphviz.compare from bnlearn.
 The figures are saved in *results/adjmat* and copied to *results/output/graph_plots/*.
 
 .. code-block:: json
