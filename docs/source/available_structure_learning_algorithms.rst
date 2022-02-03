@@ -384,6 +384,231 @@ An example
         "timeout": null
     }
 
+``bnlearn_pcstable``
+----------------
+
+*Peter-Clark stable* (PC-stable)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "pcstable-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_iamb``
+----------------
+
+*IA Markov Blanket* (IAMB)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "iamb-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_fastiamb``
+----------------
+
+*Fast IAMB* (Fast IAMB)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "fastiamb-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_iambfdr``
+----------------
+
+*IAMG false discovery rate* (IAMB FDR)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "iambfdr-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_mmpc``
+----------------
+
+*Max-Min PC* (MMPC)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "mmpc-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_sihitonpc``
+----------------
+
+*SI Hiton PC* (GSI HITON PCS)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "sihitonpc-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_hpc``
+----------------
+
+*Hybrid PC* (HPC)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "hpc-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_h2pc``
+----------------
+
+*H2 PC* (H2 PC)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "h2pc-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
+``bnlearn_rsmax2``
+----------------
+
+*RSMAX2* (RSMAX2)
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "rsmax2-mi",
+        "alpha": [
+            0.01,
+            0.05,
+            0.1
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+    }
+
 ``bnlearn_tabu``
 ------------------
 
@@ -411,6 +636,31 @@ An example
         "beta": 1,
         "timeout": null
     }
+
+``guidice_dualpc``
+------------------
+
+*Dual PC* 
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "dualpc",
+        "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+        ],
+        "skeleton": false,
+        "max_ord": null,
+        "timeout": null
+    }
+
 
 
 ``bidag_itsearch``
@@ -481,6 +731,38 @@ An example
         ],
         "burnin": 0,
         "timeout": null
+    }
+
+``bidag_partition_mcmc``
+-----------------------
+
+*Partition MCMC* 
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "partition_itmap-bge",
+        "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+        "verbose": true,
+        "scoretype": "bge",
+        "chi": null,
+        "edgepf": null,
+        "aw": null,
+        "am": [
+            0.01,
+            0.1,
+            0.05
+        ],
+        "gamma": 1,
+        "stepsave": null,
+        "iterations": null,
+        "timeout": null,
+        "mcmc_seed": 1,
+        "burnin": 0
     }
 
 

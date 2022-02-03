@@ -27,14 +27,15 @@ rule roc:
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
         fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.png",
         roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.png",
-        elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png",
-        elapsed_time_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time_joint.png",
-        elapsed_time_fine="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time_fine.png",
-        SHD_cpdag="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag.png",
+        #elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png",
+        elapsed_time_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "elapsed_time_joint.png",
+        graph_type="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "graph_type.png",
+        #SHD_cpdag="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag.png",
         SHD_cpdag_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag_joint.png",
         f1_skel_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel_joint.png",
-        f1_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel.png",
-        ntests="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests.png"
+        #f1_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel.png",
+        #ntests="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests.png"
+        ntests_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests_joint.png"
     script:
         "../scripts/evaluation/plot_ROC.R"
 
@@ -150,6 +151,25 @@ def adjmats():
                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
+
+def pairs():
+    ret = [[expand("{output_dir}/pairs/"\               
+            "adjmat=/{adjmat_string}/"\            
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\                        
+            "seed={seed}"
+            ".png",
+            output_dir="results",            
+            **alg_conf,
+            seed=seed,          
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            
+    return ret
+
 
 def graph_true_plots():
     return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
@@ -447,8 +467,6 @@ rule join_adjmat_stats:
     script:
         "../scripts/evaluation/join_csv_files.R"
 
-
-
 rule plot_adjmat_stats:
     input:    
         "workflow/scripts/evaluation/graph_stats_plot.R",
@@ -456,10 +474,28 @@ rule plot_adjmat_stats:
         joint_stats="results/output/graph_true_stats/joint_stats.csv"
     output:
         touch("results/output/graph_true_stats/graph_true_stats.done"),
-        n_edges_plot="results/output/graph_true_stats/n_edges.png"
-        
+        graph_density_plot="results/output/graph_true_stats/graph_density_plot.png"
     script:
         "../scripts/evaluation/graph_stats_plot.R"
+
+rule plot_pairs:
+    input:            
+        "workflow/scripts/utils/pairs.R",        
+        data=summarise_alg_input_data_path()        
+    output:
+        filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png"        
+    script:
+        "../scripts/utils/pairs.R"
+
+rule pairs:
+    input:
+        "workflow/scripts/utils/pairs.R",
+        pairsplots=pairs()
+    output:
+        touch("results/output/pairs_plots/pairs_plots.done")
+    run:
+        for i,f in enumerate(input.pairsplots):
+            shell("cp "+f+" results/output/pairs_plots/pairs_" +str(i+1) +".png")
 
 # This is actually a quite general rule.
 rule bnlearn_graphvizcompare:
@@ -496,10 +532,8 @@ rule graph_plots:
         directory("results/output/graph_plots/graphs"),
         directory("results/output/graph_plots/adjmats"),
         directory("results/output/graph_plots/csvs"),
-        
         directory("results/output/graph_plots/graphvizcompare"),
-        touch("results/output/graph_plots/graph_plots.done"),
-
+        touch("results/output/graph_plots/graph_plots.done")
     run:
         for i,f in enumerate(input.graphs):
             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
@@ -511,7 +545,6 @@ rule graph_plots:
             shell("mkdir -p results/output/graph_plots/graphvizcompare")
             for i,f in enumerate(input.graphvizcompare):
                 shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
-
 
 rule graph_true_plots:
     input:

@@ -33,7 +33,7 @@ container:
     docker_image("benchmark")
 
 # This function returns empty "trigger files" for the type of evaluations
-# that are used.
+# that are used. Yes, this is ugly. Should maybe have a directory output instead. 
 def get_active_rules(wildcards):
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():

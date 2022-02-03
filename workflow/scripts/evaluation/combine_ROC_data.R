@@ -77,7 +77,7 @@ for (algorithm in active_algorithms){
         sumROC = ROCdf %>%
         filter(!is.na(true_n_edges_skel)) %>%
         filter(id == params_id) %>% # Extract only the rows for the actual id         
-        group_by(id, adjmat, bn, data, !!as.symbol(curve_param)) %>% 
+        group_by(id, adjmat, parameters, data, !!as.symbol(curve_param)) %>% 
         summarise(  SHD_pattern_mean = mean(SHD_pattern),
 
                     TPR_pattern_mean = mean(TPR_pattern),                     

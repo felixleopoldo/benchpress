@@ -31,7 +31,7 @@ Blip object
     0.1
   ],
   "cores": 1,
-  "verbose": 0
+  "verbose_level": 0
 }
 ```
 

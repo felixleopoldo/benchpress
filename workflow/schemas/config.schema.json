@@ -77,6 +77,16 @@
                                 }
                             ]
                         },
+                        "pairs_plots": {
+                            "title": "pairs_plots",
+                            "description": "This module plots the data using pairs. The figures are saved in to results/output/pairs_plots/.",
+                            "type": "boolean",
+                            "examples": [
+                                {
+                                    "pairs_plots": true
+                                }
+                            ]
+                        },
                         "graph_plots": {
                             "title": "graph_plots",
                             "description": "This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph_plots/.",
@@ -410,6 +420,15 @@
                     "description": "The available structure learning algorithms",
                     "type": "object",
                     "properties": {
+                        "mylib_myalg": {
+                            "title": "mylib_myalg",
+                            "description": "List of mylib_myalg objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mylib_myalg"
+                            },
+                            "uniqueItems": true
+                        },
                         "trilearn_pgibbs": {
                             "title": "trilearn_pgibbs",
                             "description": "List of trilearn objects",
@@ -1535,6 +1554,55 @@
                 },
                 {
                     "type": "null"
+                }
+            ]
+        },
+        "mylib_myalg": {
+            "title": "mylib_myalg item",
+            "description": "Parameter setting for mylib_myalg.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "desciption": "Algorithm identifier",
+                    "type": "string"
+                },
+                "myintparam": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "mystringparam": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "possiblevalue1",
+                                "possiblevalue2"
+                            ]
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "required": [
+                "id",
+                "myintparam",
+                "mystringparam",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "mysetting",
+                    "mystringparam": "possiblevalue1",
+                    "myintparam": [
+                        2,
+                        3,
+                        5
+                    ],
+                    "timeout": null
                 }
             ]
         },
@@ -3854,7 +3922,6 @@
                 }
             ]
         },
-
         "bidag_partition_mcmc": {
             "title": "bidag_partition_mcmc item",
             "description": "Partition MCMC algorithm instance",
@@ -3883,11 +3950,9 @@
                 "scoretype": {
                     "type": "string"
                 },
-                
                 "verbose": {
                     "type": "boolean"
                 },
-                
                 "chi": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 },
@@ -3925,7 +3990,6 @@
                 "chi",
                 "edgepf",
                 "am",
-  
                 "aw",
                 "burnin",
                 "startspace_algorithm",
@@ -3953,7 +4017,6 @@
                     "iterations": null,
                     "timeout": null,
                     "mcmc_seed": 1,
-                    
                     "burnin": 0
                 }
             ]

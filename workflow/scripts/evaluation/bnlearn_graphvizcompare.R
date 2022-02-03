@@ -107,12 +107,13 @@ myFun <- function(n = 5000) {
 benchmarks <- function(true_adjmat, estimated_adjmat){
 
     if (isSymmetric(estimated_adjmat) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+       
         pattern_true = getPattern(true_adjmat)
         pattern_true_gnel = as(pattern_true, "graphNEL") ## convert to graph
         pattern_true_bn = as.bn(pattern_true_gnel)
 
-        pattern_estimated = getPattern(estimated_adjmat)
-        pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph
+        pattern_estimated = getPattern(estimated_adjmat) # already transposed here?
+        pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph.
         pattern_estimated_bn = as.bn(pattern_estimated_gnel)
 
         filename <- myFun(n=1)

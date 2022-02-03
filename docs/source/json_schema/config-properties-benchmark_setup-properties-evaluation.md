@@ -83,6 +83,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 | [roc](#roc)                                 | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")                                                                            |
 | [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
 | [graph_true_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
+| [pairs_plots](#pairs_plots)                 | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/pairs_plots")                 |
 | [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
 | [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
 | [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
@@ -173,6 +174,32 @@ This module plots statistics of the true underlying graphs. The figures are save
 ```json
 {
   "graph_true_stats": true
+}
+```
+
+## pairs_plots
+
+This module plots the data using pairs. The figures are saved in to results/output/pairs_plots/.
+
+`pairs_plots`
+
+*   is optional
+
+*   Type: `boolean` ([pairs_plots](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/pairs_plots")
+
+### pairs_plots Type
+
+`boolean` ([pairs_plots](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md))
+
+### pairs_plots Examples
+
+```json
+{
+  "pairs_plots": true
 }
 ```
 

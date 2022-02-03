@@ -86,6 +86,8 @@ if "tetrad_rfci" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["tetrad_rfci"] = "tetrad_rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_rfci"])
 if "sklearn_glasso" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["sklearn_glasso"] = "sklearn_glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["sklearn_glasso"])
+if "mylib_myalg" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["mylib_myalg"] = "mylib_myalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["mylib_myalg"])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
                             "threshold={threshold}/"\

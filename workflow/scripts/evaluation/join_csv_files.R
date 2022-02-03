@@ -32,7 +32,7 @@ for (filename in snakemake@input[["res"]]) {
 }
 
 output = snakemake@output[[1]]
-write.csv(df, file = output, row.names = FALSE)
+write.csv(df, file = output, row.names = FALSE, quote=FALSE)
 
 # This removes the seed from the adjmat and bn columns to enable proper grouping 
 # when plotting. Otherwise every seed gets its own group which is not meaningful.

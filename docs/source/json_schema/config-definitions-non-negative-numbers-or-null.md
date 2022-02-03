@@ -1,7 +1,7 @@
 # Non-negative number(s) or null Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/timeout
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_partition_mcmc/properties/timeout
 ```
 
 E.g. 1.5 or \[1.6, 3.8] or null.

@@ -1,7 +1,7 @@
 # Non-negative integer(s) Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_order_mcmc/properties/mcmc_seed
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_partition_mcmc/properties/mcmc_seed
 ```
 
 Non-negative integers, (0,1,2,...), or array of the same.

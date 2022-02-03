@@ -16,27 +16,61 @@ The available structure learning algorithms
 
 # structure_learning_algorithms Properties
 
-| Property                                | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                   |
-| :-------------------------------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [trilearn_pgibbs](#trilearn_pgibbs)     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")     |
-| [rblip_asobs](#rblip_asobs)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")             |
-| [notears](#notears)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears")                     |
-| [gobnilp](#gobnilp)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp")                     |
-| [tetrad_fges](#tetrad_fges)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fges.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges")             |
-| [tetrad_fci](#tetrad_fci)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fci")               |
-| [tetrad_rfci](#tetrad_rfci)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_rfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci")             |
-| [tetrad_gfci](#tetrad_gfci)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_gfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci")             |
-| [pcalg_pc](#pcalg_pc)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-pcalg_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/pcalg_pc")                   |
-| [bnlearn_mmhc](#bnlearn_mmhc)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_mmhc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmhc")           |
-| [bnlearn_tabu](#bnlearn_tabu)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_tabu.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_tabu")           |
-| [bidag_itsearch](#bidag_itsearch)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_itsearch.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_itsearch")       |
-| [bidag_order_mcmc](#bidag_order_mcmc)   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_order_mcmc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_order_mcmc")   |
-| [bnlearn_interiamb](#bnlearn_interiamb) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_interiamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb") |
-| [bnlearn_gs](#bnlearn_gs)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_gs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_gs")               |
-| [bnlearn_hc](#bnlearn_hc)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_hc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hc")               |
-| [gt13_multipair](#gt13_multipair)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gt13_multipair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")       |
-| [gg99_singlepair](#gg99_singlepair)     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gg99_singlepair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair")     |
-| [sklearn_glasso](#sklearn_glasso)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-sklearn_glasso.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/sklearn_glasso")       |
+| Property                                      | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                         |
+| :-------------------------------------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [mylib_myalg](#mylib_myalg)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")                   |
+| [trilearn_pgibbs](#trilearn_pgibbs)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")           |
+| [rblip_asobs](#rblip_asobs)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")                   |
+| [notears](#notears)                           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears")                           |
+| [gobnilp](#gobnilp)                           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp")                           |
+| [tetrad_fges](#tetrad_fges)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fges.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges")                   |
+| [tetrad_fci](#tetrad_fci)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fci")                     |
+| [tetrad_rfci](#tetrad_rfci)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_rfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci")                   |
+| [tetrad_gfci](#tetrad_gfci)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_gfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci")                   |
+| [pcalg_pc](#pcalg_pc)                         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-pcalg_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/pcalg_pc")                         |
+| [giudice_dualpc](#giudice_dualpc)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc")             |
+| [bnlearn_mmhc](#bnlearn_mmhc)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_mmhc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmhc")                 |
+| [bnlearn_tabu](#bnlearn_tabu)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_tabu.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_tabu")                 |
+| [bidag_itsearch](#bidag_itsearch)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_itsearch.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_itsearch")             |
+| [bidag_order_mcmc](#bidag_order_mcmc)         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_order_mcmc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_order_mcmc")         |
+| [bidag_partition_mcmc](#bidag_partition_mcmc) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_partition_mcmc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_partition_mcmc") |
+| [bnlearn_interiamb](#bnlearn_interiamb)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_interiamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_interiamb")       |
+| [bnlearn_gs](#bnlearn_gs)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_gs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_gs")                     |
+| [bnlearn_pcstable](#bnlearn_pcstable)         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_pcstable.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_pcstable")         |
+| [bnlearn_iamb](#bnlearn_iamb)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_iamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_iamb")                 |
+| [bnlearn_fastiamb](#bnlearn_fastiamb)         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_fastiamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_fastiamb")         |
+| [bnlearn_iambfdr](#bnlearn_iambfdr)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_iambfdr.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_iambfdr")           |
+| [bnlearn_mmpc](#bnlearn_mmpc)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_mmpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmpc")                 |
+| [bnlearn_sihitonpc](#bnlearn_sihitonpc)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_sihitonpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_sihitonpc")       |
+| [bnlearn_hpc](#bnlearn_hpc)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_hpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hpc")                   |
+| [bnlearn_hc](#bnlearn_hc)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_hc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hc")                     |
+| [bnlearn_h2pc](#bnlearn_h2pc)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_h2pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_h2pc")                 |
+| [bnlearn_rsmax2](#bnlearn_rsmax2)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_rsmax2.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_rsmax2")             |
+| [gt13_multipair](#gt13_multipair)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gt13_multipair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")             |
+| [gg99_singlepair](#gg99_singlepair)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gg99_singlepair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair")           |
+| [sklearn_glasso](#sklearn_glasso)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-sklearn_glasso.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/sklearn_glasso")             |
+
+## mylib_myalg
+
+List of mylib_myalg objects
+
+`mylib_myalg`
+
+*   is optional
+
+*   Type: `object[]` ([mylib_myalg item](config-definitions-mylib_myalg-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")
+
+### mylib_myalg Type
+
+`object[]` ([mylib_myalg item](config-definitions-mylib_myalg-item.md))
+
+### mylib_myalg Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
 
 ## trilearn_pgibbs
 
@@ -204,6 +238,24 @@ PC algorithm objects
 
 `object[]` ([pcalg_pc item](config-definitions-pcalg_pc-item.md))
 
+## giudice_dualpc
+
+Dual PC algorithm objects
+
+`giudice_dualpc`
+
+*   is optional
+
+*   Type: `object[]` ([giudice_dualpc item](config-definitions-giudice_dualpc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc")
+
+### giudice_dualpc Type
+
+`object[]` ([giudice_dualpc item](config-definitions-giudice_dualpc-item.md))
+
 ## bnlearn_mmhc
 
 MMHC objects
@@ -276,6 +328,24 @@ Order MCMC objects
 
 `object[]` ([bidag_order_mcmc item](config-definitions-bidag_order_mcmc-item.md))
 
+## bidag_partition_mcmc
+
+Partition MCMC objects
+
+`bidag_partition_mcmc`
+
+*   is optional
+
+*   Type: `object[]` ([bidag_partition_mcmc item](config-definitions-bidag_partition_mcmc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_partition_mcmc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_partition_mcmc")
+
+### bidag_partition_mcmc Type
+
+`object[]` ([bidag_partition_mcmc item](config-definitions-bidag_partition_mcmc-item.md))
+
 ## bnlearn_interiamb
 
 Inter-IAMB objects
@@ -312,6 +382,132 @@ GS objects
 
 `object[]` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
 
+## bnlearn_pcstable
+
+PC stable objects
+
+`bnlearn_pcstable`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_pcstable item](config-definitions-bnlearn_pcstable-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_pcstable.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_pcstable")
+
+### bnlearn_pcstable Type
+
+`object[]` ([bnlearn_pcstable item](config-definitions-bnlearn_pcstable-item.md))
+
+## bnlearn_iamb
+
+IAMB objects
+
+`bnlearn_iamb`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_iamb item](config-definitions-bnlearn_iamb-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_iamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_iamb")
+
+### bnlearn_iamb Type
+
+`object[]` ([bnlearn_iamb item](config-definitions-bnlearn_iamb-item.md))
+
+## bnlearn_fastiamb
+
+Fast IAMB objects
+
+`bnlearn_fastiamb`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_fastiamb item](config-definitions-bnlearn_fastiamb-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_fastiamb.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_fastiamb")
+
+### bnlearn_fastiamb Type
+
+`object[]` ([bnlearn_fastiamb item](config-definitions-bnlearn_fastiamb-item.md))
+
+## bnlearn_iambfdr
+
+Incremental Association with FDR Correction (IAMB FDR) objects
+
+`bnlearn_iambfdr`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_iambfdr item](config-definitions-bnlearn_iambfdr-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_iambfdr.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_iambfdr")
+
+### bnlearn_iambfdr Type
+
+`object[]` ([bnlearn_iambfdr item](config-definitions-bnlearn_iambfdr-item.md))
+
+## bnlearn_mmpc
+
+MM PC objects
+
+`bnlearn_mmpc`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_mmpc item](config-definitions-bnlearn_mmpc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_mmpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmpc")
+
+### bnlearn_mmpc Type
+
+`object[]` ([bnlearn_mmpc item](config-definitions-bnlearn_mmpc-item.md))
+
+## bnlearn_sihitonpc
+
+Semi-Interleaved Hiton-PC (sihiton) objects
+
+`bnlearn_sihitonpc`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_sihitonpc item](config-definitions-bnlearn_sihitonpc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_sihitonpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_sihitonpc")
+
+### bnlearn_sihitonpc Type
+
+`object[]` ([bnlearn_sihitonpc item](config-definitions-bnlearn_sihitonpc-item.md))
+
+## bnlearn_hpc
+
+bnlearn_hpc objects
+
+`bnlearn_hpc`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_hpc item](config-definitions-bnlearn_hpc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_hpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_hpc")
+
+### bnlearn_hpc Type
+
+`object[]` ([bnlearn_hpc item](config-definitions-bnlearn_hpc-item.md))
+
 ## bnlearn_hc
 
 HC objects
@@ -329,6 +525,42 @@ HC objects
 ### bnlearn_hc Type
 
 `object[]` ([bnlearn_hc item](config-definitions-bnlearn_hc-item.md))
+
+## bnlearn_h2pc
+
+H2PC objects
+
+`bnlearn_h2pc`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_h2pc item](config-definitions-bnlearn_h2pc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_h2pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_h2pc")
+
+### bnlearn_h2pc Type
+
+`object[]` ([bnlearn_h2pc item](config-definitions-bnlearn_h2pc-item.md))
+
+## bnlearn_rsmax2
+
+bnlearn_rsmax2 objects
+
+`bnlearn_rsmax2`
+
+*   is optional
+
+*   Type: `object[]` ([bnlearn_rsmax2 item](config-definitions-bnlearn_rsmax2-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_rsmax2.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_rsmax2")
+
+### bnlearn_rsmax2 Type
+
+`object[]` ([bnlearn_rsmax2 item](config-definitions-bnlearn_rsmax2-item.md))
 
 ## gt13\_multipair
 
