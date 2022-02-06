@@ -170,16 +170,16 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 * <a id="2">[2]</a> [Dawid AP, Lauritzen SL (1993). “Hyper Markov laws in the statistical analysis of decomposable graphical models.” The Annals of Statistics, 21(3), 1272–1317.](https://projecteuclid.org/journals/annals-of-statistics/volume-21/issue-3/Hyper-Markov-Laws-in-the-Statistical-Analysis-of-Decomposable-Graphical/10.1214/aos/1176349260.full) 
 * <a id="3">[3]</a> [Cussens J (2012). “Bayesian network learning with cutting planes.” arXiv preprint arXiv:1202.3713.](https://arxiv.org/abs/1202.3713)
 * <a id="4">[4]</a> [Spirtes P, Glymour CN (1991). “An algorithm for fast recovery of sparse causal graphs.” Social
-science computer review, 9(1), 62–72.]
+science computer review, 9(1), 62–72.](https://cse.sc.edu/~mgv/csce582sp14/presentations/SpirtesGlymourPC.pdf)
 * <a id="5">[5]</a> [Spirtes P, Glymour CN, Scheines R, Heckerman D (2000). Causation, prediction, and search.
-MIT press.]
-* <a id="6">[6]</a> [Russell S, Norvig P (2002). “Artificial intelligence: a modern approach.”]
-* <a id="7">[7]</a> [Scutari M, Vitolo C, Tucker A (2019b). “Learning Bayesian networks from big data with greedy search: computational complexity and efficient implementation.” Statistics and]
+MIT press.](https://philarchive.org/archive/SPICPA-2)
+* <a id="6">[6]</a> [Russell S, Norvig P (2002). “Artificial intelligence: a modern approach.”](https://www.sti-innsbruck.at/sites/default/files/Knowledge-Representation-Search-and-Rules/Russel-&-Norvig-Inference-and-Logic-Sections-7.pdf)
+* <a id="7">[7]</a> [Scutari M, Vitolo C, Tucker A (2019b). “Learning Bayesian networks from big data with greedy search: computational complexity and efficient implementation.” Statistics and](https://link.springer.com/article/10.1007/s11222-019-09857-1)
 Computing, 29(5), 1095–1108.
-* <a id="8">[8]</a> [Colombo D, Maathuis MH, Kalisch M, Richardson TS (2012). “Learning high-dimensional directed acyclic graphs with latent and selection variables.” The Annals of Statistics, pp. 294–321.]
+* <a id="8">[8]</a> [Colombo D, Maathuis MH, Kalisch M, Richardson TS (2012). “Learning high-dimensional directed acyclic graphs with latent and selection variables.” The Annals of Statistics, pp. 294–321.](https://www.jstor.org/stable/pdf/41713636.pdf?casa_token=rpMn5YYYjZcAAAAA:ACAY0o3Fu4oakJ5CAEnsETe0Z-brxM7agz6NfS4MQc5BGYtkQjvBoG8pLQbOYEMhn0eYwcpKCJovhWyqnmMBDwV6Hyke91eqACHAh8UkXbERmCB9)
 * <a id="9">[9]</a> [Meek C (1997). Graphical Models: Selecting causal and statistical models. Ph.D. thesis, PhD thesis, Carnegie Mellon University.]
 * <a id="10">[10]</a> [Chickering DM (2002). “Optimal structure identification with greedy search.” Journal of
-machine learning research, 3(Nov), 507–554.]
+machine learning research, 3(Nov), 507–554.](https://www.jmlr.org/papers/volume3/chickering02b/chickering02b.pdf)
 * <a id="11">[11]</a> [Ogarrio JM, Spirtes P, Ramsey J (2016). “A hybrid causal search algorithm for latent variable models.” In Conference on Probabilistic Graphical Models, pp. 368–379.]
 * <a id="12">[12]</a> [Kuipers J, Suter P, Moffa G (2018a). “Efficient structure learning and sampling of Bayesian networks.” arXiv preprint arXiv:1803.07859.]
 * <a id="13">[13]</a> [Margaritis D (2003). “Learning Bayesian network model structure from data.” Technical report, Carnegie-Mellon Univ Pittsburgh Pa School of Computer Science.]
