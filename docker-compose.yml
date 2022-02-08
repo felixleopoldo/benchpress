@@ -3,9 +3,6 @@ services:
   gobnilp:
     image: onceltuca/gobnilp:1.6.3
     command: tail -f /dev/null
-    #volumes: 
-    #    - ./workflow/scripts/run_gobnilp.R:/myappdir/run_gobnilp.R
-    #    - ./results:/myappdir/simresults
   trilearn:
     image: onceltuca/trilearn
     volumes: 
@@ -17,7 +14,7 @@ services:
     image: onceltuca/jmoss20notears:1.4
     command: tail -f /dev/null
   benchpress:
-    image: onceltuca/benchpress:1.0.1
+    image: onceltuca/benchpress:1.0.2
     working_dir: /myappdir
     command: jupyter lab --port 8080 --ip 0.0.0.0 --allow-root --no-browser
     volumes: 

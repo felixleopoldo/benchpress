@@ -93,11 +93,6 @@ pattern_strings["mcmc_est"] = "estimation_method/"\
                             "threshold={threshold}/"\
                             "burnin={burnin}"
 
-pattern_strings["evaluation"] = "evaluation/" \
-                   "score_type={score_type}/" \
-                   "chi={chi}/" \
-                   "edgepf={edgepf}" 
-
 # graph sampling
 #pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
 if "pcalg_randdag" in config["resources"]["graph"]:

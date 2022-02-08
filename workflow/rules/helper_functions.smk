@@ -268,7 +268,6 @@ def active_algorithm_files(wildcards):
     
     algs = active_algorithms()
     alg_filenames = ["results/output/roc/" + alg + ".csv" for alg in algs]
-    
     return alg_filenames
 
 def active_algorithms(eval_method="roc"):
@@ -281,22 +280,20 @@ def active_algorithms(eval_method="roc"):
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in roc_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                        algs.append( alg )
+                    algs.append( alg )
     elif eval_method == "roc":
         roc_alg_ids = config["benchmark_setup"]["evaluation"]["roc"]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in roc_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                        algs.append( alg )
+                    algs.append( alg )
     else:
         roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in roc_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
-                        algs.append( alg )
-
+                    algs.append( alg )
     return list(set(algs))
-
 
 
 def summarise_alg_input_data_path():

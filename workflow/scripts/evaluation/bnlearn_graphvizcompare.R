@@ -116,8 +116,8 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
         pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph.
         pattern_estimated_bn = as.bn(pattern_estimated_gnel)
 
-        filename <- myFun(n=1)
-        filename <- filename[1]        
+        filename <- myFun(n=1) # Since pdf seems to have trouble with long filenames
+        filename <- paste(filename[1],".pdf",sep="")        
         
         # true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
         # true_cpdag <- dag2cpdag(true_graphnel)
@@ -129,7 +129,8 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
 
         pdf(file=filename)
         graphviz.compare(pattern_true_bn, pattern_estimated_bn, layout="dot", 
-                         main=c("True pattern graph","Estimated pattern graph"))
+                         main=c(paste("True pattern graph", sep=""),  #"\n","Graph: ",snakemake@wildcards[["adjmat"]]
+                                      "Estimated pattern graph\nAlgorithm: (see adjmat plot with the same number)"))
         dev.off()
         file.copy(filename, snakemake@output[["filename"]])
         unlink(filename)

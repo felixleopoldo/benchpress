@@ -9,7 +9,7 @@
 </p>
 
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥5.2.0-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥6.15-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
@@ -174,8 +174,7 @@ science computer review, 9(1), 62–72.](https://cse.sc.edu/~mgv/csce582sp14/pre
 * <a id="5">[5]</a> [Spirtes P, Glymour CN, Scheines R, Heckerman D (2000). Causation, prediction, and search.
 MIT press.](https://philarchive.org/archive/SPICPA-2)
 * <a id="6">[6]</a> [Russell S, Norvig P (2002). “Artificial intelligence: a modern approach.”](https://www.sti-innsbruck.at/sites/default/files/Knowledge-Representation-Search-and-Rules/Russel-&-Norvig-Inference-and-Logic-Sections-7.pdf)
-* <a id="7">[7]</a> [Scutari M, Vitolo C, Tucker A (2019b). “Learning Bayesian networks from big data with greedy search: computational complexity and efficient implementation.” Statistics and](https://link.springer.com/article/10.1007/s11222-019-09857-1)
-Computing, 29(5), 1095–1108.
+* <a id="7">[7]</a> [Scutari M, Vitolo C, Tucker A (2019b). “Learning Bayesian networks from big data with greedy search: computational complexity and efficient implementation.” Statistics and Computing, 29(5), 1095–1108.](https://link.springer.com/article/10.1007/s11222-019-09857-1)
 * <a id="8">[8]</a> [Colombo D, Maathuis MH, Kalisch M, Richardson TS (2012). “Learning high-dimensional directed acyclic graphs with latent and selection variables.” The Annals of Statistics, pp. 294–321.](https://www.jstor.org/stable/pdf/41713636.pdf?casa_token=rpMn5YYYjZcAAAAA:ACAY0o3Fu4oakJ5CAEnsETe0Z-brxM7agz6NfS4MQc5BGYtkQjvBoG8pLQbOYEMhn0eYwcpKCJovhWyqnmMBDwV6Hyke91eqACHAh8UkXbERmCB9)
 * <a id="9">[9]</a> [Meek C (1997). Graphical Models: Selecting causal and statistical models. Ph.D. thesis, PhD thesis, Carnegie Mellon University.]
 * <a id="10">[10]</a> [Chickering DM (2002). “Optimal structure identification with greedy search.” Journal of

@@ -21,7 +21,7 @@ rule roc:
         config=configfilename,
         csv="results/output/roc/ROC_data.csv",
         raw_bench="results/output/roc/joint_benchmarks.csv"
-    output:
+    output: # somewhere we have to demand this file
         touch("results/output/roc/roc.done"),
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
@@ -483,7 +483,9 @@ rule plot_pairs:
         "workflow/scripts/utils/pairs.R",        
         data=summarise_alg_input_data_path()        
     output:
-        filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png"        
+        filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png",
+    params:
+        data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}"
     script:
         "../scripts/utils/pairs.R"
 

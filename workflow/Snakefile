@@ -8,7 +8,11 @@ from pathlib import Path
 import os
 from snakemake.utils import min_version
 
-min_version("5.2")
+# Have only thested with this version but it might work with previous version sa well.
+# To update using Mamba run e.g.
+# mamba update -c conda-forge -c bioconda snakemake=6.15.1
+
+min_version("6.15") 
 args = sys.argv
 
 
@@ -34,7 +38,7 @@ container:
 
 # This function returns empty "trigger files" for the type of evaluations
 # that are used. Yes, this is ugly. Should maybe have a directory output instead. 
-def get_active_rules(wildcards):
+def get_active_rules(wildcards): #BUG: it has to call roc
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
         # Check if boolean or list or object wirh nonempty ids field. 
