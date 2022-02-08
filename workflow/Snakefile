@@ -38,11 +38,11 @@ container:
 
 # This function returns empty "trigger files" for the type of evaluations
 # that are used. Yes, this is ugly. Should maybe have a directory output instead. 
-def get_active_rules(wildcards): #BUG: it has to call roc
+def get_active_rules(wildcards):
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
         # Check if boolean or list or object wirh nonempty ids field. 
-        if isinstance(val, OrderedDict) and val["ids"] != []:
+        if isinstance(val, dict) and val["ids"] != []: # TODO: this was OrderedDict, so might have to impose order somewhere.
             rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, bool) and val is True:
             rules.append("results/output/"+key+"/"+key+".done")

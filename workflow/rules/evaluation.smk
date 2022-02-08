@@ -167,9 +167,7 @@ def pairs():
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            
     return ret
-
 
 def graph_true_plots():
     return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
@@ -492,9 +490,9 @@ rule plot_pairs:
 rule pairs:
     input:
         "workflow/scripts/utils/pairs.R",
-        pairsplots=pairs()
+        pairsplots=pairs() # This will not trigger the rule if these files have already been generated.
     output:
-        touch("results/output/pairs_plots/pairs_plots.done")
+        temp(touch("results/output/pairs_plots/pairs_plots.done"))
     run:
         for i,f in enumerate(input.pairsplots):
             shell("cp "+f+" results/output/pairs_plots/pairs_" +str(i+1) +".png")
