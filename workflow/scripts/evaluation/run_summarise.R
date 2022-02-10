@@ -126,18 +126,14 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
     iscpdag <- FALSE
     isdag <- FALSE
     isug <- FALSE
-    graph_type <- "None"
+    graph_type <- "unknown"
    
-
-    if(isSymmetric(estimated_adjmat)){
-        isug <- TRUE
+    if(isSymmetric(unname(estimated_adjmat))){
         graph_type <- "ug"
     }
      if (isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {        
         compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
-
         SHD_cpdag = compres_cpdag["SHD"]
-        iscpdag <- TRUE
         graph_type <- "cpdag"
     }  
     else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
@@ -145,7 +141,6 @@ benchmarks <- function(true_adjmat, estimated_adjmat){
         #estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
         compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
         SHD_cpdag = compres_cpdag["SHD"]
-        isdag <- TRUE
         graph_type <- "dag"
     } 
     df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times

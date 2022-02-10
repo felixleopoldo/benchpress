@@ -1566,38 +1566,19 @@
                     "desciption": "Algorithm identifier",
                     "type": "string"
                 },
-                "myintparam": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "mystringparam": {
-                    "anyOf": [
-                        {
-                            "type": "string",
-                            "enum": [
-                                "possiblevalue1",
-                                "possiblevalue2"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
                 "timeout": {
                     "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
             "required": [
                 "id",
-                "myintparam",
-                "mystringparam",
                 "timeout"
             ],
             "examples": [
                 {
                     "id": "mysetting",
-                    "mystringparam": "possiblevalue1",
-                    "myintparam": [
+                    "param1": "myparamval",
+                    "param2": [
                         2,
                         3,
                         5

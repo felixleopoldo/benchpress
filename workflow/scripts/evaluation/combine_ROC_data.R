@@ -123,7 +123,6 @@ if(nrow(toplot)>0){
     write.csv(joint_df, argv$joint_bench, quote=FALSE) # Should also add curve param to this data
     write.csv(toplot, argv$filename, quote=FALSE)
 } else{
-
     print("Creating empty files.")
     file.create(argv$filename)
     file.create(argv$joint_bench)

@@ -86,9 +86,9 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4_p20",
-                    "max_parents": 5,
+                    "max_parents": 8,
                     "n": 20,
-                    "d": 4,
+                    "d": 6,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -109,8 +109,11 @@
             "mylib_myalg": [
                 {
                     "id": "test",
-                    "mystringparam": "possiblevalue1",
-                    "myintparam": 1,
+                    "myparam1": "somevalue",
+                    "myparam2": [
+                        1,
+                        2
+                    ],
                     "timeout": null
                 }
             ],

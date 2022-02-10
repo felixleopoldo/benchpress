@@ -17,6 +17,8 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
      cat("Time-out",file=snakemake@output[["ntests_joint"]], sep="\n")
      cat("Time-out",file=snakemake@output[["f1_skel_joint"]], sep="\n")     
      cat("Time-out",file=snakemake@output[["SHD_cpdag_joint"]], sep="\n")
+     cat("Time-out",file=snakemake@output[["ntests_joint"]], sep="\n")
+     cat("Time-out",file=snakemake@output[["graph_type"]], sep="\n")
      
 } else {    
     toplot <- read.csv(snakemake@input[["csv"]])
@@ -391,6 +393,7 @@ ggplot() + {
   ggsave(file = snakemake@output[["elapsed_time_joint"]])
 
 
+print("before graph type")
 ggplot() + {
     geom_point(data = joint_bench, alpha=0.8,
              aes(y=interaction(curve_param,curve_value, id), 
@@ -407,6 +410,7 @@ ggplot() + {
   theme(plot.title = element_text(hjust = 0.5)) 
   ggsave(file = snakemake@output[["graph_type"]])
 
+print("after graph type")
 
 dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value)) %>% filter(!is.na(SHD_cpdag))  %>% mutate(is_outlier=ifelse(is_outlier(SHD_cpdag), replicate , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
