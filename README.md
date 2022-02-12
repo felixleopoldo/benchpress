@@ -76,7 +76,6 @@ You can easily use your own algorithm in Benchpress regardless of the programmin
 To get the idea, perhaps the best way to start is to first use and alter the template R-script [mylib_myalg.R](workflow/scripts/structure_learning_algorithms/mylib_myalg.R) as you like. It looks like this at the moment:
 
 ```r
-# These variables are generated from the keys in the config file.
 myparam1 <- snakemake@wildcards[["myparam1"]] 
 myparam2 <- snakemake@wildcards[["myparam2"]]
 
@@ -100,7 +99,7 @@ colnames(adjmat) <- names(data)
 write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
 write(totaltime, file = snakemake@output[["time"]])
 # Write the number of c.i. tests here if applicable
-cat("None", file = snakemake@output[["ntests"]], sep = "\n") possible.
+write("None", file = snakemake@output[["ntests"]]) possible.
 
 ```
 The parameters used in the first two lines above are automatically generated from the JSON object in the *mylib_myalg* section of [config/ex.json](config/ex.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the *roc* section. 
@@ -134,7 +133,7 @@ if "mylib_myalg" in pattern_strings:
         script:            
             "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
-If R is not installed on your system, you may change None to "docker://r-base" in order to run the script in a r-base Docker container.
+If R is not installed on your system, you may change None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
 
 ### Available modules
 

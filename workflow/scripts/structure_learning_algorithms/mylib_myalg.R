@@ -16,4 +16,4 @@ totaltime <- proc.time()[1] - start
 colnames(adjmat) <- names(data) # Get the labels from the data
 write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
 write(totaltime, file = snakemake@output[["time"]])
-cat("None", file = snakemake@output[["ntests"]], sep = "\n") # Write the number of c.i. tests here if possible.
+write("None", file = snakemake@output[["ntests"]]) # Write the number of c.i. tests here if possible.
