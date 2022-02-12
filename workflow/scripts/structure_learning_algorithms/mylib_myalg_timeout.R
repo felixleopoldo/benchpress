@@ -14,7 +14,7 @@ myalg <- function() {
 
     data <- read.csv(filename_data, check.names = FALSE)
     start <- proc.time()[1]
-
+ safs
     # This is a very fast and bad algorithm.
     p <- ncol(data)
     Sys.sleep(3)

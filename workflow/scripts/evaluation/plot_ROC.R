@@ -385,7 +385,7 @@ ggplot() + {
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") +
   ggtitle("Elapsed time") +
   theme_bw() +
-  xlab("Parameter.value.alg") +
+  xlab("Parameter.value.id") +
   ylab("Time (s.)") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(guide = guide_axis(angle=90))
@@ -461,7 +461,7 @@ ggplot() + {
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") +
   ggtitle("SHD (CPDAG)") +
   theme_bw() +
-  xlab("Parameter.value.alg") +
+  xlab("Parameter.value.id") +
   ylab("SHD") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(guide = guide_axis(angle=90))
@@ -512,7 +512,7 @@ ggplot() + {
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") +
   ggtitle("F1 (undirected skeleton)") +
   theme_bw() +
-  xlab("Parameter.value.alg") +
+  xlab("Parameter.value.id") +
   ylab("F1") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(guide = guide_axis(angle=90))
@@ -564,7 +564,7 @@ ggplot() + {
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") +
   ggtitle("Number of calls to statistical criterion") +
   theme_bw() +
-  xlab("Parameter.value.alg") +
+  xlab("Parameter.value.id") +
   ylab("Number of calls") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(guide = guide_axis(angle=90))

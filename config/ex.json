@@ -86,9 +86,9 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4_p20",
-                    "max_parents": 8,
+                    "max_parents": 5,
                     "n": 20,
-                    "d": 6,
+                    "d": 4,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -108,13 +108,12 @@
         "structure_learning_algorithms": {
             "mylib_myalg": [
                 {
-                    "id": "test",
+                    "id": "testing_myalg",
                     "myparam1": "somevalue",
                     "myparam2": [
                         1,
                         2
-                    ],
-                    "timeout": null
+                    ]
                 }
             ],
             "tetrad_fges": [
