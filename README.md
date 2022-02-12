@@ -99,7 +99,7 @@ colnames(adjmat) <- names(data)
 write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
 write(totaltime, file = snakemake@output[["time"]])
 # Write the number of c.i. tests here if applicable
-write("None", file = snakemake@output[["ntests"]]) possible.
+write("None", file = snakemake@output[["ntests"]]) 
 
 ```
 The parameters used in the first two lines above are automatically generated from the JSON object in the *mylib_myalg* section of [config/ex.json](config/ex.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the *roc* section. 
