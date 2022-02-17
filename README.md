@@ -136,7 +136,7 @@ if "mylib_myalg" in pattern_strings:
 ```
 If R is not installed on your system, you may change None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
 
-To upload your algorithms to Benchpress, you should install it in a Docker image and align the algorithms with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+To upload your algorithms to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
@@ -199,7 +199,7 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 | Iterative MCMC [[28]](#28)        | DAG   | R        | BiDAG               | 2.0.3    | bidag_itsearch       |
 | Order MCMC [[28]](#28)[[29]](#29) | DAG   | R        | BiDAG               | 2.0.3    | bidag_order_mcmc     |
 | Partition MCMC [[30]](#30)        | DAG   | R        | BiDAG               | 2.0.3    | bidag_partition_mcmc |
-| PGibbs [[20]](#20)                | DG    | Python   | Trilearn            | 1.2.3    | trilearn_pgibbs      |
+| PGibbs [[20]](#20)                | DG    | Python   | trilearn            | 1.2.3    | trilearn_pgibbs      |
 | GG99 single pair [[18]](#18)      | DG    | Java     | A. Thomas           | -        | gg99_singlepair      |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | A. Thomas           | -        | gt13_multipair       |
 | GLasso [[31]](#31)                | UG    | Python   | scikit-learn        | 0.22.1   | sklearn_glasso       |
