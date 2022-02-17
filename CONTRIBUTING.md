@@ -1,14 +1,18 @@
+## Adding a new configuration file
+
+Place your configuration file in JSON format in [config](config).
+
 ## Adding a new data set
 
-Place your data sets in resources/data/mydatasets.
+Place your data sets in [resources/data/mydatasets](resources/data/mydatasets).
 
 ## Adding a new graph
 
-Place the adjacency matrix of the graph in a .csv file in resources/graph/myadjmats.
+Place the adjacency matrix of the graph in a .csv file in (resources/graph/myadjmats)[resources/graph/myadjmats].
 
 ## Adding a new graph module
 
-Place your script in workflow/scripts and edit the files 
+Place your script in [workflow/scripts](workflow/scripts) and edit the files 
 
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
@@ -20,7 +24,7 @@ Place your script in workflow/scripts and edit the files
 
 ## Adding a new parameters module
 
-Place your script in workflow/scripts and edit the files 
+Place your script in [workflow/scripts](workflow/scripts) and edit the files 
 
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
@@ -33,7 +37,7 @@ Place your script in workflow/scripts and edit the files
 
 ## Adding a new structure learning algorithm
 
-Place your script in workflow/scripts and edit the files. 
+Place your script in [workflow/scripts](workflow/scripts) and edit the files. 
 MCMC methods are different from point estimators since the graph trajectory is saved and the graph is estmated from there, see e.g. gt13_multipair.
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*

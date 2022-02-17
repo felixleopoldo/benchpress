@@ -104,47 +104,46 @@ myFun <- function(n = 5000) {
   paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
 }
 
-benchmarks <- function(true_adjmat, estimated_adjmat){
+benchmarks <- function(true_adjmat, estimated_adjmat) {
 
-    if (isSymmetric(estimated_adjmat) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
-       
-        pattern_true = getPattern(true_adjmat)
-        pattern_true_gnel = as(pattern_true, "graphNEL") ## convert to graph
-        pattern_true_bn = as.bn(pattern_true_gnel)
+  if (isSymmetric(unname(estimated_adjmat)) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+    pattern_true = getPattern(true_adjmat)
+    pattern_true_gnel = as(pattern_true, "graphNEL") ## convert to graph
+    pattern_true_bn = as.bn(pattern_true_gnel)
 
-        pattern_estimated = getPattern(estimated_adjmat) # already transposed here?
-        pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph.
-        pattern_estimated_bn = as.bn(pattern_estimated_gnel)
+    pattern_estimated = getPattern(estimated_adjmat) # already transposed here?
+    pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph.
+    pattern_estimated_bn = as.bn(pattern_estimated_gnel)
 
-        filename <- myFun(n=1) # Since pdf seems to have trouble with long filenames
-        filename <- paste(filename[1],".pdf",sep="")        
-        
-        # true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
-        # true_cpdag <- dag2cpdag(true_graphnel)
-        # true_cpdag_bn <- as.bn(true_cpdag) ## convert to graph
-       
-        # estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
-        # estimated_cpdag <- dag2cpdag(estimated_graphnel)
-        # estimated_cpdag_bn <- as.bn(estimated_cpdag) ## convert to graph
+    filename <- myFun(n = 1) # Since pdf seems to have trouble with long filenames
+    filename <- paste(filename[1], ".pdf", sep = "")
 
-        pdf(file=filename)
-        graphviz.compare(pattern_true_bn, pattern_estimated_bn, layout="dot", 
-                         main=c(paste("True pattern graph", sep=""),  #"\n","Graph: ",snakemake@wildcards[["adjmat"]]
-                                      "Estimated pattern graph\nAlgorithm: (see adjmat plot with the same number)"))
-        dev.off()
-        file.copy(filename, snakemake@output[["filename"]])
-        unlink(filename)
-    } else {
-        file.create(snakemake@output[["filename"]])
-    }
+    # true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
+    # true_cpdag <- dag2cpdag(true_graphnel)
+    # true_cpdag_bn <- as.bn(true_cpdag) ## convert to graph
+
+    # estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
+    # estimated_cpdag <- dag2cpdag(estimated_graphnel)
+    # estimated_cpdag_bn <- as.bn(estimated_cpdag) ## convert to graph
+
+    pdf(file = filename)
+    graphviz.compare(pattern_true_bn, pattern_estimated_bn, layout = "dot",
+                         main = c(paste("True pattern graph", sep = ""), #"\n","Graph: ",snakemake@wildcards[["adjmat"]]
+                                      "Estimated pattern graph (correct=black, incorrect=red, missing=blue)\nAlgorithm: (see adjmat plot with the same number)"))
+    dev.off()
+    file.copy(filename, snakemake@output[["filename"]])
+    unlink(filename)
+  } else {
+    file.create(snakemake@output[["filename"]])
+  }
 }
 
 if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
-    true_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_true"]], check.names=FALSE))
-    estimated_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_est"]], check.names=FALSE))
+  true_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_true"]], check.names = FALSE))
+  estimated_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_est"]], check.names = FALSE))
 
-    benchmarks(true_adjmat, estimated_adjmat)
+  benchmarks(true_adjmat, estimated_adjmat)
 } else {
-    file.create(snakemake@output[["filename"]])
+  file.create(snakemake@output[["filename"]])
 }
 
