@@ -178,8 +178,8 @@ def alg_shell(algorithm):
                 echo -e gobnilp/scoring/prune = {wildcards.prune} >> {output.adjmat}.gobnilp.set
                 echo -e gobnilp/delimiter = \134\042,\134\042 >> {output.adjmat}.gobnilp.set
                 cat resources/extra_args/{wildcards.extra_args} >> {output.adjmat}.gobnilp.set
-                if [ {wildcards.timeout} != \"None\" ]; then
-                    timeout --signal=SIGKILL {wildcards.timeout} bash -c '/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data}';
+                if [ {wildcards.timeout} != \"None\" ]; then                    
+                    (timeout --signal=SIGKILL {wildcards.timeout} bash -c '/myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data}' || exit 0)
                 else
                     /myappdir/gobnilp/bin/gobnilp -f=dat -g={output.adjmat}.gobnilp.set {input.data};
                 fi
