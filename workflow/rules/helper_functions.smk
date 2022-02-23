@@ -229,10 +229,12 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return None
 
 def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
+    
     if Path("resources/data/mydatasets/"+data_id).is_file():
+        num_lines = sum(1 for line in open("resources/data/mydatasets/"+data_id)) - 1
         return "fixed" + \
             "/filename="+data_id + \
-            "/n="+str(None) + \ 
+            "/n="+str(num_lines) + \ 
             "/seed="+str(seed) 
 
     elif Path("resources/data/mydatasets/"+data_id).exists():        

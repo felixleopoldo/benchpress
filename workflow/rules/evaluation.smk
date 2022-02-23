@@ -22,7 +22,7 @@ rule roc:
         csv="results/output/roc/ROC_data.csv",
         raw_bench="results/output/roc/joint_benchmarks.csv"
     output: # somewhere we have to demand this file
-        touch("results/output/roc/roc.done"),
+        temp(touch("results/output/roc/roc.done")),
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",
         FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
         fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.png",

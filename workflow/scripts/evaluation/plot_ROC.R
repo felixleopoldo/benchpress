@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tibble)
 library("rjson")
+
 is_outlier <- function(x) {
   return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
 }
@@ -32,7 +33,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     errorbarh <- config$benchmark_setup$evaluation$roc$errorbarh
     show_seed <- config$benchmark_setup$evaluation$roc$show_seed
 
-# Might have to go through all one by aone to get the ponit text.
+# Might have to go through all one by one to get the point text.
 # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
 gg  <- ggplot() + {
   if (errorbar) {
@@ -78,7 +79,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.15,
+    geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 label = replicate, col = id, shape = id),
@@ -333,9 +334,8 @@ ggsave(file = snakemake@output[["fnr_fprp_skel"]],plot=gg)
 f <- function(y) 
     c(label=length(y), y=median(y))
 
-dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value)) %>% filter(!is.na(time))  %>% mutate(is_outlier=ifelse(is_outlier(time), replicate , as.numeric(NA)))
+dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(time))  %>% mutate(is_outlier=ifelse(is_outlier(time), replicate , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
-
 
 # ggplot() + {
 #     geom_boxplot(data = joint_bench, alpha=0.2,
@@ -365,18 +365,18 @@ dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 #   ggsave(file = snakemake@output[["elapsed_time"]])
 
 ggplot() + {
-    geom_boxplot(data = joint_bench, alpha=0.2,
+    geom_boxplot(data = joint_bench, alpha=ifelse(show_seed, 0.0, 0.7),
              aes(x=interaction(curve_param,curve_value,id), 
              y = time, col=id, group_by=id) ) 
 } + {
-    if(show_seed){
+    if(param_annot){
         stat_summary(data = joint_bench, alpha=0.5,
                 aes(x=interaction(curve_param,curve_value,id), 
                 y = time), fun.data=f, geom="text", vjust=-0.5, col="black") 
     }
 } + {
     if(show_seed){
-        geom_text(data=dat, alpha=0.5,
+        geom_text(data=dat, alpha=0.7,
             aes(y=time, x=interaction(curve_param,curve_value,id),
                 label=is_outlier, col=id),na.rm=TRUE,nudge_x=0.0)
     }
@@ -392,8 +392,6 @@ ggplot() + {
   #scale_x_discrete(guide = guide_axis(n.dodge=2))
   ggsave(file = snakemake@output[["elapsed_time_joint"]])
 
-
-print("before graph type")
 ggplot() + {
     geom_point(data = joint_bench, alpha=0.8,
              aes(y=interaction(curve_param,curve_value, id), 
@@ -410,9 +408,8 @@ ggplot() + {
   theme(plot.title = element_text(hjust = 0.5)) 
   ggsave(file = snakemake@output[["graph_type"]])
 
-print("after graph type")
 
-dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value)) %>% filter(!is.na(SHD_cpdag))  %>% mutate(is_outlier=ifelse(is_outlier(SHD_cpdag), replicate , as.numeric(NA)))
+dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(SHD_cpdag))  %>% mutate(is_outlier=ifelse(is_outlier(SHD_cpdag), replicate , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
 # ggplot() + {
