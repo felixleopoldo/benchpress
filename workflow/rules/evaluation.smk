@@ -1,6 +1,6 @@
 # This file contains rules for the different evaluation types.
 
-rule roc_data:
+rule combine_roc_data:
     input:
         "workflow/scripts/evaluation/combine_ROC_data.R",
         "workflow/scripts/evaluation/run_summarise.R",
@@ -8,9 +8,9 @@ rule roc_data:
         snake="workflow/Snakefile",
         algs=active_algorithm_files("roc") # It should maybe be stated there which kind of roc to be considered..
     output:
-        csv="results/output/roc/ROC_data.csv",
-        joint="results/output/roc/joint_benchmarks.csv"
-    shell:
+        csv="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"ROC_data.csv",
+        joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"joint_benchmarks.csv"
+    shell:        
         "Rscript workflow/scripts/evaluation/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule roc:
@@ -19,8 +19,8 @@ rule roc:
         "workflow/scripts/evaluation/run_summarise.R",
         "workflow/Snakefile",
         config=configfilename,
-        csv="results/output/roc/ROC_data.csv",
-        raw_bench="results/output/roc/joint_benchmarks.csv"
+        csv="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"ROC_data.csv",
+        raw_bench="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"joint_benchmarks.csv"
     output: # somewhere we have to demand this file
         temp(touch("results/output/roc/roc.done")),
         fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",

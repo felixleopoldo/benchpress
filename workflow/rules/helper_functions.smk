@@ -154,7 +154,7 @@ def join_summaries_shell(algorithm):
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
-    return "{output_dir}/output/roc/"+algorithm+".csv"
+    return "{output_dir}/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +algorithm+".csv"
 
 def gen_evaluation_string_from_conf(method, alg_id):
     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern 
@@ -269,7 +269,7 @@ def active_algorithm_files(wildcards):
         conf = json.load(json_file)
     
     algs = active_algorithms()
-    alg_filenames = ["results/output/roc/" + alg + ".csv" for alg in algs]
+    alg_filenames = ["results/output/roc/"+conf["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + alg + ".csv" for alg in algs]
     return alg_filenames
 
 def active_algorithms(eval_method="roc"):
