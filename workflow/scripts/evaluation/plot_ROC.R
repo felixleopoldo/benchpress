@@ -149,7 +149,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.15,
+    geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 label = replicate, col = id, shape = id),
@@ -403,6 +403,8 @@ ggplot() + {
 #             x = as.factor(replicate), label=round(time, 1), col=id, group_by=id) ) 
 #}  +
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2) +
+  xlab("Seed") +
+  ylab("Parameter.value.id") +
   ggtitle("Graph type") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5)) 

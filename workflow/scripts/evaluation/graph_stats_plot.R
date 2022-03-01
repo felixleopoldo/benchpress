@@ -12,13 +12,13 @@ df2["stats"] <- "max_indegree"
 
 df <- dplyr::bind_rows(df1, df2)
 
-ggplot(data = df,
-            aes(x = as.factor(seed), y = value, fill = stats)) + {
-  geom_bar(stat = "identity", position = "dodge")
-} +
+ggplot(data = df, aes(x = as.factor(seed), y = value, fill = stats)) +
+geom_bar(stat = "identity", position = "dodge") +
 facet_wrap(. ~ adjmat) +
-ggtitle("Graph density (#in edges/#nodes)") +
+ggtitle("Graph density (#edges/#nodes)") +
 theme_bw() +
+xlab("Seed") +
+ylab("") +
 theme(plot.title = element_text(hjust = 0.5))
 ggsave(snakemake@output[["graph_density_plot"]])
 

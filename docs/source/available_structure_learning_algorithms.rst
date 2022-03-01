@@ -656,6 +656,7 @@ An example
             0.05,
             0.1
         ],
+        "pattern_graph": false,
         "skeleton": false,
         "max_ord": null,
         "timeout": null
