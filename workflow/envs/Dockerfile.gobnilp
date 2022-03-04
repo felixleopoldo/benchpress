@@ -1,4 +1,4 @@
-from ubuntu
+FROM ubuntu
 
 # Install prerequisities
 RUN apt update
@@ -13,32 +13,32 @@ RUN apt install -y wget
 
 # Install Blas
 WORKDIR /myappdir
-RUN wget https://github.com/xianyi/OpenBLAS/releases/download/v0.3.15/OpenBLAS-0.3.15.tar.gz 
-RUN tar zxvf OpenBLAS-0.3.15.tar.gz
-RUN rm OpenBLAS-0.3.15.tar.gz 
-WORKDIR /myappdir/OpenBLAS-0.3.15 
+RUN wget https://github.com/xianyi/OpenBLAS/releases/download/v0.3.17/OpenBLAS-0.3.17.tar.gz 
+RUN tar zxvf OpenBLAS-0.3.17.tar.gz
+RUN rm OpenBLAS-0.3.17.tar.gz 
+WORKDIR /myappdir/OpenBLAS-0.3.17 
 RUN make 
 RUN make install PREFIX=/blasdir
-
 RUN apt install pkg-config -y
 RUN apt install libgsl-dev -y
 RUN apt install -y bliss
 RUN apt install -y cliquer
+RUN apt install -y liblapack3 libopenblas0 libtbb2
 
-# Install scipoptsuite (make sure that it is downloaded first)
+# Install scipoptsuite from source (make sure that it is downloaded first)
 WORKDIR /myappdir
-COPY scipoptsuite-7.0.1.tgz .
-RUN tar xvf scipoptsuite-7.0.1.tgz
-RUN rm scipoptsuite-7.0.1.tgz
-WORKDIR /myappdir/scipoptsuite-7.0.1
-RUN make install INSTALLDIR="/myappdir/local/src/scipoptsuite-7.0.1/scip"
+COPY scipoptsuite-8.0.0.tgz .
+RUN tar xvf scipoptsuite-8.0.0.tgz
+RUN rm scipoptsuite-8.0.0.tgz
+WORKDIR /myappdir/scipoptsuite-8.0.0
+RUN make
+RUN make install INSTALLDIR="/myappdir/local/src/scipoptsuite-8.0.0/scip"
 
 # Install Gobnilp
-RUN apt update
 RUN apt install -y git 
 WORKDIR /myappdir
 RUN git clone https://bitbucket.org/jamescussens/gobnilp.git
 WORKDIR /myappdir/gobnilp/
-RUN git checkout df495ad
-RUN ./configure.sh /myappdir/scipoptsuite-7.0.1/scip/ /blasdir
+RUN git checkout 4347c64
+RUN ./configure.sh /myappdir/scipoptsuite-8.0.0/scip/ /blasdir
 RUN make
