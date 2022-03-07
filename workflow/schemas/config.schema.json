@@ -429,6 +429,9 @@
                             },
                             "uniqueItems": true
                         },
+                        "gcastle_notears": {
+                            "type": "array"
+                        },
                         "trilearn_pgibbs": {
                             "title": "trilearn_pgibbs",
                             "description": "List of trilearn objects",

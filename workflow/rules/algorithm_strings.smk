@@ -99,6 +99,11 @@ if "trilearn_pgibbs" in pattern_strings:
 if "rblip_asobs" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["rblip_asobs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["rblip_asobs"]})
+if "gcastle_notears" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_notears"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_notears"]})
+
+
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})

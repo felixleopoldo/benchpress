@@ -23,6 +23,22 @@ def summarise_alg_shell(algorithm):
         ret += dict_to_summary(config["resources"]["structure_learning_algorithms"][algorithm][0])
         return ret
 
+    elif algorithm == "gcastle_notears":        
+        ret = "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \                 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval "+ algorithm+" " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests          --colval `cat {input.ntests}` " 
+        ret += dict_to_summary(config["resources"]["structure_learning_algorithms"][algorithm][0])
+        return ret
+
+
     elif algorithm == "gt13_multipair":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \

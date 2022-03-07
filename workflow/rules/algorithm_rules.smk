@@ -31,6 +31,45 @@ if "mylib_myalg" in pattern_strings:
         script:
             "../scripts/evaluation/join_csv_files.R"
 
+if "gcastle_notears" in pattern_strings:
+    rule gcastle_notears:
+        input:
+            data = alg_input_data()
+        output:
+            adjmat = alg_output_adjmat_path("gcastle_notears"),
+            time = alg_output_time_path("gcastle_notears"),
+            ntests = alg_output_ntests_path("gcastle_notears")
+        params:
+            alg="notears"
+        container:
+            docker_image("gcastle")
+        script:
+            "../scripts/structure_learning_algorithms/gcastle.py"
+
+    rule summarise_gcastle_notears:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data = summarise_alg_input_data_path(),
+            adjmat_true = summarise_alg_input_adjmat_true_path(),
+            adjmat_est = summarise_alg_input_adjmat_est_path("gcastle_notears"),
+            time = summarise_alg_input_time_path("gcastle_notears"),
+            ntests = summarise_alg_input_ntests_path("gcastle_notears")
+        output:
+            res = summarise_alg_output_res_path("gcastle_notears")
+        shell:
+            summarise_alg_shell("gcastle_notears")
+        
+    rule join_summaries_gcastle_notears:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("gcastle_notears")
+        output:
+            join_summaries_output("gcastle_notears")
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
 if "sklearn_glasso" in pattern_strings:
     rule sklearn_glasso:
         input:
