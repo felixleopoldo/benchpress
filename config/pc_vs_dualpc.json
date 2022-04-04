@@ -1,0 +1,111 @@
+{
+    "benchmark_setup": {
+        "data": [
+            {
+                "graph_id": "avneigs4_p80",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
+                "seed_range": [
+                    1,
+                    10
+                ]
+            }
+        ],
+        "evaluation": {
+            "roc": {
+                "filename_prefix": "pc_vs_dualpc/",
+                "show_seed": true,
+                "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
+                "path": true,
+                "text": false,
+                "ids": [
+                    "pc-gaussCItest",
+                    "dualpc"
+                ]
+            },
+            "graph_true_plots": true,
+            "graph_true_stats": true,
+            "pairs_plots": false,
+            "graph_plots": [
+                "pc-gaussCItest",
+                "dualpc"
+            ],
+            "mcmc_traj_plots": [],
+            "mcmc_heatmaps": [],
+            "mcmc_autocorr_plots": []
+        }
+    },
+    "resources": {
+        "data": {
+            "iid": [
+                {
+                    "id": "standardized",
+                    "standardized": true,
+                    "sample_sizes": 300
+                }
+            ]
+        },
+        "graph": {
+            "pcalg_randdag": [
+                {
+                    "id": "avneigs4_p20",
+                    "max_parents": 5,
+                    "n": 80,
+                    "d": 4,
+                    "par1": null,
+                    "par2": null,
+                    "method": "er",
+                    "DAG": true
+                }
+            ]
+        },
+        "parameters": {
+            "sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
+            ]
+        },
+        "structure_learning_algorithms": {
+            "giudice_dualpc": [
+                {
+                    "id": "dualpc",
+                    "alpha": [
+                        0.001,
+                        0.05,
+                        0.1
+                    ],
+                    "skeleton": false,
+                    "pattern_graph": false,
+                    "max_ord": null,
+                    "timeout": null
+                }
+            ],
+            "pcalg_pc": [
+                {
+                    "id": "pc-gaussCItest",
+                    "alpha": [
+                        0.001,
+                        0.05,
+                        0.1
+                    ],
+                    "NAdelete": true,
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false,
+                    "solveconfl": false,
+                    "numCores": 1,
+                    "verbose": false,
+                    "indepTest": "gaussCItest",
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}
