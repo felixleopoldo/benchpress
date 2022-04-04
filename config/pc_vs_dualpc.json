@@ -50,7 +50,7 @@
         "graph": {
             "pcalg_randdag": [
                 {
-                    "id": "avneigs4_p20",
+                    "id": "avneigs4_p80",
                     "max_parents": 5,
                     "n": 80,
                     "d": 4,
