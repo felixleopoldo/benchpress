@@ -76,6 +76,8 @@ if "bidag_partition_mcmc" in config["resources"]["structure_learning_algorithms"
     pattern_strings["bidag_partition_mcmc"] = "bidag_partition_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"])
 if "trilearn_pgibbs" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["trilearn_pgibbs"] = "trilearn_pgibbs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"])
+if "parallelDG" in config["resources"]["structure_learning_algorithms"]:
+    pattern_strings["parallelDG"] = "parallelDG/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["parallelDG"])
 if "tetrad_fges" in config["resources"]["structure_learning_algorithms"]:
     pattern_strings["tetrad_fges"] = "tetrad_fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fges"])
 if "tetrad_fci" in config["resources"]["structure_learning_algorithms"]:
