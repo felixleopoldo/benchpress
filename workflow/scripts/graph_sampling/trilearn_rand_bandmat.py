@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 # Generated a graph with band adjacency matrix with maximum bandwith.
 
 from trilearn.graph import decomposable as dlib

@@ -29,7 +29,7 @@ if "trilearn_cta" in pattern_strings:
         container:
             docker_image("trilearn")
         shell:
-            "python workflow/scripts/graph_sampling/trilearn_sample_cta.py {output.adjmat} {wildcards.replicate} {wildcards.order} {wildcards.alpha} {wildcards.beta} "
+            "python2 workflow/scripts/graph_sampling/trilearn_sample_cta.py {output.adjmat} {wildcards.replicate} {wildcards.order} {wildcards.alpha} {wildcards.beta} "
 
 if "bandmat" in pattern_strings:
     rule gen_bandmat:
@@ -38,7 +38,7 @@ if "bandmat" in pattern_strings:
         container:
             docker_image("trilearn")
         shell:
-            "python workflow/scripts/graph_sampling/trilearn_gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
+            "python2 workflow/scripts/graph_sampling/trilearn_gen_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.bandwidth}"
 
 if "rand_bandmat" in pattern_strings:
     rule rand_bandmat:
@@ -47,7 +47,7 @@ if "rand_bandmat" in pattern_strings:
         container:
             docker_image("trilearn")
         shell:
-            "python workflow/scripts/graph_sampling/trilearn_rand_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.max_bandwidth}"
+            "python2 workflow/scripts/graph_sampling/trilearn_rand_bandmat.py {output.adjmat} {wildcards.replicate} {wildcards.dim} {wildcards.max_bandwidth}"
 
 rule fixed_adjmat:
     input:

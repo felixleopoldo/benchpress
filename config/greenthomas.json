@@ -2,40 +2,32 @@
     "benchmark_setup": {
         "data": [
             {
-                "id": "example1",
-                "standardized": true,
-                "sample_sizes": [100]
+                "data_id": "example1",
+                "graph_id": "AR1-5",
+                "parameters_id": "intra-class",
+                "seed_range":[1, 2]
             }
         ],
         "evaluation": {
             "roc": {
-                "filename_prefix": "example1/",
-                "show_seed": true,
+                "filename_prefix": "roc_test/",
+                "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": [
-                    "fges-sem-bic",
-                    "tabu-bge",
-                    "itsearch_sample-bge",
-                    "pc-gaussCItest"
-                ]
+                "ids": []
             },
+         
             "graph_true_plots": true,
             "graph_true_stats": true,
             "pairs_plots": true,
-            "graph_plots": [
-                "fges-sem-bic",
-                "tabu-bge",
-                "itsearch_sample-bge",
-                "pc-gaussCItest"
-            ],
+            "graph_plots": ["gt13_multipair_test"],
             "mcmc_traj_plots": [
                 {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
+                    "id": "gt13_multipair_test",
+                    "burn_in": 20000,
                     "thinning": 1,
                     "functional": [
                         "score",
@@ -46,17 +38,17 @@
             ],
             "mcmc_heatmaps": [
                 {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
+                    "id": "gt13_multipair_test",
+                    "burn_in": 20000,
                     "active": true
                 }
             ],
             "mcmc_autocorr_plots": [
                 {
-                    "id": "omcmc_itsample-bge",
+                    "id": "gt13_multipair_test",
                     "burn_in": 0,
                     "thinning": 1,
-                    "lags": 50,
+                    "lags": 20000,
                     "functional": [
                         "score",
                         "size"
@@ -67,12 +59,13 @@
         }
     },
     "resources": {
-        "data": {
-            {
+        "data":{
+            "iid": [{
                 "id": "example1",
-                "standardized": true,
+                "standardized": false,
                 "sample_sizes": [100]
             }
+                   ]
         },
         "graph": {
             "rand_bandmat": [
@@ -94,19 +87,20 @@
         },
         "structure_learning_algorithms": {
             "gt13_multipair":[  {
-                "id": "gt13_multipair_bc-cont",
-                "n_samples": 100000,
+                "id": "gt13_multipair_test",
+                "n_samples": 200000,
                 "datatype": "continuous",
                 "randomits": 100,
-                "prior": "bc",
-                "ascore": 0.1,
-                "bscore": 0.001,
-                "clq": null,
-                "sep": null,
+                "prior": "mbc",
+                "ascore": null,
+                "bscore": null,
+                "clq": 2.0,
+                "sep": 1.0,
                 "penalty": null,
                 "mcmc_seed": 1,
                 "timeout": null
-            }]   
+            }
+                             ]      
         }
     }   
 }   
