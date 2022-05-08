@@ -39,7 +39,7 @@ if "parallelDG" in pattern_strings:
             adjvecs = alg_output_seqgraph_path("parallelDG"),
             time = alg_output_time_path("parallelDG")
         container:
-            docker_image("trilearn")
+            docker_image("parallelDG")
         shell:
             alg_shell("parallelDG")
 
