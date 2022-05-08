@@ -1701,7 +1701,6 @@
                 "datatype",
                 "M",
                 "R",
-                "pseudo_obs",
                 "mcmc_seed",
                 "timeout"
             ],
