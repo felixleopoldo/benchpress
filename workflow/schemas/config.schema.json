@@ -438,6 +438,15 @@
                             },
                             "uniqueItems": true
                         },
+                        "parallelDG": {
+                            "title": "parallelDG",
+                            "description": "List of parallelDG objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/parallelDG"
+                            },
+                            "uniqueItems": true
+                        },
                         "rblip_asobs": {
                             "title": "rblip_asobs",
                             "description": "List of blip objects",
@@ -1649,6 +1658,59 @@
                         50
                     ],
                     "M": 100,
+                    "pseudo_obs": 1,
+                    "mcmc_seed": 1,
+                    "timeout": null
+                }
+            ]
+        },
+        "parallelDG": {
+            "title": "ParallelDG item",
+            "description": "Parallel Sampling of decomposable graphs with log-linear decomposable model.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "desciption": "Algorithm identifier",
+                    "type": "string"
+                },
+                "datatype": {
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "continuous"
+                    ]
+                },
+                "pseudo_obs": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "R": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "M": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "required": [
+                "id",
+                "datatype",
+                "M",
+                "R",
+                "pseudo_obs",
+                "mcmc_seed",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "trilearn-cont",
+                    "datatype": "continuous",
+                    "M": 10000,
+                    "R":100,
                     "pseudo_obs": 1,
                     "mcmc_seed": 1,
                     "timeout": null
