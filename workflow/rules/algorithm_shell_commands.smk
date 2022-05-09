@@ -229,3 +229,27 @@ def alg_shell(algorithm):
                 "&& mv $out {output.adjvecs} "\
                 "&& rm $data "\
                 "&& echo 1 > {output.time}"
+
+    elif algorithm == "parallelDG":
+        return  """
+                if [ {wildcards.timeout} = \"None\" ]; then
+                    if [ {wildcards.datatype} = \"discrete\" ]; then
+                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed};
+                    elif [ {wildcards.datatype} = \"continuous\" ]; then
+                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed};
+                    fi
+                else
+                     if [ {wildcards.datatype} = \"discrete\" ]; then
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}';
+                    elif [ {wildcards.datatype} = \"continuous\" ]; then
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}';
+                    fi
+                fi
+
+                if [ -f {output.adjvecs} ]; then
+                    sleep 1
+                else
+                    touch {output.adjvecs}
+                    echo None > {output.time};
+                fi
+                """

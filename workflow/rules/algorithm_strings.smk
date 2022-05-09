@@ -96,6 +96,9 @@ if "gobnilp" in pattern_strings:
 if "trilearn_pgibbs" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
+if "parallelDG" in pattern_strings:
+    json_string.update({val["id"]:  expand(pattern_strings["parallelDG"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["parallelDG"]})
 if "rblip_asobs" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["rblip_asobs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["rblip_asobs"]})
@@ -134,6 +137,9 @@ if "bidag_partition_mcmc" in pattern_strings:
 if "trilearn_pgibbs" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
+if "parallelDG" in pattern_strings:
+    json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["parallelDG"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["parallelDG"]})
 if "gt13_multipair" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gt13_multipair"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gt13_multipair"]})
