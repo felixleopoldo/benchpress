@@ -58,7 +58,7 @@ if "trilearn_intra-class" in pattern_strings:
         container:
             docker_image("trilearn")
         shell:
-            "python workflow/scripts/parameters_sampling/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
+            "python2 workflow/scripts/parameters_sampling/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
 
 if "trilearn_g_inv_wishart" in pattern_strings:
     rule trilearn_g_inv_wishart:
