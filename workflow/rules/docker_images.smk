@@ -31,3 +31,5 @@ def docker_image(name):
         return "docker://onceltuca/dualpc"
     elif name == "rbase":
         return "docker://r-base"
+    elif name == "parallelDG":
+        return "docker://onceltuca/paralleldg"
