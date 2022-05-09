@@ -1,0 +1,12 @@
+FROM onceltuca/trilearn:1.23
+
+RUN apt install time
+
+RUN mkdir git
+WORKDIR /git
+RUN git clone https://github.com/melmasri/parallelDG.git
+WORKDIR /git/parallelDG
+RUN pip install -r requirements.txt
+ENV PYTHONPATH /git:/git/parallelDG:/git/parallelDG/bin
+RUN apt update && apt install time 
+CMD bash
