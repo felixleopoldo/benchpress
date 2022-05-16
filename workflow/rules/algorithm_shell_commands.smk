@@ -234,15 +234,15 @@ def alg_shell(algorithm):
         return  """
                 if [ {wildcards.timeout} = \"None\" ]; then
                     if [ {wildcards.datatype} = \"discrete\" ]; then
-                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed};
+                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress;
                     elif [ {wildcards.datatype} = \"continuous\" ]; then
-                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed};
+                        /usr/bin/time -f \"%e\" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t bechpress;
                     fi
                 else
                      if [ {wildcards.datatype} = \"discrete\" ]; then
-                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}';
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress';
                     elif [ {wildcards.datatype} = \"continuous\" ]; then
-                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}';
+                        /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress';
                     fi
                 fi
 
