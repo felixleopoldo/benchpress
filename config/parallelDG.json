@@ -5,7 +5,10 @@
                 "data_id": "example1",
                 "graph_id": "AR1-5",
                 "parameters_id": "intra-class",
-                "seed_range":[1, 2]
+                "seed_range": [
+                    1,
+                    2
+                ]
             }
         ],
         "evaluation": {
@@ -19,11 +22,12 @@
                 "text": false,
                 "ids": []
             },
-         
-            "graph_true_plots": true,
-            "graph_true_stats": true,
-            "pairs_plots": true,
-            "graph_plots": ["parallelDG_test"],
+            "graph_true_plots": false,
+            "graph_true_stats": false,
+            "pairs_plots": false,
+            "graph_plots": [
+                "parallelDG_test"
+            ],
             "mcmc_traj_plots": [
                 {
                     "id": "parallelDG_test",
@@ -59,13 +63,16 @@
         }
     },
     "resources": {
-        "data":{
-            "iid": [{
-                "id": "example1",
-                "standardized": false,
-                "sample_sizes": [100]
-            }
-                   ]
+        "data": {
+            "iid": [
+                {
+                    "id": "example1",
+                    "standardized": false,
+                    "sample_sizes": [
+                        100
+                    ]
+                }
+            ]
         },
         "graph": {
             "rand_bandmat": [
@@ -75,7 +82,7 @@
                     "dim": 50
                 }
             ]
-        },      
+        },
         "parameters": {
             "trilearn_intra-class": [
                 {
@@ -86,16 +93,17 @@
             ]
         },
         "structure_learning_algorithms": {
-            "parallelDG":[  {
-                "id": "parallelDG_test",
-                "M": 10000,
-                "R": 100,
-                "pseudo_obs": 1.0,
-                "datatype": "continuous",
-                "mcmc_seed": 1,
-                "timeout": null
-            }
-                             ]      
+            "parallelDG": [
+                {
+                    "id": "parallelDG_test",
+                    "M": 10000,
+                    "R": 100,
+                    "pseudo_obs": 1.0,
+                    "datatype": "continuous",
+                    "mcmc_seed": 1,
+                    "timeout": null
+                }
+            ]
         }
-    }   
-}   
+    }
+}

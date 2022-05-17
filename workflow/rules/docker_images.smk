@@ -32,4 +32,4 @@ def docker_image(name):
     elif name == "rbase":
         return "docker://r-base"
     elif name == "parallelDG":
-        return "docker://onceltuca/paralleldg"
+        return "docker://onceltuca/paralleldg:0.2.2"
