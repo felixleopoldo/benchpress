@@ -33,7 +33,8 @@
                     "omcmc_itsample-bge",
                     "pc-gaussCItest",
                     "rfci-fisher-z",
-                    "tabu-bge"
+                    "tabu-bge",
+                    "dualpc"
                 ]
             },
             "graph_true_stats": false,
@@ -185,6 +186,20 @@
             ]
         },
         "structure_learning_algorithms": {
+            "giudice_dualpc": [
+                {
+                    "id": "dualpc",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05
+                    ],
+                    "pattern_graph": false,
+                    "skeleton": false,
+                    "max_ord": null,
+                    "timeout": null
+                }
+            ],
             "trilearn_pgibbs": [
                 {
                     "id": "trilearn-cont",
@@ -293,40 +308,25 @@
             ],
             "gobnilp": [
                 {
-                    "id": "gobnilp-bde",
-                    "continuous": false,
-                    "score_type": "BDeu",
-                    "extra_args": null,
-                    "constraints": null,
-                    "plot": false,
-                    "palim": 3,
-                    "alpha_mu": null,
-                    "alpha_omega_minus_nvars": null,
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "time_limit": null,
-                    "gap_limit": null,
-                    "prune": true,
-                    "timeout": null
-                },
-                {
                     "id": "gobnilp-bge",
                     "continuous": true,
                     "score_type": "BGe",
                     "extra_args": null,
                     "constraints": null,
                     "plot": false,
-                    "palim": 2,
-                    "alpha_mu": 1.0,
+                    "palim": 3,
+                    "alpha_mu": [
+                        0.00001,
+                        0.0001,
+                        0.001,
+                        0.01
+                    ],
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
                     "time_limit": null,
                     "gap_limit": null,
                     "prune": true,
-                    "timeout": null
+                    "timeout": 1500
                 }
             ],
             "gt13_multipair": [

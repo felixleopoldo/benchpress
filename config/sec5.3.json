@@ -304,7 +304,7 @@
                     "extra_args": null,
                     "constraints": null,
                     "plot": false,
-                    "palim": 3,
+                    "palim": 4,
                     "alpha_mu": null,
                     "alpha_omega_minus_nvars": null,
                     "alpha": [
@@ -315,143 +315,10 @@
                     "time_limit": null,
                     "gap_limit": null,
                     "prune": true,
-                    "timeout": null
-                },
-                {
-                    "id": "gobnilp-bge",
-                    "continuous": true,
-                    "score_type": "BGe",
-                    "extra_args": null,
-                    "constraints": null,
-                    "plot": false,
-                    "palim": 2,
-                    "alpha_mu": 1.0,
-                    "alpha_omega_minus_nvars": 2,
-                    "alpha": null,
-                    "time_limit": null,
-                    "gap_limit": null,
-                    "prune": true,
-                    "timeout": null
-                }
-            ],
-            "gt13_multipair": [
-                {
-                    "id": "gt13_multipair_bc-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        10
-                    ],
-                    "bscore": 0.001,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": null,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair_ep-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "ep",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": [
-                        1.5,
-                        5
-                    ],
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair_mbc-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "mbc",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 1,
-                    "sep": 1,
-                    "penalty": null,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair-disc",
-                    "n_samples": [
-                        100000
-                    ],
-                    "datatype": "discrete",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "mcmc_seed": 1,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "timeout": null
-                }
-            ],
-            "gg99_singlepair": [
-                {
-                    "id": "guidicigreen-cont",
-                    "n_samples": [
-                        1000000
-                    ],
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        0.9
-                    ],
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "guidicigreen-disc",
-                    "datatype": "discrete",
-                    "n_samples": [
-                        100000
-                    ],
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1,
-                    "timeout": null
+                    "timeout": 500
                 }
             ],
             "tetrad_fges": [
-                {
-                    "id": "fges-sem-bic",
-                    "faithfulnessAssumed": true,
-                    "score": "sem-bic",
-                    "datatype": "continuous",
-                    "samplePrior": 1,
-                    "structurePrior": 1,
-                    "penaltyDiscount": [
-                        0.8,
-                        1,
-                        1.5
-                    ],
-                    "timeout": null
-                },
                 {
                     "id": "fges-bdeu",
                     "faithfulnessAssumed": true,
@@ -1181,79 +1048,6 @@
                         0.4,
                         0.3,
                         0.2
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itmap-bge",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": 0.5,
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_pcalg005-bge",
-                    "plus1": true,
-                    "startspace_algorithm": "pcalg005",
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bge",
-                    "plus1": true,
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
                     ],
                     "burnin": 0,
                     "timeout": null

@@ -66,7 +66,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        320,
+                        
                         640
                     ]
                 },
@@ -253,9 +253,7 @@
                     "scorermethod": "is",
                     "solvermethod": "winasobs",
                     "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
+                    "timeout": 300,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -271,9 +269,7 @@
                     "scorermethod": "is",
                     "solvermethod": "asobs",
                     "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
+                    "timeout": 300,
                     "allocated": 80,
                     "scorefunction": "bdeu",
                     "alpha": [
@@ -304,7 +300,7 @@
                     "extra_args": null,
                     "constraints": null,
                     "plot": false,
-                    "palim": 3,
+                    "palim": 4,
                     "alpha_mu": null,
                     "alpha_omega_minus_nvars": null,
                     "alpha": [
@@ -315,23 +311,7 @@
                     "time_limit": null,
                     "gap_limit": null,
                     "prune": true,
-                    "timeout": null
-                },
-                {
-                    "id": "gobnilp-bge",
-                    "continuous": true,
-                    "score_type": "BGe",
-                    "extra_args": null,
-                    "constraints": null,
-                    "plot": false,
-                    "palim": 2,
-                    "alpha_mu": 1.0,
-                    "alpha_omega_minus_nvars": 2,
-                    "alpha": null,
-                    "time_limit": 120,
-                    "gap_limit": null,
-                    "prune": true,
-                    "timeout": null
+                    "timeout": 600
                 }
             ],
             "gt13_multipair": [
