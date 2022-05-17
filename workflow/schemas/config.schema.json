@@ -430,7 +430,13 @@
                             "uniqueItems": true
                         },
                         "gcastle_notears": {
-                            "type": "array"
+                            "title": "gcastle_notears",
+                            "description": "List of gcastle_notears objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/gcastle_notears"
+                            },
+                            "uniqueItems": true
                         },
                         "trilearn_pgibbs": {
                             "title": "trilearn_pgibbs",
@@ -1725,6 +1731,57 @@
                     ],
                     "cores": 1,
                     "verbose_level": 0
+                }
+            ]
+        },
+        "gcastle_notears": {
+            "title": "gcastle_notears item",
+            "description": "gcastle_notears object",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "Unique identifier",
+                    "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+                },
+                "loss_type": {
+                    "type": "string"
+                },
+                "lambda1": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "max_iter": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "w_threshold": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "rho_max": {
+                    "type": "string"
+                },
+                "h_tol": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "lambda1",
+                "loss_type",
+                "max_iter",
+                "w_threshold",
+                "rho_max",
+                "h_tol"
+            ],
+            "examples": [
+                {
+                    "id": "gcastle_notears",
+                    "lambda1": 0.1,
+                    "loss_type": "l2",
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": 0.5
                 }
             ]
         },
