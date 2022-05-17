@@ -31,7 +31,7 @@
             "mcmc_traj_plots": [
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 6000,
                     "thinning": 1,
                     "functional": [
                         "score",
@@ -43,7 +43,7 @@
             "mcmc_heatmaps": [
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 2000,
                     "active": true
                 }
             ],
@@ -52,7 +52,7 @@
                     "id": "parallelDG_test",
                     "burn_in": 0,
                     "thinning": 1,
-                    "lags": 20000,
+                    "lags": 2000,
                     "functional": [
                         "score",
                         "size"
