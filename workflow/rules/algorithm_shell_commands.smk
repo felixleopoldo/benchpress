@@ -247,11 +247,8 @@ def alg_shell(algorithm):
                 fi
 
                 if [ -f {output.adjvecs} ]; then
-                    echo "yes file exists"
-                    cat {output.adjvecs}
                     sleep 1
                 else
-                    echo "no file so create a new"
                     touch {output.adjvecs}
                     echo None > {output.time};
                 fi
