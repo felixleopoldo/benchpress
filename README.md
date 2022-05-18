@@ -182,6 +182,7 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 | PC [[4]](#4)[[5]](#5)             | CPDAG | R        | pcalg               | 2.7-3    | pcalg_pc             |
 | Dual PC [[31]](#31)               | CPDAG | R        | dualPC (github)     | 4a5175d  | giudice_dualpc       |
 | No tears [[17]](#17)              | DAG   | Python   | jmoss20 (github)    | #0c032a0 | notears              |
+| No tears                          | DAG   | Python   | gCastle             | 1.0.3rc3 | gcastle_notears      |
 | HC [[6]](#6)                      | DAG   | R        | bnlearn             | 4.7      | bnlearn_hc           |
 | MMHC [[23]](#23)                  | DAG   | R        | bnlearn             | 4.7      | bnlearn_mmhc         |
 | Inter-IAMB [[27]](#27)            | CPDAG | R        | bnlearn             | 4.7      | bnlearn_interiamb    |
@@ -202,6 +203,7 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 | PGibbs [[20]](#20)                | DG    | Python   | trilearn            | 1.2.3    | trilearn_pgibbs      |
 | GG99 single pair [[18]](#18)      | DG    | Java     | A. Thomas           | -        | gg99_singlepair      |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | A. Thomas           | -        | gt13_multipair       |
+| Parallel DG                       | DG    | Python   | parallelDG          | 0.2.2    | parallelDG           |
 | GLasso [[31]](#31)                | UG    | Python   | scikit-learn        | 0.22.1   | sklearn_glasso       |
 
 

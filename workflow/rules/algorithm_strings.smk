@@ -102,12 +102,16 @@ if "parallelDG" in pattern_strings:
 if "rblip_asobs" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["rblip_asobs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["rblip_asobs"]})
+if "gcastle_notears" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_notears"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_notears"]})
+
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})
 
 
-# Order mcmc is special and has to be the last one since it takes input strings as start space...\
+# Order mcmc is special and has to be the last one since it takes input strings as start space.
 # Also, the start space path has to be extracted first.
 if "bidag_order_mcmc" in pattern_strings:
     order_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]

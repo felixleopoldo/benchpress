@@ -25,71 +25,10 @@ def dict_to_path(d):
 
 pattern_strings = {}
 
-# structure learning algorithms
-if "gt13_multipair" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["gt13_multipair"] = "gt13_multipair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gt13_multipair"])
-if "gg99_singlepair" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["gg99_singlepair"] = "gg99_singlepair/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gg99_singlepair"])
-if "notears" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["notears"] = "notears/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["notears"])
-if "rblip_asobs" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["rblip_asobs"] = "rblip_asobs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["rblip_asobs"])
-if "pcalg_pc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["pcalg_pc"] = "pcalg_pc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["pcalg_pc"])
-if "giudice_dualpc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["giudice_dualpc"] = "giudice_dualpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["giudice_dualpc"])
-if "bnlearn_mmhc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_mmhc"] = "bnlearn_mmhc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"])
-if "bnlearn_interiamb" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_interiamb"] = "bnlearn_interiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_interiamb"])
-if "bnlearn_gs" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_gs"] = "bnlearn_gs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_gs"])
-if "bnlearn_tabu" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_tabu"] = "bnlearn_tabu/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_tabu"])
-if "bnlearn_hc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_hc"] = "bnlearn_hc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hc"])
-if "bnlearn_pcstable" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_pcstable"] = "bnlearn_pcstable/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_pcstable"])
-if "bnlearn_iamb" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_iamb"] = "bnlearn_iamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_iamb"])
-if "bnlearn_fastiamb" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_fastiamb"] = "bnlearn_fastiamb/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_fastiamb"])
-if "bnlearn_iambfdr" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_iambfdr"] = "bnlearn_iambfdr/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_iambfdr"])
-if "bnlearn_mmpc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_mmpc"] = "bnlearn_mmpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_mmpc"])
-if "bnlearn_sihitonpc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_sihitonpc"] = "bnlearn_sihitonpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_sihitonpc"])
-if "bnlearn_hpc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_hpc"] = "bnlearn_hpc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_hpc"])
-if "bnlearn_h2pc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_h2pc"] = "bnlearn_h2pc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_h2pc"])
-if "bnlearn_rsmax2" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bnlearn_rsmax2"] = "bnlearn_rsmax2/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bnlearn_rsmax2"])
-if "gobnilp" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["gobnilp"] = "gobnilp/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["gobnilp"])
-if "bidag_itsearch" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bidag_itsearch"] = "bidag_itsearch/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_itsearch"])
-if "bidag_order_mcmc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bidag_order_mcmc"] = "bidag_order_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"])
-if "bidag_partition_mcmc" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["bidag_partition_mcmc"] = "bidag_partition_mcmc/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"])
-if "trilearn_pgibbs" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["trilearn_pgibbs"] = "trilearn_pgibbs/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"])
-if "parallelDG" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["parallelDG"] = "parallelDG/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["parallelDG"])
-if "tetrad_fges" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["tetrad_fges"] = "tetrad_fges/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fges"])
-if "tetrad_fci" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["tetrad_fci"] = "tetrad_fci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_fci"])
-if "tetrad_gfci" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["tetrad_gfci"] = "tetrad_gfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_gfci"])
-if "tetrad_rfci" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["tetrad_rfci"] = "tetrad_rfci/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["tetrad_rfci"])
-if "sklearn_glasso" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["sklearn_glasso"] = "sklearn_glasso/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["sklearn_glasso"])
-if "mylib_myalg" in config["resources"]["structure_learning_algorithms"]:
-    pattern_strings["mylib_myalg"] = "mylib_myalg/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"]["mylib_myalg"])
+# structure learning algorithms. 
+# The pattern strings are generated from the json config file.
+for alg in config["resources"]["structure_learning_algorithms"].keys():
+    pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
 
 pattern_strings["mcmc_est"] = "estimation_method/"\
                             "threshold={threshold}/"\

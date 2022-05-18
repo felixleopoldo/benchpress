@@ -120,10 +120,34 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "verbose_level": 0
     }
 
+``gcastle_notears``
+-----------
+
+
+*No tears from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_notears",
+        "lambda1": 0.1,
+        "loss_type": "l2",
+        "max_iter": 100,
+        "h_tol": "1e-8",
+        "rho_max": "1e+16",
+        "w_threshold": 0.5,
+        "timeout": null
+    }
+
+
 ``notears``
 ------------
 
-*No tears*
+*No tears from jmoss20 githib*
 
 
 .. rubric:: Example

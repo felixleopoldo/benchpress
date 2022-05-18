@@ -33,3 +33,5 @@ def docker_image(name):
         return "docker://r-base"
     elif name == "parallelDG":
         return "docker://onceltuca/paralleldg:0.2.2"
+    elif name == "gcastle":
+        return "docker://onceltuca/gcastle:1.0.3rc3"

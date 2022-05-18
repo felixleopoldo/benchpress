@@ -57,6 +57,17 @@ if "parallelDG" in pattern_strings:
         script:
             "../scripts/evaluation/graphtraj_est.py"
 
+    
+    rule join_summaries_parallelDG:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("parallelDG")
+        output:
+            join_summaries_output("parallelDG")
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
     rule summarise_parallelDG:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
@@ -68,16 +79,42 @@ if "parallelDG" in pattern_strings:
             res = summarise_alg_output_res_path("parallelDG")
         shell:
             summarise_alg_shell("parallelDG")
+
+if "gcastle_notears" in pattern_strings:
+    rule gcastle_notears:
+        input:
+            data = alg_input_data()
+        output:
+            adjmat = alg_output_adjmat_path("gcastle_notears"),
+            time = alg_output_time_path("gcastle_notears"),
+            ntests = alg_output_ntests_path("gcastle_notears")
+        params:
+            alg="notears"
+        container:
+            docker_image("gcastle")
+        script:
+            "../scripts/structure_learning_algorithms/gcastle.py"
+
+    rule summarise_gcastle_notears:    
+        input:
+            adjmat_est = summarise_alg_input_adjmat_est_path("gcastle_notears"),
+            time = summarise_alg_input_time_path("gcastle_notears"),
+            ntests = summarise_alg_input_ntests_path("gcastle_notears")
+        output:
+            res = summarise_alg_output_res_path("gcastle_notears")
+        shell:
+            summarise_alg_shell("gcastle_notears")
         
-    rule join_summaries_parallelDG:
+    rule join_summaries_gcastle_notears:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("parallelDG")
+            res=join_string_sampled_model("gcastle_notears")
         output:
-            join_summaries_output("parallelDG")
+            join_summaries_output("gcastle_notears")
         script:
             "../scripts/evaluation/join_csv_files.R"
+
 
 if "sklearn_glasso" in pattern_strings:
     rule sklearn_glasso:
