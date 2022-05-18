@@ -35,10 +35,10 @@
                     "title": "evaluation",
                     "description": "This section contains the available evaluation methods.",
                     "properties": {
-                        "roc": {
-                            "title": "roc",
+                        "benchmarks": {
+                            "title": "benchmarks",
                             "description": "ROC plots and other benchmarking statistics.",
-                            "$ref": "#/definitions/roc",
+                            "$ref": "#/definitions/benchmarks",
                             "examples": [
                                 {
                                     "filename_prefix": "example/",
@@ -77,13 +77,13 @@
                                 }
                             ]
                         },
-                        "pairs_plots": {
-                            "title": "pairs_plots",
-                            "description": "This module plots the data using pairs. The figures are saved in to results/output/pairs_plots/.",
+                        "ggally_ggpairs": {
+                            "title": "ggally_ggpairs",
+                            "description": "This module plots the data using pairs. The figures are saved in to results/output/ggally_ggpairs/.",
                             "type": "boolean",
                             "examples": [
                                 {
-                                    "pairs_plots": true
+                                    "ggally_ggpairs": true
                                 }
                             ]
                         },
@@ -170,7 +170,7 @@
                         }
                     },
                     "required": [
-                        "roc",
+                        "benchmarks",
                         "graph_true_plots",
                         "graph_true_stats",
                         "graph_plots",
@@ -181,7 +181,7 @@
                     "additionalProperties": false,
                     "examples": [
                         {
-                            "roc": {
+                            "benchmarks": {
                                 "filename_prefix": "example/",
                                 "show_seed": false,
                                 "errorbar": true,
@@ -1043,8 +1043,8 @@
                 }
             ]
         },
-        "roc": {
-            "title": "roc item",
+        "benchmarks": {
+            "title": "benchmarks item",
             "description": "ROC item",
             "type": "object",
             "properties": {

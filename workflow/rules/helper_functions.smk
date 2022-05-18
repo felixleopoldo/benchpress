@@ -127,9 +127,9 @@ def join_string_sampled_model(algorithm, mode="result"):
 
     TOOD: Should contain evaluation=/{eval_param}
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
-    Create rule for roc
+    Create rule for benchmarks
     """
-    roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"]["roc"]["ids"]]
+    benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        
             "algorithm=/{alg_string}/"
@@ -147,14 +147,14 @@ def join_string_sampled_model(algorithm, mode="result"):
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in roc_alg_ids]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in benchmarks_alg_ids]
     return ret
 
 def join_summaries_shell(algorithm):
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
-    return "{output_dir}/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +algorithm+".csv"
+    return "{output_dir}/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
 
 def gen_evaluation_string_from_conf(method, alg_id):
     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern 
@@ -269,30 +269,30 @@ def active_algorithm_files(wildcards):
         conf = json.load(json_file)
     
     algs = active_algorithms()
-    alg_filenames = ["results/output/roc/"+conf["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + alg + ".csv" for alg in algs]
+    alg_filenames = ["results/output/benchmarks/"+conf["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + alg + ".csv" for alg in algs]
     return alg_filenames
 
-def active_algorithms(eval_method="roc"):
+def active_algorithms(eval_method="benchmarks"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
 
     algs = []
     if eval_method == "mcmc_traj_plots" or eval_method == "mcmc_autocorr_plots" or eval_method == "mcmc_heatmaps":
-        roc_alg_ids = [roc_dict["id"] for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+        benchmarks_alg_ids = [benchmarks_dict["id"] for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in roc_alg_ids:        
+            for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
-    elif eval_method == "roc":
-        roc_alg_ids = config["benchmark_setup"]["evaluation"]["roc"]["ids"]
+    elif eval_method == "benchmarks":
+        benchmarks_alg_ids = config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in roc_alg_ids:        
+            for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     else:
-        roc_alg_ids = [roc_dict for roc_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+        benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in roc_alg_ids:        
+            for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     return list(set(algs))

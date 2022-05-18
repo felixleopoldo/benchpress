@@ -9,15 +9,15 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
     for alg_conf in alg_conf_avail:
         available_conf_ids.append(alg_conf["id"])   
 
-# Check that all ids in the roc section actually exist.
-for rocitem in config["benchmark_setup"]["evaluation"]["roc"]["ids"]:
-    if rocitem not in available_conf_ids:
-        raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
+# Check that all ids in the benchmarks section actually exist.
+for benchmarksitem in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]:
+    if benchmarksitem not in available_conf_ids:
+        raise Exception(benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that all ids in the graph_plots actually exist.
-for rocitem in config["benchmark_setup"]["evaluation"]["graph_plots"]:
-    if rocitem not in available_conf_ids:
-        raise Exception(rocitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
+for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_plots"]:
+    if benchmarksitem not in available_conf_ids:
+        raise Exception(benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that the startspace for order mcmc exist.
 # for alg_conf in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]:
@@ -34,7 +34,7 @@ def validate_data_setup(config, dict):
     available_conf_ids += os.listdir("resources/adjmat/myadjmats")
 
     # Roc rewuires a true graph
-    if config["benchmark_setup"]["evaluation"]["roc"]["ids"] != []:
+    if config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"] != []:
         if dict["graph_id"] is None:
             raise Exception("ROC evaluation requires graph_id.\n"
                             "The available graph id´s are:\n" + str(sorted(available_conf_ids)))

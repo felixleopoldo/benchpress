@@ -7,7 +7,7 @@ library(dplyr, warn.conflicts = FALSE)
 library("rjson")
 library(argparser)
 
-p <- arg_parser("A program for combining roc data from differents sources.")
+p <- arg_parser("A program for combining benchmarks data from differents sources.")
 p <- add_argument(p, "--filename", help = "Filename")
 p <- add_argument(p, "--joint_bench", help = "Joint")
 p <- add_argument(p, "--config_filename", help = "Filename config file")
@@ -28,13 +28,13 @@ for (file in argv$algorithms) {
 joint_df <- data.frame()
 active_algorithms <- unique(active_algorithms)
 
-rocalgs <- config$benchmark_setup$evaluation$roc$ids
+benchmarksalgs <- config$benchmark_setup$evaluation$benchmarks$ids
 
 for (algorithm in active_algorithms) {
   # This reads all object ids of one algorithm so that the same coud be read more than once. 
   # The problem is that the curve variable is needed.
   # It is fixed by running the distinct function.
-  ROCdf <- read.csv(file.path("results/output/roc/", paste(config$benchmark_setup$evaluation$roc$filename_prefix, algorithm, ".csv", sep = "")))
+  ROCdf <- read.csv(file.path("results/output/benchmarks/", paste(config$benchmark_setup$evaluation$benchmarks$filename_prefix, algorithm, ".csv", sep = "")))
   unique_ids <- ROCdf %>% distinct(id)
 
 

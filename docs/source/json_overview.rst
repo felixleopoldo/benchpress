@@ -55,7 +55,7 @@ The available evaluation methods.
 
 .. _rocdef:
 
-``roc``
+``benchmarks``
 -------
 This module defines a metric for comparing graphs which may also be applied to *mixed graphs*, having a combination of edges oriented in different ways (directed or undirected), thus we distinguish between the orientations.
 
@@ -80,7 +80,7 @@ We define the true and false positive rates (FPRp and TPR) as
 where :math:`P:=|E|` denotes the total number of edges in :math:`G`.
 Note that TP and FP reduces to the ordinary counting true and false positives when all edges are undirected in both :math:`G` and :math:`G'`.
 
-.. The ``roc`` module evaluates the TPR and FPRp for each seed in ``seed_range`` and the median (mean) FPRp is plotted against the median (mean) TPR in ROC type sub figures using *ggplot2*  based on the graph, parameters and data modules used.
+.. The ``benchmarks`` module evaluates the TPR and FPRp for each seed in ``seed_range`` and the median (mean) FPRp is plotted against the median (mean) TPR in ROC type sub figures using *ggplot2*  based on the graph, parameters and data modules used.
 .. The top three title rows of each sub figure describe, from top to bottom, the objects from the graph, parameters and data modules.
 .. The varying parameter forming the curve should be given as a list of values in the corresponding algorithm object.
 .. A parameter could for example be the significance level in a test procedure of a constraint-based algorithm, or a parameter of the score function in a score-based method.
@@ -157,7 +157,7 @@ The following plots are also produced
 
 
 
-``pairs_plots``
+``ggally_ggpairs``
 -------------------------
 
 This module writes ggpairs plots using the GGally package. 

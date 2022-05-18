@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "section5.2/",
                 "show_seed": false,
                 "errorbar": true,
@@ -67,7 +67,6 @@
                     "standardized": false,
                     "sample_sizes": [
                         320
-                        
                     ]
                 },
                 {
@@ -790,7 +789,6 @@
                         0.0001,
                         0.001,
                         0.01
-                        
                     ],
                     "issw": null,
                     "l": 5,

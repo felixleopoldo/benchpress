@@ -12,8 +12,8 @@
             }
         ],
         "evaluation": {
-            "roc": {
-                "filename_prefix": "roc_test/",
+            "benchmarks": {
+                "filename_prefix": "benchmarks_test/",
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
@@ -24,7 +24,7 @@
             },
             "graph_true_plots": false,
             "graph_true_stats": false,
-            "pairs_plots": false,
+            "ggally_ggpairs": false,
             "graph_plots": [
                 "parallelDG_test"
             ],

@@ -9,7 +9,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "sachs/",
                 "show_seed": false,
                 "errorbar": false,
@@ -33,7 +33,7 @@
             },
             "graph_true_stats": true,
             "graph_true_plots": true,
-            "pairs_plots": true,
+            "ggally_ggpairs": true,
             "graph_plots": [
                 "gobnilp-bge",
                 "gs-zf",

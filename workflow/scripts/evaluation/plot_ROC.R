@@ -11,7 +11,7 @@ is_outlier <- function(x) {
 
 if (file.info(snakemake@input[["csv"]])$size == 0) {      
      file.create(snakemake@output[["fpr_tpr_pattern"]])
-     file.create(snakemake@output[["roc_FPRp_TPR_skel"]])
+     file.create(snakemake@output[["benchmarks_FPRp_TPR_skel"]])
      file.create(snakemake@output[["FPRp_FNR_skel"]])
      cat("Time-out",file=snakemake@output[["elapsed_time_joint"]], sep="\n") # Copy time-out figure
      cat("Time-out",file=snakemake@output[["fnr_fprp_skel"]], sep="\n")
@@ -26,12 +26,12 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     joint_bench <- read.csv(snakemake@input[["raw_bench"]])
     config <- fromJSON(file = snakemake@input[["config"]])
 
-    param_annot <- config$benchmark_setup$evaluation$roc$text
-    path <- config$benchmark_setup$evaluation$roc$path    
-    errorbar <- config$benchmark_setup$evaluation$roc$errorbar
-    scatter <- config$benchmark_setup$evaluation$roc$scatter
-    errorbarh <- config$benchmark_setup$evaluation$roc$errorbarh
-    show_seed <- config$benchmark_setup$evaluation$roc$show_seed
+    param_annot <- config$benchmark_setup$evaluation$benchmarks$text
+    path <- config$benchmark_setup$evaluation$benchmarks$path    
+    errorbar <- config$benchmark_setup$evaluation$benchmarks$errorbar
+    scatter <- config$benchmark_setup$evaluation$benchmarks$scatter
+    errorbarh <- config$benchmark_setup$evaluation$benchmarks$errorbarh
+    show_seed <- config$benchmark_setup$evaluation$benchmarks$show_seed
 
 # Might have to go through all one by one to get the point text.
 # directlabels::geom_dl(aes(label = class), method = "smart.grid") +

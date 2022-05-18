@@ -1,10 +1,10 @@
 Examples of data models
 ########################
 
-.. This example plots ROC curves (see :ref:`rocdef`) for some of the available structure learning algorithms.
+.. This example plots ROC curves (see :ref:`benchmarksdef`) for some of the available structure learning algorithms.
 
 .. The plot is stored in ``results/ROC.eps``. 
-.. The data for the plot is stored in ``results/output/roc/ROC_data.csv``. 
+.. The data for the plot is stored in ``results/output/benchmarks/ROC_data.csv``. 
 
 Example JSON file are found under *config/*.
 

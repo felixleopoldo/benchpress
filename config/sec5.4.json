@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "section5.4/",
                 "show_seed": false,
                 "errorbar": true,

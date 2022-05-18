@@ -44,7 +44,7 @@ A dataset is referenced by its filename.
 
 
 Example of a fixed dataset with and without the true graph. 
-Note that the true graph is needed for the ``roc`` module.
+Note that the true graph is needed for the ``benchmarks`` module.
 
 .. code-block:: json
 

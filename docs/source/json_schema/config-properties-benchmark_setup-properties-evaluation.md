@@ -83,7 +83,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 | [roc](#roc)                                 | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")                                                                            |
 | [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
 | [graph_true_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
-| [pairs_plots](#pairs_plots)                 | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/pairs_plots")                 |
+| [ggally_ggpairs](#ggally_ggpairs)                 | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")                 |
 | [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
 | [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
 | [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
@@ -177,29 +177,29 @@ This module plots statistics of the true underlying graphs. The figures are save
 }
 ```
 
-## pairs_plots
+## ggally_ggpairs
 
-This module plots the data using pairs. The figures are saved in to results/output/pairs_plots/.
+This module plots the data using pairs. The figures are saved in to results/output/ggally_ggpairs/.
 
-`pairs_plots`
+`ggally_ggpairs`
 
 *   is optional
 
-*   Type: `boolean` ([pairs_plots](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md))
+*   Type: `boolean` ([ggally_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/pairs_plots")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")
 
-### pairs_plots Type
+### ggally_ggpairs Type
 
-`boolean` ([pairs_plots](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md))
+`boolean` ([ggally_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
 
-### pairs_plots Examples
+### ggally_ggpairs Examples
 
 ```json
 {
-  "pairs_plots": true
+  "ggally_ggpairs": true
 }
 ```
 

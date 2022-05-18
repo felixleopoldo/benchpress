@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "example/",
                 "show_seed": false,
                 "errorbar": true,
@@ -29,7 +29,7 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": true,
-            "pairs_plots": true,
+            "ggally_ggpairs": true,
             "graph_plots": [
                 "fges-sem-bic",
                 "tabu-bge",

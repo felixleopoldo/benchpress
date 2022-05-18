@@ -12,8 +12,8 @@
             }
         ],
         "evaluation": {
-            "roc": {
-                "filename_prefix": "roc_test/",
+            "benchmarks": {
+                "filename_prefix": "benchmarks_test/",
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
@@ -24,7 +24,7 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": true,
-            "pairs_plots": true,
+            "ggally_ggpairs": true,
             "graph_plots": [
                 "gt13_multipair_test"
             ],

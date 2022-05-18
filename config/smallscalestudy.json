@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "smallscalestudy/",
                 "show_seed": false,
                 "errorbar": false,

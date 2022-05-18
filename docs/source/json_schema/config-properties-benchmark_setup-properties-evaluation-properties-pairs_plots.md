@@ -1,23 +1,23 @@
-# pairs_plots Schema
+# ggally_ggpairs Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/pairs_plots
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs
 ```
 
-This module plots the data using pairs. The figures are saved in to results/output/pairs_plots/.
+This module plots the data using pairs. The figures are saved in to results/output/ggally_ggpairs/.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
-## pairs_plots Type
+## ggally_ggpairs Type
 
-`boolean` ([pairs_plots](config-properties-benchmark_setup-properties-evaluation-properties-pairs_plots.md))
+`boolean` ([ggally_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
 
-## pairs_plots Examples
+## ggally_ggpairs Examples
 
 ```json
 {
-  "pairs_plots": true
+  "ggally_ggpairs": true
 }
 ```

@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "circle/",
                 "point": true,
                 "errorbar": true,

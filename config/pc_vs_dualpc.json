@@ -12,7 +12,7 @@
             }
         ],
         "evaluation": {
-            "roc": {
+            "benchmarks": {
                 "filename_prefix": "pc_vs_dualpc/",
                 "show_seed": true,
                 "errorbar": true,
@@ -27,7 +27,7 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": true,
-            "pairs_plots": false,
+            "ggally_ggpairs": false,
             "graph_plots": [
                 "pc-gaussCItest",
                 "dualpc"

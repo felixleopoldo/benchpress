@@ -1,8 +1,8 @@
 library(ggplot2)
 library(dplyr)
 library(varhandle)
-toplot <- read.csv("../../../results/output/roc/pcalg_pc.csv")
-toplot2 <- read.csv("../../../results/output/roc/bnlearn_tabu.csv")
+toplot <- read.csv("../../../results/output/benchmarks/pcalg_pc.csv")
+toplot2 <- read.csv("../../../results/output/benchmarks/bnlearn_tabu.csv")
 
 toplot <- dplyr::bind_rows(toplot, toplot2)
 

@@ -1,41 +1,41 @@
 # This file contains rules for the different evaluation types.
 
-rule combine_roc_data:
+rule combine_benchmarks_data:
     input:
         "workflow/scripts/evaluation/combine_ROC_data.R",
         "workflow/scripts/evaluation/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
-        algs=active_algorithm_files("roc") # It should maybe be stated there which kind of roc to be considered..
+        algs=active_algorithm_files("benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
     output:
-        csv="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"ROC_data.csv",
-        joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"joint_benchmarks.csv"
+        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
+        joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
     shell:        
         "Rscript workflow/scripts/evaluation/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
-rule roc:
+rule benchmarks:
     input:
         "workflow/scripts/evaluation/plot_ROC.R",
         "workflow/scripts/evaluation/run_summarise.R",
         "workflow/Snakefile",
         config=configfilename,
-        csv="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"ROC_data.csv",
-        raw_bench="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] +"joint_benchmarks.csv"
+        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
+        raw_bench="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
     output: # somewhere we have to demand this file
-        temp(touch("results/output/roc/roc.done")),
-        fpr_tpr_pattern="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_pattern.png",
-        FPRp_FNR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPRp_FNR_skel.png",
-        fnr_fprp_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FNR_FPR_skel.png",
-        roc_FPRp_TPR_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "FPR_TPR_skel.png",
-        #elapsed_time="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ellapsed_time.png",
-        elapsed_time_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "elapsed_time_joint.png",
-        graph_type="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "graph_type.png",
-        #SHD_cpdag="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag.png",
-        SHD_cpdag_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "SHD_cpdag_joint.png",
-        f1_skel_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel_joint.png",
-        #f1_skel="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "f1_skel.png",
-        #ntests="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests.png"
-        ntests_joint="results/output/roc/"+config["benchmark_setup"]["evaluation"]["roc"]["filename_prefix"] + "ntests_joint.png"
+        temp(touch("results/output/benchmarks/benchmarks.done")),
+        fpr_tpr_pattern="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_pattern.png",
+        FPRp_FNR_skel="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPRp_FNR_skel.png",
+        fnr_fprp_skel="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FNR_FPR_skel.png",
+        roc_FPRp_TPR_skel="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_skel.png",
+        #elapsed_time="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ellapsed_time.png",
+        elapsed_time_joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "elapsed_time_joint.png",
+        graph_type="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "graph_type.png",
+        #SHD_cpdag="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "SHD_cpdag.png",
+        SHD_cpdag_joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "SHD_cpdag_joint.png",
+        f1_skel_joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "f1_skel_joint.png",
+        #f1_skel="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "f1_skel.png",
+        #ntests="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ntests.png"
+        ntests_joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ntests_joint.png"
     script:
         "../scripts/evaluation/plot_ROC.R"
 
@@ -492,10 +492,10 @@ rule pairs:
         "workflow/scripts/utils/pairs.R",
         pairsplots=pairs() # This will not trigger the rule if these files have already been generated.
     output:
-        temp(touch("results/output/pairs_plots/pairs_plots.done"))
+        temp(touch("results/output/ggally_ggpairs/ggally_ggpairs.done"))
     run:
         for i,f in enumerate(input.pairsplots):
-            shell("cp "+f+" results/output/pairs_plots/pairs_" +str(i+1) +".png")
+            shell("cp "+f+" results/output/ggally_ggpairs/pairs_" +str(i+1) +".png")
 
 # This is actually a quite general rule.
 rule bnlearn_graphvizcompare:
