@@ -8,11 +8,19 @@
 
 ### Objects
 
+*   [ParallelDG item](./config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg-paralleldg-item.md "Parallel Sampling of decomposable graphs with log-linear decomposable model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG/items`
+
+*   [ParallelDG item](./config-definitions-paralleldg-item.md "Parallel Sampling of decomposable graphs with log-linear decomposable model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/parallelDG`
+
 *   [bdgraph_rgwish item](./config-properties-resources-properties-parameters-properties-bdgraph_rgwish-bdgraph_rgwish-item.md "Parameter setting for a G-Wishart model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/bdgraph_rgwish/items`
 
 *   [bdgraph_rgwish item](./config-definitions-bdgraph_rgwish-item.md "Parameter setting for a G-Wishart model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish`
 
 *   [benchmark_setup](./config-properties-benchmark_setup.md "Defines the actual benchmarking setup, where the resources are references by their corresponding id") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup`
+
+*   [benchmarks item](./config-properties-benchmark_setup-properties-evaluation-properties-benchmarks-item.md "ROC item") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks`
+
+*   [benchmarks item](./config-definitions-benchmarks-item.md "ROC item") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/benchmarks`
 
 *   [bidag_itsearch item](./config-properties-resources-properties-structure_learning_algorithms-properties-bidag_itsearch-bidag_itsearch-item.md "Iterative search +1 algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_itsearch/items`
 
@@ -143,10 +151,6 @@
 *   [rblip_asobs item](./config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs-rblip_asobs-item.md "Blip object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs/items`
 
 *   [rblip_asobs item](./config-definitions-rblip_asobs-item.md "Blip object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/rblip_asobs`
-
-*   [roc item](./config-properties-benchmark_setup-properties-evaluation-properties-roc-item.md "ROC item") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc`
-
-*   [roc item](./config-definitions-roc-item.md "ROC item") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/roc`
 
 *   [sem_params item](./config-properties-resources-properties-parameters-properties-sem_params-sem_params-item.md "Parameter setting for sampling SEM params") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/sem_params/items`
 
@@ -534,6 +538,12 @@
 
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
 *   [nonnegint list](./config-definitions-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonnegintlist`
 
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
@@ -617,6 +627,16 @@
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
@@ -1036,11 +1056,17 @@
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
 *   [notears](./config-properties-resources-properties-graph-properties-notears.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears`
 
 *   [notears](./config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "Notears objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears`
 
 *   [notears_parameters_sampling](./config-properties-resources-properties-parameters-properties-notears_parameters_sampling.md "List of notears id's") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters/properties/notears_parameters_sampling`
+
+*   [parallelDG](./config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg.md "List of parallelDG objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG`
 
 *   [pcalg_pc](./config-properties-resources-properties-structure_learning_algorithms-properties-pcalg_pc.md "PC algorithm objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/pcalg_pc`
 

@@ -18,7 +18,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 
 ```json
 {
-  "roc": {
+  "benchmarks": {
     "filename_prefix": "example/",
     "show_seed": false,
     "errorbar": true,
@@ -80,34 +80,34 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 
 | Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                             |
 | :------------------------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [roc](#roc)                                 | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")                                                                            |
+| [benchmarks](#benchmarks)                   | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")                                                              |
 | [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
 | [graph_true_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
-| [ggally_ggpairs](#ggally_ggpairs)                 | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")                 |
+| [ggally_ggpairs](#ggally_ggpairs)           | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")           |
 | [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
 | [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
 | [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
 | [mcmc_autocorr_plots](#mcmc_autocorr_plots) | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_autocorr_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_autocorr_plots") |
 
-## roc
+## benchmarks
 
 ROC item
 
-`roc`
+`benchmarks`
 
 *   is required
 
-*   Type: `object` ([roc item](config-definitions-roc-item.md))
+*   Type: `object` ([benchmarks item](config-definitions-benchmarks-item.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-roc-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/roc")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")
 
-### roc Type
+### benchmarks Type
 
-`object` ([roc item](config-definitions-roc-item.md))
+`object` ([benchmarks item](config-definitions-benchmarks-item.md))
 
-### roc Examples
+### benchmarks Examples
 
 ```json
 {

@@ -21,6 +21,7 @@ The available structure learning algorithms
 | [mylib_myalg](#mylib_myalg)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")                   |
 | [gcastle_notears](#gcastle_notears)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears")           |
 | [trilearn_pgibbs](#trilearn_pgibbs)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")           |
+| [parallelDG](#paralleldg)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG")                     |
 | [rblip_asobs](#rblip_asobs)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")                   |
 | [notears](#notears)                           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears")                           |
 | [gobnilp](#gobnilp)                           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp")                           |
@@ -114,6 +115,28 @@ List of trilearn objects
 `object[]` ([trilearn_pgibbs item](config-definitions-trilearn_pgibbs-item.md))
 
 ### trilearn_pgibbs Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## parallelDG
+
+List of parallelDG objects
+
+`parallelDG`
+
+*   is optional
+
+*   Type: `object[]` ([ParallelDG item](config-definitions-paralleldg-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG")
+
+### parallelDG Type
+
+`object[]` ([ParallelDG item](config-definitions-paralleldg-item.md))
+
+### parallelDG Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 

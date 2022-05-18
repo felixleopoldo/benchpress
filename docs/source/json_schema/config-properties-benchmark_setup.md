@@ -81,7 +81,7 @@ unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md
 
 ```json
 {
-  "roc": {
+  "benchmarks": {
     "filename_prefix": "example/",
     "show_seed": false,
     "errorbar": true,
