@@ -19,6 +19,7 @@ The available structure learning algorithms
 | Property                                      | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                         |
 | :-------------------------------------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [mylib_myalg](#mylib_myalg)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")                   |
+| [gcastle_notears](#gcastle_notears)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears")           |
 | [trilearn_pgibbs](#trilearn_pgibbs)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")           |
 | [rblip_asobs](#rblip_asobs)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")                   |
 | [notears](#notears)                           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears")                           |
@@ -69,6 +70,28 @@ List of mylib_myalg objects
 `object[]` ([mylib_myalg item](config-definitions-mylib_myalg-item.md))
 
 ### mylib_myalg Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## gcastle_notears
+
+List of gcastle_notears objects
+
+`gcastle_notears`
+
+*   is optional
+
+*   Type: `object[]` ([gcastle_notears item](config-definitions-gcastle_notears-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears")
+
+### gcastle_notears Type
+
+`object[]` ([gcastle_notears item](config-definitions-gcastle_notears-item.md))
+
+### gcastle_notears Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 

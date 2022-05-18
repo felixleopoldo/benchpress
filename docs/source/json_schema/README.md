@@ -92,6 +92,10 @@
 
 *   [data item](./config-definitions-data-item.md "Description of the data model and sampling setup") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict`
 
+*   [gcastle_notears item](./config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears-gcastle_notears-item.md "gcastle_notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears/items`
+
+*   [gcastle_notears item](./config-definitions-gcastle_notears-item.md "gcastle_notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears`
+
 *   [gg99\_singlepair item](./config-properties-resources-properties-structure_learning_algorithms-properties-gg99\_singlepair-gg99\_singlepair-item.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair/items`
 
 *   [gg99\_singlepair item](./config-definitions-gg99\_singlepair-item.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair`
@@ -345,6 +349,8 @@
 *   [bnlearn_tabu](./config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_tabu.md "Tabu search objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_tabu`
 
 *   [data](./config-properties-benchmark_setup-properties-data.md "The data setup for the study") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/data`
+
+*   [gcastle_notears](./config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "List of gcastle_notears objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears`
 
 *   [gg99\_singlepair](./config-properties-resources-properties-structure_learning_algorithms-properties-gg99\_singlepair.md "Guidici & Green parametrisarion") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair`
 
@@ -826,7 +832,19 @@
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
 *   [nonnegnumlist](./config-definitions-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonnegnumlist`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
