@@ -96,7 +96,7 @@
             "parallelDG": [
                 {
                     "id": "parallelDG_test",
-                    "M": 10000,
+                    "M": 100000,
                     "R": 100,
                     "pseudo_obs": 1.0,
                     "datatype": "continuous",

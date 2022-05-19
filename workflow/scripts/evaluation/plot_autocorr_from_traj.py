@@ -126,7 +126,7 @@ else:
             columns=df2.columns).fillna(method="ffill")
 
         if snakemake.wildcards["thinning"] != "None":
-            dfplot = df2[int(snakemake.wildcards["burn_in"])                     :][::int(snakemake.wildcards["thinning"])]
+            dfplot = df2[int(snakemake.wildcards["burn_in"]):][::int(snakemake.wildcards["thinning"])]
         else:
             dfplot = df2[int(snakemake.wildcards["burn_in"]):]
 
