@@ -203,7 +203,7 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 | PGibbs [[20]](#20)                | DG    | Python   | trilearn            | 1.2.3    | trilearn_pgibbs      |
 | GG99 single pair [[18]](#18)      | DG    | Java     | A. Thomas           | -        | gg99_singlepair      |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | A. Thomas           | -        | gt13_multipair       |
-| Parallel DG                       | DG    | Python   | parallelDG          | 0.2.2    | parallelDG           |
+| Parallel DG                       | DG    | Python   | parallelDG          | 0.3      | parallelDG           |
 | GLasso [[31]](#31)                | UG    | Python   | scikit-learn        | 0.22.1   | sklearn_glasso       |
 
 
@@ -211,11 +211,11 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 
 | Function                                  | Language | Library  | Module id           |
 |-------------------------------------------|----------|----------|---------------------|
-| Plot data with ggpairs                    | R        | GGally   | ggally_ggpairs         |
+| Plot data with ggpairs                    | R        | GGally   | ggally_ggpairs      |
 | Plot true graphs                          | -        | graphviz | graph_true_plots    |
 | Plot true graphs properties               | R        | ggplot2  | graph_true_stats    |
 | Plot estimated graphs                     | -        | graphviz | graph_plots         |
-| Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  | benchmarks                 |
+| Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  | benchmarks          |
 | MCMC mean graph                           | Python   | seaborn  | mcmc_heatmaps       |
 | MCMC auto-correlation                     | Python   | pandas   | mcmc_autocorr_plots |
 | MCMC trajectory                           | Python   | pandas   | mcmc_traj_plots     |
