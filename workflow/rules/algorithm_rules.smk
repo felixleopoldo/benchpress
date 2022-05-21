@@ -97,6 +97,9 @@ if "gcastle_notears" in pattern_strings:
 
     rule summarise_gcastle_notears:    
         input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data = summarise_alg_input_data_path(),
+            adjmat_true = summarise_alg_input_adjmat_true_path(),
             adjmat_est = summarise_alg_input_adjmat_est_path("gcastle_notears"),
             time = summarise_alg_input_time_path("gcastle_notears"),
             ntests = summarise_alg_input_ntests_path("gcastle_notears")
