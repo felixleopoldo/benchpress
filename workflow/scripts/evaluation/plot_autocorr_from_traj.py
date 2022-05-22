@@ -106,7 +106,12 @@ else:
         df2 = df[["index", "size"]][2:].set_index("index")
 
         df2 = df2.reindex(newindex).reset_index().reindex(
-            columns=df2.columns).fillna(method="ffill")
+            columns=df2.columns)
+        # incase series index doens't start at 0
+        if not np.char.isnumeric(['size'][0]):
+            df2.at[0,'size'] = int(0)
+
+        df2 = df2.fillna(method="ffill")
 
         if snakemake.wildcards["thinning"] != "None":
             dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):].iloc[::int(
@@ -123,8 +128,13 @@ else:
         # removes the two first rows.
         df2 = df[["index", "score"]][2:].set_index("index")
         df2 = df2.reindex(newindex).reset_index().reindex(
-            columns=df2.columns).fillna(method="ffill")
+            columns=df2.columns)
+        # incase series index doens't start at 0
+        if not np.char.isnumeric(['score'][0]):
+            df2.at[0,'score'] = int(0)
 
+        df2 = df2.fillna(method="ffill")
+        
         if snakemake.wildcards["thinning"] != "None":
             dfplot = df2[int(snakemake.wildcards["burn_in"]):][::int(snakemake.wildcards["thinning"])]
         else:
