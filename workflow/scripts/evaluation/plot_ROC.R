@@ -13,7 +13,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
      file.create(snakemake@output[["fpr_tpr_pattern"]])
      file.create(snakemake@output[["benchmarks_FPRp_TPR_skel"]])
      file.create(snakemake@output[["FPRp_FNR_skel"]])
-     cat("Time-out",file=snakemake@output[["elapsed_time_joint"]], sep="\n") # Copy time-out figure
+     cat("Time-out",file=snakemake@output[["elapsed_time_joint"]], sep="\n") 
      cat("Time-out",file=snakemake@output[["fnr_fprp_skel"]], sep="\n")
      cat("Time-out",file=snakemake@output[["ntests_joint"]], sep="\n")
      cat("Time-out",file=snakemake@output[["f1_skel_joint"]], sep="\n")     
@@ -27,11 +27,14 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     config <- fromJSON(file = snakemake@input[["config"]])
 
     param_annot <- config$benchmark_setup$evaluation$benchmarks$text
-    path <- config$benchmark_setup$evaluation$benchmarks$path    
+    path <- config$benchmark_setup$evaluation$benchmarks$path
     errorbar <- config$benchmark_setup$evaluation$benchmarks$errorbar
     scatter <- config$benchmark_setup$evaluation$benchmarks$scatter
     errorbarh <- config$benchmark_setup$evaluation$benchmarks$errorbarh
     show_seed <- config$benchmark_setup$evaluation$benchmarks$show_seed
+    xlim <- config$benchmark_setup$evaluation$benchmarks$xlim
+    ylim <- config$benchmark_setup$evaluation$benchmarks$ylim
+
 
 # Might have to go through all one by one to get the point text.
 # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
@@ -96,7 +99,15 @@ gg  <- ggplot() + {
           )
   }
 } +
-facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
+    if (!is.null(xlim)){
+        xlim(xlim[1], xlim[2])
+    }
+} + {
+    if (!is.null(ylim)){
+        ylim(ylim[1], ylim[2])
+    }
+} +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (pattern graph)") +
@@ -166,7 +177,15 @@ gg  <- ggplot() + {
           )
   }
  } +
-facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +  {
+    if (!is.null(xlim)){
+        xlim(xlim[1], xlim[2])
+    }
+} + {
+    if (!is.null(ylim)){
+        ylim(ylim[1], ylim[2])
+    }
+} +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (undirected skeleton)") +
@@ -228,7 +247,15 @@ gg  <- ggplot() + {
           )
   }
 } +
-facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
+    if (!is.null(xlim)){
+        xlim(xlim[1], xlim[2])
+    }
+} + {
+    if (!is.null(ylim)){
+        ylim(ylim[1], ylim[2])
+    }
+} +
 xlab("FPRp") +
 ylab("FNR") +
 ggtitle("Median FPRp/FNR (undirected skeleton)") +
@@ -289,7 +316,15 @@ gg  <- ggplot() + {
         )
   }
 } +
-facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
+    if (!is.null(xlim)){
+        xlim(xlim[1], xlim[2])
+    }
+} + {
+    if (!is.null(ylim)){
+        ylim(ylim[1], ylim[2])
+    }
+} +
 ylab("FPR") +
 xlab("FNR") +
 ggtitle("Median FNR/FPRp (undirected skeleton)") +
@@ -380,9 +415,16 @@ ggplot() + {
             aes(y=time, x=interaction(curve_param,curve_value,id),
                 label=is_outlier, col=id),na.rm=TRUE,nudge_x=0.0)
     }
-}  +
-
-  facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") +
+}  + 
+facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") + {
+    if (!is.null(xlim)){
+        xlim(xlim[1], xlim[2])
+    }
+    } + {
+    if (!is.null(ylim)){
+        ylim(ylim[1], ylim[2])
+    }
+    } +
   ggtitle("Elapsed time") +
   theme_bw() +
   xlab("Parameter.value.id") +

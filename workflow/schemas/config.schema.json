@@ -1054,6 +1054,44 @@
                 "filename_prefix": {
                     "type": "string"
                 },
+                "xlim": {
+                    "title": "xlim",
+                    "description": "x-axis limits in ROC plots.",
+                    "anyOf": [
+                        {
+                            "title": "range",
+                            "description": "List of 2 integers [a, b], where a<=b.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "maxLength": 2,
+                            "minLength": 2
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "ylim": {
+                    "title": "ylim",
+                    "description": "y-axis limits in ROC plots.",
+                    "anyOf": [
+                        {
+                            "title": "range",
+                            "description": "List of 2 integers [a, b], where a<=b.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "maxLength": 2,
+                            "minLength": 2
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "show_seed": {
                     "type": "boolean"
                 },
@@ -1087,7 +1125,11 @@
                 {
                     "filename_prefix": "example/",
                     "point": true,
+                    "show_seed": true,
                     "errorbar": true,
+                    "errorbarh": false,
+                    "xrange": [0,1],
+                    "yrange": [0,1],
                     "path": true,
                     "text": false,
                     "ids": [
@@ -1718,7 +1760,7 @@
                     "id": "trilearn-cont",
                     "datatype": "continuous",
                     "M": 10000,
-                    "R":100,
+                    "R": 100,
                     "pseudo_obs": 1,
                     "mcmc_seed": 1,
                     "timeout": null
