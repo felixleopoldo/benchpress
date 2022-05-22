@@ -15,12 +15,14 @@
             "benchmarks": {
                 "filename_prefix": "section5.4/",
                 "show_seed": false,
+                "xlim": [0, 0.4],
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
+                    "notears-l2",
                     "gobnilp-bge",
                     "gfci-sem-bic-fisher-z",
                     "interiamb-zf",
@@ -186,6 +188,22 @@
             ]
         },
         "structure_learning_algorithms": {
+            "gcastle_notears": [
+                {
+                    "id": "notears-l2",
+                    "lambda1": 0.1,
+                    "loss_type": "l2",
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": [
+                        0.075,
+                        0.1,
+                        0.25                    
+                    ],
+                    "timeout": null
+                }
+            ],
             "giudice_dualpc": [
                 {
                     "id": "dualpc",

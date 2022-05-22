@@ -15,6 +15,7 @@
             "benchmarks": {
                 "filename_prefix": "section5.1/",
                 "show_seed": false,
+                "xlim": [0, 0.4],
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
@@ -66,7 +67,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        
+                        320,
                         640
                     ]
                 },

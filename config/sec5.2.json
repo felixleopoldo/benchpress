@@ -15,12 +15,14 @@
             "benchmarks": {
                 "filename_prefix": "section5.2/",
                 "show_seed": false,
+                "xlim": [0, 0.4],
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
+                    "notears-l2",
                     "gobnilp-bge",
                     "interiamb-zf",
                     "gs-zf",
@@ -195,6 +197,22 @@
             ]
         },
         "structure_learning_algorithms": {
+            "gcastle_notears": [
+                {
+                    "id": "notears-l2",
+                    "lambda1": 0.1,
+                    "loss_type": "l2",
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": [
+                        0.05,
+                        0.1,
+                        0.25                    
+                    ],
+                    "timeout": null
+                }
+            ],
             "giudice_dualpc": [
                 {
                     "id": "dualpc",
@@ -306,17 +324,6 @@
                     ],
                     "cores": 1,
                     "verbose_level": 0
-                }
-            ],
-            "notears": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad",
-                    "timeout": null
                 }
             ],
             "gobnilp": [
