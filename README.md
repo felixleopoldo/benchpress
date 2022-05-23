@@ -32,7 +32,7 @@ The following main functionalities are provided by Benchpress
 - Linux (Singularity currently only has a Beta release for OSX which is not enough)
 
 #### Notes
-On some systems, you might also have to explicitly install squash-tools. This can be done using conda as
+Some systems requiere explicit installation of squash-tools. Using conda it can be installed as
 
 `$ conda install -c conda-forge squash-tools`
 
@@ -47,7 +47,7 @@ $ cd benchpress
 
 ## Usage
 
-Benchpress supports five different data scenarios built from combining different sources of graph parameters and data.
+Benchpress supports five different data scenarios, built from combining different sources of graph parameters and data.
 
 
 |     | Graph     | Parameters | Data      |
@@ -58,8 +58,8 @@ Benchpress supports five different data scenarios built from combining different
 | IV  | Fixed     | Generated  | Generated |
 | V   | Generated | Generated  | Generated |
 
-Have a look in [resources/](resources) to see which fixed graphs, parameters, and datasets are already available. 
-You will e.g. find all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
+The directory [resources/](resources) contains the fixed graphs, parameters, and datasets that are already available. 
+It containts, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
 The methods to generate graphs, parameters and data are listed further down.
 
 #### Example study
@@ -134,9 +134,9 @@ if "mylib_myalg" in pattern_strings:
         script:            
             "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
-If R is not installed on your system, you may change None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
+If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
 
-To upload your algorithms to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+To upload your algorithm to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
@@ -164,10 +164,10 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 
 
 #### Data modules
-| Method              | Language | Module id |
-|---------------------|----------|-----------|
-| I.I.D. data samples | -        | iid       |
-| Fixed data file     | .csv     | -         |
+| Method              | Language | Module id                                                                                                              |
+|---------------------|----------|------------------------------------------------------------------------------------------------------------------------|
+| I.I.D. data samples | -        | [iid](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-iid.md)       |
+| Fixed data file     | .csv     | -                                                                                                                      |
 
 #### Structure learning algorithms
 
