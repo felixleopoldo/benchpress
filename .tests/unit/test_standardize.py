@@ -22,18 +22,21 @@ def test_standardize():
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print("results/data/adjmat=/bdgraph_graphsim/p=50/graph=circle/class=None/size=None/prob=0.2/seed=1/parameters=/intra-class/rho=0.4/sigma2=1.0/seed=1/data=/iid/standardized=False/n=1000/seed=1.csv", file=sys.stderr)
+        print("results/data/adjmat=/pcalg_randdag/max_parents=5/n=20/d=4/par1=None/par2=None/method=er/DAG=True/seed=1/parameters=/sem_params/min=0.25/max=1/seed=1/data=/iid/standardized=True/n=300/seed=1.csv", file=sys.stderr)
 
         # Run the test job.
         sp.check_output([
             "python",
             "-m",
             "snakemake", 
-            "results/data/adjmat=/bdgraph_graphsim/p=50/graph=circle/class=None/size=None/prob=0.2/seed=1/parameters=/intra-class/rho=0.4/sigma2=1.0/seed=1/data=/iid/standardized=False/n=1000/seed=1.csv",
-            "-F", 
+            "results/data/adjmat=/pcalg_randdag/max_parents=5/n=20/d=4/par1=None/par2=None/method=er/DAG=True/seed=1/parameters=/sem_params/min=0.25/max=1/seed=1/data=/iid/standardized=True/n=300/seed=1.csv",
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])

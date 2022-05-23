@@ -22,18 +22,21 @@ def test_graph_plots():
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print("results/output/graph_plots/graph_plots.done", file=sys.stderr)
+        print("results/output/graph_plots/graphs results/output/graph_plots/adjmats results/output/graph_plots/csvs results/output/graph_plots/graphvizcompare results/output/graph_plots/graph_plots.done", file=sys.stderr)
 
         # Run the test job.
         sp.check_output([
             "python",
             "-m",
             "snakemake", 
-            "results/output/graph_plots/graph_plots.done",
-            "-F", 
+            "results/output/graph_plots/graphs results/output/graph_plots/adjmats results/output/graph_plots/csvs results/output/graph_plots/graphvizcompare results/output/graph_plots/graph_plots.done",
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])

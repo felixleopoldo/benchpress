@@ -30,10 +30,13 @@ def test_mcmc_autocorr_plots():
             "-m",
             "snakemake", 
             "results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done",
-            "-F", 
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])

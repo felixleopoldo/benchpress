@@ -30,10 +30,13 @@ def test_mcmc_traj_plots():
             "-m",
             "snakemake", 
             "results/output/mcmc_traj_plots/mcmc_traj_plots.done",
-            "-F", 
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])

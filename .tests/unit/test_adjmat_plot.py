@@ -22,18 +22,21 @@ def test_adjmat_plot():
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print("results/adjmat_estimate/adjmat=/bdgraph_graphsim/p=50/graph=circle/class=None/size=None/prob=0.2/seed=1/parameters=/intra-class/rho=0.4/sigma2=1.0/seed=1/data=/iid/standardized=False/n=1000/algorithm=/order_mcmc/alg_params=/startspace_algorithm=itsearch/alg_params=/estimate=endspace/MAP=False/plus1it=6/posterior=0.5/scoretype=bge/chi=None/edgepf=None/am=0.1/aw=None/softlimit=9/hardlimit=14/alpha=0.01/gamma=1/cpdag=False/mergetype=skeleton/plus1=True/scoretype=bge/chi=None/edgepf=None/aw=None/am=0.1/alpha=0.05/gamma=1/stepsave=None/iterations=None/MAP=False/cpdag=False/mcmc_seed=1/estimation_method/threshold=0.5/burnin=0/seed=1/adjmat.eps", file=sys.stderr)
+        print("results/adjmat_estimate/adjmat=/pcalg_randdag/max_parents=5/n=20/d=4/par1=None/par2=None/method=er/DAG=True/seed=1/parameters=/sem_params/min=0.25/max=1/seed=1/data=/iid/standardized=True/n=300/algorithm=/tetrad_fges/alg_params=/faithfulnessAssumed=True/score=sem-bic/datatype=continuous/samplePrior=1/structurePrior=1/penaltyDiscount=0.75/timeout=None/seed=1/adjmat.eps", file=sys.stderr)
 
         # Run the test job.
         sp.check_output([
             "python",
             "-m",
             "snakemake", 
-            "results/adjmat_estimate/adjmat=/bdgraph_graphsim/p=50/graph=circle/class=None/size=None/prob=0.2/seed=1/parameters=/intra-class/rho=0.4/sigma2=1.0/seed=1/data=/iid/standardized=False/n=1000/algorithm=/order_mcmc/alg_params=/startspace_algorithm=itsearch/alg_params=/estimate=endspace/MAP=False/plus1it=6/posterior=0.5/scoretype=bge/chi=None/edgepf=None/am=0.1/aw=None/softlimit=9/hardlimit=14/alpha=0.01/gamma=1/cpdag=False/mergetype=skeleton/plus1=True/scoretype=bge/chi=None/edgepf=None/aw=None/am=0.1/alpha=0.05/gamma=1/stepsave=None/iterations=None/MAP=False/cpdag=False/mcmc_seed=1/estimation_method/threshold=0.5/burnin=0/seed=1/adjmat.eps",
-            "-F", 
+            "results/adjmat_estimate/adjmat=/pcalg_randdag/max_parents=5/n=20/d=4/par1=None/par2=None/method=er/DAG=True/seed=1/parameters=/sem_params/min=0.25/max=1/seed=1/data=/iid/standardized=True/n=300/algorithm=/tetrad_fges/alg_params=/faithfulnessAssumed=True/score=sem-bic/datatype=continuous/samplePrior=1/structurePrior=1/penaltyDiscount=0.75/timeout=None/seed=1/adjmat.eps",
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])

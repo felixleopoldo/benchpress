@@ -2,80 +2,60 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "circle",
-                "parameters_id": "intra-class",
-                "data_id": "nonstandardized",
+                "graph_id": "avneigs4_p20",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
                 "seed_range": [
-                    1,
-                    1
+                    1,1
+                    
                 ]
             }
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "circle/",
-                "point": true,
+                "filename_prefix": "example/",
+                "show_seed": false,
                 "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
                 "path": true,
-                "text": true,
-                "ids": []
+                "text": false,
+                "ids": [
+                    "fges-sem-bic"
+                   
+                ]
             },
-            "adjmat_true_plots": false,
-            "graph_true_plots": false,
-            "adjmat_plots": [
-                "omcmc_itsample-bge",
-                "bc_b0001-cont",
-                "sklearn_glasso",
-                "trilearn-cont"
-            ],
+            "graph_true_plots": true,
+            "graph_true_stats": true,
+            "ggally_ggpairs": true,
             "graph_plots": [
-                "omcmc_itsample-bge",
-                "bc_b0001-cont",
-                "sklearn_glasso"
+                "fges-sem-bic"
             ],
             "mcmc_traj_plots": [
                 {
-                    "id": "mbc_clq1-cont",
-                    "burn_in": 400,
-                    "thinning": 1000,
-                    "functional": [
-                        "score",
-                        "size"
-                    ]
-                },
-                {
-                    "id": "trilearn-cont",
+                    "id": "omcmc_itsample-bge",
                     "burn_in": 0,
-                    "thinning": null,
+                    "thinning": 1,
                     "functional": [
                         "score",
                         "size"
-                    ]
-            
+                    ],
+                    "active": false
                 }
             ],
             "mcmc_heatmaps": [
                 {
-                    "id": "bc_b0001-cont",
-                    "burn_in": 200000,
-                    "active": true
-                },
-                {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
                     "active": false
-                },
-                {
-                    "id": "trilearn-cont",
-                    "burn_in": 0
                 }
             ],
             "mcmc_autocorr_plots": [
                 {
-                    "id": "bc_b0001-cont",
-                    "burn_in": 400,
-                    "thinning": 1000,
-                    "lags": 10,
+                    "id": "omcmc_itsample-bge",
+                    "burn_in": 0,
+                    "thinning": 1,
+                    "lags": 50,
                     "functional": [
                         "score",
                         "size"
@@ -92,46 +72,7 @@
                     "id": "standardized",
                     "standardized": true,
                     "sample_sizes": [
-                        1000
-                    ]
-                },
-                {
-                    "id": "nonstandardized",
-                    "standardized": false,
-                    "sample_sizes": [
-                        1000
-                    ]
-                },
-                {
-                    "id": "example1",
-                    "standardized": false,
-                    "sample_sizes": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example2",
-                    "standardized": true,
-                    "sample_sizes": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example3",
-                    "standardized": false,
-                    "sample_sizes": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example4",
-                    "standardized": true,
-                    "sample_sizes": [
-                        320,
-                        640
+                        300
                     ]
                 }
             ]
@@ -139,493 +80,55 @@
         "graph": {
             "pcalg_randdag": [
                 {
-                    "id": "avneigs4",
+                    "id": "avneigs4_p20",
                     "max_parents": 5,
-                    "n": 80,
+                    "n": 20,
                     "d": 4,
                     "par1": null,
                     "par2": null,
-                    "method": "er"
-                }
-            ],
-            "trilearn_cta": [
-                {
-                    "id": "trilearn_cta",
-                    "order": 50,
-                    "alpha": 0.5,
-                    "beta": 0.7
-                }
-            ],
-            "bandmat": [
-                {
-                    "id": "AR2",
-                    "bandwidth": 2,
-                    "dim": 50
-                }
-            ],
-            "rand_bandmat": [
-                {
-                    "id": "AR1-5",
-                    "max_bandwidth": 5,
-                    "dim": 50
-                }
-            ],
-            "bdgraph_graphsim": [
-                {
-                    "id": "circle",
-                    "p": 50,
-                    "graph": "circle",
-                    "class": null,
-                    "size": null,
-                    "prob": 0.2
+                    "method": "er",
+                    "DAG": true
                 }
             ]
         },
         "parameters": {
-            "bin_bn": [
-                {
-                    "id": "binbn",
-                    "min": 0.1,
-                    "max": 0.9
-                }
-            ],
             "sem_params": [
                 {
                     "id": "SEM",
                     "min": 0.25,
                     "max": 1
                 }
-            ],
-            "trilearn_hyper-dir": [
-                {
-                    "id": "disc-loglin",
-                    "n_levels": 2,
-                    "pseudo_obs": 1.0
-                }
-            ],
-            "trilearn_intra-class": [
-                {
-                    "id": "intra-class",
-                    "rho": 0.4,
-                    "sigma2": 1.0
-                }
-            ],
-            "trilearn_g_inv_wishart": [
-                {
-                    "id": "giw",
-                    "dof": 1
-                }
-            ],
-            "bdgraph_rgwish": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold": 0.00000001
-                }
             ]
         },
         "structure_learning_algorithms": {
-            "trilearn_pgibbs": [
+            "mylib_myalg": [
                 {
-                    "id": "trilearn-cont",
-                    "datatype": "continuous",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "N": [
-                        50
-                    ],
-                    "M": 100,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "trilearn-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "N": [
-                        50
-                    ],
-                    "M": 1000,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": [
+                    "id": "testing_myalg",
+                    "myparam1": "somevalue",
+                    "myparam2": [
                         1,
                         2
                     ]
-                },
-                {
-                    "id": "trilearn05-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "N": 50,
-                    "M": 300,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1
-                }
-            ],
-            "sklearn_glasso": [
-                {
-                    "id": "sklearn_glasso",
-                    "mode": "cd",
-                    "alpha": [
-                        0.05,
-                        0.1
-                    ],
-                    "tol": 0.0004,
-                    "enet_tol": 0.0004,
-                    "precmat_threshold": 0.1,
-                    "max_iter": 100,
-                    "verbose": false,
-                    "assume_centered": false
-                }
-            ],
-            "rblip": [
-                {
-                    "id": "winasobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "winasobs",
-                    "indeg": 80,
-                    "time": [
-                        180
-                    ],
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose": 0
-                },
-                {
-                    "id": "asobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "asobs",
-                    "indeg": 80,
-                    "time": [
-                        180
-                    ],
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose": 0
-                }
-            ],
-            "notears": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad"
-                }
-            ],
-            "gobnilp": [
-                {
-                    "id": "gobnilp-bde",
-                    "continuous": false,
-                    "score_type": "BDeu",
-                    "plot": false,
-                    "palim": 3,
-                    "alpha_mu": null,
-                    "alpha_omega_minus_nvars": null,
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "prune": true
-                },
-                {
-                    "id": "gobnilp-bge",
-                    "continuous": true,
-                    "score_type": "BGe",
-                    "plot": false,
-                    "palim": 2,
-                    "alpha_mu": 1.0,
-                    "alpha_omega_minus_nvars": 2,
-                    "alpha": null,
-                    "prune": true
-                }
-            ],
-            "gt13_multipair": [
-                {
-                    "id": "bc_b0001-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        10
-                    ],
-                    "bscore": 0.001,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": null,
-                    "mcmc_seed": [
-                        1
-                    ]
-                },
-                {
-                    "id": "bc_b01-cont",
-                    "n_samples": 100000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        5,
-                        10
-                    ],
-                    "bscore": 0.1,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": null,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ]
-                },
-                {
-                    "id": "ep-cont",
-                    "n_samples": 100000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "ep",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": [
-                        1,
-                        2
-                    ],
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ]
-                },
-                {
-                    "id": "mbc_clq2-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "mbc",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 2,
-                    "sep": [
-                        4,
-                        8
-                    ],
-                    "penalty": null,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ]
-                },
-                {
-                    "id": "mbc_clq1-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "mbc",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 1,
-                    "sep": [
-                        1,
-                        2
-                    ],
-                    "penalty": null,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ]
-                },
-                {
-                    "id": "gt13_multipair-disc",
-                    "n_samples": [
-                        100000
-                    ],
-                    "datatype": "discrete",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "mcmc_seed": 1,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5
-                }
-            ],
-            "gg99_singlepair": [
-                {
-                    "id": "guidicigreen-cont",
-                    "n_samples": [
-                        1000000
-                    ],
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        0.9
-                    ],
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "guidicigreen-disc",
-                    "datatype": "discrete",
-                    "n_samples": [
-                        100000
-                    ],
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1
                 }
             ],
             "tetrad_fges": [
                 {
-                    "id": "tetrad_fges-sem-bic",
+                    "id": "fges-sem-bic",
                     "faithfulnessAssumed": true,
                     "score": "sem-bic",
                     "datatype": "continuous",
                     "samplePrior": 1,
                     "structurePrior": 1,
                     "penaltyDiscount": [
+                        0.75,
                         0.8,
                         1,
                         1.5
-                    ]
-                },
-                {
-                    "id": "tetrad_fges-bdeu",
-                    "faithfulnessAssumed": true,
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "samplePrior": [
-                        1,
-                        2
                     ],
-                    "structurePrior": 1,
-                    "penaltyDiscount": null
-                }
-            ],
-            "tetrad_fci": [
-                {
-                    "id": "tetrad_fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous"
-                },
-                {
-                    "id": "tetrad_fci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete"
-                }
-            ],
-            "tetrad_gfci": [
-                {
-                    "id": "tetrad_gfci-bdeu-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bdeu-score",
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
-                    "penaltyDiscount": null,
-                    "samplePrior": 1,
-                    "structurePrior": 1
-                },
-                {
-                    "id": "tetrad_gfci-sem-bic-fisher-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "structurePrior": 1
-                }
-            ],
-            "tetrad_rfci": [
-                {
-                    "id": "tetrad_rfci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous"
-                },
-                {
-                    "id": "tetrad_rfci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete"
+                    "timeout": null
                 }
             ],
             "pcalg_pc": [
-                {
-                    "id": "pc-binCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest"
-                },
                 {
                     "id": "pc-gaussCItest",
                     "alpha": [
@@ -643,150 +146,11 @@
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest"
-                },
-                {
-                    "id": "pcalg005",
-                    "alpha": 0.05,
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest"
-                },
-                {
-                    "id": "pcalg-disCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "disCItest"
-                }
-            ],
-            "bnlearn_mmhc": [
-                {
-                    "id": "mmhc-bde-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "mi",
-                    "score": "bde",
-                    "iss": 0.1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1
-                },
-                {
-                    "id": "mmhc-bge-zf",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bge",
-                    "test": "zf",
-                    "iss": 1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": null
-                }
-            ],
-            "bnlearn_interiamb": [
-                {
-                    "id": "bnlearn_interiamb-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false
-                },
-                {
-                    "id": "bnlearn_interiamb-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false
-                }
-            ],
-            "bnlearn_gs": [
-                {
-                    "id": "gs-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false
-                },
-                {
-                    "id": "gs-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false
+                    "indepTest": "gaussCItest",
+                    "timeout": null
                 }
             ],
             "bnlearn_tabu": [
-                {
-                    "id": "tabu-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1
-                },
                 {
                     "id": "tabu-bge",
                     "score": "bge",
@@ -801,230 +165,26 @@
                     "l": 5,
                     "k": 1,
                     "prior": "uniform",
-                    "beta": 1
-                }
-            ],
-            "bnlearn_hc": [
-                {
-                    "id": "hc-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
                     "beta": 1,
-                    "restart": 0,
-                    "perturb": 1
-                },
-                {
-                    "id": "hc-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1
+                    "timeout": null
                 }
             ],
             "bidag_itsearch": [
                 {
-                    "id": "itsearch_map-bde",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_map-bdecat",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_map-bge",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": [
-                        0.000248,
-                        0.022300,
-                        0.100000,
-                        0.448000,
-                        0.739000
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 15,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_map-bge_am01",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
                     "id": "itsearch_sample-bge",
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
-                    "plus1it": 6,
+                    "plus1it": 2,
                     "posterior": 0.5,
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": 2,
-                    "am": 0.1,
+                    "am": [
+                        0.01,
+                        0.1,
+                        1
+                    ],
                     "aw": null,
                     "softlimit": 9,
                     "hardlimit": 14,
@@ -1035,9 +195,10 @@
                 },
                 {
                     "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
                     "estimate": "endspace",
                     "MAP": false,
-                    "plus1it": 6,
+                    "plus1it": 3,
                     "posterior": 0.5,
                     "scoretype": "bge",
                     "chi": null,
@@ -1050,224 +211,9 @@
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsample-bge_am1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde_chi10_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 10,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
                 }
             ],
             "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itmap-bde",
-                    "startspace_algorithm": [
-                        "itsearch_map-bde"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "mcmc_seed": 1,
-                    "burnin": 0
-                },
-                {
-                    "id": "omcmc_itmap-bge",
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
-                    "plus1": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "threshold": [
-                        0.5,
-                        0.7
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "omcmc_pcalg005-bge",
-                    "startspace_algorithm": "pcalg005",
-                    "plus1": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
-                },
                 {
                     "id": "omcmc_itsample-bge",
                     "startspace_algorithm": [
@@ -1278,119 +224,21 @@
                     "chi": null,
                     "edgepf": null,
                     "aw": null,
-                    "am": [
-                        0.1
-                    ],
+                    "am": 0.1,
                     "alpha": 0.05,
                     "gamma": 1,
                     "stepsave": null,
                     "iterations": null,
                     "MAP": false,
                     "cpdag": false,
+                    "timeout": null,
+                    "mcmc_seed": 1,
                     "threshold": [
-                        0.5
+                        0.2,
+                        0.5,
+                        0.7
                     ],
-                    "burnin": 0,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ]
-                },
-                {
-                    "id": "omcmc_itsample-bde",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bde_chi01_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.1
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "omcmc_itsample-bdecat",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bdecat_chi01_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.1
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi1",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bde_chi1_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
-                },
-                {
-                    "id": "omcmc_itsample-bdecat_chi1",
-                    "startspace_algorithm": [
-                        "itsearch_sample-bdecat_chi1_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bdecat",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "mcmc_seed": 1
+                    "burnin": 0
                 }
             ]
         }

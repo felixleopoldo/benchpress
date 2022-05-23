@@ -1,0 +1,67 @@
+import json
+from jsonschema import validate
+import snakemake.utils
+import sys, getopt
+import shutil
+import filecmp
+from pathlib import Path
+import os
+from snakemake.utils import min_version
+
+# Have only thested with this version but it might work with previous version sa well.
+# To update using Mamba run e.g.
+# mamba update -c conda-forge -c bioconda snakemake=6.15.1
+
+min_version("6.15") 
+args = sys.argv
+
+
+# This is a workaround. In needed a variable for the configfilename
+# and this seemed to be the only way. But there are probably better ways.
+configfilename="config/config.json"
+i=0
+for arg in args:
+    if arg=="--configfile" or arg=="--configfiles": # This is strange
+        configfilename = args[i+1]
+        break
+    i+=1
+
+configfile: 
+    configfilename
+
+snakemake.utils.validate(config, 'schemas/config.schema.json')
+
+include: "rules/docker_images.smk"
+
+container:
+    docker_image("benchmark")
+
+# This function returns empty "trigger files" for the type of evaluations
+# that are used. Yes, this is ugly. Should maybe have a directory output instead. 
+def get_active_rules(wildcards):
+    rules = []
+    for key, val in config["benchmark_setup"]["evaluation"].items():
+        # Check if boolean or list or object wirh nonempty ids field. 
+        if isinstance(val, dict) and val["ids"] != []: # TODO: this was OrderedDict, so might have to impose order somewhere.
+            rules.append("results/output/"+key+"/"+key+".done")
+        if isinstance(val, bool) and val is True:
+            rules.append("results/output/"+key+"/"+key+".done")
+        if isinstance(val, list) and val != []:
+            rules.append("results/output/"+key+"/"+key+".done")
+    return rules
+
+rule all:
+    input: get_active_rules
+
+include: "rules/validate.smk"
+include: "rules/pattern_strings.smk"
+include: "rules/algorithm_strings.smk"
+include: "rules/helper_functions.smk"
+include: "rules/algorithm_shell_commands.smk"
+include: "rules/algorithm_summary_shell_command.smk"
+include: "rules/sample_adjmat.smk"
+include: "rules/sample_parameters.smk"
+include: "rules/sample_data.smk"
+include: "rules/algorithm_rules.smk"
+include: "rules/mylib_myalg.smk"
+include: "rules/evaluation.smk"

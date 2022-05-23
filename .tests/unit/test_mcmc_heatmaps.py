@@ -30,10 +30,13 @@ def test_mcmc_heatmaps():
             "-m",
             "snakemake", 
             "results/output/mcmc_heatmaps/mcmc_heatmaps.done",
-            "-F", 
+            "-f", 
             "-j1",
             "--keep-target-files",
+            "--configfile",
+            /home/felix/git/benchpress/config/config.json
     
+            "--use-singularity",
             "--directory",
             workdir,
         ])
