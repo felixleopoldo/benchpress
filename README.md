@@ -235,6 +235,9 @@ Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), D
 }
 ```
 
+## Contact
+
+Send an email to felix leopoldo rios at gmail com for questions.
 
 ## Contributing
 Contrubutions are very welcomed. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions. 
