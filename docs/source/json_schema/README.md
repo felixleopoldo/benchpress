@@ -1210,6 +1210,14 @@
 
 *   [range](./config-definitions-data-item-properties-seed_range-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/seed_range/anyOf/0`
 
+*   [range](./config-definitions-benchmarks-item-properties-xlim-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/benchmarks/properties/xlim/anyOf/0`
+
+*   [range](./config-definitions-benchmarks-item-properties-ylim-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/benchmarks/properties/ylim/anyOf/0`
+
+*   [range](./config-definitions-benchmarks-item-properties-xlim-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/benchmarks/properties/xlim/anyOf/0`
+
+*   [range](./config-definitions-benchmarks-item-properties-ylim-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/benchmarks/properties/ylim/anyOf/0`
+
 *   [range](./config-definitions-data-item-properties-seed_range-anyof-range.md "List of 2 integers \[a, b], where a<=b") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/seed_range/anyOf/0`
 
 *   [rblip_asobs](./config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "List of blip objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs`

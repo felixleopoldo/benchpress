@@ -20,12 +20,12 @@ Requirements
 Installation and usage
 **********************
 
-To download and run benchpress with the config file :download:`config/ex.json <../../config/ex.json>` type
+To download and run benchpress with the config file :download:`config/config.json <../../config/config.json>` type
 
 .. code-block:: bash
 
     $ git clone https://github.com/felixleopoldo/benchpress.git     
     $ cd benchpress
-    $ snakemake --cores all --use-singularity --configfile config/ex.json
+    $ snakemake --cores all --use-singularity --configfile config/config.json
 
 

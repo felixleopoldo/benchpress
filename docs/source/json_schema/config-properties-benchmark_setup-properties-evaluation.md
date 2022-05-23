@@ -113,7 +113,17 @@ ROC item
 {
   "filename_prefix": "example/",
   "point": true,
+  "show_seed": true,
   "errorbar": true,
+  "errorbarh": false,
+  "xrange": [
+    0,
+    1
+  ],
+  "yrange": [
+    0,
+    1
+  ],
   "path": true,
   "text": false,
   "ids": [
