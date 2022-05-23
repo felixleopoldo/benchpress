@@ -28,7 +28,7 @@ Parallel Sampling of decomposable graphs with log-linear decomposable model.
 }
 ```
 
-# parallelDG Properties
+# ParallelDG item Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                        |
 | :------------------------ | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

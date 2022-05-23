@@ -24,7 +24,7 @@ Parameter setting for a hyper Dirichlet distribution
 }
 ```
 
-# trilearn_hyper-dir Properties
+# trilearn_hyper-dir item Properties
 
 | Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                            |
 | :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

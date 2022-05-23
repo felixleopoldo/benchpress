@@ -40,7 +40,7 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 }
 ```
 
-# bnlearn_rsmax2 Properties
+# bnlearn_rsmax2 item Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :-------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
