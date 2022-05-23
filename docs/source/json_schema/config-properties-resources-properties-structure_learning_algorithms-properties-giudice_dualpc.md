@@ -1,7 +1,7 @@
-# giudice_dualpc Schema
+# dualpc Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc
 ```
 
 Dual PC algorithm objects
@@ -10,6 +10,6 @@ Dual PC algorithm objects
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
-## giudice_dualpc Type
+## dualpc Type
 
-`object[]` ([giudice_dualpc item](config-definitions-giudice_dualpc-item.md))
+`object[]` ([dualpc item](config-definitions-dualpc-item.md))

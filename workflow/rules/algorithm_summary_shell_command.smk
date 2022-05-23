@@ -286,7 +286,7 @@ def summarise_alg_shell(algorithm):
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname time          --colval `cat {input.time}` "  \
         " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
-    elif algorithm == "giudice_dualpc":
+    elif algorithm == "dualpc":
         return "Rscript workflow/scripts/evaluation/run_summarise.R " \
         "--adjmat_true {input.adjmat_true} " \
         "--adjmat_est {input.adjmat_est} " \

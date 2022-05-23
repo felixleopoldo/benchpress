@@ -758,38 +758,38 @@ if "pcalg_pc" in pattern_strings:
         script:
             "../scripts/evaluation/join_csv_files.R"
 
-if "giudice_dualpc" in pattern_strings:
-    rule giudice_dualpc:
+if "dualpc" in pattern_strings:
+    rule dualpc:
         input:
-            "workflow/scripts/structure_learning_algorithms/giudice_dualpc.R",
+            "workflow/scripts/structure_learning_algorithms/dualpc.R",
             data = alg_input_data()
         output:
-            adjmat = alg_output_adjmat_path("giudice_dualpc"),
-            time = alg_output_time_path("giudice_dualpc")
+            adjmat = alg_output_adjmat_path("dualpc"),
+            time = alg_output_time_path("dualpc")
         container:
             docker_image("dualpc")
         script:
-            "../scripts/structure_learning_algorithms/giudice_dualpc.R"
+            "../scripts/structure_learning_algorithms/dualpc.R"
 
-    rule summarise_giudice_dualpc:
+    rule summarise_dualpc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data = summarise_alg_input_data_path(),
             adjmat_true = summarise_alg_input_adjmat_true_path(),
-            adjmat_est = summarise_alg_input_adjmat_est_path("giudice_dualpc"),
-            time = summarise_alg_input_time_path("giudice_dualpc")
+            adjmat_est = summarise_alg_input_adjmat_est_path("dualpc"),
+            time = summarise_alg_input_time_path("dualpc")
         output:
-            res = summarise_alg_output_res_path("giudice_dualpc")
+            res = summarise_alg_output_res_path("dualpc")
         shell:
-            summarise_alg_shell("giudice_dualpc")
+            summarise_alg_shell("dualpc")
 
-    rule join_summaries_giudice_dualpc:
+    rule join_summaries_dualpc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("giudice_dualpc")
+            res=join_string_sampled_model("dualpc")
         output:
-            join_summaries_output("giudice_dualpc")
+            join_summaries_output("dualpc")
         script:
             "../scripts/evaluation/join_csv_files.R"
 

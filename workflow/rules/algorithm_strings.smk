@@ -42,9 +42,9 @@ if "tetrad_rfci" in pattern_strings:
 if "pcalg_pc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["pcalg_pc"], **val)  
                         for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})
-if "giudice_dualpc" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["giudice_dualpc"], **val)  
-                        for val in config["resources"]["structure_learning_algorithms"]["giudice_dualpc"]})
+if "dualpc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["dualpc"], **val)  
+                        for val in config["resources"]["structure_learning_algorithms"]["dualpc"]})
 if "bnlearn_mmhc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bnlearn_mmhc"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"]} )

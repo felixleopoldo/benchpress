@@ -1,7 +1,7 @@
 # Untitled boolean in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/pattern_graph
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/pattern_graph
 ```
 
 
