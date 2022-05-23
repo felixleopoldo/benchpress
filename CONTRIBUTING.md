@@ -42,7 +42,6 @@ MCMC methods are different from point estimators since the graph trajectory is s
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
 - [workflow/rules/docker_images.smk](workflow/rules/docker_images.smk)
-- [workflow/rules/pattern_strings.smk](workflow/rules/pattern_strings.smk)
 - [workflow/rules/algorithm_rules.smk](workflow/rules/algorithm_rules.smk)
 - [workflow/rules/algorithm_strings.smk](workflow/rules/algorithm_strings.smk)
 - [workflow/rules/algorithm_shell_commands.smk](workflow/rules/algorithm_shell_commands.smk)
