@@ -141,26 +141,26 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 ### Available modules
 
 #### Graph modules
-| Method                 | Graph | Language | Library  | Version | Module id        |
-|------------------------|-------|----------|----------|---------|------------------|
-| randDAG                | DAG,UG| R        | pcalg    | 2.7-3   | pcalg_randdag    |
-| graph.sim              | DG,UG | R        | BDgraph  | 2.64    | bdgraph_graphsim |
-| CTA [[24]](#24)        | DG    | Python   | trilearn | 1.2.3   | trilearn_cta     |
-| AR                     | DG    | Python   | trilearn | 1.2.3   | bandmat          |
-| AR random lag          | DG    | Python   | trilearn | 1.2.3   | rand_bandmat     |
-| Fixed adjacency matrix | *     | .csv     | -        | -       | -                |
+| Method                 | Graph | Language | Library                                                                | Version | Module id                                                                                                                                       |
+|------------------------|-------|----------|------------------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| randDAG                | DAG,UG| R        | [pcalg](https://cran.r-project.org/web/packages/pcalg/index.html)      | 2.7-3   | [pcalg_randdag](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pcalg_randdag-item.md)       |
+| graph.sim              | DG,UG | R        | [BDgraph](https://cran.r-project.org/web/packages/BDgraph/index.html)  | 2.64    | [bdgraph_graphsim](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bdgraph_graphsim-item.md) |
+| CTA [[24]](#24)        | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                  | 1.2.3   | [trilearn_cta](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_cta-item.md)         |
+| AR                     | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                  | 1.2.3   | [bandmat](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bandmat-item.md)                   |
+| AR random lag          | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                  | 1.2.3   | [rand_bandmat](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-rand_bandmat-item.md)         |
+| Fixed adjacency matrix | *     | .csv     | -                                                                      | -       | -                                                                                                                                               |
 
 #### Parameter modules
 
-| Distribution               | Method | Graph  | Language | Library  | Version | Module id            |
-|----------------------------|--------|--------|----------|----------|---------|----------------------|
-| Graph Wishart              | rgwish | DG, UG | R        | BDgraph  | 2.64    | bdgraph_rgwish       |
-| Hyper Dirichlet [[2]](#2)  | -      | DG     | Python   | trilearn | 1.2.3   | trilearn_hyper-dir   |
-| Graph intra-class          | -      | DG     | Python   | trilearn | 1.2.3   | trilearn_intra-class |
-| Random SEM parameters      | -      | DAG    | R        | -        | -       | sem_params           |
-| Random probability tables  | -      | DAG    | R        | -        | -       | bin_bn               |
-| Fixed bn.fit object        | -      | DAG    | .rds     | bnlearn  | -       | -                    |
-| Fixed SEM parameter matrix | -      | DAG    | .csv     | -        | -       | -                    |
+| Distribution               | Method | Graph  | Language | Library                                                                | Version | Module id                                                                                                                                                |
+|----------------------------|--------|--------|----------|------------------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Graph Wishart              | rgwish | DG, UG | R        | [BDgraph](https://cran.r-project.org/web/packages/BDgraph/index.html)  | 2.64    | [bdgraph_rgwish](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bdgraph_rgwish-item.md)              |
+| Hyper Dirichlet [[2]](#2)  | -      | DG     | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                  | 1.2.3   | [trilearn_hyper-dir](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_hyper-dir-item.md)      |
+| Graph intra-class          | -      | DG     | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                  | 1.2.3   | [trilearn_intra-class](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_intra-class-item.md)  |
+| Random SEM parameters      | -      | DAG    | R        | -                                                                      | -       | [sem_params](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-sem_params-item.md)                      |
+| Random probability tables  | -      | DAG    | R        | -                                                                      | -       | [bin_bn](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bin_bn-item.md)                              |
+| Fixed bn.fit object        | -      | DAG    | .rds     | [bnlearn](https://www.bnlearn.com/)                                    | -       | -                                                                                                                                                        |
+| Fixed SEM parameter matrix | -      | DAG    | .csv     | -                                                                      | -       | -                                                                                                                                                        |
 
 
 #### Data modules
@@ -171,54 +171,54 @@ To upload your algorithms to Benchpress, you should install it in a Docker image
 
 #### Structure learning algorithms
 
-| Algorithm                         | Graph | Language | Library             | Version  | Module id            |
-|-----------------------------------|-------|----------|---------------------|----------|----------------------|
-| GOBNILP [[3]](#3)                 | DAG   | C        | GOBNILP (bitbucket) | #df495ad | gobnilp              |
-| ASOBS [[15]](#15)                 | DAG   | R/Java   | r.blip              | 1.1      | rblip_asobs          |
-| FGES [[9]](#9)                    | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_fges          |
-| FCI [[5]](#5)                     | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_fci           |
-| RFCI [[22]](#22)                  | CPDAG | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_rfci          |
-| GFCI [[21]](#21)                  | DAG   | Java     | TETRAD (causal-cmd) | 1.1.3    | tetrad_gfci          |
-| PC [[4]](#4)[[5]](#5)             | CPDAG | R        | pcalg               | 2.7-3    | pcalg_pc             |
-| Dual PC [[31]](#31)               | CPDAG | R        | dualPC (github)     | 4a5175d  | giudice_dualpc       |
-| No tears [[17]](#17)              | DAG   | Python   | jmoss20 (github)    | #0c032a0 | notears              |
-| No tears                          | DAG   | Python   | gCastle             | 1.0.3rc3 | gcastle_notears      |
-| HC [[6]](#6)                      | DAG   | R        | bnlearn             | 4.7      | bnlearn_hc           |
-| MMHC [[23]](#23)                  | DAG   | R        | bnlearn             | 4.7      | bnlearn_mmhc         |
-| Inter-IAMB [[27]](#27)            | CPDAG | R        | bnlearn             | 4.7      | bnlearn_interiamb    |
-| GS [[26]](#26)                    | DAG   | R        | bnlearn             | 4.7      | bnlearn_gs           |
-| Tabu [[25]](#25)                  | DAG   | R        | bnlearn             | 4.7      | bnlearn_tabu         |
-| PC stable [[4]](#4)[[5]](#5)      | CPDAG | R        | bnlearn             | 4.7      | bnlearn_pcstable     |
-| IAMB [[27]](#27)                  | DAG   | R        | bnlearn             | 4.7      | bnlearn_iamb         |
-| Fast IAMB                         | DAG   | R        | bnlearn             | 4.7      | bnlearn_fastiamb     |
-| IAMB FDR                          | DAG   | R        | bnlearn             | 4.7      | bnlearn_iambfdr      |
-| MMPC                              | DAG   | R        | bnlearn             | 4.7      | bnlearn_mmpc         |
-| SI HITON-PC                       | DAG   | R        | bnlearn             | 4.7      | bnlearn_sihitonpc    |
-| Hybrid PC                         | DAG   | R        | bnlearn             | 4.7      | bnlearn_hpc          |
-| H2PC                              | DAG   | R        | bnlearn             | 4.7      | bnlearn_h2pc         |
-| RSMAX2                            | DAG   | R        | bnlearn             | 4.7      | bnlearn_rsmax2       |
-| Iterative MCMC [[28]](#28)        | DAG   | R        | BiDAG               | 2.0.3    | bidag_itsearch       |
-| Order MCMC [[28]](#28)[[29]](#29) | DAG   | R        | BiDAG               | 2.0.3    | bidag_order_mcmc     |
-| Partition MCMC [[30]](#30)        | DAG   | R        | BiDAG               | 2.0.3    | bidag_partition_mcmc |
-| PGibbs [[20]](#20)                | DG    | Python   | trilearn            | 1.2.3    | trilearn_pgibbs      |
-| GG99 single pair [[18]](#18)      | DG    | Java     | A. Thomas           | -        | gg99_singlepair      |
-| GT13 multi pair [[19]](#19)       | DG    | Java     | A. Thomas           | -        | gt13_multipair       |
-| Parallel DG                       | DG    | Python   | parallelDG          | 0.3      | parallelDG           |
-| GLasso [[31]](#31)                | UG    | Python   | scikit-learn        | 0.22.1   | sklearn_glasso       |
+| Algorithm                         | Graph | Language | Library                                                                                                    | Version  | Module id            |
+|-----------------------------------|-------|----------|------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
+| GOBNILP [[3]](#3)                 | DAG   | C        | [GOBNILP](https://bitbucket.org/jamescussens/gobnilp)                                                      | #df495ad | [gobnilp](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gobnilp-item.md)                              |
+| ASOBS [[15]](#15)                 | DAG   | R/Java   | [r.blip](https://cran.r-project.org/web/packages/r.blip/index.html)                                        | 1.1      | [rblip_asobs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-rblip_asobs-item.md)                      |
+| FGES [[9]](#9)                    | CPDAG | Java     | [TETRAD (causal-cmd)](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fges](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fges-item.md)                      |
+| FCI [[5]](#5)                     | DAG   | Java     | [TETRAD (causal-cmd)](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fci](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fci-item.md)                        |
+| RFCI [[22]](#22)                  | CPDAG | Java     | [TETRAD (causal-cmd)](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_rfci](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_rfci-item.md)                      |
+| GFCI [[21]](#21)                  | DAG   | Java     | [TETRAD (causal-cmd)](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_gfci](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_gfci-item.md)                      |
+| PC [[4]](#4)[[5]](#5)             | CPDAG | R        | [pcalg](https://cran.r-project.org/web/packages/pcalg/index.html)                                          | 2.7-3    | [pcalg_pc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pcalg_pc-item.md)                            |
+| Dual PC [[31]](#31)               | CPDAG | R        | [dualPC](https://github.com/enricogiudice/dualPC)                                                          | 4a5175d  | [giudice_dualpc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-giudice_dualpc-item.md)                |
+| No tears [[17]](#17)              | DAG   | Python   | [jmoss20/notears](https://github.com/jmoss20/notears)                                                      | #0c032a0 | [notears](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-notears-item.md)                              |
+| No tears                          | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_notears](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears-item.md)              |
+| HC [[6]](#6)                      | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_hc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_hc-item.md)                        |
+| MMHC [[23]](#23)                  | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_mmhc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_mmhc-item.md)                    |
+| Inter-IAMB [[27]](#27)            | CPDAG | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_interiamb](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_interiamb-item.md)          |
+| GS [[26]](#26)                    | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_gs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_gs-item.md)                        |
+| Tabu [[25]](#25)                  | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_tabu](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_tabu-item.md)                    |
+| PC stable [[4]](#4)[[5]](#5)      | CPDAG | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_pcstable](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_pcstable-item.md)            |
+| IAMB [[27]](#27)                  | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_iamb](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_iamb-item.md)                    |
+| Fast IAMB                         | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_fastiamb](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_fastiamb-item.md)            |
+| IAMB FDR                          | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_iambfdr](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_iambfdr-item.md)              |
+| MMPC                              | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_mmpc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_mmpc-item.md)                    |
+| SI HITON-PC                       | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_sihitonpc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_sihitonpc-item.md)          |
+| Hybrid PC                         | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_hpc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_hpc-item.md)                      |
+| H2PC                              | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_h2pc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_h2pc-item.md)                    |
+| RSMAX2                            | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_rsmax2](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_rsmax2-item.md)                |
+| Iterative MCMC [[28]](#28)        | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_itsearch](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_itsearch-item.md)                |
+| Order MCMC [[28]](#28)[[29]](#29) | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_order_mcmc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_order_mcmc-item.md)            |
+| Partition MCMC [[30]](#30)        | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_partition_mcmc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_partition_mcmc-item.md)    |
+| PGibbs [[20]](#20)                | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                                                      | 1.2.3    | [trilearn_pgibbs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_pgibbs-item.md)              |
+| GG99 single pair [[18]](#18)      | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gg99_singlepair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gg99_singlepair-item.md)              |
+| GT13 multi pair [[19]](#19)       | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gt13_multipair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gt13_multipair-item.md)                |
+| Parallel DG                       | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.3      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
+| GLasso [[31]](#31)                | UG    | Python   | [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.graphical_lasso.html)  | 0.22.1   | [sklearn_glasso](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-sklearn_glasso-item.md)                |
 
 
 #### Evaluation modules
 
-| Function                                  | Language | Library  | Module id           |
-|-------------------------------------------|----------|----------|---------------------|
-| Plot data with ggpairs                    | R        | GGally   | ggally_ggpairs      |
-| Plot true graphs                          | -        | graphviz | graph_true_plots    |
-| Plot true graphs properties               | R        | ggplot2  | graph_true_stats    |
-| Plot estimated graphs                     | -        | graphviz | graph_plots         |
-| Timing and ROC curves for TPR,FPR,FNR,... | R        | ggplot2  | benchmarks          |
-| MCMC mean graph                           | Python   | seaborn  | mcmc_heatmaps       |
-| MCMC auto-correlation                     | Python   | pandas   | mcmc_autocorr_plots |
-| MCMC trajectory                           | Python   | pandas   | mcmc_traj_plots     |
+| Function                                  | Language | Library                                                                | Module id                                                                                                                                                                                     |
+|-------------------------------------------|----------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plot data with ggpairs                    | R        | [GGally](https://cran.r-project.org/web/packages/GGally/index.html)    | [ggally_ggpairs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md)        |
+| Plot true graphs                          | -        | [graphviz](https://graphviz.org/)                                      | [graph_true_plots](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md)    |
+| Plot true graphs properties               | R        | [ggplot2](https://ggplot2.tidyverse.org/)                              | [graph_true_stats](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md)    |
+| Plot estimated graphs                     | -        | [graphviz](https://graphviz.org/)                                      | [graph_plots](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md)              |
+| Timing and ROC curves for TPR,FPR,FNR,... | R        | [ggplot2](https://ggplot2.tidyverse.org/)                              | [benchmarks](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-benchmarks-item.md)                                                           |
+| MCMC mean graph                           | Python   | [seaborn](https://seaborn.pydata.org/)                                 | [mcmc_heatmaps](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc-mean-graph-plot.md)                                                   |
+| MCMC auto-correlation                     | Python   | [pandas](https://pandas.pydata.org/)                                   | [mcmc_autocorr_plots](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_autocorr_plots-item.md)                                         |
+| MCMC trajectory                           | Python   | [pandas](https://pandas.pydata.org/)                                   | [mcmc_traj_plots](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_traj_plots-item.md)                                                 |
 
 Acronyms are used for Directed Acyclic Graphs (DAGs), Undirected Graphs (UGs), Decomposable Graphs (DGs), and Completed Partially DAGs (CPDAGs).
 
