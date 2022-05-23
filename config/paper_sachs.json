@@ -4,7 +4,7 @@
             {
                 "graph_id": "sachs.csv",
                 "parameters_id": null,
-                "data_id": "sachs_exp2_log_stdized.csv",
+                "data_id": "sachs_2_cd3cd28icam2_log_std.csv",
                 "seed_range": null
             }
         ],
@@ -18,6 +18,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
+                    "notears-l2",
                     "gobnilp-bge",
                     "gs-zf",
                     "fges-sem-bic",
@@ -35,6 +36,7 @@
             "graph_true_plots": true,
             "ggally_ggpairs": true,
             "graph_plots": [
+                "notears-l2",
                 "gobnilp-bge",
                 "gs-zf",
                 "fges-sem-bic",
@@ -57,6 +59,22 @@
         "graph": {},
         "parameters": {},
         "structure_learning_algorithms": {
+            "gcastle_notears": [
+                {
+                    "id": "notears-l2",
+                    "lambda1": 0.1,
+                    "loss_type": "l2",
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": [
+                        0.05,
+                        0.1,
+                        0.25
+                    ],
+                    "timeout": null
+                }
+            ],
             "rblip_asobs": [
                 {
                     "id": "winasobs-bdeu",
