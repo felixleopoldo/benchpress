@@ -26,7 +26,7 @@ unknown ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
 }
 ```
 
-# trilearn_cta Properties
+# trilearn_cta item Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                |
 | :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

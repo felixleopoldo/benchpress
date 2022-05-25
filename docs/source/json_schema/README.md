@@ -100,6 +100,10 @@
 
 *   [data item](./config-definitions-data-item.md "Description of the data model and sampling setup") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict`
 
+*   [dualpc item](./config-properties-resources-properties-structure_learning_algorithms-properties-dualpc-dualpc-item.md "Dual PC algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc/items`
+
+*   [dualpc item](./config-definitions-dualpc-item.md "Dual PC algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc`
+
 *   [gcastle_notears item](./config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears-gcastle_notears-item.md "gcastle_notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears/items`
 
 *   [gcastle_notears item](./config-definitions-gcastle_notears-item.md "gcastle_notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears`
@@ -107,10 +111,6 @@
 *   [gg99\_singlepair item](./config-properties-resources-properties-structure_learning_algorithms-properties-gg99\_singlepair-gg99\_singlepair-item.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair/items`
 
 *   [gg99\_singlepair item](./config-definitions-gg99\_singlepair-item.md "Guidici & Green algorithm for learning decomopasble graphs") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gg99_singlepair`
-
-*   [giudice_dualpc item](./config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc-giudice_dualpc-item.md "Dual PC algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc/items`
-
-*   [giudice_dualpc item](./config-definitions-giudice_dualpc-item.md "Dual PC algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc`
 
 *   [gobnilp item](./config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp-gobnilp-item.md "Gobnilp instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp/items`
 
@@ -354,11 +354,11 @@
 
 *   [data](./config-properties-benchmark_setup-properties-data.md "The data setup for the study") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/data`
 
+*   [dualpc](./config-properties-resources-properties-structure_learning_algorithms-properties-dualpc.md "Dual PC algorithm objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc`
+
 *   [gcastle_notears](./config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "List of gcastle_notears objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears`
 
 *   [gg99\_singlepair](./config-properties-resources-properties-structure_learning_algorithms-properties-gg99\_singlepair.md "Guidici & Green parametrisarion") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair`
-
-*   [giudice_dualpc](./config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc.md "Dual PC algorithm objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc`
 
 *   [gobnilp](./config-properties-resources-properties-structure_learning_algorithms-properties-gobnilp.md "Gobnilp objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gobnilp`
 

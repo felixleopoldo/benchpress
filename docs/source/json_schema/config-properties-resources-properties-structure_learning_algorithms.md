@@ -30,7 +30,7 @@ The available structure learning algorithms
 | [tetrad_rfci](#tetrad_rfci)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_rfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci")                   |
 | [tetrad_gfci](#tetrad_gfci)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_gfci.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci")                   |
 | [pcalg_pc](#pcalg_pc)                         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-pcalg_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/pcalg_pc")                         |
-| [giudice_dualpc](#giudice_dualpc)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc")             |
+| [dualpc](#dualpc)                             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc")                             |
 | [bnlearn_mmhc](#bnlearn_mmhc)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_mmhc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_mmhc")                 |
 | [bnlearn_tabu](#bnlearn_tabu)                 | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_tabu.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_tabu")                 |
 | [bidag_itsearch](#bidag_itsearch)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bidag_itsearch.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bidag_itsearch")             |
@@ -284,23 +284,23 @@ PC algorithm objects
 
 `object[]` ([pcalg_pc item](config-definitions-pcalg_pc-item.md))
 
-## giudice_dualpc
+## dualpc
 
 Dual PC algorithm objects
 
-`giudice_dualpc`
+`dualpc`
 
 *   is optional
 
-*   Type: `object[]` ([giudice_dualpc item](config-definitions-giudice_dualpc-item.md))
+*   Type: `object[]` ([dualpc item](config-definitions-dualpc-item.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-giudice_dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/giudice_dualpc")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-dualpc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc")
 
-### giudice_dualpc Type
+### dualpc Type
 
-`object[]` ([giudice_dualpc item](config-definitions-giudice_dualpc-item.md))
+`object[]` ([dualpc item](config-definitions-dualpc-item.md))
 
 ## bnlearn_mmhc
 

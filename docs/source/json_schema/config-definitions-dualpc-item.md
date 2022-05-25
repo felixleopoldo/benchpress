@@ -31,16 +31,16 @@ Dual PC algorithm instance
 }
 ```
 
-# dualpc Properties
+# dualpc item Properties
 
-| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                          |
-| :------------------------------ | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [id](#id)                       | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/id")                       |
-| [alpha](#alpha)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/alpha")                                             |
-| [max_ord](#max_ord)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/max_ord")                      |
+| [alpha](#alpha)                 | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/alpha")                                     |
+| [max_ord](#max_ord)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/max_ord")              |
 | [skeleton](#skeleton)           | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-skeleton.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/skeleton")           |
 | [pattern_graph](#pattern_graph) | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-pattern_graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/pattern_graph") |
-| [timeout](#timeout)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/timeout")                       |
+| [timeout](#timeout)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/timeout")               |
 
 ## id
 

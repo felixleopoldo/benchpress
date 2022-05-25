@@ -29,7 +29,7 @@ This module plots the so called score values in the trajectory or the value of a
 }
 ```
 
-# mcmc_traj_plots_item Properties
+# mcmc_traj_plots item Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                           |
 | :------------------------ | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

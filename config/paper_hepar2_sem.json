@@ -204,7 +204,7 @@
                     "timeout": null
                 }
             ],
-            "giudice_dualpc": [
+            "dualpc": [
                 {
                     "id": "dualpc",
                     "alpha": [

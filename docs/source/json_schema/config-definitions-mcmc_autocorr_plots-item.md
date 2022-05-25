@@ -30,7 +30,7 @@ unknown ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.
 }
 ```
 
-# mcmc_autocorr_plots_item Properties
+# mcmc_autocorr_plots item Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                     |
 | :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

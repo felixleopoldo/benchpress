@@ -27,7 +27,7 @@ unknown ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 }
 ```
 
-# bdgraph_graphsim Properties
+# bdgraph_graphsim item Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                              |
 | :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

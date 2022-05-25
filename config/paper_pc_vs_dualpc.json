@@ -71,7 +71,7 @@
             ]
         },
         "structure_learning_algorithms": {
-            "giudice_dualpc": [
+            "dualpc": [
                 {
                     "id": "dualpc",
                     "alpha": [

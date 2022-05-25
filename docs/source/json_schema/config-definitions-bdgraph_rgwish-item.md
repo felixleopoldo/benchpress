@@ -24,7 +24,7 @@ Parameter setting for a G-Wishart model. Works for undirected graphs.
 }
 ```
 
-# bdgraph_rgwish Properties
+# bdgraph_rgwish item Properties
 
 | Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
 | :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

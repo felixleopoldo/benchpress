@@ -33,7 +33,7 @@ Parameter setting for trilearn with log-linear decomposable model.
 }
 ```
 
-# trilearn_pgibbs Properties
+# trilearn_pgibbs item Properties
 
 | Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
 | :-------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

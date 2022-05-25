@@ -5725,22 +5725,22 @@ any of
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
-## Definitions group giudice_dualpc
+## Definitions group dualpc
 
 Reference this group by using
 
 ```json
-{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc"}
+{"$ref":"http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc"}
 ```
 
-| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                          |
-| :------------------------------ | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id-32)                    | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/id")                       |
-| [alpha](#alpha-9)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/alpha")                                             |
-| [max_ord](#max_ord)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/max_ord")                      |
-| [skeleton](#skeleton)           | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-skeleton.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/skeleton")           |
-| [pattern_graph](#pattern_graph) | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-pattern_graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/pattern_graph") |
-| [timeout](#timeout-15)          | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/timeout")                       |
+| Property                        | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
+| :------------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id-32)                    | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/id")                       |
+| [alpha](#alpha-9)               | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/alpha")                                     |
+| [max_ord](#max_ord)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/max_ord")              |
+| [skeleton](#skeleton)           | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-skeleton.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/skeleton")           |
+| [pattern_graph](#pattern_graph) | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-pattern_graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/pattern_graph") |
+| [timeout](#timeout-15)          | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/timeout")               |
 
 ### id
 
@@ -5754,7 +5754,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/id")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/id")
 
 #### id Type
 
@@ -5772,7 +5772,7 @@ Number(s) in the range \[0,1].
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/alpha")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/alpha")
 
 #### alpha Type
 
@@ -5796,7 +5796,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/max_ord")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/max_ord")
 
 #### max_ord Type
 
@@ -5824,7 +5824,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-skeleton.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/skeleton")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-skeleton.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/skeleton")
 
 #### skeleton Type
 
@@ -5842,7 +5842,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-giudice_dualpc-item-properties-pattern_graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/pattern_graph")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-dualpc-item-properties-pattern_graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/pattern_graph")
 
 #### pattern_graph Type
 
@@ -5860,7 +5860,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/giudice_dualpc/properties/timeout")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc/properties/timeout")
 
 #### timeout Type
 

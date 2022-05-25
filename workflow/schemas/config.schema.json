@@ -520,12 +520,12 @@
                                 "$ref": "#/definitions/pcalg_pc"
                             }
                         },
-                        "giudice_dualpc": {
+                        "dualpc": {
                             "description": "Dual PC algorithm objects",
-                            "title": "giudice_dualpc",
+                            "title": "dualpc",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/giudice_dualpc"
+                                "$ref": "#/definitions/dualpc"
                             }
                         },
                         "bnlearn_mmhc": {
@@ -2597,8 +2597,8 @@
                 }
             ]
         },
-        "giudice_dualpc": {
-            "title": "giudice_dualpc item",
+        "dualpc": {
+            "title": "dualpc item",
             "description": "Dual PC algorithm instance",
             "type": "object",
             "properties": {

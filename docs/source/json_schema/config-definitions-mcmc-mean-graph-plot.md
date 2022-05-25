@@ -24,7 +24,7 @@ unknown ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 }
 ```
 
-# mcmc_heatmaps_item Properties
+# MCMC mean graph plot Properties
 
 | Property            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
 | :------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

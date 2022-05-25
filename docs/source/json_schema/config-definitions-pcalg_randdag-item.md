@@ -14,7 +14,7 @@ An instance of pcalg randdag. Sampling of a DAG with specified maximum averge nu
 
 `object` ([pcalg_randdag item](config-definitions-pcalg_randdag-item.md))
 
-# pcalg_randdag Properties
+# pcalg_randdag item Properties
 
 | Property                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :-------------------------- | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
