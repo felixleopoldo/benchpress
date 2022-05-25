@@ -20,7 +20,7 @@ def docker_image(name):
     elif name == "pcalg":
         return "docker://onceltuca/pcalg:2.7-3"
     elif name == "benchmark":
-        return "docker://onceltuca/benchpress:1.0.2"
+        return "docker://onceltuca/benchpress:1.2.0"
     elif name == "networkx":
         return "docker://onceltuca/networkx:2.5.1"
     elif name == "bdgraph":
@@ -35,3 +35,5 @@ def docker_image(name):
         return "docker://hallawalla/paralleldg:0.4"
     elif name == "gcastle":
         return "docker://onceltuca/gcastle:1.0.3rc3"
+    elif name == "tidyverse":
+        return "docker://onceltuca/tidyverse"

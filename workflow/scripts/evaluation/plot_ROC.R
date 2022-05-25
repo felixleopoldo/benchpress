@@ -4,6 +4,8 @@ library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tibble)
 library("rjson")
+library(tidyverse)
+library(ggrepel)
 
 is_outlier <- function(x) {
   return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
@@ -36,6 +38,33 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     ylim <- config$benchmark_setup$evaluation$benchmarks$ylim
 
 
+revlevlist <- c()
+revlevnumlist <- c()
+lev <- levels(toplot$id)
+numlev <- c()
+
+for (i in seq_along(lev)) {
+    numlev[i] <- paste(i,". ", lev[i], sep = "")
+    revlevlist[lev[i]] <- paste(c(i, lev[i]), collapse = ". ")
+    revlevnumlist[lev[i]] <- paste("", i, sep = "")
+}
+
+lev_to_levnum <- function(a){
+    revlevlist[a]
+}
+
+lev_to_num <- function(a){
+    revlevnumlist[a] 
+}
+
+
+# Add extra columns with id number like: 3 and id and level like: 3. pcalg_pc.
+toplot <- toplot %>% mutate(id_num = lev_to_num(id)) %>% mutate(id_numlev = lev_to_levnum(id))
+toplot$id_numlev <- factor(toplot$id_numlev, levels=numlev)
+joint_bench <- joint_bench %>% mutate(id_num = lev_to_num(id)) %>% mutate(id_numlev = lev_to_levnum(id))
+joint_bench$id_numlev <- factor(joint_bench$id_numlev, levels=numlev)
+
+
 # Might have to go through all one by one to get the point text.
 # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
 gg  <- ggplot() + {
@@ -44,7 +73,7 @@ gg  <- ggplot() + {
                 aes(x = FPR_pattern_median,
                     ymin = TPR_pattern_q1,
                     ymax = TPR_pattern_q3,
-                    col = id),
+                    col = id_numlev),
                     width = 0.01)
   }
 } + {
@@ -53,7 +82,7 @@ gg  <- ggplot() + {
                 aes(y = TPR_pattern_median,
                     xmin = FPR_pattern_q1,
                     xmax = FPR_pattern_q3,
-                    col = id),
+                    col = id_numlev),
                     height = 0.01)
   }
 } + {
@@ -61,15 +90,15 @@ gg  <- ggplot() + {
     geom_path(data = toplot, alpha=0.8,
           aes(x = FPR_pattern_median,
               y = TPR_pattern_median,
-              col = id))
+              col = id_numlev))
   }
 } + {
   if (!param_annot) {
     geom_point(data = toplot, alpha=0.5,
     aes(x = FPR_pattern_median,
         y = TPR_pattern_median,
-        col = id,
-        shape = id),
+        col = id_numlev,
+        shape = id_numlev),
         size = 1)
   }
 } + {
@@ -77,7 +106,7 @@ gg  <- ggplot() + {
         geom_point(data = joint_bench, alpha=0.15,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
-                col = id), shape=20,
+                col = id_numlev), shape=20,
                 size = 1) 
     }
 } + {
@@ -85,16 +114,27 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
-                label = replicate, col = id, shape = id),
+                label = replicate, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
- }+ {
+ } + {
+  if (path && !param_annot) {
+    geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+                alpha=0.8, position = "dodge", alpha=1,
+                aes(x =FPR_pattern_median, y = TPR_pattern_median,col = id_numlev, label=id_num)) 
+    # Avoids overlaps
+    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    #                alpha=0.8, position = "dodge", alpha=1,
+    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+
+  }
+} + {
   if (param_annot) {
-    geom_text(data = toplot, alpha=0.5,
+    geom_label(data = toplot, alpha=0.5,
             aes(x = FPR_pattern_median,
                 y = TPR_pattern_median,
-                label = curve_vals, col = id, shape = id),
+                label = curve_vals, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
@@ -121,7 +161,7 @@ gg  <- ggplot() + {
               aes(x = FPR_skel_median,
                   ymin = TPR_skel_q1,
                   ymax = TPR_skel_q3,
-                  col = id),
+                  col = id_numlev),
               width = 0.01)
   }
 } + {
@@ -130,7 +170,7 @@ gg  <- ggplot() + {
               aes(y = TPR_skel_median,
                   xmin = FPR_skel_q1,
                   xmax = FPR_skel_q3,
-                  col = id),
+                  col = id_numlev),
               height = 0.01)
   }
 } + {
@@ -138,15 +178,15 @@ gg  <- ggplot() + {
     geom_path(data = toplot, alpha=0.8, 
           aes(x = FPR_skel_median,
               y = TPR_skel_median,
-              col = id))
+              col = id_numlev))
   }
 } + {
   if (!param_annot) {
     geom_point(data = toplot, alpha=0.5,
            aes(x = FPR_skel_median,
                y = TPR_skel_median,
-               col = id,
-               shape = id),
+               col = id_numlev,
+               shape = id_numlev),
                size = 1) 
   }
 } + {
@@ -154,7 +194,7 @@ gg  <- ggplot() + {
         geom_point(data = joint_bench, alpha=0.15,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
-                col = id),
+                col = id_numlev),
                 shape = 20,
                 size = 1) 
     }
@@ -163,16 +203,27 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
-                label = replicate, col = id, shape = id),
+                label = replicate, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
  } + {
+  if (path && !param_annot) {
+    geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+                alpha=0.8, position = "dodge", alpha=1,
+                aes(x =FPR_skel_median, y = TPR_skel_median,col = id_numlev, label=id_num)) 
+    # Avoids overlaps
+    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    #                alpha=0.8, position = "dodge", alpha=1,
+    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+
+  }
+}+ {
   if (param_annot) {
-    geom_text(data = toplot, alpha=0.5,
+    geom_label(data = toplot, alpha=0.5,
             aes(x = FPR_skel_median,
                 y = TPR_skel_median,
-                label = curve_vals, col = id, shape = id),
+                label = curve_vals, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
@@ -200,7 +251,7 @@ gg  <- ggplot() + {
               aes(x = FPR_skel_median,
                   ymin = FNR_skel_q1,
                   ymax = FNR_skel_q3,
-                  col = id),
+                  col = id_numlev),
               width = 0.01)
   }
 } + {
@@ -208,15 +259,15 @@ gg  <- ggplot() + {
     geom_path(data = toplot, alpha=0.8,
           aes(x = FPR_skel_median,
               y = FNR_skel_median,
-              col = id))
+              col = id_numlev))
   }
 } + {
   if (!param_annot) {
     geom_point(data = toplot, alpha=0.5,
            aes(x = FPR_skel_median,
                y = FNR_skel_median,
-               col = id,
-               shape = id),
+               col = id_numlev,
+               shape = id_numlev),
                size = 1) 
   }
 } + {
@@ -224,7 +275,7 @@ gg  <- ggplot() + {
         geom_point(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = FNR_skel,
-                col = id),
+                col = id_numlev),
                 shape = 20,
                 size = 1) 
     }
@@ -233,16 +284,27 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = FNR_skel,
-                label = replicate, col = id, shape = id),
+                label = replicate, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
  }+ {
+  if (path && !param_annot) {
+    geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+                alpha=0.8, position = "dodge", alpha=1,
+                aes(x =FPR_skel_median, y = FNR_skel_median,col = id_numlev, label=id_num)) 
+    # Avoids overlaps
+    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    #                alpha=0.8, position = "dodge", alpha=1,
+    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+
+  }
+}+ {
   if (param_annot) {
-    geom_text(data = toplot, alpha=0.5,
+    geom_label(data = toplot, alpha=0.5,
             aes(x = FPR_skel_median,
                 y = FNR_skel_median,                
-                label = curve_vals, col = id, shape = id),
+                label = curve_vals, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
@@ -269,7 +331,7 @@ gg  <- ggplot() + {
               aes(x = FNR_skel_median,
                   ymin = FPR_skel_q1,
                   ymax = FPR_skel_q3,
-                  col = id),
+                  col = id_numlev),
               width = 0.01)
   }
 } + {
@@ -277,15 +339,15 @@ gg  <- ggplot() + {
     geom_path(data = toplot, alpha=0.7,
            aes(y = FPR_skel_median,
                x = FNR_skel_median,
-               col = id))
+               col = id_numlev))
   }
 } + {
   if (!param_annot) {
     geom_point(data = toplot, alpha=0.5,
            aes(y = FPR_skel_median,
                x = FNR_skel_median,
-               col = id,
-               shape = id),
+               col = id_numlev,
+               shape = id_numlev),
                size = 1) 
   }
 } + {
@@ -293,7 +355,7 @@ gg  <- ggplot() + {
         geom_point(data = joint_bench, alpha=0.2,
             aes(y = FPR_skel,
                 x = FNR_skel,
-                col = id),
+                col = id_numlev),
                 shape = 20,
                 size = 1) 
     }
@@ -302,16 +364,27 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.2,
             aes(y = FPR_skel,
                 x = FNR_skel,
-                label = replicate, col = id, shape = id),
+                label = replicate, col = id_numlev, shape = id_numlev),
           check_overlap = FALSE
           )
   }
  } + {
+  if (path && !param_annot) {
+    geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+                alpha=0.8, position = "dodge", alpha=1,
+                aes(x =FNR_skel_median, y = FPR_skel_median,col = id_numlev, label=id_num)) 
+    # Avoids overlaps
+    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    #                alpha=0.8, position = "dodge", alpha=1,
+    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+
+  }
+}+ {
   if (param_annot) {
-    geom_text(data = toplot, alpha=0.5,
+    geom_label(data = toplot, alpha=0.5,
         aes(x = FNR_skel_median,
         y = FPR_skel_median,
-        label = curve_vals, col = id, shape = id),
+        label = curve_vals, col = id_numlev, shape = id_numlev),
         check_overlap = FALSE
         )
   }
