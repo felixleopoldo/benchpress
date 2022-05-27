@@ -13,7 +13,7 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "section5.1/",
+                "filename_prefix": "paper_er_bin/",
                 "show_seed": false,
                 "xlim": [0, 0.4],
                 "errorbar": true,

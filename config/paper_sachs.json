@@ -10,7 +10,7 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "sachs/",
+                "filename_prefix": "paper_sachs/",
                 "show_seed": false,
                 "errorbar": false,
                 "errorbarh": false,

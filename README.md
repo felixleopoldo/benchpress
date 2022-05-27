@@ -90,7 +90,7 @@ myparam1 <- snakemake@wildcards[["myparam1"]]
 myparam2 <- snakemake@wildcards[["myparam2"]]
 data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
 
-# This is a very fast and bad algorithm for estimating an undirected graph.
+# This is a very fast way to estimate an undirected graph.
 p <- ncol(data)
 set.seed(as.integer(snakemake@wildcards[["replicate"]]))
 start <- proc.time()[1]

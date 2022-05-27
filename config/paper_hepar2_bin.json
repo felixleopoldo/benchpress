@@ -13,7 +13,7 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "section5.3/",
+                "filename_prefix": "paper_hepar2_bin/",
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,

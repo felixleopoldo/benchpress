@@ -120,7 +120,7 @@ gg  <- ggplot() + {
   }
  } + {
   if (path && !param_annot) {
-    geom_label( data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    geom_label( data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% mutate(SHDP_pattern_median = 1-TPR_pattern_median + FPR_pattern_median) %>% filter(SHDP_pattern_median == min(SHDP_pattern_median)), # mutate(SHDP_pattern = 1-TPR_pattern + FPRp_pattern) %>% filter(curve_vals == max(curve_vals)), 
                 alpha=0.8, position = "dodge", alpha=1, show.legend=FALSE,
                 aes(x =FPR_pattern_median, y = TPR_pattern_median,col = id_numlev, label=id_num))
     # Avoids overlaps
