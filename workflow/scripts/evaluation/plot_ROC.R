@@ -103,7 +103,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.15,
+        geom_point(data = joint_bench, alpha=0.15, show.legend=FALSE,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 col = id_numlev), shape=20,
@@ -111,7 +111,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.25,
+    geom_text(data = joint_bench, alpha=0.25, show.legend=FALSE,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
                 label = replicate, col = id_numlev, shape = id_numlev),
@@ -120,15 +120,14 @@ gg  <- ggplot() + {
   }
  } + {
   if (path && !param_annot) {
-    geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-                alpha=0.8, position = "dodge", alpha=1,
-                aes(x =FPR_pattern_median, y = TPR_pattern_median,col = id_numlev, label=id_num)) 
+    geom_label( data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+                alpha=0.8, position = "dodge", alpha=1, show.legend=FALSE,
+                aes(x =FPR_pattern_median, y = TPR_pattern_median,col = id_numlev, label=id_num))
     # Avoids overlaps
-    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-    #                alpha=0.8, position = "dodge", alpha=1,
-    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
-
-  }
+    # geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
+    #                  alpha=0.8, position = "dodge", alpha=1,
+    #                  aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black", x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+}
 } + {
   if (param_annot) {
     geom_label(data = toplot, alpha=0.5,
@@ -139,30 +138,32 @@ gg  <- ggplot() + {
           )
   }
 } +
+guides(shape=FALSE) +
 facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
-    if (!is.null(xlim)){
-        xlim(xlim[1], xlim[2])
-    }
-} + {
-    if (!is.null(ylim)){
-        ylim(ylim[1], ylim[2])
-    }
+        if (!is.null(xlim)) {
+            xlim(xlim[1], xlim[2])
+        }
+    } + {
+        if (!is.null(ylim)){
+            ylim(ylim[1], ylim[2])
+        }
 } +
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (pattern graph)") +
+labs(col="id") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) 
-ggsave(file = snakemake@output[["fpr_tpr_pattern"]],plot=gg)
+ggsave(file = snakemake@output[["fpr_tpr_pattern"]], plot=gg)
 
 gg  <- ggplot() + {
   if (errorbar) {
     geom_errorbar(data = toplot, alpha=0.5,
-              aes(x = FPR_skel_median,
-                  ymin = TPR_skel_q1,
-                  ymax = TPR_skel_q3,
-                  col = id_numlev),
-              width = 0.01)
+                    aes(x = FPR_skel_median,
+                        ymin = TPR_skel_q1,
+                        ymax = TPR_skel_q3,
+                        col = id_numlev),
+                        width = 0.01)
   }
 } + {
   if (errorbarh) {
@@ -191,8 +192,8 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.15,
-            aes(x = FPR_skel,
+        geom_point(data = joint_bench, alpha=0.15, show.legend=FALSE,
+            aes(x = FPR_skel, 
                 y = TP_skel / true_n_edges_skel,
                 col = id_numlev),
                 shape = 20,
@@ -200,7 +201,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.25,
+    geom_text(data = joint_bench, alpha=0.25, show.legend=FALSE,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
                 label = replicate, col = id_numlev, shape = id_numlev),
@@ -210,13 +211,8 @@ gg  <- ggplot() + {
  } + {
   if (path && !param_annot) {
     geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-                alpha=0.8, position = "dodge", alpha=1,
+                alpha=0.8, position = "dodge", alpha=1, show.legend=FALSE,
                 aes(x =FPR_skel_median, y = TPR_skel_median,col = id_numlev, label=id_num)) 
-    # Avoids overlaps
-    #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-    #                alpha=0.8, position = "dodge", alpha=1,
-    #                aes(segment.linetype="solid", segment.alpha=0.3, segment.color="black",x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
-
   }
 }+ {
   if (param_annot) {
@@ -228,6 +224,7 @@ gg  <- ggplot() + {
           )
   }
  } +
+guides(shape=FALSE) +
 facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +  {
     if (!is.null(xlim)){
         xlim(xlim[1], xlim[2])
@@ -240,6 +237,7 @@ facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +  {
 xlab("FPRp") +
 ylab("TPR") +
 ggtitle("Median FPRp/TPR (undirected skeleton)") +
+labs(col="id") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5))
 ggsave(file = snakemake@output[["roc_FPRp_TPR_skel"]],plot=gg)
@@ -272,7 +270,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.3,
+        geom_point(data = joint_bench, alpha=0.3, show.legend=FALSE,
             aes(x = FPR_skel,
                 y = FNR_skel,
                 col = id_numlev),
@@ -281,7 +279,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.3,
+    geom_text(data = joint_bench, alpha=0.3, show.legend=FALSE,
             aes(x = FPR_skel,
                 y = FNR_skel,
                 label = replicate, col = id_numlev, shape = id_numlev),
@@ -291,7 +289,7 @@ gg  <- ggplot() + {
  }+ {
   if (path && !param_annot) {
     geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-                alpha=0.8, position = "dodge", alpha=1,
+                alpha=0.8, position = "dodge", alpha=1, show.legend=FALSE,
                 aes(x =FPR_skel_median, y = FNR_skel_median,col = id_numlev, label=id_num)) 
     # Avoids overlaps
     #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
@@ -309,6 +307,7 @@ gg  <- ggplot() + {
           )
   }
 } +
+guides(shape=FALSE) +
 facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
     if (!is.null(xlim)){
         xlim(xlim[1], xlim[2])
@@ -320,6 +319,7 @@ facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
 } +
 xlab("FPRp") +
 ylab("FNR") +
+labs(col="id") +
 ggtitle("Median FPRp/FNR (undirected skeleton)") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5)) 
@@ -352,7 +352,7 @@ gg  <- ggplot() + {
   }
 } + {
     if(scatter && !show_seed){
-        geom_point(data = joint_bench, alpha=0.2,
+        geom_point(data = joint_bench, alpha=0.2, show.legend=FALSE,
             aes(y = FPR_skel,
                 x = FNR_skel,
                 col = id_numlev),
@@ -361,7 +361,7 @@ gg  <- ggplot() + {
     }
 } + {
   if (scatter && show_seed) {
-    geom_text(data = joint_bench, alpha=0.2,
+    geom_text(data = joint_bench, alpha=0.2, show.legend=FALSE,
             aes(y = FPR_skel,
                 x = FNR_skel,
                 label = replicate, col = id_numlev, shape = id_numlev),
@@ -371,7 +371,7 @@ gg  <- ggplot() + {
  } + {
   if (path && !param_annot) {
     geom_label(data = toplot %>% group_by(id_numlev) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
-                alpha=0.8, position = "dodge", alpha=1,
+                alpha=0.8, position = "dodge", alpha=1, show.legend=FALSE,
                 aes(x =FNR_skel_median, y = FPR_skel_median,col = id_numlev, label=id_num)) 
     # Avoids overlaps
     #    geom_label_repel(data = toplot %>% group_by(id) %>% replace_na(list("curve_vals" = 0)) %>% filter(curve_vals == max(curve_vals)), 
@@ -389,6 +389,7 @@ gg  <- ggplot() + {
         )
   }
 } +
+guides(shape=FALSE) +
 facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
     if (!is.null(xlim)){
         xlim(xlim[1], xlim[2])
@@ -400,6 +401,7 @@ facet_wrap(. ~ adjmat + parameters + data, nrow = 2) + {
 } +
 ylab("FPR") +
 xlab("FNR") +
+labs(col="id") +
 ggtitle("Median FNR/FPRp (undirected skeleton)") +
 theme_bw() +
 theme(plot.title = element_text(hjust = 0.5))

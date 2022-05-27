@@ -23,7 +23,7 @@
                 "ids": [
                     "fges-sem-bic",
                     "tabu-bge",
-                    "itsearch_sample-bge",
+                    "itsearch-bge",
                     "pc-gaussCItest"
                 ]
             },
@@ -33,7 +33,7 @@
             "graph_plots": [
                 "fges-sem-bic",
                 "tabu-bge",
-                "itsearch_sample-bge",
+                "itsearch-bge",
                 "pc-gaussCItest"
             ],
             "mcmc_traj_plots": [
@@ -176,7 +176,7 @@
             ],
             "bidag_itsearch": [
                 {
-                    "id": "itsearch_sample-bge",
+                    "id": "itsearch-bge",
                     "timeout": null,
                     "estimate": "map",
                     "MAP": false,
