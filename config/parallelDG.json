@@ -32,7 +32,7 @@
                 {
                     "id": "parallelDG_test",
                     "burn_in": 20000,
-                    "thinning": 1,
+                    "thinning": 100,
                     "functional": [
                         "score",
                         "size"
@@ -51,8 +51,8 @@
                 {
                     "id": "parallelDG_test",
                     "burn_in": 20000,
-                    "thinning": 1,
-                    "lags": 2000,
+                    "thinning": 100,
+                    "lags": 100,
                     "functional": [
                         "score",
                         "size"

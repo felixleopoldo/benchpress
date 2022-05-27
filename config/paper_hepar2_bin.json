@@ -17,6 +17,7 @@
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
+                "xlim": [0, 0.35],
                 "scatter": true,
                 "path": true,
                 "text": false,
