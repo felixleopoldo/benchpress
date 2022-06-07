@@ -1,0 +1,499 @@
+{
+    "benchmark_setup": {
+        "data": [
+            {
+                "graph_id": "avneigs4_p20",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
+                "seed_range": [
+                    1,
+                    5
+                ]
+            }
+        ],
+        "evaluation": {
+            "benchmarks": {
+                "filename_prefix": "example/",
+                "show_seed": false,
+                "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
+                "path": true,
+                "text": false,
+                "ids": [
+                    "gcastle_pc",
+                    "gcastle_anm",
+                    "gcastle_direct_lingam",
+                    "gcastle_ica_lingam",
+                    "gcastle_notears_nonlinear",
+                    "gcastle_notears_low_rank",
+                    "gcastle_golem",
+                    "gcastle_grandag",
+                    "gcastle_mcsl",
+                    "gcastle_rl",
+                    "gcastle_corl"
+                ]
+            },
+            "graph_true_plots": false,
+            "graph_true_stats": false,
+            "ggally_ggpairs": false,
+            "graph_plots": [],
+            "mcmc_traj_plots": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "burn_in": 0,
+                    "thinning": 1,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": false
+                }
+            ],
+            "mcmc_heatmaps": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "burn_in": 0,
+                    "active": false
+                }
+            ],
+            "mcmc_autocorr_plots": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "burn_in": 0,
+                    "thinning": 1,
+                    "lags": 50,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": false
+                }
+            ]
+        }
+    },
+    "resources": {
+        "data": {
+            "iid": [
+                {
+                    "id": "standardized",
+                    "standardized": true,
+                    "sample_sizes": [
+                        300
+                    ]
+                }
+            ]
+        },
+        "graph": {
+            "pcalg_randdag": [
+                {
+                    "id": "avneigs4_p20",
+                    "max_parents": 5,
+                    "n": 20,
+                    "d": 4,
+                    "par1": null,
+                    "par2": null,
+                    "method": "er",
+                    "DAG": true
+                }
+            ]
+        },
+        "parameters": {
+            "sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
+            ]
+        },
+        "structure_learning_algorithms": {
+            "gcastle_notears": [
+                {
+                    "id": "notears-l2",
+                    "lambda1": 0.1,
+                    "loss_type": "l2",
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": [
+                        0.05,
+                        0.1,
+                        0.25
+                    ],
+                    "timeout": null
+                }
+            ],
+            "gcastle_pc": [
+                {
+                    "id": "gcastle_pc",
+                    "variant": "original",
+                    "alpha": 0.05,
+                    "ci_test": "gauss",
+                    "timeout": null
+                }
+            ],
+            "gcastle_anm": [
+                {
+                    "id": "gcastle_anm",
+                    "alpha": 0.05,
+                    "timeout": null
+                }
+            ],
+            "gcastle_direct_lingam": [
+                {
+                    "id": "gcastle_direct_lingam",
+                    "measure": "pwling",
+                    "thresh": 0.3,
+                    "timeout": null
+                }
+            ],
+            "gcastle_ica_lingam": [
+                {
+                    "id": "gcastle_ica_lingam",
+                    "random_state": null,
+                    "max_iter": 1000,
+                    "thresh": 0.3,
+                    "timeout": null
+                }
+            ],
+            "gcastle_notears_nonlinear": [
+                {
+                    "id": "gcastle_notears_nonlinear",
+                    "lambda1": 0.01,
+                    "lambda2": 0.01,
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": 0.3,
+                    "hidden_layer": 1,
+                    "hidden_units": 10,
+                    "bias": true,
+                    "model_type": "mlp",
+                    "device_type": "cpu",
+                    "device_ids": null,
+                    "timeout": null
+                }
+            ],
+            "gcastle_notears_low_rank": [
+                {
+                    "id": "gcastle_notears_low_rank",
+                    "rank": 15,
+                    "w_init": null,
+                    "max_iter": 15,
+                    "h_tol": "1e-6",
+                    "rho_max": "1e+20",
+                    "w_threshold": 0.3,
+                    "timeout": null
+                }
+            ],
+            "gcastle_golem": [
+                {
+                    "id": "gcastle_golem",
+                    "lambda_1": "2e-2",
+                    "lambda_2": 5.0,
+                    "equal_variances": true,
+                    "non_equal_variances": true,
+                    "learning_rate": "1e-3",
+                    "num_iter": "1e+5",
+                    "checkpoint_iter": 5000,
+                    "graph_thres": 0.3,
+                    "device_type": "cpu",
+                    "device_ids": 0,
+                    "timeout": null
+                }
+            ],
+            "gcastle_grandag": [
+                {
+                    "id": "gcastle_grandag",
+                    "hidden_num": 2,
+                    "hidden_dim": 10,
+                    "batch_size": 64,
+                    "lr": 0.001,
+                    "iterations": 1000,
+                    "model_name": "NonLinGaussANM",
+                    "nonlinear": "leaky-relu",
+                    "optimizer": "rmsprop",
+                    "h_threshold": "1e-8",
+                    "device_type": "cpu",
+                    "use_pns": false,
+                    "pns_thresh": 0.75,
+                    "num_neighbors": null,
+                    "normalize": false,
+                    "precision": false,
+                    "random_seed": 42,
+                    "jac_thresh": true,
+                    "lambda_init": 0.0,
+                    "mu_init": 0.001,
+                    "omega_lambda": 0.0001,
+                    "omega_mu": 0.9,
+                    "stop_crit_win": 100,
+                    "edge_clamp_range": 0.0001,
+                    "norm_prod": "paths",
+                    "square_prod": false,
+                    "timeout": null
+                }
+            ],
+            "gcastle_mcsl": [
+                {
+                    "id": "gcastle_mcsl",
+                    "model_type": "nn",
+                    "hidden_layers": 4,
+                    "hidden_dim": 16,
+                    "graph_thresh": 0.5,
+                    "l1_graph_penalty": "2e-3",
+                    "learning_rate": "3e-2",
+                    "max_iter": 5,
+                    "iter_step": 100,
+                    "init_iter": 2,
+                    "h_tol": "1e-10",
+                    "init_rho": "1e-5",
+                    "rho_thresh": "1e14",
+                    "h_thresh": 0.25,
+                    "rho_multiply": 10,
+                    "temperature": 0.2,
+                    "device_type": "cpu",
+                    "device_ids": "0",
+                    "timeout": null
+                }
+            ],
+            "gcastle_gae": [
+                {
+                    "id": "gcastle_gae",
+                    "x_dim": 1,
+                    "num_encoder_layers": 1,
+                    "num_decoder_layers": 1,
+                    "hidden_size": 4,
+                    "latent_dim": 1,
+                    "l1_graph_penalty": 0.0,
+                    "use_float64": false,
+                    "learning_rate": "1e-3",
+                    "max_iter": 10,
+                    "iter_step": 3000,
+                    "init_iter": 3,
+                    "h_tol": "1e-8",
+                    "init_rho": 1.0,
+                    "rho_thres": "1e+30",
+                    "h_thres": 0.25,
+                    "rho_multiply": 2.0,
+                    "early_stopping": false,
+                    "early_stopping_thres": 1.0,
+                    "graph_thres": 0.3,
+                    "timeout": null
+                }
+            ],
+            "gcastle_rl": [
+                {
+                    "id": "gcastle_rl",
+                    "encoder_type": "TransformerEncoder",
+                    "hidden_dim": 64,
+                    "num_heads": 16,
+                    "num_stacks": 6,
+                    "residual": false,
+                    "decoder_type": "SingleLayerDecoder",
+                    "decoder_activation": "tanh",
+                    "decoder_hidden_dim": 16,
+                    "use_bias": false,
+                    "use_bias_constant": false,
+                    "bias_initial_value": false,
+                    "batch_size": 64,
+                    "input_dimension": 64,
+                    "normalize": false,
+                    "transpose": false,
+                    "score_type": "BIC",
+                    "reg_type": "LR",
+                    "lambda_iter_num": 1000,
+                    "lambda_flag_default": true,
+                    "score_bd_tight": false,
+                    "lambda1_update": 1.0,
+                    "lambda2_update": 10,
+                    "score_lower": 0.0,
+                    "score_upper": 0.0,
+                    "lambda2_lower": -1.0,
+                    "lambda2_upper": -1.0,
+                    "nb_epoch": 20,
+                    "lr1_start": 0.001,
+                    "lr1_decay_step": 5000,
+                    "lr1_decay_rate": 0.96,
+                    "alpha": 0.99,
+                    "init_baseline": -1.0,
+                    "temperature": 3.0,
+                    "C": 10.0,
+                    "l1_graph_reg": 0.0,
+                    "inference_mode": true,
+                    "verbose": false,
+                    "device_type": "cpu",
+                    "device_ids": 0,
+                    "timeout": null
+                }
+            ],
+            "gcastle_corl": [
+                {
+                    "id": "gcastle_corl",
+                    "batch_size": 64,
+                    "input_dim": 100,
+                    "embed_dim": 256,
+                    "normalize": false,
+                    "encoder_name": "transformer",
+                    "encoder_heads": 8,
+                    "encoder_blocks": 3,
+                    "encoder_dropout_rate": 0.1,
+                    "decoder_name": "lstm",
+                    "reward_mode": "episodic",
+                    "reward_score_type": "BIC",
+                    "reward_regression_type": "LR",
+                    "reward_gpr_alpha": 1.0,
+                    "iteration": 10,
+                    "actor_lr": "1e-4",
+                    "critic_lr": "1e-3",
+                    "alpha": 0.99,
+                    "init_baseline": -1.0,
+                    "random_seed": 0,
+                    "device_type": "cpu",
+                    "device_ids": 0,
+                    "timeout": null
+                }
+            ],
+            "mylib_myalg": [
+                {
+                    "id": "testing_myalg",
+                    "myparam1": "somevalue",
+                    "myparam2": [
+                        1,
+                        2
+                    ]
+                }
+            ],
+            "tetrad_fges": [
+                {
+                    "id": "fges-sem-bic",
+                    "faithfulnessAssumed": true,
+                    "score": "sem-bic",
+                    "datatype": "continuous",
+                    "samplePrior": 1,
+                    "structurePrior": 1,
+                    "penaltyDiscount": [
+                        0.75,
+                        0.8,
+                        1,
+                        1.5
+                    ],
+                    "timeout": null
+                }
+            ],
+            "pcalg_pc": [
+                {
+                    "id": "pc-gaussCItest",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "NAdelete": true,
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false,
+                    "solveconfl": false,
+                    "numCores": 1,
+                    "verbose": false,
+                    "indepTest": "gaussCItest",
+                    "timeout": null
+                }
+            ],
+            "bnlearn_tabu": [
+                {
+                    "id": "tabu-bge",
+                    "score": "bge",
+                    "iss": 1,
+                    "issmu": [
+                        0.0001,
+                        0.001,
+                        0.01,
+                        0.05
+                    ],
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1,
+                    "timeout": null
+                }
+            ],
+            "bidag_itsearch": [
+                {
+                    "id": "itsearch-bge",
+                    "timeout": null,
+                    "estimate": "map",
+                    "MAP": false,
+                    "plus1it": 2,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": 2,
+                    "am": [
+                        0.01,
+                        0.1,
+                        1
+                    ],
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 14,
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 3,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": 0.1,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 14,
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                }
+            ],
+            "bidag_order_mcmc": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "startspace_algorithm": [
+                        "itsample-bge_am01_endspace"
+                    ],
+                    "plus1": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": 0.1,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": false,
+                    "cpdag": false,
+                    "timeout": null,
+                    "mcmc_seed": 1,
+                    "threshold": [
+                        0.2,
+                        0.5,
+                        0.7
+                    ],
+                    "burnin": 0
+                }
+            ]
+        }
+    }
+}

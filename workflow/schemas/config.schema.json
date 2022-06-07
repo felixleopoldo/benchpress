@@ -438,6 +438,11 @@
                             },
                             "uniqueItems": true
                         },
+                        "gcastle_pc": {
+                            "title": "gcastle_pc",
+                            "description": "List of gcastle_pc objects",
+                            "type": "array"
+                        },
                         "trilearn_pgibbs": {
                             "title": "trilearn_pgibbs",
                             "description": "List of trilearn objects",
@@ -689,7 +694,7 @@
                             }
                         }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": true
                 }
             },
             "required": [
