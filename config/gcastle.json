@@ -13,9 +13,10 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "example/",
+                "filename_prefix": "gcastle/",
                 "show_seed": false,
                 "errorbar": true,
+                "xlim": [0, 2],
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
@@ -31,7 +32,11 @@
                     "gcastle_grandag",
                     "gcastle_mcsl",
                     "gcastle_rl",
-                    "gcastle_corl"
+                    "gcastle_corl",
+                    "fges-sem-bic",
+                    "tabu-bge",
+                    "itsearch-bge",
+                    "pc-gaussCItest"
                 ]
             },
             "graph_true_plots": false,
@@ -151,9 +156,9 @@
             "gcastle_ica_lingam": [
                 {
                     "id": "gcastle_ica_lingam",
-                    "random_state": null,
-                    "max_iter": 1000,
                     "thresh": 0.3,
+                    "random_state": null,
+                    "max_iter": 1000,                    
                     "timeout": null
                 }
             ],
