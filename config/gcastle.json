@@ -22,11 +22,13 @@
                 "path": true,
                 "text": false,
                 "ids": [
+                    "gcastle_notears",
                     "gcastle_pc",
                     "gcastle_anm",
                     "gcastle_direct_lingam",
                     "gcastle_ica_lingam",
-                    "gcastle_notears_nonlinear",
+                    "gcastle_notears_sob",
+                    "gcastle_notears_mlp",
                     "gcastle_notears_low_rank",
                     "gcastle_golem",
                     "gcastle_grandag",
@@ -115,7 +117,7 @@
         "structure_learning_algorithms": {
             "gcastle_notears": [
                 {
-                    "id": "notears-l2",
+                    "id": "notears",
                     "lambda1": 0.1,
                     "loss_type": "l2",
                     "max_iter": 100,
@@ -164,7 +166,7 @@
             ],
             "gcastle_notears_nonlinear": [
                 {
-                    "id": "gcastle_notears_nonlinear",
+                    "id": "gcastle_notears_mlp",
                     "lambda1": 0.01,
                     "lambda2": 0.01,
                     "max_iter": 100,
@@ -175,6 +177,22 @@
                     "hidden_units": 10,
                     "bias": true,
                     "model_type": "mlp",
+                    "device_type": "cpu",
+                    "device_ids": null,
+                    "timeout": null
+                },
+                {
+                    "id": "gcastle_notears_sob",
+                    "lambda1": 0.01,
+                    "lambda2": 0.01,
+                    "max_iter": 100,
+                    "h_tol": "1e-8",
+                    "rho_max": "1e+16",
+                    "w_threshold": 0.3,
+                    "hidden_layer": 1,
+                    "hidden_units": 10,
+                    "bias": true,
+                    "model_type": "sob",
                     "device_type": "cpu",
                     "device_ids": null,
                     "timeout": null
