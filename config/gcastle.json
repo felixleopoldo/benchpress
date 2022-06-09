@@ -117,7 +117,7 @@
         "structure_learning_algorithms": {
             "gcastle_notears": [
                 {
-                    "id": "notears",
+                    "id": "gcastle_notears",
                     "lambda1": 0.1,
                     "loss_type": "l2",
                     "max_iter": 100,
