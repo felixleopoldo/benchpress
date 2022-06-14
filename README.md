@@ -32,15 +32,17 @@ The following main functionalities are provided by Benchpress
 - [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
 
-### OSX/Win    
-Benchpress cannot run directly on OSX/Win as it requires Singularity which is currently only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine. 
-    
-- [Virtualbox](https://www.virtualbox.org/) (or similar virtualisation engine).
-
 #### Notes
 Some systems requiere explicit installation of squash-tools. Using conda it can be installed as
 
 `$ conda install -c conda-forge squash-tools`
+    
+### OSX/Win    
+Benchpress cannot run directly on OSX/Win as it requires Singularity which is currently only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine. 
+    
+- [VirtualBox](https://www.virtualbox.org/) (or similar virtualisation engine).
+
+
 
 ## Installation
 
