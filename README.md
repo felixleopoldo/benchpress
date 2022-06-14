@@ -27,9 +27,15 @@ The following main functionalities are provided by Benchpress
 * Data analysis - Estimate the underlying graph structure for your own dataset(s).
 
 ## Requirements
+
+### Linux 
 - [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
-- Linux (Singularity currently only has a Beta release for OSX which is not enough)
+
+### OSX/Win    
+Benchpress cannot run directly on OSX/Win as it requires Singularity which is currently only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine. 
+    
+- [Virtualbox](https://www.virtualbox.org/) (or similar virtualisation engine).
 
 #### Notes
 Some systems requiere explicit installation of squash-tools. Using conda it can be installed as
@@ -44,7 +50,10 @@ As Benchpress is a Snakemake workflow, once the requirements are installed it re
 $ git clone https://github.com/felixleopoldo/benchpress.git
 $ cd benchpress
 ```
-
+    
+#### Notes
+If you are using a virtual machine, this folder should be located on OSX/Win and mounted int the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Win. 
+    
 ## Usage
 
 Benchpress supports five different data scenarios, built from combining different sources of graph parameters and data.
@@ -173,7 +182,7 @@ To upload your algorithm to Benchpress, you should install it in a Docker image,
 
 | Algorithm                         | Graph | Language | Library                                                                                                    | Version  | Module id                                                                                                                                                  |
 |-----------------------------------|-------|----------|------------------------------------------------------------------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GOBNILP [[3]](#3)                 | DAG   | C        | [GOBNILP](https://bitbucket.org/jamescussens/gobnilp)                                                      | #df495ad | [gobnilp](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gobnilp-item.md)                              |
+| GOBNILP [[3]](#3)                 | DAG   | C        | [GOBNILP](https://bitbucket.org/jamescussens/gobnilp)                                                      | #4347c64 | [gobnilp](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gobnilp-item.md)                              |
 | ASOBS [[15]](#15)                 | DAG   | R/Java   | [r.blip](https://cran.r-project.org/web/packages/r.blip/index.html)                                        | 1.1      | [rblip_asobs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-rblip_asobs-item.md)                      |
 | FGES [[9]](#9)                    | CPDAG | Java     | [TETRAD](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fges](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fges-item.md)                      |
 | FCI [[5]](#5)                     | DAG   | Java     | [TETRAD](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fci](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fci-item.md)                        |
