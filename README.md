@@ -54,7 +54,7 @@ $ cd benchpress
 ```
     
 #### Notes
-If you are using a virtual machine, this folder should be located on OSX/Windows and mounted int the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Windoes. 
+If you are using a virtualiser such as VirtualBox, this folder should still be located on OSX/Windows and mounted in the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Windows. 
     
 ## Usage
 
