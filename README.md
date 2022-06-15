@@ -33,14 +33,14 @@ The following main functionalities are provided by Benchpress
 - [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
 
 #### Notes
-Some systems requiere explicit installation of squash-tools. Using conda it can be installed as
+Some systems require explicit installation of squash-tools. Using conda it can be installed as
 
 `$ conda install -c conda-forge squash-tools`
     
-### OSX/Win    
-Benchpress cannot run directly on OSX/Win as it requires Singularity which is currently only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine. 
+### OSX/Windows    
+Benchpress cannot run directly on OSX/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
     
-- [VirtualBox](https://www.virtualbox.org/) (or similar virtualisation engine).
+- [VirtualBox](https://www.virtualbox.org/) ([instructions for installing Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview))
 
 
 
@@ -54,7 +54,7 @@ $ cd benchpress
 ```
     
 #### Notes
-If you are using a virtual machine, this folder should be located on OSX/Win and mounted int the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Win. 
+If you are using a virtual machine, this folder should be located on OSX/Windows and mounted int the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Windoes. 
     
 ## Usage
 
@@ -76,7 +76,7 @@ The methods to generate graphs, parameters and data are listed further down.
 #### Example study
 This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**bidag_itsearch**, **tetrad_fges**, **bnlearn_tabu**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/config.json](config/config.json).
 
-To run this study (300 jobs ~ 10 minutes on a 2-cores laptop) type
+To run this study (333 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/config.json`
 
