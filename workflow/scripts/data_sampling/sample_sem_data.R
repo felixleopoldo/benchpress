@@ -36,4 +36,6 @@ set.seed(seed)
 data <- rmvDAG(trueDAGedges, N)
 colnames(data) <- colnames(trueDAGedges)
 
-write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")
+write.table(data,
+  file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ","
+)

@@ -28,7 +28,8 @@ compareEGs <- function(estEG, trueEG) {
   #  if (sum(EGskel(estEG) != EGskel(trueEG)) > 0){
   #    print("Skeletons should match now!")
   #  }
-  # modified graphs have the same skeletons, so now just need to count mismatches
+  # modified graphs have the same skeletons, so now just need to
+  # count mismatches
   mismatches <- 1 * (estEG != trueEG)
   wrong_order <- sum(EGskel(mismatches)) / 2 # number of wrongly oriented edges
   FP <- FP + wrong_order / 2 # include half in FP
@@ -58,7 +59,8 @@ compareEGs <- function(estEG, trueEG) {
 #########
 ## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
 ## and returns the pattern of this pdag in the Meek sense, that is,
-## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
+## it returns the adjacency matrix of the graph with the same
+## skeleton where the only oriented
 ## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
 ## this is from the PC-alg package.
 getPattern <- function(amat) {
@@ -71,12 +73,13 @@ getPattern <- function(amat) {
 
   ## find all v-structures i -> k <- j s.t. i not adj to k
   ## and make only those edges directed
-  for (i in 1:(length(tmp[1, ]) - 1))
+  for (i in 1:(length(tmp[1, ]) - 1)) {
     for (j in (i + 1):length(tmp[1, ])) {
       if ((amat[j, i] == 0) & (amat[i, j] == 0) & (i != j)) {
         ## if i no adjacent with j in G
 
-        possible.k <- which(amat[, i] != 0 & amat[i,] == 0) ## finds all k such that i -> k is in G
+        ## finds all k such that i -> k is in G
+        possible.k <- which(amat[, i] != 0 & amat[i, ] == 0)
 
         if (length(possible.k) != 0) {
           ## if there are any such k's then check whether j -> k for any of them
@@ -90,95 +93,94 @@ getPattern <- function(amat) {
         }
       }
     }
+  }
 
-    t(tmp)
+  t(tmp)
 }
 
-### This function turns an adjacancy matrix incidence DAG into an adjacancy matric of the EG
+### This function turns an adjacancy matrix incidence DAG
+### into an adjacancy matric of the EG
 DAG2EG <- function(incidence) {
   as(dag2essgraph(as(incidence, "graphNEL")), "matrix")
 }
 
 p <- arg_parser("A program for summarising and save to file.")
 p <- add_argument(p, "--adjmat_true", help = "True adjacency filename")
-p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix filename")
+p <- add_argument(p, "--adjmat_est", help = "Estimated adjacency matrix")
 p <- add_argument(p, "--filename", help = "Output filename")
 argv <- parse_args(p)
 
-benchmarks <- function(true_adjmat, estimated_adjmat){
+benchmarks <- function(true_adjmat, estimated_adjmat) {
+  skel_true <- (true_adjmat | t(true_adjmat)) * 1
+  skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
 
-    skel_true <- (true_adjmat | t(true_adjmat)) * 1
-    skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
+  TP <- sum(skel_true * skel_est) / 2
+  TN <- sum((1 - skel_true) * (1 - skel_est)) / 2
+  FP <- sum((1 - skel_true) * skel_est) / 2
+  FN <- sum(skel_true * (1 - skel_est)) / 2
 
-    TP <- sum(skel_true * skel_est) / 2
-    TN <- sum((1 - skel_true) * (1 - skel_est)) / 2
-    FP <- sum((1 - skel_true) * skel_est) / 2
-    FN <- sum(skel_true * (1 - skel_est)) / 2
+  n_edges <- sum(skel_true) / 2
+  n_nonedges <- sum(1 - skel_true) / 2
+  n_nodes <- ncol(skel_true)
 
-    n_edges <- sum(skel_true) / 2
-    n_nonedges <- sum(1 - skel_true) / 2
-    n_nodes <- ncol(skel_true)
+  compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 
-    compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
-    #compres <- compareEGs(DAG2EG(estimated_adjmat), DAG2EG(true_adjmat)) # TODO: Doesn't always work.
-    SHD_cpdag <- "None"
-    
-    iscpdag <- FALSE
-    isdag <- FALSE
-    isug <- FALSE
-    graph_type <- "unknown"
-   
-    if(isSymmetric(unname(estimated_adjmat))){
-        graph_type <- "ug"
-    }
-     if (isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {        
-        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
-        SHD_cpdag = compres_cpdag["SHD"]
-        graph_type <- "cpdag"
-    }  
-    else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
-        #true_graphnel <- as(t(true_adjmat), "graphNEL") ## convert to graph
-        #estimated_graphnel <- as(t(estimated_adjmat), "graphNEL") ## convert to graph
-        compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag=TRUE)
-        SHD_cpdag = compres_cpdag["SHD"]
-        graph_type <- "dag"
-    } 
-    df <- data.frame(TPR_pattern = compres["TPR"], # should be for all times
-                    FPRn_pattern = compres["FPR_P"],
-                    SHD_pattern = compres["SHD"],
-                    SHD_cpdag = SHD_cpdag,
-                    FPR_skel = FP / n_edges,
-                    FNR_skel = FN / n_edges,
-                    TP_skel = TP,
-                    FN_skel = FN,
-                    FP_skel = FP,
-                    TN_skel = TN,
-                    n_nodes = n_nodes,
-                    true_n_edges_skel = n_edges,
-                    true_n_non_edges_skel = n_nonedges,
-                    graph_type=graph_type)
-    return(df)
+  SHD_cpdag <- "None"
+
+  graph_type <- "unknown"
+
+  if (isSymmetric(unname(estimated_adjmat))) {
+    graph_type <- "ug"
+  }
+  if (isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+    compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
+    SHD_cpdag <- compres_cpdag["SHD"]
+    graph_type <- "cpdag"
+  } else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
+    compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
+    SHD_cpdag <- compres_cpdag["SHD"]
+    graph_type <- "dag"
+  }
+  df <- data.frame(
+    TPR_pattern = compres["TPR"], # should be for all times
+    FPRn_pattern = compres["FPR_P"],
+    SHD_pattern = compres["SHD"],
+    SHD_cpdag = SHD_cpdag,
+    FPR_skel = FP / n_edges,
+    FNR_skel = FN / n_edges,
+    TP_skel = TP,
+    FN_skel = FN,
+    FP_skel = FP,
+    TN_skel = TN,
+    n_nodes = n_nodes,
+    true_n_edges_skel = n_edges,
+    true_n_non_edges_skel = n_nonedges,
+    graph_type = graph_type
+  )
+  return(df)
 }
 
-if (file.info(argv$adjmat_est)$size > 0) { 
-    true_adjmat <- as.matrix(read.csv(argv$adjmat_true, check.names=FALSE))
-    estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est, check.names=FALSE))
-    df <- benchmarks(true_adjmat, estimated_adjmat)
+if (file.info(argv$adjmat_est)$size > 0) {
+  true_adjmat <- as.matrix(read.csv(argv$adjmat_true, check.names = FALSE))
+  estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est, check.names = FALSE))
+  df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
-    df <- data.frame(TPR_pattern = "None", # should be for all times
-                    FPRn_pattern = "None",
-                    SHD_pattern = "None",
-                    SHD_cpdag = "None",
-                    FPR_skel = "None",
-                    FNR_skel = "None",
-                    TP_skel = "None",
-                    FN_skel = "None",
-                    FP_skel = "None",
-                    TN_skel = "None",
-                    n_nodes = "None",
-                    true_n_edges_skel = "None",
-                    true_n_non_edges_skel = "None",
-                    graph_type="None")
+  df <- data.frame(
+    TPR_pattern = "None", # should be for all times
+    FPRn_pattern = "None",
+    SHD_pattern = "None",
+    SHD_cpdag = "None",
+    FPR_skel = "None",
+    FNR_skel = "None",
+    TP_skel = "None",
+    FN_skel = "None",
+    FP_skel = "None",
+    TN_skel = "None",
+    n_nodes = "None",
+    true_n_edges_skel = "None",
+    true_n_non_edges_skel = "None",
+    graph_type = "None"
+  )
 }
 
 write.csv(df, file = argv$filename, row.names = FALSE, quote = FALSE)

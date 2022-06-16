@@ -2,7 +2,6 @@ library(RBGL)
 library(pcalg)
 library(R.utils)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
-source("resources/code_for_binary_simulations/make_name.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
@@ -17,15 +16,15 @@ majrule <- as.logical(snakemake@wildcards[["majrule"]])
 solveconfl <- as.logical(snakemake@wildcards[["solveconfl"]])
 numCores <- as.integer(snakemake@wildcards[["numCores"]])
 verbose <- as.logical(snakemake@wildcards[["verbose"]])
-indepTest = match.fun(snakemake@wildcards[["indepTest"]])
+indepTest <- match.fun(snakemake@wildcards[["indepTest"]])
 
 wrapper <- function() {
   data <- read.csv(filename_data, check.names = FALSE)
-  
-  suffStat = NULL
+
+  suffStat <- NULL
   if (snakemake@wildcards[["indepTest"]] != "gaussCItest") {
-    nlev <- as.numeric(data[1,])
-    data <- data[-1,] # Remove range header
+    nlev <- as.numeric(data[1, ])
+    data <- data[-1, ] # Remove range header
     suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
   } else {
     n <- dim(data)[1]
@@ -34,27 +33,29 @@ wrapper <- function() {
 
   start <- proc.time()[1]
   set.seed(seed)
-  pc.fit <- pc(suffStat = suffStat,
-                indepTest = indepTest,
-                alpha = alpha,
-                labels = colnames(data),
-                fixedGaps = NULL,
-                fixedEdges = NULL,
-                NAdelete = NAdelete,
-                m.max = mmax,
-                u2pd = u2pd,
-                skel.method = skelmethod,
-                conservative = conservative,
-                maj.rule = majrule,
-                solve.confl = solveconfl,
-                numCores = numCores,
-                verbose = verbose)
+  pc.fit <- pc(
+    suffStat = suffStat,
+    indepTest = indepTest,
+    alpha = alpha,
+    labels = colnames(data),
+    fixedGaps = NULL,
+    fixedEdges = NULL,
+    NAdelete = NAdelete,
+    m.max = mmax,
+    u2pd = u2pd,
+    skel.method = skelmethod,
+    conservative = conservative,
+    maj.rule = majrule,
+    solve.confl = solveconfl,
+    numCores = numCores,
+    verbose = verbose
+  )
 
   totaltime <- proc.time()[1] - start
 
   graph <- pc.fit@graph
 
-    
+
 
   adjmat <- as(graph, "matrix")
   colnames(adjmat) <- names(data)
@@ -67,13 +68,22 @@ if (snakemake@wildcards[["timeout"]] == "None") {
   wrapper()
 } else {
   res <- NULL
-  tryCatch({
-    res <- withTimeout({
-      wrapper()
-    }, timeout = snakemake@wildcards[["timeout"]])
-  }, TimeoutException = function(ex) {
-    message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep = ""))
-    file.create(filename)
-    cat("None", file = snakemake@output[["time"]], sep = "\n")
-  })
+  tryCatch(
+    {
+      res <- withTimeout(
+        {
+          wrapper()
+        },
+        timeout = snakemake@wildcards[["timeout"]]
+      )
+    },
+    TimeoutException = function(ex) {
+      message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
+        " seconds. Writing empty graph and time files.",
+        sep = ""
+      ))
+      file.create(filename)
+      cat("None", file = snakemake@output[["time"]], sep = "\n")
+    }
+  )
 }

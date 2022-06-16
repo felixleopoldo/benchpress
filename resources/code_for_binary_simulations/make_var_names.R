@@ -12,4 +12,3 @@ matrixToDataframe <- function(data, varnames) {
   }
   return(datadf)
 }
-
