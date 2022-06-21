@@ -164,6 +164,11 @@ This module writes ggpairs plots using the GGally package.
 Be careful that this can be slow and the variable names may not fit into the figure if the dimension is too large.
 However, you can always alter the script as you like it.
 
+..  figure:: _static/alarm/pairs_1.png
+    :alt: GGpairs plot
+
+
+    GGpairs plot plot
 
 ``graph_true_stats``
 -------------------------
