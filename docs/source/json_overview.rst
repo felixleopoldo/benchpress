@@ -168,7 +168,7 @@ However, you can always alter the script as you like it.
     :alt: GGpairs plot
 
 
-    GGpairs plot plot
+    GGpairs plot
 
 ``graph_true_stats``
 -------------------------
