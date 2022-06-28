@@ -37,8 +37,8 @@ Some systems require explicit installation of squash-tools. Using conda it can b
 
 `$ conda install -c conda-forge squash-tools`
     
-### OSX/Windows    
-Benchpress cannot run directly on OSX/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
+### macOS/Windows    
+Benchpress cannot run directly on macOS/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
     
 - [VirtualBox](https://www.virtualbox.org/) ([instructions for installing Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview))
 
@@ -54,7 +54,7 @@ $ cd benchpress
 ```
     
 #### Notes
-If you are using a virtualiser such as VirtualBox, this folder should still be located on OSX/Windows and mounted in the virtual machine. In this way, all the files used by Benchpress are reachable from OSX/Windows. 
+If you are using a virtualiser such as VirtualBox, this folder should still be located on macOS/Windows and mounted in the virtual machine. In this way, all the files used by Benchpress are reachable from macOS/Windows. 
     
 ## Usage
 
