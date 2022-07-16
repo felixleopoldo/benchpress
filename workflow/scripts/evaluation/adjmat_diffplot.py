@@ -14,12 +14,13 @@ else:
   adjmat_est = pd.read_csv(snakemake.input["adjmat_est"])
 
   adjmat_diff = 2*adjmat_true - adjmat_est
-  adjmat_diff = adjmat_diff.replace([1],3)
-  adjmat_diff = adjmat_diff.replace([-1],1)
+  adjmat_diff = adjmat_diff.replace([1], 3)
+  adjmat_diff = adjmat_diff.replace([2], 1)
+  adjmat_diff = adjmat_diff.replace([-1], 2)
   heatmap = adjmat_diff
   # 0: no edge
-  # 1: false positive
-  # 2: false negative
+  # 1: false negative
+  # 2: false positive
   # 3: correct edge
   heatmap.index = heatmap.columns
   with sns.axes_style("white"):
