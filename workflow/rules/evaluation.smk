@@ -89,6 +89,30 @@ def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
             for alg in active_algorithms("graph_plots")]
     return ret
 
+def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
+    ret = [[[[expand("{output_dir}/" \
+            "evaluation=/{evaluation_string}/"\
+            "adjmat=/{adjmat_string}/"\
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/" \
+            "seed={seed}/" + \
+            filename + "." + ext,
+            output_dir="results",
+            alg_string=json_string[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            evaluation_string="adjmat_diffplot",
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+            for alg in active_algorithms("graph_plots")]
+    return ret
+
 def adjmat_true_plots():
     return [[expand("{output_dir}/adjmat/{adjmat_string}.eps",
             output_dir="results",
@@ -167,7 +191,7 @@ def pairs():
     return ret
 
 def graph_true_plots():
-    return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
+    return [[expand("{output_dir}/graph_plot/{adjmat_string}.png",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -175,13 +199,12 @@ def graph_true_plots():
             for sim_setup in config["benchmark_setup"]["data"] ]
 
 def graph_plots():
-    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
+    ret = [[[[expand("{output_dir}/graph_plot/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
-            "seed={seed}/"
-            "adjmat.png",
+            "seed={seed}.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
@@ -358,14 +381,14 @@ rule adjmat_true_stats:
     script:
         "../scripts/evaluation/graph_stats.R"
 
-# This rule is very generally specified ad relies on that it is called in  the right way.
-# I.e with the path of an adjaceny matrix.
+# This rule is very generally specified and relies on that it is called in the right way.
+# I.e with the path of an adjacency matrix.
 rule adjmat_to_dot:
     input:
         "workflow/scripts/utils/adjmat_to_dot.py",
-        filename="{output_dir}/{something}.csv" 
+        filename="{output_dir}/adjmat_estimate/adjmat=/{something}/adjmat.csv" # true graph has adjmat in the path and estimated does not.
     output:
-        filename = "{output_dir}/{something}.dot"
+        filename = "{output_dir}/dotgraph/adjmat=/{something}.dot"
     container:
         docker_image("trilearn")
     shell:
@@ -377,11 +400,19 @@ rule adjmat_to_dot:
         fi
         """
 
+use rule adjmat_to_dot as true_adjmat_to_dot with:
+    input:
+        "workflow/scripts/utils/adjmat_to_dot.py",
+        filename="{output_dir}/adjmat/{something}.csv" # true graph has /adjmat/ in the path and estimated does not.
+    output:
+        filename = "{output_dir}/dotgraph/{something}.dot"
+
+
 rule plot_dot:
     input:
-        filename="{output_dir}/{something}.dot" 
+        filename="{output_dir}/dotgraph/{something}.dot" 
     output:
-        filename="{output_dir}/{something}.png" 
+        filename="{output_dir}/graph_plot/{something}.png" 
     container:
         docker_image("trilearn")
     shell:
@@ -518,16 +549,50 @@ rule bnlearn_graphvizcompare:
     script:
         "../scripts/evaluation/bnlearn_graphvizcompare.R"
 
+# This is actually a quite general rule.
+rule adjmat_diffplot:
+    input:
+        "workflow/scripts/evaluation/adjmat_diffplot.py",
+        data = summarise_alg_input_data_path(),
+        adjmat_true = summarise_alg_input_adjmat_true_path(),
+        adjmat_est = "{output_dir}/adjmat_estimate/"\
+                    "adjmat=/{adjmat}/"\
+                    "parameters=/{bn}/"\
+                    "data=/{data}/"\
+                    "algorithm=/{alg_string}/"  \
+                    "seed={replicate}/" \
+                    "adjmat.csv"
+    output:
+        filename="{output_dir}/" \
+        "evaluation=/adjmat_diffplot/"\
+        "adjmat=/{adjmat}/"\
+        "parameters=/{bn}/"\
+        "data=/{data}/"\
+        "algorithm=/{alg_string}/" \
+        "seed={replicate}/{filename}"
+    params:
+        title="Graph: {adjmat}\nParameters: {bn}\nData: {data}",
+        adjmat_string="{adjmat}",
+        param_string="{bn}",
+        data_string="{data}",
+        alg_string="{alg_string}"
+    container:
+        docker_image("pydatascience")
+    script:
+        "../scripts/evaluation/adjmat_diffplot.py"
+
 rule graph_plots:
     input:
         conf=configfilename,
         graphs=graph_plots(),
         adjmats=adjmat_plots(),
+        adjmat_diffplots=adjmat_diffplots(),
         graphvizcompare=bnlearn_graphvizcompare_plots(),
         csv_adjmats=adjmats()
     output:
         directory("results/output/graph_plots/graphs"),
         directory("results/output/graph_plots/adjmats"),
+        directory("results/output/graph_plots/adjmat_diffplots"),
         directory("results/output/graph_plots/csvs"),
         directory("results/output/graph_plots/graphvizcompare"),
         touch("results/output/graph_plots/graph_plots.done")
@@ -541,7 +606,11 @@ rule graph_plots:
         if True:
             shell("mkdir -p results/output/graph_plots/graphvizcompare")
             for i,f in enumerate(input.graphvizcompare):
-                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+                shell("cp "+f+" results/output/graph_plots/graphvizcompare/diffplot_" +str(i+1) +".png")
+
+            shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
+            for i,f in enumerate(input.adjmat_diffplots):
+                shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
 
 rule graph_true_plots:
     input:
