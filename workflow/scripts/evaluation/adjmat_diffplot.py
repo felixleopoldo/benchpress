@@ -22,10 +22,14 @@ else:
   # 1: false negative
   # 2: false positive
   # 3: correct edge
+
+  colors = ["light grey", "windows blue", "red", "black"]
+  cmap = sns.xkcd_palette(colors)
   heatmap.index = heatmap.columns
+  #sns.set_style("whitegrid")
   with sns.axes_style("white"):
       sns.heatmap(heatmap,  annot=False, linewidth=1,
-                  cmap="Blues",
+                  cmap=cmap,
                   vmin=0.0, vmax=3.0, square=True,
                   cbar=False,
                   xticklabels=1, yticklabels=1)

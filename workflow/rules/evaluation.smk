@@ -606,7 +606,7 @@ rule graph_plots:
         if True:
             shell("mkdir -p results/output/graph_plots/graphvizcompare")
             for i,f in enumerate(input.graphvizcompare):
-                shell("cp "+f+" results/output/graph_plots/graphvizcompare/diffplot_" +str(i+1) +".png")
+                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
 
             shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
             for i,f in enumerate(input.adjmat_diffplots):
