@@ -18,7 +18,7 @@ Data sampling from SEM.
 
 ```json
 {
-  "id": "standardized",
+  "id": "gcastle_sem",
   "standardized": true,
   "method": "linear",
   "sem_type": "gauss",
