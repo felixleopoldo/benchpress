@@ -72,17 +72,39 @@ rule sample_rgwish_data:
     shell:
         "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
+"""
+TODO: Standardisation should better be done in a separate preprocessing module 
+in the data section in benchmark_setup.
+"""
 rule standardize:
     input:
         data="{output_dir}/data" \
              "/{model}"\
-             "/data=/iid/n={n}/seed={replicate}.csv"
+             "/data=/{data_alg}/{data_params}/seed={seed}.csv"
     output:
         data="{output_dir}/data" \
-             "/{model}"\
-             "/data=/iid/standardized={standardized}/n={n}/seed={replicate}.csv"
+             "/{model}" \             
+             "/data=/{data_alg}/standardized={standardized, (True|False)}/{data_params}/seed={seed}.csv"
+             #"/data=/{data_alg}/standardized={standardized}/{data_params}/seed={seed}.csv"
     script:
         "../scripts/utils/standardize.R"
+
+# """
+# TODO: Standardisation should better be done in a separate preprocessing module 
+# in the data section in benchmark_setup.
+# """
+# rule standardize_gcastle_iidsimulation:
+#     input:
+#         data="{output_dir}/data" \
+#              "/{model}"\
+#              "/data=/gcastle_iidsimulation/{params}/seed={seed}.csv"
+#     output:
+#         data="{output_dir}/data" \
+#              "/{model}"\
+#              "/data=/gcastle_iidsimulation/standardized={standardized}/{params}/seed={seed}.csv"
+#     script:
+#         "../scripts/utils/standardize.R"
+
 
 rule copy_fixed_data:
     input:        
@@ -106,8 +128,8 @@ rule sample_data_fixed_bnfit:
         "--seed {wildcards.replicate}"
 
 """
-This for the case when te sem parameters are gicen as a matrix in 
-a .csv file in bn/sem_params.
+This rule is for the case when te sem parameters are given as a matrix in 
+a .csv file in resources/parameters/myparams/sem_params.
 """
 rule sample_fixed_sem_params_data:
     input:        
@@ -121,6 +143,29 @@ rule sample_fixed_sem_params_data:
         docker_image("bidag")
     script:
         "../scripts/data_sampling/sample_sem_data.R" 
+
+"""
+This rule is for the case when te sem parameters are given as a matrix in 
+a .csv file in resources/parameters/myparams/sem_params.
+"""
+rule sample_fixed_sem_params_data_gcastle:
+    input:        
+        params="resources/parameters/myparams/{bn}"        
+    output:
+        data="{output_dir}/data/" \
+             "adjmat=/{adjmat}/" \
+             "parameters=/{bn}/" \
+             "data=/gcastle_iidsimulation/" \
+             "method={method}/" \
+             "sem_type={sem_type}/" \
+             "noise_scale={noise_scale}/" \
+             "n={n}/" \
+             "seed={seed}.csv"
+    container:
+        docker_image("gcastle")
+    script:
+        "../scripts/data_sampling/gcastle_iidsimulation.py" 
+
 
 if "sem_params" in pattern_strings:
     rule sample_sem_data:
@@ -138,3 +183,23 @@ if "sem_params" in pattern_strings:
             docker_image("bidag")
         script:
             "../scripts/data_sampling/sample_sem_data.R" 
+
+if "sem_params" in pattern_strings:
+    rule gcastle_iidsimulation:
+        input:
+            script="workflow/scripts/data_sampling/gcastle_iidsimulation.py",
+            params="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
+        output:
+            data="{output_dir}/data" \
+                "/adjmat=/{adjmat}"\
+                "/parameters=/" + pattern_strings["sem_params"] + "/" \
+                "data=/gcastle_iidsimulation/" \
+                "method={method}/" \
+                "sem_type={sem_type}/" \
+                "noise_scale={noise_scale}/" \
+                "n={n}/" \
+                "seed={seed}.csv"
+        container:
+            docker_image("gcastle")
+        script:
+            "../scripts/data_sampling/gcastle_iidsimulation.py" 

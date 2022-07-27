@@ -38,9 +38,10 @@ Data sampling setup.
 
 # data Properties
 
-| Property    | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                    |
-| :---------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [iid](#iid) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid") |
+| Property                                        | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                        |
+| :---------------------------------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [iid](#iid)                                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid")                                     |
+| [gcastle_iidsimulation](#gcastle_iidsimulation) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsimulation-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation") |
 
 ## iid
 
@@ -61,5 +62,27 @@ List of iid setups.
 `object[]` ([iid](config-definitions-iid.md))
 
 ### iid Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## gcastle_iidsimulation
+
+List of gcastle_iidsimulation setups.
+
+`gcastle_iidsimulation`
+
+*   is optional
+
+*   Type: `object[]` ([gcastle_iidsimulation](config-definitions-gcastle_iidsimulation.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsimulation-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation")
+
+### gcastle_iidsimulation Type
+
+`object[]` ([gcastle_iidsimulation](config-definitions-gcastle_iidsimulation.md))
+
+### gcastle_iidsimulation Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.

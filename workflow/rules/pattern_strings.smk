@@ -35,7 +35,6 @@ pattern_strings["mcmc_est"] = "estimation_method/"\
                             "burnin={burnin}"
 
 # graph sampling
-#pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
 if "pcalg_randdag" in config["resources"]["graph"]:
     pattern_strings["pcalg_randdag"] = "pcalg_randdag/" + dict_to_path(config["resources"]["graph"]["pcalg_randdag"])
 if "trilearn_cta" in config["resources"]["graph"]:

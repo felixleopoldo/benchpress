@@ -42,4 +42,4 @@ Benchpress implements a number of the state-of-the-art algorithms available in t
 `View on Github <https://github.com/felixleopoldo/benchpress>`_.
 
 
-.. [1] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
+.. [1] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.

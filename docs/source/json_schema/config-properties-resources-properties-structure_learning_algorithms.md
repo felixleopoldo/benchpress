@@ -8,7 +8,7 @@ The available structure learning algorithms
 
 | Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
 | :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
 
 ## structure_learning_algorithms Type
 
@@ -20,6 +20,7 @@ The available structure learning algorithms
 | :-------------------------------------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [mylib_myalg](#mylib_myalg)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")                   |
 | [gcastle_notears](#gcastle_notears)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears")           |
+| [gcastle_pc](#gcastle_pc)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_pc")                     |
 | [trilearn_pgibbs](#trilearn_pgibbs)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")           |
 | [parallelDG](#paralleldg)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG")                     |
 | [rblip_asobs](#rblip_asobs)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")                   |
@@ -51,6 +52,7 @@ The available structure learning algorithms
 | [gt13_multipair](#gt13_multipair)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gt13_multipair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")             |
 | [gg99_singlepair](#gg99_singlepair)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gg99_singlepair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair")           |
 | [sklearn_glasso](#sklearn_glasso)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-sklearn_glasso.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/sklearn_glasso")             |
+| Additional Properties                         | Any     | Optional | can be null    |                                                                                                                                                                                                                                                                                                                                    |
 
 ## mylib_myalg
 
@@ -95,6 +97,24 @@ List of gcastle_notears objects
 ### gcastle_notears Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## gcastle_pc
+
+List of gcastle_pc objects
+
+`gcastle_pc`
+
+*   is optional
+
+*   Type: `array` ([gcastle_pc](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_pc")
+
+### gcastle_pc Type
+
+`array` ([gcastle_pc](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md))
 
 ## trilearn_pgibbs
 
@@ -661,3 +681,7 @@ GLasso scikit-learn implementation
 ### sklearn_glasso Type
 
 `object[]` ([sklearn_glasso item](config-definitions-sklearn_glasso-item.md))
+
+## Additional Properties
+
+Additional properties are allowed and do not have to follow a specific schema

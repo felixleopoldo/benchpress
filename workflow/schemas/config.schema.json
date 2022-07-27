@@ -263,6 +263,15 @@
                                 "$ref": "#/definitions/iid"
                             },
                             "uniqueItems": true
+                        },
+                        "gcastle_iidsimulation": {
+                            "title": "List of gcastle_iidsimulation setups.",
+                            "description": "List of gcastle_iidsimulation setups.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/gcastle_iidsimulation"
+                            },
+                            "uniqueItems": true
                         }
                     },
                     "additionalProperties": false,
@@ -1133,8 +1142,14 @@
                     "show_seed": true,
                     "errorbar": true,
                     "errorbarh": false,
-                    "xrange": [0,1],
-                    "yrange": [0,1],
+                    "xrange": [
+                        0,
+                        1
+                    ],
+                    "yrange": [
+                        0,
+                        1
+                    ],
                     "path": true,
                     "text": false,
                     "ids": [
@@ -1247,6 +1262,69 @@
                     "standardized": true,
                     "sample_sizes": [
                         100
+                    ]
+                }
+            ]
+        },
+        "gcastle_iidsimulation": {
+            "title": "gcastle_iidsimulation",
+            "description": "Data sampling from SEM.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Unique ID",
+                    "type": "string"
+                },
+                "n": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "linear",
+                        "nonlinear"
+                    ]
+                },
+                "sem_type": {
+                    "type": "string",
+                    "enum": [
+                        "gauss",
+                        "exp",
+                        "gumbel",
+                        "uniform",
+                        "logistic",
+                        "mlp",
+                        "mim",
+                        "gp",
+                        "gp-add",
+                        "quadratic"
+                    ]
+                },
+                "noise_scale": {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                "standardized": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "id",
+                "n",
+                "method",
+                "noise_scale",
+                "sem_type",
+                "standardized"
+            ],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "id": "gcastle_sem",
+                    "standardized": true,
+                    "method": "linear",
+                    "sem_type": "gauss",
+                    "noise_scale": 1.0,
+                    "n": [
+                        1000
                     ]
                 }
             ]
