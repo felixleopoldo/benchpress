@@ -1,6 +1,7 @@
 # A number of code snippets, just to reduce duplication.
 # The function names are sometimes a bit misleading.
 
+# TODO: These should take a pattern string instead of an algorithm.
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat}/"\
