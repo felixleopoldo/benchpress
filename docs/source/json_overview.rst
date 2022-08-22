@@ -9,8 +9,6 @@ For specific information about each element in the JSON file, see the documentat
 
 ``benchmark_setup``
 ********************
-    
-This section contains two sub sections ``data`` and ``evaluation`` described below.
 
 
 
@@ -24,7 +22,8 @@ This section contains two sub sections ``data`` and ``evaluation`` described bel
 
 ``data``
 ========
-The ``data`` section should contain a list where each item defines a certain data setup with the following fields.
+
+This section should contain a list where each item defines a certain data setup with the following fields.
 
 * ``graph_id`` an id from a graph_ module.
 * ``parameters_id`` an id from a parameters_ module.
@@ -57,8 +56,8 @@ the user (III, IV).
 +-----+-----------+------------+-----------+
 
 The following subsections shows some data examples in the benchmark_setup_ section that correspond to the scenarios I-IV.
-To try this out, you may change the current data section in *config/config.json*.
-Note that, in general the id's used must be defined in the resources section (as it is in *config/config.json*). 
+To try this out, you may change the current data section in :download:`config/config.json <../../config/config.json>`.
+Note that, in general the id's used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ ). 
 For example, *avneigs4_p20* is the id of an object in the pcalg_randdag_ module in the graph section.
 Also, datasets, parameters, and graphs must be placed in the proper place under the *resources* folder.
 
@@ -71,7 +70,7 @@ For example, you may not use the graph_true_plots_ or benchmarks_ modules as bot
 
 .. rubric:: Example 1
 
-Here we use *2005_sachs_2_cd3cd28icam2_log_std.csv*, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
+Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
 
 .. code-block:: json
 
@@ -84,7 +83,7 @@ Here we use *2005_sachs_2_cd3cd28icam2_log_std.csv*, which is the logged and sta
 
 .. rubric:: Example 2
 
-2005_sachs is a subfolder of mydatasets containing all the datasets from Sachs et. al 2005.
+`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of mydatasets containing all the datasets from Sachs et. al 2005.
 
 .. code-block:: json
 
@@ -115,7 +114,7 @@ III
 
 .. rubric:: Example
 
-Beware that the parameters in the following example is for binary data so to make sure that the algorithms used must be compatible.
+Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
 You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
 
 .. code-block:: json
@@ -292,7 +291,7 @@ This module plots properties of the true graphs such as graph density.
 -------------------------
 
 This module plots the true underlying graphs. 
-The figures are saved in *results/adjmat* and copied to *results/output/graph_true_plots/*.
+
 
 ..  figure:: _static/alarm.png
     :alt: The Alarm network 
@@ -311,7 +310,6 @@ The figures are saved in *results/adjmat* and copied to *results/output/graph_tr
 
 This module plots and saves the estimated graphs in dot-format and adjacency matrix.
 It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`.
-The figures are saved in *results/adjmat* and copied to *results/output/graph_plots/*.
 
 .. code-block:: json
     
@@ -343,7 +341,7 @@ Suppose we have a realisation of length :math:`M + 1` of such chain, then the po
 This module has a list of objects, where each object has 
 * an id field for the algorithm object id 
 * and a field (``burn_in``) for specifying the burn-in period. 
-  
+
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
 
 .. rubric:: Example
@@ -450,7 +448,7 @@ Since the trajectories tend to be very long, the user may choose to thin out the
 
 The  sections ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
 contain the available modules in benchpress.
-Each object in a module algorithm has a unique `id` which can be referenced in the `benchmark_setup` section.
+Each object in a module algorithm has a unique `id` which can be referenced in the benchmark_setup_ section.
 
 
 .. _resources:
