@@ -152,18 +152,6 @@ Fixed parameters
 * Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
 
 
-.. code-block:: json
-
-    {
-        "graph_id": "hepar2.csv",
-        "parameters_id": "hepar2.rds",
-        "data_id": "iid2000",
-        "seed_range": [
-            1,
-            5
-        ]
-    }
-    
 .. rubric:: Example
 
 Example standard networks mostly from the `bnlearn repository <https://www.bnlearn.com/bnrepository/>`_ are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.

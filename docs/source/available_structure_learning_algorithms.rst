@@ -121,7 +121,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
     }
 
 ``gcastle_notears``
------------
+-------------------------
 
 
 *No tears from the gCastle library*
@@ -144,7 +144,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
     }
 
 ``gcastle_pc``
------------
+---------------
 
 
 *PC algorithm from the gCastle library*
@@ -222,7 +222,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
                 
                 
 ``gcastle_notears_nonlinear``
------------
+------------------------------
 
 
 *No tears non-linear from the gCastle library*

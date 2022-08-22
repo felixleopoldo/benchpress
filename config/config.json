@@ -79,6 +79,13 @@
                     "sample_sizes": [
                         300
                     ]
+                },
+                {
+                    "id": "nonstandardized",
+                    "standardized": false,
+                    "sample_sizes": [
+                        300
+                    ]
                 }
             ]
         },
@@ -216,7 +223,30 @@
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
-                }
+                },
+                {
+                    "id": "itsearch_sample-bde",
+                    "estimate": "map",
+                    "MAP": false,
+                    "plus1it": 6,
+                    "posterior": 0.5,
+                    "scoretype": "bde",
+                    "chi": [
+                        0.01,
+                        0.1,
+                        1
+                    ],
+                    "edgepf": 2,
+                    "am": null,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 12,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton",
+                    "timeout": null
+                },
             ],
             "bidag_order_mcmc": [
                 {
