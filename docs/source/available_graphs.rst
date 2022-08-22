@@ -5,10 +5,13 @@
 
 This section contains the available graph modules.
 
+.. _pcalg_randdag:
+
 ``pcalg_randdag``
 -------------------------
 
-This is the randDAG from the R package `pcalg <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`_  with the extra feature that the maximum average number of parents can be set by (``max_parents``).
+This is the *randDAG* from the R package `pcalg <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`_  with the extra feature that the maximum average number of parents can be set by ``max_parents``.
+
 
 .. Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -56,7 +59,7 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 ``bandmat``
 -------------------
 An object of the bandmat module specifies a decomposable graphs with adjacency matrix
-with given bandwidth (bandwith).
+with given bandwidth (*bandwith*).
 
 .. rubric:: Example
 
@@ -125,21 +128,9 @@ The graph is referenced by the corresponding filename.
 * 1 (0) at row i column j mean that there is (is not) an edge pointing from variable i to j. 
 * Undirected graphs have symmetric matrices.
 
-.. Example::
 
 Examples are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
 
-.. code-block:: json
-
-    {
-        "graph_id": "asia.csv",
-        "parameters_id": "binbn",
-        "data_id": "nonstandardized",
-        "seed_range": [
-            1,
-            5
-        ]
-    }
 
 
 

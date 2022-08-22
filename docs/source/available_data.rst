@@ -3,6 +3,7 @@
 ``data``
 =========
 
+.._iid:
 
 ``iid``
 ---------------------
@@ -66,26 +67,3 @@ A dataset is referenced by its filename.
 * For discrete data, the second row should contain the cardinalities of each variable.
 
 
-.. rubric:: Example
-
-
-Example of a fixed dataset with and without the true graph. 
-Note that the true graph is needed for the ``benchmarks`` module.
-
-.. code-block:: json
-
-    {
-        "graph_id": null,
-        "parameters_id": null,
-        "data_id": "olsson2019_p15_n1000.csv",
-        "seed_range": null
-    }
-
-.. code-block:: json
-
-    {
-        "graph_id": "jonesp15.csv",
-        "parameters_id": null,
-        "data_id": "olsson2019_p15_n1000.csv",
-        "seed_range": null
-    }
