@@ -34,11 +34,7 @@
                     "gcastle_grandag",
                     "gcastle_mcsl",
                     "gcastle_rl",
-                    "gcastle_corl",
-                    "fges-sem-bic",
-                    "tabu-bge",
-                    "itsearch-bge",
-                    "pc-gaussCItest"
+                    "gcastle_corl"
                 ]
             },
             "graph_true_plots": false,
