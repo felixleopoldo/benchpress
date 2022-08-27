@@ -648,8 +648,6 @@ if "sklearn_glasso" in pattern_strings:
 
 if "bnlearn_tabu" in pattern_strings:
 
-    for alg, algob_ids in alg_obj_pattern_strings.items():
-        
     rule tabu:
         input:
             data=alg_input_data(),

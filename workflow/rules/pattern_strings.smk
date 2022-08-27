@@ -23,38 +23,6 @@ def dict_to_path(d):
     ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
     return ret
 
-# This function takes the first element in a JSON object and creates a
-# pattern string based on the keys. 
-def dict_to_path2(d):
-    #if len(d) == 0:
-    #    return ""
-
-    c = d.copy() # take the first element in the list. BUG
-    c.pop("id") # remove id from the string as only the parameters should identify the computation.
-    if "burnin" in c: 
-        c.pop("burnin")
-    if "threshold" in c:      
-        c.pop("threshold")
-    if "active" in c:
-        c.pop("active")
-    sep = "/"
-    ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
-    return ret
-
-# Should the ids be in here?
-# should alg or id or both be keys?
-# mabe use the ids directly in pattern_strings instead. 
-# id can be found when generating values?
-alg_obj_pattern_strings = {}
-for alg, algobj_list in config["resources"]["structure_learning_algorithms"].items():
-    print(alg)
-    alg_obj_pattern_strings[alg] = dict()    
-    for i, alg_obj in enumerate(algobj_list):
-        print(alg_obj["id"])
-        alg_obj_pattern_strings[alg][alg_obj["id"]] = alg+"/alg_params=/"+dict_to_path2(config["resources"]["structure_learning_algorithms"][alg][i])
-
-print(alg_obj_pattern_strings)
-
 pattern_strings = {}
 # structure learning algorithms. 
 # The pattern strings are generated from the json config file.

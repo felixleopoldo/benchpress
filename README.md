@@ -54,7 +54,7 @@ $ cd benchpress
 ```
     
 #### Notes
-If you are using a virtualiser such as VirtualBox, this folder should still be located on macOS/Windows and shared to the virtual machine. In this way, all the files used by Benchpress are reachable from macOS/Windows. 
+If you are using a virtualiser such as VirtualBox, this folder should be located on macOS/Windows and shared to the virtual machine. In this way, all the files used by Benchpress are reachable from macOS/Windows. 
     
 ## Usage
 
@@ -76,7 +76,7 @@ The methods to generate graphs, parameters and data are listed further down.
 #### Example study
 This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**bidag_itsearch**, **tetrad_fges**, **bnlearn_tabu**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/config.json](config/config.json).
 
-To run this study (333 jobs ~ 10 minutes on a 2-cores laptop) type
+To run this study (378 jobs ~ 40 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/config.json`
 
