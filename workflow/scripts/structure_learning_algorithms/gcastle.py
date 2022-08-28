@@ -94,10 +94,6 @@ def wrapper():
             snakemake.wildcards["rho_max"]),
             w_threshold=float(
             snakemake.wildcards["w_threshold"]),
-            hidden_layer=int(
-            snakemake.wildcards["hidden_layer"]),
-            hidden_units=int(
-            snakemake.wildcards["hidden_units"]),
             bias=eval(snakemake.wildcards["bias"]),
             model_type=snakemake.wildcards["model_type"],
             device_type=snakemake.wildcards["device_type"],
@@ -169,8 +165,7 @@ def wrapper():
     elif(snakemake.params["alg"] == "mcsl"):
         from castle.algorithms import MCSL
 
-        n = MCSL(model_type=snakemake.wildcards["model_type"],
-                 hidden_layers=int(snakemake.wildcards["hidden_layers"]),
+        n = MCSL(model_type=snakemake.wildcards["model_type"],                 
                  hidden_dim=int(snakemake.wildcards["hidden_dim"]),
                  graph_thresh=float(snakemake.wildcards["graph_thresh"]),
                  l1_graph_penalty=float(
@@ -221,7 +216,7 @@ def wrapper():
         n.learn(df.values, columns=df.columns)
 
     elif(snakemake.params["alg"] == "rl"):
-        
+        # This creates a too long snakemake meta filename.
         from castle.algorithms import RL
         n = RL(encoder_type=snakemake.wildcards["encoder_type"],
                hidden_dim=int(snakemake.wildcards["hidden_dim"]),
@@ -247,12 +242,9 @@ def wrapper():
                lambda_flag_default=eval(
                    snakemake.wildcards["lambda_flag_default"]),
                score_bd_tight=eval(snakemake.wildcards["score_bd_tight"]),
-               lambda1_update=float(snakemake.wildcards["lambda1_update"]),
                lambda2_update=float(snakemake.wildcards["lambda2_update"]),
                score_lower=float(snakemake.wildcards["score_lower"]),
                score_upper=float(snakemake.wildcards["score_upper"]),
-               lambda2_lower=float(snakemake.wildcards["lambda2_lower"]),
-               lambda2_upper=float(snakemake.wildcards["lambda2_upper"]),
                seed=seed,
                nb_epoch=int(snakemake.wildcards["nb_epoch"]),
                lr1_start=float(snakemake.wildcards["lr1_start"]),
@@ -260,10 +252,7 @@ def wrapper():
                lr1_decay_rate=float(snakemake.wildcards["lr1_decay_rate"]),
                alpha=float(snakemake.wildcards["alpha"]),
                init_baseline=float(snakemake.wildcards["init_baseline"]),
-               temperature=float(snakemake.wildcards["temperature"]),
-               C=float(snakemake.wildcards["C"]),
                l1_graph_reg=float(snakemake.wildcards["l1_graph_reg"]),
-               inference_mode=eval(snakemake.wildcards["inference_mode"]),
                verbose=eval(snakemake.wildcards["verbose"]),
                device_type=snakemake.wildcards["device_type"],
                device_ids=int(snakemake.wildcards["device_ids"]))

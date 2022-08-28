@@ -34,6 +34,6 @@ def docker_image(name):
     elif name == "parallelDG":
         return "docker://hallawalla/paralleldg:0.5"
     elif name == "gcastle":
-        return "docker://onceltuca/gcastle:1.0.3rc3"
+        return "docker://onceltuca/gcastle:1.0.3"
     elif name == "tidyverse":
         return "docker://onceltuca/tidyverse"
