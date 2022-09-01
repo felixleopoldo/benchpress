@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Benchpress'
-copyright = '2022, Felix Rios.'
-author = 'Felix Rios'
+copyright = '2022, Felix Rios, Giusi Moffa, and Jack Kuipers.'
+author = 'Felix Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.0'
+release = '1.2.1'
 
 
 # -- General configuration ---------------------------------------------------
