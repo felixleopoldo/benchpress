@@ -14,7 +14,7 @@ is_outlier <- function(x) {
 
 if (file.info(snakemake@input[["csv"]])$size == 0) {
   file.create(snakemake@output[["fpr_tpr_pattern"]])
-  file.create(snakemake@output[["benchmarks_FPRp_TPR_skel"]])
+  file.create(snakemake@output[["roc_FPRp_TPR_skel"]])
   file.create(snakemake@output[["FPRp_FNR_skel"]])
   cat("Time-out", file = snakemake@output[["elapsed_time_joint"]], sep = "\n")
   cat("Time-out", file = snakemake@output[["fnr_fprp_skel"]], sep = "\n")
