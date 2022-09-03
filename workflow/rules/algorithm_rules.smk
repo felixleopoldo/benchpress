@@ -82,6 +82,43 @@ if "parallelDG" in pattern_strings:
         shell:
             summarise_alg_shell("parallelDG")
 
+if "causaldag_gsp" in pattern_strings:
+
+    rule causaldag_gsp:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causaldag_gsp"),
+            time=alg_output_time_path("causaldag_gsp"),
+            ntests=alg_output_ntests_path("causaldag_gsp"),
+
+        container:
+            docker_image("causaldag")
+        script:
+            "../scripts/structure_learning_algorithms/causaldag_gsp.py"
+
+    rule summarise_causaldag_gsp:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causaldag_gsp"),
+            time=summarise_alg_input_time_path("causaldag_gsp"),
+            ntests=summarise_alg_input_ntests_path("causaldag_gsp"),
+        output:
+            res=summarise_alg_output_res_path("causaldag_gsp"),
+        shell:
+            summarise_alg_shell("causaldag_gsp")
+
+    rule join_summaries_causaldag_gsp:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causaldag_gsp"),
+        output:
+            join_summaries_output("causaldag_gsp"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
 
 if "gcastle_notears" in pattern_strings:
 

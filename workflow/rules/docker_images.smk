@@ -37,3 +37,6 @@ def docker_image(name):
         return "docker://onceltuca/gcastle:1.0.3"
     elif name == "tidyverse":
         return "docker://onceltuca/tidyverse"
+    elif name == "causaldag":
+        return "docker://onceltuca/causaldag:0.1a163"
+

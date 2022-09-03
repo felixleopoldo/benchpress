@@ -91,6 +91,36 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "timeout": null
     }
 
+
+``causaldag_gsp``
+------------------
+
+
+*Greedy Sparsest Permutations* (GSP) algorithm from the causalDAG package, `<https://uhlerlab.github.io/causaldag/>`_
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gsp",
+        "nruns": 5,
+        "depth": 4,
+        "verbose": true,
+        "initial_undirected": "threshold",
+        "use_lowest": true,
+        "max_iters": "inf",
+        "factor": 2,
+        "progress_bar": false,
+        "summarize": false,
+        "alpha":[0.05, 0.001],
+        "invert": true,
+        "timeout": null
+    }
+
+
 ``rblip_asobs``
 -----------
 

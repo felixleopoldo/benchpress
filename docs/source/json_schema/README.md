@@ -8,6 +8,10 @@
 
 ### Objects
 
+*   [Greedy Sparsest Permutations (GSP)](./config-properties-resources-properties-structure_learning_algorithms-properties-causaldag_gsp-greedy-sparsest-permutations-gsp.md "This is the Greedy Sparsest Permutations (GSP) algorithm from the causalDAG package, https://uhlerlab") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/causaldag_gsp/items`
+
+*   [Greedy Sparsest Permutations (GSP)](./config-definitions-greedy-sparsest-permutations-gsp.md "This is the Greedy Sparsest Permutations (GSP) algorithm from the causalDAG package, https://uhlerlab") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp`
+
 *   [ParallelDG item](./config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg-paralleldg-item.md "Parallel Sampling of decomposable graphs with log-linear decomposable model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG/items`
 
 *   [ParallelDG item](./config-definitions-paralleldg-item.md "Parallel Sampling of decomposable graphs with log-linear decomposable model") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/parallelDG`
@@ -358,6 +362,8 @@
 
 *   [bnlearn_tabu](./config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_tabu.md "Tabu search objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_tabu`
 
+*   [causaldag_gsp](./config-properties-resources-properties-structure_learning_algorithms-properties-causaldag_gsp.md "List of causaldag_gsp objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/causaldag_gsp`
+
 *   [data](./config-properties-benchmark_setup-properties-data.md "The data setup for the study") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/data`
 
 *   [dualpc](./config-properties-resources-properties-structure_learning_algorithms-properties-dualpc.md "Dual PC algorithm objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/dualpc`
@@ -381,6 +387,14 @@
 *   [mcmc_traj_plots](./config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "This module plots the so called score values in the trajectory or the value of a given functional") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots`
 
 *   [mylib_myalg](./config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "List of mylib_myalg objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
@@ -645,6 +659,16 @@
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
 
 *   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegint list](./config-definitions-non-negative-integers-1-anyof-nonnegint-list.md "Non-negative integer list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegint/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
@@ -1076,6 +1100,8 @@
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
 *   [notears](./config-properties-resources-properties-graph-properties-notears.md) – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears`
 
 *   [notears](./config-properties-resources-properties-structure_learning_algorithms-properties-notears.md "Notears objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/notears`
@@ -1168,7 +1194,11 @@
 
 *   [problist type](./config-definitions-flexprob-anyof-problist-type.md "Probability list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1`
 
+*   [problist type](./config-definitions-flexprob-anyof-problist-type.md "Probability list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1`
+
 *   [problist type](./config-definitions-problist-type.md "Probability list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/problist`
+
+*   [problist type](./config-definitions-flexprob-anyof-problist-type.md "Probability list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1`
 
 *   [problist type](./config-definitions-flexprob-anyof-problist-type.md "Probability list") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexprob/anyOf/1`
 

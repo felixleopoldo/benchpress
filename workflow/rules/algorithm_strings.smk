@@ -141,6 +141,9 @@ if "gcastle_rl" in pattern_strings:
 if "gcastle_corl" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["gcastle_corl"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gcastle_corl"]})
+if "causaldag_gsp" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causaldag_gsp"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causaldag_gsp"]})
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})
