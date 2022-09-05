@@ -27,15 +27,21 @@
                     "pc-gaussCItest"
                 ]
             },
-            "graph_true_plots": true,
-            "graph_true_stats": true,
-            "ggally_ggpairs": true,
-            "graph_plots": [
-                "fges-sem-bic",
-                "tabu-bge",
-                "itsearch-bge",
-                "pc-gaussCItest"
-            ],
+            "graph_true_plots": false,
+            "graph_true_stats": false,
+            "ggally_ggpairs": false,
+            "graph_plots": {
+                "ids": [
+                    "fges-sem-bic",
+                    "tabu-bge",
+                    "itsearch-bge",
+                    "pc-gaussCItest"
+                ],
+                "graphs": false,
+                "adjmats": true,
+                "diffplots": false,
+                "graphvizcompare": false
+            },
             "mcmc_traj_plots": [
                 {
                     "id": "omcmc_itsample-bge",
@@ -45,14 +51,14 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -65,7 +71,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ]
         }
@@ -177,7 +183,7 @@
             "bidag_itsearch": [
                 {
                     "id": "itsearch-bge",
-                    "timeout": null,
+                    "timeout": 2,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 2,

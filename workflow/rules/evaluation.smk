@@ -111,7 +111,7 @@ def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -135,7 +135,7 @@ def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -173,7 +173,7 @@ def adjmat_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -195,7 +195,7 @@ def adjmats():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -241,7 +241,7 @@ def graph_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -735,33 +735,33 @@ rule adjmat_diffplot:
 rule graph_plots:
     input:
         conf=configfilename,
-        graphs=graph_plots(),
-        adjmats=adjmat_plots(),
-        adjmat_diffplots=adjmat_diffplots(),
-        graphvizcompare=bnlearn_graphvizcompare_plots(),
+        graphs=[d for d in [graph_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
+        adjmats=[d for d in adjmat_plots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
+        adjmat_diffplots=[d for d in adjmat_diffplots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
+        graphvizcompare=[d for d in bnlearn_graphvizcompare_plots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
         csv_adjmats=adjmats()
-    output:
-        directory("results/output/graph_plots/graphs"),
-        directory("results/output/graph_plots/adjmats"),
-        directory("results/output/graph_plots/adjmat_diffplots"),
+    output:    
+        [d for d in [directory("results/output/graph_plots/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
+        [d for d in [directory("results/output/graph_plots/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
+        [d for d in [directory("results/output/graph_plots/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
+        [d for d in [directory("results/output/graph_plots/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
         directory("results/output/graph_plots/csvs"),
-        directory("results/output/graph_plots/graphvizcompare"),
         touch("results/output/graph_plots/graph_plots.done")
     run:
         for i,f in enumerate(input.graphs):
-            shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
+                shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
             shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
         for i,f in enumerate(input.csv_adjmats):
             shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
-        if True:
-            shell("mkdir -p results/output/graph_plots/graphvizcompare")
-            for i,f in enumerate(input.graphvizcompare):
-                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+        
+        shell("mkdir -p results/output/graph_plots/graphvizcompare")
+        for i,f in enumerate(input.graphvizcompare):
+            shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
 
-            shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
-            for i,f in enumerate(input.adjmat_diffplots):
-                shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+        shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
+        for i,f in enumerate(input.adjmat_diffplots):
+            shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
 
 rule graph_true_plots:
     input:

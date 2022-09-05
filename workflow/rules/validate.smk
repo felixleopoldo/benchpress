@@ -15,7 +15,7 @@ for benchmarksitem in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids
         raise Exception(benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that all ids in the graph_plots actually exist.
-for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_plots"]:
+for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]:
     if benchmarksitem not in available_conf_ids:
         raise Exception(benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 

@@ -90,10 +90,7 @@
                         "graph_plots": {
                             "title": "graph_plots",
                             "description": "This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph_plots/.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            },
+                           
                             "examples": [
                                 [
                                     "fges-sem-bic",
