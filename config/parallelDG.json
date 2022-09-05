@@ -31,8 +31,13 @@
             "mcmc_traj_plots": [
                 {
                     "id": "parallelDG_test",
+<<<<<<< HEAD
                     "burn_in": 200000,
                     "thinning": 1,
+=======
+                    "burn_in": 20000,
+                    "thinning": 100,
+>>>>>>> 5442197370d8c73351d01a0167fd989ca700c874
                     "functional": [
                         "score",
                         "size"
@@ -44,9 +49,15 @@
             "mcmc_autocorr_plots": [
                 {
                     "id": "parallelDG_test",
+<<<<<<< HEAD
                     "burn_in": 10000,
                     "thinning": 1,
                     "lags": 20000,
+=======
+                    "burn_in": 20000,
+                    "thinning": 100,
+                    "lags": 100,
+>>>>>>> 5442197370d8c73351d01a0167fd989ca700c874
                     "functional": [
                         "score",
                         "size"

@@ -91,6 +91,36 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "timeout": null
     }
 
+
+``causaldag_gsp``
+------------------
+
+
+*Greedy Sparsest Permutations* (GSP) algorithm from the causalDAG package, `<https://uhlerlab.github.io/causaldag/>`_
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gsp",
+        "nruns": 5,
+        "depth": 4,
+        "verbose": true,
+        "initial_undirected": "threshold",
+        "use_lowest": true,
+        "max_iters": "inf",
+        "factor": 2,
+        "progress_bar": false,
+        "summarize": false,
+        "alpha":[0.05, 0.001],
+        "invert": true,
+        "timeout": null
+    }
+
+
 ``rblip_asobs``
 -----------
 
@@ -143,6 +173,391 @@ Dots (.) in the original parameter names are omitted for implementational reason
         "timeout": null
     }
 
+``gcastle_pc``
+-----------
+
+
+*PC algorithm from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_pc",
+        "variant": "original",
+        "alpha": 0.05,
+        "ci_test": "gauss",
+        "timeout": null
+    }
+
+``gcastle_anm``
+---------------------
+
+
+*ANM from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_anm",
+        "alpha": 0.05,
+        "timeout": null
+    }
+
+``gcastle_direct_lingam``
+--------------------------
+
+
+*Direct lingam from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+   {
+        "id": "gcastle_direct_lingam",
+        "measure": "pwling",
+        "thresh": 0.3,
+        "timeout": null
+    }
+
+``gcastle_ica_lingam``
+-----------
+
+
+*Ica lingam from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+   {
+        "id": "gcastle_ica_lingam",
+        "thresh": 0.3,
+        "random_state": null,
+        "max_iter": 1000,                    
+        "timeout": null
+    }
+                
+                
+``gcastle_notears_nonlinear``
+-----------
+
+
+*No tears non-linear from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_notears_mlp",
+        "lambda1": 0.01,
+        "lambda2": 0.01,
+        "max_iter": 100,
+        "h_tol": "1e-8",
+        "rho_max": "1e+16",
+        "w_threshold": 0.3,
+        "hidden_layer": 1,
+        "hidden_units": 10,
+        "bias": true,
+        "model_type": "mlp",
+        "device_type": "cpu",
+        "device_ids": null,
+        "timeout": null
+    }
+    
+.. code-block:: json
+ 
+   {
+        "id": "gcastle_notears_sob",
+        "lambda1": 0.01,
+        "lambda2": 0.01,
+        "max_iter": 100,
+        "h_tol": "1e-8",
+        "rho_max": "1e+16",
+        "w_threshold": 0.3,
+        "hidden_layer": 1,
+        "hidden_units": 10,
+        "bias": true,
+        "model_type": "sob",
+        "device_type": "cpu",
+        "device_ids": null,
+        "timeout": null
+    } 
+    
+``gcastle_notears_low_rank``
+------------------------------
+
+
+*No tears low-rank from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_notears_low_rank",
+        "rank": 15,
+        "w_init": null,
+        "max_iter": 15,
+        "h_tol": "1e-6",
+        "rho_max": "1e+20",
+        "w_threshold": 0.3,
+        "timeout": null
+    }
+
+
+``gcastle_golem``
+--------------------
+
+
+*Golem from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_golem",
+        "lambda_1": "2e-2",
+        "lambda_2": 5.0,
+        "equal_variances": true,
+        "non_equal_variances": true,
+        "learning_rate": "1e-3",
+        "num_iter": "1e+5",
+        "checkpoint_iter": 5000,
+        "graph_thres": 0.3,
+        "device_type": "cpu",
+        "device_ids": 0,
+        "timeout": null
+    }
+
+
+``gcastle_grandag``
+---------------------
+
+
+*GRANDAG from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_grandag",
+        "hidden_num": 2,
+        "hidden_dim": 10,
+        "batch_size": 64,
+        "lr": 0.001,
+        "iterations": 1000,
+        "model_name": "NonLinGaussANM",
+        "nonlinear": "leaky-relu",
+        "optimizer": "rmsprop",
+        "h_threshold": "1e-8",
+        "device_type": "cpu",
+        "use_pns": false,
+        "pns_thresh": 0.75,
+        "num_neighbors": null,
+        "normalize": false,
+        "precision": false,
+        "random_seed": 42,
+        "jac_thresh": true,
+        "lambda_init": 0.0,
+        "mu_init": 0.001,
+        "omega_lambda": 0.0001,
+        "omega_mu": 0.9,
+        "stop_crit_win": 100,
+        "edge_clamp_range": 0.0001,
+        "norm_prod": "paths",
+        "square_prod": false,
+        "timeout": null
+    }
+
+``gcastle_mcsl``
+-------------------
+
+
+*MCSL from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_mcsl",
+        "model_type": "nn",
+        "hidden_layers": 4,
+        "hidden_dim": 16,
+        "graph_thresh": 0.5,
+        "l1_graph_penalty": "2e-3",
+        "learning_rate": "3e-2",
+        "max_iter": 5,
+        "iter_step": 100,
+        "init_iter": 2,
+        "h_tol": "1e-10",
+        "init_rho": "1e-5",
+        "rho_thresh": "1e14",
+        "h_thresh": 0.25,
+        "rho_multiply": 10,
+        "temperature": 0.2,
+        "device_type": "cpu",
+        "device_ids": "0",
+        "timeout": null
+    }
+
+``gcastle_gae``
+----------------
+
+
+*GAE from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_gae",
+        "x_dim": 1,
+        "num_encoder_layers": 1,
+        "num_decoder_layers": 1,
+        "hidden_size": 4,
+        "latent_dim": 1,
+        "l1_graph_penalty": 0.0,
+        "use_float64": false,
+        "learning_rate": "1e-3",
+        "max_iter": 10,
+        "iter_step": 3000,
+        "init_iter": 3,
+        "h_tol": "1e-8",
+        "init_rho": 1.0,
+        "rho_thres": "1e+30",
+        "h_thres": 0.25,
+        "rho_multiply": 2.0,
+        "early_stopping": false,
+        "early_stopping_thres": 1.0,
+        "graph_thres": 0.3,
+        "timeout": null
+     }
+
+``gcastle_rl``
+----------------
+
+
+*RL from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_rl",
+        "encoder_type": "TransformerEncoder",
+        "hidden_dim": 64,
+        "num_heads": 16,
+        "num_stacks": 6,
+        "residual": false,
+        "decoder_type": "SingleLayerDecoder",
+        "decoder_activation": "tanh",
+        "decoder_hidden_dim": 16,
+        "use_bias": false,
+        "use_bias_constant": false,
+        "bias_initial_value": false,
+        "batch_size": 64,
+        "input_dimension": 64,
+        "normalize": false,
+        "transpose": false,
+        "score_type": "BIC",
+        "reg_type": "LR",
+        "lambda_iter_num": 1000,
+        "lambda_flag_default": true,
+        "score_bd_tight": false,
+        "lambda1_update": 1.0,
+        "lambda2_update": 10,
+        "score_lower": 0.0,
+        "score_upper": 0.0,
+        "lambda2_lower": -1.0,
+        "lambda2_upper": -1.0,
+        "nb_epoch": 20,
+        "lr1_start": 0.001,
+        "lr1_decay_step": 5000,
+        "lr1_decay_rate": 0.96,
+        "alpha": 0.99,
+        "init_baseline": -1.0,
+        "temperature": 3.0,
+        "C": 10.0,
+        "l1_graph_reg": 0.0,
+        "inference_mode": true,
+        "verbose": false,
+        "device_type": "cpu",
+        "device_ids": 0,
+        "timeout": null
+    }
+    
+
+
+``gcastle_corl``
+-------------------
+
+
+*CORL from the gCastle library*
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+    {
+        "id": "gcastle_corl",
+        "batch_size": 64,
+        "input_dim": 100,
+        "embed_dim": 256,
+        "normalize": false,
+        "encoder_name": "transformer",
+        "encoder_heads": 8,
+        "encoder_blocks": 3,
+        "encoder_dropout_rate": 0.1,
+        "decoder_name": "lstm",
+        "reward_mode": "episodic",
+        "reward_score_type": "BIC",
+        "reward_regression_type": "LR",
+        "reward_gpr_alpha": 1.0,
+        "iteration": 10,
+        "actor_lr": "1e-4",
+        "critic_lr": "1e-3",
+        "alpha": 0.99,
+        "init_baseline": -1.0,
+        "random_seed": 0,
+        "device_type": "cpu",
+        "device_ids": 0,
+        "timeout": null
+    }
 
 ``notears``
 ------------

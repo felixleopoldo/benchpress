@@ -30,7 +30,6 @@ fges_result_to_matrix <- function(graph) {
       m[node1_ind, node2_ind] <- 1
       m[node2_ind, node1_ind] <- 1
     }
-
   }
   colnames(m) <- nodes
   return(m)

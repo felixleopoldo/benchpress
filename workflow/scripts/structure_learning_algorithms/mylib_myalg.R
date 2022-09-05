@@ -1,4 +1,5 @@
-myparam1 <- snakemake@wildcards[["myparam1"]] # These variables are generated from the keys in the JSON config file.
+# These variables are generated from the keys in the JSON config file.
+myparam1 <- snakemake@wildcards[["myparam1"]]
 myparam2 <- snakemake@wildcards[["myparam2"]]
 data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
 
@@ -13,6 +14,10 @@ diag(adjmat) <- 0 # No self loops
 colnames(adjmat) <- names(data) # Get the labels from the data
 totaltime <- proc.time()[1] - start
 
-write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
+write.csv(adjmat,
+  file = snakemake@output[["adjmat"]],
+  row.names = FALSE, quote = FALSE
+)
 write(totaltime, file = snakemake@output[["time"]])
-write("None", file = snakemake@output[["ntests"]]) # Write the number of c.i. tests here if possible.
+# Write the number of c.i. tests here if possible.
+write("None", file = snakemake@output[["ntests"]])

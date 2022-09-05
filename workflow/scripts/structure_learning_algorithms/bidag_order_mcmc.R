@@ -21,7 +21,6 @@ adjmatToEdgeString <- function(adjmat, labels) {
 }
 
 dummyEdges <- function(labels) {
-
   n <- length(labels)
   added <- "["
   for (i in 2:n) {
@@ -83,32 +82,36 @@ if (snakemake@wildcards[["stepsave"]] != "None") {
 }
 
 if (snakemake@wildcards[["scoretype"]] == "bdecat") {
-  data <- data[-1,] # Remove range header
-  myscore <- scoreparameters("bdecat", data, bdecatpar = list(chi = chi, edgepf = edgepf))
+  data <- data[-1, ] # Remove range header
+  myscore <- scoreparameters("bdecat", data,
+    bdecatpar = list(chi = chi, edgepf = edgepf)
+  )
 }
 if (snakemake@wildcards[["scoretype"]] == "bde") {
-  data <- data[-1,] # Remove range header
-  myscore <- scoreparameters("bde", data, bdepar = list(chi = chi, edgepf = edgepf))
+  data <- data[-1, ] # Remove range header
+  myscore <- scoreparameters("bde", data,
+    bdepar = list(chi = chi, edgepf = edgepf)
+  )
 }
 if (snakemake@wildcards[["scoretype"]] == "bge") {
   myscore <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 }
 
-wrapper <- function(){
+wrapper <- function() {
   start <- proc.time()[1]
   set.seed(seed)
   order_mcmc_res <- orderMCMC(myscore,
-                              startspace = startspace,
-                              plus1 = as.logical(snakemake@wildcards[["plus1"]]),
-                              MAP = as.logical(snakemake@wildcards[["MAP"]]),
-                              chainout = TRUE,
-                              scoreout = TRUE,
-                              alpha = alpha,
-                              iterations = iterations,
-                              stepsave = stepsave,
-                              gamma = as.numeric(snakemake@wildcards[["gamma"]]),
-                              cpdag = as.logical(snakemake@wildcards[["cpdag"]])
-                              )
+    startspace = startspace,
+    plus1 = as.logical(snakemake@wildcards[["plus1"]]),
+    MAP = as.logical(snakemake@wildcards[["MAP"]]),
+    chainout = TRUE,
+    scoreout = TRUE,
+    alpha = alpha,
+    iterations = iterations,
+    stepsave = stepsave,
+    gamma = as.numeric(snakemake@wildcards[["gamma"]]),
+    cpdag = as.logical(snakemake@wildcards[["cpdag"]])
+  )
 
   totaltime <- proc.time()[1] - start
   endspace <- order_mcmc_res$space$adjacency # This might not be what we want
@@ -118,12 +121,17 @@ wrapper <- function(){
   labels <- colnames(data)
   added <- dummyEdges(labels)
 
-  start_edges <- adjmatToEdgeString(order_mcmc_res$traceadd$incidence[[1]], labels)
+  start_edges <- adjmatToEdgeString(
+    order_mcmc_res$traceadd$incidence[[1]],
+    labels
+  )
 
-  res <- data.frame("index" = c(-2, -1, 0),
-                    "score" = c(0, 0, order_mcmc_res$trace[[1]]),
-                    "added" = c(added, "[]", start_edges),
-                    "removed" = c("[]", added, "[]"))
+  res <- data.frame(
+    "index" = c(-2, -1, 0),
+    "score" = c(0, 0, order_mcmc_res$trace[[1]]),
+    "added" = c(added, "[]", start_edges),
+    "removed" = c("[]", added, "[]")
+  )
 
   adjmat_traj <- order_mcmc_res$traceadd$incidence
   m <- length(adjmat_traj)
@@ -140,10 +148,12 @@ wrapper <- function(){
     added_edges <- adjmatToEdgeString(added_edge_mat, labels)
     removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
 
-    df <- data.frame("index" = i,
-                      "score" = order_mcmc_res$trace[i],
-                      "added" = added_edges,
-                      "removed" = removed_edges)
+    df <- data.frame(
+      "index" = i,
+      "score" = order_mcmc_res$trace[i],
+      "added" = added_edges,
+      "removed" = removed_edges
+    )
 
     res <- rbind(res, df)
 
@@ -155,17 +165,26 @@ wrapper <- function(){
   write(totaltime, file = snakemake@output[["time"]])
 }
 
-if(snakemake@wildcards[["timeout"]] == "None"){
-    wrapper()
+if (snakemake@wildcards[["timeout"]] == "None") {
+  wrapper()
 } else {
-    res <- NULL
-    tryCatch({
-    res <- withTimeout({
-        wrapper()
-    }, timeout = snakemake@wildcards[["timeout"]])
-    }, TimeoutException = function(ex) {
-        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty graph and time files.", sep=""))
-        file.create(filename)
-        cat("None",file=snakemake@output[["time"]],sep="\n")    
-    })
+  res <- NULL
+  tryCatch(
+    {
+      res <- withTimeout(
+        {
+          wrapper()
+        },
+        timeout = snakemake@wildcards[["timeout"]]
+      )
+    },
+    TimeoutException = function(ex) {
+      message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
+        " seconds. Writing empty graph and time files.",
+        sep = ""
+      ))
+      file.create(filename)
+      cat("None", file = snakemake@output[["time"]], sep = "\n")
+    }
+  )
 }

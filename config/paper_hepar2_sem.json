@@ -13,9 +13,9 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "section5.4/",
+                "filename_prefix": "paper_hepar2_sem/",
                 "show_seed": false,
-                "xlim": [0, 0.4],
+                "xlim": [0, 0.35],
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,

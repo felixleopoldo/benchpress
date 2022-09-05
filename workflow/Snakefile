@@ -8,16 +8,32 @@ from pathlib import Path
 import os
 from snakemake.utils import min_version
 
-# Have only thested with this version but it might work with previous version sa well.
+# Have only tested with this version but it might work with previous version as well.
 # To update using Mamba run e.g.
 # mamba update -c conda-forge -c bioconda snakemake=6.15.1
 
 min_version("6.15") 
-args = sys.argv
 
+# Check that Apptainer or Singularity >=3.2 is installed.  
+(apptainer_ecode, apptainer_outp) = subprocess.getstatusoutput("apptainer --version")
+(ecode, outp) = subprocess.getstatusoutput("singularity --version")
 
-# This is a workaround. In needed a variable for the configfilename
+# Check if either singularity of apptainera is installed
+if ecode != 0 and apptainer_ecode != 0:
+    raise Exception("Benchpress requires Singularity >= 3.2 or Apptainer.")
+    #raise Exception("Benchpress requires Singularity >= 3.2.")
+
+# If Singularity and not apptainer is installer, check the version of Singularity.
+if ecode == 0 and apptainer_ecode != 0:
+    v1 = outp.split()[2].split(".")[0]
+    v2 = outp.split()[2].split(".")[1]
+    smkver = float(v1 + "." + v2)
+    if smkver < 3.2:
+        raise Exception("You have " +outp+ ". Benchpress requires Singularity >= 3.2.")
+
+# This is a workaround. Needed a variable for the configfilename
 # and this seemed to be the only way. But there are probably better ways.
+args = sys.argv
 configfilename="config/config.json"
 i=0
 for arg in args:

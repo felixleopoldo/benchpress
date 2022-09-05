@@ -1,6 +1,7 @@
 # A number of code snippets, just to reduce duplication.
 # The function names are sometimes a bit misleading.
 
+# TODO: These should take a pattern string instead of an algorithm.
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat}/"\
@@ -249,7 +250,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
     elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
         # Find the data entry from the resources
         data = next(item for item in config["resources"]["data"]["iid"] if item["id"] == data_id)
-        if seed_in_path:
+        if seed_in_path: # seed_in_path is a hack..
             return expand("iid" +\
                             "/standardized={standardized}" + \ 
                             "/n={n}" + \
@@ -263,6 +264,36 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             "/n={n}",
                             standardized = data["standardized"],
                             n = data["sample_sizes"])
+
+    elif data_id in [c["id"] for c in config["resources"]["data"]["gcastle_iidsimulation"]]:
+        # Find the data entry from the resources
+        data = next(item for item in config["resources"]["data"]["gcastle_iidsimulation"] if item["id"] == data_id)
+        if seed_in_path:
+            return expand("gcastle_iidsimulation" +\
+                            "/standardized={standardized}/" + \ 
+                            "method={method}/" + \
+                            "sem_type={sem_type}/" + \
+                            "noise_scale={noise_scale}/" + \
+                            "n={n}" + \
+                            "/seed={seed}", 
+                            method = data["method"],
+                            sem_type = data["sem_type"],
+                            noise_scale = data["noise_scale"],
+                            n = data["n"],
+                            standardized = data["standardized"],
+                            seed = seed)
+        else:
+            return expand("gcastle_iidsimulation" +\
+                            "/standardized={standardized}/" + \ 
+                            "method={method}/" + \
+                            "sem_type={sem_type}/" + \
+                            "noise_scale={noise_scale}/" + \
+                            "n={n}",
+                            method = data["method"],
+                            sem_type = data["sem_type"],
+                            noise_scale = data["noise_scale"],
+                            standardized = data["standardized"],
+                            n = data["n"])
 
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:

@@ -4,13 +4,13 @@
             {
                 "graph_id": "sachs.csv",
                 "parameters_id": null,
-                "data_id": "sachs_2_cd3cd28icam2_log_std.csv",
+                "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
                 "seed_range": null
             }
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "sachs/",
+                "filename_prefix": "paper_sachs/",
                 "show_seed": false,
                 "errorbar": false,
                 "errorbarh": false,

@@ -4,11 +4,23 @@ library(argparser)
 library(bnlearn)
 source("resources/binarydatagen/generatebinaryBNf.r")
 
-p <- arg_parser("A program for sampling dat from a binary Bayesian network and save to file.")
-p <- add_argument(p, "--filename", help = "output filename", default = "data.csv")
-p <- add_argument(p, "--filename_bn", help = "Bayesian network filename", default = "bn.rds")
-p <- add_argument(p, "--samples", help = "Sample size", type = "numeric")
-p <- add_argument(p, "--seed", help = "Random seed", type = "numeric", default = 1)
+p <- arg_parser("Sampling dat from a binary Bayesian network and save to file.")
+p <- add_argument(p,
+  "--filename",
+  help = "output filename", default = "data.csv"
+)
+p <- add_argument(p,
+  "--filename_bn",
+  help = "Bayesian network filename", default = "bn.rds"
+)
+p <- add_argument(p,
+  "--samples",
+  help = "Sample size", type = "numeric"
+)
+p <- add_argument(p,
+  "--seed",
+  help = "Random seed", type = "numeric", default = 1
+)
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)
@@ -31,4 +43,7 @@ if ("bn.fit.dnet" %in% class(bn)) {
   data <- data.frame(rbind(header, data))
 }
 
-write.table(data, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")
+write.table(data,
+  file = filename,
+  row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ","
+)

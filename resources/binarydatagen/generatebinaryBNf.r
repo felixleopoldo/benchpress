@@ -15,21 +15,33 @@ generatefactors <- function(nf, baselinevec, mapping) {
     if (4 < 5) {
       if (nf < 3) {
         factorstrength <- runif(nf, min = 0.4, max = 0.9)
-        prob0[2:(2^nf)] <- (apply(t(t(as.matrix(mapping$partable[[nf]])) * factorstrength), 1, sum))[2:(2^nf)]
+        prob0[2:(2^nf)] <- (apply(
+          t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
+          1, sum
+        ))[2:(2^nf)]
         prob0[which(prob0 > 0.95)] <- 0.95
       } else {
         factorstrength <- runif(nf, min = 0.4, max = 0.9)
-        prob0[2:(2^nf)] <- (apply(t(t(as.matrix(mapping$partable[[nf]])) * factorstrength), 1, sum))[2:(2^nf)]
+        prob0[2:(2^nf)] <- (apply(
+          t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
+          1, sum
+        ))[2:(2^nf)]
         prob0[which(prob0 > 0.95)] <- 0.95
       }
     } else {
       if (nf < 3) {
         factorstrength <- -runif(nf, min = 0.45, max = 0.85)
-        prob0[2:(2^nf)] <- (apply(t(t(as.matrix(mapping$partable[[nf]])) * factorstrength), 1, sum))[2:(2^nf)]
+        prob0[2:(2^nf)] <- (apply(
+          t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
+          1, sum
+        ))[2:(2^nf)]
         prob0[which(prob0 < 0.05)] <- 0.05
       } else {
         factorstrength <- -runif(nf, min = 0.45, max = 0.85)
-        prob0[2:(2^nf)] <- (apply(t(t(as.matrix(mapping$partable[[nf]])) * factorstrength), 1, sum))[2:(2^nf)]
+        prob0[2:(2^nf)] <- (apply(
+          t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
+          1, sum
+        ))[2:(2^nf)]
         prob0[which(prob0 < 0.05)] <- 0.05
       }
     }
@@ -79,7 +91,8 @@ generateBinaryBN <- function(mydag, baseline) {
     np[i] <- length(parlist[[i]])
   }
   mapping <- BNmaps(np)
-  ord <- as.numeric(tsort(mydag)) # to gerate data we need the ordering of the dag
+  # to gerate data we need the ordering of the dag
+  ord <- as.numeric(tsort(mydag))
   fp <- list()
   for (i in ord) {
     fp[[i]] <- generatefactors(np[i], baseline, mapping)
@@ -110,10 +123,12 @@ generatebinaryBN.data <- function(n, binaryBN, samplesize) {
         }
       } else {
         binaryvec <- BNsample[k, binaryBN$parlist[[i]]]
-        BNsample[k, i] <- rbinom(1, 1, binaryBN$fp[[i]][which(binaryBN$map$index[[binaryBN$np[i]]] == BinToDec(binaryvec))])
+        BNsample[k, i] <- rbinom(
+          1, 1,
+          binaryBN$fp[[i]][which(binaryBN$map$index[[binaryBN$np[i]]] == BinToDec(binaryvec))]
+        )
       }
     }
   }
   return(BNsample)
 }
-

@@ -19,7 +19,9 @@ The available structure learning algorithms
 | Property                                      | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                         |
 | :-------------------------------------------- | :------ | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [mylib_myalg](#mylib_myalg)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-mylib_myalg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/mylib_myalg")                   |
+| [causaldag_gsp](#causaldag_gsp)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-causaldag_gsp.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/causaldag_gsp")               |
 | [gcastle_notears](#gcastle_notears)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_notears")           |
+| [gcastle_pc](#gcastle_pc)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_pc")                     |
 | [trilearn_pgibbs](#trilearn_pgibbs)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-trilearn_pgibbs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/trilearn_pgibbs")           |
 | [parallelDG](#paralleldg)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-paralleldg.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/parallelDG")                     |
 | [rblip_asobs](#rblip_asobs)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-rblip_asobs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/rblip_asobs")                   |
@@ -74,6 +76,28 @@ List of mylib_myalg objects
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 
+## causaldag_gsp
+
+List of causaldag_gsp objects. URL <https://uhlerlab.github.io/causaldag/>.
+
+`causaldag_gsp`
+
+*   is optional
+
+*   Type: `object[]` ([Greedy Sparsest Permutations (GSP)](config-definitions-greedy-sparsest-permutations-gsp.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-causaldag_gsp.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/causaldag_gsp")
+
+### causaldag_gsp Type
+
+`object[]` ([Greedy Sparsest Permutations (GSP)](config-definitions-greedy-sparsest-permutations-gsp.md))
+
+### causaldag_gsp Constraints
+
+**unique items**: all items in this array must be unique. Duplicates are not allowed.
+
 ## gcastle_notears
 
 List of gcastle_notears objects
@@ -95,6 +119,24 @@ List of gcastle_notears objects
 ### gcastle_notears Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
+
+## gcastle_pc
+
+List of gcastle_pc objects
+
+`gcastle_pc`
+
+*   is optional
+
+*   Type: `array` ([gcastle_pc](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gcastle_pc")
+
+### gcastle_pc Type
+
+`array` ([gcastle_pc](config-properties-resources-properties-structure_learning_algorithms-properties-gcastle_pc.md))
 
 ## trilearn_pgibbs
 

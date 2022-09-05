@@ -13,10 +13,10 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "smallscalestudy/",
+                "filename_prefix": "paper_er_sem_small/",
                 "show_seed": false,
                 "xlim":[0,0.75],
-                "errorbar": true,
+                "errorbar": false,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,

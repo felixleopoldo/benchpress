@@ -24,7 +24,6 @@ def dict_to_path(d):
     return ret
 
 pattern_strings = {}
-
 # structure learning algorithms. 
 # The pattern strings are generated from the json config file.
 for alg in config["resources"]["structure_learning_algorithms"].keys():
@@ -35,7 +34,6 @@ pattern_strings["mcmc_est"] = "estimation_method/"\
                             "burnin={burnin}"
 
 # graph sampling
-#pattern_strings["DAGavparents"] = "DAGavparents/" + dict_to_path(config["resources"]["graph"]["DAGavparents"])
 if "pcalg_randdag" in config["resources"]["graph"]:
     pattern_strings["pcalg_randdag"] = "pcalg_randdag/" + dict_to_path(config["resources"]["graph"]["pcalg_randdag"])
 if "trilearn_cta" in config["resources"]["graph"]:

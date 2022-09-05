@@ -1,0 +1,5 @@
+FROM python:3.9.13-buster
+RUN apt update
+RUN apt-get -y install python3-pip 
+RUN pip3 install causaldag==0.1a163
+RUN pip install contextlib2

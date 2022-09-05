@@ -105,7 +105,45 @@ if "rblip_asobs" in pattern_strings:
 if "gcastle_notears" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["gcastle_notears"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gcastle_notears"]})
-
+if "gcastle_pc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_pc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_pc"]})
+if "gcastle_anm" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_anm"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_anm"]})
+if "gcastle_direct_lingam" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_direct_lingam"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_direct_lingam"]})
+if "gcastle_ica_lingam" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_ica_lingam"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_ica_lingam"]})
+if "gcastle_notears_nonlinear" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_notears_nonlinear"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_notears_nonlinear"]})
+if "gcastle_notears_low_rank" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_notears_low_rank"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_notears_low_rank"]})
+if "gcastle_golem" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_golem"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_golem"]})
+if "gcastle_grandag" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_grandag"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_grandag"]})
+if "gcastle_mcsl" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_mcsl"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_mcsl"]})
+if "gcastle_gae" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_gae"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_gae"]})
+if "gcastle_rl" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_rl"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_rl"]})
+if "gcastle_corl" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gcastle_corl"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gcastle_corl"]})
+if "causaldag_gsp" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causaldag_gsp"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causaldag_gsp"]})
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})

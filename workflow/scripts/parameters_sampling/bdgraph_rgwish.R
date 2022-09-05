@@ -10,11 +10,17 @@ df <- read.csv(snakemake@input[["adjmat"]], header = TRUE, check.names = FALSE)
 adjmat <- as.matrix(df)
 
 print("Simulating G Wishart matrix")
-precmat <- rgwish( n = 1, adj = adjmat, b = as.integer(snakemake@wildcards[["b"]]), D = NULL, 
-                threshold = as.numeric(snakemake@input[["threshold"]]))
+precmat <- rgwish(
+  n = 1, adj = adjmat,
+  b = as.integer(snakemake@wildcards[["b"]]), D = NULL,
+  threshold = as.numeric(snakemake@input[["threshold"]])
+)
 
-covmat = solve(precmat)
+covmat <- solve(precmat)
 colnames(covmat) <- colnames(df)
 
 filename <- snakemake@output[["params"]]
-write.table(covmat, file = filename, row.names = FALSE, quote = FALSE, col.names = TRUE, sep = ",")
+write.table(covmat,
+  file = filename, row.names = FALSE,
+  quote = FALSE, col.names = TRUE, sep = ","
+)

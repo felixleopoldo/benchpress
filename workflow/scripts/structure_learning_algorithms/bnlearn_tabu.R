@@ -3,30 +3,33 @@ source("resources/code_for_binary_simulations/make_var_names.R")
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 
-wrapper <- function(){
+wrapper <- function() {
     seed <- as.integer(snakemake@wildcards[["replicate"]])
     data <- read.csv(filename_data, check.names = FALSE)
     names <- names(data)
     if (snakemake@wildcards[["score"]] %in% c("bde", "bic")) {
-        data <- data[-1,] # Remove range header
+        data <- data[-1, ] # Remove range header
         data <- matrixToDataframe(data, names)
     }
     set.seed(seed)
 
-    iss.w <- ifelse(snakemake@wildcards[["issw"]] == "None", dim(data)[2] + 2, as.numeric(snakemake@wildcards[["issw"]]))
+    iss.w <- ifelse(snakemake@wildcards[["issw"]] == "None",
+        dim(data)[2] + 2,
+        as.numeric(snakemake@wildcards[["issw"]])
+    )
     start <- proc.time()[1]
     output <- tabu(data,
-                score = snakemake@wildcards[["score"]],
-                iss = as.numeric(snakemake@wildcards[["iss"]]),
-                iss.mu = as.numeric(snakemake@wildcards[["issmu"]]),
-                iss.w = iss.w,
-                l = as.numeric(snakemake@wildcards[["l"]]),
-                k = as.numeric(snakemake@wildcards[["k"]]),
-                prior = snakemake@wildcards[["prior"]],
-                beta = as.numeric(snakemake@wildcards[["beta"]])
-                )
+        score = snakemake@wildcards[["score"]],
+        iss = as.numeric(snakemake@wildcards[["iss"]]),
+        iss.mu = as.numeric(snakemake@wildcards[["issmu"]]),
+        iss.w = iss.w,
+        l = as.numeric(snakemake@wildcards[["l"]]),
+        k = as.numeric(snakemake@wildcards[["k"]]),
+        prior = snakemake@wildcards[["prior"]],
+        beta = as.numeric(snakemake@wildcards[["beta"]])
+    )
     totaltime <- proc.time()[1] - start
- 
+
     ## convert to graphneldag
     gnel_dag <- as.graphNEL(output)
     adjmat <- as(gnel_dag, "matrix")
@@ -37,18 +40,27 @@ wrapper <- function(){
     write(ntests, file = snakemake@output[["ntests"]])
 }
 
-if(snakemake@wildcards[["timeout"]] == "None"){
+if (snakemake@wildcards[["timeout"]] == "None") {
     wrapper()
 } else {
     res <- NULL
-    tryCatch({
-    res <- withTimeout({
-        wrapper()
-    }, timeout = snakemake@wildcards[["timeout"]])
-    }, TimeoutException = function(ex) {
-        message(paste("Timeout after ", snakemake@wildcards[["timeout"]], " seconds. Writing empty grape and time files.", sep=""))
-        file.create(filename)
-        cat("None",file=snakemake@output[["time"]],sep="\n")    
-        cat("None", file = snakemake@output[["ntests"]], sep = "\n")
-    })
+    tryCatch(
+        {
+            res <- withTimeout(
+                {
+                    wrapper()
+                },
+                timeout = snakemake@wildcards[["timeout"]]
+            )
+        },
+        TimeoutException = function(ex) {
+            message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
+                " seconds. Writing empty grape and time files.",
+                sep = ""
+            ))
+            file.create(filename)
+            cat("None", file = snakemake@output[["time"]], sep = "\n")
+            cat("None", file = snakemake@output[["ntests"]], sep = "\n")
+        }
+    )
 }
