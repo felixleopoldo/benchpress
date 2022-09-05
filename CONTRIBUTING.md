@@ -12,7 +12,7 @@ Place the adjacency matrix of the graph in a .csv file in [resources/graph/myadj
 
 ## Adding a new graph module
 
-Place your script in [workflow/scripts](workflow/scripts) and edit the files 
+Place your script in [workflow/scripts/graph_sampling](workflow/scripts/graph_sampling) and edit the files 
 
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
@@ -24,7 +24,7 @@ Place your script in [workflow/scripts](workflow/scripts) and edit the files
 
 ## Adding a new parameters module
 
-Place your script in [workflow/scripts](workflow/scripts) and edit the files 
+Place your script in [workflow/scripts/parameters_sampling](workflow/scripts/parameters_sampling) and edit the files 
 
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
@@ -38,7 +38,7 @@ Place your script in [workflow/scripts](workflow/scripts) and edit the files
 ## Adding a new structure learning algorithm
 
 Install the requirements for running your script on a [Docker](https://www.docker.com/) image and push it to [DockerHub](https://hub.docker.com/).
-Then place your script in [workflow/scripts](workflow/scripts) and edit the files listed below. 
+Then place your script in [workflow/scripts/structure_learning_algorithms](workflow/scripts) and edit the files listed below. 
 
 Note that, MCMC methods are different from point estimators since the output is a graph trajectory and the graph is estmated from there, see e.g. gt13_multipair for an example of such algorithm.
 
