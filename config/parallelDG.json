@@ -6,8 +6,8 @@
                 "graph_id": "AR1-5",
                 "parameters_id": "intra-class",
                 "seed_range": [
-                    1,
-                    2
+                    0,
+                    9
                 ]
             }
         ],
@@ -31,7 +31,7 @@
             "mcmc_traj_plots": [
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 200000,
                     "thinning": 1,
                     "functional": [
                         "score",
@@ -40,19 +40,13 @@
                     "active": true
                 }
             ],
-            "mcmc_heatmaps": [
-                {
-                    "id": "parallelDG_test",
-                    "burn_in": 20000,
-                    "active": true
-                }
-            ],
+            "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": [
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 10000,
                     "thinning": 1,
-                    "lags": 2000,
+                    "lags": 20000,
                     "functional": [
                         "score",
                         "size"
@@ -95,13 +89,17 @@
         "structure_learning_algorithms": {
             "parallelDG": [
                 {
-                    "id": "parallelDG_test",
-                    "M": 100000,
-                    "R": 100,
-                    "pseudo_obs": 1.0,
-                    "datatype": "continuous",
-                    "mcmc_seed": 1,
-                    "timeout": null
+                "id": "parallelDG_test",
+                "M": 500000,
+                "R": 100,
+                "datatype": "continuous",
+                "mcmc_seed": 1,
+                "graph_prior": "uniform",
+                "graph_prior_param": 1.0,
+                "graph_prior_param1": 3.0,
+                "pseudo_obs": 2,
+                "delta" : 5.0,
+                "timeout": null
                 }
             ]
         }
