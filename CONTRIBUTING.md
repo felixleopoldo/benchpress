@@ -37,14 +37,17 @@ Place your script in [workflow/scripts](workflow/scripts) and edit the files
 
 ## Adding a new structure learning algorithm
 
-Place your script in [workflow/scripts](workflow/scripts) and edit the files. 
-MCMC methods are different from point estimators since the graph trajectory is saved and the graph is estmated from there, see e.g. gt13_multipair.
+Install the requirements for running your script on a [Docker](https://www.docker.com/) image and push it to [DockerHub](https://hub.docker.com/).
+Then place your script in [workflow/scripts](workflow/scripts) and edit the files listed below. 
+
+Note that, MCMC methods are different from point estimators since the output is a graph trajectory and the graph is estmated from there, see e.g. gt13_multipair for an example of such algorithm.
+
 - [workflow/schemas/config.schema.json](workflow/schemas/config.schema.json)
 - config/*
 - [workflow/rules/docker_images.smk](workflow/rules/docker_images.smk)
 - [workflow/rules/algorithm_rules.smk](workflow/rules/algorithm_rules.smk)
 - [workflow/rules/algorithm_strings.smk](workflow/rules/algorithm_strings.smk)
-- [workflow/rules/algorithm_shell_commands.smk](workflow/rules/algorithm_shell_commands.smk)
+- [workflow/rules/algorithm_shell_commands.smk](workflow/rules/algorithm_shell_commands.smk) (if the algorithm runs from the command line)
 - [workflow/rules/algorithm_summary_shell_command.smk](workflow/rules/algorithm_summary_shell_command.smk)
 - [docs/source/available_structure_learning_algorithms.rst](docs/source/available_structure_learning_algorithms.rst)
 
