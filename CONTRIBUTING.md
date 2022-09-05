@@ -8,7 +8,7 @@ Place your data sets in [resources/data/mydatasets](resources/data/mydatasets).
 
 ## Adding a new graph
 
-Place the adjacency matrix of the graph in a .csv file in (resources/graph/myadjmats)[resources/graph/myadjmats].
+Place the adjacency matrix of the graph in a .csv file in [resources/graph/myadjmats](resources/graph/myadjmats).
 
 ## Adding a new graph module
 
