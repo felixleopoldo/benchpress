@@ -69,7 +69,7 @@ Benchpress supports five different data scenarios, built from combining differen
 | V   | Generated | Generated  | Generated |
 
 The directory [resources/](resources) contains the fixed graphs, parameters, and datasets that are already available. 
-It containts, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
+It contains, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
 The methods to generate graphs, parameters and data are listed further down.
 
 #### Example study
