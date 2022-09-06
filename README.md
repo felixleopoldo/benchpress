@@ -50,7 +50,6 @@ Benchpress cannot run directly on macOS/Windows as it requires Singularity which
 As Benchpress is a Snakemake workflow, once the requirements are installed it requires no further installation but cloning the repository as
 ```
 $ git clone https://github.com/felixleopoldo/benchpress.git
-$ cd benchpress
 ```
     
 #### Notes
@@ -74,7 +73,7 @@ It containts, e.g., all the graphs (and corresponding parameters) from the [Baye
 The methods to generate graphs, parameters and data are listed further down.
 
 #### Example study
-This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the [pcalg_randdag](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-randdag) module and the weight parameters are sampled uniformly using the [sem_params](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#sem-params) module. For simplicity we use only a few structure learning modules here ([bidag_itsearch](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bidag-itsearch), [tetrad_fges](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#tetrad-fges), [bnlearn_tabu](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bnlearn-tabu), [pcalg_pc](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-pc)) with different parameter settings. The full setup is found here [config/config.json](config/config.json).
+This study is an example of data scenario V based on three continuous datasets using the [iid](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#iid) module, corresponding to three realisations of a random linear Gaussian [structural equation model](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) with random DAG. The DAGs are sampled from a restricted [Erdős–Rényi distribution](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model) using the [pcalg_randdag](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-randdag) module and the weight parameters are sampled uniformly using the [sem_params](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#sem-params) module. For simplicity we use only a few structure learning modules here ([bidag_itsearch](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bidag-itsearch), [tetrad_fges](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#tetrad-fges), [bnlearn_tabu](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bnlearn-tabu), [pcalg_pc](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-pc)) with different parameter settings. The full setup is found in [config/config.json](config/config.json).
 
 To run this study (378 jobs ~ 40 minutes on a 2-cores laptop) type
 
@@ -149,7 +148,7 @@ if "mylib_myalg" in pattern_strings:
 ```
 If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
 
-To upload your algorithm to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+To upload your algorithm to Benchpress, you should install it in a [Docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMT16rxbGonghr8uVXB_mcteQHoohQ1fyjiVQE5VVj7kYDDIl_Ty5vkaAsqqEALw_wcB) image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
