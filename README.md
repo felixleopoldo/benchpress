@@ -30,7 +30,7 @@ The following main functionalities are provided by Benchpress
 
 ### Linux 
 - [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
-- [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
+- [Apptainer](https://apptainer.org/) ([installation instructions](https://apptainer.org/docs/admin/main/installation.html#installation-on-linux))
 
 #### Notes
 Some systems require explicit installation of squash-tools. Using conda it can be installed as
@@ -38,7 +38,7 @@ Some systems require explicit installation of squash-tools. Using conda it can b
 `$ conda install -c conda-forge squash-tools`
     
 ### macOS/Windows    
-Benchpress cannot run directly on macOS/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
+Benchpress cannot run directly on macOS/Windows as it requires (former [Singularity](https://sylabs.io/singularity/)) which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
     
 - [VirtualBox](https://www.virtualbox.org/) ([instructions for installing Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview))
 
@@ -146,9 +146,10 @@ if "mylib_myalg" in pattern_strings:
         script:            
             "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
-If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
+If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in an Apptainer container based on the [r-base](https://hub.docker.com/_/r-base) Docker image.
 
-To upload your algorithm to Benchpress, you should install it in a [Docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMT16rxbGonghr8uVXB_mcteQHoohQ1fyjiVQE5VVj7kYDDIl_Ty5vkaAsqqEALw_wcB) image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+#### Adding an algorithm to Benchpress permanently
+To upload an algorithm to Benchpress, you should install it in a [Docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMT16rxbGonghr8uVXB_mcteQHoohQ1fyjiVQE5VVj7kYDDIl_Ty5vkaAsqqEALw_wcB) image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
