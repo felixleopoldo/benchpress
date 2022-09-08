@@ -7,7 +7,7 @@
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
-                    2
+                    1
                 ]
             }
         ],
@@ -44,7 +44,7 @@
                 {
                     "id": "gt13_multipair_test",
                     "burn_in": 20000,
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -52,7 +52,7 @@
                     "id": "gt13_multipair_test",
                     "burn_in": 0,
                     "thinning": 1,
-                    "lags": 20000,
+                    "lags": 40000,
                     "functional": [
                         "score",
                         "size"
@@ -69,7 +69,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        100
+                        100, 200, 500
                     ]
                 }
             ]
@@ -99,12 +99,12 @@
                     "n_samples": 200000,
                     "datatype": "continuous",
                     "randomits": 100,
-                    "prior": "mbc",
+                    "prior": "ep",
                     "ascore": null,
                     "bscore": null,
                     "clq": 2.0,
-                    "sep": 1.0,
-                    "penalty": null,
+                    "sep": 4.0,
+                    "penalty": 0.0,
                     "mcmc_seed": 1,
                     "timeout": null
                 }

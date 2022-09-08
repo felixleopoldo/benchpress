@@ -30,7 +30,7 @@ The following main functionalities are provided by Benchpress
 
 ### Linux 
 - [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
-- [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
+- [Apptainer](https://apptainer.org/) ([installation instructions](https://apptainer.org/docs/admin/main/installation.html#installation-on-linux))
 
 #### Notes
 Some systems require explicit installation of squash-tools. Using conda it can be installed as
@@ -38,7 +38,7 @@ Some systems require explicit installation of squash-tools. Using conda it can b
 `$ conda install -c conda-forge squash-tools`
     
 ### macOS/Windows    
-Benchpress cannot run directly on macOS/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
+Benchpress cannot run directly on macOS/Windows as it requires Apptainer (former [Singularity](https://sylabs.io/singularity/)) which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
     
 - [VirtualBox](https://www.virtualbox.org/) ([instructions for installing Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview))
 
@@ -50,7 +50,6 @@ Benchpress cannot run directly on macOS/Windows as it requires Singularity which
 As Benchpress is a Snakemake workflow, once the requirements are installed it requires no further installation but cloning the repository as
 ```
 $ git clone https://github.com/felixleopoldo/benchpress.git
-$ cd benchpress
 ```
     
 #### Notes
@@ -70,23 +69,23 @@ Benchpress supports five different data scenarios, built from combining differen
 | V   | Generated | Generated  | Generated |
 
 The directory [resources/](resources) contains the fixed graphs, parameters, and datasets that are already available. 
-It containts, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
+It contains, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
 The methods to generate graphs, parameters and data are listed further down.
 
 #### Example study
-This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**bidag_itsearch**, **tetrad_fges**, **bnlearn_tabu**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/config.json](config/config.json).
+This study is an example of data scenario V based on three continuous datasets, sampled using the [iid](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#iid) module, corresponding to three realisations of a random linear Gaussian [structural equation model](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) with random DAG. The DAGs are sampled from a restricted [Erdős–Rényi distribution](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model) using the [pcalg_randdag](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-randdag) module and the weight parameters are sampled uniformly using the [sem_params](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#sem-params) module. For simplicity we use only a few structure learning modules here ([bidag_itsearch](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bidag-itsearch), [tetrad_fges](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#tetrad-fges), [bnlearn_tabu](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bnlearn-tabu), [pcalg_pc](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-pc)) with different parameter settings. The full setup is found in [config/config.json](config/config.json).
 
 To run this study (378 jobs ~ 40 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/config.json`
 
-The following plots are generated by the **benchmarks** module
+The following plots are generated by the [benchmarks](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#benchmarks) module
 
 <img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="400"/><img src="docs/source/_static/elapsed_time_joint.png" alt="drawing" width="400"/>
 
 <img src="docs/source/_static/SHD_cpdag_joint.png" alt="drawing" width="400"/><img src="https://github.com/felixleopoldo/benchpress/blob/master/docs/source/_static/f1_skel_joint.png" alt="F1" width="400"/>
 
-These plots are generated by the **graph_plots** module
+These plots are generated by the [graph_plots](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#graph-plots) module
     
 <img src="docs/source/_static/adjmat_true_1.png" alt="True adjacency matrix plot" width="400"/><img src="docs/source/_static/adjmat_plot_2.png" alt="Estimated adjacency matrix plot" width="400"/>
 
@@ -117,7 +116,7 @@ write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote 
 write(totaltime, file = snakemake@output[["time"]])
 write("None", file = snakemake@output[["ntests"]]) # Number of c.i. tests
 ```
-The parameters used in the first two lines above are automatically generated from the JSON object in the *mylib_myalg* section of [config/config.json](config/config.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the *benchmarks* section. 
+The parameters used in the first two lines above are automatically generated from the JSON object in the [mylib_myalg](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mylib_myalg-item.md) section of [config/config.json](config/config.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the [benchmarks](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-benchmarks-item.md) section. 
 
 ```javascript
 {
@@ -147,9 +146,10 @@ if "mylib_myalg" in pattern_strings:
         script:            
             "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
-If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
+If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in an Apptainer container based on the [r-base](https://hub.docker.com/_/r-base) Docker image.
 
-To upload your algorithm to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+#### Adding an algorithm to Benchpress permanently
+To upload an algorithm to Benchpress, you should install it in a [Docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMT16rxbGonghr8uVXB_mcteQHoohQ1fyjiVQE5VVj7kYDDIl_Ty5vkaAsqqEALw_wcB) image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
@@ -230,7 +230,7 @@ To upload your algorithm to Benchpress, you should install it in a Docker image,
 | PGibbs [[20]](#20)                | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                                                      | 1.2.3    | [trilearn_pgibbs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_pgibbs-item.md)              |
 | GG99 single pair [[18]](#18)      | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gg99_singlepair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gg99_singlepair-item.md)              |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gt13_multipair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gt13_multipair-item.md)                |
-| Parallel DG                       | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.3      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
+| Parallel DG                       | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.8      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
 | GLasso [[31]](#31)                | UG    | Python   | [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.graphical_lasso.html)  | 0.22.1   | [sklearn_glasso](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-sklearn_glasso-item.md)                |
 
 
