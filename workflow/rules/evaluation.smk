@@ -65,31 +65,31 @@ def traj_plots():
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
-# def filled_trajs():
-#     ret = [[[[expand("{output_dir}/" \
-#             "evaluation=/{evaluation_string}/"\
-#             "adjmat=/{adjmat_string}/"\
-#             "parameters=/{param_string}/"\
-#             "data=/{data_string}/"\
-#             "algorithm=/{alg_string}/" \
-#             "seed={seed}/"
-#             "traj_filled.csv",
-#             output_dir="results",
-#             alg_string=json_string_mcmc_noest[alg_conf["id"]],
-#             **alg_conf,
-#             id=alg_conf["id"],
-#             seed=seed,
-#             evaluation_string=gen_evaluation_string_from_conf("mcmc_traj_plots", alg_conf["id"]),
-#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
-#             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-#             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-#             for seed in get_seed_range(sim_setup["seed_range"])]
-#             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-#                 if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
-#                                                             if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
-#             for alg in active_algorithms("mcmc_traj_plots")]
-#     return ret
+def processed_trajs():
+    ret = [[[[expand("{output_dir}/" \
+            "evaluation=/{evaluation_string}/"\
+            "adjmat=/{adjmat_string}/"\
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/id={id}/" \
+            "seed={seed}/"
+            "processed_graphtraj.csv",
+            output_dir="results",
+            alg_string=json_string_mcmc_noest[alg_conf["id"]],
+            **alg_conf, # contains e.g. id
+            seed=seed,
+            evaluation_string=gen_evaluation_string_from_conf("mcmc_traj_plots", alg_conf["id"]),
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
+                                                            if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
+            for alg in active_algorithms("mcmc_traj_plots")]
+    return ret
+
 
 def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
     ret = [[[[expand("{output_dir}/" \
@@ -207,7 +207,7 @@ def pairs():
             "seed={seed}"
             ".png",
             output_dir="results",            
-            **alg_conf,
+            
             seed=seed,          
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
@@ -295,9 +295,13 @@ def heatmap_plots():
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
+# This should be generated from the pattern string so that we can 
+# extract the alg arguments and id and using th id we can then get 
+# the varying parameter. Or is varyig parameter of importance here?
+# The color should be be based on the varying parameter and the id.
+
 rule mcmc_traj_plot:
     input: 
-        "workflow/scripts/evaluation/plot_graph_traj.py",
         traj="{output_dir}/adjvecs/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\
@@ -324,107 +328,57 @@ rule mcmc_traj_plot:
     script:
         "../scripts/evaluation/plot_graph_traj.py"
 
-# The aim is to plot multiple mcmc trajectories, in the
-# same plot. The colors should be based on the varying parameters and it
-# should be possible to plot one trajectory for each mcmc_seed.
-# in order to get the varying parameter we would need the algorithm json values.
-# At the moment these values are not matched explicitly in the pattern string.
-#
+
+
 # From the alg id we could easily determine the varying paramter by checking which key has
 # a list instead of a single value. But we need to match the id and we need to match the 
 # parameters so that we can get the varying parameter value.
 
 
-# print("test")
-# print(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
+# Only get the pattern strings for the actual mcmc algorithms
+mcmc_alg_ids = set()
 
-
-# for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
-#     # get the actual conf
+for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
+    # get the actual conf
     
-#     alg_conf = None
-#     for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():  
-#         print(alg)
-#         for alg_conf_tmp in algconfs:  
-#             print(alg_conf_tmp)
-#             if mcmc_dict["id"] == alg_conf_tmp["id"]:
-#                 print("found")
-#                 # Found the correct algconf
-#                 alg_conf = alg_conf_tmp
+    alg_conf = None
+    curalg = None
+    for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():  
+        mcmc_alg_ids.add(alg)
     
-#     # Get the varying parameter
-#     param_var = None
-#     param_val = None
-#     for key, val in alg_conf.items():
-#         print(key)
-#         print(val)
-#         print(isinstance(val, list))
-#         if isinstance(val, list) and not key == "mcmc_seed":
-#             param_var = key
-#             param_val = val
-    
-#     print(param_var)
-#     print(param_val)
-
-    
-#     # Create an adapted anonymous rule with the correct varying parameter.
-#     rule:
-#         input: 
-#             "workflow/scripts/evaluation/write_graph_traj.py",
-#             traj="{output_dir}/adjvecs/"\               
-#                 "adjmat=/{adjmat_string}/"\            
-#                 "parameters=/{param_string}/"\
-#                 "data=/{data_string}/"\
-#                 "algorithm=/{alg_string}/"\                            
-#                 "seed={seed}/"
-#                 "adjvecs.csv"        
-#         output:
-#             traj="{output_dir}/"\
-#             "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/id={id}/param_var={"+param_var+"}/param_val={param_val}/" \ 
-#             "adjmat=/{adjmat_string}/"\            
-#             "parameters=/{param_string}/"\
-#             "data=/{data_string}/"\            
-#             "algorithm=/{alg_string}/"\                            
-#             "seed={seed}/"
-#             "traj_filled.csv"
-#         params:
-#             data_string="{data_string}",
-#             adjmat_string="{adjmat_string}",
-#             param_string="{param_string}",
-#             alg_string="{alg_string}"
-#         container:
-#             docker_image("networkx")
-#         script:
-#             "../scripts/evaluation/write_graph_traj.py"
-
-# rule mcmc_traj_fill:
-#     input: 
-#         "workflow/scripts/evaluation/write_graph_traj.py",
-#         traj="{output_dir}/adjvecs/"\               
-#             "adjmat=/{adjmat_string}/"\            
-#             "parameters=/{param_string}/"\
-#             "data=/{data_string}/"\
-#             "algorithm=/{alg_string}/"\                            
-#             "seed={seed}/"
-#             "adjvecs.csv"        
-#     output:
-#         traj="{output_dir}/"\
-#         "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/id={id}/" \ 
-#         "adjmat=/{adjmat_string}/"\            
-#         "parameters=/{param_string}/"\
-#         "data=/{data_string}/"\            
-#         "algorithm=/{alg_string}/"\                            
-#         "seed={seed}/"
-#         "traj_filled.csv"
-#     params:
-#         data_string="{data_string}",
-#         adjmat_string="{adjmat_string}",
-#         param_string="{param_string}",
-#         alg_string="{alg_string}"
-#     container:
-#         docker_image("networkx")
-#     script:
-#         "../scripts/evaluation/write_graph_traj.py"
+# Create adapted anonymous MCMC rules where the algorithm parameters are matched.
+for algid in mcmc_alg_ids:
+    if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
+        rule:
+            input:                 
+                "workflow/scripts/evaluation/write_graph_traj.py",
+                conf=configfilename,
+                traj="{output_dir}/adjvecs/"\               
+                    "adjmat=/{adjmat_string}/"\            
+                    "parameters=/{param_string}/"\
+                    "data=/{data_string}/"\
+                    "algorithm=/"+pattern_strings[algid]+"/"\                            
+                    "seed={seed}/"
+                    "adjvecs.csv"        
+            output:
+                traj="{output_dir}/"\
+                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\ 
+                "adjmat=/{adjmat_string}/"\            
+                "parameters=/{param_string}/"\
+                "data=/{data_string}/"\            
+                "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
+                "seed={seed}/"
+                "processed_graphtraj.csv"
+            params:
+                alg=algid, # Maybe this should be matched in the pattern string instead
+                data_string="{data_string}",
+                adjmat_string="{adjmat_string}",
+                param_string="{param_string}",
+                alg_string=pattern_strings[algid]
+            container:
+                docker_image("networkx")
+            script:
+                "../scripts/evaluation/write_graph_traj.py"
 
 rule mcmc_heatmap_plot:
     input: 
@@ -592,26 +546,43 @@ rule mcmc_heatmaps:
         for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i+1) +".eps")
 
-rule mcmc_traj_plots:
+
+# Joins processed trajs
+rule mcmc_join_trajs:
     input:
         configfilename,
-        plots=traj_plots()
+        trajs=processed_trajs()
     output: 
-        touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
-    run:
-        for i,f in enumerate(input.plots):
-            shell("cp "+f+" results/output/mcmc_traj_plots/trajplot_" +str(i+1) +".eps")
+        # separate based on the ids
+        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
+    script:
+        "../scripts/evaluation/join_graph_trajs.py"
 
-# rule mcmc_join_trajs:
+# This plots several trajectories in one figure
+rule mcmc_multiple_traj_plots:
+    input:
+        configfilename,
+        trajs=rules.mcmc_join_trajs.output.trajs
+    output: 
+        touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done"),
+        single=directory("results/output/mcmc_traj_plots/single_param_settings"),
+        multi=directory("results/output/mcmc_traj_plots/multi_param_settings")
+    container:
+        docker_image("pydatascience")
+    script:
+        "../scripts/evaluation/plot_multi_trajs.py"
+
+# # This plots one trajectory per file/figure.
+# rule mcmc_traj_plots:
 #     input:
 #         configfilename,
-#         plots=filled_trajs()
+#         plots=traj_plots()
 #     output: 
-#         # separate based on the ids
-#         joined_filled_trajs=["results/output/mcmc_traj_plots/traj_" +algdict["id"] + ".csv" for algdict in config["mcmc_traj_plots"]]
-#         #"results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
-#     script:
-#         "../scripts/evaluation/join_graph_trajs.py"
+#         touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
+#     run:
+#         for i,f in enumerate(input.plots):
+#             shell("cp "+f+" results/output/mcmc_traj_plots/trajplot_" +str(i+1) +".eps")
+
 
 # rule mcmc_plot_trajs:
 #     # This will output one plot for each id.
