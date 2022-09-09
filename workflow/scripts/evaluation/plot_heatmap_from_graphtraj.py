@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
+sns.set(rc={"figure.dpi": 300, 'savefig.dpi': 300})
 
 def edges_str_to_list(str, edgesymb="-"):
     edges_str = str[1:-1].split(";")
@@ -84,6 +85,7 @@ else:
             snakemake.params["param_string"] + "\nData: " + snakemake.params["data_string"], fontsize=6, ha="center")
     plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\nburn_in=" +
             snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
+
 
     plt.tight_layout()
     plt.savefig(snakemake.output["filename"])

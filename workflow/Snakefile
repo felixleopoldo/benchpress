@@ -63,7 +63,13 @@ def get_active_rules(wildcards):
         if isinstance(val, bool) and val is True:
             rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, list) and val != []:
-            rules.append("results/output/"+key+"/"+key+".done")
+            if key == "mcmc_traj_plots" or key == "mcmc_heatmaps" or key == "mcmc_autocorr_plots":
+                for item in val:
+                    if ("active" not in item) or item["active"] == True:
+                        rules.append("results/output/"+key+"/"+key+".done")
+                        break
+            else:
+                rules.append("results/output/"+key+"/"+key+".done")    
     return rules
 
 rule all:

@@ -1254,6 +1254,52 @@ MCMC algorithm for decomposable models [2]_.
         "timeout": null
     }
 
+``trilearn_pgibbs``
+--------------------
+
+Particle Gibbs algorithm for decomposable models.
+
+.. rubric:: Example 
+
+.. code-block:: json
+
+    {
+        "id": "trilearn-cont",
+        "datatype": "continuous",
+        "alpha": 0.5,
+        "beta": 0.5,
+        "radii": 80,
+        "n_particles": [
+            50
+        ],
+        "M": 100,
+        "pseudo_obs": 1,
+        "mcmc_seed": 1,
+        "timeout": null
+    }
+
+.. rubric:: Example
+
+.. code-block:: json
+
+    {
+        "id": "trilearn-disc",
+        "datatype": "discrete",
+        "alpha": 0.5,
+        "beta": 0.5,
+        "radii": 80,
+        "n_particles": [
+            50
+        ],
+        "M": 1000,
+        "pseudo_obs": 1,
+        "mcmc_seed": [
+            1,
+            2
+        ],
+        "timeout": null
+    },
+
 
 ``sklearn_glasso``
 --------------------

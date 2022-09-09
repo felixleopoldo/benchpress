@@ -88,6 +88,7 @@ def processed_trajs():
                 if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
                                                             if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_traj_plots")]
+    
     return ret
 
 
@@ -140,7 +141,7 @@ def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
     return ret
 
 def adjmat_true_plots():
-    return [[expand("{output_dir}/adjmat/{adjmat_string}.eps",
+    return [[expand("{output_dir}/adjmat/{adjmat_string}.png",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -278,7 +279,7 @@ def heatmap_plots():
             "data=/{data_string}/"\
             "algorithm=/{alg_string}/" \
             "seed={seed}/"
-            "heatmap_plot.eps",
+            "heatmap_plot.png",
             output_dir="results",
             alg_string=json_string_mcmc_noest[alg_conf["id"]],
             **alg_conf,
@@ -345,7 +346,6 @@ for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
     curalg = None
     for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():  
         mcmc_alg_ids.add(alg)
-    
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
     if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
@@ -388,7 +388,7 @@ rule mcmc_heatmap_plot:
             "parameters=/{param_string}/"\
             "data=/{data_string}/"\            
             "algorithm=/{alg_string}/"\                            
-            "seed={seed}/"
+            "seed={seed}/"\
             "adjvecs.csv"       
     output:
         filename="{output_dir}/"\
@@ -398,7 +398,7 @@ rule mcmc_heatmap_plot:
         "data=/{data_string}/"\            
         "algorithm=/{alg_string}/"\                            
         "seed={seed}/"
-        "heatmap_plot.eps"
+        "heatmap_plot.png"
     params:
         data_string="{data_string}",
         adjmat_string="{adjmat_string}",
@@ -443,7 +443,7 @@ rule adjmat_true_plot:
         "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
         matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
     output:
-        plot_filename = "{output_dir}/adjmat/{adjmat_string}.eps"
+        plot_filename = "{output_dir}/adjmat/{adjmat_string}.png"
     params:
         title="{adjmat_string}.csv",
         alg_string=""
@@ -544,7 +544,7 @@ rule mcmc_heatmaps:
         touch("results/output/mcmc_heatmaps/mcmc_heatmaps.done")
     run:
         for i,f in enumerate(input.plots):
-            shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i+1) +".eps")
+            shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i+1) +".png")
 
 
 # Joins processed trajs
@@ -745,5 +745,5 @@ rule graph_true_plots:
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
-            shell("cp "+f+" results/output/graph_true_plots/adjmat_true_" +str(i+1) +".eps")
+            shell("cp "+f+" results/output/graph_true_plots/adjmat_true_" +str(i+1) +".png")
 
