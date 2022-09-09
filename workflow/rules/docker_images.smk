@@ -2,7 +2,7 @@
 
 def docker_image(name):
     if name == "trilearn":
-        return "docker://onceltuca/trilearn:1.23-bp"
+        return "docker://onceltuca/trilearn:1.25"
     elif name == "gobnilp":
         return "docker://onceltuca/gobnilp:4347c64"
     elif name == "thomasjava":
