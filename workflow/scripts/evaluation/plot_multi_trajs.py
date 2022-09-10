@@ -58,10 +58,17 @@ for adjmat in adjmats:
 
                         plt.title("Alg: " + alg + "\nGraph: "+adjmat +
                                 "\nParams: " + param + "\nData: " + data, 
-                                fontsize=8)
+                                fontsize=6, ha="center")
+                        alg_string = tmp['alg_string'].unique()[0] # since there are different mcmc_seeds                         
+                        plt.ylabel("Algorithm:\n\n"+alg_string.replace("/", "\n"),rotation="horizontal", fontsize=6, ha="right", va="center" )#+ "\n\nburn_in=" +
+                                #             snakemake.wildcards["burn_in"], 
                         if not os.path.isdir(snakemake.output["multi"]):
                                     os.makedirs(snakemake.output["multi"])
-                        
+                        cax = plt.gcf().axes[-1]
+                        cax.tick_params(labelsize=6)
+                        plt.legend(fontsize=6, title_fontsize=7)
+                        plt.xlabel("iteration", fontsize=6)
+                        plt.tight_layout()
                         plt.savefig(snakemake.output["multi"] +"/"+ str(cnt1) + ".png")
                         plt.clf()
                         cnt1 += 1
@@ -87,10 +94,13 @@ for adjmat in adjmats:
 
                                 plt.title("Graph: "+adjmat +
                                         "\nParams: " + param + "\nData: " + data, 
-                                        fontsize=8)
+                                        fontsize=6, ha="center")
                                 alg_string = tmp['alg_string'].unique()[0] # since there are different mcmc_seeds                         
                                 plt.ylabel("Algorithm:\n\n"+alg_string.replace("/", "\n"),rotation="horizontal", fontsize=6, ha="right", va="center" )#+ "\n\nburn_in=" +
                                 #             snakemake.wildcards["burn_in"], 
+                                plt.xlabel("iteration", fontsize=6)
+                                cax = plt.gcf().axes[-1]
+                                cax.tick_params(labelsize=6)
                                 plt.tight_layout()
                                 if not os.path.isdir(snakemake.output["single"]):
                                     os.makedirs(snakemake.output["single"])

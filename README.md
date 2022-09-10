@@ -230,7 +230,7 @@ To upload an algorithm to Benchpress, you should install it in a [Docker](https:
 | PGibbs [[20]](#20)                | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                                                      | 1.25    | [trilearn_pgibbs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_pgibbs-item.md)              |
 | GG99 single pair [[18]](#18)      | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gg99_singlepair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gg99_singlepair-item.md)              |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gt13_multipair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gt13_multipair-item.md)                |
-| Parallel DG                       | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.8      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
+| Parallel DG [[36]](#36)                     | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.8      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
 | GLasso [[31]](#31)                | UG    | Python   | [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.graphical_lasso.html)  | 0.22.1   | [sklearn_glasso](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-sklearn_glasso-item.md)                |
 
 
@@ -319,4 +319,6 @@ This project is licensed under the GPL-2.0 License - see the [LICENSE](LICENSE) 
 * <a id="33">[33]</a> [M. Bartlett and J. Cussens. Integer linear programming for the bayesian network structure learning problem. Artificial Intelligence, 244:258–271, 2017. Combining Constraint Solving with Mining and Learning](https://www.jair.org/index.php/jair/article/download/11041/26213/)
 * <a id="34">[34]</a> [J. Cussens, M. Järvisalo, J. H. Korhonen, and M. Bartlett. Bayesian network structure learning with integer programming: Polytopes, facets and complexity. Journal of Artificial Intelligence Research, 58:185–229, 2017](https://www.jair.org/index.php/jair/article/download/11041/26213/)
 * <a id="35">[35]</a> [Chandler Squires. causaldag: creation, manipulation, and learning of causal models, 2018](https://uhlerlab.github.io/causaldag/)
+* <a id="36">[36]</a> [M. Elmasri. Parallel sampling of decomposable graphs using Markov chain on junction trees, 2022.](https://arxiv.org/abs/2209.02008)
+
 
