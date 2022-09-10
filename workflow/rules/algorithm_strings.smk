@@ -39,6 +39,27 @@ if "tetrad_gfci" in pattern_strings:
 if "tetrad_rfci" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["tetrad_rfci"], **val) 
                         for val in config["resources"]["structure_learning_algorithms"]["tetrad_rfci"]})
+if "causalCMD_fofc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_fofc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_fofc"]})
+if "causalCMD_ftfc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_ftfc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_ftfc"]})
+if "causalCMD_fas" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_fas"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_fas"]})
+if "causalCMD_fask" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_fask"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_fask"]})
+if "causalCMD_pc-all" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_pc-all"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_pc-all"]})
+if "causalCMD_lingam" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_lingam"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_lingam"]})
+if "causalCMD_imgscont" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["causalCMD_imgscont"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["causalCMD_imgscont"]})
 if "pcalg_pc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["pcalg_pc"], **val)  
                         for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})

@@ -1835,3 +1835,262 @@ if "gg99_singlepair" in pattern_strings:
             join_summaries_output("gg99_singlepair"),
         script:
             "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_fofc" in pattern_strings:
+
+    rule causalCMD_fofc:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_fofc"),
+            time=alg_output_time_path("causalCMD_fofc"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_fofc.py"
+
+    rule summarise_causalCMD_fofc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fofc"),
+            time=summarise_alg_input_time_path("causalCMD_fofc"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_fofc"),
+        shell:
+            summarise_alg_shell("causalCMD_fofc")
+
+    rule join_summaries_causalCMD_fofc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_fofc"),
+        output:
+            join_summaries_output("causalCMD_fofc"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_fas" in pattern_strings:
+
+    rule causalCMD_fas:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_fas"),
+            time=alg_output_time_path("causalCMD_fas"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_fas.py"
+
+    rule summarise_causalCMD_fas:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fas"),
+            time=summarise_alg_input_time_path("causalCMD_fas"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_fas"),
+        shell:
+            summarise_alg_shell("causalCMD_fas")
+
+    rule join_summaries_causalCMD_fas:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_fas"),
+        output:
+            join_summaries_output("causalCMD_fas"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_fask" in pattern_strings:
+
+    rule causalCMD_fask:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_fask"),
+            time=alg_output_time_path("causalCMD_fask"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_fask.py"
+
+    rule summarise_causalCMD_fask:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fask"),
+            time=summarise_alg_input_time_path("causalCMD_fask"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_fask"),
+        shell:
+            summarise_alg_shell("causalCMD_fask")
+
+    rule join_summaries_causalCMD_fask:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_fask"),
+        output:
+            join_summaries_output("causalCMD_fask"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_pc-all" in pattern_strings:
+
+    rule causalCMD_pc_all:
+        input:
+            "workflow/scripts/structure_learning_algorithms/causalCMD_pc.py",
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_pc-all"),
+            time=alg_output_time_path("causalCMD_pc-all"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_pc.py"
+
+    rule summarise_causalCMD_pc_all:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_pc-all"),
+            time=summarise_alg_input_time_path("causalCMD_pc-all"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_pc-all"),
+        shell:
+            summarise_alg_shell("causalCMD_pc-all")
+
+    rule join_summaries_causalCMD_pc_all:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_pc-all"),
+        output:
+            join_summaries_output("causalCMD_pc-all"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_lingam" in pattern_strings:
+
+    rule causalCMD_lingam:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_lingam"),
+            time=alg_output_time_path("causalCMD_lingam"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_lingam.py"
+
+    rule summarise_causalCMD_lingam:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_lingam"),
+            time=summarise_alg_input_time_path("causalCMD_lingam"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_lingam"),
+        shell:
+            summarise_alg_shell("causalCMD_lingam")
+
+    rule join_summaries_causalCMD_lingam:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_lingam"),
+        output:
+            join_summaries_output("causalCMD_lingam"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "causalCMD_imgscont" in pattern_strings:
+
+    rule causalCMD_imgscont:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_imgscont"),
+            time=alg_output_time_path("causalCMD_imgscont"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_imgscont.py"
+
+    rule summarise_causalCMD_imgscont:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_imgscont"),
+            time=summarise_alg_input_time_path("causalCMD_imgscont"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_imgscont"),
+        shell:
+            summarise_alg_shell("causalCMD_imgscont")
+
+    rule join_summaries_causalCMD_imgscont:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_imgscont"),
+        output:
+            join_summaries_output("causalCMD_imgscont"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+if "causalCMD_ftfc" in pattern_strings:
+
+    rule causalCMD_ftfc:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causalCMD_ftfc"),
+            time=alg_output_time_path("causalCMD_ftfc"),
+        container:
+            docker_image("causalCMD")
+        script:
+            "../scripts/structure_learning_algorithms/causalCMD_ftfc.py"
+
+    rule summarise_causalCMD_ftfc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_ftfc"),
+            time=summarise_alg_input_time_path("causalCMD_ftfc"),
+        output:
+            res=summarise_alg_output_res_path("causalCMD_ftfc"),
+        shell:
+            summarise_alg_shell("causalCMD_ftfc")
+
+    rule join_summaries_causalCMD_ftfc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causalCMD_ftfc"),
+        output:
+            join_summaries_output("causalCMD_ftfc"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"

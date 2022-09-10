@@ -39,4 +39,6 @@ def docker_image(name):
         return "docker://onceltuca/tidyverse"
     elif name == "causaldag":
         return "docker://onceltuca/causaldag:0.1a163"
+    elif name == "causalCMD":
+        return "docker://onceltuca/causal-cmd:1.1.3"
 

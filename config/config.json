@@ -22,9 +22,9 @@
                 "text": false,
                 "ids": [
                     "fges-sem-bic",
-                    "tabu-bge",
-                    "itsearch-bge",
-                    "pc-gaussCItest"
+                    "fask-fisher-z",
+                    "pc-gaussCItest",
+                    "fas-fisher-z"
                 ]
             },
             "graph_true_plots": true,
@@ -32,42 +32,13 @@
             "ggally_ggpairs": true,
             "graph_plots": [
                 "fges-sem-bic",
-                "tabu-bge",
-                "itsearch-bge",
-                "pc-gaussCItest"
+                "fask-fisher-z",
+                "pc-gaussCItest",
+                "fas-fisher-z"
             ],
-            "mcmc_traj_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ],
-            "mcmc_heatmaps": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "active": true
-                }
-            ],
-            "mcmc_autocorr_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ]
+            "mcmc_traj_plots": [],
+            "mcmc_heatmaps": [],
+            "mcmc_autocorr_plots": []
         }
     },
     "resources": {
@@ -106,16 +77,6 @@
             ]
         },
         "structure_learning_algorithms": {
-            "mylib_myalg": [
-                {
-                    "id": "testing_myalg",
-                    "myparam1": "somevalue",
-                    "myparam2": [
-                        1,
-                        2
-                    ]
-                }
-            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -155,89 +116,19 @@
                     "timeout": null
                 }
             ],
-            "bnlearn_tabu": [
+            "causalCMD_fas": [
                 {
-                    "id": "tabu-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
+                    "id": "fas-fisher-z",
+                    "test": "fisher-z-test", 
+                    "datatype": "continuous",
                     "timeout": null
                 }
             ],
-            "bidag_itsearch": [
+            "causalCMD_fofc": [
                 {
-                    "id": "itsearch-bge",
-                    "timeout": null,
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 2,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": 2,
-                    "am": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsample-bge_am01_endspace",
-                    "timeout": null,
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 3,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                }
-            ],
-            "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
-                    "plus1": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "timeout": null,
-                    "mcmc_seed": 1,
-                    "threshold": 0.5,
-                    "burnin": 0
+                    "id": "fofc",
+                    "datatype": "continuous",
+                    "timeout": null
                 }
             ]
         }
