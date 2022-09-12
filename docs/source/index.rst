@@ -51,3 +51,4 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 
 .. [1] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
+
