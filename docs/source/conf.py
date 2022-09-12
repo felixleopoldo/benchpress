@@ -30,7 +30,7 @@ release = '1.2.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx-jsonschema']
+# extensions = ['sphinx-jsonschema']
 # source_suffix = {
 #     '.rst': 'restructuredtext',
 #     '.txt': 'markdown',
