@@ -33,9 +33,6 @@ For specific information about each element in the JSON file, see the documentat
 ********************
 
 
-
-
-
 .. _datasetup:
 
 ``data``
@@ -408,7 +405,7 @@ This module plots the true underlying graphs.
 
 
 This module plots and saves the estimated graphs in dot-format and adjacency matrix.
-It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`.
+It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`_.
 
 .. code-block:: json
     
@@ -446,6 +443,8 @@ Suppose we have a realisation of length :math:`M + 1` of such chain, then the po
 This module has a list of objects, where each object has 
 
 +-------------+-------------------------+
+| Field       | Description             |
++-------------+-------------------------+
 | ``id``      | the algorithm object id |
 +-------------+-------------------------+
 | ``burn_in`` | the burn-in period.     |
@@ -482,14 +481,20 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 
 
 This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
-Similar to mcmc_traj_plots_, this module has a list of objects, where each object has
 
-* ``id``: algorithm module object id. 
-* ``burn_in``: use samples starting from this value. Use 0 if no burn-in.
-* ``thinning``: use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large).
-* ``functional``: a field specifying the functional to be considered. The currently supported functionals are the number of edges for the graphs *size* and the graph *score*. 
-* ``lags``: The maximum number of lags after thinning.
-
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| Field          | Description                                                                                                                |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``id``         | algorithm module object id.                                                                                                |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``functional`` | the currently supported functionals are the number of edges for the graphs *size* and the graph *score*.                   |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
 
 
 .. rubric:: Example
@@ -530,15 +535,17 @@ This module plots the  values in the trajectory of a given functional.
 
 The ``mcmc_traj_plots`` module has a list of objects, where each object has
 
-+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                                                                                                                  |
-+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.a burn-in field                                                                                    |
-+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``functional`` | a field specifying the functional to be considered. The currently supported functionals are the number of edges for the graphs *size* and the graph *score*. |
-+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------+-------------------------------------------------------------------+
+| Field          | Description                                                       |
++----------------+-------------------------------------------------------------------+
+| ``id``         | algorithm module object id.                                       |
++----------------+-------------------------------------------------------------------+
+| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.        |
++----------------+-------------------------------------------------------------------+
+| ``functional`` | the currently supported functionals are *size* and graph *score*. |
++----------------+-------------------------------------------------------------------+
 
-Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. 
+Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
 
 
 .. rubric:: Example
