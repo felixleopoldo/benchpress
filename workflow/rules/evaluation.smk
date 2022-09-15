@@ -318,8 +318,8 @@ for algid in mcmc_alg_ids:
         # Processed graph trajectory
         rule:
             input:                 
-                "workflow/scripts/evaluation/write_graph_traj.py",
-                conf=configfilename,
+                configfilename, # the variyng param might change
+                "workflow/scripts/evaluation/write_graph_traj.py",                
                 traj="{output_dir}/adjvecs/"\               
                     "adjmat=/{adjmat_string}/"\            
                     "parameters=/{param_string}/"\
@@ -342,7 +342,8 @@ for algid in mcmc_alg_ids:
                 adjmat_string="{adjmat_string}",
                 param_string="{param_string}",
                 alg_string=pattern_strings[algid],
-                eval_string=pattern_strings["mcmc_traj_plots"]
+                eval_string=pattern_strings["mcmc_traj_plots"],
+                conf=configfilename
             container:
                 docker_image("networkx")
             script:
@@ -351,8 +352,7 @@ for algid in mcmc_alg_ids:
         # Auto correlations
         rule:
             input:                 
-                "workflow/scripts/evaluation/write_graph_traj.py",
-                conf=configfilename,
+                "workflow/scripts/evaluation/write_graph_traj.py",                
                 traj="{output_dir}/"\
                 "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\ 
                 "adjmat=/{adjmat_string}/"\            
@@ -550,15 +550,13 @@ rule mcmc_heatmaps:
         for i,f in enumerate(input.plots):
             shell("cp "+f+" results/output/mcmc_heatmaps/heatmap_" +str(i+1) +".png")
 
-
 # Joins processed trajs
 rule mcmc_traj_plots_join_trajs:
-    input:
-        configfilename,
+    input:        
         trajs=processed_trajs("mcmc_traj_plots")
     output: 
-        # separate based on the ids
-        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
+        # having constant files makes triggering complicatad
+        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv" 
     script:
         "../scripts/evaluation/join_graph_trajs.py"
 
@@ -582,7 +580,6 @@ rule mcmc_traj_plots_plot_joined_trajs:
 # Joins processed trajs
 rule mcmc_autocorr_plots_join_trajs:
     input:
-        configfilename,
         trajs=processed_trajs("mcmc_autocorr_plots") # should get lag trajs instead?
     output: 
         # separate based on the ids

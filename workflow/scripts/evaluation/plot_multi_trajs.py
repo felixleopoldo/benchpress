@@ -18,14 +18,18 @@ matplotlib.use('Agg')
 
 df = pd.read_csv(snakemake.input["trajs"], index_col=None)
 
+# Since the values might be  mix of nunbers and strings
+df["param_val"] = df.param_val.astype(str)
+
 algs = df["alg"].unique()
 params = df["parameters"].unique()
 adjmats = df["adjmat"].unique()
 datas = df["data"].unique()
 seeds = df["seed"].unique()
-mcmc_seeds = df["mcmc_seed"].unique()
-algparams = df["param"].unique()
-algparam_vals = df["param_val"].unique()
+#mcmc_seeds = df["mcmc_seed"].unique() 
+
+#algparam_vals = [str(v) for v in algparam_vals]
+
 functionals = df["functional"].unique()
 
 cnt1 = 1  # Filename counters
@@ -36,6 +40,10 @@ for adjmat in adjmats:
         for data in datas:
             for seed in seeds:
                 for alg in algs:
+                    # TODO/BUG: Should be separated by ID as well
+                    algparams = df.loc[df["alg"]==alg]["param"].unique()
+                    algparam_vals = df.loc[df["alg"]==alg]["param_val"].unique()
+
                     for functional in functionals:
                         tmp = df.loc[(df["adjmat"] == adjmat) &
                                      (df["parameters"] == param) &
@@ -68,8 +76,8 @@ for adjmat in adjmats:
                             eval_string.replace("/", "\n")
                         ylab = re.sub(r"mcmc_seed=\d+", "", ylab)
 
-                        for ap in algparams:
-                            ylab = re.sub(r""+ap+"*?", "", ylab)
+                        #for ap in algparams:
+                        #   ylab = re.sub(r""+ap+"*?", "", ylab)
                         
                         plt.ylabel(ylab,
                                    rotation="horizontal", fontsize=6, ha="right", va="center")
@@ -104,9 +112,9 @@ for adjmat in adjmats:
                                     'category')
                                 with sns.axes_style("whitegrid"):
                                     sns.lineplot(data=tmp, x="sample", y="plotvalue",
-                                                 hue="mcmc_seed", legend=False,
+                                                 hue="mcmc_seed", #legend=True,
                                                  estimator=None, lw=0.7, alpha=1.0)
-
+                                plt.legend(fontsize=5, title_fontsize=8)
                                 plt.title("Graph: "+adjmat +
                                           "\nParams: " + param + "\nData: " + data,
                                           fontsize=6, ha="center")
