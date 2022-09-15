@@ -10,7 +10,7 @@ from snakemake.utils import min_version
 
 # Have only tested with this version but it might work with previous version as well.
 # To update using Mamba run e.g.
-# mamba update -c conda-forge -c bioconda snakemake=6.15.1
+# mamba update -c conda-forge -c bioconda snakemake
 
 min_version("6.15") 
 
@@ -21,7 +21,6 @@ min_version("6.15")
 # Check if either singularity of apptainera is installed
 if ecode != 0 and apptainer_ecode != 0:
     raise Exception("Benchpress requires Singularity >= 3.2 or Apptainer.")
-    #raise Exception("Benchpress requires Singularity >= 3.2.")
 
 # If Singularity and not apptainer is installer, check the version of Singularity.
 if ecode == 0 and apptainer_ecode != 0:
@@ -45,6 +44,7 @@ for arg in args:
 configfile: 
     configfilename
 
+# Validate JSON syntax
 snakemake.utils.validate(config, 'schemas/config.schema.json')
 
 include: "rules/docker_images.smk"

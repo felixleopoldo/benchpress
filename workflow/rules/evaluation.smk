@@ -65,29 +65,29 @@ def traj_plots():
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
 
-def processed_trajs():
+def processed_trajs(mcmc_module):
     ret = [[[[expand("{output_dir}/" \
             "evaluation=/{evaluation_string}/"\
             "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
             "data=/{data_string}/"\
-            "algorithm=/{alg_string}/id={id}/" \
-            "seed={seed}/"
+            "algorithm=/{alg_string}/id={id}/"\
+            "seed={seed}/"\
             "processed_graphtraj.csv",
             output_dir="results",
             alg_string=json_string_mcmc_noest[alg_conf["id"]],
             **alg_conf, # contains e.g. id
             seed=seed,
-            evaluation_string=gen_evaluation_string_from_conf("mcmc_traj_plots", alg_conf["id"]),
+            evaluation_string=gen_evaluation_string_from_conf(mcmc_module, alg_conf["id"]),
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
+                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"][mcmc_module] 
                                                             if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
-            for alg in active_algorithms("mcmc_traj_plots")]
+            for alg in active_algorithms(mcmc_module)]
     
     return ret
 
@@ -296,40 +296,6 @@ def heatmap_plots():
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
-# This should be generated from the pattern string so that we can 
-# extract the alg arguments and id and using th id we can then get 
-# the varying parameter. Or is varyig parameter of importance here?
-# The color should be be based on the varying parameter and the id.
-
-rule mcmc_traj_plot:
-    input: 
-        traj="{output_dir}/adjvecs/"\               
-            "adjmat=/{adjmat_string}/"\            
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
-            "seed={seed}/"
-            "adjvecs.csv"        
-    output:
-        plot="{output_dir}/"\
-        "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/" \ 
-        "adjmat=/{adjmat_string}/"\            
-        "parameters=/{param_string}/"\
-        "data=/{data_string}/"\            
-        "algorithm=/{alg_string}/"\                            
-        "seed={seed}/"
-        "traj_plot.eps"
-    params:
-        data_string="{data_string}",
-        adjmat_string="{adjmat_string}",
-        param_string="{param_string}",
-        alg_string="{alg_string}"
-    container:
-        docker_image("networkx")
-    script:
-        "../scripts/evaluation/plot_graph_traj.py"
-
-
 
 # From the alg id we could easily determine the varying paramter by checking which key has
 # a list instead of a single value. But we need to match the id and we need to match the 
@@ -349,6 +315,7 @@ for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
     if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
+        # Processed graph trajectory
         rule:
             input:                 
                 "workflow/scripts/evaluation/write_graph_traj.py",
@@ -367,18 +334,55 @@ for algid in mcmc_alg_ids:
                 "parameters=/{param_string}/"\
                 "data=/{data_string}/"\            
                 "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
-                "seed={seed}/"
+                "seed={seed}/" \
                 "processed_graphtraj.csv"
             params:
                 alg=algid, # Maybe this should be matched in the pattern string instead
                 data_string="{data_string}",
                 adjmat_string="{adjmat_string}",
                 param_string="{param_string}",
-                alg_string=pattern_strings[algid]
+                alg_string=pattern_strings[algid],
+                eval_string=pattern_strings["mcmc_traj_plots"]
             container:
                 docker_image("networkx")
             script:
                 "../scripts/evaluation/write_graph_traj.py"
+
+        # Auto correlations
+        rule:
+            input:                 
+                "workflow/scripts/evaluation/write_graph_traj.py",
+                conf=configfilename,
+                traj="{output_dir}/"\
+                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\ 
+                "adjmat=/{adjmat_string}/"\            
+                "parameters=/{param_string}/"\
+                "data=/{data_string}/"\            
+                "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
+                "seed={seed}/" \
+                "processed_graphtraj.csv"    
+            output:
+                traj="{output_dir}/"\
+                "evaluation=/" + pattern_strings["mcmc_autocorr_plots"] + "/"\ 
+                "adjmat=/{adjmat_string}/"\            
+                "parameters=/{param_string}/"\
+                "data=/{data_string}/"\            
+                "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
+                "seed={seed}/" \
+                "processed_graphtraj.csv"
+            params:
+                alg=algid, # Maybe this should be matched in the pattern string instead
+                data_string="{data_string}",
+                adjmat_string="{adjmat_string}",
+                param_string="{param_string}",
+                alg_string=pattern_strings[algid],
+                eval_string=pattern_strings["mcmc_autocorr_plots"]
+            container:
+                docker_image("networkx")
+            script:
+                "../scripts/evaluation/write_autocorr_traj.py"
+
+
 
 rule mcmc_heatmap_plot:
     input: 
@@ -548,10 +552,10 @@ rule mcmc_heatmaps:
 
 
 # Joins processed trajs
-rule mcmc_join_trajs:
+rule mcmc_traj_plots_join_trajs:
     input:
         configfilename,
-        trajs=processed_trajs()
+        trajs=processed_trajs("mcmc_traj_plots")
     output: 
         # separate based on the ids
         trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
@@ -559,52 +563,61 @@ rule mcmc_join_trajs:
         "../scripts/evaluation/join_graph_trajs.py"
 
 # This plots several trajectories in one figure
-rule mcmc_multiple_traj_plots:
+rule mcmc_traj_plots_plot_joined_trajs:
     input:
         configfilename,
-        trajs=rules.mcmc_join_trajs.output.trajs
+        trajs=rules.mcmc_traj_plots_join_trajs.output.trajs
     output: 
         touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done"),
         single=directory("results/output/mcmc_traj_plots/single_param_settings"),
         multi=directory("results/output/mcmc_traj_plots/multi_param_settings")
+    params:
+        xlab="Iteration"
     container:
         docker_image("pydatascience")
     script:
         "../scripts/evaluation/plot_multi_trajs.py"
 
-# # This plots one trajectory per file/figure.
-# rule mcmc_traj_plots:
-#     input:
-#         configfilename,
-#         plots=traj_plots()
-#     output: 
-#         touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
-#     run:
-#         for i,f in enumerate(input.plots):
-#             shell("cp "+f+" results/output/mcmc_traj_plots/trajplot_" +str(i+1) +".eps")
 
+# Joins processed trajs
+rule mcmc_autocorr_plots_join_trajs:
+    input:
+        configfilename,
+        trajs=processed_trajs("mcmc_autocorr_plots") # should get lag trajs instead?
+    output: 
+        # separate based on the ids
+        trajs="results/output/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
+    script:
+        # First compute the autocorrelation at each lag 
+        "../scripts/evaluation/join_graph_trajs.py" 
 
-# rule mcmc_plot_trajs:
-#     # This will output one plot for each id.
-#     input:
-#         configfilename,
-#         joined_filled_trajs=["results/output/mcmc_traj_plots/traj_" +algdict["id"] + ".png" for algdict in config["mcmc_traj_plots"]]
-#         #joined_filled_trajs=[algdict["id"] for algdict in config["mcmc_traj_plots"]]
-#         #joined_filled_trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
-#     output:
-#         touch("results/output/mcmc_traj_plots/mcmc_filled_trajs.done")
-#     script:
-#         "../scripts/evaluation/plot_joined_graph_trajs.py"
+# This plots several trajectories in one figure
+rule mcmc_autocorr_plots_plot_joined_trajs:
+    input:
+        configfilename,
+        trajs=rules.mcmc_autocorr_plots_join_trajs.output.trajs,
+    output: 
+        joined=touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done"),
+        single=directory("results/output/mcmc_autocorr_plots/single_param_settings"),
+        multi=directory("results/output/mcmc_autocorr_plots/multi_param_settings")
+    params:
+        xlab="Lag"
+    container:
+        docker_image("pydatascience")
+    script:
+        "../scripts/evaluation/plot_multi_trajs.py"
 
 rule mcmc_autocorr_plots:
     input:
         configfilename,
+        joined=rules.mcmc_autocorr_plots_plot_joined_trajs.output.joined,
         plots=autocorr_plots()
     output:
-        touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done")
+        touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done"),
+        dir=directory("results/output/mcmc_autocorr_plots/induvidual")
     run:
         for i,f in enumerate(input.plots):
-            shell("cp "+f+" results/output/mcmc_autocorr_plots/mcmc_autocorr_" +str(i+1) +".png")
+            shell("mkdir -p {output.dir} && cp "+f+" {output.dir}/mcmc_autocorr_" +str(i+1) +".png")
 
 rule join_adjmat_stats:
     input:

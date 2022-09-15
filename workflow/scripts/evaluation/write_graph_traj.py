@@ -77,7 +77,8 @@ else:
                 snakemake.wildcards["thinning"])]
         else:
             df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
-
+            
+    df_noburnin.rename(columns={snakemake.wildcards["functional"]:"plotvalue"}, inplace=True)
 
     # Opening conf file
     f = open(snakemake.input["conf"])
@@ -99,7 +100,6 @@ else:
             varying_param = key
             varying_param_val = snakemake.wildcards[varying_param]
 
-
     # We might have to createa a sapara
     df_noburnin["param"] = varying_param
     df_noburnin["param_val"] = varying_param_val
@@ -112,5 +112,6 @@ else:
     df_noburnin["parameters"] = snakemake.params["param_string"]
     df_noburnin["data"] = snakemake.params["data_string"]
     df_noburnin["alg_string"] = snakemake.params["alg_string"]
+    df_noburnin["eval_string"] = snakemake.params["eval_string"]
     
     df_noburnin.to_csv(snakemake.output["traj"])

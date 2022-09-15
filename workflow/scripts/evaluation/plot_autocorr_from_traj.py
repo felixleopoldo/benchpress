@@ -163,6 +163,9 @@ else:
         "\nlags="+snakemake.wildcards["lags"] +
         "\nfunctional="+snakemake.wildcards["functional"], rotation="horizontal", fontsize=6, ha="right", va="center")
 
+    plt.xlabel("Lag/"+snakemake.wildcards["thinning"], fontsize=6)
+    cax = plt.gcf().axes[-1]
+    cax.tick_params(labelsize=6)
     plt.tight_layout()
     plt.savefig(snakemake.output["plot"], dpi=300)
     plt.clf()
