@@ -1,5 +1,22 @@
 # This file contains rules for the different evaluation types.
 
+rule compress:
+    input:
+        "{whatever}/adjvecs_tobecompressed.csv"
+    output:
+        "{whatever}/adjvecs.tar.gz"
+    shell:
+        "tar -cvzf {output} {input}"
+
+rule extract:
+    input:
+        "{whatever}/adjvecs.tar.gz"
+    output:
+        temp("{whatever}/adjvecs.csv")
+    shell:
+        "tar -xvf {input} && mv {wildcards.whatever}/adjvecs_tobecompressed.csv {output}"
+
+
 rule combine_benchmarks_data:
     input:
         "workflow/scripts/evaluation/combine_ROC_data.R",

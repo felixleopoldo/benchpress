@@ -35,8 +35,15 @@ def alg_output_seqgraph_path(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
                "algorithm=/" + pattern_strings[algorithm] + "/"  + \
                "seed={replicate}/" \
+               "adjvecs_tobecompressed.csv"
+
+def alg_output_seqgraph_path_nocomp(algorithm):
+    return "{output_dir}/adjvecs/{data}/"\
+               "algorithm=/" + pattern_strings[algorithm] + "/"  + \
+               "seed={replicate}/" \
                "adjvecs.csv"
- 
+
+
 def alg_output_adjmat_path(algorithm):
     return "{output_dir}/adjmat_estimate/{data}/"\
                 "algorithm=/" + pattern_strings[algorithm] + "/" +\
