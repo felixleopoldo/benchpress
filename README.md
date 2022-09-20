@@ -29,7 +29,7 @@ The following main functionalities are provided by Benchpress
 ## Requirements
 
 ### Linux 
-- [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
 - [Apptainer](https://apptainer.org/) ([installation instructions](https://apptainer.org/docs/admin/main/installation.html#installation-on-linux))
 
 #### Notes
@@ -75,7 +75,7 @@ The methods to generate graphs, parameters and data are listed further down.
 #### Example study
 This study is an example of data scenario V based on three continuous datasets, sampled using the [iid](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#iid) module, corresponding to three realisations of a random linear Gaussian [structural equation model](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) with random DAG. The DAGs are sampled from a restricted [Erdős–Rényi distribution](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model) using the [pcalg_randdag](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-randdag) module and the weight parameters are sampled uniformly using the [sem_params](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#sem-params) module. For simplicity we use only a few structure learning modules here ([bidag_itsearch](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bidag-itsearch), [tetrad_fges](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#tetrad-fges), [bnlearn_tabu](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bnlearn-tabu), [pcalg_pc](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-pc)) with different parameter settings. The full setup is found in [config/config.json](config/config.json).
 
-To run this study (378 jobs ~ 40 minutes on a 2-cores laptop) type
+To run this study (354 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/config.json`
 
