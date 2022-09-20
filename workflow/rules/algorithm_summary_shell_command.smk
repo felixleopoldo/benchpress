@@ -926,25 +926,19 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
     elif algorithm == "parallelDG":
-        return "Rscript workflow/scripts/evaluation/run_summarise.R " \
+        ret = "Rscript workflow/scripts/evaluation/run_summarise.R " \
                 "--adjmat_true {input.adjmat_true} " \
                 "--adjmat_est {input.adjmat_est} " \
-                "--filename {output} " \ 
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval trilearn_pgibbs "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat      --colval {wildcards.adjmat} "  \       
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters          --colval {wildcards.bn} "  \       
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data        --colval {wildcards.data} "  \
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname M           --colval {wildcards.M} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname R           --colval {wildcards.R} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname pseudo_obs  --colval {wildcards.pseudo_obs} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname mcmc_seed   --colval {wildcards.mcmc_seed} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname datatype   --colval {wildcards.datatype} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
-                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
-
+                "--filename {output.res} " \                 
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate       --colval {wildcards.replicate} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm       --colval "+ algorithm+" " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat          --colval {wildcards.adjmat} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data            --colval {wildcards.data} "  \       
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time            --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests          --colval None " 
+        ret += dict_to_summary(config["resources"]["structure_learning_algorithms"][algorithm][0])
+        return ret
 
     elif algorithm == "bidag_order_mcmc":
         return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
