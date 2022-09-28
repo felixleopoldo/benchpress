@@ -8,8 +8,7 @@ from pathlib import Path
 import os
 from snakemake.utils import min_version
 
-# Have only tested with this version but it might work with previous version as well.
-# To update using Mamba run e.g.
+# To update Snakemake using Mamba run 
 # mamba update -c conda-forge -c bioconda snakemake
 
 min_version("6.15") 
