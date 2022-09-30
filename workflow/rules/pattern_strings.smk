@@ -24,7 +24,6 @@ def dict_to_path(d):
     return ret
 
 pattern_strings = {}
-
 # structure learning algorithms. 
 # The pattern strings are generated from the json config file.
 for alg in config["resources"]["structure_learning_algorithms"].keys():

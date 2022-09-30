@@ -1,6 +1,7 @@
 # A number of code snippets, just to reduce duplication.
 # The function names are sometimes a bit misleading.
 
+# TODO: These should take a pattern string instead of an algorithm.
 def summarise_alg_input_adjmat_est_path(algorithm):
     return "{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat}/"\
@@ -34,8 +35,15 @@ def alg_output_seqgraph_path(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
                "algorithm=/" + pattern_strings[algorithm] + "/"  + \
                "seed={replicate}/" \
+               "adjvecs_tobecompressed.csv"
+
+def alg_output_seqgraph_path_nocomp(algorithm):
+    return "{output_dir}/adjvecs/{data}/"\
+               "algorithm=/" + pattern_strings[algorithm] + "/"  + \
+               "seed={replicate}/" \
                "adjvecs.csv"
- 
+
+
 def alg_output_adjmat_path(algorithm):
     return "{output_dir}/adjmat_estimate/{data}/"\
                 "algorithm=/" + pattern_strings[algorithm] + "/" +\
@@ -307,10 +315,12 @@ def active_algorithms(eval_method="benchmarks"):
         conf = json.load(json_file)
 
     algs = []
-    if eval_method == "mcmc_traj_plots" or eval_method == "mcmc_autocorr_plots" or eval_method == "mcmc_heatmaps":
-        benchmarks_alg_ids = [benchmarks_dict["id"] for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+    
+    if (eval_method == "mcmc_traj_plots") or (eval_method == "mcmc_autocorr_plots") or (eval_method == "mcmc_heatmaps"):
+        benchmarks_alg_ids = [benchmarks_dict["id"]  for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method] if benchmarks_dict["active"] == True]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in benchmarks_alg_ids:        
+            for alg_conf_id in benchmarks_alg_ids: 
+                #print(alg_conf_id)
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     elif eval_method == "benchmarks":
@@ -325,6 +335,8 @@ def active_algorithms(eval_method="benchmarks"):
             for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
+    
+
     return list(set(algs))
 
 

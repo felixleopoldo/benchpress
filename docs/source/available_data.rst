@@ -3,7 +3,10 @@
 ``data``
 =========
 
-.._iid:
+There are two possibilities for the data section. 
+The user may provide their own data in .csv format for benchmarking on real data. Alternatively Benchpress can generate data according to a data model for benchmarking on simulated data.
+
+.. _iid:
 
 ``iid``
 ---------------------
@@ -12,8 +15,27 @@ Independently identically distributed (IID) samples of a given size ``sample_siz
 The data may be standardized by setting ``standardized`` to true. 
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Module name     | ``iid``                                                                                                                      |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Package/library | Benchpress                                                                                                                   |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| JSON schema     | `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_ |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Version         | -                                                                                                                            |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Documentation   | -                                                                                                                            |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Paper           | -                                                                                                                            |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Snakemake rule  | various                                                                                                                      |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Parameters      | see JSON schema                                                                                                              |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| Script          | -                                                                                                                            |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
 
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
 
 .. rubric:: Example
 

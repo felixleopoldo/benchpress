@@ -2,7 +2,7 @@
 
 def docker_image(name):
     if name == "trilearn":
-        return "docker://onceltuca/trilearn:1.23-bp"
+        return "docker://onceltuca/trilearn:1.25"
     elif name == "gobnilp":
         return "docker://onceltuca/gobnilp:4347c64"
     elif name == "thomasjava":
@@ -32,8 +32,11 @@ def docker_image(name):
     elif name == "rbase":
         return "docker://r-base"
     elif name == "parallelDG":
-        return "docker://hallawalla/paralleldg:0.5"
+        return "docker://hallawalla/paralleldg:0.8"
     elif name == "gcastle":
-        return "docker://onceltuca/gcastle:1.0.3rc3"
+        return "docker://onceltuca/gcastle:1.0.3"
     elif name == "tidyverse":
         return "docker://onceltuca/tidyverse"
+    elif name == "causaldag":
+        return "docker://onceltuca/causaldag:0.1a163"
+

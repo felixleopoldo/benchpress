@@ -29,8 +29,8 @@ The following main functionalities are provided by Benchpress
 ## Requirements
 
 ### Linux 
-- [Snakemake ≥ 6.15](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
-- [Singularity ≥ 3.2](https://sylabs.io/singularity/) ([installation instructions](https://sylabs.io/guides/3.9/user-guide/))
+- [Snakemake](https://snakemake.readthedocs.io/en/stable/) ([installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html))
+- [Apptainer](https://apptainer.org/) ([installation instructions](https://apptainer.org/docs/admin/main/installation.html#installation-on-linux))
 
 #### Notes
 Some systems require explicit installation of squash-tools. Using conda it can be installed as
@@ -38,7 +38,7 @@ Some systems require explicit installation of squash-tools. Using conda it can b
 `$ conda install -c conda-forge squash-tools`
     
 ### macOS/Windows    
-Benchpress cannot run directly on macOS/Windows as it requires Singularity which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
+Benchpress cannot run directly on macOS/Windows as it requires Apptainer (former [Singularity](https://sylabs.io/singularity/)) which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox. 
     
 - [VirtualBox](https://www.virtualbox.org/) ([instructions for installing Ubuntu](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview))
 
@@ -50,11 +50,10 @@ Benchpress cannot run directly on macOS/Windows as it requires Singularity which
 As Benchpress is a Snakemake workflow, once the requirements are installed it requires no further installation but cloning the repository as
 ```
 $ git clone https://github.com/felixleopoldo/benchpress.git
-$ cd benchpress
 ```
     
 #### Notes
-If you are using a virtualiser such as VirtualBox, this folder should still be located on macOS/Windows and shared to the virtual machine. In this way, all the files used by Benchpress are reachable from macOS/Windows. 
+If you are using a virtualiser such as VirtualBox, this folder should be located on macOS/Windows and shared to the virtual machine. In this way, all the files used by Benchpress are reachable from macOS/Windows. 
     
 ## Usage
 
@@ -70,23 +69,23 @@ Benchpress supports five different data scenarios, built from combining differen
 | V   | Generated | Generated  | Generated |
 
 The directory [resources/](resources) contains the fixed graphs, parameters, and datasets that are already available. 
-It containts, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
+It contains, e.g., all the graphs (and corresponding parameters) from the [Bayesian networks repository](https://www.cs.huji.ac.il/w~galel/Repository/), downloaded from [bnlearns homepage](https://www.bnlearn.com/). You can also place your own files in the corresponding directories and use them in the same way as the existing ones.
 The methods to generate graphs, parameters and data are listed further down.
 
 #### Example study
-This study is an example of data scenario V based on three continuous datasets corresponing to three realisations of a random linear Gaussian structural equation model (SEM) with random DAG. The DAGs are sampled from a restricted Erdős–Rényi distribution using the **pcalg_randdag** module and the weight parameters are sampled uniformly using the **sem_params** module. For simplicity we use only a few structure learning modules here (**bidag_itsearch**, **tetrad_fges**, **bnlearn_tabu**, **pcalg_pc**) with different parameter settings. The full setup is found here [config/config.json](config/config.json).
+This study is an example of data scenario V based on three continuous datasets, sampled using the [iid](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#iid) module, corresponding to three realisations of a random linear Gaussian [structural equation model](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) with random DAG. The DAGs are sampled from a restricted [Erdős–Rényi distribution](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model) using the [pcalg_randdag](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-randdag) module and the weight parameters are sampled uniformly using the [sem_params](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#sem-params) module. For simplicity we use only a few structure learning modules here ([bidag_itsearch](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bidag-itsearch), [tetrad_fges](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#tetrad-fges), [bnlearn_tabu](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#bnlearn-tabu), [pcalg_pc](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#pcalg-pc)) with different parameter settings. The full setup is found in [config/config.json](config/config.json).
 
-To run this study (333 jobs ~ 10 minutes on a 2-cores laptop) type
+To run this study (354 jobs ~ 10 minutes on a 2-cores laptop) type
 
 `$ snakemake --cores all --use-singularity --configfile config/config.json`
 
-The following plots are generated by the **benchmarks** module
+The following plots are generated by the [benchmarks](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#benchmarks) module
 
 <img src="docs/source/_static/FPR_TPR_skel.png" alt="drawing" width="400"/><img src="docs/source/_static/elapsed_time_joint.png" alt="drawing" width="400"/>
 
 <img src="docs/source/_static/SHD_cpdag_joint.png" alt="drawing" width="400"/><img src="https://github.com/felixleopoldo/benchpress/blob/master/docs/source/_static/f1_skel_joint.png" alt="F1" width="400"/>
 
-These plots are generated by the **graph_plots** module
+These plots are generated by the [graph_plots](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#graph-plots) module
     
 <img src="docs/source/_static/adjmat_true_1.png" alt="True adjacency matrix plot" width="400"/><img src="docs/source/_static/adjmat_plot_2.png" alt="Estimated adjacency matrix plot" width="400"/>
 
@@ -117,7 +116,7 @@ write.csv(adjmat, file = snakemake@output[["adjmat"]], row.names = FALSE, quote 
 write(totaltime, file = snakemake@output[["time"]])
 write("None", file = snakemake@output[["ntests"]]) # Number of c.i. tests
 ```
-The parameters used in the first two lines above are automatically generated from the JSON object in the *mylib_myalg* section of [config/config.json](config/config.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the *benchmarks* section. 
+The parameters used in the first two lines above are automatically generated from the JSON object in the [mylib_myalg](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mylib_myalg-item.md) section of [config/config.json](config/config.json). Feel free to add or change these keys or values. To test it you will have to add *testing_myalg* e.g. to the list of ids in the [benchmarks](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-benchmarks-item.md) section. 
 
 ```javascript
 {
@@ -147,9 +146,10 @@ if "mylib_myalg" in pattern_strings:
         script:            
             "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
-If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in a Singularity container based on the r-base Docker image.
+If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in an Apptainer container based on the [r-base](https://hub.docker.com/_/r-base) Docker image.
 
-To upload your algorithm to Benchpress, you should install it in a Docker image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following [CONTRIBUTING.md](CONTRIBUTING.md).
+#### Adding an algorithm to Benchpress permanently
+To upload an algorithm to Benchpress, you should install it in a [Docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMT16rxbGonghr8uVXB_mcteQHoohQ1fyjiVQE5VVj7kYDDIl_Ty5vkaAsqqEALw_wcB) image, push it to [Docker Hub](https://hub.docker.com/), and align the algorithm with the existing ones following the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Available modules
 
@@ -188,6 +188,7 @@ To upload your algorithm to Benchpress, you should install it in a Docker image,
 | Algorithm                         | Graph | Language | Library                                                                                                    | Version  | Module id                                                                                                                                                  |
 |-----------------------------------|-------|----------|------------------------------------------------------------------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | GOBNILP [[3]](#3)[[33]](#33)[[34]](#34)                 | DAG   | C        | [GOBNILP](https://bitbucket.org/jamescussens/gobnilp)                                                      | #4347c64 | [gobnilp](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gobnilp-item.md)                              |
+| GSP   [[35]](#35)                 | CPDAG | Python   | [causalDAG](https://github.com/uhlerlab/causaldag)                                        | 0.1a163      | [causaldag_gsp](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-greedy-sparsest-permutations-gsp.md)                      |
 | ASOBS [[15]](#15)                 | DAG   | R/Java   | [r.blip](https://cran.r-project.org/web/packages/r.blip/index.html)                                        | 1.1      | [rblip_asobs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-rblip_asobs-item.md)                      |
 | FGES [[9]](#9)                    | CPDAG | Java     | [TETRAD](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fges](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fges-item.md)                      |
 | FCI [[5]](#5)                     | DAG   | Java     | [TETRAD](https://bd2kccd.github.io/docs/causal-cmd/)                                          | 1.1.3    | [tetrad_fci](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-tetrad_fci-item.md)                        |
@@ -196,19 +197,19 @@ To upload your algorithm to Benchpress, you should install it in a Docker image,
 | PC [[4]](#4)[[5]](#5)             | CPDAG | R        | [pcalg](https://cran.r-project.org/web/packages/pcalg/index.html)                                          | 2.7-3    | [pcalg_pc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-pcalg_pc-item.md)                            |
 | Dual PC [[31]](#31)               | CPDAG | R        | [dualPC](https://github.com/enricogiudice/dualPC)                                                          | 4a5175d  | [dualpc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-dualpc-item.md)                                |
 | No tears [[17]](#17)              | DAG   | Python   | [jmoss20/notears](https://github.com/jmoss20/notears)                                                      | #0c032a0 | [notears](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-notears-item.md)                              |
-| No tears                          | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_notears](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears-item.md)              |
-| PC                                | CPDAG | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_pc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears-item.md)              |
-| ANM                               | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_anm](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_anm-item.md)              |
-| Direct LiNGAM                     | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_direct_lingam](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_direct_lingam-item.md)              |
-| ICALiNGAM                         | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_ica_lingam](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_ica_lingam-item.md)              |
-| NOTEARS-MLP                       | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_notears_nonlinear](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_nonlinear-item.md)              |
-| NOTEARS-SOM                       | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_notears_nonlinear](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_nonlinear-item.md)              |
-| NOTEARS-LOW-RANK                  | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_notears_low_rank](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_low_rank-item.md)              |
-| GOLEM                             | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_golem](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_golem-item.md)              |
-| GraNDAG                           | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_grandag](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_grandag-item.md)              |
-| MCSL                              | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_mcsl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_mcsl-item.md)              |
-| RL                                | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_rl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_rl-item.md)              |
-| CORL                              | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3rc3 | [gcastle_corl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_corl-item.md)              |
+| No tears                          | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_notears](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears-item.md)              |
+| PC                                | CPDAG | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_pc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears-item.md)              |
+| ANM                               | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_anm](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_anm-item.md)              |
+| Direct LiNGAM                     | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_direct_lingam](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_direct_lingam-item.md)              |
+| ICALiNGAM                         | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_ica_lingam](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_ica_lingam-item.md)              |
+| NOTEARS-MLP                       | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_notears_nonlinear](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_nonlinear-item.md)              |
+| NOTEARS-SOM                       | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_notears_nonlinear](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_nonlinear-item.md)              |
+| NOTEARS-LOW-RANK                  | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_notears_low_rank](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_notears_low_rank-item.md)              |
+| GOLEM                             | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_golem](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_golem-item.md)              |
+| GraNDAG                           | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_grandag](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_grandag-item.md)              |
+| MCSL                              | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_mcsl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_mcsl-item.md)              |
+| RL                                | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_rl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_rl-item.md)              |
+| CORL                              | DAG   | Python   | [gCastle](https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle)                                | 1.0.3 | [gcastle_corl](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_corl-item.md)              |
 | HC [[6]](#6)                      | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_hc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_hc-item.md)                        |
 | MMHC [[23]](#23)                  | DAG   | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_mmhc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_mmhc-item.md)                    |
 | Inter-IAMB [[27]](#27)            | CPDAG | R        | [bnlearn](https://www.bnlearn.com/)                                                                        | 4.7      | [bnlearn_interiamb](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bnlearn_interiamb-item.md)          |
@@ -226,10 +227,10 @@ To upload your algorithm to Benchpress, you should install it in a Docker image,
 | Iterative MCMC [[28]](#28)        | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_itsearch](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_itsearch-item.md)                |
 | Order MCMC [[28]](#28)[[29]](#29) | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_order_mcmc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_order_mcmc-item.md)            |
 | Partition MCMC [[30]](#30)        | DAG   | R        | [BiDAG](https://cran.r-project.org/web/packages/BiDAG/index.html)                                          | 2.0.3    | [bidag_partition_mcmc](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-bidag_partition_mcmc-item.md)    |
-| PGibbs [[20]](#20)                | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                                                      | 1.2.3    | [trilearn_pgibbs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_pgibbs-item.md)              |
+| PGibbs [[20]](#20)                | DG    | Python   | [trilearn](https://github.com/felixleopoldo/trilearn)                                                      | 1.25    | [trilearn_pgibbs](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-trilearn_pgibbs-item.md)              |
 | GG99 single pair [[18]](#18)      | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gg99_singlepair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gg99_singlepair-item.md)              |
 | GT13 multi pair [[19]](#19)       | DG    | Java     | [A. Thomas](https://faculty.utah.edu/u0034995-ALUN_WILLIAM_THOMAS/research/index.hml)                      | -        | [gt13_multipair](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gt13_multipair-item.md)                |
-| Parallel DG                       | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.3      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
+| Parallel DG [[36]](#36)                     | DG    | Python   | [parallelDG](https://github.com/melmasri/parallelDG)                                                       | 0.8      | [parallelDG](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-paralleldg-item.md)                        |
 | GLasso [[31]](#31)                | UG    | Python   | [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.graphical_lasso.html)  | 0.22.1   | [sklearn_glasso](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-sklearn_glasso-item.md)                |
 
 
@@ -317,5 +318,7 @@ This project is licensed under the GPL-2.0 License - see the [LICENSE](LICENSE) 
 * <a id="32">[32]</a> [E. Giudice, J. Kuipers, and G. Moffa. The dual pc algorithm for structure learning. arXiv preprint arXiv:2112.09036, 2021.](https://arxiv.org/abs/2112.09036#:~:text=While%20learning%20the%20graphical%20structure,due%20to%20its%20computational%20complexity.)
 * <a id="33">[33]</a> [M. Bartlett and J. Cussens. Integer linear programming for the bayesian network structure learning problem. Artificial Intelligence, 244:258–271, 2017. Combining Constraint Solving with Mining and Learning](https://www.jair.org/index.php/jair/article/download/11041/26213/)
 * <a id="34">[34]</a> [J. Cussens, M. Järvisalo, J. H. Korhonen, and M. Bartlett. Bayesian network structure learning with integer programming: Polytopes, facets and complexity. Journal of Artificial Intelligence Research, 58:185–229, 2017](https://www.jair.org/index.php/jair/article/download/11041/26213/)
+* <a id="35">[35]</a> [Chandler Squires. causaldag: creation, manipulation, and learning of causal models, 2018](https://uhlerlab.github.io/causaldag/)
+* <a id="36">[36]</a> [M. Elmasri. Parallel sampling of decomposable graphs using Markov chain on junction trees, 2022.](https://arxiv.org/abs/2209.02008)
 
 

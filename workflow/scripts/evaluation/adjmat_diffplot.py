@@ -6,8 +6,8 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 
-# If the algorithm was timed out
-if os.stat(snakemake.input["adjmat_true"]).st_size == 0:
+# If the algorithm was timed out or no true graph was provided in benchmark_setup.
+if (os.stat(snakemake.input["adjmat_true"]).st_size == 0)  or (os.stat(snakemake.input["adjmat_est"]).st_size == 0):
     open(snakemake.output["filename"],'a').close()
 else:
   adjmat_true = pd.read_csv(snakemake.input["adjmat_true"])

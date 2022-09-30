@@ -438,6 +438,15 @@
                             },
                             "uniqueItems": true
                         },
+                        "causaldag_gsp": {
+                            "title": "causaldag_gsp",
+                            "description": "List of causaldag_gsp objects. URL https://uhlerlab.github.io/causaldag/.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causaldag_gsp"
+                            },
+                            "uniqueItems": true
+                        },
                         "gcastle_notears": {
                             "title": "gcastle_notears",
                             "description": "List of gcastle_notears objects",
@@ -703,7 +712,7 @@
                             }
                         }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                 }
             },
             "required": [
@@ -1494,21 +1503,21 @@
                 "b": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "threshold": {
+                "threshold_conv": {
                     "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "required": [
                 "b",
                 "id",
-                "threshold"
+                "threshold_conv"
             ],
             "additionalProperties": false,
             "examples": [
                 {
                     "id": "gwi",
                     "b": 3,
-                    "threshold": 0.00000001
+                    "threshold_conv": 0.00000001
                 }
             ]
         },
@@ -1917,6 +1926,104 @@
                     ],
                     "cores": 1,
                     "verbose_level": 0
+                }
+            ]
+        },
+        "causaldag_gsp": {
+            "title": "Greedy Sparsest Permutations (GSP)",
+            "description": "This is the Greedy Sparsest Permutations (GSP) algorithm from the causalDAG package, https://uhlerlab.github.io/causaldag/. For information about the arguments please see the documentation. Note that some of them are not available here yet.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "Unique identifier",
+                    "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+                },
+                "nruns": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "depth": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "verbose": {
+                    "type": "boolean"
+                },
+                "initial_undirected": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "threshold"
+                            ]
+                        }
+                    ]
+                },
+                "use_lowest": {
+                    "type": "boolean"
+                },
+                "factor": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "progress_bar": {
+                    "type": "boolean"
+                },
+                "max_iters": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "inf"
+                            ]
+                        },
+                        {
+                            "$ref": "#/definitions/flexnonnegint"
+                        }
+                    ]
+                },
+                "summarize": {
+                    "type": "boolean"
+                },
+                "alpha": {
+                    "$ref": "#/definitions/flexprobnull"
+                },
+                "invert": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "nruns",
+                "depth",
+                "verbose",
+                "initial_undirected",
+                "use_lowest",
+                "factor",
+                "progress_bar",
+                "max_iters",
+                "summarize",
+                "alpha",
+                "invert",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "gsp",
+                    "nruns": 5,
+                    "depth": 4,
+                    "verbose": true,
+                    "initial_undirected": "threshold",
+                    "use_lowest": true,
+                    "max_iters": "inf",
+                    "factor": 2,
+                    "progress_bar": false,
+                    "summarize": false,
+                    "alpha":[0.05, 0.001],
+                    "invert": true,
+                    "timeout": null
                 }
             ]
         },

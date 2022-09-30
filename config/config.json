@@ -36,38 +36,9 @@
                 "itsearch-bge",
                 "pc-gaussCItest"
             ],
-            "mcmc_traj_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ],
-            "mcmc_heatmaps": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "active": true
-                }
-            ],
-            "mcmc_autocorr_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ]
+            "mcmc_traj_plots": [],
+            "mcmc_heatmaps": [],
+            "mcmc_autocorr_plots": []
         }
     },
     "resources": {
@@ -223,57 +194,6 @@
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsearch_sample-bde",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-            ],
-            "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": [
-                        "itsample-bge_am01_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "timeout": null,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.2,
-                        0.5,
-                        0.7
-                    ],
-                    "burnin": 0
                 }
             ]
         }

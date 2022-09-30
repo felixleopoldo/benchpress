@@ -49,7 +49,7 @@ if "parallelDG" in pattern_strings:
     rule parallelDG_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("parallelDG"),
+            traj=alg_output_seqgraph_path_nocomp("parallelDG"),
         output:
             adjmat=alg_output_adjmat_path("parallelDG"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -82,6 +82,43 @@ if "parallelDG" in pattern_strings:
         shell:
             summarise_alg_shell("parallelDG")
 
+if "causaldag_gsp" in pattern_strings:
+
+    rule causaldag_gsp:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("causaldag_gsp"),
+            time=alg_output_time_path("causaldag_gsp"),
+            ntests=alg_output_ntests_path("causaldag_gsp"),
+
+        container:
+            docker_image("causaldag")
+        script:
+            "../scripts/structure_learning_algorithms/causaldag_gsp.py"
+
+    rule summarise_causaldag_gsp:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("causaldag_gsp"),
+            time=summarise_alg_input_time_path("causaldag_gsp"),
+            ntests=summarise_alg_input_ntests_path("causaldag_gsp"),
+        output:
+            res=summarise_alg_output_res_path("causaldag_gsp"),
+        shell:
+            summarise_alg_shell("causaldag_gsp")
+
+    rule join_summaries_causaldag_gsp:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("causaldag_gsp"),
+        output:
+            join_summaries_output("causaldag_gsp"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
 
 if "gcastle_notears" in pattern_strings:
 
@@ -1616,7 +1653,7 @@ if "bidag_partition_mcmc" in pattern_strings:
     rule bidag_partition_mcmc_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("bidag_partition_mcmc"),
+            traj=alg_output_seqgraph_path_nocomp("bidag_partition_mcmc"),
         output:
             adjmat=alg_output_adjmat_path("bidag_partition_mcmc"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -1666,7 +1703,7 @@ if "trilearn_pgibbs" in pattern_strings:
     rule trilearn_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("trilearn_pgibbs"),
+            traj=alg_output_seqgraph_path_nocomp("trilearn_pgibbs"),
         output:
             adjmat=alg_output_adjmat_path("trilearn_pgibbs"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -1716,7 +1753,7 @@ if "gt13_multipair" in pattern_strings:
     rule gt13_multipair_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("gt13_multipair"),
+            traj=alg_output_seqgraph_path_nocomp("gt13_multipair"),
         output:
             adjmat=alg_output_adjmat_path("gt13_multipair"),
         params:
@@ -1766,7 +1803,7 @@ if "gg99_singlepair" in pattern_strings:
     rule gg99_singlepair_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("gg99_singlepair"),
+            traj=alg_output_seqgraph_path_nocomp("gg99_singlepair"),
         output:
             adjmat=alg_output_adjmat_path("gg99_singlepair"),
         params:

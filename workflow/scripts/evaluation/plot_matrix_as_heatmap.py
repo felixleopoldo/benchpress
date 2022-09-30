@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
+sns.set(rc={"figure.dpi": 300, 'savefig.dpi': 300})
 
 # If the algorithm was timed out
 if os.stat(snakemake.input["matrix_filename"]).st_size== 0:
