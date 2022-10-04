@@ -703,6 +703,62 @@
                                 "$ref": "#/definitions/gg99_singlepair"
                             }
                         },
+                        "causalCMD_fofc": {
+                            "title": "causalCMD_fofc",
+                            "description": "fofc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_fofc"
+                            }
+                        },
+                        "causalCMD_ftfc": {
+                            "title": "causalCMD_ftfc",
+                            "description": "ftfc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_ftfc"
+                            }
+                        },
+                        "causalCMD_lingam": {
+                            "title": "causalCMD_lingam",
+                            "description": "lingam objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_lingam"
+                            }
+                        },
+                        "causalCMD_imgscont": {
+                            "title": "causalCMD_imgsont",
+                            "description": "images continuous objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_imgscont"
+                            }
+                        },
+                        "causalCMD_fas": {
+                            "title": "causalCMD_fas",
+                            "description": "fas objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_fas"
+                            }
+                        },
+                        "causalCMD_fask": {
+                            "title": "causalCMD_fask",
+                            "description": "fask objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_fask"
+                            }
+                        },
+                        "causalCMD_pc-all": {
+                            "title": "causalCMD_pc-all",
+                            "description": "pc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/causalCMD_pc-all"
+                            }
+                        },
                         "sklearn_glasso": {
                             "description": "GLasso scikit-learn implementation",
                             "title": "sklearn_glasso",
@@ -2691,6 +2747,256 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_fas": {
+            "title": "causalCMD_fas item",
+            "description": "fas instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "fisher-z-test",
+                        "dg-lr-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fas-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_fask": {
+            "title": "causalCMD_fask item",
+            "description": "fask instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "fisher-z-test",
+                        "dg-lr-test",
+                        "kci-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fask-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_pc-all": {
+            "title": "causalCMD_pc item",
+            "description": "pc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "fisher-z-test",
+                        "bdeu-test",
+                        "disc-bic-test",
+                        "kci-test",
+                        "chi-square-test",
+                        "g-square-test",
+                        "prob-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "pc-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_fofc":{
+            "title": "causalCMD_fofc item",
+            "description": "fofc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fofc",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_ftfc":{
+            "title": "causalCMD_ftfc item",
+            "description": "ftfc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "ftfc",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_lingam":{
+            "title": "causalCMD_lingam item",
+            "description": "lingam instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "lingam",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "causalCMD_imgscont":{
+            "title": "causalCMD_imgscont item",
+            "description": "imgscont instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "imgscont",
                     "datatype": "continuous",
                     "timeout": null
                 }
