@@ -1009,3 +1009,120 @@ def summarise_alg_shell(algorithm):
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \ 
                 " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
 
+    elif algorithm == "causalCMD_fofc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_fofc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
+
+    elif algorithm == "causalCMD_ftfc":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_ftfc "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
+
+    elif algorithm == "causalCMD_fas":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_fas "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+
+
+
+    elif algorithm == "causalCMD_fask":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_fask "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+
+
+
+    elif algorithm == "causalCMD_pc-all":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_pc-all "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname test       --colval {wildcards.test} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
+
+
+    elif algorithm == "causalCMD_lingam":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_lingam "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+		" && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
+
+    elif algorithm == "causalCMD_imgscont":
+        return  "Rscript workflow/scripts/evaluation/run_summarise.R " \
+                "--adjmat_true {input.adjmat_true} " \
+                "--adjmat_est {input.adjmat_est} " \
+                "--filename {output.res} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname id              --colval {wildcards.id} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname replicate   --colval {wildcards.replicate} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname algorithm   --colval causalCMD_imgscont "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname adjmat           --colval {wildcards.adjmat} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname parameters              --colval {wildcards.bn} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname data           --colval {wildcards.data} " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname timeout       --colval {wildcards.timeout} "\
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname time        --colval `cat {input.time}` " \
+                " && python workflow/scripts/utils/add_column.py --filename {output} --colname ntests             --colval None " \
+
