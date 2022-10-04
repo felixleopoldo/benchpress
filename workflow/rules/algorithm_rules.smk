@@ -49,7 +49,7 @@ if "parallelDG" in pattern_strings:
     rule parallelDG_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("parallelDG"),
+            traj=alg_output_seqgraph_path_nocomp("parallelDG"),
         output:
             adjmat=alg_output_adjmat_path("parallelDG"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -1653,7 +1653,7 @@ if "bidag_partition_mcmc" in pattern_strings:
     rule bidag_partition_mcmc_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("bidag_partition_mcmc"),
+            traj=alg_output_seqgraph_path_nocomp("bidag_partition_mcmc"),
         output:
             adjmat=alg_output_adjmat_path("bidag_partition_mcmc"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -1703,7 +1703,7 @@ if "trilearn_pgibbs" in pattern_strings:
     rule trilearn_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("trilearn_pgibbs"),
+            traj=alg_output_seqgraph_path_nocomp("trilearn_pgibbs"),
         output:
             adjmat=alg_output_adjmat_path("trilearn_pgibbs"),  #here is the difference from order_mcmc. matching diffferently.
         params:
@@ -1753,7 +1753,7 @@ if "gt13_multipair" in pattern_strings:
     rule gt13_multipair_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("gt13_multipair"),
+            traj=alg_output_seqgraph_path_nocomp("gt13_multipair"),
         output:
             adjmat=alg_output_adjmat_path("gt13_multipair"),
         params:
@@ -1803,7 +1803,7 @@ if "gg99_singlepair" in pattern_strings:
     rule gg99_singlepair_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path("gg99_singlepair"),
+            traj=alg_output_seqgraph_path_nocomp("gg99_singlepair"),
         output:
             adjmat=alg_output_adjmat_path("gg99_singlepair"),
         params:

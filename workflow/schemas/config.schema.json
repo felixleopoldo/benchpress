@@ -1559,21 +1559,21 @@
                 "b": {
                     "$ref": "#/definitions/flexnonnegnum"
                 },
-                "threshold": {
+                "threshold_conv": {
                     "$ref": "#/definitions/flexnonnegnum"
                 }
             },
             "required": [
                 "b",
                 "id",
-                "threshold"
+                "threshold_conv"
             ],
             "additionalProperties": false,
             "examples": [
                 {
                     "id": "gwi",
                     "b": 3,
-                    "threshold": 0.00000001
+                    "threshold_conv": 0.00000001
                 }
             ]
         },

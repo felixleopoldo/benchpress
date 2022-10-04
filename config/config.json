@@ -22,9 +22,9 @@
                 "text": false,
                 "ids": [
                     "fges-sem-bic",
-                    "fask-fisher-z",
-                    "pc-gaussCItest",
-                    "fas-fisher-z"
+                    "tabu-bge",
+                    "itsearch-bge",
+                    "pc-gaussCItest"
                 ]
             },
             "graph_true_plots": true,
@@ -32,9 +32,9 @@
             "ggally_ggpairs": true,
             "graph_plots": [
                 "fges-sem-bic",
-                "fask-fisher-z",
-                "pc-gaussCItest",
-                "fas-fisher-z"
+                "tabu-bge",
+                "itsearch-bge",
+                "pc-gaussCItest"
             ],
             "mcmc_traj_plots": [],
             "mcmc_heatmaps": [],
@@ -77,6 +77,16 @@
             ]
         },
         "structure_learning_algorithms": {
+            "mylib_myalg": [
+                {
+                    "id": "testing_myalg",
+                    "myparam1": "somevalue",
+                    "myparam2": [
+                        1,
+                        2
+                    ]
+                }
+            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -116,19 +126,67 @@
                     "timeout": null
                 }
             ],
-            "causalCMD_fas": [
+            "bnlearn_tabu": [
                 {
-                    "id": "fas-fisher-z",
-                    "test": "fisher-z-test", 
-                    "datatype": "continuous",
+                    "id": "tabu-bge",
+                    "score": "bge",
+                    "iss": 1,
+                    "issmu": [
+                        0.0001,
+                        0.001,
+                        0.01,
+                        0.05
+                    ],
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1,
                     "timeout": null
                 }
             ],
-            "causalCMD_fofc": [
+            "bidag_itsearch": [
                 {
-                    "id": "fofc",
-                    "datatype": "continuous",
-                    "timeout": null
+                    "id": "itsearch-bge",
+                    "timeout": null,
+                    "estimate": "map",
+                    "MAP": false,
+                    "plus1it": 2,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": 2,
+                    "am": [
+                        0.01,
+                        0.1,
+                        1
+                    ],
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 14,
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
+                },
+                {
+                    "id": "itsample-bge_am01_endspace",
+                    "timeout": null,
+                    "estimate": "endspace",
+                    "MAP": false,
+                    "plus1it": 3,
+                    "posterior": 0.5,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": 0.1,
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 14,
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton"
                 }
             ]
         }

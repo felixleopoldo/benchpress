@@ -22,8 +22,7 @@ Linux
 
 .. note:: 
 
-    Some systems require explicit installation of *squash-tools*. 
-    This can be installed by conda as
+    Some systems require explicit installation of *squash-tools*, which can be installed by conda as
 
         $ conda install -c conda-forge squash-tools
 
@@ -50,7 +49,7 @@ To run the config file `config/config.json <https://github.com/felixleopoldo/ben
 
 .. code-block:: bash
 
-    $ conda activate snakemake
+    (base) $ conda activate snakemake
     (snakemake) $ cd path/to/benchpress
     (snakemake) $ snakemake --cores all --use-singularity --configfile config/config.json
 
