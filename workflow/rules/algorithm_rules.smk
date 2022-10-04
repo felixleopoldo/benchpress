@@ -1835,3 +1835,262 @@ if "gg99_singlepair" in pattern_strings:
             join_summaries_output("gg99_singlepair"),
         script:
             "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_fofc" in pattern_strings:
+
+    rule tetrad_fofc:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_fofc"),
+            time=alg_output_time_path("tetrad_fofc"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_fofc.py"
+
+    rule summarise_tetrad_fofc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fofc"),
+            time=summarise_alg_input_time_path("tetrad_fofc"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_fofc"),
+        shell:
+            summarise_alg_shell("tetrad_fofc")
+
+    rule join_summaries_tetrad_fofc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_fofc"),
+        output:
+            join_summaries_output("tetrad_fofc"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_fas" in pattern_strings:
+
+    rule tetrad_fas:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_fas"),
+            time=alg_output_time_path("tetrad_fas"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_fas.py"
+
+    rule summarise_tetrad_fas:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fas"),
+            time=summarise_alg_input_time_path("tetrad_fas"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_fas"),
+        shell:
+            summarise_alg_shell("tetrad_fas")
+
+    rule join_summaries_tetrad_fas:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_fas"),
+        output:
+            join_summaries_output("tetrad_fas"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_fask" in pattern_strings:
+
+    rule tetrad_fask:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_fask"),
+            time=alg_output_time_path("tetrad_fask"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_fask.py"
+
+    rule summarise_tetrad_fask:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fask"),
+            time=summarise_alg_input_time_path("tetrad_fask"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_fask"),
+        shell:
+            summarise_alg_shell("tetrad_fask")
+
+    rule join_summaries_tetrad_fask:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_fask"),
+        output:
+            join_summaries_output("tetrad_fask"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_pc-all" in pattern_strings:
+
+    rule tetrad_pc_all:
+        input:
+            "workflow/scripts/structure_learning_algorithms/tetrad_pc.py",
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_pc-all"),
+            time=alg_output_time_path("tetrad_pc-all"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_pc.py"
+
+    rule summarise_tetrad_pc_all:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_pc-all"),
+            time=summarise_alg_input_time_path("tetrad_pc-all"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_pc-all"),
+        shell:
+            summarise_alg_shell("tetrad_pc-all")
+
+    rule join_summaries_tetrad_pc_all:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_pc-all"),
+        output:
+            join_summaries_output("tetrad_pc-all"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_lingam" in pattern_strings:
+
+    rule tetrad_lingam:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_lingam"),
+            time=alg_output_time_path("tetrad_lingam"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_lingam.py"
+
+    rule summarise_tetrad_lingam:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_lingam"),
+            time=summarise_alg_input_time_path("tetrad_lingam"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_lingam"),
+        shell:
+            summarise_alg_shell("tetrad_lingam")
+
+    rule join_summaries_tetrad_lingam:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_lingam"),
+        output:
+            join_summaries_output("tetrad_lingam"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+
+if "tetrad_imgscont" in pattern_strings:
+
+    rule tetrad_imgscont:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_imgscont"),
+            time=alg_output_time_path("tetrad_imgscont"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_imgscont.py"
+
+    rule summarise_tetrad_imgscont:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_imgscont"),
+            time=summarise_alg_input_time_path("tetrad_imgscont"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_imgscont"),
+        shell:
+            summarise_alg_shell("tetrad_imgscont")
+
+    rule join_summaries_tetrad_imgscont:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_imgscont"),
+        output:
+            join_summaries_output("tetrad_imgscont"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
+if "tetrad_ftfc" in pattern_strings:
+
+    rule tetrad_ftfc:
+        input:
+            data=alg_input_data(),
+        output:
+            adjmat=alg_output_adjmat_path("tetrad_ftfc"),
+            time=alg_output_time_path("tetrad_ftfc"),
+        container:
+            docker_image("tetrad")
+        script:
+            "../scripts/structure_learning_algorithms/tetrad_ftfc.py"
+
+    rule summarise_tetrad_ftfc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_ftfc"),
+            time=summarise_alg_input_time_path("tetrad_ftfc"),
+        output:
+            res=summarise_alg_output_res_path("tetrad_ftfc"),
+        shell:
+            summarise_alg_shell("tetrad_ftfc")
+
+    rule join_summaries_tetrad_ftfc:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("tetrad_ftfc"),
+        output:
+            join_summaries_output("tetrad_ftfc"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"

@@ -39,6 +39,27 @@ if "tetrad_gfci" in pattern_strings:
 if "tetrad_rfci" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["tetrad_rfci"], **val) 
                         for val in config["resources"]["structure_learning_algorithms"]["tetrad_rfci"]})
+if "tetrad_fofc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_fofc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_fofc"]})
+if "tetrad_ftfc" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_ftfc"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_ftfc"]})
+if "tetrad_fas" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_fas"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_fas"]})
+if "tetrad_fask" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_fask"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_fask"]})
+if "tetrad_pc-all" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_pc-all"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_pc-all"]})
+if "tetrad_lingam" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_lingam"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_lingam"]})
+if "tetrad_imgscont" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["tetrad_imgscont"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["tetrad_imgscont"]})
 if "pcalg_pc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["pcalg_pc"], **val)  
                         for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})

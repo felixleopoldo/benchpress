@@ -703,6 +703,62 @@
                                 "$ref": "#/definitions/gg99_singlepair"
                             }
                         },
+                        "tetrad_fofc": {
+                            "title": "tetrad_fofc",
+                            "description": "fofc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_fofc"
+                            }
+                        },
+                        "tetrad_ftfc": {
+                            "title": "tetrad_ftfc",
+                            "description": "ftfc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_ftfc"
+                            }
+                        },
+                        "tetrad_lingam": {
+                            "title": "tetrad_lingam",
+                            "description": "lingam objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_lingam"
+                            }
+                        },
+                        "tetrad_imgscont": {
+                            "title": "tetrad_imgsont",
+                            "description": "images continuous objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_imgscont"
+                            }
+                        },
+                        "tetrad_fas": {
+                            "title": "tetrad_fas",
+                            "description": "fas objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_fas"
+                            }
+                        },
+                        "tetrad_fask": {
+                            "title": "tetrad_fask",
+                            "description": "fask objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_fask"
+                            }
+                        },
+                        "tetrad_pc-all": {
+                            "title": "tetrad_pc-all",
+                            "description": "pc objects",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tetrad_pc-all"
+                            }
+                        },
                         "sklearn_glasso": {
                             "description": "GLasso scikit-learn implementation",
                             "title": "sklearn_glasso",
@@ -2691,6 +2747,256 @@
                         0.05
                     ],
                     "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_fas": {
+            "title": "tetrad_fas item",
+            "description": "fas instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "fisher-z-test",
+                        "dg-lr-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fas-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_fask": {
+            "title": "tetrad_fask item",
+            "description": "fask instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "fisher-z-test",
+                        "dg-lr-test",
+                        "kci-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fask-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_pc-all": {
+            "title": "tetrad_pc item",
+            "description": "pc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "fisher-z-test",
+                        "bdeu-test",
+                        "disc-bic-test",
+                        "kci-test",
+                        "chi-square-test",
+                        "g-square-test",
+                        "prob-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "pc-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_fofc":{
+            "title": "tetrad_fofc item",
+            "description": "fofc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fofc",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_ftfc":{
+            "title": "tetrad_ftfc item",
+            "description": "ftfc instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "ftfc",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_lingam":{
+            "title": "tetrad_lingam item",
+            "description": "lingam instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "lingam",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        },
+        "tetrad_imgscont":{
+            "title": "tetrad_imgscont item",
+            "description": "imgscont instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "imgscont",
                     "datatype": "continuous",
                     "timeout": null
                 }
