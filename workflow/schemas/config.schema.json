@@ -703,60 +703,60 @@
                                 "$ref": "#/definitions/gg99_singlepair"
                             }
                         },
-                        "causalCMD_fofc": {
-                            "title": "causalCMD_fofc",
+                        "tetrad_fofc": {
+                            "title": "tetrad_fofc",
                             "description": "fofc objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_fofc"
+                                "$ref": "#/definitions/tetrad_fofc"
                             }
                         },
-                        "causalCMD_ftfc": {
-                            "title": "causalCMD_ftfc",
+                        "tetrad_ftfc": {
+                            "title": "tetrad_ftfc",
                             "description": "ftfc objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_ftfc"
+                                "$ref": "#/definitions/tetrad_ftfc"
                             }
                         },
-                        "causalCMD_lingam": {
-                            "title": "causalCMD_lingam",
+                        "tetrad_lingam": {
+                            "title": "tetrad_lingam",
                             "description": "lingam objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_lingam"
+                                "$ref": "#/definitions/tetrad_lingam"
                             }
                         },
-                        "causalCMD_imgscont": {
-                            "title": "causalCMD_imgsont",
+                        "tetrad_imgscont": {
+                            "title": "tetrad_imgsont",
                             "description": "images continuous objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_imgscont"
+                                "$ref": "#/definitions/tetrad_imgscont"
                             }
                         },
-                        "causalCMD_fas": {
-                            "title": "causalCMD_fas",
+                        "tetrad_fas": {
+                            "title": "tetrad_fas",
                             "description": "fas objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_fas"
+                                "$ref": "#/definitions/tetrad_fas"
                             }
                         },
-                        "causalCMD_fask": {
-                            "title": "causalCMD_fask",
+                        "tetrad_fask": {
+                            "title": "tetrad_fask",
                             "description": "fask objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_fask"
+                                "$ref": "#/definitions/tetrad_fask"
                             }
                         },
-                        "causalCMD_pc-all": {
-                            "title": "causalCMD_pc-all",
+                        "tetrad_pc-all": {
+                            "title": "tetrad_pc-all",
                             "description": "pc objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/causalCMD_pc-all"
+                                "$ref": "#/definitions/tetrad_pc-all"
                             }
                         },
                         "sklearn_glasso": {
@@ -2752,8 +2752,8 @@
                 }
             ]
         },
-        "causalCMD_fas": {
-            "title": "causalCMD_fas item",
+        "tetrad_fas": {
+            "title": "tetrad_fas item",
             "description": "fas instance",
             "type": "object",
             "properties": {
@@ -2796,8 +2796,8 @@
                 }
             ]
         },
-        "causalCMD_fask": {
-            "title": "causalCMD_fask item",
+        "tetrad_fask": {
+            "title": "tetrad_fask item",
             "description": "fask instance",
             "type": "object",
             "properties": {
@@ -2837,8 +2837,8 @@
                 }
             ]
         },
-        "causalCMD_pc-all": {
-            "title": "causalCMD_pc item",
+        "tetrad_pc-all": {
+            "title": "tetrad_pc item",
             "description": "pc instance",
             "type": "object",
             "properties": {
@@ -2882,8 +2882,8 @@
                 }
             ]
         },
-        "causalCMD_fofc":{
-            "title": "causalCMD_fofc item",
+        "tetrad_fofc":{
+            "title": "tetrad_fofc item",
             "description": "fofc instance",
             "type": "object",
             "properties": {
@@ -2912,8 +2912,8 @@
                 }
             ]
         },
-        "causalCMD_ftfc":{
-            "title": "causalCMD_ftfc item",
+        "tetrad_ftfc":{
+            "title": "tetrad_ftfc item",
             "description": "ftfc instance",
             "type": "object",
             "properties": {
@@ -2942,8 +2942,8 @@
                 }
             ]
         },
-        "causalCMD_lingam":{
-            "title": "causalCMD_lingam item",
+        "tetrad_lingam":{
+            "title": "tetrad_lingam item",
             "description": "lingam instance",
             "type": "object",
             "properties": {
@@ -2972,8 +2972,8 @@
                 }
             ]
         },
-        "causalCMD_imgscont":{
-            "title": "causalCMD_imgscont item",
+        "tetrad_imgscont":{
+            "title": "tetrad_imgscont item",
             "description": "imgscont instance",
             "type": "object",
             "properties": {

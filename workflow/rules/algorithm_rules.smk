@@ -1838,259 +1838,259 @@ if "gg99_singlepair" in pattern_strings:
 
 
 
-if "causalCMD_fofc" in pattern_strings:
+if "tetrad_fofc" in pattern_strings:
 
-    rule causalCMD_fofc:
+    rule tetrad_fofc:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_fofc"),
-            time=alg_output_time_path("causalCMD_fofc"),
+            adjmat=alg_output_adjmat_path("tetrad_fofc"),
+            time=alg_output_time_path("tetrad_fofc"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_fofc.py"
+            "../scripts/structure_learning_algorithms/tetrad_fofc.py"
 
-    rule summarise_causalCMD_fofc:
+    rule summarise_tetrad_fofc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fofc"),
-            time=summarise_alg_input_time_path("causalCMD_fofc"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fofc"),
+            time=summarise_alg_input_time_path("tetrad_fofc"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_fofc"),
+            res=summarise_alg_output_res_path("tetrad_fofc"),
         shell:
-            summarise_alg_shell("causalCMD_fofc")
+            summarise_alg_shell("tetrad_fofc")
 
-    rule join_summaries_causalCMD_fofc:
+    rule join_summaries_tetrad_fofc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_fofc"),
+            res=join_string_sampled_model("tetrad_fofc"),
         output:
-            join_summaries_output("causalCMD_fofc"),
+            join_summaries_output("tetrad_fofc"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
 
-if "causalCMD_fas" in pattern_strings:
+if "tetrad_fas" in pattern_strings:
 
-    rule causalCMD_fas:
+    rule tetrad_fas:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_fas"),
-            time=alg_output_time_path("causalCMD_fas"),
+            adjmat=alg_output_adjmat_path("tetrad_fas"),
+            time=alg_output_time_path("tetrad_fas"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_fas.py"
+            "../scripts/structure_learning_algorithms/tetrad_fas.py"
 
-    rule summarise_causalCMD_fas:
+    rule summarise_tetrad_fas:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fas"),
-            time=summarise_alg_input_time_path("causalCMD_fas"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fas"),
+            time=summarise_alg_input_time_path("tetrad_fas"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_fas"),
+            res=summarise_alg_output_res_path("tetrad_fas"),
         shell:
-            summarise_alg_shell("causalCMD_fas")
+            summarise_alg_shell("tetrad_fas")
 
-    rule join_summaries_causalCMD_fas:
+    rule join_summaries_tetrad_fas:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_fas"),
+            res=join_string_sampled_model("tetrad_fas"),
         output:
-            join_summaries_output("causalCMD_fas"),
+            join_summaries_output("tetrad_fas"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
 
-if "causalCMD_fask" in pattern_strings:
+if "tetrad_fask" in pattern_strings:
 
-    rule causalCMD_fask:
+    rule tetrad_fask:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_fask"),
-            time=alg_output_time_path("causalCMD_fask"),
+            adjmat=alg_output_adjmat_path("tetrad_fask"),
+            time=alg_output_time_path("tetrad_fask"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_fask.py"
+            "../scripts/structure_learning_algorithms/tetrad_fask.py"
 
-    rule summarise_causalCMD_fask:
+    rule summarise_tetrad_fask:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_fask"),
-            time=summarise_alg_input_time_path("causalCMD_fask"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_fask"),
+            time=summarise_alg_input_time_path("tetrad_fask"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_fask"),
+            res=summarise_alg_output_res_path("tetrad_fask"),
         shell:
-            summarise_alg_shell("causalCMD_fask")
+            summarise_alg_shell("tetrad_fask")
 
-    rule join_summaries_causalCMD_fask:
+    rule join_summaries_tetrad_fask:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_fask"),
+            res=join_string_sampled_model("tetrad_fask"),
         output:
-            join_summaries_output("causalCMD_fask"),
+            join_summaries_output("tetrad_fask"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
 
-if "causalCMD_pc-all" in pattern_strings:
+if "tetrad_pc-all" in pattern_strings:
 
-    rule causalCMD_pc_all:
+    rule tetrad_pc_all:
         input:
-            "workflow/scripts/structure_learning_algorithms/causalCMD_pc.py",
+            "workflow/scripts/structure_learning_algorithms/tetrad_pc.py",
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_pc-all"),
-            time=alg_output_time_path("causalCMD_pc-all"),
+            adjmat=alg_output_adjmat_path("tetrad_pc-all"),
+            time=alg_output_time_path("tetrad_pc-all"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_pc.py"
+            "../scripts/structure_learning_algorithms/tetrad_pc.py"
 
-    rule summarise_causalCMD_pc_all:
+    rule summarise_tetrad_pc_all:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_pc-all"),
-            time=summarise_alg_input_time_path("causalCMD_pc-all"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_pc-all"),
+            time=summarise_alg_input_time_path("tetrad_pc-all"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_pc-all"),
+            res=summarise_alg_output_res_path("tetrad_pc-all"),
         shell:
-            summarise_alg_shell("causalCMD_pc-all")
+            summarise_alg_shell("tetrad_pc-all")
 
-    rule join_summaries_causalCMD_pc_all:
+    rule join_summaries_tetrad_pc_all:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_pc-all"),
+            res=join_string_sampled_model("tetrad_pc-all"),
         output:
-            join_summaries_output("causalCMD_pc-all"),
+            join_summaries_output("tetrad_pc-all"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
 
-if "causalCMD_lingam" in pattern_strings:
+if "tetrad_lingam" in pattern_strings:
 
-    rule causalCMD_lingam:
+    rule tetrad_lingam:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_lingam"),
-            time=alg_output_time_path("causalCMD_lingam"),
+            adjmat=alg_output_adjmat_path("tetrad_lingam"),
+            time=alg_output_time_path("tetrad_lingam"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_lingam.py"
+            "../scripts/structure_learning_algorithms/tetrad_lingam.py"
 
-    rule summarise_causalCMD_lingam:
+    rule summarise_tetrad_lingam:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_lingam"),
-            time=summarise_alg_input_time_path("causalCMD_lingam"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_lingam"),
+            time=summarise_alg_input_time_path("tetrad_lingam"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_lingam"),
+            res=summarise_alg_output_res_path("tetrad_lingam"),
         shell:
-            summarise_alg_shell("causalCMD_lingam")
+            summarise_alg_shell("tetrad_lingam")
 
-    rule join_summaries_causalCMD_lingam:
+    rule join_summaries_tetrad_lingam:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_lingam"),
+            res=join_string_sampled_model("tetrad_lingam"),
         output:
-            join_summaries_output("causalCMD_lingam"),
+            join_summaries_output("tetrad_lingam"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
 
-if "causalCMD_imgscont" in pattern_strings:
+if "tetrad_imgscont" in pattern_strings:
 
-    rule causalCMD_imgscont:
+    rule tetrad_imgscont:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_imgscont"),
-            time=alg_output_time_path("causalCMD_imgscont"),
+            adjmat=alg_output_adjmat_path("tetrad_imgscont"),
+            time=alg_output_time_path("tetrad_imgscont"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_imgscont.py"
+            "../scripts/structure_learning_algorithms/tetrad_imgscont.py"
 
-    rule summarise_causalCMD_imgscont:
+    rule summarise_tetrad_imgscont:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_imgscont"),
-            time=summarise_alg_input_time_path("causalCMD_imgscont"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_imgscont"),
+            time=summarise_alg_input_time_path("tetrad_imgscont"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_imgscont"),
+            res=summarise_alg_output_res_path("tetrad_imgscont"),
         shell:
-            summarise_alg_shell("causalCMD_imgscont")
+            summarise_alg_shell("tetrad_imgscont")
 
-    rule join_summaries_causalCMD_imgscont:
+    rule join_summaries_tetrad_imgscont:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_imgscont"),
+            res=join_string_sampled_model("tetrad_imgscont"),
         output:
-            join_summaries_output("causalCMD_imgscont"),
+            join_summaries_output("tetrad_imgscont"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 
 
-if "causalCMD_ftfc" in pattern_strings:
+if "tetrad_ftfc" in pattern_strings:
 
-    rule causalCMD_ftfc:
+    rule tetrad_ftfc:
         input:
             data=alg_input_data(),
         output:
-            adjmat=alg_output_adjmat_path("causalCMD_ftfc"),
-            time=alg_output_time_path("causalCMD_ftfc"),
+            adjmat=alg_output_adjmat_path("tetrad_ftfc"),
+            time=alg_output_time_path("tetrad_ftfc"),
         container:
-            docker_image("causalCMD")
+            docker_image("tetrad")
         script:
-            "../scripts/structure_learning_algorithms/causalCMD_ftfc.py"
+            "../scripts/structure_learning_algorithms/tetrad_ftfc.py"
 
-    rule summarise_causalCMD_ftfc:
+    rule summarise_tetrad_ftfc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("causalCMD_ftfc"),
-            time=summarise_alg_input_time_path("causalCMD_ftfc"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("tetrad_ftfc"),
+            time=summarise_alg_input_time_path("tetrad_ftfc"),
         output:
-            res=summarise_alg_output_res_path("causalCMD_ftfc"),
+            res=summarise_alg_output_res_path("tetrad_ftfc"),
         shell:
-            summarise_alg_shell("causalCMD_ftfc")
+            summarise_alg_shell("tetrad_ftfc")
 
-    rule join_summaries_causalCMD_ftfc:
+    rule join_summaries_tetrad_ftfc:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("causalCMD_ftfc"),
+            res=join_string_sampled_model("tetrad_ftfc"),
         output:
-            join_summaries_output("causalCMD_ftfc"),
+            join_summaries_output("tetrad_ftfc"),
         script:
             "../scripts/evaluation/join_csv_files.R"
