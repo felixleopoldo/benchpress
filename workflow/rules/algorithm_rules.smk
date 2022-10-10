@@ -83,7 +83,6 @@ if "parallelDG" in pattern_strings:
             summarise_alg_shell("parallelDG")
 
 if "causaldag_gsp" in pattern_strings:
-
     rule causaldag_gsp:
         input:
             data=alg_input_data(),
@@ -1395,12 +1394,18 @@ if "bnlearn_mmhc" in pattern_strings:
 
 
 if "gobnilp" in pattern_strings:
+    def fix_none_startspace_algorithm(startspace_algorithm):
+        if startspace_algorithm == "None":
+            return ""
+        else:
+            return "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv",
 
     rule gobnilp:
         input:
             data=alg_input_data(),
             extra_args="resources/extra_args/{extra_args}",
             constraints="resources/constraints/{constraints}",
+            startspace=fix_none_startspace_algorithm("{startspace_algorithm}")
         output:
             adjmat=alg_output_adjmat_path("gobnilp"),
             time=alg_output_time_path("gobnilp"),
@@ -1583,7 +1588,7 @@ if "bidag_order_mcmc" in pattern_strings:
         input:
             "workflow/scripts/structure_learning_algorithms/bidag_order_mcmc.R",
             data=alg_input_data(),
-            startspace="{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv",
+            startspace="{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv"
         output:  # data seems to be matched wrongly
             seqgraph=alg_output_seqgraph_path("bidag_order_mcmc"),
             time=alg_output_time_path("bidag_order_mcmc"),

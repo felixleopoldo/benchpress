@@ -2217,6 +2217,16 @@
                         "BIC"
                     ]
                 },
+                "startspace_algorithm": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
                 "extra_args": {
                     "anyOf": [
                         {
@@ -2269,6 +2279,7 @@
             "required": [
                 "id",
                 "plot",
+                "startspace_algorithm",
                 "palim",
                 "alpha",
                 "prune",

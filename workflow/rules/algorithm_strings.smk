@@ -111,9 +111,9 @@ if "bnlearn_rsmax2" in pattern_strings:
 if "sklearn_glasso" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["sklearn_glasso"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["sklearn_glasso"]})
-if "gobnilp" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})                      
+#if "gobnilp" in pattern_strings:
+#    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
+#                        for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})                      
 if "trilearn_pgibbs" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
@@ -188,6 +188,15 @@ if "bidag_partition_mcmc" in pattern_strings:
 
     json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
                         for val in bidag_partition_mcmc_list } )
+
+if "gobnilp" in pattern_strings:
+    gobnilp_list = config["resources"]["structure_learning_algorithms"]["gobnilp"]
+    # The path to the startspace algorithm is extended here
+    for items in gobnilp_list:    
+        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
+
+    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val,) 
+                        for val in gobnilp_list } )
 
 # Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}
