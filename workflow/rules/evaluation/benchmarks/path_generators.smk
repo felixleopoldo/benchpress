@@ -26,6 +26,16 @@ def join_string_sampled_model(algorithm, mode="result"):
             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in benchmarks_alg_ids]
     return ret
 
+# TODO: These should take a pattern string instead of an algorithm.
+def summarise_alg_input_adjmat_est_path(algorithm):
+    return "{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat}/"\
+            "parameters=/{bn}/"\
+            "data=/{data}/"\
+            "algorithm=/" + pattern_strings[algorithm] + "/" + \
+            "seed={replicate}/" \
+            "adjmat.csv"
+
 def summarise_alg_input_time_path(algorithm):
     return "{output_dir}/time/"\
                     "adjmat=/{adjmat}/"\
@@ -80,3 +90,13 @@ def summarise_alg_input_data_path():
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv" 
 
+def result_path_mcmc(algorithm):
+    res = "{output_dir}/result/"\
+            "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
+            "adjmat=/{adjmat}/"\
+            "parameters=/{bn}/"\
+            "data=/{data}/"\           
+            "seed={replicate}/" \
+            "id={id}/" \             
+            "result.csv"
+    return res

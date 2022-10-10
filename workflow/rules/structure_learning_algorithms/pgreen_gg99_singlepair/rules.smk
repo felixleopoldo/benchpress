@@ -1,6 +1,3 @@
-# This is a function which returns the shell commands for most of the algorithms.
-# It could also had been a dict.
-
 def alg_shell(algorithm):
 
     if algorithm == "gg99_singlepair_fortran":
