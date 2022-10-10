@@ -60,6 +60,7 @@ def alg_shell(algorithm):
 
             """
 
+
     elif algorithm == "gg99_singlepair":
             return """
             if [ {wildcards.timeout} = \"None\" ]; then
