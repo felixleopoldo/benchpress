@@ -1,3 +1,5 @@
+import script
+
 if "gg99_singlepair" in pattern_strings:
 
     rule gg99_singlepair:

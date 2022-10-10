@@ -1,5 +1,21 @@
 from filenames import *
 
+rule compress:
+    input:
+        "{whatever}/adjvecs_tobecompressed.csv"
+    output:
+        "{whatever}/adjvecs.tar.gz"
+    shell:
+        "tar -cvzf {output} {input}"
+
+rule extract:
+    input:
+        "{whatever}/adjvecs.tar.gz"
+    output:
+        temp("{whatever}/adjvecs.csv")
+    shell:
+        "tar -xvf {input} && mv {wildcards.whatever}/adjvecs_tobecompressed.csv {output}"
+
 # From the alg id we could easily determine the varying paramter by checking which key has
 # a list instead of a single value. But we need to match the id and we need to match the
 # parameters so that we can get the varying parameter value.

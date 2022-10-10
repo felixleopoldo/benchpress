@@ -10,7 +10,28 @@ if "trilearn_pgibbs" in pattern_strings:
         container:
             docker_image("trilearn")
         shell:
-            alg_shell("trilearn_pgibbs")
+            """
+            if [ {wildcards.timeout} = \"None\" ]; then
+                if [ {wildcards.datatype} = \"discrete\" ]; then
+                    /usr/bin/time -f \"%e\" -o {output.time} pgibbs_loglinear_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed};
+                elif [ {wildcards.datatype} = \"continuous\" ]; then
+                    /usr/bin/time -f \"%e\" -o {output.time} pgibbs_ggm_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed};
+                fi
+            else
+                    if [ {wildcards.datatype} = \"discrete\" ]; then
+                    /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'pgibbs_loglinear_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} --pseudo_observations {wildcards.pseudo_obs} -s {wildcards.mcmc_seed}';
+                elif [ {wildcards.datatype} = \"continuous\" ]; then
+                    /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'pgibbs_ggm_sample -N {wildcards.n_particles} -M {wildcards.M} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed}';
+                fi
+            fi
+
+            if [ -f {output.adjvecs} ]; then
+                sleep 1
+            else
+                touch {output.adjvecs}
+                echo None > {output.time};
+            fi
+            """
 
     rule trilearn_est:
         input:

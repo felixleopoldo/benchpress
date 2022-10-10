@@ -10,4 +10,16 @@ if "notears" in pattern_strings:
         container:
             docker_image("notears")
         shell:
-            alg_shell("notears")
+            """ 
+                /usr/bin/time -f \"%e\" -o {output.time}  \
+                python workflow/scripts/structure_learning_algorithms/jmoss20_notears.py  \
+                --data_filename {input.data}  \
+                --min_rate_of_progress {wildcards.min_rate_of_progress}  \
+                --penalty_growth_rate {wildcards.penalty_growth_rate}  \
+                --optimation_accuracy {wildcards.optimation_accuracy}  \
+                --loss {wildcards.loss}  \
+                --timeout {wildcards.timeout}  \
+                --loss_grad {wildcards.loss_grad}  \
+                --filename {output.adjmat} \
+                --seed {wildcards.replicate} ;
+            """
