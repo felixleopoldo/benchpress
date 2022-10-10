@@ -52,6 +52,13 @@ The available structure learning algorithms
 | [bnlearn_rsmax2](#bnlearn_rsmax2)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-bnlearn_rsmax2.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_rsmax2")             |
 | [gt13_multipair](#gt13_multipair)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gt13_multipair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gt13_multipair")             |
 | [gg99_singlepair](#gg99_singlepair)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-gg99_singlepair.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/gg99_singlepair")           |
+| [tetrad_fofc](#tetrad_fofc)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fofc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fofc")                   |
+| [tetrad_ftfc](#tetrad_ftfc)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_ftfc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_ftfc")                   |
+| [tetrad_lingam](#tetrad_lingam)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_lingam.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_lingam")               |
+| [tetrad_imgscont](#tetrad_imgscont)           | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_imgsont.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_imgscont")            |
+| [tetrad_fas](#tetrad_fas)                     | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fas.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fas")                     |
+| [tetrad_fask](#tetrad_fask)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fask.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fask")                   |
+| [tetrad_pc-all](#tetrad_pc-all)               | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_pc-all.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_pc-all")               |
 | [sklearn_glasso](#sklearn_glasso)             | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-sklearn_glasso.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/sklearn_glasso")             |
 
 ## mylib_myalg
@@ -685,6 +692,132 @@ Guidici & Green parametrisarion
 ### gg99\_singlepair Type
 
 `object[]` ([gg99\_singlepair item](config-definitions-gg99\_singlepair-item.md))
+
+## tetrad_fofc
+
+fofc objects
+
+`tetrad_fofc`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_fofc item](config-definitions-tetrad_fofc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fofc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fofc")
+
+### tetrad_fofc Type
+
+`object[]` ([tetrad_fofc item](config-definitions-tetrad_fofc-item.md))
+
+## tetrad_ftfc
+
+ftfc objects
+
+`tetrad_ftfc`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_ftfc item](config-definitions-tetrad_ftfc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_ftfc.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_ftfc")
+
+### tetrad_ftfc Type
+
+`object[]` ([tetrad_ftfc item](config-definitions-tetrad_ftfc-item.md))
+
+## tetrad_lingam
+
+lingam objects
+
+`tetrad_lingam`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_lingam item](config-definitions-tetrad_lingam-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_lingam.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_lingam")
+
+### tetrad_lingam Type
+
+`object[]` ([tetrad_lingam item](config-definitions-tetrad_lingam-item.md))
+
+## tetrad_imgscont
+
+images continuous objects
+
+`tetrad_imgscont`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_imgscont item](config-definitions-tetrad_imgscont-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_imgsont.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_imgscont")
+
+### tetrad_imgscont Type
+
+`object[]` ([tetrad_imgscont item](config-definitions-tetrad_imgscont-item.md))
+
+## tetrad_fas
+
+fas objects
+
+`tetrad_fas`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_fas item](config-definitions-tetrad_fas-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fas.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fas")
+
+### tetrad_fas Type
+
+`object[]` ([tetrad_fas item](config-definitions-tetrad_fas-item.md))
+
+## tetrad_fask
+
+fask objects
+
+`tetrad_fask`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_fask item](config-definitions-tetrad_fask-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fask.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fask")
+
+### tetrad_fask Type
+
+`object[]` ([tetrad_fask item](config-definitions-tetrad_fask-item.md))
+
+## tetrad_pc-all
+
+pc objects
+
+`tetrad_pc-all`
+
+*   is optional
+
+*   Type: `object[]` ([tetrad_pc item](config-definitions-tetrad_pc-item.md))
+
+*   cannot be null
+
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_pc-all.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_pc-all")
+
+### tetrad_pc-all Type
+
+`object[]` ([tetrad_pc item](config-definitions-tetrad_pc-item.md))
 
 ## sklearn_glasso
 

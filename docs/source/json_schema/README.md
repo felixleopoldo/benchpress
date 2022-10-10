@@ -170,6 +170,14 @@
 
 *   [structure_learning_algorithms](./config-properties-resources-properties-structure_learning_algorithms.md "The available structure learning algorithms") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms`
 
+*   [tetrad_fas item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fas-tetrad_fas-item.md "fas instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fas/items`
+
+*   [tetrad_fas item](./config-definitions-tetrad_fas-item.md "fas instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fas`
+
+*   [tetrad_fask item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fask-tetrad_fask-item.md "fask instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fask/items`
+
+*   [tetrad_fask item](./config-definitions-tetrad_fask-item.md "fask instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fask`
+
 *   [tetrad_fci item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fci-tetrad_fci-item.md "FCI instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fci/items`
 
 *   [tetrad_fci item](./config-definitions-tetrad_fci-item.md "FCI instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fci`
@@ -178,9 +186,29 @@
 
 *   [tetrad_fges item](./config-definitions-tetrad_fges-item.md "fGES instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fges`
 
+*   [tetrad_fofc item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fofc-tetrad_fofc-item.md "fofc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fofc/items`
+
+*   [tetrad_fofc item](./config-definitions-tetrad_fofc-item.md "fofc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fofc`
+
+*   [tetrad_ftfc item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_ftfc-tetrad_ftfc-item.md "ftfc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_ftfc/items`
+
+*   [tetrad_ftfc item](./config-definitions-tetrad_ftfc-item.md "ftfc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_ftfc`
+
 *   [tetrad_gfci item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_gfci-tetrad_gfci-item.md "GFCI instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci/items`
 
 *   [tetrad_gfci item](./config-definitions-tetrad_gfci-item.md "GFCI instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci`
+
+*   [tetrad_imgscont item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_imgsont-tetrad_imgscont-item.md "imgscont instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_imgscont/items`
+
+*   [tetrad_imgscont item](./config-definitions-tetrad_imgscont-item.md "imgscont instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_imgscont`
+
+*   [tetrad_lingam item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_lingam-tetrad_lingam-item.md "lingam instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_lingam/items`
+
+*   [tetrad_lingam item](./config-definitions-tetrad_lingam-item.md "lingam instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_lingam`
+
+*   [tetrad_pc item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_pc-all-tetrad_pc-item.md "pc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_pc-all/items`
+
+*   [tetrad_pc item](./config-definitions-tetrad_pc-item.md "pc instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_pc-all`
 
 *   [tetrad_rfci item](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_rfci-tetrad_rfci-item.md "RFCI instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci/items`
 
@@ -898,7 +926,35 @@
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
 *   [nonnegnumlist](./config-definitions-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/nonnegnumlist`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
+
+*   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
 *   [nonnegnumlist](./config-definitions-flexnonnegnum-anyof-nonnegnumlist.md "List of non-negative numbers") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnonnegnum/anyOf/1`
 
@@ -1272,11 +1328,25 @@
 
 *   [sklearn_glasso](./config-properties-resources-properties-structure_learning_algorithms-properties-sklearn_glasso.md "GLasso scikit-learn implementation") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/sklearn_glasso`
 
+*   [tetrad_fas](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fas.md "fas objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fas`
+
+*   [tetrad_fask](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fask.md "fask objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fask`
+
 *   [tetrad_fci](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fci.md "FCI fast causal inference") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fci`
 
 *   [tetrad_fges](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fges.md "fGES objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fges`
 
+*   [tetrad_fofc](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_fofc.md "fofc objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_fofc`
+
+*   [tetrad_ftfc](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_ftfc.md "ftfc objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_ftfc`
+
 *   [tetrad_gfci](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_gfci.md "GFCI") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci`
+
+*   [tetrad_imgsont](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_imgsont.md "images continuous objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_imgscont`
+
+*   [tetrad_lingam](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_lingam.md "lingam objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_lingam`
+
+*   [tetrad_pc-all](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_pc-all.md "pc objects") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_pc-all`
 
 *   [tetrad_rfci](./config-properties-resources-properties-structure_learning_algorithms-properties-tetrad_rfci.md "RFCI Really fast causal inference") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_rfci`
 

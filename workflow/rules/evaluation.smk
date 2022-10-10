@@ -27,7 +27,7 @@ rule combine_benchmarks_data:
     output:
         csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
         joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    shell:        
+    shell:
         "Rscript workflow/scripts/evaluation/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule benchmarks:
@@ -38,7 +38,7 @@ rule benchmarks:
         config=configfilename,
         csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
         raw_bench="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    output: 
+    output:
         temp(touch("results/output/benchmarks/benchmarks.done")),
         fpr_tpr_pattern="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_pattern.png",
         FPRp_FNR_skel="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPRp_FNR_skel.png",
@@ -71,13 +71,13 @@ def traj_plots():
             **alg_conf,
             seed=seed,
             evaluation_string=gen_evaluation_string_from_conf("mcmc_traj_plots", alg_conf["id"]),
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
+                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]
                                                             if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_traj_plots")]
     return ret
@@ -96,16 +96,16 @@ def processed_trajs(mcmc_module):
             **alg_conf, # contains e.g. id
             seed=seed,
             evaluation_string=gen_evaluation_string_from_conf(mcmc_module, alg_conf["id"]),
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"][mcmc_module] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
+                if alg_conf["id"] in [mcmc_traj_conf["id"] for mcmc_traj_conf in config["benchmark_setup"]["evaluation"][mcmc_module]
                                                             if ("active" not in mcmc_traj_conf) or (mcmc_traj_conf["active"] == True)] ]
             for alg in active_algorithms(mcmc_module)]
-    
+
     return ret
 
 
@@ -123,12 +123,12 @@ def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
             **alg_conf,
             seed=seed,
             evaluation_string="graphvizcompare/layout=True",
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
                  if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
@@ -147,12 +147,12 @@ def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
             **alg_conf,
             seed=seed,
             evaluation_string="adjmat_diffplot",
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
@@ -174,60 +174,60 @@ def adjmat_true_stats():
             for sim_setup in config["benchmark_setup"]["data"] ]
 
 def adjmat_plots():
-    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[[[expand("{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"
             "adjmat.eps",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
             seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
 def adjmats():
-    ret = [[[[expand("{output_dir}/adjmat_estimate/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[[[expand("{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"
             "adjmat.csv",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
             seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
 def pairs():
-    ret = [[expand("{output_dir}/pairs/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[expand("{output_dir}/pairs/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\                        
+            "data=/{data_string}/"\
             "seed={seed}"
             ".png",
-            output_dir="results",            
-            
-            seed=seed,          
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            output_dir="results",
+
+            seed=seed,
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
@@ -243,22 +243,22 @@ def graph_true_plots():
             for sim_setup in config["benchmark_setup"]["data"] ]
 
 def graph_plots():
-    ret = [[[[expand("{output_dir}/graph_plot/"\               
-            "adjmat=/{adjmat_string}/"\            
+    ret = [[[[expand("{output_dir}/graph_plot/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
             seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
             for alg in active_algorithms("graph_plots")]
     return ret
@@ -277,13 +277,13 @@ def autocorr_plots():
             **alg_conf,
             seed=seed,
             evaluation_string=gen_evaluation_string_from_conf("mcmc_autocorr_plots", alg_conf["id"]),
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
+                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"]
                                                     if ("active" not in conf) or (conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_autocorr_plots")]
     return ret
@@ -302,20 +302,20 @@ def heatmap_plots():
             **alg_conf,
             seed=seed,
             evaluation_string=gen_evaluation_string_from_conf("mcmc_heatmaps", alg_conf["id"]),
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed), 
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg] 
-                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"] 
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
+                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]
                                                     if ("active" not in conf) or (conf["active"] == True)] ]
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
 
 # From the alg id we could easily determine the varying paramter by checking which key has
-# a list instead of a single value. But we need to match the id and we need to match the 
+# a list instead of a single value. But we need to match the id and we need to match the
 # parameters so that we can get the varying parameter value.
 
 
@@ -324,32 +324,32 @@ mcmc_alg_ids = set()
 
 for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
     # get the actual conf
-    
+
     alg_conf = None
     curalg = None
-    for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():  
+    for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():
         mcmc_alg_ids.add(alg)
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
     if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
         # Processed graph trajectory
         rule:
-            input:                 
+            input:
                 configfilename, # the variyng param might change
-                "workflow/scripts/evaluation/write_graph_traj.py",                
-                traj="{output_dir}/adjvecs/"\               
-                    "adjmat=/{adjmat_string}/"\            
+                "workflow/scripts/evaluation/write_graph_traj.py",
+                traj="{output_dir}/adjvecs/"\
+                    "adjmat=/{adjmat_string}/"\
                     "parameters=/{param_string}/"\
                     "data=/{data_string}/"\
-                    "algorithm=/"+pattern_strings[algid]+"/"\                            
+                    "algorithm=/"+pattern_strings[algid]+"/"\
                     "seed={seed}/"
-                    "adjvecs.csv"        
+                    "adjvecs.csv"
             output:
                 traj="{output_dir}/"\
-                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\ 
-                "adjmat=/{adjmat_string}/"\            
+                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\
+                "adjmat=/{adjmat_string}/"\
                 "parameters=/{param_string}/"\
-                "data=/{data_string}/"\            
+                "data=/{data_string}/"\
                 "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
                 "seed={seed}/" \
                 "processed_graphtraj.csv"
@@ -368,22 +368,22 @@ for algid in mcmc_alg_ids:
 
         # Auto correlations
         rule:
-            input:                 
-                "workflow/scripts/evaluation/write_graph_traj.py",                
+            input:
+                "workflow/scripts/evaluation/write_graph_traj.py",
                 traj="{output_dir}/"\
-                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\ 
-                "adjmat=/{adjmat_string}/"\            
+                "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\
+                "adjmat=/{adjmat_string}/"\
                 "parameters=/{param_string}/"\
-                "data=/{data_string}/"\            
+                "data=/{data_string}/"\
                 "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
                 "seed={seed}/" \
-                "processed_graphtraj.csv"    
+                "processed_graphtraj.csv"
             output:
                 traj="{output_dir}/"\
-                "evaluation=/" + pattern_strings["mcmc_autocorr_plots"] + "/"\ 
-                "adjmat=/{adjmat_string}/"\            
+                "evaluation=/" + pattern_strings["mcmc_autocorr_plots"] + "/"\
+                "adjmat=/{adjmat_string}/"\
                 "parameters=/{param_string}/"\
-                "data=/{data_string}/"\            
+                "data=/{data_string}/"\
                 "algorithm=/"+pattern_strings[algid]+"/id={id}/"\
                 "seed={seed}/" \
                 "processed_graphtraj.csv"
@@ -402,22 +402,22 @@ for algid in mcmc_alg_ids:
 
 
 rule mcmc_heatmap_plot:
-    input: 
+    input:
         "workflow/scripts/evaluation/plot_heatmap_from_graphtraj.py",
-        traj="{output_dir}/adjvecs/"\               
-            "adjmat=/{adjmat_string}/"\            
+        traj="{output_dir}/adjvecs/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"\
-            "adjvecs.csv"       
+            "adjvecs.csv"
     output:
         filename="{output_dir}/"\
-        "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \ 
-        "adjmat=/{adjmat_string}/"\            
+        "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \
+        "adjmat=/{adjmat_string}/"\
         "parameters=/{param_string}/"\
-        "data=/{data_string}/"\            
-        "algorithm=/{alg_string}/"\                            
+        "data=/{data_string}/"\
+        "algorithm=/{alg_string}/"\
         "seed={seed}/"
         "heatmap_plot.png"
     params:
@@ -433,19 +433,19 @@ rule mcmc_heatmap_plot:
 rule adjmat_plot:
     input:
         "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
-        matrix_filename="{output_dir}/adjmat_estimate/"\               
-            "adjmat=/{adjmat_string}/"\            
+        matrix_filename="{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"
             "adjmat.csv"
     output:
-        plot_filename="{output_dir}/adjmat_estimate/"\               
-            "adjmat=/{adjmat_string}/"\            
+        plot_filename="{output_dir}/adjmat_estimate/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"
             "adjmat.eps"
     params:
@@ -462,7 +462,7 @@ rule adjmat_plot:
 rule adjmat_true_plot:
     input:
         "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
-        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
+        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv"
     output:
         plot_filename = "{output_dir}/adjmat/{adjmat_string}.png"
     params:
@@ -476,7 +476,7 @@ rule adjmat_true_plot:
 rule adjmat_true_stats:
     input:
         "workflow/scripts/evaluation/graph_stats.R",
-        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv" 
+        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv"
     output:
         stats_filename = "{output_dir}/adjmatstats/{adjmat_string}/stats.csv"
     params:
@@ -513,9 +513,9 @@ use rule adjmat_to_dot as true_adjmat_to_dot with:
 
 rule plot_dot:
     input:
-        filename="{output_dir}/dotgraph/{something}.dot" 
+        filename="{output_dir}/dotgraph/{something}.dot"
     output:
-        filename="{output_dir}/graph_plot/{something}.png" 
+        filename="{output_dir}/graph_plot/{something}.png"
     container:
         docker_image("trilearn")
     shell:
@@ -528,22 +528,22 @@ rule plot_dot:
         """
 
 rule mcmc_autocorr_plot:
-    input: 
+    input:
          "workflow/scripts/evaluation/plot_autocorr_from_traj.py",
-         traj="{output_dir}/adjvecs/"\               
-            "adjmat=/{adjmat_string}/"\            
+         traj="{output_dir}/adjvecs/"\
+            "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
-            "data=/{data_string}/"\            
-            "algorithm=/{alg_string}/"\                            
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
             "seed={seed}/"
-            "adjvecs.csv"        
+            "adjvecs.csv"
     output:
         plot="{output_dir}/"\
-        "evaluation=/" + pattern_strings["mcmc_autocorr_plots"] + "/" \ 
-        "adjmat=/{adjmat_string}/"\            
+        "evaluation=/" + pattern_strings["mcmc_autocorr_plots"] + "/" \
+        "adjmat=/{adjmat_string}/"\
         "parameters=/{param_string}/"\
-        "data=/{data_string}/"\            
-        "algorithm=/{alg_string}/"\                            
+        "data=/{data_string}/"\
+        "algorithm=/{alg_string}/"\
         "seed={seed}/"
         "autocorr_plot.png"
     params:
@@ -569,11 +569,11 @@ rule mcmc_heatmaps:
 
 # Joins processed trajs
 rule mcmc_traj_plots_join_trajs:
-    input:        
+    input:
         trajs=processed_trajs("mcmc_traj_plots")
-    output: 
+    output:
         # having constant files makes triggering complicatad
-        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv" 
+        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
     script:
         "../scripts/evaluation/join_graph_trajs.py"
 
@@ -582,7 +582,7 @@ rule mcmc_traj_plots_plot_joined_trajs:
     input:
         configfilename,
         trajs=rules.mcmc_traj_plots_join_trajs.output.trajs
-    output: 
+    output:
         touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done"),
         single=directory("results/output/mcmc_traj_plots/single_param_settings"),
         multi=directory("results/output/mcmc_traj_plots/multi_param_settings")
@@ -598,19 +598,19 @@ rule mcmc_traj_plots_plot_joined_trajs:
 rule mcmc_autocorr_plots_join_trajs:
     input:
         trajs=processed_trajs("mcmc_autocorr_plots") # should get lag trajs instead?
-    output: 
+    output:
         # separate based on the ids
         trajs="results/output/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
     script:
-        # First compute the autocorrelation at each lag 
-        "../scripts/evaluation/join_graph_trajs.py" 
+        # First compute the autocorrelation at each lag
+        "../scripts/evaluation/join_graph_trajs.py"
 
 # This plots several trajectories in one figure
 rule mcmc_autocorr_plots_plot_joined_trajs:
     input:
         configfilename,
         trajs=rules.mcmc_autocorr_plots_join_trajs.output.trajs,
-    output: 
+    output:
         joined=touch("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done"),
         single=directory("results/output/mcmc_autocorr_plots/single_param_settings"),
         multi=directory("results/output/mcmc_autocorr_plots/multi_param_settings")
@@ -643,7 +643,7 @@ rule join_adjmat_stats:
         "../scripts/evaluation/join_csv_files.R"
 
 rule plot_adjmat_stats:
-    input:    
+    input:
         "workflow/scripts/evaluation/graph_stats_plot.R",
         conf=configfilename,
         joint_stats="results/output/graph_true_stats/joint_stats.csv"
@@ -654,9 +654,9 @@ rule plot_adjmat_stats:
         "../scripts/evaluation/graph_stats_plot.R"
 
 rule plot_pairs:
-    input:            
-        "workflow/scripts/utils/pairs.R",        
-        data=summarise_alg_input_data_path()        
+    input:
+        "workflow/scripts/utils/pairs.R",
+        data=summarise_alg_input_data_path()
     output:
         filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png",
     params:
@@ -767,7 +767,7 @@ rule graph_true_plots:
         graphs=graph_true_plots(),
         adjmats=adjmat_true_plots()
     output:
-        touch("results/output/graph_true_plots/graph_true_plots.done"),        
+        touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:
         for i,f in enumerate(input.graphs):
             shell("cp "+f+" results/output/graph_true_plots/graph_true_" +str(i+1) +".png")

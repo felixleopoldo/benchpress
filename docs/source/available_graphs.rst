@@ -7,6 +7,8 @@
 Several possibilities exist for defining the graph component, depending on whether we wish
 to draw random graphs from a given distribution, or maybe provide a given structure on
 which we wish to perform a benchmarking study. Below is the list of currently available modules.
+The rules and corresponding scripts are located in *workflow/rules/graph/* and *workflow/scripts/graph/*, respectively.
+
 
 +------------------------+-------------------+----------+---------+----------+--------+
 | Method                 | Module id         | Library  | Version | Language | Graph  |
@@ -165,9 +167,36 @@ This is the *graph.sim* method from the `BDgraph <https://cran.r-project.org/web
         "prob": 0.2
     }
 
-``bandmat``
--------------------
-An object of the bandmat module specifies a decomposable graphs with adjacency matrix
+
+.. _trilearn_bandmat:
+
+``trilearn_bandmat``
+---------------------
+
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Module name    | `trilearn_bandmat <jsjs>`__                                                                                                         |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Package        | `trilearn <https://cran.r-project.org/web/packages/BDgraph/index.html>`_                                                            |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Version        | 1.2.3                                                                                                                               |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Language       | Python                                                                                                                              |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Documentation  | -                                                                                                                                   |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Paper          | -                                                                                                                                   |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Snakemake rule | `trilearn_bandmat.smk <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/sample_adjmat.smk>`_                  |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Script         | `trilearn_bandmat.py <https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/graph_sampling/bdgraph_graphsim.R>`_ |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Docker image   | `onceltuca/trilearn:1.2.3 <https://hub.docker.com/repository/docker/onceltuca/bdgraph>`_                                            |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| Graph type     | Decomposable                                                                                                                        |
++----------------+-------------------------------------------------------------------------------------------------------------------------------------+
+
+
+An object of this module specifies a decomposable graphs with adjacency matrix
 with given bandwidth (*bandwith*).
 
 .. rubric:: Example
@@ -181,8 +210,34 @@ with given bandwidth (*bandwith*).
         "dim": 50
     }
     
-``rand_bandmat``
--------------------
+
+.. _trilearn_rand_bandmat:
+
+``trilearn_rand_bandmat``
+---------------------------
+
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Module name    | `trilearn_rand_bandmat <jsjs>`__                                                                                                         |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Package        | `trilearn <https://cran.r-project.org/web/packages/BDgraph/index.html>`_                                                                 |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Version        | 1.2.3                                                                                                                                    |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Language       | Python                                                                                                                                   |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Documentation  | -                                                                                                                                        |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Paper          | -                                                                                                                                        |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Snakemake rule | `trilearn_rand_bandmat.smk <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/sample_adjmat.smk>`_                  |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Script         | `trilearn_rand_bandmat.py <https://github.com/felixleopoldo/benchpress/blob/master/workflow/scripts/graph_sampling/bdgraph_graphsim.R>`_ |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Docker image   | `onceltuca/trilearn:1.2.3 <https://hub.docker.com/repository/docker/onceltuca/bdgraph>`_                                                 |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+| Graph type     | Decomposable                                                                                                                             |
++----------------+------------------------------------------------------------------------------------------------------------------------------------------+
+
 An object of the max bandwith module specifies a decomposable graph with band structured adjacency matrix of a given maximum width (``max_bandwith``).
 
 
@@ -227,26 +282,45 @@ An object of the max bandwith module specifies a decomposable graph with band st
 Fixed graph
 ----------------
 
+Fixed graphs are stored as adjacency matrices of in ``.csv`` format in the directory *resources/adjmats/myadjmats* along with the `existing ones <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
+A fixed graph is referenced by the corresponding filename instead of `id` as with the other modules.
 
-Adjacency matrix of a graph in ``.csv`` format. 
-Must be stored in the directory ``resources/adjmats/myadjmats``.
-The graph is referenced by the corresponding filename.
+A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{ij}=1` if :math:`(i,j)\in E` and  :math:`M_{ij}=0` if :math:`(i,j)\notin E`.
 
-* The first row should contain the labels of the variables.
-* The columns should be separated by a comma (,).
-* 1 (0) at row i column j mean that there is (is not) an edge pointing from variable i to j. 
-* Undirected graphs have symmetric matrices.
-
-
-Examples are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
+.. * The first row contains the labels of the variables.
+.. * The columns are separated by a comma (,).
+.. * 1 (0) at row i, column j indicates an (no) edge from variable i to j. 
 
 
+.. rubric:: Example (undirected graph)
+
+Below is an example undirected graph :math:`G=(V, E)`, where :math:`E = \{(a,b), (a,c), (c,d)\}` are interpreted as un-ordered pairs (un-directed edges).
+Undirected graphs have symmetric matrices.
+
+.. code-block:: text
+
+    a,b,c,d
+    0,1,1,0
+    1,0,0,0
+    1,0,0,1
+    0,0,1,0
 
 
+.. rubric:: Example (DAG)
 
-.. important:: 
+If :math:`G` is directed the adjacency matrix is asymmetric as below.
 
-    If a CSV file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
+.. code-block:: text
+
+    a,b,c,d
+    0,1,1,0
+    0,0,0,0
+    0,0,0,1
+    0,0,0,0
+
+.. .. important:: 
+
+..     If a CSV file is specified as ``data_id`` then ``parameters_id`` and ``seed_range`` should be *null* whereas ``graph_id`` should be the true graphs that generated the dataset.
     
 
 .. [AH2005] A. Atay-Kayis and H. Massam. A Monte Carlo method for computing the marginal likelihood in non decomposable Gaussian graphical models. Biometrika, 92(2):317–335, 2005.
