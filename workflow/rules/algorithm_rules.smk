@@ -1394,9 +1394,9 @@ if "bnlearn_mmhc" in pattern_strings:
 
 
 if "gobnilp" in pattern_strings:
-    def fix_none_startspace_algorithm(startspace_algorithm):
-        if startspace_algorithm == "None":
-            return ""
+    def fix_none_startspace_algorithm(wildcards):
+        if wildcards["startspace_algorithm"] == "None":
+            return []
         else:
             return "{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv",
 
@@ -1405,7 +1405,7 @@ if "gobnilp" in pattern_strings:
             data=alg_input_data(),
             extra_args="resources/extra_args/{extra_args}",
             constraints="resources/constraints/{constraints}",
-            startspace=fix_none_startspace_algorithm("{startspace_algorithm}")
+            startspace=fix_none_startspace_algorithm
         output:
             adjmat=alg_output_adjmat_path("gobnilp"),
             time=alg_output_time_path("gobnilp"),

@@ -8,6 +8,8 @@
 # of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 
 def idtopath(mylist, json_string):
+    if mylist is None:
+        return "None"
     if isinstance(mylist, list):
         return [json_string[startalg][0] for startalg in mylist]
     else:
