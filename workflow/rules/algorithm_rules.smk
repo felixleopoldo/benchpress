@@ -1742,6 +1742,56 @@ if "trilearn_pgibbs" in pattern_strings:
             "../scripts/evaluation/join_csv_files.R"
 
 
+if "bdgraph_bdgraph" in pattern_strings:
+
+    rule bdgraph_bdgraph:
+        input:
+            data=alg_input_data(),
+        output:
+            adjvecs=alg_output_seqgraph_path("bdgraph_bdgraph"),
+            time=alg_output_time_path("bdgraph_bdgraph"),
+        container:
+            docker_image("bdgraph")
+        script:
+            "../scripts/structure_learning_algorithms/bdgraph_bdgraph.R"          
+
+    rule bdgraph_est:
+        input:
+            "workflow/scripts/evaluation/graphtraj_est.py",
+            traj=alg_output_seqgraph_path_nocomp("bdgraph_bdgraph"),
+        output:
+            adjmat=alg_output_adjmat_path("bdgraph_bdgraph"),  #here is the difference from order_mcmc. matching diffferently.
+        params:
+            graph_type="chordal",
+            estimator="map",
+        container:
+            docker_image("networkx")
+        script:
+            "../scripts/evaluation/graphtraj_est.py"
+
+    rule summarise_bdgraph:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            data=summarise_alg_input_data_path(),
+            adjmat_true=summarise_alg_input_adjmat_true_path(),
+            adjmat_est=summarise_alg_input_adjmat_est_path("bdgraph_bdgraph"),
+            time=summarise_alg_input_time_path("bdgraph_bdgraph"),
+        output:
+            res=summarise_alg_output_res_path("bdgraph_bdgraph"),
+        shell:
+            summarise_alg_shell("bdgraph_bdgraph")
+
+    rule join_summaries_bdgraph:
+        input:
+            "workflow/scripts/evaluation/run_summarise.R",
+            conf=configfilename,
+            res=join_string_sampled_model("bdgraph_bdgraph"),
+        output:
+            join_summaries_output("bdgraph_bdgraph"),
+        script:
+            "../scripts/evaluation/join_csv_files.R"
+
+
 if "gt13_multipair" in pattern_strings:
 
     rule gt13_multipair:

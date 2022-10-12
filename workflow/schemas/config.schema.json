@@ -591,6 +591,14 @@
                                 "$ref": "#/definitions/bidag_partition_mcmc"
                             }
                         },
+                        "bdgraph_bdgraph": {
+                            "description": "BDgraph objects",
+                            "title": "bdgraph_bdgraph",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bdgraph_bdgraph"
+                            }
+                        },
                         "bnlearn_interiamb": {
                             "description": "Inter-IAMB objects",
                             "title": "bnlearn_interiamb",
@@ -4456,6 +4464,78 @@
                     "cpdag": false,
                     "mergetype": "skeleton",
                     "timeout": null
+                }
+            ]
+        },
+        "bdgraph_bdgraph": {
+            "title": "bdgraph_bdgraph item",
+            "description": "bdgraph_bdgraph instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "method": {
+                    "type": "string",
+                    "enum": ["ggm", "gcgm"]
+                },
+                "algo": {
+                    "type": "string",
+                    "enum": ["rjmcmc", "bdmcmc", "bd-dmh", "rj-dmh"]
+                },
+                "iter": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "gprior": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "dfprior": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "gstart": {
+                    "type": "string",
+                    "enum": ["full", "empty"]
+                },
+                "thresh": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "burnin": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "mcmc_seed": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "method",
+                "algo",
+                "iter",
+                "gprior",
+                "gstart",
+                "dfprior",
+                "thresh",
+                "burnin",
+                "mcmc_seed",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "bdgraph",
+                    "method": "ggm",
+                    "algorithm": "bdmcmc",
+                    "iter": 1000,
+                    "gprior": 0.5,
+                    "dfprior": 3,
+                    "gstart": "empty",
+                    "timeout": null,
+                    "mcmc_seed": 1,
+                    "thresh": 0.5,
+                    "burnin": 0
                 }
             ]
         },
