@@ -26,6 +26,8 @@ The following main functionalities are provided by Benchpress
 * Algorithm development - Benchmark your own algorithm along with the existing ones while developing.
 * Data analysis - Estimate the underlying graph structure for your own dataset(s).
 
+You may also have a look at [this Medium story](https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8) for an introduction to Benchpress.
+
 ## Requirements
 
 ### Linux 
