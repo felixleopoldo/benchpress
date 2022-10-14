@@ -4,15 +4,6 @@
             {
                 "data_id": "example1",
                 "graph_id": "cta",
-                "parameters_id": "gwi",
-                "seed_range": [
-                    1,
-                    1
-                ]
-            },
-            {
-                "data_id": "example1",
-                "graph_id": "AR1-5",
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
@@ -30,18 +21,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "parallelDG_test",
-                    "gt13_multipair_test",
-                    "guidicigreen-cont"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-                "parallelDG_test",
-                "gt13_multipair_test",
                 "guidicigreen-cont"
+                
             ],
             "mcmc_traj_plots": [
                 {
@@ -52,7 +39,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "guidicigreen-cont",
@@ -65,6 +52,15 @@
                     "active": true
                 },
                 {
+                    "id": "bdgraph",
+                    "burn_in": 0,
+                    "thinning": 1,
+                    "functional": [                        
+                        "size"
+                    ],
+                    "active": true
+                },
+                {
                     "id": "parallelDG_test",
                     "burn_in": 20000,
                     "thinning": 100,
@@ -72,14 +68,19 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_heatmaps": [
                 {
-                    "id": "gt13_multipair_test",
+                    "id": "guidicigreen-cont",
                     "burn_in": 20000,
-                    "active": false
+                    "active": true
+                },
+                {
+                    "id": "bdgraph",
+                    "burn_in": 0,
+                    "active": true
                 }
             ],
             "mcmc_autocorr_plots": [
@@ -92,7 +93,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "guidicigreen-cont",
@@ -103,7 +104,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "parallelDG_test",
@@ -114,7 +115,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ]
         }
@@ -142,7 +143,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 50,
+                    "order": 20,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -191,12 +192,12 @@
                     "id": "bdgraph",
                     "method": "ggm",
                     "algo": "rjmcmc",
-                    "iter": 10000,
+                    "iter": 100000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
                     "timeout": null,
-                    "mcmc_seed": 1,
+                    "mcmc_seed": [1,  2],
                     "thresh": 0.5,
                     "burnin": 0
                 }
@@ -237,8 +238,8 @@
                     "clq": 2,
                     "sep": 4,
                     "penalty": [
-                        0.0,
-                        1.0
+                        0.0
+                       
                     ],
                     "mcmc_seed": [
                         1,

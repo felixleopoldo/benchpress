@@ -47,8 +47,7 @@ else:
 
         df["size"] = size
         T = df["index"].iloc[-1]  # approximate length
-
-        newindex = pd.Series(range(T))
+        newindex = pd.Series(range(int(T)))
         # removes the two first rows.
         df2 = df[["index", "size"]][2:].set_index("index")
 

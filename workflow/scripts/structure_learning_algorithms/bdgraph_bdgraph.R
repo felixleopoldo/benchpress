@@ -36,21 +36,21 @@ dummyEdges <- function(labels) {
   return(added)
 }
 
-  strvec_to_adjmat <- function(str, p) {
-    vec <- strsplit(str, "")[[1]]
+strvec_to_adjmat <- function(str, p) {
+  vec <- strsplit(str, "")[[1]]
 
-    adjmat <- matrix(0, nrow = p, ncol = p)
-    k <- 1
-    for (i in seq(1, p-1)) {
-      for (j in seq(i+1, p)) {
-        adjmat[i, j] <- as.integer(vec[k])
-        adjmat[j, i] <- as.integer(vec[k])
-        k <- k + 1
-      }
+  adjmat <- matrix(0, nrow = p, ncol = p)
+  k <- 1
+  for (i in seq(1, p - 1)) {
+    for (j in seq(i + 1, p)) {
+      adjmat[i, j] <- as.integer(vec[k])
+      #adjmat[j, i] <- as.integer(vec[k])
+      k <- k + 1
     }
-   
-    return(adjmat)
   }
+
+  return(adjmat)
+}
 
 filename <- file.path(snakemake@output[["adjvecs"]])
 filename_data <- snakemake@input[["data"]]
@@ -62,9 +62,9 @@ wrapper <- function() {
   start <- proc.time()[1]
   set.seed(seed)
   p <- dim(data)[2]
-  print(snakemake@wildcards[["method"]])
-  print(snakemake@wildcards)
-  print(data)
+  # print(snakemake@wildcards[["method"]])
+  # print(snakemake@wildcards)
+  # print(data)
   bdgraph.obj <- bdgraph(data,
     n = NULL,
     method = snakemake@wildcards[["method"]],
@@ -81,22 +81,22 @@ wrapper <- function() {
     threshold = as.numeric(snakemake@wildcards[["thresh"]])
   )
   totaltime <- proc.time()[1] - start
-  print("done")
+  #print("done")
   adjmat_traj <- list()
   # all_graph contain indices from sample_graphs
-  j <-1
+  j <- 1
   for (i in bdgraph.obj$all_graphs) {
     strvec <- bdgraph.obj$sample_graphs[[i]]
 
     # graphs are stores as upper triangular matrices, stacked as strings
     # like 00100110 of length (p choose 2).
     adjmat <- strvec_to_adjmat(strvec, p)
-    
+
     adjmat_traj[[j]] <- adjmat
-    j <-j+1
+    j <- j + 1
   }
 
-  print(adjmat_traj)
+  #print(adjmat_traj)
 
   # This returns a string which is a list of flattened adjacency matrices.
   labels <- colnames(data)
@@ -113,6 +113,8 @@ wrapper <- function() {
     "added" = c(added, "[]", start_edges),
     "removed" = c("[]", added, "[]")
   )
+
+ 
 
   m <- length(adjmat_traj)
 
@@ -139,8 +141,9 @@ wrapper <- function() {
 
     prevmat <- adjmat_traj[[i]]
   }
-  print(head(res))
-  print(filename)
+  #print(res[3:100,])
+  #print(head(res))
+  #print(filename)
   write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
 
   write(totaltime, file = snakemake@output[["time"]])
