@@ -41,8 +41,8 @@ strvec_to_adjmat <- function(str, p) {
 
   adjmat <- matrix(0, nrow = p, ncol = p)
   k <- 1
-  for (i in seq(1, p - 1)) {
-    for (j in seq(i + 1, p)) {
+  for (i in seq(2, p)) {
+    for (j in seq(1, i-1)) {
       adjmat[i, j] <- as.integer(vec[k])
       #adjmat[j, i] <- as.integer(vec[k])
       k <- k + 1
@@ -51,6 +51,7 @@ strvec_to_adjmat <- function(str, p) {
 
   return(adjmat)
 }
+
 
 filename <- file.path(snakemake@output[["adjvecs"]])
 filename_data <- snakemake@input[["data"]]
@@ -79,35 +80,22 @@ wrapper <- function() {
     cores = NULL,
     threshold = as.numeric(snakemake@wildcards[["thresh"]])
   )
-  #print("OK")
+
   totaltime <- proc.time()[1] - start
   
   adjmat_traj <- list()
   # all_graph contain indices from sample_graphs
   j <- 1
-  #print(bdgraph.obj$all_graphs)
-  #print(bdgraph.obj$all_weight)
-  #print(bdgraph.obj$sample_graphs)
-  heatmap <- matrix(0,nrow = p,ncol = p)
+
   for (i in bdgraph.obj$all_graphs) {
     strvec <- bdgraph.obj$sample_graphs[[i]]
 
     # graphs are stores as upper triangular matrices, stacked as strings
     # like 00100110 of length (p choose 2).
     adjmat <- strvec_to_adjmat(strvec, p)
-
-    #print(strvec)
-    #print(adjmat)
     adjmat_traj[[j]] <- adjmat
-    heatmap <- heatmap + adjmat
-    print(heatmap)
     j <- j + 1
   }
-
-  print("heatmap")
-  print(heatmap / j)
-
-  #print(adjmat_traj)
 
   # This returns a string which is a list of flattened adjacency matrices.
   labels <- colnames(data)
@@ -118,8 +106,6 @@ wrapper <- function() {
     labels
   )
 
-  #print("start_edges")
-  #print(start_edges)
   res <- data.frame(
     "index" = c(-2, -1, 0),
     "score" = c(0, 0, 0),
@@ -127,17 +113,11 @@ wrapper <- function() {
     "removed" = c("[]", added, "[]")
   )
 
- 
-
   m <- length(adjmat_traj)
 
   prevmat <- adjmat_traj[[1]]
-  #print(adjmat_traj[[1]])
   for (i in seq(2, m)) {
-    #print(adjmat_traj[[i]])
-    #print(i)
     if (all(adjmat_traj[[i]] == prevmat)) {
-      #print("same as before")
       next
     }
 
@@ -146,10 +126,6 @@ wrapper <- function() {
 
     added_edges <- adjmatToEdgeString(added_edge_mat, labels)
     removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
-    #print("added_edges")
-    #print(added_edges)
-    #print("removed_edges")
-    #print(removed_edges)
     
     df <- data.frame(
       "index" = i,
@@ -162,13 +138,14 @@ wrapper <- function() {
 
     prevmat <- adjmat_traj[[i]]
   }
-  print(res[3:100,])
+  #print(res[3:100,])
   #print(head(res))
   #print(filename)
   write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
 
   write(totaltime, file = snakemake@output[["time"]])
 }
+
 
 if (snakemake@wildcards[["timeout"]] == "None") {
   wrapper()
