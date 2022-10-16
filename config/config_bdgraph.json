@@ -25,9 +25,9 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
-            "ggally_ggpairs": false,
+            "ggally_ggpairs": true,
             "graph_plots": [
-           
+           "bdgraph"
                 
             ],
             "mcmc_traj_plots": [
