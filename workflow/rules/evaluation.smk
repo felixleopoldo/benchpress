@@ -6,7 +6,7 @@ rule compress:
     output:
         "{whatever}/adjvecs.tar.gz"
     shell:
-        "tar -cvzf {output} {input}"
+        "tar -czf {output} {input}"
 
 rule extract:
     input:

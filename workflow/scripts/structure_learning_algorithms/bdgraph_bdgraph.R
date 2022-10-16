@@ -62,9 +62,8 @@ wrapper <- function() {
   start <- proc.time()[1]
   set.seed(seed)
   p <- dim(data)[2]
-  # print(snakemake@wildcards[["method"]])
-  # print(snakemake@wildcards)
-  # print(data)
+
+
   bdgraph.obj <- bdgraph(data,
     n = NULL,
     method = snakemake@wildcards[["method"]],
@@ -80,11 +79,16 @@ wrapper <- function() {
     cores = NULL,
     threshold = as.numeric(snakemake@wildcards[["thresh"]])
   )
+  #print("OK")
   totaltime <- proc.time()[1] - start
-  #print("done")
+  
   adjmat_traj <- list()
   # all_graph contain indices from sample_graphs
   j <- 1
+  #print(bdgraph.obj$all_graphs)
+  #print(bdgraph.obj$all_weight)
+  #print(bdgraph.obj$sample_graphs)
+  heatmap <- matrix(0,nrow = p,ncol = p)
   for (i in bdgraph.obj$all_graphs) {
     strvec <- bdgraph.obj$sample_graphs[[i]]
 
@@ -92,9 +96,16 @@ wrapper <- function() {
     # like 00100110 of length (p choose 2).
     adjmat <- strvec_to_adjmat(strvec, p)
 
+    #print(strvec)
+    #print(adjmat)
     adjmat_traj[[j]] <- adjmat
+    heatmap <- heatmap + adjmat
+    print(heatmap)
     j <- j + 1
   }
+
+  print("heatmap")
+  print(heatmap / j)
 
   #print(adjmat_traj)
 
@@ -107,6 +118,8 @@ wrapper <- function() {
     labels
   )
 
+  #print("start_edges")
+  #print(start_edges)
   res <- data.frame(
     "index" = c(-2, -1, 0),
     "score" = c(0, 0, 0),
@@ -119,8 +132,12 @@ wrapper <- function() {
   m <- length(adjmat_traj)
 
   prevmat <- adjmat_traj[[1]]
+  #print(adjmat_traj[[1]])
   for (i in seq(2, m)) {
+    #print(adjmat_traj[[i]])
+    #print(i)
     if (all(adjmat_traj[[i]] == prevmat)) {
+      #print("same as before")
       next
     }
 
@@ -129,7 +146,11 @@ wrapper <- function() {
 
     added_edges <- adjmatToEdgeString(added_edge_mat, labels)
     removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
-
+    #print("added_edges")
+    #print(added_edges)
+    #print("removed_edges")
+    #print(removed_edges)
+    
     df <- data.frame(
       "index" = i,
       "score" = 0,
@@ -141,7 +162,7 @@ wrapper <- function() {
 
     prevmat <- adjmat_traj[[i]]
   }
-  #print(res[3:100,])
+  print(res[3:100,])
   #print(head(res))
   #print(filename)
   write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)

@@ -1746,6 +1746,7 @@ if "bdgraph_bdgraph" in pattern_strings:
 
     rule bdgraph_bdgraph:
         input:
+            "workflow/scripts/structure_learning_algorithms/bdgraph_bdgraph.R",      
             data=alg_input_data(),
         output:
             adjvecs=alg_output_seqgraph_path("bdgraph_bdgraph"),

@@ -7,7 +7,7 @@
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
-                    1
+                    2
                 ]
             }
         ],
@@ -25,9 +25,9 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
-            "ggally_ggpairs": false,
+            "ggally_ggpairs": true,
             "graph_plots": [
-                "guidicigreen-cont"
+           
                 
             ],
             "mcmc_traj_plots": [
@@ -49,7 +49,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "bdgraph",
@@ -127,7 +127,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        100
+                        500
                     ]
                 }
             ]
@@ -143,7 +143,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 20,
+                    "order": 10,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -191,13 +191,13 @@
                 {
                     "id": "bdgraph",
                     "method": "ggm",
-                    "algo": "rjmcmc",
-                    "iter": 100000,
+                    "algo": "bdmcmc",
+                    "iter": 1001,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
                     "timeout": null,
-                    "mcmc_seed": [1,  2],
+                    "mcmc_seed": [1],
                     "thresh": 0.5,
                     "burnin": 0
                 }
@@ -218,8 +218,8 @@
                         1.0
                     ],
                     "mcmc_seed": [
-                        1,
-                        2
+                        1
+                        
                     ],
                     "timeout": null
                 }
