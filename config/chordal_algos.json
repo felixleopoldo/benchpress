@@ -186,7 +186,7 @@
                     "timeout": null
                 }
             ],
-            "bdgraph_bdgraph": [
+            "bdgraph": [
                 {
                     "id": "bdgraph",
                     "method": "ggm",

@@ -1742,26 +1742,26 @@ if "trilearn_pgibbs" in pattern_strings:
             "../scripts/evaluation/join_csv_files.R"
 
 
-if "bdgraph_bdgraph" in pattern_strings:
+if "bdgraph" in pattern_strings:
 
-    rule bdgraph_bdgraph:
+    rule bdgraph:
         input:
-            "workflow/scripts/structure_learning_algorithms/bdgraph_bdgraph.R",      
+            "workflow/scripts/structure_learning_algorithms/bdgraph.R",      
             data=alg_input_data(),
         output:
-            adjvecs=alg_output_seqgraph_path("bdgraph_bdgraph"),
-            time=alg_output_time_path("bdgraph_bdgraph"),
+            adjvecs=alg_output_seqgraph_path("bdgraph"),
+            time=alg_output_time_path("bdgraph"),
         container:
             docker_image("bdgraph")
         script:
-            "../scripts/structure_learning_algorithms/bdgraph_bdgraph.R"          
+            "../scripts/structure_learning_algorithms/bdgraph.R"          
 
     rule bdgraph_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path_nocomp("bdgraph_bdgraph"),
+            traj=alg_output_seqgraph_path_nocomp("bdgraph"),
         output:
-            adjmat=alg_output_adjmat_path("bdgraph_bdgraph"),  #here is the difference from order_mcmc. matching diffferently.
+            adjmat=alg_output_adjmat_path("bdgraph"),  #here is the difference from order_mcmc. matching diffferently.
         params:
             graph_type="chordal",
             estimator="map",
@@ -1775,20 +1775,20 @@ if "bdgraph_bdgraph" in pattern_strings:
             "workflow/scripts/evaluation/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("bdgraph_bdgraph"),
-            time=summarise_alg_input_time_path("bdgraph_bdgraph"),
+            adjmat_est=summarise_alg_input_adjmat_est_path("bdgraph"),
+            time=summarise_alg_input_time_path("bdgraph"),
         output:
-            res=summarise_alg_output_res_path("bdgraph_bdgraph"),
+            res=summarise_alg_output_res_path("bdgraph"),
         shell:
-            summarise_alg_shell("bdgraph_bdgraph")
+            summarise_alg_shell("bdgraph")
 
     rule join_summaries_bdgraph:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
             conf=configfilename,
-            res=join_string_sampled_model("bdgraph_bdgraph"),
+            res=join_string_sampled_model("bdgraph"),
         output:
-            join_summaries_output("bdgraph_bdgraph"),
+            join_summaries_output("bdgraph"),
         script:
             "../scripts/evaluation/join_csv_files.R"
 

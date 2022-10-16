@@ -170,9 +170,9 @@ if "causaldag_gsp" in pattern_strings:
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})
-if "bdgraph_bdgraph" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["bdgraph_bdgraph"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph_bdgraph"]})
+if "bdgraph" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["bdgraph"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})
 
 
 # Order mcmc is special and has to be the last one since it takes input strings as start space.
@@ -223,6 +223,6 @@ if "gt13_multipair" in pattern_strings:
 if "gg99_singlepair" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
-if "bdgraph_bdgraph" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bdgraph_bdgraph"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph_bdgraph"]})
+if "bdgraph" in pattern_strings:
+    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bdgraph"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})

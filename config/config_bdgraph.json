@@ -7,7 +7,7 @@
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
-                    2
+                    1
                 ]
             }
         ],
@@ -25,7 +25,7 @@
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
-            "ggally_ggpairs": true,
+            "ggally_ggpairs": false,
             "graph_plots": [
            
                 
@@ -143,7 +143,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 10,
+                    "order": 20,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -187,12 +187,12 @@
                     "timeout": null
                 }
             ],
-            "bdgraph_bdgraph": [
+            "bdgraph": [
                 {
                     "id": "bdgraph",
                     "method": "ggm",
-                    "algo": "bdmcmc",
-                    "iter": 1001,
+                    "algo": ["bdmcmc", "rjmcmc"],
+                    "iter": 10000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
