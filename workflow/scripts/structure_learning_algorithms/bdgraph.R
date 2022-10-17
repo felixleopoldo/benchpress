@@ -105,12 +105,29 @@ wrapper <- function() {
     adjmat_traj[[1]],
     labels
   )
+    minweight = min(bdgraph.obj$all_weights)
 
+#     totw = sum(bdgraph.obj$all_weights)
+# its = as.integer(snakemake@wildcards[["iter"]])
+#   atom = ceiling(minweight * (totw / its)) # Shoul round to closest smallest part (say we chunk into its chunks)
+#   print(bdgraph.obj$all_weights)
+#   print(min(bdgraph.obj$all_weights))
+#   print(sum(bdgraph.obj$all_weights))
+#   print(atom) # Shoul round to closest smallest part (say we chunk into its chunks))
+#   print(atom *  its)
+
+#   print(totw/atom)
+  
   if (snakemake@wildcards[["algo"]] %in% c("bdmcmc", "bd-dmh")) {
     # translate weights into indecies
-    indices <- c(0, cumsum(bdgraph.obj$all_weights)) * 1000 # Scale up. BUG: This is not sae since it may render same index
+    # Scale up. If the resolution is to low, there might be duplicates
+    # in the index. This could perhaps instead be done on plotting be
+    # done while plotting. Could also dicide by min element,
+    # but then we also loose controls, if it is eg 1000000
+    #indices <- (ceiling (c(0, cumsum(bdgraph.obj$all_weights)) /minweight  / totw) * its) # as.integer(snakemake@wildcards[["weight_resolution"]])
+    indices <- c(0, cumsum(bdgraph.obj$all_weights)) /minweight # as.integer(snakemake@wildcards[["weight_resolution"]])
     indices <- round(indices)
-
+    #print(indices)
   } else {
     indices <- c(0, cumsum(bdgraph.obj$all_weights)) # no difference since the weight are all 1s.
   }
