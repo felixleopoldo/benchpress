@@ -4534,6 +4534,10 @@
                 "dfprior": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
+                "weight_resolution": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+
                 "gstart": {
                     "type": "string",
                     "enum": [
@@ -4544,7 +4548,7 @@
                 "thresh": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "burnin": {
+                "burn_in": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "mcmc_seed": {
@@ -4562,8 +4566,9 @@
                 "gprior",
                 "gstart",
                 "dfprior",
+                "weight_resolution",
                 "thresh",
-                "burnin",
+                "burn_in",
                 "mcmc_seed",
                 "timeout"
             ],

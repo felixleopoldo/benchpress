@@ -20,12 +20,13 @@
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": [
+                "ids": ["guidicigreen-cont",
+                    "bdgraph"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
-            "ggally_ggpairs": true,
+            "ggally_ggpairs": false,
             "graph_plots": [
            "bdgraph"
                 
@@ -143,7 +144,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 20,
+                    "order": 50,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -192,14 +193,15 @@
                     "id": "bdgraph",
                     "method": "ggm",
                     "algo": ["bdmcmc", "rjmcmc"],
-                    "iter": 10000,
+                    "iter": 1000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
                     "timeout": null,
                     "mcmc_seed": [1],
                     "thresh": 0.5,
-                    "burnin": 0
+                    "weight_resolution": 10,
+                    "burn_in": 0
                 }
             ],
             "gt13_multipair": [
