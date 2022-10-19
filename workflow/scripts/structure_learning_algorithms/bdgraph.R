@@ -41,8 +41,8 @@ strvec_to_adjmat <- function(str, p) {
 
   adjmat <- matrix(0, nrow = p, ncol = p)
   k <- 1
-  for (i in seq(1, p - 1)) {
-    for (j in seq(i + 1, p)) {
+  for (i in seq(2, p)) {
+    for (j in seq(1, i - 1)) {
       adjmat[i, j] <- as.integer(vec[k])
       #adjmat[j, i] <- as.integer(vec[k])
       k <- k + 1
@@ -52,6 +52,7 @@ strvec_to_adjmat <- function(str, p) {
   return(adjmat)
 }
 
+
 filename <- file.path(snakemake@output[["adjvecs"]])
 filename_data <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["mcmc_seed"]])
@@ -60,11 +61,10 @@ data <- read.csv(filename_data, check.names = FALSE)
 
 wrapper <- function() {
   start <- proc.time()[1]
-  set.seed(seed)
+  set.seed(seed) # BUG: Doesnt seemd to work
   p <- dim(data)[2]
-  # print(snakemake@wildcards[["method"]])
-  # print(snakemake@wildcards)
-  # print(data)
+
+
   bdgraph.obj <- bdgraph(data,
     n = NULL,
     method = snakemake@wildcards[["method"]],
@@ -80,23 +80,22 @@ wrapper <- function() {
     cores = NULL,
     threshold = as.numeric(snakemake@wildcards[["thresh"]])
   )
+
   totaltime <- proc.time()[1] - start
-  #print("done")
+
   adjmat_traj <- list()
   # all_graph contain indices from sample_graphs
   j <- 1
+
   for (i in bdgraph.obj$all_graphs) {
     strvec <- bdgraph.obj$sample_graphs[[i]]
 
     # graphs are stores as upper triangular matrices, stacked as strings
     # like 00100110 of length (p choose 2).
     adjmat <- strvec_to_adjmat(strvec, p)
-
     adjmat_traj[[j]] <- adjmat
     j <- j + 1
   }
-
-  #print(adjmat_traj)
 
   # This returns a string which is a list of flattened adjacency matrices.
   labels <- colnames(data)
@@ -106,19 +105,44 @@ wrapper <- function() {
     adjmat_traj[[1]],
     labels
   )
+    minweight = min(bdgraph.obj$all_weights)
+
+#     totw = sum(bdgraph.obj$all_weights)
+# its = as.integer(snakemake@wildcards[["iter"]])
+#   atom = ceiling(minweight * (totw / its)) # Shoul round to closest smallest part (say we chunk into its chunks)
+#   print(bdgraph.obj$all_weights)
+#   print(min(bdgraph.obj$all_weights))
+#   print(sum(bdgraph.obj$all_weights))
+#   print(atom) # Shoul round to closest smallest part (say we chunk into its chunks))
+#   print(atom *  its)
+
+#   print(totw/atom)
+  
+  if (snakemake@wildcards[["algo"]] %in% c("bdmcmc", "bd-dmh")) {
+    # translate weights into indecies
+    # Scale up. If the resolution is to low, there might be duplicates
+    # in the index. This could perhaps instead be done on plotting be
+    # done while plotting. Could also dicide by min element,
+    # but then we also loose controls, if it is eg 1000000
+    #indices <- (ceiling (c(0, cumsum(bdgraph.obj$all_weights)) /minweight  / totw) * its) # as.integer(snakemake@wildcards[["weight_resolution"]])
+    indices <- c(0, cumsum(bdgraph.obj$all_weights)) /minweight # as.integer(snakemake@wildcards[["weight_resolution"]])
+    indices <- round(indices)
+    #print(indices)
+  } else {
+    indices <- c(0, cumsum(bdgraph.obj$all_weights)) # no difference since the weight are all 1s.
+  }
 
   res <- data.frame(
-    "index" = c(-2, -1, 0),
-    "score" = c(0, 0, 0),
+    "index" = c(-2, -1, indices[1]),
+    "score" = c(0, 0, bdgraph.obj$graph_weights[[bdgraph.obj$all_graphs[[1]]]]),
     "added" = c(added, "[]", start_edges),
     "removed" = c("[]", added, "[]")
   )
 
- 
-
   m <- length(adjmat_traj)
 
   prevmat <- adjmat_traj[[1]]
+
   for (i in seq(2, m)) {
     if (all(adjmat_traj[[i]] == prevmat)) {
       next
@@ -131,37 +155,32 @@ wrapper <- function() {
     removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
 
     df <- data.frame(
-      "index" = i,
-      "score" = 0,
+      "index" = indices[i],
+      "score" = bdgraph.obj$graph_weights[[bdgraph.obj$all_graphs[[i]]]],
       "added" = added_edges,
       "removed" = removed_edges
     )
 
     res <- rbind(res, df)
-
     prevmat <- adjmat_traj[[i]]
   }
-  #print(res[3:100,])
-  #print(head(res))
-  #print(filename)
-  write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
 
+  write.csv(x = res, file = filename, row.names = FALSE, quote = FALSE)
   write(totaltime, file = snakemake@output[["time"]])
+
 }
 
 if (snakemake@wildcards[["timeout"]] == "None") {
   wrapper()
 } else {
   res <- NULL
-  tryCatch(
-    {
-      res <- withTimeout(
-        {
-          wrapper()
-        },
+  tryCatch({
+    res <- withTimeout({
+      wrapper()
+    },
         timeout = snakemake@wildcards[["timeout"]]
       )
-    },
+  },
     TimeoutException = function(ex) {
       message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
         " seconds. Writing empty graph and time files.",

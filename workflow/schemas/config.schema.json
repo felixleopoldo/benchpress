@@ -591,12 +591,12 @@
                                 "$ref": "#/definitions/bidag_partition_mcmc"
                             }
                         },
-                        "bdgraph_bdgraph": {
+                        "bdgraph": {
                             "description": "BDgraph objects",
-                            "title": "bdgraph_bdgraph",
+                            "title": "bdgraph",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/bdgraph_bdgraph"
+                                "$ref": "#/definitions/bdgraph"
                             }
                         },
                         "bnlearn_interiamb": {
@@ -2085,7 +2085,10 @@
                     "factor": 2,
                     "progress_bar": false,
                     "summarize": false,
-                    "alpha":[0.05, 0.001],
+                    "alpha": [
+                        0.05,
+                        0.001
+                    ],
                     "invert": true,
                     "timeout": null
                 }
@@ -2901,7 +2904,7 @@
                 }
             ]
         },
-        "tetrad_fofc":{
+        "tetrad_fofc": {
             "title": "tetrad_fofc item",
             "description": "fofc instance",
             "type": "object",
@@ -2931,7 +2934,7 @@
                 }
             ]
         },
-        "tetrad_ftfc":{
+        "tetrad_ftfc": {
             "title": "tetrad_ftfc item",
             "description": "ftfc instance",
             "type": "object",
@@ -2961,7 +2964,7 @@
                 }
             ]
         },
-        "tetrad_lingam":{
+        "tetrad_lingam": {
             "title": "tetrad_lingam item",
             "description": "lingam instance",
             "type": "object",
@@ -2991,7 +2994,7 @@
                 }
             ]
         },
-        "tetrad_imgscont":{
+        "tetrad_imgscont": {
             "title": "tetrad_imgscont item",
             "description": "imgscont instance",
             "type": "object",
@@ -4467,9 +4470,9 @@
                 }
             ]
         },
-        "bdgraph_bdgraph": {
-            "title": "bdgraph_bdgraph item",
-            "description": "bdgraph_bdgraph instance",
+        "bdgraph": {
+            "title": "bdgraph item",
+            "description": "bdgraph instance",
             "type": "object",
             "properties": {
                 "id": {
@@ -4477,12 +4480,50 @@
                     "description": "Unique identifier"
                 },
                 "method": {
-                    "type": "string",
-                    "enum": ["ggm", "gcgm"]
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "ggm",
+                                "gcgm"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ggm",
+                                    "gcgm"
+                                ]
+                            }
+                        }
+                    ]
                 },
                 "algo": {
-                    "type": "string",
-                    "enum": ["rjmcmc", "bdmcmc", "bd-dmh", "rj-dmh"]
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "rjmcmc",
+                                "bdmcmc",
+                                "bd-dmh",
+                                "rj-dmh"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "rjmcmc",
+                                    "bdmcmc",
+                                    "bd-dmh",
+                                    "rj-dmh"
+                                ]
+                            }
+                        }
+                    ]
                 },
                 "iter": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -4493,14 +4534,21 @@
                 "dfprior": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
+                "weight_resolution": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+
                 "gstart": {
                     "type": "string",
-                    "enum": ["full", "empty"]
+                    "enum": [
+                        "full",
+                        "empty"
+                    ]
                 },
                 "thresh": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "burnin": {
+                "burn_in": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
                 "mcmc_seed": {
@@ -4518,8 +4566,9 @@
                 "gprior",
                 "gstart",
                 "dfprior",
+                "weight_resolution",
                 "thresh",
-                "burnin",
+                "burn_in",
                 "mcmc_seed",
                 "timeout"
             ],

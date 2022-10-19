@@ -20,14 +20,15 @@
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": [
+                "ids": ["guidicigreen-cont",
+                    "bdgraph"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-                "guidicigreen-cont"
+           "bdgraph"
                 
             ],
             "mcmc_traj_plots": [
@@ -49,7 +50,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "bdgraph",
@@ -127,7 +128,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        100
+                        500
                     ]
                 }
             ]
@@ -143,7 +144,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 20,
+                    "order": 50,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -187,19 +188,20 @@
                     "timeout": null
                 }
             ],
-            "bdgraph_bdgraph": [
+            "bdgraph": [
                 {
                     "id": "bdgraph",
                     "method": "ggm",
-                    "algo": "rjmcmc",
-                    "iter": 100000,
+                    "algo": ["bdmcmc", "rjmcmc"],
+                    "iter": 1000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
                     "timeout": null,
-                    "mcmc_seed": [1,  2],
+                    "mcmc_seed": [1],
                     "thresh": 0.5,
-                    "burnin": 0
+                    "weight_resolution": 10,
+                    "burn_in": 0
                 }
             ],
             "gt13_multipair": [
@@ -218,8 +220,8 @@
                         1.0
                     ],
                     "mcmc_seed": [
-                        1,
-                        2
+                        1
+                        
                     ],
                     "timeout": null
                 }

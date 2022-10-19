@@ -6,7 +6,7 @@ rule compress:
     output:
         "{whatever}/adjvecs.tar.gz"
     shell:
-        "tar -cvzf {output} {input}"
+        "tar -czf {output} {input}"
 
 rule extract:
     input:
@@ -331,7 +331,7 @@ for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
         mcmc_alg_ids.add(alg)
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
-    if algid in ["bdgraph_bdgraph", "bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
+    if algid in ["bdgraph", "bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
         # Processed graph trajectory
         rule:
             input:
