@@ -24,9 +24,7 @@ adjmat <- graph.sim(
 )
 
 p <- as.integer(snakemake@wildcards[["p"]])
-colnames(adjmat) <- as.character(seq(p))
-
-print(adjmat)
+colnames(adjmat) <- as.character(seq(p)-1) 
 
 write.table(adjmat,
   file = snakemake@output[["adjmat"]],

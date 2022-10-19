@@ -3,7 +3,7 @@
         "data": [
             {
                 "data_id": "example1",
-                "graph_id": "cta",
+                "graph_id": "lat",
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
@@ -134,6 +134,16 @@
             ]
         },
         "graph": {
+            "bdgraph_graphsim":[
+                {
+                    "id": "lat",
+                    "p": 11,
+                    "graph": "lattice",
+                    "class": null,
+                    "size": null,
+                    "prob": 0.2
+                  }
+            ],
             "rand_bandmat": [
                 {
                     "id": "AR1-5",
