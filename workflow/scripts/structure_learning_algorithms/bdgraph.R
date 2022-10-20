@@ -125,7 +125,26 @@ wrapper <- function() {
     # done while plotting. Could also dicide by min element,
     # but then we also loose controls, if it is eg 1000000
     #indices <- (ceiling (c(0, cumsum(bdgraph.obj$all_weights)) /minweight  / totw) * its) # as.integer(snakemake@wildcards[["weight_resolution"]])
-    indices <- c(0, cumsum(bdgraph.obj$all_weights)) /minweight # as.integer(snakemake@wildcards[["weight_resolution"]])
+    
+    # Find min weight differnce. Then we to make the index we divide my min(minweight, mindiff)
+    # That should be fine grained.
+    # T = length(bdgraph.obj$all_weights)
+    # all_weights = bdgraph.obj$all_weights
+    # mindiff = Inf
+    # for (k in seq(1,T-1)){
+    #   for (l in seq(k+1,T)){
+    #     diff <- abs(all_weights[[k]] - all_weights[[l]])
+    #     if (abs(all_weights[[k]] - all_weights[[l]]) < mindiff){
+    #       mindiff <- diff
+    #     }
+    #   }
+    # }
+
+    #print("mindiff")
+    #print(mindiff)
+    #print("minweight")
+    #print(minweight)    
+    indices <- c(0, cumsum(bdgraph.obj$all_weights)) / minweight # as.integer(snakemake@wildcards[["weight_resolution"]])
     indices <- round(indices)
     #print(indices)
   } else {
@@ -134,6 +153,7 @@ wrapper <- function() {
 
   res <- data.frame(
     "index" = c(-2, -1, indices[1]),
+    "time"= c(-2, -1, indices[1]), # adding the raw times as well. Can be used in e.g. heamaps
     "score" = c(0, 0, bdgraph.obj$graph_weights[[bdgraph.obj$all_graphs[[1]]]]),
     "added" = c(added, "[]", start_edges),
     "removed" = c("[]", added, "[]")
@@ -142,6 +162,8 @@ wrapper <- function() {
   m <- length(adjmat_traj)
 
   prevmat <- adjmat_traj[[1]]
+
+  cumsum_weights = c(0,cumsum(bdgraph.obj$all_weights))
 
   for (i in seq(2, m)) {
     if (all(adjmat_traj[[i]] == prevmat)) {
@@ -156,6 +178,7 @@ wrapper <- function() {
 
     df <- data.frame(
       "index" = indices[i],
+      "time"= cumsum_weights[i], # adding the raw times as well. Can be used in e.g. heamaps
       "score" = bdgraph.obj$graph_weights[[bdgraph.obj$all_graphs[[i]]]],
       "added" = added_edges,
       "removed" = removed_edges

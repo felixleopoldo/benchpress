@@ -47,14 +47,21 @@ else:
     # Create heatmap
     p = len(nodeorder)
     adjmat = np.matrix(np.zeros((p, p)))
+
     for index, row in df.iterrows():
         if row["index"] == 0:
             if row["index"] >= int(snakemake.wildcards["burn_in"]):
                 adjmat = nx.to_numpy_array(g)
         if row["index"] > 0:
-            cur_index = df["index"].iloc[index]
-            prev_index = df["index"].iloc[index-1]
+            if "time" in df.columns:
+                cur_index = df["time"].iloc[index]
+                
+                prev_index = df["time"].iloc[index-1]
+            else:
+                cur_index = df["index"].iloc[index]
+                prev_index = df["index"].iloc[index-1]
             reps = cur_index - prev_index
+
             if row["index"] >= int(snakemake.wildcards["burn_in"]):
                 # Set nodelist here
                 adjmat += nx.to_numpy_matrix(g, nodelist=nodeorder) * reps
@@ -65,9 +72,14 @@ else:
         g.remove_edges_from(removed)
 
     # TODO: almost correct. Counts the last index as the full length.
-    heatmap = adjmat / (df["index"].iloc[-1] -
-                        float(snakemake.wildcards["burn_in"]))
 
+    if "time" in df.columns:
+        heatmap = adjmat / (df["time"].iloc[-1] -
+                            float(snakemake.wildcards["burn_in"]))
+    else:
+        heatmap = adjmat / (df["index"].iloc[-1] -
+                            float(snakemake.wildcards["burn_in"]))
+        
     # need to reorganze matrix according to node orders..
     with sns.axes_style("white"):
         sns.heatmap(heatmap, annot=False, linewidth=1,
