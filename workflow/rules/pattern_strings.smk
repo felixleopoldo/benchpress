@@ -13,15 +13,19 @@ def dict_to_path(d):
 
     c = d[0].copy() # take the first element in the list. BUG
     c.pop("id") # remove id from the string as only the parameters should identify the computation.
-    if "burnin" in c: 
-        c.pop("burnin")
+    if "burnin_frac" in c: 
+        c.pop("burnin_frac")
     if "threshold" in c:      
         c.pop("threshold")
+    if "mcmc_estimator" in c:      
+        c.pop("mcmc_estimator")
     if "active" in c:
         c.pop("active")
     sep = "/"
     ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
     return ret
+
+
 
 pattern_strings = {}
 # structure learning algorithms. 
@@ -29,9 +33,14 @@ pattern_strings = {}
 for alg in config["resources"]["structure_learning_algorithms"].keys():
     pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
 
-pattern_strings["mcmc_est"] = "estimation_method/"\
+# The burning fieal is just for the thresholding. However, the whole chain
+# is stored anyway and we can e.g. use the same threshold in the mcmc_heatmaps
+# module.
+# Add mcmc_estimator field taking values {"theshold", "map", "empirical_map"}.
+pattern_strings["mcmc_est"] = "mcmc_params/"\
+                            "mcmc_estimator={mcmc_estimator}/"\
                             "threshold={threshold}/"\
-                            "burnin={burnin}"
+                            "burnin_frac={burnin_frac}"
 
 # graph sampling
 if "pcalg_randdag" in config["resources"]["graph"]:

@@ -3,7 +3,7 @@
         "data": [
             {
                 "data_id": "example1",
-                "graph_id": "lat",
+                "graph_id": "circle",
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
@@ -20,16 +20,15 @@
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": ["guidicigreen-cont",
-                    "bdgraph"
+                "ids": [
+                    "bdgraph", "guidicigreen-cont"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-           "bdgraph"
-                
+                "bdgraph"
             ],
             "mcmc_traj_plots": [
                 {
@@ -56,10 +55,10 @@
                     "id": "bdgraph",
                     "burn_in": 0,
                     "thinning": 1,
-                    "functional": [                        
+                    "functional": [
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 },
                 {
                     "id": "parallelDG_test",
@@ -75,12 +74,12 @@
             "mcmc_heatmaps": [
                 {
                     "id": "guidicigreen-cont",
-                    "burn_in": 20000,
+                    "burn_in": 0.4,
                     "active": true
                 },
                 {
                     "id": "bdgraph",
-                    "burn_in": 0,
+                    "burn_in": 0.4,
                     "active": true
                 }
             ],
@@ -128,13 +127,13 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        500
+                        100
                     ]
                 }
             ]
         },
         "graph": {
-            "bdgraph_graphsim":[
+            "bdgraph_graphsim": [
                 {
                     "id": "lat",
                     "p": 11,
@@ -142,7 +141,15 @@
                     "class": null,
                     "size": null,
                     "prob": 0.2
-                  }
+                },
+                {
+                    "id": "circle",
+                    "p": 20,
+                    "graph": "circle",
+                    "class": null,
+                    "size": null,
+                    "prob": 0.2
+                }
             ],
             "rand_bandmat": [
                 {
@@ -202,16 +209,24 @@
                 {
                     "id": "bdgraph",
                     "method": "ggm",
-                    "algo": ["bdmcmc", "rjmcmc"],
+                    "algo": [
+                        "bdmcmc"
+                    ],
                     "iter": 1000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
                     "timeout": null,
-                    "mcmc_seed": [1],
+                    "mcmc_seed": [
+                        1
+                    ],
                     "thresh": 0.5,
-                    "weight_resolution": 10,
-                    "burn_in": 0
+                    "mcmc_estimator": ["threshold","map"],
+                    "threshold": [
+                        0.8
+                        
+                    ],
+                    "burnin_frac": 0.3
                 }
             ],
             "gt13_multipair": [
@@ -231,7 +246,6 @@
                     ],
                     "mcmc_seed": [
                         1
-                        
                     ],
                     "timeout": null
                 }
@@ -251,11 +265,10 @@
                     "sep": 4,
                     "penalty": [
                         0.0
-                       
                     ],
                     "mcmc_seed": [
-                        1,
-                        2
+                        1
+                        
                     ],
                     "timeout": null
                 }

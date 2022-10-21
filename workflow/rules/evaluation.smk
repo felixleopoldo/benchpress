@@ -400,7 +400,6 @@ for algid in mcmc_alg_ids:
                 "../scripts/evaluation/write_autocorr_traj.py"
 
 
-
 rule mcmc_heatmap_plot:
     input:
         "workflow/scripts/evaluation/plot_heatmap_from_graphtraj.py",
@@ -424,7 +423,8 @@ rule mcmc_heatmap_plot:
         data_string="{data_string}",
         adjmat_string="{adjmat_string}",
         param_string="{param_string}",
-        alg_string="{alg_string}"
+        alg_string="{alg_string}",
+        burnin_frac="{burn_in}"
     container:
         docker_image("networkx")
     script:
@@ -521,7 +521,7 @@ rule plot_dot:
     shell:
         """
         if [ -s {input.filename} ]; then
-            dot -T png {input.filename} -o {output.filename}
+            circo -Nshape=circle -T png {input.filename} -o {output.filename}
         else
             touch {output.filename}
         fi

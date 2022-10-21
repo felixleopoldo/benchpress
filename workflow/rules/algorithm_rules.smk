@@ -1759,12 +1759,16 @@ if "bdgraph" in pattern_strings:
     rule bdgraph_est:
         input:
             "workflow/scripts/evaluation/graphtraj_est.py",
-            traj=alg_output_seqgraph_path_nocomp("bdgraph"),
+            traj=alg_output_seqgraph_path_fine_match("bdgraph"),
+            #traj=alg_output_seqgraph_path_nocomp("bdgraph"),            
         output:
-            adjmat=alg_output_adjmat_path("bdgraph"),  #here is the difference from order_mcmc. matching diffferently.
+            adjmat=adjmat_estimate_path_mcmc("bdgraph"),
+            #adjmat=alg_output_adjmat_path("bdgraph"),  #here is the difference from order_mcmc. matching diffferently.
         params:
-            graph_type="chordal",
-            estimator="map",
+            graph_type="undirected",
+            estimator="{mcmc_estimator}",
+            threshold="{threshold}",
+            burnin_frac="{burnin_frac}"
         container:
             docker_image("networkx")
         script:
@@ -1773,14 +1777,27 @@ if "bdgraph" in pattern_strings:
     rule summarise_bdgraph:
         input:
             "workflow/scripts/evaluation/run_summarise.R",
-            data=summarise_alg_input_data_path(),
-            adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path("bdgraph"),
-            time=summarise_alg_input_time_path("bdgraph"),
+            data=data_path(),
+            adjmat_true=adjmat_true_path(),
+            adjmat_est=adjmat_estimate_path_mcmc("bdgraph"),
+            time=time_path("bdgraph"),
         output:
-            res=summarise_alg_output_res_path("bdgraph"),
+            res=result_path_mcmc("bdgraph"),  # {data} is used for the data module here. not as the whole datamodel
         shell:
             summarise_alg_shell("bdgraph")
+
+
+    # rule summarise_bdgraph:
+    #     input:
+    #         "workflow/scripts/evaluation/run_summarise.R",
+    #         data=summarise_alg_input_data_path(),
+    #         adjmat_true=summarise_alg_input_adjmat_true_path(),
+    #         adjmat_est=summarise_alg_input_adjmat_est_path("bdgraph"),
+    #         time=summarise_alg_input_time_path("bdgraph"),
+    #     output:
+    #         res=summarise_alg_output_res_path("bdgraph"),
+    #     shell:
+    #         summarise_alg_shell("bdgraph")
 
     rule join_summaries_bdgraph:
         input:

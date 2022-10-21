@@ -931,7 +931,7 @@
                 },
                 "burn_in": {
                     "title": "Burn-in start index.",
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/definitions/flexprob"
                 }
             },
             "required": [
@@ -4534,10 +4534,6 @@
                 "dfprior": {
                     "$ref": "#/definitions/flexnonnegint"
                 },
-                "weight_resolution": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-
                 "gstart": {
                     "type": "string",
                     "enum": [
@@ -4548,8 +4544,32 @@
                 "thresh": {
                     "$ref": "#/definitions/flexprob"
                 },
-                "burn_in": {
-                    "$ref": "#/definitions/flexnonnegint"
+                "threshold": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "#/definitions/flexprob"
                 },
                 "mcmc_seed": {
                     "$ref": "#/definitions/flexnonnegint"
@@ -4558,17 +4578,18 @@
                     "$ref": "#/definitions/flexnonnegnumnull"
                 }
             },
-            "additionalProperties": false,
+            "additionalProperties": true,
             "required": [
+                "mcmc_estimator",
+                "burnin_frac",
+                "threshold",
                 "method",
                 "algo",
                 "iter",
                 "gprior",
                 "gstart",
                 "dfprior",
-                "weight_resolution",
                 "thresh",
-                "burn_in",
                 "mcmc_seed",
                 "timeout"
             ],

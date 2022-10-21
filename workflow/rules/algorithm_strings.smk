@@ -67,7 +67,7 @@ if "pcalg_pc" in pattern_strings:
                         for val in config["resources"]["structure_learning_algorithms"]["pcalg_pc"]})
 if "dualpc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["dualpc"], **val)  
-                        for val in config["resources"]["structure_learning_algorithms"]["dualpc"]})
+                        for val in config["resources"]["strtrilearnucture_learning_algorithms"]["dualpc"]})
 if "bnlearn_mmhc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bnlearn_mmhc"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_mmhc"]} )
@@ -112,10 +112,7 @@ if "bnlearn_rsmax2" in pattern_strings:
                         for val in config["resources"]["structure_learning_algorithms"]["bnlearn_rsmax2"]})
 if "sklearn_glasso" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["sklearn_glasso"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["sklearn_glasso"]})
-#if "gobnilp" in pattern_strings:
-#    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val)
-#                        for val in config["resources"]["structure_learning_algorithms"]["gobnilp"]})                      
+                        for val in config["resources"]["structure_learning_algorithms"]["sklearn_glasso"]})                  
 if "trilearn_pgibbs" in pattern_strings:
     json_string.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
@@ -170,8 +167,10 @@ if "causaldag_gsp" in pattern_strings:
 if "mylib_myalg" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["mylib_myalg"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["mylib_myalg"]})
+
+# BDgraph has MCMC estimator
 if "bdgraph" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["bdgraph"], **val)
+    json_string.update({val["id"]: expand(pattern_strings["bdgraph"]+"/"+pattern_strings["mcmc_est"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})
 
 
@@ -202,6 +201,9 @@ if "gobnilp" in pattern_strings:
 
     json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val,) 
                         for val in gobnilp_list } )
+
+
+
 
 # Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}

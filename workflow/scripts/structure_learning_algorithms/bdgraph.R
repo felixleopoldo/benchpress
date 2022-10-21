@@ -44,7 +44,6 @@ strvec_to_adjmat <- function(str, p) {
   for (i in seq(2, p)) {
     for (j in seq(1, i - 1)) {
       adjmat[i, j] <- as.integer(vec[k])
-      #adjmat[j, i] <- as.integer(vec[k])
       k <- k + 1
     }
   }
@@ -61,9 +60,8 @@ data <- read.csv(filename_data, check.names = FALSE)
 
 wrapper <- function() {
   start <- proc.time()[1]
-  set.seed(seed) # BUG: Doesnt seemd to work
+  set.seed(seed) # BUG: Seeds doesn't seem to work in BDgraph.
   p <- dim(data)[2]
-
 
   bdgraph.obj <- bdgraph(data,
     n = NULL,
@@ -106,54 +104,23 @@ wrapper <- function() {
     labels
   )
     minweight = min(bdgraph.obj$all_weights)
-
-#     totw = sum(bdgraph.obj$all_weights)
-# its = as.integer(snakemake@wildcards[["iter"]])
-#   atom = ceiling(minweight * (totw / its)) # Shoul round to closest smallest part (say we chunk into its chunks)
-#   print(bdgraph.obj$all_weights)
-#   print(min(bdgraph.obj$all_weights))
-#   print(sum(bdgraph.obj$all_weights))
-#   print(atom) # Shoul round to closest smallest part (say we chunk into its chunks))
-#   print(atom *  its)
-
-#   print(totw/atom)
   
   if (snakemake@wildcards[["algo"]] %in% c("bdmcmc", "bd-dmh")) {
-    # translate weights into indecies
-    # Scale up. If the resolution is to low, there might be duplicates
-    # in the index. This could perhaps instead be done on plotting be
-    # done while plotting. Could also dicide by min element,
-    # but then we also loose controls, if it is eg 1000000
-    #indices <- (ceiling (c(0, cumsum(bdgraph.obj$all_weights)) /minweight  / totw) * its) # as.integer(snakemake@wildcards[["weight_resolution"]])
-    
-    # Find min weight differnce. Then we to make the index we divide my min(minweight, mindiff)
-    # That should be fine grained.
-    # T = length(bdgraph.obj$all_weights)
-    # all_weights = bdgraph.obj$all_weights
-    # mindiff = Inf
-    # for (k in seq(1,T-1)){
-    #   for (l in seq(k+1,T)){
-    #     diff <- abs(all_weights[[k]] - all_weights[[l]])
-    #     if (abs(all_weights[[k]] - all_weights[[l]]) < mindiff){
-    #       mindiff <- diff
-    #     }
-    #   }
-    # }
-
-    #print("mindiff")
-    #print(mindiff)
-    #print("minweight")
-    #print(minweight)    
-    indices <- c(0, cumsum(bdgraph.obj$all_weights)) / minweight # as.integer(snakemake@wildcards[["weight_resolution"]])
+    # Translate weights into indices by dividing by the smallest weight. This
+    # is not perfect though, so one could instead divide by the smallest weight diff.
+    # However, which gives the highest resolution depends on the chain.
+    # We also save the actual times in the time column.
+        
+    indices <- c(0, cumsum(bdgraph.obj$all_weights)) / minweight 
     indices <- round(indices)
-    #print(indices)
+    
   } else {
     indices <- c(0, cumsum(bdgraph.obj$all_weights)) # no difference since the weight are all 1s.
   }
 
   res <- data.frame(
     "index" = c(-2, -1, indices[1]),
-    "time"= c(-2, -1, indices[1]), # adding the raw times as well. Can be used in e.g. heamaps
+    "time"= c(-2, -1, indices[1]), # adding the raw times as well. Can be used in e.g. heatmaps
     "score" = c(0, 0, bdgraph.obj$graph_weights[[bdgraph.obj$all_graphs[[1]]]]),
     "added" = c(added, "[]", start_edges),
     "removed" = c("[]", added, "[]")
