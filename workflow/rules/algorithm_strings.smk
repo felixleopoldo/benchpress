@@ -20,9 +20,6 @@ json_string = {}
 if "gt13_multipair" in pattern_strings:
     json_string = {val["id"]: expand(pattern_strings["gt13_multipair"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gt13_multipair"]}
-if "gg99_singlepair" in pattern_strings:
-    json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
 if "bidag_itsearch" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bidag_itsearch"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bidag_itsearch"]})
@@ -172,6 +169,10 @@ if "mylib_myalg" in pattern_strings:
 if "bdgraph" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bdgraph"]+"/"+pattern_strings["mcmc_est"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})
+
+if "gg99_singlepair" in pattern_strings:
+    json_string.update({val["id"]: expand(pattern_strings["gg99_singlepair"]+"/"+pattern_strings["mcmc_est"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
 
 
 # Order mcmc is special and has to be the last one since it takes input strings as start space.

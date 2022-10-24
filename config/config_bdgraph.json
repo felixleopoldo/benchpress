@@ -7,7 +7,7 @@
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
-                    1
+                    3
                 ]
             }
         ],
@@ -21,14 +21,16 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "bdgraph", "guidicigreen-cont"
+                    "bdgraph",
+                    "guidicigreen-cont"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-                "bdgraph"
+                "bdgraph",
+                "guidicigreen-cont"
             ],
             "mcmc_traj_plots": [
                 {
@@ -221,10 +223,14 @@
                         1
                     ],
                     "thresh": 0.5,
-                    "mcmc_estimator": ["threshold","map"],
+                    "mcmc_estimator": [
+                        "threshold"
+                    ],
                     "threshold": [
-                        0.8
-                        
+                        0.6,
+                        0.7,
+                        0.8,
+                        0.85
                     ],
                     "burnin_frac": 0.3
                 }
@@ -268,9 +274,18 @@
                     ],
                     "mcmc_seed": [
                         1
-                        
                     ],
-                    "timeout": null
+                    "timeout": null,
+                    "mcmc_estimator": [
+                        "threshold"
+                    ],
+                    "threshold": [
+                        0.6,
+                        0.7,
+                        0.8,
+                        0.85
+                    ],
+                    "burnin_frac": 0.3
                 }
             ]
         }

@@ -2504,7 +2504,35 @@
                 },
                 "timeout": {
                     "$ref": "#/definitions/flexnonnegnumnull"
+                },
+                "threshold": {
+                    "$ref": "#/definitions/flexprob"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "#/definitions/flexprob"
                 }
+
             },
             "additionalProperties": false,
             "required": [
@@ -2513,7 +2541,10 @@
                 "prior",
                 "mcmc_seed",
                 "randomits",
-                "timeout"
+                "timeout",
+                "threshold",
+                "burnin_frac",
+                "mcmc_estimator"
             ],
             "examples": [
                 {

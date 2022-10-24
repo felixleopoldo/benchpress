@@ -26,9 +26,6 @@ else:
     edgesymb = get_edge_symb(df)
     nodeorder = get_node_order(df)
     
-    
-    print("burnin frac plot {}".format(float(snakemake.params["burnin_frac"])))
-    
     # Create heatmap
     heatmap = estimate_heatmap(df, float(snakemake.params["burnin_frac"]), edgesymb)
     
