@@ -1852,7 +1852,7 @@ if "gg99_singlepair" in pattern_strings:
         input:               
             data=alg_input_data(),
         output:
-            adjvecs=alg_output_seqgraph_path("gg99_singlepair"),
+            seqgraph=alg_output_seqgraph_path("gg99_singlepair"),
             time=alg_output_time_path("gg99_singlepair"),
         container:
              docker_image("thomasjava")
