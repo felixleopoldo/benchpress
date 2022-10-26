@@ -73,10 +73,20 @@ def get_active_rules(wildcards):
 rule all:
     input: get_active_rules
 
+# Validate JSON file based on its values.
 include: "rules/validate.smk"
-include: "rules/pattern_strings.smk"
-include: "rules/algorithm_strings.smk"
+
+include: "rules/module_patterns.smk"
+include: "rules/module_strings.smk"
 include: "rules/helper_functions.smk"
+include: "rules/filename_patterns.py"
+
+# Graph modules
+paths = Path("rules/graph/").glob("*")
+for p in paths:
+    if p.is_file():
+        print p.name
+
 include: "rules/algorithm_shell_commands.smk"
 include: "rules/algorithm_summary_shell_command.smk"
 include: "rules/sample_adjmat.smk"

@@ -50,6 +50,13 @@
                     "sample_sizes": [
                         300
                     ]
+                },
+                {
+                    "id": "nonstandardized",
+                    "standardized": false,
+                    "sample_sizes": [
+                        300
+                    ]
                 }
             ]
         },

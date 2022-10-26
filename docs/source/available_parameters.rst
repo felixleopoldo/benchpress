@@ -145,6 +145,11 @@ Using an object id of this module in the ``parameters_id`` field of the ``data``
 
 Samples G-Wishart matrix given an undirected graph using the *rgwish* function from the R package  `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
 
+
+Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [AH2005]_ [Len2013]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
+The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
+
+
 Fixed parameters
 -------------------------
 
@@ -152,18 +157,6 @@ Fixed parameters
 * Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
 
 
-.. code-block:: json
-
-    {
-        "graph_id": "hepar2.csv",
-        "parameters_id": "hepar2.rds",
-        "data_id": "iid2000",
-        "seed_range": [
-            1,
-            5
-        ]
-    }
-    
 .. rubric:: Example
 
 Example standard networks mostly from the `bnlearn repository <https://www.bnlearn.com/bnrepository/>`_ are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
