@@ -3,8 +3,17 @@
         "data": [
             {
                 "data_id": "example1",
+                "graph_id": "lat",
+                "parameters_id": "gwi",
+                "seed_range": [
+                    1,
+                    3
+                ]
+            },
+            {
+                "data_id": "example1",
                 "graph_id": "circle",
-                "parameters_id": "intra-class",
+                "parameters_id": "gwi",
                 "seed_range": [
                     1,
                     3
@@ -22,7 +31,7 @@
                 "text": false,
                 "ids": [
                     "bdgraph",
-                    "guidicigreen-cont"
+                    "gg99"
                 ]
             },
             "graph_true_plots": true,
@@ -30,7 +39,7 @@
             "ggally_ggpairs": false,
             "graph_plots": [
                 "bdgraph",
-                "guidicigreen-cont"
+                "gg99"
             ],
             "mcmc_traj_plots": [
                 {
@@ -44,7 +53,7 @@
                     "active": false
                 },
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "gg99",
                     "burn_in": 20000,
                     "thinning": 100,
                     "functional": [
@@ -60,7 +69,7 @@
                     "functional": [
                         "size"
                     ],
-                    "active": false
+                    "active": true
                 },
                 {
                     "id": "parallelDG_test",
@@ -75,7 +84,7 @@
             ],
             "mcmc_heatmaps": [
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "gg99",
                     "burn_in": 0.4,
                     "active": true
                 },
@@ -98,7 +107,7 @@
                     "active": false
                 },
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "gg99",
                     "burn_in": 150000,
                     "thinning": 500,
                     "lags": 50,
@@ -129,7 +138,7 @@
                     "id": "example1",
                     "standardized": false,
                     "sample_sizes": [
-                        100
+                        100, 200
                     ]
                 }
             ]
@@ -138,7 +147,7 @@
             "bdgraph_graphsim": [
                 {
                     "id": "lat",
-                    "p": 11,
+                    "p": 20,
                     "graph": "lattice",
                     "class": null,
                     "size": null,
@@ -146,7 +155,7 @@
                 },
                 {
                     "id": "circle",
-                    "p": 20,
+                    "p": 50,
                     "graph": "circle",
                     "class": null,
                     "size": null,
@@ -214,7 +223,7 @@
                     "algo": [
                         "bdmcmc"
                     ],
-                    "iter": 1000,
+                    "iter": 10000,
                     "gprior": 0.5,
                     "dfprior": 3,
                     "gstart": "empty",
@@ -227,6 +236,7 @@
                         "threshold"
                     ],
                     "threshold": [
+                        0.3,
                         0.6,
                         0.7,
                         0.8,
@@ -258,7 +268,7 @@
             ],
             "gg99_singlepair": [
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "gg99",
                     "n_samples": [
                         200000
                     ],
