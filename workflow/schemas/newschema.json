@@ -1,0 +1,588 @@
+{
+    "title": "JSON schema for Benchpress config file.",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
+    "type": "object",
+    "properties": {
+        "benchmark_setup": {
+            "title": "benchmark_setup",
+            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
+            "type": "object",
+            "properties": {
+                "data": {
+                    "title": "data",
+                    "description": "The data setup for the study.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/data_setup_dict"
+                    },
+                    "uniqueItems": true,
+                    "examples": [
+                        [
+                            {
+                                "graph_id": "avneigs4_p20",
+                                "parameters_id": "SEM",
+                                "data_id": "standardized",
+                                "seed_range": [
+                                    1,
+                                    3
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                "evaluation": {
+                    "title": "evaluation",
+                    "description": "This section contains the available evaluation methods.",
+                    "properties": {
+                        "benchmarks": {
+                            "$ref": "../rules/evaluation/benchmarks/schema.json"
+                        },
+                        "graph_true_plots": {
+                            "$ref": "../rules/evaluation/graph_true_plots/schema.json"
+                        },
+                        "graph_true_stats": {
+                            "$ref": "../rules/evaluation/graph_true_stats/schema.json"
+                        },
+                        "ggally_ggpairs": {
+                            "$ref": "../rules/evaluation/ggally_ggpairs/schema.json"
+                        },
+                        "graph_plots": {
+                            "$ref": "../rules/evaluation/graph_plots/schema.json"
+                        },
+                        "mcmc_traj_plots": {
+                            "$ref": "../rules/evaluation/mcmc_traj_plots/schema.json"
+                        },
+                        "mcmc_heatmaps": {
+                            "$ref": "../rules/evaluation/mcmc_heatmaps/schema.json"
+                        },
+                        "mcmc_autocorr_plots": {
+                            "$ref": "../rules/evaluation/mcmc_autocorr_plots/schema.json"
+                        }
+                    },
+                    "required": [
+                        "benchmarks",
+                        "graph_true_plots",
+                        "graph_true_stats",
+                        "graph_plots",
+                        "mcmc_traj_plots",
+                        "mcmc_heatmaps",
+                        "mcmc_autocorr_plots"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "data",
+                "evaluation"
+            ],
+            "additionalProperties": false
+        },
+        "resources": {
+            "title": "resources",
+            "description": "The available modules for generating graphs, parameters, data and structure learning algorithms.",
+            "properties": {
+                "data": {
+                    "title": "data",
+                    "description": "Data sampling setup.",
+                    "type": "object",
+                    "properties": {
+                        "iid": {
+                            "$ref": "../rules/data/iid/schema.json"
+                        },
+                        "gcastle_iidsimulation": {
+                            "$ref": "../rules/data/gcastle_iidsimulation/schema.json"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "examples": [
+                        {
+                            "id": "standardized",
+                            "standardized": true,
+                            "sample_sizes": [
+                                100
+                            ]
+                        },
+                        {
+                            "id": "nonstandardized",
+                            "standardized": false,
+                            "sample_sizes": [
+                                1000
+                            ]
+                        }
+                    ]
+                },
+                "graph": {
+                    "title": "graph",
+                    "description": "The available graph sampling algorithms.",
+                    "type": "object",
+                    "properties": {
+                        "pcalg_randdag": {
+                            "$ref": "../rules/graph/pcalg_randdag/schema.json"
+                        },
+                        "trilearn_cta": {
+                            "$ref": "../rules/graph/trilearn_cta/schema.json"
+                        },
+                        "trilearn_bandmat": {
+                            "$ref": "../rules/graph/trilearn_bandmat/schema.json"
+                        },
+                        "trilearn_rand_bandmat": {
+                            "$ref": "../rules/graph/trilearn_rand_bandmat/schema.json"
+                        },
+                        "bdgraph_graphsim": {
+                            "$ref": "../rules/graph/bdgraph_graphsim/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "parameters": {
+                    "title": "parameters",
+                    "description": "The available parameter sampling algorithms",
+                    "type": "object",
+                    "properties": {
+                        "bin_bn": {
+                            "$ref": "../rules/parameters/bin_bn/schema.json"
+                        },
+                        "sem_params": {
+                            "$ref": "../rules/parameters/sem_params/schema.json"
+                        },
+                        "trilearn_hyper-dir": {
+                            "$ref": "../rules/parameters/trilearn_hyper-dir/schema.json"
+                        },
+                        "trilearn_intra-class": {
+                            "$ref": "../rules/parameters/trilearn_intra-class/schema.json"
+                        },
+                        "trilearn_g_inv_wishart": {
+                            "$ref": "../rules/parameters/trilearn_g_inv_wishart/schema.json"
+                        },
+                        "bdgraph_rgwish": {
+                            "$ref": "../rules/parameters/bdgraph_rgwish/schema.json"
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "structure_learning_algorithms": {
+                    "title": "structure_learning_algorithms",
+                    "description": "The available structure learning algorithms",
+                    "type": "object",
+                    "properties": {
+                        "mylib_myalg": {
+                            "$ref": "../rules/structure_learning_algorithms/mylib_myalg/schema.json"
+                        },
+                        "causaldag_gsp": {
+                            "$ref": "../rules/structure_learning_algorithms/causaldag_gsp/schema.json"
+                        },
+                        "gcastle_notears": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_notears/schema.json"
+                        },
+                        "gcastle_pc": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_pc/schema.json"
+                        },
+                        "trilearn_pgibbs": {
+                            "$ref": "../rules/structure_learning_algorithms/trilearn_pgibbs/schema.json"
+                        },
+                        "parallelDG": {
+                            "$ref": "../rules/structure_learning_algorithms/parallelDG/schema.json"
+                        },
+                        "rblip_asobs": {
+                            "$ref": "../rules/structure_learning_algorithms/rblip_asobs/schema.json"
+                        },
+                        "notears": {
+                            "$ref": "../rules/structure_learning_algorithms/notears/schema.json"
+                        },
+                        "gobnilp": {
+                            "$ref": "../rules/structure_learning_algorithms/gobnilp/schema.json"
+                        },
+                        "tetrad_fges": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fges/schema.json"
+                        },
+                        "tetrad_fci": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fci/schema.json"
+                        },
+                        "tetrad_rfci": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_rfci/schema.json"
+                        },
+                        "tetrad_gfci": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_gfci/schema.json"
+                        },
+                        "pcalg_pc": {
+                            "$ref": "../rules/structure_learning_algorithms/pcalg_pc/schema.json"
+                        },
+                        "dualpc": {
+                            "$ref": "../rules/structure_learning_algorithms/dualpc/schema.json"
+                        },
+                        "bnlearn_mmhc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_mmhc/schema.json"
+                        },
+                        "bnlearn_tabu": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_tabu/schema.json"
+                        },
+                        "bidag_itsearch": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_itsearch/schema.json"
+                        },
+                        "bidag_order_mcmc": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_order_mcmc/schema.json"
+                        },
+                        "bidag_partition_mcmc": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_partition_mcmc/schema.json"
+                        },
+                        "bnlearn_interiamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_interiamb/schema.json"
+                        },
+                        "bnlearn_gs": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_gs/schema.json"
+                        },
+                        "bnlearn_pcstable": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_pcstable/schema.json"
+                        },
+                        "bnlearn_iamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_iamb/schema.json"
+                        },
+                        "bnlearn_fastiamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_fastiamb/schema.json"
+                        },
+                        "bnlearn_iambfdr": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_iambfdr/schema.json"
+                        },
+                        "bnlearn_mmpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_mmpc/schema.json"
+                        },
+                        "bnlearn_sihitonpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_sihitonpc/schema.json"
+                        },
+                        "bnlearn_hpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_hpc/schema.json"
+                        },
+                        "bnlearn_hc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_hc/schema.json"
+                        },
+                        "bnlearn_h2pc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_h2pc/schema.json"
+                        },
+                        "bnlearn_rsmax2": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_rsmax2/schema.json"
+                        },
+                        "gt13_multipair": {
+                            "$ref": "../rules/structure_learning_algorithms/gt13_multipair/schema.json"
+                        },
+                        "gg99_singlepair": {
+                            "$ref": "../rules/structure_learning_algorithms/gg99_singlepair/schema.json"
+                        },
+                        "tetrad_fofc": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fofc/schema.json"
+                        },
+                        "tetrad_ftfc": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_ftfc/schema.json"
+                        },
+                        "tetrad_lingam": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_lingam/schema.json"
+                        },
+                        "tetrad_imgscont": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_imgscont/schema.json"
+                        },
+                        "tetrad_fas": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fas/schema.json"
+                        },
+                        "tetrad_fask": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fask/schema.json"
+                        },
+                        "tetrad_pc-all": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_pc-all/schema.json"
+                        },
+                        "sklearn_glasso": {
+                            "$ref": "../rules/structure_learning_algorithms/sklearn_glasso/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "data",
+                "graph",
+                "parameters",
+                "structure_learning_algorithms"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "definitions": {
+        "notears_parameters_sampling": {
+            "title": "notears_parameters_sampling item",
+            "description": "Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "edge_coefficient_range_from": {
+                    "$ref": "#/definitions/nonnegnum"
+                },
+                "edge_coefficient_range_to": {
+                    "$ref": "#/definitions/nonnegnum"
+                }
+            }
+        },
+        "notears_dag_sampling": {
+            "title": "notears_dag_sampling item",
+            "description": "Graph sampling method provided by the notears package. \n Documentation: https://github.com/jmoss20/notears",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "num_nodes": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "num_edges": {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                "mean": {
+                    "title": "Mean",
+                    "type": "number"
+                },
+                "variance": {
+                    "title": "Variance",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "id",
+                "num_nodes",
+                "num_edges"
+            ],
+            "additionalProperties": false
+        },
+        "data_setup_dict": {
+            "type": "object",
+            "title": "data item",
+            "description": "Description of the data model and sampling setup. Make sure that the id's are properly combined.\n If a CSV file is specified as data_id then parameters_id and seed_range should be null whereas graph_id should be the true graphs that generated the dataset.",
+            "properties": {
+                "graph_id": {
+                    "title": "graph_id",
+                    "description": "ID of the graph object.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "parameters_id": {
+                    "title": "parameters_id",
+                    "description": "ID of a module object in the parameters section.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "data_id": {
+                    "title": "data_id",
+                    "description": "Data sampling method ID.",
+                    "type": "string"
+                },
+                "seed_range": {
+                    "title": "seed_range",
+                    "description": "This data setup will be simulated for this range of seeds. E.g. seed_range:[1,3] will generate 3 datsets (and corresponding models) with seeds 1,2,3.",
+                    "anyOf": [
+                        {
+                            "title": "range",
+                            "description": "List of 2 integers [a, b], where a<=b.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "maxLength": 2,
+                            "minLength": 2
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "graph_id",
+                "parameters_id",
+                "data_id",
+                "seed_range"
+            ],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "graph_id": "avneigs4_p20",
+                    "parameters_id": "SEM",
+                    "data_id": "standardized",
+                    "seed_range": [
+                        1,
+                        3
+                    ]
+                }
+            ]
+        },
+        "prob": {
+            "title": "prob type",
+            "description": "Number in the range [0,1].",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "problist": {
+            "title": "problist type",
+            "type": "array",
+            "description": "Probability list",
+            "items": {
+                "$ref": "#/definitions/prob"
+            }
+        },
+        "natnum": {
+            "title": "natnum type",
+            "description": "Positive integer",
+            "type": "integer",
+            "minimum": 1
+        },
+        "nonnegint": {
+            "title": "nonnegint type",
+            "description": "Non-negative integer, 0,1,2,...",
+            "type": "integer",
+            "minimum": 0
+        },
+        "nonnegnum": {
+            "title": "nonnegnum type",
+            "description": "Non-negative number",
+            "type": "number",
+            "minimum": 0
+        },
+        "nonnegnumlist": {
+            "title": "nonnegnumlist",
+            "type": "array",
+            "description": "List of non-negative numbers",
+            "items": {
+                "$ref": "#/definitions/nonnegnum"
+            }
+        },
+        "flexnonnegnum": {
+            "description": "Non-negative number(s).",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/nonnegnum"
+                },
+                {
+                    "$ref": "#/definitions/nonnegnumlist"
+                }
+            ]
+        },
+        "flexnonnegnumnull": {
+            "title": "Non-negative number(s) or null",
+            "description": "E.g. 1.5 or [1.6, 3.8] or null.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexnonnegnum"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "flexnonnegint": {
+            "title": "Non-negative integer(s)",
+            "description": "Non-negative integers, (0,1,2,...), or array of the same.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/nonnegint"
+                },
+                {
+                    "$ref": "#/definitions/nonnegintlist"
+                }
+            ]
+        },
+        "nonnegintlist": {
+            "type": "array",
+            "title": "nonnegint list",
+            "description": "Non-negative integer list",
+            "items": {
+                "$ref": "#/definitions/nonnegint"
+            }
+        },
+        "flexnonnegintnull": {
+            "title": "Non-negative integer(s), or null.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "flexnonnegintstring": {
+            "title": "flexnonnegintstring",
+            "description": "Non-negative integer(s), or Inf string.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexnonnegint"
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "Inf"
+                    ]
+                }
+            ]
+        },
+        "flexnatnum": {
+            "title": "Non-negative integer(s)",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/natnum"
+                },
+                {
+                    "title": "Positive integer list",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/natnum"
+                    }
+                }
+            ]
+        },
+        "flexnatnumnull": {
+            "title": "Npn-negative integer or null",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexnatnum"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "flexprob": {
+            "description": "Number(s) in the range [0,1].",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/prob"
+                },
+                {
+                    "$ref": "#/definitions/problist"
+                }
+            ]
+        },
+        "flexprobnull": {
+            "title": "flexprobnull",
+            "description": "Number(s) in the range [0,1], or null.",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/flexprob"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    }
+}
