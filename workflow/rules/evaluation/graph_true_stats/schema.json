@@ -1,0 +1,10 @@
+{
+    "title": "graph_true_stats",
+    "description": "This module plots statistics of the true underlying graphs. The figures are saved in to results/output/graph_true_stats/.",
+    "type": "boolean",
+    "examples": [
+        {
+            "graph_true_stats": true
+        }
+    ]
+}

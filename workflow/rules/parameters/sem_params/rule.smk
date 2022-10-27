@@ -1,7 +1,7 @@
 if "sem_params" in pattern_strings:
     rule sample_sem_params:
         input:
-            "workflow/scripts/parameters_sampling/sample_semparams.R", 
+            "workflow/rules/parameters/sem_params/sample_semparams.R", 
             adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
         output:
             bn =    "{output_dir}/parameters/" + \
@@ -11,4 +11,4 @@ if "sem_params" in pattern_strings:
         container:
             docker_image("bidag")
         script:
-            "../scripts/parameters_sampling/sample_semparams.R" 
+            "sample_semparams.R" 

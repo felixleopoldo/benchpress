@@ -3,6 +3,7 @@ library(pcalg)
 library(R.utils)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
+
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["replicate"]])

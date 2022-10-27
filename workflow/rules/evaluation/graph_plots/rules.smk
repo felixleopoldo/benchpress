@@ -1,9 +1,9 @@
 from filenames import *
 
+include: "filenames.py"
 
 rule adjmat_plot:
-    input:
-        "workflow/scripts/evaluation/plot_matrix_as_heatmap.py",
+    input:        
         matrix_filename="{output_dir}/adjmat_estimate/"
         "adjmat=/{adjmat_string}/"
         "parameters=/{param_string}/"
@@ -28,7 +28,7 @@ rule adjmat_plot:
     container:
         docker_image("pydatascience")
     script:
-        "../scripts/evaluation/plot_matrix_as_heatmap.py"
+        "plot_matrix_as_heatmap.py"
 
 
 # This rule is very generally specified and relies on that it is called in the right way.
@@ -71,7 +71,7 @@ rule plot_dot:
 # This is actually a quite general rule.
 rule bnlearn_graphvizcompare:
     input:
-        "workflow/scripts/evaluation/bnlearn_graphvizcompare.R",
+        "workflow/rules/evaluation/graph_plots/bnlearn_graphvizcompare.R",
         data=summarise_alg_input_data_path(),
         adjmat_true=summarise_alg_input_adjmat_true_path(),
         adjmat_est="{output_dir}/adjmat_estimate/"
@@ -90,13 +90,13 @@ rule bnlearn_graphvizcompare:
         "algorithm=/{alg_string}/"
         "seed={replicate}/{filename}",
     script:
-        "../scripts/evaluation/bnlearn_graphvizcompare.R"
+        "bnlearn_graphvizcompare.R"
 
 
 # This is actually a quite general rule.
 rule adjmat_diffplot:
     input:
-        "workflow/scripts/evaluation/adjmat_diffplot.py",
+        "workflow/rules/evaluation/graph_plots/adjmat_diffplot.py",
         data=summarise_alg_input_data_path(),
         adjmat_true=summarise_alg_input_adjmat_true_path(),
         adjmat_est="{output_dir}/adjmat_estimate/"
@@ -123,7 +123,7 @@ rule adjmat_diffplot:
     container:
         docker_image("pydatascience")
     script:
-        "../scripts/evaluation/adjmat_diffplot.py"
+        "adjmat_diffplot.py"
 
 
 rule graph_plots:

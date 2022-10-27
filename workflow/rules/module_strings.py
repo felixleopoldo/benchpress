@@ -16,7 +16,7 @@ def idtopath(mylist, json_string):
 json_string = {}
 
 # Generate strings from the config file.
-for alg in pattern_strings:
+for alg in config["resources"]["structure_learning_algorithms"]:
     # Some algorihtm takes input graphs. These are treated separately.
     has_input_algs = ["bidag_order_mcmc", "bidag_partition_mcmc"] 
     if alg not in has_input_algs:
@@ -78,7 +78,6 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
     # find the adjmat_gen_method from adjmat_gen_id
     # Maybe fill up a dict as for structure learning algortihms
     # Then we would loose the seed.
-    
     if "pcalg_randdag" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["pcalg_randdag"]]:
         adjmat_dict = next(item for item in config["resources"]["graph"]["pcalg_randdag"] if item["id"] == adjmat_id)
         return expand(pattern_strings["pcalg_randdag"] + "/seed={seed}", **adjmat_dict, seed=seed)

@@ -87,7 +87,7 @@ rule standardize:
              "/data=/{data_alg}/standardized={standardized, (True|False)}/{data_params}/seed={seed}.csv"
              #"/data=/{data_alg}/standardized={standardized}/{data_params}/seed={seed}.csv"
     script:
-        "../scripts/utils/standardize.R"
+        "standardize.R"
 
 # """
 # TODO: Standardisation should better be done in a separate preprocessing module 
@@ -139,7 +139,7 @@ rule sample_fixed_sem_params_data:
 if "sem_params" in pattern_strings:
     rule sample_sem_data:
         input:
-            script="workflow/scripts/data_sampling/sample_sem_data.R",
+            script="workflow/rules/data/iid/sample_sem_data.R",
             bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
         output:
             data="{output_dir}/data" \
@@ -151,4 +151,4 @@ if "sem_params" in pattern_strings:
         container:
             docker_image("bidag")
         script:
-            "../scripts/data_sampling/sample_sem_data.R" 
+            "sample_sem_data.R" 

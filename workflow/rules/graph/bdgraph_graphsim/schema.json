@@ -1,0 +1,64 @@
+{
+    "title": "bdgraph_graphsim",
+    "description": "Generates an undirected graph using graph.sim from the R package BDgraph.",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/bdgraph_graphsim"
+    },
+    "uniqueItems": true,
+    "definitions": {
+        "bdgraph_graphsim": {
+            "title": "bdgraph_graphsim item",
+            "description": "BDgraph graph.sim",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "p": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "prob": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                },
+                "graph": {
+                    "type": "string",
+                    "enum": [
+                        "random",
+                        "cluster",
+                        "scale-free",
+                        "hub",
+                        "circle",
+                        "star",
+                        "lattice"
+                    ]
+                },
+                "class": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                },
+                "size": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                }
+            },
+            "required": [
+                "p",
+                "graph",
+                "class",
+                "size",
+                "id",
+                "prob"
+            ],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "id": "circle",
+                    "p": 50,
+                    "graph": "circle",
+                    "class": null,
+                    "size": null,
+                    "prob": 0.2
+                }
+            ]
+        }
+    }
+}

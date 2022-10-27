@@ -1,0 +1,89 @@
+{
+    "description": "HC objects",
+    "title": "bnlearn_hc",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/bnlearn_hc"
+    },
+    "definitions": {
+        "bnlearn_hc": {
+            "title": "bnlearn_hc item",
+            "description": "HC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "perturb": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "restart": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "beta": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "iss": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                },
+                "issmu": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                },
+                "issw": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "l": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "k": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "prior": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "beta",
+                "score",
+                "iss",
+                "issmu",
+                "l",
+                "k",
+                "prior",
+                "perturb",
+                "restart",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "hc-bge",
+                    "score": "bge",
+                    "iss": 1,
+                    "issmu": [
+                        0.0001,
+                        0.001,
+                        0.01,
+                        0.05
+                    ],
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": 1,
+                    "restart": 0,
+                    "perturb": 1,
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

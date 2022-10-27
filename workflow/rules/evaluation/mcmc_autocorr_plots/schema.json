@@ -1,0 +1,89 @@
+{
+    "title": "mcmc_autocorr_plots",
+    "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/mcmc_autocorr_plots_item"
+    },
+    "additionalItems": false,
+    "examples": [
+        [
+            {
+                "id": "omcmc_itsample-bge",
+                "burn_in": 0,
+                "thinning": 1,
+                "lags": 50,
+                "functional": [
+                    "score",
+                    "size"
+                ],
+                "active": true
+            }
+        ]
+    ],
+    "definitions": {
+        "mcmc_autocorr_plots": {
+            "title": "mcmc_autocorr_plots item",
+            "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
+            "examples": [
+                {
+                    "id": "omcmc_itsample-bge",
+                    "burn_in": 0,
+                    "thinning": 1,
+                    "lags": 50,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                }
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "burn_in": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "thinning": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "lags": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                },
+                "functional": {
+                    "title": "stringorlist",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "score",
+                                "size"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "score",
+                                    "size"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "burn_in",
+                "thinning",
+                "functional",
+                "lags"
+            ]
+        }
+    }
+}

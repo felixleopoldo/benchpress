@@ -1,0 +1,40 @@
+{
+    "title": "trilearn_rand_bandmat",
+    "description": "Generates a graph with band structured adjacency matrix of varying with.",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/trilearn_rand_bandmat"
+    },
+    "uniqueItems": true,
+    "definitions": {
+        "trilearn_rand_bandmat": {
+            "title": "trilearn_rand_bandmat item",
+            "description": "A graph with a band structured adjacency matrix with random width.",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "string"
+                },
+                "dim": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "max_bandwidth": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                }
+            },
+            "required": [
+                "id",
+                "dim",
+                "max_bandwidth"
+            ],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "id": "AR1-5",
+                    "max_bandwidth": 5,
+                    "dim": 50
+                }
+            ]
+        }
+    }
+}

@@ -1,20 +1,19 @@
-include: filename_gen.py
+include: "filename_gen.py"
 
 
 rule plot_pairs:
     input:
-        "workflow/scripts/utils/pairs.R",
         data=summarise_alg_input_data_path()
     output:
         filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png",
     params:
         data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}"
     script:
-        "../scripts/utils/pairs.R"
+        "pairs.R"
 
 rule ggally_ggpairs:
     input:
-        "workflow/scripts/utils/pairs.R",
+        "workflow/rules/evaluation/ggally_ggpairs/pairs.R",
         pairsplots=pairs() # This will not trigger the rule if these files have already been generated.
     output:
         temp(touch("results/output/ggally_ggpairs/ggally_ggpairs.done"))

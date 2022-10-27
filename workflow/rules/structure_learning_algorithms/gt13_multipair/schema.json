@@ -1,0 +1,88 @@
+{
+    "description": "Green & Thomas objects",
+    "title": "gt13_multipair",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/gt13_multipair"
+    },
+    "definitions": {
+        "gt13_multipair": {
+            "title": "gt13_multipair item",
+            "description": "Green & Thomas algorithm for learning decomopasble graphs.\n Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "datatype": {
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "continuous"
+                    ]
+                },
+                "n_samples": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "penalty": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "randomits": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "prior": {
+                    "type": "string",
+                    "enum": [
+                        "bc",
+                        "mbc",
+                        "ep"
+                    ]
+                },
+                "ascore": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "bscore": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "clq": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "sep": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "mcmc_seed": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "n_samples",
+                "prior",
+                "mcmc_seed",
+                "randomits",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "gt13_multipair_bc-cont",
+                    "n_samples": 1000000,
+                    "datatype": "continuous",
+                    "randomits": 1000,
+                    "prior": "bc",
+                    "ascore": 0.1,
+                    "bscore": 0.001,
+                    "clq": null,
+                    "sep": null,
+                    "penalty": null,
+                    "mcmc_seed": 1,
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

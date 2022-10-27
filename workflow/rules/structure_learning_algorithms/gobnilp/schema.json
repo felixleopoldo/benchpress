@@ -1,0 +1,102 @@
+{
+    "title": "gobnilp",
+    "description": "Gobnilp objects",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/gobnilp"
+    },
+    "definitions": {
+        "gobnilp": {
+            "title": "gobnilp item",
+            "description": "Gobnilp instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "continuous": {
+                    "type": "boolean"
+                },
+                "score_type": {
+                    "type": "string",
+                    "enum": [
+                        "BGe",
+                        "BDeu",
+                        "BIC"
+                    ]
+                },
+                "extra_args": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "constraints": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "plot": {
+                    "type": "boolean"
+                },
+                "palim": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                },
+                "alpha": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "alpha_omega_minus_nvars": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnatnumnull"
+                },
+                "alpha_mu": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "time_limit": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "gap_limit": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "prune": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "plot",
+                "palim",
+                "alpha",
+                "prune",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "gobnilp-bge",
+                    "continuous": true,
+                    "score_type": "BGe",
+                    "plot": false,
+                    "palim": 2,
+                    "alpha_mu": 1.0,
+                    "alpha_omega_minus_nvars": 2,
+                    "alpha": null,
+                    "prune": true,
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

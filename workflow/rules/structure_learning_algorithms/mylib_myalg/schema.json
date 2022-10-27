@@ -1,0 +1,39 @@
+{
+    "title": "mylib_myalg",
+    "description": "List of mylib_myalg objects",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/mylib_myalg"
+    },
+    "uniqueItems": true,
+    "definitions": {
+        "mylib_myalg": {
+            "title": "mylib_myalg item",
+            "description": "Parameter setting for mylib_myalg.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "desciption": "Algorithm identifier",
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "examples": [
+                {
+                    "id": "mysetting",
+                    "param1": "myparamval",
+                    "param2": [
+                        2,
+                        3,
+                        5
+                    ]
+                }
+            ]
+        }
+    }
+}

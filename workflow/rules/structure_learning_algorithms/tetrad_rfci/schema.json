@@ -1,0 +1,62 @@
+{
+    "description": "RFCI Really fast causal inference",
+    "title": "tetrad_rfci",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/tetrad_rfci"
+    },
+    "definitions": {
+        "tetrad_rfci": {
+            "title": "tetrad_rfci item",
+            "description": "RFCI instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "bdeu-test",
+                        "cci-test",
+                        "cg-lr-test",
+                        "chi-square-test",
+                        "d-sep-test",
+                        "disc-bic-test",
+                        "fisher-z-test",
+                        "g-square-test",
+                        "kci-test",
+                        "prob-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test"
+            ],
+            "examples": [
+                {
+                    "id": "rfci-fisher-z",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05
+                    ],
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

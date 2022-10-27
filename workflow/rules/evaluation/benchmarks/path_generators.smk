@@ -5,6 +5,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     where eval_param is e.g. SHD/ or TPR/graphtype=skeleton FPR/graphtype=cpdag.
     Create rule for benchmarks
     """
+
     benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]]
     
     ret = [[[expand("{output_dir}/"+mode+"/"\        

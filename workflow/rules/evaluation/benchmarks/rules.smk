@@ -7,11 +7,13 @@
 # Therefore these algorithms has an additional rule which creates a estimate based on
 # the trajectory,
 
+include: "path_generators.smk"
+include: "shell_commands.py"
 
 rule benchmarks_combine_data:
     input:
-        "workflow/scripts/evaluation/combine_ROC_data.R",
-        "workflow/scripts/evaluation/run_summarise.R",
+        "workflow/rules/evaluation/benchmarks/combine_ROC_data.R",
+        "workflow/rules/evaluation/benchmarks/run_summarise.R",
         conf=configfilename,
         snake="workflow/Snakefile",
         algs=active_algorithm_files("benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
@@ -19,12 +21,12 @@ rule benchmarks_combine_data:
         csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
         joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
     shell:
-        "Rscript workflow/scripts/evaluation/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+        "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
 rule benchmarks:
     input:
-        "workflow/scripts/evaluation/plot_ROC.R",
-        "workflow/scripts/evaluation/run_summarise.R",
+        "workflow/rules/evaluation/benchmarks/plot_ROC.R",
+        "workflow/rules/evaluation/benchmarks/run_summarise.R",
         "workflow/Snakefile",
         config=configfilename,
         csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
@@ -42,13 +44,15 @@ rule benchmarks:
         ntests_joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ntests_joint.png"
 
     script:
-        "../scripts/evaluation/plot_ROC.R"
+        "plot_ROC.R"
 
 
-for alg in pattern_strings:
+
+for alg in config["resources"]["structure_learning_algorithms"]:
+
     rule:
         input:
-            "workflow/scripts/evaluation/run_summarise.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
             data=summarise_alg_input_data_path(),
             adjmat_true=summarise_alg_input_adjmat_true_path(),
             adjmat_est=summarise_alg_input_adjmat_est_path(alg),
@@ -59,12 +63,14 @@ for alg in pattern_strings:
         shell:
             summarise_alg_shell(alg)
 
+    # TODO: Special for mcmc algorithms
+
     rule:
         input:
-            "workflow/scripts/evaluation/run_summarise.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
             conf=configfilename,
             res=join_string_sampled_model(alg),
         output:
             join_summaries_output(alg),
         script:
-            "../scripts/evaluation/join_csv_files.R"
+            "../rules/evaluation/benchmarks/join_csv_files.R"

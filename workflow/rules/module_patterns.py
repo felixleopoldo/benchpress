@@ -30,6 +30,8 @@ pattern_strings = {}
 for alg in config["resources"]["structure_learning_algorithms"].keys():
     pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
 
+
+
 # graph modules
 for module in config["resources"]["graph"]:
     pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["graph"][module])

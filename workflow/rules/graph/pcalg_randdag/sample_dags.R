@@ -8,7 +8,6 @@ filename <- snakemake@output[["adjmat"]]
 n <- as.integer(snakemake@wildcards[["n"]])
 d <- as.integer(snakemake@wildcards[["d"]])
 
-
 par1 <- NULL
 if (snakemake@wildcards[["par1"]] != "None") {
   par1 <- as.integer(snakemake@wildcards[["par1"]])

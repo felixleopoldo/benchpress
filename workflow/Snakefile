@@ -6,92 +6,85 @@ import shutil
 import filecmp
 from pathlib import Path
 import os
-from snakemake.utils import min_version
 
-# To update Snakemake using Mamba run 
-# mamba update -c conda-forge -c bioconda snakemake
+include: "rules/helper_functions.py"
 
-min_version("6.15") 
-
-# Check that Apptainer or Singularity >=3.2 is installed.  
-(apptainer_ecode, apptainer_outp) = subprocess.getstatusoutput("apptainer --version")
-(ecode, outp) = subprocess.getstatusoutput("singularity --version")
-
-# Check if either singularity of apptainera is installed
-if ecode != 0 and apptainer_ecode != 0:
-    raise Exception("Benchpress requires Singularity >= 3.2 or Apptainer.")
-
-# If Singularity and not apptainer is installer, check the version of Singularity.
-if ecode == 0 and apptainer_ecode != 0:
-    v1 = outp.split()[2].split(".")[0]
-    v2 = outp.split()[2].split(".")[1]
-    smkver = float(v1 + "." + v2)
-    if float(v1) < 3 or (float(v1)==3 and float(v2) < 2):
-        raise Exception("You have " +outp+ ". Benchpress requires Singularity >= 3.2.")
+check_system_requirements()
 
 # This is a workaround. Needed a variable for the configfilename
 # and this seemed to be the only way. But there are probably better ways.
 args = sys.argv
-configfilename="config/config.json"
-i=0
+configfilename = "config/config.json"
+i = 0
 for arg in args:
-    if arg=="--configfile" or arg=="--configfiles": # This is strange
-        configfilename = args[i+1]
+    if arg == "--configfile" or arg == "--configfiles":  # This is strange
+        configfilename = args[i + 1]
         break
-    i+=1
+    i += 1
 
-configfile: 
-    configfilename
 
-snakemake.utils.validate(config, 'schemas/config.schema.json')
+configfile: configfilename
+
+
+snakemake.utils.validate(config, "schemas/newschema.json")
+
 
 include: "rules/docker_images.smk"
 
-container:
-    docker_image("benchmark")
+container: docker_image("benchmark")
 
-# This function returns empty "trigger files" for the type of evaluations
-# that are used. Yes, this is ugly. Should maybe have a directory output instead. 
-def get_active_rules(wildcards):
-    rules = []
-    for key, val in config["benchmark_setup"]["evaluation"].items():
-        # Check if boolean or list or object wirh nonempty ids field. 
-        if isinstance(val, dict) and val["ids"] != []: # TODO: this was OrderedDict, so might have to impose order somewhere.
-            rules.append("results/output/"+key+"/"+key+".done")
-        if isinstance(val, bool) and val is True:
-            rules.append("results/output/"+key+"/"+key+".done")
-        if isinstance(val, list) and val != []:
-            if key == "mcmc_traj_plots" or key == "mcmc_heatmaps" or key == "mcmc_autocorr_plots":
-                for item in val:
-                    if ("active" not in item) or item["active"] == True:
-                        rules.append("results/output/"+key+"/"+key+".done")
-                        break
-            else:
-                rules.append("results/output/"+key+"/"+key+".done")    
-    return rules
 
 rule all:
-    input: get_active_rules
+    input:
+        get_active_rules
+
 
 # Validate JSON file based on its values.
-include: "rules/validate.smk"
-
-include: "rules/module_patterns.smk"
-include: "rules/module_strings.smk"
-include: "rules/helper_functions.smk"
+include: "rules/validate.py"
+include: "rules/module_patterns.py"
+include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
 
-# Graph modules
-paths = Path("rules/graph/").glob("*")
-for p in paths:
-    if p.is_file():
-        print p.name
+# Include the graph modules
+for p in Path("workflow/rules/graph/").glob("*"):
+    if (p / "rule.smk").is_file():
+        include: Path("rules/graph/", p.name, "rule.smk")
 
-include: "rules/algorithm_shell_commands.smk"
-include: "rules/algorithm_summary_shell_command.smk"
-include: "rules/sample_adjmat.smk"
-include: "rules/sample_parameters.smk"
-include: "rules/sample_data.smk"
-include: "rules/algorithm_rules.smk"
-include: "rules/mylib_myalg.smk"
-include: "rules/evaluation.smk"
+
+# Include the parameters modules
+for p in Path("workflow/rules/parameters/").glob("*"):
+    if (p / "rule.smk").is_file():
+
+        include: Path("rules/parameters/", p.name, "rule.smk")
+
+
+# Include the data modules
+for p in Path("workflow/rules/data/").glob("*"):
+    if (p / "rules.smk").is_file():
+
+        include: Path("rules/data/", p.name, "rules.smk")
+
+
+# Include the structure_learning_algorithms modules
+for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
+    if (p / "rules.smk").is_file():
+        pass
+        #print(Path("rules/structure_learning_algorithms/", p.name, "rules.smk"))
+        #include: Path("rules/structure_learning_algorithms/", p.name, "rules.smk")
+
+ 
+    if (p / "rule.smk").is_file():
+
+        include: Path("rules/structure_learning_algorithms/", p.name, "rule.smk")
+
+
+# Include the evaluation modules
+for p in Path("workflow/rules/evaluation/").glob("*"):
+    if (p / "rules.smk").is_file():
+
+        include: Path("rules/evaluation/", p.name, "rules.smk")
+
+
+    elif (p / "rule.smk").is_file():
+
+        include: Path("rules/evaluation/", p.name, "rule.smk")

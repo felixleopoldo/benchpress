@@ -36,16 +36,98 @@
                     "description": "This section contains the available evaluation methods.",
                     "properties": {
                         "benchmarks": {
-                            "title": "benchmarks",
-                            "description": "ROC plots and other benchmarking statistics.",
-                            "$ref": "#/definitions/benchmarks",
+                            "title": "benchmarks item",
+                            "description": "ROC item",
+                            "type": "object",
+                            "properties": {
+                                "ids": {
+                                    "list": "string"
+                                },
+                                "filename_prefix": {
+                                    "type": "string"
+                                },
+                                "xlim": {
+                                    "title": "xlim",
+                                    "description": "x-axis limits in ROC plots.",
+                                    "anyOf": [
+                                        {
+                                            "title": "range",
+                                            "description": "List of 2 integers [a, b], where a<=b.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "maxLength": 2,
+                                            "minLength": 2
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ]
+                                },
+                                "ylim": {
+                                    "title": "ylim",
+                                    "description": "y-axis limits in ROC plots.",
+                                    "anyOf": [
+                                        {
+                                            "title": "range",
+                                            "description": "List of 2 integers [a, b], where a<=b.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "maxLength": 2,
+                                            "minLength": 2
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ]
+                                },
+                                "show_seed": {
+                                    "type": "boolean"
+                                },
+                                "scatter": {
+                                    "type": "boolean"
+                                },
+                                "errorbar": {
+                                    "type": "boolean"
+                                },
+                                "errorbarh": {
+                                    "type": "boolean"
+                                },
+                                "text": {
+                                    "type": "boolean"
+                                },
+                                "path": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "ids",
+                                "filename_prefix",
+                                "show_seed",
+                                "scatter",
+                                "path",
+                                "errorbar",
+                                "errorbarh",
+                                "text"
+                            ],
                             "examples": [
                                 {
                                     "filename_prefix": "example/",
-                                    "show_seed": false,
+                                    "point": true,
+                                    "show_seed": true,
                                     "errorbar": true,
                                     "errorbarh": false,
-                                    "scatter": true,
+                                    "xrange": [
+                                        0,
+                                        1
+                                    ],
+                                    "yrange": [
+                                        0,
+                                        1
+                                    ],
                                     "path": true,
                                     "text": false,
                                     "ids": [
@@ -178,66 +260,9 @@
                         "mcmc_heatmaps",
                         "mcmc_autocorr_plots"
                     ],
-                    "additionalProperties": false,
-                    "examples": [
-                        {
-                            "benchmarks": {
-                                "filename_prefix": "example/",
-                                "show_seed": false,
-                                "errorbar": true,
-                                "errorbarh": false,
-                                "scatter": true,
-                                "path": true,
-                                "text": false,
-                                "ids": [
-                                    "fges-sem-bic",
-                                    "mmhc-bge-zf",
-                                    "omcmc_itsample-bge",
-                                    "pc-gaussCItest"
-                                ]
-                            },
-                            "graph_true_plots": true,
-                            "graph_true_stats": true,
-                            "graph_plots": [
-                                "fges-sem-bic",
-                                "mmhc-bge-zf",
-                                "omcmc_itsample-bge",
-                                "pc-gaussCItest"
-                            ],
-                            "mcmc_traj_plots": [
-                                {
-                                    "id": "omcmc_itsample-bge",
-                                    "burn_in": 0,
-                                    "thinning": 1,
-                                    "functional": [
-                                        "score",
-                                        "size"
-                                    ],
-                                    "active": true
-                                }
-                            ],
-                            "mcmc_heatmaps": [
-                                {
-                                    "id": "omcmc_itsample-bge",
-                                    "burn_in": 0,
-                                    "active": true
-                                }
-                            ],
-                            "mcmc_autocorr_plots": [
-                                {
-                                    "id": "omcmc_itsample-bge",
-                                    "burn_in": 0,
-                                    "thinning": 1,
-                                    "lags": 50,
-                                    "functional": [
-                                        "score",
-                                        "size"
-                                    ],
-                                    "active": true
-                                }
-                            ]
-                        }
-                    ]
+                    "additionalProperties": false
+                    
+                    
                 }
             },
             "required": [
@@ -306,14 +331,6 @@
                             },
                             "uniqueItems": true
                         },
-                        "notears": {
-                            "title": "notears",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/notears_dag_sampling"
-                            },
-                            "uniqueItems": true
-                        },
                         "trilearn_cta": {
                             "title": "trilearn_cta",
                             "description": "Sample decomposable graph using the Christmas tree algorithm (CTA) from the trilearn package.",
@@ -323,21 +340,21 @@
                             },
                             "uniqueItems": true
                         },
-                        "bandmat": {
-                            "title": "bandmat",
+                        "trilearn_bandmat": {
+                            "title": "trilearn_bandmat",
                             "description": "Generates a graph with band structured adjacency matrix.",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/bandmat"
+                                "$ref": "#/definitions/trilearn_bandmat"
                             },
                             "uniqueItems": true
                         },
-                        "rand_bandmat": {
-                            "title": "rand_bandmat",
+                        "trilearn_rand_bandmat": {
+                            "title": "trilearn_rand_bandmat",
                             "description": "Generates a graph with band structured adjacency matrix of varying with.",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/rand_bandmat"
+                                "$ref": "#/definitions/trilearn_rand_bandmat"
                             },
                             "uniqueItems": true
                         },
@@ -364,15 +381,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/bin_bn"
-                            },
-                            "uniqueItems": true
-                        },
-                        "notears_parameters_sampling": {
-                            "title": "notears_parameters_sampling",
-                            "description": "List of notears id's",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/notears_parameters_sampling"
                             },
                             "uniqueItems": true
                         },
@@ -1011,8 +1019,8 @@
                 }
             ]
         },
-        "bandmat": {
-            "title": "bandmat item",
+        "trilearn_bandmat": {
+            "title": "trilearn_bandmat item",
             "description": "A graph with a band structured adjacency matrix",
             "properties": {
                 "id": {
@@ -1093,8 +1101,8 @@
                 }
             ]
         },
-        "rand_bandmat": {
-            "title": "rand_bandmat item",
+        "trilearn_rand_bandmat": {
+            "title": "trilearn_rand_bandmat item",
             "description": "A graph with a band structured adjacency matrix with random width.",
             "properties": {
                 "id": {
@@ -1122,110 +1130,7 @@
                 }
             ]
         },
-        "benchmarks": {
-            "title": "benchmarks item",
-            "description": "ROC item",
-            "type": "object",
-            "properties": {
-                "ids": {
-                    "list": "string"
-                },
-                "filename_prefix": {
-                    "type": "string"
-                },
-                "xlim": {
-                    "title": "xlim",
-                    "description": "x-axis limits in ROC plots.",
-                    "anyOf": [
-                        {
-                            "title": "range",
-                            "description": "List of 2 integers [a, b], where a<=b.",
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            },
-                            "maxLength": 2,
-                            "minLength": 2
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "ylim": {
-                    "title": "ylim",
-                    "description": "y-axis limits in ROC plots.",
-                    "anyOf": [
-                        {
-                            "title": "range",
-                            "description": "List of 2 integers [a, b], where a<=b.",
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            },
-                            "maxLength": 2,
-                            "minLength": 2
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "show_seed": {
-                    "type": "boolean"
-                },
-                "scatter": {
-                    "type": "boolean"
-                },
-                "errorbar": {
-                    "type": "boolean"
-                },
-                "errorbarh": {
-                    "type": "boolean"
-                },
-                "text": {
-                    "type": "boolean"
-                },
-                "path": {
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "ids",
-                "filename_prefix",
-                "show_seed",
-                "scatter",
-                "path",
-                "errorbar",
-                "errorbarh",
-                "text"
-            ],
-            "examples": [
-                {
-                    "filename_prefix": "example/",
-                    "point": true,
-                    "show_seed": true,
-                    "errorbar": true,
-                    "errorbarh": false,
-                    "xrange": [
-                        0,
-                        1
-                    ],
-                    "yrange": [
-                        0,
-                        1
-                    ],
-                    "path": true,
-                    "text": false,
-                    "ids": [
-                        "fges-sem-bic",
-                        "mmhc-bge-zf",
-                        "omcmc_itsample-bge",
-                        "pc-gaussCItest"
-                    ]
-                }
-            ]
-        },
+        
         "data_setup_dict": {
             "type": "object",
             "title": "data item",

@@ -34,3 +34,16 @@ rule graph_true_plots:
         for i,f in enumerate(input.adjmats):
             shell("cp "+f+" results/output/graph_true_plots/adjmat_true_" +str(i+1) +".png")
 
+rule adjmat_true_plot:
+    input:
+        "workflow/rules/evaluation/graph_true_plots/plot_matrix_as_heatmap.py",
+        matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv"
+    output:
+        plot_filename = "{output_dir}/adjmat/{adjmat_string}.png"
+    params:
+        title="{adjmat_string}.csv",
+        alg_string=""
+    container:
+        docker_image("pydatascience")
+    script:
+        "plot_matrix_as_heatmap.py"

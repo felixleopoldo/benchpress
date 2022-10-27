@@ -9,4 +9,4 @@ if "pcalg_pc" in pattern_strings:
         container:
             docker_image("pcalg")
         script:
-            "../scripts/structure_learning_algorithms/pcalg_pc.R"
+            "pcalg_pc.R"

@@ -2,7 +2,7 @@ if "bidag_itsearch" in pattern_strings:
 
     rule itsearch:
         input:
-            "workflow/scripts/structure_learning_algorithms/bidag_iterative_search.R",
+            "workflow/rules/structure_learning_algorithms/bidag_iterative_search/bidag_iterative_search.R",
             data=alg_input_data(),
         output:
             adjmat=alg_output_adjmat_path("bidag_itsearch"),
@@ -10,4 +10,4 @@ if "bidag_itsearch" in pattern_strings:
         container:
             docker_image("bidag")
         script:
-            "../scripts/structure_learning_algorithms/bidag_iterative_search.R"
+            "bidag_iterative_search.R"

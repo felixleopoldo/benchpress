@@ -1,0 +1,10 @@
+{
+    "title": "graph_true_plots",
+    "description": "This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph_true_plots/.",
+    "type": "boolean",
+    "examples": [
+        {
+            "graph_true_plots": true
+        }
+    ]
+}

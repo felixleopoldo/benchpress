@@ -1,0 +1,51 @@
+{
+    "title": "tetrad_fask",
+    "description": "fask objects",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/tetrad_fask"
+    },
+    "definitions": {
+        "tetrad_fask": {
+            "title": "tetrad_fask item",
+            "description": "fask instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "cci-test",
+                        "cg-lr-test",
+                        "fisher-z-test",
+                        "dg-lr-test",
+                        "kci-test"
+                    ]
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "test",
+                "datatype",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "fask-fisher-z",
+                    "test": "fisher-z-test",
+                    "datatype": "continuous",
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

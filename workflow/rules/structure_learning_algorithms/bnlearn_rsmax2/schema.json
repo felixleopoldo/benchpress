@@ -1,0 +1,114 @@
+{
+    "description": "bnlearn_rsmax2 objects",
+    "title": "bnlearn_rsmax2",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/bnlearn_rsmax2"
+    },
+    "definitions": {
+        "bnlearn_rsmax2": {
+            "title": "bnlearn_rsmax2 item",
+            "description": "2-phase Restricted Maximization algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "beta": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "restrict": {
+                    "type": "string"
+                },
+                "maximize": {
+                    "type": "string"
+                },
+                "score": {
+                    "type": "string"
+                },
+                "iss": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "issmu": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "issw": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "l": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                },
+                "k": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                },
+                "prior": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnatnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "rsmax2-bge-zf",
+                    "restrict": "si.hiton.pc",
+                    "maximize": "hc",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "score": "bge",
+                    "test": "zf",
+                    "iss": 1,
+                    "issmu": 1,
+                    "issw": null,
+                    "l": 5,
+                    "k": 1,
+                    "prior": "uniform",
+                    "beta": null,
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}
