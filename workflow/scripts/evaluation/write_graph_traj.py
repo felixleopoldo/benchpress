@@ -89,14 +89,15 @@ else:
     algobjid = snakemake.wildcards["id"]
     alg_item = None
     for algob in algs[alg]:
-        if algob["id"] == algobjid:
+        if algob["id"] == algobjid: 
             alg_item = algob
 
     # Get the varying parameter
     varying_param = "id"
     varying_param_val = alg_item["id"]
     for key, val in alg_item.items():
-        if isinstance(val, list) & (key != "mcmc_seed"):
+        # check if list and that it is not a estimator parameter
+        if isinstance(val, list) & (key not in ["mcmc_seed", "mcmc_estimator", "threshold", "burnin_frac"]): 
             varying_param = key
             varying_param_val = snakemake.wildcards[varying_param]
 
