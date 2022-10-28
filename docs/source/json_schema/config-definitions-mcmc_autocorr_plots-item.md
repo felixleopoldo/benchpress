@@ -1,4 +1,4 @@
-# mcmc_autocorr_plots item Schema
+# mcmc\_autocorr\_plots item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Plots the auto correlation for a given functional in a MCMC trajectory.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## mcmc_autocorr_plots_item Type
+## mcmc\_autocorr\_plots\_item Type
 
-unknown ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
+unknown ([mcmc\_autocorr\_plots item](config-definitions-mcmc_autocorr_plots-item.md))
 
-## mcmc_autocorr_plots_item Examples
+## mcmc\_autocorr\_plots\_item Examples
 
 ```json
 {
@@ -30,12 +30,12 @@ unknown ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.
 }
 ```
 
-# mcmc_autocorr_plots item Properties
+# mcmc\_autocorr\_plots\_item Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                     |
 | :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [id](#id)                 | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/id")                   |
-| [burn_in](#burn_in)       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")                             |
+| [burn\_in](#burn_in)      | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")                             |
 | [thinning](#thinning)     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/thinning")                      |
 | [active](#active)         | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc_autocorr_plots-item-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/active")           |
 | [lags](#lags)             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/lags")                          |
@@ -59,7 +59,7 @@ unknown ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.
 
 `string`
 
-## burn_in
+## burn\_in
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -73,7 +73,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_autocorr_plots_item/properties/burn_in")
 
-### burn_in Type
+### burn\_in Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 

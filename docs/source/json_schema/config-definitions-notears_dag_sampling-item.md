@@ -1,4 +1,4 @@
-# notears_dag_sampling item Schema
+# notears\_dag\_sampling item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling
@@ -7,23 +7,23 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 Graph sampling method provided by the notears package.
 Documentation: <https://github.com/jmoss20/notears>
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## notears_dag_sampling Type
+## notears\_dag\_sampling Type
 
-unknown ([notears_dag_sampling item](config-definitions-notears_dag_sampling-item.md))
+unknown ([notears\_dag\_sampling item](config-definitions-notears_dag_sampling-item.md))
 
-# notears_dag_sampling item Properties
+# notears\_dag\_sampling Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
-| :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)               | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/id")             |
-| [num_nodes](#num_nodes) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_nodes")                      |
-| [num_edges](#num_edges) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_edges")                      |
-| [mean](#mean)           | `number` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-mean.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/mean")         |
-| [variance](#variance)   | `number` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-variance.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/variance") |
+| Property                 | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                            |
+| :----------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/id")             |
+| [num\_nodes](#num_nodes) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_nodes")                      |
+| [num\_edges](#num_edges) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_edges")                      |
+| [mean](#mean)            | `number` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-mean.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/mean")         |
+| [variance](#variance)    | `number` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears_dag_sampling-item-properties-variance.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/variance") |
 
 ## id
 
@@ -43,7 +43,7 @@ unknown ([notears_dag_sampling item](config-definitions-notears_dag_sampling-ite
 
 `string` ([ID](config-definitions-notears_dag_sampling-item-properties-id.md))
 
-## num_nodes
+## num\_nodes
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -57,7 +57,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_nodes")
 
-### num_nodes Type
+### num\_nodes Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
@@ -67,7 +67,7 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-## num_edges
+## num\_edges
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -81,7 +81,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears_dag_sampling/properties/num_edges")
 
-### num_edges Type
+### num\_edges Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 

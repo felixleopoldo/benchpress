@@ -1,4 +1,4 @@
-# tetrad_fask item Schema
+# tetrad\_fask item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_fask
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 fask instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## tetrad_fask Type
+## tetrad\_fask Type
 
-`object` ([tetrad_fask item](config-definitions-tetrad_fask-item.md))
+`object` ([tetrad\_fask item](config-definitions-tetrad_fask-item.md))
 
-## tetrad_fask Examples
+## tetrad\_fask Examples
 
 ```json
 {
@@ -25,7 +25,7 @@ fask instance
 }
 ```
 
-# tetrad_fask item Properties
+# tetrad\_fask Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :-------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

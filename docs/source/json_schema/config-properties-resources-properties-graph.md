@@ -6,9 +6,9 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 The available graph sampling algorithms.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## graph Type
 
@@ -16,16 +16,15 @@ The available graph sampling algorithms.
 
 # graph Properties
 
-| Property                              | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                 |
-| :------------------------------------ | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [pcalg_randdag](#pcalg_randdag)       | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-pcalg_randdag.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag")       |
-| [notears](#notears)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears")                   |
-| [trilearn_cta](#trilearn_cta)         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_cta.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")         |
-| [bandmat](#bandmat)                   | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat")                   |
-| [rand_bandmat](#rand_bandmat)         | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-rand_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")         |
-| [bdgraph_graphsim](#bdgraph_graphsim) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-bdgraph_graphsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim") |
+| Property                                          | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                           |
+| :------------------------------------------------ | :------ | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [pcalg\_randdag](#pcalg_randdag)                  | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-pcalg_randdag.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag")                 |
+| [trilearn\_cta](#trilearn_cta)                    | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_cta.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")                   |
+| [trilearn\_bandmat](#trilearn_bandmat)            | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_bandmat")           |
+| [trilearn\_rand\_bandmat](#trilearn_rand_bandmat) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_rand_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_rand_bandmat") |
+| [bdgraph\_graphsim](#bdgraph_graphsim)            | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-bdgraph_graphsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")           |
 
-## pcalg_randdag
+## pcalg\_randdag
 
 Sampling graph using randDAG from the pcalg package.
 
@@ -33,43 +32,21 @@ Sampling graph using randDAG from the pcalg package.
 
 *   is optional
 
-*   Type: `object[]` ([pcalg_randdag item](config-definitions-pcalg_randdag-item.md))
+*   Type: `object[]` ([pcalg\_randdag item](config-definitions-pcalg_randdag-item.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-pcalg_randdag.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/pcalg_randdag")
 
-### pcalg_randdag Type
+### pcalg\_randdag Type
 
-`object[]` ([pcalg_randdag item](config-definitions-pcalg_randdag-item.md))
+`object[]` ([pcalg\_randdag item](config-definitions-pcalg_randdag-item.md))
 
-### pcalg_randdag Constraints
-
-**unique items**: all items in this array must be unique. Duplicates are not allowed.
-
-## notears
-
-
-
-`notears`
-
-*   is optional
-
-*   Type: unknown\[] ([notears_dag_sampling item](config-definitions-notears_dag_sampling-item.md))
-
-*   cannot be null
-
-*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-notears.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/notears")
-
-### notears Type
-
-unknown\[] ([notears_dag_sampling item](config-definitions-notears_dag_sampling-item.md))
-
-### notears Constraints
+### pcalg\_randdag Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 
-## trilearn_cta
+## trilearn\_cta
 
 Sample decomposable graph using the Christmas tree algorithm (CTA) from the trilearn package.
 
@@ -77,65 +54,65 @@ Sample decomposable graph using the Christmas tree algorithm (CTA) from the tril
 
 *   is optional
 
-*   Type: unknown\[] ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
+*   Type: unknown\[] ([trilearn\_cta item](config-definitions-trilearn_cta-item.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_cta.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_cta")
 
-### trilearn_cta Type
+### trilearn\_cta Type
 
-unknown\[] ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
+unknown\[] ([trilearn\_cta item](config-definitions-trilearn_cta-item.md))
 
-### trilearn_cta Constraints
+### trilearn\_cta Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 
-## bandmat
+## trilearn\_bandmat
 
 Generates a graph with band structured adjacency matrix.
 
-`bandmat`
+`trilearn_bandmat`
 
 *   is optional
 
-*   Type: unknown\[] ([bandmat item](config-definitions-bandmat-item.md))
+*   Type: unknown\[] ([trilearn\_bandmat item](config-definitions-trilearn_bandmat-item.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bandmat")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_bandmat")
 
-### bandmat Type
+### trilearn\_bandmat Type
 
-unknown\[] ([bandmat item](config-definitions-bandmat-item.md))
+unknown\[] ([trilearn\_bandmat item](config-definitions-trilearn_bandmat-item.md))
 
-### bandmat Constraints
+### trilearn\_bandmat Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 
-## rand_bandmat
+## trilearn\_rand\_bandmat
 
 Generates a graph with band structured adjacency matrix of varying with.
 
-`rand_bandmat`
+`trilearn_rand_bandmat`
 
 *   is optional
 
-*   Type: unknown\[] ([rand_bandmat item](config-definitions-rand_bandmat-item.md))
+*   Type: unknown\[] ([trilearn\_rand\_bandmat item](config-definitions-trilearn_rand_bandmat-item.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-rand_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/rand_bandmat")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-trilearn_rand_bandmat.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/trilearn_rand_bandmat")
 
-### rand_bandmat Type
+### trilearn\_rand\_bandmat Type
 
-unknown\[] ([rand_bandmat item](config-definitions-rand_bandmat-item.md))
+unknown\[] ([trilearn\_rand\_bandmat item](config-definitions-trilearn_rand_bandmat-item.md))
 
-### rand_bandmat Constraints
+### trilearn\_rand\_bandmat Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.
 
-## bdgraph_graphsim
+## bdgraph\_graphsim
 
 Generates an undirected graph using graph.sim from the R package BDgraph.
 
@@ -143,16 +120,16 @@ Generates an undirected graph using graph.sim from the R package BDgraph.
 
 *   is optional
 
-*   Type: unknown\[] ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
+*   Type: unknown\[] ([bdgraph\_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-graph-properties-bdgraph_graphsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph/properties/bdgraph_graphsim")
 
-### bdgraph_graphsim Type
+### bdgraph\_graphsim Type
 
-unknown\[] ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
+unknown\[] ([bdgraph\_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 
-### bdgraph_graphsim Constraints
+### bdgraph\_graphsim Constraints
 
 **unique items**: all items in this array must be unique. Duplicates are not allowed.

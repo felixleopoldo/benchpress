@@ -6,10 +6,10 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Guidici & Green parametrisarion
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## gg99\_singlepair Type
 
-`object[]` ([gg99\_singlepair item](config-definitions-gg99\_singlepair-item.md))
+`object[]` ([gg99\_singlepair item](config-definitions-gg99_singlepair-item.md))

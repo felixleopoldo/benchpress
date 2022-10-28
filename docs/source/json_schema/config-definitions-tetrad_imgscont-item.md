@@ -1,4 +1,4 @@
-# tetrad_imgscont item Schema
+# tetrad\_imgscont item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_imgscont
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 imgscont instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## tetrad_imgscont Type
+## tetrad\_imgscont Type
 
-`object` ([tetrad_imgscont item](config-definitions-tetrad_imgscont-item.md))
+`object` ([tetrad\_imgscont item](config-definitions-tetrad_imgscont-item.md))
 
-## tetrad_imgscont Examples
+## tetrad\_imgscont Examples
 
 ```json
 {
@@ -24,7 +24,7 @@ imgscont instance
 }
 ```
 
-# tetrad_imgscont item Properties
+# tetrad\_imgscont Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
 | :-------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

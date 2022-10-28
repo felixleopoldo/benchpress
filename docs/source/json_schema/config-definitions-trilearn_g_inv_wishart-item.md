@@ -1,4 +1,4 @@
-# trilearn_g_inv_wishart item Schema
+# trilearn\_g\_inv\_wishart item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_g_inv_wishart
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Parameter setting for a graph inverse-Wishart model
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## trilearn_g_inv_wishart Type
+## trilearn\_g\_inv\_wishart Type
 
-`object` ([trilearn_g_inv_wishart item](config-definitions-trilearn_g_inv_wishart-item.md))
+`object` ([trilearn\_g\_inv\_wishart item](config-definitions-trilearn_g_inv_wishart-item.md))
 
-## trilearn_g_inv_wishart Examples
+## trilearn\_g\_inv\_wishart Examples
 
 ```json
 {
@@ -23,7 +23,7 @@ Parameter setting for a graph inverse-Wishart model
 }
 ```
 
-# trilearn_g_inv_wishart item Properties
+# trilearn\_g\_inv\_wishart Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                    |
 | :---------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

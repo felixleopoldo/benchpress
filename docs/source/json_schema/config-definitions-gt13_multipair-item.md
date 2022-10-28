@@ -7,13 +7,13 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 Green & Thomas algorithm for learning decomopasble graphs.
 Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## gt13\_multipair Type
 
-`object` ([gt13\_multipair item](config-definitions-gt13\_multipair-item.md))
+`object` ([gt13\_multipair item](config-definitions-gt13_multipair-item.md))
 
 ## gt13\_multipair Examples
 
@@ -34,22 +34,22 @@ Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a 
 }
 ```
 
-# gt13\_multipair item Properties
+# gt13\_multipair Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
-| :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)               | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/id")             |
-| [datatype](#datatype)   | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/datatype") |
-| [n_samples](#n_samples) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/n_samples")                |
-| [penalty](#penalty)     | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/penalty")             |
-| [randomits](#randomits) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/randomits")                |
-| [prior](#prior)         | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/prior")       |
-| [ascore](#ascore)       | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/ascore")              |
-| [bscore](#bscore)       | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/bscore")              |
-| [clq](#clq)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/clq")                 |
-| [sep](#sep)             | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/sep")                 |
-| [timeout](#timeout)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/timeout")             |
-| [mcmc_seed](#mcmc_seed) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/mcmc_seed")                |
+| Property                 | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
+| :----------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/id")             |
+| [datatype](#datatype)    | `string` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/datatype") |
+| [n\_samples](#n_samples) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/n_samples")                |
+| [penalty](#penalty)      | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/penalty")             |
+| [randomits](#randomits)  | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/randomits")                |
+| [prior](#prior)          | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/prior")       |
+| [ascore](#ascore)        | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/ascore")              |
+| [bscore](#bscore)        | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/bscore")              |
+| [clq](#clq)              | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/clq")                 |
+| [sep](#sep)              | Merged   | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/sep")                 |
+| [timeout](#timeout)      | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/timeout")             |
+| [mcmc\_seed](#mcmc_seed) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/mcmc_seed")                |
 
 ## id
 
@@ -63,7 +63,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13\_multipair-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/id")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/id")
 
 ### id Type
 
@@ -81,7 +81,7 @@ Unique identifier
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13\_multipair-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/datatype")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-datatype.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/datatype")
 
 ### datatype Type
 
@@ -96,7 +96,7 @@ Unique identifier
 | `"discrete"`   |             |
 | `"continuous"` |             |
 
-## n_samples
+## n\_samples
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -108,9 +108,9 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/n_samples")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/n_samples")
 
-### n_samples Type
+### n\_samples Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
@@ -132,7 +132,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/penalty")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/penalty")
 
 ### penalty Type
 
@@ -160,7 +160,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/randomits")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/randomits")
 
 ### randomits Type
 
@@ -184,7 +184,7 @@ any of
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13\_multipair-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/prior")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-gt13_multipair-item-properties-prior.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/prior")
 
 ### prior Type
 
@@ -212,7 +212,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/ascore")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/ascore")
 
 ### ascore Type
 
@@ -240,7 +240,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/bscore")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/bscore")
 
 ### bscore Type
 
@@ -268,7 +268,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/clq")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/clq")
 
 ### clq Type
 
@@ -296,7 +296,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/sep")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/sep")
 
 ### sep Type
 
@@ -324,7 +324,7 @@ E.g. 1.5 or \[1.6, 3.8] or null.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/timeout")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/timeout")
 
 ### timeout Type
 
@@ -340,7 +340,7 @@ any of
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
-## mcmc_seed
+## mcmc\_seed
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -352,9 +352,9 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13\_multipair/properties/mcmc_seed")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gt13_multipair/properties/mcmc_seed")
 
-### mcmc_seed Type
+### mcmc\_seed Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 

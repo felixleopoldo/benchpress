@@ -6,11 +6,11 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## max_iters Type
+## max\_iters Type
 
 merged type ([Details](config-definitions-greedy-sparsest-permutations-gsp-properties-max_iters.md))
 
@@ -20,6 +20,6 @@ any of
 
 *   any of
 
-    *   [nonnegint type](config-definitions-nonnegint-type.md "check type definition")
+    *   [nonnegint type](config-definitions-non-negative-integers-1-anyof-nonnegint-type.md "check type definition")
 
     *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")

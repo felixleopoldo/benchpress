@@ -1,4 +1,4 @@
-# trilearn_intra-class item Schema
+# trilearn\_intra-class item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_intra-class
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Parameter setting for a graph intra-class model
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## trilearn_intra-class Type
+## trilearn\_intra-class Type
 
-`object` ([trilearn_intra-class item](config-definitions-trilearn_intra-class-item.md))
+`object` ([trilearn\_intra-class item](config-definitions-trilearn_intra-class-item.md))
 
-## trilearn_intra-class Examples
+## trilearn\_intra-class Examples
 
 ```json
 {
@@ -24,7 +24,7 @@ Parameter setting for a graph intra-class model
 }
 ```
 
-# trilearn_intra-class item Properties
+# trilearn\_intra-class Properties
 
 | Property          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :---------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

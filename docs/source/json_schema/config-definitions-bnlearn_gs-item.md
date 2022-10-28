@@ -1,4 +1,4 @@
-# bnlearn_gs item Schema
+# bnlearn\_gs item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_gs
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Grow shrink (GS) algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_gs Type
+## bnlearn\_gs Type
 
-`object` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
+`object` ([bnlearn\_gs item](config-definitions-bnlearn_gs-item.md))
 
-## bnlearn_gs Examples
+## bnlearn\_gs Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ Grow shrink (GS) algorithm instance
 }
 ```
 
-# bnlearn_gs item Properties
+# bnlearn\_gs Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                            |
 | :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

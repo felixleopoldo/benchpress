@@ -1,4 +1,4 @@
-# tetrad_gfci item Schema
+# tetrad\_gfci item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_gfci
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 GFCI instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## tetrad_gfci Type
+## tetrad\_gfci Type
 
-`object` ([tetrad_gfci item](config-definitions-tetrad_gfci-item.md))
+`object` ([tetrad\_gfci item](config-definitions-tetrad_gfci-item.md))
 
-## tetrad_gfci Examples
+## tetrad\_gfci Examples
 
 ```json
 {
@@ -34,7 +34,7 @@ GFCI instance
 }
 ```
 
-# tetrad_gfci item Properties
+# tetrad\_gfci Properties
 
 | Property                            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                          |
 | :---------------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

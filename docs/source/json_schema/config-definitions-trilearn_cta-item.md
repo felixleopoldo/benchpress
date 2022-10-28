@@ -1,4 +1,4 @@
-# trilearn_cta item Schema
+# trilearn\_cta item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_cta
@@ -7,15 +7,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 Graph sampling method provided by the trilearn package.
 Documentation: <https://github.com/felixleopoldo/trilearn>
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## trilearn_cta Type
+## trilearn\_cta Type
 
-unknown ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
+unknown ([trilearn\_cta item](config-definitions-trilearn_cta-item.md))
 
-## trilearn_cta Examples
+## trilearn\_cta Examples
 
 ```json
 {
@@ -26,7 +26,7 @@ unknown ([trilearn_cta item](config-definitions-trilearn_cta-item.md))
 }
 ```
 
-# trilearn_cta item Properties
+# trilearn\_cta Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                |
 | :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

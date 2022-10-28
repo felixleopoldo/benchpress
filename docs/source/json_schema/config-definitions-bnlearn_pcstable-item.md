@@ -1,4 +1,4 @@
-# bnlearn_pcstable item Schema
+# bnlearn\_pcstable item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_pcstable
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 PC satble algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_pcstable Type
+## bnlearn\_pcstable Type
 
-`object` ([bnlearn_pcstable item](config-definitions-bnlearn_pcstable-item.md))
+`object` ([bnlearn\_pcstable item](config-definitions-bnlearn_pcstable-item.md))
 
-## bnlearn_pcstable Examples
+## bnlearn\_pcstable Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ PC satble algorithm instance
 }
 ```
 
-# bnlearn_pcstable item Properties
+# bnlearn\_pcstable Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                        |
 | :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

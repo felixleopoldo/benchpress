@@ -1,4 +1,4 @@
-# pcalg_pc item Schema
+# pcalg\_pc item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/pcalg_pc
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 PC algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## pcalg_pc Type
+## pcalg\_pc Type
 
-`object` ([pcalg_pc item](config-definitions-pcalg_pc-item.md))
+`object` ([pcalg\_pc item](config-definitions-pcalg_pc-item.md))
 
-## pcalg_pc Examples
+## pcalg\_pc Examples
 
 ```json
 {
@@ -39,7 +39,7 @@ PC algorithm instance
 }
 ```
 
-# pcalg_pc item Properties
+# pcalg\_pc Properties
 
 | Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                            |
 | :---------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

@@ -1,4 +1,4 @@
-# bdgraph_graphsim item Schema
+# bdgraph\_graphsim item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_graphsim
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 BDgraph graph.sim
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bdgraph_graphsim Type
+## bdgraph\_graphsim Type
 
-unknown ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
+unknown ([bdgraph\_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 
-## bdgraph_graphsim Examples
+## bdgraph\_graphsim Examples
 
 ```json
 {
@@ -27,7 +27,7 @@ unknown ([bdgraph_graphsim item](config-definitions-bdgraph_graphsim-item.md))
 }
 ```
 
-# bdgraph_graphsim item Properties
+# bdgraph\_graphsim Properties
 
 | Property        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                              |
 | :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

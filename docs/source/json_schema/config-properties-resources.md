@@ -6,9 +6,9 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 The available modules for generating graphs, parameters, data and structure learning algorithms.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## resources Type
 
@@ -16,12 +16,12 @@ unknown ([resources](config-properties-resources.md))
 
 # resources Properties
 
-| Property                                                        | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                         |
-| :-------------------------------------------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [data](#data)                                                   | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data")                                                   |
-| [graph](#graph)                                                 | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph")                                                 |
-| [parameters](#parameters)                                       | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-parameters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters")                                       |
-| [structure_learning_algorithms](#structure_learning_algorithms) | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms") |
+| Property                                                          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                         |
+| :---------------------------------------------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [data](#data)                                                     | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data")                                                   |
+| [graph](#graph)                                                   | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-graph.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/graph")                                                 |
+| [parameters](#parameters)                                         | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-parameters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/parameters")                                       |
+| [structure\_learning\_algorithms](#structure_learning_algorithms) | `object` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms") |
 
 ## data
 
@@ -99,7 +99,7 @@ The available parameter sampling algorithms
 
 `object` ([parameters](config-properties-resources-properties-parameters.md))
 
-## structure_learning_algorithms
+## structure\_learning\_algorithms
 
 The available structure learning algorithms
 
@@ -107,12 +107,12 @@ The available structure learning algorithms
 
 *   is required
 
-*   Type: `object` ([structure_learning_algorithms](config-properties-resources-properties-structure_learning_algorithms.md))
+*   Type: `object` ([structure\_learning\_algorithms](config-properties-resources-properties-structure_learning_algorithms.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-structure_learning_algorithms.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms")
 
-### structure_learning_algorithms Type
+### structure\_learning\_algorithms Type
 
-`object` ([structure_learning_algorithms](config-properties-resources-properties-structure_learning_algorithms.md))
+`object` ([structure\_learning\_algorithms](config-properties-resources-properties-structure_learning_algorithms.md))

@@ -1,4 +1,4 @@
-# bnlearn_sihitonpc item Schema
+# bnlearn\_sihitonpc item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_sihitonpc
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Semi-Interleaved Hiton-PC algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_sihitonpc Type
+## bnlearn\_sihitonpc Type
 
-`object` ([bnlearn_sihitonpc item](config-definitions-bnlearn_sihitonpc-item.md))
+`object` ([bnlearn\_sihitonpc item](config-definitions-bnlearn_sihitonpc-item.md))
 
-## bnlearn_sihitonpc Examples
+## bnlearn\_sihitonpc Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ Semi-Interleaved Hiton-PC algorithm instance
 }
 ```
 
-# bnlearn_sihitonpc item Properties
+# bnlearn\_sihitonpc Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                          |
 | :------------------------ | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

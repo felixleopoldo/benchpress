@@ -1,4 +1,4 @@
-# tetrad_lingam item Schema
+# tetrad\_lingam item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/tetrad_lingam
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 lingam instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## tetrad_lingam Type
+## tetrad\_lingam Type
 
-`object` ([tetrad_lingam item](config-definitions-tetrad_lingam-item.md))
+`object` ([tetrad\_lingam item](config-definitions-tetrad_lingam-item.md))
 
-## tetrad_lingam Examples
+## tetrad\_lingam Examples
 
 ```json
 {
@@ -24,7 +24,7 @@ lingam instance
 }
 ```
 
-# tetrad_lingam item Properties
+# tetrad\_lingam Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                              |
 | :-------------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
