@@ -27,7 +27,6 @@ def heatmap_plots():
 
 rule mcmc_heatmap_plot:
     input:
-        "workflow/scripts/evaluation/plot_heatmap_from_graphtraj.py",
         traj="{output_dir}/adjvecs/"\
             "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
@@ -52,7 +51,7 @@ rule mcmc_heatmap_plot:
     container:
         docker_image("networkx")
     script:
-        "../scripts/evaluation/plot_heatmap_from_graphtraj.py"
+        "plot_heatmap_from_graphtraj.py"
 
 
 rule mcmc_heatmaps:

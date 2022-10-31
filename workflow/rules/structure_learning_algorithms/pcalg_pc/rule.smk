@@ -4,6 +4,7 @@ rule pcalg_pc:
     output:
         adjmat=alg_output_adjmat_path("pcalg_pc"),
         time=alg_output_time_path("pcalg_pc"),
+        ntests=touch(alg_output_ntests_path("pcalg_pc"))
     container:
         docker_image("pcalg")
     script:

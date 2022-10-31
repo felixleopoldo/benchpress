@@ -261,8 +261,6 @@
                         "mcmc_autocorr_plots"
                     ],
                     "additionalProperties": false
-                    
-                    
                 }
             },
             "required": [
@@ -442,7 +440,32 @@
                             "description": "List of mylib_myalg objects",
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/mylib_myalg"
+                                "title": "mylib_myalg item",
+                                "description": "Parameter setting for mylib_myalg.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "desciption": "Algorithm identifier",
+                                        "type": "string"
+                                    },
+                                    "timeout": {
+                                        "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "examples": [
+                                    {
+                                        "id": "mysetting",
+                                        "param1": "myparamval",
+                                        "param2": [
+                                            2,
+                                            3,
+                                            5
+                                        ]
+                                    }
+                                ]
                             },
                             "uniqueItems": true
                         },
@@ -1130,7 +1153,6 @@
                 }
             ]
         },
-        
         "data_setup_dict": {
             "type": "object",
             "title": "data item",
@@ -1982,7 +2004,10 @@
                     "factor": 2,
                     "progress_bar": false,
                     "summarize": false,
-                    "alpha":[0.05, 0.001],
+                    "alpha": [
+                        0.05,
+                        0.001
+                    ],
                     "invert": true,
                     "timeout": null
                 }
@@ -2787,7 +2812,7 @@
                 }
             ]
         },
-        "tetrad_fofc":{
+        "tetrad_fofc": {
             "title": "tetrad_fofc item",
             "description": "fofc instance",
             "type": "object",
@@ -2817,7 +2842,7 @@
                 }
             ]
         },
-        "tetrad_ftfc":{
+        "tetrad_ftfc": {
             "title": "tetrad_ftfc item",
             "description": "ftfc instance",
             "type": "object",
@@ -2847,7 +2872,7 @@
                 }
             ]
         },
-        "tetrad_lingam":{
+        "tetrad_lingam": {
             "title": "tetrad_lingam item",
             "description": "lingam instance",
             "type": "object",
@@ -2877,7 +2902,7 @@
                 }
             ]
         },
-        "tetrad_imgscont":{
+        "tetrad_imgscont": {
             "title": "tetrad_imgscont item",
             "description": "imgscont instance",
             "type": "object",

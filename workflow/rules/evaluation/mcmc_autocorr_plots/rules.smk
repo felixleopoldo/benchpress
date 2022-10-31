@@ -100,7 +100,6 @@ for algid in mcmc_alg_ids:
 
 rule mcmc_autocorr_plot:
     input:
-         "workflow/scripts/evaluation/plot_autocorr_from_traj.py",
          traj="{output_dir}/adjvecs/"\
             "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
@@ -126,7 +125,7 @@ rule mcmc_autocorr_plot:
     container:
         docker_image("networkx")
     script:
-        "../scripts/evaluation/plot_autocorr_from_traj.py"
+        "plot_autocorr_from_traj.py"
 
 # Joins processed trajs
 rule mcmc_autocorr_plots_join_trajs:

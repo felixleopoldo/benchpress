@@ -7,8 +7,8 @@
 # Therefore these algorithms has an additional rule which creates a estimate based on
 # the trajectory,
 
-include: "path_generators.smk"
-include: "shell_commands.py"
+include: "path_generators.py"
+
 
 rule benchmarks_combine_data:
     input:
@@ -49,28 +49,34 @@ rule benchmarks:
 
 
 for alg in config["resources"]["structure_learning_algorithms"]:
+    if alg in pattern_strings:
+        rule: 
+            name: 
+                alg+"_summary"
+            input:
+                dataset=summarise_alg_input_data_path(),
+                adjmat_true=summarise_alg_input_adjmat_true_path(),
+                adjmat_est=summarise_alg_input_adjmat_est_path(alg),
+                time=summarise_alg_input_time_path(alg),
+                ntests=summarise_alg_input_ntests_path(alg),
+            output:
+                res=summarise_alg_output_res_path(alg)
+            
+            params: 
+                alg=alg,
+                config=configfilename
+            script:
+                # Had to use this wrapper script for some reason to get the right parameters.
+                "benchmarks_csv.py" 
 
-    rule:
-        input:
-            "workflow/rules/evaluation/benchmarks/run_summarise.R",
-            data=summarise_alg_input_data_path(),
-            adjmat_true=summarise_alg_input_adjmat_true_path(),
-            adjmat_est=summarise_alg_input_adjmat_est_path(alg),
-            time=summarise_alg_input_time_path(alg),
-            ntests=summarise_alg_input_ntests_path(alg),
-        output:
-            res=summarise_alg_output_res_path(alg),
-        shell:
-            summarise_alg_shell(alg)
+        # TODO: Special for mcmc algorithms
 
-    # TODO: Special for mcmc algorithms
-
-    rule:
-        input:
-            "workflow/rules/evaluation/benchmarks/run_summarise.R",
-            conf=configfilename,
-            res=join_string_sampled_model(alg),
-        output:
-            join_summaries_output(alg),
-        script:
-            "../rules/evaluation/benchmarks/join_csv_files.R"
+        rule:
+            input:
+                "workflow/rules/evaluation/benchmarks/run_summarise.R",
+                conf=configfilename,
+                res=join_string_sampled_model(alg),
+            output:
+                join_summaries_output(alg),
+            script:
+                "../../../scripts/evaluation/join_csv_files.R"

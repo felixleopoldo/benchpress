@@ -13,14 +13,15 @@ if "gt13_multipair" in pattern_strings:
 
     rule gt13_multipair_est:
         input:
-            "workflow/scripts/evaluation/graphtraj_est.py",
             traj=alg_output_seqgraph_path_nocomp("gt13_multipair"),
         output:
             adjmat=alg_output_adjmat_path("gt13_multipair"),
         params:
             graph_type="chordal",
-            estimator="map",
+            estimator="threshold",
+            threshold="{threshold}",
+            burnin="{burnin}"
         container:
             docker_image("networkx")
         script:
-            "../scripts/evaluation/graphtraj_est.py"
+            "../../../scripts/evaluation/graphtraj_est.py"

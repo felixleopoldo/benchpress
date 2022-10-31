@@ -1,4 +1,4 @@
-from filenames import *
+include: "filenames.py"
 
 rule compress:
     input:
@@ -38,7 +38,6 @@ for algid in mcmc_alg_ids:
         rule:
             input:
                 configfilename, # the variyng param might change
-                "workflow/scripts/evaluation/write_graph_traj.py",
                 traj="{output_dir}/adjvecs/"\
                     "adjmat=/{adjmat_string}/"\
                     "parameters=/{param_string}/"\

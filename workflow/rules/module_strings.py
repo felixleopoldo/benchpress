@@ -149,7 +149,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
         num_lines = sum(1 for line in open("resources/data/mydatasets/"+data_id)) - 1
         return "fixed" + \
             "/filename="+data_id + \
-            "/n="+str(num_lines) + \ 
+            "/n="+str(num_lines) + \
             "/seed="+str(seed) 
 
     elif Path("resources/data/mydatasets/"+data_id).exists():        
@@ -158,7 +158,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
 
         return ["fixed" + \
                 "/filename="+data_id + "/"+ f + \
-                "/n="+str(None) + \ 
+                "/n="+str(None) + \
                 "/seed="+str(seed) for f in files]
 
     elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
@@ -166,7 +166,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
         data = next(item for item in config["resources"]["data"]["iid"] if item["id"] == data_id)
         if seed_in_path: # seed_in_path is a hack..
             return expand("iid" +\
-                            "/standardized={standardized}" + \ 
+                            "/standardized={standardized}" + \
                             "/n={n}" + \
                             "/seed={seed}", 
                             n = data["sample_sizes"],
@@ -174,7 +174,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             seed = seed)
         else:
             return expand("iid" +\
-                        "/standardized={standardized}" + \ 
+                        "/standardized={standardized}" + \
                             "/n={n}",
                             standardized = data["standardized"],
                             n = data["sample_sizes"])
