@@ -26,22 +26,22 @@
                     "type": "boolean"
                 },
                 "plus1it": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 },
                 "posterior": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprobnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
                 },
                 "softlimit": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "hardlimit": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "gamma": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "cpdag": {
                     "type": "boolean"
@@ -56,19 +56,19 @@
                     "type": "string"
                 },
                 "chi": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "edgepf": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "am": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "aw": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

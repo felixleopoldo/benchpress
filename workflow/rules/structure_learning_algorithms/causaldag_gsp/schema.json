@@ -18,10 +18,10 @@
                     "description": "Unique identifier for that can be used as reference in the benchmark_setup."
                 },
                 "nruns": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "depth": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "verbose": {
                     "type": "boolean"
@@ -40,7 +40,7 @@
                     "type": "boolean"
                 },
                 "factor": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "progress_bar": {
                     "type": "boolean"
@@ -62,13 +62,13 @@
                     "type": "boolean"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprobnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
                 },
                 "invert": {
                     "type": "boolean"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

@@ -16,13 +16,13 @@
                     "description": "Unique identifier"
                 },
                 "min_rate_of_progress": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "penalty_growth_rate": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "optimation_accuracy": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "loss": {
                     "type": "string",
@@ -39,7 +39,7 @@
                     ]
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

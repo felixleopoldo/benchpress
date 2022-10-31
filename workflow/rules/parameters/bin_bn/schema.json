@@ -16,10 +16,10 @@
                     "type": "string"
                 },
                 "min": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "max": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 }
             },
             "required": [

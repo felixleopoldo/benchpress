@@ -16,10 +16,10 @@
                     "type": "string"
                 },
                 "n_levels": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "pseudo_obs": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 }
             },
             "required": [

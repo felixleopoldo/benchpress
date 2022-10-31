@@ -16,7 +16,7 @@
                     "type": "string"
                 },
                 "dof": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 }
             },
             "required": [

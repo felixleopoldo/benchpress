@@ -16,7 +16,7 @@
                     "description": "Unique identifier"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "test": {
                     "type": "string",
@@ -47,10 +47,10 @@
                     ]
                 },
                 "B": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnatnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
                 },
                 "maxsx": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnatnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
                 },
                 "debug": {
                     "type": "boolean"
@@ -59,7 +59,7 @@
                     "type": "boolean"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

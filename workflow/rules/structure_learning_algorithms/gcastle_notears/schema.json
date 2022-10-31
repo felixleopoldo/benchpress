@@ -21,16 +21,16 @@
                     "type": "string"
                 },
                 "lambda1": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "max_iter": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "w_threshold": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "rho_max": {
                     "type": "string"

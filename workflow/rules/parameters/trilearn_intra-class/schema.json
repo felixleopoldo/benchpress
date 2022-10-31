@@ -16,10 +16,10 @@
                     "type": "string"
                 },
                 "rho": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "sigma2": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 }
             },
             "required": [

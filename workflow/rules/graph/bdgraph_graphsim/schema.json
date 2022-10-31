@@ -16,10 +16,10 @@
                     "type": "string"
                 },
                 "p": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "prob": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "graph": {
                     "type": "string",
@@ -34,10 +34,10 @@
                     ]
                 },
                 "class": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 },
                 "size": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 }
             },
             "required": [

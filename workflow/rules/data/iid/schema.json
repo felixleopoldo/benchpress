@@ -17,7 +17,7 @@
                     "type": "string"
                 },
                 "sample_sizes": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "standardized": {
                     "type": "boolean"

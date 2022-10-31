@@ -16,10 +16,10 @@
                     "description": "Unique identifier"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "max_ord": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 },
                 "skeleton": {
                     "type": "boolean"
@@ -28,7 +28,7 @@
                     "type": "boolean"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

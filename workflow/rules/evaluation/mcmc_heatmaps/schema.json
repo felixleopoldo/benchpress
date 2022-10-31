@@ -36,7 +36,7 @@
                 },
                 "burn_in": {
                     "title": "Burn-in start index.",
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 }
             },
             "required": [

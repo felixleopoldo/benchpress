@@ -26,7 +26,7 @@ for arg in args:
 configfile: configfilename
 
 
-snakemake.utils.validate(config, "schemas/newschema.json")
+snakemake.utils.validate(config, "schemas/config.schema.json")
 
 
 include: "rules/docker_images.smk"

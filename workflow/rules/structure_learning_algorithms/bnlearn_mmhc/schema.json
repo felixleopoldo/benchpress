@@ -16,7 +16,7 @@
                     "description": "Unique identifier"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "test": {
                     "type": "string",
@@ -47,31 +47,31 @@
                     ]
                 },
                 "beta": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "score": {
                     "type": "string"
                 },
                 "iss": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "issmu": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "issw": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 },
                 "l": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 },
                 "k": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
                 },
                 "prior": {
                     "type": "string"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnatnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
                 }
             },
             "additionalProperties": false,

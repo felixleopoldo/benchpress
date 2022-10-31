@@ -17,7 +17,7 @@
                     "type": "string"
                 },
                 "n": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "method": {
                     "type": "string",
@@ -42,7 +42,7 @@
                     ]
                 },
                 "noise_scale": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnum"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
                 },
                 "standardized": {
                     "type": "boolean"

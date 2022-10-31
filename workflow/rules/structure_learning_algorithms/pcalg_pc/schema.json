@@ -16,7 +16,7 @@
                     "description": "Unique identifier"
                 },
                 "alpha": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexprob"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "indepTest": {
                     "type": "string",
@@ -28,7 +28,7 @@
                     ]
                 },
                 "numCores": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "verbose": {
                     "type": "boolean"
@@ -37,7 +37,7 @@
                     "type": "boolean"
                 },
                 "mmax": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegintstring"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintstring"
                 },
                 "u2pd": {
                     "type": "string",
@@ -65,7 +65,7 @@
                     "type": "boolean"
                 },
                 "timeout": {
-                    "$ref": "../../../schemas/config.schema.json#/definitions/flexnonnegnumnull"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
                 }
             },
             "additionalProperties": false,

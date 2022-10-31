@@ -187,9 +187,9 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
         ylim(ylim[1], ylim[2])
       }
     } +
-    xlab("FPRp") +
-    ylab("TPR") +
-    ggtitle("Median FPRp/TPR (pattern graph)") +
+    xlab("FP/P") +
+    ylab("TP/P") +
+    ggtitle("Median FP/P vs. TP/P (pattern graph)") +
     labs(col = "id") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))
@@ -308,9 +308,9 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
         ylim(ylim[1], ylim[2])
       }
     } +
-    xlab("FPRp") +
-    ylab("TPR") +
-    ggtitle("Median FPRp/TPR (undirected skeleton)") +
+    xlab("FP/P") +
+    ylab("TP/P") +
+    ggtitle("Median FP/P vs. TP/P (undirected skeleton)") +
     labs(col = "id") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))
