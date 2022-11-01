@@ -60,7 +60,7 @@ rule sample_g_inverse_wishart:
 
 rule sample_rgwish_data:
     input:
-        "workflow/scripts/data_sampling/numpy_sample_mvn_data.py",
+        "workflow/rules/data/iid/numpy_sample_mvn_data.py",
         cov="{output_dir}/parameters/bdgraph_rgwish/{bn}/adjmat=/{adjmat}.csv" # This could probably be relaxed
     output:
         data="{output_dir}/data" \
@@ -70,7 +70,7 @@ rule sample_rgwish_data:
     container:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
 """
 TODO: Standardisation should better be done in a separate preprocessing module 

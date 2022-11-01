@@ -1,10 +1,13 @@
 
-rule trilearn_pgibbs:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjvecs=alg_output_seqgraph_path("trilearn_pgibbs"),
-        time=alg_output_time_path("trilearn_pgibbs"),
+        adjvecs=alg_output_seqgraph_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name))
     container:
         docker_image("trilearn")
     shell:
@@ -30,18 +33,3 @@ rule trilearn_pgibbs:
             echo None > {output.time};
         fi
         """
-
-rule trilearn_est:
-    input:
-        traj=alg_output_seqgraph_path_nocomp("trilearn_pgibbs")
-    output:
-        adjmat=alg_output_adjmat_path("trilearn_pgibbs"),  #here is the difference from order_mcmc. matching diffferently.
-    params:
-        graph_type="chordal",
-        estimator="threshold",
-        threshold="{threshold}",
-        burnin="{burnin}"
-    container:
-        docker_image("networkx")
-    script:
-        "../../../scripts/evaluation/graphtraj_est.py"

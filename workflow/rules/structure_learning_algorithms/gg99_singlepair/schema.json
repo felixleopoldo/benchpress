@@ -51,6 +51,33 @@
                 },
                 "timeout": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "threshold": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 }
             },
             "additionalProperties": false,
@@ -64,7 +91,7 @@
             ],
             "examples": [
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "gg99",
                     "n_samples": 1000000,
                     "datatype": "continuous",
                     "randomits": 1000,

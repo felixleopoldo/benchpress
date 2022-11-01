@@ -56,6 +56,33 @@
                 },
                 "mcmc_seed": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                },
+                "threshold": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 }
             },
             "additionalProperties": false,
@@ -69,7 +96,7 @@
             ],
             "examples": [
                 {
-                    "id": "gt13_multipair_bc-cont",
+                    "id": "gt13",
                     "n_samples": 1000000,
                     "datatype": "continuous",
                     "randomits": 1000,

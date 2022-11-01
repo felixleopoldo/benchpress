@@ -6,7 +6,7 @@ rule compress:
     output:
         "{whatever}/adjvecs.tar.gz"
     shell:
-        "tar -cvzf {output} {input}"
+        "tar -czf {output} {input}"
 
 rule extract:
     input:
@@ -14,7 +14,7 @@ rule extract:
     output:
         temp("{whatever}/adjvecs.csv")
     shell:
-        "tar -xvf {input} && mv {wildcards.whatever}/adjvecs_tobecompressed.csv {output}"
+        "tar -xf {input} && mv {wildcards.whatever}/adjvecs_tobecompressed.csv {output}"
 
 # From the alg id we could easily determine the varying paramter by checking which key has
 # a list instead of a single value. But we need to match the id and we need to match the

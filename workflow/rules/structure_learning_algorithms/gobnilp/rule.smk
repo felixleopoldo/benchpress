@@ -1,6 +1,7 @@
 """
     The shell commands should be put in a separate bash script.
 """
+
 rule gobnilp:
     input:
         data=alg_input_data(),

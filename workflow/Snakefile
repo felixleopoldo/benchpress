@@ -39,18 +39,21 @@ rule all:
         get_active_rules
 
 
+mcmc_modules = ["bdgraph", "bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]
+
 # Validate JSON file based on its values.
 include: "rules/validate.py"
 include: "rules/module_patterns.py"
 include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
 
+
+
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
     if (p / "rule.smk").is_file():
         if p.name in pattern_strings:
             include: Path("rules/graph/", p.name, "rule.smk")
-
 
 
 # Include the parameters modules
@@ -68,15 +71,41 @@ for p in Path("workflow/rules/data/").glob("*"):
 
 
 # Include the structure_learning_algorithms modules
+
 for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
+    module_name = p.name # This is used inside the module to get their names
+    
     if (p / "rules.smk").is_file():
         pass
         #print(Path("rules/structure_learning_algorithms/", p.name, "rules.smk"))
         #include: Path("rules/structure_learning_algorithms/", p.name, "rules.smk")
-
+    
     if (p / "rule.smk").is_file():
+        
         if p.name in pattern_strings:
+            # set the module name here
+            
             include: Path("rules/structure_learning_algorithms/", p.name, "rule.smk")
+
+            if p.name in mcmc_modules:
+                
+                rule:
+                    name:
+                        p.name + "_estimation"
+                    input:
+                        traj=alg_output_seqgraph_path_fine_match(p.name)
+                    output:
+                        adjmat=adjmat_estimate_path_mcmc(p.name)  # here is the difference from order_mcmc. matching diffferently.
+                    params:
+                        graph_type="chordal",
+                        estimator="{mcmc_estimator}",
+                        threshold="{threshold}",
+                        burnin_frac="{burnin_frac}"
+
+                    container:
+                        docker_image("networkx")
+                    script:
+                        "scripts/evaluation/graphtraj_est.py"
 
 
 # Include the evaluation modules

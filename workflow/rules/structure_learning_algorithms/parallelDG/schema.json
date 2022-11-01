@@ -37,6 +37,33 @@
                 },
                 "timeout": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "threshold": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 }
             },
             "required": [

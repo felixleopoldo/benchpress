@@ -34,6 +34,8 @@ if "bidag_order_mcmc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in order_mcmc_list } )
 
+
+
 if "bidag_partition_mcmc" in pattern_strings:
     bidag_partition_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"]
     # The path to the startspace algorithm is extended here
@@ -42,6 +44,14 @@ if "bidag_partition_mcmc" in pattern_strings:
 
     json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
                         for val in bidag_partition_mcmc_list } )
+
+
+# parallelDG has MCMC estimator
+
+for alg in mcmc_modules:
+    if alg in pattern_strings:
+        json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
+                            for val in config["resources"]["structure_learning_algorithms"][alg]})
 
 # Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}

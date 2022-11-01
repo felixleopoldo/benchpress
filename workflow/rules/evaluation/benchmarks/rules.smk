@@ -50,28 +50,48 @@ rule benchmarks:
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if alg in pattern_strings:
-        rule: 
-            name: 
-                alg+"_summary"
-            input:
-                dataset=summarise_alg_input_data_path(),
-                adjmat_true=summarise_alg_input_adjmat_true_path(),
-                adjmat_est=summarise_alg_input_adjmat_est_path(alg),
-                time=summarise_alg_input_time_path(alg),
-                ntests=summarise_alg_input_ntests_path(alg),
-            output:
-                res=summarise_alg_output_res_path(alg)
-            
-            params: 
-                alg=alg,
-                config=configfilename
-            script:
-                # Had to use this wrapper script for some reason to get the right parameters.
-                "benchmarks_csv.py" 
+        if alg not in mcmc_modules:
+            rule: 
+                name: 
+                    alg+"_summary"
+                input:
+                    dataset=summarise_alg_input_data_path(),
+                    adjmat_true=summarise_alg_input_adjmat_true_path(),
+                    adjmat_est=summarise_alg_input_adjmat_est_path(alg),
+                    time=summarise_alg_input_time_path(alg),
+                    ntests=summarise_alg_input_ntests_path(alg),
+                output:
+                    res=summarise_alg_output_res_path(alg)
+                
+                params: 
+                    alg=alg,
+                    config=configfilename
+                script:
+                    # Had to use this wrapper script for some reason to get the right parameters.
+                    "benchmarks_csv.py" 
 
         # TODO: Special for mcmc algorithms
+        else:        
+            rule:
+                name: 
+                    alg+"_summary_mcmc"
+                input:
+                    dataset=data_path(),
+                    adjmat_true=adjmat_true_path(),
+                    adjmat_est=adjmat_estimate_path_mcmc(alg),
+                    time=time_path(alg)
+                output:
+                    res=result_path_mcmc(alg),  # {data} is used for the data module here. not as the whole datamodel
+                params: 
+                    alg=alg,
+                    config=configfilename
+                script:
+                    # Had to use this wrapper script for some reason to get the right parameters.
+                    "benchmarks_csv.py" 
 
         rule:
+            name:
+                alg+"_joined_benchmarks"
             input:
                 "workflow/rules/evaluation/benchmarks/run_summarise.R",
                 conf=configfilename,
@@ -80,3 +100,4 @@ for alg in config["resources"]["structure_learning_algorithms"]:
                 join_summaries_output(alg),
             script:
                 "../../../scripts/evaluation/join_csv_files.R"
+

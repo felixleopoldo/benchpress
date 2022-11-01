@@ -1,11 +1,17 @@
-rule parallelDG:
+# BUG: 
+# 1. not providing index 0 in graph traj.
+# 2. does not read labels from data header.
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjvecs=alg_output_seqgraph_path("parallelDG"),
-        time=alg_output_time_path("parallelDG"),
+        adjvecs=alg_output_seqgraph_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name))
     container:
-        docker_image("parallelDG")
+        "docker://hallawalla/paralleldg:0.8" 
     shell:
         """
         if [ {wildcards.timeout} = \"None\" ]; then
@@ -29,19 +35,3 @@ rule parallelDG:
             echo None > {output.time};
         fi
         """
-
-rule parallelDG_est:
-    input:
-        traj=alg_output_seqgraph_path_nocomp("parallelDG"),
-    output:
-        adjmat=alg_output_adjmat_path("parallelDG"),  #here is the difference from order_mcmc. matching diffferently.
-    params:
-        graph_type="chordal",
-        estimator="threshold",
-        threshold="{threshold}",
-        burnin="{burnin}"
-
-    container:
-        docker_image("networkx")
-    script:
-        "../../../scripts/evaluation/graphtraj_est.py"

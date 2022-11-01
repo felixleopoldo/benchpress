@@ -31,7 +31,6 @@ for alg in config["resources"]["structure_learning_algorithms"].keys():
     pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
 
 
-
 # graph modules
 for module in config["resources"]["graph"]:
     pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["graph"][module])
@@ -46,6 +45,7 @@ pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(c
 pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])
 
 # Estimation parameters of mcmc algorithms
-pattern_strings["mcmc_est"] = "estimation_method/"\
+pattern_strings["mcmc_est"] = "mcmc_params/"\
+                            "mcmc_estimator={mcmc_estimator}/"\
                             "threshold={threshold}/"\
-                            "burnin={burnin}"
+                            "burnin_frac={burnin_frac}"
