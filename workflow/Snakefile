@@ -51,8 +51,8 @@ include: "rules/filename_patterns.py"
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
-    if (p / "rule.smk").is_file() or (p.name == "fixed"):
-        if p.name in pattern_strings:
+    if (p / "rule.smk").is_file():
+        if p.name in pattern_strings or (p.name == "fixed"):
             include: Path("rules/graph/", p.name, "rule.smk")
 
 

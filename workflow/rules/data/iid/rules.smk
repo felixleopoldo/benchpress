@@ -107,12 +107,12 @@ rule standardize:
 
 rule sample_data_fixed_bnfit:
     input:
-        "workflow/scripts/data_sampling/sample_from_bnlearn_bn.R",
+        "workflow/rules/data/iid/sample_from_bnlearn_bn.R",
         bn="resources/parameters/myparams/bn.fit_networks/{bn}"        
     output:
         data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/iid/n={n}/seed={replicate}.csv"
     shell:
-        "Rscript workflow/scripts/data_sampling/sample_from_bnlearn_bn.R " \
+        "Rscript workflow/rules/data/iid/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
