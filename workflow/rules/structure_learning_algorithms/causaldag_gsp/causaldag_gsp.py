@@ -1,3 +1,5 @@
+sys.path.append("workflow/scripts/utils")
+from add_timeout import *
 from operator import invert
 from causaldag import rand, partial_correlation_suffstat, partial_correlation_test, MemoizedCI_Tester, gsp
 import numpy as np
@@ -7,43 +9,12 @@ import signal
 import pandas as pd
 
 
-@contextmanager
-def timeoutf(timelimit, filename, time_filename, ntests_filename, start_time):
-    # Register a function to raise a TimeoutError on the signal.
-    signal.signal(signal.SIGALRM, raise_timeout)
-    # Schedule the signal to be sent after ``time``.
-    signal.alarm(timelimit)
-
-    try:
-        yield
-    except TimeoutError:
-        with open(filename, "w") as text_file:
-            text_file.write("")
-
-        tottime = time.perf_counter() - start_time
-        with open(time_filename, "w") as text_file:
-            text_file.write(str(tottime))
-
-        # ntests is not applicable
-        with open(ntests_filename, "w") as text_file:
-            text_file.write("None")
-
-    finally:
-        # Unregister the signal so it won't be triggered
-        # if the timeout is not reached.
-        signal.signal(signal.SIGALRM, signal.SIG_IGN)
-
-
-def raise_timeout(signum, frame):
-    raise TimeoutError
-
-
 def wrapper():
-    
+
     seed = int(snakemake.wildcards["replicate"])
     df = pd.read_csv(snakemake.input["data"])
     samples = df.values
-  
+
     np.random.seed(seed)
     suffstat = partial_correlation_suffstat(
         samples, invert=eval(snakemake.wildcards["invert"]))
@@ -61,13 +32,13 @@ def wrapper():
                   fixed_adjacencies=set(),
                   fixed_gaps=set(),
                   use_lowest=eval(snakemake.wildcards["use_lowest"]),
-                  max_iters = float(snakemake.wildcards["max_iters"]),
+                  max_iters=float(snakemake.wildcards["max_iters"]),
                   factor=int(snakemake.wildcards["factor"]),
                   progress_bar=eval(snakemake.wildcards["progress_bar"]),
                   summarize=eval(snakemake.wildcards["summarize"]))
-    
+
     adjmat = est_dag.to_amat()[0]
-    
+
     # save time
     tottime = time.perf_counter() - start
     with open(snakemake.output["time"], "w") as text_file:
@@ -83,15 +54,16 @@ def wrapper():
         text_file.write("None")
 
 
+# Use timeout if not None
 start = time.perf_counter()
-filename = snakemake.output["adjmat"]
 
 if snakemake.wildcards["timeout"] == "None":
     wrapper()
 else:
     with timeoutf(int(snakemake.wildcards["timeout"]),
-                  filename,
+                  snakemake.output["adjmat"],
                   snakemake.output["time"],
                   snakemake.output["ntests"],
                   start):
         wrapper()
+
