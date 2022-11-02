@@ -32,17 +32,17 @@ rule sample_loglindata:
 
 rule sample_intra_class_data:
     input:
-        "workflow/scripts/data_sampling/numpy_sample_mvn_data.py",
-        cov="{output_dir}/parameters/intra-class/{bn}/adjmat=/{adjmat}.csv"
+        "workflow/rules/data/iid/numpy_sample_mvn_data.py",
+        cov="{output_dir}/parameters/trilearn_intra-class/{bn}/adjmat=/{adjmat}.csv"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/parameters=/intra-class/{bn}"\
+             "/parameters=/trilearn_intra-class/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     container:
         docker_image("trilearn")
     shell:
-        "python2 workflow/scripts/data_sampling/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python2 workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
 rule sample_g_inverse_wishart:
     input:
@@ -139,7 +139,6 @@ rule sample_fixed_sem_params_data:
 if "sem_params" in pattern_strings:
     rule sample_sem_data:
         input:
-            script="workflow/rules/data/iid/sample_sem_data.R",
             bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
         output:
             data="{output_dir}/data" \
