@@ -1,0 +1,36 @@
+{
+    "title": "Some title",
+    "description": "List of  objects",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Fields setting for .",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "mysetting",
+                "param1": "myparamval",
+                "param2": [
+                    2,
+                    3,
+                    5
+                ],
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}
