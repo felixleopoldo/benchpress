@@ -14,12 +14,25 @@ def graph_true_plots():
             for seed in get_seed_range(sim_setup["seed_range"]) ]
             for sim_setup in config["benchmark_setup"]["data"] ]
 
-use rule adjmat_to_dot as true_adjmat_to_dot with:
+# This rule is very generally specified and relies on that it is called in the right way.
+# I.e with the path of an adjacency matrix.
+rule true_adjmat_to_dot:
     input:
         "workflow/scripts/utils/adjmat_to_dot.py",
         filename="{output_dir}/adjmat/{something}.csv" # true graph has /adjmat/ in the path and estimated does not.
-    output:
+    output:        
         filename = "{output_dir}/dotgraph/{something}.dot"
+    container:
+        docker_image("trilearn")
+    shell:
+        """
+        if [ -s {input.filename} ]; then
+            python workflow/scripts/utils/adjmat_to_dot.py {input.filename} {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
+
 
 rule graph_true_plots:
     input:
@@ -36,7 +49,6 @@ rule graph_true_plots:
 
 rule adjmat_true_plot:
     input:
-        "workflow/rules/evaluation/graph_true_plots/plot_matrix_as_heatmap.py",
         matrix_filename="{output_dir}/adjmat/{adjmat_string}.csv"
     output:
         plot_filename = "{output_dir}/adjmat/{adjmat_string}.png"
