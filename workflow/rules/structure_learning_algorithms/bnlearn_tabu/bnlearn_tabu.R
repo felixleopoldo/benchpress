@@ -1,3 +1,4 @@
+source("workflow/scripts/utils/add_timeout.R")
 library(bnlearn)
 source("resources/code_for_binary_simulations/make_var_names.R")
 filename <- file.path(snakemake@output[["adjmat"]])
@@ -40,27 +41,5 @@ wrapper <- function() {
     write(ntests, file = snakemake@output[["ntests"]])
 }
 
-if (snakemake@wildcards[["timeout"]] == "None") {
-    wrapper()
-} else {
-    res <- NULL
-    tryCatch(
-        {
-            res <- withTimeout(
-                {
-                    wrapper()
-                },
-                timeout = snakemake@wildcards[["timeout"]]
-            )
-        },
-        TimeoutException = function(ex) {
-            message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
-                " seconds. Writing empty grape and time files.",
-                sep = ""
-            ))
-            file.create(filename)
-            cat("None", file = snakemake@output[["time"]], sep = "\n")
-            cat("None", file = snakemake@output[["ntests"]], sep = "\n")
-        }
-    )
-}
+add_timeout(wrapper)
+
