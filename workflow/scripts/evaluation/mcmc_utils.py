@@ -49,7 +49,7 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
     if edgesymb == "-":
         g = nx.Graph()
     elif edgesymb == "->":
-        g = DiGraph()
+        g = nx.DiGraph()
 
     # Get the heatmap
     

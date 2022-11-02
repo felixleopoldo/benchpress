@@ -70,14 +70,35 @@
                 "threshold": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
-                "burnin": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
                 "mcmc_seed": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
                 },
                 "timeout": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 }
             },
             "additionalProperties": false,
@@ -88,7 +109,8 @@
                 "am",
                 "aw",
                 "threshold",
-                "burnin",
+                "burnin_frac",
+                "mcmc_estimator",
                 "startspace_algorithm",
                 "plus1",
                 "MAP",
@@ -119,7 +141,8 @@
                     "timeout": null,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0
+                    "mcmc_estimator": "threshold",
+                    "burnin_frac": 0.5
                 }
             ]
         }
