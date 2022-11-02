@@ -180,7 +180,7 @@ To upload an algorithm to Benchpress, you should install it in a [Docker](https:
 | Method              | Language | Module id                                                                                                              |
 |---------------------|----------|------------------------------------------------------------------------------------------------------------------------|
 | I.I.D. data samples | -        | [iid](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-iid.md)       |
-| SEM I.I.D. data samples  | Python        | [gcastle_iidsimulation](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_iidsimulation.md)       |
+| SEM I.I.D. data samples  | Python        | [gcastle_iidsim](https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-gcastle_iidsim.md)       |
 | Fixed data file     | .csv     | -                                                                                                                      |
 
 #### Structure learning algorithms

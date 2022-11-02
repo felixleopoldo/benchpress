@@ -9,7 +9,7 @@ rule sample_fixed_sem_params_data_gcastle:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
              "parameters=/{bn}/" \
-             "data=/gcastle_iidsimulation/" \
+             "data=/gcastle_iidsim/" \
              "method={method}/" \
              "sem_type={sem_type}/" \
              "noise_scale={noise_scale}/" \
@@ -18,18 +18,18 @@ rule sample_fixed_sem_params_data_gcastle:
     container:
         docker_image("gcastle")
     script:
-        "gcastle_iidsimulation.py" 
+        "gcastle_iidsim.py" 
 
 
 if "sem_params" in pattern_strings:
-    rule gcastle_iidsimulation:
+    rule gcastle_iidsim:
         input:            
             params="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
         output:
             data="{output_dir}/data" \
                 "/adjmat=/{adjmat}"\
                 "/parameters=/" + pattern_strings["sem_params"] + "/" \
-                "data=/gcastle_iidsimulation/" \
+                "data=/gcastle_iidsim/" \
                 "method={method}/" \
                 "sem_type={sem_type}/" \
                 "noise_scale={noise_scale}/" \
@@ -38,4 +38,4 @@ if "sem_params" in pattern_strings:
         container:
             docker_image("gcastle")
         script:
-            "gcastle_iidsimulation.py" 
+            "gcastle_iidsim.py" 

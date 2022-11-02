@@ -1,7 +1,7 @@
 # Untitled undefined type in JSON schema for Benchpress config file. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation/items
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim/items
 ```
 
 

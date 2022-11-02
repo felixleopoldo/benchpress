@@ -90,8 +90,8 @@
                         "iid": {
                             "$ref": "../rules/data/iid/schema.json"
                         },
-                        "gcastle_iidsimulation": {
-                            "$ref": "../rules/data/gcastle_iidsimulation/schema.json"
+                        "gcastle_iidsim": {
+                            "$ref": "../rules/data/gcastle_iidsim/schema.json"
                         }
                     },
                     "additionalProperties": false,

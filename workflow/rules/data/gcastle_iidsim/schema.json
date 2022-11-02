@@ -1,14 +1,14 @@
 {
-    "title": "List of gcastle_iidsimulation setups.",
-    "description": "List of gcastle_iidsimulation setups.",
+    "title": "List of gcastle_iidsim setups.",
+    "description": "List of gcastle_iidsim setups.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/gcastle_iidsimulation"
+        "$ref": "#/definitions/gcastle_iidsim"
     },
     "uniqueItems": true,
     "definitions": {
-        "gcastle_iidsimulation": {
-            "title": "gcastle_iidsimulation",
+        "gcastle_iidsim": {
+            "title": "gcastle_iidsim",
             "description": "Data sampling from SEM.",
             "type": "object",
             "properties": {

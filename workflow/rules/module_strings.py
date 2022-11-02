@@ -189,11 +189,11 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             standardized = data["standardized"],
                             n = data["sample_sizes"])
 
-    elif data_id in [c["id"] for c in config["resources"]["data"]["gcastle_iidsimulation"]]:
+    elif data_id in [c["id"] for c in config["resources"]["data"]["gcastle_iidsim"]]:
         # Find the data entry from the resources
-        data = next(item for item in config["resources"]["data"]["gcastle_iidsimulation"] if item["id"] == data_id)
+        data = next(item for item in config["resources"]["data"]["gcastle_iidsim"] if item["id"] == data_id)
         if seed_in_path:
-            return expand("gcastle_iidsimulation" +\
+            return expand("gcastle_iidsim" +\
                             "/standardized={standardized}/" + \ 
                             "method={method}/" + \
                             "sem_type={sem_type}/" + \
@@ -207,7 +207,7 @@ def gen_data_string_from_conf(data_id, seed,seed_in_path=True):
                             standardized = data["standardized"],
                             seed = seed)
         else:
-            return expand("gcastle_iidsimulation" +\
+            return expand("gcastle_iidsim" +\
                             "/standardized={standardized}/" + \ 
                             "method={method}/" + \
                             "sem_type={sem_type}/" + \

@@ -1,7 +1,7 @@
 # List of gcastle\_iidsimulation setups. Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim
 ```
 
 List of gcastle\_iidsimulation setups.
@@ -12,7 +12,7 @@ List of gcastle\_iidsimulation setups.
 
 ## gcastle\_iidsimulation Type
 
-`object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsimulation.md))
+`object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsim.md))
 
 ## gcastle\_iidsimulation Constraints
 

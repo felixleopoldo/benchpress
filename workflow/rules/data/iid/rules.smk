@@ -93,15 +93,15 @@ rule standardize:
 # TODO: Standardisation should better be done in a separate preprocessing module 
 # in the data section in benchmark_setup.
 # """
-# rule standardize_gcastle_iidsimulation:
+# rule standardize_gcastle_iidsim:
 #     input:
 #         data="{output_dir}/data" \
 #              "/{model}"\
-#              "/data=/gcastle_iidsimulation/{params}/seed={seed}.csv"
+#              "/data=/gcastle_iidsim/{params}/seed={seed}.csv"
 #     output:
 #         data="{output_dir}/data" \
 #              "/{model}"\
-#              "/data=/gcastle_iidsimulation/standardized={standardized}/{params}/seed={seed}.csv"
+#              "/data=/gcastle_iidsim/standardized={standardized}/{params}/seed={seed}.csv"
 #     script:
 #         "../scripts/utils/standardize.R"
 
@@ -123,8 +123,9 @@ This rule is for the case when te sem parameters are given as a matrix in
 a .csv file in resources/parameters/myparams/sem_params.
 """
 rule sample_fixed_sem_params_data:
+    # No copying here as for bn.fit_params.
     input:        
-        bn="resources/parameters/myparams/sem_params/{bn}"        
+        bn="resources/parameters/myparams/{bn}"      
     output:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
@@ -133,7 +134,7 @@ rule sample_fixed_sem_params_data:
     container:
         docker_image("bidag")
     script:
-        "../scripts/data_sampling/sample_sem_data.R" 
+        "sample_sem_data.R" 
 
 
 if "sem_params" in pattern_strings:

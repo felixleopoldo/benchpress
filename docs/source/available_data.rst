@@ -51,14 +51,14 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         ]
     }
 
-``gcastle_iidsimulation``
+``gcastle_iidsim``
 --------------------------
 
 IID samples from a SEM model using the  ``IIDSimulation`` object in the ``gCastle`` library.
 The data may be standardized by setting ``standardized`` to true. 
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gcastle_iidsimulation.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gcastle_iidsim.md>`_
 
 
 .. rubric:: Example

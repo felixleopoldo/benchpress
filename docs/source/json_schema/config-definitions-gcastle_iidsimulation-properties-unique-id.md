@@ -1,7 +1,7 @@
 # Unique ID Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_iidsimulation/properties/id
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_iidsim/properties/id
 ```
 
 
@@ -12,4 +12,4 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 ## id Type
 
-`string` ([Unique ID](config-definitions-gcastle_iidsimulation-properties-unique-id.md))
+`string` ([Unique ID](config-definitions-gcastle_iidsim-properties-unique-id.md))

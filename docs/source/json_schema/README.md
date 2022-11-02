@@ -60,7 +60,7 @@
 
 *   [dualpc item](./config-definitions-dualpc-item.md "Dual PC algorithm instance") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/dualpc`
 
-*   [gcastle\_iidsimulation](./config-definitions-gcastle_iidsimulation.md "Data sampling from SEM") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_iidsimulation`
+*   [gcastle\_iidsimulation](./config-definitions-gcastle_iidsim.md "Data sampling from SEM") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_iidsim`
 
 *   [gcastle\_notears item](./config-definitions-gcastle_notears-item.md "gcastle_notears object") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears`
 
@@ -126,7 +126,7 @@
 
 ### Arrays
 
-*   [List of gcastle\_iidsimulation setups.](./config-properties-resources-properties-data-properties-list-of-gcastle_iidsimulation-setups.md "List of gcastle_iidsimulation setups") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation`
+*   [List of gcastle\_iidsimulation setups.](./config-properties-resources-properties-data-properties-list-of-gcastle_iidsim-setups.md "List of gcastle_iidsim setups") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim`
 
 *   [List of iid setups.](./config-properties-resources-properties-data-properties-list-of-iid-setups.md "List of iid setups") – `http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid`
 

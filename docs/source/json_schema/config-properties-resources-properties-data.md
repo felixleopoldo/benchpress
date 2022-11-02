@@ -41,7 +41,7 @@ Data sampling setup.
 | Property                                         | Type    | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                        |
 | :----------------------------------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [iid](#iid)                                      | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-iid-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid")                                     |
-| [gcastle\_iidsimulation](#gcastle_iidsimulation) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsimulation-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation") |
+| [gcastle\_iidsimulation](#gcastle_iidsim) | `array` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsim-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim") |
 
 ## iid
 
@@ -69,19 +69,19 @@ List of iid setups.
 
 List of gcastle\_iidsimulation setups.
 
-`gcastle_iidsimulation`
+`gcastle_iidsim`
 
 *   is optional
 
-*   Type: `object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsimulation.md))
+*   Type: `object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsim.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsimulation-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-resources-properties-data-properties-list-of-gcastle_iidsim-setups.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim")
 
 ### gcastle\_iidsimulation Type
 
-`object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsimulation.md))
+`object[]` ([gcastle\_iidsimulation](config-definitions-gcastle_iidsim.md))
 
 ### gcastle\_iidsimulation Constraints
 

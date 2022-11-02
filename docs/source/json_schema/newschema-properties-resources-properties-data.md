@@ -41,7 +41,7 @@ Data sampling setup.
 | Property                                         | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                            |
 | :----------------------------------------------- | :------------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [iid](#iid)                                      | Not specified | Optional | cannot be null | [JSON schema for Benchpress config file.](newschema-properties-resources-properties-data-properties-iid.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/iid")                                     |
-| [gcastle\_iidsimulation](#gcastle_iidsimulation) | Not specified | Optional | cannot be null | [JSON schema for Benchpress config file.](newschema-properties-resources-properties-data-properties-gcastle_iidsimulation.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation") |
+| [gcastle\_iidsimulation](#gcastle_iidsim) | Not specified | Optional | cannot be null | [JSON schema for Benchpress config file.](newschema-properties-resources-properties-data-properties-gcastle_iidsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim") |
 
 ## iid
 
@@ -65,7 +65,7 @@ unknown
 
 
 
-`gcastle_iidsimulation`
+`gcastle_iidsim`
 
 *   is optional
 
@@ -73,7 +73,7 @@ unknown
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](newschema-properties-resources-properties-data-properties-gcastle_iidsimulation.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsimulation")
+*   defined in: [JSON schema for Benchpress config file.](newschema-properties-resources-properties-data-properties-gcastle_iidsim.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/data/properties/gcastle_iidsim")
 
 ### gcastle\_iidsimulation Type
 
