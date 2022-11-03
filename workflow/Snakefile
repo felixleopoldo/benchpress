@@ -1,4 +1,5 @@
 import json
+import jsonschema
 from jsonschema import validate
 import snakemake.utils
 import sys, getopt
@@ -10,18 +11,19 @@ import os
 
 include: "rules/helper_functions.py"
 
+
 rule new_alg:
     input:
-        "resources/module_templates/alg_module"
+        "resources/module_templates/alg_module",
     output:
-        directory("workflow/rules/structure_learning_algorithms/alg_module")
+        directory("workflow/rules/structure_learning_algorithms/alg_module"),
     message:
         "A template algorithm was created in {output}. The module/folder name alg_module may be changed."
     shell:
-        "cp -r {input} {output} " 
+        "cp -r {input} {output} "
+
 
 check_system_requirements()
-
 
 
 # This is a workaround. Needed a variable for the configfilename
@@ -39,22 +41,54 @@ for arg in args:
 configfile: configfilename
 
 
+with open("workflow/schemas/config.schema.json") as json_file:
+    schema = json.load(json_file)
 
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "structure_learning_algorithms"
+    ]["properties"]
 
-snakemake.utils.validate(config, "schemas/config.schema.json")
+    item[p.name] = {
+        "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
+    }
 
+with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
+    outfile.write(json.dumps(schema, indent=4))
+
+# validate(
+#     config,
+#     schema#,
+#     # jsonschema.RefResolver(
+#     #     base_uri="/",
+#     #     referrer=schema,
+#     # ),
+# )
+
+snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
+
+Path("workflow/schemas/tmp.config.schema.json").unlink()
 
 include: "rules/docker_images.smk"
+
 
 container: docker_image("benchmark")
 
 
 rule all:
     input:
-        get_active_rules
+        get_active_rules,
 
 
-mcmc_modules = ["bdgraph", "bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]
+mcmc_modules = [
+    "bdgraph",
+    "bidag_order_mcmc",
+    "parallelDG",
+    "trilearn_pgibbs",
+    "gg99_singlepair",
+    "gt13_multipair",
+]
+
 
 # Validate JSON file based on its values.
 include: "rules/validate.py"
@@ -63,11 +97,11 @@ include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
 
 
-
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
     if (p / "rule.smk").is_file():
         if p.name in pattern_strings or (p.name == "fixed"):
+
             include: Path("rules/graph/", p.name, "rule.smk")
 
 
@@ -75,54 +109,58 @@ for p in Path("workflow/rules/graph/").glob("*"):
 for p in Path("workflow/rules/parameters/").glob("*"):
     if (p / "rule.smk").is_file():
         if (p.name in pattern_strings) or (p.name == "fixed"):
+
             include: Path("rules/parameters/", p.name, "rule.smk")
 
 
 # Include the data modules
 for p in Path("workflow/rules/data/").glob("*"):
     if (p / "rules.smk").is_file():
+
         include: Path("rules/data/", p.name, "rules.smk")
 
 
 # Include the structure_learning_algorithms modules
 for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
-    module_name = p.name # This is used inside the module to get their names
-    
+    module_name = p.name  # This is used inside the module to get their names
+
     if (p / "rule.smk").is_file():
-        
+
         if p.name in pattern_strings:
             # set the module name here
-            
+
             include: Path("rules/structure_learning_algorithms/", p.name, "rule.smk")
 
+
             if p.name in mcmc_modules:
-                
+
                 rule:
                     name:
                         p.name + "_estimation"
                     input:
-                        traj=alg_output_seqgraph_path_fine_match(p.name)
+                        traj=alg_output_seqgraph_path_fine_match(p.name),
                     output:
-                        adjmat=adjmat_estimate_path_mcmc(p.name)  # here is the difference from order_mcmc. matching diffferently.
+                        adjmat=adjmat_estimate_path_mcmc(p.name),  # here is the difference from order_mcmc. matching diffferently.
                     params:
                         graph_type="chordal",
                         estimator="{mcmc_estimator}",
                         threshold="{threshold}",
-                        burnin_frac="{burnin_frac}"
-
+                        burnin_frac="{burnin_frac}",
                     container:
                         docker_image("networkx")
                     script:
                         "scripts/evaluation/graphtraj_est.py"
-
-
 # Include the evaluation modules
+
+
 
 for p in Path("workflow/rules/evaluation/").glob("*"):
 
-        
-    if (p / "rules.smk").is_file():            
+    if (p / "rules.smk").is_file():
+
         include: Path("rules/evaluation/", p.name, "rules.smk")
 
+
     elif (p / "rule.smk").is_file():
+
         include: Path("rules/evaluation/", p.name, "rule.smk")
