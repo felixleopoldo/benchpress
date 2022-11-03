@@ -33,7 +33,8 @@
                     "gcastle_golem",
                     "gcastle_grandag",
                     "gcastle_mcsl",                  
-                    "gcastle_corl"
+                    "gcastle_corl",
+                    "gcastle_rl"
                 ]
             },
             "graph_true_plots": false,

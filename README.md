@@ -9,7 +9,7 @@
 </p>
 
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥6.15-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥7.14-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 

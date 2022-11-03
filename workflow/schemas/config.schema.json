@@ -768,7 +768,7 @@
                             }
                         }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": true
                 }
             },
             "required": [
