@@ -26,6 +26,8 @@ The following main functionalities are provided by Benchpress
 * Algorithm development - Benchmark your own algorithm along with the existing ones while developing.
 * Data analysis - Estimate the underlying graph structure for your own dataset(s).
 
+You may also have a look at [this Medium story](https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8) for an introduction to Benchpress.
+
 ## Requirements
 
 ### Linux 
@@ -132,19 +134,17 @@ The parameters used in the first two lines above are automatically generated fro
 If you want to use another programming language or link to some of your own scripts, you can edit [mylib_myalg.smk](workflow/rules/mylib_myalg.smk) to suite your algorithm. 
 
 ```python
-if "mylib_myalg" in pattern_strings:
-    rule mylib_myalg:
-        input:                        
-            justatrigger="workflow/scripts/structure_learning_algorithms/mylib_myalg.R",
-            data = alg_input_data()        
-        output:
-            adjmat = alg_output_adjmat_path("mylib_myalg"),
-            time = alg_output_time_path("mylib_myalg"),
-            ntests = alg_output_ntests_path("mylib_myalg")
-        container:
-            None 
-        script:            
-            "../scripts/structure_learning_algorithms/mylib_myalg.R"
+rule mylib_myalg:
+    input:                        
+        data = alg_input_data()        
+    output:
+        adjmat = alg_output_adjmat_path("mylib_myalg"),
+        time = alg_output_time_path("mylib_myalg"),
+        ntests = alg_output_ntests_path("mylib_myalg")
+    container:
+        None 
+    script:            
+        "../scripts/structure_learning_algorithms/mylib_myalg.R"
 ```
 If R is not installed on your system, you may change the container from None to "docker://r-base" in order to run the script in an Apptainer container based on the [r-base](https://hub.docker.com/_/r-base) Docker image.
 
