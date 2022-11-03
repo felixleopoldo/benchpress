@@ -1,1 +1,0 @@
-Write some text about the algorithm here.
