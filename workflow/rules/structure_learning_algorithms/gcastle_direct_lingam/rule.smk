@@ -10,4 +10,4 @@ rule gcastle_direct_lingam:
     container:
         docker_image("gcastle")
     script:
-        "../scripts/structure_learning_algorithms/gcastle.py"
+        "../../../scripts/structure_learning_algorithms/gcastle.py"

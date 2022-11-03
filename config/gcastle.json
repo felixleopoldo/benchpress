@@ -16,7 +16,7 @@
                 "filename_prefix": "gcastle/",
                 "show_seed": false,
                 "errorbar": true,
-                "xlim": [0, 2],
+                "xlim": [0, 1],
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
@@ -33,7 +33,8 @@
                     "gcastle_golem",
                     "gcastle_grandag",
                     "gcastle_mcsl",                  
-                    "gcastle_corl"
+                    "gcastle_corl",
+                    "gcastle_rl"
                 ]
             },
             "graph_true_plots": false,

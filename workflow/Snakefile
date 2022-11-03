@@ -12,17 +12,6 @@ import os
 include: "rules/helper_functions.py"
 
 
-rule new_alg:
-    input:
-        "resources/module_templates/alg_module",
-    output:
-        directory("workflow/rules/structure_learning_algorithms/alg_module"),
-    message:
-        "A template algorithm was created in {output}. The module/folder name alg_module may be changed."
-    shell:
-        "cp -r {input} {output} "
-
-
 check_system_requirements()
 
 
@@ -78,6 +67,18 @@ container: docker_image("benchmark")
 rule all:
     input:
         get_active_rules,
+
+
+rule new_alg:
+    input:
+        "resources/module_templates/alg_module",
+    output:
+        directory("workflow/rules/structure_learning_algorithms/alg_module"),
+    message:
+        "A template algorithm was created in {output}. The module/folder name alg_module may be changed."
+    shell:
+        "cp -r {input} {output} "
+
 
 
 mcmc_modules = [
