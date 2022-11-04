@@ -25,6 +25,7 @@ def heatmap_plots():
     return ret
 
 
+
 rule mcmc_heatmap_plot:
     input:
         traj="{output_dir}/adjvecs/"\
@@ -47,7 +48,8 @@ rule mcmc_heatmap_plot:
         data_string="{data_string}",
         adjmat_string="{adjmat_string}",
         param_string="{param_string}",
-        alg_string="{alg_string}"
+        alg_string="{alg_string}",
+        burnin_frac="{burn_in}"
     container:
         docker_image("networkx")
     script:

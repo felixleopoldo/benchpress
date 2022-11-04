@@ -1,5 +1,5 @@
 
-def processed_trajs(mcmc_module):
+def processed_trajs2(mcmc_module):
     ret = [[[[expand("{output_dir}/" \
             "evaluation=/{evaluation_string}/"\
             "adjmat=/{adjmat_string}/"\
@@ -63,7 +63,7 @@ for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
         mcmc_alg_ids.add(alg)
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
-    if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
+    if algid in mcmc_modules:
 
         # Auto correlations
         rule:
@@ -130,7 +130,7 @@ rule mcmc_autocorr_plot:
 # Joins processed trajs
 rule mcmc_autocorr_plots_join_trajs:
     input:
-        trajs=processed_trajs("mcmc_autocorr_plots") # should get lag trajs instead?
+        trajs=processed_trajs2("mcmc_autocorr_plots") # should get lag trajs instead?
     output:
         # separate based on the ids
         trajs="results/output/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
