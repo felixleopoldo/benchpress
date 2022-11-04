@@ -1,10 +1,11 @@
 rule rblip_asobs:
     input:
-        "workflow/rules/structure_learning_algorithms/rblip_asobs/rblip_asobs.R ",
+        "workflow/rules/structure_learning_algorithms/rblip_asobs/rblip_asobs.R",
         data=alg_input_data(),
     output:
         adjmat=alg_output_adjmat_path("rblip_asobs"),
         time=alg_output_time_path("rblip_asobs"),
+        ntests=touch(alg_output_ntests_path(module_name))
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \
         "Rscript workflow/rules/structure_learning_algorithms/rblip_asobs/rblip_asobs.R " \

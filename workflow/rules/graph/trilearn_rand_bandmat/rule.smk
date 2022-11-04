@@ -1,7 +1,7 @@
 
-rule rand_bandmat:
+rule trilearn_rand_bandmat:
     output:
-        adjmat = "{output_dir}/adjmat/" + pattern_strings["rand_bandmat"] + "/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["trilearn_rand_bandmat"] + "/seed={replicate}.csv"
     container:
         docker_image("trilearn")
     shell:

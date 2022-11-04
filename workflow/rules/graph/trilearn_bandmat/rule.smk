@@ -1,6 +1,6 @@
-rule gen_bandmat:
+rule trilearn_bandmat:
     output:
-        adjmat = "{output_dir}/adjmat/" + pattern_strings["bandmat"] + "/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["trilearn_bandmat"] + "/seed={replicate}.csv"
     container:
         docker_image("trilearn")
     shell:

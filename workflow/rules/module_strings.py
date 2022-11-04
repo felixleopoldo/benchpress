@@ -99,13 +99,13 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_cta"] if item["id"] == adjmat_id)
         return expand(pattern_strings["trilearn_cta"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
-    elif "bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["bandmat"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["bandmat"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    elif "trilearn_bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_bandmat"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_bandmat"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["trilearn_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
-    elif "rand_bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["rand_bandmat"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["rand_bandmat"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["rand_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    elif "trilearn_rand_bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_rand_bandmat"]]:
+        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_rand_bandmat"] if item["id"] == adjmat_id)
+        return expand(pattern_strings["trilearn_rand_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id is not None and Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]

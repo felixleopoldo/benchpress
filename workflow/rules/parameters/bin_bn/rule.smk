@@ -1,6 +1,6 @@
-rule sample_binary_bn:
+rule bin_bn:
     input:        
-        "workflow/rules/parameters/bin_bn/sample_bayesian_network_for_dag.R ",
+        "workflow/rules/parameters/bin_bn/sample_bayesian_network_for_dag.R",
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn = "{output_dir}/parameters/" + \

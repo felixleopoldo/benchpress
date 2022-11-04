@@ -11,7 +11,7 @@ rule sample_bin_bn_data:
              "/parameters=/bin_bn/{bn}"\
              "/data=/iid/n={n}/seed={replicate}.csv"
     shell:
-        "Rscript workflow/scripts/data_sampling/sample_data_with_range_header.R " \
+        "Rscript workflow/rules/data/iid/sample_data_with_range_header.R " \
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
