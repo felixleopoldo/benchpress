@@ -3,7 +3,7 @@
     "description": "This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/mcmc_traj_plots_item"
+        "$ref": "#/definitions/mcmc_traj_plots"
     },
     "additionalItems": false,
     "examples": [

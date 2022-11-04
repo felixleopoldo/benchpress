@@ -3,7 +3,7 @@
     "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/mcmc_autocorr_plots_item"
+        "$ref": "#/definitions/mcmc_autocorr_plots"
     },
     "additionalItems": false,
     "examples": [

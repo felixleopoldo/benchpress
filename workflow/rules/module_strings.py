@@ -73,6 +73,9 @@ if "gt13_multipair" in pattern_strings:
 if "gg99_singlepair" in pattern_strings:
     json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
                         for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
+if "bdgraph" in pattern_strings:
+    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bdgraph"], **val)
+                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})
 
 
 # Evaluation strings

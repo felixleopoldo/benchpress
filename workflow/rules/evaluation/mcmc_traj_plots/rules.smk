@@ -33,9 +33,10 @@ for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
         mcmc_alg_ids.add(alg)
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
 for algid in mcmc_alg_ids:
-    if algid in ["bidag_order_mcmc", "parallelDG", "trilearn_pgibbs", "gg99_singlepair", "gt13_multipair"]:
+    if algid in mcmc_modules:
         # Processed graph trajectory
         rule:
+            name: "mcmc_traj_{}".format(algid)
             input:
                 configfilename, # the variyng param might change
                 traj="{output_dir}/adjvecs/"\
@@ -65,7 +66,7 @@ for algid in mcmc_alg_ids:
             container:
                 docker_image("networkx")
             script:
-                "../scripts/evaluation/write_graph_traj.py"
+                "../../../scripts/evaluation/write_graph_traj.py"
 
 
 # Joins processed trajs
@@ -76,7 +77,7 @@ rule mcmc_traj_plots_join_trajs:
         # having constant files makes triggering complicatad
         trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
     script:
-        "../scripts/evaluation/join_graph_trajs.py"
+        "../../../scripts/evaluation/join_graph_trajs.py"
 
 # This plots several trajectories in one figure
 rule mcmc_traj_plots_plot_joined_trajs:
@@ -92,4 +93,4 @@ rule mcmc_traj_plots_plot_joined_trajs:
     container:
         docker_image("pydatascience")
     script:
-        "../scripts/evaluation/plot_multi_trajs.py"
+        "../../../scripts/evaluation/plot_multi_trajs.py"

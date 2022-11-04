@@ -67,8 +67,8 @@ for algid in mcmc_alg_ids:
 
         # Auto correlations
         rule:
+            name: "autocorr_"+algid
             input:
-                "workflow/scripts/evaluation/write_graph_traj.py",
                 traj="{output_dir}/"\
                 "evaluation=/" + pattern_strings["mcmc_traj_plots"] + "/"\
                 "adjmat=/{adjmat_string}/"\
@@ -96,7 +96,7 @@ for algid in mcmc_alg_ids:
             container:
                 docker_image("networkx")
             script:
-                "../scripts/evaluation/write_autocorr_traj.py"
+                "write_autocorr_traj.py"
 
 rule mcmc_autocorr_plot:
     input:
@@ -136,7 +136,7 @@ rule mcmc_autocorr_plots_join_trajs:
         trajs="results/output/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
     script:
         # First compute the autocorrelation at each lag
-        "../scripts/evaluation/join_graph_trajs.py"
+        "../../../scripts/evaluation/join_graph_trajs.py" 
 
 # This plots several trajectories in one figure
 rule mcmc_autocorr_plots_plot_joined_trajs:
@@ -152,7 +152,7 @@ rule mcmc_autocorr_plots_plot_joined_trajs:
     container:
         docker_image("pydatascience")
     script:
-        "../scripts/evaluation/plot_multi_trajs.py"
+        "../../../scripts/evaluation/plot_multi_trajs.py"
 
 rule mcmc_autocorr_plots:
     input:
