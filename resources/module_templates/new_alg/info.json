@@ -1,0 +1,18 @@
+{
+    "title": "My new algorithm",
+    "docker_image": "docker://",
+    "version": "v0.0.1",
+    "software": "",
+    "docs": "",
+    "papers": [
+        {
+            "title": "the paper title",
+            "url": "the_url"
+        }
+    ],
+    "output": "adjmat",
+    "graph_types": [
+        "ug"
+    ],
+    "language": "R"
+}

@@ -11,7 +11,7 @@ rule module_name:
         ntests = alg_output_ntests_path(module_name)
     container:
         None
-        #"docker://r-base" # This would run the script in a the r-base container.
+        #"docker://r-base" # This would run the script in the r-base container.
     script:
         # This is a template R script but it could be any R or Python script, 
         # even in a different directory.

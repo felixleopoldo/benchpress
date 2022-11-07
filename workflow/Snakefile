@@ -71,11 +71,11 @@ rule all:
 
 rule new_alg:
     input:
-        "resources/module_templates/alg_module",
+        "resources/module_templates/new_alg",
     output:
-        directory("workflow/rules/structure_learning_algorithms/alg_module"),
+        directory("workflow/rules/structure_learning_algorithms/new_alg"),
     message:
-        "A template algorithm was created in {output}. The module/folder name alg_module may be changed."
+        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
     shell:
         "cp -r {input} {output} "
 
