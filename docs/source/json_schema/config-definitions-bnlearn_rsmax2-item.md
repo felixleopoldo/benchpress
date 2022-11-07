@@ -1,4 +1,4 @@
-# bnlearn_rsmax2 item Schema
+# bnlearn\_rsmax2 item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_rsmax2
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 2-phase Restricted Maximization algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_rsmax2 Type
+## bnlearn\_rsmax2 Type
 
-`object` ([bnlearn_rsmax2 item](config-definitions-bnlearn_rsmax2-item.md))
+`object` ([bnlearn\_rsmax2 item](config-definitions-bnlearn_rsmax2-item.md))
 
-## bnlearn_rsmax2 Examples
+## bnlearn\_rsmax2 Examples
 
 ```json
 {
@@ -40,7 +40,7 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 }
 ```
 
-# bnlearn_rsmax2 item Properties
+# bnlearn\_rsmax2 Properties
 
 | Property              | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :-------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

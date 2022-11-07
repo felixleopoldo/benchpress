@@ -1,0 +1,150 @@
+{
+    "description": "Order MCMC objects",
+    "title": "bidag_order_mcmc",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/bidag_order_mcmc"
+    },
+    "definitions": {
+        "bidag_order_mcmc": {
+            "title": "bidag_order_mcmc item",
+            "description": "Order MCMC algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "startspace_algorithm": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "plus1": {
+                    "type": "boolean"
+                },
+                "scoretype": {
+                    "type": "string"
+                },
+                "MAP": {
+                    "type": "boolean"
+                },
+                "chi": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "edgepf": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "am": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "aw": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "iterations": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "stepsave": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "alpha": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
+                },
+                "gamma": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                },
+                "cpdag": {
+                    "type": "boolean"
+                },
+                "threshold": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "mcmc_seed": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                },
+                "mcmc_estimator": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "map",
+                                    "threshold"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "burnin_frac": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "scoretype",
+                "chi",
+                "edgepf",
+                "am",
+                "aw",
+                "threshold",
+                "burnin_frac",
+                "mcmc_estimator",
+                "startspace_algorithm",
+                "plus1",
+                "MAP",
+                "stepsave",
+                "iterations",
+                "gamma"
+            ],
+            "examples": [
+                {
+                    "id": "omcmc_itmap-bge",
+                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                    "plus1": true,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "aw": null,
+                    "am": [
+                        0.01,
+                        0.1,
+                        0.05
+                    ],
+                    "alpha": 0.01,
+                    "gamma": 1,
+                    "stepsave": null,
+                    "iterations": null,
+                    "MAP": true,
+                    "cpdag": false,
+                    "timeout": null,
+                    "mcmc_seed": 1,
+                    "threshold": 0.5,
+                    "mcmc_estimator": "threshold",
+                    "burnin_frac": 0.5
+                }
+            ]
+        }
+    }
+}

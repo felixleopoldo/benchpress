@@ -1,4 +1,4 @@
-# bnlearn_fastiamb item Schema
+# bnlearn\_fastiamb item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_fastiamb
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Fast IAMB algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_fastiamb Type
+## bnlearn\_fastiamb Type
 
-`object` ([bnlearn_fastiamb item](config-definitions-bnlearn_fastiamb-item.md))
+`object` ([bnlearn\_fastiamb item](config-definitions-bnlearn_fastiamb-item.md))
 
-## bnlearn_fastiamb Examples
+## bnlearn\_fastiamb Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ Fast IAMB algorithm instance
 }
 ```
 
-# bnlearn_fastiamb item Properties
+# bnlearn\_fastiamb Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                        |
 | :------------------------ | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

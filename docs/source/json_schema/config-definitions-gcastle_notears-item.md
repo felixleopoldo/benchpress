@@ -1,20 +1,20 @@
-# gcastle_notears item Schema
+# gcastle\_notears item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears
 ```
 
-gcastle_notears object
+gcastle\_notears object
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## gcastle_notears Type
+## gcastle\_notears Type
 
-`object` ([gcastle_notears item](config-definitions-gcastle_notears-item.md))
+`object` ([gcastle\_notears item](config-definitions-gcastle_notears-item.md))
 
-## gcastle_notears Examples
+## gcastle\_notears Examples
 
 ```json
 {
@@ -29,22 +29,22 @@ gcastle_notears object
 }
 ```
 
-# gcastle_notears item Properties
+# gcastle\_notears Properties
 
-| Property                    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                     |
-| :-------------------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                   | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/id") |
-| [loss_type](#loss_type)     | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-loss_type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/loss_type")  |
-| [lambda1](#lambda1)         | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/lambda1")                                |
-| [max_iter](#max_iter)       | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/max_iter")                     |
-| [w_threshold](#w_threshold) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/w_threshold")                            |
-| [timeout](#timeout)         | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/timeout")                 |
-| [rho_max](#rho_max)         | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-rho_max.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/rho_max")      |
-| [h_tol](#h_tol)             | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-h_tol.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/h_tol")          |
+| Property                     | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                     |
+| :--------------------------- | :------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                    | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/id") |
+| [loss\_type](#loss_type)     | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-loss_type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/loss_type")  |
+| [lambda1](#lambda1)          | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/lambda1")                                |
+| [max\_iter](#max_iter)       | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/max_iter")                     |
+| [w\_threshold](#w_threshold) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/w_threshold")                            |
+| [timeout](#timeout)          | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/timeout")                 |
+| [rho\_max](#rho_max)         | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-rho_max.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/rho_max")      |
+| [h\_tol](#h_tol)             | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-h_tol.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/h_tol")          |
 
 ## id
 
-Unique identifier for that can be used as reference in the benchmark_setup.
+Unique identifier for that can be used as reference in the benchmark\_setup.
 
 `id`
 
@@ -60,7 +60,7 @@ Unique identifier for that can be used as reference in the benchmark_setup.
 
 `string` ([Unique identifier](config-definitions-gcastle_notears-item-properties-unique-identifier.md))
 
-## loss_type
+## loss\_type
 
 
 
@@ -74,7 +74,7 @@ Unique identifier for that can be used as reference in the benchmark_setup.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-loss_type.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/loss_type")
 
-### loss_type Type
+### loss\_type Type
 
 `string`
 
@@ -102,7 +102,7 @@ any of
 
 *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
 
-## max_iter
+## max\_iter
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -116,7 +116,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/max_iter")
 
-### max_iter Type
+### max\_iter Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
@@ -126,7 +126,7 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-## w_threshold
+## w\_threshold
 
 Non-negative number(s).
 
@@ -140,7 +140,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/w_threshold")
 
-### w_threshold Type
+### w\_threshold Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 
@@ -178,7 +178,7 @@ any of
 
 *   [Untitled null in JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null-anyof-1.md "check type definition")
 
-## rho_max
+## rho\_max
 
 
 
@@ -192,11 +192,11 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-rho_max.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/rho_max")
 
-### rho_max Type
+### rho\_max Type
 
 `string`
 
-## h_tol
+## h\_tol
 
 
 
@@ -210,6 +210,6 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-gcastle_notears-item-properties-h_tol.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/gcastle_notears/properties/h_tol")
 
-### h_tol Type
+### h\_tol Type
 
 `string`

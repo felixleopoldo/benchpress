@@ -1,4 +1,4 @@
-# bnlearn_mmpc item Schema
+# bnlearn\_mmpc item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_mmpc
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 MMPC algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_mmpc Type
+## bnlearn\_mmpc Type
 
-`object` ([bnlearn_mmpc item](config-definitions-bnlearn_mmpc-item.md))
+`object` ([bnlearn\_mmpc item](config-definitions-bnlearn_mmpc-item.md))
 
-## bnlearn_mmpc Examples
+## bnlearn\_mmpc Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ MMPC algorithm instance
 }
 ```
 
-# bnlearn_mmpc item Properties
+# bnlearn\_mmpc Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

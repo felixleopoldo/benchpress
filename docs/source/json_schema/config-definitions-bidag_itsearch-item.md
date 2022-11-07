@@ -1,4 +1,4 @@
-# bidag_itsearch item Schema
+# bidag\_itsearch item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bidag_itsearch
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Iterative search +1 algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bidag_itsearch Type
+## bidag\_itsearch Type
 
-`object` ([bidag_itsearch item](config-definitions-bidag_itsearch-item.md))
+`object` ([bidag\_itsearch item](config-definitions-bidag_itsearch-item.md))
 
-## bidag_itsearch Examples
+## bidag\_itsearch Examples
 
 ```json
 {
@@ -44,7 +44,7 @@ Iterative search +1 algorithm instance
 }
 ```
 
-# bidag_itsearch item Properties
+# bidag\_itsearch Properties
 
 | Property                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                  |
 | :---------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

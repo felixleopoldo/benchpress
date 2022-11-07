@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## mcmc_heatmaps_item Type
+## mcmc\_heatmaps\_item Type
 
 unknown ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 
-## mcmc_heatmaps_item Examples
+## mcmc\_heatmaps\_item Examples
 
 ```json
 {
@@ -24,13 +24,13 @@ unknown ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 }
 ```
 
-# MCMC mean graph plot Properties
+# mcmc\_heatmaps\_item Properties
 
-| Property            | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
-| :------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)           | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc-mean-graph-plot-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/id")         |
-| [active](#active)   | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc-mean-graph-plot-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/active") |
-| [burn_in](#burn_in) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/burn_in")               |
+| Property             | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                 |
+| :------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)            | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc-mean-graph-plot-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/id")         |
+| [active](#active)    | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-definitions-mcmc-mean-graph-plot-properties-active.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/active") |
+| [burn\_in](#burn_in) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/burn_in")               |
 
 ## id
 
@@ -68,7 +68,7 @@ Set to false if you dont want to plot it.
 
 `boolean`
 
-## burn_in
+## burn\_in
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -82,7 +82,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/mcmc_heatmaps_item/properties/burn_in")
 
-### burn_in Type
+### burn\_in Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 

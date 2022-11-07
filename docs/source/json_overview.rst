@@ -605,5 +605,4 @@ The names of the fields of the modules in this section are directly transferred 
 .. include:: available_structure_learning_algorithms.rst
 
 
-.. [3] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
-
+.. [3] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.

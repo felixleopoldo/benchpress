@@ -14,10 +14,13 @@ The user may provide their own data in .csv format for benchmarking on real data
 Independently identically distributed (IID) samples of a given size ``sample_sizes``.
 The data may be standardized by setting ``standardized`` to true. 
 
+
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
 | Module name     | ``iid``                                                                                                                      |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Package/library | -                                                                                                                            |
+| Package/library | Benchpress                                                                                                                   |
++-----------------+------------------------------------------------------------------------------------------------------------------------------+
+| JSON schema     | `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_ |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
 | Version         | -                                                                                                                            |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
@@ -25,16 +28,12 @@ The data may be standardized by setting ``standardized`` to true.
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
 | Paper           | -                                                                                                                            |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema     | `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_ |
+| Snakemake rule  | various                                                                                                                      |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Snakemake rule  |                                                                                                                              |
+| Parameters      | see JSON schema                                                                                                              |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Parameters      |                                                                                                                              |
+| Script          | -                                                                                                                            |
 +-----------------+------------------------------------------------------------------------------------------------------------------------------+
-|                 |                                                                                                                              |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-|                 |                                                                                                                              |
-+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
 
@@ -52,14 +51,14 @@ See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema
         ]
     }
 
-``gcastle_iidsimulation``
+``gcastle_iidsim``
 --------------------------
 
 IID samples from a SEM model using the  ``IIDSimulation`` object in the ``gCastle`` library.
 The data may be standardized by setting ``standardized`` to true. 
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gcastle_iidsimulation.md>`_
+See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gcastle_iidsim.md>`_
 
 
 .. rubric:: Example

@@ -1,4 +1,4 @@
-# parameters_id Schema
+# parameters\_id Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/data_setup_dict/properties/parameters_id
@@ -6,13 +6,13 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 ID of a module object in the parameters section.
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## parameters_id Type
+## parameters\_id Type
 
-merged type ([parameters_id](config-definitions-data-item-properties-parameters_id.md))
+merged type ([parameters\_id](config-definitions-data-item-properties-parameters_id.md))
 
 any of
 

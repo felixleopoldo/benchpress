@@ -6,9 +6,9 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Data sampling from disctete Bayesian network.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## iid Type
 
@@ -28,11 +28,11 @@ Data sampling from disctete Bayesian network.
 
 # iid Properties
 
-| Property                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                             |
-| :---------------------------- | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                     | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-iid-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/id")              |
-| [sample_sizes](#sample_sizes) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/sample_sizes")     |
-| [standardized](#standardized) | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-iid-properties-standardized.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/standardized") |
+| Property                       | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                             |
+| :----------------------------- | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                      | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-iid-properties-unique-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/id")              |
+| [sample\_sizes](#sample_sizes) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/sample_sizes")     |
+| [standardized](#standardized)  | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-iid-properties-standardized.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/standardized") |
 
 ## id
 
@@ -52,7 +52,7 @@ Data sampling from disctete Bayesian network.
 
 `string` ([Unique ID](config-definitions-iid-properties-unique-id.md))
 
-## sample_sizes
+## sample\_sizes
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -66,7 +66,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/iid/properties/sample_sizes")
 
-### sample_sizes Type
+### sample\_sizes Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 

@@ -49,7 +49,7 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
     if edgesymb == "-":
         g = nx.Graph()
     elif edgesymb == "->":
-        g = DiGraph()
+        g = nx.DiGraph()
 
     # Get the heatmap
     
@@ -67,6 +67,7 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
     # Bug some error here in mcmc_plots
     
     for index, row in df.iterrows():
+        
         if row["index"] == 0:
             if burnin_ind == 0:
                 heatmap = nx.to_numpy_array(g) #this is strange
@@ -82,8 +83,9 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
             else:
                 cur_index = df["index"].iloc[index]
                 prev_index = df["index"].iloc[index-1]
+                
             weight = cur_index - prev_index            
-            
+
             heatmap += nx.to_numpy_matrix(g, nodelist=nodeorder) * weight
 
         added = edges_str_to_list(row["added"], edgesymb)

@@ -1,4 +1,4 @@
-# tetrad_gfci Schema
+# tetrad\_gfci Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/tetrad_gfci
@@ -6,10 +6,10 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 GFCI
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## tetrad_gfci Type
+## tetrad\_gfci Type
 
-`object[]` ([tetrad_gfci item](config-definitions-tetrad_gfci-item.md))
+`object[]` ([tetrad\_gfci item](config-definitions-tetrad_gfci-item.md))

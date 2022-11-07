@@ -1,0 +1,104 @@
+{
+    "title": "benchmarks item",
+    "description": "ROC item",
+    "type": "object",
+    "properties": {
+        "ids": {
+            "list": "string"
+        },
+        "filename_prefix": {
+            "type": "string"
+        },
+        "xlim": {
+            "title": "xlim",
+            "description": "x-axis limits in ROC plots.",
+            "anyOf": [
+                {
+                    "title": "range",
+                    "description": "List of 2 integers [a, b], where a<=b.",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxLength": 2,
+                    "minLength": 2
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "ylim": {
+            "title": "ylim",
+            "description": "y-axis limits in ROC plots.",
+            "anyOf": [
+                {
+                    "title": "range",
+                    "description": "List of 2 integers [a, b], where a<=b.",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxLength": 2,
+                    "minLength": 2
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "show_seed": {
+            "type": "boolean"
+        },
+        "scatter": {
+            "type": "boolean"
+        },
+        "errorbar": {
+            "type": "boolean"
+        },
+        "errorbarh": {
+            "type": "boolean"
+        },
+        "text": {
+            "type": "boolean"
+        },
+        "path": {
+            "type": "boolean"
+        }
+    },
+    "required": [
+        "ids",
+        "filename_prefix",
+        "show_seed",
+        "scatter",
+        "path",
+        "errorbar",
+        "errorbarh",
+        "text"
+    ],
+    "examples": [
+        {
+            "filename_prefix": "example/",
+            "point": true,
+            "show_seed": true,
+            "errorbar": true,
+            "errorbarh": false,
+            "xrange": [
+                0,
+                1
+            ],
+            "yrange": [
+                0,
+                1
+            ],
+            "path": true,
+            "text": false,
+            "ids": [
+                "fges-sem-bic",
+                "mmhc-bge-zf",
+                "omcmc_itsample-bge",
+                "pc-gaussCItest"
+            ]
+        }
+    ]
+}

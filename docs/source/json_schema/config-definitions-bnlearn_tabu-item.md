@@ -1,4 +1,4 @@
-# bnlearn_tabu item Schema
+# bnlearn\_tabu item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_tabu
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 TABU algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_tabu Type
+## bnlearn\_tabu Type
 
-`object` ([bnlearn_tabu item](config-definitions-bnlearn_tabu-item.md))
+`object` ([bnlearn\_tabu item](config-definitions-bnlearn_tabu-item.md))
 
-## bnlearn_tabu Examples
+## bnlearn\_tabu Examples
 
 ```json
 {
@@ -36,7 +36,7 @@ TABU algorithm instance
 }
 ```
 
-# bnlearn_tabu item Properties
+# bnlearn\_tabu Properties
 
 | Property            | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                      |
 | :------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

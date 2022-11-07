@@ -1,4 +1,4 @@
-# sklearn_glasso item Schema
+# sklearn\_glasso item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 GLasso instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## sklearn_glasso Type
+## sklearn\_glasso Type
 
-`object` ([sklearn_glasso item](config-definitions-sklearn_glasso-item.md))
+`object` ([sklearn\_glasso item](config-definitions-sklearn_glasso-item.md))
 
-## sklearn_glasso Examples
+## sklearn\_glasso Examples
 
 ```json
 {
@@ -32,20 +32,20 @@ GLasso instance
 }
 ```
 
-# sklearn_glasso item Properties
+# sklearn\_glasso Properties
 
-| Property                                | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                              |
-| :-------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)                               | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/id")                           |
-| [mode](#mode)                           | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-mode.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/mode")                       |
-| [max_iter](#max_iter)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/max_iter")                               |
-| [alpha](#alpha)                         | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/alpha")                                            |
-| [tol](#tol)                             | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/tol")                                              |
-| [enet_tol](#enet_tol)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")                                         |
-| [precmat_threshold](#precmat_threshold) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")                                |
-| [verbose](#verbose)                     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
-| [assume_centered](#assume_centered)     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
-| [timeout](#timeout)                     | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/timeout")                          |
+| Property                                 | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                              |
+| :--------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)                                | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/id")                           |
+| [mode](#mode)                            | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-mode.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/mode")                       |
+| [max\_iter](#max_iter)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/max_iter")                               |
+| [alpha](#alpha)                          | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/alpha")                                            |
+| [tol](#tol)                              | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/tol")                                              |
+| [enet\_tol](#enet_tol)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")                                         |
+| [precmat\_threshold](#precmat_threshold) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")                                |
+| [verbose](#verbose)                      | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/verbose")                 |
+| [assume\_centered](#assume_centered)     | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered") |
+| [timeout](#timeout)                      | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/timeout")                          |
 
 ## id
 
@@ -92,7 +92,7 @@ Unique identifier
 | `"cd"`   |             |
 | `"lars"` |             |
 
-## max_iter
+## max\_iter
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -106,7 +106,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/max_iter")
 
-### max_iter Type
+### max\_iter Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
@@ -164,7 +164,7 @@ any of
 
 *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
 
-## enet_tol
+## enet\_tol
 
 Non-negative number(s).
 
@@ -178,7 +178,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/enet_tol")
 
-### enet_tol Type
+### enet\_tol Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 
@@ -188,7 +188,7 @@ any of
 
 *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
 
-## precmat_threshold
+## precmat\_threshold
 
 Non-negative number(s).
 
@@ -202,7 +202,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/precmat_threshold")
 
-### precmat_threshold Type
+### precmat\_threshold Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 
@@ -230,7 +230,7 @@ any of
 
 `boolean`
 
-## assume_centered
+## assume\_centered
 
 
 
@@ -244,7 +244,7 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-sklearn_glasso-item-properties-assume_centered.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/sklearn_glasso/properties/assume_centered")
 
-### assume_centered Type
+### assume\_centered Type
 
 `boolean`
 

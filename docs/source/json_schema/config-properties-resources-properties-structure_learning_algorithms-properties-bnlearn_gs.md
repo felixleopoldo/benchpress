@@ -1,4 +1,4 @@
-# bnlearn_gs Schema
+# bnlearn\_gs Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/resources/properties/structure_learning_algorithms/properties/bnlearn_gs
@@ -6,10 +6,10 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 GS objects
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_gs Type
+## bnlearn\_gs Type
 
-`object[]` ([bnlearn_gs item](config-definitions-bnlearn_gs-item.md))
+`object[]` ([bnlearn\_gs item](config-definitions-bnlearn_gs-item.md))

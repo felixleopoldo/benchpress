@@ -6,9 +6,9 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Notears object
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## notears Type
 
@@ -28,17 +28,17 @@ Notears object
 }
 ```
 
-# notears item Properties
+# notears Properties
 
-| Property                                      | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
-| :-------------------------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)                                     | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/id")               |
-| [min_rate_of_progress](#min_rate_of_progress) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/min_rate_of_progress")               |
-| [penalty_growth_rate](#penalty_growth_rate)   | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/penalty_growth_rate")           |
-| [optimation_accuracy](#optimation_accuracy)   | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/optimation_accuracy")           |
-| [loss](#loss)                                 | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-loss.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/loss")           |
-| [loss_grad](#loss_grad)                       | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-loss_grad.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/loss_grad") |
-| [timeout](#timeout)                           | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/timeout")        |
+| Property                                         | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
+| :----------------------------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                                        | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/id")               |
+| [min\_rate\_of\_progress](#min_rate_of_progress) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/min_rate_of_progress")               |
+| [penalty\_growth\_rate](#penalty_growth_rate)    | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/penalty_growth_rate")           |
+| [optimation\_accuracy](#optimation_accuracy)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/optimation_accuracy")           |
+| [loss](#loss)                                    | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-loss.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/loss")           |
+| [loss\_grad](#loss_grad)                         | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-loss_grad.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/loss_grad") |
+| [timeout](#timeout)                              | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/timeout")        |
 
 ## id
 
@@ -58,7 +58,7 @@ Unique identifier
 
 `string`
 
-## min_rate_of_progress
+## min\_rate\_of\_progress
 
 Number(s) in the range \[0,1].
 
@@ -72,7 +72,7 @@ Number(s) in the range \[0,1].
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexprob.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/min_rate_of_progress")
 
-### min_rate_of_progress Type
+### min\_rate\_of\_progress Type
 
 merged type ([Details](config-definitions-flexprob.md))
 
@@ -82,7 +82,7 @@ any of
 
 *   [problist type](config-definitions-problist-type.md "check type definition")
 
-## penalty_growth_rate
+## penalty\_growth\_rate
 
 Non-negative number(s).
 
@@ -96,7 +96,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/penalty_growth_rate")
 
-### penalty_growth_rate Type
+### penalty\_growth\_rate Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 
@@ -106,7 +106,7 @@ any of
 
 *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
 
-## optimation_accuracy
+## optimation\_accuracy
 
 Non-negative number(s).
 
@@ -120,7 +120,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/optimation_accuracy")
 
-### optimation_accuracy Type
+### optimation\_accuracy Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 
@@ -157,7 +157,7 @@ any of
 | `"least_squares_loss"`     |             |
 | `"least_squares_loss_cov"` |             |
 
-## loss_grad
+## loss\_grad
 
 
 
@@ -171,11 +171,11 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-notears-item-properties-loss_grad.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/notears/properties/loss_grad")
 
-### loss_grad Type
+### loss\_grad Type
 
 `string`
 
-### loss_grad Constraints
+### loss\_grad Constraints
 
 **enum**: the value of this property must be equal to one of the following values:
 

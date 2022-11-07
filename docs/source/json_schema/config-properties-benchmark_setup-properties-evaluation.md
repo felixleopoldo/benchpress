@@ -6,88 +6,26 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 This section contains the available evaluation methods.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
 ## evaluation Type
 
 unknown ([evaluation](config-properties-benchmark_setup-properties-evaluation.md))
 
-## evaluation Examples
-
-```json
-{
-  "benchmarks": {
-    "filename_prefix": "example/",
-    "show_seed": false,
-    "errorbar": true,
-    "errorbarh": false,
-    "scatter": true,
-    "path": true,
-    "text": false,
-    "ids": [
-      "fges-sem-bic",
-      "mmhc-bge-zf",
-      "omcmc_itsample-bge",
-      "pc-gaussCItest"
-    ]
-  },
-  "graph_true_plots": true,
-  "graph_true_stats": true,
-  "graph_plots": [
-    "fges-sem-bic",
-    "mmhc-bge-zf",
-    "omcmc_itsample-bge",
-    "pc-gaussCItest"
-  ],
-  "mcmc_traj_plots": [
-    {
-      "id": "omcmc_itsample-bge",
-      "burn_in": 0,
-      "thinning": 1,
-      "functional": [
-        "score",
-        "size"
-      ],
-      "active": true
-    }
-  ],
-  "mcmc_heatmaps": [
-    {
-      "id": "omcmc_itsample-bge",
-      "burn_in": 0,
-      "active": true
-    }
-  ],
-  "mcmc_autocorr_plots": [
-    {
-      "id": "omcmc_itsample-bge",
-      "burn_in": 0,
-      "thinning": 1,
-      "lags": 50,
-      "functional": [
-        "score",
-        "size"
-      ],
-      "active": true
-    }
-  ]
-}
-```
-
 # evaluation Properties
 
-| Property                                    | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                             |
-| :------------------------------------------ | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [benchmarks](#benchmarks)                   | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")                                                              |
-| [graph_true_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
-| [graph_true_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
-| [ggally_ggpairs](#ggally_ggpairs)           | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")           |
-| [graph_plots](#graph_plots)                 | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
-| [mcmc_traj_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
-| [mcmc_heatmaps](#mcmc_heatmaps)             | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
-| [mcmc_autocorr_plots](#mcmc_autocorr_plots) | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_autocorr_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_autocorr_plots") |
+| Property                                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                             |
+| :-------------------------------------------- | :-------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [benchmarks](#benchmarks)                     | `object`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")              |
+| [graph\_true\_plots](#graph_true_plots)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")       |
+| [graph\_true\_stats](#graph_true_stats)       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")       |
+| [ggally\_ggpairs](#ggally_ggpairs)            | `boolean` | Optional | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")           |
+| [graph\_plots](#graph_plots)                  | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")                 |
+| [mcmc\_traj\_plots](#mcmc_traj_plots)         | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")         |
+| [mcmc\_heatmaps](#mcmc_heatmaps)              | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")             |
+| [mcmc\_autocorr\_plots](#mcmc_autocorr_plots) | `array`   | Required | cannot be null | [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_autocorr_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_autocorr_plots") |
 
 ## benchmarks
 
@@ -97,15 +35,15 @@ ROC item
 
 *   is required
 
-*   Type: `object` ([benchmarks item](config-definitions-benchmarks-item.md))
+*   Type: `object` ([benchmarks item](config-properties-benchmark_setup-properties-evaluation-properties-benchmarks-item.md))
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")
+*   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-benchmarks-item.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/benchmarks")
 
 ### benchmarks Type
 
-`object` ([benchmarks item](config-definitions-benchmarks-item.md))
+`object` ([benchmarks item](config-properties-benchmark_setup-properties-evaluation-properties-benchmarks-item.md))
 
 ### benchmarks Examples
 
@@ -135,25 +73,25 @@ ROC item
 }
 ```
 
-## graph_true_plots
+## graph\_true\_plots
 
-This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph_true_plots/.
+This module plots the true underlying graphs. The figures are saved in results/adjmat and copied to results/output/graph\_true\_plots/.
 
 `graph_true_plots`
 
 *   is required
 
-*   Type: `boolean` ([graph_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md))
+*   Type: `boolean` ([graph\_true\_plots](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_plots")
 
-### graph_true_plots Type
+### graph\_true\_plots Type
 
-`boolean` ([graph_true_plots](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md))
+`boolean` ([graph\_true\_plots](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md))
 
-### graph_true_plots Examples
+### graph\_true\_plots Examples
 
 ```json
 {
@@ -161,25 +99,25 @@ This module plots the true underlying graphs. The figures are saved in results/a
 }
 ```
 
-## graph_true_stats
+## graph\_true\_stats
 
-This module plots statistics of the true underlying graphs. The figures are saved in to results/output/graph_true_stats/.
+This module plots statistics of the true underlying graphs. The figures are saved in to results/output/graph\_true\_stats/.
 
 `graph_true_stats`
 
 *   is required
 
-*   Type: `boolean` ([graph_true_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
+*   Type: `boolean` ([graph\_true\_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_true_stats")
 
-### graph_true_stats Type
+### graph\_true\_stats Type
 
-`boolean` ([graph_true_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
+`boolean` ([graph\_true\_stats](config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md))
 
-### graph_true_stats Examples
+### graph\_true\_stats Examples
 
 ```json
 {
@@ -187,25 +125,25 @@ This module plots statistics of the true underlying graphs. The figures are save
 }
 ```
 
-## ggally_ggpairs
+## ggally\_ggpairs
 
-This module plots the data using pairs. The figures are saved in to results/output/ggally_ggpairs/.
+This module plots the data using pairs. The figures are saved in to results/output/ggally\_ggpairs/.
 
 `ggally_ggpairs`
 
 *   is optional
 
-*   Type: `boolean` ([ggally_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
+*   Type: `boolean` ([ggally\_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/ggally_ggpairs")
 
-### ggally_ggpairs Type
+### ggally\_ggpairs Type
 
-`boolean` ([ggally_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
+`boolean` ([ggally\_ggpairs](config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md))
 
-### ggally_ggpairs Examples
+### ggally\_ggpairs Examples
 
 ```json
 {
@@ -213,9 +151,9 @@ This module plots the data using pairs. The figures are saved in to results/outp
 }
 ```
 
-## graph_plots
+## graph\_plots
 
-This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph_plots/.
+This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph\_plots/.
 
 `graph_plots`
 
@@ -227,11 +165,11 @@ This module plots and saves the estimated graphs in dot-format. The figures are 
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/graph_plots")
 
-### graph_plots Type
+### graph\_plots Type
 
 `string[]`
 
-### graph_plots Examples
+### graph\_plots Examples
 
 ```json
 [
@@ -242,25 +180,25 @@ This module plots and saves the estimated graphs in dot-format. The figures are 
 ]
 ```
 
-## mcmc_traj_plots
+## mcmc\_traj\_plots
 
-This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.
+This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc\_traj\_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn\_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc\_traj\_plots/ and copied to results/output/mcmc\_traj\_plots/.
 
 `mcmc_traj_plots`
 
 *   is required
 
-*   Type: `object[]` ([mcmc_traj_plots item](config-definitions-mcmc_traj_plots-item.md))
+*   Type: `object[]` ([mcmc\_traj\_plots item](config-definitions-mcmc_traj_plots-item.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_traj_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_traj_plots")
 
-### mcmc_traj_plots Type
+### mcmc\_traj\_plots Type
 
-`object[]` ([mcmc_traj_plots item](config-definitions-mcmc_traj_plots-item.md))
+`object[]` ([mcmc\_traj\_plots item](config-definitions-mcmc_traj_plots-item.md))
 
-### mcmc_traj_plots Examples
+### mcmc\_traj\_plots Examples
 
 ```json
 [
@@ -277,7 +215,7 @@ This module plots the so called score values in the trajectory or the value of a
 ]
 ```
 
-## mcmc_heatmaps
+## mcmc\_heatmaps
 
 Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
@@ -291,11 +229,11 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_heatmaps.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_heatmaps")
 
-### mcmc_heatmaps Type
+### mcmc\_heatmaps Type
 
 unknown\[] ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 
-### mcmc_heatmaps Examples
+### mcmc\_heatmaps Examples
 
 ```json
 [
@@ -307,7 +245,7 @@ unknown\[] ([MCMC mean graph plot](config-definitions-mcmc-mean-graph-plot.md))
 ]
 ```
 
-## mcmc_autocorr_plots
+## mcmc\_autocorr\_plots
 
 Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
@@ -315,17 +253,17 @@ Plots mean graph as a heatmap from an MCMC trajectory of graphs.
 
 *   is required
 
-*   Type: unknown\[] ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
+*   Type: unknown\[] ([mcmc\_autocorr\_plots item](config-definitions-mcmc_autocorr_plots-item.md))
 
 *   cannot be null
 
 *   defined in: [JSON schema for Benchpress config file.](config-properties-benchmark_setup-properties-evaluation-properties-mcmc_autocorr_plots.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/properties/benchmark_setup/properties/evaluation/properties/mcmc_autocorr_plots")
 
-### mcmc_autocorr_plots Type
+### mcmc\_autocorr\_plots Type
 
-unknown\[] ([mcmc_autocorr_plots item](config-definitions-mcmc_autocorr_plots-item.md))
+unknown\[] ([mcmc\_autocorr\_plots item](config-definitions-mcmc_autocorr_plots-item.md))
 
-### mcmc_autocorr_plots Examples
+### mcmc\_autocorr\_plots Examples
 
 ```json
 [

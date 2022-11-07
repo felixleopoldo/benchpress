@@ -6,14 +6,14 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Non-negative number
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## edge_coefficient_range_from Type
+## edge\_coefficient\_range\_from Type
 
 `number` ([nonnegnum type](config-definitions-notears_parameters_sampling-item-properties-nonnegnum-type.md))
 
-## edge_coefficient_range_from Constraints
+## edge\_coefficient\_range\_from Constraints
 
 **minimum**: the value of this number must greater than or equal to: `0`

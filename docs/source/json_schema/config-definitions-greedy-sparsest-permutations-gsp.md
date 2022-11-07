@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 This is the Greedy Sparsest Permutations (GSP) algorithm from the causalDAG package, <https://uhlerlab.github.io/causaldag/>. For information about the arguments please see the documentation. Note that some of them are not available here yet.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## causaldag_gsp Type
+## causaldag\_gsp Type
 
 `object` ([Greedy Sparsest Permutations (GSP)](config-definitions-greedy-sparsest-permutations-gsp.md))
 
-## causaldag_gsp Examples
+## causaldag\_gsp Examples
 
 ```json
 {
@@ -37,27 +37,27 @@ This is the Greedy Sparsest Permutations (GSP) algorithm from the causalDAG pack
 }
 ```
 
-# Greedy Sparsest Permutations (GSP) Properties
+# causaldag\_gsp Properties
 
-| Property                                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                |
-| :---------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)                                 | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/id")                  |
-| [nruns](#nruns)                           | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/nruns")                                                     |
-| [depth](#depth)                           | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/depth")                                                     |
-| [verbose](#verbose)                       | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/verbose")                       |
-| [initial_undirected](#initial_undirected) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-initial_undirected.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/initial_undirected") |
-| [use_lowest](#use_lowest)                 | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-use_lowest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/use_lowest")                 |
-| [factor](#factor)                         | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/factor")                                                    |
-| [progress_bar](#progress_bar)             | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-progress_bar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/progress_bar")             |
-| [max_iters](#max_iters)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-max_iters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/max_iters")                   |
-| [summarize](#summarize)                   | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-summarize.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/summarize")                   |
-| [alpha](#alpha)                           | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprobnull.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/alpha")                                                                |
-| [invert](#invert)                         | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-invert.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/invert")                         |
-| [timeout](#timeout)                       | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/timeout")                                              |
+| Property                                   | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                |
+| :----------------------------------------- | :-------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)                                  | `string`  | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-unique-identifier.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/id")                  |
+| [nruns](#nruns)                            | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/nruns")                                                     |
+| [depth](#depth)                            | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/depth")                                                     |
+| [verbose](#verbose)                        | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-verbose.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/verbose")                       |
+| [initial\_undirected](#initial_undirected) | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-initial_undirected.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/initial_undirected") |
+| [use\_lowest](#use_lowest)                 | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-use_lowest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/use_lowest")                 |
+| [factor](#factor)                          | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/factor")                                                    |
+| [progress\_bar](#progress_bar)             | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-progress_bar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/progress_bar")             |
+| [max\_iters](#max_iters)                   | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-max_iters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/max_iters")                   |
+| [summarize](#summarize)                    | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-summarize.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/summarize")                   |
+| [alpha](#alpha)                            | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexprobnull.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/alpha")                                                                |
+| [invert](#invert)                          | `boolean` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-invert.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/invert")                         |
+| [timeout](#timeout)                        | Merged    | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-numbers-or-null.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/timeout")                                              |
 
 ## id
 
-Unique identifier for that can be used as reference in the benchmark_setup.
+Unique identifier for that can be used as reference in the benchmark\_setup.
 
 `id`
 
@@ -139,7 +139,7 @@ any of
 
 `boolean`
 
-## initial_undirected
+## initial\_undirected
 
 
 
@@ -153,7 +153,7 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-initial_undirected.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/initial_undirected")
 
-### initial_undirected Type
+### initial\_undirected Type
 
 merged type ([Details](config-definitions-greedy-sparsest-permutations-gsp-properties-initial_undirected.md))
 
@@ -161,7 +161,7 @@ any of
 
 *   [Untitled string in JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-initial_undirected-anyof-0.md "check type definition")
 
-## use_lowest
+## use\_lowest
 
 
 
@@ -175,7 +175,7 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-use_lowest.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/use_lowest")
 
-### use_lowest Type
+### use\_lowest Type
 
 `boolean`
 
@@ -203,7 +203,7 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-## progress_bar
+## progress\_bar
 
 
 
@@ -217,11 +217,11 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-progress_bar.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/progress_bar")
 
-### progress_bar Type
+### progress\_bar Type
 
 `boolean`
 
-## max_iters
+## max\_iters
 
 
 
@@ -235,7 +235,7 @@ any of
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-greedy-sparsest-permutations-gsp-properties-max_iters.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/causaldag_gsp/properties/max_iters")
 
-### max_iters Type
+### max\_iters Type
 
 merged type ([Details](config-definitions-greedy-sparsest-permutations-gsp-properties-max_iters.md))
 

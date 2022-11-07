@@ -1,4 +1,4 @@
-# trilearn_hyper-dir item Schema
+# trilearn\_hyper-dir item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Parameter setting for a hyper Dirichlet distribution
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## trilearn_hyper-dir Type
+## trilearn\_hyper-dir Type
 
-`object` ([trilearn_hyper-dir item](config-definitions-trilearn_hyper-dir-item.md))
+`object` ([trilearn\_hyper-dir item](config-definitions-trilearn_hyper-dir-item.md))
 
-## trilearn_hyper-dir Examples
+## trilearn\_hyper-dir Examples
 
 ```json
 {
@@ -24,13 +24,13 @@ Parameter setting for a hyper Dirichlet distribution
 }
 ```
 
-# trilearn_hyper-dir item Properties
+# trilearn\_hyper-dir Properties
 
-| Property                  | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                            |
-| :------------------------ | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [id](#id)                 | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_hyper-dir-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/id") |
-| [n_levels](#n_levels)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/n_levels")         |
-| [pseudo_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/pseudo_obs")                 |
+| Property                   | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                            |
+| :------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [id](#id)                  | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-trilearn_hyper-dir-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/id") |
+| [n\_levels](#n_levels)     | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/n_levels")         |
+| [pseudo\_obs](#pseudo_obs) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/pseudo_obs")                 |
 
 ## id
 
@@ -50,7 +50,7 @@ Parameter setting for a hyper Dirichlet distribution
 
 `string`
 
-## n_levels
+## n\_levels
 
 Non-negative integers, (0,1,2,...), or array of the same.
 
@@ -64,7 +64,7 @@ Non-negative integers, (0,1,2,...), or array of the same.
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-non-negative-integers-1.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/n_levels")
 
-### n_levels Type
+### n\_levels Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers-1.md))
 
@@ -74,7 +74,7 @@ any of
 
 *   [nonnegint list](config-definitions-nonnegint-list.md "check type definition")
 
-## pseudo_obs
+## pseudo\_obs
 
 Non-negative number(s).
 
@@ -88,7 +88,7 @@ Non-negative number(s).
 
 *   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/trilearn_hyper-dir/properties/pseudo_obs")
 
-### pseudo_obs Type
+### pseudo\_obs Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 

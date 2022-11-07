@@ -1,4 +1,4 @@
-# bnlearn_iamb item Schema
+# bnlearn\_iamb item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bnlearn_iamb
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 IAMB algorithm instance
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bnlearn_iamb Type
+## bnlearn\_iamb Type
 
-`object` ([bnlearn_iamb item](config-definitions-bnlearn_iamb-item.md))
+`object` ([bnlearn\_iamb item](config-definitions-bnlearn_iamb-item.md))
 
-## bnlearn_iamb Examples
+## bnlearn\_iamb Examples
 
 ```json
 {
@@ -32,7 +32,7 @@ IAMB algorithm instance
 }
 ```
 
-# bnlearn_iamb item Properties
+# bnlearn\_iamb Properties
 
 | Property                  | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                |
 | :------------------------ | :-------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

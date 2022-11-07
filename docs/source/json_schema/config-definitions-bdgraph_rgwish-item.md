@@ -1,4 +1,4 @@
-# bdgraph_rgwish item Schema
+# bdgraph\_rgwish item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish
@@ -6,31 +6,31 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Parameter setting for a G-Wishart model. Works for undirected graphs.
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bdgraph_rgwish Type
+## bdgraph\_rgwish Type
 
-`object` ([bdgraph_rgwish item](config-definitions-bdgraph_rgwish-item.md))
+`object` ([bdgraph\_rgwish item](config-definitions-bdgraph_rgwish-item.md))
 
-## bdgraph_rgwish Examples
+## bdgraph\_rgwish Examples
 
 ```json
 {
   "id": "gwi",
   "b": 3,
-  "threshold": 1e-8
+  "threshold_conv": 1e-8
 }
 ```
 
-# bdgraph_rgwish item Properties
+# bdgraph\_rgwish Properties
 
-| Property                | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
-| :---------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [id](#id)               | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bdgraph_rgwish-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/id") |
-| [b](#b)                 | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/b")                      |
-| [threshold](#threshold) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold")              |
+| Property                           | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                    |
+| :--------------------------------- | :------- | :------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [id](#id)                          | `string` | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-bdgraph_rgwish-item-properties-id.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/id") |
+| [b](#b)                            | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/b")                      |
+| [threshold\_conv](#threshold_conv) | Merged   | Required | cannot be null | [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold_conv")         |
 
 ## id
 
@@ -74,11 +74,11 @@ any of
 
 *   [nonnegnumlist](config-definitions-nonnegnumlist.md "check type definition")
 
-## threshold
+## threshold\_conv
 
 Non-negative number(s).
 
-`threshold`
+`threshold_conv`
 
 *   is required
 
@@ -86,9 +86,9 @@ Non-negative number(s).
 
 *   cannot be null
 
-*   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold")
+*   defined in: [JSON schema for Benchpress config file.](config-definitions-flexnonnegnum.md "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bdgraph_rgwish/properties/threshold_conv")
 
-### threshold Type
+### threshold\_conv Type
 
 merged type ([Details](config-definitions-flexnonnegnum.md))
 

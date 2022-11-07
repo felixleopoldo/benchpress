@@ -1,16 +1,16 @@
 # Non-negative integer(s) Schema
 
 ```txt
-http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnumnull/anyOf/0
+http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/flexnatnum
 ```
 
 
 
-| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## 0 Type
+## flexnatnum Type
 
 merged type ([Non-negative integer(s)](config-definitions-non-negative-integers.md))
 

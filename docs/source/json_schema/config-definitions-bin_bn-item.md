@@ -1,4 +1,4 @@
-# bin_bn item Schema
+# bin\_bn item Schema
 
 ```txt
 http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/definitions/bin_bn
@@ -6,15 +6,15 @@ http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json#/
 
 Parameter setting for generateBinaryBN
 
-| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                       |
-| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :--------------------------------------------------------------- |
-| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json*](config.schema.json "open original schema") |
+| Abstract            | Extensible | Status         | Identifiable | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                        |
+| :------------------ | :--------- | :------------- | :----------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------- |
+| Can be instantiated | No         | Unknown status | No           | Forbidden         | Forbidden             | none                | [config.schema.json\*](config.schema.json "open original schema") |
 
-## bin_bn Type
+## bin\_bn Type
 
-`object` ([bin_bn item](config-definitions-bin_bn-item.md))
+`object` ([bin\_bn item](config-definitions-bin_bn-item.md))
 
-## bin_bn Examples
+## bin\_bn Examples
 
 ```json
 {
@@ -24,7 +24,7 @@ Parameter setting for generateBinaryBN
 }
 ```
 
-# bin_bn item Properties
+# bin\_bn Properties
 
 | Property    | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                    |
 | :---------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
