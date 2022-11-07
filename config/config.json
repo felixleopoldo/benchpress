@@ -84,16 +84,6 @@
             ]
         },
         "structure_learning_algorithms": {
-            "mylib_myalg": [
-                {
-                    "id": "testing_myalg",
-                    "myparam1": "somevalue",
-                    "myparam2": [
-                        1,
-                        2
-                    ]
-                }
-            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
