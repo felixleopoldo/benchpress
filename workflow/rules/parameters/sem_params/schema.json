@@ -1,0 +1,40 @@
+{
+    "title": "sem_params",
+    "description": "List of sem_params id's",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/sem_params"
+    },
+    "uniqueItems": true,
+    "definitions": {
+        "sem_params": {
+            "title": "sem_params item",
+            "description": "Parameter setting for sampling SEM params.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "min": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "max": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                }
+            },
+            "required": [
+                "min",
+                "max",
+                "id"
+            ],
+            "additionalProperties": false,
+            "examples": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
+            ]
+        }
+    }
+}

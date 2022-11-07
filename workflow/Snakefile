@@ -1,4 +1,5 @@
 import json
+import jsonschema
 from jsonschema import validate
 import snakemake.utils
 import sys, getopt
@@ -6,82 +7,161 @@ import shutil
 import filecmp
 from pathlib import Path
 import os
-from snakemake.utils import min_version
 
-# To update Snakemake using Mamba run 
-# mamba update -c conda-forge -c bioconda snakemake
 
-min_version("7.14") 
+include: "rules/helper_functions.py"
 
-# Check that Apptainer or Singularity >=3.2 is installed.  
-(apptainer_ecode, apptainer_outp) = subprocess.getstatusoutput("apptainer --version")
-(ecode, outp) = subprocess.getstatusoutput("singularity --version")
 
-# Check if either singularity of apptainera is installed
-if ecode != 0 and apptainer_ecode != 0:
-    raise Exception("Benchpress requires Singularity >= 3.2 or Apptainer.")
+check_system_requirements()
 
-# If Singularity and not apptainer is installer, check the version of Singularity.
-if ecode == 0 and apptainer_ecode != 0:
-    v1 = outp.split()[2].split(".")[0]
-    v2 = outp.split()[2].split(".")[1]
-    smkver = float(v1 + "." + v2)
-    if float(v1) < 3 or (float(v1)==3 and float(v2) < 2):
-        raise Exception("You have " +outp+ ". Benchpress requires Singularity >= 3.2.")
 
 # This is a workaround. Needed a variable for the configfilename
 # and this seemed to be the only way. But there are probably better ways.
 args = sys.argv
-configfilename="config/config.json"
-i=0
+configfilename = "config/config.json"
+i = 0
 for arg in args:
-    if arg=="--configfile" or arg=="--configfiles": # This is strange
-        configfilename = args[i+1]
+    if arg == "--configfile" or arg == "--configfiles":  # This is strange
+        configfilename = args[i + 1]
         break
-    i+=1
+    i += 1
 
-configfile: 
-    configfilename
 
-snakemake.utils.validate(config, 'schemas/config.schema.json')
+configfile: configfilename
+
+
+with open("workflow/schemas/config.schema.json") as json_file:
+    schema = json.load(json_file)
+
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "structure_learning_algorithms"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
+    }
+
+with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
+    outfile.write(json.dumps(schema, indent=4))
+
+# validate(
+#     config,
+#     schema#,
+#     # jsonschema.RefResolver(
+#     #     base_uri="/",
+#     #     referrer=schema,
+#     # ),
+# )
+
+snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
+
+Path("workflow/schemas/tmp.config.schema.json").unlink()
 
 include: "rules/docker_images.smk"
 
-container:
-    docker_image("benchmark")
 
-# This function returns empty "trigger files" for the type of evaluations
-# that are used. Yes, this is ugly. Should maybe have a directory output instead. 
-def get_active_rules(wildcards):
-    rules = []
-    for key, val in config["benchmark_setup"]["evaluation"].items():
-        # Check if boolean or list or object wirh nonempty ids field. 
-        if isinstance(val, dict) and val["ids"] != []: # TODO: this was OrderedDict, so might have to impose order somewhere.
-            rules.append("results/output/"+key+"/"+key+".done")
-        if isinstance(val, bool) and val is True:
-            rules.append("results/output/"+key+"/"+key+".done")
-        if isinstance(val, list) and val != []:
-            if key == "mcmc_traj_plots" or key == "mcmc_heatmaps" or key == "mcmc_autocorr_plots":
-                for item in val:
-                    if ("active" not in item) or item["active"] == True:
-                        rules.append("results/output/"+key+"/"+key+".done")
-                        break
-            else:
-                rules.append("results/output/"+key+"/"+key+".done")    
-    return rules
+container: docker_image("benchmark")
+
 
 rule all:
-    input: get_active_rules
+    input:
+        get_active_rules,
 
-include: "rules/validate.smk"
-include: "rules/pattern_strings.smk"
-include: "rules/algorithm_strings.smk"
-include: "rules/helper_functions.smk"
-include: "rules/algorithm_shell_commands.smk"
-include: "rules/algorithm_summary_shell_command.smk"
-include: "rules/sample_adjmat.smk"
-include: "rules/sample_parameters.smk"
-include: "rules/sample_data.smk"
-include: "rules/algorithm_rules.smk"
-include: "rules/mylib_myalg.smk"
-include: "rules/evaluation.smk"
+
+rule new_alg:
+    input:
+        "resources/module_templates/new_alg",
+    output:
+        directory("workflow/rules/structure_learning_algorithms/new_alg"),
+    message:
+        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+
+
+mcmc_modules = [
+    "bdgraph",
+    "bidag_order_mcmc",
+    "parallelDG",
+    "trilearn_pgibbs",
+    "gg99_singlepair",
+    "gt13_multipair",
+]
+
+
+# Validate JSON file based on its values.
+include: "rules/validate.py"
+include: "rules/module_patterns.py"
+include: "rules/module_strings.py"
+include: "rules/filename_patterns.py"
+
+
+# Include the graph modules
+for p in Path("workflow/rules/graph/").glob("*"):
+    if (p / "rule.smk").is_file():
+        if p.name in pattern_strings or (p.name == "fixed"):
+
+            include: Path("rules/graph/", p.name, "rule.smk")
+
+
+# Include the parameters modules
+for p in Path("workflow/rules/parameters/").glob("*"):
+    if (p / "rule.smk").is_file():
+        if (p.name in pattern_strings) or (p.name == "fixed"):
+
+            include: Path("rules/parameters/", p.name, "rule.smk")
+
+
+# Include the data modules
+for p in Path("workflow/rules/data/").glob("*"):
+    if (p / "rules.smk").is_file():
+
+        include: Path("rules/data/", p.name, "rules.smk")
+
+
+# Include the structure_learning_algorithms modules
+for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
+
+    if (p / "rule.smk").is_file():
+
+        if p.name in pattern_strings:
+            # set the module name here
+
+            include: Path("rules/structure_learning_algorithms/", p.name, "rule.smk")
+
+
+            if p.name in mcmc_modules:
+
+                rule:
+                    name:
+                        p.name + "_estimation"
+                    input:
+                        traj=alg_output_seqgraph_path_fine_match(p.name),
+                    output:
+                        adjmat=adjmat_estimate_path_mcmc(p.name),  # here is the difference from order_mcmc. matching diffferently.
+                    params:
+                        graph_type="chordal",
+                        estimator="{mcmc_estimator}",
+                        threshold="{threshold}",
+                        burnin_frac="{burnin_frac}",
+                    container:
+                        docker_image("networkx")
+                    script:
+                        "scripts/evaluation/graphtraj_est.py"
+# Include the evaluation modules
+
+
+
+for p in Path("workflow/rules/evaluation/").glob("*"):
+
+    if (p / "rules.smk").is_file():
+
+        include: Path("rules/evaluation/", p.name, "rules.smk")
+
+
+    elif (p / "rule.smk").is_file():
+
+        include: Path("rules/evaluation/", p.name, "rule.smk")

@@ -119,20 +119,6 @@
                     "beta": 0.7
                 }
             ],
-            "bandmat": [
-                {
-                    "id": "AR2",
-                    "bandwidth": 2,
-                    "dim": 50
-                }
-            ],
-            "rand_bandmat": [
-                {
-                    "id": "AR1-5",
-                    "max_bandwidth": 5,
-                    "dim": 50
-                }
-            ],
             "bdgraph_graphsim": [
                 {
                     "id": "circle",
@@ -178,13 +164,6 @@
                     "id": "giw",
                     "dof": 1
                 }
-            ],
-            "bdgraph_rgwish": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold": 0.00000001
-                }
             ]
         },
         "structure_learning_algorithms": {
@@ -218,51 +197,7 @@
                     "timeout": null
                 }
             ],
-            "trilearn_pgibbs": [
-                {
-                    "id": "trilearn-cont",
-                    "datatype": "continuous",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": [
-                        50
-                    ],
-                    "M": 100,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "trilearn-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": [
-                        50
-                    ],
-                    "M": 1000,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ],
-                    "timeout": null
-                },
-                {
-                    "id": "trilearn05-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": 50,
-                    "M": 300,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                }
-            ],
+            
             "sklearn_glasso": [
                 {
                     "id": "sklearn_glasso",
@@ -347,109 +282,7 @@
                     "timeout": 1500
                 }
             ],
-            "gt13_multipair": [
-                {
-                    "id": "gt13_multipair_bc-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        10
-                    ],
-                    "bscore": 0.001,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": null,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair_ep-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "ep",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": null,
-                    "sep": null,
-                    "penalty": [
-                        1.5,
-                        5
-                    ],
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair_mbc-cont",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "mbc",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 1,
-                    "sep": 1,
-                    "penalty": null,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gt13_multipair-disc",
-                    "n_samples": [
-                        100000
-                    ],
-                    "datatype": "discrete",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "mcmc_seed": 1,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "timeout": null
-                }
-            ],
-            "gg99_singlepair": [
-                {
-                    "id": "guidicigreen-cont",
-                    "n_samples": [
-                        1000000
-                    ],
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": [
-                        0.1,
-                        0.9
-                    ],
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "guidicigreen-disc",
-                    "datatype": "discrete",
-                    "n_samples": [
-                        100000
-                    ],
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.1,
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                }
-            ],
+            
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -1183,19 +1016,11 @@
                     "MAP": true,
                     "cpdag": false,
                     "mcmc_seed": 1,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0,
+                    "threshold": 
+                        0.5                      
+                    ,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1215,7 +1040,8 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1246,7 +1072,8 @@
                         0.3,
                         0.2
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1268,7 +1095,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1292,7 +1120,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1316,7 +1145,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1338,7 +1168,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1360,7 +1191,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 }
             ]

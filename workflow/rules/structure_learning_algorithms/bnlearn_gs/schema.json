@@ -1,0 +1,93 @@
+{
+    "description": "GS objects",
+    "title": "bnlearn_gs",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/bnlearn_gs"
+    },
+    "definitions": {
+        "bnlearn_gs": {
+            "title": "bnlearn_gs item",
+            "description": "Grow shrink (GS) algorithm instance",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier"
+                },
+                "alpha": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                },
+                "test": {
+                    "type": "string",
+                    "enum": [
+                        "mi",
+                        "mi-adf",
+                        "mc-mi",
+                        "smc-mi",
+                        "sp-mi",
+                        "mi-sh",
+                        "x2",
+                        "x2-adf",
+                        "sp-x2",
+                        "jt",
+                        "mc-jt",
+                        "smc-jt",
+                        "cor",
+                        "mc-cor",
+                        "smc-cor",
+                        "zf",
+                        "mc-zf",
+                        "smc-zf",
+                        "mi-g",
+                        "mc-mi-g",
+                        "smc-mi-g",
+                        "mi-g-sh",
+                        "mi-cg"
+                    ]
+                },
+                "B": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+                },
+                "maxsx": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+                },
+                "debug": {
+                    "type": "boolean"
+                },
+                "undirected": {
+                    "type": "boolean"
+                },
+                "timeout": {
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "alpha",
+                "test",
+                "B",
+                "maxsx",
+                "debug",
+                "undirected",
+                "timeout"
+            ],
+            "examples": [
+                {
+                    "id": "gs-zf",
+                    "alpha": [
+                        0.01,
+                        0.05
+                    ],
+                    "test": "zf",
+                    "B": null,
+                    "maxsx": null,
+                    "debug": false,
+                    "undirected": false,
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}
