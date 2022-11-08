@@ -1,5 +1,5 @@
 {
-    "title": "tetrad_lingam",
+    "title": "docs.rst",
     "docker_image": "docker://",
     "version": "v0.0.1",
     "package": {
@@ -17,7 +17,7 @@
         "adjmat"
     ],
     "graph_types": [
-        "ug"
+        ""
     ],
     "language": ""
 }
