@@ -68,6 +68,13 @@ rule all:
     input:
         get_active_rules,
 
+rule copy_configs:
+    input: 
+        "config/"
+    output:
+        directory("config/copies")
+    shell:
+        "cp -r {input} {output}"
 
 rule new_alg:
     input:
