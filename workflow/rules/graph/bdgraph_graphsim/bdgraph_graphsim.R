@@ -2,13 +2,24 @@
 
 library(BDgraph)
 
+size <- NULL
+if (snakemake@wildcards[["size"]] != "None") {
+  size <- as.integer(snakemake@wildcards[["size"]])
+}
+
+class <- NULL
+if (snakemake@wildcards[["class"]] != "None") {
+  size <- as.numeric(snakemake@wildcards[["class"]])
+}
+
+
 set.seed(as.integer(snakemake@wildcards[["replicate"]]))
 adjmat <- graph.sim(
   p = as.integer(snakemake@wildcards[["p"]]),
   graph = snakemake@wildcards[["graph"]],
   prob = as.numeric(snakemake@wildcards[["prob"]]),
-  size = as.integer(snakemake@wildcards[["size"]]),
-  class = as.numeric(snakemake@wildcards[["class"]]),
+  size = size,
+  class = class,
   vis = FALSE
 )
 
