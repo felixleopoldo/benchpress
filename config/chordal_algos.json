@@ -66,7 +66,7 @@
                 },
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 0,
                     "thinning": 100,
                     "functional": [
                         "score",
@@ -107,7 +107,7 @@
                 },
                 {
                     "id": "parallelDG_test",
-                    "burn_in": 20000,
+                    "burn_in": 0,
                     "thinning": 100,
                     "lags": 50,
                     "functional": [
@@ -132,7 +132,7 @@
             ]
         },
         "graph": {
-            "rand_bandmat": [
+            "trilearn_rand_bandmat": [
                 {
                     "id": "AR1-5",
                     "max_bandwidth": 5,
@@ -168,7 +168,7 @@
             "parallelDG": [
                 {
                     "id": "parallelDG_test",
-                    "M": 100000,
+                    "M": 10000,
                     "R": [
                         100,
                         200
@@ -183,6 +183,9 @@
                     "graph_prior_param1": 3.0,
                     "pseudo_obs": 2,
                     "delta": 5.0,
+                    "threshold": 0.5,
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "map",
                     "timeout": null
                 }
             ],
@@ -205,6 +208,9 @@
                         1,
                         2
                     ],
+                    "threshold": 0.5,
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "map",
                     "timeout": null
                 }
             ],
@@ -229,6 +235,9 @@
                         1,
                         2
                     ],
+                    "threshold": 0.5,
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "map",
                     "timeout": null
                 }
             ]
