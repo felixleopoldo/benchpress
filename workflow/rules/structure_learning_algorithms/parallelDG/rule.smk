@@ -11,7 +11,7 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://hallawalla/paralleldg:0.8" 
+        "docker://hallawalla/paralleldg:0.9.1" 
     shell:
         """
         if [ {wildcards.timeout} = \"None\" ]; then
