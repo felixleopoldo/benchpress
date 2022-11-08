@@ -1,0 +1,1 @@
+ParallelDG is an MCMC algorithm.

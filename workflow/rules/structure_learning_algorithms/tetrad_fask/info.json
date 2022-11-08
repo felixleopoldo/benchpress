@@ -1,0 +1,23 @@
+{
+    "title": "tetrad_fask",
+    "docker_image": "docker://",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": "http"
+    },
+    "docs": "",
+    "papers": [
+        {
+            "title": "the paper title",
+            "url": "the_url"
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "ug"
+    ],
+    "language": ""
+}
