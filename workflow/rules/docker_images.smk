@@ -32,7 +32,7 @@ def docker_image(name):
     elif name == "rbase":
         return "docker://r-base"
     elif name == "parallelDG":
-        return "docker://hallawalla/paralleldg:0.9.1"
+        return "docker://hallawalla/paralleldg:0.9.2"
     elif name == "gcastle":
         return "docker://onceltuca/gcastle:1.0.3"
     elif name == "tidyverse":
