@@ -1,12 +1,12 @@
 {
-    "title": "docs.rst",
+    "title": "tetrad_rfci",
     "docker_image": "docker://",
     "version": "v0.0.1",
     "package": {
         "title": "",
         "url": "http"
     },
-    "docs": "",
+    "docs_url": "",
     "papers": [
         {
             "title": "the paper title",

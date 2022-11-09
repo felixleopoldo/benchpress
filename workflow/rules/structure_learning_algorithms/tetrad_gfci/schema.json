@@ -3,86 +3,81 @@
     "title": "tetrad_gfci",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_gfci"
-    },
-    "definitions": {
-        "tetrad_gfci": {
-            "title": "tetrad_gfci item",
-            "description": "GFCI instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "alpha": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "test": {
-                    "type": "string",
-                    "enum": [
-                        "bdeu-test",
-                        "cci-test",
-                        "cg-lr-test",
-                        "chi-square-test",
-                        "d-sep-test",
-                        "disc-bic-test",
-                        "fisher-z-test",
-                        "g-square-test",
-                        "kci-test",
-                        "prob-test"
-                    ]
-                },
-                "score": {
-                    "type": "string",
-                    "enum": [
-                        "bdeu-score",
-                        "cci-score",
-                        "cg-bic-score",
-                        "d-sep-score",
-                        "disc-bic-score",
-                        "sem-bic"
-                    ]
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "datatype": {
-                    "type": "string"
-                },
-                "samplePrior": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "structurePrior": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "penaltyDiscount": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "tetrad_gfci item",
+        "description": "GFCI instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "required": [
-                "id",
-                "test",
-                "structurePrior",
-                "penaltyDiscount"
-            ],
-            "examples": [
-                {
-                    "id": "gfci-sem-bic-fisher-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "structurePrior": 1,
-                    "timeout": null
-                }
-            ]
-        }
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "test": {
+                "type": "string",
+                "enum": [
+                    "bdeu-test",
+                    "cci-test",
+                    "cg-lr-test",
+                    "chi-square-test",
+                    "d-sep-test",
+                    "disc-bic-test",
+                    "fisher-z-test",
+                    "g-square-test",
+                    "kci-test",
+                    "prob-test"
+                ]
+            },
+            "score": {
+                "type": "string",
+                "enum": [
+                    "bdeu-score",
+                    "cci-score",
+                    "cg-bic-score",
+                    "d-sep-score",
+                    "disc-bic-score",
+                    "sem-bic"
+                ]
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "samplePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "structurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "penaltyDiscount": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "structurePrior",
+            "penaltyDiscount"
+        ],
+        "examples": [
+            {
+                "id": "gfci-sem-bic-fisher-z",
+                "alpha": 0.05,
+                "score": "sem-bic",
+                "test": "fisher-z-test",
+                "datatype": "continuous",
+                "penaltyDiscount": [
+                    0.5,
+                    1,
+                    1.5
+                ],
+                "samplePrior": null,
+                "structurePrior": 1,
+                "timeout": null
+            }
+        ]
     }
 }

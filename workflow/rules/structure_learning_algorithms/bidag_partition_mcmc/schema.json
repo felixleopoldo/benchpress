@@ -3,107 +3,102 @@
     "title": "bidag_partition_mcmc",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/bidag_partition_mcmc"
-    },
-    "definitions": {
-        "bidag_partition_mcmc": {
-            "title": "bidag_partition_mcmc item",
-            "description": "Partition MCMC algorithm instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "startspace_algorithm": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "scoretype": {
-                    "type": "string"
-                },
-                "verbose": {
-                    "type": "boolean"
-                },
-                "chi": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "edgepf": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "am": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "aw": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "iterations": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "stepsave": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "gamma": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "burnin": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "mcmc_seed": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "bidag_partition_mcmc item",
+        "description": "Partition MCMC algorithm instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "scoretype",
-                "chi",
-                "edgepf",
-                "am",
-                "aw",
-                "burnin",
-                "startspace_algorithm",
-                "verbose",
-                "stepsave",
-                "iterations",
-                "gamma"
-            ],
-            "examples": [
-                {
-                    "id": "partition_itmap-bge",
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
-                    "verbose": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": [
-                        0.01,
-                        0.1,
-                        0.05
-                    ],
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "timeout": null,
-                    "mcmc_seed": 1,
-                    "burnin": 0
-                }
-            ]
-        }
+            "startspace_algorithm": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "scoretype": {
+                "type": "string"
+            },
+            "verbose": {
+                "type": "boolean"
+            },
+            "chi": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgepf": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "am": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "aw": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "iterations": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "stepsave": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "gamma": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "burnin": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "scoretype",
+            "chi",
+            "edgepf",
+            "am",
+            "aw",
+            "burnin",
+            "startspace_algorithm",
+            "verbose",
+            "stepsave",
+            "iterations",
+            "gamma"
+        ],
+        "examples": [
+            {
+                "id": "partition_itmap-bge",
+                "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                "verbose": true,
+                "scoretype": "bge",
+                "chi": null,
+                "edgepf": null,
+                "aw": null,
+                "am": [
+                    0.01,
+                    0.1,
+                    0.05
+                ],
+                "gamma": 1,
+                "stepsave": null,
+                "iterations": null,
+                "timeout": null,
+                "mcmc_seed": 1,
+                "burnin": 0
+            }
+        ]
     }
 }

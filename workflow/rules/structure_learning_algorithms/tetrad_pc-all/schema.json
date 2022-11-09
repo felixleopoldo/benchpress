@@ -3,53 +3,48 @@
     "description": "pc objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_pc-all"
-    },
-    "definitions": {
-        "tetrad_pc-all": {
-            "title": "tetrad_pc item",
-            "description": "pc instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "test": {
-                    "type": "string",
-                    "enum": [
-                        "cci-test",
-                        "cg-lr-test",
-                        "fisher-z-test",
-                        "bdeu-test",
-                        "disc-bic-test",
-                        "kci-test",
-                        "chi-square-test",
-                        "g-square-test",
-                        "prob-test"
-                    ]
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "datatype": {
-                    "type": "string"
-                }
+        "title": "tetrad_pc item",
+        "description": "pc instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "required": [
-                "id",
-                "test",
-                "datatype",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "pc-fisher-z",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ]
-        }
+            "test": {
+                "type": "string",
+                "enum": [
+                    "cci-test",
+                    "cg-lr-test",
+                    "fisher-z-test",
+                    "bdeu-test",
+                    "disc-bic-test",
+                    "kci-test",
+                    "chi-square-test",
+                    "g-square-test",
+                    "prob-test"
+                ]
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "datatype": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "pc-fisher-z",
+                "test": "fisher-z-test",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
     }
 }

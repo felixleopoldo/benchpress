@@ -3,38 +3,33 @@
     "description": "images continuous objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_imgscont"
-    },
-    "definitions": {
-        "tetrad_imgscont": {
-            "title": "tetrad_imgscont item",
-            "description": "imgscont instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "datatype": {
-                    "type": "string"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "tetrad_imgscont item",
+        "description": "imgscont instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "datatype",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "imgscont",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ]
-        }
+            "datatype": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "imgscont",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
     }
 }

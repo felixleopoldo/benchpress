@@ -3,66 +3,61 @@
     "description": "Notears objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/notears"
-    },
-    "definitions": {
-        "notears": {
-            "title": "notears item",
-            "description": "Notears object",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "min_rate_of_progress": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "penalty_growth_rate": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "optimation_accuracy": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "loss": {
-                    "type": "string",
-                    "enum": [
-                        "least_squares_loss",
-                        "least_squares_loss_cov"
-                    ]
-                },
-                "loss_grad": {
-                    "type": "string",
-                    "enum": [
-                        "least_squares_loss_grad",
-                        "least_squares_loss_cov_grad"
-                    ]
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "notears item",
+        "description": "Notears object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "min_rate_of_progress",
-                "penalty_growth_rate",
-                "optimation_accuracy",
-                "loss",
-                "loss_grad",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 1e-08,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad",
-                    "timeout": null
-                }
-            ]
-        }
+            "min_rate_of_progress": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "penalty_growth_rate": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "optimation_accuracy": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "loss": {
+                "type": "string",
+                "enum": [
+                    "least_squares_loss",
+                    "least_squares_loss_cov"
+                ]
+            },
+            "loss_grad": {
+                "type": "string",
+                "enum": [
+                    "least_squares_loss_grad",
+                    "least_squares_loss_cov_grad"
+                ]
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "min_rate_of_progress",
+            "penalty_growth_rate",
+            "optimation_accuracy",
+            "loss",
+            "loss_grad",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "notears",
+                "min_rate_of_progress": 0.25,
+                "penalty_growth_rate": 10,
+                "optimation_accuracy": 1e-08,
+                "loss": "least_squares_loss_cov",
+                "loss_grad": "least_squares_loss_cov_grad",
+                "timeout": null
+            }
+        ]
     }
 }

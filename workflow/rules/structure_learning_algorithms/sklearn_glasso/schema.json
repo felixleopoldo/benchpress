@@ -3,78 +3,73 @@
     "title": "sklearn_glasso",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/sklearn_glasso"
-    },
-    "definitions": {
-        "sklearn_glasso": {
-            "title": "sklearn_glasso item",
-            "description": "GLasso instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "mode": {
-                    "type": "string",
-                    "enum": [
-                        "cd",
-                        "lars"
-                    ]
-                },
-                "max_iter": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "alpha": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "tol": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "enet_tol": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "precmat_threshold": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "verbose": {
-                    "type": "boolean"
-                },
-                "assume_centered": {
-                    "type": "boolean"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
-                }
+        "title": "sklearn_glasso item",
+        "description": "GLasso instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "timeout",
-                "mode",
-                "max_iter",
-                "alpha",
-                "tol",
-                "enet_tol",
-                "verbose",
-                "precmat_threshold",
-                "assume_centered"
-            ],
-            "examples": [
-                {
-                    "id": "sklearn_glasso",
-                    "mode": "cd",
-                    "alpha": [
-                        0.05
-                    ],
-                    "tol": 0.0004,
-                    "enet_tol": 0.0004,
-                    "precmat_threshold": 0.1,
-                    "max_iter": 100,
-                    "verbose": false,
-                    "assume_centered": false
-                }
-            ]
-        }
+            "mode": {
+                "type": "string",
+                "enum": [
+                    "cd",
+                    "lars"
+                ]
+            },
+            "max_iter": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "tol": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "enet_tol": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "precmat_threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "verbose": {
+                "type": "boolean"
+            },
+            "assume_centered": {
+                "type": "boolean"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "timeout",
+            "mode",
+            "max_iter",
+            "alpha",
+            "tol",
+            "enet_tol",
+            "verbose",
+            "precmat_threshold",
+            "assume_centered"
+        ],
+        "examples": [
+            {
+                "id": "sklearn_glasso",
+                "mode": "cd",
+                "alpha": [
+                    0.05
+                ],
+                "tol": 0.0004,
+                "enet_tol": 0.0004,
+                "precmat_threshold": 0.1,
+                "max_iter": 100,
+                "verbose": false,
+                "assume_centered": false
+            }
+        ]
     }
 }

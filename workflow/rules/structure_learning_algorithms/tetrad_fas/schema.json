@@ -3,52 +3,47 @@
     "description": "fas objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_fas"
-    },
-    "definitions": {
-        "tetrad_fas": {
-            "title": "tetrad_fas item",
-            "description": "fas instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "test": {
-                    "type": "string",
-                    "enum": [
-                        "cci-test",
-                        "cg-lr-test",
-                        "chi-square-test",
-                        "fisher-z-test",
-                        "dg-lr-test",
-                        "g-square-test",
-                        "kci-test",
-                        "prob-test"
-                    ]
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "datatype": {
-                    "type": "string"
-                }
+        "title": "tetrad_fas item",
+        "description": "fas instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "required": [
-                "id",
-                "test",
-                "datatype",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "fas-fisher-z",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ]
-        }
+            "test": {
+                "type": "string",
+                "enum": [
+                    "cci-test",
+                    "cg-lr-test",
+                    "chi-square-test",
+                    "fisher-z-test",
+                    "dg-lr-test",
+                    "g-square-test",
+                    "kci-test",
+                    "prob-test"
+                ]
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "datatype": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "fas-fisher-z",
+                "test": "fisher-z-test",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
     }
 }

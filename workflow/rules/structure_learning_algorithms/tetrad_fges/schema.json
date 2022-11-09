@@ -3,67 +3,62 @@
     "description": "fGES objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_fges"
-    },
-    "definitions": {
-        "tetrad_fges": {
-            "title": "tetrad_fges item",
-            "description": "fGES instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "faithfulnessAssumed": {
-                    "type": "boolean"
-                },
-                "score": {
-                    "type": "string"
-                },
-                "datatype": {
-                    "type": "string"
-                },
-                "samplePrior": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "penaltyDiscount": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "structurePrior": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                }
+        "title": "tetrad_fges item",
+        "description": "fGES instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "faithfulnessAssumed",
-                "score",
-                "datatype",
-                "samplePrior",
-                "structurePrior",
-                "penaltyDiscount",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "fges-sem-bic",
-                    "faithfulnessAssumed": true,
-                    "score": "sem-bic",
-                    "datatype": "continuous",
-                    "samplePrior": 1,
-                    "structurePrior": 1,
-                    "penaltyDiscount": [
-                        0.8,
-                        1,
-                        1.5
-                    ],
-                    "timeout": null
-                }
-            ]
-        }
+            "faithfulnessAssumed": {
+                "type": "boolean"
+            },
+            "score": {
+                "type": "string"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "samplePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "penaltyDiscount": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "structurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "faithfulnessAssumed",
+            "score",
+            "datatype",
+            "samplePrior",
+            "structurePrior",
+            "penaltyDiscount",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "fges-sem-bic",
+                "faithfulnessAssumed": true,
+                "score": "sem-bic",
+                "datatype": "continuous",
+                "samplePrior": 1,
+                "structurePrior": 1,
+                "penaltyDiscount": [
+                    0.8,
+                    1,
+                    1.5
+                ],
+                "timeout": null
+            }
+        ]
     }
 }
