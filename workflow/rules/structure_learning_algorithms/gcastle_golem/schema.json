@@ -23,7 +23,17 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_golem",
+                "lambda_1": "2e-2",
+                "lambda_2": 5.0,
+                "equal_variances": true,
+                "non_equal_variances": true,
+                "learning_rate": "1e-3",
+                "num_iter": "1e+5",
+                "checkpoint_iter": 5000,
+                "graph_thres": 0.3,
+                "device_type": "cpu",
+                "device_ids": 0,
                 "timeout": null
             }
         ]

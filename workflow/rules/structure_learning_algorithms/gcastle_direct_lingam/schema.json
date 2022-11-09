@@ -23,7 +23,9 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_direct_lingam",
+                "measure": "pwling",
+                "thresh": 0.3,
                 "timeout": null
             }
         ]

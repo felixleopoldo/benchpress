@@ -23,7 +23,24 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_mcsl",
+                "model_type": "nn",
+                "hidden_layers": 4,
+                "hidden_dim": 16,
+                "graph_thresh": 0.5,
+                "l1_graph_penalty": "2e-3",
+                "learning_rate": "3e-2",
+                "max_iter": 5,
+                "iter_step": 100,
+                "init_iter": 2,
+                "h_tol": "1e-10",
+                "init_rho": "1e-5",
+                "rho_thresh": "1e14",
+                "h_thresh": 0.25,
+                "rho_multiply": 10,
+                "temperature": 0.2,
+                "device_type": "cpu",
+                "device_ids": "0",
                 "timeout": null
             }
         ]
