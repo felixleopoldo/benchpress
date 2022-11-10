@@ -2,6 +2,18 @@ from filenames import *
 
 include: "filenames.py"
 
+
+# These two rules are also defined in thebenchmarks module and temporarliy 
+# redefined here.
+# They should probably be defined at a global level.
+def summarise_alg_input_data_path():
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+
+def summarise_alg_input_adjmat_true_path():
+    return "{output_dir}/adjmat/{adjmat}.csv"
+
+
+
 rule adjmat_plot:
     input:        
         matrix_filename="{output_dir}/adjmat_estimate/"
@@ -91,8 +103,6 @@ rule bnlearn_graphvizcompare:
         "seed={replicate}/{filename}",
     script:
         "bnlearn_graphvizcompare.R"
-
-
 # This is actually a quite general rule.
 rule adjmat_diffplot:
     input:
