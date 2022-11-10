@@ -27,111 +27,57 @@ def info_to_table(json, p):
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Docker\n"
-    tab += "     - `"+info["docker_image"]+" <"+info["docker_image"]+">`_\n"
+    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
     tab += "   * - Module\n"
-    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`_\n"
-    
-
+    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
     tab += "\n"
     return tab
 
-def info_to_table2(json, p):
+def info_to_small_table():
+    algspath = Path("../workflow/rules/structure_learning_algorithms")
+    tab = ""
+    tab += ".. list-table:: \n"#+p.name+"\n\n"
+    tab +="   :header-rows: 1 \n\n"
+    tab += "   * - Algorithm\n" 
+    tab += "     - Graph\n" 
+    tab += "     - Language\n" 
+    tab += "     - Package\n" 
+    tab += "     - Version\n" 
+    tab += "     - Module\n" 
     
-    tab = "| Title: "
-    tab += p.name +"\n"
-    tab += "| Package: "
-    tab += "`"+info["package"]["title"]+" <"+info["package"]["url"]+">`_ \n"
-    tab += "| Paper: "
-    for i in range(len(info["papers"])):
-        tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "
-    tab += ""
-    tab = tab[:-2]
-    tab += "\n"
-    tab += "| Graph types: "
-    for i in range(len(info["graph_types"])):
-        tab += ""+info["graph_types"][i] +", "
+    for p in sorted(algspath.iterdir()):
 
-    tab = tab[:-2]
+        j = p/"info.json"
 
-    tab += "\n"
-    tab += "| Version: "
-    tab += ""+info["version"]+"\n"
-    tab += "| Docs: "
-    tab += "`here <"+info["docs_url"]+">`_\n"
-    tab += "| Docker image: "
-    tab += "`"+info["docker_image"]+" <"+info["docker_image"]+">`_ \n"
-    tab += "| Language: "
-    tab += ""+info["language"]+"\n"
-    tab += "| Module directory: "
-    tab += "`"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`_\n"
-    
-
+        with open(j) as json_file:
+            info = json.load(json_file)
+        #tab += "     - "+info["title"]+"\n"
+        tab += "   * - "+info["title"]+"\n"
+        for i in range(len(info["graph_types"])):
+            tab += "     - "+info["graph_types"][i] +", "
+        tab = tab[:-2]
+        
+        tab += "\n"
+        tab += "     - "+info["language"]+"\n"
+        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+        tab += "     - "+info["version"]+"\n"
+        tab += "     - "+p.name+"_ \n"    
+        
     tab += "\n"
     return tab
-
-
 
 algspath = Path("../workflow/rules/structure_learning_algorithms")
 
-
-
-for p in algspath.iterdir():
-    print(p.name)
-    if p.name == "docs.rst":
-        continue
-    d = p/"docs.rst"
-    j = p/"info.json"
-    s = p/"schema.json"
-    
-    if not j.is_file():
-    
-        info = {
-            "title": p.name,
-            "docker_image": "docker://",
-            "version": "v0.0.1",
-            "package": {"title": "", "url": "http"},
-            "docs_url": "",
-            "papers": [
-                {
-                    "title": "the paper title",
-                    "url": "the_url"
-                }
-            ],
-            "outputs": ["adjmat"],
-            "graph_types": [
-                ""
-            ],
-            "language": ""
-        }
-        
-        with open(j, "w") as outfile:
-            outfile.write(json.dumps(info, indent=4))
-
-
-    with open(s) as json_file:    
-        schema = json.load(json_file)
-    
-    if "$ref" in schema["items"]:
-        schema["items"] = schema["definitions"][p.name]
-    
-    if "definitions" in schema:
-        schema.pop("definitions")
-
-    # with open(s, "w") as outfile:
-    #     outfile.write(json.dumps(schema, indent=4))
-
-    #print(schema)
-
-if (algspath / "docs.rst").is_file():
-    f = open(algspath / "docs.rst", "r")
-    content = f.read()
-
+f = open("algs_desc.rst", "r")
+content = f.read()
 
 str = ""
 str += "``"+algspath.name+"``\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content
+str += "\n\n"
+str += info_to_small_table()
 str += "\n\n"
 for p in sorted(algspath.iterdir()):
     #print(p.name)
@@ -158,13 +104,14 @@ for p in sorted(algspath.iterdir()):
         else: dump = ""
     
   
-    str += "\n\n"
+    #str += "\n\n\n"
+    #str +=".. _" + p.name +": "
     str += "\n\n"
     str +="``" + p.name +"`` \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
     
-    str += "\n\n"
+    str += "\n"
     str += ".. rubric:: "+ info["title"]    
     str += "\n\n"
     str += info_to_table(info, p)
@@ -179,8 +126,7 @@ for p in sorted(algspath.iterdir()):
     str += ".. code-block:: json"    
     str += "\n\n"
     str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    
-    
+
 print(str)
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
