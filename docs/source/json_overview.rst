@@ -222,353 +222,356 @@ V
         "seed_range": [1, 10]
     }
 
+.. include:: available_evaluations.rst
 
-.. _evaluation:
+.. .. _evaluation:
 
-``evaluation``
-===============
-
-There is typically no algorithm which performs well with respect to all performance metrics, and no single metric which is generally preferred. 
-Therefore, to get an overall picture of the performance of an algorithm Benchpress supports different metrics through the modules in this section.
-The output of the modules are copied to *results/output* for easy access.
-
-.. _benchmarks:
-
-``benchmarks``
------------------
+.. ``evaluation``
+.. ===============
 
 
-+-------------+--------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `benchmarks <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_ |
-+-------------+--------------------------------------------------------------------------------------------------------------------+
 
-Fields of this module
+.. There is typically no algorithm which performs well with respect to all performance metrics, and no single metric which is generally preferred. 
+.. Therefore, to get an overall picture of the performance of an algorithm Benchpress supports different metrics through the modules in this section.
+.. The output of the modules are copied to *results/output* for easy access.
 
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| Field               | Description                                                                                                                                                                                                          |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``filename_prefix`` | the prefix for the produced files.                                                                                                                                                                                   |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``show_seed``       | shows the seed numbers in the ROC type plots and for the outliers in the box-plots.                                                                                                                                  |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``errorbar``        | shows vertical estimated 5% and 95% quantiles in the ROC type plots.                                                                                                                                                 |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``errorbarh``       | shows horisontal estimated 5% and 95% quantiles in the ROC type plots.                                                                                                                                               |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``scatter``         | shows scatterplots in the ROC type plots.                                                                                                                                                                            |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``path``            | joins the median values of each parameter setting for a specific with a line. So for this to become a path, you need to specify range of values for some of the fields in the corresponding algorithm module object. |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
-| ``text``            | shows the parameter value in the ROC type plots. If this is set to false, a dot will be plotted instead.                                                                                                             |     |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. .. _benchmarks:
+
+.. ``benchmarks``
+.. -----------------
 
 
-This module produces the following files
+.. +-------------+--------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `benchmarks <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_ |
+.. +-------------+--------------------------------------------------------------------------------------------------------------------+
 
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *elapsed_time_joint.png*  | Box-plots for the total times over all seeds.                                                              |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *f1_skel_joint.png*       | F1 score box-plots.                                                                                        |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *FNR_FPR_skel.png*        | Median false negative rate (FNR) / false positive rate (FPRp) for the skeleton graph (undirected version). |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *FPR_TPR_skel.png*        | Median FPRp / TPR for the skeleton graph (undirected version).                                             |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *FPR_TPR_pattern.png*     | Median FPRp / TPR for the pattern graph (same as skeleton for undirected graphs).                          |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *FPRp_FNR_skel.png*       | Median FPRp / FNR for the skeleton graph.                                                                  |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *graph_type.png*          | Plots the type of graph for each graph estimate.                                                           |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *joint_benchmarks.csv*    | Benchmarks joined in a CSV file (this ay be analyzed using any preferred software).                        |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *ntests_joint.png*        | Box-plots for number of statistical tests (this is only applicable for some algorithms).                   |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *ROC_data.csv*            | Summarized benchmarks joined in a CSV file.                                                                |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
-| *SHD_cpdag_joint.png*     | Structural Hamming distance (SHD) box-plots.                                                               |
-+---------------------------+------------------------------------------------------------------------------------------------------------+
+.. Fields of this module
+
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | Field               | Description                                                                                                                                                                                                          |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``filename_prefix`` | the prefix for the produced files.                                                                                                                                                                                   |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``show_seed``       | shows the seed numbers in the ROC type plots and for the outliers in the box-plots.                                                                                                                                  |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``errorbar``        | shows vertical estimated 5% and 95% quantiles in the ROC type plots.                                                                                                                                                 |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``errorbarh``       | shows horisontal estimated 5% and 95% quantiles in the ROC type plots.                                                                                                                                               |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``scatter``         | shows scatterplots in the ROC type plots.                                                                                                                                                                            |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``path``            | joins the median values of each parameter setting for a specific with a line. So for this to become a path, you need to specify range of values for some of the fields in the corresponding algorithm module object. |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
+.. | ``text``            | shows the parameter value in the ROC type plots. If this is set to false, a dot will be plotted instead.                                                                                                             |     |
+.. +---------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----+
 
 
-.. rubric:: Example
+.. This module produces the following files
+
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *elapsed_time_joint.png*  | Box-plots for the total times over all seeds.                                                              |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *f1_skel_joint.png*       | F1 score box-plots.                                                                                        |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *FNR_FPR_skel.png*        | Median false negative rate (FNR) / false positive rate (FPRp) for the skeleton graph (undirected version). |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *FPR_TPR_skel.png*        | Median FPRp / TPR for the skeleton graph (undirected version).                                             |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *FPR_TPR_pattern.png*     | Median FPRp / TPR for the pattern graph (same as skeleton for undirected graphs).                          |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *FPRp_FNR_skel.png*       | Median FPRp / FNR for the skeleton graph.                                                                  |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *graph_type.png*          | Plots the type of graph for each graph estimate.                                                           |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *joint_benchmarks.csv*    | Benchmarks joined in a CSV file (this ay be analyzed using any preferred software).                        |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *ntests_joint.png*        | Box-plots for number of statistical tests (this is only applicable for some algorithms).                   |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *ROC_data.csv*            | Summarized benchmarks joined in a CSV file.                                                                |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
+.. | *SHD_cpdag_joint.png*     | Structural Hamming distance (SHD) box-plots.                                                               |
+.. +---------------------------+------------------------------------------------------------------------------------------------------------+
 
 
-.. code-block:: json
+.. .. rubric:: Example
 
-    {
-        "filename_prefix": "example/",
-        "show_seed": false,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": [
-            "fges-sem-bic",
-            "mmhc-bge-zf",
-            "gfci-sem-bic-fisher-z",
-            "pc-gaussCItest"
-        ]
-    }
+
+.. .. code-block:: json
+
+..     {
+..         "filename_prefix": "example/",
+..         "show_seed": false,
+..         "errorbar": true,
+..         "errorbarh": false,
+..         "scatter": true,
+..         "path": true,
+..         "text": false,
+..         "ids": [
+..             "fges-sem-bic",
+..             "mmhc-bge-zf",
+..             "gfci-sem-bic-fisher-z",
+..             "pc-gaussCItest"
+..         ]
+..     }
 
     
-..  figure:: _static/alarm/FPR_TPR_skel.png
-    :alt: FPR_TPR_skel.png 
-    :width: 500
+.. ..  figure:: _static/alarm/FPR_TPR_skel.png
+..     :alt: FPR_TPR_skel.png 
+..     :width: 500
 
-    *FPR_TPR_skel.png* 
+..     *FPR_TPR_skel.png* 
 
-The following plots are also produced
+.. The following plots are also produced
 
-..  figure:: _static/alarm/elapsed_time_joint.png
-    :alt: Timing 
-    :width: 500
+.. ..  figure:: _static/alarm/elapsed_time_joint.png
+..     :alt: Timing 
+..     :width: 500
 
-    *elapsed_time_joint.png*
+..     *elapsed_time_joint.png*
 
-..  figure:: _static/alarm/f1_skel_joint.png
-    :alt: F1 
-    :width: 500
+.. ..  figure:: _static/alarm/f1_skel_joint.png
+..     :alt: F1 
+..     :width: 500
 
-    *f1_skel_joint.png*
+..     *f1_skel_joint.png*
 
-..  figure:: _static/alarm/graph_type.png
-    :alt: Graph type 
-    :width: 500
+.. ..  figure:: _static/alarm/graph_type.png
+..     :alt: Graph type 
+..     :width: 500
 
-    *graph_type.png* 
+..     *graph_type.png* 
 
-.. _ggally_ggpairs:
+.. .. _ggally_ggpairs:
 
-``ggally_ggpairs``
--------------------------
+.. ``ggally_ggpairs``
+.. -------------------------
 
-This module writes ggpairs plots using the `GGally <https://cran.r-project.org/web/packages/GGally/index.html#:~:text=GGally%3A%20Extension%20to%20'ggplot2',geometric%20objects%20with%20transformed%20data.>`_ package. 
-Be careful that this can be slow and the variable names may not fit into the figure if the dimension is too large.
-However, you can always alter the script as you like it.
+.. This module writes ggpairs plots using the `GGally <https://cran.r-project.org/web/packages/GGally/index.html#:~:text=GGally%3A%20Extension%20to%20'ggplot2',geometric%20objects%20with%20transformed%20data.>`_ package. 
+.. Be careful that this can be slow and the variable names may not fit into the figure if the dimension is too large.
+.. However, you can always alter the script as you like it.
 
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `ggplot_ggpairs <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md>`_ |
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-..  figure:: _static/alarm/pairs_1.png
-    :alt: GGpairs plot
-    :width: 500
+.. +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `ggplot_ggpairs <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-ggally_ggpairs.md>`_ |
+.. +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-    GGpairs plot
-
-.. _graph_true_stats:
-
-``graph_true_stats``
--------------------------
-
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `graph_true_stats <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md>`_ |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-This module plots properties of the true graphs such as graph density.
-
-.. _graph_true_plots:
-
-``graph_true_plots``
--------------------------
-
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `graph_true_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md>`_ |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. ..  figure:: _static/alarm/pairs_1.png
+..     :alt: GGpairs plot
+..     :width: 500
 
 
-This module plots the true underlying graphs. 
+..     GGpairs plot
+
+.. .. _graph_true_stats:
+
+.. ``graph_true_stats``
+.. -------------------------
+
+.. +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `graph_true_stats <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_stats.md>`_ |
+.. +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. This module plots properties of the true graphs such as graph density.
+
+.. .. _graph_true_plots:
+
+.. ``graph_true_plots``
+.. -------------------------
+
+.. +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `graph_true_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_true_plots.md>`_ |
+.. +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-..  figure:: _static/alarm.png
-    :alt: The Alarm network 
-
-    The Alarm network
-
-..  figure:: _static/alarmadjmat.png
-    :alt: The Alarm network 
-
-    The Alarm network as adjacency matrix
-
-.. _graph_plots:
-
-``graph_plots``
--------------------------
-
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `graph_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md>`_ |
-+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. This module plots the true underlying graphs. 
 
 
+.. ..  figure:: _static/alarm.png
+..     :alt: The Alarm network 
 
-This module plots and saves the estimated graphs in dot-format and adjacency matrix.
-It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`_.
+..     The Alarm network
 
-.. code-block:: json
+.. ..  figure:: _static/alarmadjmat.png
+..     :alt: The Alarm network 
+
+..     The Alarm network as adjacency matrix
+
+.. .. _graph_plots:
+
+.. ``graph_plots``
+.. -------------------------
+
+.. +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `graph_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-properties-benchmark_setup-properties-evaluation-properties-graph_plots.md>`_ |
+.. +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
+.. This module plots and saves the estimated graphs in dot-format and adjacency matrix.
+.. It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`_.
+
+.. .. code-block:: json
     
-    [
-        "fges-sem-bic",
-        "mmhc-bge-zf",
-        "omcmc_itsample-bge",
-        "pc-gaussCItest"
-    ]
+..     [
+..         "fges-sem-bic",
+..         "mmhc-bge-zf",
+..         "omcmc_itsample-bge",
+..         "pc-gaussCItest"
+..     ]
 
-..  figure:: _static/alarmpcgraph.png
-    :alt: The Alarm network 
+.. ..  figure:: _static/alarmpcgraph.png
+..     :alt: The Alarm network 
 
-    Estimate of the Alarm network using PC algorithm
+..     Estimate of the Alarm network using PC algorithm
 
-..  figure:: _static/alarmpcest.png
-    :alt: The Alarm network 
+.. ..  figure:: _static/alarmpcest.png
+..     :alt: The Alarm network 
 
-    Estimate of the Alarm network using PC algorithm
+..     Estimate of the Alarm network using PC algorithm
 
-.. _mcmc_heatmaps:
+.. .. _mcmc_heatmaps:
 
-``mcmc_heatmaps``
--------------------------
+.. ``mcmc_heatmaps``
+.. -------------------------
 
-+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc-mean-graph-plot.md>`_ |
-+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-
-For Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
-Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math:`b` samples are disregarded as a burn-in period.
-
-This module has a list of objects, where each object has 
-
-+-------------+-------------------------+
-| Field       | Description             |
-+-------------+-------------------------+
-| ``id``      | the algorithm object id |
-+-------------+-------------------------+
-| ``burn_in`` | the burn-in period.     |
-+-------------+-------------------------+
-
-The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
-
-.. rubric:: Example
-
-.. code-block:: json
-
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "active": true
-        }
-    ]
-
-..  figure:: _static/alarmordermcmc.png
-    :alt: The Alarm network 
-
-    Mean graph estimate of the Alarm network using order MCMC with startspace from iterative MCMC 
+.. +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc-mean-graph-plot.md>`_ |
+.. +-------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-.. _mcmc_autocorr_plots:
 
-``mcmc_autocorr_plots``
--------------------------
+.. For Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
+.. Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math:`b` samples are disregarded as a burn-in period.
 
-+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_autocorr_plots-item.md>`_ |
-+-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. This module has a list of objects, where each object has 
+
+.. +-------------+-------------------------+
+.. | Field       | Description             |
+.. +-------------+-------------------------+
+.. | ``id``      | the algorithm object id |
+.. +-------------+-------------------------+
+.. | ``burn_in`` | the burn-in period.     |
+.. +-------------+-------------------------+
+
+.. The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
+
+.. .. rubric:: Example
+
+.. .. code-block:: json
+
+..     [
+..         {
+..             "id": "omcmc_itsample-bge",
+..             "burn_in": 0,
+..             "active": true
+..         }
+..     ]
+
+.. ..  figure:: _static/alarmordermcmc.png
+..     :alt: The Alarm network 
+
+..     Mean graph estimate of the Alarm network using order MCMC with startspace from iterative MCMC 
 
 
-This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
+.. .. _mcmc_autocorr_plots:
 
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| Field          | Description                                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are the number of edges for the graphs *size* and the graph *score*.                   |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. ``mcmc_autocorr_plots``
+.. -------------------------
+
+.. +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_autocorr_plots-item.md>`_ |
+.. +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-.. rubric:: Example
+.. This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
 
-.. code-block:: json
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | Field          | Description                                                                                                                |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | ``id``         | algorithm module object id.                                                                                                |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | ``functional`` | the currently supported functionals are the number of edges for the graphs *size* and the graph *score*.                   |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+.. | ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
+.. +----------------+----------------------------------------------------------------------------------------------------------------------------+
+
+
+.. .. rubric:: Example
+
+.. .. code-block:: json
     
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "thinning": 1,
-            "lags": 50,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ]
+..     [
+..         {
+..             "id": "omcmc_itsample-bge",
+..             "burn_in": 0,
+..             "thinning": 1,
+..             "lags": 50,
+..             "functional": [
+..                 "score",
+..                 "size"
+..             ],
+..             "active": true
+..         }
+..     ]
 
-..  figure:: _static/omcmcscoreautocorr.png
-    :alt: Score trajectory of order MCMC
+.. ..  figure:: _static/omcmcscoreautocorr.png
+..     :alt: Score trajectory of order MCMC
 
-    Auto-correlation of the scores in trajectory of order MCMC
+..     Auto-correlation of the scores in trajectory of order MCMC
 
-.. _mcmc_traj_plots:
+.. .. _mcmc_traj_plots:
 
-``mcmc_traj_plots``
--------------------------
+.. ``mcmc_traj_plots``
+.. -------------------------
 
-+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema | `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_traj_plots-item.md>`_ |
-+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-
-This module plots the  values in the trajectory of a given functional. 
-
-The ``mcmc_traj_plots`` module has a list of objects, where each object has
-
-+----------------+-------------------------------------------------------------------+
-| Field          | Description                                                       |
-+----------------+-------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                       |
-+----------------+-------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.        |
-+----------------+-------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are *size* and graph *score*. |
-+----------------+-------------------------------------------------------------------+
-
-Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
+.. +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+.. | JSON schema | `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/blob/master/docs/source/json_schema/config-definitions-mcmc_traj_plots-item.md>`_ |
+.. +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-.. rubric:: Example
 
-.. code-block:: json
+.. This module plots the  values in the trajectory of a given functional. 
+
+.. The ``mcmc_traj_plots`` module has a list of objects, where each object has
+
+.. +----------------+-------------------------------------------------------------------+
+.. | Field          | Description                                                       |
+.. +----------------+-------------------------------------------------------------------+
+.. | ``id``         | algorithm module object id.                                       |
+.. +----------------+-------------------------------------------------------------------+
+.. | ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.        |
+.. +----------------+-------------------------------------------------------------------+
+.. | ``functional`` | the currently supported functionals are *size* and graph *score*. |
+.. +----------------+-------------------------------------------------------------------+
+
+.. Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
+
+
+.. .. rubric:: Example
+
+.. .. code-block:: json
         
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "thinning": 1,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ]
+..     [
+..         {
+..             "id": "omcmc_itsample-bge",
+..             "burn_in": 0,
+..             "thinning": 1,
+..             "functional": [
+..                 "score",
+..                 "size"
+..             ],
+..             "active": true
+..         }
+..     ]
 
-..  figure:: _static/omcmcscoretraj.png
-    :alt: Score trajectory of order MCMC
+.. ..  figure:: _static/omcmcscoretraj.png
+..     :alt: Score trajectory of order MCMC
 
-    Score trajectory of order MCMC
+..     Score trajectory of order MCMC
 
 
 .. _resources:
@@ -583,11 +586,11 @@ Each object in a module algorithm has a unique `id` which can be referenced in t
 
 The names of the fields of the modules in this section are directly transferred or translated from the original libraries or code. Thus, for further details of each field we refer to the documentation of the original sources.
 
-.. .. _resources:
-.. .. figure:: _static/resources.png
-..     :width: 400
+.. .. .. _resources:
+.. .. .. figure:: _static/resources.png
+.. ..     :width: 400
 
-..     Expanded ``resources`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
+.. ..     Expanded ``resources`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
 
 
 
