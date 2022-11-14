@@ -19,7 +19,7 @@ for p in modpath.iterdir():
         with open(d, 'w') as fp:
             pass
 
-    if  j.is_file():
+    if not j.is_file():
         info = {
             "title": "Some title",
             "docker_image": "username/image:version",
@@ -56,7 +56,7 @@ for p in modpath.iterdir():
         with open(d, 'w') as fp:
             pass
 
-    if  j.is_file():
+    if not j.is_file():
         info = {
             "title": "Some title",
             "docker_image": "username/image:version",
@@ -78,7 +78,45 @@ for p in modpath.iterdir():
         with open(j, "w") as outfile:
             outfile.write(json.dumps(info, indent=4))
 
-modpath = Path("../workflow/rules/evaluation")
+
+modpath = Path("../workflow/rules/data")
+
+for p in modpath.iterdir():
+    print(p.name)
+    if p.name == "docs.rst":
+        continue
+    d = p/"docs.rst"
+    j = p/"info.json"
+    s = p/"schema.json"
+
+    if not d.is_file():
+        with open(d, 'w') as fp:
+            pass
+
+    if not j.is_file():
+        info = {
+            "title": "Some title",
+            "docker_image": "username/image:version",
+            "version": "v0.0.1",
+            "package": {"title": "", "url": "http"},
+            "docs_url": "",
+            "papers": [
+                {
+                    "title": "the paper title",
+                    "url": "the_url"
+                }
+            ],
+            "graph_types": [
+                ""
+            ],
+            "language": ""
+        }
+
+        with open(j, "w") as outfile:
+            outfile.write(json.dumps(info, indent=4))
+
+
+modpath = Path("../workflow/rules/data")
 
 for p in modpath.iterdir():
     print(p.name)

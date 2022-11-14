@@ -22,8 +22,9 @@ def info_to_table(json, p):
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
+    tab += "     - "
     for i in range(len(info["graph_types"])):
-        tab += "     - "+info["graph_types"][i] +", "
+        tab += info["graph_types"][i] +", "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Docker\n"
@@ -40,7 +41,7 @@ def info_to_small_table():
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
     tab += "     - Graph\n" 
-    tab += "     - Language\n" 
+    tab += "     - Lang.\n" 
     tab += "     - Package\n" 
     tab += "     - Version\n" 
     tab += "     - Module\n" 
@@ -53,8 +54,9 @@ def info_to_small_table():
             info = json.load(json_file)
         #tab += "     - "+info["title"]+"\n"
         tab += "   * - "+info["title"]+"\n"
+        tab += "     - "
         for i in range(len(info["graph_types"])):
-            tab += "     - "+info["graph_types"][i] +", "
+            tab += info["graph_types"][i] +", "
         tab = tab[:-2]
         
         tab += "\n"

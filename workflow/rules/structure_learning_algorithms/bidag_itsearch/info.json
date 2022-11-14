@@ -1,23 +1,23 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Iterative MCMC",
+    "docker_image": "onceltuca/bidag:2.0.3",
+    "version": "2.0.3",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "BiDAG",
+        "url": "https://cran.r-project.org/web/packages/BiDAG/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "Efficient Sampling and Structure Learning of Bayesian Networks",
+            "url": "Efficient Sampling and Structure Learning of Bayesian Networks"
         }
     ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        ""
+        "DAG", "CPDAG"
     ],
-    "language": ""
+    "language": "R"
 }

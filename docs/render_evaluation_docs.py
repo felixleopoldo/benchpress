@@ -27,7 +27,7 @@ def info_to_table(json, p):
     tab += "   * - Docker\n"
     tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
     tab += "   * - Module\n"
-    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/"+p.name+">`__\n"
     tab += "\n"
     return tab
 

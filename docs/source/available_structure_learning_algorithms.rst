@@ -11,7 +11,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
    * - Algorithm
      - Graph
-     - Language
+     - Lang.
      - Package
      - Version
      - Module
@@ -21,17 +21,17 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
      - 1.64
      - bdgraph_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Iterative MCMC
+     - DAG, CPDAG
+     - R
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - 2.0.3
      - bidag_itsearch_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Order MCMC
+     - DAG, CPDAG
+     - R
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - 2.0.3
      - bidag_order_mcmc_ 
    * - Some title
      - 
@@ -391,30 +391,38 @@ Dots (.) in the original parameter names are omitted for implementational reason
 ``bidag_itsearch`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: Iterative MCMC
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
    * - Version
-     - v0.0.1
+     - 2.0.3
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`_
    * - Paper
-     - `the paper title <the_url>`_
+     - `Efficient Sampling and Structure Learning of Bayesian Networks <Efficient Sampling and Structure Learning of Bayesian Networks>`_
    * - Graph type
-     - 
+     - DAG, CPDAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`_
    * - Module
      - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
 
 
 .. rubric:: Description
+
+This is a hybrid score-based optimisation technique based on Markov chain Monte Carlo
+schemes (Suter et al. 2021; Kuipers et al. 2021). The algorithm starts from a skeleton obtained
+through a fast method (e.g. a constraint based method, or GES). Then it performs score and
+search on the DAGs belonging to the space defined by the starting skeleton. To correct for
+edges which may be missed, the search space is iteratively expanded to include one additional
+parent for each variable from outside the current search space. The score and search phase relies
+on an MCMC scheme producing a chain of DAGs from their posterior probability given the data
 
 .. rubric:: Example
 
@@ -453,30 +461,42 @@ Dots (.) in the original parameter names are omitted for implementational reason
 ``bidag_order_mcmc`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: Order MCMC
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
    * - Version
-     - v0.0.1
+     - 2.0.3
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`_
    * - Paper
-     - `the paper title <the_url>`_
+     - `Efficient Sampling and Structure Learning of Bayesian Networks <Efficient Sampling and Structure Learning of Bayesian Networks>`_
    * - Graph type
-     - 
+     - DAG, CPDAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`_
    * - Module
      - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
 
 
 .. rubric:: Description
+
+This technique relies on a Bayesian perspective on structure learning, where the score of a DAG
+is defined as its posterior distribution. To overcome the limitation of simple structure-based
+MCMC schemes, Friedman and Koller (2003) turned to a score defined as the sum of the
+posterior scores of all DAG which are consistent with a given topological ordering of the
+nodes. One can then run a Metropolis-Hasting algorithm to sample from the distribution
+induced by the order score, and later draw a DAG consistent with the order. This strategy
+substantially improves convergence with respect to earlier structure MCMC scheme, though it
+unfortunately produces a biased sample on the space of DAGs. The implementation considered
+in Benchpress is a hybrid version with the sampling performed on a restricted search space
+initialised with constraint-based testing and improved with a score-based search (Kuipers et al.
+2021).
 
 .. rubric:: Example
 
