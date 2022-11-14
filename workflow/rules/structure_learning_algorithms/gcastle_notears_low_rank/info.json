@@ -1,6 +1,6 @@
 {
-    "title": "gcastle_notears_low_rank",
-    "docker_image": "docker://",
+    "title": "Some title",
+    "docker_image": "username/image:version",
     "version": "v0.0.1",
     "package": {
         "title": "",

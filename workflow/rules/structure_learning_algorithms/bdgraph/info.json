@@ -1,23 +1,23 @@
 {
-    "title": "bdgraph",
-    "docker_image": "docker://",
-    "version": "v0.0.1",
+    "title": "BDgraph",
+    "docker_image": "onceltuca/bdgraph:1.64",
+    "version": "1.64",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "BDgraph",
+        "url": "https://cran.r-project.org/web/packages/BDgraph/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "BDgraph: An R Package for Bayesian Structure Learning in Graphical Models",
+            "url": "https://www.jstatsoft.org/article/view/v089i03"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        ""
+        "UG"
     ],
-    "language": ""
+    "language": "R"
 }

@@ -1,23 +1,23 @@
 {
-    "title": "TETRAD GFCI",
-    "docker_image": "onceltuca/causal-cmd:1.1.3",
-    "version": "1.1.3",
+    "title": "GFCI",
+    "docker_image": "username/image:version",
+    "version": "v0.0.1",
     "package": {
-        "title": "causal-cmd",
-        "url": "https://bd2kccd.github.io/docs/causal-cmd/"
+        "title": "",
+        "url": "http"
     },
-    "docs_url": "https://cmu-phil.github.io/tetrad/manual/",
+    "docs_url": "",
     "papers": [
         {
-            "title": "J. M. Ogarrio, P. Spirtes, and J. Ramsey. A hybrid causal search algorithm for latent variable models. In Conference on Probabilistic Graphical Models, pages 368–379, 2016.",
-            "url": "http://proceedings.mlr.press/v52/ogarrio16.html"
+            "title": "the paper title",
+            "url": "the_url"
         }
     ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        "DAG"
+        ""
     ],
-    "language": "Java"
+    "language": ""
 }

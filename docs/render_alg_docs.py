@@ -68,7 +68,7 @@ def info_to_small_table():
 
 algspath = Path("../workflow/rules/structure_learning_algorithms")
 
-f = open("algs_desc.rst", "r")
+f = open("source/algs_desc.rst", "r")
 content = f.read()
 
 str = ""
