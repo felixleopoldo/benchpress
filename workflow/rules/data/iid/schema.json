@@ -3,41 +3,36 @@
     "description": "List of iid setups.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/iid"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "iid": {
-            "title": "iid",
-            "description": "Data sampling from disctete Bayesian network.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "title": "Unique ID",
-                    "type": "string"
-                },
-                "sample_sizes": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "standardized": {
-                    "type": "boolean"
-                }
+        "title": "iid",
+        "description": "Data sampling from disctete Bayesian network.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "title": "Unique ID",
+                "type": "string"
             },
-            "required": [
-                "id",
-                "sample_sizes",
-                "standardized"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "standardized",
-                    "standardized": true,
-                    "sample_sizes": [
-                        100
-                    ]
-                }
-            ]
-        }
-    }
+            "sample_sizes": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "standardized": {
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "id",
+            "sample_sizes",
+            "standardized"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "standardized",
+                "standardized": true,
+                "sample_sizes": [
+                    100
+                ]
+            }
+        ]
+    },
+    "uniqueItems": true
 }

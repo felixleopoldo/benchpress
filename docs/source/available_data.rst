@@ -1,91 +1,194 @@
-.. _data:
-
 ``data``
-=========
+==============
 
-There are two possibilities for the data section. 
-The user may provide their own data in .csv format for benchmarking on real data. Alternatively Benchpress can generate data according to a data model for benchmarking on simulated data.
+The data modules.
 
-.. _iid:
+.. list-table:: 
+   :header-rows: 1 
 
-``iid``
----------------------
+   * - Algorithm
+     - Graph
+     - Language
+     - Package
+     - Version
+     - Module
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - bdgraph_rgwish_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - bin_bn_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - fixed_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - sem_params_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - trilearn_g_inv_wishart_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - trilearn_hyper-dir_ 
+   * - Some title
+     - 
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - trilearn_intra-class_ 
 
-Independently identically distributed (IID) samples of a given size ``sample_sizes``.
-The data may be standardized by setting ``standardized`` to true. 
 
 
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Module name     | ``iid``                                                                                                                      |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Package/library | Benchpress                                                                                                                   |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| JSON schema     | `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_ |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Version         | -                                                                                                                            |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Documentation   | -                                                                                                                            |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Paper           | -                                                                                                                            |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Snakemake rule  | various                                                                                                                      |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Parameters      | see JSON schema                                                                                                              |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-| Script          | -                                                                                                                            |
-+-----------------+------------------------------------------------------------------------------------------------------------------------------+
-
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-standard-sampling.md>`_
-
-.. rubric:: Example
 
 
-.. code-block:: json
-    
-    {
-        "id": "example1",
-        "standardized": false,
-        "sample_sizes": [
-            320,
-            640
-        ]
-    }
+``fixed`` 
+---------
 
-``gcastle_iidsim``
---------------------------
+.. rubric:: Datasets
+
+.. rubric:: Description
+
+
+
+Observations should be stored as row vectors in a matrix, where the columns are separated by
+commas. The first row should contain the labels of the variables and if the data is categorical,
+the second row should contain the cardinality (number of levels) of each variable.
+
+.. rubric:: Example (continuous)
+
+An example showing of two samples from continuous distribution is shown below.
+
+.. code-block:: text
+
+    a,b,c,d
+    0.2,2.3,5.3,0.5
+    3.2,1.5,2.5,1.2
+
+.. rubric:: Example (categorical)
+
+Below is a formatting example of two samples of a categorical distribution where the cardinalities
+are 2,3,2, and 2.
+
+.. code-block:: text
+
+    a,b,c,d
+    2,3,2,2
+    1,2,0,1
+    0,1,1,1
+
+``gcastle_iidsim`` 
+------------------
+
+.. rubric:: Some title
+
+.. list-table:: 
+
+   * - Package
+     - ` <http>`_
+   * - Version
+     - v0.0.1
+   * - Language
+     - 
+   * - Docs
+     - `here <>`_
+   * - Paper
+     - `the paper title <the_url>`_
+   * - Graph type
+     - 
+   * - Docker
+     - `username/image:version <https://hub.docker.com/r/username/image>`_
+   * - Module
+     - `gcastle_iidsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_iidsim>`__
+
+
+
+.. rubric:: Description
 
 IID samples from a SEM model using the  ``IIDSimulation`` object in the ``gCastle`` library.
 The data may be standardized by setting ``standardized`` to true. 
 
 
-See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-gcastle_iidsim.md>`_
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "gcastle_sem",
+        "standardized": true,
+        "method": "linear",
+        "sem_type": "gauss",
+        "noise_scale": 1.0,
+        "n": [
+          1000
+        ]
+      }
+    ]
+
+``iid`` 
+-------
+
+.. rubric:: Some title
+
+.. list-table:: 
+
+   * - Package
+     - ` <http>`_
+   * - Version
+     - v0.0.1
+   * - Language
+     - 
+   * - Docs
+     - `here <>`_
+   * - Paper
+     - `the paper title <the_url>`_
+   * - Graph type
+     - 
+   * - Docker
+     - `username/image:version <https://hub.docker.com/r/username/image>`_
+   * - Module
+     - `iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/iid>`__
+
+
+
+.. rubric:: Description
+
+Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+The data may be standardized by setting ``standardized`` to true. 
 
 
 .. rubric:: Example
 
 
 .. code-block:: json
-    
-    {
-        "id": "gcastle_semdata",
+
+
+    [
+      {
+        "id": "standardized",
         "standardized": true,
-        "method": "linear",
-        "sem_type": "gauss",
-        "noise_scale": 1.0,
-        "n": [
-            1000
+        "sample_sizes": [
+          100
         ]
-    }
-
-Fixed dataset 
---------------
-
-Data files should be saved as ``.csv`` files in the ``resources/data/mydatasets`` directory.
-A dataset is referenced by its filename.
-
-
-* Columns should be separated by a blank space.
-* First row should contain labels.
-* For discrete data, the second row should contain the cardinalities of each variable.
-
-
+      }
+    ]
