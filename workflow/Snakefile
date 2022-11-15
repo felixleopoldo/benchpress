@@ -135,16 +135,13 @@ rule new_params:
         "cp -r {input} {output} "
 
 
-
-mcmc_modules = [
-    "bdgraph",
-    "bidag_order_mcmc",
-    "parallelDG",
-    "trilearn_pgibbs",
-    "gg99_singlepair",
-    "gt13_multipair",
-]
-
+# Read which modules are MCMC module (have graphtraj output).
+mcmc_modules = []
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    with open(p/"info.json") as json_file:
+        info = json.load(json_file)
+        if "graphtraj" in info["outputs"]:
+            mcmc_modules.append(p.name)
 
 # Validate JSON file based on its values.
 include: "rules/validate.py"

@@ -14,7 +14,7 @@
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
         ""
