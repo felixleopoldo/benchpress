@@ -157,10 +157,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DG
      - 
      - gt13_multipair_ 
-   * - Some title
-     - 
-     - 
-     - notears_ 
    * - Parallel DG
      - DG
      - `parallelDG <https://github.com/melmasri/parallelDG>`_
@@ -2194,52 +2190,6 @@ Abstract: Full Bayesian computational inference for model determination in undir
       }
     ]
 
-``notears`` 
------------
-
-.. rubric:: Some title
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - 
-   * - Docs
-     - 
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
-   * - Module
-     - `notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/notears>`__
-
-
-
-.. rubric:: Description
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "notears",
-        "min_rate_of_progress": 0.25,
-        "penalty_growth_rate": 10,
-        "optimation_accuracy": 1e-08,
-        "loss": "least_squares_loss_cov",
-        "loss_grad": "least_squares_loss_cov_grad",
-        "timeout": null
-      }
-    ]
-
 ``parallelDG`` 
 --------------
 
@@ -2291,12 +2241,25 @@ move variate, and outperforms current methods.
 
     [
       {
-        "id": "trilearn-cont",
-        "datatype": "continuous",
+        "id": "pdg",
         "M": 10000,
-        "R": 100,
-        "pseudo_obs": 1,
-        "mcmc_seed": 1,
+        "R": [
+          100,
+          200
+        ],
+        "datatype": "continuous",
+        "mcmc_seed": [
+          1,
+          2
+        ],
+        "graph_prior": "uniform",
+        "graph_prior_param": 1.0,
+        "graph_prior_param1": 3.0,
+        "pseudo_obs": 2,
+        "delta": 5.0,
+        "threshold": 0.5,
+        "burnin_frac": 0.5,
+        "mcmc_estimator": "map",
         "timeout": null
       }
     ]
