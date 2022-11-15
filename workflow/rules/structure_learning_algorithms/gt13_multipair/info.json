@@ -1,7 +1,7 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "GT13",
+    "docker_image": "onceltuca/thomasgreen:1.19-bp",
+    "version": "1.19-bp",
     "package": {
         "title": "",
         "url": "http"
@@ -9,15 +9,15 @@
     "docs_url": "",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees.",
+            "url": "https://www.jstor.org/stable/43304539"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        ""
+        "DG"
     ],
-    "language": ""
+    "language": "Java"
 }

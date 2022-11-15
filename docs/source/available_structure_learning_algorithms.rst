@@ -11,327 +11,219 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
    * - Algorithm
      - Graph
-     - Lang.
      - Package
-     - Version
      - Module
    * - BDgraph
      - UG
-     - R
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
-     - 1.64
      - bdgraph_ 
    * - Iterative MCMC
      - DAG, CPDAG
-     - R
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
-     - 2.0.3
      - bidag_itsearch_ 
    * - Order MCMC
      - DAG, CPDAG
-     - R
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
-     - 2.0.3
      - bidag_order_mcmc_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Partition MCMC
+     - DAG, CPDAG
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
      - bidag_partition_mcmc_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Fast IAMB
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_fastiamb_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Grow-shrink
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_gs_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_h2pc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_hc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_hpc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_iamb_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_iambfdr_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_interiamb_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_mmhc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_mmpc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_pcstable_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_rsmax2_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_sihitonpc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - bnlearn_tabu_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - causaldag_gsp_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - dualpc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_anm_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_corl_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_direct_lingam_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_gae_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_golem_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_grandag_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_ica_lingam_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_mcsl_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_notears_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_notears_low_rank_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_notears_nonlinear_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_pc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - gcastle_rl_ 
-   * - Some title
+   * - GG99
+     - DG
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - gg99_singlepair_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - GOBNILP
+     - DAG
+     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`_
      - gobnilp_ 
-   * - Some title
+   * - GT13
+     - DG
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - gt13_multipair_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - notears_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Parallel DG
+     - DG
+     - `parallelDG <https://github.com/melmasri/parallelDG>`_
      - parallelDG_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - pcalg_pc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - rblip_asobs_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - sklearn_glasso_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_fas_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_fask_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_fci_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_fges_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_fofc_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_ftfc_ 
    * - GFCI
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_gfci_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_imgscont_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_lingam_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_pc-all_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - tetrad_rfci_ 
    * - Some title
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
      - trilearn_pgibbs_ 
 
 
@@ -346,19 +238,19 @@ Dots (.) in the original parameter names are omitted for implementational reason
 .. list-table:: 
 
    * - Package
-     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
      - 1.64
    * - Language
      - R
    * - Docs
-     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`_
+     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
      - `BDgraph: An R Package for Bayesian Structure Learning in Graphical Models <https://www.jstatsoft.org/article/view/v089i03>`_
    * - Graph type
      - UG
    * - Docker
-     - `onceltuca/bdgraph:1.64 <https://hub.docker.com/r/onceltuca/bdgraph>`_
+     - `onceltuca/bdgraph:1.64 <https://hub.docker.com/r/onceltuca/bdgraph>`__
    * - Module
      - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
@@ -396,19 +288,19 @@ Dots (.) in the original parameter names are omitted for implementational reason
 .. list-table:: 
 
    * - Package
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
      - 2.0.3
    * - Language
      - R
    * - Docs
-     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`_
+     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `Efficient Sampling and Structure Learning of Bayesian Networks <Efficient Sampling and Structure Learning of Bayesian Networks>`_
+     - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
    * - Graph type
      - DAG, CPDAG
    * - Docker
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`_
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
    * - Module
      - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
@@ -466,19 +358,19 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 .. list-table:: 
 
    * - Package
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
      - 2.0.3
    * - Language
      - R
    * - Docs
-     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`_
+     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `Efficient Sampling and Structure Learning of Bayesian Networks <Efficient Sampling and Structure Learning of Bayesian Networks>`_
+     - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
    * - Graph type
      - DAG, CPDAG
    * - Docker
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`_
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
    * - Module
      - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
@@ -535,30 +427,33 @@ initialised with constraint-based testing and improved with a score-based search
 ``bidag_partition_mcmc`` 
 ------------------------
 
-.. rubric:: Some title
+.. rubric:: Partition MCMC
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - v0.0.1
+     - 2.0.3
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `Jack Kuipers & Giusi Moffa (2015). Partition MCMC for Inference on Acyclic Digraphs <https://www.tandfonline.com/doi/full/10.1080/01621459.2015.1133426>`_
    * - Graph type
-     - 
+     - DAG, CPDAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
    * - Module
      - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
 
 
 .. rubric:: Description
+
+Abstract: 
+Acyclic digraphs are the underlying representation of Bayesian networks, a widely used class of probabilistic graphical models. Learning the underlying graph from data is a way of gaining insights about the structural properties of a domain. Structure learning forms one of the inference challenges of statistical graphical models. Markov chain Monte Carlo (MCMC) methods, notably structure MCMC, to sample graphs from the posterior distribution given the data are probably the only viable option for Bayesian model averaging. Score modularity and restrictions on the number of parents of each node allow the graphs to be grouped into larger collections, which can be scored as a whole to improve the chain’s convergence. Current examples of algorithms taking advantage of grouping are the biased order MCMC, which acts on the alternative space of permuted triangular matrices, and nonergodic edge reversal moves. Here, we propose a novel algorithm, which employs the underlying combinatorial structure of DAGs to define a new grouping. As a result convergence is improved compared to structure MCMC, while still retaining the property of producing an unbiased sample. Finally, the method can be combined with edge reversal moves to improve the sampler further. Supplementary materials for this article are available online.
 
 .. rubric:: Example
 
@@ -592,30 +487,32 @@ initialised with constraint-based testing and improved with a score-based search
 ``bnlearn_fastiamb`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: Fast IAMB
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - v0.0.1
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `Margaritis D (2003). Learning Bayesian network model structure from data. <https://apps.dtic.mil/sti/pdfs/ADA461103.pdf>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
    * - Module
      - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
 
 
 .. rubric:: Description
+
+Fast incremental association Markov blanket
 
 .. rubric:: Example
 
@@ -642,30 +539,37 @@ initialised with constraint-based testing and improved with a score-based search
 ``bnlearn_gs`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: Grow-shrink
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - v0.0.1
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `Tsamardinos, I., Aliferis, C. F., Statnikov, A. R., & Statnikov, E. (2003). Algorithms for large scale Markov blanket discovery <https://www.aaai.org/Papers/FLAIRS/2003/Flairs03-073.pdf?ref=https://githubhelp.com>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
    * - Module
      - `bnlearn_gs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
 
 
 
 .. rubric:: Description
+
+The grow-shrink (GS) algorithm is based on the Markov blanket of the nodes in a DAG. For
+a specific node, the Markov blanket it the set of nodes which conditioning upon renders it
+conditionally independent from all other variables (Margaritis 2003). It is a constraint-based
+method which estimates the Markov blanket of a node in a two-stage forward-backward proce-
+dure using conditional independence tests. The Markov blankets are used to first estimate an
+undirected graph and then estimate a DAG in a four-step procedure.
 
 .. rubric:: Example
 
@@ -697,19 +601,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
@@ -753,19 +657,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
@@ -809,19 +713,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_hpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
 
@@ -859,19 +763,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
@@ -909,19 +813,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
@@ -959,19 +863,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
 
@@ -1009,19 +913,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
@@ -1065,19 +969,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
@@ -1115,19 +1019,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
@@ -1165,19 +1069,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_rsmax2 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
 
@@ -1223,19 +1127,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
@@ -1273,19 +1177,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
@@ -1327,19 +1231,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
@@ -1382,19 +1286,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
@@ -1431,19 +1335,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
@@ -1473,19 +1377,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
@@ -1520,19 +1424,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
@@ -1563,19 +1467,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
@@ -1623,19 +1527,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_golem <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
 
@@ -1674,19 +1578,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
@@ -1740,19 +1644,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_ica_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
 
@@ -1783,19 +1687,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
@@ -1841,19 +1745,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
 
@@ -1888,19 +1792,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
@@ -1935,19 +1839,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
@@ -2004,19 +1908,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
@@ -2048,19 +1952,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
@@ -2123,30 +2027,42 @@ initialised with constraint-based testing and improved with a score-based search
 ``gg99_singlepair`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: GG99
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
-     - 
+     - Java
    * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
      - 
+   * - Paper
+     - `P. Giudici & P. Green (1999). Decomposable graphical Gaussian model determination <https://www.jstor.org/stable/pdf/2673585.pdf>`_
+   * - Graph type
+     - DG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
    * - Module
      - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
 
 
 
 .. rubric:: Description
+
+Abstract: We propose a methodology for Bayesian model determination in decomposable graphical Gaussian models. To achieve this aim we consider a hyper inverse Wishart prior
+distribution on the concentration matrix for each given graph. To ensure compatibility
+across models, such prior distributions are obtained by marginalisation from the prior
+conditional on the complete graph. We explore alternative structures for the hyperparameters of the latter, and their consequences for the model. Model determination is carried
+out by implementing a reversible jump Markov chain Monte Carlo sampler. In particular,
+the dimension-changing move we propose involves adding or dropping an edge from the
+graph. We characterise the set of moves which preserve the decomposability of the graph,
+giving a fast algorithm for maintaining the junction tree representation of the graph at
+each sweep. As state variable, we use the incomplete variance-covariance matrix, containing only the elements for which the corresponding element of the inverse is nonzero. This
+allows all computations to be performed locally, at the clique level, which is a clear
+advantage for the analysis of large and complex datasets.
 
 .. rubric:: Example
 
@@ -2174,30 +2090,35 @@ initialised with constraint-based testing and improved with a score-based search
 ``gobnilp`` 
 -----------
 
-.. rubric:: Some title
+.. rubric:: GOBNILP
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
    * - Version
-     - v0.0.1
+     - #4347c64
    * - Language
-     - 
+     - C
    * - Docs
-     - `here <>`_
+     - `here <https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `M. Bartlett and J. Cussens (2017). Integer linear programming for the bayesian network structure learning problem. <https://www.jair.org/index.php/jair/article/download/11041/26213/>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp>`__
    * - Module
      - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
 
 
 .. rubric:: Description
+
+Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG
+for a Bayesian network with limit on the maximal number of parents for each node (Cussens
+2012). It is a two-stage approach where candidate parent sets for each node are discovered in
+the first phase and the optimal sets are determined in a second phase.
 
 .. rubric:: Example
 
@@ -2223,30 +2144,32 @@ initialised with constraint-based testing and improved with a score-based search
 ``gt13_multipair`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: GT13
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
-     - 
+     - Java
    * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
      - 
+   * - Paper
+     - `P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees. <https://www.jstor.org/stable/43304539>`_
+   * - Graph type
+     - DG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
    * - Module
      - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
 
 
 
 .. rubric:: Description
+
+Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
 
 .. rubric:: Example
 
@@ -2279,19 +2202,19 @@ initialised with constraint-based testing and improved with a score-based search
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/notears>`__
 
@@ -2320,24 +2243,24 @@ initialised with constraint-based testing and improved with a score-based search
 ``parallelDG`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: Parallel DG
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `parallelDG <https://github.com/melmasri/parallelDG>`__
    * - Version
-     - v0.0.1
+     - 0.9.2
    * - Language
-     - 
+     - Python
    * - Docs
-     - `here <>`_
+     - `here <https://github.com/melmasri/parallelDG>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `M. Elmasri (2022). Parallel sampling of decomposable graphs using Markov chain on junction trees. <https://arxiv.org/pdf/2209.02008>`_
    * - Graph type
-     - 
+     - DG
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg>`__
    * - Module
      - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
@@ -2345,7 +2268,20 @@ initialised with constraint-based testing and improved with a score-based search
 
 .. rubric:: Description
 
-ParallelDG is an MCMC algorithm.
+Abstract: Bayesian inference for undirected graphical models is mostly restricted to
+the class of decomposable graphs, as they enjoy a rich set of properties making them amenable to high-dimensional problems. While parameter inference is
+straightforward in this setup, inferring the underlying graph is a challenge driven
+by the computational difficultly in exploring the space of decomposable graphs.
+This work makes two contributions to address this problem. First, we provide
+sufficient and necessary conditions for when multi-edge perturbations maintain
+decomposability of the graph. Using these, we characterize a simple class of
+partitions that efficiently classify all edge perturbations by whether they maintain decomposability. Second, we propose a new parallel non-reversible Markov
+chain Monte Carlo sampler for distributions over junction tree representations
+of the graph, where at every step, all edge perturbations within a partition are
+executed simultaneously. Through simulations, we demonstrate the efficiency of
+our new edge perturbation conditions and class of partitions. We find that our
+parallel sampler yields improved mixing properties in comparison to the single-
+move variate, and outperforms current methods.
 
 .. rubric:: Example
 
@@ -2373,19 +2309,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
@@ -2430,19 +2366,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
@@ -2483,19 +2419,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
@@ -2533,19 +2469,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
 
@@ -2576,19 +2512,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
 
@@ -2619,19 +2555,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
 
@@ -2667,19 +2603,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
@@ -2718,19 +2654,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
@@ -2760,19 +2696,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
@@ -2802,19 +2738,19 @@ ParallelDG is an MCMC algorithm.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
 
@@ -2858,19 +2794,19 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_imgscont <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
 
@@ -2900,19 +2836,19 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
 
@@ -2942,19 +2878,19 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_pc-all <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
 
@@ -2985,19 +2921,19 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
 
@@ -3033,19 +2969,19 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
      - 
    * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - `username/image:version <https://hub.docker.com/r/username/image>`__
    * - Module
      - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 

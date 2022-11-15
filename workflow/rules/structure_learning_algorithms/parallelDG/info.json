@@ -1,23 +1,23 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Parallel DG",
+    "docker_image": "hallawalla/paralleldg:0.9.2",
+    "version": "0.9.2",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "parallelDG",
+        "url": "https://github.com/melmasri/parallelDG"
     },
-    "docs_url": "",
+    "docs_url": "https://github.com/melmasri/parallelDG",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "M. Elmasri (2022). Parallel sampling of decomposable graphs using Markov chain on junction trees.",
+            "url": "https://arxiv.org/pdf/2209.02008"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        ""
+        "DG"
     ],
-    "language": ""
+    "language": "Python"
 }

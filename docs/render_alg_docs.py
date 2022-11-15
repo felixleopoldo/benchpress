@@ -8,14 +8,23 @@ def info_to_table(json, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
     #tab += "   * - Title\n"
     #tab += "     - "+info["title"]+"\n"
-    tab += "   * - Package\n"
-    tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"
-    tab += "   * - Version\n"
-    tab += "     - "+info["version"]+"\n"
+    if info["package"]["title"] == "":
+        tab += "   * - Package\n"    
+        tab += "     - \n"
+        tab += "   * - Version\n"
+        tab += "     - \n"
+    else:
+        tab += "   * - Package\n"    
+        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
+        tab += "   * - Version\n"
+        tab += "     - "+info["version"]+"\n"
     tab += "   * - Language\n"
     tab += "     - "+info["language"]+"\n"
     tab += "   * - Docs\n"
-    tab += "     - `here <"+info["docs_url"]+">`_\n"
+    if info["docs_url"] == "":
+        tab += "     - \n"
+    else:
+        tab += "     - `here <"+info["docs_url"]+">`__\n"
     tab += "   * - Paper\n"
     for i in range(len(info["papers"])):
         tab += "     - `"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
@@ -28,7 +37,7 @@ def info_to_table(json, p):
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Docker\n"
-    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
+    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
     tab += "   * - Module\n"
     tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
     tab += "\n"
@@ -41,9 +50,9 @@ def info_to_small_table():
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
     tab += "     - Graph\n" 
-    tab += "     - Lang.\n" 
+    #tab += "     - Lang.\n" 
     tab += "     - Package\n" 
-    tab += "     - Version\n" 
+    #tab += "     - Version\n" 
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
@@ -60,9 +69,12 @@ def info_to_small_table():
         tab = tab[:-2]
         
         tab += "\n"
-        tab += "     - "+info["language"]+"\n"
-        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
-        tab += "     - "+info["version"]+"\n"
+        #tab += "     - "+info["language"]+"\n"
+        if info["package"]["title"] == "":
+            tab += "     - \n"
+        else:
+            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+        #tab += "     - "+info["version"]+"\n"
         tab += "     - "+p.name+"_ \n"    
         
     tab += "\n"

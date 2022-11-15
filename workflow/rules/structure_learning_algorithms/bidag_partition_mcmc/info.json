@@ -1,23 +1,23 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Partition MCMC",
+    "docker_image": "onceltuca/bidag:2.0.3",
+    "version": "2.0.3",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "BiDAG",
+        "url": "https://cran.r-project.org/web/packages/BiDAG/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "Jack Kuipers & Giusi Moffa (2015). Partition MCMC for Inference on Acyclic Digraphs",
+            "url": "https://www.tandfonline.com/doi/full/10.1080/01621459.2015.1133426"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        ""
+        "DAG", "CPDAG"
     ],
-    "language": ""
+    "language": "R"
 }

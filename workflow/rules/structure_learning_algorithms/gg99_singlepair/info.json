@@ -1,7 +1,7 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "GG99",
+    "docker_image": "onceltuca/thomasgreen:1.19-bp",
+    "version": "1.19-bp",
     "package": {
         "title": "",
         "url": "http"
@@ -9,15 +9,15 @@
     "docs_url": "",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "P. Giudici & P. Green (1999). Decomposable graphical Gaussian model determination",
+            "url": "https://www.jstor.org/stable/pdf/2673585.pdf"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        ""
+        "DG"
     ],
-    "language": ""
+    "language": "Java"
 }
