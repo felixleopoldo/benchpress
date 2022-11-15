@@ -78,13 +78,13 @@ for p in Path("workflow/rules/evaluation/").iterdir():
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
 
-
+# Yes this is a hack to use snakemakes built in validator.
 with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
 
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
-Path("workflow/schemas/tmp.config.schema.json").unlink()
+#Path("workflow/schemas/tmp.config.schema.json").unlink()
 
 include: "rules/docker_images.smk"
 
