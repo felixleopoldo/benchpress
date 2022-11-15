@@ -89,31 +89,15 @@ def gen_evaluation_string_from_conf(method, alg_id):
 # Graph strings
 def gen_adjmat_string_from_conf(adjmat_id, seed):
     # find the adjmat_gen_method from adjmat_gen_id
-    # Maybe fill up a dict as for structure learning algortihms
-    # Then we would loose the seed.
-    if "pcalg_randdag" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["pcalg_randdag"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["pcalg_randdag"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["pcalg_randdag"] + "/seed={seed}", **adjmat_dict, seed=seed)
+    
+    for module in config["resources"]["graph"]:
+        if adjmat_id in [c["id"] for c in config["resources"]["graph"][module]]:
+            adjmat_dict = next(item for item in config["resources"]["graph"][module] if item["id"] == adjmat_id)
+            return expand(pattern_strings[module] + "/seed={seed}", **adjmat_dict, seed=seed)
 
-    elif "trilearn_cta" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_cta"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_cta"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["trilearn_cta"] + "/seed={seed}", **adjmat_dict, seed=seed)
-
-    elif "trilearn_bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_bandmat"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_bandmat"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["trilearn_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
-
-    elif "trilearn_rand_bandmat" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["trilearn_rand_bandmat"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["trilearn_rand_bandmat"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["trilearn_rand_bandmat"] + "/seed={seed}", **adjmat_dict, seed=seed)
-
-    elif adjmat_id is not None and Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
+    if adjmat_id is not None and Path("resources/adjmat/myadjmats/"+adjmat_id).is_file():
         filename_no_ext = os.path.splitext(os.path.basename(adjmat_id))[0]
         return  "myadjmats/" + filename_no_ext # this could be hepar2.csv e.g.
-
-    elif "bdgraph_graphsim" in pattern_strings and adjmat_id in [c["id"] for c in config["resources"]["graph"]["bdgraph_graphsim"]]:
-        adjmat_dict = next(item for item in config["resources"]["graph"]["bdgraph_graphsim"] if item["id"] == adjmat_id)
-        return expand(pattern_strings["bdgraph_graphsim"] + "/seed={seed}", **adjmat_dict, seed=seed)
 
     elif adjmat_id is None:
         return None
@@ -121,31 +105,13 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
 # Parameter strings
 
 def gen_parameter_string_from_conf(gen_method_id, seed):
-    if "bin_bn" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bin_bn"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["bin_bn"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["bin_bn"] + "/seed={seed}", **curconf, seed=seed)
+    
+    for module in config["resources"]["parameters"]:
+        if gen_method_id in [c["id"] for c in config["resources"]["parameters"][module]]:        
+            curconf = next(item for item in config["resources"]["parameters"][module] if item["id"] == gen_method_id)
+            return expand(pattern_strings[module] + "/seed={seed}", **curconf, seed=seed)
 
-    elif "bdgraph_rgwish" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["bdgraph_rgwish"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["bdgraph_rgwish"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["bdgraph_rgwish"] + "/seed={seed}", **curconf, seed=seed)
-
-    elif "sem_params" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["sem_params"]]:     
-        curconf = next(item for item in config["resources"]["parameters"]["sem_params"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["sem_params"] + "/seed={seed}", **curconf, seed=seed)
-
-    elif "trilearn_hyper-dir" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["trilearn_hyper-dir"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["trilearn_hyper-dir"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["trilearn_hyper-dir"] + "/seed={seed}", **curconf, seed=seed)
-
-    elif "trilearn_intra-class" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["trilearn_intra-class"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["trilearn_intra-class"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["trilearn_intra-class"] + "/seed={seed}", **curconf, seed=seed)
-
-    elif "trilearn_g_inv_wishart" in pattern_strings and gen_method_id in [c["id"] for c in config["resources"]["parameters"]["trilearn_g_inv_wishart"]]:        
-        curconf = next(item for item in config["resources"]["parameters"]["trilearn_g_inv_wishart"] if item["id"] == gen_method_id)
-        return expand(pattern_strings["trilearn_g_inv_wishart"] + "/seed={seed}", **curconf, seed=seed)
-
-    elif Path("resources/parameters/myparams/bn.fit_networks/"+str(gen_method_id)).is_file():
+    if Path("resources/parameters/myparams/bn.fit_networks/"+str(gen_method_id)).is_file():
         return  "bn.fit_networks/" + gen_method_id # gen_method_id could be hepar2.rds e.g.
 
     elif Path("resources/parameters/myparams/sem_params/"+str(gen_method_id)).is_file():

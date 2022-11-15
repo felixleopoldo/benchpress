@@ -42,17 +42,45 @@ for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
         "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
     }
 
+for p in Path("workflow/rules/graph/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "graph"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/graph/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/parameters/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "parameters"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/parameters/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/data/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "data"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/data/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/evaluation/").iterdir():
+    item = schema["properties"]["benchmark_setup"]["properties"][
+        "evaluation"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
+    }
+
+
 with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
-
-# validate(
-#     config,
-#     schema#,
-#     # jsonschema.RefResolver(
-#     #     base_uri="/",
-#     #     referrer=schema,
-#     # ),
-# )
 
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
@@ -83,6 +111,26 @@ rule new_alg:
         directory("workflow/rules/structure_learning_algorithms/new_alg"),
     message:
         "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+rule new_graph:
+    input:
+        "resources/module_templates/new_graph",
+    output:
+        directory("workflow/rules/graph/new_graph"),
+    message:
+        "A template graph module was created in {output}. The module/folder name new_graph may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+rule new_params:
+    input:
+        "resources/module_templates/new_params",
+    output:
+        directory("workflow/rules/parameters/new_params"),
+    message:
+        "A template parameters module was created in {output}. The module/folder name new_params may be changed."
     shell:
         "cp -r {input} {output} "
 

@@ -1,0 +1,60 @@
+{
+    "title": "Some title",
+    "description": "List of  objects",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Fields setting for .",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "mysetting",
+                "param1": "myparamval",
+                "param2": [
+                    2,
+                    4,
+                    5
+                ],
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

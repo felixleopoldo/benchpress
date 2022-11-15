@@ -1,0 +1,26 @@
+{
+    "title": "Some title",
+    "description": "List of id's",
+    "type": "array",
+    "items": {
+        "title": "Some title",
+        "description": "Parameter setting for...",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "paramstest"
+
+            }
+        ]
+    },
+    "uniqueItems": true
+}
