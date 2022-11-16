@@ -37,113 +37,113 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DAG
      - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_gs_ 
-   * - Some title
-     - 
-     - 
+   * - H2PC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_h2pc_ 
-   * - Some title
-     - 
-     - 
+   * - HC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_hc_ 
-   * - Some title
-     - 
-     - 
+   * - HPC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_hpc_ 
-   * - Some title
-     - 
-     - 
+   * - IAMB
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_iamb_ 
-   * - Some title
-     - 
-     - 
+   * - IAMB-FDR
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_iambfdr_ 
-   * - Some title
-     - 
-     - 
+   * - INTER-IAMB
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_interiamb_ 
-   * - Some title
-     - 
-     - 
+   * - MMHC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_mmhc_ 
-   * - Some title
-     - 
-     - 
+   * - MMPC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_mmpc_ 
-   * - Some title
-     - 
-     - 
+   * - PC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_pcstable_ 
-   * - Some title
-     - 
-     - 
+   * - RSMAX2
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_rsmax2_ 
-   * - Some title
-     - 
-     - 
+   * - S-I HITON-PC
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_sihitonpc_ 
-   * - Some title
-     - 
-     - 
+   * - Tabu
+     - DAG
+     - `bnlearn <https://www.bnlearn.com/>`_
      - bnlearn_tabu_ 
-   * - Some title
-     - 
-     - 
+   * - GSP
+     - DAG
+     - `CausalDAG <https://github.com/uhlerlab/causaldag>`_
      - causaldag_gsp_ 
-   * - Some title
-     - 
-     - 
+   * - Dual PC
+     - CG, CPDAG
+     - `dualPC <https://github.com/enricogiudice/dualPC>`_
      - dualpc_ 
-   * - Some title
-     - 
-     - 
+   * - ANM
+     - DAG
+     - `gCastle <http>`_
      - gcastle_anm_ 
-   * - Some title
-     - 
-     - 
+   * - CORL
+     - DAG
+     - `gCastle <http>`_
      - gcastle_corl_ 
-   * - Some title
-     - 
-     - 
+   * - Direct LINGAM
+     - DAG
+     - `gCastle <http>`_
      - gcastle_direct_lingam_ 
-   * - Some title
-     - 
-     - 
+   * - GAE
+     - DAG
+     - `gCastle <http>`_
      - gcastle_gae_ 
-   * - Some title
-     - 
-     - 
+   * - GOLEM
+     - DAG
+     - `gCastle <http>`_
      - gcastle_golem_ 
-   * - Some title
-     - 
-     - 
+   * - GraNDAG
+     - DAG
+     - `gCastle <http>`_
      - gcastle_grandag_ 
-   * - Some title
-     - 
-     - 
+   * - ICALiNGAM
+     - DAG
+     - `gCastle <http>`_
      - gcastle_ica_lingam_ 
-   * - Some title
-     - 
-     - 
+   * - MCSL
+     - DAG
+     - `gCastle <http>`_
      - gcastle_mcsl_ 
-   * - Some title
-     - 
-     - 
+   * - NO TEARS
+     - DAG
+     - `gCastle <http>`_
      - gcastle_notears_ 
-   * - Some title
-     - 
-     - 
+   * - NO TEARS low rank
+     - DAG
+     - `gCastle <http>`_
      - gcastle_notears_low_rank_ 
-   * - Some title
-     - 
-     - 
+   * - NO TEARS non-linear
+     - DAG
+     - `gCastle <http>`_
      - gcastle_notears_nonlinear_ 
-   * - Some title
-     - 
-     - 
+   * - PC
+     - DAG
+     - `gCastle <http>`_
      - gcastle_pc_ 
-   * - Some title
-     - 
-     - 
+   * - RL
+     - DAG
+     - `gCastle <http>`_
      - gcastle_rl_ 
    * - GG99
      - DG
@@ -161,9 +161,9 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DG
      - `parallelDG <https://github.com/melmasri/parallelDG>`_
      - parallelDG_ 
-   * - Some title
-     - 
-     - 
+   * - PC
+     - CPDAG, CG
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
      - pcalg_pc_ 
    * - Some title
      - 
@@ -245,8 +245,9 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `BDgraph: An R Package for Bayesian Structure Learning in Graphical Models <https://www.jstatsoft.org/article/view/v089i03>`_
    * - Graph type
      - UG
-   * - Docker
-     - `onceltuca/bdgraph:1.64 <https://hub.docker.com/r/onceltuca/bdgraph>`__
+   * - Docker 
+     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph>`__
+
    * - Module
      - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
@@ -295,8 +296,9 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
    * - Graph type
      - DAG, CPDAG
-   * - Docker
+   * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+
    * - Module
      - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
@@ -365,8 +367,9 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
      - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
    * - Graph type
      - DAG, CPDAG
-   * - Docker
+   * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+
    * - Module
      - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
@@ -439,8 +442,9 @@ initialised with constraint-based testing and improved with a score-based search
      - `Jack Kuipers & Giusi Moffa (2015). Partition MCMC for Inference on Acyclic Digraphs <https://www.tandfonline.com/doi/full/10.1080/01621459.2015.1133426>`_
    * - Graph type
      - DAG, CPDAG
-   * - Docker
+   * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+
    * - Module
      - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
@@ -499,8 +503,9 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
      - `Margaritis D (2003). Learning Bayesian network model structure from data. <https://apps.dtic.mil/sti/pdfs/ADA461103.pdf>`_
    * - Graph type
      - DAG
-   * - Docker
+   * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
@@ -551,8 +556,9 @@ Fast incremental association Markov blanket
      - `Tsamardinos, I., Aliferis, C. F., Statnikov, A. R., & Statnikov, E. (2003). Algorithms for large scale Markov blanket discovery <https://www.aaai.org/Papers/FLAIRS/2003/Flairs03-073.pdf?ref=https://githubhelp.com>`_
    * - Graph type
      - DAG
-   * - Docker
+   * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_gs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
 
@@ -592,24 +598,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_h2pc`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: H2PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
@@ -648,24 +655,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_hc`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: HC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
@@ -704,24 +712,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_hpc`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: HPC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_hpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
 
@@ -754,24 +763,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_iamb`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: IAMB
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
@@ -804,24 +814,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_iambfdr`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: IAMB-FDR
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
@@ -854,24 +865,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_interiamb`` 
 ---------------------
 
-.. rubric:: Some title
+.. rubric:: INTER-IAMB
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
 
@@ -904,24 +916,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_mmhc`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: MMHC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
@@ -960,24 +973,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_mmpc`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: MMPC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
@@ -1010,24 +1024,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_pcstable`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
@@ -1060,24 +1075,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_rsmax2`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: RSMAX2
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_rsmax2 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
 
@@ -1118,24 +1134,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_sihitonpc`` 
 ---------------------
 
-.. rubric:: Some title
+.. rubric:: S-I HITON-PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
@@ -1168,24 +1185,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``bnlearn_tabu`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: Tabu
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 
+     - 4.7
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+
    * - Module
      - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
@@ -1222,24 +1240,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``causaldag_gsp`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: GSP
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
    * - Version
-     - 
+     - 0.1a163
    * - Language
-     - 
+     - Python
    * - Docs
-     - 
+     - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag>`__
+
    * - Module
      - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
@@ -1277,24 +1296,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``dualpc`` 
 ----------
 
-.. rubric:: Some title
+.. rubric:: Dual PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `dualPC <https://github.com/enricogiudice/dualPC>`__
    * - Version
      - 
    * - Language
-     - 
+     - R
    * - Docs
      - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - CG, CPDAG
+   * - Docker 
+     - `onceltuca/dualpc <https://hub.docker.com/r/onceltuca/dualpc>`__
+
    * - Module
      - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
@@ -1326,30 +1346,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_anm`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: ANM
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_,      - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
 
 
 .. rubric:: Description
+
+Nonlinear causal discovery with additive noise models.
 
 .. rubric:: Example
 
@@ -1368,30 +1391,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_corl`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: CORL
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
 
 
 .. rubric:: Description
+
+A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 
 .. rubric:: Example
 
@@ -1415,30 +1441,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_direct_lingam`` 
 -------------------------
 
-.. rubric:: Some title
+.. rubric:: Direct LINGAM
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
 
 
 .. rubric:: Description
+
+A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. rubric:: Example
 
@@ -1458,30 +1487,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_gae`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: GAE
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
 
 
 .. rubric:: Description
+
+A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 
 .. rubric:: Example
 
@@ -1518,30 +1550,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_golem`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: GOLEM
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_golem <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
 
 
 
 .. rubric:: Description
+
+A more efficient version of NOTEARS that can reduce number of optimization iterations.
 
 .. rubric:: Example
 
@@ -1569,30 +1604,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_grandag`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: GraNDAG
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
 
 
 .. rubric:: Description
+
+A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 
 .. rubric:: Example
 
@@ -1635,30 +1673,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_ica_lingam`` 
 ----------------------
 
-.. rubric:: Some title
+.. rubric:: ICALiNGAM
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_ica_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
 
 
 
 .. rubric:: Description
+
+An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. rubric:: Example
 
@@ -1678,30 +1719,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_mcsl`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: MCSL
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 
 .. rubric:: Description
+
+A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 
 .. rubric:: Example
 
@@ -1736,30 +1780,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_notears`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: NO TEARS
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
 
 
 
 .. rubric:: Description
+
+A gradient-based algorithm for linear data models (typically with least-squares loss).
 
 .. rubric:: Example
 
@@ -1783,30 +1830,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_notears_low_rank`` 
 ----------------------------
 
-.. rubric:: Some title
+.. rubric:: NO TEARS low rank
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 
 .. rubric:: Description
+
+Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. rubric:: Example
 
@@ -1830,24 +1880,25 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_notears_nonlinear`` 
 -----------------------------
 
-.. rubric:: Some title
+.. rubric:: NO TEARS non-linear
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
@@ -1899,30 +1950,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_pc`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 
 .. rubric:: Description
+
+A classic causal discovery algorithm based on conditional independence tests.
 
 .. rubric:: Example
 
@@ -1943,30 +1997,33 @@ undirected graph and then estimate a DAG in a four-step procedure.
 ``gcastle_rl`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: RL
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `gCastle <http>`__
    * - Version
-     - 
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - DAG
+   * - Docker 
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+
    * - Module
      - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
 
 
 .. rubric:: Description
+
+A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 
 .. rubric:: Example
 
@@ -2039,8 +2096,9 @@ undirected graph and then estimate a DAG in a four-step procedure.
      - `P. Giudici & P. Green (1999). Decomposable graphical Gaussian model determination <https://www.jstor.org/stable/pdf/2673585.pdf>`_
    * - Graph type
      - DG
-   * - Docker
+   * - Docker 
      - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
+
    * - Module
      - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
 
@@ -2102,8 +2160,9 @@ advantage for the analysis of large and complex datasets.
      - `M. Bartlett and J. Cussens (2017). Integer linear programming for the bayesian network structure learning problem. <https://www.jair.org/index.php/jair/article/download/11041/26213/>`_
    * - Graph type
      - DAG
-   * - Docker
+   * - Docker 
      - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp>`__
+
    * - Module
      - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
@@ -2156,8 +2215,9 @@ the first phase and the optimal sets are determined in a second phase.
      - `P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees. <https://www.jstor.org/stable/43304539>`_
    * - Graph type
      - DG
-   * - Docker
+   * - Docker 
      - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
+
    * - Module
      - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
 
@@ -2209,8 +2269,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
      - `M. Elmasri (2022). Parallel sampling of decomposable graphs using Markov chain on junction trees. <https://arxiv.org/pdf/2209.02008>`_
    * - Graph type
      - DG
-   * - Docker
+   * - Docker 
      - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg>`__
+
    * - Module
      - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
@@ -2267,24 +2328,25 @@ move variate, and outperforms current methods.
 ``pcalg_pc`` 
 ------------
 
-.. rubric:: Some title
+.. rubric:: PC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - 
+     - 2.7-3
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+     - CPDAG, CG
+   * - Docker 
+     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg>`__
+
    * - Module
      - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
@@ -2340,8 +2402,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress>`__
+
    * - Module
      - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
@@ -2393,8 +2456,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python>`__
+
    * - Module
      - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
@@ -2443,8 +2507,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
 
@@ -2486,8 +2551,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
 
@@ -2529,8 +2595,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
 
@@ -2577,8 +2644,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
@@ -2628,8 +2696,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
@@ -2670,8 +2739,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
@@ -2712,8 +2782,9 @@ move variate, and outperforms current methods.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
 
@@ -2768,8 +2839,9 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_imgscont <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
 
@@ -2810,8 +2882,9 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
 
@@ -2852,8 +2925,9 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_pc-all <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
 
@@ -2895,8 +2969,9 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+
    * - Module
      - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
 
@@ -2943,8 +3018,9 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`__
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn>`__
+
    * - Module
      - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 

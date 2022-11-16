@@ -8,6 +8,6 @@ rule gcastle_ica_lingam:
     params:
         alg="ica_lingam",
     container:
-        docker_image("gcastle")
+        "docker://onceltuca/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

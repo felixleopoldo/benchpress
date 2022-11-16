@@ -6,6 +6,6 @@ rule tetrad_imgscont:
         time=alg_output_time_path("tetrad_imgscont"),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        docker_image("tetrad")
+        "docker://onceltuca/causal-cmd:1.1.3"
     script:
         "tetrad_imgscont.py"

@@ -1,6 +1,5 @@
 {
     "title": "BDgraph",
-    "docker_image": "onceltuca/bdgraph:1.64",
     "version": "1.64",
     "package": {
         "title": "BDgraph",

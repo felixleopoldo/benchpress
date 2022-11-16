@@ -12,19 +12,7 @@ The data modules.
      - Package
      - Version
      - Module
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - bdgraph_rgwish_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - bin_bn_ 
-   * - Some title
+   * - Datasets
      - 
      - 
      - ` <http>`_
@@ -35,25 +23,13 @@ The data modules.
      - 
      - ` <http>`_
      - v0.0.1
-     - sem_params_ 
+     - gcastle_iidsim_ 
    * - Some title
      - 
      - 
      - ` <http>`_
      - v0.0.1
-     - trilearn_g_inv_wishart_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - trilearn_hyper-dir_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - trilearn_intra-class_ 
+     - iid_ 
 
 
 
@@ -116,7 +92,7 @@ are 2,3,2, and 2.
    * - Docker
      - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `gcastle_iidsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_iidsim>`__
+     - `gcastle_iidsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/gcastle_iidsim>`__
 
 
 
@@ -167,7 +143,7 @@ The data may be standardized by setting ``standardized`` to true.
    * - Docker
      - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/iid>`__
+     - `iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/iid>`__
 
 
 

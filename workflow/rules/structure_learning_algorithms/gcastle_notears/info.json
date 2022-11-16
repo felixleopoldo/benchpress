@@ -1,23 +1,22 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "NO TEARS",
+    "version": "1.0.3",
     "package": {
-        "title": "",
+        "title": "gCastle",
         "url": "http"
     },
     "docs_url": "",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
+            "url": "https://arxiv.org/abs/2111.15155"
         }
     ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        ""
+        "DAG"
     ],
-    "language": ""
+    "language": "Python"
 }

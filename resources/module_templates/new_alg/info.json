@@ -1,6 +1,5 @@
 {
     "title": "My new algorithm",
-    "docker_image": "docker://",
     "version": "v0.0.1",
     "software": "",
     "docs": "",
@@ -12,7 +11,7 @@
     ],
     "output": "adjmat",
     "graph_types": [
-        "ug"
+        "UG"
     ],
     "language": "R"
 }

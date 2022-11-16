@@ -1,0 +1,1 @@
+A gradient-based algorithm for linear data models (typically with least-squares loss).

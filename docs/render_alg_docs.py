@@ -4,7 +4,22 @@ import json
 """
 """
 
+def get_docker_img(rulefile):
+    import re
+
+    with open(rulefile,"r") as file_one:
+        for line in file_one:
+            if "docker" in line:
+                str = line.strip().replace('"','')
+                str = str.replace("docker://","")
+                url = "`"+str+" <https://hub.docker.com/r/"+str.split("/")[0]+"/"+str.split("/")[1].split(":")[0]+">`__\n"
+                return url 
+
+    return "None"
+            
+
 def info_to_table(json, p):
+    print(p.name)
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
     #tab += "   * - Title\n"
     #tab += "     - "+info["title"]+"\n"
@@ -36,8 +51,9 @@ def info_to_table(json, p):
         tab += info["graph_types"][i] +", "
     tab = tab[:-2]
     tab += "\n"
-    tab += "   * - Docker\n"
-    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
+    tab += "   * - Docker \n"
+    tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
+    #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
     tab += "   * - Module\n"
     tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
     tab += "\n"
@@ -101,7 +117,7 @@ for p in sorted(algspath.iterdir()):
     d = p/"docs.rst"
     j = p/"info.json"
     s = p/"schema.json"
-    if d.is_file():
+    if d.is_file():        
         f = open(d, "r")
         content = f.read()
 
@@ -141,7 +157,6 @@ for p in sorted(algspath.iterdir()):
     str += "\n\n"
     str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
 
-print(str)
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
     text_file.write(str)

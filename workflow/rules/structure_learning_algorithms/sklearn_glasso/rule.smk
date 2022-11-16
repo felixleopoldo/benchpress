@@ -4,7 +4,8 @@ rule sklearn_glasso:
     output:
         adjmat=alg_output_adjmat_path("sklearn_glasso"),
         time=alg_output_time_path("sklearn_glasso"),
+        ntests=touch(alg_output_ntests_path("sklearn_glasso"))
     container:
-        docker_image("pydatascience")
+        "docker://onceltuca/datascience-python"
     script:
         "sklearn_glasso.py"

@@ -1,12 +1,11 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "PC",
+    "version": "2.7-3",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "pcalg",
+        "url": "https://cran.r-project.org/web/packages/pcalg/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/pcalg/pcalg.pdf",
     "papers": [
         {
             "title": "the paper title",
@@ -17,7 +16,7 @@
         "adjmat"
     ],
     "graph_types": [
-        ""
+        "CPDAG, CG"
     ],
-    "language": ""
+    "language": "R"
 }

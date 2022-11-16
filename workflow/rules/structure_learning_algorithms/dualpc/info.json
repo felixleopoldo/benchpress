@@ -1,10 +1,9 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Dual PC",
+    "version": "",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "dualPC",
+        "url": "https://github.com/enricogiudice/dualPC"
     },
     "docs_url": "",
     "papers": [
@@ -17,7 +16,7 @@
         "adjmat"
     ],
     "graph_types": [
-        ""
+        "CG, CPDAG"
     ],
-    "language": ""
+    "language": "R"
 }

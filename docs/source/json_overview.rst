@@ -237,7 +237,7 @@ Each object in a module algorithm has a unique `id` which can be referenced in t
 
 The names of the fields of the modules in this section are directly transferred or translated from the original libraries or code. Thus, for further details of each field we refer to the documentation of the original sources.
 
-To start an inderactive Doecker chell for an algorithm type e.g.
+To start an interactive Docker shell for a module run
 
 .. code-block:: bash
 

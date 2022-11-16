@@ -32,7 +32,7 @@ def info_to_table(json, p):
     return tab
 
 def info_to_small_table():
-    algspath = Path("../workflow/rules/parameters")
+    algspath = Path("../workflow/rules/data")
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
     tab +="   :header-rows: 1 \n\n"

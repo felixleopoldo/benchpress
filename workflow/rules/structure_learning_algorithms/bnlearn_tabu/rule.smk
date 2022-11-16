@@ -6,6 +6,6 @@ rule bnlearn_tabu:
         time=alg_output_time_path("bnlearn_tabu"),
         ntests=alg_output_ntests_path("bnlearn_tabu"),
     container:
-        docker_image("bnlearn")
+        "docker://onceltuca/bnlearn:4.7"
     script:
         "bnlearn_tabu.R"

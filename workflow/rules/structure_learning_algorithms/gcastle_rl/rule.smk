@@ -5,10 +5,10 @@ rule gcastle_rl:
     output:
         adjmat=alg_output_adjmat_path("gcastle_rl"),
         time=alg_output_time_path("gcastle_rl"),
-        ntests=alg_output_ntests_path("gcastle_rl"),
+        ntests=alg_output_ntests_path("gcastle_rl")
     params:
-        alg="rl",
+        alg="rl"
     container:
-        docker_image("gcastle")
+        "docker://onceltuca/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"
