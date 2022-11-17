@@ -47,8 +47,13 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`_, `scikit-learn <https://scikit-learn.org>`_, `TETRAD <https://www.ccd.pitt.edu/>`_, and `trilearn <https://github.com/felixleopoldo/trilearn>`_    as well as a variety of methods for data generating models and performance evaluation. Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature, which may be included in a benchmarking study. 
 
-`View on Github <https://github.com/felixleopoldo/benchpress>`_.
 
+.. note::
+
+    The documentation is still under development.
+
+
+`View on Github <https://github.com/felixleopoldo/benchpress>`_.
 
 .. [1] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
 
