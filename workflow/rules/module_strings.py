@@ -55,28 +55,11 @@ for alg in mcmc_modules:
 
 # Since we dont want the mcmc_est when we call the trajectory directly.
 json_string_mcmc_noest = {}
-if "bidag_order_mcmc" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"], **val,) 
-                        for val in order_mcmc_list } )
-if "bidag_partition_mcmc" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
-                        for val in bidag_partition_mcmc_list } )
-if "trilearn_pgibbs" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["trilearn_pgibbs"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["trilearn_pgibbs"]})
-if "parallelDG" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]:  expand(pattern_strings["parallelDG"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["parallelDG"]})
-if "gt13_multipair" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gt13_multipair"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["gt13_multipair"]})
-if "gg99_singlepair" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["gg99_singlepair"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["gg99_singlepair"]})
-if "bdgraph" in pattern_strings:
-    json_string_mcmc_noest.update({val["id"]: expand(pattern_strings["bdgraph"], **val)
-                        for val in config["resources"]["structure_learning_algorithms"]["bdgraph"]})
 
+for alg in mcmc_modules:
+    if alg in pattern_strings:
+        json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val,) 
+                        for val in config["resources"]["structure_learning_algorithms"][alg]})
 
 # Evaluation strings
 def gen_evaluation_string_from_conf(method, alg_id):

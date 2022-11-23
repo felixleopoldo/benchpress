@@ -114,6 +114,16 @@ rule new_alg:
     shell:
         "cp -r {input} {output} "
 
+rule new_mcmcalg:
+    input:
+        "resources/module_templates/new_mcmcalg",
+    output:
+        directory("workflow/rules/structure_learning_algorithms/new_mcmcalg"),
+    message:
+        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
+    shell:
+        "cp -r {input} {output} "
+
 rule new_graph:
     input:
         "resources/module_templates/new_graph",

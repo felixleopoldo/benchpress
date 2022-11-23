@@ -14,6 +14,9 @@
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
             "threshold": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
@@ -37,23 +40,27 @@
                         }
                     }
                 ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             }
         },
         "required": [
             "id",
-            "timeout"
+            "timeout",
+            "burnin_frac",
+            "threshold",
+            "mcmc_estimator"
         ],
         "examples": [
             {
-                "id": "mysetting",
-                "param1": "myparamval",
-                "param2": [
-                    2,
-                    4,
-                    5
-                ],
-                "timeout": null
+                "id": "mcmctest",
+                "timeout": null,
+                "burnin_frac": 0.5,
+                "mcmc_estimator": "threshold",
+                "threshold": 0.5
             }
+
         ]
     },
     "uniqueItems": true
