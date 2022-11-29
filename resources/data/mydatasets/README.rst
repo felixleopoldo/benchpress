@@ -13,7 +13,7 @@
     - Categorical
     - Edwards and Havranek (1985)
 
-A 6 way contingency table representing the cross classification of 1841 men. All 6 classification criteria are binary. The variables are (a) smoking, (b) strenuous mental work, (c) strenuous physical work, (d) systolic blood pressure, (e) ratio of beta and alpha lipoproteins and (f) family anamnesis of coronary heart disease.
+A 6 way contingency table representing the cross classification of 1841 men. All 6 classification criteria are binary. The variables are (smoke) smoking, (mental) strenuous mental work, (phys) strenuous physical work, (blodp) systolic blood pressure, (lipo) ratio of beta and alpha lipoproteins and (coron) family anamnesis of coronary heart disease.
     
     
     
