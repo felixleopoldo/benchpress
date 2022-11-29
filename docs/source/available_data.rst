@@ -12,33 +12,85 @@ The data modules.
      - Package
      - Version
      - Module
-   * - Datasets
+   * - Some title
+     - cstree
+     - 
+     - ` <http>`_
+     - v0.0.1
+     - cstrees_iid_ 
+   * - Fixed dataset(s)
      - 
      - 
      - ` <http>`_
      - v0.0.1
      - fixed_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - gCastle IID (SEM)
+     - DAG
+     - Python
+     - `gCastle <http>`_
+     - 1.0.3
      - gcastle_iidsim_ 
-   * - Some title
-     - 
+   * - IID data
+     - all
      - 
      - ` <http>`_
-     - v0.0.1
+     - 
      - iid_ 
 
 
 
 
 
+``cstrees_iid`` 
+---------------
+
+.. rubric:: Some title
+
+.. list-table:: 
+
+   * - Package
+     - ` <http>`_
+   * - Version
+     - v0.0.1
+   * - Language
+     - 
+   * - Docs
+     - `here <>`_
+   * - Paper
+     - `the paper title <the_url>`_
+   * - Graph type
+     - cstree
+   * - Module
+     - `cstrees_iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/cstrees_iid>`__
+
+
+
+.. rubric:: Description
+
+Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+The data may be standardized by setting ``standardized`` to true. 
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "standardized",
+        "standardized": true,
+        "sample_sizes": [
+          100
+        ]
+      }
+    ]
+
 ``fixed`` 
 ---------
 
-.. rubric:: Datasets
+.. rubric:: Fixed dataset(s)
 
 .. rubric:: Description
 
@@ -73,24 +125,22 @@ are 2,3,2, and 2.
 ``gcastle_iidsim`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: gCastle IID (SEM)
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `gCastle <http>`_
    * - Version
-     - v0.0.1
+     - 1.0.3
    * - Language
-     - 
+     - Python
    * - Docs
      - `here <>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - DAG
    * - Module
      - `gcastle_iidsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/gcastle_iidsim>`__
 
@@ -124,14 +174,14 @@ The data may be standardized by setting ``standardized`` to true.
 ``iid`` 
 -------
 
-.. rubric:: Some title
+.. rubric:: IID data
 
 .. list-table:: 
 
    * - Package
      - ` <http>`_
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - 
    * - Docs
@@ -139,9 +189,7 @@ The data may be standardized by setting ``standardized`` to true.
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - all
    * - Module
      - `iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/iid>`__
 

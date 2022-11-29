@@ -6,11 +6,9 @@
         "type": "string"
     },
     "examples": [
-        [
-            "fges-sem-bic",
-            "mmhc-bge-zf",
-            "omcmc_itsample-bge",
-            "pc-gaussCItest"
-        ]
+        "fges-sem-bic",
+        "mmhc-bge-zf",
+        "omcmc_itsample-bge",
+        "pc-gaussCItest"
     ]
 }

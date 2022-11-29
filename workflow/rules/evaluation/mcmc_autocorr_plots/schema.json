@@ -7,19 +7,17 @@
     },
     "additionalItems": false,
     "examples": [
-        [
-            {
-                "id": "omcmc_itsample-bge",
-                "burn_in": 0,
-                "thinning": 1,
-                "lags": 50,
-                "functional": [
-                    "score",
-                    "size"
-                ],
-                "active": true
-            }
-        ]
+        {
+            "id": "omcmc_itsample-bge",
+            "burn_in": 0,
+            "thinning": 1,
+            "lags": 50,
+            "functional": [
+                "score",
+                "size"
+            ],
+            "active": true
+        }
     ],
     "definitions": {
         "mcmc_autocorr_plots": {

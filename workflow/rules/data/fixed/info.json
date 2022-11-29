@@ -1,5 +1,5 @@
 {
-    "title": "Datasets",
+    "title": "Fixed dataset(s)",
     "docker_image": "username/image:version",
     "version": "v0.0.1",
     "package": {

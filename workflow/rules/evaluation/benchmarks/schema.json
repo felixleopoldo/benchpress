@@ -83,11 +83,11 @@
             "show_seed": true,
             "errorbar": true,
             "errorbarh": false,
-            "xrange": [
+            "xlim": [
                 0,
                 1
             ],
-            "yrange": [
+            "ylim": [
                 0,
                 1
             ],

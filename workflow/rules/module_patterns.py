@@ -37,7 +37,6 @@ for module in config["resources"]["graph"]:
 
 # parameters modules
 for module in config["resources"]["parameters"]:
-    print(module)
     pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
 
 # Evaluation strings. These have not exactly the same logic as the above, but it works.

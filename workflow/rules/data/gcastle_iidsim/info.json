@@ -1,8 +1,8 @@
 {
-    "title": "gCastle IID sampling",
+    "title": "gCastle IID (SEM)",
     "version": "1.0.3",
     "package": {
-        "title": "",
+        "title": "gCastle",
         "url": "http"
     },
     "docs_url": "",
@@ -13,7 +13,7 @@
         }
     ],
     "graph_types": [
-        "dag"
+        "DAG"
     ],
     "language": "Python"
 }
