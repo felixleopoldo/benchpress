@@ -1,10 +1,9 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Hyper-Dirichlet",
+    "version": "1.25",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
     },
     "docs_url": "",
     "papers": [
@@ -14,7 +13,7 @@
         }
     ],
     "graph_types": [
-        ""
+        "DG"
     ],
-    "language": ""
+    "language": "Python"
 }

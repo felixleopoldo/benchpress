@@ -1,25 +1,8 @@
 from pathlib import Path
 import json
-
-"""
-"""
-
-def get_docker_img(rulefile):
-    import re
-
-    with open(rulefile,"r") as file_one:
-        for line in file_one:
-            if "docker" in line:
-                str = line.strip().replace('"','')
-                str = str.replace("docker://","")
-                url = "`"+str+" <https://hub.docker.com/r/"+str.split("/")[0]+"/"+str.split("/")[1].split(":")[0]+">`__\n"
-                return url 
-
-    return "None"
-            
+from docs_utils import *
 
 def info_to_table(json, p):
-    print(p.name)
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
     #tab += "   * - Title\n"
     #tab += "     - "+info["title"]+"\n"
@@ -55,7 +38,7 @@ def info_to_table(json, p):
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
     #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
     tab += "   * - Module\n"
-    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+    tab += "     - `"+p.name+"/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
     tab += "\n"
     return tab
 
@@ -77,6 +60,10 @@ def info_to_small_table():
 
         with open(j) as json_file:
             info = json.load(json_file)
+            
+        if "in_docs" in info and info["in_docs"] is False:
+            continue
+
         #tab += "     - "+info["title"]+"\n"
         tab += "   * - "+info["title"]+"\n"
         tab += "     - "
@@ -124,6 +111,8 @@ for p in sorted(algspath.iterdir()):
     with open(j) as json_file:
         info = json.load(json_file)
 
+    if "in_docs" in info and info["in_docs"] is False:
+        continue
     
     schema = None    
     with open(s) as json_file:    

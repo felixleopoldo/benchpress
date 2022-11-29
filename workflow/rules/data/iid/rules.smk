@@ -72,6 +72,22 @@ rule sample_rgwish_data:
     shell:
         "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
+rule sample_cstrees_params_data:
+    input:
+        cstree = "{output_dir}/adjmat/{adjmat}/seed={replicate}.csv",
+        #params="{output_dir}/parameters/"+pattern_strings["cstrees_params"]+"/seed={replicate}/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/parameters=/"+pattern_strings["cstrees_params"] + "/seed={replicate}" \
+             "/data=/iid/n={n}/seed={replicate}.csv"
+    container:
+        None
+    conda:
+        "cstrees.yml"
+    script:
+        "cstrees_data.py"
+
 """
 TODO: Standardisation should better be done in a separate preprocessing module 
 in the data section in benchmark_setup.
@@ -138,13 +154,15 @@ rule sample_fixed_sem_params_data:
 
 
 if "sem_params" in pattern_strings:
+    # BUG: Parameters are matched wrongly here, as seed goes into the last variable
+    # but it is not used anyway..
     rule sample_sem_data:
         input:
             bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
         output:
             data="{output_dir}/data" \
                 "/adjmat=/{adjmat}"\
-                "/parameters=/" + pattern_strings["sem_params"] + "/" \
+                "/parameters=/" + pattern_strings["sem_params"] + "/" \ 
                 "data=/iid/" \
                 "n={n}/" \
                 "seed={replicate}.csv"
@@ -152,3 +170,5 @@ if "sem_params" in pattern_strings:
             docker_image("bidag")
         script:
             "sample_sem_data.R" 
+
+

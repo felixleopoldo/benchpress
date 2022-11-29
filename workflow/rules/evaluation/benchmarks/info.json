@@ -1,6 +1,5 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
+    "title": "Benchmarks",
     "version": "v0.0.1",
     "package": {
         "title": "",

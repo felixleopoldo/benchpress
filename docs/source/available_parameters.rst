@@ -14,27 +14,27 @@ Make sure that the parameter module is compatible with the graph module you are 
      - Package
      - Version
      - Module
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - G-Wishart
+     - UG
+     - R
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
+     - 1.64
      - bdgraph_rgwish_ 
-   * - Some title
-     - 
-     - 
+   * - Binary BN
+     - DAG
+     - R
      - ` <http>`_
      - v0.0.1
      - bin_bn_ 
-   * - Some title
+   * - Fixed parameters
      - 
      - 
      - ` <http>`_
      - v0.0.1
      - fixed_ 
-   * - Some title
-     - 
-     - 
+   * - SEM parameters
+     - DAG
+     - R
      - ` <http>`_
      - v0.0.1
      - sem_params_ 
@@ -44,17 +44,17 @@ Make sure that the parameter module is compatible with the graph module you are 
      - ` <http>`_
      - v0.0.1
      - trilearn_g_inv_wishart_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Hyper-Dirichlet
+     - DG
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - 1.25
      - trilearn_hyper-dir_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Graph intra-class
+     - UG
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - 1.25
      - trilearn_intra-class_ 
 
 
@@ -64,26 +64,27 @@ Make sure that the parameter module is compatible with the graph module you are 
 ``bdgraph_rgwish`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: G-Wishart
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - v0.0.1
+     - 1.64
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - UG
+   * - Docker 
+     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+
    * - Module
-     - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph_rgwish>`__
+     - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
 
 
 
@@ -116,26 +117,26 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 ``bin_bn`` 
 ----------
 
-.. rubric:: Some title
+.. rubric:: Binary BN
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - ` <http>`__
    * - Version
      - v0.0.1
    * - Language
-     - 
+     - R
    * - Docs
      - `here <>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - DAG
+   * - Docker 
+     - None
    * - Module
-     - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bin_bn>`__
+     - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
 
 
@@ -174,7 +175,7 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
 ``fixed`` 
 ---------
 
-.. rubric:: Some title
+.. rubric:: Fixed parameters
 
 .. rubric:: Description
 
@@ -197,26 +198,27 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 ``sem_params`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: SEM parameters
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - ` <http>`__
    * - Version
      - v0.0.1
    * - Language
-     - 
+     - R
    * - Docs
      - `here <>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - DAG
+   * - Docker 
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+
    * - Module
-     - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sem_params>`__
+     - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
 
 
 
@@ -263,7 +265,7 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - ` <http>`__
    * - Version
      - v0.0.1
    * - Language
@@ -274,10 +276,11 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_g_inv_wishart <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_g_inv_wishart>`__
+     - `trilearn_g_inv_wishart <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_g_inv_wishart>`__
 
 
 
@@ -299,36 +302,37 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 ``trilearn_hyper-dir`` 
 ----------------------
 
-.. rubric:: Some title
+.. rubric:: Hyper-Dirichlet
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - v0.0.1
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
      - `here <>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - DG
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_hyper-dir>`__
+     - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
 
 
 
 .. rubric:: Description
 
+An object of this module defines a categorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
 
-An object of the trilearn hyper-dir module defines a catagorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
+.. note:: 
 
-
-
+    This module currently only supports graphs with up to 15 nodes.
 
 .. rubric:: Example
 
@@ -347,26 +351,27 @@ An object of the trilearn hyper-dir module defines a catagorical decomposable mo
 ``trilearn_intra-class`` 
 ------------------------
 
-.. rubric:: Some title
+.. rubric:: Graph intra-class
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - v0.0.1
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
      - `here <>`_
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - UG
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_intra-class>`__
+     - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 
 
 

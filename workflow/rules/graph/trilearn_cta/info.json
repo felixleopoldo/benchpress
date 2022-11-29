@@ -1,20 +1,19 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "CTA",
+    "version": "1.25",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
     },
     "docs_url": "",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs.",
+            "url": "https://link.springer.com/article/10.1007/s11222-022-10113-2"
         }
     ],
     "graph_types": [
-        ""
+        "dg"
     ],
-    "language": ""
+    "language": "Python"
 }

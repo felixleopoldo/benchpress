@@ -16,41 +16,41 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
      - Package
      - Version
      - Module
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - graph.sim
+     - UG
+     - R
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
+     - 1.64
      - bdgraph_graphsim_ 
-   * - Some title
+   * - Fixed graph
      - 
      - 
      - ` <http>`_
      - v0.0.1
      - fixed_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - randDAG
+     - dag,      - ug
+     - R
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
+     - 2.7-3
      - pcalg_randdag_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Band matrix
+     - dg
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - 1.25
      - trilearn_bandmat_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - CTA
+     - dg
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - 1.25
      - trilearn_cta_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Random bandmatrix
+     - dg
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - 1.25
      - trilearn_rand_bandmat_ 
 
 
@@ -60,26 +60,27 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 ``bdgraph_graphsim`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: graph.sim
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - v0.0.1
+     - 1.64
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - UG
+   * - Docker 
+     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+
    * - Module
-     - `bdgraph_graphsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph_graphsim>`__
+     - `bdgraph_graphsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/bdgraph_graphsim>`__
 
 
 
@@ -105,7 +106,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 ``fixed`` 
 ---------
 
-.. rubric:: Some title
+.. rubric:: Fixed graph
 
 .. rubric:: Description
 
@@ -149,26 +150,27 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
 ``pcalg_randdag`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: randDAG
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - v0.0.1
+     - 2.7-3
    * - Language
-     - 
+     - R
    * - Docs
-     - `here <>`_
+     - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - dag,      - ug
+   * - Docker 
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+
    * - Module
-     - `pcalg_randdag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_randdag>`__
+     - `pcalg_randdag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/pcalg_randdag>`__
 
 
 
@@ -210,26 +212,27 @@ parameters par1 and par2, for further details see Kalisch et al.
 ``trilearn_bandmat`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: Band matrix
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - v0.0.1
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - dg
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_bandmat>`__
+     - `trilearn_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_bandmat>`__
 
 
 
@@ -257,26 +260,27 @@ with given bandwidth (*bandwith*).
 ``trilearn_cta`` 
 ----------------
 
-.. rubric:: Some title
+.. rubric:: CTA
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - v0.0.1
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+   * - Paper
+     - `Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
+   * - Graph type
+     - dg
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_cta>`__
+     - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_cta>`__
 
 
 
@@ -309,26 +313,27 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
 ``trilearn_rand_bandmat`` 
 -------------------------
 
-.. rubric:: Some title
+.. rubric:: Random bandmatrix
 
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - v0.0.1
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - dg
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
    * - Module
-     - `trilearn_rand_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_rand_bandmat>`__
+     - `trilearn_rand_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_rand_bandmat>`__
 
 
 

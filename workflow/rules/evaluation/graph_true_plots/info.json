@@ -1,5 +1,5 @@
 {
-    "title": "Some title",
+    "title": "True graph plots",
     "docker_image": "username/image:version",
     "version": "v0.0.1",
     "package": {

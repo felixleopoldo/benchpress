@@ -12,57 +12,30 @@ The output of the modules are copied to *results/output* for easy access.
 
    * - Algorithm
      - Graph
-     - Language
-     - Package
-     - Version
      - Module
-   * - Some title
+   * - Benchmarks
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - benchmarks_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
+   * - Pairs plot
+     - all
      - ggally_ggpairs_ 
-   * - Some title
+   * - Graph plots
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - graph_plots_ 
-   * - Some title
+   * - True graph plots
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - graph_true_plots_ 
-   * - Some title
+   * - Graph stats
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - graph_true_stats_ 
-   * - Some title
+   * - MCMC auto-correlation
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - mcmc_autocorr_plots_ 
-   * - Some title
+   * - MCMC mean graphs
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - mcmc_heatmaps_ 
-   * - Some title
+   * - MCMC trajectories
      - 
-     - 
-     - ` <http>`_
-     - v0.0.1
      - mcmc_traj_plots_ 
 
 
@@ -72,7 +45,7 @@ The output of the modules are copied to *results/output* for easy access.
 ``benchmarks`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: Benchmarks
 
 .. list-table:: 
 
@@ -88,10 +61,8 @@ The output of the modules are copied to *results/output* for easy access.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `benchmarks <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/benchmarks>`__
+     - `benchmarks <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/benchmarks>`__
 
 
 
@@ -208,7 +179,7 @@ The following plots are also produced
 ``ggally_ggpairs`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: Pairs plot
 
 .. list-table:: 
 
@@ -223,11 +194,9 @@ The following plots are also produced
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
+     - all
    * - Module
-     - `ggally_ggpairs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/ggally_ggpairs>`__
+     - `ggally_ggpairs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/ggally_ggpairs>`__
 
 
 
@@ -262,7 +231,7 @@ However, you can always alter the script as you like it.
 ``graph_plots`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: Graph plots
 
 .. list-table:: 
 
@@ -278,10 +247,8 @@ However, you can always alter the script as you like it.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `graph_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/graph_plots>`__
+     - `graph_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_plots>`__
 
 
 
@@ -319,7 +286,7 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
 ``graph_true_plots`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: True graph plots
 
 .. list-table:: 
 
@@ -335,10 +302,8 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `graph_true_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/graph_true_plots>`__
+     - `graph_true_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_plots>`__
 
 
 
@@ -376,7 +341,7 @@ This module plots the true underlying graphs.
 ``graph_true_stats`` 
 --------------------
 
-.. rubric:: Some title
+.. rubric:: Graph stats
 
 .. list-table:: 
 
@@ -392,10 +357,8 @@ This module plots the true underlying graphs.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `graph_true_stats <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/graph_true_stats>`__
+     - `graph_true_stats <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_stats>`__
 
 
 
@@ -419,7 +382,7 @@ This module plots properties of the true graphs such as graph density.
 ``mcmc_autocorr_plots`` 
 -----------------------
 
-.. rubric:: Some title
+.. rubric:: MCMC auto-correlation
 
 .. list-table:: 
 
@@ -435,10 +398,8 @@ This module plots properties of the true graphs such as graph density.
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mcmc_autocorr_plots>`__
+     - `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_autocorr_plots>`__
 
 
 
@@ -492,7 +453,7 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 ``mcmc_heatmaps`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: MCMC mean graphs
 
 .. list-table:: 
 
@@ -508,10 +469,8 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mcmc_heatmaps>`__
+     - `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_heatmaps>`__
 
 
 
@@ -558,7 +517,7 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 ``mcmc_traj_plots`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: MCMC trajectories
 
 .. list-table:: 
 
@@ -574,10 +533,8 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
      - `the paper title <the_url>`_
    * - Graph type
      - 
-   * - Docker
-     - `username/image:version <https://hub.docker.com/r/username/image>`_
    * - Module
-     - `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mcmc_traj_plots>`__
+     - `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_traj_plots>`__
 
 
 

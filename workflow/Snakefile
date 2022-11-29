@@ -162,6 +162,7 @@ include: "rules/filename_patterns.py"
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
         if p.name in pattern_strings or (p.name == "fixed"):
 
@@ -170,6 +171,7 @@ for p in Path("workflow/rules/graph/").glob("*"):
 
 # Include the parameters modules
 for p in Path("workflow/rules/parameters/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
         if (p.name in pattern_strings) or (p.name == "fixed"):
 
@@ -178,6 +180,7 @@ for p in Path("workflow/rules/parameters/").glob("*"):
 
 # Include the data modules
 for p in Path("workflow/rules/data/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rules.smk").is_file():
 
         include: Path("rules/data/", p.name, "rules.smk")

@@ -1,6 +1,5 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
+    "title": "Binary BN",
     "version": "v0.0.1",
     "package": {
         "title": "",
@@ -14,7 +13,7 @@
         }
     ],
     "graph_types": [
-        ""
+        "DAG"
     ],
-    "language": ""
+    "language": "R"
 }

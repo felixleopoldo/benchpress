@@ -24,8 +24,8 @@ def info_to_table(json, p):
         tab += "     - "+info["graph_types"][i] +", "
     tab = tab[:-2]
     tab += "\n"
-    tab += "   * - Docker\n"
-    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
+#    tab += "   * - Docker\n"
+#    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
     tab += "   * - Module\n"
     tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/"+p.name+">`__\n"
     tab += "\n"
@@ -38,9 +38,9 @@ def info_to_small_table():
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
     tab += "     - Graph\n" 
-    tab += "     - Language\n" 
-    tab += "     - Package\n" 
-    tab += "     - Version\n" 
+    #tab += "     - Language\n" 
+    #tab += "     - Package\n" 
+    #tab += "     - Version\n" 
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
@@ -56,9 +56,9 @@ def info_to_small_table():
         tab = tab[:-2]
         
         tab += "\n"
-        tab += "     - "+info["language"]+"\n"
-        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
-        tab += "     - "+info["version"]+"\n"
+        #tab += "     - "+info["language"]+"\n"
+        #tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+        #tab += "     - "+info["version"]+"\n"
         tab += "     - "+p.name+"_ \n"    
         
     tab += "\n"

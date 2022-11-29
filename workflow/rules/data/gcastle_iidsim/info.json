@@ -1,7 +1,6 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "gCastle IID sampling",
+    "version": "1.0.3",
     "package": {
         "title": "",
         "url": "http"
@@ -14,7 +13,7 @@
         }
     ],
     "graph_types": [
-        ""
+        "dag"
     ],
-    "language": ""
+    "language": "Python"
 }

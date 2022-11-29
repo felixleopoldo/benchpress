@@ -13,6 +13,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - Graph
      - Package
      - Module
+   * - GT13
+     - DG
+     - 
+     - athomas_jtsampler_ 
    * - BDgraph
      - UG
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
@@ -173,7 +177,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - 
      - 
      - sklearn_glasso_ 
-   * - Some title
+   * - FAS
      - 
      - 
      - tetrad_fas_ 
@@ -198,8 +202,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - 
      - tetrad_ftfc_ 
    * - GFCI
-     - 
-     - 
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_gfci_ 
    * - Some title
      - 
@@ -226,6 +230,58 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 
 
+``athomas_jtsampler`` 
+---------------------
+
+.. rubric:: GT13
+
+.. list-table:: 
+
+   * - Package
+     - 
+   * - Version
+     - 
+   * - Language
+     - Java
+   * - Docs
+     - 
+   * - Paper
+     - `P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees. <https://www.jstor.org/stable/43304539>`_
+   * - Graph type
+     - DG
+   * - Docker 
+     - None
+   * - Module
+     - `athomas_jtsampler/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsampler>`__
+
+
+
+.. rubric:: Description
+
+Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "jtsampler",
+        "burnin_frac": 0.5,
+        "mcmc_estimator": "map",
+        "timeout": null,
+        "threshold": 0.5,
+        "mcmc_seed": 1,
+        "n": 10000,
+        "s": 0,
+        "a": 1.0,
+        "c": 10000,
+        "v": 0
+      }
+    ]
+
 ``bdgraph`` 
 -----------
 
@@ -246,10 +302,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Graph type
      - UG
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph>`__
+     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
 
    * - Module
-     - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
+     - `bdgraph/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
 
 
@@ -297,10 +353,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Graph type
      - DAG, CPDAG
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
    * - Module
-     - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
+     - `bidag_itsearch/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
 
 
@@ -368,10 +424,10 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Graph type
      - DAG, CPDAG
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
    * - Module
-     - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
+     - `bidag_order_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
 
 
@@ -443,10 +499,10 @@ initialised with constraint-based testing and improved with a score-based search
    * - Graph type
      - DAG, CPDAG
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag>`__
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
    * - Module
-     - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
+     - `bidag_partition_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
 
 
@@ -504,10 +560,10 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
+     - `bnlearn_fastiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
 
 
@@ -557,10 +613,10 @@ Fast incremental association Markov blanket
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_gs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
+     - `bnlearn_gs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
 
 
 
@@ -615,10 +671,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
+     - `bnlearn_h2pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
 
 
@@ -672,10 +728,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
+     - `bnlearn_hc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
 
 
@@ -729,10 +785,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_hpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
+     - `bnlearn_hpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
 
 
 
@@ -780,10 +836,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
+     - `bnlearn_iamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
 
 
@@ -831,10 +887,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
+     - `bnlearn_iambfdr/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
 
 
@@ -882,10 +938,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
+     - `bnlearn_interiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
 
 
 
@@ -933,10 +989,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
+     - `bnlearn_mmhc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
 
 
@@ -990,10 +1046,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
+     - `bnlearn_mmpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
 
 
@@ -1041,10 +1097,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
+     - `bnlearn_pcstable/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
 
 
@@ -1092,10 +1148,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_rsmax2 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
+     - `bnlearn_rsmax2/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
 
 
 
@@ -1151,10 +1207,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
+     - `bnlearn_sihitonpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
 
 
@@ -1202,10 +1258,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn>`__
+     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
    * - Module
-     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
+     - `bnlearn_tabu/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
 
 
@@ -1257,10 +1313,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag>`__
+     - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag/tags>`__
 
    * - Module
-     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
+     - `causaldag_gsp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
 
 
@@ -1313,10 +1369,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - CG, CPDAG
    * - Docker 
-     - `onceltuca/dualpc <https://hub.docker.com/r/onceltuca/dualpc>`__
+     - `onceltuca/dualpc <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
 
    * - Module
-     - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
+     - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
 
 
@@ -1363,10 +1419,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
+     - `gcastle_anm/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
 
 
@@ -1408,10 +1464,10 @@ Nonlinear causal discovery with additive noise models.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
+     - `gcastle_corl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
 
 
@@ -1458,10 +1514,10 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
+     - `gcastle_direct_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
 
 
@@ -1504,10 +1560,10 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
+     - `gcastle_gae/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
 
 
@@ -1567,10 +1623,10 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_golem <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
+     - `gcastle_golem/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
 
 
 
@@ -1621,10 +1677,10 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
+     - `gcastle_grandag/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
 
 
@@ -1690,10 +1746,10 @@ A gradient-based algorithm using neural network modeling for non-linear additive
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_ica_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
+     - `gcastle_ica_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
 
 
 
@@ -1736,10 +1792,10 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
+     - `gcastle_mcsl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 
@@ -1797,10 +1853,10 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
+     - `gcastle_notears/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
 
 
 
@@ -1847,10 +1903,10 @@ A gradient-based algorithm for linear data models (typically with least-squares 
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
+     - `gcastle_notears_low_rank/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 
@@ -1897,10 +1953,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
+     - `gcastle_notears_nonlinear/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
 
 
@@ -1967,10 +2023,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
+     - `gcastle_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 
@@ -2014,10 +2070,10 @@ A classic causal discovery algorithm based on conditional independence tests.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle>`__
+     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
    * - Module
-     - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
+     - `gcastle_rl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
 
 
@@ -2097,10 +2153,10 @@ A RL-based algorithm that can work with flexible score functions (including non-
    * - Graph type
      - DG
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
+     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
 
    * - Module
-     - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
+     - `gg99_singlepair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
 
 
 
@@ -2161,10 +2217,10 @@ advantage for the analysis of large and complex datasets.
    * - Graph type
      - DAG
    * - Docker 
-     - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp>`__
+     - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp/tags>`__
 
    * - Module
-     - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
+     - `gobnilp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
 
 
@@ -2216,10 +2272,10 @@ the first phase and the optimal sets are determined in a second phase.
    * - Graph type
      - DG
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen>`__
+     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
 
    * - Module
-     - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
+     - `gt13_multipair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
 
 
 
@@ -2270,10 +2326,10 @@ Abstract: Full Bayesian computational inference for model determination in undir
    * - Graph type
      - DG
    * - Docker 
-     - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg>`__
+     - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module
-     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+     - `parallelDG/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
 
 
@@ -2345,10 +2401,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - CPDAG, CG
    * - Docker 
-     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg>`__
+     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
 
    * - Module
-     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
+     - `pcalg_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
 
 
@@ -2403,10 +2459,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress>`__
+     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
 
    * - Module
-     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
+     - `rblip_asobs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
 
 
@@ -2457,10 +2513,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python>`__
+     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
    * - Module
-     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
+     - `sklearn_glasso/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
 
 
@@ -2491,7 +2547,7 @@ move variate, and outperforms current methods.
 ``tetrad_fas`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: FAS
 
 .. list-table:: 
 
@@ -2508,10 +2564,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
+     - `tetrad_fas/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
 
 
 
@@ -2552,10 +2608,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
+     - `tetrad_fask/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
 
 
 
@@ -2596,10 +2652,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
+     - `tetrad_fci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
 
 
 
@@ -2645,10 +2701,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
+     - `tetrad_fges/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
 
 
@@ -2697,10 +2753,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
+     - `tetrad_fofc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
 
 
@@ -2740,10 +2796,10 @@ move variate, and outperforms current methods.
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
+     - `tetrad_ftfc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
 
 
@@ -2771,22 +2827,22 @@ move variate, and outperforms current methods.
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - `the paper title <the_url>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
+     - `tetrad_gfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
 
 
 
@@ -2840,10 +2896,10 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_imgscont <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
+     - `tetrad_imgscont/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
 
 
 
@@ -2883,10 +2939,10 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
+     - `tetrad_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
 
 
 
@@ -2926,14 +2982,20 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_pc-all <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
+     - `tetrad_pc-all/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
 
 
 
 .. rubric:: Description
+
+From TETRAD docs: PC algorithm (Spirtes and Glymour, Social Science Computer Review, 1991) is a CPDAG search which assumes that the underlying causal structure of the input data is acyclic, and that no two variables are caused by the same latent (unmeasured) variable. In addition, it is assumed that the input data set is either entirely continuous or entirely discrete; if the data set is continuous, it is assumed that the causal relation between any two variables is linear, and that the distribution of each variable is Normal. Finally, the sample should ideally be i.i.d.. Simulations show that PC and several of the other algorithms described here often succeed when these assumptions, needed to prove their correctness, do not strictly hold. The PC algorithm will sometimes output double headed edges. In the large sample limit, double headed edges in the output indicate that the adjacent variables have an unrecorded common cause, but PC tends to produce false positive double headed edges on small samples.
+
+The PC algorithm is correct whenever decision procedures for independence and conditional independence are available. The procedure conducts a sequence of independence and conditional independence tests, and efficiently builds a CPDAG from the results of those tests. As implemented in TETRAD, PC is intended for multinomial and approximately Normal distributions with i.i.d. data. The tests have an alpha value for rejecting the null hypothesis, which is always a hypothesis of independence or conditional independence. For continuous variables, PC uses tests of zero correlation or zero partial correlation for independence or conditional independence respectively. For discrete or categorical variables, PC uses either a chi square or a g square test of independence or conditional independence (see Causation, Prediction, and Search for details on tests). In either case, the tests require an alpha value for rejecting the null hypothesis, which can be adjusted by the user. The procedures make no adjustment for multiple testing. (For PC, CPC, JPC, JCPC, FCI, all testing searches.)
+
+The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour, and Scheines, 2000) comes with three heuristics designed to reduce dependence on the order of the variables. The heuristic PC-1 simple sorts the variables in alphabetical order. The heuristic PC-2 and PC-3 sort edges by their p-values in the search. PP-3 further sorts parents of nodes in reverse order by the p-values of the conditional independence facts used to removed edges in the search. Please see Causation, Prediction, and Search for more details for these heuristics.
 
 .. rubric:: Example
 
@@ -2970,10 +3032,10 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd>`__
+     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
    * - Module
-     - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
+     - `tetrad_rfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
 
 
 
@@ -3019,10 +3081,10 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Graph type
      - 
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn>`__
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
    * - Module
-     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
+     - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 
 
 
