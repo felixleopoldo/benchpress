@@ -9,7 +9,7 @@ Auto-workers
     - Observations
     - Datatype
     - Reference
-  * - `autoworkers.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/czech_autoworkers.csv>`__
+  * - `czech_autoworkers.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/czech_autoworkers.csv>`__
     - 6
     - 1841
     - Categorical
