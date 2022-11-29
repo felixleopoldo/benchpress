@@ -1,0 +1,20 @@
+{
+    "title": "Random CStree",
+    "version": "v0.0.1",
+    "package": {
+        "title": "CStrees",
+        "url": "https://github.com/felixleopoldo/CStrees"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "Eliana Duarte, Liam Solus (2022). Representation of Context-Specific Causal Models with Observational and Interventional Data.",
+            "url": "https://arxiv.org/abs/2101.09271"
+        }
+    ],
+    "graph_types": [
+        "cstree"
+    ],
+    "language": "Python",
+    "in_docs": false
+}

@@ -1,0 +1,31 @@
+{
+    "title": "pcalg_randdag",
+    "description": "Sampling graph using randDAG from the pcalg package.",
+    "type": "array",
+    "items": {
+        "title": "pcalg_randdag item",
+        "description": "An instance of pcalg randdag. Sampling of a DAG with specified maximum averge number for parents for the nodes.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "p": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            }
+        },
+        "required": [
+            "id",            
+            "p"
+        ],
+        "additionalProperties": true,
+        "examples": [
+            {
+                "id": "test",
+                "p": 10,
+                "par1": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}
