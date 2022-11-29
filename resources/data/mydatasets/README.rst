@@ -1,6 +1,4 @@
 
-Auto-workers
-------------
 
 .. list-table::
 
