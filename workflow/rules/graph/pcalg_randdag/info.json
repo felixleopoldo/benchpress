@@ -8,12 +8,12 @@
     "docs_url": "https://cran.r-project.org/web/packages/pcalg/pcalg.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "",
+            "url": ""
         }
     ],
     "graph_types": [
-        "dag", "ug"
+        "DAG", "UG"
     ],
     "language": "R"
 }

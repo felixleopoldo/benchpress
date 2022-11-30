@@ -13,10 +13,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - Graph
      - Package
      - Module
-   * - GT13
-     - DG
-     - 
-     - athomas_jtsampler_ 
    * - BDgraph
      - UG
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
@@ -169,118 +165,66 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - CPDAG, CG
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
      - pcalg_pc_ 
-   * - Some title
-     - 
-     - 
+   * - ASOBS
+     - DAG
+     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`_
      - rblip_asobs_ 
-   * - Some title
-     - 
-     - 
+   * - Graphical Lasso
+     - UG
+     - `scikit-learn <https://scikit-learn.org/0.22/>`_
      - sklearn_glasso_ 
    * - FAS
-     - 
-     - 
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_fas_ 
-   * - Some title
-     - 
-     - 
+   * - FASK
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_fask_ 
-   * - Some title
-     - 
-     - 
+   * - GFCI
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_fci_ 
-   * - Some title
-     - 
-     - 
+   * - FGES
+     - CPDAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_fges_ 
-   * - Some title
-     - 
-     - 
+   * - FOFC
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_fofc_ 
-   * - Some title
-     - 
-     - 
+   * - FTFC
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_ftfc_ 
    * - GFCI
      - DAG
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_gfci_ 
-   * - Some title
-     - 
-     - 
+   * - IMGSCONT
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_imgscont_ 
-   * - Some title
-     - 
-     - 
+   * - LINGAM
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_lingam_ 
-   * - Some title
-     - 
-     - 
+   * - PC-ALL
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_pc-all_ 
-   * - Some title
-     - 
-     - 
+   * - RFCI
+     - DAG
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
      - tetrad_rfci_ 
-   * - Some title
-     - 
-     - 
+   * - Particle Gibbs
+     - DG
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
      - trilearn_pgibbs_ 
 
 
 
 
-
-``athomas_jtsampler`` 
----------------------
-
-.. rubric:: GT13
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - Java
-   * - Docs
-     - 
-   * - Paper
-     - `P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees. <https://www.jstor.org/stable/43304539>`_
-   * - Graph type
-     - DG
-   * - Docker 
-     - None
-   * - Module
-     - `athomas_jtsampler/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsampler>`__
-
-
-
-.. rubric:: Description
-
-Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "jtsampler",
-        "burnin_frac": 0.5,
-        "mcmc_estimator": "map",
-        "timeout": null,
-        "threshold": 0.5,
-        "mcmc_seed": 1,
-        "n": 10000,
-        "s": 0,
-        "a": 1.0,
-        "c": 10000,
-        "v": 0
-      }
-    ]
 
 ``bdgraph`` 
 -----------
@@ -2442,22 +2386,22 @@ move variate, and outperforms current methods.
 ``rblip_asobs`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: ASOBS
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
    * - Version
-     - 
+     - 1.1
    * - Language
-     - 
+     - R
    * - Docs
-     - 
+     - `here <https://cran.r-project.org/web/packages/r.blip/r.blip.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
 
@@ -2496,22 +2440,22 @@ move variate, and outperforms current methods.
 ``sklearn_glasso`` 
 ------------------
 
-.. rubric:: Some title
+.. rubric:: Graphical Lasso
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `scikit-learn <https://scikit-learn.org/0.22/>`__
    * - Version
-     - 
+     - 0.22.1
    * - Language
-     - 
+     - Python
    * - Docs
-     - 
+     - `here <https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - UG
    * - Docker 
      - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
@@ -2552,17 +2496,17 @@ move variate, and outperforms current methods.
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2591,22 +2535,22 @@ move variate, and outperforms current methods.
 ``tetrad_fask`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: FASK
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2635,22 +2579,22 @@ move variate, and outperforms current methods.
 ``tetrad_fci`` 
 --------------
 
-.. rubric:: Some title
+.. rubric:: GFCI
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2684,22 +2628,22 @@ move variate, and outperforms current methods.
 ``tetrad_fges`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: FGES
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - Java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - CPDAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2736,22 +2680,22 @@ move variate, and outperforms current methods.
 ``tetrad_fofc`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: FOFC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2779,22 +2723,22 @@ move variate, and outperforms current methods.
 ``tetrad_ftfc`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: FTFC
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2879,22 +2823,22 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 ``tetrad_imgscont`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: IMGSCONT
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2922,22 +2866,22 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 ``tetrad_lingam`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: LINGAM
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -2965,22 +2909,22 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 ``tetrad_pc-all`` 
 -----------------
 
-.. rubric:: Some title
+.. rubric:: PC-ALL
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3015,22 +2959,22 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
 ``tetrad_rfci`` 
 ---------------
 
-.. rubric:: Some title
+.. rubric:: RFCI
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 
+     - 1.1.3
    * - Language
-     - 
+     - java
    * - Docs
-     - 
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DAG
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3064,22 +3008,22 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
 ``trilearn_pgibbs`` 
 -------------------
 
-.. rubric:: Some title
+.. rubric:: Particle Gibbs
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 
+     - 1.25
    * - Language
-     - 
+     - Python
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - 
+     - DG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 

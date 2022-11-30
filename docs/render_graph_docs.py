@@ -56,7 +56,6 @@ def info_to_small_table():
             info = json.load(json_file)
 
         if "in_docs" in info and info["in_docs"] is False:
-            print("hej")
             continue
 
         #tab += "     - "+info["title"]+"\n"
