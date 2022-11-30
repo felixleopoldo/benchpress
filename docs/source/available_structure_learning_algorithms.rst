@@ -611,7 +611,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -668,7 +668,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -725,7 +725,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -776,7 +776,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -827,7 +827,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -878,7 +878,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -929,7 +929,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -986,7 +986,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1037,7 +1037,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1088,7 +1088,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1147,7 +1147,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1198,7 +1198,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1253,7 +1253,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1309,7 +1309,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - CG, CPDAG
    * - Docker 
@@ -1359,7 +1359,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - 
    * - Paper
-     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_,      - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_, `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
      - DAG
    * - Docker 
@@ -2399,7 +2399,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/r.blip/r.blip.pdf>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2453,7 +2453,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - UG
    * - Docker 
@@ -2504,7 +2504,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2548,7 +2548,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2592,7 +2592,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2641,7 +2641,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - CPDAG
    * - Docker 
@@ -2693,7 +2693,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2736,7 +2736,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2836,7 +2836,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2879,7 +2879,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2922,7 +2922,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2972,7 +2972,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -3021,7 +3021,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
    * - Docs
      - 
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DG
    * - Docker 

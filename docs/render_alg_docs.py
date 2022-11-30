@@ -24,8 +24,13 @@ def info_to_table(json, p):
     else:
         tab += "     - `here <"+info["docs_url"]+">`__\n"
     tab += "   * - Paper\n"
+    
+    tab += "     - "
     for i in range(len(info["papers"])):
-        tab += "     - `"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        if info["papers"][i]["title"] != "":
+            tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        else:
+            tab += "  "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"

@@ -10,7 +10,7 @@ The output of the modules are copied to *results/output* for easy access.
 .. list-table:: 
    :header-rows: 1 
 
-   * - Algorithm
+   * - Evaluation
      - Graph
      - Module
    * - Benchmarks
@@ -49,18 +49,6 @@ The output of the modules are copied to *results/output* for easy access.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `benchmarks <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/benchmarks>`__
 
@@ -183,18 +171,6 @@ The following plots are also produced
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - all
    * - Module
      - `ggally_ggpairs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/ggally_ggpairs>`__
 
@@ -235,18 +211,6 @@ However, you can always alter the script as you like it.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_plots>`__
 
@@ -288,18 +252,6 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_true_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_plots>`__
 
@@ -343,18 +295,6 @@ This module plots the true underlying graphs.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_true_stats <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_stats>`__
 
@@ -384,18 +324,6 @@ This module plots properties of the true graphs such as graph density.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_autocorr_plots>`__
 
@@ -453,18 +381,6 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_heatmaps>`__
 
@@ -517,18 +433,6 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_traj_plots>`__
 
