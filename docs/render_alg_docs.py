@@ -76,7 +76,7 @@ def info_to_small_table():
         if info["package"]["title"] == "":
             tab += "     - \n"
         else:
-            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
         #tab += "     - "+info["version"]+"\n"
         tab += "     - "+p.name+"_ \n"    
         

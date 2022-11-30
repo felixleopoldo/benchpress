@@ -15,135 +15,135 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - Module
    * - BDgraph
      - UG
-     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
      - bdgraph_ 
    * - Iterative MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_itsearch_ 
    * - Order MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_order_mcmc_ 
    * - Partition MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_partition_mcmc_ 
    * - Fast IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_fastiamb_ 
    * - Grow-shrink
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_gs_ 
    * - H2PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_h2pc_ 
    * - HC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hc_ 
    * - HPC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hpc_ 
    * - IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iamb_ 
    * - IAMB-FDR
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iambfdr_ 
    * - INTER-IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_interiamb_ 
    * - MMHC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmhc_ 
    * - MMPC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmpc_ 
    * - PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_pcstable_ 
    * - RSMAX2
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_rsmax2_ 
    * - S-I HITON-PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_sihitonpc_ 
    * - Tabu
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_tabu_ 
    * - GSP
      - DAG
-     - `CausalDAG <https://github.com/uhlerlab/causaldag>`_
+     - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
    * - Dual PC
      - CG, CPDAG
-     - `dualPC <https://github.com/enricogiudice/dualPC>`_
+     - `dualPC <https://github.com/enricogiudice/dualPC>`__
      - dualpc_ 
    * - ANM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_anm_ 
    * - CORL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_corl_ 
    * - Direct LINGAM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_direct_lingam_ 
    * - GAE
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_gae_ 
    * - GOLEM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_golem_ 
    * - GraNDAG
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_grandag_ 
    * - ICALiNGAM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_ica_lingam_ 
    * - MCSL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_mcsl_ 
    * - NO TEARS
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_ 
    * - NO TEARS low rank
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_low_rank_ 
    * - NO TEARS non-linear
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_nonlinear_ 
    * - PC
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_pc_ 
    * - RL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_rl_ 
    * - GG99
      - DG
@@ -151,7 +151,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - gg99_singlepair_ 
    * - GOBNILP
      - DAG
-     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`_
+     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
    * - GT13
      - DG
@@ -159,67 +159,67 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - gt13_multipair_ 
    * - Parallel DG
      - DG
-     - `parallelDG <https://github.com/melmasri/parallelDG>`_
+     - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - parallelDG_ 
    * - PC
      - CPDAG, CG
-     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
    * - ASOBS
      - DAG
-     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`_
+     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
      - rblip_asobs_ 
    * - Graphical Lasso
      - UG
-     - `scikit-learn <https://scikit-learn.org/0.22/>`_
+     - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
    * - FAS
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fas_ 
    * - FASK
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
    * - GFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fci_ 
    * - FGES
      - CPDAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fges_ 
    * - FOFC
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fofc_ 
    * - FTFC
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
    * - GFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
    * - IMGSCONT
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_imgscont_ 
    * - LINGAM
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_lingam_ 
    * - PC-ALL
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc-all_ 
    * - RFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
    * - Particle Gibbs
      - DG
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - trilearn_pgibbs_ 
 
 
@@ -236,7 +236,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Package
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - 1.64
+     - 2.64
    * - Language
      - R
    * - Docs
@@ -1313,7 +1313,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - CG, CPDAG
    * - Docker 
-     - `onceltuca/dualpc <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
+     - `onceltuca/dualpc:latest <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
 
    * - Module
      - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__

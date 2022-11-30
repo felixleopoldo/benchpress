@@ -241,7 +241,14 @@ To start an interactive Docker shell for a module run
 
 .. code-block:: bash
 
-    docker run -it theusername/theimage:theversion
+    docker run -it username/image:version
+
+or using Apptainer
+
+.. code-block:: bash
+
+    apptainer run docker://username/image:version
+
 
 .. .. .. _resources:
 .. .. .. figure:: _static/resources.png

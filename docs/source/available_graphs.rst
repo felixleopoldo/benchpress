@@ -10,46 +10,39 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 .. list-table:: 
    :header-rows: 1 
 
-   * - Algorithm
-     - Graph
-     - Language
+   * - Method
+     - Graph type
      - Package
      - Version
      - Module
    * - graph.sim function
      - UG
-     - R
-     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
-     - 1.64
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
+     - 2.64
      - bdgraph_graphsim_ 
    * - Fixed graph
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
-     - fixed_ 
+     - 
+     - fixed_graph_ 
    * - randDAG
-     - DAG,      - UG
-     - R
-     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
+     - DAG, UG
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - 2.7-3
      - pcalg_randdag_ 
    * - Band matrix
      - DG
-     - Python
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_bandmat_ 
    * - CTA
      - DG
-     - Python
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_cta_ 
    * - Random bandmatrix
      - DG
-     - Python
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_rand_bandmat_ 
 
@@ -67,13 +60,13 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
    * - Package
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - 1.64
+     - 2.64
    * - Language
      - R
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - ` <>`_
+     - Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models  <https://www.jstatsoft.org/article/view/v089i03>`_
    * - Graph type
      - UG
    * - Docker 
@@ -103,8 +96,8 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
       }
     ]
 
-``fixed`` 
----------
+``fixed_graph`` 
+---------------
 
 .. rubric:: Fixed graph
 
@@ -163,9 +156,9 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
-     - DAG,      - UG
+     - DAG, UG
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -225,7 +218,7 @@ parameters par1 and par2, for further details see Kalisch et al.
    * - Docs
      - 
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -273,7 +266,7 @@ with given bandwidth (*bandwith*).
    * - Docs
      - 
    * - Paper
-     - `Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
+     - Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
    * - Graph type
      - DG
    * - Docker 
@@ -326,7 +319,7 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
    * - Docs
      - 
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DG
    * - Docker 

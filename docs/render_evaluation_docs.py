@@ -133,7 +133,6 @@ for p in sorted(algspath.iterdir()):
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
 
-print(str)
 
 with open("source/available_evaluations.rst", "w") as text_file:
     text_file.write(str)

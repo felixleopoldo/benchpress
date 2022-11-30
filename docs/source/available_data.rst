@@ -6,28 +6,24 @@ The data modules.
 .. list-table:: 
    :header-rows: 1 
 
-   * - Algorithm
+   * - Method
      - Graph
-     - Language
      - Package
      - Version
      - Module
    * - Fixed dataset(s)
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
-     - fixed_ 
+     - 
+     - fixed_data_ 
    * - gCastle IID (SEM)
      - DAG
-     - Python
-     - `gCastle <http>`_
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - 1.0.3
      - gcastle_iidsim_ 
    * - IID data
      - all
      - 
-     - ` <http>`_
      - 
      - iid_ 
 
@@ -35,8 +31,8 @@ The data modules.
 
 
 
-``fixed`` 
----------
+``fixed_data`` 
+--------------
 
 .. rubric:: Fixed dataset(s)
 
@@ -78,15 +74,13 @@ are 2,3,2, and 2.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`_
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
-   * - Language
-     - Python
    * - Docs
-     - `here <>`_
+     - `here <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
      - DAG
    * - Module
@@ -127,15 +121,13 @@ The data may be standardized by setting ``standardized`` to true.
 .. list-table:: 
 
    * - Package
-     - ` <http>`_
+     - 
    * - Version
      - 
-   * - Language
-     - 
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - all
    * - Module

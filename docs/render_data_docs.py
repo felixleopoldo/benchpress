@@ -7,16 +7,27 @@ def info_to_table(json, p):
     #tab += "   * - Title\n"
     #tab += "     - "+info["title"]+"\n"
     tab += "   * - Package\n"
-    tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"
+    if info["package"]["url"]:
+        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
+    else:
+        tab += "     - "+info["package"]["title"]+"\n"
     tab += "   * - Version\n"
     tab += "     - "+info["version"]+"\n"
-    tab += "   * - Language\n"
-    tab += "     - "+info["language"]+"\n"
+    #tab += "   * - Language\n"
+    #tab += "     - "+info["language"]+"\n"   
     tab += "   * - Docs\n"
-    tab += "     - `here <"+info["docs_url"]+">`_\n"
+    if info["docs_url"] == "":
+        tab += "     - \n"
+    else:
+        tab += "     - `here <"+info["docs_url"]+">`__\n"
     tab += "   * - Paper\n"
+    tab += "     - "
     for i in range(len(info["papers"])):
-        tab += "     - `"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        if info["papers"][i]["title"] != "":
+            tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        else:
+            tab += "  "
+
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
@@ -35,10 +46,11 @@ def info_to_small_table():
     algspath = Path("../workflow/rules/data")
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
-    tab +="   :header-rows: 1 \n\n"
-    tab += "   * - Algorithm\n" 
+    #tab += "   :width: 100 \n"
+    tab += "   :header-rows: 1 \n\n"
+    tab += "   * - Method\n" 
     tab += "     - Graph\n" 
-    tab += "     - Language\n" 
+    #tab += "     - Language\n" 
     tab += "     - Package\n" 
     tab += "     - Version\n" 
     tab += "     - Module\n" 
@@ -56,8 +68,12 @@ def info_to_small_table():
         tab = tab[:-2]
         
         tab += "\n"
-        tab += "     - "+info["language"]+"\n"
-        tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+        #tab += "     - "+info["language"]+"\n"
+        if info["package"]["url"]:
+            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
+        else:
+            tab += "     - "+info["package"]["title"]+"\n"    
+
         tab += "     - "+info["version"]+"\n"
         tab += "     - "+p.name+"_ \n"    
         
@@ -116,7 +132,7 @@ for p in sorted(algspath.iterdir()):
     str += "\n"
     str += ".. rubric:: "+ info["title"]    
     str += "\n\n"
-    if p.name != "fixed":
+    if p.name != "fixed_data":
         str += info_to_table(info, p)
         str += "\n\n"
     str += ".. rubric:: Description"    
@@ -130,8 +146,6 @@ for p in sorted(algspath.iterdir()):
         str += ".. code-block:: json"    
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-
-print(str)
 
 with open("source/available_data.rst", "w") as text_file:
     text_file.write(str)

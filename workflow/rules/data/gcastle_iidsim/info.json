@@ -3,14 +3,15 @@
     "version": "1.0.3",
     "package": {
         "title": "gCastle",
-        "url": "http"
+        "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
-    "docs_url": "",
+    "docs_url": "https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
+            "url": "https://arxiv.org/abs/2111.15155"
         }
+
     ],
     "graph_types": [
         "DAG"
