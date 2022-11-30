@@ -1,5 +1,5 @@
 {
-    "title": "graph.sim",
+    "title": "graph.sim function",
     "version": "1.64",
     "package": {
         "title": "BDgraph",
@@ -8,8 +8,8 @@
     "docs_url": "https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "",
+            "url": ""
         }
     ],
     "graph_types": [

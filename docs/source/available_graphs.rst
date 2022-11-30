@@ -16,7 +16,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
      - Package
      - Version
      - Module
-   * - graph.sim
+   * - graph.sim function
      - UG
      - R
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
@@ -29,25 +29,25 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
      - v0.0.1
      - fixed_ 
    * - randDAG
-     - dag,      - ug
+     - DAG,      - UG
      - R
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
      - 2.7-3
      - pcalg_randdag_ 
    * - Band matrix
-     - dg
+     - DG
      - Python
      - `trilearn <https://github.com/felixleopoldo/trilearn>`_
      - 1.25
      - trilearn_bandmat_ 
    * - CTA
-     - dg
+     - DG
      - Python
      - `trilearn <https://github.com/felixleopoldo/trilearn>`_
      - 1.25
      - trilearn_cta_ 
    * - Random bandmatrix
-     - dg
+     - DG
      - Python
      - `trilearn <https://github.com/felixleopoldo/trilearn>`_
      - 1.25
@@ -60,7 +60,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 ``bdgraph_graphsim`` 
 --------------------
 
-.. rubric:: graph.sim
+.. rubric:: graph.sim function
 
 .. list-table:: 
 
@@ -73,7 +73,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
      - UG
    * - Docker 
@@ -163,9 +163,9 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - dag,      - ug
+     - DAG,      - UG
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -225,9 +225,9 @@ parameters par1 and par2, for further details see Kalisch et al.
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - dg
+     - DG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
@@ -275,7 +275,7 @@ with given bandwidth (*bandwith*).
    * - Paper
      - `Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
    * - Graph type
-     - dg
+     - DG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
@@ -326,9 +326,9 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - ` <>`_
    * - Graph type
-     - dg
+     - DG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 

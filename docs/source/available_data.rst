@@ -12,12 +12,6 @@ The data modules.
      - Package
      - Version
      - Module
-   * - Some title
-     - cstree
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - cstrees_iid_ 
    * - Fixed dataset(s)
      - 
      - 
@@ -40,52 +34,6 @@ The data modules.
 
 
 
-
-``cstrees_iid`` 
----------------
-
-.. rubric:: Some title
-
-.. list-table:: 
-
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - cstree
-   * - Module
-     - `cstrees_iid <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/cstrees_iid>`__
-
-
-
-.. rubric:: Description
-
-Independently identically distributed (IID) samples of a given size ``sample_sizes``.
-The data may be standardized by setting ``standardized`` to true. 
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "standardized",
-        "standardized": true,
-        "sample_sizes": [
-          100
-        ]
-      }
-    ]
 
 ``fixed`` 
 ---------

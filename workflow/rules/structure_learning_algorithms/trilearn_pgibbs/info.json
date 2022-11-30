@@ -1,23 +1,22 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "Particle Gibbs",
+    "version": "1.25",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
     },
     "docs_url": "",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "",
+            "url": ""
         }
     ],
     "outputs": [
         "graphtraj"
     ],
     "graph_types": [
-        ""
+        "DG"
     ],
-    "language": ""
+    "language": "Python"
 }

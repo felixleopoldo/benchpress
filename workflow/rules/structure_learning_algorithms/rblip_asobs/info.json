@@ -1,23 +1,22 @@
 {
-    "title": "Some title",
-    "docker_image": "username/image:version",
-    "version": "v0.0.1",
+    "title": "ASOBS",
+    "version": "1.1",
     "package": {
-        "title": "",
-        "url": "http"
+        "title": "r.blip",
+        "url": "https://cran.r-project.org/web/packages/r.blip/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/r.blip/r.blip.pdf",
     "papers": [
         {
-            "title": "the paper title",
-            "url": "the_url"
+            "title": "",
+            "url": ""
         }
     ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        ""
+        "DAG"
     ],
-    "language": ""
+    "language": "R"
 }
