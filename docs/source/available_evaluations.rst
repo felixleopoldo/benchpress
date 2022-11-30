@@ -16,9 +16,6 @@ The output of the modules are copied to *results/output* for easy access.
    * - Benchmarks
      - 
      - benchmarks_ 
-   * - True CStree plots
-     - cstree
-     - cstree_true_plots_ 
    * - Pairs plot
      - all
      - ggally_ggpairs_ 
@@ -160,11 +157,11 @@ The following plots are also produced
         "show_seed": true,
         "errorbar": true,
         "errorbarh": false,
-        "xrange": [
+        "xlim": [
           0,
           1
         ],
-        "yrange": [
+        "ylim": [
           0,
           1
         ],
@@ -176,53 +173,6 @@ The following plots are also produced
           "omcmc_itsample-bge",
           "pc-gaussCItest"
         ]
-      }
-    ]
-
-``cstree_true_plots`` 
----------------------
-
-.. rubric:: True CStree plots
-
-.. list-table:: 
-
-   * - Package
-     - `CStree <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - Python
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - cstree
-   * - Module
-     - `cstree_true_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/cstree_true_plots>`__
-
-
-
-.. rubric:: Description
-
-This module plots the true underlying CStrees.
-
-
-.. ..  figure:: _static/alarm.png
-..     :alt: The Alarm network
-
-..     The Alarm network
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "cstree_true_plots": true
       }
     ]
 
