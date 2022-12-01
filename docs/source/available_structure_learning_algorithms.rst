@@ -265,15 +265,24 @@ Dots (.) in the original parameter names are omitted for implementational reason
       {
         "id": "bdgraph",
         "method": "ggm",
-        "algorithm": "bdmcmc",
-        "iter": 1000,
+        "algo": "bdmcmc",
+        "iter": 3000,
         "gprior": 0.5,
         "dfprior": 3,
         "gstart": "empty",
         "timeout": null,
         "mcmc_seed": 1,
         "thresh": 0.5,
-        "burnin": 0
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.3
       }
     ]
 
@@ -480,7 +489,9 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
         "iterations": null,
         "timeout": null,
         "mcmc_seed": 1,
-        "burnin": 0
+        "threshold": 0.5,
+        "mcmc_estimator": "threshold",
+        "burnin_frac": 0.5
       }
     ]
 
@@ -1427,13 +1438,28 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
     [
       {
-        "id": "gcastle_notears_low_rank",
-        "rank": 15,
-        "w_init": null,
-        "max_iter": 15,
-        "h_tol": "1e-6",
-        "rho_max": "1e+20",
-        "w_threshold": 0.3,
+        "id": "gcastle_corl",
+        "batch_size": 64,
+        "input_dim": 100,
+        "embed_dim": 256,
+        "normalize": false,
+        "encoder_name": "transformer",
+        "encoder_heads": 8,
+        "encoder_blocks": 3,
+        "encoder_dropout_rate": 0.1,
+        "decoder_name": "lstm",
+        "reward_mode": "episodic",
+        "reward_score_type": "BIC",
+        "reward_regression_type": "LR",
+        "reward_gpr_alpha": 1.0,
+        "iteration": 10,
+        "actor_lr": "1e-4",
+        "critic_lr": "1e-3",
+        "alpha": 0.99,
+        "init_baseline": -1.0,
+        "random_seed": 0,
+        "device_type": "cpu",
+        "device_ids": 0,
         "timeout": null
       }
     ]
@@ -1709,9 +1735,10 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
     [
       {
-        "id": "gcastle_direct_lingam",
-        "measure": "pwling",
+        "id": "gcastle_ica_lingam",
         "thresh": 0.3,
+        "random_state": null,
+        "max_iter": 1000,
         "timeout": null
       }
     ]
@@ -1757,7 +1784,6 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
       {
         "id": "gcastle_mcsl",
         "model_type": "nn",
-        "hidden_layers": 4,
         "hidden_dim": 16,
         "graph_thresh": 0.5,
         "l1_graph_penalty": "2e-3",
@@ -1822,7 +1848,11 @@ A gradient-based algorithm for linear data models (typically with least-squares 
         "max_iter": 100,
         "h_tol": "1e-8",
         "rho_max": "1e+16",
-        "w_threshold": 0.5,
+        "w_threshold": [
+          0.05,
+          0.1,
+          0.25
+        ],
         "timeout": null
       }
     ]
@@ -1921,8 +1951,6 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
         "h_tol": "1e-8",
         "rho_max": "1e+16",
         "w_threshold": 0.3,
-        "hidden_layer": 1,
-        "hidden_units": 10,
         "bias": true,
         "model_type": "mlp",
         "device_type": "cpu",
@@ -1937,8 +1965,6 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
         "h_tol": "1e-8",
         "rho_max": "1e+16",
         "w_threshold": 0.3,
-        "hidden_layer": 1,
-        "hidden_units": 10,
         "bias": true,
         "model_type": "sob",
         "device_type": "cpu",
@@ -2054,22 +2080,16 @@ A RL-based algorithm that can work with flexible score functions (including non-
         "lambda_iter_num": 1000,
         "lambda_flag_default": true,
         "score_bd_tight": false,
-        "lambda1_update": 1.0,
         "lambda2_update": 10,
         "score_lower": 0.0,
         "score_upper": 0.0,
-        "lambda2_lower": -1.0,
-        "lambda2_upper": -1.0,
         "nb_epoch": 20,
         "lr1_start": 0.001,
         "lr1_decay_step": 5000,
         "lr1_decay_rate": 0.96,
         "alpha": 0.99,
         "init_baseline": -1.0,
-        "temperature": 3.0,
-        "C": 10.0,
         "l1_graph_reg": 0.0,
-        "inference_mode": true,
         "verbose": false,
         "device_type": "cpu",
         "device_ids": 0,
@@ -2127,17 +2147,27 @@ advantage for the analysis of large and complex datasets.
     [
       {
         "id": "gg99",
-        "n_samples": 1000000,
+        "n_samples": 100000,
         "datatype": "continuous",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.9,
-        "bscore": 0.001,
+        "randomits": 100,
+        "prior": "ep",
+        "ascore": null,
+        "bscore": null,
         "clq": 2,
         "sep": 4,
-        "penalty": 1.5,
+        "penalty": 0.0,
         "mcmc_seed": 1,
-        "timeout": null
+        "timeout": null,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5
       }
     ]
 
@@ -2186,13 +2216,21 @@ the first phase and the optimal sets are determined in a second phase.
         "id": "gobnilp-bge",
         "continuous": true,
         "score_type": "BGe",
+        "extra_args": null,
+        "constraints": null,
         "plot": false,
-        "palim": 2,
-        "alpha_mu": 1.0,
+        "palim": 3,
+        "alpha_mu": [
+          1e-05,
+          0.0001,
+          0.001
+        ],
         "alpha_omega_minus_nvars": 2,
         "alpha": null,
+        "time_limit": null,
+        "gap_limit": null,
         "prune": true,
-        "timeout": null
+        "timeout": 800
       }
     ]
 
@@ -2246,6 +2284,16 @@ Abstract: Full Bayesian computational inference for model determination in undir
         "sep": null,
         "penalty": null,
         "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
         "timeout": null
       }
     ]
@@ -2309,10 +2357,7 @@ move variate, and outperforms current methods.
           200
         ],
         "datatype": "continuous",
-        "mcmc_seed": [
-          1,
-          2
-        ],
+        "mcmc_seed": 1,
         "graph_prior": "uniform",
         "graph_prior_param": 1.0,
         "graph_prior_param1": 3.0,
@@ -3047,12 +3092,20 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
         "alpha": 0.5,
         "beta": 0.5,
         "radii": 80,
-        "n_particles": [
-          50
-        ],
-        "M": 100,
+        "n_particles": 50,
+        "M": 1000,
         "pseudo_obs": 1,
         "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
         "timeout": null
       }
     ]

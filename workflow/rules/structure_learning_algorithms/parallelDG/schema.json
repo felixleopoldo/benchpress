@@ -80,10 +80,7 @@
                     200
                 ],
                 "datatype": "continuous",
-                "mcmc_seed": [
-                    1,
-                    2
-                ],
+                "mcmc_seed": 1,
                 "graph_prior": "uniform",
                 "graph_prior_param": 1.0,
                 "graph_prior_param1": 3.0,

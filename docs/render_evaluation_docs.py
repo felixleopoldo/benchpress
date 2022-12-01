@@ -38,7 +38,7 @@ def info_to_small_table():
     #tab += "   :width: 100 \n"
     tab += "   :header-rows: 1 \n\n"
     tab += "   * - Evaluation\n" 
-    tab += "     - Graph\n" 
+    #tab += "     - Graph\n" 
     #tab += "     - Language\n" 
     #tab += "     - Package\n" 
     #tab += "     - Version\n" 
@@ -52,9 +52,9 @@ def info_to_small_table():
             info = json.load(json_file)
         #tab += "     - "+info["title"]+"\n"
         tab += "   * - "+info["title"]+"\n"
-        for i in range(len(info["graph_types"])):
-            tab += "     - "+info["graph_types"][i] +", "
-        tab = tab[:-2]
+        #for i in range(len(info["graph_types"])):
+        #    tab += "     - "+info["graph_types"][i] +", "
+        #tab = tab[:-2]
         
         tab += "\n"
         #tab += "     - "+info["language"]+"\n"

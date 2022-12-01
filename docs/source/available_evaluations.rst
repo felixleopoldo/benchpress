@@ -11,31 +11,30 @@ The output of the modules are copied to *results/output* for easy access.
    :header-rows: 1 
 
    * - Evaluation
-     - Graph
      - Module
    * - Benchmarks
-     - 
+
      - benchmarks_ 
    * - Pairs plot
-     - all
+
      - ggally_ggpairs_ 
    * - Graph plots
-     - 
+
      - graph_plots_ 
    * - True graph plots
-     - 
+
      - graph_true_plots_ 
    * - Graph stats
-     - 
+
      - graph_true_stats_ 
    * - MCMC auto-correlation
-     - 
+
      - mcmc_autocorr_plots_ 
    * - MCMC mean graphs
-     - 
+
      - mcmc_heatmaps_ 
    * - MCMC trajectories
-     - 
+
      - mcmc_traj_plots_ 
 
 
@@ -141,10 +140,10 @@ The following plots are also produced
     [
       {
         "filename_prefix": "example/",
-        "point": true,
         "show_seed": true,
         "errorbar": true,
         "errorbarh": false,
+        "scatter": true,
         "xlim": [
           0,
           1
@@ -157,9 +156,9 @@ The following plots are also produced
         "text": false,
         "ids": [
           "fges-sem-bic",
+          "pc-gaussCItest",
           "mmhc-bge-zf",
-          "omcmc_itsample-bge",
-          "pc-gaussCItest"
+          "omcmc_itsample-bge"
         ]
       }
     ]

@@ -128,7 +128,8 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
    * - Graph type
      - DAG
    * - Docker 
-     - None
+     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 

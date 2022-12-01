@@ -51,6 +51,7 @@
                 "square_prod": false,
                 "timeout": null
             }
+
         ]
     },
     "uniqueItems": true

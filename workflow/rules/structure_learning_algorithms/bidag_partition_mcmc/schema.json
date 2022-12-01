@@ -54,11 +54,35 @@
             "gamma": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
             },
-            "burnin": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
             "mcmc_seed": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
@@ -71,7 +95,10 @@
             "edgepf",
             "am",
             "aw",
-            "burnin",
+            "burnin_frac",
+            "mcmc_seed",
+            "mcmc_estimator",
+            "threshold",
             "startspace_algorithm",
             "verbose",
             "stepsave",
@@ -97,7 +124,9 @@
                 "iterations": null,
                 "timeout": null,
                 "mcmc_seed": 1,
-                "burnin": 0
+                "threshold": 0.5,
+                "mcmc_estimator": "threshold",
+                "burnin_frac": 0.5
             }
         ]
     }

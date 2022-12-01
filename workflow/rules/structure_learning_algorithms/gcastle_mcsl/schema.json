@@ -25,7 +25,6 @@
             {
                 "id": "gcastle_mcsl",
                 "model_type": "nn",
-                "hidden_layers": 4,
                 "hidden_dim": 16,
                 "graph_thresh": 0.5,
                 "l1_graph_penalty": "2e-3",
