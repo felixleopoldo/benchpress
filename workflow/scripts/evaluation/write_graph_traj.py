@@ -18,7 +18,7 @@ def edges_str_to_list(str, edgesymb="-"):
 # Treating the case when empty files are created. Such files
 # are created if the algorithm was timed out.
 if os.stat(snakemake.input["traj"]).st_size== 0:
-    open(snakemake.output["plot"],'a').close()
+    open(snakemake.output["traj"],'a').close()
 else:
     df = pd.read_csv(snakemake.input["traj"], sep=",")
 
