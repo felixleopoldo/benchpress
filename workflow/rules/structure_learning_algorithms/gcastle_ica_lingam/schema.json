@@ -23,9 +23,10 @@
         ],
         "examples": [
             {
-                "id": "gcastle_direct_lingam",
-                "measure": "pwling",
+                "id": "gcastle_ica_lingam",
                 "thresh": 0.3,
+                "random_state": null,
+                "max_iter": 1000,                    
                 "timeout": null
             }
         ]

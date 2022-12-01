@@ -10,35 +10,34 @@ The output of the modules are copied to *results/output* for easy access.
 .. list-table:: 
    :header-rows: 1 
 
-   * - Algorithm
-     - Graph
+   * - Evaluation
      - Module
    * - Benchmarks
-     - 
+
      - benchmarks_ 
    * - True CStree plots
      - cstree
      - cstree_true_plots_ 
    * - Pairs plot
-     - all
+
      - ggally_ggpairs_ 
    * - Graph plots
-     - 
+
      - graph_plots_ 
    * - True graph plots
-     - 
+
      - graph_true_plots_ 
    * - Graph stats
-     - 
+
      - graph_true_stats_ 
    * - MCMC auto-correlation
-     - 
+
      - mcmc_autocorr_plots_ 
    * - MCMC mean graphs
-     - 
+
      - mcmc_heatmaps_ 
    * - MCMC trajectories
-     - 
+
      - mcmc_traj_plots_ 
 
 
@@ -52,18 +51,6 @@ The output of the modules are copied to *results/output* for easy access.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `benchmarks <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/benchmarks>`__
 
@@ -156,10 +143,10 @@ The following plots are also produced
     [
       {
         "filename_prefix": "example/",
-        "point": true,
         "show_seed": true,
         "errorbar": true,
         "errorbarh": false,
+        "scatter": true,
         "xlim": [
           0,
           1
@@ -172,9 +159,9 @@ The following plots are also produced
         "text": false,
         "ids": [
           "fges-sem-bic",
+          "pc-gaussCItest",
           "mmhc-bge-zf",
-          "omcmc_itsample-bge",
-          "pc-gaussCItest"
+          "omcmc_itsample-bge"
         ]
       }
     ]
@@ -233,18 +220,6 @@ This module plots the true underlying CStrees.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - all
    * - Module
      - `ggally_ggpairs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/ggally_ggpairs>`__
 
@@ -285,18 +260,6 @@ However, you can always alter the script as you like it.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_plots>`__
 
@@ -338,18 +301,6 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_true_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_plots>`__
 
@@ -393,18 +344,6 @@ This module plots the true underlying graphs.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `graph_true_stats <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_true_stats>`__
 
@@ -434,18 +373,6 @@ This module plots properties of the true graphs such as graph density.
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_autocorr_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_autocorr_plots>`__
 
@@ -503,18 +430,6 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_heatmaps <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_heatmaps>`__
 
@@ -567,18 +482,6 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 
 .. list-table:: 
 
-   * - Package
-     - ` <http>`_
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
    * - Module
      - `mcmc_traj_plots <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/mcmc_traj_plots>`__
 

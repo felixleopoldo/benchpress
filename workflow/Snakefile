@@ -181,8 +181,8 @@ for p in Path("workflow/rules/parameters/").glob("*"):
 # Include the data modules
 for p in Path("workflow/rules/data/").glob("*"):
     module_name = p.name  # This is used inside the module to get their names
+    
     if (p / "rules.smk").is_file():
-
         include: Path("rules/data/", p.name, "rules.smk")
 
 

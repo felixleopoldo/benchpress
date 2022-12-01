@@ -24,8 +24,13 @@ def info_to_table(json, p):
     else:
         tab += "     - `here <"+info["docs_url"]+">`__\n"
     tab += "   * - Paper\n"
+    
+    tab += "     - "
     for i in range(len(info["papers"])):
-        tab += "     - `"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        if info["papers"][i]["title"] != "":
+            tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+        else:
+            tab += "  "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
@@ -76,7 +81,7 @@ def info_to_small_table():
         if info["package"]["title"] == "":
             tab += "     - \n"
         else:
-            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"    
+            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
         #tab += "     - "+info["version"]+"\n"
         tab += "     - "+p.name+"_ \n"    
         

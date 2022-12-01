@@ -84,13 +84,21 @@
                 "id": "gobnilp-bge",
                 "continuous": true,
                 "score_type": "BGe",
+                "extra_args": null,
+                "constraints": null,
                 "plot": false,
-                "palim": 2,
-                "alpha_mu": 1.0,
+                "palim": 3,
+                "alpha_mu": [
+                    0.00001,
+                    0.0001,
+                    0.001
+                ],
                 "alpha_omega_minus_nvars": 2,
                 "alpha": null,
+                "time_limit": null,
+                "gap_limit": null,
                 "prune": true,
-                "timeout": null
+                "timeout": 800
             }
         ]
     }

@@ -15,135 +15,135 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - Module
    * - BDgraph
      - UG
-     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
      - bdgraph_ 
    * - Iterative MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_itsearch_ 
    * - Order MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_order_mcmc_ 
    * - Partition MCMC
      - DAG, CPDAG
-     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_
+     - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_partition_mcmc_ 
    * - Fast IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_fastiamb_ 
    * - Grow-shrink
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_gs_ 
    * - H2PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_h2pc_ 
    * - HC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hc_ 
    * - HPC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hpc_ 
    * - IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iamb_ 
    * - IAMB-FDR
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iambfdr_ 
    * - INTER-IAMB
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_interiamb_ 
    * - MMHC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmhc_ 
    * - MMPC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmpc_ 
    * - PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_pcstable_ 
    * - RSMAX2
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_rsmax2_ 
    * - S-I HITON-PC
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_sihitonpc_ 
    * - Tabu
      - DAG
-     - `bnlearn <https://www.bnlearn.com/>`_
+     - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_tabu_ 
    * - GSP
      - DAG
-     - `CausalDAG <https://github.com/uhlerlab/causaldag>`_
+     - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
    * - Dual PC
      - CG, CPDAG
-     - `dualPC <https://github.com/enricogiudice/dualPC>`_
+     - `dualPC <https://github.com/enricogiudice/dualPC>`__
      - dualpc_ 
    * - ANM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_anm_ 
    * - CORL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_corl_ 
    * - Direct LINGAM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_direct_lingam_ 
    * - GAE
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_gae_ 
    * - GOLEM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_golem_ 
    * - GraNDAG
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_grandag_ 
    * - ICALiNGAM
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_ica_lingam_ 
    * - MCSL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_mcsl_ 
    * - NO TEARS
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_ 
    * - NO TEARS low rank
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_low_rank_ 
    * - NO TEARS non-linear
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_notears_nonlinear_ 
    * - PC
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_pc_ 
    * - RL
      - DAG
-     - `gCastle <http>`_
+     - `gCastle <http>`__
      - gcastle_rl_ 
    * - GG99
      - DG
@@ -151,7 +151,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - gg99_singlepair_ 
    * - GOBNILP
      - DAG
-     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`_
+     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
    * - GT13
      - DG
@@ -159,67 +159,67 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - gt13_multipair_ 
    * - Parallel DG
      - DG
-     - `parallelDG <https://github.com/melmasri/parallelDG>`_
+     - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - parallelDG_ 
    * - PC
      - CPDAG, CG
-     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_
+     - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
    * - ASOBS
      - DAG
-     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`_
+     - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
      - rblip_asobs_ 
    * - Graphical Lasso
      - UG
-     - `scikit-learn <https://scikit-learn.org/0.22/>`_
+     - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
    * - FAS
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fas_ 
    * - FASK
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
    * - GFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fci_ 
    * - FGES
      - CPDAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fges_ 
    * - FOFC
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fofc_ 
    * - FTFC
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
    * - GFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
    * - IMGSCONT
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_imgscont_ 
    * - LINGAM
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_lingam_ 
    * - PC-ALL
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc-all_ 
    * - RFCI
      - DAG
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`_
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
    * - Particle Gibbs
      - DG
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - trilearn_pgibbs_ 
 
 
@@ -236,7 +236,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Package
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - 1.64
+     - 2.64
    * - Language
      - R
    * - Docs
@@ -265,15 +265,24 @@ Dots (.) in the original parameter names are omitted for implementational reason
       {
         "id": "bdgraph",
         "method": "ggm",
-        "algorithm": "bdmcmc",
-        "iter": 1000,
+        "algo": "bdmcmc",
+        "iter": 3000,
         "gprior": 0.5,
         "dfprior": 3,
         "gstart": "empty",
         "timeout": null,
         "mcmc_seed": 1,
         "thresh": 0.5,
-        "burnin": 0
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.3
       }
     ]
 
@@ -480,7 +489,9 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
         "iterations": null,
         "timeout": null,
         "mcmc_seed": 1,
-        "burnin": 0
+        "threshold": 0.5,
+        "mcmc_estimator": "threshold",
+        "burnin_frac": 0.5
       }
     ]
 
@@ -611,7 +622,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -668,7 +679,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -725,7 +736,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -776,7 +787,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -827,7 +838,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -878,7 +889,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -929,7 +940,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -986,7 +997,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1037,7 +1048,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1088,7 +1099,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1147,7 +1158,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1198,7 +1209,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1253,7 +1264,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -1309,11 +1320,11 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - CG, CPDAG
    * - Docker 
-     - `onceltuca/dualpc <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
+     - `onceltuca/dualpc:latest <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
 
    * - Module
      - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
@@ -1359,7 +1370,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - 
    * - Paper
-     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_,      - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_, `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
    * - Graph type
      - DAG
    * - Docker 
@@ -1427,13 +1438,28 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
     [
       {
-        "id": "gcastle_notears_low_rank",
-        "rank": 15,
-        "w_init": null,
-        "max_iter": 15,
-        "h_tol": "1e-6",
-        "rho_max": "1e+20",
-        "w_threshold": 0.3,
+        "id": "gcastle_corl",
+        "batch_size": 64,
+        "input_dim": 100,
+        "embed_dim": 256,
+        "normalize": false,
+        "encoder_name": "transformer",
+        "encoder_heads": 8,
+        "encoder_blocks": 3,
+        "encoder_dropout_rate": 0.1,
+        "decoder_name": "lstm",
+        "reward_mode": "episodic",
+        "reward_score_type": "BIC",
+        "reward_regression_type": "LR",
+        "reward_gpr_alpha": 1.0,
+        "iteration": 10,
+        "actor_lr": "1e-4",
+        "critic_lr": "1e-3",
+        "alpha": 0.99,
+        "init_baseline": -1.0,
+        "random_seed": 0,
+        "device_type": "cpu",
+        "device_ids": 0,
         "timeout": null
       }
     ]
@@ -1709,9 +1735,10 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
     [
       {
-        "id": "gcastle_direct_lingam",
-        "measure": "pwling",
+        "id": "gcastle_ica_lingam",
         "thresh": 0.3,
+        "random_state": null,
+        "max_iter": 1000,
         "timeout": null
       }
     ]
@@ -1757,7 +1784,6 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
       {
         "id": "gcastle_mcsl",
         "model_type": "nn",
-        "hidden_layers": 4,
         "hidden_dim": 16,
         "graph_thresh": 0.5,
         "l1_graph_penalty": "2e-3",
@@ -1822,7 +1848,11 @@ A gradient-based algorithm for linear data models (typically with least-squares 
         "max_iter": 100,
         "h_tol": "1e-8",
         "rho_max": "1e+16",
-        "w_threshold": 0.5,
+        "w_threshold": [
+          0.05,
+          0.1,
+          0.25
+        ],
         "timeout": null
       }
     ]
@@ -1921,8 +1951,6 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
         "h_tol": "1e-8",
         "rho_max": "1e+16",
         "w_threshold": 0.3,
-        "hidden_layer": 1,
-        "hidden_units": 10,
         "bias": true,
         "model_type": "mlp",
         "device_type": "cpu",
@@ -1937,8 +1965,6 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
         "h_tol": "1e-8",
         "rho_max": "1e+16",
         "w_threshold": 0.3,
-        "hidden_layer": 1,
-        "hidden_units": 10,
         "bias": true,
         "model_type": "sob",
         "device_type": "cpu",
@@ -2054,22 +2080,16 @@ A RL-based algorithm that can work with flexible score functions (including non-
         "lambda_iter_num": 1000,
         "lambda_flag_default": true,
         "score_bd_tight": false,
-        "lambda1_update": 1.0,
         "lambda2_update": 10,
         "score_lower": 0.0,
         "score_upper": 0.0,
-        "lambda2_lower": -1.0,
-        "lambda2_upper": -1.0,
         "nb_epoch": 20,
         "lr1_start": 0.001,
         "lr1_decay_step": 5000,
         "lr1_decay_rate": 0.96,
         "alpha": 0.99,
         "init_baseline": -1.0,
-        "temperature": 3.0,
-        "C": 10.0,
         "l1_graph_reg": 0.0,
-        "inference_mode": true,
         "verbose": false,
         "device_type": "cpu",
         "device_ids": 0,
@@ -2127,17 +2147,27 @@ advantage for the analysis of large and complex datasets.
     [
       {
         "id": "gg99",
-        "n_samples": 1000000,
+        "n_samples": 100000,
         "datatype": "continuous",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.9,
-        "bscore": 0.001,
+        "randomits": 100,
+        "prior": "ep",
+        "ascore": null,
+        "bscore": null,
         "clq": 2,
         "sep": 4,
-        "penalty": 1.5,
+        "penalty": 0.0,
         "mcmc_seed": 1,
-        "timeout": null
+        "timeout": null,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5
       }
     ]
 
@@ -2186,13 +2216,21 @@ the first phase and the optimal sets are determined in a second phase.
         "id": "gobnilp-bge",
         "continuous": true,
         "score_type": "BGe",
+        "extra_args": null,
+        "constraints": null,
         "plot": false,
-        "palim": 2,
-        "alpha_mu": 1.0,
+        "palim": 3,
+        "alpha_mu": [
+          1e-05,
+          0.0001,
+          0.001
+        ],
         "alpha_omega_minus_nvars": 2,
         "alpha": null,
+        "time_limit": null,
+        "gap_limit": null,
         "prune": true,
-        "timeout": null
+        "timeout": 800
       }
     ]
 
@@ -2246,6 +2284,16 @@ Abstract: Full Bayesian computational inference for model determination in undir
         "sep": null,
         "penalty": null,
         "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
         "timeout": null
       }
     ]
@@ -2309,10 +2357,7 @@ move variate, and outperforms current methods.
           200
         ],
         "datatype": "continuous",
-        "mcmc_seed": [
-          1,
-          2
-        ],
+        "mcmc_seed": 1,
         "graph_prior": "uniform",
         "graph_prior_param": 1.0,
         "graph_prior_param1": 3.0,
@@ -2399,7 +2444,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/r.blip/r.blip.pdf>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2453,7 +2498,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - UG
    * - Docker 
@@ -2504,7 +2549,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2548,7 +2593,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2592,7 +2637,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2641,7 +2686,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - CPDAG
    * - Docker 
@@ -2693,7 +2738,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2736,7 +2781,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2836,7 +2881,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2879,7 +2924,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2922,7 +2967,7 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -2972,7 +3017,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -3021,7 +3066,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
    * - Docs
      - 
    * - Paper
-     - ` <>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -3047,12 +3092,20 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
         "alpha": 0.5,
         "beta": 0.5,
         "radii": 80,
-        "n_particles": [
-          50
-        ],
-        "M": 100,
+        "n_particles": 50,
+        "M": 1000,
         "pseudo_obs": 1,
         "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
         "timeout": null
       }
     ]

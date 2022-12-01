@@ -1,6 +1,6 @@
 {
     "title": "BDgraph",
-    "version": "1.64",
+    "version": "2.64",
     "package": {
         "title": "BDgraph",
         "url": "https://cran.r-project.org/web/packages/BDgraph/index.html"

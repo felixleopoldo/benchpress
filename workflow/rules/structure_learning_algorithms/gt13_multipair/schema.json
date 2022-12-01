@@ -103,6 +103,16 @@
                 "sep": null,
                 "penalty": null,
                 "mcmc_seed": 1,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5,
                 "timeout": null
             }
         ]

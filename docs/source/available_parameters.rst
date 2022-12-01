@@ -8,7 +8,7 @@ Make sure that the parameter module is compatible with the graph module you are 
 .. list-table:: 
    :header-rows: 1 
 
-   * - Algorithm
+   * - Method
      - Graph
      - Language
      - Package
@@ -17,43 +17,37 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - G-Wishart
      - UG
      - R
-     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_
-     - 1.64
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
+     - 2.64
      - bdgraph_rgwish_ 
    * - Binary BN
      - DAG
      - R
-     - ` <http>`_
-     - v0.0.1
+     - Benchpress
+     - 
      - bin_bn_ 
    * - Fixed parameters
      - 
      - 
-     - ` <http>`_
-     - v0.0.1
-     - fixed_ 
+     - 
+     - 
+     - fixed_params_ 
    * - SEM parameters
      - DAG
      - R
-     - ` <http>`_
-     - v0.0.1
+     - Benchpress
+     - 
      - sem_params_ 
-   * - Some title
-     - 
-     - 
-     - ` <http>`_
-     - v0.0.1
-     - trilearn_g_inv_wishart_ 
    * - Hyper-Dirichlet
      - DG
      - Python
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_hyper-dir_ 
    * - Graph intra-class
      - UG
      - Python
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`_
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_intra-class_ 
 
@@ -71,13 +65,13 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - Package
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
-     - 1.64
+     - 2.64
    * - Language
      - R
    * - Docs
-     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`_
+     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - `Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models  <https://www.jstatsoft.org/article/view/v089i03>`_
    * - Graph type
      - UG
    * - Docker 
@@ -91,10 +85,10 @@ Make sure that the parameter module is compatible with the graph module you are 
 .. rubric:: Description
 
 
-Samples G-Wishart matrix given an undirected graph using the *rgwish* function from the R package  `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
+Samples G-Wishart matrix given an undirected graph using the *rgwish* function from the R package  `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
 
 
-Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [AH2005]_ [Len2013]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
+Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [AH2005]_ [Len2013]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
 The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
 
 
@@ -122,19 +116,20 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 .. list-table:: 
 
    * - Package
-     - ` <http>`__
+     - Benchpress
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - R
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
-     - None
+     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
@@ -172,8 +167,8 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
       }
     ]
 
-``fixed`` 
----------
+``fixed_params`` 
+----------------
 
 .. rubric:: Fixed parameters
 
@@ -203,15 +198,15 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 .. list-table:: 
 
    * - Package
-     - ` <http>`__
+     - Benchpress
    * - Version
-     - v0.0.1
+     - 
    * - Language
      - R
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -257,48 +252,6 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
       }
     ]
 
-``trilearn_g_inv_wishart`` 
---------------------------
-
-.. rubric:: Some title
-
-.. list-table:: 
-
-   * - Package
-     - ` <http>`__
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - `here <>`_
-   * - Paper
-     - `the paper title <the_url>`_
-   * - Graph type
-     - 
-   * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
-
-   * - Module
-     - `trilearn_g_inv_wishart <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_g_inv_wishart>`__
-
-
-
-.. rubric:: Description
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "giw",
-        "dof": 1
-      }
-    ]
-
 ``trilearn_hyper-dir`` 
 ----------------------
 
@@ -313,9 +266,9 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
    * - Language
      - Python
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -362,9 +315,9 @@ An object of this module defines a categorical decomposable model by sampling th
    * - Language
      - Python
    * - Docs
-     - `here <>`_
+     - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - UG
    * - Docker 
