@@ -7,7 +7,15 @@
 # Order MCMC is special in the sense that it can define a startspace by means 
 # of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 
+# def idtopath(mylist, json_string):
+#     if isinstance(mylist, list):
+#         return [json_string[startalg][0] for startalg in mylist]
+#     else:
+#         return json_string[str(mylist)]
+
 def idtopath(mylist, json_string):
+    if mylist is None:
+        return "None"
     if isinstance(mylist, list):
         return [json_string[startalg][0] for startalg in mylist]
     else:
@@ -44,6 +52,15 @@ if "bidag_partition_mcmc" in pattern_strings:
 
     json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
                         for val in bidag_partition_mcmc_list } )
+
+if "gobnilp" in pattern_strings:
+    gobnilp_list = config["resources"]["structure_learning_algorithms"]["gobnilp"]
+    # The path to the startspace algorithm is extended here
+    for items in gobnilp_list:    
+        items["startalg"] = idtopath(items["startalg"], json_string)
+
+    json_string.update({val["id"]: expand(pattern_strings["gobnilp"], **val,) 
+                        for val in gobnilp_list } )
 
 
 # parallelDG has MCMC estimator

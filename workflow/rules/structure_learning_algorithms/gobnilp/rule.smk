@@ -2,15 +2,22 @@
     The shell commands should be put in a separate bash script.
 """
 
+def fix_none_startalg(wildcards):
+        if wildcards["startalg"] == "None":
+            return []
+        else:
+            return "{output_dir}/adjmat_estimate/{data}/algorithm=/{startalg}/seed={replicate}/adjmat.csv",
+
 rule gobnilp:
     input:
         data=alg_input_data(),
         extra_args="resources/extra_args/{extra_args}",
         constraints="resources/constraints/{constraints}",
+        startgraph_file=fix_none_startalg,
     output:
         adjmat=alg_output_adjmat_path("gobnilp"),
         time=alg_output_time_path("gobnilp"),
-        ntests=touch(alg_output_ntests_path("gobnilp"))
+        ntests=touch(alg_output_ntests_path("gobnilp"))        
     container:
         "docker://onceltuca/gobnilp:4347c64"
     shell:

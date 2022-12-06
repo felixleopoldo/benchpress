@@ -68,14 +68,30 @@
             },
             "prune": {
                 "type": "boolean"
+            },
+            "startalg": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             }
         },
         "additionalProperties": false,
         "required": [
             "id",
             "plot",
+            "extra_args",
             "palim",
+            "startalg",
+            "constraints",
+            "alpha_mu",
+            "alpha_omega_minus_nvars",
             "alpha",
+            "gap_limit",
             "prune",
             "timeout"
         ],
@@ -85,6 +101,7 @@
                 "continuous": true,
                 "score_type": "BGe",
                 "extra_args": null,
+                "startalg": null,
                 "constraints": null,
                 "plot": false,
                 "palim": 3,

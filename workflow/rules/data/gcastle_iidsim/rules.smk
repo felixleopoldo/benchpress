@@ -16,7 +16,7 @@ rule sample_fixed_sem_params_data_gcastle:
              "n={n}/" \
              "seed={seed}.csv"
     container:
-        docker_image("gcastle")
+        "docker://onceltuca/gcastle:1.0.3"
     script:
         "gcastle_iidsim.py" 
 
@@ -36,6 +36,6 @@ if "sem_params" in pattern_strings:
                 "n={n}/" \
                 "seed={seed}.csv"
         container:
-            docker_image("gcastle")
+            "docker://onceltuca/gcastle:1.0.3"
         script:
             "gcastle_iidsim.py" 
