@@ -1,0 +1,1 @@
+From the Tetrad manual: This is just the adjacency search of the PC algorithm, included here for times when just the adjacency search is needed, as when one is subsequently just going to orient variables pairwise.

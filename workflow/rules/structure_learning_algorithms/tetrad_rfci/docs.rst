@@ -1,0 +1,1 @@
+From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. See Colombo et al., 2012.
