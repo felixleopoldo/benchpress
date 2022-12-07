@@ -146,7 +146,7 @@ The following plots are also produced
         "scatter": true,
         "xlim": [
           0,
-          1
+          0.3
         ],
         "ylim": [
           0,
