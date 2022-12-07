@@ -9,7 +9,7 @@
             "url": "the_url"
         }
     ],
-    "outputs": "adjmat",
+    "outputs": "graphtraj",
     "graph_types": [
         "UG"
     ],
