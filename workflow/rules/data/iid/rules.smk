@@ -139,18 +139,19 @@ if "sem_params" in pattern_strings:
             "sample_sem_data.R" 
 
 
-rule sample_cstrees_params_data:
-    input:
-        cstree = "{output_dir}/adjmat/{adjmat}/seed={replicate}.csv",
-        #params="{output_dir}/parameters/"+pattern_strings["cstrees_params"]+"/seed={replicate}/adjmat=/{adjmat}.csv"
-    output:
-        data="{output_dir}/data" \
-             "/adjmat=/{adjmat}"\
-             "/parameters=/"+pattern_strings["cstrees_params"] + "/seed={replicate}" \
-             "/data=/iid/n={n}/seed={replicate}.csv"
-    container:
-        None
-    conda:
-        "cstrees.yml"
-    script:
-        "cstrees_data.py"
+if "cstrees_params" in pattern_strings:
+    rule sample_cstrees_params_data:
+        input:
+            cstree = "{output_dir}/adjmat/{adjmat}/seed={replicate}.csv",
+            #params="{output_dir}/parameters/"+pattern_strings["cstrees_params"]+"/seed={replicate}/adjmat=/{adjmat}.csv"
+        output:
+            data="{output_dir}/data" \
+                "/adjmat=/{adjmat}"\
+                "/parameters=/"+pattern_strings["cstrees_params"] + "/seed={replicate}" \
+                "/data=/iid/n={n}/seed={replicate}.csv"
+        container:
+            None
+        conda:
+            "cstrees.yml"
+        script:
+            "cstrees_data.py"
