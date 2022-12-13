@@ -8,6 +8,8 @@
 # of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 
 def idtopath(mylist, json_string):
+    if mylist is None:
+        return "None"
     if isinstance(mylist, list):
         return [json_string[startalg][0] for startalg in mylist]
     else:
@@ -35,6 +37,16 @@ if "bidag_order_mcmc" in pattern_strings:
                         for val in order_mcmc_list } )
 
 
+if "bdgraph_pip" in pattern_strings:
+    bdgraph_pip_list = config["resources"]["structure_learning_algorithms"]["bdgraph_pip"]
+    # The path to the startspace algorithm is extended here
+    for items in bdgraph_pip_list:    
+        items["startalg"] = idtopath(items["startalg"], json_string)
+
+    json_string.update({val["id"]: expand(pattern_strings["bdgraph_pip"], **val,) 
+                        for val in bdgraph_pip_list} )
+
+    
 
 if "bidag_partition_mcmc" in pattern_strings:
     bidag_partition_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"]
