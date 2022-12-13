@@ -34,7 +34,8 @@ release = '1.2.1'
 extensions = [
     # other
     'recommonmark',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx-prompt'
 ]
 # source_suffix = {
 #     '.rst': 'restructuredtext',

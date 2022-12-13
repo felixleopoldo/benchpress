@@ -12,6 +12,7 @@
     :caption: Getting started
 
     installation
+    roc_example
     
 
 .. toctree::
@@ -22,6 +23,13 @@
     
     json_overview
 
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+    :name: Adding modules
+    :caption: Adding modules
+    
+    module_add
 
 .. toctree::
     :hidden:
