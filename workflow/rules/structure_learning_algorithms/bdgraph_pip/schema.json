@@ -118,6 +118,7 @@
                         "type": "null"
                     }
                 ]
+            }
         },
         "additionalProperties": true,
         "required": [
