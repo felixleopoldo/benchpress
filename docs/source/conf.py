@@ -13,7 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+from pathlib import Path 
 
 # -- Project information -----------------------------------------------------
 
@@ -35,8 +35,14 @@ extensions = [
     # other
     'recommonmark',
     'sphinx_copybutton',
-    'sphinx-prompt'
+    'sphinx-prompt',
+    'sphinxcontrib.bibtex'
 ]
+
+algspath = Path("../../workflow/rules/structure_learning_algorithms")
+
+bibtex_bibfiles = [str(p / "bibtex.bib") for p in algspath.iterdir() if (p/"bibtex.bib").is_file()]
+
 # source_suffix = {
 #     '.rst': 'restructuredtext',
 #     '.txt': 'markdown',

@@ -1,2 +1,3 @@
 sphinx_copybutton
 sphinx-prompt
+sphinxcontrib.bibtex

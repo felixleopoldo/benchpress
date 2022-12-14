@@ -12,9 +12,7 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        # None # Local 
-        #"docker://r-base" # For R
-        "docker://onceltuca/datascience-python" # For Python
+        "docker://onceltuca/datascience-python"
     script:
         # This is a template R script but it could be any R or Python script, 
         # even in a different directory.

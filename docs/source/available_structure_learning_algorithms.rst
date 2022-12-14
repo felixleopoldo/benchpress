@@ -89,6 +89,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DAG
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
+   * - My new algorithm
+     - UG
+     - 
+     - cov_thresh_ 
    * - Dual PC
      - CG, CPDAG
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
@@ -165,6 +169,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - CPDAG, CG
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
+   * - My new algorithm
+     - UG
+     - 
+     - prec_thresh_ 
    * - ASOBS
      - DAG
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
@@ -217,10 +225,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DAG
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
-   * - Particle Gibbs
-     - DG
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - trilearn_pgibbs_ 
 
 
 
@@ -255,6 +259,11 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. rubric:: Description
 
+:footcite:t:`JSSv089i03`.
+
+
+
+
 .. rubric:: Example
 
 
@@ -286,6 +295,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bidag_itsearch`` 
 ------------------
 
@@ -316,12 +329,14 @@ Dots (.) in the original parameter names are omitted for implementational reason
 .. rubric:: Description
 
 This is a hybrid score-based optimisation technique based on Markov chain Monte Carlo
-schemes (Suter et al. 2021; Kuipers et al. 2021). The algorithm starts from a skeleton obtained
+schemes :footcite:t:`doi:10.1080/10618600.2021.2020127` . The algorithm starts from a skeleton obtained
 through a fast method (e.g. a constraint based method, or GES). Then it performs score and
 search on the DAGs belonging to the space defined by the starting skeleton. To correct for
 edges which may be missed, the search space is iteratively expanded to include one additional
 parent for each variable from outside the current search space. The score and search phase relies
 on an MCMC scheme producing a chain of DAGs from their posterior probability given the data.
+
+
 
 .. rubric:: Example
 
@@ -356,6 +371,10 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bidag_order_mcmc`` 
 --------------------
@@ -432,6 +451,10 @@ initialised with constraint-based testing and improved with a score-based search
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bidag_partition_mcmc`` 
 ------------------------
 
@@ -495,6 +518,10 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_fastiamb`` 
 --------------------
 
@@ -547,6 +574,10 @@ Fast incremental association Markov blanket
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_gs`` 
 --------------
@@ -606,6 +637,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_h2pc`` 
 ----------------
 
@@ -662,6 +697,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_hc`` 
 --------------
@@ -724,6 +763,10 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_hpc`` 
 ---------------
 
@@ -774,6 +817,10 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_iamb`` 
 ----------------
@@ -826,6 +873,10 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_iambfdr`` 
 -------------------
 
@@ -876,6 +927,10 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_interiamb`` 
 ---------------------
@@ -933,6 +988,10 @@ reducing the size of the blankets (Tsamardinos et al. 2003).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_mmhc`` 
 ----------------
@@ -997,6 +1056,10 @@ dimensional domains.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_mmpc`` 
 ----------------
 
@@ -1048,6 +1111,10 @@ dimensional domains.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_pcstable`` 
 --------------------
 
@@ -1098,6 +1165,10 @@ dimensional domains.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_rsmax2`` 
 ------------------
@@ -1158,6 +1229,10 @@ dimensional domains.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``bnlearn_sihitonpc`` 
 ---------------------
 
@@ -1208,6 +1283,10 @@ dimensional domains.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``bnlearn_tabu`` 
 ----------------
@@ -1268,6 +1347,10 @@ et al. 2019b).
       }
     ]
 
+.. footbibliography::
+
+
+
 ``causaldag_gsp`` 
 -----------------
 
@@ -1323,6 +1406,64 @@ et al. 2019b).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
+
+``cov_thresh`` 
+--------------
+
+.. rubric:: My new algorithm
+
+.. list-table:: 
+
+   * - Package
+     - 
+   * - Version
+     - 
+   * - Language
+     - R
+   * - Docs
+     - 
+   * - Paper
+     - `the paper title <the_url>`_
+   * - Graph type
+     - UG
+   * - Docker 
+     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+
+   * - Module
+     - `cov_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/cov_thresh>`__
+
+
+
+.. rubric:: Description
+
+Some text of the algorithm/module.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "mysetting",
+        "param1": "myparamval",
+        "param2": [
+          2,
+          4,
+          5
+        ],
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
 
 ``dualpc`` 
 ----------
@@ -1382,6 +1523,10 @@ and in recovering the underlying network structure.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_anm`` 
 ---------------
 
@@ -1426,6 +1571,10 @@ Nonlinear causal discovery with additive noise models.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_corl`` 
 ----------------
@@ -1492,6 +1641,10 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_direct_lingam`` 
 -------------------------
 
@@ -1537,6 +1690,10 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_gae`` 
 ---------------
@@ -1601,6 +1758,10 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_golem`` 
 -----------------
 
@@ -1654,6 +1815,10 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_grandag`` 
 -------------------
@@ -1724,6 +1889,10 @@ A gradient-based algorithm using neural network modeling for non-linear additive
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_ica_lingam`` 
 ----------------------
 
@@ -1770,6 +1939,10 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_mcsl`` 
 ----------------
@@ -1831,6 +2004,10 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_notears`` 
 -------------------
 
@@ -1887,6 +2064,10 @@ ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_notears_low_rank`` 
 ----------------------------
 
@@ -1936,6 +2117,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_notears_nonlinear`` 
 -----------------------------
@@ -2003,6 +2188,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gcastle_pc`` 
 --------------
 
@@ -2049,6 +2238,10 @@ A classic causal discovery algorithm based on conditional independence tests.
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gcastle_rl`` 
 --------------
@@ -2127,6 +2320,10 @@ A RL-based algorithm that can work with flexible score functions (including non-
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gg99_singlepair`` 
 -------------------
 
@@ -2201,6 +2398,10 @@ advantage for the analysis of large and complex datasets.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``gobnilp`` 
 -----------
 
@@ -2263,6 +2464,10 @@ the first phase and the optimal sets are determined in a second phase.
         "timeout": 800
       }
     ]
+
+.. footbibliography::
+
+
 
 ``gt13_multipair`` 
 ------------------
@@ -2327,6 +2532,10 @@ Abstract: Full Bayesian computational inference for model determination in undir
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``parallelDG`` 
 --------------
@@ -2400,6 +2609,10 @@ move variate, and outperforms current methods.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``pcalg_pc`` 
 ------------
 
@@ -2462,6 +2675,64 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
       }
     ]
 
+.. footbibliography::
+
+
+
+``prec_thresh`` 
+---------------
+
+.. rubric:: My new algorithm
+
+.. list-table:: 
+
+   * - Package
+     - 
+   * - Version
+     - 
+   * - Language
+     - R
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - UG
+   * - Docker 
+     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+
+   * - Module
+     - `prec_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
+
+
+
+.. rubric:: Description
+
+Some text of the algorithm/module.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "mysetting",
+        "param1": "myparamval",
+        "param2": [
+          2,
+          4,
+          5
+        ],
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
 ``rblip_asobs`` 
 ---------------
 
@@ -2522,6 +2793,10 @@ that no cycles are introduced.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``sklearn_glasso`` 
 ------------------
 
@@ -2573,6 +2848,10 @@ that no cycles are introduced.
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_fas`` 
 --------------
 
@@ -2618,6 +2897,10 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``tetrad_fask`` 
 ---------------
@@ -2672,6 +2955,10 @@ See Sanchez-Romero R, Ramsey JD, Zhang K, Glymour MR, Huang B, Glymour C. Causal
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_fci`` 
 --------------
 
@@ -2722,6 +3009,10 @@ From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that t
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``tetrad_fges`` 
 ---------------
@@ -2779,6 +3070,10 @@ The algorithms requires a decomposable score—that is, a score that for the ent
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_fofc`` 
 ---------------
 
@@ -2824,6 +3119,10 @@ From the Tetrad manual: Searches for causal structure over latent variables, whe
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_ftfc`` 
 ---------------
 
@@ -2868,6 +3167,10 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``tetrad_gfci`` 
 ---------------
@@ -2926,6 +3229,10 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_imgscont`` 
 -------------------
 
@@ -2970,6 +3277,10 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``tetrad_lingam`` 
 -----------------
@@ -3025,6 +3336,10 @@ Hyvärinen, A., Karhunen, J., & Oja, E. (2004). Independent component analysis (
       }
     ]
 
+.. footbibliography::
+
+
+
 ``tetrad_pc-all`` 
 -----------------
 
@@ -3074,6 +3389,10 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
         "timeout": null
       }
     ]
+
+.. footbibliography::
+
+
 
 ``tetrad_rfci`` 
 ---------------
@@ -3126,76 +3445,5 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
       }
     ]
 
-``trilearn_pgibbs`` 
--------------------
+.. footbibliography::
 
-.. rubric:: Particle Gibbs
-
-.. list-table:: 
-
-   * - Package
-     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-   * - Version
-     - 1.25
-   * - Language
-     - Python
-   * - Docs
-     - 
-   * - Paper
-     - 
-   * - Graph type
-     - DG
-   * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
-
-   * - Module
-     - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
-
-
-
-.. rubric:: Description
-
-Abstract: We present a sequential sampling methodology for weakly structural Markov laws, arising naturally in a Bayesian structure learning context for decomposable graphical models. As a key component of our sug-
-gested approach, we show that the problem of graph estimation, which in
-general lacks natural sequential interpretation, can be recast into a sequential setting by proposing a recursive Feynman-Kac model that generates
-a ﬂow of junction tree distributions over a space of increasing dimensions.
-We focus on particle McMC methods to provide samples on this space,
-in particular on particle Gibbs (PG), as it allows for generating McMC
-chains with global moves on an underlying space of decomposable graphs.
-To further improve the PG mixing properties, we incorporate a systematic
-refreshment step implemented through direct sampling from a backward
-kernel. The theoretical properties of the algorithm are investigated, showing that the proposed refreshment step improves the performance in terms
-of asymptotic variance of the estimated distribution. The suggested sampling methodology is illustrated through a collection of numerical examples
-demonstrating high accuracy in Bayesian graph structure learning in both
-discrete and continuous graphical models.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "trilearn-cont",
-        "datatype": "continuous",
-        "alpha": 0.5,
-        "beta": 0.5,
-        "radii": 80,
-        "n_particles": 50,
-        "M": 1000,
-        "pseudo_obs": 1,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
-      }
-    ]

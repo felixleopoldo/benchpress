@@ -2,10 +2,13 @@ from pathlib import Path
 import json
 from docs_utils import *
 
-def info_to_table(json, p):
+def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
     #tab += "   * - Title\n"
     #tab += "     - "+info["title"]+"\n"
+    
+    #print(info.keys())
+    #print(info)
     if info["package"]["title"] == "":
         tab += "   * - Package\n"    
         tab += "     - \n"
@@ -60,7 +63,7 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-
+        #print(p.name)
         j = p/"info.json"
 
         with open(j) as json_file:
@@ -102,7 +105,6 @@ str += "\n\n"
 str += info_to_small_table()
 str += "\n\n"
 for p in sorted(algspath.iterdir()):
-    #print(p.name)
     if p.name == "docs.rst":
         continue
     
@@ -150,6 +152,11 @@ for p in sorted(algspath.iterdir()):
     str += ".. code-block:: json"    
     str += "\n\n"
     str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    str += "\n\n"
+    str += ".. footbibliography::"
+    str += "\n\n"
+
+
 
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
