@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 from docs_utils import *
+import bibtexparser
 
 def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
@@ -9,6 +10,9 @@ def info_to_table(info, p):
     
     #print(info.keys())
     #print(info)
+    
+        
+    
     if info["package"]["title"] == "":
         tab += "   * - Package\n"    
         tab += "     - \n"
@@ -29,11 +33,22 @@ def info_to_table(info, p):
     tab += "   * - Paper\n"
     
     tab += "     - "
-    for i in range(len(info["papers"])):
-        if info["papers"][i]["title"] != "":
-            tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+    
+    if (p/'bibtex.bib').is_file():
+        with open(p/'bibtex.bib') as bibtex_file:
+            bibtex_database = bibtexparser.load(bibtex_file)        
+
+        if len(bibtex_database.entries) > 0:            
+            for ref in bibtex_database.entries:
+                
+                tab += ":footcite:t:`"+ref["ID"] +"`, "
         else:
             tab += "  "
+    # for i in range(len(info["papers"])):
+    #     if info["papers"][i]["title"] != "":
+    #         tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+    else:
+        tab += "  "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
@@ -65,7 +80,8 @@ def info_to_small_table():
     for p in sorted(algspath.iterdir()):
         #print(p.name)
         j = p/"info.json"
-
+        if p.name == "docs.rst" or p.name == ".DS_Store":
+            continue
         with open(j) as json_file:
             info = json.load(json_file)
             
@@ -105,9 +121,14 @@ str += "\n\n"
 str += info_to_small_table()
 str += "\n\n"
 for p in sorted(algspath.iterdir()):
-    if p.name == "docs.rst":
+
+    if not p.is_dir():
         continue
-    
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+
+
+        
     d = p/"docs.rst"
     j = p/"info.json"
     s = p/"schema.json"

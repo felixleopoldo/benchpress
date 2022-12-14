@@ -99,55 +99,55 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - dualpc_ 
    * - ANM
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_anm_ 
    * - CORL
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_corl_ 
    * - Direct LINGAM
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_direct_lingam_ 
    * - GAE
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_gae_ 
    * - GOLEM
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_golem_ 
    * - GraNDAG
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_grandag_ 
    * - ICALiNGAM
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_ica_lingam_ 
    * - MCSL
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_mcsl_ 
    * - NO TEARS
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_ 
    * - NO TEARS low rank
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_low_rank_ 
    * - NO TEARS non-linear
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_nonlinear_ 
    * - PC
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_pc_ 
    * - RL
      - DAG
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_rl_ 
    * - GG99
      - DG
@@ -225,6 +225,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DAG
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
+   * - Particle Gibbs
+     - DG
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+     - trilearn_pgibbs_ 
 
 
 
@@ -246,7 +250,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - `BDgraph: An R Package for Bayesian Structure Learning in Graphical Models <https://www.jstatsoft.org/article/view/v089i03>`_
+     - :footcite:t:`JSSv089i03`
    * - Graph type
      - UG
    * - Docker 
@@ -259,7 +263,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. rubric:: Description
 
-:footcite:t:`JSSv089i03`.
+
 
 
 
@@ -315,7 +319,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
+     - :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
      - DAG, CPDAG
    * - Docker 
@@ -392,7 +396,7 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks <https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127>`_
+     - :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
      - DAG, CPDAG
    * - Docker 
@@ -471,7 +475,7 @@ initialised with constraint-based testing and improved with a score-based search
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - `Jack Kuipers & Giusi Moffa (2015). Partition MCMC for Inference on Acyclic Digraphs <https://www.tandfonline.com/doi/full/10.1080/01621459.2015.1133426>`_
+     - :footcite:t:`doi:10.1080/01621459.2015.1133426`
    * - Graph type
      - DAG, CPDAG
    * - Docker 
@@ -538,7 +542,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `Margaritis D (2003). Learning Bayesian network model structure from data. <https://apps.dtic.mil/sti/pdfs/ADA461103.pdf>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -595,7 +599,7 @@ Fast incremental association Markov blanket
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - `Tsamardinos, I., Aliferis, C. F., Statnikov, A. R., & Statnikov, E. (2003). Algorithms for large scale Markov blanket discovery <https://www.aaai.org/Papers/FLAIRS/2003/Flairs03-073.pdf?ref=https://githubhelp.com>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -838,7 +842,7 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`tsamardinos2003algorithms`
    * - Graph type
      - DAG
    * - Docker 
@@ -893,7 +897,7 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`tsamardinos2003algorithms`
    * - Graph type
      - DAG
    * - Docker 
@@ -948,7 +952,7 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`tsamardinos2003algorithms`
    * - Graph type
      - DAG
    * - Docker 
@@ -1009,7 +1013,7 @@ reducing the size of the blankets (Tsamardinos et al. 2003).
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`tsamardinos2006max`
    * - Graph type
      - DAG
    * - Docker 
@@ -1131,7 +1135,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - DAG
    * - Docker 
@@ -1304,7 +1308,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`norvig2002modern`
    * - Graph type
      - DAG
    * - Docker 
@@ -1427,7 +1431,7 @@ et al. 2019b).
    * - Docs
      - 
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - UG
    * - Docker 
@@ -1481,7 +1485,7 @@ Some text of the algorithm/module.
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`pmlr-v186-giudice22a`
    * - Graph type
      - CG, CPDAG
    * - Docker 
@@ -1494,7 +1498,7 @@ Some text of the algorithm/module.
 
 .. rubric:: Description
 
-The dual PC algorithm (Giudice, Kuipers, and Moffa 2021) is a novel scheme to carry out the
+The dual PC algorithm is a novel scheme to carry out the
 conditional independence tests within the PC algorithm for Gaussian data, by leveraging the
 inverse relationship between covariance and precision matrices. The algorithm exploits block
 matrix inversions on the covariance and precision matrices to simultaneously perform tests on
@@ -1535,7 +1539,7 @@ and in recovering the underlying network structure.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1543,7 +1547,7 @@ and in recovering the underlying network structure.
    * - Docs
      - 
    * - Paper
-     - `Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models. <https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf>`_, `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`hoyer2008nonlinear`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1584,7 +1588,7 @@ Nonlinear causal discovery with additive noise models.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1592,7 +1596,7 @@ Nonlinear causal discovery with additive noise models.
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`wang2021ordering`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1653,7 +1657,7 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1661,7 +1665,7 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`shimizu2011directlingam`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1703,7 +1707,7 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1711,7 +1715,7 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1770,7 +1774,7 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1778,7 +1782,7 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`NEURIPS2020_d04d42cd`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1828,7 +1832,7 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1836,7 +1840,7 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1901,7 +1905,7 @@ A gradient-based algorithm using neural network modeling for non-linear additive
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1909,7 +1913,7 @@ A gradient-based algorithm using neural network modeling for non-linear additive
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`10.5555/1248547.1248619`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -1952,7 +1956,7 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -1960,7 +1964,7 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`doi:10.1137/1.9781611977172.48`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -2016,7 +2020,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -2024,7 +2028,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`NEURIPS2018_e347c514`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -2076,7 +2080,7 @@ ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -2084,7 +2088,7 @@ ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -2130,7 +2134,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -2138,7 +2142,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`pmlr-v108-zheng20a`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -2200,7 +2204,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -2208,7 +2212,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`kalisch2007estimating`
    * - Graph type
      - DAG
    * - Docker 
@@ -2251,7 +2255,7 @@ A classic causal discovery algorithm based on conditional independence tests.
 .. list-table:: 
 
    * - Package
-     - `gCastle <http>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
      - 1.0.3
    * - Language
@@ -2259,7 +2263,7 @@ A classic causal discovery algorithm based on conditional independence tests.
    * - Docs
      - 
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1906.04477`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Docker 
@@ -2340,7 +2344,7 @@ A RL-based algorithm that can work with flexible score functions (including non-
    * - Docs
      - 
    * - Paper
-     - `P. Giudici & P. Green (1999). Decomposable graphical Gaussian model determination <https://www.jstor.org/stable/pdf/2673585.pdf>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -2418,7 +2422,7 @@ advantage for the analysis of large and complex datasets.
    * - Docs
      - `here <https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf>`__
    * - Paper
-     - `M. Bartlett and J. Cussens (2017). Integer linear programming for the bayesian network structure learning problem. <https://www.jair.org/index.php/jair/article/download/11041/26213/>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1202.3713`, :footcite:t:`BARTLETT2017258`, :footcite:t:`cussens2017bayesian`, :footcite:t:`pmlr-v138-cussens20a`
    * - Graph type
      - DAG
    * - Docker 
@@ -2432,8 +2436,7 @@ advantage for the analysis of large and complex datasets.
 .. rubric:: Description
 
 Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG
-for a Bayesian network with limit on the maximal number of parents for each node (Cussens
-2012). It is a two-stage approach where candidate parent sets for each node are discovered in
+for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in
 the first phase and the optimal sets are determined in a second phase.
 
 .. rubric:: Example
@@ -2485,7 +2488,7 @@ the first phase and the optimal sets are determined in a second phase.
    * - Docs
      - 
    * - Paper
-     - `P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees. <https://www.jstor.org/stable/43304539>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -2553,7 +2556,7 @@ Abstract: Full Bayesian computational inference for model determination in undir
    * - Docs
      - `here <https://github.com/melmasri/parallelDG>`__
    * - Paper
-     - `M. Elmasri (2022). Parallel sampling of decomposable graphs using Markov chain on junction trees. <https://arxiv.org/pdf/2209.02008>`_
+     - :footcite:t:`https://doi.org/10.48550/arxiv.2209.02008`
    * - Graph type
      - DG
    * - Docker 
@@ -2629,7 +2632,7 @@ move variate, and outperforms current methods.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - CPDAG, CG
    * - Docker 
@@ -3188,7 +3191,7 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - `the paper title <the_url>`_
+     - 
    * - Graph type
      - DAG
    * - Docker 
@@ -3441,6 +3444,84 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
         ],
         "test": "fisher-z-test",
         "datatype": "continuous",
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
+``trilearn_pgibbs`` 
+-------------------
+
+.. rubric:: Particle Gibbs
+
+.. list-table:: 
+
+   * - Package
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+   * - Version
+     - 1.25
+   * - Language
+     - Python
+   * - Docs
+     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
+   * - Paper
+     - :footcite:t:`10.1214/19-EJS1585`
+   * - Graph type
+     - DG
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+
+   * - Module
+     - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
+
+
+
+.. rubric:: Description
+
+Abstract: We present a sequential sampling methodology for weakly structural Markov laws, arising naturally in a Bayesian structure learning context for decomposable graphical models. As a key component of our sug-
+gested approach, we show that the problem of graph estimation, which in
+general lacks natural sequential interpretation, can be recast into a sequential setting by proposing a recursive Feynman-Kac model that generates
+a ﬂow of junction tree distributions over a space of increasing dimensions.
+We focus on particle McMC methods to provide samples on this space,
+in particular on particle Gibbs (PG), as it allows for generating McMC
+chains with global moves on an underlying space of decomposable graphs.
+To further improve the PG mixing properties, we incorporate a systematic
+refreshment step implemented through direct sampling from a backward
+kernel. The theoretical properties of the algorithm are investigated, showing that the proposed refreshment step improves the performance in terms
+of asymptotic variance of the estimated distribution. The suggested sampling methodology is illustrated through a collection of numerical examples
+demonstrating high accuracy in Bayesian graph structure learning in both
+discrete and continuous graphical models.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "trilearn-cont",
+        "datatype": "continuous",
+        "alpha": 0.5,
+        "beta": 0.5,
+        "radii": 80,
+        "n_particles": 50,
+        "M": 1000,
+        "pseudo_obs": 1,
+        "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
         "timeout": null
       }
     ]
