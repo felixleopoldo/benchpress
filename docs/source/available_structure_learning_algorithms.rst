@@ -1547,7 +1547,7 @@ and in recovering the underlying network structure.
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`hoyer2008nonlinear`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`hoyer2008nonlinear`
    * - Graph type
      - DAG
    * - Docker 
@@ -1596,7 +1596,7 @@ Nonlinear causal discovery with additive noise models.
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`wang2021ordering`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`wang2021ordering`
    * - Graph type
      - DAG
    * - Docker 
@@ -1665,7 +1665,7 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`shimizu2011directlingam`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`shimizu2011directlingam`
    * - Graph type
      - DAG
    * - Docker 
@@ -1715,7 +1715,7 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
      - DAG
    * - Docker 
@@ -1782,7 +1782,7 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`NEURIPS2020_d04d42cd`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`NEURIPS2020_d04d42cd`
    * - Graph type
      - DAG
    * - Docker 
@@ -1840,7 +1840,7 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`
    * - Graph type
      - DAG
    * - Docker 
@@ -1913,7 +1913,7 @@ A gradient-based algorithm using neural network modeling for non-linear additive
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`10.5555/1248547.1248619`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`10.5555/1248547.1248619`
    * - Graph type
      - DAG
    * - Docker 
@@ -1964,7 +1964,7 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`doi:10.1137/1.9781611977172.48`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type
      - DAG
    * - Docker 
@@ -2028,7 +2028,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`NEURIPS2018_e347c514`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`NEURIPS2018_e347c514`
    * - Graph type
      - DAG
    * - Docker 
@@ -2088,7 +2088,7 @@ ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`
    * - Graph type
      - DAG
    * - Docker 
@@ -2142,7 +2142,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`pmlr-v108-zheng20a`, :footcite:t:`zhang2021gcastle`
+     - :footcite:t:`pmlr-v108-zheng20a`
    * - Graph type
      - DAG
    * - Docker 
@@ -2344,7 +2344,7 @@ A RL-based algorithm that can work with flexible score functions (including non-
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`10.1093/biomet/86.4.785`
    * - Graph type
      - DG
    * - Docker 
@@ -2488,7 +2488,7 @@ the first phase and the optimal sets are determined in a second phase.
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`10.2307/43304539`
    * - Graph type
      - DG
    * - Docker 
