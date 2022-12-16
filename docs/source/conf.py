@@ -13,7 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-from pathlib import Path 
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
@@ -39,9 +39,16 @@ extensions = [
     'sphinxcontrib.bibtex'
 ]
 
-algspath = Path("../../workflow/rules/structure_learning_algorithms")
+paths = [Path("../../workflow/rules/structure_learning_algorithms"), 
+         Path("../../workflow/rules/parameters"),
+         Path("../../workflow/rules/graph"),  
+         Path("../../workflow/rules/evaluation")]
 
-bibtex_bibfiles = [str(p / "bibtex.bib") for p in algspath.iterdir() if (p/"bibtex.bib").is_file()]
+
+bibtex_bibfiles = []
+for mod in paths:
+    bibtex_bibfiles += [str(p / "bibtex.bib")
+                        for p in mod.iterdir() if (p/"bibtex.bib").is_file()]
 
 # source_suffix = {
 #     '.rst': 'restructuredtext',
@@ -70,7 +77,6 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
 
 
 html_logo = '_static/benchpress-logo-readthedocs@2x.png'

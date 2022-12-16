@@ -66,6 +66,10 @@ are 2,3,2, and 2.
     1,2,0,1
     0,1,1,1
 
+.. footbibliography::
+
+
+
 ``gcastle_iidsim`` 
 ------------------
 
@@ -80,7 +84,7 @@ are 2,3,2, and 2.
    * - Docs
      - `here <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py>`__
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Module
@@ -112,6 +116,10 @@ The data may be standardized by setting ``standardized`` to true.
         ]
       }
     ]
+
+.. footbibliography::
+
+
 
 ``iid`` 
 -------
@@ -156,3 +164,6 @@ The data may be standardized by setting ``standardized`` to true.
         ]
       }
     ]
+
+.. footbibliography::
+

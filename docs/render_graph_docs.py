@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 from docs_utils import *
+import bibtexparser
 
 def info_to_table(json, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
@@ -17,13 +18,19 @@ def info_to_table(json, p):
         tab += "     - \n"
     else:
         tab += "     - `here <"+info["docs_url"]+">`__\n"
-    tab += "   * - Paper\n"
+    tab += "   * - Paper\n"  
     tab += "     - "
-    for i in range(len(info["papers"])):
-        if info["papers"][i]["title"] != "":
-            tab += info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+    if (p/'bibtex.bib').is_file():
+        with open(p/'bibtex.bib') as bibtex_file:
+            bibtex_database = bibtexparser.load(bibtex_file)        
+
+        if len(bibtex_database.entries) > 0:            
+            for ref in bibtex_database.entries:                
+                tab += ":footcite:t:`"+ref["ID"] +"`, "
         else:
             tab += "  "
+    else:
+        tab += "  "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
@@ -151,6 +158,10 @@ for p in sorted(algspath.iterdir()):
         str += ".. code-block:: json"    
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    str += "\n\n"
+    str += ".. footbibliography::"
+    str += "\n\n"
+
 
 with open("source/available_graphs.rst", "w") as text_file:
     text_file.write(str)

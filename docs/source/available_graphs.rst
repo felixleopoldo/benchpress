@@ -66,7 +66,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models  <https://www.jstatsoft.org/article/view/v089i03>`_
+     - :footcite:t:`JSSv089i03`
    * - Graph type
      - UG
    * - Docker 
@@ -95,6 +95,10 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
         "prob": 0.2
       }
     ]
+
+.. footbibliography::
+
+
 
 ``fixed_graph`` 
 ---------------
@@ -140,6 +144,10 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
     0,0,0,1
     0,0,0,0
 
+.. footbibliography::
+
+
+
 ``pcalg_randdag`` 
 -----------------
 
@@ -156,7 +164,7 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
-     - 
+     - :footcite:t:`JSSv047i11`
    * - Graph type
      - DAG, UG
    * - Docker 
@@ -172,10 +180,10 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
 This is the *randDAG* from the R package `pcalg <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`_  with the extra feature that the maximum average number of parents can be set by ``max_parents``.
 
 An object of the pcalg_randdag module specifies a graph generated using the randDAG
-function from the pcalg package (Kalisch et al. 2012), with the extra functionality of restricting
+function from the pcalg package, with the extra functionality of restricting
 the maximal number of parents per node (max_parents). It samples a random graph with n
 nodes and d neighbours per node on average, using the algorithm specified by method with
-parameters par1 and par2, for further details see Kalisch et al.
+parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 .. Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -201,6 +209,10 @@ parameters par1 and par2, for further details see Kalisch et al.
         "DAG": true
       }
     ]
+
+.. footbibliography::
+
+
 
 ``trilearn_bandmat`` 
 --------------------
@@ -250,6 +262,10 @@ with given bandwidth (*bandwith*).
       }
     ]
 
+.. footbibliography::
+
+
+
 ``trilearn_cta`` 
 ----------------
 
@@ -266,7 +282,7 @@ with given bandwidth (*bandwith*).
    * - Docs
      - 
    * - Paper
-     - Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
+     - 
    * - Graph type
      - DG
    * - Docker 
@@ -302,6 +318,10 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
         "beta": 0.7
       }
     ]
+
+.. footbibliography::
+
+
 
 ``trilearn_rand_bandmat`` 
 -------------------------
@@ -348,3 +368,6 @@ An object of the max bandwith module specifies a decomposable graph with band st
         "dim": 50
       }
     ]
+
+.. footbibliography::
+
