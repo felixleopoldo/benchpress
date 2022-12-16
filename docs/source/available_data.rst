@@ -31,6 +31,8 @@ The data modules.
 
 
 
+.. _fixed_data: 
+
 ``fixed_data`` 
 --------------
 
@@ -69,6 +71,8 @@ are 2,3,2, and 2.
 .. footbibliography::
 
 
+
+.. _gcastle_iidsim: 
 
 ``gcastle_iidsim`` 
 ------------------
@@ -120,6 +124,8 @@ The data may be standardized by setting ``standardized`` to true.
 .. footbibliography::
 
 
+
+.. _iid: 
 
 ``iid`` 
 -------

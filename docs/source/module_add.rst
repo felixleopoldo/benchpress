@@ -1,13 +1,10 @@
-Graph modules
+Graph module
 ########################
 
-The graph modules are stored as directories in workflow/rules/graphs. 
+The graph modules are stored as sub directories of `workflow/rules/graph <../../../workflow/rules/graph>`_. 
 
 
-Create new graph module
-***********************
-
-In order to create a new graph module you can either copy a template as
+In order to create a new graph module, you can make a copy of the template module `new_graph <../../../resources/module_templates/new_graph>`__ as
 
 .. prompt:: bash
 
@@ -19,14 +16,14 @@ Alternatively, you may copy one of the existing modules. This line
 
    cp -r workflow/rules/graph/pcalg_randdag workflow/rules/graph/pcalg_randdag_copy
 
-copies the ``pcalg_randdag`` module to a new module called ``pcalg_randdag_copy``.
+copies the :ref:`pcalg_randdag` module to a new module named ``pcalg_randdag_copy``.
 
-The content of the modules may be changed in any of the alternatives while maintaining the structure described below.
+The content of the modules may be changed in any of the alternatives above while maintaining the structure described below.
 
 Template structure
 ------------------
 
-A graph module has the following basic file structure, where all the files are necessary except for script.R that may be changed.
+A graph module has the following basic file structure, where all the files are necessary except for `script.R <../../../resources/module_templates/new_graph/script.R>`__ that may be changed.
 
 ::
 
@@ -35,13 +32,14 @@ A graph module has the following basic file structure, where all the files are n
     ├── script.R
     ├── schema.json
     ├── info.json
+    ├── bibtex.bib
     └── docs.rst
 
-Here we show the content for the module template ``new_graph``.
-The file `rule.smk <../../../resources/module_templates/new_graph/rule.smk>`__ contains a Snakemake rule with the proper name and output fields.
-This template calls *script.R* shown below, but you may change either the whole script or the content of it. 
-The container is set to None in the example in order to force local execution.
-On deployment (pushing to Benchpress repository) this field should be a Docker Hub uri, e.g. *docker://username/image:version*.
+In this section we show the content for the module template `new_graph <../../../resources/module_templates/new_graph>`__.
+The file `rule.smk <../../../resources/module_templates/new_graph/rule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
+This template runs `script.R <../../../resources/module_templates/new_graph/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
+The container is set to `None` in the example in order to force local execution.
+On deployment (pushing to Benchpress repository) this field should be a `Docker Hub <https://hub.docker.com/>`__ uri on the form *docker://username/image:version*.
 You should not alter the name or the output fields.
 
 .. code-block:: python
@@ -56,8 +54,28 @@ You should not alter the name or the output fields.
         script: 
             "script.R"
 
-`script.R <../../../resources/module_templates/new_graph/script.R>`__ is a script that generates a random binary symetric matrix (undirected graph).
-The result is saved in the output
+
+The module specific variables available in the script are generated from the `JSON <https://www.json.org/json-en.html>`_ config file. 
+In particular, in order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``resources -> graph`` section.
+
+.. code-block:: json
+
+    "new_algmod": [
+        {
+            "id": "testmat",
+            "p": 5,
+            "param1": 10
+        }
+    ]
+
+This will make the parameters ``p`` and ``param1``, accessible in the script. 
+Note that the values are passed as string and might have to be converted to suite your script.
+
+.. role:: r(code)
+   :language: r
+
+`script.R <../../../resources/module_templates/new_graph/script.R>`__ generates a random binary symetric matrix (undirected graph).
+The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
 
 .. code-block:: r
 
@@ -76,33 +94,49 @@ The result is saved in the output
                 quote = FALSE, col.names = TRUE, sep = ","
                 )
 
-You need to add the following piece of JSON code to ``resources -> graph`` section.
+In general the vairables available in the script is are generated from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ config file. 
 Variables are then automatically accessible in the script.
+See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details of how to access variables in script.
 
-.. code-block:: json
-
-    "new_algmod": [
-        {
-            "id": "testmat",
-            "p": 5,
-            "par1": 10
-        }
-    ]
+* `info.json <../../../resources/module_templates/new_graph/info.json>`__ is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when generating the documentation.
+* `schema.json <../../../resources/module_templates/new_graph/schema.json>`__ is a `JSON <https://www.json.org/json-en.html>`_ schema for the module.
+* `docs.rst <../../../resources/module_templates/new_graph/docs.rst>`__ is a documentation file in reStructuredText (RST) format.
+* `bibtext.bib <../../../resources/module_templates/new_graph/bibtex.bib>`__ is a `BibTeX <http://www.bibtex.org/Format/>`_ file with references that will be show in the docs.
 
 
 
-* `info.json` is a JSON file to be parsed when generating the documentation.
-* `schema.json` is a JSON schema for the module.
-* `docs.rst` is a documentation file in RST format.
 
-Parameters module
+.. Parameters module
+.. ########################
+
+.. Data module
+.. ########################
+
+.. Algorithm module
+.. ########################
+
+.. Evaluation module
+.. ########################
+
+Updating the docs
 ########################
 
-Data module
-########################
+When a new module is installed you may also update the documentation.
+First install some requirements 
 
-Algorithm module
-########################
+.. prompt:: bash
 
-Evaluation module
-########################
+    cd docs/
+    pip install -r _source/requirements.txt
+
+First make *render_docs.sh* executable then render and build the documentation
+
+.. prompt:: bash
+    
+    chmod +x render_docs.sh
+
+.. prompt:: bash
+
+    ./render_docs.sh && make html
+
+The updated docs is then to

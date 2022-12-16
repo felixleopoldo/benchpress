@@ -1,10 +1,9 @@
 ``graph``
 ===============
 
-Several possibilities exist for defining the graph component, depending on whether we wish
-to draw random graphs from a given distribution, or maybe provide a given structure on
-which we wish to perform a benchmarking study. Below is the list of currently available modules.
-The rules and corresponding scripts are located in *workflow/rules/graph/* and *workflow/scripts/graph/*, respectively.
+Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on
+which we wish to perform a benchmarking study. 
+Below is the list of currently available modules.
 
 
 .. list-table:: 
@@ -49,6 +48,8 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 
 
 
+
+.. _bdgraph_graphsim: 
 
 ``bdgraph_graphsim`` 
 --------------------
@@ -100,6 +101,8 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 
 
 
+.. _fixed_graph: 
+
 ``fixed_graph`` 
 ---------------
 
@@ -147,6 +150,8 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
 .. footbibliography::
 
 
+
+.. _pcalg_randdag: 
 
 ``pcalg_randdag`` 
 -----------------
@@ -214,6 +219,8 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 
 
+.. _trilearn_bandmat: 
+
 ``trilearn_bandmat`` 
 --------------------
 
@@ -266,6 +273,8 @@ with given bandwidth (*bandwith*).
 
 
 
+.. _trilearn_cta: 
+
 ``trilearn_cta`` 
 ----------------
 
@@ -282,7 +291,7 @@ with given bandwidth (*bandwith*).
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`olsson2022sequential`
    * - Graph type
      - DG
    * - Docker 
@@ -322,6 +331,8 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
 .. footbibliography::
 
 
+
+.. _trilearn_rand_bandmat: 
 
 ``trilearn_rand_bandmat`` 
 -------------------------

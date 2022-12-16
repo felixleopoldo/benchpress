@@ -55,6 +55,8 @@ Make sure that the parameter module is compatible with the graph module you are 
 
 
 
+.. _bdgraph_rgwish: 
+
 ``bdgraph_rgwish`` 
 ------------------
 
@@ -110,6 +112,8 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 .. footbibliography::
 
 
+
+.. _bin_bn: 
 
 ``bin_bn`` 
 ----------
@@ -173,6 +177,8 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
 
 
 
+.. _fixed_params: 
+
 ``fixed_params`` 
 ----------------
 
@@ -199,6 +205,8 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 .. footbibliography::
 
 
+
+.. _sem_params: 
 
 ``sem_params`` 
 --------------
@@ -265,6 +273,8 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 
 
 
+.. _trilearn_hyper-dir: 
+
 ``trilearn_hyper-dir`` 
 ----------------------
 
@@ -318,6 +328,8 @@ An object of this module defines a categorical decomposable model by sampling th
 .. footbibliography::
 
 
+
+.. _trilearn_intra-class: 
 
 ``trilearn_intra-class`` 
 ------------------------

@@ -234,6 +234,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 
 
+.. _bdgraph: 
+
 ``bdgraph`` 
 -----------
 
@@ -302,6 +304,8 @@ Dots (.) in the original parameter names are omitted for implementational reason
 .. footbibliography::
 
 
+
+.. _bidag_itsearch: 
 
 ``bidag_itsearch`` 
 ------------------
@@ -379,6 +383,8 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 .. footbibliography::
 
 
+
+.. _bidag_order_mcmc: 
 
 ``bidag_order_mcmc`` 
 --------------------
@@ -459,6 +465,8 @@ initialised with constraint-based testing and improved with a score-based search
 
 
 
+.. _bidag_partition_mcmc: 
+
 ``bidag_partition_mcmc`` 
 ------------------------
 
@@ -526,6 +534,8 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
 
 
 
+.. _bnlearn_fastiamb: 
+
 ``bnlearn_fastiamb`` 
 --------------------
 
@@ -582,6 +592,8 @@ Fast incremental association Markov blanket
 .. footbibliography::
 
 
+
+.. _bnlearn_gs: 
 
 ``bnlearn_gs`` 
 --------------
@@ -645,6 +657,8 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 
 
+.. _bnlearn_h2pc: 
+
 ``bnlearn_h2pc`` 
 ----------------
 
@@ -705,6 +719,8 @@ undirected graph and then estimate a DAG in a four-step procedure.
 .. footbibliography::
 
 
+
+.. _bnlearn_hc: 
 
 ``bnlearn_hc`` 
 --------------
@@ -771,6 +787,8 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
 
 
 
+.. _bnlearn_hpc: 
+
 ``bnlearn_hpc`` 
 ---------------
 
@@ -825,6 +843,8 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
 .. footbibliography::
 
 
+
+.. _bnlearn_iamb: 
 
 ``bnlearn_iamb`` 
 ----------------
@@ -881,6 +901,8 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
 
 
 
+.. _bnlearn_iambfdr: 
+
 ``bnlearn_iambfdr`` 
 -------------------
 
@@ -935,6 +957,8 @@ Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
 .. footbibliography::
 
 
+
+.. _bnlearn_interiamb: 
 
 ``bnlearn_interiamb`` 
 ---------------------
@@ -996,6 +1020,8 @@ reducing the size of the blankets (Tsamardinos et al. 2003).
 .. footbibliography::
 
 
+
+.. _bnlearn_mmhc: 
 
 ``bnlearn_mmhc`` 
 ----------------
@@ -1064,6 +1090,8 @@ dimensional domains.
 
 
 
+.. _bnlearn_mmpc: 
+
 ``bnlearn_mmpc`` 
 ----------------
 
@@ -1119,6 +1147,8 @@ dimensional domains.
 
 
 
+.. _bnlearn_pcstable: 
+
 ``bnlearn_pcstable`` 
 --------------------
 
@@ -1173,6 +1203,8 @@ dimensional domains.
 .. footbibliography::
 
 
+
+.. _bnlearn_rsmax2: 
 
 ``bnlearn_rsmax2`` 
 ------------------
@@ -1237,6 +1269,8 @@ dimensional domains.
 
 
 
+.. _bnlearn_sihitonpc: 
+
 ``bnlearn_sihitonpc`` 
 ---------------------
 
@@ -1291,6 +1325,8 @@ dimensional domains.
 .. footbibliography::
 
 
+
+.. _bnlearn_tabu: 
 
 ``bnlearn_tabu`` 
 ----------------
@@ -1355,6 +1391,8 @@ et al. 2019b).
 
 
 
+.. _causaldag_gsp: 
+
 ``causaldag_gsp`` 
 -----------------
 
@@ -1415,6 +1453,8 @@ et al. 2019b).
 
 
 
+.. _cov_thresh: 
+
 ``cov_thresh`` 
 --------------
 
@@ -1468,6 +1508,8 @@ Some text of the algorithm/module.
 .. footbibliography::
 
 
+
+.. _dualpc: 
 
 ``dualpc`` 
 ----------
@@ -1531,6 +1573,8 @@ and in recovering the underlying network structure.
 
 
 
+.. _gcastle_anm: 
+
 ``gcastle_anm`` 
 ---------------
 
@@ -1579,6 +1623,8 @@ Nonlinear causal discovery with additive noise models.
 .. footbibliography::
 
 
+
+.. _gcastle_corl: 
 
 ``gcastle_corl`` 
 ----------------
@@ -1649,6 +1695,8 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
 
 
+.. _gcastle_direct_lingam: 
+
 ``gcastle_direct_lingam`` 
 -------------------------
 
@@ -1698,6 +1746,8 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 .. footbibliography::
 
 
+
+.. _gcastle_gae: 
 
 ``gcastle_gae`` 
 ---------------
@@ -1766,6 +1816,8 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
 
 
 
+.. _gcastle_golem: 
+
 ``gcastle_golem`` 
 -----------------
 
@@ -1823,6 +1875,8 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
 .. footbibliography::
 
 
+
+.. _gcastle_grandag: 
 
 ``gcastle_grandag`` 
 -------------------
@@ -1897,6 +1951,8 @@ A gradient-based algorithm using neural network modeling for non-linear additive
 
 
 
+.. _gcastle_ica_lingam: 
+
 ``gcastle_ica_lingam`` 
 ----------------------
 
@@ -1947,6 +2003,8 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 .. footbibliography::
 
 
+
+.. _gcastle_mcsl: 
 
 ``gcastle_mcsl`` 
 ----------------
@@ -2012,6 +2070,8 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 
 
 
+.. _gcastle_notears: 
+
 ``gcastle_notears`` 
 -------------------
 
@@ -2072,6 +2132,8 @@ ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
 
 
 
+.. _gcastle_notears_low_rank: 
+
 ``gcastle_notears_low_rank`` 
 ----------------------------
 
@@ -2125,6 +2187,8 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 .. footbibliography::
 
 
+
+.. _gcastle_notears_nonlinear: 
 
 ``gcastle_notears_nonlinear`` 
 -----------------------------
@@ -2196,6 +2260,8 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 
 
+.. _gcastle_pc: 
+
 ``gcastle_pc`` 
 --------------
 
@@ -2246,6 +2312,8 @@ A classic causal discovery algorithm based on conditional independence tests.
 .. footbibliography::
 
 
+
+.. _gcastle_rl: 
 
 ``gcastle_rl`` 
 --------------
@@ -2328,6 +2396,8 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 
 
+.. _gg99_singlepair: 
+
 ``gg99_singlepair`` 
 -------------------
 
@@ -2406,6 +2476,8 @@ advantage for the analysis of large and complex datasets.
 
 
 
+.. _gobnilp: 
+
 ``gobnilp`` 
 -----------
 
@@ -2471,6 +2543,8 @@ the first phase and the optimal sets are determined in a second phase.
 .. footbibliography::
 
 
+
+.. _gt13_multipair: 
 
 ``gt13_multipair`` 
 ------------------
@@ -2539,6 +2613,8 @@ Abstract: Full Bayesian computational inference for model determination in undir
 .. footbibliography::
 
 
+
+.. _parallelDG: 
 
 ``parallelDG`` 
 --------------
@@ -2616,6 +2692,8 @@ move variate, and outperforms current methods.
 
 
 
+.. _pcalg_pc: 
+
 ``pcalg_pc`` 
 ------------
 
@@ -2682,6 +2760,8 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 
 
+.. _prec_thresh: 
+
 ``prec_thresh`` 
 ---------------
 
@@ -2735,6 +2815,8 @@ Some text of the algorithm/module.
 .. footbibliography::
 
 
+
+.. _rblip_asobs: 
 
 ``rblip_asobs`` 
 ---------------
@@ -2800,6 +2882,8 @@ that no cycles are introduced.
 
 
 
+.. _sklearn_glasso: 
+
 ``sklearn_glasso`` 
 ------------------
 
@@ -2855,6 +2939,8 @@ that no cycles are introduced.
 
 
 
+.. _tetrad_fas: 
+
 ``tetrad_fas`` 
 --------------
 
@@ -2904,6 +2990,8 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
 .. footbibliography::
 
 
+
+.. _tetrad_fask: 
 
 ``tetrad_fask`` 
 ---------------
@@ -2962,6 +3050,8 @@ See Sanchez-Romero R, Ramsey JD, Zhang K, Glymour MR, Huang B, Glymour C. Causal
 
 
 
+.. _tetrad_fci: 
+
 ``tetrad_fci`` 
 --------------
 
@@ -3016,6 +3106,8 @@ From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that t
 .. footbibliography::
 
 
+
+.. _tetrad_fges: 
 
 ``tetrad_fges`` 
 ---------------
@@ -3077,6 +3169,8 @@ The algorithms requires a decomposable score—that is, a score that for the ent
 
 
 
+.. _tetrad_fofc: 
+
 ``tetrad_fofc`` 
 ---------------
 
@@ -3126,6 +3220,8 @@ From the Tetrad manual: Searches for causal structure over latent variables, whe
 
 
 
+.. _tetrad_ftfc: 
+
 ``tetrad_ftfc`` 
 ---------------
 
@@ -3174,6 +3270,8 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 .. footbibliography::
 
 
+
+.. _tetrad_gfci: 
 
 ``tetrad_gfci`` 
 ---------------
@@ -3236,6 +3334,8 @@ From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorith
 
 
 
+.. _tetrad_imgscont: 
+
 ``tetrad_imgscont`` 
 -------------------
 
@@ -3284,6 +3384,8 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 .. footbibliography::
 
 
+
+.. _tetrad_lingam: 
 
 ``tetrad_lingam`` 
 -----------------
@@ -3343,6 +3445,8 @@ Hyvärinen, A., Karhunen, J., & Oja, E. (2004). Independent component analysis (
 
 
 
+.. _tetrad_pc-all: 
+
 ``tetrad_pc-all`` 
 -----------------
 
@@ -3396,6 +3500,8 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
 .. footbibliography::
 
 
+
+.. _tetrad_rfci: 
 
 ``tetrad_rfci`` 
 ---------------
@@ -3451,6 +3557,8 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
 .. footbibliography::
 
 
+
+.. _trilearn_pgibbs: 
 
 ``trilearn_pgibbs`` 
 -------------------

@@ -130,6 +130,7 @@ for p in sorted(algspath.iterdir()):
     #str += "\n\n\n"
     #str +=".. _" + p.name +": "
     str += "\n\n"
+    str += ".. _"+p.name+": \n\n"
     str +="``" + p.name +"`` \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
