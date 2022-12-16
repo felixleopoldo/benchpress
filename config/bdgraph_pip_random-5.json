@@ -1,7 +1,7 @@
 {
   "benchmark_setup": {
     "data": [
-           {
+      {
         "data_id": "example1",
         "graph_id": "random-5",
         "parameters_id": "gwi",
@@ -21,18 +21,16 @@
         "path": true,
         "text": false,
         "ids": [
-            "bdgraph",
-            "gg99",
-            "bdgraph_pip"
+          "gg99",
+          "bdgraph_pip"
         ]
       },
       "graph_true_plots": true,
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": [
-        "bdgraph",
-          "gg99",
-          "bdgraph_pip"
+        "gg99",
+        "bdgraph_pip"
       ],
       "mcmc_traj_plots": [
         {
@@ -52,28 +50,28 @@
           "functional": [
             "size"
           ],
-            "active": false
+          "active": false
         }
       ],
       "mcmc_heatmaps": [
         {
           "id": "gg99",
           "burn_in": 0.5,
-          "active": true
+          "active": false
         },
         {
           "id": "bdgraph",
           "burn_in": 0.5,
-          "active": true
+          "active": false
         },
-          {
-            "id": "bdgraph_pip",
-            "burn_in": 0.5,
-            "active": true
+        {
+          "id": "bdgraph_pip",
+          "burn_in": 0.5,
+          "active": false
         }
       ],
       "mcmc_autocorr_plots": [
-          {
+        {
           "id": "gg99",
           "burn_in": 150000,
           "thinning": 500,
@@ -178,6 +176,25 @@
       ]
     },
     "structure_learning_algorithms": {
+      "bnlearn_tabu": [
+        {
+            "id": "tabu-bge",
+            "score": "bge",
+            "iss": 1,
+            "issmu": [
+                0.0001,
+                0.001,
+                0.01,
+                0.05
+            ],
+            "issw": null,
+            "l": 5,
+            "k": 1,
+            "prior": "uniform",
+            "beta": 1,
+            "timeout": null
+        }
+    ],
       "bdgraph": [
         {
           "id": "bdgraph",
@@ -212,7 +229,7 @@
         {
           "id": "gg99",
           "n_samples": [
-            2000000
+            20000
           ],
           "datatype": "continuous",
           "randomits": 100,
@@ -242,8 +259,7 @@
           "burnin_frac": 0.3
         }
       ],
-        
-        "bdgraph_pip": [
+      "bdgraph_pip": [
         {
           "id": "bdgraph_pip",
           "method": "ggm",
@@ -252,8 +268,8 @@
           ],
           "iter": 3000,
           "gprior": 0.5,
-            "dfprior": 3,
-            "startalg": "gg99",
+          "dfprior": 3,
+          "startalg": "tabu-bge",
           "gstart": "empty",
           "timeout": null,
           "mcmc_seed": [

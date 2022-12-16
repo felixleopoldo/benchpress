@@ -7,11 +7,18 @@
 # Order MCMC is special in the sense that it can define a startspace by means 
 # of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 
-def idtopath(mylist, json_string):
+def idtopath(mylist, json_string, mcmc_est=False):
+    print("mylist")
+    print(mylist)
+    
+    print("json_string")
+    print(json_string)
     if mylist is None:
         return "None"
     if isinstance(mylist, list):
+        #if mcmc_est:
         return [json_string[startalg][0] for startalg in mylist]
+        
     else:
         return json_string[str(mylist)]
 
@@ -20,14 +27,17 @@ json_string = {}
 # Generate strings from the config file.
 for alg in config["resources"]["structure_learning_algorithms"]:
     # Some algorihtm takes input graphs. These are treated separately.
-    has_input_algs = ["bidag_order_mcmc", "bidag_partition_mcmc"] 
-    if alg not in has_input_algs:
+    has_input_algs = ["bidag_order_mcmc", "bidag_partition_mcmc" , "bdgraph_pip"] 
+    if (alg not in has_input_algs) and (alg not in mcmc_modules): # not the mcmc_modules yet
         json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                         for val in config["resources"]["structure_learning_algorithms"][alg]})
 
 
 # These are special and have to be the last one since they take input strings as start space.
 # The start space path has to be gnerated first.
+
+# Maybe this can be done in the end.
+# Need to check if the startspace_algoruthm is an mcmc algorithm. If so idtopath should give also append pattern_strings["mcmc_est"]
 if "bidag_order_mcmc" in pattern_strings:
     order_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]
     for items in order_mcmc_list:    
@@ -40,12 +50,15 @@ if "bidag_order_mcmc" in pattern_strings:
 if "bdgraph_pip" in pattern_strings:
     bdgraph_pip_list = config["resources"]["structure_learning_algorithms"]["bdgraph_pip"]
     # The path to the startspace algorithm is extended here
-    for items in bdgraph_pip_list:    
-        items["startalg"] = idtopath(items["startalg"], json_string)
+    for items in bdgraph_pip_list:
+        #print("hej")
+        #print(items) 
+        items["startalg"] = idtopath(items["startalg"], json_string, mcmc_est=True) # Need to att the estmimator to the startalg as well
 
-    json_string.update({val["id"]: expand(pattern_strings["bdgraph_pip"], **val,) 
+    json_string.update({val["id"]: expand(pattern_strings["bdgraph_pip"] +"/"+pattern_strings["mcmc_est"] , **val,) 
                         for val in bdgraph_pip_list} )
 
+#print(json_string["bdgraph_pip"])
     
 
 if "bidag_partition_mcmc" in pattern_strings:
@@ -54,7 +67,7 @@ if "bidag_partition_mcmc" in pattern_strings:
     for items in bidag_partition_mcmc_list:    
         items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
 
-    json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
+    json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in bidag_partition_mcmc_list } )
 
 

@@ -15,6 +15,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        docker_image("bdgraph")
+        "docker://onceltuca/bdgraph:2.64"
     script:
         "script.R"
