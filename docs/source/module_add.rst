@@ -139,4 +139,5 @@ First make *render_docs.sh* executable then render and build the documentation
 
     ./render_docs.sh && make html
 
-The updated docs is then to
+Open the file *build/index.html* in a browser.
+
