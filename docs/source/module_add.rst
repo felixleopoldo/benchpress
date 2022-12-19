@@ -138,7 +138,7 @@ A parameters module has the following basic file structure, where all the files 
     └── docs.rst
 
 In this section we show the content for the module template `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__.
-The file `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_paramsrule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
+The file `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/rule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
 The container is set to `None` in the example in order to force local execution.
 On deployment (pushing to Benchpress repository) this field should be a `Docker Hub <https://hub.docker.com/>`__ uri on the form *docker://username/image:version*.
@@ -259,6 +259,7 @@ An algorithm module has the following basic file structure, where all the files 
     new_alg
     ├── rule.smk
     ├── script.R
+    ├── script.py
     ├── schema.json
     ├── info.json
     ├── bibtex.bib

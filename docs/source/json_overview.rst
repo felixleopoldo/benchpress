@@ -2,13 +2,13 @@
 JSON config file
 ##################
 
-In this section we describe the modules of Benchpress and the structure of the JSON configuration file, which serves as interface for the user.
-As are reference, we show the content of :ref:`pcdualpc` which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
+In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`_ configuration file, which serves as interface for the user.
+As are reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
 At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 40). 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
-Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id``. 
-The benchmark_setup_ section specifies the data models (datasetup_) (Line 3) and evaluation methods (evaluation_) (Line 14) a user wishes to consider for analysis. 
+Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 44, 53, 67, 76, and 90). 
+The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (evaluation_) (Line 14) a user wishes to consider for analysis. 
 The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding id’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
 
@@ -16,7 +16,7 @@ The output files of each module are saved systematically under the *results/* di
 .. code-block:: json
     :linenos:
     :name: pcdualpc
-    :caption: config/paper_pc_vs_dualpc.json
+    :caption: Comparison between PC vs. dual PC.
 
     {
         "benchmark_setup": {
