@@ -1,1 +1,0 @@
-Some text of the algorithm/module.
