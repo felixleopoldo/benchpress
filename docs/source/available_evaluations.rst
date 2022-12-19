@@ -41,6 +41,8 @@ The output of the modules are copied to *results/output* for easy access.
 
 
 
+.. _benchmarks: 
+
 ``benchmarks`` 
 --------------
 
@@ -163,6 +165,8 @@ The following plots are also produced
       }
     ]
 
+.. _ggally_ggpairs: 
+
 ``ggally_ggpairs`` 
 ------------------
 
@@ -202,6 +206,8 @@ However, you can always alter the script as you like it.
         "ggally_ggpairs": true
       }
     ]
+
+.. _graph_plots: 
 
 ``graph_plots`` 
 ---------------
@@ -243,6 +249,8 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
       "omcmc_itsample-bge",
       "pc-gaussCItest"
     ]
+
+.. _graph_true_plots: 
 
 ``graph_true_plots`` 
 --------------------
@@ -287,6 +295,8 @@ This module plots the true underlying graphs.
       }
     ]
 
+.. _graph_true_stats: 
+
 ``graph_true_stats`` 
 --------------------
 
@@ -315,6 +325,8 @@ This module plots properties of the true graphs such as graph density.
         "graph_true_stats": true
       }
     ]
+
+.. _mcmc_autocorr_plots: 
 
 ``mcmc_autocorr_plots`` 
 -----------------------
@@ -373,6 +385,8 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
       }
     ]
 
+.. _mcmc_heatmaps: 
+
 ``mcmc_heatmaps`` 
 -----------------
 
@@ -424,6 +438,8 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
         }
       ]
     ]
+
+.. _mcmc_traj_plots: 
 
 ``mcmc_traj_plots`` 
 -------------------

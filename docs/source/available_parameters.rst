@@ -55,6 +55,8 @@ Make sure that the parameter module is compatible with the graph module you are 
 
 
 
+.. _bdgraph_rgwish: 
+
 ``bdgraph_rgwish`` 
 ------------------
 
@@ -71,12 +73,11 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - `Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models  <https://www.jstatsoft.org/article/view/v089i03>`_
+     - :footcite:t:`JSSv089i03`
    * - Graph type
      - UG
    * - Docker 
      - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
-
    * - Module
      - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
 
@@ -108,6 +109,12 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
       }
     ]
 
+.. footbibliography::
+
+
+
+.. _bin_bn: 
+
 ``bin_bn`` 
 ----------
 
@@ -129,7 +136,6 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
      - DAG
    * - Docker 
      - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
-
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
@@ -167,6 +173,12 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
       }
     ]
 
+.. footbibliography::
+
+
+
+.. _fixed_params: 
+
 ``fixed_params`` 
 ----------------
 
@@ -190,6 +202,12 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 
 
 
+.. footbibliography::
+
+
+
+.. _sem_params: 
+
 ``sem_params`` 
 --------------
 
@@ -211,7 +229,6 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
      - DAG
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
-
    * - Module
      - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
 
@@ -252,6 +269,12 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
       }
     ]
 
+.. footbibliography::
+
+
+
+.. _trilearn_hyper-dir: 
+
 ``trilearn_hyper-dir`` 
 ----------------------
 
@@ -268,12 +291,11 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`10.1214/aos/1176349260`
    * - Graph type
      - DG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
-
    * - Module
      - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
 
@@ -281,7 +303,9 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 
 .. rubric:: Description
 
-An object of this module defines a categorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
+An object of this module defines a categorical decomposable model by sampling the parameters from the hyper Dirichlet distribution, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
+
+
 
 .. note:: 
 
@@ -300,6 +324,12 @@ An object of this module defines a categorical decomposable model by sampling th
         "pseudo_obs": 1.0
       }
     ]
+
+.. footbibliography::
+
+
+
+.. _trilearn_intra-class: 
 
 ``trilearn_intra-class`` 
 ------------------------
@@ -322,7 +352,6 @@ An object of this module defines a categorical decomposable model by sampling th
      - UG
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
-
    * - Module
      - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 
@@ -360,3 +389,6 @@ Using an object id of this module in the ``parameters_id`` field of the ``data``
         "sigma2": 1.0
       }
     ]
+
+.. footbibliography::
+

@@ -59,22 +59,6 @@ A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-In case of fixed data sets, parameters, or graphs, we simply use the corresponding filenames in place of ``id``.
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-    
-    [
-        { 
-            "graph_id": "avneigs4_p20",
-            "parameters_id": "SEM",
-            "data_id": "standardized",
-            "seed_range": [1, 10]
-        }
-    ]
 
 Data scenarios
 ---------------
@@ -92,6 +76,7 @@ replicating a simulation study from the literature, where both the true graph an
 are given. Scenario III-V are pure benchmarking scenarios, where either all of the graphs,
 parameters and data are generated (V) or the graphs and possibly parameters are specified by
 the user (III, IV).
+
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -113,14 +98,17 @@ Note that, in general the ``id``'s used must be defined in the resources section
 For example, *avneigs4_p20* is the ``id`` of an object in the pcalg_randdag_ module in the graph_ section.
 Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
 
-I
----
-
 Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
 For example, you may not use the graph_true_plots_ or benchmarks_ modules as both require the true graph to be provided.
 
 
-.. rubric:: Example 
+Examples
+^^^^^^^^^
+
+.. _I:
+
+I) Data analysis
+-----------------
 
 Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
 
@@ -133,7 +121,6 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-.. rubric:: Example 
 
 `2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from Sachs et. al 2005.
 
@@ -146,10 +133,8 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-II
+II)
 ---
-
-.. rubric:: Example
 
 
 .. code-block:: json
@@ -161,10 +146,8 @@ II
         "seed_range": null
     }
 
-III
----
-
-.. rubric:: Example
+III)
+-----
 
 Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
 You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
@@ -178,10 +161,8 @@ You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
         "seed_range": [1, 10]
     }
 
-IV
+IV)
 ---
-
-.. rubric:: Example
 
 
 .. code-block:: json
@@ -206,12 +187,11 @@ IV
                 3
             ]
         }
-    
-V
+
+.. _V:
+
+V)
 ---
-
-.. rubric:: Example
-
 
 .. code-block:: json
 
