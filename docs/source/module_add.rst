@@ -2,8 +2,6 @@ Graph module
 ########################
 
 The graph modules are stored as sub directories of `workflow/rules/graph <../../../workflow/rules/graph>`_. 
-
-
 In order to create a new graph module, you can make a copy of the template module `new_graph <../../../resources/module_templates/new_graph>`__ as
 
 .. prompt:: bash
@@ -20,7 +18,7 @@ copies the :ref:`pcalg_randdag` module to a new module named ``pcalg_randdag_cop
 
 The content of the modules may be changed in any of the alternatives above while maintaining the structure described below.
 
-Template structure
+Module structure
 ------------------
 
 A graph module has the following basic file structure, where all the files are necessary except for `script.R <../../../resources/module_templates/new_graph/script.R>`__ that may be changed.
@@ -60,7 +58,7 @@ In particular, in order to use the module, you need to add the following piece o
 
 .. code-block:: json
 
-    "new_algmod": [
+    "new_graph": [
         {
             "id": "testmat",
             "p": 5,
@@ -99,24 +97,22 @@ Variables are then automatically accessible in the script.
 See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details of how to access variables in script.
 
 * `info.json <../../../resources/module_templates/new_graph/info.json>`__ is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when generating the documentation.
-* `schema.json <../../../resources/module_templates/new_graph/schema.json>`__ is a `JSON <https://www.json.org/json-en.html>`_ schema for the module.
-* `docs.rst <../../../resources/module_templates/new_graph/docs.rst>`__ is a documentation file in reStructuredText (RST) format.
+* `schema.json <../../../resources/module_templates/new_graph/schema.json>`__ is a `JSON schema <https://json-schema.org/>`_  for the module.
+* `docs.rst <../../../resources/module_templates/new_graph/docs.rst>`__ is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format.
 * `bibtext.bib <../../../resources/module_templates/new_graph/bibtex.bib>`__ is a `BibTeX <http://www.bibtex.org/Format/>`_ file with references that will be show in the docs.
 
 
+Parameters module
+########################
 
+Data module
+########################
 
-.. Parameters module
-.. ########################
+Algorithm module
+########################
 
-.. Data module
-.. ########################
-
-.. Algorithm module
-.. ########################
-
-.. Evaluation module
-.. ########################
+Evaluation module
+########################
 
 Updating the docs
 ########################
@@ -139,5 +135,5 @@ First make *render_docs.sh* executable then render and build the documentation
 
     ./render_docs.sh && make html
 
-Open the file *build/index.html* in a browser.
+Open *build/html/index.html* in a browser.
 

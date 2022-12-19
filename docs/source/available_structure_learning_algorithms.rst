@@ -252,7 +252,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - :footcite:t:`JSSv089i03`
+     - :footcite:t:`JSSv089i03`, :footcite:t:`mohammadi2015bayesian`, :footcite:t:`doi:10.1080/01621459.2021.1996377`, :footcite:t:`10.1214/18-AOAS1164`
    * - Graph type
      - UG
    * - Docker 
@@ -337,7 +337,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 .. rubric:: Description
 
 This is a hybrid score-based optimisation technique based on Markov chain Monte Carlo
-schemes :footcite:t:`doi:10.1080/10618600.2021.2020127` . The algorithm starts from a skeleton obtained
+schemes :footcite:t:`doi:10.1080/10618600.2021.2020127`. The algorithm starts from a skeleton obtained
 through a fast method (e.g. a constraint based method, or GES). Then it performs score and
 search on the DAGs belonging to the space defined by the starting skeleton. To correct for
 edges which may be missed, the search space is iteratively expanded to include one additional
@@ -402,7 +402,7 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
-     - :footcite:t:`doi:10.1080/10618600.2021.2020127`
+     - :footcite:t:`friedman2003being`, :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
      - DAG, CPDAG
    * - Docker 
@@ -417,15 +417,14 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 
 This technique relies on a Bayesian perspective on structure learning, where the score of a DAG
 is defined as its posterior distribution. To overcome the limitation of simple structure-based
-MCMC schemes, Friedman and Koller (2003) turned to a score defined as the sum of the
+MCMC schemes, :footcite:t:`friedman2003being` turned to a score defined as the sum of the
 posterior scores of all DAG which are consistent with a given topological ordering of the
 nodes. One can then run a Metropolis-Hasting algorithm to sample from the distribution
 induced by the order score, and later draw a DAG consistent with the order. This strategy
 substantially improves convergence with respect to earlier structure MCMC scheme, though it
 unfortunately produces a biased sample on the space of DAGs. The implementation considered
 in Benchpress is a hybrid version with the sampling performed on a restricted search space
-initialised with constraint-based testing and improved with a score-based search (Kuipers et al.
-2021).
+initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
 .. rubric:: Example
 
@@ -611,7 +610,7 @@ Fast incremental association Markov blanket
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`margaritis2003learning`
    * - Graph type
      - DAG
    * - Docker 
@@ -626,7 +625,7 @@ Fast incremental association Markov blanket
 
 The grow-shrink (GS) algorithm is based on the Markov blanket of the nodes in a DAG. For
 a specific node, the Markov blanket it the set of nodes which conditioning upon renders it
-conditionally independent from all other variables (Margaritis 2003). It is a constraint-based
+conditionally independent from all other variables :footcite:t:`margaritis2003learning`. It is a constraint-based
 method which estimates the Markov blanket of a node in a two-stage forward-backward proce-
 dure using conditional independence tests. The Markov blankets are used to first estimate an
 undirected graph and then estimate a DAG in a four-step procedure.
@@ -738,7 +737,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - DAG
    * - Docker 
@@ -752,8 +751,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
 .. rubric:: Description
 
 Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and
-adds, deletes or reverses edges in a greedy manner until an optimum is reached (Russell and
-Norvig 2002; Scutari, Vitolo, and Tucker 2019b).
+adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 .. rubric:: Example
 
@@ -993,7 +991,7 @@ As in GS, this algorithm is also based on the Markov blanket method to first det
 undirected skeleton. However, in incremental association Markov blanket (inter-IAMB) the
 variable to be included in the Markov blankets are not considered in static order as in GS
 and the forward-backward stages are combined into a single procedure, which has the effect of
-reducing the size of the blankets (Tsamardinos et al. 2003).
+reducing the size of the blankets.
 
 .. rubric:: Example
 
@@ -1054,8 +1052,7 @@ reducing the size of the blankets (Tsamardinos et al. 2003).
 
 Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a
 DAG using an algorithm called Max-Min Parents and Children and then performs a greedy
-hill-climbing search to orient the edges with respect to a Bayesian score (Tsamardinos et al.
-2006). It is a popular approach used as standard benchmark and also well suited for high-
+hill-climbing search to orient the edges with respect to a Bayesian score. It is a popular approach used as standard benchmark and also well suited for high-
 dimensional domains.
 
 .. rubric:: Example
@@ -1409,7 +1406,7 @@ et al. 2019b).
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
-     - 
+     - :footcite:t:`squires2018causaldag`
    * - Graph type
      - DAG
    * - Docker 
@@ -2723,7 +2720,7 @@ move variate, and outperforms current methods.
 
 .. rubric:: Description
 
-The Peter and Clark (PC) algorithm (Spirtes and Glymour 1991), is a constraint based method
+The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`, is a constraint based method
 consisting of two main steps. The first step is called the adjacency search and amounts to
 finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
 
@@ -2834,7 +2831,7 @@ Some text of the algorithm/module.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/r.blip/r.blip.pdf>`__
    * - Paper
-     - 
+     - :footcite:t:`scanagatta2018approximate`, :footcite:t:`scanagatta2015learning`, :footcite:t:`teyssier2012ordering`
    * - Graph type
      - DAG
    * - Docker 
@@ -2900,7 +2897,7 @@ that no cycles are introduced.
    * - Docs
      - `here <https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso>`__
    * - Paper
-     - 
+     - :footcite:t:`friedman2008sparse`
    * - Graph type
      - UG
    * - Docker 
@@ -3009,7 +3006,7 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`sanchez2018causal`, :footcite:t:`hyvarinen2013pairwise`
    * - Graph type
      - DAG
    * - Docker 
@@ -3024,11 +3021,12 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
 
 From the Tetrad manual: FASK learns a linear model in which all of the variables are skewed.
 
-The idea is as follows. First, FAS-stable is run on the data, producing an undirected graph. We use the BIC score as a conditional independence test with a specified penalty discount c. This yields undirected graph G0 . The reason FAS-stable works for sparse cyclic models where the linear coefficients are all less than 1 is that correlations induced by long cyclic paths are statistically judged as zero, since they are products of multiple coefficients less than 1. Then, each of the X − Y adjacencies in G0 is oriented as a 2-cycle X += Y , or X → Y , or X ← Y . Taking up each adjacency in turn, one tests to see whether the adjacency is a 2-cycle by testing if the difference between corr(X, Y ) and corr(X, Y |X > 0), and corr(X, Y ) and corr(X, Y |Y > 0), are both significantly not zero. If so, the edges X → Y and X ← Y are added to the output graph G1 . If not, the Left-Right orientation is rule is applied: Orient X → Y in G1, if (E(X Y |X > 0)/ E(X 2|X > 0)E(Y 2 |X > 0) − E(X Y |Y > 0)/ E(X 2 |Y > 0)E(Y 2|Y > 0)) > 0; otherwise orient X ← Y . G1 will be a fully oriented graph. For some models, where the true coefficients of a 2-cycle between X and Y are more or less equal in magnitude but opposite in sign, FAS-stable may fail to detect an edge between X and Y when in fact a 2-cycle exists. In this case, we check explicitly whether corr(X, Y |X > 0) and corr(X, Y |Y > 0) differ by more than a set amount of 0.3. If so, the adjacency is added to the graph and oriented using the aforementioned rules.
+The idea is as follows. First, FAS-stable is run on the data, producing an undirected graph. We use the BIC score as a conditional independence test with a specified penalty discount c. 
+This yields undirected graph G0 . The reason FAS-stable works for sparse cyclic models where the linear coefficients are all less than 1 is that correlations induced by long cyclic paths are statistically judged as zero, since they are products of multiple coefficients less than 1. Then, each of the X − Y adjacencies in G0 is oriented as a 2-cycle X += Y , or X → Y , or X ← Y . Taking up each adjacency in turn, one tests to see whether the adjacency is a 2-cycle by testing if the difference between corr(X, Y ) and corr(X, Y |X > 0), and corr(X, Y ) and corr(X, Y |Y > 0), are both significantly not zero. If so, the edges X → Y and X ← Y are added to the output graph G1 . If not, the Left-Right orientation is rule is applied: Orient X → Y in G1, if (E(X Y |X > 0)/ E(X 2|X > 0)E(Y 2 |X > 0) − E(X Y |Y > 0)/ E(X 2 |Y > 0)E(Y 2|Y > 0)) > 0; otherwise orient X ← Y . G1 will be a fully oriented graph. For some models, where the true coefficients of a 2-cycle between X and Y are more or less equal in magnitude but opposite in sign, FAS-stable may fail to detect an edge between X and Y when in fact a 2-cycle exists. In this case, we check explicitly whether corr(X, Y |X > 0) and corr(X, Y |Y > 0) differ by more than a set amount of 0.3. If so, the adjacency is added to the graph and oriented using the aforementioned rules.
 
-We include pairwise orientation rule RSkew, Skew, and Tanh from Hyvärinen, A., & Smith, S. M. (2013). Pairwise likelihood ratios for estimation of non-Gaussian structural equation models. Journal of Machine Learning Research, 14(Jan), 111-152, so in some configurations FASK can be made to implement an algorithm that has been called in the literature "Pairwise LiNGAM"--this is intentional; we do this for ease of comparison. You'll get this configuration if you choose one of these pairwise orientation rules, together with the FAS with orientation alpha and two-cycle threshold set to zero and skewness threshold set to 1, for instance.
+We include pairwise orientation rule RSkew, Skew, and Tanh from :footcite:t:`hyvarinen2013pairwise`, so in some configurations FASK can be made to implement an algorithm that has been called in the literature "Pairwise LiNGAM"--this is intentional; we do this for ease of comparison. You'll get this configuration if you choose one of these pairwise orientation rules, together with the FAS with orientation alpha and two-cycle threshold set to zero and skewness threshold set to 1, for instance.
 
-See Sanchez-Romero R, Ramsey JD, Zhang K, Glymour MR, Huang B, Glymour C. Causal discovery of feedback networks with functional magnetic resonance imaging. Network Neuroscience 2018.
+See  :footcite:t:`sanchez2018causal`.
 
 
 .. rubric:: Example
@@ -3068,7 +3066,7 @@ See Sanchez-Romero R, Ramsey JD, Zhang K, Glymour MR, Huang B, Glymour C. Causal
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`spirtes1993discovery`, :footcite:t:`spirtes2000causation`
    * - Graph type
      - DAG
    * - Docker 
@@ -3081,7 +3079,8 @@ See Sanchez-Romero R, Ramsey JD, Zhang K, Glymour MR, Huang B, Glymour C. Causal
 
 .. rubric:: Description
 
-From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that takes as input sample data and optional background knowledge and in the large sample limit outputs an equivalence class of CBNs that (including those with hidden confounders) that entail the set of conditional independence relations judged to hold in the population. It is limited to several thousand variables, and on realistic sample sizes it is inaccurate in both adjacencies and orientations. FCI has two phases: an adjacency phase and an orientation phase. The adjacency phase of the algorithm starts with a complete undirected graph and then performs a sequence of conditional independence tests that lead to the removal of an edge between any two adjacent variables that are judged to be independent, conditional on some subset of the observed variables; any conditioning set that leads to the removal of an adjacency is stored. After the adjacency phase, the resulting undirected graph has the correct set of adjacencies, but all of the edges are unoriented. FCI then enters an orientation phase that uses the stored conditioning sets that led to the removal of adjacencies to orient as many of the edges as possible. See [Spirtes, 1993]
+From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that takes as input sample data and optional background knowledge and in the large sample limit outputs an equivalence class of CBNs that (including those with hidden confounders) that entail the set of conditional independence relations judged to hold in the population. It is limited to several thousand variables, and on realistic sample sizes it is inaccurate in both adjacencies and orientations. FCI has two phases: an adjacency phase and an orientation phase. The adjacency phase of the algorithm starts with a complete undirected graph and then performs a sequence of conditional independence tests that lead to the removal of an edge between any two adjacent variables that are judged to be independent, conditional on some subset of the observed variables; any conditioning set that leads to the removal of an adjacency is stored. After the adjacency phase, the resulting undirected graph has the correct set of adjacencies, but all of the edges are unoriented. FCI then enters an orientation phase that uses the stored conditioning sets that led to the removal of adjacencies to orient as many of the edges as possible. 
+See :footcite:t:`spirtes1993discovery`.
 
 .. rubric:: Example
 
@@ -3125,7 +3124,7 @@ From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that t
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`meek1997graphical`, :footcite:t:`chickering2002optimal`, :footcite:t:`ramsey2017million`
    * - Graph type
      - CPDAG
    * - Docker 
@@ -3138,7 +3137,10 @@ From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that t
 
 .. rubric:: Description
 
-From the Tetrad manual:  FGES is an optimized and parallelized version of an algorithm developed by Meek [Meek, 1997] called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering [Chickering, 2002]. GES is a Bayesian algorithm that heuristically searches the space of CBNs and returns the model with highest Bayesian score it finds. In particular, GES starts its search with the empty graph. It then performs a forward stepping search in which edges are added between nodes in order to increase the Bayesian score. This process continues until no single edge addition increases the score. Finally, it performs a backward stepping search that removes edges until no single edge removal can increase the score. More information is available here and here. The reference is Ramsey et al., 2017.
+From the Tetrad manual:  FGES is an optimized and parallelized version of an algorithm developed by :footcite:t:`meek1997graphical` called the Greedy Equivalence Search (GES). 
+The algorithm was further developed and studied by :footcite:t:`chickering2002optimal`. 
+GES is a Bayesian algorithm that heuristically searches the space of CBNs and returns the model with highest Bayesian score it finds. In particular, GES starts its search with the empty graph. It then performs a forward stepping search in which edges are added between nodes in order to increase the Bayesian score. This process continues until no single edge addition increases the score. Finally, it performs a backward stepping search that removes edges until no single edge removal can increase the score. More information is available here and here. 
+The reference is :footcite:t:`ramsey2017million`.
 
 The algorithms requires a decomposable score—that is, a score that for the entire DAG model is a sum of logged scores of each variables given its parents in the model. The algorithms can take all continuous data (using the SEM BIC score), all discrete data (using the BDeu score).
 
@@ -3200,7 +3202,11 @@ The algorithms requires a decomposable score—that is, a score that for the ent
 
 .. rubric:: Description
 
-From the Tetrad manual: Searches for causal structure over latent variables, where the true models are Multiple Indicator Models (MIM’s) as described in the Graphs section. The idea is this. There is a set of latent (unmeasured) variables over which a directed acyclic model has been defined, Then for each of these latent L there are 3 (preferably 4) or more measures of that variable—that is, measured variables that are all children of L. Under these conditions, one may define tetrad constraints (see Spirtes et al., 2000). There is a theorem to the effect that if certain CPDAGs of these tetrad constraints hold, there must be a latent common cause of all of them (the Tetrad Representation Theorem). The FOFC (Find One Factor Clusters) takes advantage of this fact. The basic idea is to build up clusters one at a time by adding variables that keep them pure in the sense that all relevant tetrad constraints still hold. There are different ways of going about this. One could try to build one cluster up as far as possible, then remove all of those variables from the set, and try to make a another cluster using the remaining variables (SAG, Seed and Grow). Or one can try in parallel to grow all possible clusters and then choose among the grown clusters using some criterion such as cluster size (GAP, Grow and Pick). In general, GAP is more accurate. The result is a clustering of variables. Once one has such a “measurement model, one can estimate (using the ESTIMATOR box) a covariance matrix over the latent variables that are parents of the measures and use some algorithm such as PC or GES to estimate a CPDAG over the latent variables. The algorithm to run PC or GES on this covariance matrix is called MimBuild (“MIM” is the graph, Multiple Indicator Model; “Build” means build). MimBUILD is an optional choice inside FOFC In this way, one may recover causal structure over the latents. The more measures one has for each latent the better the result is, generally. At least 3 measured indicator variables are needed for each latent variable. The larger the sample size the better. One important issue is that the algorithm is sensitive to so-called “impurities”—that is,causal edges among the measured variables, or between measured variables and multiple latent variables. The algorithm will in effect remove one measure in each impure pair from consideration. Note that for FOFC, a test is done for each final cluster as to whether the variables in teh cluster are all mutually dependent. 
+From the Tetrad manual: Searches for causal structure over latent variables, where the true models are Multiple Indicator Models (MIM’s) as described in the Graphs section. 
+The idea is this. 
+There is a set of latent (unmeasured) variables over which a directed acyclic model has been defined, Then for each of these latent L there are 3 (preferably 4) or more measures of that variable—that is, measured variables that are all children of L. Under these conditions, one may define tetrad constraints (see :footcite:t:`spirtes2000causation`). 
+There is a theorem to the effect that if certain CPDAGs of these tetrad constraints hold, there must be a latent common cause of all of them (the Tetrad Representation Theorem). The FOFC (Find One Factor Clusters) takes advantage of this fact. The basic idea is to build up clusters one at a time by adding variables that keep them pure in the sense that all relevant tetrad constraints still hold. There are different ways of going about this. One could try to build one cluster up as far as possible, then remove all of those variables from the set, and try to make a another cluster using the remaining variables (SAG, Seed and Grow). Or one can try in parallel to grow all possible clusters and then choose among the grown clusters using some criterion such as cluster size (GAP, Grow and Pick). In general, GAP is more accurate. The result is a clustering of variables. Once one has such a “measurement model, one can estimate (using the ESTIMATOR box) a covariance matrix over the latent variables that are parents of the measures and use some algorithm such as PC or GES to estimate a CPDAG over the latent variables. The algorithm to run PC or GES on this covariance matrix is called MimBuild (“MIM” is the graph, Multiple Indicator Model; “Build” means build). MimBUILD is an optional choice inside FOFC In this way, one may recover causal structure over the latents. The more measures one has for each latent the better the result is, generally. At least 3 measured indicator variables are needed for each latent variable. The larger the sample size the better. 
+One important issue is that the algorithm is sensitive to so-called “impurities”—that is,causal edges among the measured variables, or between measured variables and multiple latent variables. The algorithm will in effect remove one measure in each impure pair from consideration. Note that for FOFC, a test is done for each final cluster as to whether the variables in teh cluster are all mutually dependent. 
 
 .. rubric:: Example
 
@@ -3289,7 +3295,7 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`ramsey2017million`, :footcite:t:`spirtes1993discovery`
    * - Graph type
      - DAG
    * - Docker 
@@ -3302,9 +3308,8 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 .. rubric:: Description
 
-From the TETRAD manual: *GFCI is a combination of the FGES [FGES, 2016] algorithm and the FCI algorithm [Spirtes, 1993] that improves upon the accuracy and efficiency of FCI. In order to understand the basic methodology of GFCI, it is necessary to understand some basic facts about the FGES and FCI algorithms. The FGES algorithm is used to improve the accuracy of both the adjacency phase and the orientation phase of FCI by providing a more accurate initial graph that contains a subset of both the non-adjacencies and orientations of the final output of FCI. The initial set of nonadjacencies given by FGES is augmented by FCI performing a set of conditional independence tests that lead to the removal of some further adjacencies whenever a conditioning set is found that makes two adjacent variables independent. After the adjacency phase of FCI, some of the orientations of FGES are then used to provide an initial orientation of the undirected graph that is then augmented by the orientation phase of FCI to provide additional orientations. A verbose description of GFCI can be found here (discrete variables) and here (continuous variables).*
-
-
+From the TETRAD manual: GFCI is a combination of the FGES :footcite:t:`ramsey2017million` algorithm and the FCI algorithm :footcite:t:`spirtes1993discovery` that improves upon the accuracy and efficiency of FCI. In order to understand the basic methodology of GFCI, it is necessary to understand some basic facts about the FGES and FCI algorithms. 
+The FGES algorithm is used to improve the accuracy of both the adjacency phase and the orientation phase of FCI by providing a more accurate initial graph that contains a subset of both the non-adjacencies and orientations of the final output of FCI. The initial set of nonadjacencies given by FGES is augmented by FCI performing a set of conditional independence tests that lead to the removal of some further adjacencies whenever a conditioning set is found that makes two adjacent variables independent. After the adjacency phase of FCI, some of the orientations of FGES are then used to provide an initial orientation of the undirected graph that is then augmented by the orientation phase of FCI to provide additional orientations. 
 
 .. rubric:: Example
 
@@ -3403,7 +3408,7 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`shimizu2006linear`, :footcite:t:`hyvarinen2002independent`
    * - Graph type
      - DAG
    * - Docker 
@@ -3416,16 +3421,12 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
 .. rubric:: Description
 
-From the Tetrad manual: LiNGAM (Shimizu et al., 2006) was one of the first of the algorithms that assumed linearity among the variables and non-Gaussianity of error term, and still one of the best for smaller models, for the basic algorithm, implemented here. The idea is to use the Independent Components Analysis (ICA) algorithm to check all permutations of the variables to find one that is a causal order—that is, one in which earlier variables can cause later variables but not vice-versa. The method is clever. First, since we assume the model is a directed acyclic graph (DAG), there must be some permutation of the variables for which the main diagonal of the inverse of the weight matrix contains no zeros. This gives us a permuted estimate of the weight matrix. Then we look for a permutation of this weight matrix that is lower triangular. There must be one, since the model is assumed to be a DAG. But a lower triangular weight matrix just gives a causal order, so we’re done.
+From the Tetrad manual: LiNGAM :footcite:t:`shimizu2006linear` was one of the first of the algorithms that assumed linearity among the variables and non-Gaussianity of error term, and still one of the best for smaller models, for the basic algorithm, implemented here. The idea is to use the Independent Components Analysis (ICA) algorithm to check all permutations of the variables to find one that is a causal order—that is, one in which earlier variables can cause later variables but not vice-versa. The method is clever. First, since we assume the model is a directed acyclic graph (DAG), there must be some permutation of the variables for which the main diagonal of the inverse of the weight matrix contains no zeros. This gives us a permuted estimate of the weight matrix. Then we look for a permutation of this weight matrix that is lower triangular. There must be one, since the model is assumed to be a DAG. But a lower triangular weight matrix just gives a causal order, so we’re done.
 
 In the referenced paper, we implement Algorithm A, which is described above. Once one has a causal order the only thing one needs to do is to eliminate the extra edges. For this, we use the causal order to define knowledge of tiers and run FGES.
 
-Our implementation of LiNGAM has one parameter, penalty discount, used for the FGES adjacency search. The method as implemented does not scale much beyond 10 variables, because it is checking every permutation of all of the variables (twice). The implementation of ICA we use is FastIca (Hyvärinen et al., 2004).
+Our implementation of LiNGAM has one parameter, penalty discount, used for the FGES adjacency search. The method as implemented does not scale much beyond 10 variables, because it is checking every permutation of all of the variables (twice). The implementation of ICA we use is FastIca  :footcite:t:`hyvarinen2002independent`.
 
-
-Shimizu, S., Hoyer, P. O., Hyvärinen, A., & Kerminen, A. (2006). A linear non-Gaussian acyclic model for causal discovery. Journal of Machine Learning Research, 7(Oct), 2003-2030.
-
-Hyvärinen, A., Karhunen, J., & Oja, E. (2004). Independent component analysis (Vol. 46). John Wiley & Sons. 
 
 .. rubric:: Example
 
@@ -3463,7 +3464,7 @@ Hyvärinen, A., Karhunen, J., & Oja, E. (2004). Independent component analysis (
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`doi:10.1177/089443939100900106`, :footcite:t:`spirtes2000causation`
    * - Graph type
      - DAG
    * - Docker 
@@ -3476,11 +3477,11 @@ Hyvärinen, A., Karhunen, J., & Oja, E. (2004). Independent component analysis (
 
 .. rubric:: Description
 
-From TETRAD docs: PC algorithm (Spirtes and Glymour, Social Science Computer Review, 1991) is a CPDAG search which assumes that the underlying causal structure of the input data is acyclic, and that no two variables are caused by the same latent (unmeasured) variable. In addition, it is assumed that the input data set is either entirely continuous or entirely discrete; if the data set is continuous, it is assumed that the causal relation between any two variables is linear, and that the distribution of each variable is Normal. Finally, the sample should ideally be i.i.d.. Simulations show that PC and several of the other algorithms described here often succeed when these assumptions, needed to prove their correctness, do not strictly hold. The PC algorithm will sometimes output double headed edges. In the large sample limit, double headed edges in the output indicate that the adjacent variables have an unrecorded common cause, but PC tends to produce false positive double headed edges on small samples.
+From TETRAD docs: PC algorithm :footcite:t:`doi:10.1177/089443939100900106` is a CPDAG search which assumes that the underlying causal structure of the input data is acyclic, and that no two variables are caused by the same latent (unmeasured) variable. In addition, it is assumed that the input data set is either entirely continuous or entirely discrete; if the data set is continuous, it is assumed that the causal relation between any two variables is linear, and that the distribution of each variable is Normal. Finally, the sample should ideally be i.i.d.. Simulations show that PC and several of the other algorithms described here often succeed when these assumptions, needed to prove their correctness, do not strictly hold. The PC algorithm will sometimes output double headed edges. In the large sample limit, double headed edges in the output indicate that the adjacent variables have an unrecorded common cause, but PC tends to produce false positive double headed edges on small samples.
 
 The PC algorithm is correct whenever decision procedures for independence and conditional independence are available. The procedure conducts a sequence of independence and conditional independence tests, and efficiently builds a CPDAG from the results of those tests. As implemented in TETRAD, PC is intended for multinomial and approximately Normal distributions with i.i.d. data. The tests have an alpha value for rejecting the null hypothesis, which is always a hypothesis of independence or conditional independence. For continuous variables, PC uses tests of zero correlation or zero partial correlation for independence or conditional independence respectively. For discrete or categorical variables, PC uses either a chi square or a g square test of independence or conditional independence (see Causation, Prediction, and Search for details on tests). In either case, the tests require an alpha value for rejecting the null hypothesis, which can be adjusted by the user. The procedures make no adjustment for multiple testing. (For PC, CPC, JPC, JCPC, FCI, all testing searches.)
 
-The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour, and Scheines, 2000) comes with three heuristics designed to reduce dependence on the order of the variables. The heuristic PC-1 simple sorts the variables in alphabetical order. The heuristic PC-2 and PC-3 sort edges by their p-values in the search. PP-3 further sorts parents of nodes in reverse order by the p-values of the conditional independence facts used to removed edges in the search. Please see Causation, Prediction, and Search for more details for these heuristics.
+The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirtes2000causation` comes with three heuristics designed to reduce dependence on the order of the variables. The heuristic PC-1 simple sorts the variables in alphabetical order. The heuristic PC-2 and PC-3 sort edges by their p-values in the search. PP-3 further sorts parents of nodes in reverse order by the p-values of the conditional independence facts used to removed edges in the search. Please see Causation, Prediction, and Search for more details for these heuristics.
 
 .. rubric:: Example
 
@@ -3519,7 +3520,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`10.2307/41713636`
    * - Graph type
      - DAG
    * - Docker 
@@ -3532,7 +3533,7 @@ The PC algorithm as given in Causation, Prediction and Search (Spirtes, Glymour,
 
 .. rubric:: Description
 
-From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. See Colombo et al., 2012.
+From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. 
 
 .. rubric:: Example
 

@@ -430,13 +430,11 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 
 
     [
-      [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "active": true
-        }
-      ]
+      {
+        "id": "omcmc_itsample-bge",
+        "burn_in": 0,
+        "active": true
+      }
     ]
 
 .. _mcmc_traj_plots: 
@@ -485,16 +483,14 @@ Since the trajectories tend to be very long, the user may choose to thin out the
 
 
     [
-      [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "thinning": 1,
-          "functional": [
-            "score",
-            "size"
-          ],
-          "active": true
-        }
-      ]
+      {
+        "id": "omcmc_itsample-bge",
+        "burn_in": 0,
+        "thinning": 1,
+        "functional": [
+          "score",
+          "size"
+        ],
+        "active": true
+      }
     ]

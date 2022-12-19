@@ -40,7 +40,6 @@ def info_to_table(info, p):
 
         if len(bibtex_database.entries) > 0:            
             for ref in bibtex_database.entries:
-                
                 tab += ":footcite:t:`"+ref["ID"] +"`, "
         else:
             tab += "  "
