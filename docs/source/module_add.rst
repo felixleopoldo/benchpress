@@ -1,3 +1,8 @@
+The container field is set to `None` in all of the example rules below in order to force local execution.
+On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
+You should not alter the name or the output fields.
+
+
 Graph module
 ########################
 
@@ -36,9 +41,6 @@ A graph module has the following basic file structure, where all the files are n
 In this section we show the content for the module template `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__.
 The file `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
-The container is set to `None` in the example in order to force local execution.
-On deployment (pushing to Benchpress repository) this field should be a `Docker Hub <https://hub.docker.com/>`__ uri on the form *docker://username/image:version*.
-You should not alter the name or the output fields.
 
 .. code-block:: python
     
@@ -140,8 +142,6 @@ A parameters module has the following basic file structure, where all the files 
 In this section we show the content for the module template `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__.
 The file `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/rule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
-The container is set to `None` in the example in order to force local execution.
-On deployment (pushing to Benchpress repository) this field should be a `Docker Hub <https://hub.docker.com/>`__ uri on the form *docker://username/image:version*.
 You should not alter the name or the output fields.
 
 .. code-block:: python
@@ -268,8 +268,6 @@ An algorithm module has the following basic file structure, where all the files 
 In this section we show the content for the module template `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__.
 The file `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rule.smk>`__ contains a  `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the proper name and output fields.
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
-The container is set to `None` in the example in order to force local execution.
-On deployment (pushing to Benchpress repository) this field should be a `Docker Hub <https://hub.docker.com/>`__ uri on the form *docker://username/image:version*.
 You should not alter the name or the output fields.
 
 .. code-block:: python

@@ -132,7 +132,7 @@ The output files of each module are saved systematically under the *results/* di
 
 
 
-Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles) in a JSON file. 
+Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles). 
 Graphs, parameters, and data are denoted by :math:`G, \Theta`, and :math:`\mathbf Y`, respectively.
 The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results, respectively. 
 An arrow from a node A to another node B should be read as *“B requires input from A”*. 
@@ -228,7 +228,7 @@ Examples
 I) Data analysis (fixed data)
 ---------------------------------
 
-Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`, and is contain
+Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`
 
 .. code-block:: json
 

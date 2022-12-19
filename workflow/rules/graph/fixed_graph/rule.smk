@@ -1,3 +1,4 @@
+
 rule fixed_adjmat:
     input:
         "resources/adjmat/myadjmats/{adjmat}.csv"

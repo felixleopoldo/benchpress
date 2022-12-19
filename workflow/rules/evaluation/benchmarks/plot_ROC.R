@@ -79,12 +79,6 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
 unique_adjmats <- unique(joint_bench$adjmat)
 unique_parameters <- unique(joint_bench$parameters)
 unique_data <- unique(joint_bench$data)
-#  print("Unique adjmats")
-#  print(unique_adjmats)
-#  print("Unique parameters")
-#  print(unique_parameters)
-#  print("Unique data")
-#  print(unique_data)
 
   joint_bench_tmp <- joint_bench
   toplot_tmp <- toplot
@@ -100,9 +94,6 @@ unique_data <- unique(joint_bench$data)
         toplot <- toplot_tmp %>% filter(adjmat==adjmat2) %>%         
         filter(parameters==parameters2) %>% 
         filter(data==data2)
-
-        print("")
-        print(toplot)
         
         if (nrow(joint_bench) > 0){
 
@@ -579,39 +570,6 @@ unique_data <- unique(joint_bench$data)
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["fnr_fprp_skel"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
-
-        # adjmats <- unique(toplot["adjmat"])
-        # parameterss <- unique(toplot["parameters"])
-        # datas <- unique(toplot["data"])
-        # ids <- unique(toplot["id"])
-
-        # for (adjmat in adjmats){
-        #     for (parameters in parameterss){
-        #         for (data in datas) {
-        #             for (id in ids) {
-        #                 dftmp <- toplot %>%
-        #                         filter(adjmat == adjmat) %>%
-        #                         filter(parameters == parameters) %>%
-        #                         filter(data == data) %>%
-        #                         filter(id == id)
-
-        #                 param <- unlist(unique(dftmp["curve_param"]))
-        #                 print(paste(c(unlist(adjmat), unlist(parameters), unlist(data))))
-        #                 print(data[1])
-        #                 print(unlist(parameters))
-        #                 print(unlist(adjmat))
-
-        #                 ggplot() + geom_bar(data = dftmp, stat="identity", aes(x=as.factor(curve_vals), y = time_mean)) +
-        #                   ggtitle(id) +
-        #                   theme_bw() +
-        #                   xlab(param) +
-        #                   ylab("Mean time (s.)")
-        #                 ggsave(file = snakemake@output[["elapsed_time"]])
-
-        #             }
-        #         }
-        #     }
-        # }
 
         f <- function(y) {
           c(label = length(y), y = median(y))

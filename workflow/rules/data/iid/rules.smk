@@ -108,11 +108,11 @@ a .csv file in resources/parameters/myparams/sem_params.
 rule sample_fixed_sem_params_data:
     # No copying here as for bn.fit_params.
     input:        
-        bn="resources/parameters/myparams/{bn}"      
+        bn="resources/parameters/myparams/sem_params/{bn}"      
     output:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
-             "parameters=/{bn}/" \
+             "parameters=/sem_params/{bn}/" \
              "data=/iid/n={n}/seed={replicate}.csv"
     container:
         docker_image("bidag")
