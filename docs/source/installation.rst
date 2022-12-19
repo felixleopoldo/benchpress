@@ -47,6 +47,7 @@ Usage
 
 To run the config file `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ type
 
+
 .. code-block:: bash
 
     (base) $ conda activate snakemake

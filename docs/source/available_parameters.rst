@@ -125,7 +125,7 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`rios2021benchpress`
    * - Graph type
      - DAG
    * - Docker 
@@ -218,7 +218,7 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`rios2021benchpress`
    * - Graph type
      - DAG
    * - Docker 

@@ -1,9 +1,7 @@
 sys.path.append("workflow/scripts/utils")
 from add_timeout import *
-from operator import invert
 
 import numpy as np
-from contextlib import contextmanager
 import time
 import pandas as pd
 
@@ -14,7 +12,7 @@ def wrapper():
     df = pd.read_csv(snakemake.input["data"])
     samples = df.values
 
-    # The algorithm context goes here.
+    # The algorithm goes here.
     
     p = df.shape[1]
     np.random.seed(seed)
@@ -23,7 +21,6 @@ def wrapper():
     adjmat = (m + m.T) / 2
     np.fill_diagonal(adjmat, 0)
     adjmat.as_type(int)
-    
 
     # save time
     tottime = time.perf_counter() - start

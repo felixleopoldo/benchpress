@@ -3,13 +3,134 @@ JSON config file
 ##################
 
 In this section we describe the modules of Benchpress and the structure of the JSON configuration file, which serves as interface for the user.
+As are reference, we show the content of :ref:`pcdualpc` which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
-At the highest level there are two main sections, benchmark_setup_ and resources_. 
+At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 40). 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
 Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id``. 
-The benchmark_setup_ section specifies the data models (datasetup_) and evaluation methods (evaluation_) a user wishes to consider for analysis. 
+The benchmark_setup_ section specifies the data models (datasetup_) (Line 3) and evaluation methods (evaluation_) (Line 14) a user wishes to consider for analysis. 
 The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding id’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
+
+
+.. code-block:: json
+    :linenos:
+    :name: pcdualpc
+    :caption: config/paper_pc_vs_dualpc.json
+
+    {
+        "benchmark_setup": {
+            "data": [
+                {
+                    "graph_id": "avneigs4_p80",
+                    "parameters_id": "SEM",
+                    "data_id": "standardized",
+                    "seed_range": [
+                        1,
+                        10
+                    ]
+                }
+            ],
+            "evaluation": {
+                "benchmarks": {
+                    "filename_prefix": "paper_pc_vs_dualpc/",
+                    "show_seed": true,
+                    "errorbar": true,
+                    "errorbarh": false,
+                    "scatter": true,
+                    "path": true,
+                    "text": false,
+                    "ids": [
+                        "pc-gaussCItest",
+                        "dualpc"
+                    ]
+                },
+                "graph_true_plots": true,
+                "graph_true_stats": true,
+                "ggally_ggpairs": false,
+                "graph_plots": [
+                    "pc-gaussCItest",
+                    "dualpc"
+                ],
+                "mcmc_traj_plots": [],
+                "mcmc_heatmaps": [],
+                "mcmc_autocorr_plots": []
+            }
+        },
+        "resources": {
+            "data": {
+                "iid": [
+                    {
+                        "id": "standardized",
+                        "standardized": true,
+                        "sample_sizes": 300
+                    }
+                ]
+            },
+            "graph": {
+                "pcalg_randdag": [
+                    {
+                        "id": "avneigs4_p80",
+                        "max_parents": 5,
+                        "n": 80,
+                        "d": 4,
+                        "par1": null,
+                        "par2": null,
+                        "method": "er",
+                        "DAG": true
+                    }
+                ]
+            },
+            "parameters": {
+                "sem_params": [
+                    {
+                        "id": "SEM",
+                        "min": 0.25,
+                        "max": 1
+                    }
+                ]
+            },
+            "structure_learning_algorithms": {
+                "dualpc": [
+                    {
+                        "id": "dualpc",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "skeleton": false,
+                        "pattern_graph": false,
+                        "max_ord": null,
+                        "timeout": null
+                    }
+                ],
+                "pcalg_pc": [
+                    {
+                        "id": "pc-gaussCItest",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "NAdelete": true,
+                        "mmax": "Inf",
+                        "u2pd": "relaxed",
+                        "skelmethod": "stable",
+                        "conservative": false,
+                        "majrule": false,
+                        "solveconfl": false,
+                        "numCores": 1,
+                        "verbose": false,
+                        "indepTest": "gaussCItest",
+                        "timeout": null
+                    }
+                ]
+            }
+        }
+    }
+
+
 
 Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles) in a JSON file. 
 Graphs, parameters, and data are denoted by :math:`G, \Theta`, and :math:`\mathbf Y`, respectively.
@@ -107,7 +228,7 @@ Examples
 I) Data analysis (fixed data)
 ---------------------------------
 
-Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
+Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`, and is contain
 
 .. code-block:: json
 
@@ -119,7 +240,7 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
     }
 
 
-`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from Sachs et. al 2005.
+`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from :footcite:t:`doi:10.1126/science.1105809`.
 
 .. code-block:: json
 
@@ -146,21 +267,6 @@ II) Data analysis with validation
 III) Fixed graph
 ------------------
 
-Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
-You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "sachs.rds",
-        "data_id": "nonstandardized",
-        "seed_range": [1, 10]
-    }
-
-IV) Fixed graph and parameters
---------------------------------
-
 
 .. code-block:: json
 
@@ -174,6 +280,23 @@ IV) Fixed graph and parameters
                 3
             ]
         }
+
+
+IV) Fixed graph and parameters
+--------------------------------
+
+Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
+You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
+
+.. code-block:: json
+
+    { 
+        "graph_id": "sachs.csv",
+        "parameters_id": "sachs.rds",
+        "data_id": "nonstandardized",
+        "seed_range": [1, 10]
+    }
+
 
 .. _V:
 
