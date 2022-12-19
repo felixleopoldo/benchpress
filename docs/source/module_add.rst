@@ -367,7 +367,7 @@ First install some requirements
     cd docs/
     pip install -r _source/requirements.txt
 
-First make *render_docs.sh* executable then render and build the documentation
+Then make *render_docs.sh* executable then render and build the documentation
 
 .. prompt:: bash
     
