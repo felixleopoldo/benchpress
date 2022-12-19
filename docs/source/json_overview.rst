@@ -2,7 +2,7 @@
 JSON config file
 ##################
 
-In this section we describe the modules of Benchpress and the structure of the Snakemake JSON (Pezoa et al. 2016) configuration file, which serves as interface for the user.
+In this section we describe the modules of Benchpress and the structure of the JSON configuration file, which serves as interface for the user.
 
 At the highest level there are two main sections, benchmark_setup_ and resources_. 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
@@ -23,8 +23,6 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 
     Flowchart for the Benchpress sections/modules/files architecture.
 
-
-For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
 
 .. _benchmark_setup:
 
