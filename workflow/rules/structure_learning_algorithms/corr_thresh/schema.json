@@ -21,13 +21,8 @@
         ],
         "examples": [
             {
-                "id": "mysetting",
-                "param1": "myparamval",
-                "param2": [
-                    2,
-                    4,
-                    5
-                ],
+                "id": "ct",
+                "thresh": 0.5,
                 "timeout": null
             }
         ]

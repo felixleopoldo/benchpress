@@ -89,10 +89,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - DAG
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
-   * - My new algorithm
+   * - Corrmat thresh
      - UG
-     - 
-     - cov_thresh_ 
+     - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
+     - corr_thresh_ 
    * - Dual PC
      - CG, CPDAG
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
@@ -169,9 +169,9 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - CPDAG, CG
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
-   * - My new algorithm
+   * - Precmat thresh
      - UG
-     - 
+     - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - prec_thresh_ 
    * - ASOBS
      - DAG
@@ -1450,38 +1450,39 @@ et al. 2019b).
 
 
 
-.. _cov_thresh: 
+.. _corr_thresh: 
 
-``cov_thresh`` 
---------------
+``corr_thresh`` 
+---------------
 
-.. rubric:: My new algorithm
+.. rubric:: Corrmat thresh
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
    * - Version
      - 
    * - Language
-     - R
+     - Python
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`lauritzen1996graphical`
    * - Graph type
      - UG
    * - Docker 
      - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
    * - Module
-     - `cov_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/cov_thresh>`__
+     - `corr_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
 
 
 
 .. rubric:: Description
 
-Some text of the algorithm/module.
+Thresholding the estimated correlation matrix.
+Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
 
 .. rubric:: Example
 
@@ -1491,13 +1492,8 @@ Some text of the algorithm/module.
 
     [
       {
-        "id": "mysetting",
-        "param1": "myparamval",
-        "param2": [
-          2,
-          4,
-          5
-        ],
+        "id": "ct",
+        "thresh": 0.5,
         "timeout": null
       }
     ]
@@ -2762,16 +2758,16 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 ``prec_thresh`` 
 ---------------
 
-.. rubric:: My new algorithm
+.. rubric:: Precmat thresh
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
    * - Version
      - 
    * - Language
-     - R
+     - Python
    * - Docs
      - 
    * - Paper
@@ -2788,7 +2784,8 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 .. rubric:: Description
 
-Some text of the algorithm/module.
+Thresholding the estimated precision matrix.
+Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.
 
 .. rubric:: Example
 
@@ -2798,13 +2795,8 @@ Some text of the algorithm/module.
 
     [
       {
-        "id": "mysetting",
-        "param1": "myparamval",
-        "param2": [
-          2,
-          4,
-          5
-        ],
+        "id": "pthresh",
+        "thresh": 0.5,
         "timeout": null
       }
     ]

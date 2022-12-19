@@ -1,10 +1,12 @@
 {
-    "title": "Precmat thresh",
+    "title": "Corrmat thresh",
     "version": "",
+
     "package": {
         "title": "Benchpress",
         "url": "https://github.com/felixleopoldo/benchpress"
     },
+
     "docs_url": "",
     "outputs": "adjmat",
     "graph_types": [

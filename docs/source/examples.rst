@@ -1,13 +1,6 @@
 Examples studies
 ########################
 
-The studies in this section can be reproduced by the following command
-
-.. prompt:: bash
-
-    snakemake --cores all --use-singularity --configfile [CONFIGFILE]
-
-where [CONFIGFILE] should be changed appropriately.
 
 Simple example
 *************************
