@@ -1,10 +1,9 @@
 ``graph``
 ===============
 
-Several possibilities exist for defining the graph component, depending on whether we wish
-to draw random graphs from a given distribution, or maybe provide a given structure on
-which we wish to perform a benchmarking study. Below is the list of currently available modules.
-The rules and corresponding scripts are located in *workflow/rules/graph/* and *workflow/scripts/graph/*, respectively.
+Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on
+which we wish to perform a benchmarking study. 
+Below is the list of currently available modules.
 
 
 .. list-table:: 
@@ -50,6 +49,8 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 
 
 
+.. _bdgraph_graphsim: 
+
 ``bdgraph_graphsim`` 
 --------------------
 
@@ -66,7 +67,7 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models  <https://www.jstatsoft.org/article/view/v089i03>`_
+     - :footcite:t:`JSSv089i03`
    * - Graph type
      - UG
    * - Docker 
@@ -96,6 +97,12 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
       }
     ]
 
+.. footbibliography::
+
+
+
+.. _fixed_graph: 
+
 ``fixed_graph`` 
 ---------------
 
@@ -107,38 +114,11 @@ The rules and corresponding scripts are located in *workflow/rules/graph/* and *
 Fixed graphs are stored as adjacency matrices of in ``.csv`` format in the directory *resources/adjmats/myadjmats* along with the `existing ones <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
 A fixed graph is referenced by the corresponding filename instead of `id` as with the other modules.
 
-A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{ij}=1` if :math:`(i,j)\in E` and  :math:`M_{ij}=0` if :math:`(i,j)\notin E`.
-
-.. * The first row contains the labels of the variables.
-.. * The columns are separated by a comma (,).
-.. * 1 (0) at row i, column j indicates an (no) edge from variable i to j. 
+.. footbibliography::
 
 
-.. rubric:: Example (undirected graph)
 
-Below is an example undirected graph :math:`G=(V, E)`, where :math:`E = \{(a,b), (a,c), (c,d)\}` are interpreted as un-ordered pairs (un-directed edges).
-Undirected graphs have symmetric matrices.
-
-.. code-block:: text
-
-    a,b,c,d
-    0,1,1,0
-    1,0,0,0
-    1,0,0,1
-    0,0,1,0
-
-
-.. rubric:: Example (DAG)
-
-If :math:`G` is directed the adjacency matrix is asymmetric as below.
-
-.. code-block:: text
-
-    a,b,c,d
-    0,1,1,0
-    0,0,0,0
-    0,0,0,1
-    0,0,0,0
+.. _pcalg_randdag: 
 
 ``pcalg_randdag`` 
 -----------------
@@ -156,7 +136,7 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
-     - 
+     - :footcite:t:`JSSv047i11`
    * - Graph type
      - DAG, UG
    * - Docker 
@@ -172,10 +152,10 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
 This is the *randDAG* from the R package `pcalg <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`_  with the extra feature that the maximum average number of parents can be set by ``max_parents``.
 
 An object of the pcalg_randdag module specifies a graph generated using the randDAG
-function from the pcalg package (Kalisch et al. 2012), with the extra functionality of restricting
+function from the pcalg package, with the extra functionality of restricting
 the maximal number of parents per node (max_parents). It samples a random graph with n
 nodes and d neighbours per node on average, using the algorithm specified by method with
-parameters par1 and par2, for further details see Kalisch et al.
+parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 .. Source `resources/binarydatagen/generate_DAG.R <https://github.com/felixleopoldo/benchpress/blob/master/resources/binarydatagen/generate_DAG.R>`_
 
@@ -201,6 +181,12 @@ parameters par1 and par2, for further details see Kalisch et al.
         "DAG": true
       }
     ]
+
+.. footbibliography::
+
+
+
+.. _trilearn_bandmat: 
 
 ``trilearn_bandmat`` 
 --------------------
@@ -250,6 +236,12 @@ with given bandwidth (*bandwith*).
       }
     ]
 
+.. footbibliography::
+
+
+
+.. _trilearn_cta: 
+
 ``trilearn_cta`` 
 ----------------
 
@@ -266,7 +258,7 @@ with given bandwidth (*bandwith*).
    * - Docs
      - 
    * - Paper
-     - Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs. <https://link.springer.com/article/10.1007/s11222-022-10113-2>`_
+     - :footcite:t:`olsson2022sequential`
    * - Graph type
      - DG
    * - Docker 
@@ -302,6 +294,12 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
         "beta": 0.7
       }
     ]
+
+.. footbibliography::
+
+
+
+.. _trilearn_rand_bandmat: 
 
 ``trilearn_rand_bandmat`` 
 -------------------------
@@ -348,3 +346,6 @@ An object of the max bandwith module specifies a decomposable graph with band st
         "dim": 50
       }
     ]
+
+.. footbibliography::
+

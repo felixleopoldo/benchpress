@@ -79,27 +79,30 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
 unique_adjmats <- unique(joint_bench$adjmat)
 unique_parameters <- unique(joint_bench$parameters)
 unique_data <- unique(joint_bench$data)
-# print("Unique adjmats")
-# print(unique_adjmats)
-# print("Unique parameters")
-# print(unique_parameters)
-# print("Unique data")
-# print(unique_data)
+#  print("Unique adjmats")
+#  print(unique_adjmats)
+#  print("Unique parameters")
+#  print(unique_parameters)
+#  print("Unique data")
+#  print(unique_data)
 
   joint_bench_tmp <- joint_bench
   toplot_tmp <- toplot
   plt_counter <- 1
 
-  for(adjmat in unique_adjmats){
-    for(parameters in unique_parameters){
+  for(adjmat2 in unique_adjmats){
+    for(parameters2 in unique_parameters){
       for(data2 in unique_data){
-        joint_bench <- joint_bench_tmp %>% filter(adjmat==adjmat) %>%         
-        filter(parameters==parameters) %>% 
+        joint_bench <- joint_bench_tmp %>% filter(adjmat==adjmat2) %>%         
+        filter(parameters==parameters2) %>% 
         filter(data==data2)
         
-        toplot <- toplot_tmp %>% filter(adjmat==adjmat) %>%         
-        filter(parameters==parameters) %>% 
+        toplot <- toplot_tmp %>% filter(adjmat==adjmat2) %>%         
+        filter(parameters==parameters2) %>% 
         filter(data==data2)
+
+        print("")
+        print(toplot)
         
         if (nrow(joint_bench) > 0){
 

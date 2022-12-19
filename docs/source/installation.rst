@@ -12,9 +12,9 @@ Linux
 
 1. Download Benchpress
 
-    .. code-block:: bash
+    .. prompt:: bash
 
-        $ git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
+        git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
 
 2. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_
 3. Install `Snakemake >= 7.14 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_
@@ -34,9 +34,9 @@ Benchpress cannot run directly on macOS/Windows as it requires Apptainer which i
 
 1. Download Benchpress 
 
-    .. code-block:: bash
+    .. prompt:: bash
 
-        $ git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress  
+        git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress  
 
 2. Install Ubuntu on `VirtualBox <https://www.virtualbox.org/>`_ following `these instructions <https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview>`_. Create a dynamic hard drive with about 40 GB of space. 
 3. Share *path/to/benchpress* on macOS/Windows folder to the virtual machine at *path/to/sharedfolder* using `this guide <https://carleton.ca/scs/tech-support/troubleshooting-guides/creating-a-shared-folder-in-virtualbox/>`_ and change the permission using `this <https://dev.to/rahedmir/virtualbox-cannot-access-shared-folder-items-permission-denied-fixed-59mi>`_ guide 

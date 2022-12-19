@@ -1,15 +1,12 @@
 {
     "title": "My new algorithm",
     "version": "v0.0.1",
-    "software": "",
+    "package": {
+        "title": "",
+        "url": ""
+    },
     "docs": "",
-    "papers": [
-        {
-            "title": "the paper title",
-            "url": "the_url"
-        }
-    ],
-    "output": "adjmat",
+    "outputs": "adjmat",
     "graph_types": [
         "UG"
     ],

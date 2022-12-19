@@ -12,6 +12,7 @@
     :caption: Getting started
 
     installation
+    examples
     
 
 .. toctree::
@@ -22,6 +23,21 @@
     
     json_overview
 
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+    :name: Adding modules
+    :caption: Adding modules
+    
+    module_add
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+    :name: File formats
+    :caption: File formats
+
+    data_formats
 
 .. toctree::
     :hidden:

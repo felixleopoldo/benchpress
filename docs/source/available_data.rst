@@ -31,6 +31,8 @@ The data modules.
 
 
 
+.. _fixed_data: 
+
 ``fixed_data`` 
 --------------
 
@@ -39,32 +41,57 @@ The data modules.
 .. rubric:: Description
 
 
+.. list-table::
 
-Observations should be stored as row vectors in a matrix, where the columns are separated by
-commas. The first row should contain the labels of the variables and if the data is categorical,
-the second row should contain the cardinality (number of levels) of each variable.
+  * - Filename
+    - p
+    - n
+    - Type
+    - Graph
+    - Reference
+  * - :ref:`czech_autoworkers.csv`
+    - 6
+    - 1841
+    - Bin
+    - Not known
+    - :footcite:t:`edwards1985fast`
+  * - `2019_olsson_pavlenko_rios_p15_n1000.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2019_olsson_pavlenko_rios_p15_n1000.csv>`__
+    - 15
+    - 1000
+    - Bin
+    - `jonesp15.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/jonesp15.csv>`__
+    - :footcite:t:`10.1214/19-EJS1585`
+  * - `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2019_olsson_pavlenko_rios_p15_n1000.csv>`__
+    - 11
+    - 992
+    - Cont
+    - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
+    - :footcite:t:`doi:10.1126/science.1105809`
 
-.. rubric:: Example (continuous)
 
-An example showing of two samples from continuous distribution is shown below.
+.. _czech_autoworkers.csv:
 
-.. code-block:: text
+.. rubric:: czech_autoworkers.csv
+----------------------
 
-    a,b,c,d
-    0.2,2.3,5.3,0.5
-    3.2,1.5,2.5,1.2
+File: `czech_autoworkers.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/czech_autoworkers.csv>`__
 
-.. rubric:: Example (categorical)
+Description:
 
-Below is a formatting example of two samples of a categorical distribution where the cardinalities
-are 2,3,2, and 2.
+A 6 way contingency table representing the cross classification of 1841 men. All 6 classification criteria are binary. The variables are (smoke) smoking, (mental) strenuous mental work, (phys) strenuous physical work, (blodp) systolic blood pressure, (lipo) ratio of beta and alpha lipoproteins and (coron) family anamnesis of coronary heart disease.
 
-.. code-block:: text
 
-    a,b,c,d
-    2,3,2,2
-    1,2,0,1
-    0,1,1,1
+
+    
+.. rubric:: References
+    
+.. footbibliography::
+
+.. footbibliography::
+
+
+
+.. _gcastle_iidsim: 
 
 ``gcastle_iidsim`` 
 ------------------
@@ -80,7 +107,7 @@ are 2,3,2, and 2.
    * - Docs
      - `here <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py>`__
    * - Paper
-     - `Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery. <https://arxiv.org/abs/2111.15155>`_
+     - :footcite:t:`zhang2021gcastle`
    * - Graph type
      - DAG
    * - Module
@@ -90,8 +117,8 @@ are 2,3,2, and 2.
 
 .. rubric:: Description
 
-IID samples from a SEM model using the  ``IIDSimulation`` object in the ``gCastle`` library.
-The data may be standardized by setting ``standardized`` to true. 
+IID samples from a SEM model using the  *IIDSimulation* object in the `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`_ library.
+The data may be standardized by setting ``standardized`` to *true*. 
 
 
 .. rubric:: Example
@@ -112,6 +139,12 @@ The data may be standardized by setting ``standardized`` to true.
         ]
       }
     ]
+
+.. footbibliography::
+
+
+
+.. _iid: 
 
 ``iid`` 
 -------
@@ -156,3 +189,6 @@ The data may be standardized by setting ``standardized`` to true.
         ]
       }
     ]
+
+.. footbibliography::
+

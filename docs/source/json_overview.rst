@@ -21,8 +21,7 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 .. figure:: _static/jsonmap.png
     :width: 500
 
-    Flowchart for the Benchpress architecture describing how the files and sections (light colored rectangles) of the JSON configuration file are related to the modules (dark colored rounded rectangles). 
-    The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results respectively. 
+    Flowchart for the Benchpress sections/modules/files architecture.
 
 
 For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
@@ -59,22 +58,6 @@ A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-In case of fixed data sets, parameters, or graphs, we simply use the corresponding filenames in place of ``id``.
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-    
-    [
-        { 
-            "graph_id": "avneigs4_p20",
-            "parameters_id": "SEM",
-            "data_id": "standardized",
-            "seed_range": [1, 10]
-        }
-    ]
 
 Data scenarios
 ---------------
@@ -92,6 +75,7 @@ replicating a simulation study from the literature, where both the true graph an
 are given. Scenario III-V are pure benchmarking scenarios, where either all of the graphs,
 parameters and data are generated (V) or the graphs and possibly parameters are specified by
 the user (III, IV).
+
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -113,14 +97,17 @@ Note that, in general the ``id``'s used must be defined in the resources section
 For example, *avneigs4_p20* is the ``id`` of an object in the pcalg_randdag_ module in the graph_ section.
 Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
 
-I
----
-
 Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
 For example, you may not use the graph_true_plots_ or benchmarks_ modules as both require the true graph to be provided.
 
 
-.. rubric:: Example 
+Examples
+^^^^^^^^^
+
+.. _I:
+
+I) Data analysis (fixed data)
+---------------------------------
 
 Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
 
@@ -133,7 +120,6 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-.. rubric:: Example 
 
 `2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from Sachs et. al 2005.
 
@@ -146,10 +132,8 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-II
----
-
-.. rubric:: Example
+II) Data analysis with validation
+----------------------------------
 
 
 .. code-block:: json
@@ -161,10 +145,8 @@ II
         "seed_range": null
     }
 
-III
----
-
-.. rubric:: Example
+III) Fixed graph
+------------------
 
 Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
 You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
@@ -178,20 +160,8 @@ You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
         "seed_range": [1, 10]
     }
 
-IV
----
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 10]
-    }
+IV) Fixed graph and parameters
+--------------------------------
 
 
 .. code-block:: json
@@ -206,12 +176,11 @@ IV
                 3
             ]
         }
-    
-V
----
 
-.. rubric:: Example
+.. _V:
 
+V) Fully generated
+-------------------
 
 .. code-block:: json
 
@@ -239,13 +208,13 @@ The names of the fields of the modules in this section are directly transferred 
 
 To start an interactive Docker shell for a module run
 
-.. code-block:: bash
+.. prompt:: bash
 
     docker run -it username/image:version
 
 or using Apptainer
 
-.. code-block:: bash
+.. prompt:: bash
 
     apptainer run docker://username/image:version
 
