@@ -12,7 +12,7 @@
     :caption: Getting started
 
     installation
-    roc_example
+    examples
     
 
 .. toctree::
@@ -30,6 +30,14 @@
     :caption: Adding modules
     
     module_add
+
+.. toctree::
+    :hidden:
+    :maxdepth: 3
+    :name: File formats
+    :caption: File formats
+
+    data_formats
 
 .. toctree::
     :hidden:

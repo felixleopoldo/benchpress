@@ -1,5 +1,5 @@
 This is a hybrid score-based optimisation technique based on Markov chain Monte Carlo
-schemes :footcite:t:`doi:10.1080/10618600.2021.2020127` . The algorithm starts from a skeleton obtained
+schemes :footcite:t:`doi:10.1080/10618600.2021.2020127`. The algorithm starts from a skeleton obtained
 through a fast method (e.g. a constraint based method, or GES). Then it performs score and
 search on the DAGs belonging to the space defined by the starting skeleton. To correct for
 edges which may be missed, the search space is iteratively expanded to include one additional

@@ -21,8 +21,7 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 .. figure:: _static/jsonmap.png
     :width: 500
 
-    Flowchart for the Benchpress architecture describing how the files and sections (light colored rectangles) of the JSON configuration file are related to the modules (dark colored rounded rectangles). 
-    The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results respectively. 
+    Flowchart for the Benchpress sections/modules/files architecture.
 
 
 For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
@@ -107,8 +106,8 @@ Examples
 
 .. _I:
 
-I) Data analysis
------------------
+I) Data analysis (fixed data)
+---------------------------------
 
 Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
 
@@ -133,8 +132,8 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-II)
----
+II) Data analysis with validation
+----------------------------------
 
 
 .. code-block:: json
@@ -146,8 +145,8 @@ II)
         "seed_range": null
     }
 
-III)
------
+III) Fixed graph
+------------------
 
 Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
 You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
@@ -161,18 +160,8 @@ You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
         "seed_range": [1, 10]
     }
 
-IV)
----
-
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 10]
-    }
+IV) Fixed graph and parameters
+--------------------------------
 
 
 .. code-block:: json
@@ -190,8 +179,8 @@ IV)
 
 .. _V:
 
-V)
----
+V) Fully generated
+-------------------
 
 .. code-block:: json
 
@@ -219,13 +208,13 @@ The names of the fields of the modules in this section are directly transferred 
 
 To start an interactive Docker shell for a module run
 
-.. code-block:: bash
+.. prompt:: bash
 
     docker run -it username/image:version
 
 or using Apptainer
 
-.. code-block:: bash
+.. prompt:: bash
 
     apptainer run docker://username/image:version
 

@@ -73,7 +73,7 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
-     - :footcite:t:`JSSv089i03`
+     - :footcite:t:`lenkoski2013direct`, :footcite:t:`JSSv089i03`
    * - Graph type
      - UG
    * - Docker 
@@ -85,14 +85,8 @@ Make sure that the parameter module is compatible with the graph module you are 
 
 .. rubric:: Description
 
-
-Samples G-Wishart matrix given an undirected graph using the *rgwish* function from the R package  `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
-
-
-Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [AH2005]_ [Len2013]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
+Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution  using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
 The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
-
-
 
 
 .. rubric:: Example

@@ -42,6 +42,7 @@ extensions = [
 paths = [Path("../../workflow/rules/structure_learning_algorithms"), 
          Path("../../workflow/rules/parameters"),
          Path("../../workflow/rules/graph"),  
+         Path("../../workflow/rules/data"),  
          Path("../../workflow/rules/evaluation")]
 
 
@@ -49,6 +50,7 @@ bibtex_bibfiles = []
 for mod in paths:
     bibtex_bibfiles += [str(p / "bibtex.bib")
                         for p in mod.iterdir() if (p/"bibtex.bib").is_file()]
+
 
 # source_suffix = {
 #     '.rst': 'restructuredtext',
