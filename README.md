@@ -33,7 +33,7 @@ You may also have a look at [this Medium story](https://medium.com/@felixleopold
 
 ```
 @misc{rios2021benchpress,
-      title={Benchpress: a scalable and verstile workflow for benchmarking structure learning algorithms for graphical models}, 
+      title={Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models}, 
       author={Felix L. Rios and Giusi Moffa and Jack Kuipers},
       year={2021},
       eprint={2107.03863},
@@ -62,3 +62,9 @@ This project is licensed under the GPL-2.0 License - see the [LICENSE](LICENSE) 
 </content>
   <tabTrigger></tabTrigger>
 </snippet>
+
+
+## References
+* <a id="1">[1]</a> [Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. *ArXiv eprints.*, 2107.03863, 2021.](https://arxiv.org/abs/2107.03863)
+
+
