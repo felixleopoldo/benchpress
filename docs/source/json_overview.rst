@@ -22,13 +22,13 @@ The output files of each module are saved systematically under the *results/* di
         "benchmark_setup": {
             "data": [ // the data setups
                 {
-                    "graph_id": "avneigs4_p80",
-                    "parameters_id": "SEM",
-                    "data_id": "standardized",
+                    "graph_id": "avneigs4_p80", // see line 50
+                    "parameters_id": "SEM", // see line 64
+                    "data_id": "standardized", // see line 41
                     "seed_range": [1, 10]
                 }
             ],
-            "evaluation": { // The evaluation modules
+            "evaluation": { // the evaluation modules
                 "benchmarks": {  
                     "filename_prefix": "paper_pc_vs_dualpc/",
                     "show_seed": true,
@@ -38,8 +38,8 @@ The output files of each module are saved systematically under the *results/* di
                     "path": true,
                     "text": false,
                     "ids": [
-                        "pc-gaussCItest",
-                        "dualpc"
+                        "pc-gaussCItest", // see line 87
+                        "dualpc" // see line 73
                     ]
                 },
                 "graph_true_plots": true,
@@ -55,7 +55,7 @@ The output files of each module are saved systematically under the *results/* di
             }
         },
         "resources": {
-            "data": { // the data generation modules
+            "data": { // the data modules
                 "iid": [
                     {
                         "id": "standardized",
