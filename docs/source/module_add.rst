@@ -2,6 +2,8 @@ Adding new modules
 *******************
 
 All modules have the following basic file structure, where all the files are necessary except for *script.R* that may be replaced by some `alternative script <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`_.
+However, to get something working, you only have to consider altering *script.R* (or some alternative and in that case also *rule.smk*) and the modules `JSON <https://www.json.org/json-en.html>`_ snippets, as shown in the examples below.
+
 
 ::
 
@@ -13,10 +15,10 @@ All modules have the following basic file structure, where all the files are nec
     ├── bibtex.bib
     └── docs.rst
 
-* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when generating the documentation.
+* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
 * *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
-* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format. This file should contain an overview of the module and further explanation of the JSON fields if needed.
-* *bibtext.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
+* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
+* *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields of the proper form.  The container field is set to `None` in all of the example rules below in order to force local execution. On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. Variables available in the script is are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (form the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details of how to access variables in scripts. Note that the values are passed as string and might have to be converted to suite your specific script.
 
@@ -43,8 +45,6 @@ The following line copies the :ref:`pcalg_randdag` module to a new module named 
 
 Template structure
 ------------------
-
-In this section we show the content for the module template `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__.
 
 `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ (below) takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__.
 
@@ -272,8 +272,12 @@ In order to use the module, you need to add the following piece of `JSON <https:
 Evaluation module
 ########################
 
-Updating the docs
-########################
+
+.. _update_docs:
+
+
+Updating the documentation
+###########################
 
 When a new module is installed you may also update the documentation.
 First install some requirements 

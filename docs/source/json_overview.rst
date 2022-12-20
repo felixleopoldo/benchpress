@@ -3,7 +3,7 @@ JSON config file
 ##################
 
 In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`_ configuration file, which serves as interface for the user.
-As are reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
+For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
 At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 37). 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
