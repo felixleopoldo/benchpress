@@ -5,11 +5,11 @@ JSON config file
 In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`_ configuration file, which serves as interface for the user.
 As are reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
-At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 40). 
+At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 37). 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
-Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 44, 53, 67, 76, and 90). 
-The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (evaluation_) (Line 14) a user wishes to consider for analysis. 
-The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding id’s. 
+Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 41, 50, 64, 73, and 87). 
+The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (evaluation_) (Line 11) a user wishes to consider for analysis. 
+The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding ``id``’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
 
 
@@ -20,19 +20,16 @@ The output files of each module are saved systematically under the *results/* di
 
     {
         "benchmark_setup": {
-            "data": [
+            "data": [ // the data setups
                 {
                     "graph_id": "avneigs4_p80",
                     "parameters_id": "SEM",
                     "data_id": "standardized",
-                    "seed_range": [
-                        1,
-                        10
-                    ]
+                    "seed_range": [1, 10]
                 }
             ],
-            "evaluation": {
-                "benchmarks": {
+            "evaluation": { // The evaluation modules
+                "benchmarks": {  
                     "filename_prefix": "paper_pc_vs_dualpc/",
                     "show_seed": true,
                     "errorbar": true,
@@ -58,7 +55,7 @@ The output files of each module are saved systematically under the *results/* di
             }
         },
         "resources": {
-            "data": {
+            "data": { // the data generation modules
                 "iid": [
                     {
                         "id": "standardized",
@@ -67,7 +64,7 @@ The output files of each module are saved systematically under the *results/* di
                     }
                 ]
             },
-            "graph": {
+            "graph": { // the graph modules 
                 "pcalg_randdag": [
                     {
                         "id": "avneigs4_p80",
@@ -81,7 +78,7 @@ The output files of each module are saved systematically under the *results/* di
                     }
                 ]
             },
-            "parameters": {
+            "parameters": { // the parameters modules
                 "sem_params": [
                     {
                         "id": "SEM",
@@ -90,7 +87,7 @@ The output files of each module are saved systematically under the *results/* di
                     }
                 ]
             },
-            "structure_learning_algorithms": {
+            "structure_learning_algorithms": { // the structure learning modules
                 "dualpc": [
                     {
                         "id": "dualpc",
@@ -158,24 +155,9 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 
 
 This section should contain a list where each item defines a certain data setup.
-For each seed number :math:`i` in the range defined by ``seed_range``, a graph :math:`G_i` is obtained as specified according to ``graph_id``. 
-Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained according to the specifics in ``parameters_id``. 
-A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from :math:`(G_i,\Theta_i)` as specified by the data model in ``data_id``. 
-
-
-
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field             | Description                                                                                                                                                                                            |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``graph_id``      | ``id`` from a graph_ module object.                                                                                                                                                                    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``parameters_id`` | ``id`` from a parameters_ module object.                                                                                                                                                               |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``data_id``       | ``id`` from the data_ module object of a dataset or folder with datasets located in `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_. |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``seed_range``    | range of seeds used for random number generation.                                                                                                                                                      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
+For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a graph :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). 
+Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained from ``parameters_id`` (Line 6). 
+A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from :math:`(G_i,\Theta_i)` as specified by the data model in ``data_id`` (Line 7). 
 
 
 Data scenarios
@@ -320,41 +302,19 @@ V) Fully generated
 ``resources``
 *************
 
-
-The  sections ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available modules in benchpress.
-Each object in a module algorithm has a unique `id` which can be referenced in the benchmark_setup_ section.
-
 The names of the fields of the modules in this section are directly transferred or translated from the original libraries or code. Thus, for further details of each field we refer to the documentation of the original sources.
 
-To start an interactive Docker shell for a module run
+To start an interactive `Docker <https://www.docker.com/>`_ shell for a module run
 
 .. prompt:: bash
 
     docker run -it username/image:version
 
-or using Apptainer
+or using `Apptainer <https://apptainer.org/>`_
 
 .. prompt:: bash
 
     apptainer run docker://username/image:version
-
-
-.. .. .. _resources:
-.. .. .. figure:: _static/resources.png
-.. ..     :width: 400
-
-.. ..     Expanded ``resources`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
-
-
-
-.. .. _setup:
-.. .. figure:: _static/setup.png
-..     :width: 400
-
-..     Expanded ``resources`` and ``benchmark_setup`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
 
 .. include:: available_graphs.rst
 .. include:: available_parameters.rst

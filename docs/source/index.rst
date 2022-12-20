@@ -26,8 +26,8 @@
 .. toctree::
     :hidden:
     :maxdepth: 3
-    :name: Adding modules
-    :caption: Adding modules
+    :name: Modules
+    :caption: Modules
     
     module_add
 
