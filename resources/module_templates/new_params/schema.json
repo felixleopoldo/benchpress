@@ -1,10 +1,10 @@
 {
     "title": "Some title",
-    "description": "List of id's",
+    "description": "Some description",
     "type": "array",
     "items": {
         "title": "Some title",
-        "description": "Parameter setting for...",
+        "description": "Some description",
         "type": "object",
         "properties": {
             "id": {
@@ -18,7 +18,6 @@
         "examples": [
             {
                 "id": "paramstest"
-
             }
         ]
     },

@@ -2,16 +2,134 @@
 JSON config file
 ##################
 
-In this section we describe the modules of Benchpress and the structure of the Snakemake JSON (Pezoa et al. 2016) configuration file, which serves as interface for the user.
+In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`_ configuration file, which serves as interface for the user.
+For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
-At the highest level there are two main sections, benchmark_setup_ and resources_. 
+At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 37). 
 The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
-Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id``. 
-The benchmark_setup_ section specifies the data models (datasetup_) and evaluation methods (evaluation_) a user wishes to consider for analysis. 
-The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding id’s. 
+Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 41, 50, 64, 73, and 87). 
+The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (evaluation_) (Line 11) a user wishes to consider for analysis. 
+The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding ``id``’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
 
-Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles) in a JSON file. 
+
+.. code-block:: json
+    :linenos:
+    :name: pcdualpc
+    :caption: Comparison between PC vs. dual PC.
+
+    {
+        "benchmark_setup": {
+            "data": [ // the data setups
+                {
+                    "graph_id": "avneigs4_p80", // see line 50
+                    "parameters_id": "SEM", // see line 64
+                    "data_id": "standardized", // see line 41
+                    "seed_range": [1, 10]
+                }
+            ],
+            "evaluation": { // the evaluation modules
+                "benchmarks": {  
+                    "filename_prefix": "paper_pc_vs_dualpc/",
+                    "show_seed": true,
+                    "errorbar": true,
+                    "errorbarh": false,
+                    "scatter": true,
+                    "path": true,
+                    "text": false,
+                    "ids": [
+                        "pc-gaussCItest", // see line 87
+                        "dualpc" // see line 73
+                    ]
+                },
+                "graph_true_plots": true,
+                "graph_true_stats": true,
+                "ggally_ggpairs": false,
+                "graph_plots": [
+                    "pc-gaussCItest",
+                    "dualpc"
+                ],
+                "mcmc_traj_plots": [],
+                "mcmc_heatmaps": [],
+                "mcmc_autocorr_plots": []
+            }
+        },
+        "resources": {
+            "data": { // the data modules
+                "iid": [
+                    {
+                        "id": "standardized",
+                        "standardized": true,
+                        "sample_sizes": 300
+                    }
+                ]
+            },
+            "graph": { // the graph modules 
+                "pcalg_randdag": [
+                    {
+                        "id": "avneigs4_p80",
+                        "max_parents": 5,
+                        "n": 80,
+                        "d": 4,
+                        "par1": null,
+                        "par2": null,
+                        "method": "er",
+                        "DAG": true
+                    }
+                ]
+            },
+            "parameters": { // the parameters modules
+                "sem_params": [
+                    {
+                        "id": "SEM",
+                        "min": 0.25,
+                        "max": 1
+                    }
+                ]
+            },
+            "structure_learning_algorithms": { // the structure learning modules
+                "dualpc": [
+                    {
+                        "id": "dualpc",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "skeleton": false,
+                        "pattern_graph": false,
+                        "max_ord": null,
+                        "timeout": null
+                    }
+                ],
+                "pcalg_pc": [
+                    {
+                        "id": "pc-gaussCItest",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "NAdelete": true,
+                        "mmax": "Inf",
+                        "u2pd": "relaxed",
+                        "skelmethod": "stable",
+                        "conservative": false,
+                        "majrule": false,
+                        "solveconfl": false,
+                        "numCores": 1,
+                        "verbose": false,
+                        "indepTest": "gaussCItest",
+                        "timeout": null
+                    }
+                ]
+            }
+        }
+    }
+
+
+
+Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles). 
 Graphs, parameters, and data are denoted by :math:`G, \Theta`, and :math:`\mathbf Y`, respectively.
 The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results, respectively. 
 An arrow from a node A to another node B should be read as *“B requires input from A”*. 
@@ -21,11 +139,8 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 .. figure:: _static/jsonmap.png
     :width: 500
 
-    Flowchart for the Benchpress architecture describing how the files and sections (light colored rectangles) of the JSON configuration file are related to the modules (dark colored rounded rectangles). 
-    The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results respectively. 
+    Flowchart for the Benchpress sections/modules/files architecture.
 
-
-For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
 
 .. _benchmark_setup:
 
@@ -40,41 +155,10 @@ For specific information about each element in the JSON file, see the documentat
 
 
 This section should contain a list where each item defines a certain data setup.
-For each seed number :math:`i` in the range defined by ``seed_range``, a graph :math:`G_i` is obtained as specified according to ``graph_id``. 
-Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained according to the specifics in ``parameters_id``. 
-A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from :math:`(G_i,\Theta_i)` as specified by the data model in ``data_id``. 
+For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a graph :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). 
+Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained from ``parameters_id`` (Line 6). 
+A data matrix, :math:`\mathbf Y_i^T = (Y_{1:p}^j)_{j=1}^n`, is then sampled from :math:`(G_i,\Theta_i)` as specified by the data model in ``data_id`` (Line 7). 
 
-
-
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field             | Description                                                                                                                                                                                            |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``graph_id``      | ``id`` from a graph_ module object.                                                                                                                                                                    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``parameters_id`` | ``id`` from a parameters_ module object.                                                                                                                                                               |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``data_id``       | ``id`` from the data_ module object of a dataset or folder with datasets located in `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_. |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``seed_range``    | range of seeds used for random number generation.                                                                                                                                                      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-In case of fixed data sets, parameters, or graphs, we simply use the corresponding filenames in place of ``id``.
-
-
-.. rubric:: Example
-
-
-.. code-block:: json
-    
-    [
-        { 
-            "graph_id": "avneigs4_p20",
-            "parameters_id": "SEM",
-            "data_id": "standardized",
-            "seed_range": [1, 10]
-        }
-    ]
 
 Data scenarios
 ---------------
@@ -92,6 +176,7 @@ replicating a simulation study from the literature, where both the true graph an
 are given. Scenario III-V are pure benchmarking scenarios, where either all of the graphs,
 parameters and data are generated (V) or the graphs and possibly parameters are specified by
 the user (III, IV).
+
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -113,16 +198,19 @@ Note that, in general the ``id``'s used must be defined in the resources section
 For example, *avneigs4_p20* is the ``id`` of an object in the pcalg_randdag_ module in the graph_ section.
 Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
 
-I
----
-
 Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
 For example, you may not use the graph_true_plots_ or benchmarks_ modules as both require the true graph to be provided.
 
 
-.. rubric:: Example 
+Examples
+^^^^^^^^^
 
-Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
+.. _I:
+
+I) Data analysis (fixed data)
+---------------------------------
+
+Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`
 
 .. code-block:: json
 
@@ -133,9 +221,8 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-.. rubric:: Example 
 
-`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from Sachs et. al 2005.
+`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing all the datasets from :footcite:t:`doi:10.1126/science.1105809`.
 
 .. code-block:: json
 
@@ -146,10 +233,8 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
-II
----
-
-.. rubric:: Example
+II) Data analysis with validation
+----------------------------------
 
 
 .. code-block:: json
@@ -161,37 +246,8 @@ II
         "seed_range": null
     }
 
-III
----
-
-.. rubric:: Example
-
-Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
-You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "sachs.rds",
-        "data_id": "nonstandardized",
-        "seed_range": [1, 10]
-    }
-
-IV
----
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 10]
-    }
+III) Fixed graph
+------------------
 
 
 .. code-block:: json
@@ -206,12 +262,28 @@ IV
                 3
             ]
         }
-    
-V
----
 
-.. rubric:: Example
 
+IV) Fixed graph and parameters
+--------------------------------
+
+Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
+You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
+
+.. code-block:: json
+
+    { 
+        "graph_id": "sachs.csv",
+        "parameters_id": "sachs.rds",
+        "data_id": "nonstandardized",
+        "seed_range": [1, 10]
+    }
+
+
+.. _V:
+
+V) Fully generated
+-------------------
 
 .. code-block:: json
 
@@ -230,41 +302,19 @@ V
 ``resources``
 *************
 
-
-The  sections ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available modules in benchpress.
-Each object in a module algorithm has a unique `id` which can be referenced in the benchmark_setup_ section.
-
 The names of the fields of the modules in this section are directly transferred or translated from the original libraries or code. Thus, for further details of each field we refer to the documentation of the original sources.
 
-To start an interactive Docker shell for a module run
+To start an interactive `Docker <https://www.docker.com/>`_ shell for a module run
 
-.. code-block:: bash
+.. prompt:: bash
 
     docker run -it username/image:version
 
-or using Apptainer
+or using `Apptainer <https://apptainer.org/>`_
 
-.. code-block:: bash
+.. prompt:: bash
 
     apptainer run docker://username/image:version
-
-
-.. .. .. _resources:
-.. .. .. figure:: _static/resources.png
-.. ..     :width: 400
-
-.. ..     Expanded ``resources`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
-
-
-
-.. .. _setup:
-.. .. figure:: _static/setup.png
-..     :width: 400
-
-..     Expanded ``resources`` and ``benchmark_setup`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
 
 .. include:: available_graphs.rst
 .. include:: available_parameters.rst

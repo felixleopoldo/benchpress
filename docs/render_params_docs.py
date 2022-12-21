@@ -1,6 +1,8 @@
 from pathlib import Path
 import json
 from docs_utils import *
+import bibtexparser
+
 
 def info_to_table(json, p):
     tab = ".. list-table:: \n\n" # +p.name+"\n\n"
@@ -22,14 +24,21 @@ def info_to_table(json, p):
         tab += "     - \n"
     else:
         tab += "     - `here <"+info["docs_url"]+">`__\n"
-    tab += "   * - Paper\n"
+
+    tab += "   * - Paper\n"  
     tab += "     - "
-    for i in range(len(info["papers"])):
-        if info["papers"][i]["title"] != "":
-            tab += "`"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
+    if (p/'bibtex.bib').is_file():
+        with open(p/'bibtex.bib') as bibtex_file:
+            bibtex_database = bibtexparser.load(bibtex_file)        
+
+        if len(bibtex_database.entries) > 0:            
+            for ref in bibtex_database.entries: 
+                tab += ":footcite:t:`"+ref["ID"] +"`, "
         else:
             tab += "  "
-
+    else:
+        tab += "  "
+    
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Graph type\n"
@@ -39,7 +48,7 @@ def info_to_table(json, p):
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Docker \n"
-    tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
+    tab += "     - " +get_docker_img(p / "rule.smk") 
 #    tab += "   * - Docker\n"
 #    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
     tab += "   * - Module\n"
@@ -132,6 +141,7 @@ for p in sorted(algspath.iterdir()):
     #str += "\n\n\n"
     #str +=".. _" + p.name +": "
     str += "\n\n"
+    str += ".. _"+p.name+": \n\n"
     str +="``" + p.name +"`` \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
     str += "\n"
@@ -151,6 +161,10 @@ for p in sorted(algspath.iterdir()):
         str += ".. code-block:: json"
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    str += "\n\n"
+    str += ".. footbibliography::"
+    str += "\n\n"
+
 
 
 with open("source/available_parameters.rst", "w") as text_file:

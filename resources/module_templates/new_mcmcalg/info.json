@@ -1,0 +1,14 @@
+{
+    "title": "My new algorithm",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs": "",
+    "outputs": "graphtraj",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}

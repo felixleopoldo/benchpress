@@ -41,6 +41,8 @@ The output of the modules are copied to *results/output* for easy access.
 
 
 
+.. _benchmarks: 
+
 ``benchmarks`` 
 --------------
 
@@ -163,6 +165,8 @@ The following plots are also produced
       }
     ]
 
+.. _ggally_ggpairs: 
+
 ``ggally_ggpairs`` 
 ------------------
 
@@ -202,6 +206,8 @@ However, you can always alter the script as you like it.
         "ggally_ggpairs": true
       }
     ]
+
+.. _graph_plots: 
 
 ``graph_plots`` 
 ---------------
@@ -243,6 +249,8 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
       "omcmc_itsample-bge",
       "pc-gaussCItest"
     ]
+
+.. _graph_true_plots: 
 
 ``graph_true_plots`` 
 --------------------
@@ -287,6 +295,8 @@ This module plots the true underlying graphs.
       }
     ]
 
+.. _graph_true_stats: 
+
 ``graph_true_stats`` 
 --------------------
 
@@ -315,6 +325,8 @@ This module plots properties of the true graphs such as graph density.
         "graph_true_stats": true
       }
     ]
+
+.. _mcmc_autocorr_plots: 
 
 ``mcmc_autocorr_plots`` 
 -----------------------
@@ -352,6 +364,12 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 
     Auto-correlation of the scores in trajectory of order MCMC
 
+..  figure:: _static/alarm/autocorr_score.png
+    :alt: Multiple score trajectory of order MCMC
+
+    Auto-correlation of the scores in trajectory of order MCMC for differnt algorithm seeds and parameter settings.
+
+
 
 .. rubric:: Example
 
@@ -372,6 +390,8 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
         "active": true
       }
     ]
+
+.. _mcmc_heatmaps: 
 
 ``mcmc_heatmaps`` 
 -----------------
@@ -416,14 +436,14 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
 
 
     [
-      [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "active": true
-        }
-      ]
+      {
+        "id": "omcmc_itsample-bge",
+        "burn_in": 0,
+        "active": true
+      }
     ]
+
+.. _mcmc_traj_plots: 
 
 ``mcmc_traj_plots`` 
 -------------------
@@ -456,10 +476,10 @@ The ``mcmc_traj_plots`` module has a list of objects, where each object has
 Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
 
 
-..  figure:: _static/omcmcscoretraj.png
-    :alt: Score trajectory of order MCMC
+..  figure:: _static/alarm/score.png
+    :alt: Score trajectories of order MCMC
 
-    Score trajectory of order MCMC
+    Score trajectories of order MCMC with 3 different seeds and parameter settings for the ``am`` parameter.
 
 
 .. rubric:: Example
@@ -469,16 +489,14 @@ Since the trajectories tend to be very long, the user may choose to thin out the
 
 
     [
-      [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "thinning": 1,
-          "functional": [
-            "score",
-            "size"
-          ],
-          "active": true
-        }
-      ]
+      {
+        "id": "omcmc_itsample-bge",
+        "burn_in": 0,
+        "thinning": 1,
+        "functional": [
+          "score",
+          "size"
+        ],
+        "active": true
+      }
     ]

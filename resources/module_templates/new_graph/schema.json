@@ -1,10 +1,10 @@
 {
-    "title": "pcalg_randdag",
-    "description": "Sampling graph using randDAG from the pcalg package.",
+    "title": "Some title",
+    "description": "Some description",
     "type": "array",
     "items": {
-        "title": "pcalg_randdag item",
-        "description": "An instance of pcalg randdag. Sampling of a DAG with specified maximum averge number for parents for the nodes.",
+        "title": "Some title",
+        "description": "Some description",
         "type": "object",
         "properties": {
             "id": {
