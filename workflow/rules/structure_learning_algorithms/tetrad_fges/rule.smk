@@ -6,6 +6,6 @@ rule tetrad_fges:
         time=alg_output_time_path("tetrad_fges"),
         ntests=touch(alg_output_ntests_path("tetrad_fges"))
     container:
-        docker_image("tetrad")
+        "docker://onceltuca/causal-cmd:1.1.3"
     script:
         "tetrad_fges.py"

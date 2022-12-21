@@ -3,88 +3,95 @@
     "description": "List of parallelDG objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/parallelDG"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "parallelDG": {
-            "title": "ParallelDG item",
-            "description": "Parallel Sampling of decomposable graphs with log-linear decomposable model.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "desciption": "Algorithm identifier",
-                    "type": "string"
-                },
-                "datatype": {
-                    "type": "string",
-                    "enum": [
-                        "discrete",
-                        "continuous"
-                    ]
-                },
-                "pseudo_obs": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "R": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "M": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "mcmc_seed": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "threshold": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "mcmc_estimator": {
-                    "anyOf": [
-                        {
+        "title": "ParallelDG item",
+        "description": "Parallel Sampling of decomposable graphs with log-linear decomposable model.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "datatype": {
+                "type": "string",
+                "enum": [
+                    "discrete",
+                    "continuous"
+                ]
+            },
+            "pseudo_obs": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "R": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "M": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
                             "type": "string",
                             "enum": [
                                 "map",
                                 "threshold"
                             ]
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "map",
-                                    "threshold"
-                                ]
-                            }
                         }
-                    ]
-                },
-                "burnin_frac": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                }
+                    }
+                ]
             },
-            "required": [
-                "id",
-                "datatype",
-                "M",
-                "R",
-                "mcmc_seed",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "trilearn-cont",
-                    "datatype": "continuous",
-                    "M": 10000,
-                    "R": 100,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                }
-            ]
-        }
-    }
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "datatype",
+            "M",
+            "R",
+            "mcmc_seed",
+            "mcmc_estimator",
+            "threshold",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "pdg",
+                "M": 10000,
+                "R": [
+                    100,
+                    200
+                ],
+                "datatype": "continuous",
+                "mcmc_seed": 1,
+                "graph_prior": "uniform",
+                "graph_prior_param": 1.0,
+                "graph_prior_param1": 3.0,
+                "pseudo_obs": 2,
+                "delta": 5.0,
+                "threshold": 0.5,
+                "burnin_frac": 0.5,
+                "mcmc_estimator": "map",
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
 }

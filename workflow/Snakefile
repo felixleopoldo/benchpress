@@ -42,21 +42,49 @@ for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
         "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
     }
 
+for p in Path("workflow/rules/graph/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "graph"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/graph/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/parameters/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "parameters"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/parameters/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/data/").iterdir():
+    item = schema["properties"]["resources"]["properties"][
+        "data"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/data/{}/schema.json".format(p.name)
+    }
+
+for p in Path("workflow/rules/evaluation/").iterdir():
+    item = schema["properties"]["benchmark_setup"]["properties"][
+        "evaluation"
+    ]["properties"]
+
+    item[p.name] = {
+        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
+    }
+
+# Yes this is a hack to use snakemakes built in validator.
 with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
 
-# validate(
-#     config,
-#     schema#,
-#     # jsonschema.RefResolver(
-#     #     base_uri="/",
-#     #     referrer=schema,
-#     # ),
-# )
-
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
-Path("workflow/schemas/tmp.config.schema.json").unlink()
+#Path("workflow/schemas/tmp.config.schema.json").unlink()
 
 include: "rules/docker_images.smk"
 
@@ -68,28 +96,62 @@ rule all:
     input:
         get_active_rules,
 
+rule copy_configs:
+    input: 
+        "config/"
+    output:
+        directory("config/copies")
+    shell:
+        "cp -r {input} {output}"
 
 rule new_alg:
     input:
-        "resources/module_templates/alg_module",
+        "resources/module_templates/new_alg",
     output:
-        directory("workflow/rules/structure_learning_algorithms/alg_module"),
+        directory("workflow/rules/structure_learning_algorithms/new_alg"),
     message:
-        "A template algorithm was created in {output}. The module/folder name alg_module may be changed."
+        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+rule new_mcmcalg:
+    input:
+        "resources/module_templates/new_mcmcalg",
+    output:
+        directory("workflow/rules/structure_learning_algorithms/new_mcmcalg"),
+    message:
+        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+rule new_graph:
+    input:
+        "resources/module_templates/new_graph",
+    output:
+        directory("workflow/rules/graph/new_graph"),
+    message:
+        "A template graph module was created in {output}. The module/folder name new_graph may be changed."
+    shell:
+        "cp -r {input} {output} "
+
+rule new_params:
+    input:
+        "resources/module_templates/new_params",
+    output:
+        directory("workflow/rules/parameters/new_params"),
+    message:
+        "A template parameters module was created in {output}. The module/folder name new_params may be changed."
     shell:
         "cp -r {input} {output} "
 
 
-
-mcmc_modules = [
-    "bdgraph",
-    "bidag_order_mcmc",
-    "parallelDG",
-    "trilearn_pgibbs",
-    "gg99_singlepair",
-    "gt13_multipair",
-]
-
+# Read which modules are MCMC module (have graphtraj output).
+mcmc_modules = []
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    with open(p/"info.json") as json_file:
+        info = json.load(json_file)
+        if "graphtraj" in info["outputs"]:
+            mcmc_modules.append(p.name)
 
 # Validate JSON file based on its values.
 include: "rules/validate.py"
@@ -100,22 +162,25 @@ include: "rules/filename_patterns.py"
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
-        if p.name in pattern_strings or (p.name == "fixed"):
+        if p.name in pattern_strings or (p.name == "fixed_graph"):
 
             include: Path("rules/graph/", p.name, "rule.smk")
 
 
 # Include the parameters modules
 for p in Path("workflow/rules/parameters/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
-        if (p.name in pattern_strings) or (p.name == "fixed"):
+        if (p.name in pattern_strings) or (p.name == "fixed_params"):
 
             include: Path("rules/parameters/", p.name, "rule.smk")
 
 
 # Include the data modules
 for p in Path("workflow/rules/data/").glob("*"):
+    module_name = p.name  # This is used inside the module to get their names
     if (p / "rules.smk").is_file():
 
         include: Path("rules/data/", p.name, "rules.smk")

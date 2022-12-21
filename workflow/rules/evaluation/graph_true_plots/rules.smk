@@ -38,7 +38,8 @@ rule graph_true_plots:
     input:
         conf=configfilename,
         graphs=graph_true_plots(),
-        adjmats=adjmat_true_plots()
+        adjmats=adjmat_true_plots(),
+        #cstrees=
     output:
         touch("results/output/graph_true_plots/graph_true_plots.done"),
     run:

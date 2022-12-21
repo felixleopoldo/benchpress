@@ -1,0 +1,22 @@
+{
+    "title": "ASOBS",
+    "version": "1.1",
+    "package": {
+        "title": "r.blip",
+        "url": "https://cran.r-project.org/web/packages/r.blip/index.html"
+    },
+    "docs_url": "https://cran.r-project.org/web/packages/r.blip/r.blip.pdf",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "R"
+}

@@ -3,46 +3,32 @@
     "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/mcmc_heatmaps"
-    },
-    "additionalItems": false,
-    "examples": [
-        [
+        "examples": [
             {
                 "id": "omcmc_itsample-bge",
                 "burn_in": 0,
                 "active": true
             }
-        ]
-    ],
-    "definitions": {
-        "mcmc_heatmaps": {
-            "examples": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "active": true
-                }
-            ],
-            "title": "MCMC mean graph plot",
-            "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "active": {
-                    "description": "Set to false if you dont want to plot it.",
-                    "type": "boolean"
-                },
-                "burn_in": {
-                    "title": "Burn-in start index.",
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                }
+        ],
+        "title": "MCMC mean graph plot",
+        "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+        "properties": {
+            "id": {
+                "type": "string"
             },
-            "required": [
-                "id",
-                "burn_in"
-            ]
-        }
-    }
+            "active": {
+                "description": "Set to false if you dont want to plot it.",
+                "type": "boolean"
+            },
+            "burn_in": {
+                "title": "Burn-in start index.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "burn_in"
+        ]
+    },
+    "additionalItems": false
 }

@@ -3,56 +3,51 @@
     "title": "dualpc",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/dualpc"
-    },
-    "definitions": {
-        "dualpc": {
-            "title": "dualpc item",
-            "description": "Dual PC algorithm instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "alpha": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "max_ord": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
-                },
-                "skeleton": {
-                    "type": "boolean"
-                },
-                "pattern_graph": {
-                    "type": "boolean"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "dualpc item",
+        "description": "Dual PC algorithm instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "alpha",
-                "skeleton",
-                "max_ord",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "dualpc",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "skeleton": false,
-                    "max_ord": null,
-                    "timeout": null
-                }
-            ]
-        }
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "max_ord": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
+            "skeleton": {
+                "type": "boolean"
+            },
+            "pattern_graph": {
+                "type": "boolean"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "alpha",
+            "skeleton",
+            "max_ord",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "dualpc",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "skeleton": false,
+                "max_ord": null,
+                "timeout": null
+            }
+        ]
     }
 }

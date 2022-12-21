@@ -3,38 +3,33 @@
     "description": "Generates a graph with band structured adjacency matrix.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/trilearn_bandmat"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "trilearn_bandmat": {
-            "title": "trilearn_bandmat item",
-            "description": "A graph with a band structured adjacency matrix",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "dim": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "bandwidth": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                }
+        "title": "trilearn_bandmat item",
+        "description": "A graph with a band structured adjacency matrix",
+        "properties": {
+            "id": {
+                "title": "ID",
+                "type": "string"
             },
-            "required": [
-                "id",
-                "dim",
-                "bandwidth"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "AR2",
-                    "bandwidth": 2,
-                    "dim": 50
-                }
-            ]
-        }
-    }
+            "dim": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "bandwidth": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            }
+        },
+        "required": [
+            "id",
+            "dim",
+            "bandwidth"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "AR2",
+                "bandwidth": 2,
+                "dim": 50
+            }
+        ]
+    },
+    "uniqueItems": true
 }

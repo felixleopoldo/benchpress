@@ -1,5 +1,35 @@
 {
     "title": "gcastle_pc",
     "description": "List of gcastle_pc objects",
-    "type": "array"
+    "type": "array",
+    "items": {
+        "title": "gcastle_pc item",
+        "description": "gcastle_pc object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_pc",
+                "variant": "original",
+                "alpha": 0.05,
+                "ci_test": "gauss",
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
 }

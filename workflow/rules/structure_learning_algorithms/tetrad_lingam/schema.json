@@ -3,38 +3,33 @@
     "description": "lingam objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_lingam"
-    },
-    "definitions": {
-        "tetrad_lingam": {
-            "title": "tetrad_lingam item",
-            "description": "lingam instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "datatype": {
-                    "type": "string"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "tetrad_lingam item",
+        "description": "lingam instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "datatype",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "lingam",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ]
-        }
+            "datatype": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "lingam",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
     }
 }

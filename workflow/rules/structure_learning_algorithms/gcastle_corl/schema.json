@@ -23,7 +23,28 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_corl",
+                "batch_size": 64,
+                "input_dim": 100,
+                "embed_dim": 256,
+                "normalize": false,
+                "encoder_name": "transformer",
+                "encoder_heads": 8,
+                "encoder_blocks": 3,
+                "encoder_dropout_rate": 0.1,
+                "decoder_name": "lstm",
+                "reward_mode": "episodic",
+                "reward_score_type": "BIC",
+                "reward_regression_type": "LR",
+                "reward_gpr_alpha": 1.0,
+                "iteration": 10,
+                "actor_lr": "1e-4",
+                "critic_lr": "1e-3",
+                "alpha": 0.99,
+                "init_baseline": -1.0,
+                "random_seed": 0,
+                "device_type": "cpu",
+                "device_ids": 0,
                 "timeout": null
             }
         ]

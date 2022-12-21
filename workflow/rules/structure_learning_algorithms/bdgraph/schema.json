@@ -129,15 +129,24 @@
             {
                 "id": "bdgraph",
                 "method": "ggm",
-                "algorithm": "bdmcmc",
-                "iter": 1000,
+                "algo": "bdmcmc",
+                "iter": 3000,
                 "gprior": 0.5,
                 "dfprior": 3,
                 "gstart": "empty",
                 "timeout": null,
                 "mcmc_seed": 1,
                 "thresh": 0.5,
-                "burnin": 0
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.3
             }
         ]
     }

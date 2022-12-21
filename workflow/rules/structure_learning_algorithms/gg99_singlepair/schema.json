@@ -3,108 +3,113 @@
     "title": "gg99_singlepair",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/gg99_singlepair"
-    },
-    "definitions": {
-        "gg99_singlepair": {
-            "title": "gg99_singlepair item",
-            "description": "Guidici & Green algorithm for learning decomopasble graphs.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "datatype": {
-                    "type": "string",
-                    "enum": [
-                        "discrete",
-                        "continuous"
-                    ]
-                },
-                "n_samples": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "penalty": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "randomits": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "prior": {
-                    "type": "string"
-                },
-                "ascore": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "bscore": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "clq": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "sep": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "mcmc_seed": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                },
-                "threshold": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "mcmc_estimator": {
-                    "anyOf": [
-                        {
+        "title": "gg99_singlepair item",
+        "description": "Guidici & Green algorithm for learning decomopasble graphs.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "datatype": {
+                "type": "string",
+                "enum": [
+                    "discrete",
+                    "continuous"
+                ]
+            },
+            "n_samples": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "penalty": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "randomits": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "prior": {
+                "type": "string"
+            },
+            "ascore": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "bscore": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "clq": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "sep": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
                             "type": "string",
                             "enum": [
                                 "map",
                                 "threshold"
                             ]
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "map",
-                                    "threshold"
-                                ]
-                            }
                         }
-                    ]
-                },
-                "burnin_frac": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                }
+                    }
+                ]
             },
-            "additionalProperties": false,
-            "required": [
-                "id",
-                "n_samples",
-                "prior",
-                "mcmc_seed",
-                "randomits",
-                "timeout"
-            ],
-            "examples": [
-                {
-                    "id": "gg99",
-                    "n_samples": 1000000,
-                    "datatype": "continuous",
-                    "randomits": 1000,
-                    "prior": "bc",
-                    "ascore": 0.9,
-                    "bscore": 0.001,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": 1.5,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                }
-            ]
-        }
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "n_samples",
+            "prior",
+            "mcmc_seed",
+            "randomits",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gg99",
+                "n_samples": 100000,
+                "datatype": "continuous",
+                "randomits": 100,
+                "prior": "ep",
+                "ascore": null,
+                "bscore": null,
+                "clq": 2,
+                "sep": 4,
+                "penalty": 0.0,
+                "mcmc_seed": 1,
+                "timeout": null,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5
+            }
+        ]
     }
 }

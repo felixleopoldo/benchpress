@@ -1,0 +1,23 @@
+{
+    "title": "GOBNILP",
+    "docker_image": "onceltuca/gobnilp:4347c64",
+    "version": "#4347c64",
+    "package": {
+        "title": "GOBNILP (BitBucket)",
+        "url": "https://bitbucket.org/jamescussens/gobnilp"
+    },
+    "docs_url": "https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf",
+    "papers": [
+        {
+            "title": "M. Bartlett and J. Cussens (2017). Integer linear programming for the bayesian network structure learning problem.",
+            "url": "https://www.jair.org/index.php/jair/article/download/11041/26213/"
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "C"
+}

@@ -79,25 +79,19 @@
     "examples": [
         {
             "filename_prefix": "example/",
-            "point": true,
             "show_seed": true,
             "errorbar": true,
             "errorbarh": false,
-            "xrange": [
-                0,
-                1
-            ],
-            "yrange": [
-                0,
-                1
-            ],
+            "scatter": true,
+            "xlim": [0, 0.3],
+            "ylim": [0, 1],
             "path": true,
             "text": false,
             "ids": [
                 "fges-sem-bic",
+                "pc-gaussCItest",
                 "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pc-gaussCItest"
+                "omcmc_itsample-bge"
             ]
         }
     ]

@@ -1,0 +1,23 @@
+{
+    "title": "GG99",
+    "docker_image": "onceltuca/thomasgreen:1.19-bp",
+    "version": "1.19-bp",
+    "package": {
+        "title": "",
+        "url": "http"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "P. Giudici & P. Green (1999). Decomposable graphical Gaussian model determination",
+            "url": "https://www.jstor.org/stable/pdf/2673585.pdf"
+        }
+    ],
+    "outputs": [
+        "graphtraj"
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Java"
+}

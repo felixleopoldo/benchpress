@@ -1,0 +1,13 @@
+{
+    "title": "Some title",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "graph_types": [
+        ""
+    ],
+    "language": ""
+}

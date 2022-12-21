@@ -3,61 +3,56 @@
     "title": "tetrad_fci",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/tetrad_fci"
-    },
-    "definitions": {
-        "tetrad_fci": {
-            "title": "tetrad_fci item",
-            "description": "FCI instance",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier"
-                },
-                "alpha": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "test": {
-                    "type": "string",
-                    "enum": [
-                        "bdeu-test",
-                        "cci-test",
-                        "cg-lr-test",
-                        "chi-square-test",
-                        "d-sep-test",
-                        "disc-bic-test",
-                        "fisher-z-test",
-                        "g-square-test",
-                        "kci-test",
-                        "prob-test"
-                    ]
-                },
-                "datatype": {
-                    "type": "string"
-                },
-                "timeout": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-                }
+        "title": "tetrad_fci item",
+        "description": "FCI instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
             },
-            "required": [
-                "id",
-                "test",
-                "alpha"
-            ],
-            "examples": [
-                {
-                    "id": "fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ]
-        }
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "test": {
+                "type": "string",
+                "enum": [
+                    "bdeu-test",
+                    "cci-test",
+                    "cg-lr-test",
+                    "chi-square-test",
+                    "d-sep-test",
+                    "disc-bic-test",
+                    "fisher-z-test",
+                    "g-square-test",
+                    "kci-test",
+                    "prob-test"
+                ]
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "alpha"
+        ],
+        "examples": [
+            {
+                "id": "fci-fisher-z",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05
+                ],
+                "test": "fisher-z-test",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
     }
 }

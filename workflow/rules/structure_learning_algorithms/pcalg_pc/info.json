@@ -1,0 +1,22 @@
+{
+    "title": "PC",
+    "version": "2.7-3",
+    "package": {
+        "title": "pcalg",
+        "url": "https://cran.r-project.org/web/packages/pcalg/index.html"
+    },
+    "docs_url": "https://cran.r-project.org/web/packages/pcalg/pcalg.pdf",
+    "papers": [
+        {
+            "title": "the paper title",
+            "url": "the_url"
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "CPDAG, CG"
+    ],
+    "language": "R"
+}

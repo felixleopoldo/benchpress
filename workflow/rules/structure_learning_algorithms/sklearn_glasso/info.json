@@ -1,0 +1,22 @@
+{
+    "title": "Graphical Lasso",
+    "version": "0.22.1",
+    "package": {
+        "title": "scikit-learn",
+        "url": "https://scikit-learn.org/0.22/"
+    },
+    "docs_url": "https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "UG"
+    ],
+    "language": "Python"
+}

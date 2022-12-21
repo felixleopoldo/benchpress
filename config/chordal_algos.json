@@ -9,15 +9,6 @@
                     1,
                     1
                 ]
-            },
-            {
-                "data_id": "example1",
-                "graph_id": "AR1-5",
-                "parameters_id": "intra-class",
-                "seed_range": [
-                    1,
-                    1
-                ]
             }
         ],
         "evaluation": {
@@ -30,7 +21,6 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "parallelDG_test",
                     "gt13_multipair_test",
                     "guidicigreen-cont"
                 ]
@@ -39,7 +29,6 @@
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-                "parallelDG_test",
                 "gt13_multipair_test",
                 "guidicigreen-cont"
             ],
@@ -72,13 +61,13 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "gt13_multipair_test",
-                    "burn_in": 20000,
+                    "burn_in": 0.5,
                     "active": false
                 }
             ],
@@ -114,7 +103,7 @@
                         "score",
                         "size"
                     ],
-                    "active": true
+                    "active": false
                 }
             ]
         }

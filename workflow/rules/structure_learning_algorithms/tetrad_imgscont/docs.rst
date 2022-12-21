@@ -1,0 +1,1 @@
+From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES so allow for multiple datasets as input. The linear, Gaussian BIC scores for each data set are averaged at each step of the algorithm, producing a model for all data sets that assumes they have the same graphical structure across dataset.

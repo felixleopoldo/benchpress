@@ -6,6 +6,6 @@ rule bnlearn_fastiamb:
         time=alg_output_time_path("bnlearn_fastiamb"),
         ntests=alg_output_ntests_path("bnlearn_fastiamb"),
     container:
-        docker_image("bnlearn")
+        "docker://onceltuca/bnlearn:4.7"
     script:
         "bnlearn_fastiamb.R"

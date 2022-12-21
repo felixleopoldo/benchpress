@@ -23,7 +23,31 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_notears_mlp",
+                "lambda1": 0.01,
+                "lambda2": 0.01,
+                "max_iter": 100,
+                "h_tol": "1e-8",
+                "rho_max": "1e+16",
+                "w_threshold": 0.3,
+                "bias": true,
+                "model_type": "mlp",
+                "device_type": "cpu",
+                "device_ids": null,
+                "timeout": null
+            },
+            {
+                "id": "gcastle_notears_sob",
+                "lambda1": 0.01,
+                "lambda2": 0.01,
+                "max_iter": 100,
+                "h_tol": "1e-8",
+                "rho_max": "1e+16",
+                "w_threshold": 0.3,
+                "bias": true,
+                "model_type": "sob",
+                "device_type": "cpu",
+                "device_ids": null,
                 "timeout": null
             }
         ]

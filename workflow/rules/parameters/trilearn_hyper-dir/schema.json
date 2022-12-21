@@ -3,38 +3,33 @@
     "description": "List of trilearn_hyper-dir id's",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/trilearn_hyper-dir"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "trilearn_hyper-dir": {
-            "title": "trilearn_hyper-dir item",
-            "description": "Parameter setting for a hyper Dirichlet distribution",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "n_levels": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-                },
-                "pseudo_obs": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                }
+        "title": "trilearn_hyper-dir item",
+        "description": "Parameter setting for a hyper Dirichlet distribution",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
             },
-            "required": [
-                "n_levels",
-                "pseudo_obs",
-                "id"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "disc-loglin",
-                    "n_levels": 2,
-                    "pseudo_obs": 1.0
-                }
-            ]
-        }
-    }
+            "n_levels": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "pseudo_obs": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "required": [
+            "n_levels",
+            "pseudo_obs",
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "disc-loglin",
+                "n_levels": 2,
+                "pseudo_obs": 1.0
+            }
+        ]
+    },
+    "uniqueItems": true
 }

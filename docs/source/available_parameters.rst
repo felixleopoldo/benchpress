@@ -1,12 +1,141 @@
-.. _parameters:
-
 ``parameters``
-==============================
+====================
 
-.. Samples the parameters for a graphical model with a given graph (specified in the ``data`` section).
+Parameter modules are listed below. 
+Make sure that the parameter module is compatible with the graph module you are using.
 
-``bin_bn``
---------------------
+
+.. list-table:: 
+   :header-rows: 1 
+
+   * - Method
+     - Graph
+     - Language
+     - Package
+     - Version
+     - Module
+   * - G-Wishart
+     - UG
+     - R
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
+     - 2.64
+     - bdgraph_rgwish_ 
+   * - Binary BN
+     - DAG
+     - R
+     - Benchpress
+     - 
+     - bin_bn_ 
+   * - Fixed parameters
+     - 
+     - 
+     - 
+     - 
+     - fixed_params_ 
+   * - SEM parameters
+     - DAG
+     - R
+     - Benchpress
+     - 
+     - sem_params_ 
+   * - Hyper-Dirichlet
+     - DG
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+     - 1.25
+     - trilearn_hyper-dir_ 
+   * - Graph intra-class
+     - UG
+     - Python
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+     - 1.25
+     - trilearn_intra-class_ 
+
+
+
+
+
+.. _bdgraph_rgwish: 
+
+``bdgraph_rgwish`` 
+------------------
+
+.. rubric:: G-Wishart
+
+.. list-table:: 
+
+   * - Package
+     - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
+   * - Version
+     - 2.64
+   * - Language
+     - R
+   * - Docs
+     - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
+   * - Paper
+     - :footcite:t:`lenkoski2013direct`, :footcite:t:`JSSv089i03`
+   * - Graph type
+     - UG
+   * - Docker 
+     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+   * - Module
+     - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
+
+
+
+.. rubric:: Description
+
+Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution  using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__.
+The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
+
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "gwi",
+        "b": 3,
+        "threshold_conv": 1e-08
+      }
+    ]
+
+.. footbibliography::
+
+
+
+.. _bin_bn: 
+
+``bin_bn`` 
+----------
+
+.. rubric:: Binary BN
+
+.. list-table:: 
+
+   * - Package
+     - Benchpress
+   * - Version
+     - 
+   * - Language
+     - R
+   * - Docs
+     - 
+   * - Paper
+     - :footcite:t:`rios2021benchpress`
+   * - Graph type
+     - DAG
+   * - Docker 
+     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+   * - Module
+     - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
+
+
+
+.. rubric:: Description
 
 
 An object of this module defines a binary Bayesian network (where the nodes are binary variables) by sampling its conditional probability tables.
@@ -26,17 +155,80 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
 
 .. rubric:: Example
 
+
 .. code-block:: json
 
-    {
+
+    [
+      {
         "id": "binbn",
         "min": 0.1,
         "max": 0.9
-    }
+      }
+    ]
+
+.. footbibliography::
 
 
-``sem_params``
--------------------------------
+
+.. _fixed_params: 
+
+``fixed_params`` 
+----------------
+
+.. rubric:: Fixed parameters
+
+.. rubric:: Description
+
+* Bnlearn objects `bn.fit` objects should be stored in `RDS` format in the directory *resources/myparams/bn.fit_networks*.
+* Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
+
+
+.. rubric:: Example
+
+Example standard networks mostly from the `bnlearn repository <https://www.bnlearn.com/bnrepository/>`_ are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
+
+
+.. important::
+
+    This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
+
+
+
+
+.. footbibliography::
+
+
+
+.. _sem_params: 
+
+``sem_params`` 
+--------------
+
+.. rubric:: SEM parameters
+
+.. list-table:: 
+
+   * - Package
+     - Benchpress
+   * - Version
+     - 
+   * - Language
+     - R
+   * - Docs
+     - 
+   * - Paper
+     - :footcite:t:`rios2021benchpress`
+   * - Graph type
+     - DAG
+   * - Docker 
+     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+   * - Module
+     - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
+
+
+
+.. rubric:: Description
 
 An object of this module defines a Bayesian network by generating the weight matrix :math:`W` of a Gaussian linear structural equation model (SEM) of the form
 
@@ -57,60 +249,110 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
     
 
 
-.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
-
-
 .. rubric:: Example
+
 
 .. code-block:: json
 
-    {
+
+    [
+      {
         "id": "SEM",
         "min": 0.25,
         "max": 1
-    }
+      }
+    ]
 
-``trilearn_hyper-dir``
--------------------------------
-
-An object of the trilearn hyper-dir module defines a catagorical decomposable model by sampling the parameters from the hyper Dirichlet distribution [1]_, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
+.. footbibliography::
 
 
-.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
 
+.. _trilearn_hyper-dir: 
+
+``trilearn_hyper-dir`` 
+----------------------
+
+.. rubric:: Hyper-Dirichlet
+
+.. list-table:: 
+
+   * - Package
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+   * - Version
+     - 1.25
+   * - Language
+     - Python
+   * - Docs
+     - 
+   * - Paper
+     - :footcite:t:`10.1214/aos/1176349260`
+   * - Graph type
+     - DG
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+   * - Module
+     - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
+
+
+
+.. rubric:: Description
+
+An object of this module defines a categorical decomposable model by sampling the parameters from the hyper Dirichlet distribution, with specified equivalent sample size (``pseudo_obs``) and number of levels per variable (``n_levels``).
+
+
+
+.. note:: 
+
+    This module currently only supports graphs with up to 15 nodes.
 
 .. rubric:: Example
 
+
 .. code-block:: json
 
-    {
+
+    [
+      {
         "id": "disc-loglin",
         "n_levels": 2,
         "pseudo_obs": 1.0
-    }
+      }
+    ]
+
+.. footbibliography::
 
 
-``trilearn_g_inv_wishart``
--------------------------------
 
-An object of the trilearn hyper inv wishart module defines a zero-mean Gaussian decomposable model by sampling the covariance matrix from the *hyper inverse-Wishart* distribution [1]_ according to the procedure outlined by [2]_. 
-The clique-wise scale matrices are fixed to the identity matrix and the degrees of freedom (``dof``) should be specified by the user.
+.. _trilearn_intra-class: 
 
-.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
+``trilearn_intra-class`` 
+------------------------
+
+.. rubric:: Graph intra-class
+
+.. list-table:: 
+
+   * - Package
+     - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+   * - Version
+     - 1.25
+   * - Language
+     - Python
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - UG
+   * - Docker 
+     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+   * - Module
+     - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 
 
-.. rubric:: Example
 
-.. code-block:: json
+.. rubric:: Description
 
-    {
-        "id": "giw",
-        "dof": 1
-    }
-
-
-``trilearn_intra-class``
--------------------------------
 
 An object of the intraclass module defines a zero mean multivariate Gaussian distribution by its covariance matrix :math:`\Sigma` as 
 
@@ -127,48 +369,20 @@ and :math:`\Sigma^{−1}_{ij} = 0 \text{ if } (i, j) \in  E \text{, where } \sig
 Using an object id of this module in the ``parameters_id`` field of the ``data`` section requires that ``graph_id`` represents a decomposable graph.
 
 
-.. See  `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-notears-parameter-sampling-for-gaissian-bayesian-networks.md>`_
-
 
 .. rubric:: Example
 
+
 .. code-block:: json
-    
-    {
+
+
+    [
+      {
         "id": "intra-class",
         "rho": 0.4,
         "sigma2": 1.0
-    }
+      }
+    ]
 
-``bdgraph_rgwish``
-------------------
+.. footbibliography::
 
-Samples G-Wishart matrix given an undirected graph using the *rgwish* function from the R package  `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
-
-
-Provided that :math:`G` is undirected, an object of this module defines a zero-mean Gaussian graphical model by sampling the precision matrix from the *G-Wishart* distribution [AH2005]_ [Len2013]_ using the *rgwish* function from the R package `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_.
-The inverted precision matrix is saved, serving as covariance matrix in a Gaussian distribution.
-
-
-Fixed parameters
--------------------------
-
-* Bnlearn objects `bn.fit` objects should be stored in `RDS` format in the directory *resources/myparams/bn.fit_networks*.
-* Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
-
-
-.. rubric:: Example
-
-Example standard networks mostly from the `bnlearn repository <https://www.bnlearn.com/bnrepository/>`_ are found `here <https://github.com/felixleopoldo/benchpress/tree/master/resources/parameters/myparams/bn.fit_networks>`_.
-
-
-.. important::
-
-    This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
-
-
-
-
-.. [1] A. P. Dawid and S. L. Lauritzen. Hyper Markov laws in the statistical analysis of decomposable graphical models. The Annals of Statistics, 21(3):1272–1317, 1993.
-
-.. [2] C. M. Carvalho, H. Massam, and M. West. Simulation of hyper-inverse Wishart distributions in graphical models. Biometrika, 94(3):647–659, 2007.

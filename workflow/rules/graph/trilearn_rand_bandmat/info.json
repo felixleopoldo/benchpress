@@ -1,0 +1,19 @@
+{
+    "title": "Random bandmatrix",
+    "version": "1.25",
+    "package": {
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Python"
+}

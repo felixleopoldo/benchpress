@@ -1,0 +1,21 @@
+{
+    "title": "Some title",
+    "docker_image": "username/image:version",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "graph_types": [
+        ""
+    ],
+    "language": "",
+    "in_docs": false
+}

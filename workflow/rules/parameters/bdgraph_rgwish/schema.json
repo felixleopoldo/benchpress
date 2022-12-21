@@ -3,38 +3,33 @@
     "description": "List of graph inverse-Wishart id's",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/bdgraph_rgwish"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "bdgraph_rgwish": {
-            "title": "bdgraph_rgwish item",
-            "description": "Parameter setting for a G-Wishart model. Works for undirected graphs.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "b": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                },
-                "threshold_conv": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-                }
+        "title": "bdgraph_rgwish item",
+        "description": "Parameter setting for a G-Wishart model. Works for undirected graphs.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
             },
-            "required": [
-                "b",
-                "id",
-                "threshold_conv"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold_conv": 1e-08
-                }
-            ]
-        }
-    }
+            "b": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "threshold_conv": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "required": [
+            "b",
+            "id",
+            "threshold_conv"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "gwi",
+                "b": 3,
+                "threshold_conv": 1e-08
+            }
+        ]
+    },
+    "uniqueItems": true
 }

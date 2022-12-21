@@ -3,38 +3,33 @@
     "description": "List of generateBinayBN objects",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/bin_bn"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "bin_bn": {
-            "title": "bin_bn item",
-            "description": "Parameter setting for generateBinaryBN",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "min": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                },
-                "max": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-                }
+        "title": "bin_bn item",
+        "description": "Parameter setting for generateBinaryBN",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
             },
-            "required": [
-                "min",
-                "max",
-                "id"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "id": "binbn",
-                    "min": 0.1,
-                    "max": 0.9
-                }
-            ]
-        }
-    }
+            "min": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "max": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "min",
+            "max",
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "binbn",
+                "min": 0.1,
+                "max": 0.9
+            }
+        ]
+    },
+    "uniqueItems": true
 }

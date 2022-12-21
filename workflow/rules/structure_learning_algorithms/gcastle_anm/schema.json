@@ -23,7 +23,8 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_anm",
+                "alpha": 0.05,
                 "timeout": null
             }
         ]

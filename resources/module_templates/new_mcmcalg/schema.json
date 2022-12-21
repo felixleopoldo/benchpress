@@ -1,0 +1,67 @@
+{
+    "title": "Some title",
+    "description": "List of  objects",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Fields setting for .",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "timeout",
+            "burnin_frac",
+            "threshold",
+            "mcmc_estimator"
+        ],
+        "examples": [
+            {
+                "id": "mcmctest",
+                "timeout": null,
+                "burnin_frac": 0.5,
+                "mcmc_estimator": "threshold",
+                "threshold": 0.5
+            }
+
+        ]
+    },
+    "uniqueItems": true
+}

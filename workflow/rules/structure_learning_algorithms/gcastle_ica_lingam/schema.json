@@ -23,7 +23,10 @@
         ],
         "examples": [
             {
-                "id": "gcastle_notears_low_rank",
+                "id": "gcastle_ica_lingam",
+                "thresh": 0.3,
+                "random_state": null,
+                "max_iter": 1000,                    
                 "timeout": null
             }
         ]

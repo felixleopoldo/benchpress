@@ -3,12 +3,7 @@
     "description": "Sample decomposable graph using the Christmas tree algorithm (CTA) from the trilearn package.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/trilearn_cta"
-    },
-    "uniqueItems": true,
-    "definitions": {
-        "trilearn_cta": {
-            "title": "trilearn_cta item",
+        "title": "trilearn_cta item",
             "description": "Graph sampling method provided by the trilearn package. \n Documentation: https://github.com/felixleopoldo/trilearn",
             "properties": {
                 "id": {
@@ -40,6 +35,6 @@
                     "beta": 0.7
                 }
             ]
-        }
-    }
+    },
+    "uniqueItems": true
 }

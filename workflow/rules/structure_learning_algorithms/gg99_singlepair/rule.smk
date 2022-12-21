@@ -8,7 +8,7 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        docker_image("thomasjava")
+        "docker://onceltuca/thomasgreen:1.19-bp"
     shell:
         """
             if [ {wildcards.timeout} = \"None\" ]; then
