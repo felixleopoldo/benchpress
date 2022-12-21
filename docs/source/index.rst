@@ -12,6 +12,7 @@
     :caption: Getting started
 
     installation
+    usage
     examples
     
 
