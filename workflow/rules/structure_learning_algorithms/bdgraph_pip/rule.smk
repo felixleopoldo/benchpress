@@ -3,6 +3,7 @@ def fix_none_startalg(wildcards):
         if wildcards["startalg"] == "None":
             return []
         else:
+            print("hoho")
             return "{output_dir}/adjmat_estimate/{data}/algorithm=/{startalg}/seed={replicate}/adjmat.csv",
 
 rule:

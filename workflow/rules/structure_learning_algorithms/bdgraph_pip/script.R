@@ -63,6 +63,7 @@ wrapper <- function() {
   start <- proc.time()[1]
   set.seed(seed) # BUG: Seeds doesn't seem to work in BDgraph.
   p <- dim(data)[2]
+  
 
   bdgraph.obj <- bdgraph(data,
     n = NULL,
