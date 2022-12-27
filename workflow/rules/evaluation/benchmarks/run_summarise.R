@@ -18,6 +18,7 @@ compareEGs <- function(estEG, trueEG) {
   estSkel <- EGskel(estEG) # estimated skeleton
   trueSkel <- EGskel(trueEG) # true skeleton
   P <- sum(trueSkel) / 2 # number of positives
+  N <- sum(1-trueSkel) /2 # number of negative
   diffSkel <- estSkel - trueSkel
   extra_edges <- which(diffSkel > 0) # edges in estimated but not true EG
   FP <- length(extra_edges) / 2 # count to FPs
@@ -42,17 +43,20 @@ compareEGs <- function(estEG, trueEG) {
     if (FP >= 0) {
       TPR <- 0
       FPR_P <- 1
+      FPR <- FP / N
     } else {
       TPR <- 1
       FPR_P <- 0
+      FPR <- 0
     }
   } else {
     # true graph is non-empty
-    TPR <- TP / P
-    FPR_P <- FP / P
+      TPR <- TP / P
+      FPR_P <- FP / P
+      FPR <- FP / N
   }
-  compEGs <- c(TP, FP, SHD, TPR, FPR_P)
-  names(compEGs) <- c("TP", "FP", "SHD", "TPR", "FPR_P")
+  compEGs <- c(TP, FP, SHD, TPR, FPR_P, FPR)
+  names(compEGs) <- c("TP", "FP", "SHD", "TPR", "FPR_P", "FPR")
   return(compEGs)
 }
 
@@ -142,7 +146,8 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     graph_type <- "dag"
   }
   df <- data.frame(
-    TPR_pattern = compres["TPR"], # should be for all times
+      TPR_pattern = compres["TPR"], # should be for all times
+      FPR_pattern = compres["FPR"],
     FPRn_pattern = compres["FPR_P"],
     SHD_pattern = compres["SHD"],
     SHD_cpdag = SHD_cpdag,

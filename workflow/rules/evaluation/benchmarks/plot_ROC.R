@@ -21,6 +21,7 @@ dir.create(snakemake@output[["graph_type"]])
 dir.create(snakemake@output[["SHD_cpdag_joint"]])
 dir.create(snakemake@output[["f1_skel_joint"]])
 dir.create(snakemake@output[["ntests_joint"]])
+dir.create(snakemake@output[["roc_FPR_TPR"]])
 
 if (file.info(snakemake@input[["csv"]])$size == 0) {
   # Do nothing. Everything was timed out so the directories will be empty.
@@ -222,6 +223,8 @@ unique_data <- unique(joint_bench$data)
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
+
+            
         gg <- ggplot() + {
             if (errorbar) {
               geom_errorbar(
@@ -277,8 +280,8 @@ unique_data <- unique(joint_bench$data)
               geom_point(
                 data = joint_bench, alpha = 0.15, show.legend = FALSE,
                 aes(
-                  x = FPR_skel,
-                  y = TP_skel / true_n_edges_skel,
+                  x = FPR_pattern,
+                  y = TPR_pattern,
                   col = id_numlev
                 ),
                 shape = 20,
@@ -290,8 +293,8 @@ unique_data <- unique(joint_bench$data)
               geom_text(
                 data = joint_bench, alpha = 0.25, show.legend = FALSE,
                 aes(
-                  x = FPR_skel,
-                  y = TP_skel / true_n_edges_skel,
+                  x = FPR_pattern,
+                  y = TPR_pattern,
                   label = replicate, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
@@ -335,15 +338,113 @@ unique_data <- unique(joint_bench$data)
               ylim(ylim[1], ylim[2])
             }
           } +
-          xlab("FP/P") +
-          ylab("TP/P") +
-          ggtitle("Median FP/P vs. TP/P (undirected skeleton)") +
+          xlab("FPR") +
+          ylab("TPR") +
+          ggtitle("Median FPR vs. TPR (undirected skeleton)") +
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["roc_FPRp_TPR_skel"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
 
+            
+        gg <- ggplot() + {
+            if (path) {
+              geom_path(
+                data = toplot, alpha = 0.8,
+                aes(
+                  x = FPR_skel_median,
+                  y = TPR_skel_median,
+                  col = id_numlev
+                )
+              )
+            }
+          } + {
+            if (!param_annot) {
+              geom_point(
+                data = toplot, alpha = 0.5,
+                aes(
+                  x = FPR_skel_median,
+                  y = TPR_skel_median,
+                  col = id_numlev,
+                  shape = id_numlev
+                ),
+                size = 1
+              )
+            }
+          } + {
+            if (scatter && !show_seed) {
+              geom_point(
+                data = joint_bench, alpha = 0.15, show.legend = FALSE,
+                aes(
+                  x = FPR_pattern,
+                  y = TPR_pattern,
+                  col = id_numlev
+                ),
+                shape = 20,
+                size = 1
+              )
+            }
+          } + {
+            if (scatter && show_seed) {
+              geom_text(
+                data = joint_bench, alpha = 0.25, show.legend = FALSE,
+                aes(
+                  x = FPR_pattern,
+                  y = TPR_pattern,
+                  label = replicate, col = id_numlev, shape = id_numlev
+                ),
+                check_overlap = FALSE
+              )
+            }
+          } + {
+            if (path && !param_annot) {
+              geom_label(
+                data = toplot %>%
+                  group_by(id_numlev) %>%
+                  replace_na(list("curve_vals" = 0)) %>%
+                  filter(curve_vals == max(curve_vals)),
+                alpha = 0.8, position = "dodge", alpha = 1, show.legend = FALSE,
+                aes(
+                  x = FPR_skel_median, y = TPR_skel_median,
+                  col = id_numlev, label = id_num
+                )
+              )
+            }
+          } + {
+            if (param_annot) {
+              geom_label(
+                data = toplot, alpha = 0.5,
+                aes(
+                  x = FPR_skel_median,
+                  y = TPR_skel_median,
+                  label = curve_vals, col = id_numlev, shape = id_numlev
+                ),
+                check_overlap = FALSE
+              )
+            }
+          } +
+          guides(shape = FALSE) +
+          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          {
+            if (!is.null(xlim)) {
+              xlim(xlim[1], xlim[2])
+            }
+          } + {
+            if (!is.null(ylim)) {
+              ylim(ylim[1], ylim[2])
+            }
+          } +
+          xlab("FPR") +
+          ylab("TPR") +
+          ggtitle("FPR vs. TPR (undirected skeleton)") +
+          labs(col = "id") +
+          theme_bw() +
+          theme(plot.title = element_text(hjust = 0.5))
+          ggsave(file = paste(snakemake@output[["roc_FPR_TPR"]],"/", plt_counter, ".png", sep=""), plot = gg)
+
+
+            
         gg <- ggplot() +
           {
             if (errorbar) {
