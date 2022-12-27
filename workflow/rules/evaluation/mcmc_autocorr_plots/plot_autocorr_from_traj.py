@@ -113,11 +113,13 @@ else:
 
         df2 = df2.fillna(method="ffill")
 
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
+        
         if snakemake.wildcards["thinning"] != "None":
-            dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):].iloc[::int(
-                snakemake.wildcards["thinning"])]
+            thinning = int(snakemake.wildcards["thinning"])
+            dfplot = df2["size"][burnin:].iloc[::thinning]
         else:
-            dfplot = df2["size"][int(snakemake.wildcards["burn_in"]):]
+            dfplot = df2["size"][burnin:]
         # pd.plotting.autocorrelation_plot(dfplot.iloc[::int(snakemake.wildcards["thinning"])])
 
     elif snakemake.wildcards["functional"] == "score":
@@ -134,11 +136,12 @@ else:
             df2.at[0,'score'] = int(0)
 
         df2 = df2.fillna(method="ffill")
-        
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
         if snakemake.wildcards["thinning"] != "None":
-            dfplot = df2[int(snakemake.wildcards["burn_in"]):][::int(snakemake.wildcards["thinning"])]
+            thinning = int(snakemake.wildcards["thinning"])
+            dfplot = df2[burnin:].iloc[::thinning]
         else:
-            dfplot = df2[int(snakemake.wildcards["burn_in"]):]
+            dfplot = df2[burnin:]
 
     if snakemake.wildcards["lags"] != "None":
         sm.graphics.tsa.plot_acf(dfplot, lags=int(snakemake.wildcards["lags"]))

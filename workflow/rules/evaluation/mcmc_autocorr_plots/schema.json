@@ -9,7 +9,7 @@
     "examples": [
         {
             "id": "omcmc_itsample-bge",
-            "burn_in": 0,
+            "burn_in": 0.5,
             "thinning": 1,
             "lags": 50,
             "functional": [
@@ -26,7 +26,7 @@
             "examples": [
                 {
                     "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
+                    "burn_in": 0.5,
                     "thinning": 1,
                     "lags": 50,
                     "functional": [
@@ -41,7 +41,7 @@
                     "type": "string"
                 },
                 "burn_in": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
                 },
                 "thinning": {
                     "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
