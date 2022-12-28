@@ -12,7 +12,11 @@ for lag in range(1, int(snakemake.wildcards["lags"])+1):
 varying_param = traj["param"].unique()[0]
 varying_param_val = traj["param_val"].unique()[0]
 
-df = pd.DataFrame({"plotvalue":acs}, index=np.arange(1, int(snakemake.wildcards["lags"])+1) * int(snakemake.wildcards["thinning"]))
+thinning = int(1)
+if snakemake.wildcards["thinning"] != "None":
+    thinning = int(snakemake.wildcards["thinning"])
+
+df = pd.DataFrame({"plotvalue":acs}, index=np.arange(1, int(snakemake.wildcards["lags"])+1) * thinning)
 
 
 df["param"] = varying_param
