@@ -61,7 +61,8 @@ area of current research with a plethora of algorithms being developed.
 To facilitate the benchmarking of different methods we present Benchpress, a novel `Snakemake <https://snakemake.github.io/>`_ workflow for producing scalable, reproducible, and platform-independent benchmarks
 of structure learning algorithms for probabilistic graphical models. 
 Benchpress is interfaced via a simple `JSON <https://www.json.org/json-en.html>`_-file, which makes it accessible for all users, while the code is
-designed in a fully modular fashion to enable researchers to contribute additional methodologies. Benchpress currently provides an interface to a large number of state-of-the-art
+designed in a fully modular fashion to enable researchers to contribute additional methodologies. 
+Benchpress  provides an interface to a large number of state-of-the-art
 algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_, `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`_, `bnlearn <https://www.bnlearn.com/>`_, `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`_, `GOBNILP <https://bitbucket.org/jamescussens/gobnilp/src/master/>`_, `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`_, `scikit-learn <https://scikit-learn.org>`_, `TETRAD <https://www.ccd.pitt.edu/>`_, and `trilearn <https://github.com/felixleopoldo/trilearn>`_    as well as a variety of methods for data generating models and performance evaluation. 
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature, which may be included in a benchmarking study. 

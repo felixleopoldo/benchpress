@@ -551,7 +551,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`1565788`
    * - Graph type
      - DAG
    * - Docker 
@@ -564,7 +564,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
 
 .. rubric:: Description
 
-Fast incremental association Markov blanket
+From bnlearn: a variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 
 .. rubric:: Example
 
@@ -674,7 +674,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`GASSE20146755`
    * - Graph type
      - DAG
    * - Docker 
@@ -686,6 +686,8 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 
 .. rubric:: Description
+
+Abstract: We present a novel hybrid algorithm for Bayesian network structure learning, called H2PC. It first reconstructs the skeleton of a Bayesian network and then performs a Bayesian-scoring greedy hill-climbing search to orient the edges. The algorithm is based on divide-and-conquer constraint-based subroutines to learn the local structure around a target variable. We conduct two series of experimental comparisons of H2PC against Max–Min Hill-Climbing (MMHC), which is currently the most powerful state-of-the-art algorithm for Bayesian network structure learning. First, we use eight well-known Bayesian network benchmarks with various data sizes to assess the quality of the learned structure returned by the algorithms. Our extensive experiments show that H2PC outperforms MMHC in terms of goodness of fit to new data and quality of the network structure with respect to the true dependence structure of the data. Second, we investigate H2PC’s ability to solve the multi-label learning problem. We provide theoretical results to characterize and identify graphically the so-called minimal label powersets that appear as irreducible factors in the joint distribution under the faithfulness condition. The multi-label learning problem is then decomposed into a series of multi-class classification problems, where each multi-class variable encodes a label powerset. H2PC is shown to compare favorably to MMHC in terms of global classification accuracy over ten multi-label data sets covering different application domains. Overall, our experiments support the conclusions that local structural learning with H2PC in the form of local neighborhood induction is a theoretically well-motivated and empirically effective learning framework that is well suited to multi-label learning. The source code (in R) of H2PC as well as all data sets used for the empirical tests are publicly available.
 
 .. rubric:: Example
 
@@ -803,7 +805,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`GASSE20146755`
    * - Graph type
      - DAG
    * - Docker 
@@ -815,6 +817,8 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 
 .. rubric:: Description
+
+From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
 
 .. rubric:: Example
 
@@ -917,7 +921,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - :footcite:t:`tsamardinos2003algorithms`
+     - :footcite:t:`10.1007/978-3-540-78757-0_15`
    * - Graph type
      - DAG
    * - Docker 
@@ -929,6 +933,8 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 
 .. rubric:: Description
+
+Abstract: In many cases what matters is not whether a false discovery is made or not but the expected proportion of false discoveries among all the discoveries made, i.e. the so-called false discovery rate (FDR). We present an algorithm aiming at controlling the FDR of edges when learning Gaussian graphical models (GGMs). The algorithm is particularly suitable when dealing with more nodes than samples, e.g. when learning GGMs of gene networks from gene expression data. We illustrate this on the Rosetta compendium [8].
 
 .. rubric:: Example
 
@@ -974,7 +980,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - :footcite:t:`tsamardinos2003algorithms`
+     - :footcite:t:`1565788`
    * - Graph type
      - DAG
    * - Docker 
@@ -1105,7 +1111,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`10.1145/956750.956838`
    * - Graph type
      - DAG
    * - Docker 
@@ -1117,6 +1123,8 @@ dimensional domains.
 
 
 .. rubric:: Description
+
+Abstract: Data Mining with Bayesian Network learning has two important characteristics: under conditions learned edges between variables correspond to casual influences, and second, for every variable T in the network a special subset (Markov Blanket) identifiable by the network is the minimal variable set required to predict T. However, all known algorithms learning a complete BN do not scale up beyond a few hundred variables. On the other hand, all known sound algorithms learning a local region of the network require an exponential number of training instances to the size of the learned region.The contribution of this paper is two-fold. We introduce a novel local algorithm that returns all variables with direct edges to and from a target variable T as well as a local algorithm that returns the Markov Blanket of T. Both algorithms (i) are sound, (ii) can be run efficiently in datasets with thousands of variables, and (iii) significantly outperform in terms of approximating the true neighborhood previous state-of-the-art algorithms using only a fraction of the training size required by the existing methods. A fundamental difference between our approach and existing ones is that the required sample depends on the generating graph connectivity and not the size of the local region; this yields up to exponential savings in sample relative to previously known algorithms. The results presented here are promising not only for discovery of local causal structure, and variable selection for classification, but also for the induction of complete BNs.
 
 .. rubric:: Example
 
@@ -1219,7 +1227,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`https://doi.org/10.48550/arxiv.1301.6696`
    * - Graph type
      - DAG
    * - Docker 
@@ -1231,6 +1239,8 @@ dimensional domains.
 
 
 .. rubric:: Description
+
+Abstract: Learning Bayesian networks is often cast as an optimization problem, where the computational task is to find a structure that maximizes a statistically motivated score. By and large, existing learning tools address this optimization problem using standard heuristic search techniques. Since the search space is extremely large, such search procedures can spend most of the time examining candidates that are extremely unreasonable. This problem becomes critical when we deal with data sets that are large either in the number of instances, or the number of attributes. In this paper, we introduce an algorithm that achieves faster learning by restricting the search space. This iterative algorithm restricts the parents of each variable to belong to a small subset of candidates. We then search for a network that satisfies these constraints. The learned network is then used for selecting better candidates for the next iteration. We evaluate this algorithm both on synthetic and real-life data. Our results show that it is significantly faster than alternative search procedures without loss of quality in the learned structures.
 
 .. rubric:: Example
 
@@ -1284,7 +1294,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - 
+     - :footcite:t:`JMLR:v11:aliferis10a`
    * - Graph type
      - DAG
    * - Docker 
@@ -1296,6 +1306,12 @@ dimensional domains.
 
 
 .. rubric:: Description
+
+Abstract: We present an algorithmic framework for learning local causal structure around target variables of interest in the form of direct causes/effects and Markov blankets applicable to very large data sets with relatively small samples. The selected feature sets can be used for causal discovery and classification. The framework (Generalized Local Learning, or GLL) can be instantiated in numerous ways, giving rise to both existing state-of-the-art as well as novel algorithms. The resulting algorithms are sound under well-defined sufficient conditions. In a first set of experiments we evaluate several algorithms derived from this framework in terms of predictivity and feature set parsimony and compare to other local causal discovery methods and to state-of-the-art non-causal feature selection methods using real data. A second set of experimental evaluations compares the algorithms in terms of ability to induce local causal neighborhoods using simulated and resimulated data and examines the relation of predictivity with causal induction performance.
+Our experiments demonstrate, consistently with causal feature selection theory, that local causal feature selection methods (under broad assumptions encompassing appropriate family of distributions, types of classifiers, and loss functions) exhibit strong feature set parsimony, high predictivity and local causal interpretability. Although non-causal feature selection methods are often used in practice to shed light on causal relationships, we find that they cannot be interpreted causally even when they achieve excellent predictivity. Therefore we conclude that only local causal techniques should be used when insight into causal structure is sought.
+In a companion paper we examine in depth the behavior of GLL algorithms, provide extensions, and show how local techniques can be used for scalable and accurate global causal graph learning.
+
+
 
 .. rubric:: Example
 
@@ -1341,7 +1357,7 @@ dimensional domains.
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
-     - :footcite:t:`norvig2002modern`
+     - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - DAG
    * - Docker 
@@ -1355,8 +1371,7 @@ dimensional domains.
 .. rubric:: Description
 
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
-beneficial from a global perspective to avoid local maxima (Russell and Norvig 2002; Scutari
-et al. 2019b).
+beneficial from a global perspective to avoid local maxima.
 
 .. rubric:: Example
 
@@ -2096,7 +2111,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 
 This score-based method recasts the combinatorial problem of estimating a DAG into a purely
 continuous non-convex optimization problem over real matrices with a smooth constraint to
-ensure acyclicity (Zheng, Aragam, Ravikumar, and Xing 2018).
+ensure acyclicity.
 
 .. rubric:: Example
 
@@ -2837,9 +2852,9 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 .. rubric:: Description
 
 A score-based two-phase algorithm where the first phase aims to identify the possible parent
-sets, Scanagatta et al. (2015); Scanagatta, Corani, De Campos, and Zaffalon (2018). The
-second phase performs an optimisation on a modification of the space of node orders introduced
-in Teyssier and Koller (2012), allowing edges from nodes of higher to lower order, provided
+sets, :footcite:t:`scanagatta2015learning`; :footcite:t:`scanagatta2018approximate`. 
+The second phase performs an optimisation on a modification of the space of node orders introduced
+in :footcite:t:`teyssier2012ordering`, allowing edges from nodes of higher to lower order, provided
 that no cycles are introduced.
 
 .. rubric:: Example

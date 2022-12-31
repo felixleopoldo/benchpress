@@ -321,5 +321,3 @@ or using `Apptainer <https://apptainer.org/>`_
 .. include:: available_data.rst
 .. include:: available_structure_learning_algorithms.rst
 
-
-.. [3] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
