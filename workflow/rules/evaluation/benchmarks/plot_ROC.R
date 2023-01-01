@@ -224,7 +224,6 @@ unique_data <- unique(joint_bench$data)
 
             ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
-            
         gg <- ggplot() + {
             if (errorbar) {
               geom_errorbar(
@@ -451,16 +450,9 @@ unique_data <- unique(joint_bench$data)
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
-          {
-            if (!is.null(xlim)) {
-              xlim(xlim[1], xlim[2])
-            }
-          } + {
-            if (!is.null(ylim)) {
-              ylim(ylim[1], ylim[2])
-            }
-          } +
+              facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+              xlim(0, 1) +
+              ylim(0, 1) +
           xlab("FPR") +
           ylab("TPR") +
           ggtitle("FPR vs. TPR (undirected skeleton)") +
