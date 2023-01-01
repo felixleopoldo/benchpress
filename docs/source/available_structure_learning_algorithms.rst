@@ -377,6 +377,29 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
         "cpdag": false,
         "mergetype": "skeleton",
         "timeout": null
+      },
+      {
+        "id": "itsearch_map-bde",
+        "estimate": "map",
+        "MAP": true,
+        "plus1it": null,
+        "posterior": null,
+        "scoretype": "bde",
+        "chi": [
+          0.01,
+          0.1,
+          1
+        ],
+        "edgepf": 2,
+        "am": null,
+        "aw": null,
+        "softlimit": 9,
+        "hardlimit": 12,
+        "alpha": 0.05,
+        "gamma": 1,
+        "cpdag": false,
+        "mergetype": "skeleton",
+        "timeout": null
       }
     ]
 
