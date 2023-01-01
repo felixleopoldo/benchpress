@@ -105,7 +105,7 @@ unique_data <- unique(joint_bench$data)
               geom_errorbar(
                 data = toplot, alpha = 0.5,
                 aes(
-                  x = FPR_pattern_median,
+                  x = FPRn_pattern_median,
                   ymin = TPR_pattern_q1,
                   ymax = TPR_pattern_q3,
                   col = id_numlev
@@ -120,8 +120,8 @@ unique_data <- unique(joint_bench$data)
                 data = toplot, alpha = 0.5,
                 aes(
                   y = TPR_pattern_median,
-                  xmin = FPR_pattern_q1,
-                  xmax = FPR_pattern_q3,
+                  xmin = FPRn_pattern_q1,
+                  xmax = FPRn_pattern_q3,
                   col = id_numlev
                 ),
                 height = 0.01
@@ -132,7 +132,7 @@ unique_data <- unique(joint_bench$data)
               geom_path(
                 data = toplot, alpha = 0.8,
                 aes(
-                  x = FPR_pattern_median,
+                  x = FPRn_pattern_median,
                   y = TPR_pattern_median,
                   col = id_numlev
                 )
@@ -144,7 +144,7 @@ unique_data <- unique(joint_bench$data)
               geom_point(
                 data = toplot, alpha = 0.5,
                 aes(
-                  x = FPR_pattern_median,
+                  x = FPRn_pattern_median,
                   y = TPR_pattern_median,
                   col = id_numlev,
                   shape = id_numlev
@@ -182,11 +182,11 @@ unique_data <- unique(joint_bench$data)
                 data = toplot %>%
                   group_by(id, adjmat, parameters, data) %>%
                   replace_na(list("curve_vals" = 0)) %>%
-                  mutate(SHDP_pattern_median = 1 - TPR_pattern_median + FPR_pattern_median) %>%
+                  mutate(SHDP_pattern_median = 1 - TPR_pattern_median + FPRn_pattern_median) %>%
                   filter(SHDP_pattern_median == min(SHDP_pattern_median)),
                 alpha = 0.8, position = "dodge", alpha = 1, show.legend = FALSE,
                 aes(
-                  x = FPR_pattern_median, y = TPR_pattern_median,
+                  x = FPRn_pattern_median, y = TPR_pattern_median,
                   col = id_numlev, label = id_num
                 )
               )
@@ -196,7 +196,7 @@ unique_data <- unique(joint_bench$data)
               geom_label(
                 data = toplot, alpha = 0.5,
                 aes(
-                  x = FPR_pattern_median,
+                  x = FPRn_pattern_median,
                   y = TPR_pattern_median,
                   label = curve_vals, col = id_numlev, shape = id_numlev
                 ),
@@ -348,13 +348,41 @@ unique_data <- unique(joint_bench$data)
 
 
             
-        gg <- ggplot() + {
+            gg <- ggplot() + {
+                {
+                    if (errorbar) {
+              geom_errorbar(
+                data = toplot, alpha = 0.5,
+                aes(
+                  x = FPR_pattern_mean,
+                  ymin = TPR_pattern_q1,
+                  ymax = TPR_pattern_q3,
+                  col = id_numlev
+                ),
+                width = 0.01
+              )
+            }
+          } + {
+
+            if (errorbarh) {
+              geom_errorbarh(
+                data = toplot, alpha = 0.5,
+                aes(
+                  y = TPR_pattern_median,
+                  xmin = FPR_pattern_q1,
+                  xmax = FPR_pattern_q3,
+                  col = id_numlev
+                ),
+                height = 0.01
+              )
+            }
+          
             if (path) {
               geom_path(
                 data = toplot, alpha = 0.8,
                 aes(
-                  x = FPR_skel_median,
-                  y = TPR_skel_median,
+                  x = FPR_pattern_mean,
+                  y = TPR_pattern_mean,
                   col = id_numlev
                 )
               )
@@ -364,8 +392,8 @@ unique_data <- unique(joint_bench$data)
               geom_point(
                 data = toplot, alpha = 0.5,
                 aes(
-                  x = FPR_skel_median,
-                  y = TPR_skel_median,
+                  x = FPR_pattern_median,
+                  y = TPR_pattern_median,
                   col = id_numlev,
                   shape = id_numlev
                 ),
@@ -637,7 +665,7 @@ unique_data <- unique(joint_bench$data)
               #                alpha=0.8, position = "dodge", alpha=1,
               #                aes(segment.linetype="solid", segment.alpha=0.3,
               ## segment.color="black",
-              # x =FPR_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
+              # x =FPRn_pattern_median, y = TPR_pattern_median,col = id, label=id_num))
             }
           } + {
             if (param_annot) {
