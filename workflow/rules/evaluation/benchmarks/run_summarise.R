@@ -171,7 +171,8 @@ if (file.info(argv$adjmat_est)$size > 0) {
   df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
   df <- data.frame(
-    TPR_pattern = "None", # should be for all times
+      TPR_pattern = "None", # should be for all times
+      FPR_pattern = "None",
     FPRn_pattern = "None",
     SHD_pattern = "None",
     SHD_cpdag = "None",
