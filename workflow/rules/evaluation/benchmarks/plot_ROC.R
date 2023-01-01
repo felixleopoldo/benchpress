@@ -42,7 +42,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
 
   revlevlist <- c()
   revlevnumlist <- c()
-  lev <- levels(toplot$id)
+  lev <- levels(factor(toplot$id))
   numlev <- c()
 
   for (i in seq_along(lev)) {
@@ -63,7 +63,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
   # Add extra columns with id number like: 3 and id and level like: 3. pcalg_pc.
   toplot <- toplot %>%
     mutate(id_num = lev_to_num(id)) %>%
-    mutate(id_numlev = lev_to_levnum(id))
+      mutate(id_numlev = lev_to_levnum(id))
   toplot$id_numlev <- factor(toplot$id_numlev, levels = numlev)
   joint_bench <- joint_bench %>%
     mutate(id_num = lev_to_num(id)) %>%
@@ -221,8 +221,8 @@ unique_data <- unique(joint_bench$data)
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
-        ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
+            ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
             
         gg <- ggplot() + {
@@ -344,14 +344,12 @@ unique_data <- unique(joint_bench$data)
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
-        ggsave(file = paste(snakemake@output[["roc_FPRp_TPR_skel"]],"/", plt_counter, ".png", sep=""), plot = gg)
-
+            ggsave(file = paste(snakemake@output[["roc_FPRp_TPR_skel"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
             
             gg <- ggplot() + {
-                {
-                    if (errorbar) {
-              geom_errorbar(
+                if (errorbar) {
+                        geom_errorbar(
                 data = toplot, alpha = 0.5,
                 aes(
                   x = FPR_pattern_mean,
@@ -363,8 +361,7 @@ unique_data <- unique(joint_bench$data)
               )
             }
           } + {
-
-            if (errorbarh) {
+              if (errorbarh) {
               geom_errorbarh(
                 data = toplot, alpha = 0.5,
                 aes(
@@ -376,8 +373,8 @@ unique_data <- unique(joint_bench$data)
                 height = 0.01
               )
             }
-          
-            if (path) {
+          } + {
+              if (path) {
               geom_path(
                 data = toplot, alpha = 0.8,
                 aes(
@@ -414,7 +411,7 @@ unique_data <- unique(joint_bench$data)
               )
             }
           } + {
-            if (scatter && show_seed) {
+           if (scatter && show_seed) {
               geom_text(
                 data = joint_bench, alpha = 0.25, show.legend = FALSE,
                 aes(
@@ -434,7 +431,8 @@ unique_data <- unique(joint_bench$data)
                   filter(curve_vals == max(curve_vals)),
                 alpha = 0.8, position = "dodge", alpha = 1, show.legend = FALSE,
                 aes(
-                  x = FPR_skel_median, y = TPR_skel_median,
+                    x = FPR_pattern_mean,
+                    y = TPR_pattern_mean,
                   col = id_numlev, label = id_num
                 )
               )
@@ -444,9 +442,9 @@ unique_data <- unique(joint_bench$data)
               geom_label(
                 data = toplot, alpha = 0.5,
                 aes(
-                  x = FPR_skel_median,
-                  y = TPR_skel_median,
-                  label = curve_vals, col = id_numlev, shape = id_numlev
+                    x = FPR_pattern_mean,
+                    y = TPR_pattern_mean,
+                    label = curve_vals, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -469,8 +467,7 @@ unique_data <- unique(joint_bench$data)
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
-          ggsave(file = paste(snakemake@output[["roc_FPR_TPR"]],"/", plt_counter, ".png", sep=""), plot = gg)
-
+            ggsave(file = paste(snakemake@output[["roc_FPR_TPR"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
             
         gg <- ggplot() +
