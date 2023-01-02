@@ -1,19 +1,11 @@
 This module plots the  values in the trajectory of a given functional. 
 
-The ``mcmc_traj_plots`` module has a list of objects, where each object has
+* Fields 
 
-+----------------+-------------------------------------------------------------------+
-| Field          | Description                                                       |
-+----------------+-------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                       |
-+----------------+-------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.        |
-+----------------+-------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are *size* and graph *score*. |
-+----------------+-------------------------------------------------------------------+
-
-Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
-
+  * ``burn_in`` is the final index of the so-called burn-in period. Use 0 for no burn-in.
+  * ``functional`` should be one of the supported functionals *size* or graph *score*. 
+  * ``thinning`` tells the module to only considering every graph at a given interval length.  
+  * ``active`` should be set to *false* to exclude deactivate.
 
 ..  figure:: _static/alarm/score.png
     :alt: Score trajectories of order MCMC
