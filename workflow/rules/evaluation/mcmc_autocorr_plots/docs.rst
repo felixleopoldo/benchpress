@@ -6,7 +6,7 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | ``id``         | algorithm module object id.                                                                                                |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
+| ``burn_in``    | percent to burn of the number of samples.                                                                 |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+

@@ -7,7 +7,7 @@ The ``mcmc_traj_plots`` module has a list of objects, where each object has
 +----------------+-------------------------------------------------------------------+
 | ``id``         | algorithm module object id.                                       |
 +----------------+-------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.        |
+| ``burn_in``    | percent to burn of the number of samples.        |
 +----------------+-------------------------------------------------------------------+
 | ``functional`` | the currently supported functionals are *size* and graph *score*. |
 +----------------+-------------------------------------------------------------------+
