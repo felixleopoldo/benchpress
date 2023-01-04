@@ -2,3 +2,4 @@ sphinx_copybutton
 sphinx-prompt
 sphinxcontrib.bibtex
 bibtexparser
+sphinx_rtd_theme

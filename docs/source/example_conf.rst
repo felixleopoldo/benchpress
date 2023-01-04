@@ -3,7 +3,14 @@ Small example
 *************************
 Config file: `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`__.
 
-Approximate time: 10 min.
+Command:
+
+.. prompt:: bash
+
+    snakemake --cores all --use-singularity --configfile config/config.json
+
+
+Approximate time: 10 min. on a 3.1 GHz Dual-Core Intel Core i5.
 
 
 This study is an example of data scenario :ref:`V` based on three continuous datasets, sampled using the iid module, corresponding to three realisations of a random linear Gaussian `structural equation model (SEM) <https://en.wikipedia.org/wiki/Structural_equation_modeling>`__ with random `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`_. 

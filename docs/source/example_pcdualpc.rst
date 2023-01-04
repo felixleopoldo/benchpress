@@ -1,15 +1,25 @@
 
+.. _pcdualpcstudy:
+
+
 PC vs. dual PC 
 ******************************
 
 Config file: `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__.
 
+Command:
+
+.. prompt:: bash
+
+    snakemake --cores all --use-singularity --configfile config/paper_pc_vs_dualpc.json
+
+
 Approximate time: 20 min.
 
 We demonstrate a small scale simulation study from data scenario :ref:`V` where the PC (:ref:`pcalg_pc`) and the dual PC (:ref:`dualpc`) algorithms  are compared side-by-side.
 We consider data from 10 random `Bayesian network <https://en.wikipedia.org/wiki/Bayesian_network>`_ models :math:`\{(G_i,\Theta_i)\}_{i=1}^{10}`, where each graph :math:`G_i` has :math:`p=80`` nodes and is sampled using the :ref:`pcalg_randdag` module.
-The parameters :math:`\Theta_i`` are sampled from the random linear Gaussian SEM using the :ref:`sem_params` module  with ``min`` =0.25, ``max`` =1.
-We draw standardised datasets :math:`\mathbf Y_i` of size :math:`n=300` from each of the models using the :ref:`iid`, module. 
+The parameters :math:`\Theta_i` are sampled from the random linear Gaussian SEM using the :ref:`sem_params` module  with ``min`` =0.25, ``max`` =1.
+We draw one standardised dataset :math:`\mathbf Y_i` of size :math:`n=300` from each of the models using the :ref:`iid`, module. 
 
 The ``benchmark_setup`` section looks like this
 
