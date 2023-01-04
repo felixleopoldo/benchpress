@@ -36,8 +36,8 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
     0,0,0,0
 
 
-Graph sequence
-###################
+MCMC trajectory
+######################
 
 When the output of the algorithm is a Markov chain of graphs, we store the output in a compact
 form by tracking only the changes when moves are accepted, along with the corresponding

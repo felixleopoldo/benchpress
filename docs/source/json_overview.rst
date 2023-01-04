@@ -233,6 +233,9 @@ Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleop
         "seed_range": null
     }
 
+
+.. _II:
+
 II) Data analysis with validation
 ----------------------------------
 
@@ -294,7 +297,7 @@ V) Fully generated
         "seed_range": [1, 10]
     }
 
-.. include:: available_evaluations.rst
+
 
 
 .. _resources:
@@ -315,9 +318,4 @@ or using `Apptainer <https://apptainer.org/>`_
 .. prompt:: bash
 
     apptainer run docker://username/image:version
-
-.. include:: available_graphs.rst
-.. include:: available_parameters.rst
-.. include:: available_data.rst
-.. include:: available_structure_learning_algorithms.rst
 

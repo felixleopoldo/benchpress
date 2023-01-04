@@ -30,6 +30,11 @@
     :name: Modules
     :caption: Modules
     
+    available_graphs
+    available_parameters
+    available_data
+    available_structure_learning_algorithms
+    available_evaluations
     module_add
 
 .. toctree::
