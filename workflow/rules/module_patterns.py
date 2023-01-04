@@ -13,10 +13,12 @@ def dict_to_path(d):
 
     c = d[0].copy() # take the first element in the list. BUG
     c.pop("id") # remove id from the string as only the parameters should identify the computation.
-    if "burnin" in c: 
-        c.pop("burnin")
+    if "burnin_frac" in c: 
+        c.pop("burnin_frac")
     if "threshold" in c:      
         c.pop("threshold")
+    if "mcmc_estimator" in c:      
+        c.pop("mcmc_estimator")
     if "active" in c:
         c.pop("active")
     sep = "/"

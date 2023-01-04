@@ -1,38 +1,84 @@
-# This file pricudes a dict where the paths for all algorithms are generated based on the
-# algorithm pattern strings and the values in the config file.
-#
-# MCMC methods are special since the the estimation parameters should not mix with the 
-# parameters that define the run.
-#
-# Order MCMC is special in the sense that it can define a startspace by means 
-# of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 
-def idtopath(mylist, json_string):
-    if isinstance(mylist, list):
-        return [json_string[startalg][0] for startalg in mylist]
+
+
+def id_to_alg(id):
+    for key, alg in config["resources"]["structure_learning_algorithms"].items():
+        for obj in alg:
+            if obj["id"] == id:
+                return key
+   
+    return None
+    
+    
+
+"""
+    This file procudes a dict where the paths for all algorithms are generated based on the
+    algorithm pattern strings and the values in the config file.
+    MCMC methods are special since the the estimation parameters should not mix with the 
+    parameters that define the run.
+    Order MCMC is special in the sense that it can define a startspace by means 
+    of the id of some algorithm. Thus the id has to be exptracted into a path string first.
+"""
+def idtopath(idlist):
+
+    
+    # mylist can either be None, an id, or a list of ids.
+    # The id may correspond to an MCMC alg, then the estimator parameters should be added too.
+    
+    alg = id_to_alg(idlist)
+    vals = config["resources"]["structure_learning_algorithms"][alg][0]
+    
+    if idlist is None:
+        return "None"
+    if isinstance(idlist, list): # TODO: not spported yet
+        if id_to_alg(idlist[0]) in mcmc_modules:
+            return
+        else:            
+            return [json_string[startalg][0] for startalg in idlist]
     else:
-        return json_string[str(mylist)]
+        if alg in mcmc_modules:
+            return expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **vals)
+        else:
+            return expand(pattern_strings[alg], **vals)
 
+ 
 json_string = {}
 
 # Generate strings from the config file.
 for alg in config["resources"]["structure_learning_algorithms"]:
     # Some algorihtm takes input graphs. These are treated separately.
-    has_input_algs = ["bidag_order_mcmc", "bidag_partition_mcmc"] 
-    if alg not in has_input_algs:
+    has_input_algs = ["bidag_order_mcmc", "bidag_partition_mcmc" , "bdgraph_pip"] 
+    if (alg not in has_input_algs) and (alg not in mcmc_modules): # not the mcmc_modules yet
         json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                         for val in config["resources"]["structure_learning_algorithms"][alg]})
 
 
 # These are special and have to be the last one since they take input strings as start space.
 # The start space path has to be gnerated first.
+
+# Maybe this can be done in the end.
+# Need to check if the startspace_algoruthm is an mcmc algorithm. If so idtopath should give also append pattern_strings["mcmc_est"]
 if "bidag_order_mcmc" in pattern_strings:
     order_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]
     for items in order_mcmc_list:    
-        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
+        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"])
 
     json_string.update({val["id"]: expand(pattern_strings["bidag_order_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in order_mcmc_list } )
+
+
+# BUG: The the algs used as input need to bedefied before. PErhaps we can determined the pathstring here as well..
+if "bdgraph_pip" in pattern_strings:
+    bdgraph_pip_list = config["resources"]["structure_learning_algorithms"]["bdgraph_pip"]
+    # The path to the startspace algorithm is extended here
+    for items in bdgraph_pip_list:
+        #print("hej")
+        #print(items) 
+        
+        items["startalg"] = idtopath(items["startalg"]) # Need to att the estmimator to the startalg as well
+
+    json_string.update({val["id"]: expand(pattern_strings["bdgraph_pip"] +"/"+pattern_strings["mcmc_est"] , **val,) 
+                        for val in bdgraph_pip_list} )
 
 
 
@@ -40,14 +86,14 @@ if "bidag_partition_mcmc" in pattern_strings:
     bidag_partition_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_partition_mcmc"]
     # The path to the startspace algorithm is extended here
     for items in bidag_partition_mcmc_list:    
-        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"], json_string)
+        items["startspace_algorithm"] = idtopath(items["startspace_algorithm"])
 
-    json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"], **val,) 
+    json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in bidag_partition_mcmc_list } )
 
 
-# parallelDG has MCMC estimator
 
+# All MCMC algs 
 for alg in mcmc_modules:
     if alg in pattern_strings:
         json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
@@ -60,6 +106,10 @@ for alg in mcmc_modules:
     if alg in pattern_strings:
         json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val,) 
                         for val in config["resources"]["structure_learning_algorithms"][alg]})
+
+
+
+
 
 # Evaluation strings
 def gen_evaluation_string_from_conf(method, alg_id):

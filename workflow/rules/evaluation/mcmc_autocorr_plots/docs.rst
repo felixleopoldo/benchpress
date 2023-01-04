@@ -1,12 +1,10 @@
 
-This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
-
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | Field          | Description                                                                                                                |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | ``id``         | algorithm module object id.                                                                                                |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
+| ``burn_in``    | percent to burn of the number of samples.                                                                                  |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
@@ -14,6 +12,12 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
 | ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
 +----------------+----------------------------------------------------------------------------------------------------------------------------+
+| ``active``     | should be set to *false* to deactivate.                                                                                        |
++----------------+----------------------------------------------------------------------------------------------------------------------------+
+
+
+This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
+
 
 ..  figure:: _static/omcmcscoreautocorr.png
     :alt: Score trajectory of order MCMC

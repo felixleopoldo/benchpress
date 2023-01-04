@@ -53,12 +53,13 @@ else:
 
         df2 = df2.reindex(newindex).reset_index().reindex(
             columns=df2.columns).fillna(method="ffill")
-
+        
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
         if snakemake.wildcards["thinning"] != "None":
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):][::int(
+            df_noburnin = df2[burnin:][::int(
                 snakemake.wildcards["thinning"])]
         else:
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
+            df_noburnin = df2[burnin:]
 
     # Score trajectory
     elif snakemake.wildcards["functional"] == "score":
@@ -70,12 +71,12 @@ else:
         df2 = df[["index", "score"]][2:].set_index("index")
         df2 = df2.reindex(newindex).reset_index().reindex(
             columns=df2.columns).fillna(method="ffill")
-
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
         if snakemake.wildcards["thinning"] != "None":
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):][::int(
+            df_noburnin = df2[burnin:][::int(
                 snakemake.wildcards["thinning"])]
         else:
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
+            df_noburnin = df2[burnin:]
             
     df_noburnin.rename(columns={snakemake.wildcards["functional"]:"plotvalue"}, inplace=True)
 

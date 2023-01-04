@@ -21,7 +21,7 @@
                 "type": "boolean"
             },
             "burn_in": {
-                "title": "Burn-in start index.",
+                "title": "Burn-in percentage.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             }
         },

@@ -9,7 +9,7 @@ This module has a list of objects, where each object has
 +-------------+-------------------------+
 | ``id``      | the algorithm object id |
 +-------------+-------------------------+
-| ``burn_in`` | the burn-in period.     |
+| ``burn_in`` | percent to burn of the number of samples.     |
 +-------------+-------------------------+
 
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
