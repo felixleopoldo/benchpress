@@ -64,19 +64,19 @@ File: `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/b
 
 Paper: :footcite:t:`doi:10.1126/science.1105809`
 
-We consider the data from \cite{sachs2005causal} containing cytometry measurements of 11 phosphorylated proteins and phospholipids, which has become standard in this field since the true underlying graph is regarded as known.
-The dataset consists of totally 7644 measurements from nine different perturbation conditions, each defining a unique intervention scheme.
+.. We consider the data from \cite{sachs2005causal} containing cytometry measurements of 11 phosphorylated proteins and phospholipids, which has become standard in this field since the true underlying graph is regarded as known.
+.. The dataset consists of totally 7644 measurements from nine different perturbation conditions, each defining a unique intervention scheme.
 
-%This data has several times been used carelessly to benchmark structure learning algorithms for observational data.
+.. %This data has several times been used carelessly to benchmark structure learning algorithms for observational data.
 
-\cite{sachs2005causal} removed any data points that fell more than three standard deviations from the mean. % , which resulted in 5400 datapoints which are not available. 
-The data were then discretized to three levels. 
-%The purely observational data had merely 1200 data points.
-They also use bootstrapping methodologies and handle the interventional dataset to determine causal directions of edges. 
+.. \cite{sachs2005causal} removed any data points that fell more than three standard deviations from the mean. % , which resulted in 5400 datapoints which are not available. 
+.. The data were then discretized to three levels. 
+.. %The purely observational data had merely 1200 data points.
+.. They also use bootstrapping methodologies and handle the interventional dataset to determine causal directions of edges. 
 
-However, since the purpose here is to benchmark algorithms suited for observational data, we consider only the first two interventions, referred to as \emph{(anti-CD3/CD28)} and \emph{(anti-CD3/CD28 + ICAM-2)} as only these are expected to be independent of the nodes in the network and just activate the T-cells generally. 
-Algorithms that can handle interventional data (or a combination of interventional and observential), are also available  \citep[see \emph{e.g.},][]{hauser2012characterization,NIPS2017_275d7fb2, kuipers2022interventional} but not studied in this paper and are not yet supported by \ttl.
-We show results for the (logged and standardized version of) the second dataset (\emph{anti-CD3/CD28 + ICAM-2}) with 902 observations since the graphs estimated from this dataset were in general closer to the gold standard network. The data are visualised in Figure~\ref{fig:sachs_pairs} with independent and pairwise scatter plots using the \texttt{ggally\_ggpairs} module.
+.. However, since the purpose here is to benchmark algorithms suited for observational data, we consider only the first two interventions, referred to as \emph{(anti-CD3/CD28)} and \emph{(anti-CD3/CD28 + ICAM-2)} as only these are expected to be independent of the nodes in the network and just activate the T-cells generally. 
+.. Algorithms that can handle interventional data (or a combination of interventional and observential), are also available  \citep[see \emph{e.g.},][]{hauser2012characterization,NIPS2017_275d7fb2, kuipers2022interventional} but not studied in this paper and are not yet supported by \ttl.
+.. We show results for the (logged and standardized version of) the second dataset (\emph{anti-CD3/CD28 + ICAM-2}) with 902 observations since the graphs estimated from this dataset were in general closer to the gold standard network. The data are visualised in Figure~\ref{fig:sachs_pairs} with independent and pairwise scatter plots using the \texttt{ggally\_ggpairs} module.
 
 
 .. rubric:: References
