@@ -17,7 +17,7 @@
 
 Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different languages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
-The documentation (to be updated) is found at https://benchpressdocs.readthedocs.io. 
+The documentation is found at https://benchpressdocs.readthedocs.io. 
 <!-- [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods. -->
 
 The following main functionalities are provided by Benchpress 
@@ -26,7 +26,7 @@ The following main functionalities are provided by Benchpress
 * Algorithm development - Benchmark your own algorithm along with the existing ones while developing.
 * Data analysis - Estimate the underlying graph structure for your own dataset(s).
 
-You may also have a look at [this Medium story](https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8) for an introduction to Benchpress.
+You may also have a look at [this Medium story](https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8) for an introduction.
 
 
 ## Citing

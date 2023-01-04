@@ -4,13 +4,12 @@ Suppose we have a realisation of length :math:`M + 1` of such chain, then the po
 
 This module has a list of objects, where each object has 
 
-+-------------+-------------------------+
-| Field       | Description             |
-+-------------+-------------------------+
-| ``id``      | the algorithm object id |
-+-------------+-------------------------+
-| ``burn_in`` | percent to burn of the number of samples.     |
-+-------------+-------------------------+
+
+* Fields
+
+  * ``burn_in`` percent [0, 1] to burn of the number of samples. 
+  
+
 
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
 

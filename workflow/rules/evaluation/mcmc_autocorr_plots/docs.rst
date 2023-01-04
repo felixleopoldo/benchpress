@@ -1,19 +1,13 @@
 
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| Field          | Description                                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | percent to burn of the number of samples.                                                                                  |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are the number of edges for the graphs *size* and the graph *score*.                   |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``active``     | should be set to *false* to deactivate.                                                                                        |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
+
+* Fields
+
+  * ``burn_in`` percent [0, 1] to burn of the number of samples. 
+  * ``functional`` the currently supported functionals are *size* and graph *score*. 
+  * ``thinning`` tells the module to only considering every graph at a given interval length.
+  * ``active`` should be set to *false* to deactivate.  
+  * ``lags``  the maximum number of lags after ``thinning``.
+
 
 
 This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 

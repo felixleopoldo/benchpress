@@ -343,21 +343,19 @@ This module plots properties of the true graphs such as graph density.
 .. rubric:: Description
 
 
+
+* Fields
+
+  * ``burn_in`` percent [0, 1] to burn of the number of samples. 
+  * ``functional`` the currently supported functionals are *size* and graph *score*. 
+  * ``thinning`` tells the module to only considering every graph at a given interval length.
+  * ``active`` should be set to *false* to deactivate.  
+  * ``lags``  the maximum number of lags after ``thinning``.
+
+
+
 This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
 
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| Field          | Description                                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                                                                                |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``burn_in``    | use samples starting from this value. Use 0 if no burn-in.                                                                 |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``thinning``   | use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large). |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are the number of edges for the graphs *size* and the graph *score*.                   |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
-| ``lags``       | The maximum number of lags after ``thinning``.                                                                             |
-+----------------+----------------------------------------------------------------------------------------------------------------------------+
 
 ..  figure:: _static/omcmcscoreautocorr.png
     :alt: Score trajectory of order MCMC
@@ -380,7 +378,7 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
     [
       {
         "id": "omcmc_itsample-bge",
-        "burn_in": 0,
+        "burn_in": 0.5,
         "thinning": 1,
         "lags": 50,
         "functional": [
@@ -413,13 +411,12 @@ Suppose we have a realisation of length :math:`M + 1` of such chain, then the po
 
 This module has a list of objects, where each object has 
 
-+-------------+-------------------------+
-| Field       | Description             |
-+-------------+-------------------------+
-| ``id``      | the algorithm object id |
-+-------------+-------------------------+
-| ``burn_in`` | the burn-in period.     |
-+-------------+-------------------------+
+
+* Fields
+
+  * ``burn_in`` percent [0, 1] to burn of the number of samples. 
+  
+
 
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
 
@@ -463,19 +460,14 @@ This module plots the  values in the trajectory of a given functional.
 
 The ``mcmc_traj_plots`` module has a list of objects, where each object has
 
-+----------------+-------------------------------------------------------------------------------+
-| Field          | Description                                                                   |
-+----------------+-------------------------------------------------------------------------------+
-| ``id``         | algorithm module object id.                                                   |
-+----------------+-------------------------------------------------------------------------------+
-| ``burn_in``    | percent to burn of the number of samples.                                     |
-+----------------+-------------------------------------------------------------------------------+
-| ``functional`` | the currently supported functionals are *size* and graph *score*.             |
-+----------------+-------------------------------------------------------------------------------+
-|``thinning``    | tells the module to only considering every graph at a given interval length.  |
-+----------------+-------------------------------------------------------------------------------+
-|``active``      | should be set to *false* to deactivate.                                       |
-+----------------+-------------------------------------------------------------------------------+
+* Fields
+
+  * ``burn_in`` percent [0, 1] to burn of the number of samples. 
+  * ``functional`` the currently supported functionals are *size* and graph *score*. 
+  * ``thinning`` tells the module to only considering every graph at a given interval length.
+  * ``active`` should be set to *false* to deactivate.  
+
+
 
 Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the ``thinning`` field. 
 
@@ -495,7 +487,7 @@ Since the trajectories tend to be very long, the user may choose to thin out the
     [
       {
         "id": "omcmc_itsample-bge",
-        "burn_in": 0,
+        "burn_in": 0.5,
         "thinning": 1,
         "functional": [
           "score",
