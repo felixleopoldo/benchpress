@@ -36,7 +36,8 @@ extensions = [
     'recommonmark',
     'sphinx_copybutton',
     'sphinx-prompt',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'sphinx_rtd_theme'
 ]
 
 paths = [Path("../../workflow/rules/structure_learning_algorithms"), 

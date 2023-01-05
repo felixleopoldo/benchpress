@@ -6,9 +6,9 @@ In this section we describe the modules of Benchpress and the structure of the `
 For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
 At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 37). 
-The resources_ section contains separate subsections of the available modules for generating or defining graphs (graph_), parameters (parameters_), data (data_), and algorithms for structure learning (structure_learning_algorithms_). 
+The resources_ section contains separate subsections of the available modules for generating or defining graphs (:ref:`graph`), parameters (:ref:`parameters`), data (:ref:`data`, and algorithms for structure learning (:ref:`structure_learning_algorithms`). 
 Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 41, 50, 64, 73, and 87). 
-The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (evaluation_) (Line 11) a user wishes to consider for analysis. 
+The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (:ref:`evaluation`) (Line 11) a user wishes to consider for analysis. 
 The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding ``id``’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
 
@@ -195,11 +195,11 @@ the user (III, IV).
 The following subsections shows some data examples in the benchmark_setup_ section that correspond to the scenarios I-IV.
 To try this out, you may change the current data section in `config/config.json <../../config/config.json>`_.
 Note that, in general the ``id``'s used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ ). 
-For example, *avneigs4_p20* is the ``id`` of an object in the pcalg_randdag_ module in the graph_ section.
+For example, *avneigs4_p20* is the ``id`` of an object in the :ref:`pcalg_randdag` module in the :ref:`graph` section.
 Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
 
 Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
-For example, you may not use the graph_true_plots_ or benchmarks_ modules as both require the true graph to be provided.
+For example, you may not use the :ref:`graph_true_plots` or :ref:`benchmarks` modules as both require the true graph to be provided.
 
 
 Examples
@@ -271,7 +271,7 @@ IV) Fixed graph and parameters
 --------------------------------
 
 Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
-You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
+You may e.g. use the id *itsearch_sample-bde* in the :ref:`graph_plots` module.
 
 .. code-block:: json
 

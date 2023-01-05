@@ -1,3 +1,5 @@
+.. _structure_learning_algorithms: 
+
 ``structure_learning_algorithms``
 =======================================
 

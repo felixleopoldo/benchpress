@@ -113,6 +113,7 @@ f = open("source/algs_desc.rst", "r")
 content = f.read()
 
 str = ""
+str += ".. _"+algspath.name+": \n\n"
 str += "``"+algspath.name+"``\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
