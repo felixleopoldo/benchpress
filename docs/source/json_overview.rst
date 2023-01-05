@@ -2,14 +2,14 @@
 JSON config file
 ##################
 
-In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`_ configuration file, which serves as interface for the user.
-For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`_, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
+In this section we describe the modules of Benchpress and the structure of the `JSON <https://www.json.org/json-en.html>`__ configuration file, which serves as interface for the user.
+For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
-At the highest level there are two main sections, benchmark_setup_ (Line 2) and resources_ (Line 37). 
-The resources_ section contains separate subsections of the available modules for generating or defining graphs (:ref:`graph`), parameters (:ref:`parameters`), data (:ref:`data`, and algorithms for structure learning (:ref:`structure_learning_algorithms`). 
+At the highest level there are two main sections, :ref:`benchmark_setup` (Line 2) and :ref:`resources` (Line 37). 
+The :ref:`resources` section contains separate subsections of the available modules for generating or defining graphs (:ref:`graph`), parameters (:ref:`parameters`), data (:ref:`data`, and algorithms for structure learning (:ref:`structure_learning_algorithms`). 
 Each module in turn has a list, where each element is an object defining a parameter setting, identified by a unique ``id`` (Lines 41, 50, 64, 73, and 87). 
-The benchmark_setup_ section specifies the data models (data_) (Line 3) and evaluation methods (:ref:`evaluation`) (Line 11) a user wishes to consider for analysis. 
-The module objects used in benchmark_setup_ are defined in resources_ and referenced by their corresponding ``id``’s. 
+The :ref:`benchmark_setup` section specifies the data models (data_) (Line 3) and evaluation methods (:ref:`evaluation`) (Line 11) a user wishes to consider for analysis. 
+The module objects used in :ref:`benchmark_setup` are defined in :ref:`resources` and referenced by their corresponding ``id``’s. 
 The output files of each module are saved systematically under the *results/* directory based on the corresponding objects’ values.
 
 
@@ -147,6 +147,7 @@ Dashed arrows indicates that one of the parents is required and grey arrows indi
 ``benchmark_setup``
 ********************
 
+some text
 
 .. _datasetup:
 
@@ -193,8 +194,8 @@ the user (III, IV).
 +-----+-----------+------------+-----------+
 
 The following subsections shows some data examples in the benchmark_setup_ section that correspond to the scenarios I-IV.
-To try this out, you may change the current data section in `config/config.json <../../config/config.json>`_.
-Note that, in general the ``id``'s used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ ). 
+To try this out, you may change the current data section in `config/config.json <../../config/config.json>`__.
+Note that, in general the ``id``'s used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`__ ). 
 For example, *avneigs4_p20* is the ``id`` of an object in the :ref:`pcalg_randdag` module in the :ref:`graph` section.
 Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
 
@@ -319,3 +320,8 @@ or using `Apptainer <https://apptainer.org/>`_
 
     apptainer run docker://username/image:version
 
+
+.. rubric:: References
+
+
+.. footbibliography::
