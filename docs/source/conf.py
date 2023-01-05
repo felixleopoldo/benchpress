@@ -18,8 +18,8 @@ from pathlib import Path
 # -- Project information -----------------------------------------------------
 
 project = 'Benchpress'
-copyright = '2022'
-author = ''
+copyright = '2023'
+author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
 release = '1.2.1'
