@@ -53,10 +53,15 @@
 
     dev_guide
     
-|GitHub stars|
+|GPLv2 license| |GitHub stars| 
+
+.. |GPLv2 license| image:: https://img.shields.io/badge/License-GPLv2-blue.svg
+   :target: http://www.gnu.org/licenses/gpl-2.0.html
 
 .. |GitHub stars| image:: https://img.shields.io/github/stars/felixleopoldo/benchpress.svg?style=social&label=Star&maxAge=2592000
-   :target: https://GitHub.com/felixleopoldo/benchpress/stargazers/
+   :target: https://GitHub.com/felixleopoldo/benchpress/stargazers/   
+
+
 
 ##################################
 Benchpress
