@@ -53,6 +53,11 @@
 
     dev_guide
     
+|GitHub stars|
+
+.. |GitHub stars| image:: https://img.shields.io/github/stars/felixleopoldo/benchpress.svg?style=social&label=Star&maxAge=2592000
+   :target: https://GitHub.com/felixleopoldo/benchpress/stargazers/
+
 ##################################
 Benchpress
 ##################################

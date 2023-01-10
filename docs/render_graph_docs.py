@@ -12,7 +12,7 @@ def info_to_table(json, p):
     tab += "   * - Version\n"
     tab += "     - "+info["version"]+"\n"
     tab += "   * - Language\n"
-    tab += "     - "+info["language"]+"\n"
+    tab += "     - "+str2link(info["language"])+"\n"
     tab += "   * - Docs\n"
     if info["docs_url"] == "":
         tab += "     - \n"
@@ -36,7 +36,7 @@ def info_to_table(json, p):
     tab += "   * - Graph type\n"
     tab += "     - "
     for i in range(len(info["graph_types"])):
-        tab += info["graph_types"][i] +", "
+        tab += str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
     tab += "   * - Docker \n"
@@ -74,7 +74,7 @@ def info_to_small_table():
         tab += "   * - "+info["title"]+"\n"
         tab += "     - "
         for i in range(len(info["graph_types"])):
-            tab += info["graph_types"][i] +", "
+            tab += str2link(info["graph_types"][i]) +", "
 
         tab = tab[:-2]
         

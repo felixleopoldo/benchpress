@@ -1,3 +1,28 @@
+def str2link(s):
+    
+    if s == "DG":
+        return "`DG <https://en.wikipedia.org/wiki/Chordal_graph>`__"
+    if s == "UG":
+        return "`UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__"
+    if s == "CG":
+        return "`CG <https://en.wikipedia.org/wiki/Mixed_graph>`__"
+    if s == "DAG":
+        return "`DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__"
+    if s == "CPDAG":
+        return "`CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__"
+    if s == "R":
+        return "`R <https://www.r-project.org/>`__"
+    if s == "Python":
+        return "`Python <https://www.python.org/>`__"
+    if s in ["java", "Java"]:
+        return "`Java <https://www.java.com/en/>`__"
+    if s == "C":
+        return "`C <https://en.wikipedia.org/wiki/C_(programming_language)>`__"
+    print(s)
+    return s
+
+    
+
 
 def get_docker_img(rulefile):
     import re

@@ -17,7 +17,7 @@ The data modules.
      - 
      - fixed_data_ 
    * - gCastle IID (SEM)
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - 1.0.3
      - gcastle_iidsim_ 
@@ -147,7 +147,7 @@ Paper: :footcite:t:`doi:10.1126/science.1105809`
    * - Paper
      - :footcite:t:`zhang2021gcastle`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Module
      - `gcastle_iidsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/gcastle_iidsim>`__
 

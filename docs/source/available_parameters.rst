@@ -17,14 +17,14 @@ Make sure that the parameter module is compatible with the graph module you are 
      - Version
      - Module
    * - G-Wishart
-     - UG
-     - R
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `R <https://www.r-project.org/>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
      - 2.64
      - bdgraph_rgwish_ 
    * - Binary BN
-     - DAG
-     - R
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `R <https://www.r-project.org/>`__
      - Benchpress
      - 
      - bin_bn_ 
@@ -35,20 +35,20 @@ Make sure that the parameter module is compatible with the graph module you are 
      - 
      - fixed_params_ 
    * - SEM parameters
-     - DAG
-     - R
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `R <https://www.r-project.org/>`__
      - Benchpress
      - 
      - sem_params_ 
    * - Hyper-Dirichlet
-     - DG
-     - Python
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+     - `Python <https://www.python.org/>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_hyper-dir_ 
    * - Graph intra-class
-     - UG
-     - Python
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `Python <https://www.python.org/>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_intra-class_ 
@@ -71,13 +71,13 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - Version
      - 2.64
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
      - :footcite:t:`lenkoski2013direct`, :footcite:t:`JSSv089i03`
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
    * - Module
@@ -123,13 +123,13 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
    * - Version
      - 
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`rios2021benchpress`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
    * - Module
@@ -216,13 +216,13 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
    * - Version
      - 
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`rios2021benchpress`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
    * - Module
@@ -283,13 +283,13 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`10.1214/aos/1176349260`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
    * - Module
@@ -339,13 +339,13 @@ An object of this module defines a categorical decomposable model by sampling th
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - 
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
    * - Module

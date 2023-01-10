@@ -16,7 +16,7 @@
         "adjmat"
     ],
     "graph_types": [
-        "CPDAG, CG"
+        "CPDAG", "CG"
     ],
     "language": "R"
 }

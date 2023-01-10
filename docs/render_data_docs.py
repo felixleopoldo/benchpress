@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 import bibtexparser
-
+from docs_utils import *
 
 def info_to_table(json, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
@@ -39,7 +39,7 @@ def info_to_table(json, p):
     tab += "\n"
     tab += "   * - Graph type\n"
     for i in range(len(info["graph_types"])):
-        tab += "     - "+info["graph_types"][i] +", "
+        tab += "     - "+str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
 #    tab += "   * - Docker\n"
@@ -71,7 +71,7 @@ def info_to_small_table():
         #tab += "     - "+info["title"]+"\n"
         tab += "   * - "+info["title"]+"\n"
         for i in range(len(info["graph_types"])):
-            tab += "     - "+info["graph_types"][i] +", "
+            tab += "     - "+str2link(info["graph_types"][i]) +", "
         tab = tab[:-2]
         
         tab += "\n"

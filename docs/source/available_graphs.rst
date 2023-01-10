@@ -17,7 +17,7 @@ Below is the list of currently available modules.
      - Version
      - Module
    * - graph.sim function
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
      - 2.64
      - bdgraph_graphsim_ 
@@ -27,22 +27,22 @@ Below is the list of currently available modules.
      - 
      - fixed_graph_ 
    * - randDAG
-     - DAG, UG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - 2.7-3
      - pcalg_randdag_ 
    * - Band matrix
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_bandmat_ 
    * - CTA
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_cta_ 
    * - Random bandmatrix
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - 1.25
      - trilearn_rand_bandmat_ 
@@ -65,13 +65,13 @@ Below is the list of currently available modules.
    * - Version
      - 2.64
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
      - :footcite:t:`JSSv089i03`
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
 
@@ -134,13 +134,13 @@ A fixed graph is referenced by the corresponding filename instead of `id` as wit
    * - Version
      - 2.7-3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
      - :footcite:t:`JSSv047i11`
    * - Graph type
-     - DAG, UG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -202,13 +202,13 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - 
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
@@ -256,13 +256,13 @@ with given bandwidth (*bandwith*).
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`olsson2022sequential`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
@@ -315,13 +315,13 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - 
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 

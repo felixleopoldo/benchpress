@@ -16,219 +16,219 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - Package
      - Module
    * - BDgraph
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
      - bdgraph_ 
    * - Iterative MCMC
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_itsearch_ 
    * - Order MCMC
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_order_mcmc_ 
    * - Partition MCMC
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_partition_mcmc_ 
    * - Fast IAMB
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_fastiamb_ 
    * - Grow-shrink
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_gs_ 
    * - H2PC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_h2pc_ 
    * - HC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hc_ 
    * - HPC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_hpc_ 
    * - IAMB
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iamb_ 
    * - IAMB-FDR
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_iambfdr_ 
    * - INTER-IAMB
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_interiamb_ 
    * - MMHC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmhc_ 
    * - MMPC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_mmpc_ 
    * - PC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_pcstable_ 
    * - RSMAX2
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_rsmax2_ 
    * - S-I HITON-PC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_sihitonpc_ 
    * - Tabu
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
      - bnlearn_tabu_ 
    * - GSP
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
    * - Corrmat thresh
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - corr_thresh_ 
    * - Dual PC
-     - CG, CPDAG
+     - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
      - dualpc_ 
    * - ANM
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_anm_ 
    * - CORL
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_corl_ 
    * - Direct LINGAM
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_direct_lingam_ 
    * - GAE
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_gae_ 
    * - GOLEM
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_golem_ 
    * - GraNDAG
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_grandag_ 
    * - ICALiNGAM
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_ica_lingam_ 
    * - MCSL
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_mcsl_ 
    * - NO TEARS
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_ 
    * - NO TEARS low rank
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_low_rank_ 
    * - NO TEARS non-linear
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_notears_nonlinear_ 
    * - PC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_pc_ 
    * - RL
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_rl_ 
    * - GG99
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - 
      - gg99_singlepair_ 
    * - GOBNILP
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
    * - GT13
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - 
      - gt13_multipair_ 
    * - Parallel DG
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - parallelDG_ 
    * - PC
-     - CPDAG, CG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
    * - Precmat thresh
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - prec_thresh_ 
    * - ASOBS
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
      - rblip_asobs_ 
    * - Graphical Lasso
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
    * - FAS
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fas_ 
    * - FASK
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
    * - FCI
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fci_ 
    * - FGES
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fges_ 
    * - FOFC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fofc_ 
    * - FTFC
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
    * - GFCI
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
    * - IMGSCONT
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_imgscont_ 
    * - LINGAM
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_lingam_ 
    * - PC-ALL
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc-all_ 
    * - RFCI
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
    * - Particle Gibbs
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - trilearn_pgibbs_ 
 
@@ -250,13 +250,13 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Version
      - 2.64
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf>`__
    * - Paper
      - :footcite:t:`JSSv089i03`, :footcite:t:`mohammadi2015bayesian`, :footcite:t:`doi:10.1080/01621459.2021.1996377`, :footcite:t:`10.1214/18-AOAS1164`
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
 
@@ -321,13 +321,13 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Version
      - 2.0.3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
      - :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -423,13 +423,13 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Version
      - 2.0.3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
      - :footcite:t:`friedman2003being`, :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -503,13 +503,13 @@ initialised with constraint-based testing and improved with a score-based search
    * - Version
      - 2.0.3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf>`__
    * - Paper
      - :footcite:t:`doi:10.1080/01621459.2015.1133426`
    * - Graph type
-     - DAG, CPDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
 
@@ -572,13 +572,13 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`1565788`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -631,13 +631,13 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`margaritis2003learning`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -695,13 +695,13 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`GASSE20146755`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -760,13 +760,13 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -826,13 +826,13 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`GASSE20146755`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -885,13 +885,13 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`tsamardinos2003algorithms`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -942,13 +942,13 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`10.1007/978-3-540-78757-0_15`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1001,13 +1001,13 @@ Abstract: In many cases what matters is not whether a false discovery is made or
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`1565788`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1064,13 +1064,13 @@ reducing the size of the blankets.
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`tsamardinos2006max`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1132,13 +1132,13 @@ dimensional domains.
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`10.1145/956750.956838`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1191,13 +1191,13 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1248,13 +1248,13 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1301.6696`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1315,13 +1315,13 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`JMLR:v11:aliferis10a`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1378,13 +1378,13 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
    * - Version
      - 4.7
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://www.bnlearn.com/documentation/man/constraint.html>`__
    * - Paper
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
 
@@ -1442,13 +1442,13 @@ beneficial from a global perspective to avoid local maxima.
    * - Version
      - 0.1a163
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
      - :footcite:t:`squires2018causaldag`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag/tags>`__
 
@@ -1504,13 +1504,13 @@ beneficial from a global perspective to avoid local maxima.
    * - Version
      - 
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`lauritzen1996graphical`
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
@@ -1556,13 +1556,13 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
    * - Version
      - 
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`pmlr-v186-giudice22a`
    * - Graph type
-     - CG, CPDAG
+     - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/dualpc:latest <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
 
@@ -1620,13 +1620,13 @@ and in recovering the underlying network structure.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`hoyer2008nonlinear`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1671,13 +1671,13 @@ Nonlinear causal discovery with additive noise models.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`wang2021ordering`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1742,13 +1742,13 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`shimizu2011directlingam`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1794,13 +1794,13 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1863,13 +1863,13 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`NEURIPS2020_d04d42cd`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1923,13 +1923,13 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -1998,13 +1998,13 @@ A gradient-based algorithm using neural network modeling for non-linear additive
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`10.5555/1248547.1248619`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2051,13 +2051,13 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2117,13 +2117,13 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`NEURIPS2018_e347c514`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2179,13 +2179,13 @@ ensure acyclicity.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2235,13 +2235,13 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`pmlr-v108-zheng20a`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2307,13 +2307,13 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`kalisch2007estimating`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2360,13 +2360,13 @@ A classic causal discovery algorithm based on conditional independence tests.
    * - Version
      - 1.0.3
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.04477`, :footcite:t:`zhang2021gcastle`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
 
@@ -2443,13 +2443,13 @@ A RL-based algorithm that can work with flexible score functions (including non-
    * - Version
      - 
    * - Language
-     - Java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`10.1093/biomet/86.4.785`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
 
@@ -2523,13 +2523,13 @@ advantage for the analysis of large and complex datasets.
    * - Version
      - #4347c64
    * - Language
-     - C
+     - `C <https://en.wikipedia.org/wiki/C_(programming_language)>`__
    * - Docs
      - `here <https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1202.3713`, :footcite:t:`BARTLETT2017258`, :footcite:t:`cussens2017bayesian`, :footcite:t:`pmlr-v138-cussens20a`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp/tags>`__
 
@@ -2591,13 +2591,13 @@ the first phase and the optimal sets are determined in a second phase.
    * - Version
      - 
    * - Language
-     - Java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - 
    * - Paper
      - :footcite:t:`10.2307/43304539`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
 
@@ -2661,13 +2661,13 @@ Abstract: Full Bayesian computational inference for model determination in undir
    * - Version
      - 0.9.2
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - `here <https://github.com/melmasri/parallelDG>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.2209.02008`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
@@ -2739,13 +2739,13 @@ move variate, and outperforms current methods.
    * - Version
      - 2.7-3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/pcalg.pdf>`__
    * - Paper
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
-     - CPDAG, CG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
    * - Docker 
      - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
 
@@ -2807,13 +2807,13 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
    * - Version
      - 
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - 
    * - Paper
      - 
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
@@ -2859,13 +2859,13 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
    * - Version
      - 1.1
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/r.blip/r.blip.pdf>`__
    * - Paper
      - :footcite:t:`scanagatta2018approximate`, :footcite:t:`scanagatta2015learning`, :footcite:t:`teyssier2012ordering`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
 
@@ -2925,13 +2925,13 @@ that no cycles are introduced.
    * - Version
      - 0.22.1
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - `here <https://scikit-learn.org/0.22/modules/generated/sklearn.covariance.graphical_lasso.html?highlight=glasso>`__
    * - Paper
      - :footcite:t:`friedman2008sparse`
    * - Graph type
-     - UG
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
 
@@ -2982,13 +2982,13 @@ that no cycles are introduced.
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - 
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3034,13 +3034,13 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`sanchez2018causal`, :footcite:t:`hyvarinen2013pairwise`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3094,13 +3094,13 @@ See  :footcite:t:`sanchez2018causal`.
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`spirtes1993discovery`, :footcite:t:`spirtes2000causation`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3152,13 +3152,13 @@ See :footcite:t:`spirtes1993discovery`.
    * - Version
      - 1.1.3
    * - Language
-     - Java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`meek1997graphical`, :footcite:t:`chickering2002optimal`, :footcite:t:`ramsey2017million`
    * - Graph type
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3217,13 +3217,13 @@ The algorithms requires a decomposable score—that is, a score that for the ent
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - 
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3272,13 +3272,13 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - 
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3323,13 +3323,13 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`ramsey2017million`, :footcite:t:`spirtes1993discovery`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3385,13 +3385,13 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - 
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3436,13 +3436,13 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`shimizu2006linear`, :footcite:t:`hyvarinen2002independent`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3492,13 +3492,13 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`doi:10.1177/089443939100900106`, :footcite:t:`spirtes2000causation`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3548,13 +3548,13 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
    * - Version
      - 1.1.3
    * - Language
-     - java
+     - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`10.2307/41713636`
    * - Graph type
-     - DAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
      - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
 
@@ -3605,13 +3605,13 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
    * - Version
      - 1.25
    * - Language
-     - Python
+     - `Python <https://www.python.org/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
      - :footcite:t:`10.1214/19-EJS1585`
    * - Graph type
-     - DG
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
      - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
 
