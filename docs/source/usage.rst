@@ -9,6 +9,7 @@ To run the config file `config/config.json <https://github.com/felixleopoldo/ben
     snakemake --cores all --use-singularity --configfile config/config.json
 
 The output is stored in subfolders of *path/to/benchpress/results/output* named by the evaluation modules.
+Note that the first run will take some more time as about 20 GB of `Docker <https://www.docker.com/>`_ images will be downloaded.
 
 Depending on if you are using `Docker <https://www.docker.com/>`_ or run directly on `Linux <https://en.wikipedia.org/wiki/Linux>`_ you need to perform one of the initial steps below.
 
