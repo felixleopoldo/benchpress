@@ -6,6 +6,10 @@ To run the config file `config/config.json <https://github.com/felixleopoldo/ben
 
 .. prompt:: bash
 
+    cd path/to/benchpress
+
+.. prompt:: bash
+
     snakemake --cores all --use-singularity --configfile config/config.json
 
 The output is stored in subfolders of *path/to/benchpress/results/output* named by the evaluation modules.
@@ -20,10 +24,6 @@ Start an interative `Docker <https://www.docker.com/>`_ container in the privili
 
 .. prompt:: bash
 
-    cd path/to/benchpress
-
-.. prompt:: bash
-
     docker run -it -w /mnt --privileged -v $(pwd):/mnt snakemake/snakemake:stable
 
 
@@ -32,9 +32,6 @@ Linux without Docker
 
 If you installed `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ by using `Conda <https://www.anaconda.com/>`_ as suggested by `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_, you first need to activate the conda environment called *snakemake*.
 
-.. prompt:: bash
-
-    cd path/to/benchpress
 
 .. prompt:: bash
 
