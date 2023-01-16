@@ -4,7 +4,6 @@ Adding new modules
 All modules have the following basic file structure, where all the files are necessary except for *script.R* that may be replaced by some `alternative script <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`_.
 However, to get something working, you only have to consider altering *script.R* (or some alternative and in that case also *rule.smk*) and the modules `JSON <https://www.json.org/json-en.html>`_ snippets, as shown in the examples below.
 
-
 ::
 
     module_name
@@ -17,9 +16,11 @@ However, to get something working, you only have to consider altering *script.R*
 
 * *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
 * *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
-* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
+* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. 
+* This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
 * *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
-* *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields of the proper form.  The container field is set to `None` in all of the example rules below in order to force local execution. On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
+* *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields of the proper form.  
+* The container field is set to `None` in all of the example rules below in order to force local execution. On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. Variables available in the script is are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (form the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details of how to access variables in scripts. Note that the values are passed as string and might have to be converted to suite your specific script.
 
 The modules are stored in sub directories of `workflow/rules/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/>`__. 
@@ -30,14 +31,14 @@ The modules are stored in sub directories of `workflow/rules/ <https://github.co
 Graph module
 ########################
 
-To create a new graph module, you can make a copy of the template module `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__ as
+To create a new graph module, you may either copy the template module `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_graph workflow/rules/graph/new_graph
 
-Alternatively, you may copy one of the existing modules.
-The following line copies the :ref:`pcalg_randdag` module to a new module named ``pcalg_randdag_copy``.
+or one of the existing modules.
+The following line copies  :ref:`pcalg_randdag`  to a new module named ``pcalg_randdag_copy``.
 
 .. prompt:: bash
 
@@ -46,9 +47,11 @@ The following line copies the :ref:`pcalg_randdag` module to a new module named 
 Template structure
 ------------------
 
-`rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ (below) takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__.
+:numref:`new_graph_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ from `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__.
 
 .. code-block:: python
+    :name: new_graph_rule
+    :caption: rule.smk in the new_graph template.
     
     rule:
         name:
@@ -61,12 +64,13 @@ Template structure
             "script.R"
 
 
-`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__ generates a random binary symmetric matrix (undirected graph).
-The result is saved in to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__.
+:numref:`new_graph_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__, which generates a random undirected graph (symmetric binary matrix) and saves it properly.
+
+.. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__.
 
 .. code-block:: r
-
-    # Samples the adjacency matrix for a random undirected graph.
+    :name: new_graph_script
+    :caption: script.R in the new_graph template.
 
     p <- as.integer(snakemake@wildcards[["p"]])
 
@@ -81,7 +85,9 @@ The result is saved in to the ``adjmat`` variable of the ``output`` field of `ru
                 quote = FALSE, col.names = TRUE, sep = ","
                 )
 
-In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``resources -> graph`` section, making the variable ``p``  accessible in the script.
+In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``graph`` subsection of the ``resources`` section in the config file.
+
+.. Here making the variable ``p``  accessible in the script.
 
 .. code-block:: json
 
@@ -98,13 +104,13 @@ Parameters module
 ########################
 
 
-In order to create a new parameters module, you can make a copy of the template module `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__ as
+To create a new parameters module, you may either copy the template module `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
 
-Alternatively, you may copy one of the existing modules. 
+or one of the existing modules. 
 This line copies the :ref:`sem_params` module to a new module named ``sem_params_copy``.
 
 .. prompt:: bash
@@ -115,10 +121,13 @@ This line copies the :ref:`sem_params` module to a new module named ``sem_params
 Template structure
 ------------------
 
-In this section we show the content for the module template `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__.
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
+.. In this section we show the content for the module template `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__.
+
+This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) but you may change either the entire file or the content of it. 
 
 .. code-block:: python
+    :name: new_params_rule
+    :caption: rule.smk in the new_params template.
         
     rule:
         name:
@@ -136,12 +145,12 @@ This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/m
             "script.R" 
 
 
-
-
-`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ generates a random binary symetric matrix (undirected graph).
-The result is saved in :r:`snakemake@output[["params"]]`, which is generated from the rule. 
+:numref:`new_params_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__, which samples a covariance matrix for a multivariate Gaussian distribution and saves is properly in :r:`snakemake@output[["params"]]`. 
+The format of this file depend on the type of parameters used, here we sample the a covariance matrix, which are stored as a matrix in a CSV file.
 
 .. code-block:: r
+    :name: new_params_script
+    :caption: script.R in the new_params template.
 
     # As the parameterisation differ between models, there is 
     # no sample script here. 
@@ -156,14 +165,14 @@ The result is saved in :r:`snakemake@output[["params"]]`, which is generated fro
     cat("Replace this", file = snakemake@output[["params"]], sep = "\n")
 
 
-In principal, in order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``parameters`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``p`` and ``param1``, accessible in the script. 
+To use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``parameters`` section of the `JSON <https://www.json.org/json-en.html>`_ file.
+, making the parameter ``param1``, accessible in the script. 
 
 .. code-block:: json
 
     "new_params": [
         {
             "id": "testparams",
-            "p": 5,
             "param1": 10
         }
     ]
@@ -178,7 +187,7 @@ Data module
 
 
 How to sample data depends on the model one samples from.
-However, the iid module is a generic module to sample data from all modules.
+However, the :ref:`iid` module is a generic module to sample data from all modules.
 So sampling IID data the preferred alternative is to alter the :ref:`iid` module.
 However, sometime for implementational reasons, as some sampling function also takes additional arguments  it is easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
 
@@ -297,5 +306,5 @@ Then make *render_docs.sh* executable then render and build the documentation
 
     ./render_docs.sh && make html
 
-Open *build/html/index.html* in a browser.
+Open *build/html/index.html* in a web browser.
 
