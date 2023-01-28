@@ -3,6 +3,8 @@ services:
   gobnilp:
     image: onceltuca/gobnilp:4347c64
     command: tail -f /dev/null
+  snakemake:
+    image: snakemake/snakemake:stable
   trilearn:
     image: onceltuca/trilearn:1.23-bp
     volumes: 

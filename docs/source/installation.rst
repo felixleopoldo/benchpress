@@ -12,7 +12,7 @@ You can either run Benchpress directly on a `Linux <https://en.wikipedia.org/wik
 
 
 Docker 
-**************
+-------------
 
 .. Benchpress cannot run directly on `macOS <https://en.wikipedia.org/wiki/MacOS>`_/`Windows <https://en.wikipedia.org/wiki/Microsoft_Windows>`_ as it requires `Apptainer <https://apptainer.org/>`_ which is only supported by `Linux <https://en.wikipedia.org/wiki/Linux>`_ systems. 
 
@@ -32,7 +32,7 @@ Install `Docker <https://www.docker.com/>`_ following the instructions for your 
 .. _linuxx:
 
 Linux without Docker
-*********************
+----------------------
 
 .. 1. Download Benchpress
 
