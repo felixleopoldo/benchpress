@@ -1,4 +1,3 @@
-
 FROM r-base:4.2.2
 
 ENV DEBIAN_FRONTEND=noninteractive
