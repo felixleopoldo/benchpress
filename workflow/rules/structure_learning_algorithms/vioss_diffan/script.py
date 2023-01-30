@@ -1,13 +1,10 @@
-import os
-
 sys.path.append("workflow/scripts/utils")
-from add_timeout import *
 
-olddir = os.getcwd()
-
+import os
 import pandas as pd
 import time
 import numpy as np
+from add_timeout import *
 
 def wrapper():
 
@@ -19,7 +16,7 @@ def wrapper():
 
     p = df.shape[1]
     np.random.seed(seed)
-
+    olddir = os.getcwd()
     os.chdir("/DiffAN")
     sys.path.append("/DiffAN")
     from diffan.diffan import DiffAN
