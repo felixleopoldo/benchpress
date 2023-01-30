@@ -1,0 +1,14 @@
+{
+    "title": "DiffAN",
+    "version": "#fd83d01",
+    "package": {
+        "title": "DiffAN",
+        "url": "https://github.com/vios-s/DiffAN"
+    },
+    "docs_url": "",
+    "outputs": "adjmat",
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "Python"
+}

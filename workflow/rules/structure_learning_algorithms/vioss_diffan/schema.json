@@ -1,0 +1,55 @@
+{
+    "title": "DiffAN",
+    "description": "List of  objects",
+    "type": "array",
+    "items": {
+        "title": "DiffAN",
+        "description": "Fields setting for DiffAN.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "masking": {
+                "type": "boolean"
+            },
+            "residue": {
+                "type": "boolean"
+            },
+            "epochs": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "batch_size": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
+            "learning_rate": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "timeout",
+            "masking",
+            "residue",
+            "epochs",
+            "batch_size",
+            "learning_rate"
+        ],
+        "examples": [
+            {
+                "id": "diffan",
+                "masking": true,
+                "residue": true,
+                "epochs": 3e3,
+                "batch_size": 1024,
+                "learning_rate": 0.001,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}
