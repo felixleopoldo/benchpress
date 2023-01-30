@@ -18,15 +18,10 @@ def str2link(s):
         return "`Java <https://www.java.com/en/>`__"
     if s == "C":
         return "`C <https://en.wikipedia.org/wiki/C_(programming_language)>`__"
-    print(s)
     return s
-
-    
-
 
 def get_docker_img(rulefile):
     import re
-
     with open(rulefile,"r") as file_one:
         for line in file_one:
             if "docker" in line:
