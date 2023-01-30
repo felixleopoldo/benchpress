@@ -3,16 +3,11 @@ import os
 sys.path.append("workflow/scripts/utils")
 from add_timeout import *
 
-
 olddir = os.getcwd()
-
-
 
 import pandas as pd
 import time
 import numpy as np
-
-
 
 def wrapper():
 
@@ -30,23 +25,15 @@ def wrapper():
     from diffan.diffan import DiffAN
 
     diffan = DiffAN(p,
-                    #masking=eval(snakemake.wildcards["masking"]),
-                    residue=True, #eval(snakemake.wildcards["residue"]),
+                    masking=eval(snakemake.wildcards["masking"]),
+                    residue=eval(snakemake.wildcards["residue"]),
                     epochs=int(float(snakemake.wildcards["epochs"])),
-                    #batch_size=int(snakemake.wildcards["batch_size"]),
-                    #learning_rate=float(snakemake.wildcards["learning_rate"])
+                    batch_size=int(snakemake.wildcards["batch_size"]),
+                    learning_rate=float(snakemake.wildcards["learning_rate"])
                     )
     
-    print(df.values)
     adjmat, order = diffan.fit(df.values)
     os.chdir(olddir)
-    print(os.getcwd())
-
-
-    # m = np.random.randint(p*p, size=(p, p))
-    # adjmat = (m + m.T) / 2
-    # np.fill_diagonal(adjmat, 0)
-    # adjmat.as_type(int)
 
     # save time
     tottime = time.perf_counter() - start
