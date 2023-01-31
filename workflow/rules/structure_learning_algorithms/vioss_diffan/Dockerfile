@@ -13,6 +13,23 @@ RUN pip install functorch
 RUN pip install tqdm
 RUN pip install cdt
 
+RUN pip install networkx==2.7
+RUN pip install gcastle
+
+
+RUN R -e "if (!requireNamespace(\"BiocManager\", quietly = TRUE)) {install.packages(\"BiocManager\", repo=\"http://cran.rstudio.com/\")}" --no-save 
+RUN R -e "BiocManager::install()"  --no-save 
+RUN R -e "BiocManager::install(\"gRbase\")" --no-save 
+RUN R -e "BiocManager::install(\"RBGL\")" --no-save 
+RUN R -e "BiocManager::install(\"Rgraphviz\")" --no-save 
+RUN R -e "BiocManager::install(\"gRain\")" --no-save 
+
+RUN R -e "install.packages(\"pcalg\")" --no-save
+
+RUN R -e 'install.packages(c("remotes"))'
+RUN R -e 'remotes::install_github("https://github.com/cran/SID")'
+
 RUN git clone https://github.com/vios-s/DiffAN.git
 
 WORKDIR /DiffAN
+
