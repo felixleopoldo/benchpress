@@ -1,0 +1,14 @@
+{
+    "title": "GIES",
+    "version": "2.7-3",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "language": "R"
+}
