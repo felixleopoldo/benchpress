@@ -84,7 +84,7 @@ rule standardize:
     output:
         data="{output_dir}/data" \
              "/{model}" \             
-             "/data=/{data_alg}/standardized={standardized, (True|False)}/{data_params}/seed={seed}.csv"
+             "/data=/{data_alg}/{data_params}/standardized={standardized, (True|False)}/seed={seed}.csv"
     script:
         "standardize.R"
 
@@ -114,28 +114,27 @@ rule sample_fixed_sem_params_data:
              "adjmat=/{adjmat}/" \
              "parameters=/sem_params/{bn}/" \
              "data=/iid/n={n}/seed={replicate}.csv"
+    wildcard_constraints:
+        n="[0-9]*",
+        bn=".*\.csv"
     container:
         docker_image("bidag")
     script:
         "sample_sem_data.R" 
 
-
-if "sem_params" in pattern_strings:
-    # BUG: Parameters are matched wrongly here, as seed goes into the last variable
-    # but it is not used anyway so it is ok...
-    rule sample_sem_data:
-        input:
-            bn="{output_dir}/parameters/"+pattern_strings["sem_params"]+"/adjmat=/{adjmat}.csv"
-        output:
-            data="{output_dir}/data" \
-                "/adjmat=/{adjmat}"\
-                "/parameters=/" + pattern_strings["sem_params"] + "/" \ 
-                "data=/iid/" \
-                "n={n}/" \
-                "seed={replicate}.csv"
-        container:
-            docker_image("bidag")
-        script:
-            "sample_sem_data.R" 
-
-
+rule sample_sem_data:
+    input:
+        bn="{output_dir}/parameters/sem_params/{params}/adjmat=/{adjmat}.csv"
+    output:
+        data="{output_dir}/data" \
+            "/adjmat=/{adjmat}"\
+            "/parameters=/sem_params/{params}/" \
+            "data=/iid/" \
+            "n={n}/" \
+            "seed={replicate}.csv"
+    wildcard_constraints:
+        n="[0-9]*"
+    container:
+        docker_image("bidag")
+    script:
+        "sample_sem_data.R" 

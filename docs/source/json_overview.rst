@@ -59,7 +59,7 @@ The module objects used in :ref:`benchmark_setup` are defined in :ref:`resources
                     {
                         "id": "standardized",
                         "standardized": true,
-                        "sample_sizes": 300
+                        "n": 300
                     }
                 ]
             },

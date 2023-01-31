@@ -44,7 +44,7 @@ The parameters :math:`\Theta_i` are sampled using the  :ref:`bin_bn` module  and
     ]
 
 
-From each model, we draw two datasets :math:`\mathbf Y_i^{320}` and :math:`\mathbf Y_i^{640}` of sizes *n=320* and *n=640* using (*n* is called ``sample_sizes`` in this module) the :ref:`iid` module.
+From each model, we draw two datasets :math:`\mathbf Y_i^{320}` and :math:`\mathbf Y_i^{640}` of sizes *n=320* and *n=640* using (*n* is called ``n`` in this module) the :ref:`iid` module.
 
 .. code-block:: json
 
@@ -52,7 +52,7 @@ From each model, we draw two datasets :math:`\mathbf Y_i^{320}` and :math:`\math
       {
           "id": "example3",
           "standardized": false,
-          "sample_sizes": [320, 640]
+          "n": [320, 640]
       }
    ]
 

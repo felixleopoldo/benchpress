@@ -99,14 +99,14 @@
                         {
                             "id": "standardized",
                             "standardized": true,
-                            "sample_sizes": [
+                            "n": [
                                 100
                             ]
                         },
                         {
                             "id": "nonstandardized",
                             "standardized": false,
-                            "sample_sizes": [
+                            "n": [
                                 1000
                             ]
                         }

@@ -43,7 +43,7 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": 300
+                    "n": 300
                 }
             ]
         },

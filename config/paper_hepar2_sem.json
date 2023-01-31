@@ -53,21 +53,21 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "example1",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -75,7 +75,7 @@
                 {
                     "id": "example2",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -83,7 +83,7 @@
                 {
                     "id": "example3",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -91,7 +91,7 @@
                 {
                     "id": "example4",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]

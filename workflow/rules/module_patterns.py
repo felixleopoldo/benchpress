@@ -21,8 +21,20 @@ def dict_to_path(d):
         c.pop("mcmc_estimator")
     if "active" in c:
         c.pop("active")
+    if "standardized" in c:
+        c.pop("standardized")
+    
     sep = "/"
-    ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
+    # HACK: Should put standardized first if it exists.. 
+    tmp = [key+"={"+key+"}" for key, val in c.items()]
+    # x = "standardized={standardized}"
+    # print(tmp)
+    # if x in tmp:
+    #     print(x)
+        
+    #     tmp.remove(x)
+    #     tmp.insert(0, x)
+    ret = sep.join(tmp)
     return ret
 
 # The pattern strings are generated from the json config file.
@@ -40,6 +52,11 @@ for module in config["resources"]["graph"]:
 # parameters modules
 for module in config["resources"]["parameters"]:
     pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
+
+# data modules
+for module in config["resources"]["data"]:
+    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])
+
 
 # Evaluation strings. These have not exactly the same logic as the above, but it works.
 pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])

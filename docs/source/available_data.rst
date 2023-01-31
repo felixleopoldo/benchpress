@@ -208,7 +208,7 @@ The data may be standardized by setting ``standardized`` to *true*.
 
 .. rubric:: Description
 
-Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+Independently identically distributed (IID) samples of a given size ``n``.
 The data may be standardized by setting ``standardized`` to true. 
 
 
@@ -222,7 +222,7 @@ The data may be standardized by setting ``standardized`` to true.
       {
         "id": "standardized",
         "standardized": true,
-        "sample_sizes": [
+        "n": [
           100
         ]
       }
