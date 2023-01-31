@@ -145,12 +145,15 @@ This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/m
             "script.R" 
 
 
-:numref:`new_params_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__, which samples a covariance matrix for a multivariate Gaussian distribution and saves is properly in :r:`snakemake@output[["params"]]`. 
-The format of this file depend on the type of parameters used, here we sample the a covariance matrix, which are stored as a matrix in a CSV file.
+:numref:`new_params_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__, which samples a covariance matrix for a multivariate Gaussian distribution from the G-Inverse Wishart distibution and saves it. 
+
+This template module uses the `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_ to sample the matrix, so this needs to be installed on your system in order to be tested.
+
+The format of the saved file depend on the type of parameters used, in this case, since we sample matrix it can be stored as a CSV file.
 
 .. code-block:: r
     :name: new_params_script
-    :caption: script.R in the new_params template.
+    :caption: script.R from new_params.
 
     # As the parameterisation differ between models, there is 
     # no sample script here. 
@@ -160,20 +163,34 @@ The format of this file depend on the type of parameters used, here we sample th
     # Read the adjacency matrix
     df_adjmat <- read.csv(snakemake@input[["adjmat"]], header = TRUE, check.names = FALSE)
     adjmat <- as.matrix(df_adjmat)
+    p <- dim(adjmat)[2]
 
-    # Write the parameters to file. 
-    cat("Replace this", file = snakemake@output[["params"]], sep = "\n")
+    precmat <- rgwish(n = 1, 
+                      adj = adjmat,
+                      b = as.integer(snakemake@wildcards[["b"]]), 
+                      D = diag(p),
+                      threshold = snakemake@wildcards[["thresh"]])
+    covmat <- solve(precmat)
+
+    colnames(covmat) <- colnames(df)
+
+    write.table(covmat,
+                file = snakemake@output[["params"]], 
+                row.names = FALSE,
+                quote = FALSE, col.names = TRUE, sep = ","
+                )
 
 
 To use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``parameters`` section of the `JSON <https://www.json.org/json-en.html>`_ file.
-, making the parameter ``param1``, accessible in the script. 
+
 
 .. code-block:: json
 
     "new_params": [
         {
-            "id": "testparams",
-            "param1": 10
+            "id": "gwish",
+            "thresh": 1e-8,
+            "b": 3
         }
     ]
 
@@ -186,10 +203,10 @@ Data module
 ########################
 
 
-How to sample data depends on the model one samples from.
-However, the :ref:`iid` module is a generic module to sample data from all modules.
-So sampling IID data the preferred alternative is to alter the :ref:`iid` module.
-However, sometime for implementational reasons, as some sampling function also takes additional arguments  it is easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
+While the data sampling procedure depends on the model to sample from, in most cases we are interested in drawing IID samples.
+The :ref:`iid` module is a generic module to sample data from many different models.
+So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
+However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
 
 
 Algorithm module
@@ -233,6 +250,9 @@ This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/m
 
 `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected graph).
 The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
+Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which save an empty graph if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 .. code-block:: r
 
@@ -281,6 +301,8 @@ In order to use the module, you need to add the following piece of `JSON <https:
 Evaluation module
 ########################
 
+There is no unified way of creating evaluation modules as their functionality and output may differ. 
+However, you may either extend or copy one of the existing ones.
 
 .. _update_docs:
 
@@ -308,3 +330,5 @@ Then make *render_docs.sh* executable then render and build the documentation
 
 Open *build/html/index.html* in a web browser.
 
+
+.. _ BDgraph: https://cran.r-project.org/web/packages/BDgraph/index.html
