@@ -2,10 +2,10 @@
     "title": "GIES",
     "version": "2.7-3",
     "package": {
-        "title": "",
-        "url": ""
+        "title": "pcalg",
+        "url": "https://cran.r-project.org/web/packages/pcalg/index.html"
     },
-    "docs_url": "",
+    "docs_url": "https://cran.r-project.org/web/packages/pcalg/index.html",
     "outputs": "adjmat",
     "graph_types": [
         "CPDAG"

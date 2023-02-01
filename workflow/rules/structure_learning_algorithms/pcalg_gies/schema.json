@@ -21,13 +21,10 @@
         ],
         "examples": [
             {
-                "id": "mysetting",
-                "param1": "myparamval",
-                "param2": [
-                    2,
-                    4,
-                    5
-                ],
+                "id": "gies",
+                "maxDegree": null,
+                "iterate": true,
+                "verbose": false,
                 "timeout": null
             }
         ]
