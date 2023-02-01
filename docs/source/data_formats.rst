@@ -50,7 +50,7 @@ to []. The second row (index -1) has the same edges in the removed column, while
 column is set to 0 and added is set to []. The third row (index 0) contains all the vertices in
 the starting graph along with its score in the score column and [] in the removed column.
 
-Below is an example of a trajectory of undirected graphs :math:`G_0, G_1, \dots , G_{89}`, where :math:`E_i = {(b, c),(a, d)}` for :math:`i = 0, \dots , 33, E_i = {(a, d)}`` for :math:`i = 34, \dots , 88` and :math:`E_i = {(c, d),(a, d)}``
+Below is an example of a trajectory of undirected graphs :math:`G_0, G_1, \dots , G_{89}` , where :math:`E_i = {(b, c),(a, d)}` for :math:`i = 0, \dots , 33, E_i = {(a, d)}` for :math:`i = 34, \dots , 88` and :math:`E_i = {(c, d),(a, d)}`
 for :math:`i = 89`.
 
 .. code-block:: text
@@ -64,6 +64,9 @@ for :math:`i = 89`.
 
 Dataset
 #################
+
+Observational data
+******************************
 
 
 Observations should be stored as row vectors in a matrix, where the columns are separated by
@@ -91,6 +94,26 @@ are 2,3,2, and 2.
     2,3,2,2
     1,2,0,1
     0,1,1,1
+
+Interventional data
+******************************
+
+Hard interventions are indicated by additinal columns for the interventional variables, stacked on the right part of the data matrix.
+Below is and example showing samples from a mix of observational and interventional samples from continuous distribution.
+
+.. rubric:: Example (continuous)
+
+
+If in the continuous example above there would be two additinal observations where only :math:`a` was intervened, and one whe both :math:`a` and :math:`d` were intervened, it could look as below. 
+
+.. code-block:: text
+
+    a,b,c,d,a,d
+    0.2,2.3,5.3,0.5,0,0
+    3.2,1.5,2.5,1.2,0,0
+    5.2,0.1,1.5,3.2,1,0
+    1.2,1.2,2.2,4.2,1,0
+    1.1,1.5,1.4,2.2,1,1
 
 
 Parameters
