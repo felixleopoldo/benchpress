@@ -160,61 +160,14 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
         
         for module in config["resources"]["data"]:
             if data_id in [c["id"] for c in config["resources"]["data"][module]]:
+                
                 # Find the data entry from the resources
                 data = next(item for item in config["resources"]["data"][module] if item["id"] == data_id)
                 if seed_in_path: # seed_in_path is a HACK..
-                    
-                    print("str:" + pattern_strings[module])
                     return expand(pattern_strings[module] + "/standardized={standardized}" + # Standardized has to come first... see module_patterns.py
                                     "/seed={seed}",                             
                                     seed = seed,
                                     **data)
                 else:
-                    return expand(pattern_strings[module]+"/standardized={standardized}/" ,
+                    return expand(pattern_strings[module]+"/standardized={standardized}" ,
                                 **data)
-
-
-
-    # elif data_id in [c["id"] for c in config["resources"]["data"]["iid"]]:
-    #     # Find the data entry from the resources
-    #     data = next(item for item in config["resources"]["data"]["iid"] if item["id"] == data_id)
-    #     if seed_in_path: # seed_in_path is a HACK..
-    #         print(pattern_strings["iid"])
-    #         return expand("iid/standardized={standardized}/" + pattern_strings["iid"] + # Standardized has to come first... see module_patterns.py
-    #                         "/seed={seed}",                             
-    #                         seed = seed,
-    #                         **data)
-    #     else:
-    #         return expand("iid/standardized={standardized}/" + pattern_strings["iid"],
-    #                       **data)
-
-
-    # elif data_id in [c["id"] for c in config["resources"]["data"]["gcastle_iidsim"]]:
-    #     # Find the data entry from the resources
-    #     data = next(item for item in config["resources"]["data"]["gcastle_iidsim"] if item["id"] == data_id)
-    #     if seed_in_path:
-    #         return expand("gcastle_iidsim" +\
-    #                         "/standardized={standardized}/" + \
-    #                         "method={method}/" + \
-    #                         "sem_type={sem_type}/" + \
-    #                         "noise_scale={noise_scale}/" + \
-    #                         "n={n}" + \
-    #                         "/seed={seed}", 
-    #                         method = data["method"],
-    #                         sem_type = data["sem_type"],
-    #                         noise_scale = data["noise_scale"],
-    #                         n = data["n"],
-    #                         standardized = data["standardized"],
-    #                         seed = seed)
-    #     else:            
-    #         return expand("gcastle_iidsim" +\
-    #                         "/standardized={standardized}/" + \
-    #                         "method={method}/" + \
-    #                         "sem_type={sem_type}/" + \
-    #                         "noise_scale={noise_scale}/" + \
-    #                         "n={n}",
-    #                         method = data["method"],
-    #                         sem_type = data["sem_type"],
-    #                         noise_scale = data["noise_scale"],
-    #                         standardized = data["standardized"],
-    #                         n = data["n"])
