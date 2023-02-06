@@ -1,0 +1,14 @@
+{
+    "title": "GG99",
+    "version": "v1.0",
+    "package": {
+        "title": "Peter Green",
+        "url": "https://petergreenweb.wordpress.com/"
+    },
+    "docs": "",
+    "outputs": "graphtraj",
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Fortran"
+}
