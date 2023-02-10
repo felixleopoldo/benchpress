@@ -168,7 +168,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - parallelDG_ 
    * - GIES
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_gies_ 
    * - PC
@@ -2743,13 +2743,13 @@ move variate, and outperforms current methods.
    * - Version
      - 2.7-3
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Paper
      - :footcite:t:`JMLR:v13:hauser12a`
    * - Graph type
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
      - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
 

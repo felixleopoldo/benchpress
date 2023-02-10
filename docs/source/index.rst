@@ -12,7 +12,6 @@
     :caption: Getting started
 
     installation
-    usage
     examples
     
 
@@ -20,9 +19,10 @@
     :hidden:
     :maxdepth: 3
     :name: Configuration
-    :caption: Configuration
+    :caption: Usage
     
     json_overview
+    usage
 
 .. toctree::
     :hidden:
@@ -35,6 +35,14 @@
     available_data
     available_structure_learning_algorithms
     available_evaluations
+
+
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+    :name: Modules
+    :caption: Adding modules
+    
     module_add
 
 .. toctree::

@@ -28,7 +28,7 @@ The modules are stored in sub directories of `workflow/rules/ <https://github.co
 .. role:: r(code)
    :language: r
 
-Graph module
+Graph 
 ########################
 
 To create a new graph module, you may either copy the template module `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__ as
@@ -100,7 +100,7 @@ In order to use the module, you need to add the following piece of `JSON <https:
 
 
 
-Parameters module
+Parameters 
 ########################
 
 
@@ -199,7 +199,7 @@ To use the module, you need to add the following piece of `JSON <https://www.jso
 .. role:: r(code)
    :language: r
 
-Data module
+Data 
 ########################
 
 
@@ -289,7 +289,7 @@ In order to use the module, you need to add the following piece of `JSON <https:
     ]
 
 
-Algorithm module
+Algorithm 
 ########################
 
 
@@ -378,17 +378,17 @@ In order to use the module, you need to add the following piece of `JSON <https:
         }
     ]
 
-Evaluation module
+Evaluation 
 ########################
 
-There is no unified way of creating evaluation modules as their functionality and output may differ. 
+There is not yeat a general way of creating evaluation modules as their functionality and output may differ. 
 However, you may either extend or copy one of the existing ones.
 
 .. _update_docs:
 
 
 Updating the documentation
-###########################
+******************************************
 
 When a new module is installed you may also update the documentation.
 First install some requirements 
