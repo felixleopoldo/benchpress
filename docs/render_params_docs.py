@@ -104,7 +104,8 @@ content = f.read()
 
 str = ""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+#str += "``"+algspath.name+"``\n"
+str += "Parameters\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content

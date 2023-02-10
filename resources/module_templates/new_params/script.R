@@ -1,18 +1,45 @@
-# As the parameterisation differ between models, ther is 
-# no sample script here. however, 
+# # As the parameterisation differ between models, ther is 
+# # no sample script here. however, 
 
-# Read the seed number
-seed <- as.integer(snakemake@wildcards[["seed"]])
+# # Read the seed number
+# seed <- as.integer(snakemake@wildcards[["seed"]])
+
+# # Read the adjacency matrix
+# df_adjmat <- read.csv(snakemake@input[["adjmat"]], 
+#                       header = TRUE, 
+#                       check.names = FALSE)
+# adjmat <- as.matrix(df_adjmat)
+
+# # Set the seed
+# set.seed(seed)
+
+# # Write the parameters to file. 
+# cat("Replace this", file = snakemake@output[["params"]], sep = "\n")
+
+
+
+
+# As the parameterisation differ between models, there is
+# no sample script here.
+
+seed <- set.seed(as.integer(snakemake@wildcards[["seed"]]))
 
 # Read the adjacency matrix
-df_adjmat <- read.csv(snakemake@input[["adjmat"]], 
-                      header = TRUE, 
-                      check.names = FALSE)
+df_adjmat <- read.csv(snakemake@input[["adjmat"]], header = TRUE, check.names = FALSE)
 adjmat <- as.matrix(df_adjmat)
+p <- dim(adjmat)[2]
 
-# Set the seed
-set.seed(seed)
+precmat <- rgwish(n = 1,
+                  adj = adjmat,
+                  b = as.integer(snakemake@wildcards[["b"]]),
+                  D = diag(p),
+                  threshold = snakemake@wildcards[["thresh"]])
+covmat <- solve(precmat)
 
-# Write the parameters to file. 
-cat("Replace this", file = snakemake@output[["params"]], sep = "\n")
+colnames(covmat) <- colnames(df)
 
+write.table(covmat,
+            file = snakemake@output[["params"]],
+            row.names = FALSE,
+            quote = FALSE, col.names = TRUE, sep = ","
+            )

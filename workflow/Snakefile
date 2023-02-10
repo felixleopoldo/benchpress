@@ -8,12 +8,9 @@ import filecmp
 from pathlib import Path
 import os
 
-
 include: "rules/helper_functions.py"
 
-
 check_system_requirements()
-
 
 # This is a workaround. Needed a variable for the configfilename
 # and this seemed to be the only way. But there are probably better ways.
@@ -28,7 +25,6 @@ for arg in args:
 
 
 configfile: configfilename
-
 
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
@@ -88,9 +84,7 @@ snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
 include: "rules/docker_images.smk"
 
-
 container: docker_image("benchmark")
-
 
 rule all:
     input:
@@ -103,47 +97,6 @@ rule copy_configs:
         directory("config/copies")
     shell:
         "cp -r {input} {output}"
-
-rule new_alg:
-    input:
-        "resources/module_templates/new_alg",
-    output:
-        directory("workflow/rules/structure_learning_algorithms/new_alg"),
-    message:
-        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
-    shell:
-        "cp -r {input} {output} "
-
-rule new_mcmcalg:
-    input:
-        "resources/module_templates/new_mcmcalg",
-    output:
-        directory("workflow/rules/structure_learning_algorithms/new_mcmcalg"),
-    message:
-        "A template algorithm was created in {output}. The module/folder name new_alg may be changed."
-    shell:
-        "cp -r {input} {output} "
-
-rule new_graph:
-    input:
-        "resources/module_templates/new_graph",
-    output:
-        directory("workflow/rules/graph/new_graph"),
-    message:
-        "A template graph module was created in {output}. The module/folder name new_graph may be changed."
-    shell:
-        "cp -r {input} {output} "
-
-rule new_params:
-    input:
-        "resources/module_templates/new_params",
-    output:
-        directory("workflow/rules/parameters/new_params"),
-    message:
-        "A template parameters module was created in {output}. The module/folder name new_params may be changed."
-    shell:
-        "cp -r {input} {output} "
-
 
 # Read which modules are MCMC module (have graphtraj output).
 mcmc_modules = []
@@ -158,7 +111,6 @@ include: "rules/validate.py"
 include: "rules/module_patterns.py"
 include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
-
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("*"):
@@ -189,17 +141,11 @@ for p in Path("workflow/rules/data/").glob("*"):
 # Include the structure_learning_algorithms modules
 for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
     module_name = p.name  # This is used inside the module to get their names
-
     if (p / "rule.smk").is_file():
-
         if p.name in pattern_strings:
             # set the module name here
-
             include: Path("rules/structure_learning_algorithms/", p.name, "rule.smk")
-
-
             if p.name in mcmc_modules:
-
                 rule:
                     name:
                         p.name + "_estimation"
@@ -218,15 +164,10 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
                         "scripts/evaluation/graphtraj_est.py"
 # Include the evaluation modules
 
-
-
 for p in Path("workflow/rules/evaluation/").glob("*"):
-
     if (p / "rules.smk").is_file():
-
         include: Path("rules/evaluation/", p.name, "rules.smk")
 
 
     elif (p / "rule.smk").is_file():
-
         include: Path("rules/evaluation/", p.name, "rule.smk")

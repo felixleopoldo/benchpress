@@ -1,6 +1,6 @@
 .. _parameters: 
 
-``parameters``
+Parameters
 ====================
 
 Parameter modules are listed below. 

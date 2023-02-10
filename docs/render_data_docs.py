@@ -94,7 +94,8 @@ f = open("source/data_desc.rst", "r")
 content = f.read()
 
 str = ""
-str += "``"+algspath.name+"``\n"
+#str += "``"+algspath.name+"``\n"
+str += "Data\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content

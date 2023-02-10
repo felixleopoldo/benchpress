@@ -1,6 +1,6 @@
 .. _structure_learning_algorithms: 
 
-``structure_learning_algorithms``
+Algorithm
 =======================================
 
 For explanations of the parametrisations of each algorithm see the documentation for the corresponding algorithms.

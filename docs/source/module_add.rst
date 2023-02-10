@@ -208,12 +208,92 @@ The :ref:`iid` module is a generic module to sample data from many different mod
 So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
 However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
 
+To create a new data module, the best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
+
+.. prompt:: bash
+
+    cp -r resources/module_templates/new_data workflow/rules/data/new_data
+
+
+Template structure
+------------------
+
+:numref:`new_data_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__ from `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__.
+
+.. code-block:: python
+    :name: new_data_rule
+    :caption: rule.smk from new_data.
+    
+    rule:
+        name:
+            module_name
+        input:
+            params="{output_dir}/parameters/{params}/adjmat=/{adjmat}.csv"
+        output:
+            data="{output_dir}/data" \
+                "/adjmat=/{adjmat}"\
+                "/parameters=/{params}/" \
+                "data=/"+pattern_strings[module_name] + "/" \
+                "seed={seed}.csv"
+        wildcard_constraints:
+            n="[0-9]*"
+        container:
+            None
+        script:
+            "script.R"
+
+
+:numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates a random undirected data (symmetric binary matrix) and saves it properly.
+
+.. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__.
+
+.. code-block:: r
+    :name: new_data_script
+    :caption: script.R in the new_data template.
+
+    library(mvtnorm)
+
+    seed <- as.integer(snakemake@wildcards[["seed"]])
+
+    df_params <- read.csv(snakemake@input[["params"]], 
+                        header = TRUE, 
+                        check.names = FALSE)
+    covmat <- as.matrix(df_params)
+
+    n <- as.integer(snakemake@wildcards[["n"]])
+    set.seed(seed)
+
+    rmvnorm(n, mean = rep(0, nrow(covmat)), sigma = covmat)
+
+    # Write the data to file. 
+    colnames(covmat) <- colnames(df_params)
+    write.table(covmat,
+                file = snakemake@output[["data"]],
+                row.names = FALSE,
+                quote = FALSE, col.names = TRUE, sep = ","
+                )
+
+
+In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``data`` subsection of the ``resources`` section in the config file.
+
+.. Here making the variable ``p``  accessible in the script.
+
+.. code-block:: json
+
+    "new_data": [
+        {
+            "id": "testdata",
+            "n": 100,
+            "standardized": false
+        }
+    ]
+
 
 Algorithm module
 ########################
 
 
-In order to create a new graph module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
+In order to create a new data module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
 
 .. prompt:: bash
 
@@ -248,10 +328,10 @@ This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/m
             "script.R"
 
 
-`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected graph).
+`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected data).
 The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
 Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which save an empty graph if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 .. code-block:: r
