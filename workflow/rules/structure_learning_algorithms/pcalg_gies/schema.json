@@ -1,0 +1,33 @@
+{
+    "title": "Some title",
+    "description": "List of  objects",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Fields setting for .",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gies",
+                "maxDegree": null,
+                "iterate": true,
+                "verbose": false,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}
