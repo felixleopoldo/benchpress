@@ -11,6 +11,8 @@ rule sample_bin_bn_data:
              "/parameters=/bin_bn/{bn}"\             
              "/data=/"+pattern_strings["iid"] + "/" \
              "seed={replicate}.csv"
+    wildcard_constraints:
+        n="[0-9]*"
     shell:
         "Rscript workflow/rules/data/iid/sample_data_with_range_header.R " \
         "--filename {output.data} " \
@@ -32,7 +34,7 @@ rule sample_loglindata:
     shell:
         "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
 
-rule sample_intra_class_data:
+rule sample_intra_class_            data:
     input:
         "workflow/rules/data/iid/numpy_sample_mvn_data.py",
         cov="{output_dir}/parameters/trilearn_intra-class/{bn}/adjmat=/{adjmat}.csv"
@@ -70,8 +72,7 @@ rule sample_rgwish_data:
              "/parameters=/bdgraph_rgwish/{bn}"\
              "/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
     wildcard_constraints:
-        n="[0-9]*",
-        bn=".*\.csv"
+        n="[0-9]*"
     container:
         docker_image("trilearn")
     shell:

@@ -27,13 +27,6 @@ def dict_to_path(d):
     sep = "/"
     # HACK: Should put standardized first if it exists.. 
     tmp = [key+"={"+key+"}" for key, val in c.items()]
-    # x = "standardized={standardized}"
-    # print(tmp)
-    # if x in tmp:
-    #     print(x)
-        
-    #     tmp.remove(x)
-    #     tmp.insert(0, x)
     ret = sep.join(tmp)
     return ret
 
@@ -41,9 +34,9 @@ def dict_to_path(d):
 pattern_strings = {}
 
 # structure learning algorithms. 
+# May be good to add all since they might be input for other algs.
 for alg in config["resources"]["structure_learning_algorithms"].keys():
     pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
-
 
 # graph modules
 for module in config["resources"]["graph"]:

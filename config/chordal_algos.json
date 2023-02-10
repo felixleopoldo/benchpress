@@ -35,7 +35,7 @@
             "mcmc_traj_plots": [
                 {
                     "id": "gt13_multipair_test",
-                    "burn_in": 20000,
+                    "burn_in": 0.5,
                     "thinning": 100,
                     "functional": [
                         "score",
@@ -45,7 +45,7 @@
                 },
                 {
                     "id": "guidicigreen-cont",
-                    "burn_in": 20000,
+                    "burn_in": 0.5,
                     "thinning": 100,
                     "functional": [
                         "score",
@@ -74,7 +74,7 @@
             "mcmc_autocorr_plots": [
                 {
                     "id": "gt13_multipair_test",
-                    "burn_in": 150000,
+                    "burn_in": 0.5,
                     "thinning": 500,
                     "lags": 50,
                     "functional": [
@@ -85,7 +85,7 @@
                 },
                 {
                     "id": "guidicigreen-cont",
-                    "burn_in": 150000,
+                    "burn_in": 0.5,
                     "thinning": 500,
                     "lags": 50,
                     "functional": [

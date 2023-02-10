@@ -223,17 +223,6 @@
                     "verbose_level": 0
                 }
             ],
-            "notears": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad",
-                    "timeout": null
-                }
-            ],
             "gobnilp": [
                 {
                     "id": "gobnilp-bde",

@@ -17,7 +17,6 @@ def id_to_alg(id):
 """
 def idtopath(idlist):
 
-    
     # mylist can either be None, an id, or a list of ids.
     # The id may correspond to an MCMC alg, then the estimator parameters should be added too.
     
@@ -92,15 +91,12 @@ for alg in mcmc_modules:
         json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val,) 
                         for val in config["resources"]["structure_learning_algorithms"][alg]})
 
-
-
 # Evaluation strings
 def gen_evaluation_string_from_conf(method, alg_id):
     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern 
     # specified in pattern_strings.
     eval_dict = next(item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
     return expand(pattern_strings[method], **eval_dict)
-
 
 # Graph strings
 def gen_adjmat_string_from_conf(adjmat_id, seed):
@@ -119,7 +115,6 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return None
 
 # Parameter strings
-
 def gen_parameter_string_from_conf(gen_method_id, seed):
     
     for module in config["resources"]["parameters"]:
@@ -155,9 +150,7 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                 "/filename="+data_id + "/"+ f + \
                 "/n="+str(None) + \
                 "/seed="+str(seed) for f in files]
-
     else:
-        
         for module in config["resources"]["data"]:
             if data_id in [c["id"] for c in config["resources"]["data"][module]]:
                 
