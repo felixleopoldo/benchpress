@@ -1,0 +1,175 @@
+{
+    "benchmark_setup": {
+        "data": [
+            {
+                "graph_id": "avneigs4_p80",
+                "parameters_id": "SEM",
+                "data_id": "standardized",
+                "seed_range": [
+                    1,
+                    1
+                ]
+            }
+        ],
+        "evaluation": {
+            "benchmarks": {
+                "filename_prefix": "paper_pc_vs_dualpc/",
+                "show_seed": true,
+                "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
+                "path": true,
+                "text": true,
+                "ids": [
+                    "itsearch_map-bge",
+                    "gobnilpit",
+                    "pc-gaussCItest",
+                    "gobnilp-bge"
+
+                ]
+            },
+            "graph_true_plots": false,
+            "graph_true_stats": true,
+            "ggally_ggpairs": false,
+            "graph_plots": [
+ 
+            ],
+            "mcmc_traj_plots": [],
+            "mcmc_heatmaps": [],
+            "mcmc_autocorr_plots": []
+        }
+    },
+    "resources": {
+        "data": {
+            "iid": [
+                {
+                    "id": "standardized",
+                    "standardized": true,
+                    "sample_sizes": 300
+                }
+            ]
+        },
+        "graph": {
+            "pcalg_randdag": [
+                {
+                    "id": "avneigs4_p80",
+                    "max_parents": null,
+                    "n": 80,
+                    "d": 4,
+                    "par1": null,
+                    "par2": null,
+                    "method": "er",
+                    "DAG": true
+                }
+            ]
+        },
+        "parameters": {
+            "sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
+            ]
+        },
+        "structure_learning_algorithms": {
+            "gobnilp": [
+                {
+                    "id": "gobnilp-bge",
+                    "continuous": true,
+                    "score_type": "BGe",
+                    "extra_args": null,
+                    "constraints": null,
+                    "plot": false,
+                    "palim": [
+                        2, 3
+                    ],
+                    "alpha_mu": [
+                        0.01
+                    ],
+                    "alpha_omega_minus_nvars": 2,
+                    "alpha": null,
+                    "time_limit": null,
+                    "gap_limit": null,
+                    "prune": true,
+                    "timeout": null
+                }
+            ],
+            "bidag_itsearch": [
+                {
+                    "id": "itsearch_map-bge",
+                    "estimate": "map",
+                    "MAP": true,
+                    "plus1it": [
+                        1,
+                        2,
+                        3
+
+                    ],
+                    "posterior": null,
+                    "scoretype": "bge",
+                    "chi": null,
+                    "edgepf": null,
+                    "am": [
+                        0.1
+                    ],
+                    "aw": null,
+                    "softlimit": 9,
+                    "hardlimit": 15,
+                    "alpha": 0.05,
+                    "gamma": 1,
+                    "cpdag": false,
+                    "mergetype": "skeleton",
+                    "timeout": null
+                }
+            ],
+            "gobnilpit": [
+                {
+                    "id": "gobnilpit",
+                    "mergetype":"skeleton",
+                    "plus1it": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "timeout": null
+                }
+            ],
+            "dualpc": [
+                {
+                    "id": "dualpc",
+                    "alpha": [
+                        0.001,
+                        0.05,
+                        0.1
+                    ],
+                    "skeleton": false,
+                    "pattern_graph": false,
+                    "max_ord": null,
+                    "timeout": null
+                }
+            ],
+            "pcalg_pc": [
+                {
+                    "id": "pc-gaussCItest",
+                    "alpha": [
+                        0.001,
+                        0.05,
+                        0.1
+                    ],
+                    "NAdelete": true,
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false,
+                    "solveconfl": false,
+                    "numCores": 1,
+                    "verbose": false,
+                    "indepTest": "gaussCItest",
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

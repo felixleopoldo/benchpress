@@ -1,0 +1,15 @@
+{
+    "title": "My new algorithm",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs": "",
+    "outputs": "adjmat",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R",
+    "in_docs": false
+}
