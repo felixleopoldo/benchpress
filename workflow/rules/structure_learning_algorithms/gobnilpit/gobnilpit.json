@@ -13,7 +13,7 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "paper_pc_vs_dualpc/",
+                "filename_prefix": "gobnilpit/",
                 "show_seed": true,
                 "errorbar": true,
                 "errorbarh": false,
@@ -21,11 +21,7 @@
                 "path": true,
                 "text": true,
                 "ids": [
-                    "itsearch_map-bge",
-                    "gobnilpit",
-                    "pc-gaussCItest",
-                    "gobnilp-bge"
-
+                    "gobnilpit"
                 ]
             },
             "graph_true_plots": false,
@@ -53,7 +49,7 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4_p80",
-                    "max_parents": null,
+                    "max_parents": 5,
                     "n": 80,
                     "d": 4,
                     "par1": null,
@@ -85,7 +81,7 @@
                         2, 3
                     ],
                     "alpha_mu": [
-                        0.01
+                        0.1
                     ],
                     "alpha_omega_minus_nvars": 2,
                     "alpha": null,
@@ -129,23 +125,8 @@
                     "mergetype":"skeleton",
                     "plus1it": [
                         1,
-                        2,
-                        3
+                        2
                     ],
-                    "timeout": null
-                }
-            ],
-            "dualpc": [
-                {
-                    "id": "dualpc",
-                    "alpha": [
-                        0.001,
-                        0.05,
-                        0.1
-                    ],
-                    "skeleton": false,
-                    "pattern_graph": false,
-                    "max_ord": null,
                     "timeout": null
                 }
             ],
@@ -153,9 +134,7 @@
                 {
                     "id": "pc-gaussCItest",
                     "alpha": [
-                        0.001,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "NAdelete": true,
                     "mmax": "Inf",

@@ -67,6 +67,8 @@ if (mergetype == "skeleton"){
     startspace <- 1*(as(pcg, "matrix") | t(as(pcg, "matrix")))
 }
 
+# Write pcalg startspace to file.
+
 colnames(startspace) <- names(data)
 
 ## Getting the plus1 score tables as a by-product of iterativeMCMC
@@ -76,23 +78,25 @@ aw <- NULL
 scores <- scoreparameters("bge", data, bgepar = list(am = am, aw = aw))
 
 
-print("start itsearch")
-itfit <- iterativeMCMC(scores,
-    chainout = TRUE,
-    startspace = startspace,
-    plus1it = 1, scoreout = TRUE
-)
-print(itfit$score) # just for comparison, this is not used
+# print("start itsearch")
+# itfit <- iterativeMCMC(scores,
+#     chainout = TRUE,
+#     startspace = startspace,
+#     plus1it = 1, scoreout = TRUE
+# )
+# print(itfit$score) # just for comparison, this is not used
 
-tables <- itfit$scoretable$tables
-adjmat <- itfit$scoretable$adjacency
+# tables <- itfit$scoretable$tables
+# adjmat <- itfit$scoretable$adjacency
 scorefile <- paste(snakemake@output[["adjmat"]], ".scorefile", sep="")
 
-write_gobnilp_scores(tables, adjmat, scorefile)
+# print("Saving scores in gobnilp format")
+# write_gobnilp_scores(tables, adjmat, scorefile)
 
 
-# Running gobnilp ans saves DAG to file
-gobnilp(scorefile, filename, snakemake@output[["adjmat"]])
+# # Running gobnilp ans saves DAG to file
+# print("Running gobnilp")
+# gobnilp(scorefile, filename, snakemake@output[["adjmat"]])
 
 # Run gobnilp its times with plus1 expanded search space.
 its <- as.integer(snakemake@wildcards[["plus1it"]])
@@ -116,7 +120,7 @@ for (i in seq(its)) {
     itfit <- iterativeMCMC(scores,
         chainout = TRUE, plus1it = 1,
         startspace = plus1_space,
-        scoreout = TRUE
+        scoreout = TRUE, iterations=3, stepsave=1
     )
     print(itfit$score) # just for comparison, this is not used
 
