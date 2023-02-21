@@ -157,9 +157,7 @@ The format of the saved file depend on the type of parameters used, in this case
     :name: new_params_script
     :caption: script.R from new_params.
 
-    # As the parameterisation differ between models, there is 
-    # no sample script here. 
-
+    library(BDgraph)
     seed <- set.seed(as.integer(snakemake@wildcards[["seed"]]))
 
     # Read the adjacency matrix
