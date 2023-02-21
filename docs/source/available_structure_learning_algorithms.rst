@@ -242,7 +242,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. _bdgraph: 
 
-``bdgraph`` 
+bdgraph 
 -----------
 
 .. rubric:: BDgraph
@@ -309,11 +309,11 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. footbibliography::
 
-
+---------
 
 .. _bidag_itsearch: 
 
-``bidag_itsearch`` 
+bidag_itsearch 
 ------------------
 
 .. rubric:: Iterative MCMC
@@ -411,11 +411,11 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 
 .. footbibliography::
 
-
+---------
 
 .. _bidag_order_mcmc: 
 
-``bidag_order_mcmc`` 
+bidag_order_mcmc 
 --------------------
 
 .. rubric:: Order MCMC
@@ -491,11 +491,11 @@ initialised with constraint-based testing and improved with a score-based search
 
 .. footbibliography::
 
-
+---------
 
 .. _bidag_partition_mcmc: 
 
-``bidag_partition_mcmc`` 
+bidag_partition_mcmc 
 ------------------------
 
 .. rubric:: Partition MCMC
@@ -560,11 +560,11 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_fastiamb: 
 
-``bnlearn_fastiamb`` 
+bnlearn_fastiamb 
 --------------------
 
 .. rubric:: Fast IAMB
@@ -619,11 +619,11 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_gs: 
 
-``bnlearn_gs`` 
+bnlearn_gs 
 --------------
 
 .. rubric:: Grow-shrink
@@ -683,11 +683,11 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_h2pc: 
 
-``bnlearn_h2pc`` 
+bnlearn_h2pc 
 ----------------
 
 .. rubric:: H2PC
@@ -748,11 +748,11 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_hc: 
 
-``bnlearn_hc`` 
+bnlearn_hc 
 --------------
 
 .. rubric:: HC
@@ -814,11 +814,11 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_hpc: 
 
-``bnlearn_hpc`` 
+bnlearn_hpc 
 ---------------
 
 .. rubric:: HPC
@@ -873,11 +873,11 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_iamb: 
 
-``bnlearn_iamb`` 
+bnlearn_iamb 
 ----------------
 
 .. rubric:: IAMB
@@ -930,11 +930,11 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_iambfdr: 
 
-``bnlearn_iambfdr`` 
+bnlearn_iambfdr 
 -------------------
 
 .. rubric:: IAMB-FDR
@@ -989,11 +989,11 @@ Abstract: In many cases what matters is not whether a false discovery is made or
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_interiamb: 
 
-``bnlearn_interiamb`` 
+bnlearn_interiamb 
 ---------------------
 
 .. rubric:: INTER-IAMB
@@ -1052,11 +1052,11 @@ reducing the size of the blankets.
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_mmhc: 
 
-``bnlearn_mmhc`` 
+bnlearn_mmhc 
 ----------------
 
 .. rubric:: MMHC
@@ -1120,11 +1120,11 @@ dimensional domains.
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_mmpc: 
 
-``bnlearn_mmpc`` 
+bnlearn_mmpc 
 ----------------
 
 .. rubric:: MMPC
@@ -1179,11 +1179,11 @@ Abstract: Data Mining with Bayesian Network learning has two important character
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_pcstable: 
 
-``bnlearn_pcstable`` 
+bnlearn_pcstable 
 --------------------
 
 .. rubric:: PC
@@ -1236,11 +1236,11 @@ Abstract: Data Mining with Bayesian Network learning has two important character
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_rsmax2: 
 
-``bnlearn_rsmax2`` 
+bnlearn_rsmax2 
 ------------------
 
 .. rubric:: RSMAX2
@@ -1303,11 +1303,11 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_sihitonpc: 
 
-``bnlearn_sihitonpc`` 
+bnlearn_sihitonpc 
 ---------------------
 
 .. rubric:: S-I HITON-PC
@@ -1366,11 +1366,11 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
 
 .. footbibliography::
 
-
+---------
 
 .. _bnlearn_tabu: 
 
-``bnlearn_tabu`` 
+bnlearn_tabu 
 ----------------
 
 .. rubric:: Tabu
@@ -1430,11 +1430,11 @@ beneficial from a global perspective to avoid local maxima.
 
 .. footbibliography::
 
-
+---------
 
 .. _causaldag_gsp: 
 
-``causaldag_gsp`` 
+causaldag_gsp 
 -----------------
 
 .. rubric:: GSP
@@ -1492,11 +1492,11 @@ beneficial from a global perspective to avoid local maxima.
 
 .. footbibliography::
 
-
+---------
 
 .. _corr_thresh: 
 
-``corr_thresh`` 
+corr_thresh 
 ---------------
 
 .. rubric:: Corrmat thresh
@@ -1544,11 +1544,11 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. footbibliography::
 
-
+---------
 
 .. _dualpc: 
 
-``dualpc`` 
+dualpc 
 ----------
 
 .. rubric:: Dual PC
@@ -1608,11 +1608,11 @@ and in recovering the underlying network structure.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_anm: 
 
-``gcastle_anm`` 
+gcastle_anm 
 ---------------
 
 .. rubric:: ANM
@@ -1659,11 +1659,11 @@ Nonlinear causal discovery with additive noise models.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_corl: 
 
-``gcastle_corl`` 
+gcastle_corl 
 ----------------
 
 .. rubric:: CORL
@@ -1730,11 +1730,11 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_direct_lingam: 
 
-``gcastle_direct_lingam`` 
+gcastle_direct_lingam 
 -------------------------
 
 .. rubric:: Direct LINGAM
@@ -1782,11 +1782,11 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_gae: 
 
-``gcastle_gae`` 
+gcastle_gae 
 ---------------
 
 .. rubric:: GAE
@@ -1851,11 +1851,11 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_golem: 
 
-``gcastle_golem`` 
+gcastle_golem 
 -----------------
 
 .. rubric:: GOLEM
@@ -1911,11 +1911,11 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_grandag: 
 
-``gcastle_grandag`` 
+gcastle_grandag 
 -------------------
 
 .. rubric:: GraNDAG
@@ -1986,11 +1986,11 @@ A gradient-based algorithm using neural network modeling for non-linear additive
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_ica_lingam: 
 
-``gcastle_ica_lingam`` 
+gcastle_ica_lingam 
 ----------------------
 
 .. rubric:: ICALiNGAM
@@ -2039,11 +2039,11 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_mcsl: 
 
-``gcastle_mcsl`` 
+gcastle_mcsl 
 ----------------
 
 .. rubric:: MCSL
@@ -2105,11 +2105,11 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_notears: 
 
-``gcastle_notears`` 
+gcastle_notears 
 -------------------
 
 .. rubric:: NO TEARS
@@ -2167,11 +2167,11 @@ ensure acyclicity.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_notears_low_rank: 
 
-``gcastle_notears_low_rank`` 
+gcastle_notears_low_rank 
 ----------------------------
 
 .. rubric:: NO TEARS low rank
@@ -2223,11 +2223,11 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_notears_nonlinear: 
 
-``gcastle_notears_nonlinear`` 
+gcastle_notears_nonlinear 
 -----------------------------
 
 .. rubric:: NO TEARS non-linear
@@ -2295,11 +2295,11 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_pc: 
 
-``gcastle_pc`` 
+gcastle_pc 
 --------------
 
 .. rubric:: PC
@@ -2348,11 +2348,11 @@ A classic causal discovery algorithm based on conditional independence tests.
 
 .. footbibliography::
 
-
+---------
 
 .. _gcastle_rl: 
 
-``gcastle_rl`` 
+gcastle_rl 
 --------------
 
 .. rubric:: RL
@@ -2431,11 +2431,11 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 .. footbibliography::
 
-
+---------
 
 .. _gg99_singlepair: 
 
-``gg99_singlepair`` 
+gg99_singlepair 
 -------------------
 
 .. rubric:: GG99
@@ -2511,11 +2511,11 @@ advantage for the analysis of large and complex datasets.
 
 .. footbibliography::
 
-
+---------
 
 .. _gobnilp: 
 
-``gobnilp`` 
+gobnilp 
 -----------
 
 .. rubric:: GOBNILP
@@ -2579,11 +2579,11 @@ the first phase and the optimal sets are determined in a second phase.
 
 .. footbibliography::
 
-
+---------
 
 .. _gt13_multipair: 
 
-``gt13_multipair`` 
+gt13_multipair 
 ------------------
 
 .. rubric:: GT13
@@ -2649,11 +2649,11 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 .. footbibliography::
 
-
+---------
 
 .. _parallelDG: 
 
-``parallelDG`` 
+parallelDG 
 --------------
 
 .. rubric:: Parallel DG
@@ -2727,11 +2727,11 @@ move variate, and outperforms current methods.
 
 .. footbibliography::
 
-
+---------
 
 .. _pcalg_gies: 
 
-``pcalg_gies`` 
+pcalg_gies 
 --------------
 
 .. rubric:: GIES
@@ -2780,11 +2780,11 @@ Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same 
 
 .. footbibliography::
 
-
+---------
 
 .. _pcalg_pc: 
 
-``pcalg_pc`` 
+pcalg_pc 
 ------------
 
 .. rubric:: PC
@@ -2848,11 +2848,11 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 .. footbibliography::
 
-
+---------
 
 .. _prec_thresh: 
 
-``prec_thresh`` 
+prec_thresh 
 ---------------
 
 .. rubric:: Precmat thresh
@@ -2900,11 +2900,11 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. footbibliography::
 
-
+---------
 
 .. _rblip_asobs: 
 
-``rblip_asobs`` 
+rblip_asobs 
 ---------------
 
 .. rubric:: ASOBS
@@ -2966,11 +2966,11 @@ that no cycles are introduced.
 
 .. footbibliography::
 
-
+---------
 
 .. _sklearn_glasso: 
 
-``sklearn_glasso`` 
+sklearn_glasso 
 ------------------
 
 .. rubric:: Graphical Lasso
@@ -3023,11 +3023,11 @@ that no cycles are introduced.
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_fas: 
 
-``tetrad_fas`` 
+tetrad_fas 
 --------------
 
 .. rubric:: FAS
@@ -3075,11 +3075,11 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_fask: 
 
-``tetrad_fask`` 
+tetrad_fask 
 ---------------
 
 .. rubric:: FASK
@@ -3135,11 +3135,11 @@ See  :footcite:t:`sanchez2018causal`.
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_fci: 
 
-``tetrad_fci`` 
+tetrad_fci 
 --------------
 
 .. rubric:: FCI
@@ -3193,11 +3193,11 @@ See :footcite:t:`spirtes1993discovery`.
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_fges: 
 
-``tetrad_fges`` 
+tetrad_fges 
 ---------------
 
 .. rubric:: FGES
@@ -3258,11 +3258,11 @@ The algorithms requires a decomposable score—that is, a score that for the ent
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_fofc: 
 
-``tetrad_fofc`` 
+tetrad_fofc 
 ---------------
 
 .. rubric:: FOFC
@@ -3313,11 +3313,11 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_ftfc: 
 
-``tetrad_ftfc`` 
+tetrad_ftfc 
 ---------------
 
 .. rubric:: FTFC
@@ -3364,11 +3364,11 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_gfci: 
 
-``tetrad_gfci`` 
+tetrad_gfci 
 ---------------
 
 .. rubric:: GFCI
@@ -3426,11 +3426,11 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_imgscont: 
 
-``tetrad_imgscont`` 
+tetrad_imgscont 
 -------------------
 
 .. rubric:: IMGSCONT
@@ -3477,11 +3477,11 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_lingam: 
 
-``tetrad_lingam`` 
+tetrad_lingam 
 -----------------
 
 .. rubric:: LINGAM
@@ -3533,11 +3533,11 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_pc-all: 
 
-``tetrad_pc-all`` 
+tetrad_pc-all 
 -----------------
 
 .. rubric:: PC-ALL
@@ -3589,11 +3589,11 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
 
 .. footbibliography::
 
-
+---------
 
 .. _tetrad_rfci: 
 
-``tetrad_rfci`` 
+tetrad_rfci 
 ---------------
 
 .. rubric:: RFCI
@@ -3646,11 +3646,11 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
 
 .. footbibliography::
 
-
+---------
 
 .. _trilearn_pgibbs: 
 
-``trilearn_pgibbs`` 
+trilearn_pgibbs 
 -------------------
 
 .. rubric:: Particle Gibbs
@@ -3726,3 +3726,4 @@ discrete and continuous graphical models.
 
 .. footbibliography::
 
+---------

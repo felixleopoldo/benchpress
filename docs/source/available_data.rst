@@ -33,7 +33,7 @@ The data modules.
 
 .. _fixed_data: 
 
-``fixed_data`` 
+fixed_data 
 --------------
 
 .. rubric:: Fixed dataset(s)
@@ -127,11 +127,11 @@ Paper: :footcite:t:`doi:10.1126/science.1105809`
 
 .. footbibliography::
 
-
+-------
 
 .. _gcastle_iidsim: 
 
-``gcastle_iidsim`` 
+gcastle_iidsim 
 ------------------
 
 .. rubric:: gCastle IID (SEM)
@@ -180,11 +180,11 @@ The data may be standardized by setting ``standardized`` to *true*.
 
 .. footbibliography::
 
-
+-------
 
 .. _iid: 
 
-``iid`` 
+iid 
 -------
 
 .. rubric:: IID data
@@ -230,3 +230,4 @@ The data may be standardized by setting ``standardized`` to true.
 
 .. footbibliography::
 
+-------

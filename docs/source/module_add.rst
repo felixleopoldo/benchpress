@@ -1,3 +1,5 @@
+.. _new_modules:
+
 Adding new modules 
 *******************
 
@@ -395,20 +397,20 @@ First install some requirements
 
 .. prompt:: bash
 
-    cd docs/
-    pip install -r _source/requirements.txt
+
+    pip install -r docs/_source/requirements.txt
 
 Then make *render_docs.sh* executable then render and build the documentation
 
 .. prompt:: bash
     
-    chmod +x render_docs.sh
+    chmod +x docs/render_docs.sh
 
 .. prompt:: bash
 
-    ./render_docs.sh && make html
+    make docs
 
-Open *build/html/index.html* in a web browser.
+Open *docs/build/html/index.html* in a web browser.
 
 
 .. _ BDgraph: https://cran.r-project.org/web/packages/BDgraph/index.html

@@ -53,7 +53,7 @@ Below is the list of currently available modules.
 
 .. _bdgraph_graphsim: 
 
-``bdgraph_graphsim`` 
+bdgraph_graphsim 
 --------------------
 
 .. rubric:: graph.sim function
@@ -101,11 +101,11 @@ Below is the list of currently available modules.
 
 .. footbibliography::
 
-
+-----------
 
 .. _fixed_graph: 
 
-``fixed_graph`` 
+fixed_graph 
 ---------------
 
 .. rubric:: Fixed graph
@@ -118,11 +118,11 @@ A fixed graph is referenced by the corresponding filename instead of `id` as wit
 
 .. footbibliography::
 
-
+-----------
 
 .. _pcalg_randdag: 
 
-``pcalg_randdag`` 
+pcalg_randdag 
 -----------------
 
 .. rubric:: randDAG
@@ -186,11 +186,11 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 .. footbibliography::
 
-
+-----------
 
 .. _trilearn_bandmat: 
 
-``trilearn_bandmat`` 
+trilearn_bandmat 
 --------------------
 
 .. rubric:: Band matrix
@@ -240,11 +240,11 @@ with given bandwidth (*bandwith*).
 
 .. footbibliography::
 
-
+-----------
 
 .. _trilearn_cta: 
 
-``trilearn_cta`` 
+trilearn_cta 
 ----------------
 
 .. rubric:: CTA
@@ -299,11 +299,11 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
 
 .. footbibliography::
 
-
+-----------
 
 .. _trilearn_rand_bandmat: 
 
-``trilearn_rand_bandmat`` 
+trilearn_rand_bandmat 
 -------------------------
 
 .. rubric:: Random bandmatrix
@@ -351,3 +351,4 @@ An object of the max bandwith module specifies a decomposable graph with band st
 
 .. footbibliography::
 
+-----------

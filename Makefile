@@ -1,4 +1,6 @@
 # This is totally fine to clean sinc e it only contains copies
+all:
+	
 cleanres:
 		rm -rf results/output
 
@@ -8,7 +10,7 @@ cleanall:
 
 # Creates the docs
 docs:	docs/source/*
-		cd docs && make html
+		cd docs && ./render_docs.sh && make html
 
 # Generates markdown for the json schema. 
 # Install by:

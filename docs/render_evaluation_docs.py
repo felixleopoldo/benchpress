@@ -119,7 +119,7 @@ for p in sorted(algspath.iterdir()):
     #str +=".. _" + p.name +": "
     str += "\n\n"
     str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
+    str +="" + p.name +" \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
     
@@ -140,6 +140,7 @@ for p in sorted(algspath.iterdir()):
         str += ".. code-block:: json"    
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    str += "\n\n\n----------"
 
 
 with open("source/available_evaluations.rst", "w") as text_file:

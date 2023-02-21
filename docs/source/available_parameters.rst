@@ -59,7 +59,7 @@ Make sure that the parameter module is compatible with the graph module you are 
 
 .. _bdgraph_rgwish: 
 
-``bdgraph_rgwish`` 
+bdgraph_rgwish 
 ------------------
 
 .. rubric:: G-Wishart
@@ -109,9 +109,12 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 
 
 
+
+----------
+
 .. _bin_bn: 
 
-``bin_bn`` 
+bin_bn 
 ----------
 
 .. rubric:: Binary BN
@@ -173,9 +176,12 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
 
 
 
+
+----------
+
 .. _fixed_params: 
 
-``fixed_params`` 
+fixed_params 
 ----------------
 
 .. rubric:: Fixed parameters
@@ -202,9 +208,12 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 
 
 
+
+----------
+
 .. _sem_params: 
 
-``sem_params`` 
+sem_params 
 --------------
 
 .. rubric:: SEM parameters
@@ -269,9 +278,12 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 
 
 
+
+----------
+
 .. _trilearn_hyper-dir: 
 
-``trilearn_hyper-dir`` 
+trilearn_hyper-dir 
 ----------------------
 
 .. rubric:: Hyper-Dirichlet
@@ -325,9 +337,12 @@ An object of this module defines a categorical decomposable model by sampling th
 
 
 
+
+----------
+
 .. _trilearn_intra-class: 
 
-``trilearn_intra-class`` 
+trilearn_intra-class 
 ------------------------
 
 .. rubric:: Graph intra-class
@@ -388,3 +403,7 @@ Using an object id of this module in the ``parameters_id`` field of the ``data``
 
 .. footbibliography::
 
+
+
+
+----------

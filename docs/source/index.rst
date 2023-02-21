@@ -12,17 +12,18 @@
     :caption: Getting started
 
     installation
-    examples
+    usage
+
     
 
 .. toctree::
     :hidden:
     :maxdepth: 3
     :name: Configuration
-    :caption: Usage
+    :caption: Configuration
     
     json_overview
-    usage
+    examples    
 
 .. toctree::
     :hidden:

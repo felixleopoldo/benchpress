@@ -45,7 +45,7 @@ The output of the modules are copied to *results/output* for easy access.
 
 .. _benchmarks: 
 
-``benchmarks`` 
+benchmarks 
 --------------
 
 .. rubric:: Benchmarks
@@ -167,9 +167,12 @@ The following plots are also produced
       }
     ]
 
+
+----------
+
 .. _ggally_ggpairs: 
 
-``ggally_ggpairs`` 
+ggally_ggpairs 
 ------------------
 
 .. rubric:: Pairs plot
@@ -209,9 +212,12 @@ However, you can always alter the script as you like it.
       }
     ]
 
+
+----------
+
 .. _graph_plots: 
 
-``graph_plots`` 
+graph_plots 
 ---------------
 
 .. rubric:: Graph plots
@@ -252,9 +258,12 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
       "pc-gaussCItest"
     ]
 
+
+----------
+
 .. _graph_true_plots: 
 
-``graph_true_plots`` 
+graph_true_plots 
 --------------------
 
 .. rubric:: True graph plots
@@ -297,9 +306,12 @@ This module plots the true underlying graphs.
       }
     ]
 
+
+----------
+
 .. _graph_true_stats: 
 
-``graph_true_stats`` 
+graph_true_stats 
 --------------------
 
 .. rubric:: Graph stats
@@ -328,9 +340,12 @@ This module plots properties of the true graphs such as graph density.
       }
     ]
 
+
+----------
+
 .. _mcmc_autocorr_plots: 
 
-``mcmc_autocorr_plots`` 
+mcmc_autocorr_plots 
 -----------------------
 
 .. rubric:: MCMC auto-correlation
@@ -391,9 +406,12 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
       }
     ]
 
+
+----------
+
 .. _mcmc_heatmaps: 
 
-``mcmc_heatmaps`` 
+mcmc_heatmaps 
 -----------------
 
 .. rubric:: MCMC mean graphs
@@ -442,9 +460,12 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
       }
     ]
 
+
+----------
+
 .. _mcmc_traj_plots: 
 
-``mcmc_traj_plots`` 
+mcmc_traj_plots 
 -------------------
 
 .. rubric:: MCMC trajectories
@@ -498,3 +519,6 @@ Since the trajectories tend to be very long, the user may choose to thin out the
         "active": true
       }
     ]
+
+
+----------
