@@ -44,7 +44,7 @@ You may also have a look at [this Medium story](https://medium.com/@felixleopold
 
 ## Contact
 
-Send an email to felix leopoldo rios at gmail com for questions.
+For problems, bug reporting, or questions please raise an issue or open a discussion thread.
 
 ## Contributing
 Contrubutions are very welcomed. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions. 

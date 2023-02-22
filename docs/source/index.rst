@@ -41,8 +41,8 @@
 .. toctree::
     :hidden:
     :maxdepth: 1
-    :name: Modules
-    :caption: Adding modules
+    :name: Development
+    :caption: Development
     
     module_add
 
