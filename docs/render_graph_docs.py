@@ -95,8 +95,23 @@ algspath = Path("../workflow/rules/graph")
 
 f = open("source/graphs_desc.rst", "r")
 content = f.read()
+str= """
+All the modules run in Apptainer (Singularity) containers created from the Docker images corresponding used by the modules.
+To start an interactive `Docker <https://www.docker.com/>`_ shell for a module run
 
-str = ""
+ .. prompt:: bash
+
+     docker run -it username/image:version
+
+ or using `Apptainer <https://apptainer.org/>`_
+
+ .. prompt:: bash
+
+     apptainer run docker://username/image:version
+
+
+"""
+str = "The names of the fields of the modules in these section are directly transferred or translated from the original libraries or code. Thus, for further details of each field see the documentation of the original sources.\n\n"
 str += ".. _"+algspath.name+": \n\n"
 #str += "``"+algspath.name+"``\n"
 str += "Graph\n"

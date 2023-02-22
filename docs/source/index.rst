@@ -57,8 +57,8 @@
 .. toctree::
     :hidden:
     :maxdepth: 3
-    :name: Developers guide
-    :caption: Developers guide
+    :name: Project info
+    :caption: Project info
 
     dev_guide
     
