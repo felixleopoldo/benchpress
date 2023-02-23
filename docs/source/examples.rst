@@ -1,4 +1,4 @@
-Studies
+Example studies
 ########################
 
 .. include:: example_conf.rst

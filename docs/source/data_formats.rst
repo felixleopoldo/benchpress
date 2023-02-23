@@ -1,5 +1,9 @@
+File formats
+#############
+
+
 Graph
-########
+*******
 
 
 A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{ij}=1` if :math:`(i,j)\in E` and  :math:`M_{ij}=0` if :math:`(i,j)\notin E`.
@@ -37,7 +41,7 @@ If :math:`G` is directed the adjacency matrix is asymmetric as below.
 
 
 MCMC trajectory
-######################
+********************************
 
 When the output of the algorithm is a Markov chain of graphs, we store the output in a compact
 form by tracking only the changes when moves are accepted, along with the corresponding
@@ -63,10 +67,10 @@ for :math:`i = 89`.
     89,-2310.81,[c-d],[]
 
 Dataset
-#################
+******************
 
 Observational data
-******************************
+^^^^^^^^^^^^^^^^^^^
 
 
 Observations should be stored as row vectors in a matrix, where the columns are separated by
@@ -96,7 +100,7 @@ are 2,3,2, and 2.
     0,1,1,1
 
 Interventional data
-******************************
+^^^^^^^^^^^^^^^^^^^
 
 Hard interventions are indicated by additinal columns for the interventional variables, stacked on the right part of the data matrix.
 Below is and example showing samples from a mix of observational and interventional samples from continuous distribution.
@@ -117,7 +121,7 @@ If in the continuous example above there would be two additinal observations whe
 
 
 Parameters
-###########
+************
 
 * Bnlearn objects `bn.fit` objects should be stored in `RDS` format in the directory *resources/myparams/bn.fit_networks*.
 * Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
