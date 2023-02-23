@@ -24,6 +24,7 @@
     
     json_overview
     examples    
+    data_formats
 
 .. toctree::
     :hidden:
@@ -41,18 +42,18 @@
 .. toctree::
     :hidden:
     :maxdepth: 1
-    :name: Modules
-    :caption: Adding modules
+    :name: Development
+    :caption: Development
     
     module_add
 
-.. toctree::
-    :hidden:
-    :maxdepth: 3
-    :name: File formats
-    :caption: File formats
+.. .. toctree::
+..     :hidden:
+..     :maxdepth: 3
+..     :name: File formats
+..     :caption: File formats
 
-    data_formats
+..     data_formats
 
 .. toctree::
     :hidden:

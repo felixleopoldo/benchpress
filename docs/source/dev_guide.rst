@@ -20,15 +20,15 @@ Contributers
 
 | `James Cussens <https://research-information.bris.ac.uk/en/persons/james-cussens>`_
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
-| University of Bristol
+| University of Bristol, UK
 
 | `Mohamad Elmasri <https://sites.google.com/view/mohamadelmasri/home>`_
 | `Department of Statistical Sciences  <https://www.statistics.utoronto.ca/>`_
-| University of Toronto 
+| University of Toronto, Canada
 
 | Aditya Singh
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
-| University of Bristol
+| University of Bristol, UK
 
 Contributing
 #################
