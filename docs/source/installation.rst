@@ -1,14 +1,25 @@
 Installation
 #######################
 
-The first step is to clone the Benchpress repository
+.. As Benchpress is a Snakemake worlflow, you only have to download the workflow folder and run it, i.e. no extra installation is required.
+.. However, 
+
+Benchpress relies on a number of modules from a several packages and libraries so in order to save the user the time from explicitly installing each of them on their own, Benchpress relies on Snakemake's support for running Docker containers through Apptainer.
+
+.. Apptainer, for sequrity reasons runs only on Linux systems.
+
+.. However, for other systems you can run Snakemake through Docker and the official Snakemake container (where Appatainer is installed).
+
+You can either run Benchpress directly on a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system or in a `Docker <https://www.docker.com/>`_ container created from the official `Snakemake Docker image <https://hub.docker.com/r/snakemake/snakemake/tags>`_.
+In either of the alternatives, the first step is to clone the Benchpress repository
+
 
 .. prompt:: bash
 
     git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
 
 .. You can either run Benchpress in a Docker contaier or directly on a Linux system.
-You can either run Benchpress directly on a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system or in a `Docker <https://www.docker.com/>`_ container created from the official `Snakemake Docker image <https://hub.docker.com/r/snakemake/snakemake/tags>`_.
+
 
 
 Docker (Linux/macOS/Win)
@@ -45,7 +56,7 @@ This alternative is preferred e.g. if you will add a new module or if are workin
 
 1. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_.
 2. Install `Snakemake >= 7.14 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_.
-3. Install `Apptainer (former Singularity) <https://apptainer.org/>`_  following the `installation instructions <https://apptainer.org/docs/admin/main/installation.html#installation-on-linux>`_.
+3. Install `Apptainer (former Singularity) <https://apptainer.org/>`_  following the `installation instructions <https://apptainer.org/docs/admin/main/installation.html#install-from-pre-built-packages>`_.
 
 .. note:: 
 
