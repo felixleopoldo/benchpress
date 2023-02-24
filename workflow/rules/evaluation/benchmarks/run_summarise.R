@@ -117,15 +117,20 @@ argv <- parse_args(p)
 benchmarks <- function(true_adjmat, estimated_adjmat) {
   skel_true <- (true_adjmat | t(true_adjmat)) * 1
   skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
+  n_nodes <- ncol(skel_true)
+
+  ones <- matrix(1, n_nodes, n_nodes)
+  diag(ones) <- 0
+
 
   TP <- sum(skel_true * skel_est) / 2
-  TN <- sum((1 - skel_true) * (1 - skel_est)) / 2
-  FP <- sum((1 - skel_true) * skel_est) / 2
-  FN <- sum(skel_true * (1 - skel_est)) / 2
+  TN <- sum((ones - skel_true) * (ones - skel_est)) / 2
+  FP <- sum((ones - skel_true) * skel_est) / 2
+  FN <- sum(skel_true * (ones - skel_est)) / 2
 
   n_edges <- sum(skel_true) / 2
-  n_nonedges <- sum(1 - skel_true) / 2
-  n_nodes <- ncol(skel_true)
+  n_nonedges <- sum(ones - skel_true) / 2
+  
 
   compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 

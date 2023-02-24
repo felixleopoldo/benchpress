@@ -2,7 +2,7 @@ Authors
 ################
 
 | `Felix Rios <https://www.kth.se/profile/flrios?l=en>`_
-| `Department of Mathematics of Data and AI <https://www.kth.se/math/mathematics-of-data/mathematics-of-data-and-ai-1.947023>`_
+| `Department of Mathematics <https://www.kth.se/math/mathematics-of-data/mathematics-of-data-and-ai-1.947023>`_
 | KTH Stockholm, Sweden
 | (formerly at University of Basel)
 
@@ -11,12 +11,11 @@ Authors
 | University of Basel, Switzerland
 
 | `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_
-| `Dep. of Biosystems Science and Eng. <https://bsse.ethz.ch/>`_
+| `Department of Biosystems Science and Eng. <https://bsse.ethz.ch/>`_
 | ETH Zürich, Switzerland
 
-Contributers
+Contributors
 ############
-
 
 | `James Cussens <https://research-information.bris.ac.uk/en/persons/james-cussens>`_
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
