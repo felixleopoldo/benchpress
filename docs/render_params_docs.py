@@ -166,7 +166,8 @@ for p in sorted(algspath.iterdir()):
     str += "\n\n"
     str += ".. footbibliography::"
     str += "\n\n"
-    str += "\n\n\n----------"
+    #str += "\n\n\n----------"
+    
 
 
 

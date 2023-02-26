@@ -309,7 +309,7 @@ bdgraph
 
 .. footbibliography::
 
----------
+
 
 .. _bidag_itsearch: 
 
@@ -411,7 +411,7 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 
 .. footbibliography::
 
----------
+
 
 .. _bidag_order_mcmc: 
 
@@ -491,7 +491,7 @@ initialised with constraint-based testing and improved with a score-based search
 
 .. footbibliography::
 
----------
+
 
 .. _bidag_partition_mcmc: 
 
@@ -560,7 +560,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_fastiamb: 
 
@@ -619,7 +619,7 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_gs: 
 
@@ -683,7 +683,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_h2pc: 
 
@@ -748,7 +748,7 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_hc: 
 
@@ -814,7 +814,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_hpc: 
 
@@ -873,7 +873,7 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_iamb: 
 
@@ -930,7 +930,7 @@ bnlearn_iamb
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_iambfdr: 
 
@@ -989,7 +989,7 @@ Abstract: In many cases what matters is not whether a false discovery is made or
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_interiamb: 
 
@@ -1052,7 +1052,7 @@ reducing the size of the blankets.
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_mmhc: 
 
@@ -1120,7 +1120,7 @@ dimensional domains.
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_mmpc: 
 
@@ -1179,7 +1179,7 @@ Abstract: Data Mining with Bayesian Network learning has two important character
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_pcstable: 
 
@@ -1236,7 +1236,7 @@ bnlearn_pcstable
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_rsmax2: 
 
@@ -1303,7 +1303,7 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_sihitonpc: 
 
@@ -1366,7 +1366,7 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
 
 .. footbibliography::
 
----------
+
 
 .. _bnlearn_tabu: 
 
@@ -1430,7 +1430,7 @@ beneficial from a global perspective to avoid local maxima.
 
 .. footbibliography::
 
----------
+
 
 .. _causaldag_gsp: 
 
@@ -1492,7 +1492,7 @@ causaldag_gsp
 
 .. footbibliography::
 
----------
+
 
 .. _corr_thresh: 
 
@@ -1544,7 +1544,7 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. footbibliography::
 
----------
+
 
 .. _dualpc: 
 
@@ -1608,7 +1608,7 @@ and in recovering the underlying network structure.
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_anm: 
 
@@ -1659,7 +1659,7 @@ Nonlinear causal discovery with additive noise models.
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_corl: 
 
@@ -1730,7 +1730,7 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_direct_lingam: 
 
@@ -1782,7 +1782,7 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_gae: 
 
@@ -1851,7 +1851,7 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_golem: 
 
@@ -1911,7 +1911,7 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_grandag: 
 
@@ -1986,7 +1986,7 @@ A gradient-based algorithm using neural network modeling for non-linear additive
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_ica_lingam: 
 
@@ -2039,7 +2039,7 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_mcsl: 
 
@@ -2105,7 +2105,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_notears: 
 
@@ -2167,7 +2167,7 @@ ensure acyclicity.
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_notears_low_rank: 
 
@@ -2223,7 +2223,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_notears_nonlinear: 
 
@@ -2295,7 +2295,7 @@ gcastle_notears_nonlinear
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_pc: 
 
@@ -2348,7 +2348,7 @@ A classic causal discovery algorithm based on conditional independence tests.
 
 .. footbibliography::
 
----------
+
 
 .. _gcastle_rl: 
 
@@ -2431,7 +2431,7 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 .. footbibliography::
 
----------
+
 
 .. _gg99_singlepair: 
 
@@ -2511,7 +2511,7 @@ advantage for the analysis of large and complex datasets.
 
 .. footbibliography::
 
----------
+
 
 .. _gobnilp: 
 
@@ -2579,7 +2579,7 @@ the first phase and the optimal sets are determined in a second phase.
 
 .. footbibliography::
 
----------
+
 
 .. _gt13_multipair: 
 
@@ -2649,7 +2649,7 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 .. footbibliography::
 
----------
+
 
 .. _parallelDG: 
 
@@ -2727,7 +2727,7 @@ move variate, and outperforms current methods.
 
 .. footbibliography::
 
----------
+
 
 .. _pcalg_gies: 
 
@@ -2780,7 +2780,7 @@ Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same 
 
 .. footbibliography::
 
----------
+
 
 .. _pcalg_pc: 
 
@@ -2848,7 +2848,7 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 .. footbibliography::
 
----------
+
 
 .. _prec_thresh: 
 
@@ -2900,7 +2900,7 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. footbibliography::
 
----------
+
 
 .. _rblip_asobs: 
 
@@ -2966,7 +2966,7 @@ that no cycles are introduced.
 
 .. footbibliography::
 
----------
+
 
 .. _sklearn_glasso: 
 
@@ -3023,7 +3023,7 @@ sklearn_glasso
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_fas: 
 
@@ -3075,7 +3075,7 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_fask: 
 
@@ -3108,9 +3108,11 @@ tetrad_fask
 
 .. rubric:: Description
 
+
 From the Tetrad manual: FASK learns a linear model in which all of the variables are skewed.
 
-The idea is as follows. First, FAS-stable is run on the data, producing an undirected graph. We use the BIC score as a conditional independence test with a specified penalty discount c. 
+The idea is as follows.
+First, FAS-stable is run on the data, producing an undirected graph. We use the BIC score as a conditional independence test with a specified penalty discount c. 
 This yields undirected graph G0 . The reason FAS-stable works for sparse cyclic models where the linear coefficients are all less than 1 is that correlations induced by long cyclic paths are statistically judged as zero, since they are products of multiple coefficients less than 1. Then, each of the X − Y adjacencies in G0 is oriented as a 2-cycle X += Y , or X → Y , or X ← Y . Taking up each adjacency in turn, one tests to see whether the adjacency is a 2-cycle by testing if the difference between corr(X, Y ) and corr(X, Y |X > 0), and corr(X, Y ) and corr(X, Y |Y > 0), are both significantly not zero. If so, the edges X → Y and X ← Y are added to the output graph G1 . If not, the Left-Right orientation is rule is applied: Orient X → Y in G1, if (E(X Y |X > 0)/ E(X 2|X > 0)E(Y 2 |X > 0) − E(X Y |Y > 0)/ E(X 2 |Y > 0)E(Y 2|Y > 0)) > 0; otherwise orient X ← Y . G1 will be a fully oriented graph. For some models, where the true coefficients of a 2-cycle between X and Y are more or less equal in magnitude but opposite in sign, FAS-stable may fail to detect an edge between X and Y when in fact a 2-cycle exists. In this case, we check explicitly whether corr(X, Y |X > 0) and corr(X, Y |Y > 0) differ by more than a set amount of 0.3. If so, the adjacency is added to the graph and oriented using the aforementioned rules.
 
 We include pairwise orientation rule RSkew, Skew, and Tanh from :footcite:t:`hyvarinen2013pairwise`, so in some configurations FASK can be made to implement an algorithm that has been called in the literature "Pairwise LiNGAM"--this is intentional; we do this for ease of comparison. You'll get this configuration if you choose one of these pairwise orientation rules, together with the FAS with orientation alpha and two-cycle threshold set to zero and skewness threshold set to 1, for instance.
@@ -3135,7 +3137,7 @@ See  :footcite:t:`sanchez2018causal`.
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_fci: 
 
@@ -3193,7 +3195,7 @@ See :footcite:t:`spirtes1993discovery`.
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_fges: 
 
@@ -3258,7 +3260,7 @@ The algorithms requires a decomposable score—that is, a score that for the ent
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_fofc: 
 
@@ -3313,7 +3315,7 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_ftfc: 
 
@@ -3364,7 +3366,7 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_gfci: 
 
@@ -3426,7 +3428,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_imgscont: 
 
@@ -3477,7 +3479,7 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_lingam: 
 
@@ -3533,7 +3535,7 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_pc-all: 
 
@@ -3589,7 +3591,7 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
 
 .. footbibliography::
 
----------
+
 
 .. _tetrad_rfci: 
 
@@ -3646,7 +3648,7 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
 
 .. footbibliography::
 
----------
+
 
 .. _trilearn_pgibbs: 
 
@@ -3726,4 +3728,3 @@ discrete and continuous graphical models.
 
 .. footbibliography::
 
----------

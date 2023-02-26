@@ -1,26 +1,21 @@
 Usage 
 **********************
-
-Benchpress is run as any other Snakemake workflow.
-However, it is built such that all interation should be through a config file, on a Benchpress specific format. 
-Read more about that here.
-There are several options for running Snakemake workflows, as stated on Snakemake homepage
+As Benchpress is a Snakemake workflow, there are several possibilties for running Snakemake workflows, and as stated on Snakemake homepage
 *"..can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition."*
-We rely on the config file 
-Here we describe the simplest commands to get started, whether you use Docker or run on directly on your machine.
 
-First head into the benchpress folder by
+
+Here we descrbe some basic steps to get started. First head into the benchpress folder by
 
 .. prompt:: bash
 
     cd path/to/benchpress
 
-Depending on if you use  `Docker <https://www.docker.com/>`_ or if you have installed `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  and `Apptainer (or Singularity) <https://apptainer.org/>`_ on your own machine, proceed as below.
+Depending on if you use  `Docker <https://www.docker.com/>`_ or if you have installed `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_  and `Apptainer (or Singularity) <https://apptainer.org/>`_ natively, proceed as below.
 
 Docker
 ######
 
-Start an interative `Docker <https://www.docker.com/>`_ container in the priviliged mode, where the benchpress folder is shared as a volume (here to the folder /mnt which is also set to the working directory).
+Start an interative `Docker <https://www.docker.com/>`_ container in priviliged mode, where the benchpress folder is shared as a volume (here to the folder /mnt which is also set to the working directory).
 
 .. prompt:: bash
 
@@ -41,6 +36,10 @@ If you installed `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ by u
 
 Run config file 
 ################
+
+Benchpress built so that all the interation with the user is done through a config file, on a specific format. 
+Here we describe the simplest commands to get started to run Benchpress locally using *all* available cores, whether you use Docker or run on directly on your machine.
+For info about e.g. cloud or cluster execution, please review the documentation of Snakemake.
 
 
 To run the config file `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ type

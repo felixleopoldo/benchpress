@@ -168,7 +168,6 @@ The following plots are also produced
     ]
 
 
-----------
 
 .. _ggally_ggpairs: 
 
@@ -213,7 +212,6 @@ However, you can always alter the script as you like it.
     ]
 
 
-----------
 
 .. _graph_plots: 
 
@@ -259,7 +257,6 @@ It also plots graph comparison using *graphviz.compare* from `bnlearn <https://w
     ]
 
 
-----------
 
 .. _graph_true_plots: 
 
@@ -307,7 +304,6 @@ This module plots the true underlying graphs.
     ]
 
 
-----------
 
 .. _graph_true_stats: 
 
@@ -341,7 +337,6 @@ This module plots properties of the true graphs such as graph density.
     ]
 
 
-----------
 
 .. _mcmc_autocorr_plots: 
 
@@ -407,7 +402,6 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
     ]
 
 
-----------
 
 .. _mcmc_heatmaps: 
 
@@ -461,7 +455,6 @@ The estimated probabilities are plotted in heatmaps using seaborn which are save
     ]
 
 
-----------
 
 .. _mcmc_traj_plots: 
 
@@ -520,5 +513,3 @@ Since the trajectories tend to be very long, the user may choose to thin out the
       }
     ]
 
-
-----------

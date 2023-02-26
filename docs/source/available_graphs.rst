@@ -103,7 +103,7 @@ bdgraph_graphsim
 
 .. footbibliography::
 
------------
+
 
 .. _fixed_graph: 
 
@@ -120,7 +120,7 @@ A fixed graph is referenced by the corresponding filename instead of `id` as wit
 
 .. footbibliography::
 
------------
+
 
 .. _pcalg_randdag: 
 
@@ -188,7 +188,7 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 .. footbibliography::
 
------------
+
 
 .. _trilearn_bandmat: 
 
@@ -242,7 +242,7 @@ with given bandwidth (*bandwith*).
 
 .. footbibliography::
 
------------
+
 
 .. _trilearn_cta: 
 
@@ -301,7 +301,7 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
 
 .. footbibliography::
 
------------
+
 
 .. _trilearn_rand_bandmat: 
 
@@ -353,4 +353,3 @@ An object of the max bandwith module specifies a decomposable graph with band st
 
 .. footbibliography::
 
------------

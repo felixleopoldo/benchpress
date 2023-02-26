@@ -178,7 +178,8 @@ for p in sorted(algspath.iterdir()):
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
     str += "\n\n"
     str += ".. footbibliography::"
-    str += "\n\n-----------"
+    #str += "\n\n-----------\n"
+    str += "\n\n"
 
 
 with open("source/available_graphs.rst", "w") as text_file:

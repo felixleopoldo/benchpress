@@ -130,7 +130,7 @@ Paper: :footcite:t:`doi:10.1126/science.1105809`
 
 .. footbibliography::
 
--------
+
 
 .. _gcastle_iidsim: 
 
@@ -183,7 +183,7 @@ The data may be standardized by setting ``standardized`` to *true*.
 
 .. footbibliography::
 
--------
+
 
 .. _iid: 
 
@@ -233,4 +233,3 @@ The data may be standardized by setting ``standardized`` to true.
 
 .. footbibliography::
 
--------
