@@ -142,7 +142,8 @@ for p in sorted(algspath.iterdir()):
     if "in_docs" in info and info["in_docs"] is False:
         continue
     
-    schema = None    
+    schema = None
+
     with open(s) as json_file:    
         schema = json.load(json_file)
     

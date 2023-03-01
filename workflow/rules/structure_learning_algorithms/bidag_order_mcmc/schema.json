@@ -167,7 +167,7 @@
                 "burnin_frac": 0,
                 "mcmc_estimator": "threshold",
                 "timeout": null
-            },
+            }
         ]
     }
 }

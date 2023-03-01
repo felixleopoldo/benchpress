@@ -291,7 +291,9 @@ Algorithm
 ########################
 
 
-In order to create a new data module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
+
+
+In order to create a new algorithm module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
 
 .. prompt:: bash
 
@@ -375,6 +377,99 @@ In order to use the module, you need to add the following piece of `JSON <https:
             "timeout": null
         }
     ]
+
+
+MCMC algorithm
+###############
+
+
+In order to create a new algorithm module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
+
+.. prompt:: bash
+
+    cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
+
+Alternatively, you may copy one of the existing modules. This line copies the :ref:`pcalg_pc` module to a new module named ``pcalg_pc_copy``.
+
+.. prompt:: bash
+
+   cp -r workflow/rules/structure_learning_algorithms/pcalg_pc workflow/rules/structure_learning_algorithms/pcalg_pc_copy
+
+Template structure
+------------------
+
+In this section we show the content for the module template `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__.
+This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
+
+.. code-block:: python
+    
+    rule:
+        name:
+            module_name
+        input:
+            data = alg_input_data()        
+        output:
+            adjmat = alg_output_adjmat_path(module_name),
+            time = alg_output_time_path(module_name),
+            ntests = alg_output_ntests_path(module_name)
+        container:
+            None # Make sure R and R.utils is installed 
+        script:
+            "script.R"
+
+
+`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected data).
+The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
+Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
+
+.. code-block:: r
+
+    source("workflow/scripts/utils/add_timeout.R")
+
+    filename <- file.path(snakemake@output[["adjmat"]])
+    filename_data <- snakemake@input[["data"]]
+    seed <- as.integer(snakemake@wildcards[["replicate"]])
+
+    myalg <- function() {
+        # Here is where you should put your algorithm.
+        data <- read.csv(filename_data, check.names = FALSE)
+        start <- proc.time()[1]
+
+        # This is a very fast and bad algorithm.
+        threshold <- float(snakemake@wildcards[["thresh"]])
+        p <- ncol(data)
+        Sys.sleep(3)
+        set.seed(seed)
+        adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > threshold
+        adjmat <- 1 * (adjmat | t(adjmat))
+        diag(adjmat) <- 0
+        totaltime <- proc.time()[1] - start
+        colnames(adjmat) <- names(data) # Get the labels from the data
+        
+        write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
+        write(totaltime, file = snakemake@output[["time"]])
+        # Write the true number of c.i. tests here if possible.
+        cat("None", file = snakemake@output[["ntests"]], sep = "\n") 
+    }
+
+    add_timeout(myalg)
+
+In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
+
+.. code-block:: json
+
+    "new_mcmcalg": [
+        {
+            "id": "mcmcalg",
+            "threshold": 0.5,
+            "burnin_frac": 0.5,
+            "mcmc_estimator": "map",
+            "timeout": null
+        }
+    ]
+
 
 Evaluation 
 ########################
