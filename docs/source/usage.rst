@@ -1,10 +1,11 @@
 Usage 
 **********************
-As Benchpress is a Snakemake workflow, there are several possibilties for running Snakemake workflows, and as stated on Snakemake homepage
-*"..can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition."*
 
+Here we describe some basic steps to get you started on your local machine or on a server. 
+However, Snakemake workflows *"..can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition."*
+See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/index.html>`__ for `cluster <https://snakemake.readthedocs.io/en/stable/executing/cluster.html>`__ and `cloud <https://snakemake.readthedocs.io/en/stable/executing/cloud.html>`__ execution.
 
-Here we descrbe some basic steps to get started. First head into the benchpress folder by
+First head into the benchpress folder by
 
 .. prompt:: bash
 

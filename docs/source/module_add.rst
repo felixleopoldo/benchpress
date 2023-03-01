@@ -123,8 +123,6 @@ This line copies the :ref:`sem_params` module to a new module named ``sem_params
 Template structure
 ------------------
 
-.. In this section we show the content for the module template `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__.
-
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) but you may change either the entire file or the content of it. 
 
 .. code-block:: python
@@ -206,9 +204,9 @@ Data
 While the data sampling procedure depends on the model to sample from, in most cases we are interested in drawing IID samples.
 The :ref:`iid` module is a generic module to sample data from many different models.
 So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
-However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
 
-To create a new data module, the best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
+However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
+To do so, the best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
 
 .. prompt:: bash
 
@@ -243,13 +241,13 @@ Template structure
             "script.R"
 
 
-:numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates a random undirected data (symmetric binary matrix) and saves it properly.
+:numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates i.i.d multivariate Gaussian data and saves it properly.
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__.
 
 .. code-block:: r
     :name: new_data_script
-    :caption: script.R in the new_data template.
+    :caption: script.R from new_data.
 
     library(mvtnorm)
 

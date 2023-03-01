@@ -103,6 +103,27 @@
                 "prior": "uniform",
                 "beta": null,
                 "timeout": null
+            },
+            {
+                "id": "rsmax2-bde-mi",
+                "restrict": "si.hiton.pc",
+                "maximize": "hc",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "score": "bde",
+                "test": "mi",
+                "iss": 1,
+                "issmu": null,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": null,
+                "timeout": null
             }
         ]
     }

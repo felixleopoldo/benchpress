@@ -53,6 +53,22 @@
         ],
         "examples": [
             {
+                "id": "tabu-bde",
+                "score": "bde",
+                "iss": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "issmu": 1,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": 1,
+                "timeout": null
+            },
+            {
                 "id": "tabu-bge",
                 "score": "bge",
                 "iss": 1,

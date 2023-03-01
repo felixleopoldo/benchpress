@@ -90,6 +90,25 @@
                 "verbose": false,
                 "indepTest": "gaussCItest",
                 "timeout": null
+            },
+            {
+                "id": "pc-binCItest",
+                "alpha": [
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "NAdelete": true,
+                "mmax": "Inf",
+                "u2pd": "relaxed",
+                "skelmethod": "stable",
+                "conservative": false,
+                "majrule": false,
+                "solveconfl": false,
+                "numCores": 1,
+                "verbose": false,
+                "indepTest": "binCItest",
+                "timeout": null
             }
         ]
     }

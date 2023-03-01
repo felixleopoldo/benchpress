@@ -14,8 +14,6 @@
     installation
     usage
 
-    
-
 .. toctree::
     :hidden:
     :maxdepth: 3

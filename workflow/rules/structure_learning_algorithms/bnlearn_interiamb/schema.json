@@ -86,6 +86,19 @@
                 "debug": false,
                 "undirected": false,
                 "timeout": null
+            },
+            {
+                "id": "interiamb-mi",
+                "alpha": [
+                    0.01,
+                    0.05
+                ],
+                "test": "mi",
+                "B": null,
+                "maxsx": null,
+                "debug": false,
+                "undirected": false,
+                "timeout": null
             }
         ]
     }

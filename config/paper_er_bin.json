@@ -189,8 +189,7 @@
                 }
             ]
         },
-        "structure_learning_algorithms": {            
-
+        "structure_learning_algorithms": {
             "rblip_asobs": [
                 {
                     "id": "winasobs-bdeu",
@@ -247,7 +246,6 @@
                     "timeout": 600
                 }
             ],
-  
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -981,7 +979,7 @@
                     "MAP": true,
                     "cpdag": false,
                     "mcmc_seed": 1,
-                    "threshold": [     
+                    "threshold": [
                         0.5
                     ],
                     "burnin_frac": 0,

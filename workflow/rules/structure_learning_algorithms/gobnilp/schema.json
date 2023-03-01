@@ -99,6 +99,26 @@
                 "gap_limit": null,
                 "prune": true,
                 "timeout": 800
+            },
+            {
+                "id": "gobnilp-bde",
+                "continuous": false,
+                "score_type": "BDeu",
+                "extra_args": null,
+                "constraints": null,
+                "plot": false,
+                "palim": 4,
+                "alpha_mu": null,
+                "alpha_omega_minus_nvars": null,
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "time_limit": null,
+                "gap_limit": null,
+                "prune": true,
+                "timeout": 600
             }
         ]
     }
