@@ -29,6 +29,11 @@ Contributors
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
 | University of Bristol, UK
 
+Credits
+########
+
+We would like to thank all the developers and researchers that have made their software available open-source.
+
 Contributing
 #################
 

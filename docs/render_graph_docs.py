@@ -111,7 +111,14 @@ To start an interactive `Docker <https://www.docker.com/>`_ shell for a module r
 
 
 """
-str = "The names of the fields of the modules in these section are directly transferred or translated from the original libraries or code. Thus, for further details of each field see the documentation of the original sources.\n\n"
+str = """The names of the fields of the modules are directly transferred or translated from the original libraries or code. 
+Thus, for further details of each field see the documentation of the original sources.
+Most of the parameters can be given as either a single value or a list.
+However, some parametrers might be missing for some modules, to see which parameters are available please review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
+
+
+"""
 str += ".. _"+algspath.name+": \n\n"
 #str += "``"+algspath.name+"``\n"
 str += "Graph\n"

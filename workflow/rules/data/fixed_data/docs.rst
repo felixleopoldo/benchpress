@@ -64,6 +64,10 @@ File: `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/b
 
 Paper: :footcite:t:`doi:10.1126/science.1105809`
 
+Description:
+
+The logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`.
+
 .. We consider the data from \cite{sachs2005causal} containing cytometry measurements of 11 phosphorylated proteins and phospholipids, which has become standard in this field since the true underlying graph is regarded as known.
 .. The dataset consists of totally 7644 measurements from nine different perturbation conditions, each defining a unique intervention scheme.
 

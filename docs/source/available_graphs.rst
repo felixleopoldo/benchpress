@@ -1,13 +1,17 @@
-The names of the fields of the modules in these section are directly transferred or translated from the original libraries or code. Thus, for further details of each field see the documentation of the original sources.
+The names of the fields of the modules are directly transferred or translated from the original libraries or code. 
+Thus, for further details of each field see the documentation of the original sources.
+Most of the parameters can be given as either a single value or a list.
+However, some parametrers might be missing for some modules, to see which parameters are available please review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
+
 
 .. _graph: 
 
 Graph
 ===============
 
-Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on
-which we wish to perform a benchmarking study. 
-Below is the list of currently available modules.
+.. Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on which we wish to perform a benchmarking study. 
+Below is a list of available modules.
 
 
 .. list-table:: 

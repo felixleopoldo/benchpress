@@ -95,6 +95,7 @@ content = f.read()
 
 str = ""
 #str += "``"+algspath.name+"``\n"
+str += ".. _"+algspath.name+": \n\n"
 str += "Data\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
