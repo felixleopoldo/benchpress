@@ -7,6 +7,12 @@ Installation
 Benchpress is built up of by a collection of modules which stem from a variety of packages, libraries, and open-source software.
 In order to maintain reproducibility, and at the same time save the user the time from manually installing each these, Benchpress relies on Snakemake's support for Docker containers through Apptainer and runs the modules in separate containers.
 
+Wth that said, there is no installation of the workflow as such, ones apptaiuner and snakemake is installed.. acks:: 
+However, snakeke workflows canscale seelessly, tp grid, ..., and depending on the usage ther software sucha s kuberneted may also be required.
+See the snakemake docs.
+
+Here we describe the simples local or server installation.
+
 You can either install Apptainer natively on a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system or you can use  the official `Snakemake Docker image <https://hub.docker.com/r/snakemake/snakemake/tags>`_, where Apptainer is installed, and run Benchpress through an interactive `Docker <https://www.docker.com/>`_ container.
 
 Ones Apptainer and Snakemake is in place, there is no further installtion of the workflow as such.

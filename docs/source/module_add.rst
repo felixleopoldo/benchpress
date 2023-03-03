@@ -18,14 +18,13 @@ However, to get something working, you only have to consider altering *script.R*
 
 * *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
 * *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
-* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. 
-* This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
+* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
 * *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
-* *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields of the proper form.  
-* The container field is set to `None` in all of the example rules below in order to force local execution. On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
-* *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. Variables available in the script is are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (form the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details of how to access variables in scripts. Note that the values are passed as string and might have to be converted to suite your specific script.
+* *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
+  The container field is set to `None` in all of the example rules below in order to force local execution. On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
+* *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. Variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suite your specific script.
 
-The modules are stored in sub directories of `workflow/rules/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/>`__. 
+.. The modules are stored in sub directories of `workflow/rules/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/>`__. 
 
 .. role:: r(code)
    :language: r
@@ -53,7 +52,7 @@ Template structure
 
 .. code-block:: python
     :name: new_graph_rule
-    :caption: rule.smk in the new_graph template.
+    :caption: rule.smk from new_graph.
     
     rule:
         name:
@@ -66,13 +65,13 @@ Template structure
             "script.R"
 
 
-:numref:`new_graph_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__, which generates a random undirected graph (symmetric binary matrix) and saves it properly.
+:numref:`new_graph_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__, which generates a random undirected graph (symmetric binary matrix) and saves it properly in the CSV format specified in :ref:`file_formats`.
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__.
 
 .. code-block:: r
     :name: new_graph_script
-    :caption: script.R in the new_graph template.
+    :caption: script.R from new_graph.
 
     p <- as.integer(snakemake@wildcards[["p"]])
 
@@ -123,11 +122,11 @@ This line copies the :ref:`sem_params` module to a new module named ``sem_params
 Template structure
 ------------------
 
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) but you may change either the entire file or the content of it. 
+This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) taking an adjacency matrix as as input.  
 
 .. code-block:: python
     :name: new_params_rule
-    :caption: rule.smk in the new_params template.
+    :caption: rule.smk from new_params.
         
     rule:
         name:
@@ -146,10 +145,8 @@ This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/m
 
 
 :numref:`new_params_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__, which samples a covariance matrix for a multivariate Gaussian distribution from the G-Inverse Wishart distibution and saves it. 
-
 This template module uses the `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_ to sample the matrix, so this needs to be installed on your system in order to be tested.
-
-The format of the saved file depend on the type of parameters used, in this case, since we sample matrix it can be stored as a CSV file.
+The format of the saved file depend on the type of parameters used, in this case, since we sample a matrix it can be stored as a CSV file.
 
 .. code-block:: r
     :name: new_params_script
@@ -204,8 +201,8 @@ Data
 While the data sampling procedure depends on the model to sample from, in most cases we are interested in drawing IID samples.
 The :ref:`iid` module is a generic module to sample data from many different models.
 So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
+However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`_, see :ref:`gcastle_iidsim` ).
 
-However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using gCastle, see :ref:`gcastle_iidsim` ).
 To do so, the best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
 
 .. prompt:: bash
@@ -241,7 +238,7 @@ Template structure
             "script.R"
 
 
-:numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates i.i.d multivariate Gaussian data and saves it properly.
+:numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates i.i.d multivariate Gaussian data and saves it properly in the CSV format specified in :ref:`file_formats`.
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__.
 
@@ -290,9 +287,6 @@ In order to use the module, you need to add the following piece of `JSON <https:
 Algorithm 
 ########################
 
-
-
-
 In order to create a new algorithm module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
 
 .. prompt:: bash
@@ -309,10 +303,13 @@ Template structure
 ------------------
 
 In this section we show the content for the module template `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__.
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
+This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (:numref:`new_alg_script`) but you may change either the entire file or the content of it. 
+There is also the `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which can be used for as a template for `Python <https://www.python.org/>`_ algorithms.
 
 .. code-block:: python
-    
+    :name: new_alg_rule
+    :caption: rule.smk for new_alg.
+
     rule:
         name:
             module_name
@@ -335,6 +332,8 @@ This is to enable the timeout functionality, which save an empty data if the alg
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 .. code-block:: r
+    :name: new_alg_script
+    :caption: script.R from new_alg.
 
     source("workflow/scripts/utils/add_timeout.R")
 
@@ -383,7 +382,7 @@ MCMC algorithm
 ###############
 
 
-In order to create a new algorithm module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
+In order to create a new algorithm module, you can make a copy of the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
 
 .. prompt:: bash
 

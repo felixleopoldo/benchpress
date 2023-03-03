@@ -1,3 +1,5 @@
+.. _file_formats:
+
 File formats
 #############
 
@@ -11,6 +13,7 @@ A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{
 .. * The first row contains the labels of the variables.
 .. * The columns are separated by a comma (,).
 .. * 1 (0) at row i, column j indicates an (no) edge from variable i to j. 
+
 
 
 .. rubric:: Example (undirected graph)
