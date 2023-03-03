@@ -28,9 +28,9 @@ The first step is to install `git <https://git-scm.com/downloads>`_ and clone th
 
     git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
 
-Note that, git is not a requirement but it is highly recommended as it will make it easier to keep you updated with the latest updates using the command *git pull* and to add you own modules to Benchpress.
+Note that, git is not a requirement but it is highly recommended as it will make it easier to keep you updated with the latest updates using the command *git pull* and to add new modules.
 
-As soon as `Apptainer <https://apptainer.org/>`_ and `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ is available, no further installation is required and you are ready to run Benchpress.
+As soon as `Apptainer <https://apptainer.org/>`_ and `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ are available, no further installation is required and you are ready to run Benchpress.
 Here we describe two ways to get these in place on your server or local machine.
 
 Docker (Linux/macOS/Win)
@@ -44,7 +44,7 @@ This is usually the easiest way to get started and it works for any platform sup
 Without Docker (Linux)
 ----------------------
 
-This alternative is preferred e.g. if you will add a new module or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
+This alternative is preferred e.g. if you will add new modules or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
 
 1. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_.
 2. Install `Snakemake >= 7.14 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_.
