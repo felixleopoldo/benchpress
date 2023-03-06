@@ -32,21 +32,11 @@ However, to get something working, you only have to consider altering *script.R*
 Graph 
 ########################
 
-To create a new graph module, you may either copy the template module `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__ as
+To create a new graph module, you may copy the template module `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_graph workflow/rules/graph/new_graph
-
-or one of the existing modules.
-The following line copies  :ref:`pcalg_randdag`  to a new module named ``pcalg_randdag_copy``.
-
-.. prompt:: bash
-
-   cp -r workflow/rules/graph/pcalg_randdag workflow/rules/graph/pcalg_randdag_copy
-
-Template structure
-------------------
 
 :numref:`new_graph_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ from `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__.
 
@@ -83,8 +73,7 @@ Template structure
 
     write.table(snakemake@output[["adjmat"]],
                 file = filename, row.names = FALSE,
-                quote = FALSE, col.names = TRUE, sep = ","
-                )
+                quote = FALSE, col.names = TRUE, sep = ",")
 
 In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``graph`` subsection of the ``resources`` section in the config file.
 
@@ -105,24 +94,13 @@ Parameters
 ########################
 
 
-To create a new parameters module, you may either copy the template module `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__ as
+To create a new parameters module, you may copy the template module `new_params <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
 
-or one of the existing modules. 
-This line copies the :ref:`sem_params` module to a new module named ``sem_params_copy``.
-
-.. prompt:: bash
-
-   cp -r workflow/rules/graph/sem_params workflow/rules/parameters/sem_params_copy
-
-
-Template structure
-------------------
-
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) taking an adjacency matrix as as input.  
+:numref:`new_params_rule` show `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/rule.smk>`__ which runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) taking an adjacency matrix as as input.  
 
 .. code-block:: python
     :name: new_params_rule
@@ -172,8 +150,7 @@ The format of the saved file depend on the type of parameters used, in this case
     write.table(covmat,
                 file = snakemake@output[["params"]], 
                 row.names = FALSE,
-                quote = FALSE, col.names = TRUE, sep = ","
-                )
+                quote = FALSE, col.names = TRUE, sep = ",")
 
 
 To use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``parameters`` section of the `JSON <https://www.json.org/json-en.html>`_ file.
@@ -198,20 +175,17 @@ Data
 ########################
 
 
-While the data sampling procedure depends on the model to sample from, in most cases we are interested in drawing IID samples.
-The :ref:`iid` module is a generic module to sample data from many different models.
-So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
-However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`_, see :ref:`gcastle_iidsim` ).
+.. While the data sampling procedure depends on the model to sample from, in most cases we are interested in drawing IID samples.
+.. The :ref:`iid` module is a generic module to sample data from many different models.
+.. So for sampling IID data, the preferred way is to alter the :ref:`iid` module.
+.. However, for implementational reasons, as some sampling functions also takes additional arguments it is sometimes easier to create a new module (as in the case of sampling from data from a SEM using `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`_, see :ref:`gcastle_iidsim` ).
 
-To do so, the best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
+The best way to get started is to copy the template module `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_data workflow/rules/data/new_data
 
-
-Template structure
-------------------
 
 :numref:`new_data_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__ from `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__.
 
@@ -265,8 +239,7 @@ Template structure
     write.table(covmat,
                 file = snakemake@output[["data"]],
                 row.names = FALSE,
-                quote = FALSE, col.names = TRUE, sep = ","
-                )
+                quote = FALSE, col.names = TRUE, sep = ",")
 
 
 In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``data`` subsection of the ``resources`` section in the config file.
@@ -287,24 +260,15 @@ In order to use the module, you need to add the following piece of `JSON <https:
 Algorithm 
 ########################
 
-In order to create a new algorithm module, you can make a copy of the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
+In order to create a new algorithm module, you may copy the template module `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__ as
 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
-Alternatively, you may copy one of the existing modules. This line copies the :ref:`pcalg_pc` module to a new module named ``pcalg_pc_copy``.
 
-.. prompt:: bash
-
-   cp -r workflow/rules/structure_learning_algorithms/pcalg_pc workflow/rules/structure_learning_algorithms/pcalg_pc_copy
-
-Template structure
-------------------
-
-In this section we show the content for the module template `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__.
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (:numref:`new_alg_script`) but you may change either the entire file or the content of it. 
-There is also the `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which can be used for as a template for `Python <https://www.python.org/>`_ algorithms.
+There is also the Python script `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which can be used as a template for `Python <https://www.python.org/>`_ algorithms.
 
 .. code-block:: python
     :name: new_alg_rule
@@ -378,96 +342,72 @@ In order to use the module, you need to add the following piece of `JSON <https:
     ]
 
 
-MCMC algorithm
-###############
+.. MCMC algorithm
+.. ###############
 
 
-In order to create a new algorithm module, you can make a copy of the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
+.. In order to create a new algorithm module, you may copy the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
 
-.. prompt:: bash
+.. .. prompt:: bash
 
-    cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
+..     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_mcmcalg
 
-Alternatively, you may copy one of the existing modules. This line copies the :ref:`pcalg_pc` module to a new module named ``pcalg_pc_copy``.
 
-.. prompt:: bash
+.. This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
 
-   cp -r workflow/rules/structure_learning_algorithms/pcalg_pc workflow/rules/structure_learning_algorithms/pcalg_pc_copy
-
-Template structure
-------------------
-
-In this section we show the content for the module template `new_alg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg>`__.
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
-
-.. code-block:: python
+.. .. code-block:: python
     
-    rule:
-        name:
-            module_name
-        input:
-            data = alg_input_data()        
-        output:
-            adjmat = alg_output_adjmat_path(module_name),
-            time = alg_output_time_path(module_name),
-            ntests = alg_output_ntests_path(module_name)
-        container:
-            None # Make sure R and R.utils is installed 
-        script:
-            "script.R"
+..     rule:
+..         name:
+..             module_name
+..         input:
+..             data=alg_input_data(),
+..         output:
+..             seqgraph=alg_output_seqgraph_path(module_name),
+..             time=alg_output_time_path(module_name),
+..             ntests=touch(alg_output_ntests_path(module_name))
+..         container:
+..             None
+..         script:
+..             "script.R"
 
 
-`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected data).
-The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
-Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
-However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
+.. `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ generates a random binary symetric matrix (undirected data).
+.. The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
+.. Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+.. This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+.. However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
-.. code-block:: r
+.. .. code-block:: r
 
-    source("workflow/scripts/utils/add_timeout.R")
+..     source("workflow/scripts/utils/add_timeout.R")
 
-    filename <- file.path(snakemake@output[["adjmat"]])
-    filename_data <- snakemake@input[["data"]]
-    seed <- as.integer(snakemake@wildcards[["replicate"]])
+..     filename <- file.path(snakemake@output[["seqgraph"]])
+..     filename_data <- snakemake@input[["data"]]
+..     seed <- as.integer(snakemake@wildcards[["replicate"]])
 
-    myalg <- function() {
-        # Here is where you should put your algorithm.
-        data <- read.csv(filename_data, check.names = FALSE)
-        start <- proc.time()[1]
+..     myalg <- function() {
+..         # Here is where you should put your algorithm.
+..         data <- read.csv(filename_data, check.names = FALSE)
+..         start <- proc.time()[1]
+..         # TODO
+..     }
 
-        # This is a very fast and bad algorithm.
-        threshold <- float(snakemake@wildcards[["thresh"]])
-        p <- ncol(data)
-        Sys.sleep(3)
-        set.seed(seed)
-        adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > threshold
-        adjmat <- 1 * (adjmat | t(adjmat))
-        diag(adjmat) <- 0
-        totaltime <- proc.time()[1] - start
-        colnames(adjmat) <- names(data) # Get the labels from the data
-        
-        write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
-        write(totaltime, file = snakemake@output[["time"]])
-        # Write the true number of c.i. tests here if possible.
-        cat("None", file = snakemake@output[["ntests"]], sep = "\n") 
-    }
+..     add_timeout(myalg)
 
-    add_timeout(myalg)
+.. In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
 
-In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
+.. .. code-block:: json
 
-.. code-block:: json
-
-    "new_mcmcalg": [
-        {
-            "id": "mcmcalg",
-            "threshold": 0.5,
-            "burnin_frac": 0.5,
-            "mcmc_estimator": "map",
-            "timeout": null
-        }
-    ]
+..     "new_mcmcalg": [
+..         {
+..             "id": "mcmcalg",
+..             "threshold": 0.5,
+..             "burnin_frac": 0.5,
+..             "mcmc_estimator": "map",
+..             "timeout": null
+..         }
+..     ]
 
 
 Evaluation 
