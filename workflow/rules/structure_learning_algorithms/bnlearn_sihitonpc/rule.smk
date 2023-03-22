@@ -6,6 +6,6 @@ rule bnlearn_sihitonpc:
         time=alg_output_time_path("bnlearn_sihitonpc"),
         ntests=alg_output_ntests_path("bnlearn_sihitonpc"),
     container:
-        "docker://onceltuca/bnlearn:4.7"
+        "docker://bpimages/bnlearn:4.7"
     script:
         "bnlearn_sihitonpc.R"

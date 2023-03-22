@@ -6,6 +6,6 @@ rule sklearn_glasso:
         time=alg_output_time_path("sklearn_glasso"),
         ntests=touch(alg_output_ntests_path("sklearn_glasso"))
     container:
-        "docker://onceltuca/datascience-python"
+        "docker://bpimages/datascience-python"
     script:
         "sklearn_glasso.py"

@@ -6,6 +6,6 @@ rule causaldag_gsp:
         time=alg_output_time_path("causaldag_gsp"),
         ntests=alg_output_ntests_path("causaldag_gsp"),
     container:
-        "docker://onceltuca/causaldag:0.1a163"
+        "docker://bpimages/causaldag:0.1a163"
     script:
         "causaldag_gsp.py"

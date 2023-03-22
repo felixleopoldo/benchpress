@@ -7,7 +7,7 @@ rule bin_bn:
             pattern_strings["bin_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
     container:
-        "docker://onceltuca/benchpress:1.2.0"
+        "docker://bpimages/benchpress:1.2.0"
     shell:
         "Rscript workflow/rules/parameters/bin_bn/sample_bayesian_network_for_dag.R " \
         "--filename_dag {input.adjmat} " \

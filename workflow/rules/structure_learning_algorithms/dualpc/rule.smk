@@ -6,6 +6,6 @@ rule dualpc:
         time=alg_output_time_path("dualpc"),
         ntests=touch(alg_output_ntests_path("dualpc"))
     container:
-        "docker://onceltuca/dualpc:latest"
+        "docker://bpimages/dualpc:latest"
     script:
         "dualpc.R"

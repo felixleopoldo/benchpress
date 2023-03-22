@@ -14,7 +14,7 @@ rule:
     container:
         None # Local 
         #"docker://r-base" # For R
-        #"docker://onceltuca/datascience-python" # For Python
+        #"docker://bpimages/datascience-python" # For Python
     script:
         # This is a template R script but it could be any R or Python script, 
         # even in a different directory.

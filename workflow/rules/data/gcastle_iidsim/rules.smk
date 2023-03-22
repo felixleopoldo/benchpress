@@ -16,7 +16,7 @@ rule sample_fixed_sem_params_data_gcastle:
         n="[0-9]*",
         bn=".*\.csv"
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "gcastle_iidsim.py"
 
@@ -32,6 +32,6 @@ rule gcastle_iidsim:
     wildcard_constraints:
         n="[0-9]*"
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "gcastle_iidsim.py"

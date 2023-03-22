@@ -79,7 +79,7 @@ bdgraph_rgwish
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
    * - Module
      - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
 
@@ -131,7 +131,7 @@ bin_bn
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+     - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
@@ -224,7 +224,7 @@ sem_params
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
    * - Module
      - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
 
@@ -291,7 +291,7 @@ trilearn_hyper-dir
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
 
@@ -347,7 +347,7 @@ trilearn_intra-class
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 

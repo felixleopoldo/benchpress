@@ -79,7 +79,7 @@ bdgraph_graphsim
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
    * - Module
      - `bdgraph_graphsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/bdgraph_graphsim>`__
@@ -148,7 +148,7 @@ pcalg_randdag
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `pcalg_randdag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/pcalg_randdag>`__
@@ -216,7 +216,7 @@ trilearn_bandmat
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_bandmat>`__
@@ -270,7 +270,7 @@ trilearn_cta
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_cta>`__
@@ -329,7 +329,7 @@ trilearn_rand_bandmat
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_rand_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_rand_bandmat>`__

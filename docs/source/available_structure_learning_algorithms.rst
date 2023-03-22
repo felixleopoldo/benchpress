@@ -260,7 +260,7 @@ bdgraph
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
    * - Module
      - `bdgraph/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
@@ -331,7 +331,7 @@ bidag_itsearch
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_itsearch/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
@@ -433,7 +433,7 @@ bidag_order_mcmc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_order_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
@@ -541,7 +541,7 @@ bidag_partition_mcmc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_partition_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
@@ -633,7 +633,7 @@ bnlearn_fastiamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_fastiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
@@ -707,7 +707,7 @@ bnlearn_gs
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_gs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
@@ -786,7 +786,7 @@ bnlearn_h2pc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_h2pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
@@ -870,7 +870,7 @@ bnlearn_hc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_hc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
@@ -954,7 +954,7 @@ bnlearn_hpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_hpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
@@ -1028,7 +1028,7 @@ bnlearn_iamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_iamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
@@ -1098,7 +1098,7 @@ bnlearn_iambfdr
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_iambfdr/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
@@ -1170,7 +1170,7 @@ bnlearn_interiamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_interiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
@@ -1246,7 +1246,7 @@ bnlearn_mmhc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_mmhc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
@@ -1332,7 +1332,7 @@ bnlearn_mmpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_mmpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
@@ -1404,7 +1404,7 @@ bnlearn_pcstable
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_pcstable/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
@@ -1474,7 +1474,7 @@ bnlearn_rsmax2
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_rsmax2/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
@@ -1562,7 +1562,7 @@ bnlearn_sihitonpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_sihitonpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
@@ -1638,7 +1638,7 @@ bnlearn_tabu
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_tabu/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
@@ -1718,7 +1718,7 @@ causaldag_gsp
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag/tags>`__
+     - `bpimages/causaldag:0.1a163 <https://hub.docker.com/r/bpimages/causaldag/tags>`__
 
    * - Module
      - `causaldag_gsp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
@@ -1780,7 +1780,7 @@ corr_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module
      - `corr_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
@@ -1832,7 +1832,7 @@ dualpc
    * - Graph type
      - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/dualpc:latest <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
+     - `bpimages/dualpc:latest <https://hub.docker.com/r/bpimages/dualpc/tags>`__
 
    * - Module
      - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
@@ -1896,7 +1896,7 @@ gcastle_anm
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_anm/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
@@ -1947,7 +1947,7 @@ gcastle_corl
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_corl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
@@ -2018,7 +2018,7 @@ gcastle_direct_lingam
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_direct_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
@@ -2070,7 +2070,7 @@ gcastle_gae
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_gae/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
@@ -2139,7 +2139,7 @@ gcastle_golem
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_golem/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
@@ -2199,7 +2199,7 @@ gcastle_grandag
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_grandag/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
@@ -2274,7 +2274,7 @@ gcastle_ica_lingam
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_ica_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
@@ -2327,7 +2327,7 @@ gcastle_mcsl
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_mcsl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
@@ -2393,7 +2393,7 @@ gcastle_notears
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_notears/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
@@ -2455,7 +2455,7 @@ gcastle_notears_low_rank
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_notears_low_rank/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
@@ -2511,7 +2511,7 @@ gcastle_notears_nonlinear
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_notears_nonlinear/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
@@ -2583,7 +2583,7 @@ gcastle_pc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
@@ -2636,7 +2636,7 @@ gcastle_rl
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_rl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
@@ -2719,7 +2719,7 @@ gg99_singlepair
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
+     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
    * - Module
      - `gg99_singlepair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
@@ -2823,7 +2823,7 @@ gobnilp
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp/tags>`__
+     - `bpimages/gobnilp:4347c64 <https://hub.docker.com/r/bpimages/gobnilp/tags>`__
 
    * - Module
      - `gobnilp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
@@ -2911,7 +2911,7 @@ gt13_multipair
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
+     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
    * - Module
      - `gt13_multipair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
@@ -3083,7 +3083,7 @@ pcalg_gies
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-3 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
    * - Module
      - `pcalg_gies/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
@@ -3136,7 +3136,7 @@ pcalg_pc
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
    * - Docker 
-     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-3 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
    * - Module
      - `pcalg_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
@@ -3223,7 +3223,7 @@ prec_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module
      - `prec_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
@@ -3275,7 +3275,7 @@ rblip_asobs
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+     - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
 
    * - Module
      - `rblip_asobs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
@@ -3341,7 +3341,7 @@ sklearn_glasso
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module
      - `sklearn_glasso/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
@@ -3398,7 +3398,7 @@ tetrad_fas
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_fas/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
@@ -3450,7 +3450,7 @@ tetrad_fask
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_fask/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
@@ -3510,7 +3510,7 @@ tetrad_fci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_fci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
@@ -3568,7 +3568,7 @@ tetrad_fges
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_fges/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
@@ -3633,7 +3633,7 @@ tetrad_fofc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_fofc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
@@ -3688,7 +3688,7 @@ tetrad_ftfc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_ftfc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
@@ -3739,7 +3739,7 @@ tetrad_gfci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_gfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
@@ -3801,7 +3801,7 @@ tetrad_imgscont
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_imgscont/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
@@ -3852,7 +3852,7 @@ tetrad_lingam
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
@@ -3908,7 +3908,7 @@ tetrad_pc-all
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_pc-all/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
@@ -3964,7 +3964,7 @@ tetrad_rfci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module
      - `tetrad_rfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
@@ -4021,7 +4021,7 @@ trilearn_pgibbs
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__

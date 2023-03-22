@@ -1,22 +1,22 @@
 version: "3.3"
 services:
   gobnilp:
-    image: onceltuca/gobnilp:4347c64
+    image: bpimages/gobnilp:4347c64
     command: tail -f /dev/null
   snakemake:
     image: snakemake/snakemake:stable
   trilearn:
-    image: onceltuca/trilearn:1.23-bp
+    image: bpimages/trilearn:1.23-bp
     volumes: 
       - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       DISPLAY: $DISPLAY
       MPLBACKEND: Agg
   notears:
-    image: onceltuca/jmoss20notears:1.4
+    image: bpimages/jmoss20notears:1.4
     command: tail -f /dev/null
   benchpress:
-    image: onceltuca/benchpress:1.2.0
+    image: bpimages/benchpress:1.2.0
     working_dir: /myappdir
     command: jupyter lab --port 8080 --ip 0.0.0.0 --allow-root --no-browser
     volumes: 
@@ -31,4 +31,4 @@ services:
       DISPLAY: $DISPLAY
       MPLBACKEND: Agg
   bidag:
-    image: onceltuca/bidag:2.0.2
+    image: bpimages/bidag:2.0.2

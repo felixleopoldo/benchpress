@@ -1,1 +1,1 @@
-FROM onceltuca/trilearn:1.25
+FROM bpimages/trilearn:1.25

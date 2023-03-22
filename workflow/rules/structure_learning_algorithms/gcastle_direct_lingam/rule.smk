@@ -8,6 +8,6 @@ rule gcastle_direct_lingam:
     params:
         alg="direct_lingam",
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

@@ -1,4 +1,4 @@
-FROM onceltuca/trilearn:1.23
+FROM bpimages/trilearn:1.23
 
 RUN mkdir git
 WORKDIR /git

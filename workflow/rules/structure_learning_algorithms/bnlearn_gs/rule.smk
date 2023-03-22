@@ -6,6 +6,6 @@ rule gs:
         time=alg_output_time_path("bnlearn_gs"),
         ntests=alg_output_ntests_path("bnlearn_gs"),
     container:
-        "docker://onceltuca/bnlearn:4.7"
+        "docker://bpimages/bnlearn:4.7"
     script:
         "bnlearn_gs.R"

@@ -12,7 +12,7 @@ rule gobnilp:
         time=alg_output_time_path("gobnilp"),
         ntests=touch(alg_output_ntests_path("gobnilp"))
     container:
-        "docker://onceltuca/gobnilp:4347c64"
+        "docker://bpimages/gobnilp:4347c64"
     shell:
         """touch {output.adjmat}.gobnilp.set
             echo -e gobnilp/outputfile/adjacencymatrix = \134\\042{output.adjmat}\134\\042 > {output.adjmat}.gobnilp.set
