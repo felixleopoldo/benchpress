@@ -1,6 +1,6 @@
 {
     "title": "Partition MCMC",
-    "docker_image": "onceltuca/bidag:2.0.3",
+    "docker_image": "bpimages/bidag:2.0.3",
     "version": "2.0.3",
     "package": {
         "title": "BiDAG",

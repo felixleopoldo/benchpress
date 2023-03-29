@@ -9,6 +9,6 @@ rule gcastle_rl:
     params:
         alg="rl"
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

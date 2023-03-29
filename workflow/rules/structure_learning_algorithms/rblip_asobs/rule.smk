@@ -7,7 +7,7 @@ rule rblip_asobs:
         time=alg_output_time_path("rblip_asobs"),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://onceltuca/benchpress:1.2.0"
+        "docker://bpimages/benchpress:1.2.0"
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \
         "Rscript workflow/rules/structure_learning_algorithms/rblip_asobs/rblip_asobs.R " \

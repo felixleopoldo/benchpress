@@ -11,6 +11,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://onceltuca/pcalg:2.7-3"
+        "docker://bpimages/pcalg:2.7-3"
     script:
         "pcalg_pc.R"

@@ -8,6 +8,6 @@ rule gcastle_grandag:
     params:
         alg="grandag",
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

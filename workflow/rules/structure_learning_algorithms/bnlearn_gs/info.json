@@ -1,6 +1,6 @@
 {
     "title": "Grow-shrink",
-    "docker_image": "onceltuca/bnlearn:4.7",
+    "docker_image": "bpimages/bnlearn:4.7",
     "version": "4.7",
     "package": {
         "title": "bnlearn",

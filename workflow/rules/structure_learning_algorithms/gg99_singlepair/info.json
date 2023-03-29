@@ -1,6 +1,6 @@
 {
     "title": "GG99",
-    "docker_image": "onceltuca/thomasgreen:1.19-bp",
+    "docker_image": "bpimages/thomasgreen:1.19-bp",
     "version": "1.19-bp",
     "package": {
         "title": "",

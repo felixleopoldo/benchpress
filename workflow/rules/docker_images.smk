@@ -2,20 +2,20 @@
 
 def docker_image(name):
     if name == "trilearn":
-        return "docker://onceltuca/trilearn:1.25"
+        return "docker://bpimages/trilearn:1.25"
     elif name == "pydatascience":
-        return "docker://onceltuca/datascience-python"
+        return "docker://bpimages/datascience-python"
     elif name == "bidag":
-        return "docker://onceltuca/bidag:2.0.3"
+        return "docker://bpimages/bidag:2.0.3"
     elif name == "bnlearn":
-        return "docker://onceltuca/bnlearn:4.7"
+        return "docker://bpimages/bnlearn:4.7"
     elif name == "pcalg":
-        return "docker://onceltuca/pcalg:2.7-3"
+        return "docker://bpimages/pcalg:2.7-3"
     elif name == "benchmark":
-        return "docker://onceltuca/benchpress:1.2.0"
+        return "docker://bpimages/benchpress:1.2.0"
     elif name == "networkx":
-        return "docker://onceltuca/networkx:2.5.1"
+        return "docker://bpimages/networkx:2.5.1"
     elif name == "rbase":
         return "docker://r-base"
     elif name == "tidyverse":
-        return "docker://onceltuca/tidyverse"
+        return "docker://bpimages/tidyverse"
