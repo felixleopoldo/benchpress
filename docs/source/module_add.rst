@@ -38,23 +38,6 @@ To create a new graph module, you may copy the template module `new_graph <https
 
     cp -r resources/module_templates/new_graph workflow/rules/graph/new_graph
 
-:numref:`new_graph_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__ from `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__.
-
-.. code-block:: python
-    :name: new_graph_rule
-    :caption: rule.smk from new_graph.
-    
-    rule:
-        name:
-            module_name
-        output:
-            adjmat = "{output_dir}/adjmat/"+pattern_strings[module_name]+"/seed={seed}.csv"
-        container:
-            None
-        script: 
-            "script.R"
-
-
 :numref:`new_graph_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/script.R>`__, which generates a random undirected graph (symmetric binary matrix) and saves it properly in the CSV format specified in :ref:`file_formats`.
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__.
@@ -99,28 +82,6 @@ To create a new parameters module, you may copy the template module `new_params 
 .. prompt:: bash
 
     cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
-
-:numref:`new_params_rule` show `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/rule.smk>`__ which runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__ (:numref:`new_params_script`) taking an adjacency matrix as as input.  
-
-.. code-block:: python
-    :name: new_params_rule
-    :caption: rule.smk from new_params.
-        
-    rule:
-        name:
-            module_name
-        input:
-            adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
-        output:
-            params = "{output_dir}/parameters/" + \
-                     pattern_strings[module_name] + "/" \
-                     "seed={seed}/"+\
-                     "adjmat=/{adjmat}.csv"
-        container:
-            None
-        script:
-            "script.R" 
-
 
 :numref:`new_params_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_params/script.R>`__, which samples a covariance matrix for a multivariate Gaussian distribution from the G-Inverse Wishart distibution and saves it. 
 This template module uses the `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_ to sample the matrix, so this needs to be installed on your system in order to be tested.
@@ -186,32 +147,6 @@ The best way to get started is to copy the template module `new_data <https://gi
 
     cp -r resources/module_templates/new_data workflow/rules/data/new_data
 
-
-:numref:`new_data_rule` shows `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__ from `new_data <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data>`__, which takes no input files and runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__.
-
-.. code-block:: python
-    :name: new_data_rule
-    :caption: rule.smk from new_data.
-    
-    rule:
-        name:
-            module_name
-        input:
-            params="{output_dir}/parameters/{params}/adjmat=/{adjmat}.csv"
-        output:
-            data="{output_dir}/data" \
-                "/adjmat=/{adjmat}"\
-                "/parameters=/{params}/" \
-                "data=/"+pattern_strings[module_name] + "/" \
-                "seed={seed}.csv"
-        wildcard_constraints:
-            n="[0-9]*"
-        container:
-            None
-        script:
-            "script.R"
-
-
 :numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates i.i.d multivariate Gaussian data and saves it properly in the CSV format specified in :ref:`file_formats`.
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__.
@@ -269,26 +204,6 @@ In order to create a new algorithm module, you may copy the template module `new
 
 This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (:numref:`new_alg_script`) but you may change either the entire file or the content of it. 
 There is also the Python script `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which can be used as a template for `Python <https://www.python.org/>`_ algorithms.
-
-.. code-block:: python
-    :name: new_alg_rule
-    :caption: rule.smk for new_alg.
-
-    rule:
-        name:
-            module_name
-        input:
-            data = alg_input_data()        
-        output:
-            adjmat = alg_output_adjmat_path(module_name),
-            time = alg_output_time_path(module_name),
-            ntests = alg_output_ntests_path(module_name)
-        container:
-            None # Make sure R and R.utils is installed 
-        script:
-            "script.R"
-
-
 `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected data).
 The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
 Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
