@@ -8,9 +8,9 @@ def docker_image(name):
     elif name == "bidag":
         return "docker://bpimages/bidag:2.0.3"
     elif name == "bnlearn":
-        return "docker://bpimages/bnlearn:4.7"
+        return "docker://bpimages/bnlearn:4.8.1"
     elif name == "pcalg":
-        return "docker://bpimages/pcalg:2.7-3"
+        return "docker://bpimages/pcalg:2.7-8"
     elif name == "benchmark":
         return "docker://bpimages/benchpress:1.2.0"
     elif name == "networkx":

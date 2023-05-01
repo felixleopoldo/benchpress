@@ -6,6 +6,6 @@ rule bnlearn_mmpc:
         time=alg_output_time_path("bnlearn_mmpc"),
         ntests=alg_output_ntests_path("bnlearn_mmpc"),
     container:
-        "docker://bpimages/bnlearn:4.7"
+        "docker://bpimages/bnlearn:4.8.1"
     script:
         "bnlearn_mmpc.R"

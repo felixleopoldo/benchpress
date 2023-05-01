@@ -214,7 +214,7 @@ However, *add_timeout* is not needed if your algorithm is able to produce result
     :name: new_alg_script
     :caption: script.R from new_alg.
 
-    source("workflow/scripts/utils/add_timeout.R")
+    source("workflow/scripts/utils/helpers.R")
 
     filename <- file.path(snakemake@output[["adjmat"]])
     filename_data <- snakemake@input[["data"]]
@@ -295,7 +295,7 @@ In order to use the module, you need to add the following piece of `JSON <https:
 
 .. .. code-block:: r
 
-..     source("workflow/scripts/utils/add_timeout.R")
+..     source("workflow/scripts/utils/helpers.R")
 
 ..     filename <- file.path(snakemake@output[["seqgraph"]])
 ..     filename_data <- snakemake@input[["data"]]
