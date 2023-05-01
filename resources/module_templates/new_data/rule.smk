@@ -13,6 +13,6 @@ rule:
     wildcard_constraints:
         n="[0-9]*"
     container:
-        None
+        "docker://bpimages/sandbox" # Change to None for local run
     script:
         "script.R"

@@ -5,7 +5,7 @@ rule:
     output:
         adjmat = "{output_dir}/adjmat/" + pattern_strings[module_name] + "/seed={replicate}.csv"
     container:
-        None
+        "docker://bpimages/sandbox" # Change to None for local run
     script: 
         "script.py"
         #"script.R"
