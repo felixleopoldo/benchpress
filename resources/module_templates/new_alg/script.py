@@ -13,7 +13,6 @@ def wrapper():
     samples = df.values
 
     # The algorithm goes here.
-    
     p = df.shape[1]
     np.random.seed(seed)
 

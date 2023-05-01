@@ -7,14 +7,14 @@ Depending on if you use  `Docker <https://www.docker.com/>`_ or if you have inst
 Docker
 ######
 
-Start an interative `Docker <https://www.docker.com/>`_ container in priviliged mode, where the  benchpress folder (absolute path) is shared as a volume, here to the folder /mnt which is also set to the working directory.
+Start an interative `Docker <https://www.docker.com/>`_ container in priviliged mode, where the benchpress folder (absolute path) is shared as a volume, here to the folder /mnt which is also set to the working directory.
 
 .. prompt:: bash
 
     docker run -it -w /mnt --privileged -v /absolute/path/to/benchpress:/mnt snakemake/snakemake:stable
 
 Depending on your system, you may have to prepend the above command by *sudo*. 
-On Windows you may have to escape spaces in the path using ^ or \`.
+On Windows you may have to escape spaces in the benchpress path using ^ or \`.
 
 Linux without Docker
 #####################
