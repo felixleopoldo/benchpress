@@ -1,4 +1,4 @@
-FROM bpimages/pcalg:2.7-3
+FROM bpimages/pcalg:2.7-8
 
 WORKDIR /dual_pc
 

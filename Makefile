@@ -1,10 +1,12 @@
-# This is totally fine to clean sinc e it only contains copies
 all:
-	
+
+# Clean the output folder. 
+# This is totally fine to clean since it only contains copies.	
 cleanres:
 		rm -rf results/output
 
-# Cleans all results.
+# Cleans all results from the benchmarks module. 
+# However, the graph estimates remain of course.
 cleanall: 
 		rm -rf results
 

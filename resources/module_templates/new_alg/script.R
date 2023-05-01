@@ -1,7 +1,7 @@
 # If you have a Docker image with files to source you can source them here.
 # Be careful to use the absolute path in the Docker image.
 # R.utils is needed for the timeout. Make sure this is installed.
-source("workflow/scripts/utils/add_timeout.R")
+source("workflow/scripts/utils/helpers.R")
 library("R.utils") 
 # source("/path/in/dockerimage/filetosource.R")
 

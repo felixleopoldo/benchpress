@@ -633,7 +633,7 @@ bnlearn_fastiamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_fastiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
@@ -707,7 +707,7 @@ bnlearn_gs
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_gs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
@@ -786,7 +786,7 @@ bnlearn_h2pc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_h2pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
@@ -870,7 +870,7 @@ bnlearn_hc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_hc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
@@ -954,7 +954,7 @@ bnlearn_hpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_hpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
@@ -1028,7 +1028,7 @@ bnlearn_iamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_iamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
@@ -1098,7 +1098,7 @@ bnlearn_iambfdr
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_iambfdr/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
@@ -1170,7 +1170,7 @@ bnlearn_interiamb
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_interiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
@@ -1246,7 +1246,7 @@ bnlearn_mmhc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_mmhc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
@@ -1332,7 +1332,7 @@ bnlearn_mmpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_mmpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
@@ -1404,7 +1404,7 @@ bnlearn_pcstable
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_pcstable/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
@@ -1474,7 +1474,7 @@ bnlearn_rsmax2
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_rsmax2/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
@@ -1562,7 +1562,7 @@ bnlearn_sihitonpc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_sihitonpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
@@ -1638,7 +1638,7 @@ bnlearn_tabu
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bnlearn:4.7 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
    * - Module
      - `bnlearn_tabu/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
@@ -3083,7 +3083,7 @@ pcalg_gies
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/pcalg:2.7-3 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
    * - Module
      - `pcalg_gies/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
@@ -3136,7 +3136,7 @@ pcalg_pc
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
    * - Docker 
-     - `bpimages/pcalg:2.7-3 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
    * - Module
      - `pcalg_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__

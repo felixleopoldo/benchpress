@@ -1,3 +1,15 @@
-FROM bpimages/pcalg:2.7-3
+FROM r-base:4.2.3
+
+RUN R -e "install.packages(\"R.utils\", repos=\"https://cran.rstudio.com\")" --no-save
+RUN R -e "if (!requireNamespace(\"BiocManager\", quietly = TRUE)) {install.packages(\"BiocManager\", repo=\"http://cran.rstudio.com/\")}" --no-save
+RUN R -e "BiocManager::install()" --no-save
+#RUN R -e "BiocManager::install(\"gRbase\")" --no-save
+RUN R -e "BiocManager::install(\"graph\")" --no-save
+RUN R -e "BiocManager::install(\"RBGL\")" --no-save
+RUN R -e "BiocManager::install(\"Rgraphviz\")" --no-save
+RUN R -e "BiocManager::install(\"gRain\")" --no-save
+
+
+#FROM bpimages/pcalg:2.7-8
 
 RUN R -e "install.packages(\"bnlearn\")" --no-save

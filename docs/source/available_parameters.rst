@@ -196,8 +196,6 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
     This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
 
 
-
-
 .. footbibliography::
 
 

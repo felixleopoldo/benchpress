@@ -165,25 +165,6 @@
                     "gamma": 1,
                     "cpdag": false,
                     "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsample-bge_am01_endspace",
-                    "timeout": null,
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 3,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
                 }
             ]
         }

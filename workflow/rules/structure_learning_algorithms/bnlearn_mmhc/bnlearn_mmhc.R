@@ -1,7 +1,7 @@
 library(pcalg)
 library(RBGL)
 library(bnlearn)
-source("workflow/scripts/utils/add_timeout.R")
+source("workflow/scripts/utils/helpers.R")
 source("resources/code_for_binary_simulations/make_var_names.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])

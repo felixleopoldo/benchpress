@@ -1,4 +1,4 @@
-source("workflow/scripts/utils/add_timeout.R")
+source("workflow/scripts/utils/helpers.R")
 library(RBGL)
 library(pcalg)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")

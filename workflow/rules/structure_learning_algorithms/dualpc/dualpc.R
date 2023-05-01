@@ -1,4 +1,4 @@
-source("workflow/scripts/utils/add_timeout.R")
+source("workflow/scripts/utils/helpers.R")
 library(pcalg)
 library(MASS)
 d <- getwd()

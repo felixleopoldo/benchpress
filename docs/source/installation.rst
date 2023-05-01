@@ -38,6 +38,7 @@ Docker (Linux/macOS/Win)
 
 For this alternative, you only have to install `Docker <https://www.docker.com/>`_, following the instructions for your specific system.
 This is usually the easiest way to get started and it works for any platform supporting `Docker <https://www.docker.com/>`_.
+You may configure the amount of resources (memory, cores, disk,... ) to be used through the `Docker <https://www.docker.com/>`_ interface.
 
 .. _linuxx:
 

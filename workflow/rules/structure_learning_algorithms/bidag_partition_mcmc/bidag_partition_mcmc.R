@@ -2,7 +2,7 @@ library(BiDAG)
 library(R.utils)
 
 adjmatToEdgeString <- function(adjmat, labels) {
-  edgeinds <- which(adjmat == 1, arr.ind = TRUE)
+  edgeinds <- which(as.matrix(adjmat) == 1, arr.ind = TRUE)
   df <- data.frame(edgeinds)
   edges <- "["
   firstrow <- TRUE

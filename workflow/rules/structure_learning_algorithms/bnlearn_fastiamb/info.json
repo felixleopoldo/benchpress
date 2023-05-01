@@ -1,6 +1,6 @@
 {
     "title": "Fast IAMB",
-    "docker_image": "bpimages/bnlearn:4.7",
+    "docker_image": "bpimages/bnlearn:4.8.1",
     "version": "4.7",
     "package": {
         "title": "bnlearn",
