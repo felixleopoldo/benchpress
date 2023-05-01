@@ -147,3 +147,36 @@ bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels) {
 
   return(res)
 }
+
+
+get_bidag_score <- function(data, scoretype, aw = 1, am = 1, chi = 1, edgepf = 1) {
+  myscore <- NULL
+  if (scoretype == "bdecat") {
+    # if categorical data
+    data <- data[-1, ] # Remove range header
+    myscore <- scoreparameters("bdecat", data,
+      bdecatpar = list(chi = chi, edgepf = edgepf)
+    )
+  }
+  if (scoretype == "bde") {
+    # if discrete data
+    data <- data[-1, ] # Remove range header
+    myscore <- scoreparameters("bde", data,
+      bdepar = list(
+        chi = convert_or_null(chi, as.numeric),
+        edgepf = convert_or_null(edgepf, as.numeric)
+      )
+    )
+  }
+  if (scoretype == "bge") {
+    # if continuous data
+    myscore <- scoreparameters("bge", data,
+      bgepar = list(
+        am = convert_or_null(am, as.numeric),
+        aw = convert_or_null(aw, as.numeric)
+      )
+    )
+  }
+
+  return(myscore)
+}

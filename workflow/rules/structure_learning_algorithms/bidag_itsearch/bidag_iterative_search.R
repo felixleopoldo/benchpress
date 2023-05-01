@@ -1,10 +1,7 @@
-library(RBGL)
 library(BiDAG)
-
 source("workflow/scripts/utils/helpers.R")
 
 data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
-
 
 # This is a wrapper to pass into add_timeout.
 wrapper <- function() {
@@ -14,32 +11,9 @@ wrapper <- function() {
   set.seed(wc[["replicate"]])
   # Calculate the score tables
 
-  if (wc[["scoretype"]] == "bdecat") {
-    # if categorical data
-    data <- data[-1, ] # Remove range header
-    myscore <- scoreparameters("bdecat", data,
-      bdecatpar = list(chi = chi, edgepf = edgepf)
-    )
-  }
-  if (wc[["scoretype"]] == "bde") {
-    # if discrete data
-    data <- data[-1, ] # Remove range header
-    myscore <- scoreparameters("bde", data,
-      bdepar = list(
-        chi = convert_or_null(wc[["chi"]], as.numeric),
-        edgepf = convert_or_null(wc[["edgepf"]], as.numeric)
-      )
-    )
-  }
-  if (wc[["scoretype"]] == "bge") {
-    # if continuous data
-    myscore <- scoreparameters("bge", data,
-      bgepar = list(
-        am = convert_or_null(wc[["am"]], as.numeric),
-        aw = convert_or_null(wc[["aw"]], as.numeric)
-      )
-    )
-  }
+  myscore <- get_bidag_score(data, wc[["scoretype"]], 
+                             aw = wc[["aw"]], am = wc[["am"]], 
+                             chi = wc[["chi"]], edgepf = wc[["edgepf"]])
 
   itsearch_res <- iterativeMCMC(
     myscore,
