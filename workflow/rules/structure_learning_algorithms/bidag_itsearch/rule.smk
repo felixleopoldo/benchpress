@@ -6,6 +6,6 @@ rule bidag_iterative_search:
         time=alg_output_time_path("bidag_itsearch"),
         ntests=touch(alg_output_ntests_path("bidag_itsearch")),
     container:
-        "docker://bpimages/bidag:2.0.3"
+        "docker://bpimages/bidag:2.1.4"
     script:
         "bidag_iterative_search.R"
