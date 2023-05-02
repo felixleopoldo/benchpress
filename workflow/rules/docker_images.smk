@@ -6,7 +6,7 @@ def docker_image(name):
     elif name == "pydatascience":
         return "docker://bpimages/datascience-python"
     elif name == "bidag":
-        return "docker://bpimages/bidag:2.0.3"
+        return "docker://bpimages/bidag:2.1.4"
     elif name == "bnlearn":
         return "docker://bpimages/bnlearn:4.8.1"
     elif name == "pcalg":
