@@ -321,7 +321,7 @@ bidag_itsearch
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -423,7 +423,7 @@ bidag_order_mcmc
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -531,7 +531,7 @@ bidag_partition_mcmc
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -623,7 +623,7 @@ bnlearn_fastiamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -697,7 +697,7 @@ bnlearn_gs
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -776,7 +776,7 @@ bnlearn_h2pc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -860,7 +860,7 @@ bnlearn_hc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -944,7 +944,7 @@ bnlearn_hpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1018,7 +1018,7 @@ bnlearn_iamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1088,7 +1088,7 @@ bnlearn_iambfdr
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1160,7 +1160,7 @@ bnlearn_interiamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1236,7 +1236,7 @@ bnlearn_mmhc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1322,7 +1322,7 @@ bnlearn_mmpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1394,7 +1394,7 @@ bnlearn_pcstable
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1464,7 +1464,7 @@ bnlearn_rsmax2
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1552,7 +1552,7 @@ bnlearn_sihitonpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1628,7 +1628,7 @@ bnlearn_tabu
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -3073,7 +3073,7 @@ pcalg_gies
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - 2.7-3
+     - 2.7-8
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -3126,7 +3126,7 @@ pcalg_pc
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - 2.7-3
+     - 2.7-8
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs

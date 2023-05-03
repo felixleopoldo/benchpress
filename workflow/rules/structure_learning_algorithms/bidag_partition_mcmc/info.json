@@ -1,7 +1,6 @@
 {
     "title": "Partition MCMC",
-    "docker_image": "bpimages/bidag:2.1.3",
-    "version": "2.0.3",
+    "version": "2.1.4",
     "package": {
         "title": "BiDAG",
         "url": "https://cran.r-project.org/web/packages/BiDAG/index.html"
