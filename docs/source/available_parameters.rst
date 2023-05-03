@@ -222,7 +222,7 @@ sem_params
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
    * - Module
      - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
 

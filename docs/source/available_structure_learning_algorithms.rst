@@ -331,7 +331,7 @@ bidag_itsearch
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_itsearch/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
@@ -433,7 +433,7 @@ bidag_order_mcmc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_order_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
@@ -541,7 +541,7 @@ bidag_partition_mcmc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/bidag:2.0.3 <https://hub.docker.com/r/bpimages/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `bidag_partition_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
