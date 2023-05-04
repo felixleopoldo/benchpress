@@ -1,6 +1,5 @@
 sys.path.append("workflow/scripts/utils")
-
-sys.path.append("/home/f/l/flrios/git/CStrees/src")
+sys.path.append(wildcards["cstrees_path"])
 import cstrees.cstree as ct
 import numpy as np
 import networkx as nx
@@ -11,8 +10,8 @@ import pandas as pd
 
 
 def wrapper():
-
-
+    wc = snakemake.wildcards
+    
     seed = int(snakemake.wildcards["replicate"]) + 100
     df = pd.read_csv(snakemake.input["data"])
     samples = df.values
@@ -21,6 +20,21 @@ def wrapper():
 
     # Just sample a random tree instead of a proper estimate.
     t = ct.sample_cstree(p) 
+    
+    optord, score = ct.find_optimal_order(df, 
+                                          strategy="max", 
+                                          max_cvars=int(wc["max_cvars"]), 
+                                          alpha_tot=float(wc["alpha"]), 
+                                          method=wc["method"])
+    print("optimal order: {}, score {}".format(optord, score))
+
+    t = ct.optimal_cstree(optord, 
+                          df, 
+                          max_cvars=int(wc["max_cvars"]), 
+                          alpha_tot=float(wc["alpha"]), 
+                          method=wc["method"])
+    print("stages :{}".format(t.stages))
+    
     df_cstree =  t.to_df()
     print(df_cstree)
 

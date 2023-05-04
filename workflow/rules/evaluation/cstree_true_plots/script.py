@@ -25,8 +25,9 @@ np.random.seed(seed)
 random.seed(seed)
 
 # Need to get the parameters here.. or we plot without probabilities.
-tt.set_random_stage_parameters() # This should not be necessary
-
+tt.set_random_stage_parameters(alpha=1) # This should not be necessary
+tt.create_tree()
+tt.set_random_parameters()
 
 # Check dimension  
 if df.shape[1] > 6:

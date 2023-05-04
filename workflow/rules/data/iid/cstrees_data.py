@@ -20,7 +20,10 @@ np.random.seed(seed)
 random.seed(seed)
 
 ns = 0
-tt.set_random_stage_parameters()
+# alpha is from the parameters as we for now dont store the parameters
+# explicitly as the number of stages would blow for if we allow for
+# singleton stages.
+tt.set_random_stage_parameters(alpha=float(snakemake.wildcards["alpha"])) 
 for l, sl in tt.stages.items():
     for s in sl:
         ns += 1
