@@ -355,11 +355,12 @@ Then make *render_docs.sh* executable then render and build the documentation
 
 .. prompt:: bash
     
-    chmod +x docs/render_docs.sh
+    cd docs
+    chmod +x render_docs.sh
 
 .. prompt:: bash
 
-    make docs
+    make html
 
 Open *docs/build/html/index.html* in a web browser.
 

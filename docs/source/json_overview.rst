@@ -3,8 +3,8 @@
 JSON config
 ##############################
 
-In this section we describe the structure of the `JSON <https://www.json.org/json-en.html>`__ configuration file, which serves as interface for the user.
-For reference, we show the content of  `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__, which is  comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
+The `JSON <https://www.json.org/json-en.html>`__ configuration file serves as the interface between for user to Bencpress and defines a specific study.
+Below we will describe the structure of a config file and for reference, we show the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ (with additional comments), which is a comparison between :ref:`pcalg_pc` and :ref:`dualpc`.
 
 At the highest level there are two main sections, :ref:`benchmark_setup` (Line 2) and :ref:`resources` (Line 37). 
 The :ref:`resources` section contains separate subsections of the available modules for generating or defining graphs (:ref:`graph`), parameters (:ref:`parameters`), data (:ref:`data`), and algorithms for structure learning (:ref:`structure_learning_algorithms`). 
