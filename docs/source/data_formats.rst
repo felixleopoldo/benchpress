@@ -8,7 +8,7 @@ Graph
 *******
 
 
-A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{ij}=1` if :math:`(i,j)\in E` and  :math:`M_{ij}=0` if :math:`(i,j)\notin E`.
+A graph :math:`G=(V, E)` is represented by its adjacency matrix :math:`M`, where :math:`M_{ij}=1` if :math:`(i,j)\in E` and  :math:`M_{ij}=0` if :math:`(i,j)\notin E`.
 
 .. * The first row contains the labels of the variables.
 .. * The columns are separated by a comma (,).
@@ -18,7 +18,7 @@ A graph :math:`G` is represented as adjacency matrix :math:`M`, where :math:`M_{
 
 .. rubric:: Example (undirected graph)
 
-Below is an example undirected graph :math:`G=(V, E)`, where :math:`E = \{(a,b), (a,c), (c,d)\}` are interpreted as un-ordered pairs (un-directed edges).
+Below is an example undirected graph, where :math:`E = \{(a,b), (a,c), (c,d)\}` are interpreted as un-ordered pairs (un-directed edges).
 Undirected graphs have symmetric matrices.
 
 .. code-block:: text
@@ -32,7 +32,7 @@ Undirected graphs have symmetric matrices.
 
 .. rubric:: Example (DAG)
 
-If :math:`G` is directed the adjacency matrix is asymmetric as below.
+If the graph is directed the adjacency matrix is asymmetric as below.
 
 .. code-block:: text
 
@@ -49,7 +49,7 @@ MCMC trajectory
 When the output of the algorithm is a Markov chain of graphs, we store the output in a compact
 form by tracking only the changes when moves are accepted, along with the corresponding
 time index and the score of the resulting graph after acceptance (not the score difference).
-Additionaly, in the first two rows the labels of the variables, which should be read from the
+Additionally, in the first two rows the labels of the variables, which should be read from the
 data matrix, are recorded. Specifically, the first row (index -2) contains edges from the first
 variable to each of the rest in the added column, where a dash (-) symbolises an undirected
 edge, and a right arrow (->) a directed edge. The score column is set to 0 and removed is set
@@ -82,7 +82,7 @@ the second row should contain the cardinality (number of levels) of each variabl
 
 .. rubric:: Example (continuous)
 
-An example showing of two samples from continuous distribution is shown below.
+Below is an example showing two samples from a continuous distribution.
 
 .. code-block:: text
 
@@ -105,13 +105,13 @@ are 2,3,2, and 2.
 Interventional data
 ^^^^^^^^^^^^^^^^^^^
 
-Hard interventions are indicated by additinal columns for the interventional variables, stacked on the right part of the data matrix.
-Below is and example showing samples from a mix of observational and interventional samples from continuous distribution.
+Hard interventions are indicated by additional columns for the interventional variables, stacked on the right part of the data matrix.
+Below is an example showing samples from a mix of observational and interventional samples from a continuous distribution.
 
 .. rubric:: Example (continuous)
 
 
-If in the continuous example above there would be two additinal observations where only :math:`a` was intervened, and one whe both :math:`a` and :math:`d` were intervened, it could look as below. 
+If in the continuous example above there would be two additional observations where only :math:`a` was intervened, and one when both :math:`a` and :math:`d` were intervened, it could look as below. 
 
 .. code-block:: text
 

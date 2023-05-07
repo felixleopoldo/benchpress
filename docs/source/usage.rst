@@ -47,7 +47,7 @@ The output is stored in subfolders of *path/to/benchpress/results/output* named 
 Note that the first run will take some longer time, as about 5-10 GB of `Docker <https://www.docker.com/>`_ images will be downloaded.
 
 To use other modules, you may copy the `JSON <https://www.json.org/json-en.html>`__ snippets from the documentation (:ref:`graph`, :ref:`parameters`, :ref:`data`, :ref:`structure_learning_algorithms`, :ref:`evaluation`) and paste them into your config file.
-You may also find it helpful to look into the other config files in `config/ <https://github.com/felixleopoldo/benchpress/blob/master/config/>`_.
+It may also be helpful to look into the other config files in `config/ <https://github.com/felixleopoldo/benchpress/blob/master/config/>`_.
 
 .. note::
 
