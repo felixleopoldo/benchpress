@@ -27,7 +27,7 @@ benchmark_setup
 The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and evaluation methods (``evaluation``, Line 11) a user wishes to consider for analysis.
 
 
-* The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled from :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
+* The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
 
 .. * For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a graph :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). 
 .. * Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained from ``parameters_id`` (Line 6). 
