@@ -3,3 +3,4 @@ sphinx-prompt
 sphinxcontrib.bibtex
 bibtexparser
 sphinx_rtd_theme
+recommonmark

@@ -13,13 +13,9 @@ The modules used in ``benchmark_setup`` are specified in ``resources`` and refer
 resources
 ************
 
-.. the available modules for generating or defining graphs, parameterisation, data, and algorithms for structure learning. 
 The ``resources`` section contains the subsections ``graph`` (Line 47), ``parameters`` (Line 61), ``data`` (Line 37), and ``structure_learning_algorithms`` (Line 70), which should contain the modules used in a study. 
 Each module in turn has a list of JSON objects, where each of the objects defines a specific parameter setting. 
 The objects are identified by unique IDs (see Lines 41, 50, 64, 73, and 87). 
-
-.. To use other modules than found in this study, you need to add them to the proper subsection of ``resources``.
-
 
 benchmark_setup
 **********************
@@ -29,13 +25,8 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
 
 * The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
 
-.. * For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a graph :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). 
-.. * Given :math:`G_i`, the parameters in the model :math:`\Theta_i` are obtained from ``parameters_id`` (Line 6). 
-.. * A data matrix, :math:`\mathbf Y_i = (Y^j)_{j=1}^n`, is then sampled from :math:`(G_i,\Theta_i)` as specified by the data model in ``data_id`` (Line 7). 
+* The ``evaluation`` section contains the evaluation methods used for the analysis. Descriptions of the available evaluation methods can be found in :ref:`evaluation`.
 
-.. Note that, in the special case of using fixed-file modules, the IDs are replaced by filenames.
-
-* The ``evaluation`` section contains the evaluation methods used for the analysis. Description of the available evaluation methods can be found in :ref:`evaluation`.
 
 .. code-block:: json
     :linenos:
@@ -152,57 +143,12 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
     }
 
 
-
-.. Figure 1 shows a flowchart describing how the files (light colored rectangles) and sections relate to the modules (dark colored rounded rectangles). 
-.. Graphs, parameters, and data are denoted by :math:`G, \Theta`, and :math:`\mathbf Y`, respectively.
-.. The different colors pink, blue, and purple indicate modules, files and sections related to data, structure learning, and evaluating results, respectively. 
-.. An arrow from a node A to another node B should be read as *“B requires input from A”*. 
-.. Thus, for any node, following the arrows in their opposite directions builds a path of the used modules or files. 
-.. Dashed arrows indicates that one of the parents is required and grey arrows indicate partial requirement.
-
-.. .. figure:: _static/jsonmap.png
-..     :width: 500
-
-..     Flowchart for the Benchpress sections/modules/files architecture.
-
-
-
-.. .. _benchmark_setup:
-
-.. benchmark_setup
-.. ************************
-
-
-.. .. _datasetup:
-
-.. data
-.. ========
-
-
-.. .. _resources:
-
-.. resources
-.. *************
-
-.. The resources section defines the available modules to be used in the benchmark_setup section.
-
-
-
 Example data scenarios
 ************************
 
 Apart from the modules used in :numref:`pcdualpc`, Benchpress also provides the special modules :ref:`fixed_graph`, :ref:`fixed_params`, and :ref:`fixed_data`, which allow the user to provide files in their analysis.
 These modules are not part of the resources section of the `JSON <https://www.json.org/json-en.html>`__ file and are referenced by IDs, instead, files are simply referenced by their names.
 The file formats are described in :ref:`file_formats`.
-
-.. The modules :ref:`fixed_graph`, :ref:`fixed_params`, and :ref:`fixed_data` are special, in the sense that they allow the user to specify fixed graphs, parameters and data, instead of generating them using the modules in the resources section.
-
-.. , instead of their object ids as for ordinary modules.
-
-.. Benchpress supports different strategies for defining models and data. 
-.. One possibility is to generate data, graphs and parameters using the existing modules in the ``resources`` section, referenced by their objects id, as described above. 
-.. An alternative is to provide user-specified graphs, parameters and data sets, referenced by their corresponding filenames. 
-.. Further, we can combine the two approaches as needed.
 
 The different sources of data, obtained by combining the fixed files and the ordinary modules, can be summarised in five scenarios
 shown in the table below. Scenario I is the typical scenario for data analysts, where the user provides
@@ -227,20 +173,7 @@ the user (III, IV).
 | V   | Generated | Generated  | Generated |
 +-----+-----------+------------+-----------+
 
-The following subsections shows some template data examples in the ``benchmark_setup`` section that correspond to the scenarios I-IV.
-
-
-.. To try this out, you may change the current data section in `config/config.json <../../config/config.json>`__.
-.. Note that, in general the id's used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`__ ). 
-.. For example, *avneigs4_p20* is the id of an object in the :ref:`pcalg_randdag` module in the :ref:`graph` section.
-.. Also, datasets, parameters, and graphs must be placed in the proper subfolder of the `resources/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/>`_ folder.
-
-.. Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
-.. For example, you may not use the :ref:`graph_true_plots` or :ref:`benchmarks` modules as both require the true graph to be provided.
-
-
-.. Examples
-.. ^^^^^^^^^
+The following subsections show some template data examples in the ``benchmark_setup`` section that correspond to the scenarios I-IV.
 
 .. _I:
 
@@ -307,9 +240,6 @@ III) Fixed graph
 IV) Fixed graph and parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
-.. You may e.g. use the id *itsearch_sample-bde* in the :ref:`graph_plots` module.
-
 .. code-block:: json
 
     { 
@@ -333,9 +263,6 @@ V) Fully generated
         "data_id": "my_data_id",
         "seed_range": [1, 10]
     }
-
-
-
 
 
 .. rubric:: References
