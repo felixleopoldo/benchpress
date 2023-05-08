@@ -1,15 +1,12 @@
 # Samples the adjacency matrix for a random undirected graph.
 
-
+# These are the parameters that are passed to the script from the config file.
 p <- as.integer(snakemake@wildcards[["p"]])
+cutoff <- as.numeric(snakemake@wildcards[["cutoff"]])
 
-# This is not used, just here to show how to handle null and integers.
-# You may add other parameters in the config file.
+set.seed(as.integer(snakemake@wildcards[["replicate"]]))
 
-seed_number <- as.integer(snakemake@wildcards[["replicate"]])
-set.seed(seed_number)
-
-adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > as.numeric(snakemake@wildcards[["cutoff"]])
+adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > cutoff
 adjmat <- 1 * (adjmat | t(adjmat)) # Make it symmetric (undirected)
 diag(adjmat) <- 0 # No self loops
 colnames(adjmat) <- as.character(seq(p))

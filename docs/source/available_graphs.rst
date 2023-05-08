@@ -32,6 +32,11 @@ Below is a list of available modules.
      - 
      - 
      - fixed_graph_ 
+   * - Some title
+     - 
+     - 
+     - v0.0.1
+     - new_graph_ 
    * - randDAG
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -121,6 +126,57 @@ fixed_graph
 
 Fixed graphs are stored as adjacency matrices of in ``.csv`` format in the directory *resources/adjmats/myadjmats* along with the `existing ones <https://github.com/felixleopoldo/benchpress/tree/master/resources/adjmat/myadjmats>`_.
 A fixed graph is referenced by the corresponding filename instead of `id` as with the other modules.
+
+.. footbibliography::
+
+
+
+.. _new_graph: 
+
+new_graph 
+-------------
+
+.. rubric:: Some title
+
+.. list-table:: 
+
+   * - Package
+     - ` <>`__
+   * - Version
+     - v0.0.1
+   * - Language
+     - 
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - 
+   * - Docker 
+     - `bpimages/sandbox # Change to None for local execution <https://hub.docker.com/r/bpimages/sandbox # Change to None for local execution/tags>`__
+
+   * - Module
+     - `new_graph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/new_graph>`__
+
+
+
+.. rubric:: Description
+
+Info about this graph generating module.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "test",
+        "p": 10,
+        "cutoff": 0.8
+      }
+    ]
 
 .. footbibliography::
 

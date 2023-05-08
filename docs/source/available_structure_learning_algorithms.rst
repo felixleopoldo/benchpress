@@ -161,6 +161,10 @@ The available structure learning algorithms are tabulated below.
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - 
      - gt13_multipair_ 
+   * - My new algorithm
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - 
+     - new_alg_ 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
@@ -2975,6 +2979,57 @@ Abstract: Full Bayesian computational inference for model determination in undir
           1.0
         ],
         "burnin_frac": 0.5,
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
+.. _new_alg: 
+
+new_alg 
+-----------
+
+.. rubric:: My new algorithm
+
+.. list-table:: 
+
+   * - Package
+     - 
+   * - Version
+     - 
+   * - Language
+     - `R <https://www.r-project.org/>`__
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Docker 
+     - `bpimages/sandbox # Change to None for local run <https://hub.docker.com/r/bpimages/sandbox # Change to None for local run/tags>`__
+
+   * - Module
+     - `new_alg/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/new_alg>`__
+
+
+
+.. rubric:: Description
+
+Some text of the algorithm/module.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "myalg",
+        "cutoff": 0.5,
         "timeout": null
       }
     ]

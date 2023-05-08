@@ -51,21 +51,12 @@ To create a new graph module, you may copy the template module `new_graph <https
 
 .. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_graph/rule.smk>`__.
 
-.. code-block:: r
+.. literalinclude:: ../../resources/module_templates/new_graph/script.R
+    :language: r
     :name: new_graph_script
     :caption: script.R from new_graph.
 
-    p <- as.integer(snakemake@wildcards[["p"]])
-
-    set.seed(as.integer(snakemake@wildcards[["seed"]]))
-    adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > 0.8 
-    adjmat <- 1 * (adjmat | t(adjmat)) # Make it symmetric (undirected)
-    diag(adjmat) <- 0 # No self loops
-    colnames(adjmat) <- as.character(seq(p))
-
-    write.table(snakemake@output[["adjmat"]],
-                file = filename, row.names = FALSE,
-                quote = FALSE, col.names = TRUE, sep = ",")
+--------
 
 In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``graph`` subsection of the ``resources`` section in the config file.
 
@@ -82,7 +73,6 @@ In order to use the module, you need to add the following piece of `JSON <https:
     ]
 
 
-
 Parameters 
 ########################
 
@@ -97,32 +87,10 @@ To create a new parameters module, you may copy the template module `new_params 
 This template module uses the `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`_ to sample the matrix, so this needs to be installed on your system in to be tested.
 The format of the saved file depends on the type of parameters used, in this case, since we sample a matrix it can be stored as a CSV file.
 
-.. code-block:: r
+.. literalinclude:: ../../resources/module_templates/new_params/script.R
+    :language: r
     :name: new_params_script
     :caption: script.R from new_params.
-
-    library(BDgraph)
-    seed <- set.seed(as.integer(snakemake@wildcards[["seed"]]))
-
-    # Read the adjacency matrix
-    df_adjmat <- read.csv(snakemake@input[["adjmat"]], header = TRUE, check.names = FALSE)
-    adjmat <- as.matrix(df_adjmat)
-    p <- dim(adjmat)[2]
-
-    precmat <- rgwish(n = 1, 
-                      adj = adjmat,
-                      b = as.integer(snakemake@wildcards[["b"]]), 
-                      D = diag(p),
-                      threshold = snakemake@wildcards[["thresh"]])
-    covmat <- solve(precmat)
-
-    colnames(covmat) <- colnames(df)
-
-    write.table(covmat,
-                file = snakemake@output[["params"]], 
-                row.names = FALSE,
-                quote = FALSE, col.names = TRUE, sep = ",")
-
 
 To use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the ``parameters`` section of the `JSON <https://www.json.org/json-en.html>`_ file.
 
@@ -136,7 +104,6 @@ To use the module, you need to add the following piece of `JSON <https://www.jso
             "b": 3
         }
     ]
-
 
 
 .. role:: r(code)
@@ -158,33 +125,6 @@ The best way to get started is to copy the template module `new_data <https://gi
     cp -r resources/module_templates/new_data workflow/rules/data/new_data
 
 :numref:`new_data_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/script.R>`__, which generates i.i.d multivariate Gaussian data and saves it properly in the CSV format specified in :ref:`file_formats`.
-
-.. to the ``adjmat`` variable of the ``output`` field of `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_data/rule.smk>`__.
-
-.. .. code-block:: r
-..     :name: new_data_script
-..     :caption: script.R from new_data.
-
-..     library(mvtnorm)
-
-..     seed <- as.integer(snakemake@wildcards[["seed"]])
-
-..     df_params <- read.csv(snakemake@input[["params"]], 
-..                         header = TRUE, 
-..                         check.names = FALSE)
-..     covmat <- as.matrix(df_params)
-
-..     n <- as.integer(snakemake@wildcards[["n"]])
-..     set.seed(seed)
-
-..     rmvnorm(n, mean = rep(0, nrow(covmat)), sigma = covmat)
-
-..     # Write the data to file. 
-..     colnames(covmat) <- colnames(df_params)
-..     write.table(covmat,
-..                 file = snakemake@output[["data"]],
-..                 row.names = FALSE,
-..                 quote = FALSE, col.names = TRUE, sep = ",")
 
 .. literalinclude:: ../../resources/module_templates/new_data/script.R
     :language: r
@@ -216,57 +156,50 @@ In order to create a new algorithm module, you may copy the template module `new
 
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
+Below are two examples of how to implement an algorithm module, one in R and one in `Python <https://www.python.org/>`_.
+Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rula.smk>`__
 
-This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ (:numref:`new_alg_script`) but you may change either the entire file or the content of it. 
-There is also the Python script `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which can be used as a template for `Python <https://www.python.org/>`_ algorithms.
-`script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ generates a random binary symetric matrix (undirected data).
-The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
-Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+R
+------
+
+:numref:`new_alg_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ , which generates a random binary symmetric matrix (undirected data).
+Note that the actual algorithm is wrapped into the function *wrapper* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which saves an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
-.. code-block:: r
+
+.. literalinclude:: ../../resources/module_templates/new_alg/script.R
+    :language: r
     :name: new_alg_script
     :caption: script.R from new_alg.
 
-    source("workflow/scripts/utils/helpers.R")
 
-    filename <- file.path(snakemake@output[["adjmat"]])
-    filename_data <- snakemake@input[["data"]]
-    seed <- as.integer(snakemake@wildcards[["replicate"]])
 
-    myalg <- function() {
-        # Here is where you should put your algorithm.
-        data <- read.csv(filename_data, check.names = FALSE)
-        start <- proc.time()[1]
+Python
+-------
 
-        # This is a very fast and bad algorithm.
-        threshold <- float(snakemake@wildcards[["thresh"]])
-        p <- ncol(data)
-        Sys.sleep(3)
-        set.seed(seed)
-        adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > threshold
-        adjmat <- 1 * (adjmat | t(adjmat))
-        diag(adjmat) <- 0
-        totaltime <- proc.time()[1] - start
-        colnames(adjmat) <- names(data) # Get the labels from the data
-        
-        write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
-        write(totaltime, file = snakemake@output[["time"]])
-        # Write the true number of c.i. tests here if possible.
-        cat("None", file = snakemake@output[["ntests"]], sep = "\n") 
-    }
+:numref:`new_alg_pyscript` shows `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which is the `Python <https://www.python.org/>`_ analog of the `R <https://www.r-project.org/>`_-script above.
+As in the `R <https://www.r-project.org/>`_-script, to enable the timeout functionality, the actual algorithm is wrapped into the function *myalg* which is then used from Line 39 and below.
 
-    add_timeout(myalg)
 
-In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
+.. literalinclude:: ../../resources/module_templates/new_alg/script.py
+   :language: python
+   :name: asd    
+   :caption: script.py from new_alg.
+   :linenos:
+    
+    
+
+-------------
+
+In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``cutoff`` and ``timeout`` accessible in the script. 
 
 .. code-block:: json
 
     "new_alg": [
         {
             "id": "testalg",
-            "thresh": 0.8,
+            "cutoff": 0.8,
             "timeout": null
         }
     ]
@@ -276,7 +209,7 @@ In order to use the module, you need to add the following piece of `JSON <https:
 .. ###############
 
 
-.. In order to create a new algorithm module, you may copy the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
+.. In order to create a new MCMC algorithm module, you may copy the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
 
 .. .. prompt:: bash
 
@@ -285,45 +218,11 @@ In order to use the module, you need to add the following piece of `JSON <https:
 
 .. This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
 
-.. .. code-block:: python
-    
-..     rule:
-..         name:
-..             module_name
-..         input:
-..             data=alg_input_data(),
-..         output:
-..             seqgraph=alg_output_seqgraph_path(module_name),
-..             time=alg_output_time_path(module_name),
-..             ntests=touch(alg_output_ntests_path(module_name))
-..         container:
-..             None
-..         script:
-..             "script.R"
 
-
-.. `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ generates a random binary symetric matrix (undirected data).
-.. The result is saved in :r:`snakemake@output[["adjmat"]]`, which is generated from the rule. 
-.. Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
-.. This is to enable the timeout functionality, which save an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
-.. However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
-
-.. .. code-block:: r
-
-..     source("workflow/scripts/utils/helpers.R")
-
-..     filename <- file.path(snakemake@output[["seqgraph"]])
-..     filename_data <- snakemake@input[["data"]]
-..     seed <- as.integer(snakemake@wildcards[["replicate"]])
-
-..     myalg <- function() {
-..         # Here is where you should put your algorithm.
-..         data <- read.csv(filename_data, check.names = FALSE)
-..         start <- proc.time()[1]
-..         # TODO
-..     }
-
-..     add_timeout(myalg)
+.. .. literalinclude:: ../../resources/module_templates/new_mcmcalg/script.R
+..     :language: r
+..     :name: new_mcmcalg_script
+..     :caption: script.R from new_mcmcalg.
 
 .. In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
 
