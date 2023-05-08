@@ -31,11 +31,6 @@ The availabe data modules are listed below.
      - 
      - 
      - iid_ 
-   * - Some title
-     - 
-     - 
-     - v0.0.1
-     - new_data_ 
 
 
 
@@ -239,52 +234,6 @@ The data may be standardized by setting ``standardized`` to true.
         "n": [
           100
         ]
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _new_data: 
-
-new_data 
-------------
-
-.. rubric:: Some title
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - v0.0.1
-   * - Docs
-     - 
-   * - Paper
-     - 
-   * - Graph type
-     - 
-   * - Module
-     - `new_data <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/new_data>`__
-
-
-
-.. rubric:: Description
-
-Info about this parameter generating module.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "datatest",
-        "standardized": true,
-        "n": 100
       }
     ]
 

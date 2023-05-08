@@ -34,12 +34,6 @@ Make sure that the parameter module is compatible with the graph module you are 
      - 
      - 
      - fixed_params_ 
-   * - Some title
-     - 
-     - 
-     - 
-     - v0.0.1
-     - new_params_ 
    * - SEM parameters
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `R <https://www.r-project.org/>`__
@@ -201,56 +195,6 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 
     This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
 
-
-.. footbibliography::
-
-
-
-.. _new_params: 
-
-new_params 
---------------
-
-.. rubric:: Some title
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - v0.0.1
-   * - Language
-     - 
-   * - Docs
-     - 
-   * - Paper
-     - 
-   * - Graph type
-     - 
-   * - Docker 
-     - `bpimages/sandbox # Change to None for local run <https://hub.docker.com/r/bpimages/sandbox # Change to None for local run/tags>`__
-   * - Module
-     - `new_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/new_params>`__
-
-
-
-.. rubric:: Description
-
-Info about this parameter generating module.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gwish",
-        "b": 3,
-        "thresh": 1e-08
-      }
-    ]
 
 .. footbibliography::
 
