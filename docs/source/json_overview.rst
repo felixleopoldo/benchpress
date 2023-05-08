@@ -13,7 +13,7 @@ The modules used in ``benchmark_setup`` are specified in ``resources`` and refer
 resources
 ************
 
-The ``resources`` section contains the subsections ``graph`` (Line 47), ``parameters`` (Line 61), ``data`` (Line 37), and ``structure_learning_algorithms`` (Line 70), which should contain the modules used in a study. 
+The ``resources`` section contains the subsections ``graph`` (Line 47), ``parameters`` (Line 61), ``data`` (Line 37), and ``structure_learning_algorithms`` (Line 70), which contain the modules used in the study. 
 Each module in turn has a list of JSON objects, where each of the objects defines a specific parameter setting. 
 The objects are identified by unique IDs (see Lines 41, 50, 64, 73, and 87).
 The parametrisations for the modules can typically be either single values (see e.g. Line 73) or lists (see e.g. Line 79). 

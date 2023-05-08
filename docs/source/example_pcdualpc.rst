@@ -74,9 +74,6 @@ We note e.g., that seed number 1 gave a bit longer computational time for the st
 The conclusion of the `F1 <https://en.wikipedia.org/wiki/F-score>`_ score plot in :numref:`study_1/F1_skel_joint.png`. are in line with the `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ / `TP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ results from :numref:`study_1/FPR_TPR_skel.png`.
 
 
-
-
-
 .. _study_1/FPR_TPR_skel.png:
 
 .. figure:: _static/study_1/FPR_TPR_skel.png
