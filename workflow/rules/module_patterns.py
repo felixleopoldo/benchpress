@@ -48,8 +48,7 @@ for module in config["resources"]["parameters"]:
 
 # data modules
 for module in config["resources"]["data"]:
-    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])
-
+    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])    
 
 # Evaluation strings. These have not exactly the same logic as the above, but it works.
 pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])

@@ -1,28 +1,19 @@
 library(mvtnorm)
+# Samples multivariate normal data given a covariance matrix.
 
-# As the parameterisation differ between models, ther is 
-# no sample script here. however, 
-
-# Read the seed number
-seed <- as.integer(snakemake@wildcards[["seed"]])
-
-# Read the adjacency matrix
+# Read the covariance matrix from the params file.
 df_params <- read.csv(snakemake@input[["params"]], 
                       header = TRUE, 
                       check.names = FALSE)
 covmat <- as.matrix(df_params)
-
 n <- as.integer(snakemake@wildcards[["n"]])
 
-# Set the seed
-set.seed(seed)
+set.seed(as.integer(snakemake@wildcards[["seed"]]))
+data <- rmvnorm(n, mean = rep(0, nrow(covmat)), sigma = covmat)
 
-rmvnorm(n, mean = rep(0, nrow(covmat)), sigma = covmat)
-
-# Write the data to file. 
-colnames(covmat) <- colnames(df_params)
-
-write.table(covmat,
+# Set the proper header and write the data to file. 
+colnames(data) <- colnames(df_params)
+write.table(data,
             file = snakemake@output[["data"]],
             row.names = FALSE,
             quote = FALSE, col.names = TRUE, sep = ","

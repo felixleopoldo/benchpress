@@ -1,6 +1,6 @@
 .. _structure_learning_algorithms: 
 
-Algorithm
+Algorithms
 =======================================
 
 

@@ -121,7 +121,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 """
 str += ".. _"+algspath.name+": \n\n"
 #str += "``"+algspath.name+"``\n"
-str += "Graph\n"
+str += "Graphs\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content

@@ -157,7 +157,7 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                 # Find the data entry from the resources
                 data = next(item for item in config["resources"]["data"][module] if item["id"] == data_id)
                 if seed_in_path: # seed_in_path is a HACK..
-                    return expand(pattern_strings[module] + "/standardized={standardized}" + # Standardized has to come first... see module_patterns.py
+                    return expand(pattern_strings[module] + "/standardized={standardized}" + # standardized has to come last, see standardize rule
                                     "/seed={seed}",                             
                                     seed = seed,
                                     **data)

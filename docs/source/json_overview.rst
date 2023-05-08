@@ -3,7 +3,7 @@
 JSON config
 ##############################
 
-The `JSON <https://www.json.org/json-en.html>`__ configuration file, together with snakemake's command line tool, serve as the interface for the user.
+The `JSON <https://www.json.org/json-en.html>`__ configuration file, together with Snakemake's command line tool, serve as the interface for the user.
 Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between the PC algorithm :footcite:p:`doi:10.1177/089443939100900106` (:ref:`pcalg_pc`) and the Dual PC algorithm :footcite:p:`pmlr-v186-giudice22a` (:ref:`dualpc`). 
 The results of this study can be found in :ref:`pcdualpcstudy`.
 
@@ -23,7 +23,6 @@ benchmark_setup
 **********************
 
 The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and evaluation methods (``evaluation``, Line 11) a user wishes to consider for analysis.
-
 
 * The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
 

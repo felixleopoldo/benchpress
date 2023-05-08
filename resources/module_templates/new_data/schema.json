@@ -9,15 +9,25 @@
         "properties": {
             "id": {
                 "type": "string"
+            },
+            "standardized": {
+                "type": "boolean"
+            },
+            "n": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
             }
         },
         "required": [
-            "id"
+            "id",
+            "standardized",
+            "n"
         ],
-        "additionalProperties": false,
+        "additionalProperties": true,
         "examples": [
             {
-                "id": "paramstest"
+                "id": "datatest",
+                "standardized": true,
+                "n": 100
             }
         ]
     },
