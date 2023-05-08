@@ -26,17 +26,22 @@ However, to get something working, you only have to consider altering *script.R*
   On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suite your specific script.
 
-.. The container field is set to `None` in all of the example rules below in order to force local execution. 
-
-.. .. note:: 
-
-..     The template modules run by default in a container based on the Docker image "bpimages/sandbox" (set in *rule.smk*). 
-..     To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.
-
-.. The modules are stored in sub directories of `workflow/rules/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/>`__. 
 
 .. role:: r(code)
    :language: r
+
+The sections below show how to get started developing your own modules. To get a quick start, you may run the following commands in the benchpress directory, to make copy of each of the template modules at once.
+Then you can use the config file *config/mysandbox.json* which is configured to use each of them.
+
+.. prompt:: bash
+
+    cp -r resources/module_templates/new_graph workflow/rules/graph/new_graph
+    cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
+    cp -r resources/module_templates/new_data workflow/rules/data/new_data
+    cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
+    cp config/sandbox.json config/mysandbox.json    
+
+
 
 Graph 
 ########################
