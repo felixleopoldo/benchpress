@@ -76,16 +76,19 @@ def check_system_requirements():
     # Check that Apptainer or Singularity >=3.2 is installed.
     (apptainer_ecode, apptainer_outp) = subprocess.getstatusoutput("apptainer --version")
     (ecode, outp) = subprocess.getstatusoutput("singularity --version")
-
+    print("Singularity version: " + outp)
     # Check if either singularity of apptainera is installed
     if ecode != 0 and apptainer_ecode != 0:
         raise Exception("Benchpress requires Singularity >= 3.2 or Apptainer.")
 
     # If Singularity and not apptainer is installer, check the version of Singularity.
     if ecode == 0 and apptainer_ecode != 0:
-        v1 = outp.split()[2].split(".")[0]
-        v2 = outp.split()[2].split(".")[1]
-        smkver = float(v1 + "." + v2)
+        # This is usually on the format: singularity version x.y.z         
+        version_string = outp.split()[-1] # Get the version number as a string as the last word
+        v1 = version_string.split(".")[0] # major version
+        v2 = version_string.split(".")[1] # minor version 
+        smkver = float(v1 + "." + v2) # Make it a number for comparison
+        print("Singularity version: " + str(smkver))
         if float(v1) < 3 or (float(v1) == 3 and float(v2) < 2):
             raise Exception(
                 "You have " + outp + ". Benchpress requires Singularity >= 3.2."
