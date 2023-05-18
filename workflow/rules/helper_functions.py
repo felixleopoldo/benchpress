@@ -87,7 +87,7 @@ def check_system_requirements():
         v1 = version_string.split(".")[0] # major version
         v2 = version_string.split(".")[1] # minor version 
         smkver = float(v1 + "." + v2) # Make it a number for comparison
-        if float(v1) < 3 or (float(v1) == 3 and float(v2) < 2):
+        if smkver < 3.2:
             raise Exception(
                 "You have " + outp + ". Benchpress requires Singularity >= 3.2."
             )
