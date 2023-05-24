@@ -210,38 +210,41 @@ In order to use the module, you need to add the following piece of `JSON <https:
     ]
 
 
-.. MCMC algorithm
-.. ###############
+Algorithm (MCMC)
+##################
+
+In order to create a new MCMC algorithm module, you may copy the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
+
+.. prompt:: bash
+
+    cp -r resources/module_templates/new_mcmcalg workflow/rules/structure_learning_algorithms/new_mcmcalg
 
 
-.. In order to create a new MCMC algorithm module, you may copy the template module `new_mcmcalg <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg>`__ as
-
-.. .. prompt:: bash
-
-..     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_mcmcalg
+This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
 
 
-.. This template runs `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_mcmcalg/script.R>`__ (shown below) but you may change either the entire file or the content of it. 
+.. literalinclude:: ../../resources/module_templates/new_mcmcalg/script.R
+    :language: r
+    :name: new_mcmcalg_script
+    :caption: script.R from new_mcmcalg.
 
+MCMC algorithms have, apart from the algorithm parameters, four additional required fields, ``mcmc_seed``, ``mcmc_estimator``, ``threshold``, and ``burnin_frac``.
+``mcmc_seed`` is the random seed for the algorithm. ``mcmc_estimator`` specifies which estimator to use (*threshold* or *map*), and ``threshold`` specifies the threshold for the estimator if ``mcmc_estimator`` is set to *threshold*.
+``burnin_frac`` specifies the fraction of the samples to be discarded as burn-in.
+In order to use the module, you can add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file.
 
-.. .. literalinclude:: ../../resources/module_templates/new_mcmcalg/script.R
-..     :language: r
-..     :name: new_mcmcalg_script
-..     :caption: script.R from new_mcmcalg.
+.. code-block:: json
 
-.. In order to use the module, you need to add the following piece of `JSON <https://www.json.org/json-en.html>`_ to the list of structure learning modules in the ``structure_learning_algorithms`` section of the `JSON <https://www.json.org/json-en.html>`_ file, making the parameters ``thresh`` and ``timeout`` accessible in the script. 
-
-.. .. code-block:: json
-
-..     "new_mcmcalg": [
-..         {
-..             "id": "mcmcalg",
-..             "threshold": 0.5,
-..             "burnin_frac": 0.5,
-..             "mcmc_estimator": "map",
-..             "timeout": null
-..         }
-..     ]
+    "new_mcmcalg": [
+        {
+            "id": "mcmctest",
+            "cutoff": 0.8,
+            "burnin_frac": 0.5,
+            "mcmc_estimator": "threshold",
+            "threshold": 0.5,
+            "timeout": null
+        }
+    ]
 
 
 Evaluation 

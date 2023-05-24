@@ -1,3 +1,3 @@
-The availabe data modules are listed below.
+The available data modules are listed below.
 
 

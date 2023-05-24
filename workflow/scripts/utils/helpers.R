@@ -68,13 +68,21 @@ add_timeout_mcmc <- function(wrapper) {
 
 
 # Convert an adjacency matrix to a string of edges. Used in MCMC algorithms.
-adjmatToEdgeString <- function(adjmat, labels) {
+adjmatToEdgeString <- function(adjmat, labels, directed = TRUE) {
+  # if not directed, make upper triangular
+  # and set edge symbol to "-"
+  edge_symbol <- "->"
+  if (!directed) {
+    adjmat <- adjmat * upper.tri(adjmat)
+    edge_symbol <- "-"
+  }
+
   edgeinds <- which(as.matrix(adjmat) == 1, arr.ind = TRUE)
   df <- data.frame(edgeinds)
   edges <- "["
   firstrow <- TRUE
   for (i in rownames(df)) {
-    edge <- paste(labels[df[i, "row"]], labels[df[i, "col"]], sep = "->")
+    edge <- paste(labels[df[i, "row"]], labels[df[i, "col"]], sep = edge_symbol)
     if (firstrow) {
       sep <- ""
       firstrow <- FALSE
@@ -88,11 +96,17 @@ adjmatToEdgeString <- function(adjmat, labels) {
 }
 
 # Creadets dummy edges for the initial graph. Used in MCMC algorithms.
-dummyEdges <- function(labels) {
+dummyEdges <- function(labels, directed = TRUE) {
+  if (directed == TRUE) {
+    edge_symbol <- "->"
+  } else {
+    edge_symbol <- "-"
+  }
+
   n <- length(labels)
   added <- "["
   for (i in 2:n) {
-    edge <- paste(labels[1], labels[i], sep = "->")
+    edge <- paste(labels[1], labels[i], sep = edge_symbol)
     if (i == 2) {
       sep <- ""
     } else {
@@ -101,15 +115,17 @@ dummyEdges <- function(labels) {
     added <- paste(added, edge, sep = sep)
   }
   added <- paste(added, sep = "", "]")
+
   return(added)
 }
 
-bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels) {
-  added <- dummyEdges(labels)
+bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels, directed = TRUE) {
+  added <- dummyEdges(labels, directed = directed)
 
   start_edges <- adjmatToEdgeString(
     adjmat_traj[[1]],
-    labels
+    labels,
+    directed = directed
   )
 
   res <- data.frame(
@@ -129,19 +145,17 @@ bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels) {
 
     removed_edge_mat <- prevmat - (prevmat & adjmat_traj[[i]]) * 1
     added_edge_mat <- adjmat_traj[[i]] - (prevmat & adjmat_traj[[i]]) * 1
-
-    added_edges <- adjmatToEdgeString(added_edge_mat, labels)
-    removed_edges <- adjmatToEdgeString(removed_edge_mat, labels)
+    added_edges <- adjmatToEdgeString(added_edge_mat, labels, directed = directed)
+    removed_edges <- adjmatToEdgeString(removed_edge_mat, labels, directed = directed)
 
     df <- data.frame(
-      "index" = i,
-      "score" = scores[i],
-      "added" = added_edges,
-      "removed" = removed_edges
+      "index" = c(i-1),
+      "score" = c(scores[[i]]),
+      "added" = c(added_edges),
+      "removed" = c(removed_edges)
     )
 
     res <- rbind(res, df)
-
     prevmat <- adjmat_traj[[i]]
   }
 
