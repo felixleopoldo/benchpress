@@ -242,6 +242,7 @@ In order to use the module, you can add the following piece of `JSON <https://ww
             "burnin_frac": 0.5,
             "mcmc_estimator": "threshold",
             "threshold": 0.5,
+            "mcmc_seed": [1, 2, 3],
             "timeout": null
         }
     ]
