@@ -1,0 +1,22 @@
+{
+    "title": "Chordal-screening",
+    "version": "0.1",
+    "package": {
+        "title": "",
+        "url": "http"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+        "title": "Elmasri, M., Rios, F., and Thomas, A. (2023).",
+        "url": ""
+    }   
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "UG"
+    ],
+    "language": "Java"
+}
