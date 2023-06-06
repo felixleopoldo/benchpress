@@ -50,9 +50,6 @@
         "required": [
             "id",
             "timeout",
-            "burnin_frac",
-            "threshold",
-            "mcmc_estimator"
         ],
         "examples": [
             {

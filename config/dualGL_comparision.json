@@ -1,0 +1,304 @@
+{
+  "benchmark_setup": {
+    "data": [
+      {
+        "data_id": "example1",
+        "graph_id": "random-5",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "random-2",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "random-1",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "lattice",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "circle",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "hub",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "cluster",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "scale-free",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      }
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "graphical_models/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": false,
+          "ids": [
+              "dualGL-GT13",
+              "dualGL",
+              "bdgraph",
+              "jtsampler_gg",
+              "jtsampler_gts"
+        ]
+      },
+      "graph_true_plots": true,
+      "graph_true_stats": false,
+      "ggally_ggpairs": false,
+        "graph_plots": [],
+      "mcmc_traj_plots": [],
+      "mcmc_heatmaps": [],
+      "mcmc_autocorr_plots": []
+    }
+  },
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "example1",
+          "standardized": false,
+          "n": [
+              50, 
+              100
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "bdgraph_graphsim": [
+        {
+          "id": "lattice",
+          "p": 50,
+          "graph": "lattice",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        },
+        {
+          "id": "random-1",
+          "p": 50,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.1
+        },
+        {
+          "id": "random-2",
+          "p": 50,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        },
+        {
+          "id": "random-5",
+          "p": 50,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.5
+        },
+        {
+          "id": "cluster",
+          "p": 50,
+          "graph": "cluster",
+          "class": null,
+          "size": 20,
+          "prob": 0.2
+        },
+        {
+          "id": "circle",
+          "p": 50,
+          "graph": "circle",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        },
+        {
+          "id": "hub",
+          "p": 50,
+          "graph": "hub",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        },
+        {
+          "id": "scale-free",
+          "p": 50,
+          "graph": "scale-free",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        }
+      ]
+    },
+    "parameters": {
+      "bdgraph_rgwish": [
+        {
+          "id": "gwi",
+          "b": 3,
+          "threshold_conv": 1e-07
+        }
+      ]
+    },
+      "structure_learning_algorithms": {
+          "dualGraphLearner": [
+              {
+              "id": "dualGL",
+              "timeout": null,
+              "mcmc_seed": 1,                    
+              "n": 2000000,
+              "s": 0,
+              "a": 0.0,
+              "c": 100,
+              "v": 0
+          },
+              {
+              "id": "dualGL-GT13",
+              "timeout": null,
+              "mcmc_seed": 1,                    
+              "n": 2000000,
+              "s": 1,
+              "a": 0.0,
+              "c": 100,
+              "v": 0
+          }
+          ],    
+      "bdgraph": [
+        {
+          "id": "bdgraph",
+          "method": "ggm",
+          "algo": [
+            "bdmcmc"
+          ],
+          "iter": 50000,
+          "gprior": 0.5,
+          "dfprior": 3,
+          "gstart": "empty",
+          "timeout": null,
+          "mcmc_seed": [
+            1
+          ],
+          "thresh": 0.001,
+          "mcmc_estimator": [
+              "threshold",
+              "map"
+          ],
+          "threshold": [
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ],
+          "burnin_frac": 0.5
+        }
+      ],
+      "athomas_jtsampler": [
+        {
+          "id": "jtsampler_gg",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": ["threshold", "map"],
+          "timeout": null,
+          "mcmc_seed": 1,
+          "n": 2000000,
+          "s": 0,
+          "a": 0.0,
+          "c": 100,
+          "v": 0,
+          "threshold": [
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        },
+        {
+          "id": "jtsampler_gts",
+          "burnin_frac": 0.5,
+            "mcmc_estimator": ["threshold", "map"],
+          "timeout": null,
+          "mcmc_seed": 1,
+          "n": 2000000,
+          "s": 1,
+          "a": 0.0,
+          "c": 100,
+          "v": 0,
+          "threshold": [
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        }
+      ]
+    }
+  }
+}   
+

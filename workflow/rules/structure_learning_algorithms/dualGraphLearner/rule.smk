@@ -1,7 +1,5 @@
 
-rule:
-    name:
-        module_name
+rule dcomposable_chain:
     input:
         data=alg_input_data(),
     output:
@@ -13,7 +11,9 @@ rule:
 
 
 
-rule screening:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
         seqgraph=alg_output_seqgraph_path(module_name),
