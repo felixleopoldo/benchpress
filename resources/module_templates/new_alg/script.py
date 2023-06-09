@@ -36,7 +36,7 @@ def myalg():
         text_file.write("None")
 
 
-# This part starts the timer (if not None) and runs the algorithm.
+# This part starts the timer 
 start = time.perf_counter()
 
 if snakemake.wildcards["timeout"] == "None":
