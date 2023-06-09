@@ -23,6 +23,7 @@
                 ]
             },
             "extra_args": {
+                "description": "File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs).",
                 "anyOf": [
                     {
                         "type": "string"
@@ -33,6 +34,7 @@
                 ]
             },
             "constraints": {
+                "description": "File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs).",
                 "anyOf": [
                     {
                         "type": "string"
@@ -58,12 +60,15 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "timeout": {
+                "description": "Use the best DAG found so far after this number of seconds.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "time_limit": {
+                "description": "Time limit in seconds for the solver (not including the time to build the score tables).",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "gap_limit": {
+                "description": "Gap limit.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "prune": {
