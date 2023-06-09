@@ -1,0 +1,10 @@
+{
+    "title": "cstree_true_plots",
+    "description": "This module plots the true underlying CStrees.",
+    "type": "boolean",
+    "examples": [
+        {
+            "cstree_true_plots": true
+        }
+    ]
+}

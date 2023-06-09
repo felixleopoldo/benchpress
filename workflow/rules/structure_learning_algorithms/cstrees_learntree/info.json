@@ -1,0 +1,17 @@
+{
+    "title": "My new algorithm",
+    "version": "v0.0.1",
+    "software": "",
+    "docs": "",
+    "papers": [
+        {
+            "title": "the paper title",
+            "url": "the_url"
+        }
+    ],
+    "outputs": "cstree",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}
