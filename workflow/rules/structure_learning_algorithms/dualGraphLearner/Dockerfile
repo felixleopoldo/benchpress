@@ -14,7 +14,16 @@ RUN R -e "install.packages('ZIM', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('mvtnorm', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('speedglm', repos='http://cran.us.r-project.org')"
 
+
+RUN R -e "install.packages('ncvreg', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('bnlearn', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('doParallel', repos='http://cran.us.r-project.org')"
+
+
+
 RUN apt install wget -y
 RUN wget https://cran.r-project.org/src/contrib/Archive/equSA/equSA_1.2.1.tar.gz
+RUN echo hej
 RUN R -e 'install.packages("equSA_1.2.1.tar.gz", repos = NULL, type="source")'
+
 
