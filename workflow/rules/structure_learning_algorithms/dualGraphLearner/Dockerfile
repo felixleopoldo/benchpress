@@ -13,12 +13,10 @@ RUN R -e "install.packages('XMRF', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('ZIM', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('mvtnorm', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('speedglm', repos='http://cran.us.r-project.org')"
-
-
 RUN R -e "install.packages('ncvreg', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('bnlearn', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('doParallel', repos='http://cran.us.r-project.org')"
-
+RUN R -e "install.packages('SIS', repos='http://cran.us.r-project.org')"
 
 
 RUN apt install wget -y
