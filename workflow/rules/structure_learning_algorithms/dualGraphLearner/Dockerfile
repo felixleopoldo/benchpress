@@ -28,3 +28,4 @@ RUN wget https://cran.r-project.org/src/contrib/Archive/equSA/equSA_1.2.1.tar.gz
 RUN echo hej
 RUN R -e 'install.packages("equSA_1.2.1.tar.gz", repos = NULL, type="source")'
 
+RUN R -e "install.packages('R.utils', repos='http://cran.us.r-project.org')"
