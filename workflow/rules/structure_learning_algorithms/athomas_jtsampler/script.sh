@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CP=$(pwd)/workflow/rules/structure_learning_algorithms/athomas_jtsampler/jtsampler
+#CP=$(pwd)/workflow/rules/structure_learning_algorithms/athomas_jtsampler/jtsampler
+CP=/jtsampler
 
 if [ ${snakemake_wildcards[timeout]} = "None" ]; then
     /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
