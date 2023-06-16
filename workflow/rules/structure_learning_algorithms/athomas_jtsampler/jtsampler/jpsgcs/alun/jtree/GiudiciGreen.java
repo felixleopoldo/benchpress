@@ -86,8 +86,9 @@ public class GiudiciGreen<V> extends AbstractJTreeSampler<V>
 		//if (Math.log(random().nextDouble()) * getTemperature() > deltaScore(up.Cxy,up.x,up.y,up.type))
 		if (Math.log(random().nextDouble()) * getTemperature() > delta)
 			//return 4;
-			return new UpdateResult(4);
+			return new UpdateResult(2, -1, up.x, up.y, delta, up.Cxy.size());
 
+        int csize = up.Cxy.size();
 		Separator<V> S = disconnect(up.x,up.y,up.Cx,up.Cy,up.Cxy);
 
 		for (V v : S.getX())
@@ -96,7 +97,7 @@ public class GiudiciGreen<V> extends AbstractJTreeSampler<V>
 			map.put(v,S.getY());
 
 		//return 0;
-		return new UpdateResult(-1,up.x,up.y);
+		return new UpdateResult(0,-1,up.x,up.y, delta, csize);
 	}
 
 /*
@@ -208,8 +209,9 @@ public class GiudiciGreen<V> extends AbstractJTreeSampler<V>
 		double delta = deltaScore(up.S,up.x,up.y,up.type);
 		if (Math.log(random().nextDouble()) * getTemperature() > delta)
 			//return 6;
-			return new UpdateResult(6);
+			return new UpdateResult(1, 1, up.x, up.y, delta, up.S.size() + 2);
 
+        int csize = up.S.size()+2;
  		Pair<Clique<V>,Clique<V>> p = jt.cliquePair(up.x,up.y,up.S);
 		Clique<V> Cxy = connect(up.x,up.y,p.x,p.y,up.S);
 
@@ -217,7 +219,7 @@ public class GiudiciGreen<V> extends AbstractJTreeSampler<V>
 			map.put(v,Cxy);
 
 		//return 0;
-		return new UpdateResult(1,up.x,up.y);
+		return new UpdateResult(0,1,up.x,up.y, delta, csize);
 	}
 
 	public V randomVertex()

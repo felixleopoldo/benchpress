@@ -44,7 +44,27 @@
             },
             "burnin_frac": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-            }
+            },
+            "num_samples": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "sampler": {
+                "type": "integer",
+                "enum": [0, 1, 2],
+                "default": 0
+            },
+            "size_maxclique": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
+                "default": 100
+            },
+            "edge_penalty": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum",
+                "default": 0.0
+            },
+             "full_output": {
+                 "type": "boolean",
+                 "default": false
+             }
         },
         "additionalProperties": true,
         "required": [
@@ -52,22 +72,22 @@
             "timeout",
             "burnin_frac",
             "threshold",
-            "mcmc_estimator"
+            "mcmc_estimator",
+            "num_samples"
         ],
         "examples": [
             {
-                "id": "jtsampler",                    
-                "burnin_frac": 0.5,
-                "mcmc_estimator": "map",
-                "timeout": null,
-                "threshold":0.5,
-                "mcmc_seed": 1,                    
-                "n": 10000,
-                "s": 0,
-                "a": 1.0,
-                "c": 10000,
-                "v": 0
-            }
+            "id": "jtsampler",                    
+            "burnin_frac": 0.5,
+            "mcmc_estimator": "map",
+            "timeout": null,
+            "threshold":0.5,
+            "mcmc_seed": 1,                    
+            "num_samples": 10000,
+            "sampler": 0,
+            "edge_penalty": 1.0,
+            "size_maxclique": 10000
+        }   
         ]
     }
 }

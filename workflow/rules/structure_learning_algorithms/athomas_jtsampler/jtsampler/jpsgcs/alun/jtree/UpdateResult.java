@@ -5,13 +5,60 @@ import java.util.Set;
 public class UpdateResult<V>
 {
 	public int code = -1;
-
+    public double delta = 0.0;
 	public V[][] cons = null;
 	public V[][] diss = null;
+    public int clique_size = 0;
 
 	public UpdateResult(int c)
 	{
 		code = c;
+	}
+
+    public UpdateResult(int c,  V x, V y, double d, int m)
+	{
+		code = c;
+        delta = d;
+        clique_size = m;
+		V[][] link = (V[][]) new Object[1][2];
+		link[0][0] = x;
+		link[0][1] = y;
+		
+	}
+    
+    public UpdateResult(int c, int type, V x, V y, double d, int m)
+	{
+		code = c;
+        delta = d;
+        clique_size = m;
+		V[][] link = (V[][]) new Object[1][2];
+		link[0][0] = x;
+		link[0][1] = y;
+		
+		switch(type)
+		{
+		case 1: cons = link;
+			break;
+		case -1: diss = link;
+			break;
+		}
+	}
+
+    public UpdateResult(int type, V x, V y, double d)
+	{
+		code = 0;
+        delta = d;
+		V[][] link = (V[][]) new Object[1][2];
+		link[0][0] = x;
+		link[0][1] = y;
+		
+		switch(type)
+		{
+		case 1: cons = link;
+			break;
+		case -1: diss = link;
+			break;
+		}
 	}
 
 	public UpdateResult(int type, V x, V y)
@@ -59,7 +106,17 @@ public class UpdateResult<V>
 		return code;
 	}
 
-	public String toString()
+    public double getDelta()
+	{
+		return delta;
+	}
+
+    public String toString()
+	{
+		return toString(false);
+	}
+
+	public String toString(boolean opt)
 	{
 		StringBuffer b = new StringBuffer();
 //		b.append("("+code+")");
@@ -79,6 +136,10 @@ public class UpdateResult<V>
 			b.deleteCharAt(b.length()-1);
 		}
 		b.append("]");
+
+		if (opt)
+			b.append(","+code+","+delta+","+clique_size);
+
 		return b.toString();
 	}
 }

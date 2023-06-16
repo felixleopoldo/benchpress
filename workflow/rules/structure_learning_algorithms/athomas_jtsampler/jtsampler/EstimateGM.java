@@ -14,7 +14,6 @@ public class EstimateGM
 		try
 		{
 			// Handle command line options.
-
 			ArgParser a = new ArgParser(args);
 
 			boolean help = a.gotOpt("-h");
@@ -27,11 +26,12 @@ public class EstimateGM
 
 			double lambda = a.doubleAfter("-pl",1);
 			double phi = a.doubleAfter("-ph",1);
-			double delta = a.doubleAfter("-pd",3);
+			double delta = a.doubleAfter("-pd",1);
 			double gamma = a.doubleAfter("-pg",0);
 			double kappa = a.doubleAfter("-pk",1);
 
 			boolean nobenchout = a.gotOpt("-b");
+            boolean fulloutput = a.gotOpt("-F");
 			boolean graphout = a.gotOpt("-g");
 
 			boolean header = true;
@@ -42,7 +42,7 @@ public class EstimateGM
 			{
 				System.err.println("Usage: java EstimateGM [options] < input.file > output.file");
 				System.err.print("Options:\t");
-				System.err.println("-h\t : Print this message");
+				System.err.println("-h\t : Print this message.");
 				System.err.println("\t\t-v\t : Show current state of graph in GUI. Default is not to.");
 				System.err.println("\t\t-n n\t : Set the number of iterations to int n. Default is 1000000.");
 				System.err.println("\t\t-r s\t : Set the random seed to int s. Default is pseudo random seed.");
@@ -53,6 +53,7 @@ public class EstimateGM
 				System.err.println("\t\t\t\t 1 = Green & Thomas (2013) single edge junction tree sampler.");
 				System.err.println("\t\t\t\t 2 = Green & Thomas (2013) multiple edge junction tree sampler.");
 				System.err.println("\t\t-b\t : Turns off Benchpress style output. Default is on.");
+                System.err.println("\t\t-F\t : Turns on full output in Benchpress style, i.e. failed dis(connect). Default is off.");
 				System.err.println("\t\t-g\t : Turns on printing of final graph as adjacencies. Default is off.");
 
 				System.err.println("\t\t-pl x\t : Set the Dirichlet prior lambda hyper parameter to x. Default is 1.");
@@ -74,6 +75,7 @@ public class EstimateGM
 			//MixedMarginalLikelihood like = new MixedMarginalLikelihood(data,1,1,1,0,1);
 			MixedMarginalLikelihood like = new MixedMarginalLikelihood(data,lambda,phi,delta,gamma,kappa);
 
+            
 			// Set up the intial state of the graph.
 
 			Network<Variable,Object> g = new Network<Variable,Object>();
@@ -163,16 +165,22 @@ public class EstimateGM
 					System.err.println("Exiting.");
 					System.exit(1);
 				}
-
-				System.out.println("index,score,added,removed");
+                if (fulloutput) {
+                    System.out.println("index,score,added,removed,code,delta,m");
+                }else{
+                    System.out.println("index,score,added,removed");
+                }
 
 				System.out.print("-2,0.0,");
 				System.out.print("[");
 				System.out.print(data.getName(0)+"-"+data.getName(1));
 				for (int i=2; i<data.nCols(); i++)
 					System.out.print(";"+data.getName(0)+"-"+data.getName(i));
-				System.out.print("],");
-				System.out.print("[]");
+				System.out.print("],[]");
+                if (fulloutput) {
+                    // print order [success-failed-connect-failed-disconnect]
+                    System.out.print(",[0-1-2],,");//
+                }
 				System.out.println();
 
 				System.out.print("-1,0.0,");
@@ -182,14 +190,21 @@ public class EstimateGM
 				for (int i=2; i<data.nCols(); i++)
 					System.out.print(";"+data.getName(0)+"-"+data.getName(i));
 				System.out.print("]");
-				System.out.println();
+                if (fulloutput) {
+                    // print order [success-failed-connect-failed-disconnect]
+                    System.out.print(",,,");//
+                }
+                System.out.println();
 
-				System.out.print("0,");
-				System.out.print(posterior.logProbability(jt)+",");
-				System.out.print("[],[]");
-				System.out.println();
-			}
-		
+                System.out.print("0,");
+                System.out.print(posterior.logProbability(jt)+",");
+                System.out.print("[],[]");
+                if (fulloutput) {
+                    // print order [success-failed-connect-failed-disconnect]
+                    System.out.print(",,,");//
+                }
+                System.out.println();
+            }
 			for (int i=1; i<=totalits; i++)
 			{
 				if (visual)
@@ -197,19 +212,33 @@ public class EstimateGM
 
 				if (i % randomits == 0)
 					jts.randomize();
-
+                
 				UpdateResult res = jts.randomUpdate();
 
-				if (!nobenchout && res.getCode() == 0)
-				{
-					System.out.print(i+",");
-					System.out.print(posterior.logProbability(jt)+",");
-					System.out.println(res);
-				}
+                if (!nobenchout){
+                // 0 sucessfull connect; 1 faild connect, 2 failed disconnect.
+                // this only applies to GG99 and GT13 single pair.
+                    int code = res.getCode();
+                    double absolute_delta =  Math.abs(res.getDelta());
+                    if (!fulloutput){
+                        if(code == 0){
+                            System.out.print(i+",");
+                            System.out.print(posterior.logProbability(jt)+",");
+                            System.out.println(res);
+                        }
+                    }else{
+                        if ((code == 0 || code == 1 || code == 2) && absolute_delta > 0.0)
+                            {
+                                String strout = res.toString(true);
+                                System.out.print(i+",");
+                                System.out.print(posterior.logProbability(jt)+",");
+                                System.out.println(strout);
+                            }
+                    }
+                }
 			}
 
 			// Output the result if required.
-
 			if (graphout)
 				System.out.println(g);
 

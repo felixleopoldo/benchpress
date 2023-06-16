@@ -57,7 +57,8 @@ public class OnePairSampler<V> extends AbstractJTreeSampler<V>
 		double logprob = Math.log(up.Aij);
 		double delta = deltaScore(up.S,up.x,up.y,up.type);
 		logprob += delta/getTemperature();
-		
+
+        int csize  = up.S.size() + 2;
 		up.Cxy = connect(up.x,up.y,up.Cx,up.Cy,up.S);
 		double newEnum = jt.logEnumerate();
 
@@ -68,14 +69,13 @@ public class OnePairSampler<V> extends AbstractJTreeSampler<V>
 		{
 			storedEnum = newEnum;
 			//return 0;
-			return new UpdateResult(1,up.x,up.y);
+			return new UpdateResult(0,1, up.x,up.y, delta, csize);
 		}
 
-		
 		Pair<Clique<V>,Clique<V>> p = jt.cliquePair(up.x,up.y,up.Cxy);
 		disconnect(up.x,up.y,p.x,p.y,up.Cxy);
 		//return 5;
-		return new UpdateResult(5);
+		return new UpdateResult(1, 1, up.x, up.y, delta, csize);
 	}
 
 /*
@@ -146,7 +146,8 @@ public class OnePairSampler<V> extends AbstractJTreeSampler<V>
 		double logprob = Math.log(up.Aij);
 		double delta = deltaScore(up.Cxy,up.x,up.y,up.type);
 		logprob += delta/getTemperature();
-		
+
+        int csize = up.Cxy.size();
 		up.S = disconnect(up.x,up.y,up.Cx,up.Cy,up.Cxy);
 		double newEnum = jt.logEnumerate();
 
@@ -157,13 +158,13 @@ public class OnePairSampler<V> extends AbstractJTreeSampler<V>
 		{
 			storedEnum = newEnum;
 			//return 0;
-			return new UpdateResult(-1,up.x,up.y);
+			return new UpdateResult(0,-1,up.x,up.y, delta, csize);
 		}
 
 		Pair<Clique<V>,Clique<V>> p = jt.cliquePair(up.x,up.y,up.S);
 		connect(up.x,up.y,p.x,p.y,up.S);
 		//return 9;
-		return new UpdateResult(9);
+		return new UpdateResult(2, -1, up.x, up.y, delta, csize);
 	}
 
 	public UpdateInfo<V> proposeConnection()
