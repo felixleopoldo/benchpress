@@ -77,6 +77,16 @@ if "bidag_partition_mcmc" in pattern_strings:
     json_string.update({val["id"]: expand(pattern_strings["bidag_partition_mcmc"]+"/"+pattern_strings["mcmc_est"], **val,) 
                         for val in bidag_partition_mcmc_list } )
 
+
+if "dualgl" in pattern_strings:
+    dualgl_list = config["resources"]["structure_learning_algorithms"]["dualgl"]
+    # The path to the startspace algorithm is extended here
+    for items in dualgl_list:    
+        items["startalg"] = idtopath(items["startalg"])
+
+    json_string.update({val["id"]: expand(pattern_strings["dualgl"], **val,) 
+                        for val in dualgl_list } )
+    
 # All MCMC algs 
 for alg in mcmc_modules:
     if alg in pattern_strings:
