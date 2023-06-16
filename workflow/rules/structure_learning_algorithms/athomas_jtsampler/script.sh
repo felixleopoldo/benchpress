@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CP=$(pwd)/workflow/rules/structure_learning_algorithms/athomas_jtsampler/jtsampler
-#CP=/jtsampler
+#CP=$(pwd)/workflow/rules/structure_learning_algorithms/athomas_jtsampler/jtsampler
+CP=/jtsampler
 
 if [ ${snakemake_wildcards[timeout]} = "None" ]; then
     if [ ${snakemake_wildcards[full_output]} = "True" ]; then
