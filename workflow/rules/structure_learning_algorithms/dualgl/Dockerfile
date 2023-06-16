@@ -1,9 +1,5 @@
 FROM r-base:4.3.0
 
-RUN apt update -y
-RUN apt install default-jre -y
-
-
 RUN R -e "install.packages('stringr', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('igraph', repos='http://cran.us.r-project.org')"
 RUN R -e "install.packages('data.table', repos='http://cran.us.r-project.org')"
