@@ -127,8 +127,6 @@ for p in sorted(algspath.iterdir()):
     if p.name == "docs.rst" or p.name == ".DS_Store":
         continue
 
-
-        
     d = p/"docs.rst"
     j = p/"info.json"
     s = p/"schema.json"
