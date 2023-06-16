@@ -14,6 +14,7 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -F < ${snakemake_input[data]} > ${snakemake_output[seqgraph_full]}
         ## convet to benchpress file
         awk -F, -v OFS=',' 'NR <= 4 || $5 == 0 {print $1, $2, $3, $4}' ${snakemake_output[seqgraph_full]} > ${snakemake_output[seqgraph]}
+
     else
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
                       -r ${snakemake_wildcards[replicate]} \
