@@ -8,7 +8,7 @@
         "type": "object",
         "properties": {
             "id": {
-                "desciption": "Algorithm identifier",
+                "description": "Algorithm identifier",
                 "type": "string"
             },
             "timeout": {

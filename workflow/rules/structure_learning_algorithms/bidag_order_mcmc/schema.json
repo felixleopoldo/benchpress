@@ -12,6 +12,7 @@
                 "description": "Unique identifier"
             },
             "startspace_algorithm": {
+                "description": "Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package.",    
                 "anyOf": [
                     {
                         "type": "string"

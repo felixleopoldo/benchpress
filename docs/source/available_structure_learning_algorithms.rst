@@ -519,6 +519,8 @@ unfortunately produces a biased sample on the space of DAGs. The implementation 
 in Benchpress is a hybrid version with the sampling performed on a restricted search space
 initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
+.. rubric:: Some fields described 
+* ``startspace_algorithm`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
 .. rubric:: Example
 
 
@@ -1251,6 +1253,8 @@ variable to be included in the Markov blankets are not considered in static orde
 and the forward-backward stages are combined into a single procedure, which has the effect of
 reducing the size of the blankets.
 
+.. rubric:: Some fields described 
+* ``plot_legend`` Legend to show in plotting 
 .. rubric:: Example
 
 
@@ -2959,6 +2963,12 @@ Globally optimal Bayesian network learning using integer linear programming (GOB
 for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in
 the first phase and the optimal sets are determined in a second phase.
 
+.. rubric:: Some fields described 
+* ``constraints`` File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs). 
+* ``extra_args`` File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs). 
+* ``gap_limit`` Gap limit. 
+* ``time_limit`` Time limit in seconds for the solver (not including the time to build the score tables). 
+* ``timeout`` Use the best DAG found so far after this number of seconds. 
 .. rubric:: Example
 
 
