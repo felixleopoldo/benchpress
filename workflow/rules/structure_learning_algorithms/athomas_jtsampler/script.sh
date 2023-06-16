@@ -16,8 +16,8 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
         ## copying the first 4 lines and every line afterwards that has a successfull move
         awk -F, -v OFS=',' 'NR <= 4 || $5 == 0 {print $1, $2, $3, $4}' ${snakemake_output[seqgraph_full]} > ${snakemake_output[seqgraph]}
         ## compressing the files
-        tar -czf ${snakemake_output[seqgraph_full]/fulloutput_tobecompressed.csv/fulloutput.tar.gz} ${snakemake_output[seqgraph_full]}
-        rm ${snakemake_output[seqgraph_full]}
+        ## tar -czf ${snakemake_output[seqgraph_full]/fulloutput_tobecompressed.csv/fulloutput.tar.gz} ${snakemake_output[seqgraph_full]}
+        ## rm ${snakemake_output[seqgraph_full]}
     else
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
                       -r ${snakemake_wildcards[replicate]} \
