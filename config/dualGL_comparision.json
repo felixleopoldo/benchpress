@@ -191,7 +191,7 @@
       ]
     },
       "structure_learning_algorithms": {
-          "dualGraphLearner": [
+          "dual_graph_learner": [
               {
               "id": "dualGL",
               "timeout": null,

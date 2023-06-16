@@ -16,7 +16,7 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
             },
             "s": {
-                "description": "Set the sampler to the one indexed by int k. 0 = Giudicci & Green (1999) sampler. This is the default. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
+                "description": "Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. This is the default. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
             },
             "a": {

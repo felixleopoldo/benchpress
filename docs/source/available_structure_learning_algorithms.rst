@@ -279,6 +279,11 @@ athomas_jtsampler
 
 Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
 
+.. rubric:: Some fields described 
+* ``a`` Set the edge penalty in the prior. 
+* ``c`` Set the maximum clique size. 
+* ``n`` Set the number of iterations to int. 
+* ``s`` Set the sampler to the one indexed by int k. 0 = Giudicci & Green (1999) sampler. This is the default. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler.  
 .. rubric:: Example
 
 
