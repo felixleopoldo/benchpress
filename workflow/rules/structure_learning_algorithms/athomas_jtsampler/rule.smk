@@ -4,11 +4,9 @@ def change_filename(original_string):
     return original_string.replace("adjvecs_", "adjvecs_fulloutput_")
 
 def compress(original_string):
-    return original_string.replace("adjvecs_fulloutput_tobecompressed.csv", "adjvecs_fulloutput.tar.gz")
+    return original_string.replace(".csv", ".tar.gz")
 
-rule:
-    name:
-        module_name
+rule athomas_jtsampler:
     input:
         data=alg_input_data(),
     output:
@@ -21,4 +19,13 @@ rule:
     script:
         "script.sh"
 
-        
+rule compress_file:
+    input:
+        rules.athomas_jtsampler.output.seqgraph_full
+    output:
+        compress(rules.athomas_jtsampler.output.seqgraph_full)
+    shell:
+        """
+        tar -czf {output} {input}
+        rm {input}
+        """
