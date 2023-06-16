@@ -16,15 +16,15 @@ However, to get something working, you only have to consider altering *script.R*
     ├── bibtex.bib
     └── docs.rst
 
-* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
-* *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment, you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
-* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
-* *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
   The template modules run by default in a container based on the Docker image "bpimages/sandbox". 
   To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.  
   On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suite your specific script.
+* *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment, you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
+* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
+* *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
+* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
 
 
 .. role:: r(code)
@@ -277,6 +277,7 @@ Then make *render_docs.sh* executable then render and build the documentation
 
 .. prompt:: bash
 
+    ./render_docs.sh
     make html
 
 Open *build/html/index.html* in a web browser to see the result.
