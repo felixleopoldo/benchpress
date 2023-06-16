@@ -11,7 +11,22 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            
+            "n": {
+                "description": "Set the number of iterations to int.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "s": {
+                "description": "Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. This is the default. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "a": {
+                "description": "Set the edge penalty in the prior.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "c": {
+                "description": "Set the maximum clique size.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
@@ -88,6 +103,7 @@
             "edge_penalty": 1.0,
             "size_maxclique": 10000
         }   
+
         ]
     }
 }

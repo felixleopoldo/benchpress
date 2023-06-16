@@ -127,8 +127,6 @@ for p in sorted(algspath.iterdir()):
     if p.name == "docs.rst" or p.name == ".DS_Store":
         continue
 
-
-        
     d = p/"docs.rst"
     j = p/"info.json"
     s = p/"schema.json"
@@ -172,6 +170,22 @@ for p in sorted(algspath.iterdir()):
         str += "\n\n"
         str += content
     str += "\n\n"
+    
+    with open(s) as json_file:    
+        schema = json.load(json_file)
+
+    tmp = any(["description" in obj 
+           for prop, obj in schema["items"]["properties"].items() 
+           if prop != "id"])
+
+    if tmp:
+        str += ".. rubric:: Some fields described \n"
+        for prop, obj in sorted(schema["items"]["properties"].items()):
+            if prop == "id":
+                continue
+            if "description" in obj:                
+                str += "* ``{}`` {} \n".format(prop, obj["description"])
+    
     str += ".. rubric:: Example"
     str += "\n\n\n"
     str += ".. code-block:: json"    
@@ -181,9 +195,6 @@ for p in sorted(algspath.iterdir()):
     str += ".. footbibliography::"
     #str += "\n\n---------"
     str += "\n\n"
-
-
-
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
     text_file.write(str)
