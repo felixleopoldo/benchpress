@@ -6,11 +6,6 @@ def change_filename(original_string):
 def compress(original_string):
     return original_string.replace("adjvecs_fulloutput_tobecompressed.csv", "adjvecs_fulloutput.tar.gz")
 
-SEQGRAPH_PATH = alg_output_seqgraph_path(module_name)
-SEQGRAPH_FULL_PATH = change_filename(SEQGRAPH_PATH)
-SEQGRAPH_COMPRESSED_PATH = compress(SEQGRAPH_FULL_PATH)
-
-
 rule:
     name:
         module_name
@@ -26,12 +21,4 @@ rule:
     script:
         "script.sh"
 
-
-rule compress_file:
-    input:
-        SEQGRAPH_FULL_PATH
-    output:
-        SEQGRAPH_COMPRESSED_PATH
-    shell:
-        "tar -czf {file_out} {file_in}"
         
