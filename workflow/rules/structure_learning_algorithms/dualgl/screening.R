@@ -57,6 +57,8 @@ z_tild <-function(z) {
 ## true_graph = data[[1]]
 ## dt = data[[2]]
 
+## traj_filename = "results/adjvecs/adjmat=/bdgraph_graphsim/p=50/graph=random/class=None/size=None/prob=0.5/seed=2/parameters=/bdgraph_rgwish/b=3/threshold_conv=1e-07/seed=2/data=/iid/n=50/standardized=False/algorithm=/athomas_jtsampler/alg_params=/timeout=None/mcmc_seed=1/num_samples=100000/sampler=0/edge_penalty=0.0/size_maxclique=100/full_output=True/mcmc_params/mcmc_estimator=map/threshold=0.0/burnin_frac=0.5/seed=2/adjvecs_fulloutput_tobecompressed.csv"
+## data_filename = "results/data/adjmat=/bdgraph_graphsim/p=50/graph=random/class=None/size=None/prob=0.5/seed=2/parameters=/bdgraph_rgwish/b=3/threshold_conv=1e-07/seed=2/data=/iid/n=50/standardized=False/seed=2.csv"
 
 myalg <- function() {
 
@@ -75,9 +77,9 @@ myalg <- function() {
     codes = drop(sapply(str_split(str_sub(codes, 2,-2), '-'), as.numeric))
     data = data[-c(1:3), ]
     colnames(data)<-c('index', 'score', 'added', 'removed', 'code', 'delta', 'm')
-        
-    n = nrow(data)
-    input_data = read.csv(file = data_filename, header=TRUE, nrows = 1)
+
+    input_data = read.csv(file = data_filename, header=TRUE)
+    n = nrow(input_data)
     p = ncol(input_data)
     
     ## data = data[code %in% c(0,9,5)][m>0]
@@ -108,9 +110,8 @@ myalg <- function() {
     data = unique(data[, .(orig, dest, edge, zt, z, empirical_p, N)])
 
     data_treat=data[, .(orig=orig[1], dest=dest[1],zt= mean(zt),z = mean(z), .N), by = edge]
-    q = data_treat[, pcorselR(cbind(orig, dest, zt), ALPHA2=0.05, GRID=2, iteration=100)]
+    q = data_treat[, pcorselR(cbind(orig, dest, zt), ALPHA2=0.05, GRID=3, iteration=100)]
     data_treat[, est_edge := 1*(zt>=q)]
-
         
     adjmat <- matrix(0, nrow = p, ncol = p)
     ed = data_treat[est_edge==1][, cbind(orig+1, dest+1)]
