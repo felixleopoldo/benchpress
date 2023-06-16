@@ -15,36 +15,6 @@
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
-            "mcmc_seed": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-            },
-            "threshold": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-            },
-            "mcmc_estimator": {
-                "anyOf": [
-                    {
-                        "type": "string",
-                        "enum": [
-                            "map",
-                            "threshold"
-                        ]
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "map",
-                                "threshold"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "burnin_frac": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-            }
         },
         "additionalProperties": true,
         "required": [
@@ -53,17 +23,11 @@
         ],
         "examples": [
             {
-                "id": "jtsampler",                    
-                "burnin_frac": 0.5,
-                "mcmc_estimator": "map",
-                "timeout": null,
-                "threshold":0.5,
-                "mcmc_seed": 1,                    
-                "n": 10000,
-                "s": 0,
-                "a": 1.0,
-                "c": 10000,
-                "v": 0
+            "id": "jtsampler",                    
+            "burnin_frac": 0.5,
+            "startalg": "jtsampler_gg",
+            "timeout": null,
+         
             }
         ]
     }
