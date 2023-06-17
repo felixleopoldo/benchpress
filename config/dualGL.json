@@ -1,9 +1,18 @@
 {
   "benchmark_setup": {
     "data": [
-      {
+        {
         "data_id": "example1",
         "graph_id": "random-5",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            2
+        ]
+    },
+        {
+        "data_id": "example1",
+        "graph_id": "random-1",
         "parameters_id": "gwi",
         "seed_range": [
             1,
@@ -21,9 +30,8 @@
         "path": true,
         "text": false,
           "ids": [
-              "dualGL",
-              "jtsampler_gg"
-
+              "jtsampler_gg",
+              "jtsampler_gt13"
         ]
       },
       "graph_true_plots": true,
@@ -125,32 +133,40 @@
       ]
     },
       "structure_learning_algorithms": {
-             "athomas_jtsampler": [
+          "athomas_jtsampler": [
               {
             "id": "jtsampler_gg",                    
             "burnin_frac": 0.5,
             "mcmc_estimator": ["map"],
             "timeout": null,
             "mcmc_seed": 1,                    
-            "num_samples": 100000,
+            "num_samples": 2000000,
             "sampler": 0,
               "edge_penalty": 0.0,
-              "size_maxclique": 100,
+              "size_maxclique": 50,
               "full_output": true,
               "threshold": [
                 0.0
               ]
-             }               
-             ],
-          "dualgl": [
+          },
               {
-              "id": "dualGL",
-              "timeout": null,
-              "startalg": "jtsampler_gg",
-              "mcmc_seed": 1                    
-          } 
-          ]
+            "id": "jtsampler_gt13",                    
+            "burnin_frac": 0.5,
+            "mcmc_estimator": ["map"],
+            "timeout": null,
+            "mcmc_seed": 1,                    
+            "num_samples": 2000000,
+              "sampler": 1,
+              "edge_penalty": 0.0,
+              "size_maxclique": 50,
+              "full_output": true,
+              "threshold": [
+                0.0
+              ]
+             }
+             ]
       }
+ 
   }
 }   
 
