@@ -2,8 +2,23 @@ def fix_none_startalg(wildcards):
         if wildcards["startalg"] == "None":
             return []
         else:
-            return "{output_dir}/adjvecs/{data}/algorithm=/"+ wildcards['startalg']+"/seed={replicate}/adjvecs_fulloutput_tobecompressed.csv"
+            return "{output_dir}/adjvecs/{data}/algorithm=/"+ wildcards['startalg']+"/seed={replicate}/adjvecs_fulloutput.csv"
 
+def extract_filename(filename):
+    return filename.replace("_fulloutput.tar.gz", "fulloutput_tobecompressed.csv")
+    
+
+
+
+rule extract_dualgl:
+    input:
+        "{whatever}/adjvecs_fulloutput.tar.gz"
+    output:
+        temp("{whatever}/adjvecs_fulloutput.csv")
+    shell:
+        "tar -xf {input} && mv {wildcards.whatever}/adjvecs_fulloutput_tobecompressed.csv {output}"
+
+     
 rule:
     name:
         module_name
@@ -18,3 +33,13 @@ rule:
         "docker://hallawalla/dualgl:0.1"
     script:
         "screening.R"
+
+
+rule clean_up_dualgl:
+    input:
+        fix_none_startalg
+    output:
+
+    shell:
+        "rm {input}"
+

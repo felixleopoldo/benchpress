@@ -60,6 +60,8 @@ z_tild <-function(z) {
 ## traj_filename = "results/adjvecs/adjmat=/bdgraph_graphsim/p=50/graph=random/class=None/size=None/prob=0.5/seed=2/parameters=/bdgraph_rgwish/b=3/threshold_conv=1e-07/seed=2/data=/iid/n=50/standardized=False/algorithm=/athomas_jtsampler/alg_params=/timeout=None/mcmc_seed=1/num_samples=100000/sampler=0/edge_penalty=0.0/size_maxclique=100/full_output=True/mcmc_params/mcmc_estimator=map/threshold=0.0/burnin_frac=0.5/seed=2/adjvecs_fulloutput_tobecompressed.csv"
 ## data_filename = "results/data/adjmat=/bdgraph_graphsim/p=50/graph=random/class=None/size=None/prob=0.5/seed=2/parameters=/bdgraph_rgwish/b=3/threshold_conv=1e-07/seed=2/data=/iid/n=50/standardized=False/seed=2.csv"
 
+## traj_filename = "results/adjvecs/adjmat\=/bdgraph_graphsim/p\=50/graph\=random/class\=None/size\=None/prob\=0.1/seed\=1/parameters\=/bdgraph_rgwish/b\=3/threshold_conv\=1e-07/seed\=1/data\=/iid/n\=50/standardized\=False/algorithm\=/athomas_jtsampler/alg_params\=/timeout\=None/mcmc_seed\=1/num_samples\=2000000/sampler\=0/edge_penalty\=0.0/size_maxclique\=50/full_output\=True/seed\=1/adjvecs_fulloutput_tobecompressed.csv"
+
 myalg <- function() {
 
     output_filename <- snakemake@output[["adjmat"]]
@@ -110,18 +112,19 @@ myalg <- function() {
     data = unique(data[, .(orig, dest, edge, zt, z, empirical_p, N)])
 
     data_treat=data[, .(orig=orig[1], dest=dest[1],zt= mean(zt),z = mean(z), .N), by = edge]
-    q = data_treat[, pcorselR(cbind(orig, dest, zt), ALPHA2=0.05, GRID=3, iteration=100)]
-    data_treat[, est_edge := 1*(zt>=q)]
-        
+    #q = data_treat[, pcorselR(cbind(orig, dest, zt), ALPHA2=0.05, GRID=3, iteration=100)]
+    q = as.numeric(snakemake@wildcards[['alpha']])
+    data_treat[, est_edge := 1*(pnorm(zt)> 1-q/2)]
+
     adjmat <- matrix(0, nrow = p, ncol = p)
     ed = data_treat[est_edge==1][, cbind(orig+1, dest+1)]
     adjmat[ed] <- 1
 
     adjmat <- 1 * (adjmat | t(adjmat))
     diag(adjmat) <- 0
-        
+
     totaltime <- proc.time()[1] - start
-    colnames(adjmat) <- names(input_data) # Get the labels from the data
+    colnames(adjmat) <- colnames(input_data) # Get the labels from the data
     write.csv(adjmat, file = output_filename, row.names = FALSE, quote = FALSE)
     write(totaltime, file = time_filename)
     # Write the true number of c.i. tests here if possible.

@@ -81,11 +81,23 @@ if "bidag_partition_mcmc" in pattern_strings:
 if "dualgl" in pattern_strings:
     dualgl_list = config["resources"]["structure_learning_algorithms"]["dualgl"]
     # The path to the startspace algorithm is extended here
+
+    def local_idtopath(idlist):
+
+        # mylist can either be None, an id, or a list of ids.
+        # The id may correspond to an MCMC alg, then the estimator parameters should be added too.
+        alg = id_to_alg(idlist)
+        vals = config["resources"]["structure_learning_algorithms"][alg][0]
+        if idlist is None:
+            return "None"
+        return expand(pattern_strings[alg], **vals)
+
+ 
     for items in dualgl_list:    
-        items["startalg"] = idtopath(items["startalg"])
+        items["startalg"] = local_idtopath(items["startalg"])
 
     json_string.update({val["id"]: expand(pattern_strings["dualgl"], **val,) 
-                        for val in dualgl_list } )
+                        for val in dualgl_list } )      
     
 # All MCMC algs 
 for alg in mcmc_modules:
