@@ -1,0 +1,68 @@
+
+[
+  {
+    "filename": "czech_autoworkers.csv",
+    "n": 1841,
+    "p": 6,
+    "type": ["binary"],
+    "graph": "unknown",
+    "description": "Czech autoworkers dataset from :footcite:t:`edwards1985fast`."
+  },
+  {
+    "filename": "2019_olsson_pavlenko_rios_p15_n1000.csv",
+    "n": 1000,
+    "p": 15,
+    "type": ["binary"],
+    "graph": "jonesp15.csv",
+    "description": "The binary decomposable dataset from section 6.2 in :footcite:t:`10.1214/19-EJS1585`."
+  },
+  {
+    "filename": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+    "n": 992,
+    "p": 11,
+    "type": ["continuous"],
+    "graph": "sachs.csv",
+    "description": "The logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`."
+  },
+  {
+    "filename": "2005_sachs_2_cd3cd28icam2_log.csv",
+    "n": 992,
+    "p": 11,
+    "type": ["continuous"],
+    "graph": "sachs.csv",
+    "description": "The logged version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`."
+  },
+  {
+    "filename": "2005_sachs_1_cd3cd28_log.csv",
+    "n": 992,
+    "p": 11,
+    "type": ["continuous"],
+    "graph": "sachs.csv",
+    "description": "The logged version of the 1st dataset from :footcite:t:`doi:10.1126/science.1105809`."
+  },
+  {
+    "filename": "2013_green_thomas_p50_n1000.csv",
+    "n": 1000,
+    "p": 50,
+    "type": ["continuous"],
+    "graph": "greenthomas2013_ar2.csv",
+    "description": "Synthetic decomposable Gaussian graphical AR-2 (intra-class) model dataset from section 4.3 in :footcite:t:`Green01032013`."
+  },
+  {
+    "filename": "gmint.csv",
+    "n": 5000,
+    "p": 8,
+    "type": ["continuous", "interventional"],
+    "graph": "gmint.csv",
+    "description": "Synthetic interventional dataset gmInt from the pcalg package :footcite:t:`kalisch2012causal` (see the documentation of pcalg). "
+  },
+  {
+  "filename": "2005_sachs/",
+  "n": "",
+  "p": 11,
+  "type": ["continuous"],
+  "graph": "sachs.csv",
+  "description": "Directory with all the datasets from :footcite:t:`doi:10.1126/science.1105809`"
+  }
+  
+]
