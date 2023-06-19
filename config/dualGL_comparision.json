@@ -28,6 +28,15 @@
             4
         ]
       },
+        {
+        "data_id": "example1",
+        "graph_id": "random-1-sparse",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            4
+        ]
+      },
       {
         "data_id": "example1",
         "graph_id": "lattice",
@@ -84,11 +93,11 @@
         "path": true,
         "text": false,
           "ids": [
-              "dualGL-GT13",
-              "dualGL",
+              "dualGL-gt13",
               "bdgraph",
               "jtsampler_gg",
-              "jtsampler_gts"
+              "jtsampler_gt13",
+              "psi-learn"
         ]
       },
       "graph_true_plots": true,
@@ -126,6 +135,14 @@
         {
           "id": "random-1",
           "p": 50,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.1
+        },
+          {
+          "id": "random-1-sparse",
+          "p": 100,
           "graph": "random",
           "class": null,
           "size": null,
@@ -191,28 +208,22 @@
       ]
     },
       "structure_learning_algorithms": {
-          "dual_graph_learner": [
+          "psilearner": [
               {
-              "id": "dualGL",
-              "timeout": null,
-              "mcmc_seed": 1,                    
-              "n": 2000000,
-              "s": 0,
-              "a": 0.0,
-              "c": 100,
-              "v": 0
-          },
+              "id": "psi-learn",
+              "timeout": null, 
+              "alpha1": 0.3,
+              "alpha2": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, 0.99]
+
+          }], 
+           "dualgl": [
               {
-              "id": "dualGL-GT13",
+              "id": "dualGL-gt13",
               "timeout": null,
-              "mcmc_seed": 1,                    
-              "n": 2000000,
-              "s": 1,
-              "a": 0.0,
-              "c": 100,
-              "v": 0
-          }
-          ],    
+              "startalg": "jtsampler_gt13",
+              "alpha": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9]
+           }
+           ]    ,
       "bdgraph": [
         {
           "id": "bdgraph",
@@ -254,12 +265,10 @@
           "burnin_frac": 0.5,
           "mcmc_estimator": ["threshold", "map"],
           "timeout": null,
-          "mcmc_seed": 1,
-          "n": 2000000,
-          "s": 0,
-          "a": 0.0,
-          "c": 100,
-          "v": 0,
+          "num_samples": 2000000,
+          "sampler": 0,
+          "edge_penalty": 0.0,
+          "size_maxclique": 12,
           "threshold": [
             0.1,
             0.2,
@@ -272,33 +281,35 @@
             0.9,
             1.0
           ]
-        },
-        {
-          "id": "jtsampler_gts",
+      },
+          {
+          "id": "jtsampler_gt13",                    
           "burnin_frac": 0.5,
-            "mcmc_estimator": ["threshold", "map"],
+          "mcmc_estimator": ["map", "threshold"],
           "timeout": null,
-          "mcmc_seed": 1,
-          "n": 2000000,
-          "s": 1,
-          "a": 0.0,
-          "c": 100,
-          "v": 0,
-          "threshold": [
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7,
-            0.8,
-            0.9,
-            1.0
-          ]
-        }
+          "mcmc_seed": 1,                    
+          "num_samples": 2000000,
+          "sampler": 1,
+          "edge_penalty": 0.0,
+          "size_maxclique": 12,
+          "full_output": true,
+            "threshold": [
+                0.0,
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5,
+                0.6,
+                0.7,
+                0.8,
+                0.9,
+                1.0
+            ]
+      }
       ]
-    }
-  }
-}   
+      }
+}
+}
+   
 
