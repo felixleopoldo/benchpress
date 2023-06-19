@@ -1,7 +1,8 @@
 import os
 
 def change_filename(original_string):
-    return original_string.replace("adjvecs_", "adjvecs_fulloutput_")
+    return original_string.replace("adjvecs_tobecompressed.csv", "adjvecs_fulloutput.tar.gz")
+
 
 rule athomas_jtsampler:
     input:

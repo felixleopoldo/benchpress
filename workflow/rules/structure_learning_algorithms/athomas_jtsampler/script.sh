@@ -2,7 +2,7 @@
 
 #CP=$(pwd)/workflow/rules/structure_learning_algorithms/athomas_jtsampler/jtsampler
 CP=/jtsampler
-
+TEMP_FILENAME=${snakemake_output[seqgraph_full]/fulloutput.tar.gz/fulloutput_tobecompressed.csv}
 if [ ${snakemake_wildcards[timeout]} = "None" ]; then
     if [ ${snakemake_wildcards[full_output]} = "True" ]; then
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
@@ -11,13 +11,13 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
                       -c ${snakemake_wildcards[size_maxclique]} \
-                      -F < ${snakemake_input[data]} > ${snakemake_output[seqgraph_full]}
+                      -F < ${snakemake_input[data]} > $TEMP_FILENAME
         ## convet to benchpress file
         ## copying the first 4 lines and every line afterwards that has a successfull move
-        awk -F, -v OFS=',' 'NR <= 4 || $5 == 0 {print $1, $2, $3, $4}' ${snakemake_output[seqgraph_full]} > ${snakemake_output[seqgraph]}
+        awk -F, -v OFS=',' 'NR <= 4 || $5 == 0 {print $1, $2, $3, $4}' $TEMP_FILENAME > ${snakemake_output[seqgraph]}
         ## compressing the files
-        tar -czf ${snakemake_output[seqgraph_full]/fulloutput_tobecompressed.csv/fulloutput.tar.gz} ${snakemake_output[seqgraph_full]}
-        rm -f ${snakemake_output[seqgraph_full]}
+        tar -czf ${snakemake_output[seqgraph_full]} $TEMP_FILENAME
+        rm -f $TEMP_FILENAME
     else
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
                       -r ${snakemake_wildcards[replicate]} \
