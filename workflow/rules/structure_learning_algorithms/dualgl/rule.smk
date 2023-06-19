@@ -35,11 +35,3 @@ rule:
         "screening.R"
 
 
-rule clean_up_dualgl:
-    input:
-        fix_none_startalg
-    output:
-
-    shell:
-        "rm {input}"
-
