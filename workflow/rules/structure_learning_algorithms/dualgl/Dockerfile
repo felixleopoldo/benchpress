@@ -7,7 +7,21 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install CRAN packages
-RUN R -e "install.packages(c('stringr', 'igraph', 'data.table', 'graph', 'huge', 'ZIM', 'mvtnorm', 'speedglm', 'ncvreg', 'bnlearn', 'doParallel', 'SIS', 'snowfall', 'R.utils'), repos='http://cran.us.r-project.org')"
+
+RUN R -e "install.packages('stringr', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('igraph', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('data.table', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('graph', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('huge', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('ZIM', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('mvtnorm', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('speedglm', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('ncvreg', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('bnlearn', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('doParallel', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('SIS', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('snowfall', repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages('R.utils', repos='http://cran.us.r-project.org')"
 
 WORKDIR /tmp
 

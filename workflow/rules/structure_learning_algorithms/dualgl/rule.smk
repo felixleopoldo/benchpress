@@ -30,7 +30,7 @@ rule:
         time=touch(alg_output_time_path(module_name)),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://hallawalla/dualgl:0.1"
+        "docker://hallawalla/dualgl:1.4"
     script:
         "screening.R"
 
