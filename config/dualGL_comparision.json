@@ -240,7 +240,7 @@
           ],
           "thresh": 0.001,
           "mcmc_estimator": [
-              "threshold",
+              "threshold"
           ],
           "threshold": [
             0.1,
