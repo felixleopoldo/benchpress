@@ -202,7 +202,7 @@
         {
           "id": "gwi",
           "b": 3,
-          "threshold_conv": 1e-07
+          "threshold_conv": 0.000001
         }
       ]
     },
