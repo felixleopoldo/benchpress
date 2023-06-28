@@ -157,7 +157,7 @@
           "prob": 0.1
         },
           {
-          "id": "random-1-sparse",
+          "id": "random-1-ultra-sparse",
           "p": 300,
           "graph": "random",
           "class": null,
