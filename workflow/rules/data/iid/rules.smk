@@ -82,6 +82,10 @@ rule sample_rgwish_data:
 TODO: Standardisation should better be done in a separate preprocessing module
 in the data section in benchmark_setup.
 """
+print("standardize")
+print("{output_dir}/data" \
+             "/{model}"\
+             "/data=/{data_alg}/{data_params}/seed={seed}.csv")
 rule standardize:
     input:
         data="{output_dir}/data" \

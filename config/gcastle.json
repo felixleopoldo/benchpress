@@ -4,7 +4,7 @@
             {
                 "graph_id": "avneigs4_p20",
                 "parameters_id": "SEM",
-                "data_id": "standardized",
+                "data_id": "gcastle_iid",
                 "seed_range": [
                     1,
                     5
@@ -22,19 +22,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gcastle_notears",
-                    "gcastle_pc",
-                    "gcastle_anm",
-                    "gcastle_direct_lingam",
-                    "gcastle_ica_lingam",
-                    "gcastle_notears_sob",
-                    "gcastle_notears_mlp",
-                    "gcastle_notears_low_rank",
-                    "gcastle_golem",
-                    "gcastle_grandag",
-                    "gcastle_mcsl",                  
-                    "gcastle_corl",
-                    "gcastle_rl"
+                    "gcastle_notears"
                 ]
             },
             "graph_true_plots": false,
@@ -62,7 +50,19 @@
                         300
                     ]
                 }
-            ]
+            ],
+            "gcastle_iidsim": [
+                {
+                  "id": "gcastle_iid",
+                  "standardized": false,
+                  "method": "linear",
+                  "sem_type": "gauss",
+                  "noise_scale": 1.0,
+                  "n": [
+                    1000
+                  ]
+                }
+              ]
         },
         "graph": {
             "pcalg_randdag": [

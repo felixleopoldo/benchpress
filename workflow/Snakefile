@@ -91,7 +91,7 @@ rule all:
         get_active_rules,
 
 rule copy_configs:
-    input: 
+    input:
         "config/"
     output:
         directory("config/copies")
@@ -165,12 +165,18 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
                         docker_image("networkx")
                     script:
                         "scripts/evaluation/graphtraj_est.py"
-# Include the evaluation modules
 
-for p in Path("workflow/rules/evaluation/").glob("*"):
+# Include the evaluation modules
+for module in config["benchmark_setup"]["evaluation"]:
+    p = Path("workflow/rules/evaluation/")/ module
     if (p / "rules.smk").is_file():
         include: Path("rules/evaluation/", p.name, "rules.smk")
-
-
     elif (p / "rule.smk").is_file():
         include: Path("rules/evaluation/", p.name, "rule.smk")
+
+
+# for p in Path("workflow/rules/evaluation/").glob("*"):
+#     if (p / "rules.smk").is_file():
+#         include: Path("rules/evaluation/", p.name, "rules.smk")
+#     elif (p / "rule.smk").is_file():
+#         include: Path("rules/evaluation/", p.name, "rule.smk")

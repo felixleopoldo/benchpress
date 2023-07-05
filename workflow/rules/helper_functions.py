@@ -8,7 +8,7 @@ def get_seed_range(seed_range):
 def active_algorithm_files(wildcards):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
-    
+
     algs = active_algorithms()
     alg_filenames = ["results/output/benchmarks/"+conf["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + alg + ".csv" for alg in algs]
     return alg_filenames
@@ -18,27 +18,27 @@ def active_algorithms(eval_method="benchmarks"):
         conf = json.load(json_file)
 
     algs = []
-    
+
     if (eval_method == "mcmc_traj_plots") or (eval_method == "mcmc_autocorr_plots") or (eval_method == "mcmc_heatmaps"):
         benchmarks_alg_ids = [benchmarks_dict["id"]  for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method] if benchmarks_dict["active"] == True]
-        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in benchmarks_alg_ids: 
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
+            for alg_conf_id in benchmarks_alg_ids:
                 #print(alg_conf_id)
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     elif eval_method == "benchmarks":
         benchmarks_alg_ids = config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]
-        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in benchmarks_alg_ids:        
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
+            for alg_conf_id in benchmarks_alg_ids:
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     else:
         benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
-        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
-            for alg_conf_id in benchmarks_alg_ids:        
+        for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
+            for alg_conf_id in benchmarks_alg_ids:
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
-    
+
 
     return list(set(algs))
 
@@ -47,11 +47,11 @@ def active_algorithms(eval_method="benchmarks"):
 def get_active_rules(wildcards):
     """
     This function returns empty "trigger files" for the type of evaluations
-    that are used. Yes, this is ugly. Should maybe have a directory output instead. 
+    that are used. Yes, this is ugly. Should maybe have a directory output instead.
     """
     rules = []
     for key, val in config["benchmark_setup"]["evaluation"].items():
-        # Check if boolean or list or object wirh nonempty ids field. 
+        # Check if boolean or list or object wirh nonempty ids field.
         if isinstance(val, dict) and val["ids"] != []: # TODO: this was OrderedDict, so might have to impose order somewhere.
             rules.append("results/output/"+key+"/"+key+".done")
         if isinstance(val, bool) and val is True:
@@ -63,7 +63,7 @@ def get_active_rules(wildcards):
                         rules.append("results/output/"+key+"/"+key+".done")
                         break
             else:
-                rules.append("results/output/"+key+"/"+key+".done")    
+                rules.append("results/output/"+key+"/"+key+".done")
     return rules
 
 def check_system_requirements():
@@ -83,10 +83,10 @@ def check_system_requirements():
 
     # If Singularity and not apptainer is installer, check the version of Singularity.
     if ecode == 0 and apptainer_ecode != 0:
-        # This is usually on the format: singularity version x.y.z         
+        # This is usually on the format: singularity version x.y.z
         version_string = outp.split()[-1] # Get the version number as a string as the last word
         v1 = version_string.split(".")[0] # major version
-        v2 = version_string.split(".")[1] # minor version 
+        v2 = version_string.split(".")[1] # minor version
         smkver = float(v1 + "." + v2) # Make it a number for comparison
         if smkver < 3.2:
             raise Exception(
