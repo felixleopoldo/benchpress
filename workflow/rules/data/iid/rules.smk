@@ -34,7 +34,7 @@ rule sample_loglindata:
     shell:
         "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
 
-rule sample_intra_class_            data:
+rule sample_intra_class_data:
     input:
         "workflow/rules/data/iid/numpy_sample_mvn_data.py",
         cov="{output_dir}/parameters/trilearn_intra-class/{bn}/adjmat=/{adjmat}.csv"

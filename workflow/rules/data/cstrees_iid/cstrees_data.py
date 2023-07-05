@@ -6,7 +6,7 @@ import networkx as nx
 import numpy as np
 import cstrees.cstree as ct
 
-seed = int(snakemake.wildcards["replicate"])
+seed = int(snakemake.wildcards["seed"])
 
 df = pd.read_csv(snakemake.input["cstree"], header=[0, 1])
 print(df)
