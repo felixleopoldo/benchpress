@@ -39,11 +39,13 @@ extensions = [
     'sphinxcontrib.bibtex'
 ]
 
-paths = [Path("../../workflow/rules/structure_learning_algorithms"), 
+paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
-         Path("../../workflow/rules/graph"),  
-         Path("../../workflow/rules/data"),  
-         Path("../../workflow/rules/evaluation")]
+         Path("../../workflow/rules/graph"),
+         Path("../../workflow/rules/data"),
+         Path("../../workflow/rules/evaluation"),
+         Path("../../workflow/rules/data/fixed_data")
+         ]
 
 
 bibtex_bibfiles = []

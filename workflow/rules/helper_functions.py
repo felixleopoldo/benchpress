@@ -67,6 +67,7 @@ def get_active_rules(wildcards):
     return rules
 
 def check_system_requirements():
+    import subprocess
     from snakemake.utils import min_version
     # To update Snakemake using Mamba run
     # mamba update -c conda-forge -c bioconda snakemake

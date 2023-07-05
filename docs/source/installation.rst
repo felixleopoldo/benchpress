@@ -37,8 +37,8 @@ Here we describe two ways to get these in place.
 
 ..  on your server or local machine.
 
-Docker (Linux/macOS/Win)
------------------------------
+Docker (Linux/macOS/Win x86-64)
+--------------------------------
 
 For this alternative, you only need to install `Docker <https://www.docker.com/>`_, following the instructions for your specific system.
 This is usually the easiest way to get started and it works for any platform supporting `Docker <https://www.docker.com/>`_.
@@ -46,8 +46,8 @@ You may configure the resources (memory, cores, disk,... ) to be used through th
 
 .. _linuxx:
 
-Without Docker (Linux)
-----------------------
+Without Docker (Linux x86-64)
+-----------------------------
 
 This alternative is preferred e.g. if you will add new modules or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
 
