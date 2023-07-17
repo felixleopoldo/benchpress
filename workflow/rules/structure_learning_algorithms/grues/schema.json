@@ -1,6 +1,6 @@
 {
-    "title": "Some title",
-    "description": "Some description",
+    "title": "GrUES",
+    "description": "The GrUES submodule for MCMC-based structure learning",
     "type": "array",
     "items": {
         "title": "Some item",
@@ -8,7 +8,7 @@
         "type": "object",
         "properties": {
             "id": {
-                "desciption": "Algorithm identifier",
+                "desciption": "grues",
                 "type": "string"
             },
             "timeout": {
@@ -59,7 +59,7 @@
         ],
         "examples": [
             {
-                "id": "mcmctest",
+                "id": "grues",
                 "cutoff": 0.8,
                 "burnin_frac": 0.5,
                 "mcmc_estimator": "threshold",

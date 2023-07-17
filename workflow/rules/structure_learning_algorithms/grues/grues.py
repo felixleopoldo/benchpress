@@ -12,32 +12,22 @@ from add_timeout import *
 
 
 def grues_wrap():
-    # Read in data (not used in this algorithm)
-    df = pd.read_csv(snakemake.input["data"])
+    # Read in data, seed, and params
+    sample = pd.read_csv(snakemake.input["data"]).to_numpy()
+    rng = np.random.seed(int(snakemake.wildcards["mcmc_seed"]))
+    mc_len = int(int(snakemake.wildcards["n_iterations"]))
 
-    # The algorithm goes here
-    p = df.shape[1]
-    np.random.seed(int(snakemake.wildcards["replicate"]))
-
-    m = np.random.rand(p * p).reshape((p, p))
-    m = m > float(snakemake.wildcards["cutoff"])
-    adjmat = (m | m.T) * 1
-    np.fill_diagonal(adjmat, 0)
-    adjmat.astype(int)
+    # run MCMC
+    model = grues.InputData(df)
 
     # Save time
     tottime = time.perf_counter() - start
     with open(snakemake.output["time"], "w") as text_file:
         text_file.write(str(tottime))
 
-    # Save adjmat
-    adjmat_df = pd.DataFrame(adjmat)
-    adjmat_df.columns = df.columns
-    adjmat_df.to_csv(snakemake.output["adjmat"], index=False)
-
-    # ntests is not applicable for this algorithm
-    with open(snakemake.output["ntests"], "w") as text_file:
-        text_file.write("None")
+    # Save seqgraph
+    seqgraph_df = pd.DataFrame()
+    seqgraph_df.to_csv(snakemake.output["seqgraph"], index=False)
 
 
 # This part starts the timer
