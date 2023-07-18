@@ -8,4 +8,4 @@ rule bnlearn_fastiamb:
     container:
         "docker://bpimages/bnlearn:4.8.1"
     script:
-        "bnlearn_fastiamb.R"
+        "script.R"

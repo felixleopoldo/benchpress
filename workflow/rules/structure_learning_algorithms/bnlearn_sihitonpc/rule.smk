@@ -1,11 +1,13 @@
-rule bnlearn_sihitonpc:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data(),
+        data=alg_input_data()
     output:
-        adjmat=alg_output_adjmat_path("bnlearn_sihitonpc"),
-        time=alg_output_time_path("bnlearn_sihitonpc"),
-        ntests=alg_output_ntests_path("bnlearn_sihitonpc"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path()
     container:
         "docker://bpimages/bnlearn:4.8.1"
     script:
-        "bnlearn_sihitonpc.R"
+        "script.R"

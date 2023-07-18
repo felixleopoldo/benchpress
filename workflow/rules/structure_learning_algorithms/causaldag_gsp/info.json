@@ -6,12 +6,6 @@
         "url": "https://github.com/uhlerlab/causaldag"
     },
     "docs_url": "https://uhlerlab.github.io/causaldag/",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
     "outputs": [
         "adjmat"
     ],

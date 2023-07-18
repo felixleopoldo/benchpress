@@ -62,6 +62,7 @@
                 "id": "mcmctest",
                 "cutoff": 0.8,
                 "burnin_frac": 0.5,
+                "n_iterations": 10000,
                 "mcmc_estimator": "threshold",
                 "mcmc_seed": [1, 2, 3],
                 "threshold": 0.5,

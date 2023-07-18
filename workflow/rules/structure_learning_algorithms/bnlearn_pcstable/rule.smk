@@ -1,11 +1,13 @@
-rule bnlearn_pcstable:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data(),
+        data=alg_input_data()
     output:
-        adjmat=alg_output_adjmat_path("bnlearn_pcstable"),
-        time=alg_output_time_path("bnlearn_pcstable"),
-        ntests=alg_output_ntests_path("bnlearn_pcstable"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name)
     container:
         "docker://bpimages/bnlearn:4.8.1"
     script:
-        "bnlearn_pcstable.R"
+        "script.R"

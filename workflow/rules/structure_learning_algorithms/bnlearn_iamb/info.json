@@ -6,12 +6,6 @@
         "url": "https://www.bnlearn.com/"
     },
     "docs_url": "https://www.bnlearn.com/documentation/man/constraint.html",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
     "outputs": [
         "adjmat"
     ],

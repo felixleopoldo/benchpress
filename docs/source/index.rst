@@ -13,6 +13,7 @@
 
     installation
     usage
+    examples
 
 .. toctree::
     :hidden:
@@ -20,8 +21,7 @@
     :name: Configuration
     :caption: Configuration
     
-    json_overview
-    examples    
+    json_overview    
     data_formats
 
 .. toctree::
@@ -95,7 +95,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository, and `this Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_.
 
 
-.. rubric:: Activity
+.. rubric:: Outreach
 
 * 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ 
 * 2023-06-20: Benchpress tutorial at KTH
