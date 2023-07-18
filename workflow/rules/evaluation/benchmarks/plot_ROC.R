@@ -24,10 +24,17 @@ dir.create(snakemake@output[["ntests_joint"]])
 dir.create(snakemake@output[["roc_FPR_TPR"]])
 
 if (file.info(snakemake@input[["csv"]])$size == 0) {
+  print("No data to plot.")
   # Do nothing. Everything was timed out so the directories will be empty.
 } else {
   toplot <- read.csv(snakemake@input[["csv"]]) # Median, mean, quantiles, taken over the seeds
   joint_bench <- read.csv(snakemake@input[["raw_bench"]]) # All raw benchmarks in one dataframe
+
+  replacement_list = list(parameters = "NA") # converts NA to string "NA" in the dataframe
+
+  toplot <- toplot %>% replace_na(replacement_list)
+  joint_bench <- joint_bench %>% replace_na(replacement_list)
+
   config <- fromJSON(file = snakemake@input[["config"]])
 
   param_annot <- config$benchmark_setup$evaluation$benchmarks$text
@@ -65,11 +72,11 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     mutate(id_num = lev_to_num(id)) %>%
       mutate(id_numlev = lev_to_levnum(id))
   toplot$id_numlev <- factor(toplot$id_numlev, levels = numlev)
+
   joint_bench <- joint_bench %>%
     mutate(id_num = lev_to_num(id)) %>%
     mutate(id_numlev = lev_to_levnum(id))
   joint_bench$id_numlev <- factor(joint_bench$id_numlev, levels = numlev)
-
 
   # Might have to go through all one by one to get the point text.
   # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
@@ -81,23 +88,23 @@ unique_adjmats <- unique(joint_bench$adjmat)
 unique_parameters <- unique(joint_bench$parameters)
 unique_data <- unique(joint_bench$data)
 
-  joint_bench_tmp <- joint_bench
+  joint_bench_tmp <- joint_bench # just renaming, quick fix
   toplot_tmp <- toplot
   plt_counter <- 1
 
   for(adjmat2 in unique_adjmats){
     for(parameters2 in unique_parameters){
       for(data2 in unique_data){
-        joint_bench <- joint_bench_tmp %>% filter(adjmat==adjmat2) %>%         
-        filter(parameters==parameters2) %>% 
-        filter(data==data2)
-        
-        toplot <- toplot_tmp %>% filter(adjmat==adjmat2) %>%         
-        filter(parameters==parameters2) %>% 
-        filter(data==data2)
-        
-        if (nrow(joint_bench) > 0){
 
+        joint_bench <- joint_bench_tmp %>% filter(adjmat==adjmat2) %>%
+        filter(parameters==parameters2) %>%
+        filter(data==data2)
+
+        toplot <- toplot_tmp %>% filter(adjmat==adjmat2) %>%
+        filter(parameters==parameters2) %>%
+        filter(data==data2)
+
+        if (nrow(joint_bench) > 0){
 
         gg <- ggplot() +
           {
@@ -222,9 +229,9 @@ unique_data <- unique(joint_bench$data)
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
 
-            ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
+          ggsave(file = paste(snakemake@output[["fpr_tpr_pattern"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
-        gg <- ggplot() + {
+          gg <- ggplot() + {
             if (errorbar) {
               geom_errorbar(
                 data = toplot, alpha = 0.5,
@@ -345,7 +352,7 @@ unique_data <- unique(joint_bench$data)
           theme(plot.title = element_text(hjust = 0.5))
             ggsave(file = paste(snakemake@output[["roc_FPRp_TPR_skel"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
-            
+
             gg <- ggplot() + {
                 if (errorbar) {
                         geom_errorbar(
@@ -461,7 +468,7 @@ unique_data <- unique(joint_bench$data)
           theme(plot.title = element_text(hjust = 0.5))
             ggsave(file = paste(snakemake@output[["roc_FPR_TPR"]],"/", plt_counter, ".png", sep=""), plot = gg)
 
-            
+
         gg <- ggplot() +
           {
             if (errorbar) {
@@ -534,7 +541,7 @@ unique_data <- unique(joint_bench$data)
                   filter(curve_vals == max(curve_vals)),
                 alpha = 0.8, position = "dodge",
                 alpha = 1, show.legend = FALSE,
-                aes(x = FPR_skel_median, y = FNR_skel_median, 
+                aes(x = FPR_skel_median, y = FNR_skel_median,
                     col = id_numlev, label = id_num)
               )
             }
