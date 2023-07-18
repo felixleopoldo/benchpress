@@ -1,4 +1,4 @@
-library(pcalg)
+library(bnlearn)
 library(RBGL)
 source("workflow/scripts/utils/helpers.R")
 source("resources/code_for_binary_simulations/make_var_names.R")
