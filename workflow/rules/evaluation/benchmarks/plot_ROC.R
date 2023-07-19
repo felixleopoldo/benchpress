@@ -286,8 +286,8 @@ unique_data <- unique(joint_bench$data)
               geom_point(
                 data = joint_bench, alpha = 0.15, show.legend = FALSE,
                 aes(
-                  x = FPR_pattern,
-                  y = TPR_pattern,
+                  x = FPR_skel,
+                  y = TPR_skel,
                   col = id_numlev
                 ),
                 shape = 20,
@@ -299,8 +299,8 @@ unique_data <- unique(joint_bench$data)
               geom_text(
                 data = joint_bench, alpha = 0.25, show.legend = FALSE,
                 aes(
-                  x = FPR_pattern,
-                  y = TPR_pattern,
+                  x = FPR_skel,
+                  y = TPR_skel,
                   label = replicate, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
@@ -344,9 +344,9 @@ unique_data <- unique(joint_bench$data)
               ylim(ylim[1], ylim[2])
             }
           } +
-          xlab("FPR") +
-          ylab("TPR") +
-          ggtitle("Median FPR vs. TPR (undirected skeleton)") +
+          xlab("FP/P") +
+          ylab("TP/P") +
+          ggtitle("Median FP/P vs. TP/P (undirected skeleton)") +
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
@@ -462,7 +462,7 @@ unique_data <- unique(joint_bench$data)
               ylim(0, 1) +
           xlab("FPR") +
           ylab("TPR") +
-          ggtitle("FPR vs. TPR (undirected skeleton)") +
+          ggtitle("FPR vs. TPR (pattern graph)") +
           labs(col = "id") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))

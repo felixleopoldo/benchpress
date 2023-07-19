@@ -28,22 +28,22 @@ else
 fi
 
 # Run the command
-if [ ${snakemake_wildcards[timeout]} != "None" ]; then                    
+if [ ${snakemake_wildcards[timeout]} != "None" ]; then 
+     # run with timeout
     /usr/bin/time -f "%e" -o ${snakemake_output[time]} timeout --signal SIGKILL ${snakemake_wildcards[timeout]} bash -c '$CMD'
-else
-    echo "No timeout set"
+else 
+    # no timeout set
     /usr/bin/time -f "%e" -o ${snakemake_output[time]} $CMD
 fi
 
 # Process the output
 if [ -f ${snakemake_output[adjmat]}_graph.json ]; then 
-    echo "Processing output"
     Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph ${snakemake_output[adjmat]}_graph.json --filename ${snakemake_output[adjmat]}  
     rm -f ${snakemake_output[adjmat]}.no_range_header 
     rm ${snakemake_output[adjmat]}_graph.json 
     rm ${snakemake_output[adjmat]}.txt; 
-else # if timeout was reached, create empty files
-    echo "No output"    
+else 
+    # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}
     echo None > ${snakemake_output[time]}
 fi
