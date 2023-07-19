@@ -287,7 +287,7 @@ unique_data <- unique(joint_bench$data)
                 data = joint_bench, alpha = 0.15, show.legend = FALSE,
                 aes(
                   x = FPR_skel,
-                  y = TPR_skel,
+                  y = TP/true_n_edges_skel,
                   col = id_numlev
                 ),
                 shape = 20,
@@ -300,7 +300,7 @@ unique_data <- unique(joint_bench$data)
                 data = joint_bench, alpha = 0.25, show.legend = FALSE,
                 aes(
                   x = FPR_skel,
-                  y = TPR_skel,
+                  y = TP/true_n_edges_skel,
                   label = replicate, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
