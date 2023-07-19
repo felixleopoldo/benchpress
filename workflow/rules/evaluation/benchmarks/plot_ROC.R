@@ -16,6 +16,8 @@ is_outlier <- function(x) {
     x > quantile(x, 0.75) + 1.5 * IQR(x))
 }
 
+# The functions are just here without parameters for now, should be fixed at some point..
+
 fpr_tpr_pattern <- function(){
    gg <- ggplot() +
           {
@@ -894,7 +896,6 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     revlevnumlist[a]
   }
 
-
   # Add extra columns with id number like: 3 and id and level like: 3. pcalg_pc.
   toplot <- toplot %>%
     mutate(id_num = lev_to_num(id)) %>%
@@ -906,11 +907,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     mutate(id_numlev = lev_to_levnum(id))
   joint_bench$id_numlev <- factor(joint_bench$id_numlev, levels = numlev)
 
-  # Might have to go through all one by one to get the point text.
-  # directlabels::geom_dl(aes(label = class), method = "smart.grid") +
-
   # get unique graph, parameters, data
-
   unique_adjmats <- unique(joint_bench$adjmat)
   unique_parameters <- unique(joint_bench$parameters)
   unique_data <- unique(joint_bench$data)
