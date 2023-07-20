@@ -13,6 +13,7 @@
 
     installation
     usage
+    examples
 
 .. toctree::
     :hidden:
@@ -20,8 +21,7 @@
     :name: Configuration
     :caption: Configuration
     
-    json_overview
-    examples    
+    json_overview    
     data_formats
 
 .. toctree::

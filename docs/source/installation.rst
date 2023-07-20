@@ -52,8 +52,16 @@ Without Docker (Linux x86-64)
 This alternative is preferred e.g. if you will add new modules or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
 
 1. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_.
-2. Install `Snakemake >= 7.14 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_.
+2. Install `Snakemake >= 7.30.1 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_.
 3. Install `Apptainer (former Singularity) <https://apptainer.org/>`_  following the `installation instructions <https://apptainer.org/docs/admin/main/installation.html#install-from-pre-built-packages>`_.
+
+.. note::
+
+    If you have an old version of Snakemake installed by Mamba, as suggested on Snakemakes homepage, you may update it by running
+
+    .. prompt:: bash
+
+        mamba update snakemake
 
 .. note:: 
 

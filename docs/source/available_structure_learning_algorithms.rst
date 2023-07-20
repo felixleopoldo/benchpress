@@ -272,8 +272,8 @@ bdgraph
    * - Docker 
      - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
-   * - Module
-     - `bdgraph/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
+   * - Module folder
+     - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
 
 
@@ -343,8 +343,8 @@ bidag_itsearch
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_itsearch/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
+   * - Module folder
+     - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
 
 
@@ -445,8 +445,8 @@ bidag_order_mcmc
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_order_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
+   * - Module folder
+     - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
 
 
@@ -555,8 +555,8 @@ bidag_partition_mcmc
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_partition_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
+   * - Module folder
+     - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
 
 
@@ -647,8 +647,8 @@ bnlearn_fastiamb
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_fastiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
+   * - Module folder
+     - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
 
 
@@ -721,8 +721,8 @@ bnlearn_gs
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_gs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
+   * - Module folder
+     - `bnlearn_gs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
 
 
 
@@ -800,8 +800,8 @@ bnlearn_h2pc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_h2pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
+   * - Module folder
+     - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
 
 
@@ -884,8 +884,8 @@ bnlearn_hc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_hc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
+   * - Module folder
+     - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
 
 
@@ -968,8 +968,8 @@ bnlearn_hpc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_hpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
+   * - Module folder
+     - `bnlearn_hpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
 
 
 
@@ -1042,8 +1042,8 @@ bnlearn_iamb
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_iamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
+   * - Module folder
+     - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
 
 
@@ -1112,8 +1112,8 @@ bnlearn_iambfdr
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_iambfdr/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
+   * - Module folder
+     - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
 
 
@@ -1184,8 +1184,8 @@ bnlearn_interiamb
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_interiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
+   * - Module folder
+     - `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
 
 
 
@@ -1262,8 +1262,8 @@ bnlearn_mmhc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_mmhc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
+   * - Module folder
+     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
 
 
@@ -1348,8 +1348,8 @@ bnlearn_mmpc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_mmpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
+   * - Module folder
+     - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
 
 
@@ -1420,8 +1420,8 @@ bnlearn_pcstable
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_pcstable/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
+   * - Module folder
+     - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
 
 
@@ -1490,8 +1490,8 @@ bnlearn_rsmax2
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_rsmax2/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
+   * - Module folder
+     - `bnlearn_rsmax2 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
 
 
 
@@ -1578,8 +1578,8 @@ bnlearn_sihitonpc
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_sihitonpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
+   * - Module folder
+     - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
 
 
@@ -1654,8 +1654,8 @@ bnlearn_tabu
    * - Docker 
      - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_tabu/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
+   * - Module folder
+     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
 
 
@@ -1734,8 +1734,8 @@ causaldag_gsp
    * - Docker 
      - `bpimages/causaldag:0.1a163 <https://hub.docker.com/r/bpimages/causaldag/tags>`__
 
-   * - Module
-     - `causaldag_gsp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
+   * - Module folder
+     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
 
 
@@ -1796,8 +1796,8 @@ corr_thresh
    * - Docker 
      - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `corr_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
+   * - Module folder
+     - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
 
 
 
@@ -1848,8 +1848,8 @@ dualpc
    * - Docker 
      - `bpimages/dualpc:latest <https://hub.docker.com/r/bpimages/dualpc/tags>`__
 
-   * - Module
-     - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
+   * - Module folder
+     - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
 
 
@@ -1912,8 +1912,8 @@ gcastle_anm
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_anm/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
+   * - Module folder
+     - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
 
 
@@ -1963,8 +1963,8 @@ gcastle_corl
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_corl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
+   * - Module folder
+     - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
 
 
@@ -2034,8 +2034,8 @@ gcastle_direct_lingam
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_direct_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
+   * - Module folder
+     - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
 
 
@@ -2086,8 +2086,8 @@ gcastle_gae
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_gae/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
+   * - Module folder
+     - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
 
 
@@ -2155,8 +2155,8 @@ gcastle_golem
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_golem/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
+   * - Module folder
+     - `gcastle_golem <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
 
 
 
@@ -2215,8 +2215,8 @@ gcastle_grandag
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_grandag/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
+   * - Module folder
+     - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
 
 
@@ -2290,8 +2290,8 @@ gcastle_ica_lingam
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_ica_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
+   * - Module folder
+     - `gcastle_ica_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
 
 
 
@@ -2343,8 +2343,8 @@ gcastle_mcsl
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_mcsl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
+   * - Module folder
+     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 
@@ -2409,8 +2409,8 @@ gcastle_notears
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
+   * - Module folder
+     - `gcastle_notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
 
 
 
@@ -2471,8 +2471,8 @@ gcastle_notears_low_rank
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears_low_rank/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
+   * - Module folder
+     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 
@@ -2527,8 +2527,8 @@ gcastle_notears_nonlinear
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears_nonlinear/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
+   * - Module folder
+     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
 
 
@@ -2599,8 +2599,8 @@ gcastle_pc
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
+   * - Module folder
+     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 
@@ -2619,7 +2619,7 @@ A classic causal discovery algorithm based on conditional independence tests.
         "id": "gcastle_pc",
         "variant": "original",
         "alpha": 0.05,
-        "ci_test": "gauss",
+        "ci_test": "fisherz",
         "timeout": null
       }
     ]
@@ -2652,8 +2652,8 @@ gcastle_rl
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_rl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
+   * - Module folder
+     - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
 
 
@@ -2735,8 +2735,8 @@ gg99_singlepair
    * - Docker 
      - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
-   * - Module
-     - `gg99_singlepair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
+   * - Module folder
+     - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
 
 
 
@@ -2839,8 +2839,8 @@ gobnilp
    * - Docker 
      - `bpimages/gobnilp:4347c64 <https://hub.docker.com/r/bpimages/gobnilp/tags>`__
 
-   * - Module
-     - `gobnilp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
+   * - Module folder
+     - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
 
 
@@ -2933,8 +2933,8 @@ gt13_multipair
    * - Docker 
      - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
-   * - Module
-     - `gt13_multipair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
+   * - Module folder
+     - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
 
 
 
@@ -3027,8 +3027,8 @@ parallelDG
    * - Docker 
      - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
-   * - Module
-     - `parallelDG/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+   * - Module folder
+     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
 
 
@@ -3105,8 +3105,8 @@ pcalg_gies
    * - Docker 
      - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module
-     - `pcalg_gies/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
+   * - Module folder
+     - `pcalg_gies <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
 
 
 
@@ -3158,8 +3158,8 @@ pcalg_pc
    * - Docker 
      - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module
-     - `pcalg_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
+   * - Module folder
+     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
 
 
@@ -3245,8 +3245,8 @@ prec_thresh
    * - Docker 
      - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `prec_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
+   * - Module folder
+     - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
 
 
 
@@ -3297,8 +3297,8 @@ rblip_asobs
    * - Docker 
      - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
 
-   * - Module
-     - `rblip_asobs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
+   * - Module folder
+     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
 
 
@@ -3363,8 +3363,8 @@ sklearn_glasso
    * - Docker 
      - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `sklearn_glasso/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
+   * - Module folder
+     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
 
 
@@ -3420,8 +3420,8 @@ tetrad_fas
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fas/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
+   * - Module folder
+     - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
 
 
 
@@ -3472,8 +3472,8 @@ tetrad_fask
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fask/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
+   * - Module folder
+     - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
 
 
 
@@ -3532,8 +3532,8 @@ tetrad_fci
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
+   * - Module folder
+     - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
 
 
 
@@ -3590,8 +3590,8 @@ tetrad_fges
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fges/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
+   * - Module folder
+     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
 
 
@@ -3655,8 +3655,8 @@ tetrad_fofc
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fofc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
+   * - Module folder
+     - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
 
 
@@ -3710,8 +3710,8 @@ tetrad_ftfc
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_ftfc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
+   * - Module folder
+     - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
 
 
@@ -3761,8 +3761,8 @@ tetrad_gfci
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_gfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
+   * - Module folder
+     - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
 
 
 
@@ -3823,8 +3823,8 @@ tetrad_imgscont
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_imgscont/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
+   * - Module folder
+     - `tetrad_imgscont <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
 
 
 
@@ -3874,8 +3874,8 @@ tetrad_lingam
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
+   * - Module folder
+     - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
 
 
 
@@ -3930,8 +3930,8 @@ tetrad_pc-all
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_pc-all/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
+   * - Module folder
+     - `tetrad_pc-all <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
 
 
 
@@ -3986,8 +3986,8 @@ tetrad_rfci
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_rfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
+   * - Module folder
+     - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
 
 
 
@@ -4035,7 +4035,7 @@ trilearn_pgibbs
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
+     - 
    * - Paper
      - :footcite:t:`10.1214/19-EJS1585`
    * - Graph type
@@ -4043,8 +4043,8 @@ trilearn_pgibbs
    * - Docker 
      - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
-   * - Module
-     - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
+   * - Module folder
+     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 
 
 

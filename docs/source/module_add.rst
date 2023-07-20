@@ -39,6 +39,7 @@ Then you can use the config file `config/sandbox.json <https://github.com/felixl
     cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
     cp -r resources/module_templates/new_data workflow/rules/data/new_data
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
+    cp -r resources/module_templates/new_mcmcalg workflow/rules/structure_learning_algorithms/new_mcmcalg
     cp config/sandbox.json config/mysandbox.json    
 
 To test run

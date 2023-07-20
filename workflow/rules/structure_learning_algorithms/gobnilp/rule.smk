@@ -1,7 +1,3 @@
-"""
-    The shell commands should be put in a separate bash script.
-"""
-
 rule:
     name: module_name
     input:
