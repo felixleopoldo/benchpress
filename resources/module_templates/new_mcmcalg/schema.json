@@ -65,7 +65,7 @@
                 "n_iterations": 10000,
                 "mcmc_estimator": "threshold",
                 "mcmc_seed": [1, 2, 3],
-                "threshold": 0.5,
+                "threshold": [0.1, 0.3, 0.5, 0.8, 0.9],
                 "timeout": null
             }
         ]
