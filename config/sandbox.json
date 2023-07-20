@@ -22,16 +22,46 @@
                 "text": true,
                 "ids": [
                     "pc-gaussCItest",
-                    "testalg"
+                    "testalg",
+                    "mcmctest"
                 ]
             },
             "graph_true_plots": false,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [],
-            "mcmc_traj_plots": [],
-            "mcmc_heatmaps": [],
-            "mcmc_autocorr_plots": []
+            "mcmc_traj_plots": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "thinning": 10,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                }
+            ],
+            "mcmc_heatmaps": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "active": true
+                }
+            ],
+            "mcmc_autocorr_plots": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "thinning": 10,
+                    "lags": 50,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                }
+            ]
         }
     },
     "resources": {
@@ -101,6 +131,28 @@
                         0.8,
                         0.9
                     ],
+                    "timeout": null
+                }
+            ],
+            "new_mcmcalg": [
+                {
+                    "id": "mcmctest",
+                    "cutoff": 0.8,
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "threshold",
+                    "threshold": [
+                        0.1,
+                        0.3,
+                        0.5,
+                        0.8,
+                        0.9
+                    ],
+                    "mcmc_seed": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "n_iterations": 10000,
                     "timeout": null
                 }
             ],
