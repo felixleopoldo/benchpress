@@ -57,7 +57,7 @@ This alternative is preferred e.g. if you will add new modules or if you are wor
 
 .. note::
 
-    If you have an old version of Snakemake installed by Mamba, as suggested on Snakemakes homepage, you may update it by running
+    If `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ was installed with `Mamba <https://anaconda.org/conda-forge/mamba>`_ (as suggested on `Snakemakes' <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_ homepage) you may update it to the latest version by running
 
     .. prompt:: bash
 
@@ -67,7 +67,9 @@ This alternative is preferred e.g. if you will add new modules or if you are wor
 
     Some systems require explicit installation of *squashfs-tools*, which can be installed by conda as
 
-        $ conda install -c conda-forge squashfs-tools
+    .. prompt:: bash
+
+        conda install -c conda-forge squashfs-tools
 
 .. note::
 

@@ -8,7 +8,7 @@ if snakemake.wildcards["timeout"] != "None":
 else:
     cmd += "bash -c 'java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar "
 
-cmd += "--algorithm fofc "
+cmd += "--algorithm ftfc " #cmd += "--algorithm fofc "
 cmd += "--data-type continuous "
 cmd +="--dataset {dataset} "
 cmd += "--delimiter comma " 
