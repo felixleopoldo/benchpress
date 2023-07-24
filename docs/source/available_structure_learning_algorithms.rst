@@ -1197,8 +1197,6 @@ variable to be included in the Markov blankets are not considered in static orde
 and the forward-backward stages are combined into a single procedure, which has the effect of
 reducing the size of the blankets.
 
-.. rubric:: Some fields described 
-* ``plot_legend`` Legend to show in plotting 
 .. rubric:: Example
 
 
