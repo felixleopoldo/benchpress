@@ -22,7 +22,7 @@ copyright = '2023'
 author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.1'
+release = '2.0.0'
 
 
 # -- General configuration ---------------------------------------------------
