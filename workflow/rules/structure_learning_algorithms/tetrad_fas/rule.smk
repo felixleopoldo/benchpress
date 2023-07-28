@@ -10,4 +10,4 @@ rule:
     container:
         "docker://bpimages/causal-cmd:1.1.3"
     script:
-        "script.py"
+        "script.sh"

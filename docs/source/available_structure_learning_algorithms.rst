@@ -196,7 +196,7 @@ To add new modules, see :ref:`new_modules`.
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
    * - FAS
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fas_ 
    * - FASK
@@ -3414,7 +3414,7 @@ tetrad_fas
    * - Paper
      - 
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
      - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
@@ -3828,7 +3828,7 @@ tetrad_imgscont
 
 .. rubric:: Description
 
-From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES so allow for multiple datasets as input. The linear, Gaussian BIC scores for each data set are averaged at each step of the algorithm, producing a model for all data sets that assumes they have the same graphical structure across dataset.
+From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES so allow for multiple datasets as input (not supported here). The linear, Gaussian BIC scores for each data set are averaged at each step of the algorithm, producing a model for all data sets that assumes they have the same graphical structure across dataset.
 
 .. rubric:: Example
 
@@ -3951,6 +3951,7 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
       {
         "id": "pc-fisher-z",
         "test": "fisher-z-test",
+        "alpha": 0.01,
         "datatype": "continuous",
         "timeout": null
       }

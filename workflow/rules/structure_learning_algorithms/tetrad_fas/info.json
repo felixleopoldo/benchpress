@@ -16,7 +16,7 @@
         "adjmat"
     ],
     "graph_types": [
-        "DAG"
+        "UG"
     ],
     "language": "java"
 }
