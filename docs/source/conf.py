@@ -22,7 +22,8 @@ copyright = '2023'
 author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0.0'
+
+release = '2.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,7 +37,9 @@ extensions = [
     'recommonmark',
     'sphinx_copybutton',
     'sphinx-prompt',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'sphinx_last_updated_by_git',
+    'versionwarning.extension'
 ]
 
 paths = [Path("../../workflow/rules/structure_learning_algorithms"),

@@ -7,24 +7,23 @@ CMD="$CMD --json-graph"
 
 # Use data without range header for discrete data 
 if [ ${snakemake_wildcards[datatype]} = "discrete" ]; then
-    # Create temporary datafile without range/cardinality header
-    # for discrete data
     sed '2d' ${snakemake_input[data]} > ${snakemake_output[adjmat]}.no_range_header
     CMD="$CMD --dataset ${snakemake_output[adjmat]}.no_range_header"
 else
     CMD="$CMD --dataset ${snakemake_input[data]}"
 fi
 
-CMD="$CMD --algorithm fges"
-CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --structurePrior ${snakemake_wildcards[structurePrior]}"
+CMD="$CMD --algorithm fci"
 
-if [ ${snakemake_wildcards[score]} = "sem-bic" ]; then
-    CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
+CMD="$CMD --test ${snakemake_wildcards[test]}"
+
+if [ ${snakemake_wildcards[test]} = "fisher-z-test" ]; then
+    CMD="$CMD --alpha ${snakemake_wildcards[alpha]}"
 fi
 
-if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
-    CMD="$CMD --samplePrior ${snakemake_wildcards[samplePrior]}"
+# Shold support all tests
+if [ ${snakemake_wildcards[test]} = "chi-square-test" ]; then
+    CMD="$CMD --alpha ${snakemake_wildcards[alpha]}"
 fi
 
 # Run the command

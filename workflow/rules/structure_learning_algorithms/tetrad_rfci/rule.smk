@@ -8,4 +8,4 @@ rule tetrad_rfci:
     container:
         "docker://bpimages/causal-cmd:1.1.3"
     script:
-        "tetrad_rfci.py"
+        "script.sh"
