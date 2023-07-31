@@ -77,6 +77,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
+        if p.name.startswith("."):
+            continue
         #print(p.name)
         j = p/"info.json"
         if p.name == "docs.rst" or p.name == ".DS_Store":
@@ -126,8 +128,6 @@ for p in sorted(algspath.iterdir()):
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":
         continue
-
-
         
     d = p/"docs.rst"
     j = p/"info.json"
