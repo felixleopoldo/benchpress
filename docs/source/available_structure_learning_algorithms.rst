@@ -99,6 +99,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
+   * - GRaSP
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+     - causallearn_grasp_ 
    * - Corrmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
@@ -1762,6 +1766,57 @@ causaldag_gsp
           0.001
         ],
         "invert": true,
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
+.. _causallearn_grasp: 
+
+causallearn_grasp 
+---------------------
+
+.. rubric:: GRaSP
+
+.. list-table:: 
+
+   * - Package
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+   * - Version
+     - v0.1.3.3
+   * - Language
+     - `Python <https://www.python.org/>`__
+   * - Docs
+     - `here <https://causal-learn.readthedocs.io/en/latest/search_methods_index/Permutation-based%20causal%20discovery%20methods/GRaSP.html#id10>`__
+   * - Paper
+     - :footcite:t:`lam2022greedy`
+   * - Graph type
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Docker 
+     - `bpimages/causal-learn:0.1.3.3 <https://hub.docker.com/r/bpimages/causal-learn/tags>`__
+
+   * - Module folder
+     - `causallearn_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causallearn_grasp>`__
+
+
+
+.. rubric:: Description
+
+Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "grasp",
+        "maxP": 2,
         "timeout": null
       }
     ]
