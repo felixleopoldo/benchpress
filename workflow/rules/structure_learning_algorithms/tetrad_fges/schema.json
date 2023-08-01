@@ -29,7 +29,7 @@
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
-            "structurePrior": {
+            "semBicStructurePrior": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
             }
         },
@@ -40,7 +40,7 @@
             "score",
             "datatype",
             "samplePrior",
-            "structurePrior",
+            "semBicStructurePrior",
             "penaltyDiscount",
             "timeout"
         ],

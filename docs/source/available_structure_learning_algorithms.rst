@@ -3641,7 +3641,7 @@ tetrad_fges
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
