@@ -38,14 +38,15 @@ fi
 
 # Process the output
 if [ -f ${snakemake_output[adjmat]}_graph.json ]; then 
-    echo "some output"
-    cat ${snakemake_output[adjmat]}_graph.json
+        
     Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph ${snakemake_output[adjmat]}_graph.json --filename ${snakemake_output[adjmat]}  
     rm -f ${snakemake_output[adjmat]}.no_range_header 
     rm ${snakemake_output[adjmat]}_graph.json 
-    rm ${snakemake_output[adjmat]}.txt; 
+    rm ${snakemake_output[adjmat]}_out.txt; # prefix is not the same in the new versin?
+    
+    cat ${snakemake_output[adjmat]}
 else 
-    echo empty files
+    echo Writing empty files in FGES
     # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}
     echo None > ${snakemake_output[time]}

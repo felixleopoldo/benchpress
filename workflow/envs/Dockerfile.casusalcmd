@@ -1,0 +1,10 @@
+FROM r-base:4.1.0
+#FROM r-base:3.6.3
+
+RUN apt update -y
+RUN apt install -y default-jre
+WORKDIR /tetrad
+RUN wget https://s01.oss.sonatype.org/content/repositories/releases/io/github/cmu-phil/causal-cmd/1.9.0/causal-cmd-1.9.0-jar-with-dependencies.jar
+RUN apt install time
+RUN R -e "install.packages(\"argparser\")" --no-save
+RUN R -e "install.packages(\"rjson\")" --no-save
