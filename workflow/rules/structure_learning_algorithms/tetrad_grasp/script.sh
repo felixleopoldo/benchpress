@@ -17,6 +17,7 @@ fi
 
 CMD="$CMD --algorithm grasp"
 CMD="$CMD --default"
+CMD="$CMD --test fisher-z-test"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
 
