@@ -25,7 +25,10 @@ fges_result_to_matrix <- function(graph) {
     node2_ind <- match(node2, nodes)
 
     #isdirected <- e$endpoint2$ordinal && TRUE
-    isdirected <- e$node2$nodeType$ordinal && TRUE
+    #isdirected <- e$endpoint2$ordinal && TRUE
+    #isdirected <- e$node2$nodeType$ordinal && TRUE
+
+    isdirected <- (e$endpoint1 == "TAIL") && (e$endpoint2 == "ARROW")
 
     if (isdirected) {
       m[node1_ind, node2_ind] <- 1
