@@ -16,6 +16,7 @@ else
 fi
 
 CMD="$CMD --algorithm grasp"
+CMD="$CMD --default"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
 
