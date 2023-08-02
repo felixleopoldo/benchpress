@@ -3667,10 +3667,10 @@ The algorithms requires a decomposable score—that is, a score that for the ent
       {
         "id": "fges-sem-bic",
         "faithfulnessAssumed": true,
-        "score": "sem-bic",
+        "score": "sem-bic-score",
         "datatype": "continuous",
         "samplePrior": 1,
-        "structurePrior": 1,
+        "semBicStructurePrior": 1,
         "penaltyDiscount": [
           0.8,
           1,
