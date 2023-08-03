@@ -1,35 +1,31 @@
 {
-    "title": "tetrad_imgsont",
-    "description": "images continuous objects",
+    "title": "Some title",
+    "description": "List of objects",
     "type": "array",
     "items": {
-        "title": "tetrad_imgscont item",
-        "description": "imgscont instance",
+        "title": "Some item",
+        "description": "Some description.",
         "type": "object",
         "properties": {
             "id": {
-                "type": "string",
-                "description": "Unique identifier"
-            },
-            "datatype": {
+                "description": "Algorithm identifier",
                 "type": "string"
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             }
         },
-        "additionalProperties": false,
         "required": [
             "id",
-            "datatype",
             "timeout"
         ],
         "examples": [
             {
-                "id": "imgscont",
-                "datatype": "continuous",
+                "id": "grasp",
+                "maxP": 2,
                 "timeout": null
             }
         ]
-    }
+    },
+    "uniqueItems": true
 }

@@ -99,6 +99,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
+   * - GRaSP
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+     - causallearn_grasp_ 
    * - Corrmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
@@ -195,10 +199,6 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
-   * - FAS
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fas_ 
    * - FASK
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -223,18 +223,18 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
-   * - IMGSCONT
+   * - GRASP
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - tetrad_grasp_ 
+   * - ICA-LINGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_imgscont_ 
-   * - LINGAM
+     - tetrad_ica-lingam_ 
+   * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_lingam_ 
-   * - PC-ALL
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_pc-all_ 
+     - tetrad_pc_ 
    * - RFCI
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -1762,6 +1762,57 @@ causaldag_gsp
           0.001
         ],
         "invert": true,
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
+.. _causallearn_grasp: 
+
+causallearn_grasp 
+---------------------
+
+.. rubric:: GRaSP
+
+.. list-table:: 
+
+   * - Package
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+   * - Version
+     - v0.1.3.3
+   * - Language
+     - `Python <https://www.python.org/>`__
+   * - Docs
+     - `here <https://causal-learn.readthedocs.io/en/latest/search_methods_index/Permutation-based%20causal%20discovery%20methods/GRaSP.html#id10>`__
+   * - Paper
+     - :footcite:t:`lam2022greedy`
+   * - Graph type
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Docker 
+     - `bpimages/causal-learn:0.1.3.3 <https://hub.docker.com/r/bpimages/causal-learn/tags>`__
+
+   * - Module folder
+     - `causallearn_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causallearn_grasp>`__
+
+
+
+.. rubric:: Description
+
+Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "grasp",
+        "maxP": 2,
         "timeout": null
       }
     ]
@@ -3394,58 +3445,6 @@ sklearn_glasso
 
 
 
-.. _tetrad_fas: 
-
-tetrad_fas 
---------------
-
-.. rubric:: FAS
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.1.3
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - 
-   * - Graph type
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: This is just the adjacency search of the PC algorithm, included here for times when just the adjacency search is needed, as when one is subsequently just going to orient variables pairwise.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "fas-fisher-z",
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_fask: 
 
 tetrad_fask 
@@ -3458,7 +3457,7 @@ tetrad_fask
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3468,7 +3467,7 @@ tetrad_fask
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
@@ -3497,6 +3496,8 @@ See  :footcite:t:`sanchez2018causal`.
       {
         "id": "fask-fisher-z",
         "test": "fisher-z-test",
+        "score": "sem-bic-score",
+        "semBicStructurePrior": 1,
         "datatype": "continuous",
         "timeout": null
       }
@@ -3518,7 +3519,7 @@ tetrad_fci
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3528,7 +3529,7 @@ tetrad_fci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
@@ -3576,7 +3577,7 @@ tetrad_fges
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3586,7 +3587,7 @@ tetrad_fges
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
@@ -3612,10 +3613,10 @@ The algorithms requires a decomposable score—that is, a score that for the ent
       {
         "id": "fges-sem-bic",
         "faithfulnessAssumed": true,
-        "score": "sem-bic",
+        "score": "sem-bic-score",
         "datatype": "continuous",
         "samplePrior": 1,
-        "structurePrior": 1,
+        "semBicStructurePrior": 1,
         "penaltyDiscount": [
           0.8,
           1,
@@ -3641,7 +3642,7 @@ tetrad_fofc
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3651,7 +3652,7 @@ tetrad_fofc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
@@ -3696,7 +3697,7 @@ tetrad_ftfc
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3706,7 +3707,7 @@ tetrad_ftfc
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
@@ -3747,7 +3748,7 @@ tetrad_gfci
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3757,7 +3758,7 @@ tetrad_gfci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
@@ -3779,7 +3780,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
       {
         "id": "gfci-sem-bic-fisher-z",
         "alpha": 0.05,
-        "score": "sem-bic",
+        "score": "sem-bic-score",
         "test": "fisher-z-test",
         "datatype": "continuous",
         "penaltyDiscount": [
@@ -3788,7 +3789,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
           1.5
         ],
         "samplePrior": null,
-        "structurePrior": 1,
+        "semBicStructurePrior": 1,
         "timeout": null
       }
     ]
@@ -3797,38 +3798,36 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
 
 
 
-.. _tetrad_imgscont: 
+.. _tetrad_grasp: 
 
-tetrad_imgscont 
--------------------
+tetrad_grasp 
+----------------
 
-.. rubric:: IMGSCONT
+.. rubric:: GRASP
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`meek1997graphical`, :footcite:t:`chickering2002optimal`, :footcite:t:`ramsey2017million`
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
-     - `tetrad_imgscont <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
+     - `tetrad_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_grasp>`__
 
 
 
 .. rubric:: Description
-
-From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES so allow for multiple datasets as input (not supported here). The linear, Gaussian BIC scores for each data set are averaged at each step of the algorithm, producing a model for all data sets that assumes they have the same graphical structure across dataset.
 
 .. rubric:: Example
 
@@ -3838,8 +3837,17 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
     [
       {
-        "id": "imgscont",
+        "id": "fges-sem-bic",
+        "faithfulnessAssumed": true,
+        "score": "sem-bic-score",
         "datatype": "continuous",
+        "samplePrior": 1,
+        "semBicStructurePrior": 1,
+        "penaltyDiscount": [
+          0.8,
+          1,
+          1.5
+        ],
         "timeout": null
       }
     ]
@@ -3848,19 +3856,19 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
 
 
-.. _tetrad_lingam: 
+.. _tetrad_ica-lingam: 
 
-tetrad_lingam 
------------------
+tetrad_ica-lingam 
+---------------------
 
-.. rubric:: LINGAM
+.. rubric:: ICA-LINGAM
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3870,10 +3878,10 @@ tetrad_lingam
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
-     - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
+     - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
 
 
 
@@ -3904,19 +3912,19 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
 
 
 
-.. _tetrad_pc-all: 
+.. _tetrad_pc: 
 
-tetrad_pc-all 
------------------
+tetrad_pc 
+-------------
 
-.. rubric:: PC-ALL
+.. rubric:: PC
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3926,10 +3934,10 @@ tetrad_pc-all
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
-     - `tetrad_pc-all <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
+     - `tetrad_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc>`__
 
 
 
@@ -3973,7 +3981,7 @@ tetrad_rfci
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3983,7 +3991,7 @@ tetrad_rfci
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/causal-cmd:1.1.3 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
      - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
