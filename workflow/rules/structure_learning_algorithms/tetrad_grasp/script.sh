@@ -47,7 +47,7 @@ if [ -f ${snakemake_output[adjmat]}_graph.json ]; then
     rm ${snakemake_output[adjmat]}_out.txt; # prefix is not the same in the new versin
     
 else 
-    echo Writing empty files in FGES
+    echo Writing empty files in GRaSP
     # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}
     echo None > ${snakemake_output[time]}
