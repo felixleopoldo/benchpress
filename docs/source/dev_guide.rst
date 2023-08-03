@@ -40,19 +40,19 @@ Contributing
 To add more algorithms, datasets or other functionalities fork the repository https://github.com/felixleopoldo/benchpress.
 For problems, bug reporting, or questions please raise an issue or start a discussion there.
 
-
 Citing
-#################
+########
 
-BibTeX entry:
+BibTeX entry for citing Benchpress:
 
-.. code-block:: bibtex
+.. code:: bibtex
 
-    @misc{rios2021benchpress,
+  @misc{rios2021benchpress,
       title={Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models}, 
       author={Felix L. Rios and Giusi Moffa and Jack Kuipers},
       year={2021},
       eprint={2107.03863},
       archivePrefix={arXiv},
       primaryClass={stat.ML}
-    }
+  }
+

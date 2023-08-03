@@ -21,6 +21,12 @@
                     "kci-test"
                 ]
             },
+            "score": {
+                "type": "string"
+            },
+            "semBicStructurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
@@ -31,6 +37,8 @@
         "required": [
             "id",
             "test",
+            "score",
+            "semBicStructurePrior",
             "datatype",
             "timeout"
         ],
@@ -38,6 +46,8 @@
             {
                 "id": "fask-fisher-z",
                 "test": "fisher-z-test",
+                "score": "sem-bic-score",
+                "semBicStructurePrior": 1,
                 "datatype": "continuous",
                 "timeout": null
             }

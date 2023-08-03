@@ -1,6 +1,6 @@
 
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
 CMD="$CMD --algorithm fas"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
@@ -30,7 +30,7 @@ if [ -f ${snakemake_output[adjmat]}_graph.json ]; then
     Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph ${snakemake_output[adjmat]}_graph.json --filename ${snakemake_output[adjmat]}  
     rm -f ${snakemake_output[adjmat]}.no_range_header 
     rm ${snakemake_output[adjmat]}_graph.json 
-    rm ${snakemake_output[adjmat]}.txt; 
+    rm ${snakemake_output[adjmat]}_out.txt; 
 else 
     # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}

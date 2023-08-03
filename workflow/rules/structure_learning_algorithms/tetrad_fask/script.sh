@@ -1,5 +1,5 @@
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.1.3-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --dataset ${snakemake_input[data]}"
 CMD="$CMD --delimiter comma"
@@ -8,6 +8,12 @@ CMD="$CMD --json-graph"
 CMD="$CMD --algorithm fask"
 CMD="$CMD --data-type continuous"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
+CMD="$CMD --score ${snakemake_wildcards[score]}"
+
+CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
+if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
+    CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
+fi
 
 # Run the command
 if [ ${snakemake_wildcards[timeout]} != "None" ]; then 
@@ -23,7 +29,7 @@ if [ -f ${snakemake_output[adjmat]}_graph.json ]; then
     Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph ${snakemake_output[adjmat]}_graph.json --filename ${snakemake_output[adjmat]}  
     rm -f ${snakemake_output[adjmat]}.no_range_header 
     rm ${snakemake_output[adjmat]}_graph.json 
-    rm ${snakemake_output[adjmat]}.txt; 
+    rm ${snakemake_output[adjmat]}_out.txt; 
 else 
     # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}

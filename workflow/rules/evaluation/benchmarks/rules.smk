@@ -52,17 +52,18 @@ rule benchmarks:
 for alg in config["resources"]["structure_learning_algorithms"]:
     if alg in pattern_strings:
         if alg not in mcmc_modules:
+            # These dont get triggered when updating alg script for some reason when the benchmarks module has run
             rule: 
                 name: 
                     alg+"_summary"
                 input:
                     dataset=summarise_alg_input_data_path(),
                     adjmat_true=summarise_alg_input_adjmat_true_path(),
-                    adjmat_est=summarise_alg_input_adjmat_est_path(alg),
+                    adjmat_est=summarise_alg_input_adjmat_est_path(alg), # BUG: this should trigger new run when altering alg script
                     time=summarise_alg_input_time_path(alg),
                     ntests=summarise_alg_input_ntests_path(alg),
                 output:
-                    res=summarise_alg_output_res_path(alg)
+                    res=summarise_alg_output_res_path(alg) # this is containing the SHD, TP,.. etc for each run.
                 
                 params: 
                     alg=alg,
@@ -96,7 +97,7 @@ for alg in config["resources"]["structure_learning_algorithms"]:
             input:
                 "workflow/rules/evaluation/benchmarks/run_summarise.R",
                 conf=configfilename,
-                res=join_string_sampled_model(alg),
+                res=join_string_sampled_model(alg) # this is not triggering new run of alg script when altered, Where is it even produced? Should end with results.
             output:
                 join_summaries_output(alg),
             script:
