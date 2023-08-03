@@ -8,6 +8,12 @@ CMD="$CMD --json-graph"
 CMD="$CMD --algorithm fask"
 CMD="$CMD --data-type continuous"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
+CMD="$CMD --score ${snakemake_wildcards[score]}"
+
+CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
+if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
+    CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
+fi
 
 # Run the command
 if [ ${snakemake_wildcards[timeout]} != "None" ]; then 

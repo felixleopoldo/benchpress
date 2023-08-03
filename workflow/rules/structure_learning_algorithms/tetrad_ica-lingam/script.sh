@@ -6,7 +6,7 @@ CMD="$CMD --delimiter comma"
 CMD="$CMD --json-graph"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 
-CMD="$CMD --algorithm lingam"
+CMD="$CMD --algorithm ica-lingam"
 CMD="$CMD --dataset ${snakemake_input[data]}"
 
 # Run the command

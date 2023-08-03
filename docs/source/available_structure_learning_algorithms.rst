@@ -199,10 +199,6 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
-   * - FAS
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fas_ 
    * - FASK
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -231,10 +227,10 @@ To add new modules, see :ref:`new_modules`.
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_grasp_ 
-   * - LINGAM
+   * - ICA-LINGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_lingam_ 
+     - tetrad_ica-lingam_ 
    * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -3449,58 +3445,6 @@ sklearn_glasso
 
 
 
-.. _tetrad_fas: 
-
-tetrad_fas 
---------------
-
-.. rubric:: FAS
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.9.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - 
-   * - Graph type
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_fas <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: This is just the adjacency search of the PC algorithm, included here for times when just the adjacency search is needed, as when one is subsequently just going to orient variables pairwise.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "fas-fisher-z",
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_fask: 
 
 tetrad_fask 
@@ -3552,6 +3496,8 @@ See  :footcite:t:`sanchez2018causal`.
       {
         "id": "fask-fisher-z",
         "test": "fisher-z-test",
+        "score": "sem-bic-score",
+        "semBicStructurePrior": 1,
         "datatype": "continuous",
         "timeout": null
       }
@@ -3910,12 +3856,12 @@ tetrad_grasp
 
 
 
-.. _tetrad_lingam: 
+.. _tetrad_ica-lingam: 
 
-tetrad_lingam 
------------------
+tetrad_ica-lingam 
+---------------------
 
-.. rubric:: LINGAM
+.. rubric:: ICA-LINGAM
 
 .. list-table:: 
 
@@ -3935,7 +3881,7 @@ tetrad_lingam
      - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
    * - Module folder
-     - `tetrad_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
+     - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
 
 
 

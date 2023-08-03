@@ -7,7 +7,7 @@
                 "data_id": "standardized",
                 "seed_range": [
                     1,
-                    1
+                    3
                 ]
             }
         ],
@@ -21,14 +21,14 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "fas-fisher-z",
+                    "grasp-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
                     "fci-fisher-z",
                     "fofc",
                     "ftfc",
                     "gfci-sem-bic-fisher-z",
-                    "lingam",
+                    "ica-lingam",
                     "pc-fisher-z",
                     "rfci-fisher-z"
                 ]
@@ -85,19 +85,36 @@
             ]
         },
         "structure_learning_algorithms": {
-            "tetrad_fas": [
-                {
-                    "id": "fas-fisher-z",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ],
             "tetrad_fask": [
                 {
                     "id": "fask-fisher-z",
                     "test": "fisher-z-test",
                     "datatype": "continuous",
+                    "score": "sem-bic-score",
+                    "semBicStructurePrior": 1,
+                    "penaltyDiscount": [
+                        0.75,
+                        0.8,
+                        1,
+                        1.5
+                    ],
+                    "timeout": null
+                }
+            ],
+            "tetrad_grasp": [
+                {
+                    "id": "grasp-sem-bic",
+                    "faithfulnessAssumed": true,
+                    "score": "sem-bic-score",
+                    "datatype": "continuous",
+                    "samplePrior": 0,
+                    "semBicStructurePrior": 0,
+                    "penaltyDiscount": [
+                        0.75,
+                        0.8,
+                        1,
+                        1.5
+                    ],
                     "timeout": null
                 }
             ],
@@ -162,9 +179,9 @@
                     "timeout": null
                 }
             ],  
-            "tetrad_lingam": [
+            "tetrad_ica-lingam": [
                 {
-                    "id": "lingam",
+                    "id": "ica-lingam",
                     "datatype": "continuous",
                     "timeout": null
                 }
