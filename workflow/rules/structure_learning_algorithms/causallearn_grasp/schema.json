@@ -11,12 +11,16 @@
                 "description": "Algorithm identifier",
                 "type": "string"
             },
+            "maxP": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             }
         },
         "required": [
             "id",
+            "maxP",
             "timeout"
         ],
         "examples": [

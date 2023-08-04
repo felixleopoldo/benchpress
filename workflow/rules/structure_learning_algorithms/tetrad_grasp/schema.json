@@ -1,10 +1,10 @@
 {
-    "title": "tetrad_fges",
-    "description": "fGES objects",
+    "title": "tetrad_grasp",
+    "description": "GRaSP objects",
     "type": "array",
     "items": {
-        "title": "tetrad_fges item",
-        "description": "fGES instance",
+        "title": "tetrad_grasp item",
+        "description": "GRaSP instance",
         "type": "object",
         "properties": {
             "id": {
@@ -46,7 +46,7 @@
         ],
         "examples": [
             {
-                "id": "fges-sem-bic",
+                "id": "causal-cmd-grasp",
                 "faithfulnessAssumed": true,
                 "score": "sem-bic-score",
                 "datatype": "continuous",

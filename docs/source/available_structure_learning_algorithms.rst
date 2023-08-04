@@ -223,7 +223,7 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
-   * - GRASP
+   * - GRaSP
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_grasp_ 
@@ -3803,7 +3803,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
 tetrad_grasp 
 ----------------
 
-.. rubric:: GRASP
+.. rubric:: GRaSP
 
 .. list-table:: 
 
@@ -3816,7 +3816,7 @@ tetrad_grasp
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - :footcite:t:`meek1997graphical`, :footcite:t:`chickering2002optimal`, :footcite:t:`ramsey2017million`
+     - :footcite:t:`lam2022greedy`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
@@ -3829,6 +3829,8 @@ tetrad_grasp
 
 .. rubric:: Description
 
+Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
 .. rubric:: Example
 
 
@@ -3837,7 +3839,7 @@ tetrad_grasp
 
     [
       {
-        "id": "fges-sem-bic",
+        "id": "causal-cmd-grasp",
         "faithfulnessAssumed": true,
         "score": "sem-bic-score",
         "datatype": "continuous",
