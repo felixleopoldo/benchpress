@@ -102,7 +102,6 @@
             "tetrad_grasp": [
                 {
                     "id": "grasp-sem-bic",
-                    "faithfulnessAssumed": true,
                     "score": "sem-bic-score",
                     "datatype": "continuous",
                     "samplePrior": 0,

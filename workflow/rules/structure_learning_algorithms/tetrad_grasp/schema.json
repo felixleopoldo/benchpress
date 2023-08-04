@@ -1,18 +1,15 @@
 {
-    "title": "tetrad_fges",
-    "description": "fGES objects",
+    "title": "tetrad_grasp",
+    "description": "GRaSP objects",
     "type": "array",
     "items": {
-        "title": "tetrad_fges item",
-        "description": "fGES instance",
+        "title": "tetrad_grasp item",
+        "description": "GRaSP instance",
         "type": "object",
         "properties": {
             "id": {
                 "type": "string",
                 "description": "Unique identifier"
-            },
-            "faithfulnessAssumed": {
-                "type": "boolean"
             },
             "score": {
                 "type": "string"
@@ -36,7 +33,6 @@
         "additionalProperties": false,
         "required": [
             "id",
-            "faithfulnessAssumed",
             "score",
             "datatype",
             "samplePrior",
@@ -46,8 +42,7 @@
         ],
         "examples": [
             {
-                "id": "fges-sem-bic",
-                "faithfulnessAssumed": true,
+                "id": "causal-cmd-grasp",
                 "score": "sem-bic-score",
                 "datatype": "continuous",
                 "samplePrior": 1,

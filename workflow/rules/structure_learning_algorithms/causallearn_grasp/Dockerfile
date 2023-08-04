@@ -2,6 +2,3 @@
 FROM python:3.11.4-bullseye
 
 RUN pip install causal-learn==0.1.3.3
-
-
-#RUN pip install contextlib2
