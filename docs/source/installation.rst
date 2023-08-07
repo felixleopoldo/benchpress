@@ -1,61 +1,77 @@
-Installation and usage
-#######################
+.. role:: bash(code)
+   :language: bash
 
 
-See also `this <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_ `Medium <https://medium.com/>`_ story on how to get started.
+Overview
+#########
+
+.. Benchpress is a Snakemake workflow based on a collection of modules which stem from various different packages, libraries, and open-source software.
+
+Benchpress is a `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ workflow based on a collection of packages, libraries, and open-source software related to structure learning for graphical models.
+It is designed in a modular way, separating graph (:ref:`graph`), parameterization (:ref:`parameters`), and data sampling (:ref:`data`), from structure learning (:ref:`structure_learning_algorithms`) and performance evaluation (:ref:`evaluation`), so that it *"..can be seamlessly scaled to server, cluster, grid and cloud environments, without the need to modify the workflow definition."*, following the `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ principles.
+In order to maintain reproducibility and to save the user from manually installing each of the used software, Benchpress relies on `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_'s support for `Apptainer <https://apptainer.org/>`_ and runs by default each of the modules in separate containers.
 
 Installation
-************
+#######################
 
-Linux
-******
+.. The first alternative is to use the official `Snakemake Docker image <https://hub.docker.com/r/snakemake/snakemake/tags>`_, where `Apptainer <https://apptainer.org/>`_ is installed, and run Benchpress through an interactive `Docker <https://www.docker.com/>`_ container.
+.. The second alternative is to install `Apptainer <https://apptainer.org/>`_ natively on a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system.
 
-1. Download Benchpress
+.. For either of the alternatives, 
 
-    .. code-block:: bash
+The first step is to install `git <https://git-scm.com/downloads>`_ and to clone the Benchpress repository to a directory of choice (*path/to/benchpress*)
 
-        $ git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
+.. Ones `Apptainer <https://apptainer.org/>`_ and Snakemake is in place, there is no further installation of the workflow as such.
 
-2. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_
-3. Install `Snakemake >= 6.15 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_
-4. Install `Apptainer (former Singularity) <https://apptainer.org/>`_  following the `installation instructions <https://apptainer.org/docs/admin/main/installation.html#installation-on-linux>`_
+
+.. prompt:: bash
+
+    git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress
+
+To keep you up-to-date with the latest updates you simply do the *git pull* command in the benchpress directory.
+
+.. Note that, `git <https://git-scm.com/downloads>`_ is not a requirement but it is highly recommended as it will make it easier to keep you updated with the latest updates using the command *git pull* and to add new modules.
+
+As soon as `Apptainer <https://apptainer.org/>`_ and `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ are available, no further installation is required and you are ready to run Benchpress.
+Here we describe two ways to get these in place. 
+
+..  on your server or local machine.
+
+Docker (Linux/macOS/Win x86-64)
+--------------------------------
+
+For this alternative, you only need to install `Docker <https://www.docker.com/>`_, following the instructions for your specific system.
+This is usually the easiest way to get started and it works for any platform supporting `Docker <https://www.docker.com/>`_.
+You may configure the resources (memory, cores, disk,... ) to be used through the `Docker <https://www.docker.com/>`_ interface.
+
+.. _linuxx:
+
+Without Docker (Linux x86-64)
+-----------------------------
+
+This alternative is preferred e.g. if you will add new modules or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
+
+1. Install `Anaconda <https://www.anaconda.com/>`_ (or miniconda) from `here <https://docs.conda.io/en/main/miniconda.html>`_.
+2. Install `Snakemake >= 7.30.1 <https://snakemake.readthedocs.io/en/stable/>`_ following the `installation instructions <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_.
+3. Install `Apptainer (former Singularity) <https://apptainer.org/>`_  following the `installation instructions <https://apptainer.org/docs/admin/main/installation.html#install-from-pre-built-packages>`_.
+
+.. note::
+
+    If `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ was installed with `Mamba <https://anaconda.org/conda-forge/mamba>`_ (as suggested on `Snakemakes' <https://snakemake.readthedocs.io/en/stable/getting_started/installation.html>`_ homepage) you may update it to the latest version by running
+
+    .. prompt:: bash
+
+        mamba update snakemake
 
 .. note:: 
 
-    Some systems require explicit installation of *squash-tools*. 
-    This can be installed by conda as
+    Some systems require explicit installation of *squashfs-tools*, which can be installed by conda as
 
-        $ conda install -c conda-forge squash-tools
+    .. prompt:: bash
 
+        conda install -c conda-forge squashfs-tools
 
-macOS/Windows
-***************
+.. note::
 
-Benchpress cannot run directly on macOS/Windows as it requires Apptainer which is only supported by Linux systems. However, Linux can be installed (and the requirements above) on a virtual machine via e.g. VirtualBox.
-
-1. Download Benchpress 
-
-    .. code-block:: bash
-
-        $ git clone https://github.com/felixleopoldo/benchpress.git path/to/benchpress  
-
-2. Install Ubuntu on `VirtualBox <https://www.virtualbox.org/>`_ following `these instructions <https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview>`_. Create a dynamic hard drive with about 40 GB of space. 
-3. Share *path/to/benchpress* on macOS/Windows folder to the virtual machine at *path/to/sharedfolder* using `this guide <https://carleton.ca/scs/tech-support/troubleshooting-guides/creating-a-shared-folder-in-virtualbox/>`_ and change the permission using `this <https://dev.to/rahedmir/virtualbox-cannot-access-shared-folder-items-permission-denied-fixed-59mi>`_ guide 
-4. Do steps 2-4 for Linux on the virtual Ubuntu machine.
-
-Usage
-**********
-
-To run the config file `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ type
-
-.. code-block:: bash
-
-    $ conda activate snakemake
-    (snakemake) $ cd path/to/benchpress
-    (snakemake) $ snakemake --cores all --use-singularity --configfile config/config.json
-
-
-If you are using VirtualBox, this command should run in the shared benchpress folder *path/to/sharedfolder* instead of *path/to/benchpress*. 
-
-The output files are stored in *path/to/benchpress/results/output*.
-
+    For cloud or cluster execution however, software such as `Kubernetes <https://kubernetes.io/>`_ or `Slurm <https://slurm.schedmd.com/documentation.html>`_ may also be required.
+    See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/>`_  for further information.

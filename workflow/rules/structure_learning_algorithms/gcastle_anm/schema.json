@@ -1,0 +1,33 @@
+{
+    "title": "gcastle_notears_low_rank",
+    "description": "List of gcastle_notears_low_rank objects",
+    "type": "array",
+    "items": {
+        "title": "gcastle_notears_low_rank item",
+        "description": "gcastle_notears_low_rank object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_anm",
+                "alpha": 0.05,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

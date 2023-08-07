@@ -1,17 +1,11 @@
-# Plots graph trajectory
+# This file processes a graph trajectory using the parameters for an MCMC method. 
+# That could be e.g. thinning or removing burn-in samples.
 
 import os
-import sys
-import seaborn as sns
-from pandas.plotting import autocorrelation_plot
-import matplotlib.pyplot as plt
+import json
 import pandas as pd
 import numpy as np
 import networkx as nx
-import matplotlib
-matplotlib.use('Agg')
-
-sns.set_style("whitegrid")
 
 
 def edges_str_to_list(str, edgesymb="-"):
@@ -24,12 +18,15 @@ def edges_str_to_list(str, edgesymb="-"):
 # Treating the case when empty files are created. Such files
 # are created if the algorithm was timed out.
 if os.stat(snakemake.input["traj"]).st_size== 0:
-    open(snakemake.output["plot"],'a').close()
+    open(snakemake.output["traj"],'a').close()
 else:
     df = pd.read_csv(snakemake.input["traj"], sep=",")
 
+    # Size (#edges) trajectory 
     if snakemake.wildcards["functional"] == "size":
 
+        # Checking if there are diderced edges. 
+        # Otherwise they are undirected.
         edges = edges_str_to_list(df["added"][0], edgesymb="->")
 
         if len(edges) != 0:
@@ -50,20 +47,21 @@ else:
 
         df["size"] = size
         T = df["index"].iloc[-1]  # approximate length
-
-        newindex = pd.Series(range(T))
+        newindex = pd.Series(range(int(T)))
         # removes the two first rows.
         df2 = df[["index", "size"]][2:].set_index("index")
 
         df2 = df2.reindex(newindex).reset_index().reindex(
             columns=df2.columns).fillna(method="ffill")
-
+        
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
         if snakemake.wildcards["thinning"] != "None":
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):][::int(
+            df_noburnin = df2[burnin:][::int(
                 snakemake.wildcards["thinning"])]
         else:
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
+            df_noburnin = df2[burnin:]
 
+    # Score trajectory
     elif snakemake.wildcards["functional"] == "score":
         T = df["index"].iloc[-1]  # approximate length
 
@@ -73,21 +71,49 @@ else:
         df2 = df[["index", "score"]][2:].set_index("index")
         df2 = df2.reindex(newindex).reset_index().reindex(
             columns=df2.columns).fillna(method="ffill")
-
+        burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
         if snakemake.wildcards["thinning"] != "None":
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):][::int(
+            df_noburnin = df2[burnin:][::int(
                 snakemake.wildcards["thinning"])]
         else:
-            df_noburnin = df2[int(snakemake.wildcards["burn_in"]):]
+            df_noburnin = df2[burnin:]
+            
+    df_noburnin.rename(columns={snakemake.wildcards["functional"]:"plotvalue"}, inplace=True)
 
-    # Get id
-    # Get seed number
+    # Opening conf file
+    # This should be moves to the plotting
+    f = open(snakemake.params["conf"])
+    conf = json.load(f)
+    # Get the algorithm object
+    algs = conf["resources"]["structure_learning_algorithms"]
+    alg = snakemake.params["alg"]
+    algobjid = snakemake.wildcards["id"]
+    alg_item = None
+    for algob in algs[alg]:
+        if algob["id"] == algobjid: 
+            alg_item = algob
+
+    # Get the varying parameter
+    varying_param = "id"
+    varying_param_val = alg_item["id"]
+    for key, val in alg_item.items():
+        # check if list and that it is not a estimator parameter
+        if isinstance(val, list) & (key not in ["mcmc_seed", "mcmc_estimator", "threshold", "burnin_frac"]): 
+            varying_param = key
+            varying_param_val = snakemake.wildcards[varying_param]
+
+
+    df_noburnin["param"] = varying_param
+    df_noburnin["param_val"] = varying_param_val
     df_noburnin["seed"] = snakemake.wildcards["seed"]
-    #df_noburnin["mcmc_seed"] = snakemake.wildcards["mcmc_seed"]
+    df_noburnin["mcmc_seed"] = snakemake.wildcards["mcmc_seed"]
+    df_noburnin["alg"] = snakemake.params["alg"]
+    df_noburnin["id"] = snakemake.wildcards["id"] # should get param and params_vals in plotting instead.
+    df_noburnin["functional"] = snakemake.wildcards["functional"]
+    df_noburnin["adjmat"] = snakemake.params["adjmat_string"]
+    df_noburnin["parameters"] = snakemake.params["param_string"]
+    df_noburnin["data"] = snakemake.params["data_string"]
+    df_noburnin["alg_string"] = snakemake.params["alg_string"]
+    df_noburnin["eval_string"] = snakemake.params["eval_string"]
     
-    # Get varying param.
-    df_noburnin["param_var"] = snakemake.wildcards["param_var"]
-    df_noburnin["param_val"] = snakemake.wildcards["param_val"]
-    # kolla vilken som är lista. Men sen har amn ju inte de värdet ändå..
-    df_noburnin["id"] = snakemake.wildcards["id"]
     df_noburnin.to_csv(snakemake.output["traj"])

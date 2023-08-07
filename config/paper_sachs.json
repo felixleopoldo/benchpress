@@ -509,53 +509,8 @@
                 }
             ],
             "bidag_itsearch": [
-                {
-                    "id": "itsearch_map-bde",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bdecat",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
+  
+
                 {
                     "id": "itsearch_map-bge",
                     "estimate": "map",
@@ -619,77 +574,7 @@
                     "mergetype": "skeleton",
                     "timeout": null
                 },
-                {
-                    "id": "itsearch_sample-bde",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
+
                 {
                     "id": "itsearch_sample-bge",
                     "estimate": "map",
@@ -765,140 +650,9 @@
                     "cpdag": false,
                     "mergetype": "skeleton",
                     "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi10_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 10,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
                 }
             ],
             "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itmap-bde",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bde",
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
                 {
                     "id": "omcmc_itmap-bge",
                     "plus1": true,
@@ -916,7 +670,8 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -947,7 +702,8 @@
                         0.3,
                         0.2
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -969,101 +725,10 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bde",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
-                    "scoretype": "bde",
-                    "chi": [
-                        0.1
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bdecat",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi01_endspace",
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.1
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi1",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi1_endspace",
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bdecat_chi1",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi1_endspace",
-                    "scoretype": "bdecat",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin": 0,
-                    "timeout": null
-                }
+                }  
             ]
         }
     }

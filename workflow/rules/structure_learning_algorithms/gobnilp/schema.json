@@ -1,0 +1,130 @@
+{
+    "title": "gobnilp",
+    "description": "Gobnilp objects",
+    "type": "array",
+    "items": {
+        "title": "gobnilp item",
+        "description": "Gobnilp instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "continuous": {
+                "type": "boolean"
+            },
+            "score_type": {
+                "type": "string",
+                "enum": [
+                    "BGe",
+                    "BDeu",
+                    "BIC"
+                ]
+            },
+            "extra_args": {
+                "description": "File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs).",
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
+            "constraints": {
+                "description": "File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs).",
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
+            "plot": {
+                "type": "boolean"
+            },
+            "palim": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "alpha_omega_minus_nvars": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            },
+            "alpha_mu": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "description": "Use the best DAG found so far after this number of seconds.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "time_limit": {
+                "description": "Time limit in seconds for the solver (not including the time to build the score tables).",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "gap_limit": {
+                "description": "Gap limit.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "prune": {
+                "type": "boolean"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "plot",
+            "palim",
+            "alpha",
+            "prune",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gobnilp-bge",
+                "continuous": true,
+                "score_type": "BGe",
+                "extra_args": null,
+                "constraints": null,
+                "plot": false,
+                "palim": 3,
+                "alpha_mu": [
+                    0.00001,
+                    0.0001,
+                    0.001
+                ],
+                "alpha_omega_minus_nvars": 2,
+                "alpha": null,
+                "time_limit": null,
+                "gap_limit": null,
+                "prune": true,
+                "timeout": 800
+            },
+            {
+                "id": "gobnilp-bde",
+                "continuous": false,
+                "score_type": "BDeu",
+                "extra_args": null,
+                "constraints": null,
+                "plot": false,
+                "palim": 4,
+                "alpha_mu": null,
+                "alpha_omega_minus_nvars": null,
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "time_limit": null,
+                "gap_limit": null,
+                "prune": true,
+                "timeout": 600
+            }
+        ]
+    }
+}

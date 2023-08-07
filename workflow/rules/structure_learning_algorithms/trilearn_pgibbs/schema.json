@@ -1,0 +1,133 @@
+{
+    "title": "trilearn_pgibbs",
+    "description": "List of trilearn objects",
+    "type": "array",
+    "items": {
+        "title": "trilearn_pgibbs item",
+        "description": "Parameter setting for trilearn with log-linear decomposable model.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "datatype": {
+                "type": "string",
+                "enum": [
+                    "discrete",
+                    "continuous"
+                ]
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "beta": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "pseudo_obs": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "radii": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "n_particles": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "M": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "datatype",
+            "alpha",
+            "beta",
+            "radii",
+            "n_particles",
+            "M",
+            "pseudo_obs",
+            "mcmc_seed",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "trilearn-cont",
+                "datatype": "continuous",
+                "alpha": 0.5,
+                "beta": 0.5,
+                "radii": 80,
+                "n_particles": 50,
+                "M": 1000,
+                "pseudo_obs": 1,
+                "mcmc_seed": 1,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5,
+                "timeout": null
+            },
+            {
+                "id": "trilearn-disc",
+                "datatype": "discrete",
+                "alpha": 0.5,
+                "beta": 0.5,
+                "radii": 80,
+                "n_particles": 50,
+                "M": 1000,
+                "pseudo_obs": 1,
+                "mcmc_seed": 1,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

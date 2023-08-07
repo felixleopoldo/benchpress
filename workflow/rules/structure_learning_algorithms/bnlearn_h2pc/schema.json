@@ -1,0 +1,120 @@
+{
+    "description": "H2PC objects",
+    "title": "bnlearn_h2pc",
+    "type": "array",
+    "items": {
+        "title": "bnlearn_h2pc item",
+        "description": "H2PC algorithm instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "test": {
+                "type": "string",
+                "enum": [
+                    "mi",
+                    "mi-adf",
+                    "mc-mi",
+                    "smc-mi",
+                    "sp-mi",
+                    "mi-sh",
+                    "x2",
+                    "x2-adf",
+                    "sp-x2",
+                    "jt",
+                    "mc-jt",
+                    "smc-jt",
+                    "cor",
+                    "mc-cor",
+                    "smc-cor",
+                    "zf",
+                    "mc-zf",
+                    "smc-zf",
+                    "mi-g",
+                    "mc-mi-g",
+                    "smc-mi-g",
+                    "mi-g-sh",
+                    "mi-cg"
+                ]
+            },
+            "beta": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "score": {
+                "type": "string"
+            },
+            "iss": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "issmu": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "issw": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "l": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
+            "k": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
+            "prior": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "alpha",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "h2pc-bge-zf",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "score": "bge",
+                "test": "zf",
+                "iss": 1,
+                "issmu": 1,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": null,
+                "timeout": null
+            },
+            {
+                "id": "h2pc-bde",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "score": "bge",
+                "test": "zf",
+                "iss": 1,
+                "issmu": null,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": null,
+                "timeout": null
+            }
+        ]
+    }
+}

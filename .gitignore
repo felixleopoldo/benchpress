@@ -11,3 +11,5 @@ Rplots.pdf
 causal-cmd.log
 .java/
 .cache/
+__pycache__
+workflow/schemas/tmp.config.schema.json

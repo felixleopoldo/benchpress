@@ -1,0 +1,66 @@
+{
+    "title": "gcastle_notears",
+    "description": "List of gcastle_notears objects",
+    "type": "array",
+    "items": {
+        "title": "gcastle_notears item",
+        "description": "gcastle_notears object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "loss_type": {
+                "type": "string"
+            },
+            "lambda1": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "max_iter": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "w_threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "rho_max": {
+                "type": "string"
+            },
+            "h_tol": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "lambda1",
+            "loss_type",
+            "max_iter",
+            "w_threshold",
+            "rho_max",
+            "h_tol",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_notears",
+                "lambda1": 0.1,
+                "loss_type": "l2",
+                "max_iter": 100,
+                "h_tol": "1e-8",
+                "rho_max": "1e+16",
+                "w_threshold": [
+                    0.05,
+                    0.1,
+                    0.25
+                ],
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

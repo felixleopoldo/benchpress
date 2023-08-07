@@ -1,0 +1,35 @@
+{
+    "title": "trilearn_intra-class",
+    "description": "List of intra-class id's",
+    "type": "array",
+    "items": {
+        "title": "trilearn_intra-class item",
+        "description": "Parameter setting for a graph intra-class model",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "rho": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "sigma2": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "required": [
+            "rho",
+            "sigma2",
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "intra-class",
+                "rho": 0.4,
+                "sigma2": 1.0
+            }
+        ]
+    },
+    "uniqueItems": true
+}

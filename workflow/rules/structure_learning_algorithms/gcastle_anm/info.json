@@ -1,0 +1,26 @@
+{
+    "title": "ANM",
+    "version": "1.0.3",
+    "package": {
+        "title": "gCastle",
+        "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "Patrik O. Hoyer et al. (2008). Nonlinear causal discovery with additive noise models.",
+            "url": "https://webdav.tuebingen.mpg.de/causality/NIPS2008-Hoyer.pdf"
+        },
+        {
+            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
+            "url": "https://arxiv.org/abs/2111.15155"
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "Python"
+}

@@ -1,0 +1,10 @@
+{
+    "title": "ggally_ggpairs",
+    "description": "This module plots the data using pairs. The figures are saved in to results/output/ggally_ggpairs/.",
+    "type": "boolean",
+    "examples": [
+        {
+            "ggally_ggpairs": true
+        }
+    ]
+}

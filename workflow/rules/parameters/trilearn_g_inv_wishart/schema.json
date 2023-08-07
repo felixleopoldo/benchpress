@@ -1,0 +1,30 @@
+{
+    "title": "trilearn_g_inv_wishart",
+    "description": "List of graph inverse-Wishart id's",
+    "type": "array",
+    "items": {
+        "title": "trilearn_g_inv_wishart item",
+        "description": "Parameter setting for a graph inverse-Wishart model",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "dof": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "required": [
+            "dof",
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "giw",
+                "dof": 1
+            }
+        ]
+    },
+    "uniqueItems": true
+}

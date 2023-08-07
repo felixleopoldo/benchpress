@@ -1,0 +1,19 @@
+{
+    "title": "CTA",
+    "version": "1.25",
+    "package": {
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "Jimmy Olsson, Tatjana Pavlenko, Felix L Rios (2022). Sequential sampling of junction trees for decomposable graphs.",
+            "url": "https://link.springer.com/article/10.1007/s11222-022-10113-2"
+        }
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Python"
+}

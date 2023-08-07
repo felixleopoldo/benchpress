@@ -15,7 +15,10 @@
             "benchmarks": {
                 "filename_prefix": "paper_er_sem/",
                 "show_seed": false,
-                "xlim": [0, 0.35],
+                "xlim": [
+                    0,
+                    0.35
+                ],
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
@@ -53,28 +56,28 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         300
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "example1",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320
                     ]
                 },
                 {
                     "id": "example2",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -82,7 +85,7 @@
                 {
                     "id": "example3",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -90,7 +93,7 @@
                 {
                     "id": "example4",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -126,20 +129,6 @@
                     "order": 50,
                     "alpha": 0.5,
                     "beta": 0.7
-                }
-            ],
-            "bandmat": [
-                {
-                    "id": "AR2",
-                    "bandwidth": 2,
-                    "dim": 50
-                }
-            ],
-            "rand_bandmat": [
-                {
-                    "id": "AR1-5",
-                    "max_bandwidth": 5,
-                    "dim": 50
                 }
             ],
             "bdgraph_graphsim": [
@@ -187,13 +176,6 @@
                     "id": "giw",
                     "dof": 1
                 }
-            ],
-            "bdgraph_rgwish": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold": 0.00000001
-                }
             ]
         },
         "structure_learning_algorithms": {
@@ -208,7 +190,7 @@
                     "w_threshold": [
                         0.05,
                         0.1,
-                        0.25                    
+                        0.25
                     ],
                     "timeout": null
                 }
@@ -1184,18 +1166,10 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
+                        0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1215,7 +1189,8 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": 0.5,
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1246,7 +1221,8 @@
                         0.3,
                         0.2
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1268,7 +1244,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1292,7 +1269,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1316,7 +1294,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1338,7 +1317,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1360,7 +1340,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 }
             ]

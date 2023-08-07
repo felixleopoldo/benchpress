@@ -1,0 +1,22 @@
+{
+    "title": "Dual PC",
+    "version": "",
+    "package": {
+        "title": "dualPC",
+        "url": "https://github.com/enricogiudice/dualPC"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "CG", "CPDAG"
+    ],
+    "language": "R"
+}

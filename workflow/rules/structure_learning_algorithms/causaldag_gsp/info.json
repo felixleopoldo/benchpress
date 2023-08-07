@@ -1,0 +1,16 @@
+{
+    "title": "GSP",
+    "version": "0.1a163",
+    "package": {
+        "title": "CausalDAG",
+        "url": "https://github.com/uhlerlab/causaldag"
+    },
+    "docs_url": "https://uhlerlab.github.io/causaldag/",
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "Python"
+}

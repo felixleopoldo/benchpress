@@ -1,0 +1,17 @@
+{
+    "title": "Particle Gibbs",
+    "version": "1.25",
+    "package": {
+        "title": "trilearn",
+        "url": "https://github.com/felixleopoldo/trilearn"
+    },
+    "docs_url": "",
+    "outputs": [
+        "graphtraj"
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Python",
+    "in_docs": true
+}

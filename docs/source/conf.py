@@ -13,24 +13,49 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
 project = 'Benchpress'
-copyright = '2022'
-author = ''
+copyright = '2023'
+author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.1'
 
+release = '2.1.0'
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-# extensions = ['recommonmark']
+# extensions = ['sphinx-jsonschema']
+extensions = [
+    # other
+    'recommonmark',
+    'sphinx_copybutton',
+    'sphinx-prompt',
+    'sphinxcontrib.bibtex',
+    'sphinx_last_updated_by_git',
+    'versionwarning.extension'
+]
+
+paths = [Path("../../workflow/rules/structure_learning_algorithms"),
+         Path("../../workflow/rules/parameters"),
+         Path("../../workflow/rules/graph"),
+         Path("../../workflow/rules/data"),
+         Path("../../workflow/rules/evaluation"),
+         Path("../../workflow/rules/data/fixed_data")
+         ]
+
+
+bibtex_bibfiles = []
+for mod in paths:
+    bibtex_bibfiles += [str(p / "bibtex.bib")
+                        for p in mod.iterdir() if (p/"bibtex.bib").is_file()]
+
+
 # source_suffix = {
 #     '.rst': 'restructuredtext',
 #     '.txt': 'markdown',

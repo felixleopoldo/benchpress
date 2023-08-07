@@ -1,0 +1,27 @@
+{
+    "title": "Some title",
+    "description": "Some description",
+    "type": "array",
+    "items": {
+        "title": "Some title",
+        "description": "Some description",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id"
+        ],
+        "additionalProperties": true,
+        "examples": [
+            {
+                "id": "gwish",
+                "b": 3,
+                "thresh": 1e-8
+            }
+        ]
+    },
+    "uniqueItems": true
+}

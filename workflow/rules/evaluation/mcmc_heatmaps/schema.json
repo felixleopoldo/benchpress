@@ -1,0 +1,34 @@
+{
+    "title": "mcmc_heatmaps",
+    "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+    "type": "array",
+    "items": {
+        "examples": [
+            {
+                "id": "omcmc_itsample-bge",
+                "burn_in": 0,
+                "active": true
+            }
+        ],
+        "title": "MCMC mean graph plot",
+        "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "active": {
+                "description": "Set to false if you dont want to plot it.",
+                "type": "boolean"
+            },
+            "burn_in": {
+                "title": "Burn-in percentage.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "burn_in"
+        ]
+    },
+    "additionalItems": false
+}

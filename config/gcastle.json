@@ -16,7 +16,7 @@
                 "filename_prefix": "gcastle/",
                 "show_seed": false,
                 "errorbar": true,
-                "xlim": [0, 2],
+                "xlim": [0, 1],
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
@@ -33,7 +33,8 @@
                     "gcastle_golem",
                     "gcastle_grandag",
                     "gcastle_mcsl",                  
-                    "gcastle_corl"
+                    "gcastle_corl",
+                    "gcastle_rl"
                 ]
             },
             "graph_true_plots": false,
@@ -41,36 +42,13 @@
             "ggally_ggpairs": false,
             "graph_plots": [],
             "mcmc_traj_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
-                }
+
             ],
             "mcmc_heatmaps": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "active": false
-                }
+
             ],
             "mcmc_autocorr_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
-                }
+
             ]
         }
     },
@@ -80,7 +58,7 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         300
                     ]
                 }
@@ -361,147 +339,8 @@
                     "device_ids": 0,
                     "timeout": null
                 }
-            ],
-            "mylib_myalg": [
-                {
-                    "id": "testing_myalg",
-                    "myparam1": "somevalue",
-                    "myparam2": [
-                        1,
-                        2
-                    ]
-                }
-            ],
-            "tetrad_fges": [
-                {
-                    "id": "fges-sem-bic",
-                    "faithfulnessAssumed": true,
-                    "score": "sem-bic",
-                    "datatype": "continuous",
-                    "samplePrior": 1,
-                    "structurePrior": 1,
-                    "penaltyDiscount": [
-                        0.75,
-                        0.8,
-                        1,
-                        1.5
-                    ],
-                    "timeout": null
-                }
-            ],
-            "pcalg_pc": [
-                {
-                    "id": "pc-gaussCItest",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                }
-            ],
-            "bnlearn_tabu": [
-                {
-                    "id": "tabu-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                }
-            ],
-            "bidag_itsearch": [
-                {
-                    "id": "itsearch-bge",
-                    "timeout": null,
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 2,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": 2,
-                    "am": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                },
-                {
-                    "id": "itsample-bge_am01_endspace",
-                    "timeout": null,
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 3,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                }
-            ],
-            "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": [
-                        "itsample-bge_am01_endspace"
-                    ],
-                    "plus1": true,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "timeout": null,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.2,
-                        0.5,
-                        0.7
-                    ],
-                    "burnin": 0
-                }
             ]
+            
         }
     }
 }

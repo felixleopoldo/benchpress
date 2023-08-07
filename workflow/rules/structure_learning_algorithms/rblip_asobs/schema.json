@@ -1,0 +1,75 @@
+{
+    "title": "rblip_asobs",
+    "description": "List of blip objects",
+    "type": "array",
+    "items": {
+        "title": "rblip_asobs item",
+        "description": "Blip object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "scorermethod": {
+                "type": "string"
+            },
+            "solvermethod": {
+                "type": "string"
+            },
+            "indeg": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "allocated": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "scorefunction": {
+                "type": "string"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "cores": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "verbose_level": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegint"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "scorermethod",
+            "solvermethod",
+            "indeg",
+            "timeout",
+            "allocated",
+            "scorefunction",
+            "alpha",
+            "cores",
+            "verbose_level"
+        ],
+        "examples": [
+            {
+                "id": "winasobs-bdeu",
+                "scorermethod": "is",
+                "solvermethod": "winasobs",
+                "indeg": 80,
+                "timeout": 180,
+                "allocated": 80,
+                "scorefunction": "bdeu",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "cores": 1,
+                "verbose_level": 0
+            }
+        ]
+    }
+}

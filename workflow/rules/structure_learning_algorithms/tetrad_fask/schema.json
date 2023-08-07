@@ -1,0 +1,56 @@
+{
+    "title": "tetrad_fask",
+    "description": "fask objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_fask item",
+        "description": "fask instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "test": {
+                "type": "string",
+                "enum": [
+                    "cci-test",
+                    "cg-lr-test",
+                    "fisher-z-test",
+                    "dg-lr-test",
+                    "kci-test"
+                ]
+            },
+            "score": {
+                "type": "string"
+            },
+            "semBicStructurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "datatype": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "score",
+            "semBicStructurePrior",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "fask-fisher-z",
+                "test": "fisher-z-test",
+                "score": "sem-bic-score",
+                "semBicStructurePrior": 1,
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
+    }
+}

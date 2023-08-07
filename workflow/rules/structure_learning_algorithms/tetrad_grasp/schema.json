@@ -1,0 +1,59 @@
+{
+    "title": "tetrad_grasp",
+    "description": "GRaSP objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_grasp item",
+        "description": "GRaSP instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "score": {
+                "type": "string"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "samplePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "penaltyDiscount": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "semBicStructurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "score",
+            "datatype",
+            "samplePrior",
+            "semBicStructurePrior",
+            "penaltyDiscount",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "causal-cmd-grasp",
+                "score": "sem-bic-score",
+                "datatype": "continuous",
+                "samplePrior": 1,
+                "semBicStructurePrior": 1,
+                "penaltyDiscount": [
+                    0.8,
+                    1,
+                    1.5
+                ],
+                "timeout": null
+            }
+        ]
+    }
+}

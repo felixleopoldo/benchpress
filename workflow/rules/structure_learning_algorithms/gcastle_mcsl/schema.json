@@ -1,0 +1,48 @@
+{
+    "title": "gcastle_notears_low_rank",
+    "description": "List of gcastle_notears_low_rank objects",
+    "type": "array",
+    "items": {
+        "title": "gcastle_notears_low_rank item",
+        "description": "gcastle_notears_low_rank object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_mcsl",
+                "model_type": "nn",
+                "hidden_dim": 16,
+                "graph_thresh": 0.5,
+                "l1_graph_penalty": "2e-3",
+                "learning_rate": "3e-2",
+                "max_iter": 5,
+                "iter_step": 100,
+                "init_iter": 2,
+                "h_tol": "1e-10",
+                "init_rho": "1e-5",
+                "rho_thresh": "1e14",
+                "h_thresh": 0.25,
+                "rho_multiply": 10,
+                "temperature": 0.2,
+                "device_type": "cpu",
+                "device_ids": "0",
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

@@ -1,0 +1,1 @@
+A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).

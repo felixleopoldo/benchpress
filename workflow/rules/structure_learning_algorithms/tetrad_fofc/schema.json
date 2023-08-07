@@ -1,0 +1,35 @@
+{
+    "title": "tetrad_fofc",
+    "description": "fofc objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_fofc item",
+        "description": "fofc instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "fofc",
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
+    }
+}

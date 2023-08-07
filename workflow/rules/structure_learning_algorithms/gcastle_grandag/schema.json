@@ -1,0 +1,58 @@
+{
+    "title": "gcastle_notears_low_rank",
+    "description": "List of gcastle_notears_low_rank objects",
+    "type": "array",
+    "items": {
+        "title": "gcastle_notears_low_rank item",
+        "description": "gcastle_notears_low_rank object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_grandag",
+                "hidden_num": 2,
+                "hidden_dim": 10,
+                "batch_size": 64,
+                "lr": 0.001,
+                "iterations": 1000,
+                "model_name": "NonLinGaussANM",
+                "nonlinear": "leaky-relu",
+                "optimizer": "rmsprop",
+                "h_threshold": "1e-8",
+                "device_type": "cpu",
+                "use_pns": false,
+                "pns_thresh": 0.75,
+                "num_neighbors": null,
+                "normalize": false,
+                "precision": false,
+                "random_seed": 42,
+                "jac_thresh": true,
+                "lambda_init": 0.0,
+                "mu_init": 0.001,
+                "omega_lambda": 0.0001,
+                "omega_mu": 0.9,
+                "stop_crit_win": 100,
+                "edge_clamp_range": 0.0001,
+                "norm_prod": "paths",
+                "square_prod": false,
+                "timeout": null
+            }
+
+        ]
+    },
+    "uniqueItems": true
+}

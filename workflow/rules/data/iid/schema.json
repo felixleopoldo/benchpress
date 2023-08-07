@@ -1,0 +1,38 @@
+{
+    "title": "List of iid setups.",
+    "description": "List of iid setups.",
+    "type": "array",
+    "items": {
+        "title": "iid",
+        "description": "Data sampling from disctete Bayesian network.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "title": "Unique ID",
+                "type": "string"
+            },
+            "n": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "standardized": {
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "id",
+            "n",
+            "standardized"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "standardized",
+                "standardized": true,
+                "n": [
+                    100
+                ]
+            }
+        ]
+    },
+    "uniqueItems": true
+}

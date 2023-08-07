@@ -1,0 +1,65 @@
+{
+    "title": "gcastle_notears_low_rank",
+    "description": "List of gcastle_notears_low_rank objects",
+    "type": "array",
+    "items": {
+        "title": "gcastle_notears_low_rank item",
+        "description": "gcastle_notears_low_rank object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "gcastle_rl",
+                "encoder_type": "TransformerEncoder",
+                "hidden_dim": 64,
+                "num_heads": 16,
+                "num_stacks": 6,
+                "residual": false,
+                "decoder_type": "SingleLayerDecoder",
+                "decoder_activation": "tanh",
+                "decoder_hidden_dim": 16,
+                "use_bias": false,
+                "use_bias_constant": false,
+                "bias_initial_value": false,
+                "batch_size": 64,
+                "input_dimension": 64,
+                "normalize": false,
+                "transpose": false,
+                "score_type": "BIC",
+                "reg_type": "LR",
+                "lambda_iter_num": 1000,
+                "lambda_flag_default": true,
+                "score_bd_tight": false,
+                "lambda2_update": 10,
+                "score_lower": 0.0,
+                "score_upper": 0.0,
+                "nb_epoch": 20,
+                "lr1_start": 0.001,
+                "lr1_decay_step": 5000,
+                "lr1_decay_rate": 0.96,
+                "alpha": 0.99,
+                "init_baseline": -1.0,
+                "l1_graph_reg": 0.0,
+                "verbose": false,
+                "device_type": "cpu",
+                "device_ids": 0,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

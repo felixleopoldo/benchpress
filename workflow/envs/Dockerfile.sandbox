@@ -1,0 +1,19 @@
+FROM r-base:4.2.3
+
+RUN R -e "install.packages(\"R.utils\")" 
+RUN R -e "install.packages(\"mvtnorm\")" 
+RUN R -e "install.packages(\"BDgraph\")" 
+
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential libpq-dev python3.11 python3-pip python3-setuptools python3-dev
+RUN apt install python3-full -y 
+RUN apt install python-is-python3
+RUN apt install python3.11-venv
+
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN pip install numpy
+RUN pip install pandas

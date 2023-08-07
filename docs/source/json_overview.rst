@@ -1,45 +1,164 @@
+.. _json_config:
 
-JSON config file
-##################
+JSON config
+##############################
 
-An overview of how the config file is structured can be read about in the paper [3]_.
-For specific information about each element in the JSON file, see the documentation generated from the `JSON schema <https://github.com/felixleopoldo/benchpress/tree/master/docs/source/json_schema/config.md>`_.
+The `JSON <https://www.json.org/json-en.html>`__ configuration file, together with Snakemake's command line tool, serve as the interface for the user.
+Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between the PC algorithm :footcite:p:`doi:10.1177/089443939100900106` (:ref:`pcalg_pc`) and the Dual PC algorithm :footcite:p:`pmlr-v186-giudice22a` (:ref:`dualpc`). 
+The results of this study can be found in :ref:`pcdualpcstudy`.
 
-.. _benchmark_setup:
+At the highest level there are two main sections, ``benchmark_setup`` (Line 2) and ``resources`` (Line 37).
+The modules used in ``benchmark_setup`` are specified in ``resources`` and referenced by their corresponding IDs. 
 
-``benchmark_setup``
-********************
+resources
+************
 
+The ``resources`` section contains the subsections ``graph`` (Line 47), ``parameters`` (Line 61), ``data`` (Line 37), and ``structure_learning_algorithms`` (Line 70), which contain the modules used in the study. 
+Each module in turn has a list of JSON objects, where each of the objects defines a specific parameter setting. 
+The objects are identified by unique IDs (see Lines 41, 50, 64, 73, and 87).
+The parametrisations for the modules can typically be either single values (see e.g. Line 73) or lists (see e.g. Line 79). 
+In the case of lists, the module runs for each of the values in the list.
 
+benchmark_setup
+**********************
 
-.. .. figure:: _static/benchmark_setup.png
-..     :width: 400
+The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and evaluation methods (``evaluation``, Line 11) a user wishes to consider for analysis.
 
-..     Expanded ``benchmark_setup`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
+* The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
 
-
-.. _datasetup:
-
-``data``
-========
-
-This section should contain a list where each item defines a certain data setup with the following fields.
-
-* ``graph_id`` an id from a graph_ module.
-* ``parameters_id`` an id from a parameters_ module.
-* ``data_id`` an id from the data_ module.
-* ``seed_range`` a range of seeds used for random number generation.  
+* The ``evaluation`` section contains the evaluation methods used for the analysis. Descriptions of the available evaluation methods can be found in :ref:`evaluation`.
 
 
+.. code-block:: json
+    :linenos:
+    :name: pcdualpc
+    :caption: Comparison between PC vs. dual PC.
 
-The different sources of data provided by Benchpress can be summarised in five scenarios
-shown in the tabel below. Scenario I is the typical scenario for data analysts, where the user provides
+    {
+        "benchmark_setup": {
+            "data": [ // the data setups
+                {
+                    "graph_id": "avneigs4_p80", // see line 50
+                    "parameters_id": "SEM", // see line 64
+                    "data_id": "standardized", // see line 41
+                    "seed_range": [1, 10]
+                }
+            ],
+            "evaluation": { // the evaluation modules
+                "benchmarks": {  
+                    "filename_prefix": "paper_pc_vs_dualpc/",
+                    "show_seed": true,
+                    "errorbar": true,
+                    "errorbarh": false,
+                    "scatter": true,
+                    "path": true,
+                    "text": false,
+                    "ids": [
+                        "pc-gaussCItest", // see line 87
+                        "dualpc" // see line 73
+                    ]
+                },
+                "graph_true_plots": true,
+                "graph_true_stats": true,
+                "ggally_ggpairs": false,
+                "graph_plots": [
+                    "pc-gaussCItest",
+                    "dualpc"
+                ],
+                "mcmc_traj_plots": [],
+                "mcmc_heatmaps": [],
+                "mcmc_autocorr_plots": []
+            }
+        },
+        "resources": {
+            "data": { // the data modules
+                "iid": [
+                    {
+                        "id": "standardized",
+                        "standardized": true,
+                        "n": 300
+                    }
+                ]
+            },
+            "graph": { // the graph modules 
+                "pcalg_randdag": [
+                    {
+                        "id": "avneigs4_p80",
+                        "max_parents": 5,
+                        "n": 80,
+                        "d": 4,
+                        "par1": null,
+                        "par2": null,
+                        "method": "er",
+                        "DAG": true
+                    }
+                ]
+            },
+            "parameters": { // the parameters modules
+                "sem_params": [
+                    {
+                        "id": "SEM",
+                        "min": 0.25,
+                        "max": 1
+                    }
+                ]
+            },
+            "structure_learning_algorithms": { // the structure learning modules
+                "dualpc": [
+                    {
+                        "id": "dualpc",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "skeleton": false,
+                        "pattern_graph": false,
+                        "max_ord": null,
+                        "timeout": null
+                    }
+                ],
+                "pcalg_pc": [
+                    {
+                        "id": "pc-gaussCItest",
+                        "alpha": [
+                            0.001,
+                            0.05,
+                            0.1
+                        ],
+                        "NAdelete": true,
+                        "mmax": "Inf",
+                        "u2pd": "relaxed",
+                        "skelmethod": "stable",
+                        "conservative": false,
+                        "majrule": false,
+                        "solveconfl": false,
+                        "numCores": 1,
+                        "verbose": false,
+                        "indepTest": "gaussCItest",
+                        "timeout": null
+                    }
+                ]
+            }
+        }
+    }
+
+
+Example data scenarios
+************************
+
+Apart from the modules used in :numref:`pcdualpc`, Benchpress also provides the special modules :ref:`fixed_graph`, :ref:`fixed_params`, and :ref:`fixed_data`, which allow the user to provide files in their analysis.
+These modules are not part of the resources section of the `JSON <https://www.json.org/json-en.html>`__ file and are referenced by IDs, instead, files are simply referenced by their names.
+The file formats are described in :ref:`file_formats`.
+
+The different sources of data, obtained by combining the fixed files and the ordinary modules, can be summarised in five scenarios
+shown in the table below. Scenario I is the typical scenario for data analysts, where the user provides
 one or more datasets by hand. Scenario II is similar to Scenario I, with the difference that
 the user also provides the true graph underlying the data. This situation arises e.g. when
 replicating a simulation study from the literature, where both the true graph and the dataset
-are given. Scenario III-V are pure benchmarking scenarios, where either all of the graphs,
+are given. Scenarios III-V are pure benchmarking scenarios, where either all of the graphs,
 parameters and data are generated (V) or the graphs and possibly parameters are specified by
-the user (III, IV).
+the user (III, IV). 
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -55,423 +174,99 @@ the user (III, IV).
 | V   | Generated | Generated  | Generated |
 +-----+-----------+------------+-----------+
 
-The following subsections shows some data examples in the benchmark_setup_ section that correspond to the scenarios I-IV.
-To try this out, you may change the current data section in :download:`config/config.json <../../config/config.json>`.
-Note that, in general the id's used must be defined in the resources section (as it is in `config/config.json <https://github.com/felixleopoldo/benchpress/blob/master/config/config.json>`_ ). 
-For example, *avneigs4_p20* is the id of an object in the pcalg_randdag_ module in the graph section.
-Also, datasets, parameters, and graphs must be placed in the proper place under the *resources* folder.
+The following subsections show some template data examples in the ``benchmark_setup`` section that correspond to the scenarios I-IV.
 
-I
----
+.. _I:
 
-Note that some evaluation modules are not compatible with this scenario as there is no true graph specified.
-For example, you may not use the graph_true_plots_ or benchmarks_ modules as both require the true graph to be provided.
+I) Data analysis (fixed data)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-.. rubric:: Example 1
-
-Here we use `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`_, which is the logged and standardized version of the 2nd dataset from Sachs et. al 2005, and is contain
+In the example below, *my_data_file.csv* should be a file in  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_.
 
 .. code-block:: json
 
     { 
         "graph_id": null,
         "parameters_id": null,
-        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+        "data_id": "my_data_file.csv",
         "seed_range": null
     }
 
-.. rubric:: Example 2
 
-`2005_sachs <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets/2005_sachs>`_ is a subfolder of mydatasets containing all the datasets from Sachs et. al 2005.
+In the example below, *my_data_folder* should be a subfolder of  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_ containing data files.
 
 .. code-block:: json
 
     { 
         "graph_id": null,
         "parameters_id": null,
-        "data_id": "2005_sachs",
+        "data_id": "my_data_folder",
         "seed_range": null
     }
 
-II
----
 
-.. rubric:: Example
+.. _II:
+
+II) Data analysis with validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code-block:: json
 
     { 
-        "graph_id": "sachs.csv",
+        "graph_id": "my_graph_file.csv",
         "parameters_id": null,
-        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+        "data_id": "my_data_file.csv",
         "seed_range": null
     }
 
-III
----
-
-.. rubric:: Example
-
-Beware that the parameters in the following example is for binary data so make sure that the algorithms used must be compatible.
-You may e.g. use the id *itsearch_sample-bde* in the graph_plots_ module.
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "sachs.rds",
-        "data_id": "nonstandardized",
-        "seed_range": [1, 10]
-    }
-
-IV
----
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-    { 
-        "graph_id": "sachs.csv",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 10]
-    }
+III) Fixed graph
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code-block:: json
 
     
         {
-            "graph_id": "alarm.csv",
-            "parameters_id": "SEM",
-            "data_id": "standardized",
+            "graph_id": "my_graph_file.csv",
+            "parameters_id": "my_params_id",
+            "data_id": "my_data_id",
             "seed_range": [
                 1,
                 3
             ]
         }
-    
-V
----
 
-.. rubric:: Example
 
+IV) Fixed graph and parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: json
 
     { 
-        "graph_id": "avneigs4_p20",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
+        "graph_id": "my_graph_file.csv",
+        "parameters_id": "my_params_file.rds",
+        "data_id": "my_data_id",
         "seed_range": [1, 10]
     }
 
 
-.. _evaluation:
+.. _V:
 
-``evaluation``
-===============
-
-The available evaluation methods. The output of the evaluation modules are found in *results/output*.
-
-.. _benchmarks:
-
-``benchmarks``
------------------
-
-
-This modules produce several results in one
-
-* *elapsed_time_joint.png*: Box-plots for the total times over all seeds.
-* *f1_skel_joint.png*: F1 score box-plots.
-* *FNR_FPR_skel.png*: Median false negative rate (FNR) / false positive rate (FPRp) for the skeleton graph (undirected version).
-* *FPR_TPR_skel.png*: Median FPRp / TPR for the skeleton graph (undirected version).
-* *FPR_TPR_pattern.png*: Median FPRp / TPR for the pattern graph (same as skeleton for undirected graphs).
-* *FPRp_FNR_skel.png*: Median FPRp / FNR for the skeleton graph.
-* *graph_type.png*: Plots the type of graph for each graph estimate.
-* *joint_benchmarks.csv*: Benchmarks joined in a CSV file (this ay be analyzed using any preferred software).
-* *ntests_joint.png*: Box-plots for number of statistical tests (this is only applicable for some algorithms).
-* *ROC_data.csv*: Summarized benchmarks joined in a CSV file.
-* *SHD_cpdag_joint.png*: Structural Hamming distance (SHD) box-plots.
-
-.. ``algorithm_id`` is the current algorithm and ``curve_variable`` is the varying parameter in the plot.
-.. In order to get the curve like form in the plot, you need to make sure that ``curve_variable`` is given as a list in the corresponding algorithm's section.
-
-.. See `JSON schema <https://github.com/felixleopoldo/benchpress/blob/master/schema/docs/config-definitions-roc-item.md>`_
-
-
-Fields (mostly for the ROC type curves).
-
-* ``filename_prefix``: is the prefix for the produced files. By ending with a "/" as in "example/", the produced files will be stored in the folder "example/". 
-* ``show_seed``: shows the seed numbers in the ROC type plots and for the outliers in the box-plots.
-* ``errorbar``: shows vertical estimated 5% and 95% quantiles in the ROC type plots.
-* ``errorbarh``: shows horisontal estimated 5% and 95% quantiles in the ROC type plots.
-* ``scatter``: shows scatterplots in the ROC type plots.
-* ``path``: joins the median values of each parameter setting for a specific with a line. So for this to become a path, you need to specify rande of values for some of the fields in the corresponding algorithm module object.
-* ``text``: shows the parameter value in the ROC type plots. If this is set to false, a dot will be plotted instead.
-
-
-.. rubric:: Example
-
+V) Fully generated
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: json
 
-    {
-        "filename_prefix": "example/",
-        "show_seed": false,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": [
-            "fges-sem-bic",
-            "mmhc-bge-zf",
-            "gfci-sem-bic-fisher-z",
-            "pc-gaussCItest"
-        ]
+    { 
+        "graph_id": "my_graph_id",
+        "parameters_id": "my_params_id",
+        "data_id": "my_data_id",
+        "seed_range": [1, 10]
     }
 
-    
-..  figure:: _static/alarm/FPR_TPR_skel.png
-    :alt: ROC plot 
-    :width: 500
 
-    ROC plot
+.. rubric:: References
 
-The following plots are also produced
 
-..  figure:: _static/alarm/elapsed_time_joint.png
-    :alt: Timing 
-    :width: 500
-
-    Timing
-
-..  figure:: _static/alarm/f1_skel_joint.png
-    :alt: F1 
-    :width: 500
-
-    F1
-
-..  figure:: _static/alarm/graph_type.png
-    :alt: Graph type 
-    :width: 500
-
-    Graph type
-
-.. _ggally_ggpairs:
-
-``ggally_ggpairs``
--------------------------
-
-This module writes ggpairs plots using the `GGally <https://cran.r-project.org/web/packages/GGally/index.html#:~:text=GGally%3A%20Extension%20to%20'ggplot2',geometric%20objects%20with%20transformed%20data.>`_ package. 
-Be careful that this can be slow and the variable names may not fit into the figure if the dimension is too large.
-However, you can always alter the script as you like it.
-
-..  figure:: _static/alarm/pairs_1.png
-    :alt: GGpairs plot
-
-
-    GGpairs plot
-
-.. _graph_true_stats:
-
-``graph_true_stats``
--------------------------
-
-This module plots properties of the true graphs such as graph density.
-
-.. _graph_true_plots:
-
-``graph_true_plots``
--------------------------
-
-This module plots the true underlying graphs. 
-
-
-..  figure:: _static/alarm.png
-    :alt: The Alarm network 
-
-    The Alarm network
-
-..  figure:: _static/alarmadjmat.png
-    :alt: The Alarm network 
-
-    The Alarm network as adjacency matrix
-
-.. _graph_plots:
-
-``graph_plots``
--------------------------
-
-This module plots and saves the estimated graphs in dot-format and adjacency matrix.
-It also plots graph comparison using *graphviz.compare* from `bnlearn <https://www.bnlearn.com/>`.
-
-.. code-block:: json
-    
-    [
-        "fges-sem-bic",
-        "mmhc-bge-zf",
-        "omcmc_itsample-bge",
-        "pc-gaussCItest"
-    ]
-
-..  figure:: _static/alarmpcgraph.png
-    :alt: The Alarm network 
-
-    Estimate of the Alarm network using PC algorithm
-
-..  figure:: _static/alarmpcest.png
-    :alt: The Alarm network 
-
-    Estimate of the Alarm network using PC algorithm
-
-.. _mcmc_heatmaps:
-
-``mcmc_heatmaps``
--------------------------
-
-For Bayesian inference it is custom to use MCMC methods to simulate a Markov chain of graphs :math:`\{G^l\}_{l=0}^\infty` having the graph posterior as stationary distribution.
-Suppose we have a realisation of length :math:`M + 1` of such chain, then the posterior edge probability of an edge e is estimated by :math:`\frac{1}{M+1-b} \sum_{l=b}^{M} \mathbf{1}_{e}(e^l)`, where the first :math:`b` samples are disregarded as a burn-in period.
-
-This module has a list of objects, where each object has 
-* an id field for the algorithm object id 
-* and a field (``burn_in``) for specifying the burn-in period. 
-
-The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
-
-.. rubric:: Example
-
-.. code-block:: json
-
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "active": true
-        }
-    ]
-
-..  figure:: _static/alarmordermcmc.png
-    :alt: The Alarm network 
-
-    Mean graph estimate of the Alarm network using order MCMC with startspace from iterative MCMC 
-
-
-.. _mcmc_autocorr_plots:
-
-``mcmc_autocorr_plots``
--------------------------
-
-The ``mcmc_autocorr_plots`` module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
-Similar to the ``mcmc_traj_plots`` module, the ``mcmc_autocorr_plots`` module has a list of objects, where each object has
-
-* ``id``: algorithm module object id. 
-* ``burn_in``: use samples starting from this value. Use 0 if no burn-in.
-* ``thinning``: use only each ``thinning`` sample of the chain. (It is usually recommended to use this if the number of samples if large).
-* ``functional``: a field specifying the functional to be considered. The currently supported functionals are the number of edges for the graphs *size* and the graph *score*. 
-* ``lags``: The maximum number of lags after thinning.
-
-
-
-.. rubric:: Example
-
-.. code-block:: json
-    
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "thinning": 1,
-            "lags": 50,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ]
-
-..  figure:: _static/omcmcscoreautocorr.png
-    :alt: Score trajectory of order MCMC
-
-    Auto-correlation of the scores in trajectory of order MCMC
-
-.. _mcmc_traj_plots:
-
-``mcmc_traj_plots``
--------------------------
-
-This module plots the  values in the trajectory of a given functional. 
-
-The ``mcmc_traj_plots`` module has a list of objects, where each object has
-
-* ``id``: algorithm module object id. 
-* ``burn_in``: use samples starting from this value. Use 0 if no burn-in.a burn-in field 
-* ``functional``:  a field specifying the functional to be considered. The currently supported functionals are the number of edges for the graphs *size* and the graph *score*. 
-  
-Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. 
-
-
-.. rubric:: Example
-
-.. code-block:: json
-        
-    [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0,
-            "thinning": 1,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ]
-
-..  figure:: _static/omcmcscoretraj.png
-    :alt: Score trajectory of order MCMC
-
-    Score trajectory of order MCMC
-
-
-.. _resources:
-
-``resources``
-*************
-
-
-The  sections ``graph``, ``parameters``, ``data``, and ``structure_learning_algorithms``
-contain the available modules in benchpress.
-Each object in a module algorithm has a unique `id` which can be referenced in the benchmark_setup_ section.
-
-
-.. _resources:
-.. .. figure:: _static/resources.png
-..     :width: 400
-
-..     Expanded ``resources`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
-
-
-
-.. .. _setup:
-.. .. figure:: _static/setup.png
-..     :width: 400
-
-..     Expanded ``resources`` and ``benchmark_setup`` in :download:`config/sec6.1.json <../../config/sec6.1.json>`. 
-
-
-.. include:: available_graphs.rst
-.. include:: available_parameters.rst
-.. include:: available_data.rst
-.. include:: available_structure_learning_algorithms.rst
-
-
-.. [3] Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and platform-independent workflow for benchmarking structure learning algorithms for graphical models. ArXiv eprints., 2107.03863, 2021.
-
+.. footbibliography::

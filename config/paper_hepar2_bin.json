@@ -17,7 +17,10 @@
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
-                "xlim": [0, 0.35],
+                "xlim": [
+                    0,
+                    0.35
+                ],
                 "scatter": true,
                 "path": true,
                 "text": false,
@@ -52,21 +55,21 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "example1",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -74,7 +77,7 @@
                 {
                     "id": "example2",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -82,7 +85,7 @@
                 {
                     "id": "example3",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -90,7 +93,7 @@
                 {
                     "id": "example4",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -116,20 +119,6 @@
                     "order": 50,
                     "alpha": 0.5,
                     "beta": 0.7
-                }
-            ],
-            "bandmat": [
-                {
-                    "id": "AR2",
-                    "bandwidth": 2,
-                    "dim": 50
-                }
-            ],
-            "rand_bandmat": [
-                {
-                    "id": "AR1-5",
-                    "max_bandwidth": 5,
-                    "dim": 50
                 }
             ],
             "bdgraph_graphsim": [
@@ -177,61 +166,9 @@
                     "id": "giw",
                     "dof": 1
                 }
-            ],
-            "bdgraph_rgwish": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold": 0.00000001
-                }
             ]
         },
         "structure_learning_algorithms": {
-            "trilearn_pgibbs": [
-                {
-                    "id": "trilearn-cont",
-                    "datatype": "continuous",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": [
-                        50
-                    ],
-                    "M": 100,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "trilearn-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": [
-                        50
-                    ],
-                    "M": 1000,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ],
-                    "timeout": null
-                },
-                {
-                    "id": "trilearn05-disc",
-                    "datatype": "discrete",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": 50,
-                    "M": 300,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": 1,
-                    "timeout": null
-                }
-            ],
             "sklearn_glasso": [
                 {
                     "id": "sklearn_glasso",
@@ -284,17 +221,6 @@
                     ],
                     "cores": 1,
                     "verbose_level": 0
-                }
-            ],
-            "notears": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad",
-                    "timeout": null
                 }
             ],
             "gobnilp": [
@@ -1039,18 +965,10 @@
                     "cpdag": false,
                     "mcmc_seed": 1,
                     "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
+                        0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1074,7 +992,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1098,7 +1017,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1120,7 +1040,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 },
                 {
@@ -1142,7 +1063,8 @@
                     "threshold": [
                         0.5
                     ],
-                    "burnin": 0,
+                    "burnin_frac": 0,
+                    "mcmc_estimator": "threshold",
                     "timeout": null
                 }
             ]

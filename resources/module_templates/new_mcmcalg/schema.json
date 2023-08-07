@@ -1,0 +1,74 @@
+{
+    "title": "Some title",
+    "description": "Some description",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Some description",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "n_iterations": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegint"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "n_iterations",
+            "timeout",
+            "burnin_frac",
+            "threshold",
+            "mcmc_estimator",
+            "mcmc_seed"
+        ],
+        "examples": [
+            {
+                "id": "mcmctest",
+                "cutoff": 0.8,
+                "burnin_frac": 0.5,
+                "n_iterations": 10000,
+                "mcmc_estimator": "threshold",
+                "mcmc_seed": [1, 2, 3],
+                "threshold": [0.1, 0.3, 0.5, 0.8, 0.9],
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

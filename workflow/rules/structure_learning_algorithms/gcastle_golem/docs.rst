@@ -1,0 +1,1 @@
+A more efficient version of NOTEARS that can reduce number of optimization iterations.
