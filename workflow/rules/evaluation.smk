@@ -225,6 +225,8 @@ def graph_true_plots():
             for sim_setup in config["benchmark_setup"]["data"] ]
 
 def graph_plots():
+    print("##################active_algorithms")
+    print( active_algorithms("graph_plots"))
     ret = [[[[expand("{output_dir}/graph_plot/"\               
             "adjmat=/{adjmat_string}/"\            
             "parameters=/{param_string}/"\

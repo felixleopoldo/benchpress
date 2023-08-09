@@ -26,12 +26,13 @@ def active_algorithms(eval_method="benchmarks"):
                 #print(alg_conf_id)
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
-    elif eval_method == "benchmarks":
-        benchmarks_alg_ids = config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]
+    elif (eval_method == "benchmarks") or (eval_method == "graph_plots"):
+        benchmarks_alg_ids = config["benchmark_setup"]["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
+    
     else:
         benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     

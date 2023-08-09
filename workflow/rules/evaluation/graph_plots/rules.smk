@@ -136,34 +136,66 @@ rule adjmat_diffplot:
         "adjmat_diffplot.py"
 
 
+# rule graph_plots:
+#     input:
+#         conf=configfilename,
+#         graphs=graph_plots(),
+#         adjmats=adjmat_plots(),
+#         adjmat_diffplots=adjmat_diffplots(),
+#         graphvizcompare=bnlearn_graphvizcompare_plots(),
+#         csv_adjmats=adjmats()
+#     output:
+#         directory("results/output/graph_plots/graphs"),
+#         directory("results/output/graph_plots/adjmats"),
+#         directory("results/output/graph_plots/adjmat_diffplots"),
+#         directory("results/output/graph_plots/csvs"),
+#         directory("results/output/graph_plots/graphvizcompare"),
+#         touch("results/output/graph_plots/graph_plots.done")
+#     run:
+#         for i,f in enumerate(input.graphs):
+#             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
+#         for i,f in enumerate(input.adjmats):
+#             shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
+#         for i,f in enumerate(input.csv_adjmats):
+#             shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
+#         if True:
+#             shell("mkdir -p results/output/graph_plots/graphvizcompare")
+#             for i,f in enumerate(input.graphvizcompare):
+#                 shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+
+#             shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
+#             for i,f in enumerate(input.adjmat_diffplots):
+#                 shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+
 rule graph_plots:
     input:
         conf=configfilename,
-        graphs=graph_plots(),
-        adjmats=adjmat_plots(),
-        adjmat_diffplots=adjmat_diffplots(),
-        graphvizcompare=bnlearn_graphvizcompare_plots(),
+        graphs=[d for d in [graph_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
+        adjmats=[d for d in [adjmat_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
+        adjmat_diffplots=[d for d in adjmat_diffplots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
+        graphvizcompare=[d for d in bnlearn_graphvizcompare_plots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
         csv_adjmats=adjmats()
-    output:
-        directory("results/output/graph_plots/graphs"),
-        directory("results/output/graph_plots/adjmats"),
-        directory("results/output/graph_plots/adjmat_diffplots"),
+    output:    
+        [d for d in [directory("results/output/graph_plots/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
+        [d for d in [directory("results/output/graph_plots/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
+        [d for d in [directory("results/output/graph_plots/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
+        [d for d in [directory("results/output/graph_plots/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
         directory("results/output/graph_plots/csvs"),
-        directory("results/output/graph_plots/graphvizcompare"),
         touch("results/output/graph_plots/graph_plots.done")
     run:
+        #shell("touch results/output/graph_plots/desc.csv") 
         for i,f in enumerate(input.graphs):
+            #    shell("echo "+i+ ",  "+f+" >> results/output/graph_plots/desc.csv ") 
             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
             shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
         for i,f in enumerate(input.csv_adjmats):
             shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
-        if True:
-            shell("mkdir -p results/output/graph_plots/graphvizcompare")
-            for i,f in enumerate(input.graphvizcompare):
-                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+        
+        shell("mkdir -p results/output/graph_plots/graphvizcompare")
+        for i,f in enumerate(input.graphvizcompare):
+            shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
 
-            shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
-            for i,f in enumerate(input.adjmat_diffplots):
-                shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
-
+        shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
+        for i,f in enumerate(input.adjmat_diffplots):
+            shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")

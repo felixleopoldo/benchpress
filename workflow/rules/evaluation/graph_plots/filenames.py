@@ -19,7 +19,7 @@ def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -43,7 +43,7 @@ def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -66,12 +66,13 @@ def adjmat_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
 
 def adjmats():
+
     ret = [[[[expand("{output_dir}/adjmat_estimate/"\
             "adjmat=/{adjmat_string}/"\
             "parameters=/{param_string}/"\
@@ -89,7 +90,7 @@ def adjmats():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
 
@@ -110,6 +111,6 @@ def graph_plots():
             for seed in get_seed_range(sim_setup["seed_range"])]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]]
+                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
             for alg in active_algorithms("graph_plots")]
     return ret
