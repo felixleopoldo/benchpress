@@ -70,7 +70,7 @@ def check_system_requirements():
     from snakemake.utils import min_version
     # To update Snakemake using Mamba run
     # mamba update -c conda-forge -c bioconda snakemake
-
+    import subprocess
     min_version("7.14")
 
     # Check that Apptainer or Singularity >=3.2 is installed.
