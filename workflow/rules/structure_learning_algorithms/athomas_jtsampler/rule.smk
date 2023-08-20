@@ -13,7 +13,7 @@ rule athomas_jtsampler:
         time=touch(alg_output_time_path(module_name)),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-       "docker://hallawalla/athomas_jtsampler:1.3"
+       "docker://hallawalla/athomas_jtsampler:1.4"
     script:
         "script.sh"
 
