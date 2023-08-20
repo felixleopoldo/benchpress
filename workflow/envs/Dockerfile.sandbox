@@ -1,9 +1,9 @@
-FROM r-base:4.2.3
+FROM r-base:4.3.1
 
-RUN R -e "install.packages(\"R.utils\")" 
-RUN R -e "install.packages(\"mvtnorm\")" 
-RUN R -e "install.packages(\"BDgraph\")" 
-
+RUN R -e "install.packages(\"remotes\")" 
+RUN R -e 'library(remotes); install_version("R.utils", "2.12.2")'
+RUN R -e 'library(remotes); install_version("mvtnorm", "1.2-2")'
+RUN R -e 'library(remotes); install_version("BDgraph", "2.72")'
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential libpq-dev python3.11 python3-pip python3-setuptools python3-dev
@@ -15,5 +15,5 @@ ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN pip install numpy
-RUN pip install pandas
+RUN pip install numpy==1.25.2
+RUN pip install pandas==2.0.3
