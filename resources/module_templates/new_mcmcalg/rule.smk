@@ -8,6 +8,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/sandbox" # Change to None for local run
+        "docker://bpimages/sandbox-arm64" # Change to None for local run
     script:
         "script.R"

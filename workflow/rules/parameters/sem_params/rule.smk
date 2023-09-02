@@ -7,6 +7,6 @@ rule sample_sem_params:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     container:
-        "docker://bpimages/bidag:2.1.4"
+        "docker://bpimages/bidag:2.1.4-arm64"
     script:
         "sample_semparams.R" 

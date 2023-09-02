@@ -10,6 +10,6 @@ rule:
     params:
         alg="notears",
     container:
-        "docker://bpimages/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3-arm64"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

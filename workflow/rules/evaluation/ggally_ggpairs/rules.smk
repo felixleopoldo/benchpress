@@ -1,6 +1,5 @@
 include: "filename_gen.py"
 
-
 rule plot_pairs:
     input:
         data=summarise_alg_input_data_path()
@@ -8,6 +7,8 @@ rule plot_pairs:
         filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png",
     params:
         data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}"
+    container:
+        "docker://bpimages/ggally:2.1.2-arm64"
     script:
         "pairs.R"
 

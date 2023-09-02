@@ -3,8 +3,8 @@
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tibble)
-library("rjson")
-library(tidyverse)
+library(rjson)
+library(tidyr)
 library(ggrepel)
 
 f <- function(y) {
