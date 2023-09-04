@@ -9,7 +9,7 @@
 </p>
 
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥7.14-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥7.30.1-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
@@ -44,7 +44,7 @@ You may also have a look at [this Medium story](https://medium.com/@felixleopold
 
 ## Contact
 
-Send an email to felix leopoldo rios at gmail com for questions.
+For problems, bug reporting, or questions please raise an issue or open a discussion thread.
 
 ## Contributing
 Contrubutions are very welcomed. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions. 

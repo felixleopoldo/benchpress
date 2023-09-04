@@ -9,6 +9,6 @@ rule:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     container:
-        None
+        "docker://bpimages/sandbox-arm64" # Change to None for local run
     script:
         "script.R" 

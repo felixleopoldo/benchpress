@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 # Install prerequisities
 RUN apt update
@@ -31,7 +31,7 @@ COPY scipoptsuite-8.0.0.tgz .
 RUN tar xvf scipoptsuite-8.0.0.tgz
 RUN rm scipoptsuite-8.0.0.tgz
 WORKDIR /myappdir/scipoptsuite-8.0.0
-RUN make
+RUN make ARCH=arm
 RUN make install INSTALLDIR="/myappdir/local/src/scipoptsuite-8.0.0/scip"
 
 # Install Gobnilp

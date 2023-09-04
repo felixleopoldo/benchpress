@@ -114,6 +114,30 @@
                 ],
                 "burnin_frac": 0.5,
                 "timeout": null
+            },
+            {
+                "id": "gt13",
+                "n_samples": 1000000,
+                "datatype": "discrete",
+                "randomits": 1000,
+                "prior": "bc",
+                "ascore": 0.1,
+                "bscore": 0.001,
+                "clq": null,
+                "sep": null,
+                "penalty": null,
+                "mcmc_seed": 1,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5,
+                "timeout": null
             }
         ]
     }

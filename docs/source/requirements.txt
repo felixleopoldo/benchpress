@@ -3,3 +3,8 @@ sphinx-prompt
 sphinxcontrib.bibtex
 bibtexparser
 sphinx_rtd_theme
+recommonmark
+urllib3==1.26.15
+requests
+sphinx-version-warning
+sphinx-last-updated-by-git

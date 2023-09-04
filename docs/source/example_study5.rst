@@ -19,10 +19,10 @@ From each model we draw, as before, two datasets :math:`\mathbf Y_i^{320}` and :
 
 :numref:`study_5/FPR_TPR_pattern.png` shows the ROC curves for this scenario. 
 The algorithms appear to be divided in two groups with respect to their performance in terms of TPR. 
-Constraint based methods including :ref:`pcalg_pc` (*pc-binCItest*), :ref:`tetrad_fci` (*fci-chi-square*), :ref:`tetrad_rfci` (*rfci-chi-square*), inter-IAMB (*interiamb-mi*), :ref:`bnlearn_mmhc` (*mmhc-bde-mi*), and :ref:`bnlearn_gs` (*gs-mi*) appear to cluster in the lower scoring region (TPR *<0.5*), with :ref:`bnlearn_gs` achieving the lowest FPRp.
+Constraint based methods including :ref:`pcalg_pc` (*pc-binCItest*), :ref:`tetrad_fci` (*fci-chi-square*), :ref:`tetrad_rfci` (*rfci-chi-square*), inter-IAMB (*interiamb-mi*), :ref:`bnlearn_mmhc` (*mmhc-bde-mi*), and :ref:`bnlearn_gs` (*gs-mi*) appear to cluster in the lower scoring region (TPR *<0.5*), with :ref:`bnlearn_gs` achieving the lowest `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_.
 Score based methods on the other seem to concentrate in the higher scoring region (TPR *>0.5*). 
 For the smaller dataset (*n=320*), the group of better performing algorithms includes :ref:`tetrad_fges` (*fges-bdeu*), :ref:`bidag_order_mcmc` (*omcmc_itsample-bde*), :ref:`bidag_itsearch` (*itsearch_sample-bde*), :ref:`tetrad_gfci` (*gfci-bdeu-chi-square*), all with FPRp :math:`\approx 0.15`. 
-For the larger data set (*n=640*) the higher performing group in terms of FPRp :math:`\approx 0.11`` includes again :ref:`bidag_itsearch` (*omcmc_itsample-bde*) and :ref:`bidag_itsearch` (*itsearch_sample-bde*), this time joined by :ref:`gobnilp` (*gobnilp-bde*).
+For the larger data set (*n=640*) the higher performing group in terms of `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ :math:`\approx 0.11`` includes again :ref:`bidag_itsearch` (*omcmc_itsample-bde*) and :ref:`bidag_itsearch` (*itsearch_sample-bde*), this time joined by :ref:`gobnilp` (*gobnilp-bde*).
 
 
 .. _study_5/FPR_TPR_pattern.png:

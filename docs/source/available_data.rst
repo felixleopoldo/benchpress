@@ -1,7 +1,12 @@
-``data``
+.. _data: 
+
+Data
 ==============
 
-The data modules.
+The available data modules are listed below.
+
+
+
 
 .. list-table:: 
    :header-rows: 1 
@@ -11,7 +16,7 @@ The data modules.
      - Package
      - Version
      - Module
-   * - Fixed dataset(s)
+   * - Fixed data
      - 
      - 
      - 
@@ -33,97 +38,172 @@ The data modules.
 
 .. _fixed_data: 
 
-``fixed_data`` 
+fixed_data 
 --------------
 
-.. rubric:: Fixed dataset(s)
+.. rubric:: Fixed data
 
 .. rubric:: Description
 
-
-.. list-table::
-
-  * - Filename
-    - p
-    - n
-    - Type
-    - Graph
-  * - :ref:`czech_autoworkers.csv`
-    - 6
-    - 1841
-    - Bin
-    - Not known
-  * - :ref:`2019_olsson_pavlenko_rios_p15_n1000.csv`
-    - 15
-    - 1000
-    - Bin
-    - `jonesp15.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/jonesp15.csv>`__
-  * - :ref:`2005_sachs_2_cd3cd28icam2_log_std.csv`
-    - 11
-    - 992
-    - Cont
-    - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
-
-----------------------
-
-.. _czech_autoworkers.csv:
-
-.. rubric:: czech_autoworkers.csv
-
-
-File: `czech_autoworkers.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/czech_autoworkers.csv>`__
-
-Paper: :footcite:t:`edwards1985fast`
-
-Description:
-
-A 6 way contingency table representing the cross classification of 1841 men. All 6 classification criteria are binary. The variables are (smoke) smoking, (mental) strenuous mental work, (phys) strenuous physical work, (blodp) systolic blood pressure, (lipo) ratio of beta and alpha lipoproteins and (coron) family anamnesis of coronary heart disease.
-
-
-------------------------
-
-.. _2019_olsson_pavlenko_rios_p15_n1000.csv:
-
-.. rubric:: 2019_olsson_pavlenko_rios_p15_n1000.csv
-
-
-File: `2019_olsson_pavlenko_rios_p15_n1000.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2019_olsson_pavlenko_rios_p15_n1000.csv>`__
-
-Paper: :footcite:t:`10.1214/19-EJS1585`
-
-Description:
+The table below contains a list of some of the datasets that are available.
+However, to use other datasets, you can simply place them in your local  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/tree/master/resources/data/mydatasets>`_ along with the others.
+The files should be on the csv format specified in :ref:`data_formats`.
 
 
 
--------------------
+
+.. list-table:: 
+
+   * - Filename 
+     - p
+     - n
+     - Type
+     - Graph
+   * - :ref:`2005_sachs/`
+     - 11
+     - 
+     - cont
+     - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
+   * - :ref:`2005_sachs_1_cd3cd28_log.csv`
+     - 11
+     - 992
+     - cont
+     - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
+   * - :ref:`2005_sachs_2_cd3cd28icam2_log.csv`
+     - 11
+     - 992
+     - cont
+     - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
+   * - :ref:`2005_sachs_2_cd3cd28icam2_log_std.csv`
+     - 11
+     - 992
+     - cont
+     - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
+   * - :ref:`2013_green_thomas_p50_n1000.csv`
+     - 50
+     - 1000
+     - cont
+     - `greenthomas2013_ar2.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/greenthomas2013_ar2.csv>`__
+   * - :ref:`2019_olsson_pavlenko_rios_p15_n1000.csv`
+     - 15
+     - 1000
+     - bin
+     - `jonesp15.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/jonesp15.csv>`__
+   * - :ref:`czech_autoworkers.csv`
+     - 6
+     - 1841
+     - bin
+     - `unknown <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/unknown>`__
+   * - :ref:`gmint.csv`
+     - 8
+     - 5000
+     - cont, interv
+     - `gmint.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/gmint.csv>`__
+
+
+
+
+.. _2005_sachs/:
+
+.. rubric:: 2005_sachs/
+
+File: `2005_sachs/ <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs/>`__
+
+Directory with all the datasets from :footcite:t:`doi:10.1126/science.1105809`
+
+--------------------
+
+
+
+.. _2005_sachs_1_cd3cd28_log.csv:
+
+.. rubric:: 2005_sachs_1_cd3cd28_log.csv
+
+File: `2005_sachs_1_cd3cd28_log.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_1_cd3cd28_log.csv>`__
+
+The logged version of the 1st dataset from :footcite:t:`doi:10.1126/science.1105809`.
+
+--------------------
+
+
+
+.. _2005_sachs_2_cd3cd28icam2_log.csv:
+
+.. rubric:: 2005_sachs_2_cd3cd28icam2_log.csv
+
+File: `2005_sachs_2_cd3cd28icam2_log.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log.csv>`__
+
+The logged version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`.
+
+--------------------
+
+
 
 .. _2005_sachs_2_cd3cd28icam2_log_std.csv:
 
 .. rubric:: 2005_sachs_2_cd3cd28icam2_log_std.csv
 
-
 File: `2005_sachs_2_cd3cd28icam2_log_std.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv>`__
 
-Paper: :footcite:t:`doi:10.1126/science.1105809`
+The logged and standardized version of the 2nd dataset from :footcite:t:`doi:10.1126/science.1105809`.
 
-.. We consider the data from \cite{sachs2005causal} containing cytometry measurements of 11 phosphorylated proteins and phospholipids, which has become standard in this field since the true underlying graph is regarded as known.
-.. The dataset consists of totally 7644 measurements from nine different perturbation conditions, each defining a unique intervention scheme.
+--------------------
 
-.. %This data has several times been used carelessly to benchmark structure learning algorithms for observational data.
 
-.. \cite{sachs2005causal} removed any data points that fell more than three standard deviations from the mean. % , which resulted in 5400 datapoints which are not available. 
-.. The data were then discretized to three levels. 
-.. %The purely observational data had merely 1200 data points.
-.. They also use bootstrapping methodologies and handle the interventional dataset to determine causal directions of edges. 
 
-.. However, since the purpose here is to benchmark algorithms suited for observational data, we consider only the first two interventions, referred to as \emph{(anti-CD3/CD28)} and \emph{(anti-CD3/CD28 + ICAM-2)} as only these are expected to be independent of the nodes in the network and just activate the T-cells generally. 
-.. Algorithms that can handle interventional data (or a combination of interventional and observential), are also available  \citep[see \emph{e.g.},][]{hauser2012characterization,NIPS2017_275d7fb2, kuipers2022interventional} but not studied in this paper and are not yet supported by \ttl.
-.. We show results for the (logged and standardized version of) the second dataset (\emph{anti-CD3/CD28 + ICAM-2}) with 902 observations since the graphs estimated from this dataset were in general closer to the gold standard network. The data are visualised in Figure~\ref{fig:sachs_pairs} with independent and pairwise scatter plots using the \texttt{ggally\_ggpairs} module.
+.. _2013_green_thomas_p50_n1000.csv:
+
+.. rubric:: 2013_green_thomas_p50_n1000.csv
+
+File: `2013_green_thomas_p50_n1000.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2013_green_thomas_p50_n1000.csv>`__
+
+Synthetic decomposable Gaussian graphical AR-2 (intra-class) model dataset from section 4.3 in :footcite:t:`Green01032013`.
+
+--------------------
+
+
+
+.. _2019_olsson_pavlenko_rios_p15_n1000.csv:
+
+.. rubric:: 2019_olsson_pavlenko_rios_p15_n1000.csv
+
+File: `2019_olsson_pavlenko_rios_p15_n1000.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/2019_olsson_pavlenko_rios_p15_n1000.csv>`__
+
+The binary decomposable dataset from section 6.2 in :footcite:t:`10.1214/19-EJS1585`.
+
+--------------------
+
+
+
+.. _czech_autoworkers.csv:
+
+.. rubric:: czech_autoworkers.csv
+
+File: `czech_autoworkers.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/czech_autoworkers.csv>`__
+
+Czech autoworkers dataset from :footcite:t:`edwards1985fast`.
+
+--------------------
+
+
+
+.. _gmint.csv:
+
+.. rubric:: gmint.csv
+
+File: `gmint.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/gmint.csv>`__
+
+Synthetic interventional dataset gmInt from the pcalg package :footcite:t:`kalisch2012causal` (see the documentation of pcalg). 
+
+--------------------
+
 
 
 .. rubric:: References
-    
+
 .. footbibliography::
+
+
 
 .. footbibliography::
 
@@ -131,7 +211,7 @@ Paper: :footcite:t:`doi:10.1126/science.1105809`
 
 .. _gcastle_iidsim: 
 
-``gcastle_iidsim`` 
+gcastle_iidsim 
 ------------------
 
 .. rubric:: gCastle IID (SEM)
@@ -159,6 +239,8 @@ IID samples from a SEM model using the  *IIDSimulation* object in the `gCastle <
 The data may be standardized by setting ``standardized`` to *true*. 
 
 
+
+
 .. rubric:: Example
 
 
@@ -184,7 +266,7 @@ The data may be standardized by setting ``standardized`` to *true*.
 
 .. _iid: 
 
-``iid`` 
+iid 
 -------
 
 .. rubric:: IID data
@@ -208,8 +290,10 @@ The data may be standardized by setting ``standardized`` to *true*.
 
 .. rubric:: Description
 
-Independently identically distributed (IID) samples of a given size ``sample_sizes``.
+Independently identically distributed (IID) samples of a given size ``n``.
 The data may be standardized by setting ``standardized`` to true. 
+
+
 
 
 .. rubric:: Example
@@ -222,7 +306,7 @@ The data may be standardized by setting ``standardized`` to true.
       {
         "id": "standardized",
         "standardized": true,
-        "sample_sizes": [
+        "n": [
           100
         ]
       }

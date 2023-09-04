@@ -1,11 +1,13 @@
-rule sklearn_glasso:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjmat=alg_output_adjmat_path("sklearn_glasso"),
-        time=alg_output_time_path("sklearn_glasso"),
-        ntests=touch(alg_output_ntests_path("sklearn_glasso"))
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://onceltuca/datascience-python"
+        "docker://bpimages/datascience-python-arm64"
     script:
-        "sklearn_glasso.py"
+        "script.py"

@@ -1,11 +1,11 @@
 {
-    "title": "My new algorithm",
+    "title": "My new MCMC algorithm",
     "version": "v0.0.1",
     "package": {
         "title": "",
         "url": ""
     },
-    "docs": "",
+    "docs_url": "",
     "outputs": "graphtraj",
     "graph_types": [
         "UG"

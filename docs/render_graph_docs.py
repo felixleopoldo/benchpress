@@ -61,7 +61,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-    
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
@@ -95,10 +96,33 @@ algspath = Path("../workflow/rules/graph")
 
 f = open("source/graphs_desc.rst", "r")
 content = f.read()
+str= """
+All the modules run in Apptainer (Singularity) containers created from the Docker images corresponding used by the modules.
+To start an interactive `Docker <https://www.docker.com/>`_ shell for a module run
 
-str = ""
+ .. prompt:: bash
+
+     docker run -it username/image:version
+
+ or using `Apptainer <https://apptainer.org/>`_
+
+ .. prompt:: bash
+
+     apptainer run docker://username/image:version
+
+
+"""
+str = """The names of the fields of the modules are directly transferred or translated from the original libraries or code. 
+Thus, for further details of each field see the documentation of the original sources.
+Most of the parameters can be given as either a single value or a list.
+However, some parametrers might be missing for some modules, to see which parameters are available please review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
+
+
+"""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+#str += "``"+algspath.name+"``\n"
+str += "Graphs\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content
@@ -109,6 +133,8 @@ str += "\n\n"
 for p in sorted(algspath.iterdir()):
     #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"
@@ -139,7 +165,7 @@ for p in sorted(algspath.iterdir()):
     #str +=".. _" + p.name +": "
     str += "\n\n"
     str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
+    str +="" + p.name +" \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
     
@@ -162,6 +188,7 @@ for p in sorted(algspath.iterdir()):
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
     str += "\n\n"
     str += ".. footbibliography::"
+    #str += "\n\n-----------\n"
     str += "\n\n"
 
 

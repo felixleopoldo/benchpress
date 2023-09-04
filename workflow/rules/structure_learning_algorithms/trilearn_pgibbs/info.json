@@ -5,13 +5,7 @@
         "title": "trilearn",
         "url": "https://github.com/felixleopoldo/trilearn"
     },
-    "docs_url": "https://cmu-phil.github.io/tetrad/manual/#search_box",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
+    "docs_url": "",
     "outputs": [
         "graphtraj"
     ],

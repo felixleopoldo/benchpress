@@ -53,21 +53,21 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         1000
                     ]
                 },
                 {
                     "id": "example1",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -75,7 +75,7 @@
                 {
                     "id": "example2",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -83,7 +83,7 @@
                 {
                     "id": "example3",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -91,7 +91,7 @@
                 {
                     "id": "example4",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         320,
                         640
                     ]
@@ -247,18 +247,7 @@
                     "cores": 1,
                     "verbose_level": 0
                 }
-            ],
-            "notears": [
-                {
-                    "id": "notears",
-                    "min_rate_of_progress": 0.25,
-                    "penalty_growth_rate": 10,
-                    "optimation_accuracy": 0.00000001,
-                    "loss": "least_squares_loss_cov",
-                    "loss_grad": "least_squares_loss_cov_grad",
-                    "timeout": null
-                }
-            ],
+            ],  
             "gobnilp": [
                 {
                     "id": "gobnilp-bge",
@@ -287,10 +276,10 @@
                 {
                     "id": "fges-sem-bic",
                     "faithfulnessAssumed": true,
-                    "score": "sem-bic",
+                    "score": "sem-bic-score",
                     "datatype": "continuous",
                     "samplePrior": 1,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": [
                         0.8,
                         1,
@@ -307,7 +296,7 @@
                         1,
                         2
                     ],
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": null,
                     "timeout": null
                 }
@@ -349,13 +338,13 @@
                     "datatype": "discrete",
                     "penaltyDiscount": null,
                     "samplePrior": 1,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "timeout": null
                 },
                 {
                     "id": "gfci-sem-bic-fisher-z",
                     "alpha": 0.05,
-                    "score": "sem-bic",
+                    "score": "sem-bic-score",
                     "test": "fisher-z-test",
                     "datatype": "continuous",
                     "penaltyDiscount": [
@@ -364,7 +353,7 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "timeout": null
                 }
             ],

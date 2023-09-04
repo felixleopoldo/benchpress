@@ -21,7 +21,7 @@ In the present study we consider a broader simulation over 13 algorithms in a si
 .. _study_2/FPR_TPR_pattern.png:
 
 .. figure:: _static/study_2/FPR_TPR_pattern.png
-    :width: 300 
+    :width: 305 
     :alt: FP/P vs. TP/P
     :align: left
 
@@ -30,14 +30,15 @@ In the present study we consider a broader simulation over 13 algorithms in a si
 .. _study_2/elapsed_time_joint.png:
 
 .. figure:: _static/study_2/elapsed_time_joint.png
-    :width: 300
+    :width: 305
     :alt: 
-
 
     Timing.
 
-:numref:`study_2/FPR_TPR_pattern.png` shows the FPR and TPRp based on pattern graphs and :numref:`study_2/elapsed_time_joint.png`  shows the computational times.
+
+
+:numref:`study_2/FPR_TPR_pattern.png` shows `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ / `TP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_  based on pattern graphs and :numref:`study_2/elapsed_time_joint.png`  shows the computational times.
 We can directly observe that :ref:`bidag_order_mcmc` (*omcmc-bge*) has the best (near perfect) performance, and that it comes at the cost of longer computational time.
-Apart from this, the results of :numref:`study_2/FPR_TPR_pattern.png` may be partitioned into two regions, :ref:`tetrad_fges` (*fges-sem-bic*), :ref:`bnlearn_hc` (*hc-bge*), and :ref:`bnlearn_tabu` (*tabu-bge*) having higher values for both TPR and FPRp and the rest having lower values for both TPR and FPRp.
+Apart from this, the results of :numref:`study_2/FPR_TPR_pattern.png` may be partitioned into two regions, :ref:`tetrad_fges` (*fges-sem-bic*), :ref:`bnlearn_hc` (*hc-bge*), and :ref:`bnlearn_tabu` (*tabu-bge*) having higher values for both `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ and `TP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_  and the rest having lower values for both `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_  and `TP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ .
 
 

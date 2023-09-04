@@ -1,6 +1,6 @@
 .. _parameters: 
 
-``parameters``
+Parameters
 ====================
 
 Parameter modules are listed below. 
@@ -59,7 +59,7 @@ Make sure that the parameter module is compatible with the graph module you are 
 
 .. _bdgraph_rgwish: 
 
-``bdgraph_rgwish`` 
+bdgraph_rgwish 
 ------------------
 
 .. rubric:: G-Wishart
@@ -79,7 +79,7 @@ Make sure that the parameter module is compatible with the graph module you are 
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
    * - Module
      - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
 
@@ -111,7 +111,7 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
 
 .. _bin_bn: 
 
-``bin_bn`` 
+bin_bn 
 ----------
 
 .. rubric:: Binary BN
@@ -131,7 +131,7 @@ The inverted precision matrix is saved, serving as covariance matrix in a Gaussi
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+     - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
@@ -175,7 +175,7 @@ where  :math:`(a,b) \in [0,1]^2, a<b` and :math:`\mathrm{Unif}(c)` denotes the u
 
 .. _fixed_params: 
 
-``fixed_params`` 
+fixed_params 
 ----------------
 
 .. rubric:: Fixed parameters
@@ -193,9 +193,7 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 
 .. important::
 
-    This must be combined with the correct graph of the network. For example, the network of ``asia.rds`` should be used with the graph ``asia.csv``, which happens the be corresponding adjacancy matrix.
-
-
+    This must be combined with the correct graph of the network. For example, ``asia.rds`` should be used with the graph ``asia.csv``, which is the corresponding adjacency matrix.
 
 
 .. footbibliography::
@@ -204,7 +202,7 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
 
 .. _sem_params: 
 
-``sem_params`` 
+sem_params 
 --------------
 
 .. rubric:: SEM parameters
@@ -224,7 +222,7 @@ Example standard networks mostly from the `bnlearn repository <https://www.bnlea
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
    * - Module
      - `sem_params <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/sem_params>`__
 
@@ -271,7 +269,7 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
 
 .. _trilearn_hyper-dir: 
 
-``trilearn_hyper-dir`` 
+trilearn_hyper-dir 
 ----------------------
 
 .. rubric:: Hyper-Dirichlet
@@ -291,7 +289,7 @@ where :math:`Z_i\sim \mathcal N(\mu, \sigma^2)` and elements of :math:`W` are di
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
 
@@ -327,7 +325,7 @@ An object of this module defines a categorical decomposable model by sampling th
 
 .. _trilearn_intra-class: 
 
-``trilearn_intra-class`` 
+trilearn_intra-class 
 ------------------------
 
 .. rubric:: Graph intra-class
@@ -347,7 +345,7 @@ An object of this module defines a categorical decomposable model by sampling th
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 

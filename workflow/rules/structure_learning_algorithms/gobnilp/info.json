@@ -1,6 +1,6 @@
 {
     "title": "GOBNILP",
-    "docker_image": "onceltuca/gobnilp:4347c64",
+    "docker_image": "bpimages/gobnilp:4347c64",
     "version": "#4347c64",
     "package": {
         "title": "GOBNILP (BitBucket)",

@@ -109,14 +109,14 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": [
+                    "n": [
                         300
                     ]
                 },
                 {
                     "id": "nonstandardized",
                     "standardized": false,
-                    "sample_sizes": [
+                    "n": [
                         300
                     ]
                 }
@@ -374,10 +374,10 @@
                 {
                     "id": "fges-sem-bic",
                     "faithfulnessAssumed": true,
-                    "score": "sem-bic",
+                    "score": "sem-bic-score",
                     "datatype": "continuous",
                     "samplePrior": 1,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": [
                         0.75,
                         0.8,

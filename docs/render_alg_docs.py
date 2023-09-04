@@ -59,8 +59,8 @@ def info_to_table(info, p):
     tab += "   * - Docker \n"
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
     #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
-    tab += "   * - Module\n"
-    tab += "     - `"+p.name+"/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+    tab += "   * - Module folder\n"
+    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
     tab += "\n"
     return tab
 
@@ -77,6 +77,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
+        if p.name.startswith("."):
+            continue
         #print(p.name)
         j = p/"info.json"
         if p.name == "docs.rst" or p.name == ".DS_Store":
@@ -113,7 +115,7 @@ content = f.read()
 
 str = ""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+str += "Algorithms\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content
@@ -126,8 +128,6 @@ for p in sorted(algspath.iterdir()):
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":
         continue
-
-
         
     d = p/"docs.rst"
     j = p/"info.json"
@@ -142,7 +142,8 @@ for p in sorted(algspath.iterdir()):
     if "in_docs" in info and info["in_docs"] is False:
         continue
     
-    schema = None    
+    schema = None
+
     with open(s) as json_file:    
         schema = json.load(json_file)
     
@@ -155,7 +156,9 @@ for p in sorted(algspath.iterdir()):
     #str +=".. _" + p.name +": "
     str += "\n\n"
     str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
+    #str +="``" + p.name +"`` \n"
+    str +="" + p.name +" \n"
+    #str +="" + info["title"] +" ("+p.name+") \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
     
@@ -169,6 +172,22 @@ for p in sorted(algspath.iterdir()):
         str += "\n\n"
         str += content
     str += "\n\n"
+    
+    with open(s) as json_file:    
+        schema = json.load(json_file)
+
+    tmp = any(["description" in obj 
+           for prop, obj in schema["items"]["properties"].items() 
+           if prop != "id"])
+
+    if tmp:
+        str += ".. rubric:: Some fields described \n"
+        for prop, obj in sorted(schema["items"]["properties"].items()):
+            if prop == "id":
+                continue
+            if "description" in obj:                
+                str += "* ``{}`` {} \n".format(prop, obj["description"])
+    
     str += ".. rubric:: Example"
     str += "\n\n\n"
     str += ".. code-block:: json"    
@@ -176,10 +195,8 @@ for p in sorted(algspath.iterdir()):
     str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
     str += "\n\n"
     str += ".. footbibliography::"
+    #str += "\n\n---------"
     str += "\n\n"
-
-
-
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
     text_file.write(str)

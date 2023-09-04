@@ -7,7 +7,7 @@
                 "data_id": "standardized",
                 "seed_range": [
                     1,
-                    10
+                    1
                 ]
             }
         ],
@@ -43,7 +43,7 @@
                 {
                     "id": "standardized",
                     "standardized": true,
-                    "sample_sizes": 300
+                    "n": 300
                 }
             ]
         },

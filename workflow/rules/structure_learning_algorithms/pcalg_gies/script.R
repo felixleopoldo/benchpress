@@ -1,5 +1,5 @@
 
-source("workflow/scripts/utils/add_timeout.R")
+source("workflow/scripts/utils/helpers.R")
 library("R.utils") 
 library(RBGL)
 library(pcalg)

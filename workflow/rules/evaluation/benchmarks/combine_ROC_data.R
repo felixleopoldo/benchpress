@@ -4,7 +4,7 @@
 # Averages are usually taken over different seeds.
 
 library(dplyr, warn.conflicts = FALSE)
-library("rjson")
+library(rjson)
 library(argparser)
 
 p <- arg_parser("Combining benchmarks data from differents sources.")

@@ -1,0 +1,183 @@
+{
+    "benchmark_setup": {
+        "data": [
+            {
+                "graph_id": "testmat",
+                "parameters_id": "gwish",
+                "data_id": "testdata",
+                "seed_range": [
+                    1,
+                    2
+                ]
+            }
+        ],
+        "evaluation": {
+            "benchmarks": {
+                "filename_prefix": "sandbox/",
+                "show_seed": false,
+                "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
+                "path": true,
+                "text": true,
+                "ids": [
+                    "pc-gaussCItest",
+                    "testalg",
+                    "mcmctest"
+                ]
+            },
+            "graph_true_plots": false,
+            "graph_true_stats": false,
+            "ggally_ggpairs": false,
+            "graph_plots": [],
+            "mcmc_traj_plots": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "thinning": 10,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                }
+            ],
+            "mcmc_heatmaps": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "active": true
+                }
+            ],
+            "mcmc_autocorr_plots": [
+                {
+                    "id": "mcmctest",
+                    "burn_in": 0.5,
+                    "thinning": 10,
+                    "lags": 50,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                }
+            ]
+        }
+    },
+    "resources": {
+        "data": {
+            "iid": [
+                {
+                    "id": "standardized",
+                    "standardized": true,
+                    "n": [
+                        300
+                    ]
+                }
+            ],
+            "new_data": [
+                {
+                    "id": "testdata",
+                    "n": 100,
+                    "standardized": false
+                }
+            ]
+        },
+        "graph": {
+            "new_graph": [
+                {
+                    "id": "testmat",
+                    "p": 5,
+                    "cutoff": 0.8
+                }
+            ],
+            "pcalg_randdag": [
+                {
+                    "id": "avneigs4_p20",
+                    "max_parents": 5,
+                    "n": 20,
+                    "d": 4,
+                    "par1": null,
+                    "par2": null,
+                    "method": "er",
+                    "DAG": true
+                }
+            ]
+        },
+        "parameters": {
+            "new_params": [
+                {
+                    "id": "gwish",
+                    "thresh": 1e-8,
+                    "b": 3
+                }
+            ],
+            "sem_params": [
+                {
+                    "id": "SEM",
+                    "min": 0.25,
+                    "max": 1
+                }
+            ]
+        },
+        "structure_learning_algorithms": {
+            "new_alg": [
+                {
+                    "id": "testalg",
+                    "cutoff": [
+                        0.1,
+                        0.3,
+                        0.5,
+                        0.8,
+                        0.9
+                    ],
+                    "timeout": null
+                }
+            ],
+            "new_mcmcalg": [
+                {
+                    "id": "mcmctest",
+                    "cutoff": 0.8,
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "threshold",
+                    "threshold": [
+                        0.1,
+                        0.3,
+                        0.5,
+                        0.8,
+                        0.9
+                    ],
+                    "mcmc_seed": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "n_iterations": 10000,
+                    "timeout": null
+                }
+            ],
+            "pcalg_pc": [
+                {
+                    "id": "pc-gaussCItest",
+                    "alpha": [
+                        0.001,
+                        0.01,
+                        0.05,
+                        0.1
+                    ],
+                    "NAdelete": true,
+                    "mmax": "Inf",
+                    "u2pd": "relaxed",
+                    "skelmethod": "stable",
+                    "conservative": false,
+                    "majrule": false,
+                    "solveconfl": false,
+                    "numCores": 1,
+                    "verbose": false,
+                    "indepTest": "gaussCItest",
+                    "timeout": null
+                }
+            ]
+        }
+    }
+}

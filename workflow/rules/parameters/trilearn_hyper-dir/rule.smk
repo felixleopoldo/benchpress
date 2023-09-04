@@ -8,6 +8,6 @@ rule trilearn_hyper_dir:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.json"
     container:
-        "docker://onceltuca/trilearn:1.25"
+        "docker://bpimages/trilearn:2.0.1-arm64"
     shell:
         "python workflow/rules/parameters/trilearn_hyper-dir/trilearn_sample_hyper-dir.py {output.bn} {wildcards.seed} {wildcards.n_levels} {wildcards.pseudo_obs} {input.adjmat}" 

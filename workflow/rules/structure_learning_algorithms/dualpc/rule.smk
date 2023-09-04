@@ -1,11 +1,13 @@
-rule dualpc:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data(),
+        data=alg_input_data()
     output:
-        adjmat=alg_output_adjmat_path("dualpc"),
-        time=alg_output_time_path("dualpc"),
-        ntests=touch(alg_output_ntests_path("dualpc"))
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://onceltuca/dualpc:latest"
+        "docker://bpimages/dualpc:585751b-arm64"
     script:
-        "dualpc.R"
+        "script.R"

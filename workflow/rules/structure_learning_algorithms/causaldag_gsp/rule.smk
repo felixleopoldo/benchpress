@@ -1,11 +1,13 @@
-rule causaldag_gsp:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data(),
+        data=alg_input_data()
     output:
-        adjmat=alg_output_adjmat_path("causaldag_gsp"),
-        time=alg_output_time_path("causaldag_gsp"),
-        ntests=alg_output_ntests_path("causaldag_gsp"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name)
     container:
-        "docker://onceltuca/causaldag:0.1a163"
+        "docker://bpimages/causaldag:0.1a163-arm64"
     script:
-        "causaldag_gsp.py"
+        "script.py"

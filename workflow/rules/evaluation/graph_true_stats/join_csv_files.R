@@ -3,7 +3,14 @@
 library(dplyr)
 
 fix_columns <- function(df) {
-  df <- na_if(df, "None")
+  print(df)
+
+  #tmp <- df %>% mutate(across(everything(), replace, "None" , NA))
+
+  df[df == "None"] <- NA
+  print(df)
+  #df %>%  mutate(across(Q2:Q4, ~ replace(., !is.na(.), "Competitor")))
+  #df <- na_if(df, "None")
 
   if ("plus1it" %in% colnames(df)) {
     df["plus1it"] <- as.numeric(df["plus1it"])

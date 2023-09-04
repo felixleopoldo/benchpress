@@ -4,7 +4,7 @@ stats <- read.csv(snakemake@input[["joint_stats"]])
 
 df1 <- stats
 df1["value"] <- stats[, "n_inedges"] / stats[, "n_nodes"]
-df1["stats"] <- "density"
+df1["stats"] <- "avg_indegree"
 
 df2 <- stats
 df2["value"] <- stats[, "max_indegree"]
@@ -15,7 +15,7 @@ df <- dplyr::bind_rows(df1, df2)
 ggplot(data = df, aes(x = as.factor(seed), y = value, fill = stats)) +
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(. ~ adjmat) +
-    ggtitle("Graph density (#edges/#nodes)") +
+    ggtitle("Graph properties") +
     theme_bw() +
     xlab("Seed") +
     ylab("") +

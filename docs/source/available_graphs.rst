@@ -1,11 +1,17 @@
+The names of the fields of the modules are directly transferred or translated from the original libraries or code. 
+Thus, for further details of each field see the documentation of the original sources.
+Most of the parameters can be given as either a single value or a list.
+However, some parametrers might be missing for some modules, to see which parameters are available please review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
+
+
 .. _graph: 
 
-``graph``
+Graphs
 ===============
 
-Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on
-which we wish to perform a benchmarking study. 
-Below is the list of currently available modules.
+.. Several possibilities exist for defining the graph component, depending on whether we wish to draw random graphs from a given distribution, or maybe provide a given structure on which we wish to perform a benchmarking study. 
+Below is a list of available modules.
 
 
 .. list-table:: 
@@ -53,7 +59,7 @@ Below is the list of currently available modules.
 
 .. _bdgraph_graphsim: 
 
-``bdgraph_graphsim`` 
+bdgraph_graphsim 
 --------------------
 
 .. rubric:: graph.sim function
@@ -73,7 +79,7 @@ Below is the list of currently available modules.
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
    * - Module
      - `bdgraph_graphsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/bdgraph_graphsim>`__
@@ -105,7 +111,7 @@ Below is the list of currently available modules.
 
 .. _fixed_graph: 
 
-``fixed_graph`` 
+fixed_graph 
 ---------------
 
 .. rubric:: Fixed graph
@@ -122,7 +128,7 @@ A fixed graph is referenced by the corresponding filename instead of `id` as wit
 
 .. _pcalg_randdag: 
 
-``pcalg_randdag`` 
+pcalg_randdag 
 -----------------
 
 .. rubric:: randDAG
@@ -142,7 +148,7 @@ A fixed graph is referenced by the corresponding filename instead of `id` as wit
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
    * - Module
      - `pcalg_randdag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/pcalg_randdag>`__
@@ -190,7 +196,7 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
 
 .. _trilearn_bandmat: 
 
-``trilearn_bandmat`` 
+trilearn_bandmat 
 --------------------
 
 .. rubric:: Band matrix
@@ -210,7 +216,7 @@ parameters par1 and par2, for further details see :footcite:t:`JSSv047i11`.
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_bandmat>`__
@@ -244,7 +250,7 @@ with given bandwidth (*bandwith*).
 
 .. _trilearn_cta: 
 
-``trilearn_cta`` 
+trilearn_cta 
 ----------------
 
 .. rubric:: CTA
@@ -264,7 +270,7 @@ with given bandwidth (*bandwith*).
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_cta>`__
@@ -303,7 +309,7 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
 
 .. _trilearn_rand_bandmat: 
 
-``trilearn_rand_bandmat`` 
+trilearn_rand_bandmat 
 -------------------------
 
 .. rubric:: Random bandmatrix
@@ -323,7 +329,7 @@ In summary, high values of ``alpha``, ``beta`` give denser graphs.
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_rand_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_rand_bandmat>`__

@@ -1,22 +1,17 @@
 {
     "title": "FAS",
-    "version": "1.1.3",
+    "version": "1.9.0",
     "package": {
         "title": "causal-cmd",
         "url": "https://github.com/bd2kccd/causal-cmd"
     },
     "docs_url": "https://cmu-phil.github.io/tetrad/manual/#search_box",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        "DAG"
+        "UG"
     ],
-    "language": "java"
+    "language": "java",
+    "in_docs": false
 }

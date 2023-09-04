@@ -1,13 +1,15 @@
-rule gcastle_grandag:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjmat=alg_output_adjmat_path("gcastle_grandag"),
-        time=alg_output_time_path("gcastle_grandag"),
-        ntests=alg_output_ntests_path("gcastle_grandag"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name),
     params:
         alg="grandag",
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3-arm64"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

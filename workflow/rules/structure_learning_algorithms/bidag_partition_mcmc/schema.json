@@ -127,7 +127,30 @@
                 "threshold": 0.5,
                 "mcmc_estimator": "threshold",
                 "burnin_frac": 0.5
-            }
+            },
+            {
+                "id": "partition_itmap-bde",
+                "startspace_algorithm": "itsearch_map-bde_endspace",
+                "verbose": true,
+                "scoretype": "bde",
+                "chi": [
+                    0.01,
+                    0.1,
+                    1,
+                    2
+                ],
+                "edgepf": 2,
+                "aw": null,
+                "am": null,
+                "gamma": 1,
+                "stepsave": null,
+                "iterations": null,
+                "timeout": null,
+                "mcmc_seed": 1,
+                "threshold": 0.5,
+                "mcmc_estimator": "threshold",
+                "burnin_frac": 0.5
+            }            
         ]
     }
 }

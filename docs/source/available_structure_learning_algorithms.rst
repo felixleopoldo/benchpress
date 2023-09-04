@@ -1,12 +1,20 @@
 .. _structure_learning_algorithms: 
 
-``structure_learning_algorithms``
+Algorithms
 =======================================
 
-For explanations of the parametrisations of each algorithm see the documentation for the corresponding algorithms.
-Most of the parameters can be given as either a single value or a list.
-However, some parametrers might be missing for some algorithms, to see which parameters are available please review the JSON schema.
-Dots (.) in the original parameter names are omitted for implementational reasons.
+Apart from the original parameters of the underlying software, each algorithm module is equipped with an additional parameter, ``timeout``, which is the maximum time in seconds allowed for the algorithm to run.
+After the timeout, the algorithm will be terminated and either an empty file will be created or the current best graph will be saved (if the algorithm supports that).
+
+Modules for MCMC algorithms can be used seamlessly with the other modules. However, apart from the original parameters and ``timeout``, these modules have four additional fields:
+
+* ``mcmc_seed`` is the random seed for the algorithm. 
+* ``mcmc_estimator`` specifies which estimator to use (*threshold* or *map*). 
+* ``threshold`` specifies the threshold for the posterior edge probabilities if ``mcmc_estimator`` is set to *threshold*. 
+* ``burnin_frac`` is a value in (0, 1) that specifies the fraction of the samples at the beginning of the graph trajectory to be discarded as burn-in.
+
+The available modules are listed below. 
+To add new modules, see :ref:`new_modules`.
 
 .. list-table:: 
    :header-rows: 1 
@@ -91,6 +99,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
      - causaldag_gsp_ 
+   * - GRaSP
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+     - causallearn_grasp_ 
    * - Corrmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
@@ -168,7 +180,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - parallelDG_ 
    * - GIES
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_gies_ 
    * - PC
@@ -187,10 +199,6 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      - sklearn_glasso_ 
-   * - FAS
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fas_ 
    * - FASK
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -215,18 +223,18 @@ Dots (.) in the original parameter names are omitted for implementational reason
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
-   * - IMGSCONT
+   * - GRaSP
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - tetrad_grasp_ 
+   * - ICA-LINGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_imgscont_ 
-   * - LINGAM
+     - tetrad_ica-lingam_ 
+   * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_lingam_ 
-   * - PC-ALL
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_pc-all_ 
+     - tetrad_pc_ 
    * - RFCI
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -242,7 +250,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. _bdgraph: 
 
-``bdgraph`` 
+bdgraph 
 -----------
 
 .. rubric:: BDgraph
@@ -262,10 +270,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/bdgraph:2.64 <https://hub.docker.com/r/onceltuca/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
-   * - Module
-     - `bdgraph/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
+   * - Module folder
+     - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
 
 
@@ -313,7 +321,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
 
 .. _bidag_itsearch: 
 
-``bidag_itsearch`` 
+bidag_itsearch 
 ------------------
 
 .. rubric:: Iterative MCMC
@@ -323,7 +331,7 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -333,10 +341,10 @@ Dots (.) in the original parameter names are omitted for implementational reason
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_itsearch/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
+   * - Module folder
+     - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
 
 
@@ -415,7 +423,7 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 
 .. _bidag_order_mcmc: 
 
-``bidag_order_mcmc`` 
+bidag_order_mcmc 
 --------------------
 
 .. rubric:: Order MCMC
@@ -425,7 +433,7 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -435,10 +443,10 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_order_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
+   * - Module folder
+     - `bidag_order_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_order_mcmc>`__
 
 
 
@@ -455,6 +463,8 @@ unfortunately produces a biased sample on the space of DAGs. The implementation 
 in Benchpress is a hybrid version with the sampling performed on a restricted search space
 initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
+.. rubric:: Some fields described 
+* ``startspace_algorithm`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
 .. rubric:: Example
 
 
@@ -486,6 +496,34 @@ initialised with constraint-based testing and improved with a score-based search
         "threshold": 0.5,
         "mcmc_estimator": "threshold",
         "burnin_frac": 0.5
+      },
+      {
+        "id": "omcmc_itmap-bde",
+        "plus1": true,
+        "startspace_algorithm": "itsearch_map-bde",
+        "scoretype": "bde",
+        "chi": [
+          0.01,
+          0.1,
+          1,
+          2
+        ],
+        "edgepf": 2,
+        "aw": null,
+        "am": null,
+        "alpha": 0.05,
+        "gamma": 1,
+        "stepsave": null,
+        "iterations": null,
+        "MAP": true,
+        "cpdag": false,
+        "mcmc_seed": 1,
+        "threshold": [
+          0.5
+        ],
+        "burnin_frac": 0,
+        "mcmc_estimator": "threshold",
+        "timeout": null
       }
     ]
 
@@ -495,7 +533,7 @@ initialised with constraint-based testing and improved with a score-based search
 
 .. _bidag_partition_mcmc: 
 
-``bidag_partition_mcmc`` 
+bidag_partition_mcmc 
 ------------------------
 
 .. rubric:: Partition MCMC
@@ -505,7 +543,7 @@ initialised with constraint-based testing and improved with a score-based search
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
-     - 2.0.3
+     - 2.1.4
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -515,10 +553,10 @@ initialised with constraint-based testing and improved with a score-based search
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/bidag:2.0.3 <https://hub.docker.com/r/onceltuca/bidag/tags>`__
+     - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module
-     - `bidag_partition_mcmc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
+   * - Module folder
+     - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
 
 
@@ -555,6 +593,29 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
         "threshold": 0.5,
         "mcmc_estimator": "threshold",
         "burnin_frac": 0.5
+      },
+      {
+        "id": "partition_itmap-bde",
+        "startspace_algorithm": "itsearch_map-bde_endspace",
+        "verbose": true,
+        "scoretype": "bde",
+        "chi": [
+          0.01,
+          0.1,
+          1,
+          2
+        ],
+        "edgepf": 2,
+        "aw": null,
+        "am": null,
+        "gamma": 1,
+        "stepsave": null,
+        "iterations": null,
+        "timeout": null,
+        "mcmc_seed": 1,
+        "threshold": 0.5,
+        "mcmc_estimator": "threshold",
+        "burnin_frac": 0.5
       }
     ]
 
@@ -564,7 +625,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
 
 .. _bnlearn_fastiamb: 
 
-``bnlearn_fastiamb`` 
+bnlearn_fastiamb 
 --------------------
 
 .. rubric:: Fast IAMB
@@ -574,7 +635,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -584,10 +645,10 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_fastiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
+   * - Module folder
+     - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
 
 
@@ -614,6 +675,21 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "fastiamb-mi",
+        "alpha": [
+          0.01,
+          0.05,
+          0.1,
+          0.2
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -623,7 +699,7 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
 
 .. _bnlearn_gs: 
 
-``bnlearn_gs`` 
+bnlearn_gs 
 --------------
 
 .. rubric:: Grow-shrink
@@ -633,7 +709,7 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -643,10 +719,10 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_gs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
+   * - Module folder
+     - `bnlearn_gs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_gs>`__
 
 
 
@@ -666,6 +742,21 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 
     [
+      {
+        "id": "gs-mi",
+        "alpha": [
+          0.01,
+          0.05,
+          0.1,
+          0.2
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
+      },
       {
         "id": "gs-zf",
         "alpha": [
@@ -687,7 +778,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
 
 .. _bnlearn_h2pc: 
 
-``bnlearn_h2pc`` 
+bnlearn_h2pc 
 ----------------
 
 .. rubric:: H2PC
@@ -697,7 +788,7 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -707,10 +798,10 @@ undirected graph and then estimate a DAG in a four-step procedure.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_h2pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
+   * - Module folder
+     - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
 
 
@@ -743,6 +834,25 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
         "prior": "uniform",
         "beta": null,
         "timeout": null
+      },
+      {
+        "id": "h2pc-bde",
+        "alpha": [
+          0.001,
+          0.01,
+          0.05,
+          0.1
+        ],
+        "score": "bge",
+        "test": "zf",
+        "iss": 1,
+        "issmu": null,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": null,
+        "timeout": null
       }
     ]
 
@@ -752,7 +862,7 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
 
 .. _bnlearn_hc: 
 
-``bnlearn_hc`` 
+bnlearn_hc 
 --------------
 
 .. rubric:: HC
@@ -762,7 +872,7 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -772,10 +882,10 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_hc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
+   * - Module folder
+     - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
 
 
@@ -791,6 +901,24 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 
     [
+      {
+        "id": "hc-bde",
+        "score": "bde",
+        "iss": [
+          0.001,
+          0.01,
+          0.1
+        ],
+        "issmu": null,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": 1,
+        "restart": 0,
+        "perturb": 1,
+        "timeout": null
+      },
       {
         "id": "hc-bge",
         "score": "bge",
@@ -818,7 +946,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
 .. _bnlearn_hpc: 
 
-``bnlearn_hpc`` 
+bnlearn_hpc 
 ---------------
 
 .. rubric:: HPC
@@ -828,7 +956,7 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -838,10 +966,10 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_hpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
+   * - Module folder
+     - `bnlearn_hpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hpc>`__
 
 
 
@@ -868,6 +996,21 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "hpc-mi",
+        "alpha": [
+          0.01,
+          0.05,
+          0.1,
+          0.2
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -877,7 +1020,7 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
 
 .. _bnlearn_iamb: 
 
-``bnlearn_iamb`` 
+bnlearn_iamb 
 ----------------
 
 .. rubric:: IAMB
@@ -887,7 +1030,7 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -897,10 +1040,10 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_iamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
+   * - Module folder
+     - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
 
 
@@ -925,6 +1068,19 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "iamb-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -934,7 +1090,7 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
 
 .. _bnlearn_iambfdr: 
 
-``bnlearn_iambfdr`` 
+bnlearn_iambfdr 
 -------------------
 
 .. rubric:: IAMB-FDR
@@ -944,7 +1100,7 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -954,10 +1110,10 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_iambfdr/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
+   * - Module folder
+     - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
 
 
@@ -984,6 +1140,19 @@ Abstract: In many cases what matters is not whether a false discovery is made or
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "iambfdr-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -993,7 +1162,7 @@ Abstract: In many cases what matters is not whether a false discovery is made or
 
 .. _bnlearn_interiamb: 
 
-``bnlearn_interiamb`` 
+bnlearn_interiamb 
 ---------------------
 
 .. rubric:: INTER-IAMB
@@ -1003,7 +1172,7 @@ Abstract: In many cases what matters is not whether a false discovery is made or
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1013,10 +1182,10 @@ Abstract: In many cases what matters is not whether a false discovery is made or
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_interiamb/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
+   * - Module folder
+     - `bnlearn_interiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_interiamb>`__
 
 
 
@@ -1047,6 +1216,19 @@ reducing the size of the blankets.
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "interiamb-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -1056,7 +1238,7 @@ reducing the size of the blankets.
 
 .. _bnlearn_mmhc: 
 
-``bnlearn_mmhc`` 
+bnlearn_mmhc 
 ----------------
 
 .. rubric:: MMHC
@@ -1066,7 +1248,7 @@ reducing the size of the blankets.
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1076,10 +1258,10 @@ reducing the size of the blankets.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_mmhc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
+   * - Module folder
+     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
 
 
@@ -1097,6 +1279,24 @@ dimensional domains.
 
 
     [
+      {
+        "id": "mmhc-bde-mi",
+        "alpha": [
+          0.01,
+          0.05,
+          0.1
+        ],
+        "test": "mi",
+        "score": "bde",
+        "iss": 0.1,
+        "issmu": 1,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": 1,
+        "timeout": null
+      },
       {
         "id": "mmhc-bge-zf",
         "alpha": [
@@ -1124,7 +1324,7 @@ dimensional domains.
 
 .. _bnlearn_mmpc: 
 
-``bnlearn_mmpc`` 
+bnlearn_mmpc 
 ----------------
 
 .. rubric:: MMPC
@@ -1134,7 +1334,7 @@ dimensional domains.
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1144,10 +1344,10 @@ dimensional domains.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_mmpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
+   * - Module folder
+     - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
 
 
@@ -1174,6 +1374,19 @@ Abstract: Data Mining with Bayesian Network learning has two important character
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "mmpc-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -1183,7 +1396,7 @@ Abstract: Data Mining with Bayesian Network learning has two important character
 
 .. _bnlearn_pcstable: 
 
-``bnlearn_pcstable`` 
+bnlearn_pcstable 
 --------------------
 
 .. rubric:: PC
@@ -1193,7 +1406,7 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1203,10 +1416,10 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_pcstable/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
+   * - Module folder
+     - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
 
 
@@ -1231,6 +1444,19 @@ Abstract: Data Mining with Bayesian Network learning has two important character
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "pcstable-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -1240,7 +1466,7 @@ Abstract: Data Mining with Bayesian Network learning has two important character
 
 .. _bnlearn_rsmax2: 
 
-``bnlearn_rsmax2`` 
+bnlearn_rsmax2 
 ------------------
 
 .. rubric:: RSMAX2
@@ -1250,7 +1476,7 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1260,10 +1486,10 @@ Abstract: Data Mining with Bayesian Network learning has two important character
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_rsmax2/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
+   * - Module folder
+     - `bnlearn_rsmax2 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_rsmax2>`__
 
 
 
@@ -1298,6 +1524,27 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
         "prior": "uniform",
         "beta": null,
         "timeout": null
+      },
+      {
+        "id": "rsmax2-bde-mi",
+        "restrict": "si.hiton.pc",
+        "maximize": "hc",
+        "alpha": [
+          0.001,
+          0.01,
+          0.05,
+          0.1
+        ],
+        "score": "bde",
+        "test": "mi",
+        "iss": 1,
+        "issmu": null,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": null,
+        "timeout": null
       }
     ]
 
@@ -1307,7 +1554,7 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
 
 .. _bnlearn_sihitonpc: 
 
-``bnlearn_sihitonpc`` 
+bnlearn_sihitonpc 
 ---------------------
 
 .. rubric:: S-I HITON-PC
@@ -1317,7 +1564,7 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1327,10 +1574,10 @@ Abstract: Learning Bayesian networks is often cast as an optimization problem, w
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_sihitonpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
+   * - Module folder
+     - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
 
 
@@ -1361,6 +1608,19 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
         "debug": false,
         "undirected": false,
         "timeout": null
+      },
+      {
+        "id": "sihitonpc-mi",
+        "alpha": [
+          0.01,
+          0.05
+        ],
+        "test": "mi",
+        "B": null,
+        "maxsx": null,
+        "debug": false,
+        "undirected": false,
+        "timeout": null
       }
     ]
 
@@ -1370,7 +1630,7 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
 
 .. _bnlearn_tabu: 
 
-``bnlearn_tabu`` 
+bnlearn_tabu 
 ----------------
 
 .. rubric:: Tabu
@@ -1380,7 +1640,7 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.7
+     - 4.8.1
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1390,10 +1650,10 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/bnlearn:4.7 <https://hub.docker.com/r/onceltuca/bnlearn/tags>`__
+     - `bpimages/bnlearn:4.8.1 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module
-     - `bnlearn_tabu/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
+   * - Module folder
+     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
 
 
@@ -1409,6 +1669,22 @@ beneficial from a global perspective to avoid local maxima.
 
 
     [
+      {
+        "id": "tabu-bde",
+        "score": "bde",
+        "iss": [
+          0.001,
+          0.01,
+          0.1
+        ],
+        "issmu": 1,
+        "issw": null,
+        "l": 5,
+        "k": 1,
+        "prior": "uniform",
+        "beta": 1,
+        "timeout": null
+      },
       {
         "id": "tabu-bge",
         "score": "bge",
@@ -1434,7 +1710,7 @@ beneficial from a global perspective to avoid local maxima.
 
 .. _causaldag_gsp: 
 
-``causaldag_gsp`` 
+causaldag_gsp 
 -----------------
 
 .. rubric:: GSP
@@ -1454,10 +1730,10 @@ beneficial from a global perspective to avoid local maxima.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causaldag:0.1a163 <https://hub.docker.com/r/onceltuca/causaldag/tags>`__
+     - `bpimages/causaldag:0.1a163 <https://hub.docker.com/r/bpimages/causaldag/tags>`__
 
-   * - Module
-     - `causaldag_gsp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
+   * - Module folder
+     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
 
 
@@ -1494,9 +1770,60 @@ beneficial from a global perspective to avoid local maxima.
 
 
 
+.. _causallearn_grasp: 
+
+causallearn_grasp 
+---------------------
+
+.. rubric:: GRaSP
+
+.. list-table:: 
+
+   * - Package
+     - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
+   * - Version
+     - v0.1.3.3
+   * - Language
+     - `Python <https://www.python.org/>`__
+   * - Docs
+     - `here <https://causal-learn.readthedocs.io/en/latest/search_methods_index/Permutation-based%20causal%20discovery%20methods/GRaSP.html#id10>`__
+   * - Paper
+     - :footcite:t:`lam2022greedy`
+   * - Graph type
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Docker 
+     - `bpimages/causal-learn:0.1.3.3 <https://hub.docker.com/r/bpimages/causal-learn/tags>`__
+
+   * - Module folder
+     - `causallearn_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causallearn_grasp>`__
+
+
+
+.. rubric:: Description
+
+Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "grasp",
+        "maxP": 2,
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
 .. _corr_thresh: 
 
-``corr_thresh`` 
+corr_thresh 
 ---------------
 
 .. rubric:: Corrmat thresh
@@ -1516,10 +1843,10 @@ beneficial from a global perspective to avoid local maxima.
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `corr_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
+   * - Module folder
+     - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
 
 
 
@@ -1548,7 +1875,7 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. _dualpc: 
 
-``dualpc`` 
+dualpc 
 ----------
 
 .. rubric:: Dual PC
@@ -1568,10 +1895,10 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
    * - Graph type
      - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/dualpc:latest <https://hub.docker.com/r/onceltuca/dualpc/tags>`__
+     - `bpimages/dualpc:latest <https://hub.docker.com/r/bpimages/dualpc/tags>`__
 
-   * - Module
-     - `dualpc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
+   * - Module folder
+     - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
 
 
@@ -1612,7 +1939,7 @@ and in recovering the underlying network structure.
 
 .. _gcastle_anm: 
 
-``gcastle_anm`` 
+gcastle_anm 
 ---------------
 
 .. rubric:: ANM
@@ -1632,10 +1959,10 @@ and in recovering the underlying network structure.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_anm/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
+   * - Module folder
+     - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
 
 
@@ -1663,7 +1990,7 @@ Nonlinear causal discovery with additive noise models.
 
 .. _gcastle_corl: 
 
-``gcastle_corl`` 
+gcastle_corl 
 ----------------
 
 .. rubric:: CORL
@@ -1683,10 +2010,10 @@ Nonlinear causal discovery with additive noise models.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_corl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
+   * - Module folder
+     - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
 
 
@@ -1734,7 +2061,7 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
 
 .. _gcastle_direct_lingam: 
 
-``gcastle_direct_lingam`` 
+gcastle_direct_lingam 
 -------------------------
 
 .. rubric:: Direct LINGAM
@@ -1754,10 +2081,10 @@ A RL- and order-based algorithm that improves the efficiency and scalability of 
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_direct_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
+   * - Module folder
+     - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
 
 
@@ -1786,7 +2113,7 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. _gcastle_gae: 
 
-``gcastle_gae`` 
+gcastle_gae 
 ---------------
 
 .. rubric:: GAE
@@ -1806,10 +2133,10 @@ A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_gae/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
+   * - Module folder
+     - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
 
 
@@ -1855,7 +2182,7 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
 
 .. _gcastle_golem: 
 
-``gcastle_golem`` 
+gcastle_golem 
 -----------------
 
 .. rubric:: GOLEM
@@ -1875,10 +2202,10 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_golem/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
+   * - Module folder
+     - `gcastle_golem <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_golem>`__
 
 
 
@@ -1915,7 +2242,7 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
 
 .. _gcastle_grandag: 
 
-``gcastle_grandag`` 
+gcastle_grandag 
 -------------------
 
 .. rubric:: GraNDAG
@@ -1935,10 +2262,10 @@ A more efficient version of NOTEARS that can reduce number of optimization itera
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_grandag/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
+   * - Module folder
+     - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
 
 
@@ -1990,7 +2317,7 @@ A gradient-based algorithm using neural network modeling for non-linear additive
 
 .. _gcastle_ica_lingam: 
 
-``gcastle_ica_lingam`` 
+gcastle_ica_lingam 
 ----------------------
 
 .. rubric:: ICALiNGAM
@@ -2010,10 +2337,10 @@ A gradient-based algorithm using neural network modeling for non-linear additive
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_ica_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
+   * - Module folder
+     - `gcastle_ica_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_ica_lingam>`__
 
 
 
@@ -2043,7 +2370,7 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
 .. _gcastle_mcsl: 
 
-``gcastle_mcsl`` 
+gcastle_mcsl 
 ----------------
 
 .. rubric:: MCSL
@@ -2063,10 +2390,10 @@ An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_mcsl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
+   * - Module folder
+     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 
@@ -2109,7 +2436,7 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
 
 .. _gcastle_notears: 
 
-``gcastle_notears`` 
+gcastle_notears 
 -------------------
 
 .. rubric:: NO TEARS
@@ -2129,10 +2456,10 @@ A gradient-based algorithm for non-linear additive noise data by learning the bi
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
+   * - Module folder
+     - `gcastle_notears <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears>`__
 
 
 
@@ -2171,7 +2498,7 @@ ensure acyclicity.
 
 .. _gcastle_notears_low_rank: 
 
-``gcastle_notears_low_rank`` 
+gcastle_notears_low_rank 
 ----------------------------
 
 .. rubric:: NO TEARS low rank
@@ -2191,10 +2518,10 @@ ensure acyclicity.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears_low_rank/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
+   * - Module folder
+     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 
@@ -2227,7 +2554,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. _gcastle_notears_nonlinear: 
 
-``gcastle_notears_nonlinear`` 
+gcastle_notears_nonlinear 
 -----------------------------
 
 .. rubric:: NO TEARS non-linear
@@ -2247,10 +2574,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_notears_nonlinear/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
+   * - Module folder
+     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
 
 
@@ -2299,7 +2626,7 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
 
 .. _gcastle_pc: 
 
-``gcastle_pc`` 
+gcastle_pc 
 --------------
 
 .. rubric:: PC
@@ -2319,10 +2646,10 @@ Adapting NOTEARS for large problems with low-rank causal graphs.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
+   * - Module folder
+     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 
@@ -2341,7 +2668,7 @@ A classic causal discovery algorithm based on conditional independence tests.
         "id": "gcastle_pc",
         "variant": "original",
         "alpha": 0.05,
-        "ci_test": "gauss",
+        "ci_test": "fisherz",
         "timeout": null
       }
     ]
@@ -2352,7 +2679,7 @@ A classic causal discovery algorithm based on conditional independence tests.
 
 .. _gcastle_rl: 
 
-``gcastle_rl`` 
+gcastle_rl 
 --------------
 
 .. rubric:: RL
@@ -2372,10 +2699,10 @@ A classic causal discovery algorithm based on conditional independence tests.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module
-     - `gcastle_rl/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
+   * - Module folder
+     - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
 
 
@@ -2435,7 +2762,7 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 .. _gg99_singlepair: 
 
-``gg99_singlepair`` 
+gg99_singlepair 
 -------------------
 
 .. rubric:: GG99
@@ -2455,10 +2782,10 @@ A RL-based algorithm that can work with flexible score functions (including non-
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
+     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
-   * - Module
-     - `gg99_singlepair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
+   * - Module folder
+     - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
 
 
 
@@ -2506,6 +2833,30 @@ advantage for the analysis of large and complex datasets.
           1.0
         ],
         "burnin_frac": 0.5
+      },
+      {
+        "id": "gg99",
+        "n_samples": 100000,
+        "datatype": "discrete",
+        "randomits": 100,
+        "prior": "ep",
+        "ascore": null,
+        "bscore": null,
+        "clq": 2,
+        "sep": 4,
+        "penalty": 0.0,
+        "mcmc_seed": 1,
+        "timeout": null,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5
       }
     ]
 
@@ -2515,7 +2866,7 @@ advantage for the analysis of large and complex datasets.
 
 .. _gobnilp: 
 
-``gobnilp`` 
+gobnilp 
 -----------
 
 .. rubric:: GOBNILP
@@ -2535,10 +2886,10 @@ advantage for the analysis of large and complex datasets.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gobnilp:4347c64 <https://hub.docker.com/r/onceltuca/gobnilp/tags>`__
+     - `bpimages/gobnilp:4347c64 <https://hub.docker.com/r/bpimages/gobnilp/tags>`__
 
-   * - Module
-     - `gobnilp/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
+   * - Module folder
+     - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
 
 
@@ -2548,6 +2899,12 @@ Globally optimal Bayesian network learning using integer linear programming (GOB
 for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in
 the first phase and the optimal sets are determined in a second phase.
 
+.. rubric:: Some fields described 
+* ``constraints`` File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs). 
+* ``extra_args`` File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs). 
+* ``gap_limit`` Gap limit. 
+* ``time_limit`` Time limit in seconds for the solver (not including the time to build the score tables). 
+* ``timeout`` Use the best DAG found so far after this number of seconds. 
 .. rubric:: Example
 
 
@@ -2574,6 +2931,26 @@ the first phase and the optimal sets are determined in a second phase.
         "gap_limit": null,
         "prune": true,
         "timeout": 800
+      },
+      {
+        "id": "gobnilp-bde",
+        "continuous": false,
+        "score_type": "BDeu",
+        "extra_args": null,
+        "constraints": null,
+        "plot": false,
+        "palim": 4,
+        "alpha_mu": null,
+        "alpha_omega_minus_nvars": null,
+        "alpha": [
+          0.001,
+          0.01,
+          0.1
+        ],
+        "time_limit": null,
+        "gap_limit": null,
+        "prune": true,
+        "timeout": 600
       }
     ]
 
@@ -2583,7 +2960,7 @@ the first phase and the optimal sets are determined in a second phase.
 
 .. _gt13_multipair: 
 
-``gt13_multipair`` 
+gt13_multipair 
 ------------------
 
 .. rubric:: GT13
@@ -2603,10 +2980,10 @@ the first phase and the optimal sets are determined in a second phase.
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/thomasgreen:1.19-bp <https://hub.docker.com/r/onceltuca/thomasgreen/tags>`__
+     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
 
-   * - Module
-     - `gt13_multipair/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
+   * - Module folder
+     - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
 
 
 
@@ -2644,6 +3021,30 @@ Abstract: Full Bayesian computational inference for model determination in undir
         ],
         "burnin_frac": 0.5,
         "timeout": null
+      },
+      {
+        "id": "gt13",
+        "n_samples": 1000000,
+        "datatype": "discrete",
+        "randomits": 1000,
+        "prior": "bc",
+        "ascore": 0.1,
+        "bscore": 0.001,
+        "clq": null,
+        "sep": null,
+        "penalty": null,
+        "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
+        "timeout": null
       }
     ]
 
@@ -2653,7 +3054,7 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 .. _parallelDG: 
 
-``parallelDG`` 
+parallelDG 
 --------------
 
 .. rubric:: Parallel DG
@@ -2675,8 +3076,8 @@ Abstract: Full Bayesian computational inference for model determination in undir
    * - Docker 
      - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
-   * - Module
-     - `parallelDG/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+   * - Module folder
+     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
 
 
@@ -2731,7 +3132,7 @@ move variate, and outperforms current methods.
 
 .. _pcalg_gies: 
 
-``pcalg_gies`` 
+pcalg_gies 
 --------------
 
 .. rubric:: GIES
@@ -2741,20 +3142,20 @@ move variate, and outperforms current methods.
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - 2.7-3
+     - 2.7-8
    * - Language
-     - R
+     - `R <https://www.r-project.org/>`__
    * - Docs
      - `here <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Paper
      - :footcite:t:`JMLR:v13:hauser12a`
    * - Graph type
-     - CPDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module
-     - `pcalg_gies/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
+   * - Module folder
+     - `pcalg_gies <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
 
 
 
@@ -2784,7 +3185,7 @@ Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same 
 
 .. _pcalg_pc: 
 
-``pcalg_pc`` 
+pcalg_pc 
 ------------
 
 .. rubric:: PC
@@ -2794,7 +3195,7 @@ Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same 
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
-     - 2.7-3
+     - 2.7-8
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -2804,10 +3205,10 @@ Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same 
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
    * - Docker 
-     - `onceltuca/pcalg:2.7-3 <https://hub.docker.com/r/onceltuca/pcalg/tags>`__
+     - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module
-     - `pcalg_pc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
+   * - Module folder
+     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
 
 
@@ -2843,6 +3244,25 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
         "verbose": false,
         "indepTest": "gaussCItest",
         "timeout": null
+      },
+      {
+        "id": "pc-binCItest",
+        "alpha": [
+          0.01,
+          0.05,
+          0.1
+        ],
+        "NAdelete": true,
+        "mmax": "Inf",
+        "u2pd": "relaxed",
+        "skelmethod": "stable",
+        "conservative": false,
+        "majrule": false,
+        "solveconfl": false,
+        "numCores": 1,
+        "verbose": false,
+        "indepTest": "binCItest",
+        "timeout": null
       }
     ]
 
@@ -2852,7 +3272,7 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 .. _prec_thresh: 
 
-``prec_thresh`` 
+prec_thresh 
 ---------------
 
 .. rubric:: Precmat thresh
@@ -2872,10 +3292,10 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `prec_thresh/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
+   * - Module folder
+     - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
 
 
 
@@ -2904,7 +3324,7 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
 
 .. _rblip_asobs: 
 
-``rblip_asobs`` 
+rblip_asobs 
 ---------------
 
 .. rubric:: ASOBS
@@ -2924,10 +3344,10 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/benchpress:1.2.0 <https://hub.docker.com/r/onceltuca/benchpress/tags>`__
+     - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
 
-   * - Module
-     - `rblip_asobs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
+   * - Module folder
+     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
 
 
@@ -2970,7 +3390,7 @@ that no cycles are introduced.
 
 .. _sklearn_glasso: 
 
-``sklearn_glasso`` 
+sklearn_glasso 
 ------------------
 
 .. rubric:: Graphical Lasso
@@ -2990,10 +3410,10 @@ that no cycles are introduced.
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `onceltuca/datascience-python <https://hub.docker.com/r/onceltuca/datascience-python/tags>`__
+     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module
-     - `sklearn_glasso/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
+   * - Module folder
+     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
 
 
@@ -3025,61 +3445,9 @@ that no cycles are introduced.
 
 
 
-.. _tetrad_fas: 
-
-``tetrad_fas`` 
---------------
-
-.. rubric:: FAS
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.1.3
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - 
-   * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-   * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
-
-   * - Module
-     - `tetrad_fas/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fas>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: This is just the adjacency search of the PC algorithm, included here for times when just the adjacency search is needed, as when one is subsequently just going to orient variables pairwise.
-
-.. rubric:: Example
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "fas-fisher-z",
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_fask: 
 
-``tetrad_fask`` 
+tetrad_fask 
 ---------------
 
 .. rubric:: FASK
@@ -3089,7 +3457,7 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3099,10 +3467,10 @@ From the Tetrad manual: This is just the adjacency search of the PC algorithm, i
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fask/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
+   * - Module folder
+     - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
 
 
 
@@ -3128,6 +3496,8 @@ See  :footcite:t:`sanchez2018causal`.
       {
         "id": "fask-fisher-z",
         "test": "fisher-z-test",
+        "score": "sem-bic-score",
+        "semBicStructurePrior": 1,
         "datatype": "continuous",
         "timeout": null
       }
@@ -3139,7 +3509,7 @@ See  :footcite:t:`sanchez2018causal`.
 
 .. _tetrad_fci: 
 
-``tetrad_fci`` 
+tetrad_fci 
 --------------
 
 .. rubric:: FCI
@@ -3149,7 +3519,7 @@ See  :footcite:t:`sanchez2018causal`.
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3159,10 +3529,10 @@ See  :footcite:t:`sanchez2018causal`.
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
+   * - Module folder
+     - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
 
 
 
@@ -3197,7 +3567,7 @@ See :footcite:t:`spirtes1993discovery`.
 
 .. _tetrad_fges: 
 
-``tetrad_fges`` 
+tetrad_fges 
 ---------------
 
 .. rubric:: FGES
@@ -3207,7 +3577,7 @@ See :footcite:t:`spirtes1993discovery`.
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3217,10 +3587,10 @@ See :footcite:t:`spirtes1993discovery`.
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fges/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
+   * - Module folder
+     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
 
 
@@ -3243,10 +3613,10 @@ The algorithms requires a decomposable score—that is, a score that for the ent
       {
         "id": "fges-sem-bic",
         "faithfulnessAssumed": true,
-        "score": "sem-bic",
+        "score": "sem-bic-score",
         "datatype": "continuous",
         "samplePrior": 1,
-        "structurePrior": 1,
+        "semBicStructurePrior": 1,
         "penaltyDiscount": [
           0.8,
           1,
@@ -3262,7 +3632,7 @@ The algorithms requires a decomposable score—that is, a score that for the ent
 
 .. _tetrad_fofc: 
 
-``tetrad_fofc`` 
+tetrad_fofc 
 ---------------
 
 .. rubric:: FOFC
@@ -3272,7 +3642,7 @@ The algorithms requires a decomposable score—that is, a score that for the ent
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3282,10 +3652,10 @@ The algorithms requires a decomposable score—that is, a score that for the ent
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_fofc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
+   * - Module folder
+     - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
 
 
@@ -3317,7 +3687,7 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
 
 .. _tetrad_ftfc: 
 
-``tetrad_ftfc`` 
+tetrad_ftfc 
 ---------------
 
 .. rubric:: FTFC
@@ -3327,7 +3697,7 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3337,10 +3707,10 @@ One important issue is that the algorithm is sensitive to so-called “impuritie
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_ftfc/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
+   * - Module folder
+     - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
 
 
@@ -3368,7 +3738,7 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 .. _tetrad_gfci: 
 
-``tetrad_gfci`` 
+tetrad_gfci 
 ---------------
 
 .. rubric:: GFCI
@@ -3378,7 +3748,7 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3388,10 +3758,10 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_gfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
+   * - Module folder
+     - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
 
 
 
@@ -3410,7 +3780,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
       {
         "id": "gfci-sem-bic-fisher-z",
         "alpha": 0.05,
-        "score": "sem-bic",
+        "score": "sem-bic-score",
         "test": "fisher-z-test",
         "datatype": "continuous",
         "penaltyDiscount": [
@@ -3419,7 +3789,7 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
           1.5
         ],
         "samplePrior": null,
-        "structurePrior": 1,
+        "semBicStructurePrior": 1,
         "timeout": null
       }
     ]
@@ -3428,38 +3798,38 @@ The FGES algorithm is used to improve the accuracy of both the adjacency phase a
 
 
 
-.. _tetrad_imgscont: 
+.. _tetrad_grasp: 
 
-``tetrad_imgscont`` 
--------------------
+tetrad_grasp 
+----------------
 
-.. rubric:: IMGSCONT
+.. rubric:: GRaSP
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - 
+     - :footcite:t:`lam2022greedy`
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_imgscont/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_imgscont>`__
+   * - Module folder
+     - `tetrad_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_grasp>`__
 
 
 
 .. rubric:: Description
 
-From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES so allow for multiple datasets as input. The linear, Gaussian BIC scores for each data set are averaged at each step of the algorithm, producing a model for all data sets that assumes they have the same graphical structure across dataset.
+Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
 .. rubric:: Example
 
@@ -3469,8 +3839,16 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
     [
       {
-        "id": "imgscont",
+        "id": "causal-cmd-grasp",
+        "score": "sem-bic-score",
         "datatype": "continuous",
+        "samplePrior": 1,
+        "semBicStructurePrior": 1,
+        "penaltyDiscount": [
+          0.8,
+          1,
+          1.5
+        ],
         "timeout": null
       }
     ]
@@ -3479,19 +3857,19 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
 
 
 
-.. _tetrad_lingam: 
+.. _tetrad_ica-lingam: 
 
-``tetrad_lingam`` 
------------------
+tetrad_ica-lingam 
+---------------------
 
-.. rubric:: LINGAM
+.. rubric:: ICA-LINGAM
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3501,10 +3879,10 @@ From the Tetrad manual: Adjusts the continuous variable score (SEM BIC) of FGES 
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_lingam/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_lingam>`__
+   * - Module folder
+     - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
 
 
 
@@ -3535,19 +3913,19 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
 
 
 
-.. _tetrad_pc-all: 
+.. _tetrad_pc: 
 
-``tetrad_pc-all`` 
------------------
+tetrad_pc 
+-------------
 
-.. rubric:: PC-ALL
+.. rubric:: PC
 
 .. list-table:: 
 
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3557,10 +3935,10 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_pc-all/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc-all>`__
+   * - Module folder
+     - `tetrad_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc>`__
 
 
 
@@ -3582,6 +3960,7 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
       {
         "id": "pc-fisher-z",
         "test": "fisher-z-test",
+        "alpha": 0.01,
         "datatype": "continuous",
         "timeout": null
       }
@@ -3593,7 +3972,7 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
 
 .. _tetrad_rfci: 
 
-``tetrad_rfci`` 
+tetrad_rfci 
 ---------------
 
 .. rubric:: RFCI
@@ -3603,7 +3982,7 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
-     - 1.1.3
+     - 1.9.0
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
@@ -3613,10 +3992,10 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/causal-cmd:1.1.3 <https://hub.docker.com/r/onceltuca/causal-cmd/tags>`__
+     - `bpimages/causal-cmd:1.9.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module
-     - `tetrad_rfci/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
+   * - Module folder
+     - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
 
 
 
@@ -3650,7 +4029,7 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
 
 .. _trilearn_pgibbs: 
 
-``trilearn_pgibbs`` 
+trilearn_pgibbs 
 -------------------
 
 .. rubric:: Particle Gibbs
@@ -3664,16 +4043,16 @@ From the Tetrad manual: A modification of the FCI algorithm in which some expens
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
+     - 
    * - Paper
      - :footcite:t:`10.1214/19-EJS1585`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `onceltuca/trilearn:1.25 <https://hub.docker.com/r/onceltuca/trilearn/tags>`__
+     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
-   * - Module
-     - `trilearn_pgibbs/ <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
+   * - Module folder
+     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 
 
 
@@ -3703,6 +4082,28 @@ discrete and continuous graphical models.
       {
         "id": "trilearn-cont",
         "datatype": "continuous",
+        "alpha": 0.5,
+        "beta": 0.5,
+        "radii": 80,
+        "n_particles": 50,
+        "M": 1000,
+        "pseudo_obs": 1,
+        "mcmc_seed": 1,
+        "mcmc_estimator": "threshold",
+        "threshold": [
+          0.1,
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.0
+        ],
+        "burnin_frac": 0.5,
+        "timeout": null
+      },
+      {
+        "id": "trilearn-disc",
+        "datatype": "discrete",
         "alpha": 0.5,
         "beta": 0.5,
         "radii": 80,

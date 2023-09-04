@@ -14,10 +14,12 @@
         "required": [
             "id"
         ],
-        "additionalProperties": false,
+        "additionalProperties": true,
         "examples": [
             {
-                "id": "paramstest"
+                "id": "gwish",
+                "b": 3,
+                "thresh": 1e-8
             }
         ]
     },

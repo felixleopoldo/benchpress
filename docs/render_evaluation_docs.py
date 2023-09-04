@@ -45,7 +45,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
@@ -77,7 +78,8 @@ content = f.read()
 
 str = ""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+#str += "``"+algspath.name+"``\n"
+str += "Evaluation\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
 str += content
@@ -88,6 +90,8 @@ str += "\n\n"
 for p in sorted(algspath.iterdir()):
     #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"
@@ -118,7 +122,7 @@ for p in sorted(algspath.iterdir()):
     #str +=".. _" + p.name +": "
     str += "\n\n"
     str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
+    str +="" + p.name +" \n"
     str +="-"*len(p.name) + "-"*4 + "\n"
 
     
@@ -139,6 +143,8 @@ for p in sorted(algspath.iterdir()):
         str += ".. code-block:: json"    
         str += "\n\n"
         str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    #str += "\n\n\n----------"
+    str += "\n\n"
 
 
 with open("source/available_evaluations.rst", "w") as text_file:

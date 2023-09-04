@@ -1,4 +1,4 @@
-FROM r-base
+FROM r-base:4.3.1
 
-RUN R -e "install.packages(\"GGally\")" --no-save
-
+RUN R -e "install.packages('remotes')" 
+RUN R -e 'library(remotes); install_version("GGally", "2.1.2")'
