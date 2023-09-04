@@ -14,7 +14,7 @@ def docker_image(name):
     elif name == "benchmark":
         return "docker://bpimages/benchpress:2.1.0-arm64"
     elif name == "networkx":
-        return "docker://bpimages/networkx:2.5.1-arm64"
+        return "docker://bpimages/networkx:3..1-arm64"
     elif name == "rbase":
         return "docker://r-base"
     elif name == "tidyverse":

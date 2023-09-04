@@ -164,7 +164,7 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
                         threshold="{threshold}",
                         burnin_frac="{burnin_frac}",
                     container:
-                        docker_image("networkx")
+                        docker_image("pydatascience")
                     script:
                         "scripts/evaluation/graphtraj_est.py"
 # Include the evaluation modules

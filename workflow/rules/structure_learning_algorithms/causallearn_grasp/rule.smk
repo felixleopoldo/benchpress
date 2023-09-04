@@ -12,7 +12,7 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/causal-learn:0.1.3.3-arm64" 
+        "docker://bpimages/causal-learn:0.1.3.4-arm64" 
 
     script:
         "script.py"
