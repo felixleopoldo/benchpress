@@ -1,0 +1,21 @@
+#FROM alpine 
+FROM ubuntu:23.10
+#openjdk:22
+#FROM Ubuntu:20.04s
+RUN apt update -y
+RUN apt install -y default-jre
+RUN apt install time
+# install git
+
+
+ADD jtsampler-main jtsampler
+WORKDIR /jtsampler
+RUN apt install -y build-essential
+#RUN make clean
+RUN mkdir /packaging
+RUN make all
+#RUN apt install -y git
+#RUN git clone https://github.com/alun-thomas/jtsampler.git
+
+
+
