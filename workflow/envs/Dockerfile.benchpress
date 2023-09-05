@@ -1,0 +1,35 @@
+FROM bpimages/rgraphstuff-arm64
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential libpq-dev python3.11 python3-pip python3-setuptools python3-dev
+RUN apt install python3-full -y 
+RUN apt install python-is-python3
+RUN apt install python3.11-venv
+
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN pip install numpy==1.25.2
+RUN pip install pandas==2.0.3
+
+# RUN apt-get install r-base-dev xml2 libxml2-dev libssl-dev libcurl4-openssl-dev unixodbc-dev
+
+RUN R -e 'library(remotes); install_version("dplyr", "1.1.2")'
+RUN R -e 'library(remotes); install_version("ggplot2", "3.4.3")'
+RUN R -e 'library(remotes); install_version("stringr", "1.5.0")'
+RUN R -e 'library(remotes); install_version("pcalg", "2.7-8")'
+RUN R -e 'library(remotes); install_version("BiDAG", "2.1.4")'
+RUN R -e 'library(remotes); install_version("bnlearn", "4.8.3")'
+RUN R -e 'library(remotes); install_version("reticulate", "1.31")'
+RUN R -e 'library(remotes); install_version("reshape", "0.8.9")'
+RUN R -e 'library(remotes); install_version("gridExtra", "2.3")'
+RUN R -e 'library(remotes); install_version("argparser", "0.7.1")'
+RUN R -e 'library(remotes); install_version("rjson", "0.2.21")'
+RUN R -e 'library(remotes); install_version("devtools", "2.4.5")'
+RUN R -e 'library(remotes); install_version("rJava", "1.0-6")'
+RUN R -e 'library(remotes); install_version("r.blip", "1.1")'
+RUN R -e 'library(remotes); install_version("GGally", "2.1.2")'
+RUN R -e 'library(remotes); install_version("ggrepel", "0.9.3")'
+RUN R -e 'library(remotes); install_version("tidyr", "1.3.0")'
+
