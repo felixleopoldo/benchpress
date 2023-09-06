@@ -9,7 +9,7 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/rblip:1.1-arm64"
+        "docker://bpimages/rblip:1.1"
     shell:
         "/usr/bin/time -f \"%e\" -o {output.time} " \
         "Rscript workflow/rules/structure_learning_algorithms/rblip_asobs/script.R " \

@@ -12,7 +12,7 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/sandbox-arm64" # Change to None for local run
+        "docker://bpimages/sandbox" # Change to None for local run
 
     script:
         # This is a template R script but it could be any R or Python script, 

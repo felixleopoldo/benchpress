@@ -7,6 +7,6 @@ rule bidag_partition_mcmc:
         time=alg_output_time_path("bidag_partition_mcmc"),
         ntests=touch(alg_output_ntests_path("bidag_partition_mcmc"))
     container:
-        "docker://bpimages/bidag:2.1.4-arm64"
+        "docker://bpimages/bidag:2.1.4"
     script:
         "bidag_partition_mcmc.R"

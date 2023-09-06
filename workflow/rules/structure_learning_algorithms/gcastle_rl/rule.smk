@@ -11,6 +11,6 @@ rule:
     params:
         alg="rl"
     container:
-        "docker://bpimages/gcastle:1.0.3-arm64"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

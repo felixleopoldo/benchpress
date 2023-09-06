@@ -7,6 +7,6 @@ rule bidag_order_mcmc:
         time=alg_output_time_path("bidag_order_mcmc"),
         ntests=touch(alg_output_ntests_path("bidag_order_mcmc"))
     container:
-        "docker://bpimages/bidag:2.1.4-arm64"
+        "docker://bpimages/bidag:2.1.4"
     script:
         "bidag_order_mcmc.R"

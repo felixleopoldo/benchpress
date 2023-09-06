@@ -12,7 +12,7 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/datascience-python-arm64"
+        "docker://bpimages/datascience-python"
     script:
         # This is a template R script but it could be any R or Python script, 
         # even in a different directory.

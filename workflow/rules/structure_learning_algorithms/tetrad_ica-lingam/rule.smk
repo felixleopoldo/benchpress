@@ -8,6 +8,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/causal-cmd:1.9.0-arm64"
+        "docker://bpimages/causal-cmd:1.9.0"
     script:
         "script.sh"

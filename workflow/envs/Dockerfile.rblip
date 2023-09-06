@@ -1,4 +1,4 @@
-FROM bpimages/bnlearn:4.8.3-arm64
+FROM bpimages/bnlearn:4.8.3
 
 RUN apt update -y
 RUN apt install -y default-jre

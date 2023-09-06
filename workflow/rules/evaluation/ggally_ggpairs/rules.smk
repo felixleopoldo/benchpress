@@ -8,7 +8,7 @@ rule plot_pairs:
     params:
         data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}"
     container:
-        "docker://bpimages/ggally:2.1.2-arm64"
+        "docker://bpimages/ggally:2.1.2"
     script:
         "pairs.R"
 

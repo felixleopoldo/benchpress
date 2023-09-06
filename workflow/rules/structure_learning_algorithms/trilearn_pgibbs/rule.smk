@@ -9,7 +9,7 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/trilearn:2.0.1-arm64"
+        "docker://bpimages/trilearn:2.0.1"
     shell:
         """
         if [ {wildcards.timeout} = \"None\" ]; then
