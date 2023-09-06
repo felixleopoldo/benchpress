@@ -26,6 +26,7 @@ docker build . -f Dockerfile.causaldag -t bpimages/causaldag:0.1a163-$ARCH $FLAG
 docker build . -f Dockerfile.gcastle -t bpimages/gcastle:1.0.3-$ARCH $FLAGS
 docker build . -f Dockerfile.sandbox -t bpimages/sandbox-$ARCH $FLAGS
 docker build . -f Dockerfile.datascience-python -t bpimages/datascience-python-$ARCH $FLAGS
+docker build . -f Dockerfile.trilearn -t bpimages/trilearn:2.0.2-$ARCH $FLAGS
 #docker build ../rules/structure_learnin_algorithms/gobnilp/ -f ../rules/structure_learnin_algorithms/gobnilp/Dockerfile -t bpimages/gobnilp:4347c64-$ARCH $FLAGS
 
 # docker build . -f ../rules/structure_learnin_algorithms/athomas_jtsamplers/Dockerfile -t bpimages/athomas_jtsamplers:4347c64-$ARCH $FLAGS
@@ -56,6 +57,7 @@ docker push bpimages/sandbox-$ARCH
 docker push bpimages/datascience-python-$ARCH
 docker push bpimages/gobnilp:4347c64-$ARCH
 docker push bpimages/snakemake:v7.32.3-$ARCH
+docker push bpimages/trilearn:2.0.2-$ARCH
 
 # Create the manifests
 docker manifest create bpimages/rblip:1.1 --amend bpimages/rblip:1.1-amd64 --amend bpimages/rblip:1.1-arm64
@@ -75,6 +77,7 @@ docker manifest create bpimages/sandbox --amend bpimages/sandbox-amd64 --amend b
 docker manifest create bpimages/datascience-python --amend bpimages/datascience-python-amd64 --amend bpimages/datascience-python-arm64
 #docker manifest create bpimages/gobnilp:4347c64 --amend bpimages/gobnilp:4347c64-amd64 --amend bpimages/gobnilp:4347c64-arm64
 docker manifest create bpimages/snakemake:v7.32.3 --amend bpimages/snakemake:v7.32.3-amd64 --amend bpimages/snakemake:v7.32.3-arm64
+docker manifest create bpimages/trilearn:2.0.2 --amend bpimages/trilearn:2.0.2-amd64 --amend bpimages/trilearn:2.0.2-arm64
 
 # Push the manifests
 docker manifest push bpimages/rblip:1.1
@@ -94,4 +97,5 @@ docker manifest push bpimages/sandbox
 docker manifest push bpimages/datascience-python
 #docker manifest push bpimages/gobnilp:4347c64
 docker manifest push bpimages/snakemake:v7.32.3
+docker manifest push bpimages/trilearn:2.0.2
 
