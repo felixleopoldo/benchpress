@@ -713,6 +713,8 @@ shd_cpdag <- function(){
       replicate, as.numeric(NA)
     ))
 
+    print(dat[c("outlier", "SHD_cpdag", "id", "curve_value", "curve_param") ],n=50 )
+
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
   ggplot() +
           {

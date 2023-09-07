@@ -32,7 +32,7 @@ for image in "${!image_versions[@]}"; do
     ver=${image_versions[$image]}
     echo "Building $DOCKER_REPO/$image:$ver-$ARCH for $1"
 
-    if [ $image = snakemake ]; then
+    if [ $image = "snakemake" ]; then
       git clone https://github.com/snakemake/snakemake.git && \
       cd snakemake && \
       git checkout tags/v7.32.3 && \
@@ -45,8 +45,8 @@ for image in "${!image_versions[@]}"; do
     docker push $DOCKER_REPO/$image:$ver-$ARCH
     docker manifest create $DOCKER_REPO/$image:$ver --amend $DOCKER_REPO/$image:$ver-amd64 --amend $DOCKER_REPO/$image:$ver-arm64
     docker manifest push $DOCKER_REPO/$image:$ver
+    
 
 done
 
-exit 0
 

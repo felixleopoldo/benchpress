@@ -17,7 +17,7 @@ However, to get something working, you only have to consider altering *script.R*
     └── docs.rst
 
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
-  The template modules run by default in a container based on the Docker image "bpimages/sandbox". 
+  The template modules run by default in a container based on the Docker image "bpimages/sandbox:1.0". 
   To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.  
   On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version* (see e.g. `this tutorial <https://www.techrepublic.com/article/how-to-build-a-docker-image-and-upload-it-to-docker-hub/>`_ for building and pushing images to `Docker Hub <https://hub.docker.com/>`__). 
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suit your specific script.
@@ -267,7 +267,7 @@ However, you may either extend or copy one of the existing ones.
 Local development 
 ************************************************
 
-The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox <https://hub.docker.com/repository/docker/bpimages/sandbox/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
+The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox:1.0 <https://hub.docker.com/repository/docker/bpimages/sandbox:1.0/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
 If you instead prefer to run a module using software installed on your local computer, you should change the ``container`` field in *rule.smk* to *None*, *i.e.*
 
 .. code-block:: python

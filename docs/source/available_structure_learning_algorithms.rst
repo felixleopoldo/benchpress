@@ -1843,7 +1843,7 @@ corr_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python:1.0/tags>`__
 
    * - Module folder
      - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
@@ -3292,7 +3292,7 @@ prec_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python:1.0/tags>`__
 
    * - Module folder
      - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
@@ -3410,7 +3410,7 @@ sklearn_glasso
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python:1.0/tags>`__
 
    * - Module folder
      - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
