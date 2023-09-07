@@ -178,7 +178,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - parallelDG_ 
+     - paralleldg_ 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -635,7 +635,7 @@ bnlearn_fastiamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -709,7 +709,7 @@ bnlearn_gs
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -788,7 +788,7 @@ bnlearn_h2pc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -872,7 +872,7 @@ bnlearn_hc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -956,7 +956,7 @@ bnlearn_hpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1030,7 +1030,7 @@ bnlearn_iamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1100,7 +1100,7 @@ bnlearn_iambfdr
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1172,7 +1172,7 @@ bnlearn_interiamb
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1248,7 +1248,7 @@ bnlearn_mmhc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1334,7 +1334,7 @@ bnlearn_mmpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1406,7 +1406,7 @@ bnlearn_pcstable
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1476,7 +1476,7 @@ bnlearn_rsmax2
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1564,7 +1564,7 @@ bnlearn_sihitonpc
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -1640,7 +1640,7 @@ bnlearn_tabu
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
-     - 4.8.1
+     - 4.8.3
    * - Language
      - `R <https://www.r-project.org/>`__
    * - Docs
@@ -3052,9 +3052,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 
 
-.. _parallelDG: 
+.. _paralleldg: 
 
-parallelDG 
+paralleldg 
 --------------
 
 .. rubric:: Parallel DG
@@ -3077,7 +3077,7 @@ parallelDG
      - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
 
 
 
