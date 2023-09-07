@@ -11,22 +11,6 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            "n": {
-                "description": "Set the number of iterations to int.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-            },
-            "s": {
-                "description": "Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-            },
-            "a": {
-                "description": "Set the edge penalty in the prior.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
-            },
-            "c": {
-                "description": "Set the maximum clique size.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-            },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
@@ -61,18 +45,22 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
             "num_samples": {
+                "description": "The number of MCMC iterations.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
             },
             "sampler": {
+                "description": "Sets the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
                 "type": "integer",
                 "enum": [0, 1, 2],
                 "default": 0
             },
             "size_maxclique": {
+                "description": "The maximum clique size.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
                 "default": 100
             },
             "edge_penalty": {
+                "description": "The edge penalty in the prior.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum",
                 "default": 0.0
             }
