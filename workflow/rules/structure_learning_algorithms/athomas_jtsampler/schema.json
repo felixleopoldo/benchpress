@@ -1,0 +1,105 @@
+{
+    "description": "Green & Thomas objects",
+    "title": "gt13_multipair",
+    "type": "array",
+    "items": {
+        "title": "gt13_multipair item",
+        "description": "Green & Thomas algorithm for learning decomopasble graphs.\n Source: Green, P. J., & Thomas, A. (2013). Sampling decomposable graphs using a Markov chain on junction trees. Biometrika, 100(1), 91-110.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "n": {
+                "description": "Set the number of iterations to int.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "s": {
+                "description": "Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "a": {
+                "description": "Set the edge penalty in the prior.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "c": {
+                "description": "Set the maximum clique size.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "mcmc_seed": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "threshold": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "mcmc_estimator": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "map",
+                            "threshold"
+                        ]
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "map",
+                                "threshold"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "burnin_frac": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "num_samples": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "sampler": {
+                "type": "integer",
+                "enum": [0, 1, 2],
+                "default": 0
+            },
+            "size_maxclique": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
+                "default": 100
+            },
+            "edge_penalty": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum",
+                "default": 0.0
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout",
+            "burnin_frac",
+            "threshold",
+            "mcmc_estimator",
+            "num_samples"
+        ],
+        "examples": [
+            {
+            "id": "jtsampler",                    
+            "burnin_frac": 0.5,
+            "mcmc_estimator": "map",
+            "timeout": null,
+            "threshold":0.5,
+            "mcmc_seed": 1,                    
+            "num_samples": 10000,
+            "sampler": 0,
+            "edge_penalty": 1.0,
+            "size_maxclique": 10000
+        }   
+
+        ]
+    }
+}
