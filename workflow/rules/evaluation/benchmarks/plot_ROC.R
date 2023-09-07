@@ -709,14 +709,18 @@ shd_cpdag <- function(){
     tibble::rownames_to_column(var = "outlier") %>%
     group_by(interaction(curve_param, curve_value, id)) %>%
     filter(!is.na(SHD_cpdag)) %>%
+    filter(SHD_cpdag != "NA") %>%
     mutate(is_outlier = ifelse(is_outlier(SHD_cpdag),
       replicate, as.numeric(NA)
     ))
+    # convert column to numeric
+    dat$SHD_cpdag <- as.numeric(dat$SHD_cpdag)
+    joint_bench$SHD_cpdag <- as.numeric(joint_bench$SHD_cpdag)
 
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
   ggplot() +
           {
-            geom_boxplot(
+            geom_boxplot( # plotting the boxplot
               data = joint_bench, alpha = 0.2,
               aes(
                 x = interaction(curve_param, curve_value, id),
@@ -724,7 +728,7 @@ shd_cpdag <- function(){
               )
             )
           } + {
-            if (show_seed) {
+            if (show_seed) { # plotting the outliers
               geom_text(
                 data = dat,
                 aes(
@@ -734,7 +738,7 @@ shd_cpdag <- function(){
               )
             }
           } + {
-            if (show_seed) {
+            if (show_seed) { 
               stat_summary(
                 data = joint_bench, alpha = 0.5,
                 aes(

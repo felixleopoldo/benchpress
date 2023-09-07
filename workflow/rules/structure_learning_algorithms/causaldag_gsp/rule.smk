@@ -8,6 +8,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/causaldag:0.1a163-arm64"
+        "docker://bpimages/causaldag:0.1a163"
     script:
         "script.py"

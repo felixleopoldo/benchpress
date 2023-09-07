@@ -17,14 +17,15 @@ fi
 
 CMD="$CMD --algorithm fges"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
+
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
+    CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
 fi
 
 if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
-    CMD="$CMD --samplePrior ${snakemake_wildcards[samplePrior]}"
+    CMD="$CMD --priorEquivalentSampleSize ${snakemake_wildcards[samplePrior]}"
 fi
 
 # Run the command
