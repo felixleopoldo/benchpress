@@ -8,7 +8,7 @@ DOCKER_REPO=bpimages
 # associate array
 declare -A image_versions
 
-image_versions[athomas_jtsampler]=76ad20e
+#image_versions[athomas_jtsampler]=76ad20e
 image_versions[rblip]=1.1
 image_versions[bdgraph]=2.72
 image_versions[causal-learn]=0.1.3.4
