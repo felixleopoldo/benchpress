@@ -1,0 +1,9 @@
+FROM bpimages/bnlearn:4.8.3
+
+RUN apt update -y
+RUN apt install -y default-jre
+WORKDIR /rblip
+RUN apt install time
+RUN R -e 'library(remotes); install_version("argparser", "0.7.1")'
+RUN R -e 'library(remotes); install_version("rjson", "0.2.21")'
+RUN R -e 'library(remotes); install_version("r.blip", "1.1")'

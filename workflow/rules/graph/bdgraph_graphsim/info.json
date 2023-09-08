@@ -1,17 +1,11 @@
 {
     "title": "graph.sim function",
-    "version": "2.64",
+    "version": "2.72",
     "package": {
         "title": "BDgraph",
         "url": "https://cran.r-project.org/web/packages/BDgraph/index.html"
     },
     "docs_url": "https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf",
-    "papers": [
-        {
-            "title": "Reza Mohammadi, Ernst C. Wit . BDgraph: An R Package for Bayesian Structure Learning in Graphical Models ",
-            "url": "https://www.jstatsoft.org/article/view/v089i03"
-        }
-    ],
     "graph_types": [
         "UG"
     ],

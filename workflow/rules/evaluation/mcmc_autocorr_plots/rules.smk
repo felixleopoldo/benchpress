@@ -94,7 +94,7 @@ for algid in mcmc_alg_ids:
                 alg_string=pattern_strings[algid],
                 eval_string=pattern_strings["mcmc_autocorr_plots"]
             container:
-                docker_image("networkx")
+                docker_image("pydatascience")
             script:
                 "write_autocorr_traj.py"
 
@@ -123,7 +123,7 @@ rule mcmc_autocorr_plot:
         data_string="{data_string}",
         alg_string="{alg_string}"
     container:
-        docker_image("networkx")
+        docker_image("pydatascience")
     script:
         "plot_autocorr_from_traj.py"
 

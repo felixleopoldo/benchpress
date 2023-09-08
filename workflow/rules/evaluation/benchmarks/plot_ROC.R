@@ -3,8 +3,8 @@
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tibble)
-library("rjson")
-library(tidyverse)
+library(rjson)
+library(tidyr)
 library(ggrepel)
 
 f <- function(y) {
@@ -12,8 +12,10 @@ f <- function(y) {
 }
 
 is_outlier <- function(x) {
-  return(x < quantile(x, 0.25) - 1.5 * IQR(x) |
-    x > quantile(x, 0.75) + 1.5 * IQR(x))
+  # Make numeric as it can be vector of strings. Even "NA" is made NA here.
+  x <- as.numeric(x)
+  return(x < quantile(x, 0.25,na.rm = TRUE) - 1.5 * IQR(x, na.rm = TRUE) |
+    x > quantile(x, 0.75,na.rm = TRUE) + 1.5 * IQR(x, na.rm = TRUE))
 }
 
 # The functions are just here without parameters for now, should be fixed at some point..
@@ -702,18 +704,23 @@ graph_type <- function(){
 }
 
 shd_cpdag <- function(){
-  # transforming the data to get the outliers for plotting SHD
+  # transforming the data to get the outliers for plotting SHD  
   dat <- joint_bench %>%
     tibble::rownames_to_column(var = "outlier") %>%
     group_by(interaction(curve_param, curve_value, id)) %>%
     filter(!is.na(SHD_cpdag)) %>%
+    filter(SHD_cpdag != "NA") %>%
     mutate(is_outlier = ifelse(is_outlier(SHD_cpdag),
       replicate, as.numeric(NA)
     ))
+    # convert column to numeric
+    dat$SHD_cpdag <- as.numeric(dat$SHD_cpdag)
+    joint_bench$SHD_cpdag <- as.numeric(joint_bench$SHD_cpdag)
+
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
   ggplot() +
           {
-            geom_boxplot(
+            geom_boxplot( # plotting the boxplot
               data = joint_bench, alpha = 0.2,
               aes(
                 x = interaction(curve_param, curve_value, id),
@@ -721,7 +728,7 @@ shd_cpdag <- function(){
               )
             )
           } + {
-            if (show_seed) {
+            if (show_seed) { # plotting the outliers
               geom_text(
                 data = dat,
                 aes(
@@ -731,7 +738,7 @@ shd_cpdag <- function(){
               )
             }
           } + {
-            if (show_seed) {
+            if (show_seed) { 
               stat_summary(
                 data = joint_bench, alpha = 0.5,
                 aes(
@@ -862,9 +869,10 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
   joint_bench <- read.csv(snakemake@input[["raw_bench"]]) # All raw benchmarks in one dataframe
 
   replacement_list <- list(parameters = "NA") # converts NA to string "NA" in the dataframe
-
-  toplot <- toplot %>% replace_na(replacement_list)
-  joint_bench <- joint_bench %>% replace_na(replacement_list)
+  toplot[is.na(toplot)] <- "NA"
+  joint_bench[is.na(joint_bench)] <- "NA"
+  #toplot <- toplot %>% replace_na(replacement_list)
+  #joint_bench <- joint_bench %>% replace_na(replacement_list)
 
   config <- fromJSON(file = snakemake@input[["config"]])
 
