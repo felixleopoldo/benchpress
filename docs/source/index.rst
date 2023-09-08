@@ -96,8 +96,8 @@ See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felix
 
 .. rubric:: Updates
 
-* 2021-09-08: Benchpress 2.2.0 relased. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
-* 2021-08-31: The Grasp algorithm is available through both :ref:`causallearn_grasp` and :ref:`tetrad_grasp`.
+* 2023-09-08: Benchpress 2.2.0 relased. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
+* 2023-08-31: The Grasp algorithm is available through both :ref:`causallearn_grasp` and :ref:`tetrad_grasp`.
 
 .. rubric:: Outreach
 
