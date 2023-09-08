@@ -94,6 +94,11 @@ generated datasets, the workflow also includes a number of standard datasets and
 See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository, and `this Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_.
 
 
+.. rubric:: Updates
+
+* 2021-09-08: Benchpress 2.2.0 relased. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
+* 2021-08-31: The Grasp algorithm is available through both :ref:`causallearn_grasp` and :ref:`tetrad_grasp`.
+
 .. rubric:: Outreach
 
 * 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`).
