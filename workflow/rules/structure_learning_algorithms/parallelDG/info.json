@@ -7,12 +7,6 @@
         "url": "https://github.com/melmasri/parallelDG"
     },
     "docs_url": "https://github.com/melmasri/parallelDG",
-    "papers": [
-        {
-            "title": "M. Elmasri (2022). Parallel sampling of decomposable graphs using Markov chain on junction trees.",
-            "url": "https://arxiv.org/pdf/2209.02008"
-        }
-    ],
     "outputs": [
         "graphtraj"
     ],

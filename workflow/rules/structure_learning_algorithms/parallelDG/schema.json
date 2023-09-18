@@ -37,7 +37,7 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
             "threshold": {
-                "boolean"
+                "type": "boolean"
             },
             "mcmc_estimator": {
                 "anyOf": [
@@ -93,8 +93,8 @@
                 "threshold": 0.5,
                 "burnin_frac": 0.5,
                 "mcmc_estimator": "map",
-            "timeout": null,
-            "parallel": true
+                "timeout": null,
+                "parallel": true
             }
         ]
     },

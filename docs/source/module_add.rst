@@ -169,7 +169,7 @@ In order to create a new algorithm module, you may copy the template module `new
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
 Below are two examples of how to implement an algorithm module, one in R and one in `Python <https://www.python.org/>`_.
-Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rula.smk>`__
+Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rule.smk>`__
 
 R
 ------
