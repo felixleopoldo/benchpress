@@ -3076,7 +3076,7 @@ paralleldg
    * - Package
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
    * - Version
-     - 0.9.2
+     - 0.9.5
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -3086,7 +3086,7 @@ paralleldg
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `hallawalla/paralleldg:0.9.2 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
+     - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
      - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
@@ -3138,7 +3138,8 @@ move variate, and outperforms current methods.
         "threshold": 0.5,
         "burnin_frac": 0.5,
         "mcmc_estimator": "map",
-        "timeout": null
+        "timeout": null,
+        "parallel": true
       }
     ]
 
