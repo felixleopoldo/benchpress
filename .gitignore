@@ -5,7 +5,6 @@
 results
 docs/build
 .DS_Store
-.R*
 docs/source/_build
 Rplots.pdf
 causal-cmd.log
