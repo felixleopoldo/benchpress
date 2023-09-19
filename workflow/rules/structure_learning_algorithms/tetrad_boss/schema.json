@@ -1,0 +1,69 @@
+{
+    "title": "tetrad_boss",
+    "description": "BOSS objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_boss item",
+        "description": "BOSS instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "score": {
+                "type": "string"
+            },
+            "useBes": {
+                "type": "boolean"
+            },
+            "allowInternalRandomess": {
+                "type": "boolean"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "samplePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "penaltyDiscount": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "semBicStructurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "useBes",
+            "allowInternalRandomess",
+            "score",
+            "datatype",
+            "samplePrior",
+            "semBicStructurePrior",
+            "penaltyDiscount",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "causal-cmd-boss",
+                "score": "sem-bic-score",
+                "datatype": "continuous",
+                "samplePrior": 1,
+                "useBes": true,
+                "allowInternalRandomess": false,
+                "semBicStructurePrior": 1,
+                "penaltyDiscount": [
+                    0.8,
+                    1,
+                    1.5
+                ],
+                "timeout": null
+            }
+        ]
+    }
+}
