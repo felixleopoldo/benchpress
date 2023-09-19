@@ -1,6 +1,6 @@
 {
     "title": "RFCI",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "package": {
         "title": "causal-cmd",
         "url": "https://github.com/bd2kccd/causal-cmd"
