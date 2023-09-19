@@ -1,6 +1,6 @@
 
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --algorithm fas"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
