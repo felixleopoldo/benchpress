@@ -14,3 +14,56 @@ accuracy. Mixed continuous discrete and all-discrete datasets were also tested. 
 showed advantage for BOSS over GES more apparent at higher depths with the same score; the discrete
 data analysis showed a very small advantage for BOSS over GES with the same score, perhaps not
 enough to prefer it.
+
+.. rubric:: Example 
+
+Config file: `dense_large_SEM.json <../../workflow/rules/structure_learning_algorithms/tetrad_boss/config/dense_large_SEM.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/tetrad_boss/config/dense_large_SEM.json
+
+:numref:`bossplot` and :numref:`bosstimings`  shows FP/P vs. TP/P and timings based on 3 datsets corresponding to 3 realisations of a 80-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 300 samples.
+:numref:`bosstype` and :numref:`bossprops` shows the type of graphs estimated and the properties of the true graphs, respectively.
+
+.. _bossplot:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/4.png
+    :width: 320 
+    :alt: FP/P vs. TP/P BOSS example
+    :align: left
+
+    FP/P vs. TP/P.
+
+.. _bosstimings:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time4.png
+    :width: 320 
+    :alt: Timings BOSS example
+    :align: right
+
+    Timings.
+
+.. _bosstype:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graphtype.png
+    :width: 320 
+    :alt: Graph types example
+    :align: left
+
+    Type of graphs estimated.
+
+.. _bossprops:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graph_properties_plot.png
+    :width: 320 
+    :alt: Properties of the true graphs
+    :align: right
+
+    Graph properties.
+
+
+

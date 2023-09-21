@@ -14,13 +14,14 @@
         "evaluation": {
             "benchmarks": {
                 "filename_prefix": "tetrad/",
-                "show_seed": false,
+                "show_seed": true,
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
+                    "itsearch-bge",
                     "boss-sem-bic",
                     "grasp-sem-bic",
                     "fask-fisher-z",
@@ -33,7 +34,7 @@
                 ]
             },
             "graph_true_plots": false,
-            "graph_true_stats": false,
+            "graph_true_stats": true,
             "ggally_ggpairs": false,
             "graph_plots": [],
             "mcmc_traj_plots": [],

@@ -127,7 +127,7 @@ fpr_tpr_pattern <- function(){
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -754,7 +754,7 @@ graph_type <- function(){
           #             x = as.factor(replicate), label=round(time, 1), col=id, group_by=id) )
           # }  +
           facet_wrap(. ~ adjmat + parameters + data, ncol = 2) +
-          xlab("Seed") +
+          xlab("Dataset seed number") +
           ylab("Parameter.value.id") +
           ggtitle("Graph type") +
           theme_bw() +
