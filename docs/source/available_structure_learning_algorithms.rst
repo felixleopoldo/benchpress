@@ -178,7 +178,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - paralleldg_ 
+     - parallelDG_ 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -3144,9 +3144,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 
 
-.. _paralleldg: 
+.. _parallelDG: 
 
-paralleldg 
+parallelDG 
 --------------
 
 .. rubric:: Parallel DG
@@ -3169,7 +3169,7 @@ paralleldg
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
+     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
 
 
@@ -3618,7 +3618,7 @@ Each dataset contains 300 samples.
 
 .. _bossplot:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/4.png
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/tprfpr_pattern.png
     :width: 320 
     :alt: FP/P vs. TP/P BOSS example
     :align: left
@@ -3627,7 +3627,7 @@ Each dataset contains 300 samples.
 
 .. _bosstimings:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time4.png
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time.png
     :width: 320 
     :alt: Timings BOSS example
     :align: right

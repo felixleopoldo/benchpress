@@ -31,7 +31,7 @@ Each dataset contains 300 samples.
 
 .. _bossplot:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/4.png
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/tprfpr_pattern.png
     :width: 320 
     :alt: FP/P vs. TP/P BOSS example
     :align: left
@@ -40,7 +40,7 @@ Each dataset contains 300 samples.
 
 .. _bosstimings:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time4.png
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time.png
     :width: 320 
     :alt: Timings BOSS example
     :align: right
