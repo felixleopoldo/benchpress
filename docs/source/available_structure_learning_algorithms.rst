@@ -3604,7 +3604,7 @@ enough to prefer it.
 
 .. rubric:: Example 
 
-Config file: `boss_SEM.json <../../workflow/rules/structure_learning_algorithms/tetrad_boss/config/boss_SEM.json>`_
+Config file: `boss_SEM.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/tetrad_boss/config/boss_SEM.json>`_
 
 Command:
 
