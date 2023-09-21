@@ -2,7 +2,7 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4_p20",
+                "graph_id": "avneigs8_p60",
                 "parameters_id": "SEM",
                 "data_id": "standardized",
                 "seed_range": [
@@ -32,8 +32,7 @@
             "graph_true_plots": true,
             "graph_true_stats": true,
             "ggally_ggpairs": false,
-            "graph_plots": [
-            ],
+            "graph_plots": [],
             "mcmc_traj_plots": [],
             "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": []
@@ -61,10 +60,14 @@
         "graph": {
             "pcalg_randdag": [
                 {
-                    "id": "avneigs4_p20",
+                    "id": "avneigs8_p60",
                     "max_parents": 15,
-                    "n": [60],
-                    "d": [  8],
+                    "n": [
+                        60
+                    ],
+                    "d": [
+                        8
+                    ],
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -116,7 +119,6 @@
                     "timeout": null
                 }
             ],
-
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
