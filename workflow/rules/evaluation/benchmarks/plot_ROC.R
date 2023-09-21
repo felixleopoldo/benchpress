@@ -656,7 +656,7 @@ elapsed_time <- function(){
               )
             }
           } +
-          facet_wrap(. ~ adjmat + parameters + data + n_seeds, ncol = 2, scales = "free_x") +
+          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -715,7 +715,7 @@ elapsed_log_time <- function(){
               )
             }
           } +
-          facet_wrap(. ~ adjmat + parameters + data + n_seeds, ncol = 2, scales = "free_x") +
+          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
