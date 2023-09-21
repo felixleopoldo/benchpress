@@ -178,7 +178,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - paralleldg_ 
+     - parallelDG_ 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -288,7 +288,9 @@ bdgraph
 
 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -364,7 +366,9 @@ on an MCMC scheme producing a chain of DAGs from their posterior probability giv
 
 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -469,7 +473,9 @@ initialised with constraint-based testing and improved with a score-based search
 
 .. rubric:: Some fields described 
 * ``startspace_algorithm`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -569,7 +575,9 @@ bidag_partition_mcmc
 Abstract: 
 Acyclic digraphs are the underlying representation of Bayesian networks, a widely used class of probabilistic graphical models. Learning the underlying graph from data is a way of gaining insights about the structural properties of a domain. Structure learning forms one of the inference challenges of statistical graphical models. Markov chain Monte Carlo (MCMC) methods, notably structure MCMC, to sample graphs from the posterior distribution given the data are probably the only viable option for Bayesian model averaging. Score modularity and restrictions on the number of parents of each node allow the graphs to be grouped into larger collections, which can be scored as a whole to improve the chain’s convergence. Current examples of algorithms taking advantage of grouping are the biased order MCMC, which acts on the alternative space of permuted triangular matrices, and nonergodic edge reversal moves. Here, we propose a novel algorithm, which employs the underlying combinatorial structure of DAGs to define a new grouping. As a result convergence is improved compared to structure MCMC, while still retaining the property of producing an unbiased sample. Finally, the method can be combined with edge reversal moves to improve the sampler further. Supplementary materials for this article are available online.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -660,7 +668,9 @@ bnlearn_fastiamb
 
 From bnlearn: a variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -739,7 +749,9 @@ method which estimates the Markov blanket of a node in a two-stage forward-backw
 dure using conditional independence tests. The Markov blankets are used to first estimate an
 undirected graph and then estimate a DAG in a four-step procedure.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -813,7 +825,9 @@ bnlearn_h2pc
 
 Abstract: We present a novel hybrid algorithm for Bayesian network structure learning, called H2PC. It first reconstructs the skeleton of a Bayesian network and then performs a Bayesian-scoring greedy hill-climbing search to orient the edges. The algorithm is based on divide-and-conquer constraint-based subroutines to learn the local structure around a target variable. We conduct two series of experimental comparisons of H2PC against Max–Min Hill-Climbing (MMHC), which is currently the most powerful state-of-the-art algorithm for Bayesian network structure learning. First, we use eight well-known Bayesian network benchmarks with various data sizes to assess the quality of the learned structure returned by the algorithms. Our extensive experiments show that H2PC outperforms MMHC in terms of goodness of fit to new data and quality of the network structure with respect to the true dependence structure of the data. Second, we investigate H2PC’s ability to solve the multi-label learning problem. We provide theoretical results to characterize and identify graphically the so-called minimal label powersets that appear as irreducible factors in the joint distribution under the faithfulness condition. The multi-label learning problem is then decomposed into a series of multi-class classification problems, where each multi-class variable encodes a label powerset. H2PC is shown to compare favorably to MMHC in terms of global classification accuracy over ten multi-label data sets covering different application domains. Overall, our experiments support the conclusions that local structural learning with H2PC in the form of local neighborhood induction is a theoretically well-motivated and empirically effective learning framework that is well suited to multi-label learning. The source code (in R) of H2PC as well as all data sets used for the empirical tests are publicly available.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -898,7 +912,9 @@ bnlearn_hc
 Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and
 adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -981,7 +997,9 @@ bnlearn_hpc
 
 From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1053,7 +1071,9 @@ bnlearn_iamb
 
 .. rubric:: Description
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1125,7 +1145,9 @@ bnlearn_iambfdr
 
 Abstract: In many cases what matters is not whether a false discovery is made or not but the expected proportion of false discoveries among all the discoveries made, i.e. the so-called false discovery rate (FDR). We present an algorithm aiming at controlling the FDR of edges when learning Gaussian graphical models (GGMs). The algorithm is particularly suitable when dealing with more nodes than samples, e.g. when learning GGMs of gene networks from gene expression data. We illustrate this on the Rosetta compendium [8].
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1201,7 +1223,9 @@ variable to be included in the Markov blankets are not considered in static orde
 and the forward-backward stages are combined into a single procedure, which has the effect of
 reducing the size of the blankets.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1276,7 +1300,9 @@ DAG using an algorithm called Max-Min Parents and Children and then performs a g
 hill-climbing search to orient the edges with respect to a Bayesian score. It is a popular approach used as standard benchmark and also well suited for high-
 dimensional domains.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1359,7 +1385,9 @@ bnlearn_mmpc
 
 Abstract: Data Mining with Bayesian Network learning has two important characteristics: under conditions learned edges between variables correspond to casual influences, and second, for every variable T in the network a special subset (Markov Blanket) identifiable by the network is the minimal variable set required to predict T. However, all known algorithms learning a complete BN do not scale up beyond a few hundred variables. On the other hand, all known sound algorithms learning a local region of the network require an exponential number of training instances to the size of the learned region.The contribution of this paper is two-fold. We introduce a novel local algorithm that returns all variables with direct edges to and from a target variable T as well as a local algorithm that returns the Markov Blanket of T. Both algorithms (i) are sound, (ii) can be run efficiently in datasets with thousands of variables, and (iii) significantly outperform in terms of approximating the true neighborhood previous state-of-the-art algorithms using only a fraction of the training size required by the existing methods. A fundamental difference between our approach and existing ones is that the required sample depends on the generating graph connectivity and not the size of the local region; this yields up to exponential savings in sample relative to previously known algorithms. The results presented here are promising not only for discovery of local causal structure, and variable selection for classification, but also for the induction of complete BNs.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1429,7 +1457,9 @@ bnlearn_pcstable
 
 .. rubric:: Description
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1501,7 +1531,9 @@ bnlearn_rsmax2
 
 Abstract: Learning Bayesian networks is often cast as an optimization problem, where the computational task is to find a structure that maximizes a statistically motivated score. By and large, existing learning tools address this optimization problem using standard heuristic search techniques. Since the search space is extremely large, such search procedures can spend most of the time examining candidates that are extremely unreasonable. This problem becomes critical when we deal with data sets that are large either in the number of instances, or the number of attributes. In this paper, we introduce an algorithm that achieves faster learning by restricting the search space. This iterative algorithm restricts the parents of each variable to belong to a small subset of candidates. We then search for a network that satisfies these constraints. The learned network is then used for selecting better candidates for the next iteration. We evaluate this algorithm both on synthetic and real-life data. Our results show that it is significantly faster than alternative search procedures without loss of quality in the learned structures.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1593,7 +1625,9 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
 
 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1666,7 +1700,9 @@ bnlearn_tabu
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
 beneficial from a global perspective to avoid local maxima.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1743,7 +1779,9 @@ causaldag_gsp
 
 .. rubric:: Description
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1807,7 +1845,9 @@ causallearn_grasp
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1859,7 +1899,9 @@ corr_thresh
 Thresholding the estimated correlation matrix.
 Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1916,7 +1958,9 @@ partial correlations of complementary (or dual) conditioning sets. Simulation st
 that the dual PC algorithm outperforms the classic PC algorithm both in terms of run time
 and in recovering the underlying network structure.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -1974,7 +2018,9 @@ gcastle_anm
 
 Nonlinear causal discovery with additive noise models.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2025,7 +2071,9 @@ gcastle_corl
 
 A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2096,7 +2144,9 @@ gcastle_direct_lingam
 
 A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2148,7 +2198,9 @@ gcastle_gae
 
 A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2217,7 +2269,9 @@ gcastle_golem
 
 A more efficient version of NOTEARS that can reduce number of optimization iterations.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2277,7 +2331,9 @@ gcastle_grandag
 
 A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2352,7 +2408,9 @@ gcastle_ica_lingam
 
 An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2405,7 +2463,9 @@ gcastle_mcsl
 
 A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2473,7 +2533,9 @@ This score-based method recasts the combinatorial problem of estimating a DAG in
 continuous non-convex optimization problem over real matrices with a smooth constraint to
 ensure acyclicity.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2533,7 +2595,9 @@ gcastle_notears_low_rank
 
 Adapting NOTEARS for large problems with low-rank causal graphs.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2587,7 +2651,9 @@ gcastle_notears_nonlinear
 
 .. rubric:: Description
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2661,7 +2727,9 @@ gcastle_pc
 
 A classic causal discovery algorithm based on conditional independence tests.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2714,7 +2782,9 @@ gcastle_rl
 
 A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2811,7 +2881,9 @@ advantage for the analysis of large and complex datasets.
 
   This module only works on the AMD64 architecture.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -2917,7 +2989,9 @@ the first phase and the optimal sets are determined in a second phase.
 * ``gap_limit`` Gap limit. 
 * ``time_limit`` Time limit in seconds for the solver (not including the time to build the score tables). 
 * ``timeout`` Use the best DAG found so far after this number of seconds. 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3007,7 +3081,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
   This module only works on the AMD64 architecture.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3068,9 +3144,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 
 
-.. _paralleldg: 
+.. _parallelDG: 
 
-paralleldg 
+parallelDG 
 --------------
 
 .. rubric:: Parallel DG
@@ -3093,7 +3169,7 @@ paralleldg
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
+     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
 
 
 
@@ -3118,7 +3194,9 @@ move variate, and outperforms current methods.
 
   This module only works on the AMD64 architecture.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3184,7 +3262,9 @@ pcalg_gies
 
 Abstract: The investigation of directed acyclic graphs (DAGs) encoding the same Markov property, that is the same conditional independence relations of multivariate observational distributions, has a long tradition; many algorithms exist for model selection and structure learning in Markov equivalence classes. In this paper, we extend the notion of Markov equivalence of DAGs to the case of interventional distributions arising from multiple intervention experiments. We show that under reasonable assumptions on the intervention experiments, interventional Markov equivalence defines a finer partitioning of DAGs than observational Markov equivalence and hence improves the identifiability of causal models. We give a graph theoretic criterion for two DAGs being Markov equivalent under interventions and show that each interventional Markov equivalence class can, analogously to the observational case, be uniquely represented by a chain graph called interventional essential graph (also known as CPDAG in the observational case). These are key insights for deriving a generalization of the Greedy Equivalence Search algorithm aimed at structure learning from interventional data. This new algorithm is evaluated in a simulation study. 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3239,7 +3319,9 @@ The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`,
 consisting of two main steps. The first step is called the adjacency search and amounts to
 finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3325,7 +3407,9 @@ prec_thresh
 Thresholding the estimated precision matrix.
 Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3380,7 +3464,9 @@ The second phase performs an optimisation on a modification of the space of node
 in :footcite:t:`teyssier2012ordering`, allowing edges from nodes of higher to lower order, provided
 that no cycles are introduced.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3440,7 +3526,9 @@ sklearn_glasso
 
 .. rubric:: Description
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3514,7 +3602,63 @@ showed advantage for BOSS over GES more apparent at higher depths with the same 
 data analysis showed a very small advantage for BOSS over GES with the same score, perhaps not
 enough to prefer it.
 
-.. rubric:: Example
+.. rubric:: Example 
+
+Config file: `boss_SEM.json <../../workflow/rules/structure_learning_algorithms/tetrad_boss/config/boss_SEM.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/tetrad_boss/config/boss_SEM.json
+
+:numref:`bossplot` and :numref:`bosstimings`  shows FP/P vs. TP/P and timings based on 10 datsets corresponding to 10 realisations of a 60-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 300 samples.
+:numref:`bosstype` and :numref:`bossprops` shows the type of graphs estimated and the properties of the true graphs, respectively.
+
+.. _bossplot:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/tprfpr_pattern.png
+    :width: 320 
+    :alt: FP/P vs. TP/P BOSS example
+    :align: left
+
+    FP/P vs. TP/P.
+
+.. _bosstimings:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time.png
+    :width: 320 
+    :alt: Timings BOSS example
+    :align: right
+
+    Timings.
+
+.. _bosstype:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graphtype.png
+    :width: 320 
+    :alt: Graph types example
+    :align: left
+
+    Type of graphs estimated.
+
+.. _bossprops:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graph_properties_plot.png
+    :width: 320 
+    :alt: Properties of the true graphs
+    :align: right
+
+    Graph properties.
+
+
+
+
+
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3583,7 +3727,9 @@ We include pairwise orientation rule RSkew, Skew, and Tanh from :footcite:t:`hyv
 See  :footcite:t:`sanchez2018causal`.
 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3638,7 +3784,9 @@ tetrad_fci
 From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that takes as input sample data and optional background knowledge and in the large sample limit outputs an equivalence class of CBNs that (including those with hidden confounders) that entail the set of conditional independence relations judged to hold in the population. It is limited to several thousand variables, and on realistic sample sizes it is inaccurate in both adjacencies and orientations. FCI has two phases: an adjacency phase and an orientation phase. The adjacency phase of the algorithm starts with a complete undirected graph and then performs a sequence of conditional independence tests that lead to the removal of an edge between any two adjacent variables that are judged to be independent, conditional on some subset of the observed variables; any conditioning set that leads to the removal of an adjacency is stored. After the adjacency phase, the resulting undirected graph has the correct set of adjacencies, but all of the edges are unoriented. FCI then enters an orientation phase that uses the stored conditioning sets that led to the removal of adjacencies to orient as many of the edges as possible. 
 See :footcite:t:`spirtes1993discovery`.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3700,7 +3848,9 @@ The reference is :footcite:t:`ramsey2017million`.
 
 The algorithms requires a decomposable score—that is, a score that for the entire DAG model is a sum of logged scores of each variables given its parents in the model. The algorithms can take all continuous data (using the SEM BIC score), all discrete data (using the BDeu score).
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3764,7 +3914,9 @@ There is a set of latent (unmeasured) variables over which a directed acyclic mo
 There is a theorem to the effect that if certain CPDAGs of these tetrad constraints hold, there must be a latent common cause of all of them (the Tetrad Representation Theorem). The FOFC (Find One Factor Clusters) takes advantage of this fact. The basic idea is to build up clusters one at a time by adding variables that keep them pure in the sense that all relevant tetrad constraints still hold. There are different ways of going about this. One could try to build one cluster up as far as possible, then remove all of those variables from the set, and try to make a another cluster using the remaining variables (SAG, Seed and Grow). Or one can try in parallel to grow all possible clusters and then choose among the grown clusters using some criterion such as cluster size (GAP, Grow and Pick). In general, GAP is more accurate. The result is a clustering of variables. Once one has such a “measurement model, one can estimate (using the ESTIMATOR box) a covariance matrix over the latent variables that are parents of the measures and use some algorithm such as PC or GES to estimate a CPDAG over the latent variables. The algorithm to run PC or GES on this covariance matrix is called MimBuild (“MIM” is the graph, Multiple Indicator Model; “Build” means build). MimBUILD is an optional choice inside FOFC In this way, one may recover causal structure over the latents. The more measures one has for each latent the better the result is, generally. At least 3 measured indicator variables are needed for each latent variable. The larger the sample size the better. 
 One important issue is that the algorithm is sensitive to so-called “impurities”—that is,causal edges among the measured variables, or between measured variables and multiple latent variables. The algorithm will in effect remove one measure in each impure pair from consideration. Note that for FOFC, a test is done for each final cluster as to whether the variables in teh cluster are all mutually dependent. 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3815,7 +3967,9 @@ tetrad_ftfc
 
 From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but instead of each cluster having one latent that is the parent of all of the measure in the cluster, it instead has two such latents. So each measure has two latent parents; these are two “factors.” Similarly to FOFC, constraints are checked for, but in this case, the constraints must be sextad constraints, and more of them must be satisfied for each pure cluster (see Kummerfelt et al., 2014). Thus, the number of measures in each cluster, once impure edges have been taken into account, must be at least six, preferably more.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3867,7 +4021,9 @@ tetrad_gfci
 From the TETRAD manual: GFCI is a combination of the FGES :footcite:t:`ramsey2017million` algorithm and the FCI algorithm :footcite:t:`spirtes1993discovery` that improves upon the accuracy and efficiency of FCI. In order to understand the basic methodology of GFCI, it is necessary to understand some basic facts about the FGES and FCI algorithms. 
 The FGES algorithm is used to improve the accuracy of both the adjacency phase and the orientation phase of FCI by providing a more accurate initial graph that contains a subset of both the non-adjacencies and orientations of the final output of FCI. The initial set of nonadjacencies given by FGES is augmented by FCI performing a set of conditional independence tests that lead to the removal of some further adjacencies whenever a conditioning set is found that makes two adjacent variables independent. After the adjacency phase of FCI, some of the orientations of FGES are then used to provide an initial orientation of the undirected graph that is then augmented by the orientation phase of FCI to provide additional orientations. 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3928,7 +4084,9 @@ tetrad_grasp
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -3992,7 +4150,9 @@ In the referenced paper, we implement Algorithm A, which is described above. Onc
 Our implementation of LiNGAM has one parameter, penalty discount, used for the FGES adjacency search. The method as implemented does not scale much beyond 10 variables, because it is checking every permutation of all of the variables (twice). The implementation of ICA we use is FastIca  :footcite:t:`hyvarinen2002independent`.
 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -4047,7 +4207,9 @@ The PC algorithm is correct whenever decision procedures for independence and co
 
 The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirtes2000causation` comes with three heuristics designed to reduce dependence on the order of the variables. The heuristic PC-1 simple sorts the variables in alphabetical order. The heuristic PC-2 and PC-3 sort edges by their p-values in the search. PP-3 further sorts parents of nodes in reverse order by the p-values of the conditional independence facts used to removed edges in the search. Please see Causation, Prediction, and Search for more details for these heuristics.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -4100,7 +4262,9 @@ tetrad_rfci
 
 From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. 
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
@@ -4169,7 +4333,9 @@ of asymptotic variance of the estimated distribution. The suggested sampling met
 demonstrating high accuracy in Bayesian graph structure learning in both
 discrete and continuous graphical models.
 
-.. rubric:: Example
+
+
+.. rubric:: Example JSON
 
 
 .. code-block:: json
