@@ -656,7 +656,7 @@ elapsed_time <- function(){
               )
             }
           } +
-          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, ncol = 2, scales = "free_x") +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -715,7 +715,7 @@ elapsed_log_time <- function(){
               )
             }
           } +
-          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, ncol = 2, scales = "free_x") +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -756,7 +756,7 @@ graph_type <- function(){
           facet_wrap(. ~ adjmat + parameters + data, ncol = 2) +
           xlab("Dataset seed number") +
           ylab("Parameter.value.id") +
-          ggtitle("Estimated graph type") +
+          ggtitle("Graph type of estimated graphs") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["graph_type"]],"/", plt_counter, ".png", sep=""))
