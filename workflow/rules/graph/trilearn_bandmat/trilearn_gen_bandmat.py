@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Generated a graph with band adjacency matrix.
 
 from trilearn.graph import decomposable as dlib

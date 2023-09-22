@@ -34,6 +34,6 @@ rule plot_adjmat_stats:
         joint_stats="results/output/graph_true_stats/joint_stats.csv"
     output:
         touch("results/output/graph_true_stats/graph_true_stats.done"),
-        graph_density_plot="results/output/graph_true_stats/graph_density_plot.png"
+        graph_density_plot="results/output/graph_true_stats/graph_properties_plot.png"
     script:
         "graph_stats_plot.R"

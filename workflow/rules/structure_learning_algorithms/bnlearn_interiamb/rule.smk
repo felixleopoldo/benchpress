@@ -1,11 +1,13 @@
-rule bnlearn_interiamb:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjmat=alg_output_adjmat_path("bnlearn_interiamb"),
-        time=alg_output_time_path("bnlearn_interiamb"),
-        ntests=alg_output_ntests_path("bnlearn_interiamb"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name),
     container:
-        "docker://bpimages/bnlearn:4.8.1"
+        "docker://bpimages/bnlearn:4.8.3"
     script:
-        "bnlearn_inter-iamb.R"
+        "script.R"

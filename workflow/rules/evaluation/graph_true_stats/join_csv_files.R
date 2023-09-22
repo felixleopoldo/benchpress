@@ -3,7 +3,8 @@
 library(dplyr)
 
 fix_columns <- function(df) {
-  df <- na_if(df, "None")
+
+  df[df == "None"] <- NA
 
   if ("plus1it" %in% colnames(df)) {
     df["plus1it"] <- as.numeric(df["plus1it"])

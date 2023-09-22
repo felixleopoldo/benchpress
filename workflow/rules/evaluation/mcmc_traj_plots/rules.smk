@@ -64,7 +64,7 @@ for algid in mcmc_alg_ids:
                 eval_string=pattern_strings["mcmc_traj_plots"],
                 conf=configfilename
             container:
-                docker_image("networkx")
+                docker_image("pydatascience")
             script:
                 "../../../scripts/evaluation/write_graph_traj.py"
 

@@ -2,11 +2,50 @@ from pathlib import Path
 import json
 import bibtexparser
 from docs_utils import *
+from operator import itemgetter
+
+
+def fixed_data_to_table(json, p):
+    
+    tab = ".. list-table:: \n\n"#+p.name+"\n\n"
+    tab += "   * - Filename \n"
+    tab += "     - p\n"
+    tab += "     - n\n"
+    tab += "     - Type\n"
+    tab += "     - Graph\n"
+    for element in sorted(json, key=itemgetter('filename')):
+        tab += "   * - :ref:`{}`\n".format(element["filename"])
+        tab += "     - "+str(element["p"])+"\n"
+        tab += "     - "+str(element["n"])+"\n"
+        tab += "     - "
+        for t in element["type"]:
+            tab += str2link(t)+", "
+        tab = tab[:-2] + "\n"
+        tab += "     - `{graph} <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/{graph}>`__".format(graph=element["graph"])+"\n"
+
+    tab += "\n\n"
+
+    for element in sorted(json, key=itemgetter('filename')):
+        
+        tab += "\n\n"
+        tab += ".. _"+element["filename"]+":\n\n"
+        tab += ".. rubric:: "+element["filename"]+"\n\n"
+        tab += "File: `{filename} <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/{filename}>`__".format(filename=element["filename"])
+        tab += "\n\n"
+        tab += element["description"]
+        tab += "\n\n"
+        tab += "--------------------\n\n"
+        
+    tab += "\n\n"
+    
+    tab += ".. rubric:: References"
+    tab += "\n\n"
+    tab += ".. footbibliography::"
+    
+    return tab
 
 def info_to_table(json, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
-    #tab += "   * - Title\n"
-    #tab += "     - "+info["title"]+"\n"
     tab += "   * - Package\n"
     if info["package"]["url"]:
         tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
@@ -14,8 +53,6 @@ def info_to_table(json, p):
         tab += "     - "+info["package"]["title"]+"\n"
     tab += "   * - Version\n"
     tab += "     - "+info["version"]+"\n"
-    #tab += "   * - Language\n"
-    #tab += "     - "+info["language"]+"\n"   
     tab += "   * - Docs\n"
     if info["docs_url"] == "":
         tab += "     - \n"
@@ -42,8 +79,6 @@ def info_to_table(json, p):
         tab += "     - "+str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
-#    tab += "   * - Docker\n"
-#    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
     tab += "   * - Module\n"
     tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/data/"+p.name+">`__\n"
     tab += "\n"
@@ -63,19 +98,18 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
             info = json.load(json_file)
-        #tab += "     - "+info["title"]+"\n"
+            
         tab += "   * - "+info["title"]+"\n"
         for i in range(len(info["graph_types"])):
             tab += "     - "+str2link(info["graph_types"][i]) +", "
         tab = tab[:-2]
-        
         tab += "\n"
-        #tab += "     - "+info["language"]+"\n"
         if info["package"]["url"]:
             tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
         else:
@@ -93,20 +127,22 @@ algspath = Path("../workflow/rules/data")
 f = open("source/data_desc.rst", "r")
 content = f.read()
 
-str = ""
-#str += "``"+algspath.name+"``\n"
-str += ".. _"+algspath.name+": \n\n"
-str += "Data\n"
-str += "="*len(algspath.name) + "="*10
-str += "\n\n"
-str += content
-str += "\n\n"
+ret_str = ""
+#ret_str += "``"+algspath.name+"``\n"
+ret_str += ".. _"+algspath.name+": \n\n"
+ret_str += "Data\n"
+ret_str += "="*len(algspath.name) + "="*10
+ret_str += "\n\n"
+ret_str += content
+ret_str += "\n\n"
 
-str += info_to_small_table()
-str += "\n\n"
+ret_str += info_to_small_table()
+ret_str += "\n\n"
 for p in sorted(algspath.iterdir()):
     #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"
@@ -129,37 +165,46 @@ for p in sorted(algspath.iterdir()):
             if "examples" in schema["items"]:
                 dump = json.dumps(schema["items"]["examples"], indent=2)
 
-    #str += "\n\n\n"
-    #str +=".. _" + p.name +": "
-    str += "\n\n"
-    str += ".. _"+p.name+": \n\n"
-    #str +="``" + p.name +"`` \n"
-    str +=p.name +" \n"
-    str +="-"*len(p.name) + "-"*4 + "\n"
+
+    ret_str += "\n\n"
+    ret_str += ".. _"+p.name+": \n\n"
+    ret_str +=p.name +" \n"
+    ret_str +="-"*len(p.name) + "-"*4 + "\n"
 
     
-    str += "\n"
-    str += ".. rubric:: "+ info["title"]    
-    str += "\n\n"
+    ret_str += "\n"
+    ret_str += ".. rubric:: "+ info["title"]    
+    ret_str += "\n\n"
     if p.name != "fixed_data":
-        str += info_to_table(info, p)
-        str += "\n\n"
-    str += ".. rubric:: Description"    
+        ret_str += info_to_table(info, p)
+        ret_str += "\n\n"
+        
+    
+    ret_str += ".. rubric:: Description"    
     if content != "":    
-        str += "\n\n"
-        str += content
+        ret_str += "\n\n"
+        ret_str += content
+        ret_str += "\n\n"
+        
+    if p.name == "fixed_data":
+        with open(p/"data_info.json") as json_data_file:
+            fixed_data_info = json.load(json_data_file)
+        ret_str += fixed_data_to_table(fixed_data_info, p)
+        ret_str += "\n\n"
+        
+
     if dump != "":
-        str += "\n\n"
-        str += ".. rubric:: Example"
-        str += "\n\n\n"
-        str += ".. code-block:: json"    
-        str += "\n\n"
-        str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    str += "\n\n"
-    str += ".. footbibliography::"
-    #str += "\n\n-------"
-    str += "\n\n"
+        ret_str += "\n\n"
+        ret_str += ".. rubric:: Example"
+        ret_str += "\n\n\n"
+        ret_str += ".. code-block:: json"    
+        ret_str += "\n\n"
+        ret_str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    ret_str += "\n\n"
+    ret_str += ".. footbibliography::"
+    #ret_str += "\n\n-------"
+    ret_str += "\n\n"
 
 
 with open("source/available_data.rst", "w") as text_file:
-    text_file.write(str)
+    text_file.write(ret_str)

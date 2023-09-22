@@ -18,6 +18,12 @@ def str2link(s):
         return "`Java <https://www.java.com/en/>`__"
     if s == "C":
         return "`C <https://en.wikipedia.org/wiki/C_(programming_language)>`__"
+    if s == "continuous":
+        return "cont"
+    if s == "binary":
+        return "bin"
+    if s == "interventional":
+        return "interv"
     return s
 
 def get_docker_img(rulefile):

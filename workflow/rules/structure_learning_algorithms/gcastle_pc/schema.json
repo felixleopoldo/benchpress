@@ -26,7 +26,7 @@
                 "id": "gcastle_pc",
                 "variant": "original",
                 "alpha": 0.05,
-                "ci_test": "gauss",
+                "ci_test": "fisherz",
                 "timeout": null
             }
         ]

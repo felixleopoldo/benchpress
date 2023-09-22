@@ -1,6 +1,5 @@
 include: "filename_gen.py"
 
-
 rule plot_pairs:
     input:
         data=summarise_alg_input_data_path()

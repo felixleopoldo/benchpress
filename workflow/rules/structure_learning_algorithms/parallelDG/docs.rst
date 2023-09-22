@@ -12,3 +12,7 @@ executed simultaneously. Through simulations, we demonstrate the efficiency of
 our new edge perturbation conditions and class of partitions. We find that our
 parallel sampler yields improved mixing properties in comparison to the single-
 move variate, and outperforms current methods.
+
+.. important:: 
+
+  This module only works on the AMD64 architecture.

@@ -9,20 +9,20 @@
 </p>
 
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥7.14-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥7.30.1-brightgreen.svg)](https://snakemake.bitbucket.io)
 [![Documentation Status](https://readthedocs.org/projects/benchpressdocs/badge/?version=latest)](https://benchpressdocs.readthedocs.io/en/latest/?badge=latest)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 ---
 
-Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning algorithms, implemented in possibly different languages, can be executed and compared.
+Benchpress [[1]](#1) is a [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow where structure learning (sometimes called causal discovery) algorithms, implemented in possibly different languages, can be executed and compared.
 The computations scale seamlessly on multiple cores or *"... to server, cluster, grid and cloud environments, without the need to modify the workflow definition" - Snakemake*.
 The documentation is found at https://benchpressdocs.readthedocs.io. 
 <!-- [This](https://benchpressdocs.readthedocs.io/en/latest/json_overview.html#evaluation) section shows an overview of the supported evaluation methods. -->
 
 The following main functionalities are provided by Benchpress 
 
-* Benchmarks - Benchmark publically available structure learning algorithms.
+* Benchmarks - Benchmark structure learning algorithms.
 * Algorithm development - Benchmark your own algorithm along with the existing ones while developing.
 * Data analysis - Estimate the underlying graph structure for your own dataset(s).
 
@@ -47,7 +47,7 @@ You may also have a look at [this Medium story](https://medium.com/@felixleopold
 For problems, bug reporting, or questions please raise an issue or open a discussion thread.
 
 ## Contributing
-Contrubutions are very welcomed. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions. 
+Contributions are very welcomed. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions. 
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
