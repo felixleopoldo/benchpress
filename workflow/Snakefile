@@ -101,6 +101,8 @@ rule copy_configs:
 # Read which modules are MCMC module (have graphtraj output).
 mcmc_modules = []
 for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    if p.name.startswith("."): # Skip hidden files
+        continue
     with open(p/"info.json") as json_file:
         info = json.load(json_file)
         if "graphtraj" in info["outputs"]:
@@ -113,7 +115,7 @@ include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
 
 # Include the graph modules
-for p in Path("workflow/rules/graph/").glob("*"):
+for p in Path("workflow/rules/graph/").glob("[!.]*"):
     module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
         if p.name in pattern_strings or (p.name == "fixed_graph"):
@@ -122,7 +124,7 @@ for p in Path("workflow/rules/graph/").glob("*"):
 
 
 # Include the parameters modules
-for p in Path("workflow/rules/parameters/").glob("*"):
+for p in Path("workflow/rules/parameters/").glob("[!.]*"):
     module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
         if (p.name in pattern_strings) or (p.name == "fixed_params"):
@@ -131,7 +133,7 @@ for p in Path("workflow/rules/parameters/").glob("*"):
 
 
 # Include the data modules
-for p in Path("workflow/rules/data/").glob("*"):
+for p in Path("workflow/rules/data/").glob("[!.]*"):
     module_name = p.name  # This is used inside the module to get their names
     if (p / "rules.smk").is_file():
         if (p.name in pattern_strings) or (p.name == "fixed_data"):
@@ -142,7 +144,7 @@ for p in Path("workflow/rules/data/").glob("*"):
 
 
 # Include the structure_learning_algorithms modules
-for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
+for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
     module_name = p.name  # This is used inside the module to get their names
     if (p / "rule.smk").is_file():
         if p.name in pattern_strings:
@@ -162,12 +164,12 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("*"):
                         threshold="{threshold}",
                         burnin_frac="{burnin_frac}",
                     container:
-                        docker_image("networkx")
+                        docker_image("pydatascience")
                     script:
                         "scripts/evaluation/graphtraj_est.py"
 # Include the evaluation modules
 
-for p in Path("workflow/rules/evaluation/").glob("*"):
+for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
     if (p / "rules.smk").is_file():
         include: Path("rules/evaluation/", p.name, "rules.smk")
 

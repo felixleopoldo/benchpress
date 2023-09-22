@@ -1,4 +1,4 @@
-# Converts a graph in TETRAD format into an adjacency matrix.
+# Converts a graph in TETRAD (causal-cmd 1.9.0) format into an adjacency matrix.
 
 library(argparser)
 library(rjson)
@@ -13,16 +13,18 @@ fges_result_to_matrix <- function(graph) {
   for (node in graph$nodes) {
     nodes <- c(nodes, node$name)
   }
+
   p <- length(nodes)
   m <- matrix(0, p, p)
 
   for (e in graph$edgesSet) {
     node1 <- e$node1$name
+
     node2 <- e$node2$name
     node1_ind <- match(node1, nodes) # TODO: This might not always work..
     node2_ind <- match(node2, nodes)
 
-    isdirected <- e$endpoint2$ordinal && TRUE
+    isdirected <- ((e$endpoint1 == "TAIL") && (e$endpoint2 == "ARROW")) | ((e$endpoint2 == "TAIL") && (e$endpoint1 == "ARROW"))
 
     if (isdirected) {
       m[node1_ind, node2_ind] <- 1
@@ -36,5 +38,4 @@ fges_result_to_matrix <- function(graph) {
 }
 graph <- fromJSON(file = argv$jsongraph)
 adjmat <- fges_result_to_matrix(graph)
-
 write.csv(adjmat, file = argv$filename, row.names = FALSE, quote = FALSE)

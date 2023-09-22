@@ -46,7 +46,7 @@ rule sample_intra_class_            data:
     container:
         docker_image("trilearn")
     shell:
-        "python2 workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
 rule sample_g_inverse_wishart:
     input:

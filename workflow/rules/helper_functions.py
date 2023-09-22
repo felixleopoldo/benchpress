@@ -67,11 +67,13 @@ def get_active_rules(wildcards):
     return rules
 
 def check_system_requirements():
+    import subprocess
     from snakemake.utils import min_version
     # To update Snakemake using Mamba run
     # mamba update -c conda-forge -c bioconda snakemake
-    import subprocess
-    min_version("7.14")
+    
+    
+    min_version("7.30.1")
 
     # Check that Apptainer or Singularity >=3.2 is installed.
     (apptainer_ecode, apptainer_outp) = subprocess.getstatusoutput("apptainer --version")

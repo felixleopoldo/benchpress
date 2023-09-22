@@ -16,22 +16,22 @@ However, to get something working, you only have to consider altering *script.R*
     ├── bibtex.bib
     └── docs.rst
 
-* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
-* *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment, you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
-* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
-* *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
-  The template modules run by default in a container based on the Docker image "bpimages/sandbox". 
+  The template modules run by default in a container based on the Docker image "bpimages/sandbox:1.0". 
   To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.  
-  On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version*.
-* *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suite your specific script.
+  On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version* (see e.g. `this tutorial <https://www.techrepublic.com/article/how-to-build-a-docker-image-and-upload-it-to-docker-hub/>`_ for building and pushing images to `Docker Hub <https://hub.docker.com/>`__). 
+* *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suit your specific script.
+* *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment, you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
+* *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
+* *bibtex.bib* is a file with references in `BibTeX <http://www.bibtex.org/Format/>`_  format that will be accessible in *docs.rst* (using `sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/>`_ syntax) and shown in the documentation.
+* *docs.rst* is a documentation file in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ (RST) format that will be included when :ref:`update_docs`. This file should contain an overview of the module and further explanation of the `JSON <https://www.json.org/json-en.html>`_ fields if needed.
 
 
 .. role:: r(code)
    :language: r
 
-The sections below show how to get started developing your own modules. To get a quick start, you may run the following commands in the benchpress directory, to make copy of each of the template modules at once.
-Then you can use the config file *config/mysandbox.json* which is configured to use each of them.
+The sections below show how to get started developing your own modules. To get a quick start, you may run the following commands in the benchpress directory, to copy of each of the template modules at once.
+Then you can use the config file `config/sandbox.json <https://github.com/felixleopoldo/benchpress/blob/master/config/sandbox.json>`_ which is configured to use each of them.
 
 .. prompt:: bash
 
@@ -39,7 +39,14 @@ Then you can use the config file *config/mysandbox.json* which is configured to 
     cp -r resources/module_templates/new_params workflow/rules/parameters/new_params
     cp -r resources/module_templates/new_data workflow/rules/data/new_data
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
+    cp -r resources/module_templates/new_mcmcalg workflow/rules/structure_learning_algorithms/new_mcmcalg
     cp config/sandbox.json config/mysandbox.json    
+
+To test run
+
+.. prompt:: bash
+
+    snakemake --cores all --use-singularity --configfile config/mysandbox.json
 
 
 
@@ -162,7 +169,7 @@ In order to create a new algorithm module, you may copy the template module `new
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
 Below are two examples of how to implement an algorithm module, one in R and one in `Python <https://www.python.org/>`_.
-Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rula.smk>`__
+Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rule.smk>`__
 
 R
 ------
@@ -183,17 +190,17 @@ However, *add_timeout* is not needed if your algorithm is able to produce result
 Python
 -------
 
-:numref:`new_alg_pyscript` shows `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which is the `Python <https://www.python.org/>`_ analog of the `R <https://www.r-project.org/>`_-script above.
+:numref:`new_alg_pyscript` shows `script.py <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.py>`__, which is the `Python <https://www.python.org/>`_ analogue of `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ shown in :numref:`new_alg_script`.
 As in the `R <https://www.r-project.org/>`_-script, to enable the timeout functionality, the actual algorithm is wrapped into the function *myalg* which is then used from Line 39 and below.
 
 
 .. literalinclude:: ../../resources/module_templates/new_alg/script.py
    :language: python
-   :name: asd    
+   :name: new_alg_pyscript    
    :caption: script.py from new_alg.
    :linenos:
     
-    
+
 
 -------------
 
@@ -243,6 +250,7 @@ In order to use the module, you can add the following piece of `JSON <https://ww
             "mcmc_estimator": "threshold",
             "threshold": 0.5,
             "mcmc_seed": [1, 2, 3],
+            "n_iterations": 10000,
             "timeout": null
         }
     ]
@@ -251,12 +259,159 @@ In order to use the module, you can add the following piece of `JSON <https://ww
 Evaluation 
 ########################
 
-There is not yeat a general way of creating evaluation modules as their functionality and output may differ. 
+There is not yet a general way of creating evaluation modules as their functionality and output may differ. 
 However, you may either extend or copy one of the existing ones.
+
+
+
+Local development 
+************************************************
+
+The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox:1.0 <https://hub.docker.com/repository/docker/bpimages/sandbox:1.0/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
+If you instead prefer to run a module using software installed on your local computer, you should change the ``container`` field in *rule.smk* to *None*, *i.e.*
+
+.. code-block:: python
+
+    container: 
+        None
+
+
+Integrating existing project
+#############################################
+
+You may have an existing (possibly version controlled by e.g. `git <https://git-scm.com/>`_) project that you want to integrate into Benchpress.
+Below we show how this is done in `Python <https://www.python.org/>`_ and `R <https://www.r-project.org/>`_.
+
+
+Python
+-------
+
+If you for example have a `Python <https://www.python.org/>`_ project in your local folder */path/to/my/local/python_lib*, you may simply add the folder to the systems library path variable as:
+
+.. .. literalinclude:: ../../resources/module_templates/new_alg/script.py
+..    :language: python
+..    :name: 
+..    :caption: Line to uncomment in script.py from new_alg.
+..    :lines: 3
+
+
+.. code-block:: python
+   
+   sys.path.append("/path/to/my/local/python_lib")
+
+R
+-------
+
+If you for example have an `R <https://www.r-project.org/>`_ project in your local folder */path/to/my/local/r/code.R*, you may source the code as:
+
+.. code-block:: r
+
+    source("/path/to/my/local/r/code.R")    
+
+
+Using Conda environments
+----------------------------------
+
+`Conda <https://conda.io/projects/conda/en/latest/user-guide/getting-started.html>`_ is an open-source platform-independent package management system widely used in the data science community.
+If your local projects requirements are installed on a conda environment, called *e.g.* *myenv*, you may specify that the in *rule.smk* as
+
+
+.. code-block:: python
+
+        container:
+            None
+        conda:
+            "myenv"
+
+To use conda, the extra *use-conda* flag has to be passed to snakemake when running the workflow:
+
+.. prompt:: bash
+
+    snakemake --cores all --use-singularity --configfile config/sandbox.json --use-conda
 
 .. _update_docs:
 
+Example
+----------------------------------
 
+The rule and `Python <https://www.python.org/>`_ script for a structure learning module, using the local conda environment *myenv* may look like :numref:`conda_rule` and :numref:`local_script`.
+
+.. code-block:: python
+    :name: conda_rule
+    :caption: Rule using conda.
+    :linenos:
+    :emphasize-lines: 10,11,12,13
+
+    rule:
+        name:
+            module_name
+        input:
+            data = alg_input_data()        
+        output:
+            adjmat = alg_output_adjmat_path(module_name),
+            time = alg_output_time_path(module_name),
+            ntests = alg_output_ntests_path(module_name)
+        container:
+            None
+        conda:
+            "myenv"
+        script:
+            "script.py"
+
+
+.. code-block:: python
+    :name: local_script
+    :caption: Script importing local code.
+    :linenos:
+    :emphasize-lines: 2, 17
+
+
+    sys.path.append("workflow/scripts/utils")
+    sys.path.append("/path/to/my/local/python_lib")
+
+    import time
+    import pandas as pd
+    import numpy as np
+    from add_timeout import *
+
+    def myalg():
+        # Read in data 
+        df = pd.read_csv(snakemake.input["data"])
+
+        # Set the seed
+        np.random.seed(int(snakemake.wildcards["replicate"]))
+        
+        # The algorithm goes here    
+        adjmat = my_local_algorithm(df) # returns an adjacency matrix
+
+        # Save time
+        tottime = time.perf_counter() - start
+        with open(snakemake.output["time"], "w") as text_file:
+            text_file.write(str(tottime))
+
+        # Save adjmat
+        adjmat_df = pd.DataFrame(adjmat)
+        adjmat_df.columns = df.columns
+        adjmat_df.to_csv(snakemake.output["adjmat"], index=False)
+
+        # ntests is not applicable for this algorithm
+        with open(snakemake.output["ntests"], "w") as text_file:
+            text_file.write("None")
+
+
+    # This part starts the timer 
+    start = time.perf_counter()
+
+    if snakemake.wildcards["timeout"] == "None":
+        myalg()
+    else:
+        with timeoutf(int(snakemake.wildcards["timeout"]),
+                    snakemake.output["adjmat"],
+                    snakemake.output["time"],
+                    snakemake.output["ntests"],
+                    start):
+            myalg()
+    
 Updating the documentation
 ******************************************
 
@@ -277,6 +432,7 @@ Then make *render_docs.sh* executable then render and build the documentation
 
 .. prompt:: bash
 
+    ./render_docs.sh
     make html
 
 Open *build/html/index.html* in a web browser to see the result.

@@ -12,7 +12,7 @@
     :caption: Getting started
 
     installation
-    usage
+    examples
 
 .. toctree::
     :hidden:
@@ -20,8 +20,7 @@
     :name: Configuration
     :caption: Configuration
     
-    json_overview
-    examples    
+    json_overview    
     data_formats
 
 .. toctree::
@@ -94,8 +93,19 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository, and `this Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_.
 
-.. note::
 
-    This site is under development.
+.. rubric:: Updates
+
+* 2023-09-19: Benchpress 2.3.0 released. Updated causal-cmd to version 1.10.0. Added the BOSS algorithm (:ref:`tetrad_boss`).
+* 2023-09-08: Benchpress 2.2.0 released. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
+* 2023-08-31: The Grasp algorithm is available through both :ref:`causallearn_grasp` and :ref:`tetrad_grasp`.
+
+.. rubric:: Outreach
+
+* 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`).
+* 2023-06-20: Benchpress tutorial at KTH
+* 2022-09-06: `Algorithms for learning Bayesian networks (James Cussens) <https://jcussens.github.io/talks/bias22.pdf>`_. `Interactive AI CDT Summer School (BIAS 22) <https://www.bristol.ac.uk/cdt/interactive-ai/events/bias-summer-school-2022/>`_, University of Bristol
+* 2022-05-24: Benchpress talk at the `CATS seminar series at KTH <https://www.kth.se/math/kalender/felix-rios-benchpress-a-scalable-and-versatile-workflow-for-benchmarking-structure-learning-algorithms-for-graphical-models-1.1171995?date=2022-05-24&orgdate=2022-05-24&length=1&orglength=1>`_
+* 2022-04-04: Benchpress talk and tutorial at the `Simons Institute, Berkley <https://simons.berkeley.edu/homepage>`_ 
 
 .. footbibliography::

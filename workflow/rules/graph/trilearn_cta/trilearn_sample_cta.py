@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Samples a decomposable graph from the Christma tree algorithm.
 
 from trilearn.graph import decomposable as dlib

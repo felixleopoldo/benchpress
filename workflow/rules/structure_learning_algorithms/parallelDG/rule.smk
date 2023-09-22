@@ -11,27 +11,44 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://hallawalla/paralleldg:0.9.2" 
+        "docker://hallawalla/paralleldg:0.9.5" 
     shell:
         """
-        if [ {wildcards.timeout} = \"None\" ]; then
-            if [ {wildcards.datatype} = \"discrete\" ]; then
-                /usr/bin/time -f \"%e\" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress;
-            elif [ {wildcards.datatype} = \"continuous\" ]; then
-                /usr/bin/time -f \"%e\" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1};
-            fi
-        else
-            if [ {wildcards.datatype} = \"discrete\" ]; then
-                /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress';
-            elif [ {wildcards.datatype} = \"continuous\" ]; then
-                /usr/bin/time -f \"%e\" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c  'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress  --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1}';
-            fi
+if [ "{wildcards.parallel}" = "TRUE" ]; then
+    if [ "{wildcards.timeout}" = "None" ]; then
+        if [ "{wildcards.datatype}" = "discrete" ]; then
+            /usr/bin/time -f "%e" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress;
+        elif [ "{wildcards.datatype}" = "continuous" ]; then
+            /usr/bin/time -f "%e" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1};
         fi
+    else
+        if [ "{wildcards.datatype}" = "discrete" ]; then
+            /usr/bin/time -f "%e" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c 'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress';
+        elif [ "{wildcards.datatype}" = "continuous" ]; then
+            /usr/bin/time -f "%e" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c 'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress  --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1}';
+        fi
+    fi
+else
+    if [ "{wildcards.timeout}" = "None" ]; then
+        if [ "{wildcards.datatype}" = "discrete" ]; then
+            /usr/bin/time -f "%e" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress --parallel;
+        elif [ "{wildcards.datatype}" = "continuous" ]; then
+            /usr/bin/time -f "%e" -o {output.time} parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1} --parallel;
+        fi
+    else
+        if [ "{wildcards.datatype}" = "discrete" ]; then
+            /usr/bin/time -f "%e" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c 'parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress --parallel';
+        elif [ "{wildcards.datatype}" = "continuous" ]; then
+            /usr/bin/time -f "%e" -o {output.time} timeout -s SIGKILL {wildcards.timeout} bash -c 'parallelDG_ggm_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} -s {wildcards.mcmc_seed} -t benchpress  --deltas {wildcards.delta} --graph-prior {wildcards.graph_prior} {wildcards.graph_prior_param} {wildcards.graph_prior_param1} --parallel';
+        fi
+    fi
+fi
 
-        if [ -f {output.adjvecs} ]; then
-            sleep 1
-        else
-            touch {output.adjvecs}
-            echo None > {output.time};
-        fi
-        """
+if [ -f {output.adjvecs} ]; then
+    sleep 1
+else
+    touch {output.adjvecs}
+    echo None > {output.time};
+fi
+
+"""

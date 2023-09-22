@@ -8,10 +8,7 @@ rule intra_class_cov:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     container:
-        "docker://bpimages/trilearn:1.25"
-    shell:
-        "python2 workflow/rules/parameters/trilearn_intra-class/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
-
-
-
-ruleorder: standardize > data
+        "docker://bpimages/trilearn:2.0.1"
+    shell:     
+        "python workflow/rules/parameters/trilearn_intra-class/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
+    ruleorder: standardize > data

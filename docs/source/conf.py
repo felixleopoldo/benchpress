@@ -10,7 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from pathlib import Path
@@ -22,8 +22,12 @@ copyright = '2023'
 author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.1'
 
+dirname = os.path.dirname(__file__)
+projdir = os.path.dirname(dirname)
+appdir = Path(projdir).parent
+release = open(os.path.join(appdir, 'VERSION')).read().strip()
+version = '.'.join(release.split('.')[:3])
 
 # -- General configuration ---------------------------------------------------
 
@@ -36,14 +40,18 @@ extensions = [
     'recommonmark',
     'sphinx_copybutton',
     'sphinx-prompt',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'sphinx_last_updated_by_git',
+    'versionwarning.extension'
 ]
 
-paths = [Path("../../workflow/rules/structure_learning_algorithms"), 
+paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
-         Path("../../workflow/rules/graph"),  
-         Path("../../workflow/rules/data"),  
-         Path("../../workflow/rules/evaluation")]
+         Path("../../workflow/rules/graph"),
+         Path("../../workflow/rules/data"),
+         Path("../../workflow/rules/evaluation"),
+         Path("../../workflow/rules/data/fixed_data")
+         ]
 
 
 bibtex_bibfiles = []

@@ -4,7 +4,7 @@
 # Averages are usually taken over different seeds.
 
 library(dplyr, warn.conflicts = FALSE)
-library("rjson")
+library(rjson)
 library(argparser)
 
 p <- arg_parser("Combining benchmarks data from differents sources.")
@@ -116,7 +116,7 @@ for (algorithm in active_algorithms) {
         time_median = median(time),
         time_q1 = quantile(time, probs = c(0.05)),
         time_q3 = quantile(time, probs = c(0.95)),
-        N = n(),
+        n_seeds = n(),
         curve_vals = mean(!!as.symbol(curve_param))
       )
 

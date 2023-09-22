@@ -61,7 +61,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-    
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
@@ -132,6 +133,8 @@ str += "\n\n"
 for p in sorted(algspath.iterdir()):
     #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"

@@ -25,7 +25,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gobnilp-bde",
+                    
                     "asobs-bdeu",
                     "tabu-bde",
                     "mmhc-bde-mi",
@@ -255,7 +255,7 @@
                         1,
                         2
                     ],
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": null,
                     "timeout": null
                 }
@@ -297,13 +297,13 @@
                     "datatype": "discrete",
                     "penaltyDiscount": null,
                     "samplePrior": 1,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "timeout": null
                 },
                 {
                     "id": "gfci-sem-bic-fisher-z",
                     "alpha": 0.05,
-                    "score": "sem-bic",
+                    "score": "sem-bic-score",
                     "test": "fisher-z-test",
                     "datatype": "continuous",
                     "penaltyDiscount": [
@@ -312,7 +312,7 @@
                         1.5
                     ],
                     "samplePrior": null,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "timeout": null
                 }
             ],
