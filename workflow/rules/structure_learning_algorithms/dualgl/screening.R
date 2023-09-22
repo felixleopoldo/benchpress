@@ -69,6 +69,7 @@ myalg <- function() {
     time_filename <- snakemake@output[["time"]]
     data_filename <- snakemake@input[["data"]]
     ntests_filename <- snakemake@output[["ntests"]]
+    alpha = as.numeric(snakemake@wildcards[['alpha']])
 
     ## The algorithm should be in this function.
     start <- proc.time()[1]
@@ -87,21 +88,24 @@ myalg <- function() {
     ## data = data[code %in% c(0,9,5)][m>0]
     ## 9 failed disconnect, 5 failed connect, 0 success One-pair JT sampler
     ## 6 faild connection, 4 fails disconnection, 0 sucess, Guidici Green
-    data = data[code %in% codes][m>0]
+    data = data[code %in% codes][m>0][m < n-1]
 
     ## re-order edge index, where x-y such that x < y.
     a = rbind(data[removed=='[]',as.list(fix_edges(added, 'add')), index],
               data[added=='[]', as.list(fix_edges(removed, 'remove')), index])
     data = merge(a, data, by ='index')
-
+    
+    
     ## inverting Marginal likelihood ratio
     data[, B := ifelse(move=='remove', delta,-delta)]
 
     ## compute the Z-test
     data[, z:=z(B, n, m)]
     data[, zt:=z_tild(z)]
-    data[order(zt)]
-    data = merge(data, data[, .(empirical_p = sum(code=='0')/.N, .N), by = edge], by = c('edge'))
+
+    emp = data[ ,.(N_p = .N, prop = sum(1*(code=='0') * (move =='remove') +  1*(code!='0')*(move=='add'))/.N), by = c('edge')][order(edge)]
+
+    data = merge(data, emp, by = 'edge')
 
     
     ## converting orig/dest to numeric
@@ -109,12 +113,24 @@ myalg <- function() {
     data$dest = as.numeric(data$dest)
 
     
-    data = unique(data[, .(orig, dest, edge, zt, z, empirical_p, N)])
+    data = unique(data[, .(orig, dest, edge, zt, z, prop, N_p)])
 
-    data_treat=data[, .(orig=orig[1], dest=dest[1],zt= mean(zt),z = mean(z), .N), by = edge]
+
+    data_treat=data[, .(
+        orig=orig[1],
+        dest=dest[1],
+        zt= mean(zt),
+        z = mean(z),
+        .N,
+        N_p = N_p[1],
+        prop = prop[1]), by = edge]
+
+    data_treat[, pzt := sqrt(N_p) * prop/sqrt(1e-4+prop*(1-prop))]
+    data_treat
     #q = data_treat[, pcorselR(cbind(orig, dest, zt), ALPHA2=0.05, GRID=3, iteration=100)]
     q = as.numeric(snakemake@wildcards[['alpha']])
-    data_treat[, est_edge := 1*(pnorm(zt)> 1-q/2)]
+    
+    data_treat[, est_edge := 1*(pnorm(zt)> 1-q)]
 
     adjmat <- matrix(0, nrow = p, ncol = p)
     ed = data_treat[est_edge==1][, cbind(orig+1, dest+1)]
@@ -132,5 +148,3 @@ myalg <- function() {
 }
 
 add_timeout(myalg)
-
-
