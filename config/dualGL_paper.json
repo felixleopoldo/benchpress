@@ -163,7 +163,7 @@
         {
           "id": "example1",
           "standardized": false,
-          "sample_sizes": [
+          "n": [
               100, 
               200
           ]
@@ -270,7 +270,7 @@
           }],
           "dualgl": [
               {
-              "id": "dualGL-gts",
+              "id": "dualGL_gts",
               "timeout": null,
               "startalg": "jtsampler_gts",
               "alpha": [0.01,
@@ -325,6 +325,7 @@
           "burnin_frac": 0.5,
           "mcmc_estimator": "threshold",
           "timeout": null,
+          "num_samples": 3000000,
           "mcmc_seed": 1,
           "sampler": 1,
           "edge_penalty": 0.0,
