@@ -2,20 +2,10 @@
     "title": "Psi-learning",
     "version": "0.1",
     "package": {
-        "title": "",
+        "title": "equSA",
         "url": "https://rdrr.io/cran/equSA/"
     },
-    "docs_url": "",
-    "papers": [
-        {
-        "title": "Liang, F., Song, Q. and Qiu, P. (2015). An Equivalent Measure of Partial Correlation Coefficients for High Dimensional Gaussian Graphical Models. J. Amer. Statist. Assoc., 110, 1248-1265.",
-        "url": "https://www.jstor.org/stable/24739721"
-    },
-        {
-        "title": "Liang, F. and Zhang, J. (2008) Estimating FDR under general dependence using stochastic approximation. Biometrika, 95(4), 961-977.",
-        "url" : "https://www.jstor.org/stable/20441518"
-    }
-    ],
+    "docs_url": "https://rdrr.io/cran/equSA/man/",
     "outputs": [
         "adjmat"
     ],
