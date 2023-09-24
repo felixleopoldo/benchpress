@@ -154,7 +154,7 @@
             ]
         },
         "structure_learning_algorithms": {
-            "parallelDG": [
+            "paralleldg": [
                 {
                     "id": "parallelDG_test",
                     "M": 10000,
