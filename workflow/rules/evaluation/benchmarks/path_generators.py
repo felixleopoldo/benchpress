@@ -68,17 +68,6 @@ def summarise_alg_output_res_path(algorithm):
     # this seed belongs to data actually, and gets stripped from data after.
     # this is a build in hack to allow for fixed data, I think..
 
-def result_path_mcmc(algorithm):
-    res = "{output_dir}/result/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
-            "adjmat=/{adjmat}/"\
-            "parameters=/{bn}/"\
-            "data=/{data}/"\
-            "seed={replicate}/" \
-            "id={id}/" \
-            "result.csv"
-    return res
-
 def join_summaries_shell(algorithm):
     return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
@@ -101,3 +90,4 @@ def result_path_mcmc(algorithm):
             "id={id}/" \
             "result.csv"
     return res
+
