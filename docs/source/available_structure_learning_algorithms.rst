@@ -2011,7 +2011,7 @@ equsa_psilearner
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `hallawalla/dualgl:0.1 <https://hub.docker.com/r/hallawalla/dualgl/tags>`__
+     - `bpimages/equsa_psilearner:1.2.1 <https://hub.docker.com/r/bpimages/equsa_psilearner/tags>`__
 
    * - Module folder
      - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
