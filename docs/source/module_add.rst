@@ -175,8 +175,8 @@ R
 ------
 
 :numref:`new_alg_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ , which generates a random binary symmetric matrix (undirected data).
-Note that the actual algorithm is wrapped into the function *wrapper* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which saves an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which writes an empty file if the algorithm has finished before ``timeout`` seconds, specified in the config file.
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 

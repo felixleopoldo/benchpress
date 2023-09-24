@@ -178,7 +178,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - parallelDG_ 
+     - paralleldg_ 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -3144,9 +3144,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 
 
-.. _parallelDG: 
+.. _paralleldg: 
 
-parallelDG 
+paralleldg 
 --------------
 
 .. rubric:: Parallel DG
@@ -3169,7 +3169,7 @@ parallelDG
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
 
 
 
