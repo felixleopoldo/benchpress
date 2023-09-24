@@ -191,6 +191,10 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - prec_thresh_ 
+   * - Psi-learning
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `equSA <https://rdrr.io/cran/equSA/>`__
+     - psilearner_ 
    * - ASOBS
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
@@ -3420,6 +3424,67 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
         "id": "pthresh",
         "thresh": 0.5,
         "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
+.. _psilearner: 
+
+psilearner 
+--------------
+
+.. rubric:: Psi-learning
+
+.. list-table:: 
+
+   * - Package
+     - `equSA <https://rdrr.io/cran/equSA/>`__
+   * - Version
+     - 0.1
+   * - Language
+     - `R <https://www.r-project.org/>`__
+   * - Docs
+     - `here <https://rdrr.io/cran/equSA/man/>`__
+   * - Paper
+     - :footcite:t:`liang2015equivalent`, :footcite:t:`liang2008estimating`
+   * - Graph type
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Docker 
+     - `hallawalla/dualgl:0.1 <https://hub.docker.com/r/hallawalla/dualgl/tags>`__
+
+   * - Module folder
+     - `psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/psilearner>`__
+
+
+
+.. rubric:: Description
+
+.. rubric:: Some fields described 
+* ``alpha1`` The significance level of correlation screening. In general, a high significance level of correlation screening will lead to a slightly large separator set S_{ij}. 
+* ``alpha2`` The significance level of ψ screening. 
+* ``grid`` The number of components for the ψ scores. The default value is 2. 
+* ``iterations`` Number of iterations for screening. The default value is 100. 
+* ``neig`` Neiborhood size in correlation screening step, default to n/log(n), where n is the number of observation. 
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "psilearn",
+        "timeout": null,
+        "alpha1": 0.05,
+        "alpha2": 0.05,
+        "grid": 2,
+        "iterations": 100,
+        "neig": 10
       }
     ]
 
