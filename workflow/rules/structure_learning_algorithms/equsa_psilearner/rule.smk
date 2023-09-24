@@ -9,6 +9,6 @@ rule:
         time=touch(alg_output_time_path(module_name)),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://hallawalla/dualgl:0.1"
+        "docker://bpimages/equsa_psilearner:1.2.1"
     script:
         "psi_learner.R"

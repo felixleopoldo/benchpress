@@ -111,6 +111,10 @@ To add new modules, see :ref:`new_modules`.
      - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
      - dualpc_ 
+   * - Psi-learning
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `equSA <https://rdrr.io/cran/equSA/>`__
+     - equsa_psilearner_ 
    * - ANM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
@@ -178,7 +182,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - parallelDG_ 
+     - paralleldg_ 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
@@ -191,10 +195,6 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - prec_thresh_ 
-   * - Psi-learning
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-     - `equSA <https://rdrr.io/cran/equSA/>`__
-     - psilearner_ 
    * - ASOBS
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
@@ -1989,6 +1989,70 @@ and in recovering the underlying network structure.
 
 
 
+.. _equsa_psilearner: 
+
+equsa_psilearner 
+--------------------
+
+.. rubric:: Psi-learning
+
+.. list-table:: 
+
+   * - Package
+     - `equSA <https://rdrr.io/cran/equSA/>`__
+   * - Version
+     - 1.2.1
+   * - Language
+     - `R <https://www.r-project.org/>`__
+   * - Docs
+     - `here <https://rdrr.io/cran/equSA/man/>`__
+   * - Paper
+     - :footcite:t:`liang2015equivalent`, :footcite:t:`liang2008estimating`
+   * - Graph type
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Docker 
+     - `bpimages/equsa_psilearner:1.2.1 <https://hub.docker.com/r/bpimages/equsa_psilearner/tags>`__
+
+   * - Module folder
+     - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
+
+
+
+.. rubric:: Description
+
+Abstract: Gaussian graphical models (GGMs) are frequently used to explore networks, such as gene regulatory networks, among a set of variables. Under the classical theory of GGMs, the construction of Gaussian graphical networks amounts to finding the pairs of variables with nonzero partial correlation coefficients. However, this is infeasible for high-dimensional problems for which the number of variables is larger than the sample size. In this article, we propose a new measure of partial correlation coefficient, which is evaluated with a reduced conditional set and thus feasible for high-dimensional problems. Under the Markov property and adjacency faithfulness conditions, the new measure of partial correlation coefficient is equivalent to the true partial correlation coefficient in construction of Gaussian graphical networks. Based on the new measure of partial correlation coefficient, we propose a multiple hypothesis test-based method for the construction of Gaussian graphical networks. Furthermore, we establish the consistency of the proposed method under mild conditions. The proposed method outperforms the existing methods, such as the PC, graphical Lasso, nodewise regression, and qp-average methods, especially for the problems for which a large number of indirect associations are present. The proposed method has a computational complexity of nearly O(p2), and is flexible in data integration, network comparison, and covariate adjustment.
+
+
+.. rubric:: Some fields described 
+* ``alpha1`` The significance level of correlation screening. In general, a high significance level of correlation screening will lead to a slightly large separator. 
+* ``alpha2`` The significance level of ψ screening. 
+* ``grid`` The number of components for the ψ scores. The default value is 2. 
+* ``iterations`` Number of iterations for screening. The default value is 100. 
+* ``neig`` Neiborhood size in correlation screening step, default to n/log(n), where n is the number of observation. 
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "psilearn",
+        "timeout": null,
+        "alpha1": 0.05,
+        "alpha2": 0.05,
+        "grid": 2,
+        "iterations": 100,
+        "neig": 10
+      }
+    ]
+
+.. footbibliography::
+
+
+
 .. _gcastle_anm: 
 
 gcastle_anm 
@@ -3148,9 +3212,9 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
 
 
-.. _parallelDG: 
+.. _paralleldg: 
 
-parallelDG 
+paralleldg 
 --------------
 
 .. rubric:: Parallel DG
@@ -3173,7 +3237,7 @@ parallelDG
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
 
 
 
@@ -3424,67 +3488,6 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
         "id": "pthresh",
         "thresh": 0.5,
         "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _psilearner: 
-
-psilearner 
---------------
-
-.. rubric:: Psi-learning
-
-.. list-table:: 
-
-   * - Package
-     - `equSA <https://rdrr.io/cran/equSA/>`__
-   * - Version
-     - 0.1
-   * - Language
-     - `R <https://www.r-project.org/>`__
-   * - Docs
-     - `here <https://rdrr.io/cran/equSA/man/>`__
-   * - Paper
-     - :footcite:t:`liang2015equivalent`, :footcite:t:`liang2008estimating`
-   * - Graph type
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-   * - Docker 
-     - `hallawalla/dualgl:0.1 <https://hub.docker.com/r/hallawalla/dualgl/tags>`__
-
-   * - Module folder
-     - `psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/psilearner>`__
-
-
-
-.. rubric:: Description
-
-.. rubric:: Some fields described 
-* ``alpha1`` The significance level of correlation screening. In general, a high significance level of correlation screening will lead to a slightly large separator set S_{ij}. 
-* ``alpha2`` The significance level of ψ screening. 
-* ``grid`` The number of components for the ψ scores. The default value is 2. 
-* ``iterations`` Number of iterations for screening. The default value is 100. 
-* ``neig`` Neiborhood size in correlation screening step, default to n/log(n), where n is the number of observation. 
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "psilearn",
-        "timeout": null,
-        "alpha1": 0.05,
-        "alpha2": 0.05,
-        "grid": 2,
-        "iterations": 100,
-        "neig": 10
       }
     ]
 
