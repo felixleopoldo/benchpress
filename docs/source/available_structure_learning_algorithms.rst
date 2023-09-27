@@ -392,7 +392,7 @@ Each dataset contains 300 samples.
     :alt: FP/P vs. TP/P itsearch example
     :align: left
 
-    FP/P vs. TP/P s.
+    FP/P vs. TP/P.
 
 
 .. _itsearchtimings2:
