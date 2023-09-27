@@ -53,14 +53,6 @@ def is_single_output_run(run_config: dict) -> bool:
  
 json_string = {}
 
-for alg in config["resources"]["structure_learning_algorithms"].keys():
-    alg_config = config["resources"]["structure_learning_algorithms"][alg]
-    for run in alg_config:
-        for key, item in run.items():
-            if key == 'input_algorithm_id':
-                print(f"alg {alg}, item {item}, path {idtopath(item)}")
-
-
 # Generate strings from the config file.
 for alg in config["resources"]["structure_learning_algorithms"]:
     # Some algorihtm takes input graphs. These are treated separately.
