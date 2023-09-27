@@ -1,12 +1,3 @@
-def id_to_alg(id):
-    for key, alg in config["resources"]["structure_learning_algorithms"].items():
-        for obj in alg:
-            if obj["id"] == id:
-                return key
-   
-    return None
-    
-
 """
     This file procudes a dict where the paths for all algorithms are generated based on the
     algorithm pattern strings and the values in the config file.
@@ -15,29 +6,60 @@ def id_to_alg(id):
     Order MCMC is special in the sense that it can define a startspace by means 
     of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 """
-def idtopath(idlist):
 
-    # mylist can either be None, an id, or a list of ids.
-    # The id may correspond to an MCMC alg, then the estimator parameters should be added too.
+from typing import Optional, List, Union, Tuple
+
+""" set of functions to nest algorithms """
+def idtopath(run_id: Optional[str]) -> Optional[str]:
+    """ Returns the path to the estimated graph of each id"""
     
-    alg = id_to_alg(idlist)
-    vals = config["resources"]["structure_learning_algorithms"][alg][0]
-    
-    if idlist is None:
+    if not run_id:
         return "None"
-    if isinstance(idlist, list): # TODO: not spported yet
-        if id_to_alg(idlist[0]) in mcmc_modules:
-            return
-        else:            
-            return [json_string[startalg][0] for startalg in idlist]
+    
+    alg, run_config = idtoalg(run_id)
+    if not alg:
+        return "None"
+    
+    if not is_single_output_run(run_config):
+        print('config issue')
+        return "None"
+    
+   
+    if alg in mcmc_modules:
+        return expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **run_config)
     else:
-        if alg in mcmc_modules:
-            return expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **vals)
-        else:
-            return expand(pattern_strings[alg], **vals)
+        return expand(pattern_strings[alg], **run_config)
 
+        
+def idtoalg(run_id: str) -> Optional[Tuple[str, dict]]:
+    """ Returns the algorithm name that the id belongs to, otherwise None """
+    for key, alg in config["resources"]["structure_learning_algorithms"].items():
+        for obj in alg:
+            if obj["id"] == run_id:
+                return key, obj
+    return None, None
+
+
+def is_single_output_run(run_config: dict) -> bool:
+    """ checks if the run is a single output run, i.e., no parameters is with a list lager > 1"""
+   
+    for key, item in run_config.items():
+        if isinstance(item, list):
+            if len(item) > 1: 
+                return False
+    
+    return True
+    
  
 json_string = {}
+
+for alg in config["resources"]["structure_learning_algorithms"].keys():
+    alg_config = config["resources"]["structure_learning_algorithms"][alg]
+    for run in alg_config:
+        for key, item in run.items():
+            if key == 'input_algorithm_id':
+                print(f"alg {alg}, item {item}, path {idtopath(item)}")
+
 
 # Generate strings from the config file.
 for alg in config["resources"]["structure_learning_algorithms"]:
@@ -47,9 +69,14 @@ for alg in config["resources"]["structure_learning_algorithms"]:
         json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                         for val in config["resources"]["structure_learning_algorithms"][alg]})
 
-
 # These are special and have to be the last one since they take input strings as start space.
 # The start space path has to be generated first.
+
+## attaching input_graph_id 
+for alg in config["resources"]["structure_learning_algorithms"].keys():
+    alg_config = config["resources"]["structure_learning_algorithms"][alg]
+    
+    pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
 
 if "bidag_order_mcmc" in pattern_strings:
     order_mcmc_list = config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]
