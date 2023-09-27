@@ -25,6 +25,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchroc:
 
+
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_roc.png
     :width: 320 
     :alt: FP/P vs. TP/P itsearch example

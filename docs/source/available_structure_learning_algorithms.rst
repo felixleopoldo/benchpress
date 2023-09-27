@@ -397,6 +397,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchtimings2:
 
+
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_time.png
     :width: 320 
     :alt: Timings itsearch example
@@ -414,6 +415,7 @@ Each dataset contains 300 samples.
     Type of graphs estimated.
 
 .. _itsearchprops2:
+
 
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graph_properties_plot.png
     :width: 320 
