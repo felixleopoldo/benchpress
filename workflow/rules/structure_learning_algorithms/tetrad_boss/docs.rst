@@ -25,9 +25,9 @@ Command:
 
     snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/tetrad_boss/config/boss_SEM.json
 
-:numref:`bossplot` and :numref:`bosstimings`  shows FP/P vs. TP/P and timings based on 10 datsets corresponding to 10 realisations of a 60-variables random Gaussian SEM, with an average indegree of 4.
+:numref:`bossplot` and :numref:`bosstimings`  show FP/P vs. TP/P and timings based on 10 datsets corresponding to 10 realisations of a 60-variables random Gaussian SEM, with an average indegree of 4.
 Each dataset contains 300 samples.
-:numref:`bosstype` and :numref:`bossprops` shows the type of graphs estimated and the properties of the true graphs, respectively.
+:numref:`bosstype` and :numref:`bossprops` show the type of graphs estimated and the properties of the true graphs, respectively.
 
 .. _bossplot:
 
