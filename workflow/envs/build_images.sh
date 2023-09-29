@@ -2,13 +2,19 @@
 # Using bash 5
 
 # ARCH should be arm64 or amd64
+# The script will build the images for both architectures and push them to dockerhub
+# 1. run on amd64 machine as
+# ./build_images.sh amd64
+# 2. run on arm64 machine as
+# ./build_images.sh arm64
+
 ARCH=$1
 DOCKER_REPO=bpimages
 
 # associate array
 declare -A image_versions
 
-image_versions[athomas_jtsamplers]=76ad20e
+# image_versions[athomas_jtsamplers]=76ad20e
 # image_versions[rblip]=1.1
 # image_versions[bdgraph]=2.72
 # image_versions[causal-learn]=0.1.3.4
@@ -23,8 +29,8 @@ image_versions[athomas_jtsamplers]=76ad20e
 # image_versions[causaldag]=0.1a163
 # image_versions[gcastle]=1.0.3
 # image_versions[sandbox]=1.0
-# image_versions[datascience-python]=1.0
-# image_versions[trilearn]=2.0.2
+# image_versions[datascience-python]=1.1
+image_versions[trilearn]=2.0.3
 # image_versions[snakemake]=v7.32.3
 # image_versions[gobnilp]=4347c64
 

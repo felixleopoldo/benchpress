@@ -5,14 +5,7 @@ import bibtexparser
 
 def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
-    #tab += "   * - Title\n"
-    #tab += "     - "+info["title"]+"\n"
-    
-    #print(info.keys())
-    #print(info)
-    
-        
-    
+
     if info["package"]["title"] == "":
         tab += "   * - Package\n"    
         tab += "     - \n"

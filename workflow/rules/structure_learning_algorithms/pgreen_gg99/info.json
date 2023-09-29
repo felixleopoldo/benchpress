@@ -5,7 +5,7 @@
         "title": "Peter Green",
         "url": "https://petergreenweb.wordpress.com/"
     },
-    "docs": "",
+    "docs_url": "",
     "outputs": "graphtraj",
     "graph_types": [
         "DG"

@@ -23,6 +23,10 @@ To add new modules, see :ref:`new_modules`.
      - Graph
      - Package
      - Module
+   * - JTsamplers
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+     - 
+     - athomas_jtsamplers_ 
    * - BDgraph
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
@@ -191,6 +195,10 @@ To add new modules, see :ref:`new_modules`.
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - pcalg_pc_ 
+   * - GG99
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+     - `Peter Green <https://petergreenweb.wordpress.com/>`__
+     - pgreen_gg99_ 
    * - Precmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
@@ -241,6 +249,67 @@ To add new modules, see :ref:`new_modules`.
      - trilearn_pgibbs_ 
 
 
+
+
+
+.. _athomas_jtsamplers: 
+
+athomas_jtsamplers 
+----------------------
+
+.. rubric:: JTsamplers
+
+.. list-table:: 
+
+   * - Package
+     - 
+   * - Version
+     - 
+   * - Language
+     - `Java <https://www.java.com/en/>`__
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - Docker 
+     - `bpimages/athomas_jtsamplers:76ad20e <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
+
+   * - Module folder
+     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
+
+
+
+.. rubric:: Description
+
+Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
+
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "jtsampler",
+        "burnin_frac": 0.5,
+        "mcmc_estimator": "map",
+        "timeout": null,
+        "threshold": 0.5,
+        "mcmc_seed": 1,
+        "n": 10000,
+        "s": 0,
+        "a": 1.0,
+        "c": 10000,
+        "v": 0
+      }
+    ]
+
+.. footbibliography::
 
 
 
@@ -1933,7 +2002,7 @@ corr_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
@@ -3483,6 +3552,64 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
 
 
 
+.. _pgreen_gg99: 
+
+pgreen_gg99 
+---------------
+
+.. rubric:: GG99
+
+.. list-table:: 
+
+   * - Package
+     - `Peter Green <https://petergreenweb.wordpress.com/>`__
+   * - Version
+     - v1.0
+   * - Language
+     - Fortran
+   * - Docs
+     - 
+   * - Paper
+     - 
+   * - Graph type
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - Docker 
+     - `onceltuca/pgreen_gg99:1.0 <https://hub.docker.com/r/onceltuca/pgreen_gg99/tags>`__
+
+   * - Module folder
+     - `pgreen_gg99 <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pgreen_gg99>`__
+
+
+
+.. rubric:: Description
+
+Some text of the algorithm/module.
+
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "mysetting",
+        "param1": "myparamval",
+        "param2": [
+          2,
+          4,
+          5
+        ],
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
+
+
 .. _prec_thresh: 
 
 prec_thresh 
@@ -3505,7 +3632,7 @@ prec_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
@@ -3627,7 +3754,7 @@ sklearn_glasso
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__

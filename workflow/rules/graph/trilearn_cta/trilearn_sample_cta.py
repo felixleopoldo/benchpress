@@ -16,6 +16,6 @@ filename = sys.argv[1]
 np.random.seed(seed)
 g = dlib.sample(dim, alpha=alpha, beta=beta)
 
-m = nx.to_numpy_matrix(g)
+m = nx.to_numpy_array(g)
 df = pd.DataFrame(m, dtype=int)
 df.to_csv(filename, index=None)
