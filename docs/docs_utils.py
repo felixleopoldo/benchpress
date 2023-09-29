@@ -8,6 +8,8 @@ def str2link(s):
         return "`CG <https://en.wikipedia.org/wiki/Mixed_graph>`__"
     if s == "DAG":
         return "`DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__"
+    if s == "PAG":
+        return "`PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__"
     if s == "CPDAG":
         return "`CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__"
     if s == "R":

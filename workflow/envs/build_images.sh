@@ -11,7 +11,7 @@ declare -A image_versions
 #image_versions[athomas_jtsampler]=76ad20e
 
 # image_versions[rblip]=1.1
-# image_versions[bdgraph]=2.72
+image_versions[bdgraph]=2.72
 # image_versions[causal-learn]=0.1.3.4
 # image_versions[dualpc]=585751b
 # image_versions[rgraphstuff]=1.0
@@ -19,7 +19,7 @@ declare -A image_versions
 # image_versions[bnlearn]=4.8.3
 # image_versions[bidag]=2.1.4
 # image_versions[causal-cmd]=1.10.0
-image_versions[equsa_psilearner]=1.2.1
+#image_versions[equsa_psilearner]=1.2.1
 # image_versions[benchpress]=2.1.0
 # image_versions[causaldag]=0.1a163
 # image_versions[gcastle]=1.0.3

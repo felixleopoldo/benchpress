@@ -30,13 +30,10 @@
                     "dualpc",
                     "interiamb-zf",
                     "gs-zf",
-                    "fci-fisher-z",
                     "fges-sem-bic",
-                    "gfci-sem-bic-f-z",
                     "hc-bge",
                     "mmhc-bge-zf",
                     "pc-gaussCItest",
-                    "rfci-fisher-z",
                     "tabu-bge",
                     "omcmc-bge"
                 ]

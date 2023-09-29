@@ -10,7 +10,7 @@
         "adjmat"
     ],
     "graph_types": [
-        "DAG"
+        "PAG"
     ],
     "language": "java"
 }

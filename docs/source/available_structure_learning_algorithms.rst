@@ -212,7 +212,7 @@ To add new modules, see :ref:`new_modules`.
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
    * - FCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fci_ 
    * - FGES
@@ -228,7 +228,7 @@ To add new modules, see :ref:`new_modules`.
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
    * - GFCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_gfci_ 
    * - GRaSP
@@ -244,7 +244,7 @@ To add new modules, see :ref:`new_modules`.
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc_ 
    * - RFCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_rfci_ 
    * - Particle Gibbs
@@ -1823,7 +1823,7 @@ causaldag_gsp
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
-     - :footcite:t:`10.1093/biomet/asaa104`, :footcite:t:`squires2018causaldag`
+     - :footcite:t:`10.1093/biomet/asaa104`, :footcite:t:`squires2018causaldag`, :footcite:t:`https://doi.org/10.1002/sta4.183`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
@@ -3706,22 +3706,7 @@ tetrad_boss
 
 .. rubric:: Description
 
-Abstract: The Sparsest Permutation (SP) algorithm is accurate but limited to about 9 variables in practice; the
-Greedy Sparest Permutation (GSP) algorithm is faster but less weak theoretically. A compromise can
-be given, the Best Order Score Search, which gives results as accurate as SP but for much larger and
-denser graphs. BOSS (Best Order Score Search) is more accurate for two reason: (a) It assumes the
-“brute faithfuness” assumption, which is weaker than faithfulness, and (b) it uses a different traversal
-of permutations than the depth first traversal used by GSP, obtained by taking each variable in turn and
-moving it to the position in the permutation that optimizes the model score. Results are given comparing
-BOSS to several related papers in the literature in terms of performance, for linear, Gaussian data. In
-all cases, with the proper parameter settings, accuracy of BOSS is lifted considerably with respect to
-competing approaches. In configurations tested, models with 60 variables are feasible with large samples
-out to about an average degree of 12 in reasonable time, with near-perfect accuracy, and sparse models
-with an average degree of 4 are feasible out to about 300 variables on a laptop, again with near-perfect
-accuracy. Mixed continuous discrete and all-discrete datasets were also tested. The mixed data analysis
-showed advantage for BOSS over GES more apparent at higher depths with the same score; the discrete
-data analysis showed a very small advantage for BOSS over GES with the same score, perhaps not
-enough to prefer it.
+BOSS (Best Order Score Search) is an algorithm that, like GRaSP, generalizes and extends the GSP (Greedy Sparsest Permutation) algorithm. It has been tested to 1000 variables with an average degree of 20 and gives near perfect precisions and recalls for N = 10,000 (with recall that drop to 0.9 for N = 1000). The algorithms works by building DAGs given permutations in ways similar to those described in Raskutti and Uhler and Solus et al.
 
 .. rubric:: Example 
 
@@ -3777,6 +3762,9 @@ Each dataset contains 300 samples.
 
 
 
+.. rubric:: Some fields described 
+* ``allowInternalRandomess``  If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic. 
+* ``useBes`` True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed. 
 
 
 .. rubric:: Example JSON
@@ -3891,7 +3879,7 @@ tetrad_fci
    * - Paper
      - :footcite:t:`spirtes1993discovery`, :footcite:t:`spirtes2000causation`
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
@@ -4128,7 +4116,7 @@ tetrad_gfci
    * - Paper
      - :footcite:t:`ramsey2017million`, :footcite:t:`spirtes1993discovery`
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
@@ -4370,7 +4358,7 @@ tetrad_rfci
    * - Paper
      - :footcite:t:`10.2307/41713636`
    * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 

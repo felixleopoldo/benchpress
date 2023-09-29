@@ -28,15 +28,12 @@
                     "notears-l2",
                     "interiamb-zf",
                     "gs-zf",
-                    "fci-fisher-z",
                     "fges-sem-bic",
-                    "gfci-sem-bic-fisher-z",
                     "hc-bge",
                     "itsearch_sample-bge",
                     "mmhc-bge-zf",
                     "omcmc_itsample-bge",
                     "pc-gaussCItest",
-                    "rfci-fisher-z",
                     "tabu-bge",
                     "dualpc"
                 ]
