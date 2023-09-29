@@ -211,10 +211,6 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
-   * - FCI
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fci_ 
    * - FGES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -227,10 +223,6 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
-   * - GFCI
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_gfci_ 
    * - GRaSP
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -243,10 +235,6 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc_ 
-   * - RFCI
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_rfci_ 
    * - Particle Gibbs
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
@@ -3860,66 +3848,6 @@ See  :footcite:t:`sanchez2018causal`.
 
 
 
-.. _tetrad_fci: 
-
-tetrad_fci 
---------------
-
-.. rubric:: FCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`spirtes1993discovery`, :footcite:t:`spirtes2000causation`
-   * - Graph type
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that takes as input sample data and optional background knowledge and in the large sample limit outputs an equivalence class of CBNs that (including those with hidden confounders) that entail the set of conditional independence relations judged to hold in the population. It is limited to several thousand variables, and on realistic sample sizes it is inaccurate in both adjacencies and orientations. FCI has two phases: an adjacency phase and an orientation phase. The adjacency phase of the algorithm starts with a complete undirected graph and then performs a sequence of conditional independence tests that lead to the removal of an edge between any two adjacent variables that are judged to be independent, conditional on some subset of the observed variables; any conditioning set that leads to the removal of an adjacency is stored. After the adjacency phase, the resulting undirected graph has the correct set of adjacencies, but all of the edges are unoriented. FCI then enters an orientation phase that uses the stored conditioning sets that led to the removal of adjacencies to orient as many of the edges as possible. 
-See :footcite:t:`spirtes1993discovery`.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "fci-fisher-z",
-        "alpha": [
-          0.001,
-          0.01,
-          0.05
-        ],
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_fges: 
 
 tetrad_fges 
@@ -4097,70 +4025,6 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 
 
-.. _tetrad_gfci: 
-
-tetrad_gfci 
----------------
-
-.. rubric:: GFCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`ramsey2017million`, :footcite:t:`spirtes1993discovery`
-   * - Graph type
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
-
-
-
-.. rubric:: Description
-
-From the TETRAD manual: GFCI is a combination of the FGES :footcite:t:`ramsey2017million` algorithm and the FCI algorithm :footcite:t:`spirtes1993discovery` that improves upon the accuracy and efficiency of FCI. In order to understand the basic methodology of GFCI, it is necessary to understand some basic facts about the FGES and FCI algorithms. 
-The FGES algorithm is used to improve the accuracy of both the adjacency phase and the orientation phase of FCI by providing a more accurate initial graph that contains a subset of both the non-adjacencies and orientations of the final output of FCI. The initial set of nonadjacencies given by FGES is augmented by FCI performing a set of conditional independence tests that lead to the removal of some further adjacencies whenever a conditioning set is found that makes two adjacent variables independent. After the adjacency phase of FCI, some of the orientations of FGES are then used to provide an initial orientation of the undirected graph that is then augmented by the orientation phase of FCI to provide additional orientations. 
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gfci-sem-bic-fisher-z",
-        "alpha": 0.05,
-        "score": "sem-bic-score",
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "penaltyDiscount": [
-          0.5,
-          1,
-          1.5
-        ],
-        "samplePrior": null,
-        "semBicStructurePrior": 1,
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_grasp: 
 
 tetrad_grasp 
@@ -4330,65 +4194,6 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
         "id": "pc-fisher-z",
         "test": "fisher-z-test",
         "alpha": 0.01,
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _tetrad_rfci: 
-
-tetrad_rfci 
----------------
-
-.. rubric:: RFCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`10.2307/41713636`
-   * - Graph type
-     - `PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. 
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "rfci-fisher-z",
-        "alpha": [
-          0.001,
-          0.01,
-          0.05
-        ],
-        "test": "fisher-z-test",
         "datatype": "continuous",
         "timeout": null
       }
