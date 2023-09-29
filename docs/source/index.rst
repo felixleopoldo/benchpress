@@ -94,6 +94,13 @@ generated datasets, the workflow also includes a number of standard datasets and
 See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository, and `this Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_.
 
 
+.. rubric:: Updates
+
+* 2023-09-24: Benchpress 2.4.0 released. Added the Psi-learner algorithm for learning graphs of undirected Gaussian graphical models (:ref:`equsa_psilearner`).
+* 2023-09-19: Benchpress 2.3.0 released. Updated causal-cmd to version 1.10.0. Added the BOSS algorithm (:ref:`tetrad_boss`).
+* 2023-09-08: Benchpress 2.2.0 released. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
+* 2023-08-31: The Grasp algorithm is available through both :ref:`causallearn_grasp` and :ref:`tetrad_grasp`.
+
 .. rubric:: Outreach
 
 * 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`).

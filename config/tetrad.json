@@ -14,25 +14,24 @@
         "evaluation": {
             "benchmarks": {
                 "filename_prefix": "tetrad/",
-                "show_seed": false,
+                "show_seed": true,
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
                 "text": false,
                 "ids": [
+                    "itsearch-bge",
+                    "boss-sem-bic",
                     "grasp-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
-                    "fci-fisher-z",
                     "fofc",
-                    "gfci-sem-bic-fisher-z",
-                    "pc-fisher-z",
-                    "rfci-fisher-z"
+                    "pc-fisher-z"
                 ]
             },
             "graph_true_plots": false,
-            "graph_true_stats": false,
+            "graph_true_stats": true,
             "ggally_ggpairs": false,
             "graph_plots": [],
             "mcmc_traj_plots": [],
@@ -63,9 +62,9 @@
             "pcalg_randdag": [
                 {
                     "id": "avneigs4_p20",
-                    "max_parents": 5,
-                    "n": 10,
-                    "d": 4,
+                    "max_parents": 15,
+                    "n": [30, 60],
+                    "d": 8,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -90,6 +89,24 @@
                     "datatype": "continuous",
                     "score": "sem-bic-score",
                     "semBicStructurePrior": 1,
+                    "penaltyDiscount": [
+                        0.75,
+                        0.8,
+                        1,
+                        1.5
+                    ],
+                    "timeout": null
+                }
+            ],
+            "tetrad_boss": [
+                {
+                    "id": "boss-sem-bic",
+                    "score": "sem-bic-score",
+                    "datatype": "continuous",
+                    "useBes": true,
+                    "allowInternalRandomess": false,
+                    "samplePrior": 0,
+                    "semBicStructurePrior": 0,
                     "penaltyDiscount": [
                         0.75,
                         0.8,

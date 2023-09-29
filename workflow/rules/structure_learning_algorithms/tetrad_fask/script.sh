@@ -1,5 +1,5 @@
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --dataset ${snakemake_input[data]}"
 CMD="$CMD --delimiter comma"

@@ -127,7 +127,7 @@ fpr_tpr_pattern <- function(){
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -251,7 +251,7 @@ gg <- ggplot() + {
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -676,6 +676,66 @@ elapsed_time <- function(){
 
 }
 
+elapsed_log_time <- function(){
+  # transforming the data to get the outliers for plotting time
+  dat <- joint_bench %>%
+    tibble::rownames_to_column(var = "outlier") %>%
+    group_by(interaction(curve_param, curve_value, id)) %>%
+    filter(!is.na(log(time))) %>%
+    mutate(is_outlier = ifelse(is_outlier(log(time)), replicate, as.numeric(NA)))
+  dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
+
+  ggplot() +
+          {
+            geom_boxplot(
+              data = joint_bench, alpha = ifelse(show_seed, 0.0, 0.7),
+              aes(
+                x = interaction(curve_param, curve_value, id),
+                y = log(time), col = id, group_by = id
+              )
+            )
+          } + {
+            if (param_annot) {
+              stat_summary(
+                data = joint_bench, alpha = 0.5,
+                aes(
+                  x = interaction(curve_param, curve_value, id),
+                  y = log(time)
+                ), fun.data = f, geom = "text", vjust = -0.5, col = "black"
+              )
+            }
+          } + {
+            if (show_seed) {
+              geom_text(
+                data = dat, alpha = 0.7,
+                aes(
+                  y = log(time), x = interaction(curve_param, curve_value, id),
+                  label = is_outlier, col = id
+                ), na.rm = TRUE, nudge_x = 0.0
+              )
+            }
+          } +
+          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
+          {
+            if (!is.null(xlim)) {
+              xlim(xlim[1], xlim[2])
+            }
+          } + {
+            if (!is.null(ylim)) {
+              ylim(ylim[1], ylim[2])
+            }
+          } +
+          ggtitle("Elapsed ln(time)") +
+          theme_bw() +
+          xlab("Parameter.value.id") +
+          ylab("ln(time) (s.)") +
+          theme(plot.title = element_text(hjust = 0.5)) +
+          scale_x_discrete(guide = guide_axis(angle = 90))
+        ggsave(file = paste(snakemake@output[["elapsed_log_time_joint"]],"/", plt_counter, ".png", sep=""))
+
+}
+
+
 graph_type <- function(){
  ggplot() +
           {
@@ -694,9 +754,9 @@ graph_type <- function(){
           #             x = as.factor(replicate), label=round(time, 1), col=id, group_by=id) )
           # }  +
           facet_wrap(. ~ adjmat + parameters + data, ncol = 2) +
-          xlab("Seed") +
+          xlab("Dataset seed number") +
           ylab("Parameter.value.id") +
-          ggtitle("Graph type") +
+          ggtitle("Graph type of estimated graphs") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["graph_type"]],"/", plt_counter, ".png", sep=""))
@@ -855,6 +915,7 @@ dir.create(snakemake@output[["FPRp_FNR_skel"]])
 dir.create(snakemake@output[["fnr_fprp_skel"]])
 dir.create(snakemake@output[["roc_FPRp_TPR_skel"]])
 dir.create(snakemake@output[["elapsed_time_joint"]])
+dir.create(snakemake@output[["elapsed_log_time_joint"]])
 dir.create(snakemake@output[["graph_type"]])
 dir.create(snakemake@output[["SHD_cpdag_joint"]])
 dir.create(snakemake@output[["f1_skel_joint"]])
@@ -944,6 +1005,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
           fpr_fnr_skel()
           fnr_fpr_skel() # same as above but switced axis
           elapsed_time()
+          elapsed_log_time()
           graph_type()
           shd_cpdag()
           f1_skel()

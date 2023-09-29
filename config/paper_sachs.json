@@ -19,7 +19,6 @@
                 "text": false,
                 "ids": [
                     "notears-l2",
-                    
                     "gs-zf",
                     "fges-sem-bic",
                     "hc-bge",
@@ -28,8 +27,7 @@
                     "omcmc_itsample-bge",
                     "pc-gaussCItest",
                     "tabu-bge",
-                    "interiamb-zf",
-                    "gfci-sem-bic-fisher-z"
+                    "interiamb-zf"
                 ]
             },
             "graph_true_stats": true,

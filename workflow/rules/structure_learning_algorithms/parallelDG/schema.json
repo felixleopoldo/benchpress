@@ -89,7 +89,8 @@
                 "threshold": 0.5,
                 "burnin_frac": 0.5,
                 "mcmc_estimator": "map",
-                "timeout": null
+                "timeout": null,
+                "parallel": true
             }
         ]
     },

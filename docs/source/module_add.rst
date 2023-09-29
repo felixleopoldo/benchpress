@@ -169,14 +169,14 @@ In order to create a new algorithm module, you may copy the template module `new
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
 Below are two examples of how to implement an algorithm module, one in R and one in `Python <https://www.python.org/>`_.
-Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rula.smk>`__
+Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rule.smk>`__
 
 R
 ------
 
 :numref:`new_alg_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ , which generates a random binary symmetric matrix (undirected data).
-Note that the actual algorithm is wrapped into the function *wrapper* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which saves an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which writes an empty file if the algorithm has finished before ``timeout`` seconds, specified in the config file.
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 

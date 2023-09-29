@@ -9,3 +9,7 @@ giving a fast algorithm for maintaining the junction tree representation of the 
 each sweep. As state variable, we use the incomplete variance-covariance matrix, containing only the elements for which the corresponding element of the inverse is nonzero. This
 allows all computations to be performed locally, at the clique level, which is a clear
 advantage for the analysis of large and complex datasets.
+
+.. important:: 
+
+  This module only works on the AMD64 architecture.
