@@ -19,7 +19,7 @@ matplotlib.use('Agg')
 df = pd.read_csv(snakemake.input["trajs"], index_col=None)
 
 # Since the values might be  mix of nunbers and strings
-df["param_val"] = df.param_val.astype(str)
+df["param_val"] = df["param_val"].astype(str)
 
 algs = df["alg"].unique()
 params = df["parameters"].unique()
