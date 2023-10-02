@@ -23,9 +23,9 @@ To add new modules, see :ref:`new_modules`.
      - Graph
      - Package
      - Module
-   * - JTsamplers
+   * - Chordal graph samplers
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-     - 
+     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
      - athomas_jtsamplers_ 
    * - BDgraph
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
@@ -171,18 +171,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_rl_ 
-   * - GG99
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-     - 
-     - gg99_singlepair_ 
    * - GOBNILP
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
-   * - GT13
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-     - 
-     - gt13_multipair_ 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
@@ -257,20 +249,20 @@ To add new modules, see :ref:`new_modules`.
 athomas_jtsamplers 
 ----------------------
 
-.. rubric:: JTsamplers
+.. rubric:: Chordal graph samplers
 
 .. list-table:: 
 
    * - Package
-     - 
+     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
    * - Version
-     - 
+     - 76ad20e
    * - Language
      - `Java <https://www.java.com/en/>`__
    * - Docs
      - 
    * - Paper
-     - 
+     - :footcite:t:`10.1093/biomet/86.4.785`, :footcite:t:`10.2307/43304539`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
@@ -283,8 +275,13 @@ athomas_jtsamplers
 
 .. rubric:: Description
 
-Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
+Abstract :footcite:p:`10.2307/43304539`: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
 
+.. rubric:: Some fields described 
+* ``edge_penalty`` Set the edge penalty in the prior. 
+* ``num_samples`` The number of MCMC iterations. 
+* ``sampler`` Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler.  
+* ``size_maxclique`` Set the maximum clique size. 
 
 
 .. rubric:: Example JSON
@@ -295,17 +292,16 @@ Abstract: Full Bayesian computational inference for model determination in undir
 
     [
       {
-        "id": "jtsampler",
+        "id": "gg99",
         "burnin_frac": 0.5,
         "mcmc_estimator": "map",
         "timeout": null,
         "threshold": 0.5,
         "mcmc_seed": 1,
-        "n": 10000,
-        "s": 0,
-        "a": 1.0,
-        "c": 10000,
-        "v": 0
+        "num_samples": 10000,
+        "sampler": 0,
+        "edge_penalty": 1.0,
+        "size_maxclique": 10000
       }
     ]
 
@@ -3013,116 +3009,6 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 
 
-.. _gg99_singlepair: 
-
-gg99_singlepair 
--------------------
-
-.. rubric:: GG99
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - 
-   * - Paper
-     - :footcite:t:`10.1093/biomet/86.4.785`
-   * - Graph type
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-   * - Docker 
-     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
-
-   * - Module folder
-     - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
-
-
-
-.. rubric:: Description
-
-Abstract: We propose a methodology for Bayesian model determination in decomposable graphical Gaussian models. To achieve this aim we consider a hyper inverse Wishart prior
-distribution on the concentration matrix for each given graph. To ensure compatibility
-across models, such prior distributions are obtained by marginalisation from the prior
-conditional on the complete graph. We explore alternative structures for the hyperparameters of the latter, and their consequences for the model. Model determination is carried
-out by implementing a reversible jump Markov chain Monte Carlo sampler. In particular,
-the dimension-changing move we propose involves adding or dropping an edge from the
-graph. We characterise the set of moves which preserve the decomposability of the graph,
-giving a fast algorithm for maintaining the junction tree representation of the graph at
-each sweep. As state variable, we use the incomplete variance-covariance matrix, containing only the elements for which the corresponding element of the inverse is nonzero. This
-allows all computations to be performed locally, at the clique level, which is a clear
-advantage for the analysis of large and complex datasets.
-
-.. important:: 
-
-  This module only works on the AMD64 architecture.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gg99",
-        "n_samples": 100000,
-        "datatype": "continuous",
-        "randomits": 100,
-        "prior": "ep",
-        "ascore": null,
-        "bscore": null,
-        "clq": 2,
-        "sep": 4,
-        "penalty": 0.0,
-        "mcmc_seed": 1,
-        "timeout": null,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5
-      },
-      {
-        "id": "gg99",
-        "n_samples": 100000,
-        "datatype": "discrete",
-        "randomits": 100,
-        "prior": "ep",
-        "ascore": null,
-        "bscore": null,
-        "clq": 2,
-        "sep": 4,
-        "penalty": 0.0,
-        "mcmc_seed": 1,
-        "timeout": null,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _gobnilp: 
 
 gobnilp 
@@ -3216,106 +3102,6 @@ the first phase and the optimal sets are determined in a second phase.
         "gap_limit": null,
         "prune": true,
         "timeout": 600
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _gt13_multipair: 
-
-gt13_multipair 
-------------------
-
-.. rubric:: GT13
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - 
-   * - Paper
-     - :footcite:t:`10.2307/43304539`
-   * - Graph type
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-   * - Docker 
-     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
-
-   * - Module folder
-     - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
-
-
-
-.. rubric:: Description
-
-Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
-
-.. important:: 
-
-  This module only works on the AMD64 architecture.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gt13",
-        "n_samples": 1000000,
-        "datatype": "continuous",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.1,
-        "bscore": 0.001,
-        "clq": null,
-        "sep": null,
-        "penalty": null,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
-      },
-      {
-        "id": "gt13",
-        "n_samples": 1000000,
-        "datatype": "discrete",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.1,
-        "bscore": 0.001,
-        "clq": null,
-        "sep": null,
-        "penalty": null,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
       }
     ]
 

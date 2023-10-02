@@ -11,7 +11,22 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            
+            "num_samples": {
+                "description": "The number of MCMC iterations.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "sampler": {
+                "description": "Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler. ",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "edge_penalty": {
+                "description": "Set the edge penalty in the prior.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "size_maxclique": {
+                "description": "Set the maximum clique size.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
@@ -52,21 +67,24 @@
             "timeout",
             "burnin_frac",
             "threshold",
-            "mcmc_estimator"
+            "mcmc_estimator",
+            "num_samples",
+            "sampler",
+            "edge_penalty",
+            "size_maxclique"
         ],
         "examples": [
             {
-                "id": "jtsampler",                    
+                "id": "gg99",
                 "burnin_frac": 0.5,
                 "mcmc_estimator": "map",
                 "timeout": null,
-                "threshold":0.5,
-                "mcmc_seed": 1,                    
-                "n": 10000,
-                "s": 0,
-                "a": 1.0,
-                "c": 10000,
-                "v": 0
+                "threshold": 0.5,
+                "mcmc_seed": 1,
+                "num_samples": 10000,
+                "sampler": 0,
+                "edge_penalty": 1.0,
+                "size_maxclique": 10000
             }
         ]
     }
