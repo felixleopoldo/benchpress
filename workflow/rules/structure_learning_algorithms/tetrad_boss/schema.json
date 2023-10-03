@@ -15,9 +15,11 @@
                 "type": "string"
             },
             "useBes": {
+                "description":"True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed.",
                 "type": "boolean"
             },
             "allowInternalRandomess": {
+                "description":" If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic.",
                 "type": "boolean"
             },
             "datatype": {

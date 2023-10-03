@@ -2,9 +2,9 @@
 
 def docker_image(name):
     if name == "trilearn":
-        return "docker://bpimages/trilearn:2.0.2"
+        return "docker://bpimages/trilearn:2.0.3"
     elif name == "pydatascience":
-        return "docker://bpimages/datascience-python:1.0"
+        return "docker://bpimages/datascience-python:1.1"
     elif name == "bidag":
         return "docker://bpimages/bidag:2.1.4"
     elif name == "bnlearn":

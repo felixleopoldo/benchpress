@@ -23,6 +23,10 @@ To add new modules, see :ref:`new_modules`.
      - Graph
      - Package
      - Module
+   * - Chordal graph samplers
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
+     - athomas_jtsamplers_ 
    * - BDgraph
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
@@ -167,18 +171,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - gcastle_rl_ 
-   * - GG99
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-     - 
-     - gg99_singlepair_ 
    * - GOBNILP
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
-   * - GT13
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-     - 
-     - gt13_multipair_ 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
@@ -211,10 +207,6 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_fask_ 
-   * - FCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fci_ 
    * - FGES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -227,10 +219,6 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_ftfc_ 
-   * - GFCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_gfci_ 
    * - GRaSP
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
@@ -243,16 +231,77 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - tetrad_pc_ 
-   * - RFCI
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_rfci_ 
    * - Particle Gibbs
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
      - trilearn_pgibbs_ 
 
 
+
+
+
+.. _athomas_jtsamplers: 
+
+athomas_jtsamplers 
+----------------------
+
+.. rubric:: Chordal graph samplers
+
+.. list-table:: 
+
+   * - Package
+     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
+   * - Version
+     - 76ad20e
+   * - Language
+     - `Java <https://www.java.com/en/>`__
+   * - Docs
+     - 
+   * - Paper
+     - :footcite:t:`10.1093/biomet/86.4.785`, :footcite:t:`10.2307/43304539`
+   * - Graph type
+     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - Docker 
+     - `bpimages/athomas_jtsamplers:76ad20e <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
+
+   * - Module folder
+     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
+
+
+
+.. rubric:: Description
+
+Abstract :footcite:p:`10.2307/43304539`: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
+
+.. rubric:: Some fields described 
+* ``edge_penalty`` Set the edge penalty in the prior. 
+* ``num_samples`` The number of MCMC iterations. 
+* ``sampler`` Set the sampler to the one indexed by: 0 = Giudicci & Green (1999) sampler. 1 = Green & Thomas (2013) single edge junction tree sampler. 2 = Green & Thomas (2013) multiple edge junction tree sampler.  
+* ``size_maxclique`` Set the maximum clique size. 
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "gg99",
+        "burnin_frac": 0.5,
+        "mcmc_estimator": "map",
+        "timeout": null,
+        "threshold": 0.5,
+        "mcmc_seed": 1,
+        "num_samples": 10000,
+        "sampler": 0,
+        "edge_penalty": 1.0,
+        "size_maxclique": 10000
+      }
+    ]
+
+.. footbibliography::
 
 
 
@@ -278,7 +327,7 @@ bdgraph
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/bdgraph:2.72 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.72.0 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
    * - Module folder
      - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
@@ -387,6 +436,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchroc:
 
+
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_roc.png
     :width: 320 
     :alt: FP/P vs. TP/P itsearch example
@@ -396,7 +446,6 @@ Each dataset contains 300 samples.
 
 
 .. _itsearchtimings2:
-
 
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_time.png
     :width: 320 
@@ -415,7 +464,6 @@ Each dataset contains 300 samples.
     Type of graphs estimated.
 
 .. _itsearchprops2:
-
 
 .. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graph_properties_plot.png
     :width: 320 
@@ -1825,7 +1873,7 @@ causaldag_gsp
    * - Docs
      - `here <https://uhlerlab.github.io/causaldag/>`__
    * - Paper
-     - :footcite:t:`10.1093/biomet/asaa104`, :footcite:t:`squires2018causaldag`
+     - :footcite:t:`10.1093/biomet/asaa104`, :footcite:t:`squires2018causaldag`, :footcite:t:`https://doi.org/10.1002/sta4.183`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
@@ -1946,7 +1994,7 @@ corr_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
@@ -2957,116 +3005,6 @@ A RL-based algorithm that can work with flexible score functions (including non-
 
 
 
-.. _gg99_singlepair: 
-
-gg99_singlepair 
--------------------
-
-.. rubric:: GG99
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - 
-   * - Paper
-     - :footcite:t:`10.1093/biomet/86.4.785`
-   * - Graph type
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-   * - Docker 
-     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
-
-   * - Module folder
-     - `gg99_singlepair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gg99_singlepair>`__
-
-
-
-.. rubric:: Description
-
-Abstract: We propose a methodology for Bayesian model determination in decomposable graphical Gaussian models. To achieve this aim we consider a hyper inverse Wishart prior
-distribution on the concentration matrix for each given graph. To ensure compatibility
-across models, such prior distributions are obtained by marginalisation from the prior
-conditional on the complete graph. We explore alternative structures for the hyperparameters of the latter, and their consequences for the model. Model determination is carried
-out by implementing a reversible jump Markov chain Monte Carlo sampler. In particular,
-the dimension-changing move we propose involves adding or dropping an edge from the
-graph. We characterise the set of moves which preserve the decomposability of the graph,
-giving a fast algorithm for maintaining the junction tree representation of the graph at
-each sweep. As state variable, we use the incomplete variance-covariance matrix, containing only the elements for which the corresponding element of the inverse is nonzero. This
-allows all computations to be performed locally, at the clique level, which is a clear
-advantage for the analysis of large and complex datasets.
-
-.. important:: 
-
-  This module only works on the AMD64 architecture.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gg99",
-        "n_samples": 100000,
-        "datatype": "continuous",
-        "randomits": 100,
-        "prior": "ep",
-        "ascore": null,
-        "bscore": null,
-        "clq": 2,
-        "sep": 4,
-        "penalty": 0.0,
-        "mcmc_seed": 1,
-        "timeout": null,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5
-      },
-      {
-        "id": "gg99",
-        "n_samples": 100000,
-        "datatype": "discrete",
-        "randomits": 100,
-        "prior": "ep",
-        "ascore": null,
-        "bscore": null,
-        "clq": 2,
-        "sep": 4,
-        "penalty": 0.0,
-        "mcmc_seed": 1,
-        "timeout": null,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _gobnilp: 
 
 gobnilp 
@@ -3160,106 +3098,6 @@ the first phase and the optimal sets are determined in a second phase.
         "gap_limit": null,
         "prune": true,
         "timeout": 600
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _gt13_multipair: 
-
-gt13_multipair 
-------------------
-
-.. rubric:: GT13
-
-.. list-table:: 
-
-   * - Package
-     - 
-   * - Version
-     - 
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - 
-   * - Paper
-     - :footcite:t:`10.2307/43304539`
-   * - Graph type
-     - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
-   * - Docker 
-     - `bpimages/thomasgreen:1.19-bp <https://hub.docker.com/r/bpimages/thomasgreen/tags>`__
-
-   * - Module folder
-     - `gt13_multipair <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gt13_multipair>`__
-
-
-
-.. rubric:: Description
-
-Abstract: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
-
-.. important:: 
-
-  This module only works on the AMD64 architecture.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gt13",
-        "n_samples": 1000000,
-        "datatype": "continuous",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.1,
-        "bscore": 0.001,
-        "clq": null,
-        "sep": null,
-        "penalty": null,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
-      },
-      {
-        "id": "gt13",
-        "n_samples": 1000000,
-        "datatype": "discrete",
-        "randomits": 1000,
-        "prior": "bc",
-        "ascore": 0.1,
-        "bscore": 0.001,
-        "clq": null,
-        "sep": null,
-        "penalty": null,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
       }
     ]
 
@@ -3518,7 +3356,7 @@ prec_thresh
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
@@ -3640,7 +3478,7 @@ sklearn_glasso
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/datascience-python:1.0 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
+     - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
    * - Module folder
      - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
@@ -3708,22 +3546,7 @@ tetrad_boss
 
 .. rubric:: Description
 
-Abstract: The Sparsest Permutation (SP) algorithm is accurate but limited to about 9 variables in practice; the
-Greedy Sparest Permutation (GSP) algorithm is faster but less weak theoretically. A compromise can
-be given, the Best Order Score Search, which gives results as accurate as SP but for much larger and
-denser graphs. BOSS (Best Order Score Search) is more accurate for two reason: (a) It assumes the
-“brute faithfuness” assumption, which is weaker than faithfulness, and (b) it uses a different traversal
-of permutations than the depth first traversal used by GSP, obtained by taking each variable in turn and
-moving it to the position in the permutation that optimizes the model score. Results are given comparing
-BOSS to several related papers in the literature in terms of performance, for linear, Gaussian data. In
-all cases, with the proper parameter settings, accuracy of BOSS is lifted considerably with respect to
-competing approaches. In configurations tested, models with 60 variables are feasible with large samples
-out to about an average degree of 12 in reasonable time, with near-perfect accuracy, and sparse models
-with an average degree of 4 are feasible out to about 300 variables on a laptop, again with near-perfect
-accuracy. Mixed continuous discrete and all-discrete datasets were also tested. The mixed data analysis
-showed advantage for BOSS over GES more apparent at higher depths with the same score; the discrete
-data analysis showed a very small advantage for BOSS over GES with the same score, perhaps not
-enough to prefer it.
+BOSS (Best Order Score Search) is an algorithm that, like GRaSP, generalizes and extends the GSP (Greedy Sparsest Permutation) algorithm. It has been tested to 1000 variables with an average degree of 20 and gives near perfect precisions and recalls for N = 10,000 (with recall that drop to 0.9 for N = 1000). The algorithms works by building DAGs given permutations in ways similar to those described in Raskutti and Uhler and Solus et al.
 
 .. rubric:: Example 
 
@@ -3779,6 +3602,9 @@ Each dataset contains 300 samples.
 
 
 
+.. rubric:: Some fields described 
+* ``allowInternalRandomess``  If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic. 
+* ``useBes`` True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed. 
 
 
 .. rubric:: Example JSON
@@ -3864,66 +3690,6 @@ See  :footcite:t:`sanchez2018causal`.
         "test": "fisher-z-test",
         "score": "sem-bic-score",
         "semBicStructurePrior": 1,
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
-.. _tetrad_fci: 
-
-tetrad_fci 
---------------
-
-.. rubric:: FCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`spirtes1993discovery`, :footcite:t:`spirtes2000causation`
-   * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_fci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fci>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: The FCI algorithm is a constraint-based algorithm that takes as input sample data and optional background knowledge and in the large sample limit outputs an equivalence class of CBNs that (including those with hidden confounders) that entail the set of conditional independence relations judged to hold in the population. It is limited to several thousand variables, and on realistic sample sizes it is inaccurate in both adjacencies and orientations. FCI has two phases: an adjacency phase and an orientation phase. The adjacency phase of the algorithm starts with a complete undirected graph and then performs a sequence of conditional independence tests that lead to the removal of an edge between any two adjacent variables that are judged to be independent, conditional on some subset of the observed variables; any conditioning set that leads to the removal of an adjacency is stored. After the adjacency phase, the resulting undirected graph has the correct set of adjacencies, but all of the edges are unoriented. FCI then enters an orientation phase that uses the stored conditioning sets that led to the removal of adjacencies to orient as many of the edges as possible. 
-See :footcite:t:`spirtes1993discovery`.
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "fci-fisher-z",
-        "alpha": [
-          0.001,
-          0.01,
-          0.05
-        ],
-        "test": "fisher-z-test",
         "datatype": "continuous",
         "timeout": null
       }
@@ -4110,70 +3876,6 @@ From the Tetrad manual: FTFC (Find Two Factor Clusters) is similar to FOFC, but 
 
 
 
-.. _tetrad_gfci: 
-
-tetrad_gfci 
----------------
-
-.. rubric:: GFCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`ramsey2017million`, :footcite:t:`spirtes1993discovery`
-   * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_gfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_gfci>`__
-
-
-
-.. rubric:: Description
-
-From the TETRAD manual: GFCI is a combination of the FGES :footcite:t:`ramsey2017million` algorithm and the FCI algorithm :footcite:t:`spirtes1993discovery` that improves upon the accuracy and efficiency of FCI. In order to understand the basic methodology of GFCI, it is necessary to understand some basic facts about the FGES and FCI algorithms. 
-The FGES algorithm is used to improve the accuracy of both the adjacency phase and the orientation phase of FCI by providing a more accurate initial graph that contains a subset of both the non-adjacencies and orientations of the final output of FCI. The initial set of nonadjacencies given by FGES is augmented by FCI performing a set of conditional independence tests that lead to the removal of some further adjacencies whenever a conditioning set is found that makes two adjacent variables independent. After the adjacency phase of FCI, some of the orientations of FGES are then used to provide an initial orientation of the undirected graph that is then augmented by the orientation phase of FCI to provide additional orientations. 
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "gfci-sem-bic-fisher-z",
-        "alpha": 0.05,
-        "score": "sem-bic-score",
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "penaltyDiscount": [
-          0.5,
-          1,
-          1.5
-        ],
-        "samplePrior": null,
-        "semBicStructurePrior": 1,
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _tetrad_grasp: 
 
 tetrad_grasp 
@@ -4352,65 +4054,6 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
 
 
 
-.. _tetrad_rfci: 
-
-tetrad_rfci 
----------------
-
-.. rubric:: RFCI
-
-.. list-table:: 
-
-   * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-   * - Version
-     - 1.10.0
-   * - Language
-     - `Java <https://www.java.com/en/>`__
-   * - Docs
-     - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
-   * - Paper
-     - :footcite:t:`10.2307/41713636`
-   * - Graph type
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-   * - Docker 
-     - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
-
-   * - Module folder
-     - `tetrad_rfci <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_rfci>`__
-
-
-
-.. rubric:: Description
-
-From the Tetrad manual: A modification of the FCI algorithm in which some expensive steps are finessed and the output is somewhat differently interpreted. In most cases this runs faster than FCI (which can be slow in some steps) and is almost as informative. 
-
-
-
-.. rubric:: Example JSON
-
-
-.. code-block:: json
-
-
-    [
-      {
-        "id": "rfci-fisher-z",
-        "alpha": [
-          0.001,
-          0.01,
-          0.05
-        ],
-        "test": "fisher-z-test",
-        "datatype": "continuous",
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
-
-
-
 .. _trilearn_pgibbs: 
 
 trilearn_pgibbs 
@@ -4433,7 +4076,7 @@ trilearn_pgibbs
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.1 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module folder
      - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__

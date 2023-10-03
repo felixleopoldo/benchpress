@@ -26,11 +26,8 @@
                     "grasp-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
-                    "fci-fisher-z",
                     "fofc",
-                    "gfci-sem-bic-fisher-z",
-                    "pc-fisher-z",
-                    "rfci-fisher-z"
+                    "pc-fisher-z"
                 ]
             },
             "graph_true_plots": false,

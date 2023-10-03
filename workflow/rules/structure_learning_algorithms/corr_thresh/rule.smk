@@ -12,6 +12,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/datascience-python:1.0"
+        "docker://bpimages/datascience-python:1.1"
     script:
         "script.py"

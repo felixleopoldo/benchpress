@@ -25,6 +25,10 @@ CMD="$CMD --allowInternalRandomness ${snakemake_wildcards[allowInternalRandomnes
 
 #CMD="$CMD --test fisher-z-test"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
+<<<<<<< HEAD:workflow/rules/structure_learning_algorithms/tetrad_gfci/script.sh
+
+=======
+>>>>>>> dev:workflow/rules/structure_learning_algorithms/tetrad_boss/script.sh
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
@@ -32,7 +36,7 @@ if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
 fi
 
 if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
-    CMD="$CMD --samplePrior ${snakemake_wildcards[samplePrior]}"
+    CMD="$CMD --priorEquivalentSampleSize ${snakemake_wildcards[samplePrior]}"
 fi
 
 # Run the command
@@ -53,7 +57,7 @@ if [ -f ${snakemake_output[adjmat]}_graph.json ]; then
     rm ${snakemake_output[adjmat]}_out.txt; # prefix is not the same in the new versin
     
 else 
-    echo Writing empty files in GRaSP
+    echo Writing empty files for BOSS
     # if timeout was reached, create empty files
     touch ${snakemake_output[adjmat]}
     echo None > ${snakemake_output[time]}
