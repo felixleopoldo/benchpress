@@ -16,7 +16,7 @@ declare -A image_versions
 
 # image_versions[athomas_jtsamplers]=76ad20e
 # image_versions[rblip]=1.1
-# image_versions[bdgraph]=2.72
+image_versions[bdgraph]=2.72
 # image_versions[causal-learn]=0.1.3.4
 # image_versions[dualpc]=585751b
 # image_versions[rgraphstuff]=1.0
@@ -32,7 +32,7 @@ declare -A image_versions
 # image_versions[datascience-python]=1.1
 # image_versions[trilearn]=2.0.3
 # image_versions[snakemake]=v7.32.3
-image_versions[gobnilp]=4347c64
+# image_versions[gobnilp]=4347c64
 
 
 # Build the image for amd64 and arm64 and push them to dockerhub and create the manifest and push it
