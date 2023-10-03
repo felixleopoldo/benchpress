@@ -30,9 +30,9 @@ declare -A image_versions
 # image_versions[gcastle]=1.0.3
 # image_versions[sandbox]=1.0
 # image_versions[datascience-python]=1.1
-image_versions[trilearn]=2.0.3
+# image_versions[trilearn]=2.0.3
 # image_versions[snakemake]=v7.32.3
-# image_versions[gobnilp]=4347c64
+image_versions[gobnilp]=4347c64
 
 
 # Build the image for amd64 and arm64 and push them to dockerhub and create the manifest and push it

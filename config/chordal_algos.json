@@ -119,7 +119,7 @@
                     "threshold": 0.5,
                     "mcmc_seed": [1, 2, 3],
                     "num_samples": 100000,
-                    "sampler": 0,
+                    "sampler": [0,1],
                     "edge_penalty": 1.0,
                     "size_maxclique": 10000
                 }

@@ -5,14 +5,14 @@ CP=/jtsampler
 
 if [ ${snakemake_wildcards[timeout]} = "None" ]; then
     /usr/bin/time -q -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
-    -r ${snakemake_wildcards[replicate]} \
+    -r ${snakemake_wildcards[mcmc_seed]} \
     -n ${snakemake_wildcards[num_samples]} \
     -s ${snakemake_wildcards[sampler]} \
     -a ${snakemake_wildcards[edge_penalty]} \
     -c ${snakemake_wildcards[size_maxclique]} < ${snakemake_input[data]} > ${snakemake_output[seqgraph]}
 else
     CMD="java -classpath $CP EstimateGM \
-    -r ${snakemake_wildcards[replicate]} \
+    -r ${snakemake_wildcards[mcmc_seed]} \
     -n ${snakemake_wildcards[num_samples]} \
     -s ${snakemake_wildcards[sampler]} \
     -a ${snakemake_wildcards[edge_penalty]} \
