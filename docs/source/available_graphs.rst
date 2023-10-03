@@ -79,7 +79,7 @@ bdgraph_graphsim
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/bdgraph:2.72 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.72.0 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
    * - Module
      - `bdgraph_graphsim <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/bdgraph_graphsim>`__
