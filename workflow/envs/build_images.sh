@@ -16,7 +16,7 @@ declare -A image_versions
 
 # image_versions[athomas_jtsamplers]=76ad20e
 # image_versions[rblip]=1.1
-image_versions[bdgraph]=2.72
+image_versions[bdgraph]=2.72.0
 # image_versions[causal-learn]=0.1.3.4
 # image_versions[dualpc]=585751b
 # image_versions[rgraphstuff]=1.0
@@ -52,7 +52,7 @@ for image in "${!image_versions[@]}"; do
       docker build . -f Dockerfile.$image -t $DOCKER_REPO/$image:$ver-$ARCH $FLAGS
     fi
     docker push $DOCKER_REPO/$image:$ver-$ARCH
-    docker manifest create $DOCKER_REPO/$image:$ver --amend $DOCKER_REPO/$image:$ver-amd64 --amend $DOCKER_REPO/$image:$ver-arm64
+    docker manifest create $DOCKER_REPO/$image:$ver  --amend $DOCKER_REPO/$image:$ver-amd64 --amend $DOCKER_REPO/$image:$ver-arm64
     docker manifest push $DOCKER_REPO/$image:$ver
 done
 
