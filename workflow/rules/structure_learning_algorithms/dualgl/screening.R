@@ -74,7 +74,7 @@ myalg <- function() {
     ## The algorithm should be in this function.
     start <- proc.time()[1]
     ## extract codes
-    data <- read.csv(traj_filename, check.names = FALSE)
+    data <- read.csv(traj_filename, check.names = FALSE, header = TRUE)
     data = data.table(data)
     codes = data$code[1]
     codes = drop(sapply(str_split(str_sub(codes, 2,-2), '-'), as.numeric))

@@ -15,10 +15,10 @@ myalg <- function() {
     ## The algorithm should be in this function.
     start <- proc.time()[1]
     ## extract codes
-    input_data <- read.csv(data_filename)
+    input_data <- read.csv(data_filename, header = TRUE, check.names = FALSE)
     n <- nrow(input_data)
     p <- ncol(input_data)
-    neighborhood <- n / log(n)
+    neighborhood <- floor(n / log(n)) + 1
     if (!is.null(snakemake@wildcards[["neig"]])) {
           neighborhood <- as.integer(snakemake@wildcards[["neig"]])
       }
@@ -43,3 +43,4 @@ myalg <- function() {
 }
 
 add_timeout(myalg)
+
