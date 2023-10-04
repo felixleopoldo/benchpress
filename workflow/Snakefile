@@ -80,8 +80,6 @@ with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
 
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
-#Path("workflow/schemas/tmp.config.schema.json").unlink()
-
 include: "rules/docker_images.smk"
 
 container: docker_image("benchmark")

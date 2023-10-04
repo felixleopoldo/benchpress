@@ -11,10 +11,9 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-            },
+            }
         },
         "additionalProperties": true,
         "required": [
@@ -23,11 +22,10 @@
         ],
         "examples": [
             {
-            "id": "jtsampler",                    
-            "burnin_frac": 0.5,
-            "startalg": "jtsampler_gg",
-            "timeout": null,
-         
+                "id": "jtsampler",
+                "burnin_frac": 0.5,
+                "startalg": "jtsampler_gg",
+                "timeout": null
             }
         ]
     }
