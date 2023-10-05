@@ -86,5 +86,73 @@ def validate_data_setup(config, dict):
                         "The available paremeter id´s are:\n" + str(sorted(available_conf_ids)))
 
 
+
+   
 for data_setup in config["benchmark_setup"]["data"]:
     validate_data_setup(config, data_setup)
+
+
+    
+from typing import Optional, List, Union, Tuple
+
+""" set of functions to nest algorithms """
+def valid_path(run_id: Optional[str]) -> bool:
+    """ Returns the path to the estimated graph of each id"""
+    
+    if not run_id:
+        return False
+    
+    alg, run_config = idtoalg(run_id)
+    if not alg:
+        return False
+    
+    if not is_single_output_run(run_config):
+        return False
+    
+    return True
+    # if alg in mcmc_modules:
+    #     return expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **run_config)
+    # else:
+    #     return expand(pattern_strings[alg], **run_config)
+
+
+def idtoalg(run_id: str) -> Optional[Tuple[str, dict]]:
+    """ Returns the algorithm name that the id belongs to, otherwise None """
+    for key, alg in config["resources"]["structure_learning_algorithms"].items():
+        for obj in alg:
+            if obj["id"] == run_id:
+                return key, obj
+    return None, None
+
+
+def is_single_output_run(run_config: dict) -> bool:
+    """ checks if the run is a single output run, i.e., no parameters is with a list lager > 1"""
+    
+    for key, item in run_config.items():
+        if isinstance(item, list):
+            if len(item) > 1: 
+                return False
+    
+    return True
+    
+ 
+
+def validate_algorithms():
+    """ Random validation tests for config"""
+    # Testing if input_graph_id has an actual run.
+    for key, runs in config["resources"]["structure_learning_algorithms"].items():
+        for run in runs:
+            if 'input_algorithm_id' in run:
+                if isinstance(run['input_algorithm_id'], list):
+                    for input_graph in run['input_algorithm_id']:
+                        path = valid_path(input_graph)
+                        if not path: 
+                            raise Exception(f"In algorithm {key}, 'input_algorithm_id' {input_graph} is not available in the config file, or the associated config has parameters with multiple values!")
+                else:
+                    path = valid_path(run['input_algorithm_id'])
+                    if not path: 
+                        raise Exception(f"In algorithm {key}, 'input_algorithm_id' {run['input_algorithm_id']} is not available in the config file, or the associated config has parameters with multiple values!")
+    
+
+
+validate_algorithms()

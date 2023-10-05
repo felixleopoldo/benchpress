@@ -70,5 +70,13 @@ def time_path(algorithm):
 def data_path():
     return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
 
+
 def adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv",
+
+
+def path_to_input_algorithm_graph(alg_id):
+    return "{output_dir}/adjmat_estimate/{data}/"\
+        "algorithm=/" + json_string[alg_id][0] + "/" +\
+        "seed={replicate}/" \
+        "adjmat.csv"
