@@ -629,7 +629,7 @@
                 {
                     "id": "omcmc_itmap-bge",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                    "input_algorithm_id": "itsearch_map-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -650,7 +650,7 @@
                 {
                     "id": "omcmc_itsample-bge",
                     "plus1": true,
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
+                    "input_algorithm_id": "itsample-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,

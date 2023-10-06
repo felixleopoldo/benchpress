@@ -99,7 +99,7 @@
             "mcmc_seed",
             "mcmc_estimator",
             "threshold",
-            "startspace_algorithm",
+            "input_algorithm_id",
             "verbose",
             "stepsave",
             "iterations",

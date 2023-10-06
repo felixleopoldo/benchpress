@@ -336,7 +336,7 @@
             "bidag_order_mcmc": [
                 {
                     "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
+                    "input_algorithm_id": "itsample-bge_am01_endspace",
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,
