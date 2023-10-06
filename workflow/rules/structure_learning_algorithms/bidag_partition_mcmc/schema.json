@@ -11,7 +11,7 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            "startspace_algorithm": {
+            "input_algorithm_id": {
                 "anyOf": [
                     {
                         "type": "string"
@@ -108,7 +108,7 @@
         "examples": [
             {
                 "id": "partition_itmap-bge",
-                "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                "input_algorithm_id": "itsearch_map-bge_am01_endspace",
                 "verbose": true,
                 "scoretype": "bge",
                 "chi": null,
@@ -130,7 +130,7 @@
             },
             {
                 "id": "partition_itmap-bde",
-                "startspace_algorithm": "itsearch_map-bde_endspace",
+                "input_algorithm_id": "itsearch_map-bde_endspace",
                 "verbose": true,
                 "scoretype": "bde",
                 "chi": [
