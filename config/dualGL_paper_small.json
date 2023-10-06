@@ -6,8 +6,8 @@
         "graph_id": "random-5",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            3
+            10,
+            15
         ]
       }
     ],
