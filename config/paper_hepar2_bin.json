@@ -860,34 +860,6 @@
             ],
             "bidag_order_mcmc": [
                 {
-                    "id": "omcmc_itmap-bde",
-                    "plus1": true,
-                    "input_algorithm_id": "itsearch_map-bde",
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
                     "id": "omcmc_itsample-bde",
                     "plus1": true,
                     "input_algorithm_id": "itsearch_sample-bde_chi01_endspace",
