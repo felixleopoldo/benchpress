@@ -7,6 +7,7 @@ CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 
 CMD="$CMD --algorithm fofc"
 CMD="$CMD --dataset ${snakemake_input[data]}"
+CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
 
 # Run the command
 if [ ${snakemake_wildcards[timeout]} != "None" ]; then 

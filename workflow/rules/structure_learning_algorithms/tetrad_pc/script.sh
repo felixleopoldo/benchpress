@@ -4,6 +4,7 @@ CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --json-graph"
+CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
 
 # Use data without range header for discrete data 
 if [ ${snakemake_wildcards[datatype]} = "discrete" ]; then
