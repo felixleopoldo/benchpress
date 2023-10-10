@@ -22,14 +22,13 @@ CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
 CMD="$CMD --test fisher-z-test"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 
-
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
     CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
 fi
 
 if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
-    CMD="$CMD --samplePrior ${snakemake_wildcards[samplePrior]}"
+    CMD="$CMD --priorEquivalentSampleSize ${snakemake_wildcards[samplePrior]}"
 fi
 
 # Run the command

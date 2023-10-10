@@ -3615,7 +3615,7 @@ Each dataset contains 300 samples.
 
     [
       {
-        "id": "causal-cmd-boss",
+        "id": "boss-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
         "samplePrior": 1,
@@ -3627,6 +3627,20 @@ Each dataset contains 300 samples.
           1,
           1.5
         ],
+        "timeout": null
+      },
+      {
+        "id": "boss-bdeu",
+        "score": "bdeu-score",
+        "datatype": "discrete",
+        "samplePrior": [
+          0.1,
+          1
+        ],
+        "useBes": true,
+        "allowInternalRandomess": false,
+        "semBicStructurePrior": null,
+        "penaltyDiscount": null,
         "timeout": null
       }
     ]
@@ -3919,7 +3933,7 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
     [
       {
-        "id": "causal-cmd-grasp",
+        "id": "grasp-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
         "samplePrior": 1,
@@ -3929,6 +3943,18 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
           1,
           1.5
         ],
+        "timeout": null
+      },
+      {
+        "id": "grasp-bdeu",
+        "score": "bdeu-score",
+        "datatype": "dicrete",
+        "samplePrior": [
+          0.1,
+          1
+        ],
+        "semBicStructurePrior": null,
+        "penaltyDiscount": null,
         "timeout": null
       }
     ]
