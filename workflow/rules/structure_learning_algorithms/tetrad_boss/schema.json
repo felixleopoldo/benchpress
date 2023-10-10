@@ -15,7 +15,7 @@
                 "type": "string",
                 "enum": [
                     "sem-bic-score",
-                    "sem-bdeu-score"
+                    "bdeu-score"
                 ]
             },
             "useBes": {
