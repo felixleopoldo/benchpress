@@ -18,6 +18,16 @@
                     "bdeu-score"
                 ]
             },
+            "test": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
             "datatype": {
                 "type": "string",
                 "enum": [
@@ -41,6 +51,7 @@
         "additionalProperties": false,
         "required": [
             "id",
+            "test",
             "score",
             "datatype",
             "samplePrior",
@@ -53,6 +64,7 @@
                 "id": "grasp-bic",
                 "score": "sem-bic-score",
                 "datatype": "continuous",
+                "test": "fisher-z-test",
                 "samplePrior": null,
                 "semBicStructurePrior": 1,
                 "penaltyDiscount": [
@@ -65,10 +77,12 @@
             {
                 "id": "grasp-bdeu",
                 "score": "bdeu-score",
+                "test": " chi-square-test",
                 "datatype": "discrete",
-                "samplePrior": [
-                    0.1,
-                    1
+                "samplePrior": [                    
+                    1,
+                    10,
+                    20
                 ],
                 "semBicStructurePrior": null,
                 "penaltyDiscount": null,
