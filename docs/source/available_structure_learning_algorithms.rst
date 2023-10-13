@@ -3634,8 +3634,9 @@ Each dataset contains 300 samples.
         "score": "bdeu-score",
         "datatype": "discrete",
         "samplePrior": [
-          0.1,
-          1
+          1,
+          10,
+          20
         ],
         "useBes": true,
         "allowInternalRandomess": false,
