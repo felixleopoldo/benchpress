@@ -81,7 +81,7 @@ myalg <- function() {
     data = data[-c(1:3), ]
     colnames(data)<-c('index', 'score', 'added', 'removed', 'code', 'delta', 'm')
 
-    input_data = read.csv(file = data_filename, header=TRUE)
+    input_data = read.csv(file = data_filename, header=TRUE, check.names=FALSE)
     n = nrow(input_data)
     p = ncol(input_data)
     
