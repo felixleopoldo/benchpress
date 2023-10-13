@@ -97,8 +97,8 @@ generated datasets, the workflow also includes a number of standard datasets and
 * The paper :footcite:t:`rios2021benchpress`
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
-* This tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
-* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of questions
+* This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
+* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of questions etc.
 
 
 .. rubric:: Updates
