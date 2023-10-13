@@ -79,8 +79,8 @@ myalg <- function() {
 
     totaltime <- proc.time()[1] - start
     if(res$sigfault) {
-        write.csv("", file = output_filename, row.names = FALSE, quote = FALSE)
-        
+        file.create(file = output_filename)
+        totaltime = "None"
     }else {
         colnames(adjmat) <- names(input_data) # Get the labels from the data
         write.csv(adjmat, file = output_filename, row.names = FALSE, quote = FALSE)
