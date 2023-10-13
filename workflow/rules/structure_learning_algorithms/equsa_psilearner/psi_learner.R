@@ -13,7 +13,7 @@ equSAR_localR<-function(iData, iMaxNei, ALPHA1=0.05, ALPHA2=0.05, GRID=2, iterat
     ## the R code returns a matix of zeroes, therefore, here we check it
     ## and returns an empty mattix
     if(U[1,1]==0 & U[1,2]==0)           
-        return(list(score = U, Adj = A))
+        return(list(score = U, Adj = A, sigfault=TRUE))
     
     z<-U[,3]
     q<-pnorm(-abs(z), log.p=TRUE)
@@ -42,7 +42,7 @@ equSAR_localR<-function(iData, iMaxNei, ALPHA1=0.05, ALPHA2=0.05, GRID=2, iterat
     ij = y[s, c(1,2)]
     A[ij] <-1
     A = A + t(A)
-    list(score = U, Adj = A)
+    list(score = U, Adj = A, sigfault=FALSE)
 }
 
 myalg <- function() {
@@ -78,8 +78,13 @@ myalg <- function() {
     adjmat <- res$Adj
 
     totaltime <- proc.time()[1] - start
-    colnames(adjmat) <- names(input_data) # Get the labels from the data
-    write.csv(adjmat, file = output_filename, row.names = FALSE, quote = FALSE)
+    if(res$sigfault) {
+        write.csv("", file = output_filename, row.names = FALSE, quote = FALSE)
+        
+    }else {
+        colnames(adjmat) <- names(input_data) # Get the labels from the data
+        write.csv(adjmat, file = output_filename, row.names = FALSE, quote = FALSE)
+    }
     write(totaltime, file = time_filename)
     # Write the true number of c.i. tests here if possible.
     cat("None", file = ntests_filename, sep = "\n")
