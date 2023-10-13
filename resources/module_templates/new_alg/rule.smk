@@ -6,6 +6,7 @@ rule:
     name:
         module_name
     input:
+        # input_algorithm=input_algorithm # To use this, add a field called input_algorithm_id to the JSON file
         data = alg_input_data()        
     output:
         adjmat = alg_output_adjmat_path(module_name),

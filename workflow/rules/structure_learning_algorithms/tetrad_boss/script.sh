@@ -17,6 +17,7 @@ fi
 
 CMD="$CMD --algorithm boss"
 CMD="$CMD --default"
+CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
 
 CMD="$CMD --useBes ${snakemake_wildcards[useBes]}"
 CMD="$CMD --numStarts 1"
@@ -25,10 +26,6 @@ CMD="$CMD --allowInternalRandomness ${snakemake_wildcards[allowInternalRandomnes
 
 #CMD="$CMD --test fisher-z-test"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-<<<<<<< HEAD:workflow/rules/structure_learning_algorithms/tetrad_gfci/script.sh
-
-=======
->>>>>>> dev:workflow/rules/structure_learning_algorithms/tetrad_boss/script.sh
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"

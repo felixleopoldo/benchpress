@@ -579,7 +579,7 @@ in Benchpress is a hybrid version with the sampling performed on a restricted se
 initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
 .. rubric:: Some fields described 
-* ``startspace_algorithm`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
+* ``input_algorithm_id`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
 
 
 .. rubric:: Example JSON
@@ -591,7 +591,7 @@ initialised with constraint-based testing and improved with a score-based search
     [
       {
         "id": "omcmc_itmap-bge",
-        "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+        "input_algorithm_id": "itsearch_map-bge_am01_endspace",
         "plus1": true,
         "scoretype": "bge",
         "chi": null,
@@ -617,7 +617,7 @@ initialised with constraint-based testing and improved with a score-based search
       {
         "id": "omcmc_itmap-bde",
         "plus1": true,
-        "startspace_algorithm": "itsearch_map-bde",
+        "input_algorithm": "itsearch_map-bde",
         "scoretype": "bde",
         "chi": [
           0.01,
@@ -693,7 +693,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
     [
       {
         "id": "partition_itmap-bge",
-        "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+        "input_algorithm_id": "itsearch_map-bge_am01_endspace",
         "verbose": true,
         "scoretype": "bge",
         "chi": null,
@@ -715,7 +715,7 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
       },
       {
         "id": "partition_itmap-bde",
-        "startspace_algorithm": "itsearch_map-bde_endspace",
+        "input_algorithm_id": "itsearch_map-bde_endspace",
         "verbose": true,
         "scoretype": "bde",
         "chi": [
@@ -3615,10 +3615,10 @@ Each dataset contains 300 samples.
 
     [
       {
-        "id": "causal-cmd-boss",
+        "id": "boss-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
-        "samplePrior": 1,
+        "samplePrior": null,
         "useBes": true,
         "allowInternalRandomess": false,
         "semBicStructurePrior": 1,
@@ -3627,6 +3627,21 @@ Each dataset contains 300 samples.
           1,
           1.5
         ],
+        "timeout": null
+      },
+      {
+        "id": "boss-bdeu",
+        "score": "bdeu-score",
+        "datatype": "discrete",
+        "samplePrior": [
+          1,
+          10,
+          20
+        ],
+        "useBes": true,
+        "allowInternalRandomess": false,
+        "semBicStructurePrior": null,
+        "penaltyDiscount": null,
         "timeout": null
       }
     ]
@@ -3919,16 +3934,31 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
     [
       {
-        "id": "causal-cmd-grasp",
+        "id": "grasp-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
-        "samplePrior": 1,
+        "test": "fisher-z-test",
+        "samplePrior": null,
         "semBicStructurePrior": 1,
         "penaltyDiscount": [
           0.8,
           1,
           1.5
         ],
+        "timeout": null
+      },
+      {
+        "id": "grasp-bdeu",
+        "score": "bdeu-score",
+        "test": "chi-square-test",
+        "datatype": "discrete",
+        "samplePrior": [
+          1,
+          10,
+          20
+        ],
+        "semBicStructurePrior": null,
+        "penaltyDiscount": null,
         "timeout": null
       }
     ]

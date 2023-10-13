@@ -7,7 +7,7 @@
                 "data_id": "example3",
                 "seed_range": [
                     1,
-                    1
+                    50
                 ]
             }
         ],
@@ -860,37 +860,9 @@
             ],
             "bidag_order_mcmc": [
                 {
-                    "id": "omcmc_itmap-bde",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bde",
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
                     "id": "omcmc_itsample-bde",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
+                    "input_algorithm_id": "itsearch_sample-bde_chi01_endspace",
                     "scoretype": "bde",
                     "chi": [
                         0.1
@@ -915,7 +887,7 @@
                 {
                     "id": "omcmc_itsample-bdecat",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi01_endspace",
+                    "input_algorithm_id": "itsearch_sample-bdecat_chi01_endspace",
                     "scoretype": "bdecat",
                     "chi": [
                         0.1
@@ -940,7 +912,7 @@
                 {
                     "id": "omcmc_itsample-bde_chi1",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi1_endspace",
+                    "input_algorithm_id": "itsearch_sample-bde_chi1_endspace",
                     "scoretype": "bde",
                     "chi": 1,
                     "edgepf": 2,
@@ -963,7 +935,7 @@
                 {
                     "id": "omcmc_itsample-bdecat_chi1",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi1_endspace",
+                    "input_algorithm_id": "itsearch_sample-bdecat_chi1_endspace",
                     "scoretype": "bdecat",
                     "chi": 1,
                     "edgepf": 2,
