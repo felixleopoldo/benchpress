@@ -3949,7 +3949,7 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
       {
         "id": "grasp-bdeu",
         "score": "bdeu-score",
-        "test": " chi-square-test",
+        "test": "chi-square-test",
         "datatype": "discrete",
         "samplePrior": [
           1,
