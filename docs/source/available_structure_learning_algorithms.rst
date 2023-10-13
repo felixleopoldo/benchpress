@@ -3618,7 +3618,7 @@ Each dataset contains 300 samples.
         "id": "boss-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
-        "samplePrior": 1,
+        "samplePrior": null,
         "useBes": true,
         "allowInternalRandomess": false,
         "semBicStructurePrior": 1,
@@ -3936,7 +3936,8 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
         "id": "grasp-bic",
         "score": "sem-bic-score",
         "datatype": "continuous",
-        "samplePrior": 1,
+        "test": "fisher-z-test",
+        "samplePrior": null,
         "semBicStructurePrior": 1,
         "penaltyDiscount": [
           0.8,
@@ -3948,10 +3949,12 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
       {
         "id": "grasp-bdeu",
         "score": "bdeu-score",
-        "datatype": "dicrete",
+        "test": "chi-square-test",
+        "datatype": "discrete",
         "samplePrior": [
-          0.1,
-          1
+          1,
+          10,
+          20
         ],
         "semBicStructurePrior": null,
         "penaltyDiscount": null,
