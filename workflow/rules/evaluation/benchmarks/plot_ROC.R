@@ -61,7 +61,6 @@ fpr_tpr_pattern <- function(){
               )
             }
           } + {
-
             if (!param_annot) {
               geom_point(
                 data = toplot, alpha = 0.5,
@@ -84,7 +83,7 @@ fpr_tpr_pattern <- function(){
                   col = id_numlev
                 ), shape = 20,
                 size = 1
-              )
+              ) 
             }
           } + {
             if (scatter && show_seed) {
@@ -106,7 +105,7 @@ fpr_tpr_pattern <- function(){
                   replace_na(list("curve_vals" = 0)) %>%
                   mutate(SHDP_pattern_median = 1 - TPR_pattern_median + FPRn_pattern_median) %>%
                   filter(SHDP_pattern_median == min(SHDP_pattern_median)),
-                alpha = 0.8, position = "dodge", alpha = 1, show.legend = FALSE,
+                alpha = 0.8, position = "dodge", show.legend = FALSE,
                 aes(
                   x = FPRn_pattern_median, y = TPR_pattern_median,
                   col = id_numlev, label = id_num
@@ -126,7 +125,7 @@ fpr_tpr_pattern <- function(){
               )
             }
           } +
-          guides(shape = FALSE) +
+          guides(shape = "none") +
           facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
@@ -929,9 +928,12 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
   toplot <- read.csv(snakemake@input[["csv"]]) # Median, mean, quantiles, taken over the seeds
   joint_bench <- read.csv(snakemake@input[["raw_bench"]]) # All raw benchmarks in one dataframe
 
-  replacement_list <- list(parameters = "NA") # converts NA to string "NA" in the dataframe
-  toplot[is.na(toplot)] <- "NA"
-  joint_bench[is.na(joint_bench)] <- "NA"
+  # ME: converting NA to sting causes mix types in a column
+  # R in this case converts all to string
+  # made an laternative fix below
+  # replacement_list <- list(parameters = "NA") # converts NA to string "NA" in the dataframe
+  # toplot[is.na(toplot)] <- "NA"
+  # joint_bench[is.na(joint_bench)] <- "NA"
   #toplot <- toplot %>% replace_na(replacement_list)
   #joint_bench <- joint_bench %>% replace_na(replacement_list)
 
@@ -997,7 +999,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
           filter(adjmat == adjmat2) %>%
           filter(parameters == parameters2) %>%
           filter(data == data2)
-
+        
         if (nrow(joint_bench) > 0) {
           fpr_tpr_pattern()
           fpr_tpr_skel()
