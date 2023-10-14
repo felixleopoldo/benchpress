@@ -12,13 +12,31 @@
                 "description": "Unique identifier"
             },
             "score": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                    "sem-bic-score",
+                    "bdeu-score"
+                ]
+            },
+            "test": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "datatype": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                    "continuous",
+                    "discrete"
+                ]
             },
             "samplePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "penaltyDiscount": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
@@ -27,12 +45,13 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "semBicStructurePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             }
         },
         "additionalProperties": false,
         "required": [
             "id",
+            "test",
             "score",
             "datatype",
             "samplePrior",
@@ -42,16 +61,31 @@
         ],
         "examples": [
             {
-                "id": "causal-cmd-grasp",
+                "id": "grasp-bic",
                 "score": "sem-bic-score",
                 "datatype": "continuous",
-                "samplePrior": 1,
+                "test": "fisher-z-test",
+                "samplePrior": null,
                 "semBicStructurePrior": 1,
                 "penaltyDiscount": [
                     0.8,
                     1,
                     1.5
                 ],
+                "timeout": null
+            },
+            {
+                "id": "grasp-bdeu",
+                "score": "bdeu-score",
+                "test": "chi-square-test",
+                "datatype": "discrete",
+                "samplePrior": [                    
+                    1,
+                    10,
+                    20
+                ],
+                "semBicStructurePrior": null,
+                "penaltyDiscount": null,
                 "timeout": null
             }
         ]

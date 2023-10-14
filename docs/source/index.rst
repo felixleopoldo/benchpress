@@ -91,11 +91,19 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature.
 
-See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository, and `this Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_.
+
+.. rubric:: See also
+
+* The paper :footcite:t:`rios2021benchpress`
+* The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
+* This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
+* This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
+* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of questions etc.
 
 
 .. rubric:: Updates
 
+* 2023-10-13: Benchpress 2.5.0 released. Added the feature to pass the graph estimate of one algorithm as input of another. Added the algorithm module :ref:`athomas_jtsamplers` for MCMC estimating graphs of undirected decomposable graphical models.
 * 2023-09-24: Benchpress 2.4.0 released. Added the Psi-learner algorithm for learning graphs of undirected Gaussian graphical models (:ref:`equsa_psilearner`).
 * 2023-09-19: Benchpress 2.3.0 released. Updated causal-cmd to version 1.10.0. Added the BOSS algorithm (:ref:`tetrad_boss`).
 * 2023-09-08: Benchpress 2.2.0 released. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 
@@ -103,7 +111,7 @@ See also :footcite:t:`rios2021benchpress`, the `GitHub <https://github.com/felix
 
 .. rubric:: Outreach
 
-* 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`).
+* 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`, `YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_).
 * 2023-06-20: Benchpress tutorial at KTH
 * 2022-09-06: `Algorithms for learning Bayesian networks (James Cussens) <https://jcussens.github.io/talks/bias22.pdf>`_. `Interactive AI CDT Summer School (BIAS 22) <https://www.bristol.ac.uk/cdt/interactive-ai/events/bias-summer-school-2022/>`_, University of Bristol
 * 2022-05-24: Benchpress talk at the `CATS seminar series at KTH <https://www.kth.se/math/kalender/felix-rios-benchpress-a-scalable-and-versatile-workflow-for-benchmarking-structure-learning-algorithms-for-graphical-models-1.1171995?date=2022-05-24&orgdate=2022-05-24&length=1&orglength=1>`_

@@ -5,6 +5,7 @@ CMD="$CMD --data-type continuous"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --json-graph"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
+CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
 
 CMD="$CMD --algorithm ica-lingam"
 CMD="$CMD --dataset ${snakemake_input[data]}"

@@ -74,9 +74,9 @@ for :math:`i = 89`.
 Dataset
 ******************
 
+
 Observational data
 ^^^^^^^^^^^^^^^^^^^
-
 
 Observations should be stored as row vectors in a matrix, where the columns are separated by
 commas. The first row should contain the labels of the variables and if the data is categorical,
@@ -125,6 +125,7 @@ If in the continuous example above there would be two additional observations wh
     1.1,1.5,1.4,2.2,1,1
 
 
+
 Parameters
 ************
 
@@ -132,3 +133,6 @@ Parameters
 * Weight matrices for SEM models should be stored in CSV format in *resources/myparams/sem_params*.
 
 
+.. note:: 
+
+    The column labels and their order in the dataset CSV files should directly correspond to the variable names in the graph and parameters CSV files (if such files exist). 

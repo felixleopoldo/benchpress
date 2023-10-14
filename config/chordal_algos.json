@@ -33,7 +33,7 @@
             "mcmc_traj_plots": [
                 {
                     "id": "gg99",
-                    "burn_in": 0.5,
+                    "burn_in": 0,
                     "thinning": 10,
                     "functional": [
                         "score",
@@ -87,7 +87,7 @@
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 50,
+                    "order": 100,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -118,8 +118,8 @@
                     "timeout": null,
                     "threshold": 0.5,
                     "mcmc_seed": [1, 2, 3],
-                    "num_samples": 100000,
-                    "sampler": [0,1],
+                    "num_samples": 1000000,
+                    "sampler": [0, 1],
                     "edge_penalty": 1.0,
                     "size_maxclique": 10000
                 }

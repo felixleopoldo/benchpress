@@ -4,7 +4,7 @@ source("workflow/scripts/utils/helpers.R")
 wrapper <- function() {
   start <- proc.time()[1]
   data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
-  startspace <- read.csv(snakemake@input[["startspace"]])
+  startspace <- read.csv(snakemake@input[["input_algorithm"]])
   rownames(startspace) <- seq(dim(data)[2])
   colnames(startspace) <- seq(dim(data)[2])
 

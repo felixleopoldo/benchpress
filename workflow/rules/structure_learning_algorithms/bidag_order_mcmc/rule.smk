@@ -1,7 +1,7 @@
 rule bidag_order_mcmc:
     input:
         data=alg_input_data(),
-        startspace="{output_dir}/adjmat_estimate/{data}/algorithm=/{startspace_algorithm}/seed={replicate}/adjmat.csv",
+        input_algorithm=input_algorithm
     output:  
         seqgraph=alg_output_seqgraph_path("bidag_order_mcmc"),
         time=alg_output_time_path("bidag_order_mcmc"),

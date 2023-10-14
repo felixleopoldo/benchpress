@@ -12,21 +12,29 @@
                 "description": "Unique identifier"
             },
             "score": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                    "sem-bic-score",
+                    "bdeu-score"
+                ]
             },
             "useBes": {
-                "description":"True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed.",
+                "description": "True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed.",
                 "type": "boolean"
             },
             "allowInternalRandomess": {
-                "description":" If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic.",
+                "description": " If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic.",
                 "type": "boolean"
             },
             "datatype": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                    "continuous",
+                    "discrete"
+                ]
             },
             "samplePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "penaltyDiscount": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
@@ -35,7 +43,7 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "semBicStructurePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             }
         },
         "additionalProperties": true,
@@ -52,10 +60,10 @@
         ],
         "examples": [
             {
-                "id": "causal-cmd-boss",
+                "id": "boss-bic",
                 "score": "sem-bic-score",
                 "datatype": "continuous",
-                "samplePrior": 1,
+                "samplePrior": null,
                 "useBes": true,
                 "allowInternalRandomess": false,
                 "semBicStructurePrior": 1,
@@ -64,6 +72,21 @@
                     1,
                     1.5
                 ],
+                "timeout": null
+            },
+            {
+                "id": "boss-bdeu",
+                "score": "bdeu-score",
+                "datatype": "discrete",
+                "samplePrior": [
+                    1,
+                    10,
+                    20
+                ],
+                "useBes": true,
+                "allowInternalRandomess": false,
+                "semBicStructurePrior": null,
+                "penaltyDiscount": null,
                 "timeout": null
             }
         ]
