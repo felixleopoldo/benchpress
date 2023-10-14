@@ -74,14 +74,14 @@ myalg <- function() {
     ## The algorithm should be in this function.
     start <- proc.time()[1]
     ## extract codes
-    data <- read.csv(traj_filename, check.names = FALSE)
+    data <- read.csv(traj_filename, check.names = FALSE, header = TRUE)
     data = data.table(data)
     codes = data$code[1]
     codes = drop(sapply(str_split(str_sub(codes, 2,-2), '-'), as.numeric))
     data = data[-c(1:3), ]
     colnames(data)<-c('index', 'score', 'added', 'removed', 'code', 'delta', 'm')
 
-    input_data = read.csv(file = data_filename, header=TRUE)
+    input_data = read.csv(file = data_filename, header=TRUE, check.names=FALSE)
     n = nrow(input_data)
     p = ncol(input_data)
     

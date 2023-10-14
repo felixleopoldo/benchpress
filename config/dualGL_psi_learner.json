@@ -6,8 +6,8 @@
         "graph_id": "random-5",
         "parameters_id": "gwi",
         "seed_range": [
-           20,
-            25
+            1,
+            3
         ]
       }
     ],
@@ -21,9 +21,6 @@
         "path": true,
         "text": false,
         "ids": [
-            "bdgraph",
-            "dualGL_gts",
-            "jtsampler_gts",
             "psi-learn"
         ]
       },
@@ -31,6 +28,7 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": [
+          "psi-learn"
       ],
       "mcmc_traj_plots": [
         {
@@ -58,7 +56,7 @@
         {
           "id": "jtsampler_gts",
           "burn_in": 0.5,
-          "active": false
+          "active": true
         },
         {
           "id": "bdgraph",
@@ -199,85 +197,7 @@
                          0.7,
                          0.9,
                          0.99]
-
-          }],
-          "dualgl": [
-              {
-              "id": "dualGL_gts",
-              "timeout": null,
-              "startalg": "jtsampler_gts",
-              "alpha": [0.01,
-                        0.025,
-                        0.05,
-                        0.1,
-                        0.2,
-                        0.3,
-                        0.4,
-                        0.5,
-                        0.6,
-                        0.7,
-                        0.9,
-                        0.99]
-           }    
-           ],       
-          "bdgraph": [
-              {
-              "id": "bdgraph",
-              "method": "ggm",
-              "algo": [
-                  "bdmcmc"
-              ],
-              "iter": 100000,
-              "gprior": 0.5,
-              "dfprior": 3,
-              "gstart": "empty",
-              "timeout": null,
-              "mcmc_seed": 1,
-              "thresh": 0.001,
-              "mcmc_estimator": [
-                  "threshold"
-              ],
-          "threshold": [
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7,
-            0.8,
-            0.9,
-            1.0
-          ],
-          "burnin_frac": 0.5
-        }
-      ],
-      "athomas_jtsampler": [
-        {
-          "id": "jtsampler_gts",
-          "burnin_frac": 0.5,
-          "mcmc_estimator": "threshold",
-          "timeout": null,
-          "num_samples": 3000000,
-          "mcmc_seed": 1,
-          "sampler": 1,
-          "edge_penalty": 0.0,
-          "size_maxclique": 200,
-          "full_output": true,
-          "threshold": [
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7,
-            0.8,
-            0.9,
-            1.0
-          ]
-        }
-      ]
+          }]
     }
   }
 }   
