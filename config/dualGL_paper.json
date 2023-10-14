@@ -6,8 +6,8 @@
         "graph_id": "random-5",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -15,8 +15,8 @@
         "graph_id": "random-2",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -24,8 +24,8 @@
         "graph_id": "random-1",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -33,8 +33,8 @@
         "graph_id": "lattice",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -42,8 +42,8 @@
         "graph_id": "circle",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -51,8 +51,8 @@
         "graph_id": "hub",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -60,8 +60,8 @@
         "graph_id": "cluster",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       },
       {
@@ -69,8 +69,8 @@
         "graph_id": "scale-free",
         "parameters_id": "gwi",
         "seed_range": [
-            1,
-            10
+            10,
+            15
         ]
       }
     ],
@@ -94,10 +94,7 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": [
-          "bdgraph",
-          "jtsampler_gts",
-          "dualGL_gts",
-          "psi-learn"
+
       ],
       "mcmc_traj_plots": [
         {
@@ -108,7 +105,7 @@
             "score",
             "size"
           ],
-          "active": true
+          "active": false
         },
         {
           "id": "bdgraph",
@@ -118,19 +115,19 @@
             "score",
             "size"
           ],
-          "active": true
+          "active": false
         }
       ],
       "mcmc_heatmaps": [
         {
           "id": "jtsampler_gts",
           "burn_in": 0.5,
-          "active": true
+          "active": false
         },
         {
           "id": "bdgraph",
           "burn_in": 0.5,
-          "active": true
+          "active": false
         }
       ],
       "mcmc_autocorr_plots": [
@@ -142,7 +139,7 @@
           "functional": [
             "score"
           ],
-          "active": true
+          "active": false
         },
         {
           "id": "bdgraph",
@@ -152,7 +149,7 @@
           "functional": [
             "score"
           ],
-          "active": true
+          "active": false
         }
       ]
     }
@@ -248,7 +245,7 @@
       ]
     },
       "structure_learning_algorithms": {
-          "psilearner": [
+          "equsa_psilearner": [
               {
               "id": "psi-learn",
               "timeout": null, 
