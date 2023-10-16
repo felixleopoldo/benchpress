@@ -30,16 +30,12 @@
                     "dualpc",
                     "interiamb-zf",
                     "gs-zf",
-                    "fci-fisher-z",
                     "fges-sem-bic",
-                    "gfci-sem-bic-f-z",
                     "hc-bge",
                     "mmhc-bge-zf",
                     "pc-gaussCItest",
-                    "rfci-fisher-z",
                     "tabu-bge",
-                    "omcmc-bge",
-                    "gobnilp-bge"
+                    "omcmc-bge"
                 ]
             },
             "graph_true_stats": true,
@@ -302,10 +298,10 @@
                 {
                     "id": "fges-sem-bic",
                     "faithfulnessAssumed": true,
-                    "score": "sem-bic",
+                    "score": "sem-bic-score",
                     "datatype": "continuous",
                     "samplePrior": 1,
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": [
                         0.8,
                         1,
@@ -322,88 +318,8 @@
                         1,
                         2
                     ],
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": null,
-                    "timeout": null
-                }
-            ],
-            "tetrad_fci": [
-                {
-                    "id": "fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                },
-                {
-                    "id": "fci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
-                    "timeout": null
-                }
-            ],
-            "tetrad_gfci": [
-                {
-                    "id": "gfci-bdeu-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bdeu-score",
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
-                    "penaltyDiscount": null,
-                    "samplePrior": 1,
-                    "structurePrior": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gfci-sem-bic-f-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "structurePrior": 1,
-                    "timeout": null
-                }
-            ],
-            "tetrad_rfci": [
-                {
-                    "id": "rfci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                },
-                {
-                    "id": "rfci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
                     "timeout": null
                 }
             ],
@@ -805,7 +721,7 @@
                 {
                     "id": "omcmc_itmap-bge",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                    "input_algorithm_id": "itsearch_map-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -826,7 +742,7 @@
                 {
                     "id": "omcmc_pcalg005-bge",
                     "plus1": true,
-                    "startspace_algorithm": "pcalg005",
+                    "input_algorithm_id": "pcalg005",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,
@@ -858,7 +774,7 @@
                 {
                     "id": "omcmc-bge",
                     "plus1": true,
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
+                    "input_algorithm_id": "itsample-bge_am01_endspace",
                     "scoretype": "bge",
                     "chi": null,
                     "edgepf": null,

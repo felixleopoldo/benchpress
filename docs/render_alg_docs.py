@@ -5,14 +5,7 @@ import bibtexparser
 
 def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
-    #tab += "   * - Title\n"
-    #tab += "     - "+info["title"]+"\n"
-    
-    #print(info.keys())
-    #print(info)
-    
-        
-    
+
     if info["package"]["title"] == "":
         tab += "   * - Package\n"    
         tab += "     - \n"
@@ -77,6 +70,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
+        if p.name.startswith("."):
+            continue
         #print(p.name)
         j = p/"info.json"
         if p.name == "docs.rst" or p.name == ".DS_Store":
@@ -111,23 +106,21 @@ algspath = Path("../workflow/rules/structure_learning_algorithms")
 f = open("source/algs_desc.rst", "r")
 content = f.read()
 
-str = ""
-str += ".. _"+algspath.name+": \n\n"
-str += "Algorithms\n"
-str += "="*len(algspath.name) + "="*10
-str += "\n\n"
-str += content
-str += "\n\n"
-str += info_to_small_table()
-str += "\n\n"
+outpur_str = ""
+outpur_str += ".. _"+algspath.name+": \n\n"
+outpur_str += "Algorithms\n"
+outpur_str += "="*len(algspath.name) + "="*10
+outpur_str += "\n\n"
+outpur_str += content
+outpur_str += "\n\n"
+outpur_str += info_to_small_table()
+outpur_str += "\n\n"
 for p in sorted(algspath.iterdir()):
 
     if not p.is_dir():
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":
         continue
-
-
         
     d = p/"docs.rst"
     j = p/"info.json"
@@ -152,26 +145,26 @@ for p in sorted(algspath.iterdir()):
         else: dump = ""
     
   
-    #str += "\n\n\n"
-    #str +=".. _" + p.name +": "
-    str += "\n\n"
-    str += ".. _"+p.name+": \n\n"
-    #str +="``" + p.name +"`` \n"
-    str +="" + p.name +" \n"
-    #str +="" + info["title"] +" ("+p.name+") \n"
-    str +="-"*len(p.name) + "-"*4 + "\n"
+    #outpur_str += "\n\n\n"
+    #outpur_str +=".. _" + p.name +": "
+    outpur_str += "\n\n"
+    outpur_str += ".. _"+p.name+": \n\n"
+    #outpur_str +="``" + p.name +"`` \n"
+    outpur_str +="" + p.name +" \n"
+    #outpur_str +="" + info["title"] +" ("+p.name+") \n"
+    outpur_str +="-"*len(p.name) + "-"*4 + "\n"
 
     
-    str += "\n"
-    str += ".. rubric:: "+ info["title"]    
-    str += "\n\n"
-    str += info_to_table(info, p)
-    str += "\n\n"
-    str += ".. rubric:: Description"    
+    outpur_str += "\n"
+    outpur_str += ".. rubric:: "+ info["title"]    
+    outpur_str += "\n\n"
+    outpur_str += info_to_table(info, p)
+    outpur_str += "\n\n"
+    outpur_str += ".. rubric:: Description"    
     if content != "":    
-        str += "\n\n"
-        str += content
-    str += "\n\n"
+        outpur_str += "\n\n"
+        outpur_str += content
+    outpur_str += "\n\n"
     
     with open(s) as json_file:    
         schema = json.load(json_file)
@@ -181,22 +174,31 @@ for p in sorted(algspath.iterdir()):
            if prop != "id"])
 
     if tmp:
-        str += ".. rubric:: Some fields described \n"
+        outpur_str += ".. rubric:: Some fields described \n"
         for prop, obj in sorted(schema["items"]["properties"].items()):
             if prop == "id":
                 continue
             if "description" in obj:                
-                str += "* ``{}`` {} \n".format(prop, obj["description"])
+                outpur_str += "* ``{}`` {} \n".format(prop, obj["description"])
     
-    str += ".. rubric:: Example"
-    str += "\n\n\n"
-    str += ".. code-block:: json"    
-    str += "\n\n"
-    str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    str += "\n\n"
-    str += ".. footbibliography::"
-    #str += "\n\n---------"
-    str += "\n\n"
+    # # downloadable linke to config files in config folder
+    # outpur_str += "\n\n\n"
+    # outpur_str += ".. rubric:: Config files"
+    # outpur_str += "\n\n"
+    # for conffile in (p / "config").glob("*.json"):
+    #     xx = str(".."/ conffile)
+    #     outpur_str += ":download:`"+conffile.name+" <"+xx + ">` \n"
+                
+    outpur_str += "\n\n"
+    
+    outpur_str += ".. rubric:: Example JSON"
+    outpur_str += "\n\n\n"
+    outpur_str += ".. code-block:: json"    
+    outpur_str += "\n\n"
+    outpur_str += '    '.join(('\n'+dump.strip()).splitlines(True))
+    outpur_str += "\n\n"
+    outpur_str += ".. footbibliography::"
+    outpur_str += "\n\n"
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
-    text_file.write(str)
+    text_file.write(outpur_str)

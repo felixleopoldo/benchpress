@@ -7,6 +7,6 @@ rule bdgraph_rgwish:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     container:
-        "docker://bpimages/bdgraph:2.64"
+        "docker://bpimages/bdgraph:2.72.0"
     script:
         "bdgraph_rgwish.R"

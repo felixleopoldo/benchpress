@@ -8,6 +8,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/dualpc:latest"
+        "docker://bpimages/dualpc:585751b"
     script:
         "script.R"

@@ -1,0 +1,55 @@
+{
+    "title": "tetrad_pc-all",
+    "description": "pc objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_pc item",
+        "description": "pc instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "test": {
+                "type": "string",
+                "enum": [
+                    "cci-test",
+                    "cg-lr-test",
+                    "fisher-z-test",
+                    "bdeu-test",
+                    "disc-bic-test",
+                    "kci-test",
+                    "chi-square-test",
+                    "g-square-test",
+                    "prob-test"
+                ]
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "datatype": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "test",
+            "alpha",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "pc-fisher-z",
+                "test": "fisher-z-test",
+                "alpha": 0.01,
+                "datatype": "continuous",
+                "timeout": null
+            }
+        ]
+    }
+}

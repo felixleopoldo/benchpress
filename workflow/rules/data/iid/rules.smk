@@ -34,7 +34,7 @@ rule sample_loglindata:
     shell:
         "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
 
-rule sample_intra_class_            data:
+rule sample_intra_class_data:
     input:
         "workflow/rules/data/iid/numpy_sample_mvn_data.py",
         cov="{output_dir}/parameters/trilearn_intra-class/{bn}/adjmat=/{adjmat}.csv"
@@ -43,10 +43,12 @@ rule sample_intra_class_            data:
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_intra-class/{bn}"\
              "/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+    wildcard_constraints:
+        n="[0-9]*"
     container:
         docker_image("trilearn")
     shell:
-        "python2 workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
 
 rule sample_g_inverse_wishart:
     input:
@@ -92,7 +94,8 @@ rule standardize:
              "/{model}" \
              "/data=/{data_alg}/{data_params}/standardized={standardized}/seed={seed}.csv"
     wildcard_constraints:
-        standardized="(True|False)"
+        standardized="(True|False)",
+        seed="[0-9]*"
     script:
         "standardize.R"
 

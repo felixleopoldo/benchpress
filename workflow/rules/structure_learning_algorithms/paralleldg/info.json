@@ -1,0 +1,17 @@
+{
+    "title": "Parallel DG",
+    "docker_image": "hallawalla/paralleldg:0.9.5",
+    "version": "0.9.5",
+    "package": {
+        "title": "parallelDG",
+        "url": "https://github.com/melmasri/parallelDG"
+    },
+    "docs_url": "https://github.com/melmasri/parallelDG",
+    "outputs": [
+        "graphtraj"
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Python"
+}

@@ -15,9 +15,9 @@ df <- dplyr::bind_rows(df1, df2)
 ggplot(data = df, aes(x = as.factor(seed), y = value, fill = stats)) +
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(. ~ adjmat) +
-    ggtitle("Graph properties") +
+    ggtitle("True graph properties") +
     theme_bw() +
-    xlab("Seed") +
+    xlab("Graph seed number") +
     ylab("") +
     theme(plot.title = element_text(hjust = 0.5))
 ggsave(snakemake@output[["graph_density_plot"]])

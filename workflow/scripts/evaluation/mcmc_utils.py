@@ -86,7 +86,7 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
                 
             weight = cur_index - prev_index            
 
-            heatmap += nx.to_numpy_matrix(g, nodelist=nodeorder) * weight
+            heatmap += nx.to_numpy_array(g, nodelist=nodeorder) * weight
 
         added = edges_str_to_list(row["added"], edgesymb)
         removed = edges_str_to_list(row["removed"], edgesymb)

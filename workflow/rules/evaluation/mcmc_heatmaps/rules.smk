@@ -51,7 +51,7 @@ rule mcmc_heatmap_plot:
         alg_string="{alg_string}",
         burnin_frac="{burn_in}"
     container:
-        docker_image("networkx")
+        docker_image("pydatascience")
     script:
         "plot_heatmap_from_graphtraj.py"
 

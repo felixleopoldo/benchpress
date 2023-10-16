@@ -79,7 +79,7 @@ bdgraph_rgwish
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/bdgraph:2.64 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
+     - `bpimages/bdgraph:2.72.0 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
    * - Module
      - `bdgraph_rgwish <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bdgraph_rgwish>`__
 
@@ -131,7 +131,7 @@ bin_bn
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `bpimages/benchpress:1.2.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
+     - `bpimages/benchpress:2.1.0 <https://hub.docker.com/r/bpimages/benchpress/tags>`__
    * - Module
      - `bin_bn <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/bin_bn>`__
 
@@ -289,7 +289,7 @@ trilearn_hyper-dir
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_hyper-dir <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_hyper-dir>`__
 
@@ -345,7 +345,7 @@ trilearn_intra-class
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Docker 
-     - `bpimages/trilearn:1.25 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
    * - Module
      - `trilearn_intra-class <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/parameters/trilearn_intra-class>`__
 
