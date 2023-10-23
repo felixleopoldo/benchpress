@@ -85,7 +85,7 @@
     ],
     "evaluation": {
       "benchmarks": {
-        "filename_prefix": "dualGL_sparse/",
+        "filename_prefix": "dualGL_sparse_noburnin/",
         "show_seed": false,
         "errorbar": true,
         "errorbarh": false,
