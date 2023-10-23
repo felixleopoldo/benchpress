@@ -30,6 +30,15 @@
       },
       {
         "data_id": "example1",
+        "graph_id": "random-sparse",
+        "parameters_id": "gwi",
+        "seed_range": [
+          10,
+          15
+        ]
+      },
+      {
+        "data_id": "example1",
         "graph_id": "lattice",
         "parameters_id": "gwi",
         "seed_range": [
@@ -171,6 +180,14 @@
           "class": null,
           "size": null,
           "prob": 0.2
+        },
+        {
+          "id": "random-sparse",
+          "p": 200,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.01
         },
         {
           "id": "random-1",
