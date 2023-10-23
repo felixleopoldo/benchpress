@@ -70,7 +70,7 @@ myalg <- function() {
     data_filename <- snakemake@input[["data"]]
     ntests_filename <- snakemake@output[["ntests"]]
     alpha = as.numeric(snakemake@wildcards[['alpha']])
-    burnin <- 0.5
+    ## burnin <- 0.5
 
     ## The algorithm should be in this function.
     start <- proc.time()[1]
@@ -92,7 +92,7 @@ myalg <- function() {
     data = data[code %in% codes][m>0][m < n-1]
 
     ## remove burnin
-    data = data[floor(nrow(data)*burnin):nrow(data)]
+    ## data = data[floor(nrow(data)*burnin):nrow(data)]
 
     ## re-order edge index, where x-y such that x < y.
     a = rbind(data[removed=='[]',as.list(fix_edges(added, 'add')), index],
