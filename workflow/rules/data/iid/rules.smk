@@ -8,7 +8,7 @@ rule sample_bin_bn_data:
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/parameters=/bin_bn/{bn}"\             
+             "/parameters=/bin_bn/{bn}"\
              "/data=/"+pattern_strings["iid"] + "/" \
              "seed={replicate}.csv"
     wildcard_constraints:
@@ -107,7 +107,7 @@ rule sample_data_fixed_bnfit:
         data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
     wildcard_constraints:
         n="[0-9]*",
-        bn=".*\.rds"    
+        bn=".*\.rds"
     shell:
         "Rscript workflow/rules/data/iid/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
