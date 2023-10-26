@@ -33,7 +33,7 @@ def summarise_alg_input_adjmat_est_path(algorithm):
             "adjmat=/{adjmat}/"\
             "parameters=/{bn}/"\
             "data=/{data}/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + \
+            "algorithm=/" + pattern_strings[algorithm] + "/"  \
             "seed={replicate}/" \
             "adjmat.csv"
 
@@ -42,7 +42,7 @@ def summarise_alg_input_time_path(algorithm):
                     "adjmat=/{adjmat}/"\
                     "parameters=/{bn}/"\
                     "data=/{data}/" \
-                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
+                    "algorithm=/" + pattern_strings[algorithm] + "/" \
                     "seed={replicate}/" \
                     "time.txt"
 
@@ -52,13 +52,13 @@ def summarise_alg_input_ntests_path(algorithm):
                     "adjmat=/{adjmat}/"\
                     "parameters=/{bn}/"\
                     "data=/{data}/" \
-                    "algorithm=/" + pattern_strings[algorithm] + "/" + \
+                    "algorithm=/" + pattern_strings[algorithm] + "/" \
                     "seed={replicate}/" \
                     "ntests.txt"
 
 def summarise_alg_output_res_path(algorithm):
     return "{output_dir}/result/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + \
+            "algorithm=/" + pattern_strings[algorithm] + "/"  \
             "adjmat=/{adjmat}/"\
             "parameters=/{bn}/"\
             "data=/{data}/"\
