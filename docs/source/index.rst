@@ -80,6 +80,7 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature.
 
+
 .. rubric:: See also
 
 * The paper :footcite:t:`rios2021benchpress`
