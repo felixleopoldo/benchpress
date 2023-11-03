@@ -15,7 +15,7 @@ def grues_wrap():
     # Read in data, seed, and params
     df = pd.read_csv(snakemake.input["data"])
     rng = np.random.seed(int(snakemake.wildcards["mcmc_seed"]))
-    mc_len = int(int(snakemake.wildcards["n_iterations"]))
+    mc_len = int(snakemake.wildcards["n_iterations"])
 
     # run MCMC
     model = grues.InputData(df.to_numpy(), rng)

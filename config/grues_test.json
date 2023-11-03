@@ -1,0 +1,170 @@
+{
+  "benchmark_setup": {
+    "data": [
+      {
+        "graph_id": "sachs.csv",
+        "parameters_id": null,
+        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+        "seed_range": null
+      }
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "grues_test/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": false,
+        "ids": ["corr", "grues"
+        ]
+      },
+      "graph_true_plots": false,
+      "graph_true_stats": true,
+      "ggally_ggpairs": false,
+      "graph_plots": ["corr"],
+      "mcmc_traj_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0,
+          "thinning": 1,
+          "functional": [
+            "score",
+            "size"
+          ],
+          "active": false
+        }
+      ],
+      "mcmc_heatmaps": [
+        {
+          "id": "grues",
+          "burn_in": 0,
+          "active": false
+        }
+      ],
+      "mcmc_autocorr_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0,
+          "thinning": 1,
+          "lags": 50,
+          "functional": [
+            "score",
+            "size"
+          ],
+          "active": false
+        }
+      ]
+    }
+  },
+  "resources": {
+    "data": {
+      "gcastle_iidsim": [
+        {
+          "id": "gcastle_sem",
+          "standardized": true,
+          "method": "linear",
+          "sem_type": "gauss",
+          "noise_scale": 1.0,
+          "n": [
+            100
+          ]
+        }
+      ],
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": [
+            300
+          ]
+        },
+        {
+          "id": "nonstandardized",
+          "standardized": false,
+          "n": [
+            300
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "trilearn_cta": [
+        {
+          "id": "cta",
+          "order": 20,
+          "alpha": 0.5,
+          "beta": 0.5
+        }
+      ],
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": [
+            6,
+            20
+          ],
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "trilearn_intra-class": [
+        {
+          "id": "intra-class",
+          "rho": 0.9,
+          "sigma2": 1.0
+        }
+      ],
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ],
+      "bdgraph_rgwish": [
+        {
+          "id": "gwi",
+          "b": 3,
+          "threshold_conv": 1e-08
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "corr_thresh": [
+        {
+          "id": "corr",
+          "timeout": null,
+          "thresh": [
+            0.25,
+            0.5,
+            0.75
+          ]
+        }
+            ],
+      "grues": [
+        {
+          "id": "grues",
+          "cutoff": 0.8,
+          "burnin_frac": 0.5,
+          "mcmc_estimator": "threshold",
+          "threshold": 0.5,
+          "mcmc_seed": [
+            1,
+            2,
+            3
+          ],
+          "n_iterations": 10000,
+          "timeout": null
+        }
+      ]
+    }
+  }
+}
