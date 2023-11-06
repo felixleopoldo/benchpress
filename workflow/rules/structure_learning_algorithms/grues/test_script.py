@@ -1,30 +1,24 @@
-sys.path.append("workflow/scripts/utils")
-# If you have a local folder for your program/library, you can add it to the path here.
-# sys.path.append("/path/to/my/local/python_lib")
-
-import time
-
 import numpy as np
 import pandas as pd
+
+from gues.sample import sample_causal_dag
 from gues import grues
 
-from add_timeout import *
 
-
-def grues_wrap():
+def grues_wrap(sm_data, sm_mcmc_seed, sm_n_iterations):
     # Read in data, seed, and params
-    df = pd.read_csv(snakemake.input["data"])
-    rng = np.random.default_rng(int(snakemake.wildcards["mcmc_seed"]))
-    mc_len = int(snakemake.wildcards["n_iterations"])
+    df = pd.read_csv(sm_data)
+    rng = np.random.default_rng(sm_mcmc_seed)
+    mc_len = int(sm_n_iterations)
 
     # run MCMC
     model = grues.InputData(df.to_numpy(), rng)
     model.mcmc(max_moves=mc_len)
 
     # Save time
-    tottime = time.perf_counter() - start
-    with open(snakemake.output["time"], "w") as text_file:
-        text_file.write(str(tottime))
+    # tottime = time.perf_counter() - start
+    # with open(snakemake.output["time"], "w") as text_file:
+    #     text_file.write(str(tottime))
 
     # Convert to and save seqgraph
     labels = df.columns
@@ -40,7 +34,7 @@ def grues_wrap():
     score_init = all_scores[0]
     add_init = ";".join((f"{labels[i]}-{labels[j]}" for (i, j) in edges_init))
 
-    with open(snakemake.output["seqgraph"], "w") as f:
+    with open("test_seqgraph.csv", "w") as f:
         f.write("index,score,added,removed\n")
         f.write(f"-2,0.0,[{first_to_others}],[]\n")
         f.write(f"-1,0.0,[],[{first_to_others}]\n")
@@ -55,17 +49,7 @@ def grues_wrap():
             f.write(f"{idx+1},{score},[{add}],[{rm}]\n")
 
 
-# This part starts the timer
-start = time.perf_counter()
+uec, dag_adj, sample = sample_causal_dag(5, 0.3, return_uec=True)
 
-if snakemake.wildcards["timeout"] == "None":
-    grues_wrap()
-else:
-    with timeoutf(
-        int(snakemake.wildcards["timeout"]),
-        snakemake.output["seqgraph"],
-        snakemake.output["time"],
-        snakemake.output["ntests"],
-        start,
-    ):
-        grues_wrap()
+sm_data = "../../../../resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv"
+grues_wrap(sm_data, 0, 10)
