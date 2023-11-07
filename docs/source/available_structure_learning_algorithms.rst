@@ -44,8 +44,7 @@ To add new modules, see :ref:`new_modules`.
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - bidag_partition_mcmc_
    * - GrUES MCMC
-     - `UG
-       <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `GrUES <https://gues.causal.dev/repro_astat>`___
      - grues_
    * - Fast IAMB
@@ -767,7 +766,7 @@ grues
    * - Paper
      - `arXiv <https://arxiv.org/abs/2210.00822>`__
    * - Graph type
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
    * - Docker
      - `causaldev/bp-grues:0.3.0 <https://hub.docker.com/r/causaldev/bp-grues/tags>`__
    * - Module folder
@@ -780,9 +779,57 @@ grues
 Abstract:
 We consider the problem of estimating the marginal independence structure of a Bayesian network from observational data in the form of an undirected graph called the unconditional dependence graph. We show that unconditional dependence graphs of Bayesian networks correspond to the graphs having equal independence and intersection numbers. Using this observation, a Gröbner basis for a toric ideal associated to unconditional dependence graphs of Bayesian networks is given and then extended by additional binomial relations to connect the space of all such graphs. An MCMC method, called GrUES (Gröbner-based Unconditional Equivalence Search), is implemented based on the resulting moves and applied to synthetic Gaussian data. GrUES recovers the true marginal independence structure via a penalized maximum likelihood or MAP estimate at a higher rate than simple independence tests while also yielding an estimate of the posterior, for which the 20% HPD credible sets include the true structure at a high rate for data-generating graphs with density at least 0.5.
 
+.. rubric:: Example
+
+Config file: `grues_vs_corr-thresh.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/grues/grues_vs_corr-thresh.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/grues/grues_vs_corr-thresh.json
+
+:numref:`bossplot` and :numref:`bosstimings`  show FP/P vs. TP/P and timings based on 10 datsets corresponding to 10 realisations of a 60-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 300 samples.
+:numref:`bosstype` and :numref:`bossprops` show the type of graphs estimated and the properties of the true graphs, respectively.
+
+.. _bossplot:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/tprfpr_pattern.png
+    :width: 320
+    :alt: FP/P vs. TP/P BOSS example
+    :align: left
+
+    FP/P vs. TP/P.
+
+.. _bosstimings:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/time.png
+    :width: 320
+    :alt: Timings BOSS example
+    :align: right
+
+    Timings.
+
+.. _bosstype:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graphtype.png
+    :width: 320
+    :alt: Graph types example
+    :align: left
+
+    Type of graphs estimated.
+
+.. _bossprops:
+
+.. figure:: ../../workflow/rules/structure_learning_algorithms/tetrad_boss/images/graph_properties_plot.png
+    :width: 320
+    :alt: Properties of the true graphs
+    :align: right
+
+    Graph properties.
 
 .. rubric:: Example JSON
-
 
 .. code-block:: json
 
