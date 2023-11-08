@@ -1002,6 +1002,7 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
           filter(adjmat == adjmat2) %>%
           filter(parameters == parameters2) %>%
           filter(data == data2)
+
         if (nrow(joint_bench) > 0) {
           fpr_tpr_pattern()
           fpr_tpr_skel()
