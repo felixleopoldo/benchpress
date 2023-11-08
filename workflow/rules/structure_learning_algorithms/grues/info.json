@@ -1,5 +1,5 @@
 {
-    "title": "The GrUES submodule for MCMC-based structure learning",
+    "title": "The GrUES module for MCMC-based structure learning",
     "version": "0.3.0",
     "package": {
         "title": "gues",
@@ -8,7 +8,7 @@
     "docs": "https://gues.causal.dev/repro_astat",
     "outputs": "graphtraj",
     "graph_types": [
-        "UG"
+        "UDG"
     ],
     "language": "Python"
 }
