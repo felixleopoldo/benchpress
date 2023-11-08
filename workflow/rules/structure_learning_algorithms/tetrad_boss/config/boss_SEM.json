@@ -109,6 +109,7 @@
                     "score": "sem-bic-score",
                     "datatype": "continuous",
                     "samplePrior": 0,
+                    "test": "fisher-z-test",
                     "semBicStructurePrior": 0,
                     "penaltyDiscount": [
                         0.75,
