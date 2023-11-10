@@ -5,7 +5,7 @@
         "title": "gues",
         "url": "https://pypi.org/project/gues/"
     },
-    "docs": "https://gues.causal.dev/repro_astat",
+    "docs_url": "https://gues.causal.dev/repro_astat",
     "outputs": "graphtraj",
     "graph_types": [
         "UDG"

@@ -35,9 +35,26 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": ["corr", "grues"],
-      "mcmc_traj_plots": [],
+      "mcmc_traj_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0.5,
+          "thinning": 5,
+          "functional": ["score"],
+          "active": false
+        }
+      ],
       "mcmc_heatmaps": [],
-      "mcmc_autocorr_plots": []
+      "mcmc_autocorr_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 50,
+          "functional": ["score"],
+          "active": false
+        }
+      ]
     }
   },
   "resources": {
