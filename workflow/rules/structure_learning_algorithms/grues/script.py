@@ -2,6 +2,7 @@ sys.path.append("workflow/scripts/utils")
 # If you have a local folder for your program/library, you can add it to the path here.
 # sys.path.append("/path/to/my/local/python_lib")
 
+from os import PRIO_PGRP
 import time
 
 import numpy as np
@@ -17,9 +18,16 @@ def grues_wrap():
     rng = np.random.default_rng(int(snakemake.wildcards["mcmc_seed"]))
     mc_len = int(snakemake.wildcards["n_iterations"])
 
+    # set prior
+    prior_n_sources = int(snakemake.wildcards["prior_n_sources"])
+    if prior_n_sources == 0:
+        prior = None
+    else:
+        prior = (prior_n_sources, df.shape[1])
+
     # run MCMC
     model = grues.InputData(df.to_numpy(), rng)
-    model.mcmc(max_moves=mc_len)
+    model.mcmc(init=("gauss", 0.05), max_moves=mc_len, prior=prior)
 
     # Save time
     tottime = time.perf_counter() - start

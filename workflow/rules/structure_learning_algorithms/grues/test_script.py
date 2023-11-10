@@ -7,7 +7,7 @@ from gues import grues
 
 def grues_wrap(sm_data, sm_mcmc_seed, sm_n_iterations):
     # Read in data, seed, and params
-    df = pd.read_csv(sm_data)
+    df = sm_data
     rng = np.random.default_rng(sm_mcmc_seed)
     mc_len = int(sm_n_iterations)
 
@@ -49,7 +49,7 @@ def grues_wrap(sm_data, sm_mcmc_seed, sm_n_iterations):
             f.write(f"{idx+1},{score},[{add}],[{rm}]\n")
 
 
-uec, dag_adj, sample = sample_causal_dag(5, 0.3, return_uec=True)
-
-sm_data = "../../../../resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv"
-grues_wrap(sm_data, 0, 10)
+uec, dag_adj, sample = sample_causal_dag(6, 0.5, return_uec=True)
+sm_data = pd.DataFrame(sample, columns=["a", "b", "c", "d", "e", "f"])
+# sm_data = "../../../../resources/data/mydatasets/2005_sachs_2_cd3cd28icam2_log_std.csv"
+grues_wrap(sm_data, 0, 1000)
