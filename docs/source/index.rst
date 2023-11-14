@@ -35,7 +35,6 @@
     available_structure_learning_algorithms
     available_evaluations
 
-
 .. toctree::
     :hidden:
     :maxdepth: 1
@@ -43,14 +42,6 @@
     :caption: Development
     
     module_add
-
-.. .. toctree::
-..     :hidden:
-..     :maxdepth: 3
-..     :name: File formats
-..     :caption: File formats
-
-..     data_formats
 
 .. toctree::
     :hidden:
@@ -71,11 +62,9 @@
 
 ------------------------
 
-
 ##################################
 Benchpress
 ##################################
-
 
 Describing the relationship between the variables in a study domain and modelling
 the data generating mechanism is a fundamental problem in many empirical sciences.
@@ -91,15 +80,13 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature.
 
-
 .. rubric:: See also
 
 * The paper :footcite:t:`rios2021benchpress`
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
-* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of questions etc.
-
+* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
 
 .. rubric:: Updates
 
