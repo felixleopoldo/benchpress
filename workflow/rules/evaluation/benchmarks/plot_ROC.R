@@ -978,6 +978,9 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     mutate(id_numlev = lev_to_levnum(id))
   joint_bench$id_numlev <- factor(joint_bench$id_numlev, levels = numlev)
 
+  # Make NA values in parameters column to string "NA"
+  joint_bench$parameters[is.na(joint_bench$parameters)] <- "NA"
+
   # get unique graph, parameters, data
   unique_adjmats <- unique(joint_bench$adjmat)
   unique_parameters <- unique(joint_bench$parameters)
