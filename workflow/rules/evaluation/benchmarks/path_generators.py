@@ -34,7 +34,7 @@ def summarise_alg_input_adjmat_est_path(algorithm):
             "parameters=/{bn}/"\
             "data=/{data}/"\
             "algorithm=/" + pattern_strings[algorithm] + "/"  \
-            "seed={replicate}/" \
+            "seed={seed}/" \
             "adjmat.csv"
 
 def summarise_alg_input_time_path(algorithm):
@@ -43,7 +43,7 @@ def summarise_alg_input_time_path(algorithm):
                     "parameters=/{bn}/"\
                     "data=/{data}/" \
                     "algorithm=/" + pattern_strings[algorithm] + "/" \
-                    "seed={replicate}/" \
+                    "seed={seed}/" \
                     "time.txt"
 
 # This is code repetition, yes...
@@ -53,7 +53,7 @@ def summarise_alg_input_ntests_path(algorithm):
                     "parameters=/{bn}/"\
                     "data=/{data}/" \
                     "algorithm=/" + pattern_strings[algorithm] + "/" \
-                    "seed={replicate}/" \
+                    "seed={seed}/" \
                     "ntests.txt"
 
 def summarise_alg_output_res_path(algorithm):
@@ -62,7 +62,7 @@ def summarise_alg_output_res_path(algorithm):
             "adjmat=/{adjmat}/"\
             "parameters=/{bn}/"\
             "data=/{data}/"\
-            "seed={replicate}/" \
+            "seed={seed}/" \
             "id={id}/" \
             "result.csv"
     # this seed belongs to data actually, and gets stripped from data after.
@@ -75,7 +75,7 @@ def join_summaries_output(algorithm):
     return "{output_dir}/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
 
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"
 
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
@@ -86,7 +86,7 @@ def result_path_mcmc(algorithm):
             "adjmat=/{adjmat}/"\
             "parameters=/{bn}/"\
             "data=/{data}/"\
-            "seed={replicate}/" \
+            "seed={seed}/" \
             "id={id}/" \
             "result.csv"
     return res

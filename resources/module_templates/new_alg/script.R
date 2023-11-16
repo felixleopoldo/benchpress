@@ -14,7 +14,7 @@ myalg <- function() {
     # This is a fast and naiive algorithm.
     p <- ncol(data)
     Sys.sleep(3)
-    set.seed(as.integer(snakemake@wildcards[["replicate"]]))
+    set.seed(as.integer(snakemake@wildcards[["seed"]]))
     adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > cutoff
     adjmat <- 1 * (adjmat | t(adjmat))
     diag(adjmat) <- 0

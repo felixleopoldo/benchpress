@@ -379,7 +379,7 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
         df = pd.read_csv(snakemake.input["data"])
 
         # Set the seed
-        np.random.seed(int(snakemake.wildcards["replicate"]))
+        np.random.seed(int(snakemake.wildcards["seed"]))
         
         # The algorithm goes here    
         adjmat = my_local_algorithm(df) # returns an adjacency matrix

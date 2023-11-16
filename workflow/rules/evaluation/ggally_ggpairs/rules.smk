@@ -4,9 +4,9 @@ rule plot_pairs:
     input:
         data=summarise_alg_input_data_path()
     output:
-        filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.png",
+        filename="{output_dir}/pairs/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.png",
     params:
-        data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}"
+        data="Graph:\n{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}"
     script:
         "pairs.R"
 

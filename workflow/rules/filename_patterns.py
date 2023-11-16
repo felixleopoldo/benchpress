@@ -8,7 +8,7 @@ def adjmat_estimate_path_mcmc(algorithm):
         "parameters=/{bn}/"\
         "data=/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/" \
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "adjmat.csv"
     return ret
 
@@ -19,21 +19,21 @@ def alg_output_seqgraph_path_fine_match(algorithm):
         "parameters=/{bn}/"\
         "data=/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" + \
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "adjvecs.csv"
 
 
 def alg_output_seqgraph_path(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" + \
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "adjvecs_tobecompressed.csv"
 
 
 def alg_output_seqgraph_path_nocomp(algorithm):
     return "{output_dir}/adjvecs/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" + \
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "adjvecs.csv"
 
 # Standard algorithms
@@ -42,14 +42,14 @@ def alg_output_seqgraph_path_nocomp(algorithm):
 def alg_output_adjmat_path(algorithm):
     return "{output_dir}/adjmat_estimate/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" +\
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "adjmat.csv"
 
 
 def alg_output_time_path(algorithm):
     return "{output_dir}/time/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" +\
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "time.txt"
 
 # This is code repetition, yes...
@@ -58,12 +58,12 @@ def alg_output_time_path(algorithm):
 def alg_output_ntests_path(algorithm):
     return "{output_dir}/ntests/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" +\
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "ntests.txt"
 
 
 def alg_input_data():
-    return "{output_dir}/data/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/{data}/seed={seed}.csv"
 
 
 def time_path(algorithm):
@@ -72,13 +72,13 @@ def time_path(algorithm):
         "parameters=/{bn}/"\
         "data=/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" + \
-        "seed={replicate}/" \
+        "seed={seed}/" \
         "time.txt"
     return ret
 
 
 def data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"
 
 
 def adjmat_true_path():

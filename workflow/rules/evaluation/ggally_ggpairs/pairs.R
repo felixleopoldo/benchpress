@@ -6,19 +6,19 @@ myFun <- function(n = 5000) {
 }
 
 filename <- myFun(n=1) # temporary filemane
-filename <- paste(filename[1], ".png", sep="") 
+filename <- paste(filename[1], ".png", sep="")
 png(file=filename, width = 1200, height = 1200)
 
 df <- read.csv(snakemake@input[["data"]], check.names=FALSE)[-1,]
 title <- paste("Graph: ", snakemake@wildcards[["adjmat"]],"\n",
             "Parameters: ", snakemake@wildcards[["bn"]],"\n",
-            "Data: ", snakemake@wildcards[["data"]],"\n",            
+            "Data: ", snakemake@wildcards[["data"]],"\n",
             sep=""
             )
 datatype <- class(df[1,1])
 if (datatype == "integer")  {
     df <- df[-1,]
-    df[] <- lapply( df, factor) 
+    df[] <- lapply( df, factor)
     ggpairs(df, upper = list(continuous = ggally_density, combo = ggally_box_no_facet),
             title=title)
 } else {

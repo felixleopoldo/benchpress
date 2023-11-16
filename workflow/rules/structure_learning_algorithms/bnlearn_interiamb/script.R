@@ -4,7 +4,7 @@ source("resources/code_for_binary_simulations/make_var_names.R")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
-seed <- as.integer(snakemake@wildcards[["replicate"]])
+seed <- as.integer(snakemake@wildcards[["seed"]])
 
 data <- read.csv(filename_data, check.names = FALSE)
 

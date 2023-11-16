@@ -14,7 +14,7 @@ def myalg():
 
     # The algorithm goes here
     p = df.shape[1]
-    np.random.seed(int(snakemake.wildcards["replicate"]))
+    np.random.seed(int(snakemake.wildcards["seed"]))
     
     
     ######### GRaSP ##########

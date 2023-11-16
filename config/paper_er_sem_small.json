@@ -25,11 +25,12 @@
                 "path": true,
                 "text": false,
                 "ids": [
+                    "gobnilp-bge",
+                    "boss-sem-bic",
+                    "grasp-sem-bic",
                     "notears-l2",
                     "itsearch-bge",
                     "dualpc",
-                    "interiamb-zf",
-                    "gs-zf",
                     "fges-sem-bic",
                     "hc-bge",
                     "mmhc-bge-zf",
@@ -50,47 +51,9 @@
         "data": {
             "iid": [
                 {
-                    "id": "standardized",
-                    "standardized": true,
-                    "n": [
-                        300
-                    ]
-                },
-                {
-                    "id": "nonstandardized",
-                    "standardized": false,
-                    "n": [
-                        1000
-                    ]
-                },
-                {
-                    "id": "example1",
-                    "standardized": false,
-                    "n": [
-                        320,
-                        640
-                    ]
-                },
-                {
                     "id": "example2",
                     "standardized": true,
                     "n": [
-                        640
-                    ]
-                },
-                {
-                    "id": "example3",
-                    "standardized": false,
-                    "n": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example4",
-                    "standardized": true,
-                    "n": [
-                        320,
                         640
                     ]
                 }
@@ -98,16 +61,6 @@
         },
         "graph": {
             "pcalg_randdag": [
-                {
-                    "id": "avneigs4",
-                    "max_parents": 5,
-                    "n": 80,
-                    "d": 4,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
                 {
                     "id": "avneigs4_p20",
                     "max_parents": 5,
@@ -118,55 +71,55 @@
                     "method": "er",
                     "DAG": true
                 }
-            ],
-            "bdgraph_graphsim": [
-                {
-                    "id": "circle",
-                    "p": 50,
-                    "graph": "circle",
-                    "class": null,
-                    "size": null,
-                    "prob": 0.2
-                }
             ]
         },
         "parameters": {
-            "bin_bn": [
-                {
-                    "id": "binbn",
-                    "min": 0.1,
-                    "max": 0.9
-                }
-            ],
             "sem_params": [
                 {
                     "id": "SEM",
                     "min": 0.25,
                     "max": 1
                 }
-            ],
-            "trilearn_hyper-dir": [
-                {
-                    "id": "disc-loglin",
-                    "n_levels": 2,
-                    "pseudo_obs": 1.0
-                }
-            ],
-            "trilearn_intra-class": [
-                {
-                    "id": "intra-class",
-                    "rho": 0.4,
-                    "sigma2": 1.0
-                }
-            ],
-            "trilearn_g_inv_wishart": [
-                {
-                    "id": "giw",
-                    "dof": 1
-                }
             ]
         },
         "structure_learning_algorithms": {
+            "tetrad_boss": [
+                {
+                    "id": "boss-sem-bic",
+                    "score": "sem-bic-score",
+                    "datatype": "continuous",
+                    "useBes": true,
+                    "allowInternalRandomess": false,
+                    "samplePrior": 0,
+                    "semBicStructurePrior": 0,
+                    "penaltyDiscount": [
+                        1,
+                        1.5,
+                        2.0,
+                        2.5,
+                        3.0
+                    ],
+                    "timeout": null
+                }
+            ],
+            "tetrad_grasp": [
+                {
+                    "id": "grasp-sem-bic",
+                    "score": "sem-bic-score",
+                    "datatype": "continuous",
+                    "test": "fisher-z-test",
+                    "samplePrior": 0,
+                    "semBicStructurePrior": 0,
+                    "penaltyDiscount": [
+                        1,
+                        1.5,
+                        2.0,
+                        2.5,
+                        3.0
+                    ],
+                    "timeout": null
+                }
+            ],
             "gcastle_notears": [
                 {
                     "id": "notears-l2",
@@ -197,81 +150,7 @@
                     "timeout": null
                 }
             ],
-            "sklearn_glasso": [
-                {
-                    "id": "sklearn_glasso",
-                    "mode": "cd",
-                    "alpha": [
-                        0.05
-                    ],
-                    "tol": 0.0004,
-                    "enet_tol": 0.0004,
-                    "precmat_threshold": 0.1,
-                    "max_iter": 100,
-                    "verbose": false,
-                    "assume_centered": false,
-                    "timeout": null
-                }
-            ],
-            "rblip_asobs": [
-                {
-                    "id": "winasobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "winasobs",
-                    "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose_level": 0
-                },
-                {
-                    "id": "asobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "asobs",
-                    "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose_level": 0
-                }
-            ],
             "gobnilp": [
-                {
-                    "id": "gobnilp-bde",
-                    "continuous": false,
-                    "score_type": "BDeu",
-                    "extra_args": null,
-                    "constraints": null,
-                    "plot": false,
-                    "palim": 2,
-                    "alpha_mu": null,
-                    "alpha_omega_minus_nvars": null,
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "time_limit": null,
-                    "gap_limit": null,
-                    "prune": true,
-                    "timeout": 10
-                },
                 {
                     "id": "gobnilp-bge",
                     "continuous": true,
@@ -308,41 +187,9 @@
                         1.5
                     ],
                     "timeout": null
-                },
-                {
-                    "id": "fges-bdeu",
-                    "faithfulnessAssumed": true,
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "samplePrior": [
-                        1,
-                        2
-                    ],
-                    "semBicStructurePrior": 1,
-                    "penaltyDiscount": null,
-                    "timeout": null
                 }
             ],
             "pcalg_pc": [
-                {
-                    "id": "pc-binCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest",
-                    "timeout": null
-                },
                 {
                     "id": "pc-gaussCItest",
                     "alpha": [
@@ -362,61 +209,9 @@
                     "verbose": false,
                     "indepTest": "gaussCItest",
                     "timeout": null
-                },
-                {
-                    "id": "pcalg005",
-                    "alpha": 0.05,
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pcalg-disCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "disCItest",
-                    "timeout": null
                 }
             ],
             "bnlearn_mmhc": [
-                {
-                    "id": "mmhc-bde-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "mi",
-                    "score": "bde",
-                    "iss": 0.1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                },
                 {
                     "id": "mmhc-bge-zf",
                     "alpha": [
@@ -437,83 +232,7 @@
                     "timeout": null
                 }
             ],
-            "bnlearn_interiamb": [
-                {
-                    "id": "interiamb-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                },
-                {
-                    "id": "interiamb-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                }
-            ],
-            "bnlearn_gs": [
-                {
-                    "id": "gs-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                },
-                {
-                    "id": "gs-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                }
-            ],
             "bnlearn_tabu": [
-                {
-                    "id": "tabu-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                },
                 {
                     "id": "tabu-bge",
                     "score": "bge",
@@ -534,24 +253,6 @@
                 }
             ],
             "bnlearn_hc": [
-                {
-                    "id": "hc-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1,
-                    "timeout": null
-                },
                 {
                     "id": "hc-bge",
                     "score": "bge",
@@ -575,69 +276,6 @@
             ],
             "bidag_itsearch": [
                 {
-                    "id": "itsearch_map-bge",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": [
-                        0.000248,
-                        0.022300,
-                        0.100000,
-                        0.448000,
-                        0.739000
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 15,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
                     "id": "itsearch-bge",
                     "estimate": "map",
                     "MAP": false,
@@ -650,25 +288,6 @@
                         0.01,
                         0.1
                     ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsample-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 1,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
                     "hardlimit": 14,
@@ -696,81 +315,9 @@
                     "cpdag": false,
                     "mergetype": "skeleton",
                     "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
                 }
             ],
             "bidag_order_mcmc": [
-                {
-                    "id": "omcmc_itmap-bge",
-                    "plus1": true,
-                    "input_algorithm_id": "itsearch_map-bge_am01_endspace",
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": 0.5,
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_pcalg005-bge",
-                    "plus1": true,
-                    "input_algorithm_id": "pcalg005",
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "aw": null,
-                    "am": 0.1,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": false,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.99,
-                        0.95,
-                        0.9,
-                        0.8,
-                        0.7,
-                        0.6,
-                        0.5,
-                        0.4,
-                        0.3,
-                        0.2
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
                 {
                     "id": "omcmc-bge",
                     "plus1": true,

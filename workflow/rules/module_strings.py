@@ -28,7 +28,7 @@ def input_algorithm(wildcards):
     else:
         return "{output_dir}/adjmat_estimate/{data}/"\
             "algorithm=/" + wildcards["input_algorithm_id"] + "/" +\
-            "seed={replicate}/" \
+            "seed={seed}/" \
             "adjmat.csv"
 
 def idtopath(mylist, json_string):
@@ -193,5 +193,5 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
 # def path_to_input_algorithm_graph(alg_id):
 #     return "{output_dir}/adjmat_estimate/{data}/"\
 #         "algorithm=/" + json_string[alg_id][0] + "/" +\
-#         "seed={replicate}/" \
+#         "seed={seed}/" \
 #         "adjmat.csv"

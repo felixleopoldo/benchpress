@@ -85,7 +85,7 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPRn_pattern,
                 y = TPR_pattern,
-                label = replicate, col = id, shape = id),
+                label = seed, col = id, shape = id),
           check_overlap = FALSE
           )
   }
@@ -163,7 +163,7 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.25,
             aes(x = FPR_skel,
                 y = TP_skel / true_n_edges_skel,
-                label = replicate, col = id, shape = id),
+                label = seed, col = id, shape = id),
           check_overlap = FALSE
           )
   }
@@ -233,7 +233,7 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.3,
             aes(x = FPR_skel,
                 y = FNR_skel,
-                label = replicate, col = id, shape = id),
+                label = seed, col = id, shape = id),
           check_overlap = FALSE
           )
   }
@@ -302,7 +302,7 @@ gg  <- ggplot() + {
     geom_text(data = joint_bench, alpha=0.2,
             aes(y = FPR_skel,
                 x = FNR_skel,
-                label = replicate, col = id, shape = id),
+                label = seed, col = id, shape = id),
           check_overlap = FALSE
           )
   }
@@ -369,7 +369,7 @@ ggsave(file = snakemake@output[["fnr_fprp_skel"]],plot=gg)
 f <- function(y) 
     c(label=length(y), y=median(y))
 
-dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(time))  %>% mutate(is_outlier=ifelse(is_outlier(time), replicate , as.numeric(NA)))
+dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(time))  %>% mutate(is_outlier=ifelse(is_outlier(time), seed , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
 # ggplot() + {
@@ -437,12 +437,12 @@ facet_wrap(. ~ adjmat + parameters + data , ncol = 2, scales="free_x") + {
 ggplot() + {
     geom_point(data = joint_bench, alpha=0.8,
              aes(y=interaction(curve_param,curve_value, id), 
-             x = as.factor(replicate), label=round(time, 1), col=graph_type, group_by=id) ) 
+             x = as.factor(seed), label=round(time, 1), col=graph_type, group_by=id) ) 
 }  +
 #+ {
 #    geom_text(data = joint_bench, alpha=0.8,
 #             aes(y=interaction(curve_param,curve_value, id), 
-#             x = as.factor(replicate), label=round(time, 1), col=id, group_by=id) ) 
+#             x = as.factor(seed), label=round(time, 1), col=id, group_by=id) ) 
 #}  +
   facet_wrap(. ~ adjmat + parameters + data , ncol = 2) +
   xlab("Seed") +
@@ -453,7 +453,7 @@ ggplot() + {
   ggsave(file = snakemake@output[["graph_type"]])
 
 
-dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(SHD_cpdag))  %>% mutate(is_outlier=ifelse(is_outlier(SHD_cpdag), replicate , as.numeric(NA)))
+dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value,id)) %>% filter(!is.na(SHD_cpdag))  %>% mutate(is_outlier=ifelse(is_outlier(SHD_cpdag), seed , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
 # ggplot() + {
@@ -536,7 +536,7 @@ ggplot() + {
 #   scale_x_discrete(guide = guide_axis(angle=10))
 #   ggsave(file = snakemake@output[["f1_skel"]])
 
-dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value)) %>% filter(!is.na(TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))))  %>% mutate(is_outlier=ifelse(is_outlier(TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))), replicate , as.numeric(NA)))
+dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% group_by(interaction(curve_param,curve_value)) %>% filter(!is.na(TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))))  %>% mutate(is_outlier=ifelse(is_outlier(TP_skel / (TP_skel + 0.5*(FP_skel + FN_skel))), seed , as.numeric(NA)))
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
 ggplot() + {
@@ -581,7 +581,7 @@ ggplot() + {
 dat <- joint_bench %>% tibble::rownames_to_column(var="outlier") %>% 
                     group_by(interaction(curve_param,curve_value)) %>% 
                     filter(!is.na(ntests)) %>% 
-                    mutate(is_outlier=ifelse(is_outlier(ntests), replicate , as.numeric(NA)))
+                    mutate(is_outlier=ifelse(is_outlier(ntests), seed , as.numeric(NA)))
 
 dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
