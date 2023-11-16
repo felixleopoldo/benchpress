@@ -1,0 +1,136 @@
+{
+  "benchmark_setup": {
+    "data": [
+      {
+        "graph_id": "n=5 avg_ngh=1",
+        "parameters_id": "SEM",
+        "data_id": "standardized",
+        "seed_range": [1, 5]
+      },
+      {
+        "graph_id": "n=5 avg_ngh=2",
+        "parameters_id": "SEM",
+        "data_id": "standardized",
+        "seed_range": [1, 5]
+      },
+      {
+        "graph_id": "n=5 avg_ngh=3",
+        "parameters_id": "SEM",
+        "data_id": "standardized",
+        "seed_range": [1, 5]
+      }
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "grues_test/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": true,
+        "ids": ["corr", "grues"]
+      },
+      "graph_true_plots": true,
+      "graph_true_stats": false,
+      "ggally_ggpairs": false,
+      "graph_plots": ["corr", "grues"],
+      "mcmc_traj_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0.5,
+          "thinning": 5,
+          "functional": ["score"],
+          "active": false
+        }
+      ],
+      "mcmc_heatmaps": [],
+      "mcmc_autocorr_plots": [
+        {
+          "id": "grues",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 50,
+          "functional": ["score"],
+          "active": false
+        }
+      ]
+    }
+  },
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": 300
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "n=5 avg_ngh=1",
+          "max_parents": 4,
+          "n": 5,
+          "d": 1,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        },
+        {
+          "id": "n=5 avg_ngh=2",
+          "max_parents": 4,
+          "n": 5,
+          "d": 2,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        },
+        {
+          "id": "n=5 avg_ngh=3",
+          "max_parents": 4,
+          "n": 5,
+          "d": 3,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.01,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "corr_thresh": [
+        {
+          "id": "corr",
+          "timeout": null,
+          "thresh": [0.25]
+        }
+      ],
+      "grues": [
+        {
+          "id": "grues",
+          "prior_n_sources": 2,
+          "cutoff": 0.8,
+          "burnin_frac": 0.9,
+          "mcmc_estimator": "map",
+          "threshold": 0.5,
+          "mcmc_seed": [1],
+          "n_iterations": 10000,
+          "timeout": null
+        }
+      ]
+    }
+  }
+}

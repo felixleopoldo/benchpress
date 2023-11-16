@@ -80,7 +80,6 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature.
 
-
 .. rubric:: See also
 
 * The paper :footcite:t:`rios2021benchpress`
@@ -91,7 +90,6 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: Updates
 
-* 2023-10-13: Benchpress 2.5.0 released. Added the feature to pass the graph estimate of one algorithm as input of another. Added the algorithm module :ref:`athomas_jtsamplers` for MCMC estimating graphs of undirected decomposable graphical models.
 * 2023-09-24: Benchpress 2.4.0 released. Added the Psi-learner algorithm for learning graphs of undirected Gaussian graphical models (:ref:`equsa_psilearner`).
 * 2023-09-19: Benchpress 2.3.0 released. Updated causal-cmd to version 1.10.0. Added the BOSS algorithm (:ref:`tetrad_boss`).
 * 2023-09-08: Benchpress 2.2.0 released. Now supporting the `ARM64 <https://en.wikipedia.org/wiki/AArch64>`_ architecture used e.g. by the recent Apple computers. 

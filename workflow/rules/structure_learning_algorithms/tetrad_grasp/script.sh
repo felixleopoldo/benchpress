@@ -19,12 +19,10 @@ CMD="$CMD --algorithm grasp"
 CMD="$CMD --default"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
+CMD="$CMD --test fisher-z-test"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --test ${snakemake_wildcards[test]}"
-
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
-
     CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
     CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
 fi

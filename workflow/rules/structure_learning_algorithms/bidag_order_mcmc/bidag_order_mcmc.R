@@ -4,7 +4,10 @@ source("workflow/scripts/utils/helpers.R")
 wrapper <- function() {
   data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
 
+  print("Reading startspace")
+  print(snakemake@input[["input_algorithm"]])
   startspace <- read.csv(snakemake@input[["input_algorithm"]])
+  print("Reading startspace done")
   rownames(startspace) <- seq(dim(data)[2])
   colnames(startspace) <- seq(dim(data)[2])
 

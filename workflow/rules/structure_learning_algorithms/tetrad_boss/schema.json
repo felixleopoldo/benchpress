@@ -15,7 +15,7 @@
                 "type": "string",
                 "enum": [
                     "sem-bic-score",
-                    "bdeu-score"
+                    "sem-bdeu-score"
                 ]
             },
             "useBes": {
@@ -79,9 +79,8 @@
                 "score": "bdeu-score",
                 "datatype": "discrete",
                 "samplePrior": [
-                    1,
-                    10,
-                    20
+                    0.1,
+                    1
                 ],
                 "useBes": true,
                 "allowInternalRandomess": false,
