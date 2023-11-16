@@ -40,7 +40,7 @@ def raise_timeout(signum, frame):
 
 
 def wrapper():
-    seed = int(snakemake.wildcards["replicate"])
+    seed = int(snakemake.wildcards["seed"])
     # np.random.seed(seed)
     df = pd.read_csv(snakemake.input["data"])
     n = None

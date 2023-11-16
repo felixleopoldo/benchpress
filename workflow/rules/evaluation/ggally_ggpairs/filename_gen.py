@@ -15,4 +15,4 @@ def pairs():
     return ret
 
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"

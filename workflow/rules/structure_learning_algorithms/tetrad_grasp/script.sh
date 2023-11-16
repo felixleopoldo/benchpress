@@ -17,7 +17,7 @@ fi
 
 CMD="$CMD --algorithm grasp"
 CMD="$CMD --default"
-CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 CMD="$CMD --test ${snakemake_wildcards[test]}"

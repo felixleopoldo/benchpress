@@ -17,7 +17,7 @@ fi
 
 CMD="$CMD --algorithm fges"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"

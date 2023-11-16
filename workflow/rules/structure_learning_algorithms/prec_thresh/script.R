@@ -7,7 +7,7 @@ library("R.utils")
 
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
-seed <- as.integer(snakemake@wildcards[["replicate"]])
+seed <- as.integer(snakemake@wildcards[["seed"]])
 
 myalg <- function() {
     # Here is where you should put your algorithm.

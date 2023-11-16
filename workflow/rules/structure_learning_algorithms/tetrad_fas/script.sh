@@ -6,7 +6,7 @@ CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 CMD="$CMD --json-graph"
-CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 

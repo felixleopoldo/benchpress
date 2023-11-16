@@ -17,7 +17,7 @@ fi
 
 CMD="$CMD --algorithm boss"
 CMD="$CMD --default"
-CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --useBes ${snakemake_wildcards[useBes]}"
 CMD="$CMD --numStarts 1"
