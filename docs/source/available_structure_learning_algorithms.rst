@@ -3131,7 +3131,7 @@ grues
    * - Graph type
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
    * - Docker 
-     - `causaldev/bp-grues:0.3.0 <https://hub.docker.com/r/causaldev/bp-grues/tags>`__
+     - `bpimages/grues:0.3.0 <https://hub.docker.com/r/bpimages/grues/tags>`__
 
    * - Module folder
      - `grues <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/grues>`__
