@@ -3206,7 +3206,6 @@ Command:
     [
       {
         "id": "grues",
-        "cutoff": 0.8,
         "burnin_frac": 0.5,
         "mcmc_estimator": "threshold",
         "mcmc_seed": [

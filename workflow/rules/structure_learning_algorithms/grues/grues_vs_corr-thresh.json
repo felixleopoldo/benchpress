@@ -122,7 +122,6 @@
         {
           "id": "grues",
           "prior_n_sources": 2,
-          "cutoff": 0.8,
           "burnin_frac": 0.9,
           "mcmc_estimator": "map",
           "threshold": 0.5,
