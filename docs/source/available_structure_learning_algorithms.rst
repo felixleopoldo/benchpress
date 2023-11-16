@@ -175,7 +175,7 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
      - gobnilp_ 
-   * - The GrUES module for MCMC-based structure learning
+   * - GrUES
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - grues_ 
@@ -3114,7 +3114,7 @@ the first phase and the optimal sets are determined in a second phase.
 grues 
 ---------
 
-.. rubric:: The GrUES module for MCMC-based structure learning
+.. rubric:: GrUES
 
 .. list-table:: 
 

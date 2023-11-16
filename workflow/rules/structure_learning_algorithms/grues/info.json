@@ -1,5 +1,5 @@
 {
-    "title": "The GrUES module for MCMC-based structure learning",
+    "title": "GrUES",
     "version": "0.3.0",
     "package": {
         "title": "gues",
