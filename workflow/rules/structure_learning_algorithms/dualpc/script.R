@@ -10,7 +10,7 @@ setwd(d)
 wrapper <- function() {
   filename <- file.path(snakemake@output[["adjmat"]])
   filename_data <- snakemake@input[["data"]]
-  seed <- as.integer(snakemake@wildcards[["replicate"]])
+  seed <- as.integer(snakemake@wildcards[["seed"]])
   alpha <- as.numeric(snakemake@wildcards[["alpha"]])
   skeleton <- as.logical(snakemake@wildcards[["skeleton"]])
   pattern_graph <- as.logical(snakemake@wildcards[["pattern_graph"]])

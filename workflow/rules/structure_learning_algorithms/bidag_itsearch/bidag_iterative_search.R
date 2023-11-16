@@ -8,7 +8,7 @@ wrapper <- function() {
   wc <- snakemake@wildcards # save some notation
 
   start <- proc.time()[1]
-  set.seed(wc[["replicate"]])
+  set.seed(wc[["seed"]])
   # Calculate the score tables
 
   myscore <- get_bidag_score(data, wc[["scoretype"]], 

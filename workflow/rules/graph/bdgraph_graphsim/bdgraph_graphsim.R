@@ -13,7 +13,7 @@ if (snakemake@wildcards[["class"]] != "None") {
 }
 
 
-set.seed(as.integer(snakemake@wildcards[["replicate"]]))
+set.seed(as.integer(snakemake@wildcards[["seed"]]))
 adjmat <- graph.sim(
   p = as.integer(snakemake@wildcards[["p"]]),
   graph = snakemake@wildcards[["graph"]],

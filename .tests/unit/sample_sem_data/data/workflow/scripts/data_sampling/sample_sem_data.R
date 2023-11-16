@@ -27,7 +27,7 @@ rmvDAG <- function(trueDAGedges, N) {
 
 weight_mat_filename <- snakemake@input[["bn"]]
 N <- as.integer(snakemake@wildcards[["n"]])
-seed <- as.integer(snakemake@wildcards[["replicate"]])
+seed <- as.integer(snakemake@wildcards[["seed"]])
 filename <- snakemake@output[["data"]]
 
 trueDAGedges <- as.matrix(read.csv(weight_mat_filename, check.names = FALSE))

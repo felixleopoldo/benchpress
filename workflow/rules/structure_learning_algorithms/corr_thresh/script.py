@@ -10,7 +10,7 @@ from numpy.linalg import inv
 
 def wrapper():
 
-    seed = int(snakemake.wildcards["replicate"])
+    seed = int(snakemake.wildcards["seed"])
     df = pd.read_csv(snakemake.input["data"])
     
     

@@ -23,7 +23,7 @@ if (snakemake@wildcards[["max_parents"]] != "None") {
 
 DAG <- as.logical(snakemake@wildcards[["DAG"]])
 method <- snakemake@wildcards[["method"]]
-seed_number <- as.integer(snakemake@wildcards[["replicate"]])
+seed_number <- as.integer(snakemake@wildcards[["seed"]])
 
 set.seed(seed_number)
 adjmat <- randDAGMaxParents(

@@ -4,7 +4,7 @@
 p <- as.integer(snakemake@wildcards[["p"]])
 cutoff <- as.numeric(snakemake@wildcards[["cutoff"]])
 
-set.seed(as.integer(snakemake@wildcards[["replicate"]]))
+set.seed(as.integer(snakemake@wildcards[["seed"]]))
 
 adjmat <- matrix(runif(p * p), nrow = p, ncol = p) > cutoff
 adjmat <- 1 * (adjmat | t(adjmat)) # Make it symmetric (undirected)
