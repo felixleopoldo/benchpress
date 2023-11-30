@@ -24,14 +24,14 @@ declare -A image_versions
 # image_versions[pcalg]=2.7-8
 # image_versions[bnlearn]=4.8.3
 # image_versions[bidag]=2.1.4
-image_versions[causal-cmd]=1.11.1
+# image_versions[causal-cmd]=1.11.1
 # image_versions[equsa_psilearner]=1.2.1
 # image_versions[benchpress]=2.1.0
 # image_versions[causaldag]=0.1a163
 # image_versions[gcastle]=1.0.3
 # image_versions[sandbox]=1.0
 # image_versions[datascience-python]=1.1
-# image_versions[trilearn]=2.0.3
+image_versions[trilearn]=2.0.4
 # image_versions[snakemake]=v7.32.3
 # image_versions[gobnilp]=4347c64
 # image_versions[grues]=0.3.0
