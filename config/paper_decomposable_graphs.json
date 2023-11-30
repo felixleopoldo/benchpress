@@ -7,16 +7,7 @@
         "parameters_id": "gwi",
         "seed_range": [
           1,
-          10
-        ]
-    },
-        {
-        "data_id": "example1",
-        "graph_id": "cta",
-        "parameters_id": "gwi",
-        "seed_range": [
-          1,
-          10
+          5
         ]
       }
     ],
@@ -30,99 +21,114 @@
         "path": true,
         "text": false,
         "ids": [
-            "parallelDG",
-            "GT13",
-            "GG99",
-            "GT13_single_edge",
-            "parallelDG_single_move",
-            "trilearn-cont"
+          "trilearn-cont"
         ]
       },
       "graph_true_plots": true,
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": [],
-        "mcmc_traj_plots": [
-            {
-            "id": "GT13",
-            "burn_in": 0.0,
-            "thinning": 10,
-            "functional": [
-                "score"
-            ],
-            "active": false
-        },  
-            {
-            "id": "GG99",
-            "burn_in": 0.0,
-            "thinning": 10,
-            "functional": [
-                "score"
-            ],
-            "active": false
-        },  
-            {
-            "id": "parallelDG",
-            "burn_in": 0.0,
-            "thinning": 10,
-            "functional": [
-                "score"
-            ],
-            "active": false
+      "mcmc_traj_plots": [
+        {
+          "id": "GT13",
+          "burn_in": 0.0,
+          "thinning": 10,
+          "functional": [
+            "score"
+          ],
+          "active": false
         },
-            {
-            "id": "parallelDG_single_move",
-            "burn_in": 0.0,
-            "thinning": 10,
-            "functional": [
-                "score"
-            ],
-            "active": false
+        {
+          "id": "trilearn-cont",
+          "burn_in": 0,
+          "thinning": 1,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GG99",
+          "burn_in": 0.0,
+          "thinning": 10,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "parallelDG",
+          "burn_in": 0.0,
+          "thinning": 10,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "parallelDG_single_move",
+          "burn_in": 0.0,
+          "thinning": 10,
+          "functional": [
+            "score"
+          ],
+          "active": false
         }
-        ],
-      "mcmc_heatmaps": [],
-        "mcmc_autocorr_plots": [
-            {   
-            "id": "parallelDG",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 20000,
-            "functional": [
-                "score"
-            ],
-            "active": false
+      ],
+      "mcmc_heatmaps": [
+        {
+          "id": "trilearn-cont",
+          "burn_in": 0.5,
+          "active": true
         },
-            {   
-            "id": "GG99",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 20000,
-            "functional": [
-                "score"
-            ],
-            "active": false
-        },
-            {   
-            "id": "GT13",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 20000,
-            "functional": [
-                "score"
-            ],
-            "active": false
-        },
-            {   
-            "id": "GT13_single_edge",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 20000,
-            "functional": [
-                "score"
-            ],
-            "active": false
+        {
+          "id": "parallelDG",
+          "burn_in": 0.5,
+          "active": true
         }
-        ]
+      ],
+      "mcmc_autocorr_plots": [
+        {
+          "id": "parallelDG",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GG99",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GT13",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GT13_single_edge",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        }
+      ]
     }
   },
   "resources": {
@@ -181,20 +187,20 @@
           ],
           "timeout": null,
           "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
           ]
-      },
-          {
+        },
+        {
           "id": "parallelDG_single_move",
           "M": 1000000,
           "R": 100,
@@ -212,126 +218,132 @@
           ],
           "timeout": null,
           "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
-            ]
-          
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
         }
       ],
-        "athomas_jtsamplers": [
-            {
-          "id": "GT13",                    
+      "athomas_jtsamplers": [
+        {
+          "id": "GT13",
           "burnin_frac": 0.5,
-          "mcmc_estimator": ["threshold"],
+          "mcmc_estimator": [
+            "threshold"
+          ],
           "timeout": null,
-          "mcmc_seed": 0,                    
+          "mcmc_seed": 0,
           "num_samples": 1000000,
           "sampler": 2,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
           "full_output": true,
-            "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
-            ]
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
         },
-            {
-          "id": "GT13_single_edge",                    
+        {
+          "id": "GT13_single_edge",
           "burnin_frac": 0.5,
-          "mcmc_estimator": ["threshold"],
+          "mcmc_estimator": [
+            "threshold"
+          ],
           "timeout": null,
-          "mcmc_seed": 0,                    
+          "mcmc_seed": 0,
           "num_samples": 1000000,
           "sampler": 1,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
           "full_output": true,
-            "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
-            ]
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
         },
-            {
-          "id": "GG99",                    
+        {
+          "id": "GG99",
           "burnin_frac": 0.5,
-          "mcmc_estimator": ["threshold"],
+          "mcmc_estimator": [
+            "threshold"
+          ],
           "timeout": null,
-          "mcmc_seed": 0,                    
+          "mcmc_seed": 0,
           "num_samples": 1000000,
           "sampler": 0,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
           "full_output": true,
-            "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
-            ]
-      }
-        ],
-        "trilearn_pgibbs":
-        [{
-            "id": "trilearn-cont",
-            "datatype": "continuous",
-            "alpha": 0.5,
-            "beta": 0.5,
-            "radii": 80,
-            "n_particles": 50,
-            "M": 4000,
-            "pseudo_obs": 1,
-            "mcmc_seed": 1,
-            "mcmc_estimator": "threshold",
-            "threshold": [
-                0.0,
-                0.1,
-                0.2,
-                0.3,
-                0.4,
-                0.5,
-                0.6,
-                0.7,
-                0.8,
-                0.9,
-                1.0
-            ],
-            "burnin_frac": 0.5,
-            "timeout": null
-        }]  
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        }
+      ],
+      "trilearn_pgibbs": [
+        {
+          "id": "trilearn-cont",
+          "datatype": "continuous",
+          "alpha": 0.5,
+          "beta": 0.5,
+          "radii": 80,
+          "n_particles": 50,
+          "M": 4000,
+          "pseudo_obs": 1,
+          "mcmc_seed": 1,
+          "mcmc_estimator": "threshold",
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ],
+          "burnin_frac": 0.5,
+          "timeout": null
+        }
+      ]
     }
   }
 }
