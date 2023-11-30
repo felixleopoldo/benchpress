@@ -24,7 +24,7 @@ declare -A image_versions
 # image_versions[pcalg]=2.7-8
 # image_versions[bnlearn]=4.8.3
 # image_versions[bidag]=2.1.4
-# image_versions[causal-cmd]=1.11.0
+image_versions[causal-cmd]=1.11.1
 # image_versions[equsa_psilearner]=1.2.1
 # image_versions[benchpress]=2.1.0
 # image_versions[causaldag]=0.1a163
@@ -34,7 +34,7 @@ declare -A image_versions
 # image_versions[trilearn]=2.0.3
 # image_versions[snakemake]=v7.32.3
 # image_versions[gobnilp]=4347c64
-image_versions[grues]=0.3.0
+# image_versions[grues]=0.3.0
 
 # Build the image for amd64 and arm64 and push them to dockerhub and create the manifest and push it
 # Run this twice or so as some packages depend on rgraphstuff and pcalg e.g.
