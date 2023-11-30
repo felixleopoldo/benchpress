@@ -11,10 +11,10 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://hallawalla/paralleldg:0.9.5" 
+        "docker://hallawalla/paralleldg:0.9.9" 
     shell:
         """
-if [ "{wildcards.parallel}" = "TRUE" ]; then
+if [ "{wildcards.parallel}" = "True" ]; then
     if [ "{wildcards.timeout}" = "None" ]; then
         if [ "{wildcards.datatype}" = "discrete" ]; then
             /usr/bin/time -f "%e" -o {output.time} parallelDG_loglinear_sample -M {wildcards.M} -R {wildcards.R} -f {input} -o . -F {output.adjvecs} --pseudo_obs {wildcards.pseudo_obs} -s {wildcards.mcmc_seed} -t benchpress;
