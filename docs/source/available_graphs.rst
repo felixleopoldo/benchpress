@@ -40,17 +40,17 @@ Below is a list of available modules.
    * - Band matrix
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 1.25
+     - 2.0.4
      - trilearn_bandmat_ 
    * - CTA
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 1.25
+     - 2.0.4
      - trilearn_cta_ 
    * - Random bandmatrix
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 1.25
+     - 2.0.4
      - trilearn_rand_bandmat_ 
 
 
@@ -206,7 +206,7 @@ trilearn_bandmat
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 1.25
+     - 2.0.4
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -216,7 +216,7 @@ trilearn_bandmat
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.4.0 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_bandmat>`__
@@ -260,7 +260,7 @@ trilearn_cta
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 1.25
+     - 2.0.4
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -270,7 +270,7 @@ trilearn_cta
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.4.0 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_cta>`__
@@ -319,7 +319,7 @@ trilearn_rand_bandmat
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 1.25
+     - 2.0.4
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -329,7 +329,7 @@ trilearn_rand_bandmat
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.4.0 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_rand_bandmat <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_rand_bandmat>`__

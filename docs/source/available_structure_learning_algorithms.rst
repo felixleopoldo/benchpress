@@ -4213,7 +4213,7 @@ trilearn_pgibbs
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 1.25
+     - 2.0.4
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -4223,7 +4223,7 @@ trilearn_pgibbs
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.3 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.4.0 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module folder
      - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__

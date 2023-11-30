@@ -3,11 +3,11 @@
         "data": [
             {
                 "data_id": "example1",
-                "graph_id": "cta",
+                "graph_id": "AR1-5",
                 "parameters_id": "intra-class",
                 "seed_range": [
                     1,
-                    5
+                    1
                 ]
             }
         ],
@@ -21,7 +21,7 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gg99"
+                    "gg99", "trilearn"
                 ]
             },
             "graph_true_plots": true,
@@ -33,18 +33,34 @@
             "mcmc_traj_plots": [
                 {
                     "id": "gg99",
-                    "burn_in": 0,
-                    "thinning": 10,
+                    "burn_in": 0.5,
+                    "thinning": 1000,
+                    "functional": [
+                        "score",
+                        "size"
+                    ],
+                    "active": true
+                },
+                {
+                    "id": "trilearn",
+                    "burn_in": 0.5,
+                    "thinning": 1,
                     "functional": [
                         "score",
                         "size"
                     ],
                     "active": true
                 }
+
             ],
             "mcmc_heatmaps": [
                 {
                     "id": "gg99",
+                    "burn_in": 0.5,
+                    "active": true
+                },
+                {
+                    "id": "trilearn",
                     "burn_in": 0.5,
                     "active": true
                 }
@@ -53,7 +69,7 @@
                 {
                     "id": "gg99",
                     "burn_in": 0.5,
-                    "thinning": 100,
+                    "thinning": 1000,
                     "lags": 50,
                     "functional": [
                         "score",
@@ -81,13 +97,13 @@
                 {
                     "id": "AR1-5",
                     "max_bandwidth": 5,
-                    "dim": 10000
+                    "dim": 50
                 }
             ],
             "trilearn_cta": [
                 {
                     "id": "cta",
-                    "order": 100,
+                    "order": 50,
                     "alpha": 0.5,
                     "beta": 0.5
                 }
@@ -114,12 +130,18 @@
                 {
                     "id": "gg99",
                     "burnin_frac": 0.5,
-                    "mcmc_estimator": "map",
+                    "mcmc_estimator": "threshold",
                     "timeout": null,
-                    "threshold": 0.5,
-                    "mcmc_seed": [1, 2, 3],
+                    "threshold": [0.2, 0.5, 0.9],
+                    "mcmc_seed": [
+                        1,
+                        2,
+                        3
+                    ],
                     "num_samples": 1000000,
-                    "sampler": [0, 1],
+                    "sampler": [
+                        1
+                    ],
                     "edge_penalty": 1.0,
                     "size_maxclique": 10000
                 }
@@ -145,6 +167,27 @@
                     "threshold": 0.5,
                     "burnin_frac": 0.5,
                     "mcmc_estimator": "map",
+                    "timeout": null
+                }
+            ],
+            "trilearn_pgibbs": [
+                {
+                    "id": "trilearn",
+                    "datatype": "continuous",
+                    "alpha": 0.5,
+                    "beta": 0.5,
+                    "radii": 80,
+                    "n_particles": 20,
+                    "M": 2000,
+                    "pseudo_obs": 1,
+                    "mcmc_seed": [1,2,3],
+                    "mcmc_estimator": "threshold",
+                    "threshold": [
+                        0.2,
+                        0.5,
+                        0.9
+                    ],
+                    "burnin_frac": 0.5,
                     "timeout": null
                 }
             ]

@@ -31,7 +31,7 @@ declare -A image_versions
 # image_versions[gcastle]=1.0.3
 # image_versions[sandbox]=1.0
 # image_versions[datascience-python]=1.1
-image_versions[trilearn]=2.0.4
+image_versions[trilearn]=2.0.4.0
 # image_versions[snakemake]=v7.32.3
 # image_versions[gobnilp]=4347c64
 # image_versions[grues]=0.3.0
