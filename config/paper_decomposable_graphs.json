@@ -7,21 +7,36 @@
         "parameters_id": "gwi",
         "seed_range": [
           1,
-          5
+          10
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "cta",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          10
         ]
       }
+
     ],
     "evaluation": {
       "benchmarks": {
         "filename_prefix": "Elmasri_parallel_sampler/",
         "show_seed": false,
-        "errorbar": false,
+        "errorbar": true,
         "errorbarh": false,
         "scatter": false,
         "path": true,
         "text": false,
         "ids": [
-          "trilearn-cont"
+          "GT13_single_edge",
+          "trilearn-cont",
+          "GT13",
+          "GG99",
+          "parallelDG_single_move",
+          "parallelDG"
         ]
       },
       "graph_true_plots": true,
@@ -32,11 +47,11 @@
         {
           "id": "GT13",
           "burn_in": 0.0,
-          "thinning": 10,
+          "thinning": 100,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
           "id": "trilearn-cont",
@@ -45,12 +60,12 @@
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
           "id": "GG99",
           "burn_in": 0.0,
-          "thinning": 10,
+          "thinning": 100,
           "functional": [
             "score"
           ],
@@ -59,7 +74,7 @@
         {
           "id": "parallelDG",
           "burn_in": 0.0,
-          "thinning": 10,
+          "thinning": 100,
           "functional": [
             "score"
           ],
@@ -68,7 +83,7 @@
         {
           "id": "parallelDG_single_move",
           "burn_in": 0.0,
-          "thinning": 10,
+          "thinning": 100,
           "functional": [
             "score"
           ],
@@ -320,7 +335,7 @@
           "id": "trilearn-cont",
           "datatype": "continuous",
           "alpha": 0.5,
-          "beta": 0.5,
+          "beta": 0.8,
           "radii": 80,
           "n_particles": 50,
           "M": 4000,
