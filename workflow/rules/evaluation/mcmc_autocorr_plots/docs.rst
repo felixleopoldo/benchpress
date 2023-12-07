@@ -13,12 +13,12 @@
 This module plots the auto-correlation of a functional of the graphs in a MCMC trajectory. 
 
 
-..  figure:: _static/omcmcscoreautocorr.png
+..  figure:: ../_static/omcmcscoreautocorr.png
     :alt: Score trajectory of order MCMC
 
     Auto-correlation of the scores in trajectory of order MCMC
 
-..  figure:: _static/alarm/autocorr_score.png
+..  figure:: ../_static/alarm/autocorr_score.png
     :alt: Multiple score trajectory of order MCMC
 
     Auto-correlation of the scores in trajectory of order MCMC for differnt algorithm seeds and parameter settings.

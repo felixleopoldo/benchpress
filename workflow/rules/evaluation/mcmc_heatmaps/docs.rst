@@ -13,7 +13,7 @@ This module has a list of objects, where each object has
 
 The estimated probabilities are plotted in heatmaps using seaborn which are saved in *results/mcmc_heatmaps/* and copied to *results/output/mcmc_heatmaps/* for easy reference.
 
-..  figure:: _static/alarmordermcmc.png
+..  figure:: ../_static/alarmordermcmc.png
     :alt: The Alarm network 
 
     Mean graph estimate of the Alarm network using order MCMC with startspace from iterative MCMC 
