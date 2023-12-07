@@ -18,7 +18,7 @@ tetrad_boss
    * - Docs
      - `here <https://cmu-phil.github.io/tetrad/manual/#search_box>`__
    * - Paper
-     - :footcite:t:`ramsey2021improving`
+     - :footcite:t:`ramsey2021improving`, :footcite:t:`andrews2023fast`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
