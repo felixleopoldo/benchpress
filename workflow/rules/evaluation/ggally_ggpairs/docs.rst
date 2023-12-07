@@ -4,7 +4,7 @@ However, you can always alter the script as you like it.
 
 
 
-..  figure:: _static/alarm/pairs_1.png
+..  figure:: ../_static/alarm/pairs_1.png
     :alt: GGpairs plot
     :width: 500
 

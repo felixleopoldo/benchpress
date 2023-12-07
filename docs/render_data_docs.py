@@ -116,7 +116,7 @@ def info_to_small_table():
             tab += "     - "+info["package"]["title"]+"\n"    
 
         tab += "     - "+info["version"]+"\n"
-        tab += "     - "+p.name+"_ \n"    
+        tab += "     - :ref:`"+p.name+"` \n"    
         
     tab += "\n"
     return tab
@@ -133,6 +133,25 @@ ret_str += ".. _"+algspath.name+": \n\n"
 ret_str += "Data\n"
 ret_str += "="*len(algspath.name) + "="*10
 ret_str += "\n\n"
+
+# Toc tree for the data modules
+ret_str += """.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Data modules
+    :caption: Data modules
+    
+"""
+for p in sorted(algspath.iterdir()):
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    ret_str += "    data/{}\n".format(p.name)
+
+
+
 ret_str += content
 ret_str += "\n\n"
 
@@ -165,45 +184,49 @@ for p in sorted(algspath.iterdir()):
             if "examples" in schema["items"]:
                 dump = json.dumps(schema["items"]["examples"], indent=2)
 
-
-    ret_str += "\n\n"
-    ret_str += ".. _"+p.name+": \n\n"
-    ret_str +=p.name +" \n"
-    ret_str +="-"*len(p.name) + "-"*4 + "\n"
+    # This is the module part, tha we write to the file.
+    
+    
+    module_str = "\n\n"
+    module_str += ".. _"+p.name+": \n\n"
+    module_str +=p.name +" \n"
+    module_str +="-"*len(p.name) + "-"*4 + "\n"
 
     
-    ret_str += "\n"
-    ret_str += ".. rubric:: "+ info["title"]    
-    ret_str += "\n\n"
+    module_str += "\n"
+    module_str += ".. rubric:: "+ info["title"]    
+    module_str += "\n\n"
     if p.name != "fixed_data":
-        ret_str += info_to_table(info, p)
-        ret_str += "\n\n"
+        module_str += info_to_table(info, p)
+        module_str += "\n\n"
         
     
-    ret_str += ".. rubric:: Description"    
+    module_str += ".. rubric:: Description"    
     if content != "":    
-        ret_str += "\n\n"
-        ret_str += content
-        ret_str += "\n\n"
+        module_str += "\n\n"
+        module_str += content
+        module_str += "\n\n"
         
     if p.name == "fixed_data":
         with open(p/"data_info.json") as json_data_file:
             fixed_data_info = json.load(json_data_file)
-        ret_str += fixed_data_to_table(fixed_data_info, p)
-        ret_str += "\n\n"
+        module_str += fixed_data_to_table(fixed_data_info, p)
+        module_str += "\n\n"
         
 
     if dump != "":
-        ret_str += "\n\n"
-        ret_str += ".. rubric:: Example"
-        ret_str += "\n\n\n"
-        ret_str += ".. code-block:: json"    
-        ret_str += "\n\n"
-        ret_str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    ret_str += "\n\n"
-    ret_str += ".. footbibliography::"
-    #ret_str += "\n\n-------"
-    ret_str += "\n\n"
+        module_str += "\n\n"
+        module_str += ".. rubric:: Example"
+        module_str += "\n\n\n"
+        module_str += ".. code-block:: json"    
+        module_str += "\n\n"
+        module_str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    module_str += "\n\n"
+    module_str += ".. footbibliography::"
+    #module_str += "\n\n-------"
+    module_str += "\n\n"
+    with open("source/data/{}.rst".format(p.name), "w") as text_file:
+        text_file.write(module_str)
 
 
 with open("source/available_data.rst", "w") as text_file:

@@ -28,7 +28,7 @@
     :maxdepth: 3
     :name: Modules
     :caption: Modules
-    
+        
     available_graphs
     available_parameters
     available_data

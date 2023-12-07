@@ -47,7 +47,7 @@ This module produces the following CSV files and directories with files
 +------------------------+------------------------------------------------------------------------------------------------------------+
 
     
-..  figure:: _static/alarm/FPR_TPR_skel.png
+..  figure:: ../_static/alarm/FPR_TPR_skel.png
     :alt: FPR_TPR_skel.png 
     :width: 500
 
@@ -55,19 +55,19 @@ This module produces the following CSV files and directories with files
 
 The following plots are also produced
 
-..  figure:: _static/alarm/elapsed_time_joint.png
+..  figure:: ../_static/alarm/elapsed_time_joint.png
     :alt: Timing 
     :width: 500
 
     *elapsed_time_joint.png*
 
-..  figure:: _static/alarm/f1_skel_joint.png
+..  figure:: ../_static/alarm/f1_skel_joint.png
     :alt: F1 
     :width: 500
 
     *f1_skel_joint.png*
 
-..  figure:: _static/alarm/graph_type.png
+..  figure:: ../_static/alarm/graph_type.png
     :alt: Graph type 
     :width: 500
 

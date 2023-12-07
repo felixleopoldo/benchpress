@@ -26,7 +26,7 @@ Each dataset contains 300 samples.
 .. _itsearchroc:
 
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_roc.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_roc.png
     :width: 320 
     :alt: FP/P vs. TP/P itsearch example
     :align: left
@@ -36,7 +36,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchtimings2:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_time.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_time.png
     :width: 320 
     :alt: Timings itsearch example
     :align: right
@@ -45,7 +45,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchtype2:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graphtype.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graphtype.png
     :width: 320 
     :alt: Graph types example
     :align: left
@@ -54,7 +54,7 @@ Each dataset contains 300 samples.
 
 .. _itsearchprops2:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graph_properties_plot.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bidag_itsearch/images/bidag_graph_properties_plot.png
     :width: 320 
     :alt: Properties of the true graphs
     :align: right

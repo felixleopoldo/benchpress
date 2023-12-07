@@ -96,7 +96,7 @@ def info_to_small_table():
         else:
             tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
         #tab += "     - "+info["version"]+"\n"
-        tab += "     - "+p.name+"_ \n"    
+        tab += "     - :ref:`"+p.name+"` \n"    
         
     tab += "\n"
     return tab
@@ -110,6 +110,21 @@ outpur_str = ""
 outpur_str += ".. _"+algspath.name+": \n\n"
 outpur_str += "Algorithms\n"
 outpur_str += "="*len(algspath.name) + "="*10
+outpur_str += "\n\n"
+outpur_str += """.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Structure learning algorithms
+    :caption: Structure learning algorithms
+    
+"""
+for p in sorted(algspath.iterdir()):
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    outpur_str += "    structure_learning_algorithms/{}\n".format(p.name)
 outpur_str += "\n\n"
 outpur_str += content
 outpur_str += "\n\n"
@@ -144,27 +159,23 @@ for p in sorted(algspath.iterdir()):
             dump = json.dumps(schema["items"]["examples"], indent=2)
         else: dump = ""
     
-  
-    #outpur_str += "\n\n\n"
-    #outpur_str +=".. _" + p.name +": "
-    outpur_str += "\n\n"
-    outpur_str += ".. _"+p.name+": \n\n"
-    #outpur_str +="``" + p.name +"`` \n"
-    outpur_str +="" + p.name +" \n"
-    #outpur_str +="" + info["title"] +" ("+p.name+") \n"
-    outpur_str +="-"*len(p.name) + "-"*4 + "\n"
+    # This is the module part
 
+    module_str = "\n\n"
+    module_str += ".. _"+p.name+": \n\n"
+    module_str +="" + p.name +" \n"
+    module_str +="-"*len(p.name) + "-"*4 + "\n"
     
-    outpur_str += "\n"
-    outpur_str += ".. rubric:: "+ info["title"]    
-    outpur_str += "\n\n"
-    outpur_str += info_to_table(info, p)
-    outpur_str += "\n\n"
-    outpur_str += ".. rubric:: Description"    
+    module_str += "\n"
+    module_str += ".. rubric:: "+ info["title"]    
+    module_str += "\n\n"
+    module_str += info_to_table(info, p)
+    module_str += "\n\n"
+    module_str += ".. rubric:: Description"    
     if content != "":    
-        outpur_str += "\n\n"
-        outpur_str += content
-    outpur_str += "\n\n"
+        module_str += "\n\n"
+        module_str += content
+    module_str += "\n\n"
     
     with open(s) as json_file:    
         schema = json.load(json_file)
@@ -174,31 +185,29 @@ for p in sorted(algspath.iterdir()):
            if prop != "id"])
 
     if tmp:
-        outpur_str += ".. rubric:: Some fields described \n"
+        module_str += ".. rubric:: Some fields described \n"
         for prop, obj in sorted(schema["items"]["properties"].items()):
             if prop == "id":
                 continue
             if "description" in obj:                
-                outpur_str += "* ``{}`` {} \n".format(prop, obj["description"])
+                module_str += "* ``{}`` {} \n".format(prop, obj["description"])
+                    
+    module_str += "\n\n"
     
-    # # downloadable linke to config files in config folder
-    # outpur_str += "\n\n\n"
-    # outpur_str += ".. rubric:: Config files"
-    # outpur_str += "\n\n"
-    # for conffile in (p / "config").glob("*.json"):
-    #     xx = str(".."/ conffile)
-    #     outpur_str += ":download:`"+conffile.name+" <"+xx + ">` \n"
-                
-    outpur_str += "\n\n"
+    module_str += ".. rubric:: Example JSON"
+    module_str += "\n\n\n"
+    module_str += ".. code-block:: json"    
+    module_str += "\n\n"
+    module_str += '    '.join(('\n'+dump.strip()).splitlines(True))
+    module_str += "\n\n"
+    module_str += ".. footbibliography::"
+    module_str += "\n\n"
     
-    outpur_str += ".. rubric:: Example JSON"
-    outpur_str += "\n\n\n"
-    outpur_str += ".. code-block:: json"    
-    outpur_str += "\n\n"
-    outpur_str += '    '.join(('\n'+dump.strip()).splitlines(True))
-    outpur_str += "\n\n"
-    outpur_str += ".. footbibliography::"
-    outpur_str += "\n\n"
+    #outpur_str += module_str
+    with open("source/structure_learning_algorithms/{}.rst".format(p.name), "w") as text_file:
+        text_file.write(module_str)
+    
+    
 
 with open("source/available_structure_learning_algorithms.rst", "w") as text_file:
     text_file.write(outpur_str)

@@ -18,7 +18,7 @@ Command:
 
 .. _roc_grues_vs_thresh:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/grues/images/roc.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/grues/images/roc.png
     :width: 320
     :alt: ROC (FPR vs. TPR) GrUES vs corr_thresh example
     :align: left
@@ -27,7 +27,7 @@ Command:
 
 .. _shd_grues_vs_thresh:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/grues/images/shd.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/grues/images/shd.png
     :width: 320
     :alt: SHD GrUES vs corr_thresh example
     :align: right
@@ -36,7 +36,7 @@ Command:
 
 .. _adj_grues:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/grues/images/diffplot_30.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/grues/images/diffplot_30.png
     :width: 320
     :alt: adjacency matrix GrUES example
     :align: left
@@ -45,7 +45,7 @@ Command:
 
 .. _adj_thresh:
 
-.. figure:: ../../workflow/rules/structure_learning_algorithms/grues/images/diffplot_15.png
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/grues/images/diffplot_15.png
     :width: 320
     :alt: adjacency matrix corr_thresh example
     :align: right
