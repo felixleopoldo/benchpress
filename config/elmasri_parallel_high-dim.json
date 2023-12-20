@@ -1,0 +1,364 @@
+{
+  "benchmark_setup": {
+    "data": [
+      {
+        "data_id": "example1",
+        "graph_id": "AR1-5",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          10
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "cta",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          10
+        ]
+      }
+
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "Elmasri_parallel_sampler/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": false,
+        "path": true,
+        "text": false,
+        "ids": [
+          "GT13_single_edge",
+          "trilearn-cont",
+          "GT13",
+          "GG99",
+          "parallelDG_single_move",
+          "parallelDG"
+        ]
+      },
+      "graph_true_plots": true,
+      "graph_true_stats": false,
+      "ggally_ggpairs": false,
+      "graph_plots": [],
+      "mcmc_traj_plots": [
+        {
+          "id": "GT13",
+          "burn_in": 0.0,
+          "thinning": 100,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "trilearn-cont",
+          "burn_in": 0,
+          "thinning": 1,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GG99",
+          "burn_in": 0.0,
+          "thinning": 100,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "parallelDG",
+          "burn_in": 0.0,
+          "thinning": 100,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "parallelDG_single_move",
+          "burn_in": 0.0,
+          "thinning": 100,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        }
+      ],
+      "mcmc_heatmaps": [
+        {
+          "id": "trilearn-cont",
+          "burn_in": 0.5,
+          "active": false
+        },
+        {
+          "id": "parallelDG",
+          "burn_in": 0.5,
+          "active": false
+        }
+      ],
+      "mcmc_autocorr_plots": [
+        {
+          "id": "parallelDG",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GG99",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GT13",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        },
+        {
+          "id": "GT13_single_edge",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+            "score"
+          ],
+          "active": false
+        }
+      ]
+    }
+  },
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "example1",
+          "standardized": false,
+          "n": 100
+        }
+      ]
+    },
+    "graph": {
+      "trilearn_rand_bandmat": [
+        {
+          "id": "AR1-5",
+          "max_bandwidth": 5,
+          "dim": 200
+        }
+      ],
+      "trilearn_cta": [
+        {
+          "id": "cta",
+          "order": 200,
+          "alpha": 0.5,
+          "beta": 0.5
+        }
+      ]
+    },
+    "parameters": {
+      "bdgraph_rgwish": [
+        {
+          "id": "gwi",
+          "b": 5,
+          "threshold_conv": 0.0001
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "paralleldg": [
+        {
+          "id": "parallelDG",
+          "M": 500000,
+          "R": 100,
+          "datatype": "continuous",
+          "mcmc_seed": 0,
+          "graph_prior": "uniform",
+          "graph_prior_param": 1.0,
+          "graph_prior_param1": 3.0,
+          "pseudo_obs": 2,
+          "parallel": true,
+          "delta": 1.0,
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        },
+        {
+          "id": "parallelDG_single_move",
+          "M": 1000000,
+          "R": 100,
+          "datatype": "continuous",
+          "mcmc_seed": 0,
+          "graph_prior": "uniform",
+          "graph_prior_param": 1.0,
+          "graph_prior_param1": 3.0,
+          "pseudo_obs": 2,
+          "parallel": false,
+          "delta": 1.0,
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        }
+      ],
+      "athomas_jtsamplers": [
+        {
+          "id": "GT13",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "mcmc_seed": 0,
+          "num_samples": 1000000,
+          "sampler": 2,
+          "edge_penalty": 0.0,
+          "size_maxclique": 1000,
+          "full_output": false,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        },
+        {
+          "id": "GT13_single_edge",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "mcmc_seed": 0,
+          "num_samples": 1000000,
+          "sampler": 1,
+          "edge_penalty": 0.0,
+          "size_maxclique": 1000,
+            "full_output": false,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        },
+        {
+          "id": "GG99",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "mcmc_seed": 0,
+          "num_samples": 1000000,
+          "sampler": 0,
+          "edge_penalty": 0.0,
+          "size_maxclique": 1000,
+          "full_output": false,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        }
+      ],
+      "trilearn_pgibbs": [
+        {
+          "id": "trilearn-cont",
+          "datatype": "continuous",
+          "alpha": 0.5,
+          "beta": 0.8,
+          "radii": 80,
+          "n_particles": 50,
+          "M": 10000,
+          "pseudo_obs": 1,
+          "mcmc_seed": 1,
+          "mcmc_estimator": "threshold",
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ],
+          "burnin_frac": 0.5,
+          "timeout": null
+        }
+      ]
+    }
+  }
+}
