@@ -1,0 +1,14 @@
+{
+    "title": "huge glasso ",
+    "version": "",
+    "package": {
+        "title": "huge",
+        "url": "https://cran.r-project.org/web/packages/huge/index.html"
+    },
+    "docs_url": "",
+    "outputs": "adjmat",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}
