@@ -1,0 +1,79 @@
+{
+    "benchmark_setup": {
+        "data": [
+            {
+                "graph_id": "AR1-5",
+                "parameters_id": "gwi",
+                "data_id": "example1",
+                "seed_range": [
+                    1,
+                    5
+                ]
+            }
+        ],
+        "evaluation": {
+            "benchmarks": {
+                "filename_prefix": "huge_glasso_test/",
+                "show_seed": false,
+                "errorbar": true,
+                "errorbarh": false,
+                "scatter": true,
+                "path": true,
+                "text": true,
+                "ids": [
+                    "huge_glasso"
+                ]
+            },
+            "graph_true_plots": true,
+            "graph_true_stats": false,
+            "ggally_ggpairs": false,
+            "graph_plots": [],
+            "mcmc_traj_plots": [],
+            "mcmc_heatmaps": [],
+            "mcmc_autocorr_plots": []
+        }
+    },
+    "resources": {
+        "data": {
+            "iid": [
+                {
+                    "id": "example1",
+                    "standardized": false,
+                    "n": [
+                        50
+                    ]
+                }
+            ]
+        },
+        "graph": {
+            "trilearn_rand_bandmat": [
+                {
+                    "id": "AR1-5",
+                    "max_bandwidth": 5,
+                    "dim": 50
+                }
+            ]
+        },
+        "parameters": {
+            "bdgraph_rgwish": [
+                {
+                    "id": "gwi",
+                    "b": 3,
+                    "threshold_conv": 0.0001
+                }
+            ]
+        },
+        "structure_learning_algorithms": {
+            "huge_glasso": [
+                {
+                "id": "huge_glasso",
+                "timeout": null,
+                "lambda": null,
+                "nlambda": null,
+                "select_criterion": "ebic"
+                }
+            ]
+        }
+    }
+}
+
