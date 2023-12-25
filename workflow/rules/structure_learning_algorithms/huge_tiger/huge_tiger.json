@@ -13,7 +13,7 @@
         ],
         "evaluation": {
             "benchmarks": {
-                "filename_prefix": "huge_mb_test/",
+                "filename_prefix": "huge_tiger_test/",
                 "show_seed": false,
                 "errorbar": true,
                 "errorbarh": false,
@@ -21,7 +21,7 @@
                 "path": true,
                 "text": true,
                 "ids": [
-                    "huge_mb"
+                    "huge_tiger"
                 ]
             },
             "graph_true_plots": true,
@@ -64,9 +64,9 @@
             ]
         },
         "structure_learning_algorithms": {
-            "huge_mb": [
+            "huge_tiger": [
                 {
-                "id": "huge_mb",
+                "id": "huge_tiger",
                 "timeout": null,
                 "lambda": null,
                 "nlambda": null,

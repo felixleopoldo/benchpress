@@ -35,7 +35,7 @@ myalg <- function() {
     
     ## estimation
     huge_result <- huge(as.matrix(data),
-                        method = "mb",
+                        method = "tiger",
                         lambda = lambda,
                         nlambda = nlambda,
                         verbose = FALSE)

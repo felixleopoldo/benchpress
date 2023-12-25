@@ -1,6 +1,6 @@
 {
     "title": "Huge R package",
-    "description": "Meinshausen & Buhlmann graph estimation",
+    "description": "TIGER: A tuning-insensitive approach for optimally estimating Gaussian graphical models",
     "type": "array",
     "items": {
         "title": "",
