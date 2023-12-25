@@ -16,8 +16,7 @@
             }
         },
         "lambda": {
-                "description": "
-A positive number to control the regularization. Typical usage is to leave the input lambda = NULL and have the program compute its own.",
+                "description": "A positive number to control the regularization. Typical usage is to leave the input lambda = NULL and have the program compute its own.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
             "default": null
         },
@@ -29,7 +28,7 @@ A positive number to control the regularization. Typical usage is to leave the i
         "select_criterion": {
             "description": "Model selection criterion. ric, stars, and ebic are available. The default value is ric.",
             "enum": ["ric", "ebic", "stars", null],
-            "default": null
+            "default": "ebic"
          },
         "required": [
             "id",
@@ -37,7 +36,7 @@ A positive number to control the regularization. Typical usage is to leave the i
         ],
         "examples": [
             {
-                "id": "glasso"
+            "id": "glasso",
                 "timeout": null
             }
         ]
