@@ -23,17 +23,17 @@
     ],
     "evaluation": {
       "benchmarks": {
-        "filename_prefix": "Elmasri_parallel_sampler/",
+        "filename_prefix": "Elmasri_decomposable_graphs/",
         "show_seed": false,
         "errorbar": true,
         "errorbarh": false,
-        "scatter": false,
+        "scatter": true,
         "path": true,
         "text": false,
         "ids": [
-          "GT13_single_edge",
-          "trilearn-cont",
-          "GT13",
+          "GT13-s",
+          "Gibbs-O19",
+          "GT13-m",
           "GG99",
           "parallelDG_single_move",
           "parallelDG"
@@ -45,22 +45,22 @@
       "graph_plots": [],
       "mcmc_traj_plots": [
         {
-          "id": "GT13",
+          "id": "GT13-m",
           "burn_in": 0.0,
           "thinning": 100,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
-          "id": "trilearn-cont",
+          "id": "Gibbs-O19",
           "burn_in": 0,
           "thinning": 1,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
           "id": "GG99",
@@ -69,7 +69,7 @@
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
           "id": "parallelDG",
@@ -78,7 +78,7 @@
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
           "id": "parallelDG_single_move",
@@ -87,12 +87,12 @@
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         }
       ],
       "mcmc_heatmaps": [
         {
-          "id": "trilearn-cont",
+          "id": "Gibbs-O19",
           "burn_in": 0.5,
           "active": false
         },
@@ -103,45 +103,65 @@
         }
       ],
       "mcmc_autocorr_plots": [
-        {
+          {
           "id": "parallelDG",
           "burn_in": 0.5,
           "thinning": 1,
           "lags": 20000,
           "functional": [
-            "score"
+              "score"
           ],
-          "active": false
+          "active": true
+      },
+          {
+          "id": "parallelDG_single_move",
+          "burn_in": 0.5,
+          "thinning": 1,
+          "lags": 20000,
+          "functional": [
+              "score"
+          ],
+          "active": true
         },
         {
           "id": "GG99",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 20000,
+          "lags": 150000,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
-          "id": "GT13",
+          "id": "GT13-m",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 20000,
+          "lags": 150000,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
         },
         {
-          "id": "GT13_single_edge",
+          "id": "GT13-s",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 20000,
+          "lags": 150000,
           "functional": [
             "score"
           ],
-          "active": false
+          "active": true
+        },
+          {
+            "id": "Gibbs-O19",
+            "burn_in": 0.5,
+            "thinning": 1,
+            "lags": 1000,
+            "functional": [
+            "score"
+          ],
+          "active": true
         }
       ]
     }
@@ -249,7 +269,7 @@
       ],
       "athomas_jtsamplers": [
         {
-          "id": "GT13",
+          "id": "GT13-m",
           "burnin_frac": 0.5,
           "mcmc_estimator": [
             "threshold"
@@ -276,7 +296,7 @@
           ]
         },
         {
-          "id": "GT13_single_edge",
+          "id": "GT13-s",
           "burnin_frac": 0.5,
           "mcmc_estimator": [
             "threshold"
@@ -332,7 +352,7 @@
       ],
       "trilearn_pgibbs": [
         {
-          "id": "trilearn-cont",
+          "id": "Gibbs-O19",
           "datatype": "continuous",
           "alpha": 0.5,
           "beta": 0.8,
