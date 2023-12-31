@@ -23,7 +23,7 @@
     ],
     "evaluation": {
       "benchmarks": {
-        "filename_prefix": "Elmasri_decomposable_graphs_single_run/",
+        "filename_prefix": "Elmasri_decomposable_graphs_high-dim_single_run/",
         "show_seed": false,
         "errorbar": true,
         "errorbarh": false,
@@ -32,7 +32,6 @@
         "text": false,
         "ids": [
           "GT13-s",
-          "Gibbs-O19",
           "GT13-m",
           "GG99",
           "parallelDG_single_move",
@@ -49,7 +48,7 @@
           "burn_in": 0.0,
           "thinning": 100,
           "functional": [
-            "score"
+              "score", "size"
           ],
           "active": true
         },
@@ -92,11 +91,6 @@
       ],
       "mcmc_heatmaps": [
         {
-          "id": "Gibbs-O19",
-          "burn_in": 0.5,
-          "active": false
-        },
-        {
           "id": "parallelDG",
           "burn_in": 0.5,
           "active": false
@@ -107,7 +101,7 @@
           "id": "parallelDG",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 20000,
+          "lags": 40000,
           "functional": [
               "score", "size"
           ],
@@ -117,7 +111,7 @@
           "id": "parallelDG_single_move",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 20000,
+          "lags": 40000,
           "functional": [
               "score", "size"
           ],
@@ -127,7 +121,7 @@
           "id": "GG99",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 150000,
+          "lags": 200000,
           "functional": [
               "score", "size"
           ],
@@ -137,7 +131,7 @@
           "id": "GT13-m",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 150000,
+          "lags": 200000,
           "functional": [
               "score", "size"
           ],
@@ -147,19 +141,9 @@
           "id": "GT13-s",
           "burn_in": 0.5,
           "thinning": 1,
-          "lags": 150000,
+          "lags": 200000,
           "functional": [
               "score", "size"
-          ],
-          "active": true
-        },
-          {
-            "id": "Gibbs-O19",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 1000,
-            "functional": [
-                "score", "size"
           ],
           "active": true
         }
@@ -181,13 +165,13 @@
         {
           "id": "AR1-5",
           "max_bandwidth": 5,
-          "dim": 50
+          "dim": 200
         }
       ],
       "trilearn_cta": [
         {
           "id": "cta",
-          "order": 50,
+          "order": 200,
           "alpha": 0.5,
           "beta": 0.5
         }
@@ -206,7 +190,7 @@
       "paralleldg": [
         {
           "id": "parallelDG",
-          "M": 500000,
+          "M": 1000000,
           "R": 100,
           "datatype": "continuous",
           "mcmc_seed": 0,
@@ -276,7 +260,7 @@
           ],
           "timeout": null,
           "mcmc_seed": 0,
-          "num_samples": 1000000,
+          "num_samples": 3000000,
           "sampler": 2,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
@@ -303,7 +287,7 @@
           ],
           "timeout": null,
           "mcmc_seed": 0,
-          "num_samples": 1000000,
+          "num_samples": 3000000,
           "sampler": 1,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
@@ -330,7 +314,7 @@
           ],
           "timeout": null,
           "mcmc_seed": 0,
-          "num_samples": 1000000,
+          "num_samples": 3000000,
           "sampler": 0,
           "edge_penalty": 0.0,
           "size_maxclique": 1000,
@@ -348,35 +332,6 @@
             0.9,
             1.0
           ]
-        }
-      ],
-      "trilearn_pgibbs": [
-        {
-          "id": "Gibbs-O19",
-          "datatype": "continuous",
-          "alpha": 0.5,
-          "beta": 0.8,
-          "radii": 80,
-          "n_particles": 50,
-          "M": 10000,
-          "pseudo_obs": 1,
-          "mcmc_seed": 1,
-          "mcmc_estimator": "threshold",
-          "threshold": [
-            0.0,
-            0.1,
-            0.2,
-            0.3,
-            0.4,
-            0.5,
-            0.6,
-            0.7,
-            0.8,
-            0.9,
-            1.0
-          ],
-          "burnin_frac": 0.5,
-          "timeout": null
         }
       ]
     }
