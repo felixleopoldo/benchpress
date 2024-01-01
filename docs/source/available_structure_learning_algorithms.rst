@@ -30,7 +30,6 @@ Algorithms
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/bnlearn_tabu
     structure_learning_algorithms/causaldag_gsp
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
@@ -50,10 +49,14 @@ Algorithms
     structure_learning_algorithms/gcastle_rl
     structure_learning_algorithms/gobnilp
     structure_learning_algorithms/grues
+    structure_learning_algorithms/huge_glasso
+    structure_learning_algorithms/huge_mb
+    structure_learning_algorithms/huge_tiger
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/pcalg_gies
     structure_learning_algorithms/pcalg_pc
     structure_learning_algorithms/prec_thresh
+    structure_learning_algorithms/qpgraph
     structure_learning_algorithms/rblip_asobs
     structure_learning_algorithms/sklearn_glasso
     structure_learning_algorithms/tetrad_boss
@@ -244,6 +247,18 @@ To add new modules, see :ref:`new_modules`.
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - :ref:`grues` 
+   * - Graphical lasso from huge R package 
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_glasso` 
+   * - Meinshausen & Buhlmann covariance estimation from huge package
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_mb` 
+   * - TIGER: A tuning-insensitive approach for optimally estimating Gaussian graphical models
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_tiger` 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
@@ -260,6 +275,10 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - :ref:`prec_thresh` 
+   * - qp-graph
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `A robust procedure for Gaussian graphical model search from microarray data with p larger than n. <https://bioconductor.org/packages/release/bioc/html/qpgraph.html>`__
+     - :ref:`qpgraph` 
    * - ASOBS
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
