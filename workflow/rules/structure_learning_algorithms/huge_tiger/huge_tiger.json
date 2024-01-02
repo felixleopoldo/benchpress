@@ -66,12 +66,21 @@
         "structure_learning_algorithms": {
             "huge_tiger": [
                 {
-                "id": "huge_tiger",
-                "timeout": null,
-                "lambda": [2, 1, 0.8, 0.6, 0.4, 0.2, 0.1, 0.05, 0.01]
+                    "id": "huge_tiger",
+                    "timeout": null,
+                    "lambda": [
+                        2,
+                        1,
+                        0.8,
+                        0.6,
+                        0.4,
+                        0.2,
+                        0.1,
+                        0.05,
+                        0.01
+                    ]
                 }
             ]
         }
     }
 }
-

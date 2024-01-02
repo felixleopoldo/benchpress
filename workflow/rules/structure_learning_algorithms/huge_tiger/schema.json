@@ -13,12 +13,12 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "lambda": {
+                "description": "A positive number to control the regularization. Typical usage is to leave the input lambda: null and have the program compute its own.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "default": 1
             }
-        },
-        "lambda": {
-            "description": "A positive number to control the regularization. Typical usage is to leave the input lambda = NULL and have the program compute its own.",
-            "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
-            "default": 1
         },
         "required": [
             "id",
@@ -26,9 +26,19 @@
         ],
         "examples": [
             {
-            "id": "tiger",
-            "timeout": null,
-            "lambda": 2
+                "id": "huge_tiger",
+                "timeout": null,
+                "lambda": [
+                    2,
+                    1,
+                    0.8,
+                    0.6,
+                    0.4,
+                    0.2,
+                    0.1,
+                    0.05,
+                    0.01
+                ]
             }
         ]
     },
