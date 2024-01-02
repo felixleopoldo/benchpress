@@ -1,6 +1,6 @@
 {
     "title": "Random bandmatrix",
-    "version": "1.25",
+    "version": "2.0.4",
     "package": {
         "title": "trilearn",
         "url": "https://github.com/felixleopoldo/trilearn"

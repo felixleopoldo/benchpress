@@ -140,7 +140,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
   if (isSymmetric(unname(estimated_adjmat))) {
     graph_type <- "ug"
   }
-  if (pcalg::isValidGraph(t(estimated_adjmat), type = "cpdag",verbose = FALSE)) {
+  if (pcalg::isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {
     compres_cpdag <- BiDAG::compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
     SHD_cpdag <- compres_cpdag["SHD"]
     graph_type <- "cpdag"
@@ -148,12 +148,15 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     type = "dag",
     verbose = FALSE
   )) {
-    compres_cpdag <- BiDAG::compareDAGs(estimated_adjmat, true_adjmat,cpdag = TRUE)
+    compres_cpdag <- BiDAG::compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
     SHD_cpdag <- compres_cpdag["SHD"]
     graph_type <- "dag"
   }
   df <- data.frame(
-    TPR_pattern = compres["TPR"], # should be for all times
+    TP_pattern = compres["TP"],
+    FP_pattern = compres["FP"],
+    FN_pattern = n_edges - compres["TP"], # shouldn't store simple calculations but anyway..
+    TPR_pattern = compres["TPR"], 
     FPR_pattern = compres["FPR"],
     FPRn_pattern = compres["FPR_P"],
     SHD_pattern = compres["SHD"],
@@ -178,6 +181,9 @@ if (file.info(argv$adjmat_est)$size > 0) {
   df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
   df <- data.frame(
+    TP_pattern = "None",
+    FP_pattern = "None",
+    FN_pattern = "None",
     TPR_pattern = "None", # should be for all times
     FPR_pattern = "None",
     FPRn_pattern = "None",

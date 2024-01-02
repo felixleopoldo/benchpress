@@ -8,7 +8,7 @@ wrapper <- function() {
 
   filename <- file.path(snakemake@output[["adjmat"]])
   filename_data <- snakemake@input[["data"]]
-  seed <- as.integer(snakemake@wildcards[["replicate"]])
+  seed <- as.integer(snakemake@wildcards[["seed"]])
   alpha <- as.numeric(snakemake@wildcards[["alpha"]])
   NAdelete <- as.logical(snakemake@wildcards[["NAdelete"]])
   mmax <- as.numeric(snakemake@wildcards[["mmax"]])

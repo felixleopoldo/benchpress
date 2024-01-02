@@ -92,7 +92,7 @@ def info_to_small_table():
         else:
             tab += "     - "+info["package"]["title"]+"\n"    
         tab += "     - "+info["version"]+"\n"
-        tab += "     - "+p.name+"_ \n"
+        tab += "     - :ref:`"+p.name+"` \n"
 
     tab += "\n"
     return tab
@@ -109,6 +109,23 @@ str += ".. _"+algspath.name+": \n\n"
 str += "Parameters\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
+
+# Toc tree for the parameters modules
+str += """.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Parameters modules
+    :caption: Parameters modules
+    
+"""
+for p in sorted(algspath.iterdir()):
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    str += "    parameters/{}\n".format(p.name)
+
 str += content
 str += "\n\n"
 
@@ -143,36 +160,34 @@ for p in sorted(algspath.iterdir()):
             if "examples" in schema["items"]:
                 dump = json.dumps(schema["items"]["examples"], indent=2)
 
-    #str += "\n\n\n"
-    #str +=".. _" + p.name +": "
-    str += "\n\n"
-    str += ".. _"+p.name+": \n\n"
-    str +="" + p.name +" \n"
-    str +="-"*len(p.name) + "-"*4 + "\n"
-    str += "\n"
-    str += ".. rubric:: "+ info["title"]
-    str += "\n\n"
+    # This is the module part, written to the file.    
+    module_str = "\n\n"
+    module_str += ".. _"+p.name+": \n\n"
+    module_str +="" + p.name +" \n"
+    module_str +="-"*len(p.name) + "-"*4 + "\n"
+    module_str += "\n"
+    module_str += ".. rubric:: "+ info["title"]
+    module_str += "\n\n"
     if p.name != "fixed_params":
-        str += info_to_table(info, p)
-        str += "\n\n"
-    str += ".. rubric:: Description"
+        module_str += info_to_table(info, p)
+        module_str += "\n\n"
+    module_str += ".. rubric:: Description"
     if content != "":
-        str += "\n\n"
-        str += content
+        module_str += "\n\n"
+        module_str += content
     if dump != "":
-        str += "\n\n"
-        str += ".. rubric:: Example"
-        str += "\n\n\n"
-        str += ".. code-block:: json"
-        str += "\n\n"
-        str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    str += "\n\n"
-    str += ".. footbibliography::"
-    str += "\n\n"
-    #str += "\n\n\n----------"
-    
+        module_str += "\n\n"
+        module_str += ".. rubric:: Example"
+        module_str += "\n\n\n"
+        module_str += ".. code-block:: json"
+        module_str += "\n\n"
+        module_str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    module_str += "\n\n"
+    module_str += ".. footbibliography::"
+    module_str += "\n\n"
 
-
+    with open("source/parameters/{}.rst".format(p.name), "w") as text_file:
+        text_file.write(module_str)
 
 with open("source/available_parameters.rst", "w") as text_file:
     text_file.write(str)

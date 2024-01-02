@@ -7,7 +7,7 @@ include: "filenames.py"
 # redefined here.
 # They should probably be defined at a global level.
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"
 
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
@@ -91,7 +91,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -100,7 +100,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     script:
         "bnlearn_graphvizcompare.R"
 # This is actually a quite general rule.
@@ -114,7 +114,7 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -123,7 +123,7 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     params:
         title="Graph: {adjmat}\nParameters: {bn}\nData: {data}",
         adjmat_string="{adjmat}",

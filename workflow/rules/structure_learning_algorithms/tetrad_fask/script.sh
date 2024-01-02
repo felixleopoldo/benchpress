@@ -9,7 +9,7 @@ CMD="$CMD --algorithm fask"
 CMD="$CMD --data-type continuous"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --seed ${snakemake_wildcards[replicate]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then

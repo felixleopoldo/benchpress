@@ -5,7 +5,7 @@ filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 
 wrapper <- function() {
-    seed <- as.integer(snakemake@wildcards[["replicate"]])
+    seed <- as.integer(snakemake@wildcards[["seed"]])
     data <- read.csv(filename_data, check.names = FALSE)
     names <- names(data)
     if (snakemake@wildcards[["score"]] %in% c("bde", "bic")) {

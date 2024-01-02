@@ -3,6 +3,74 @@
 Algorithms
 =======================================
 
+.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Structure learning algorithms
+    :caption: Structure learning algorithms
+    
+    structure_learning_algorithms/athomas_jtsamplers
+    structure_learning_algorithms/bdgraph
+    structure_learning_algorithms/bidag_itsearch
+    structure_learning_algorithms/bidag_order_mcmc
+    structure_learning_algorithms/bidag_partition_mcmc
+    structure_learning_algorithms/bnlearn_fastiamb
+    structure_learning_algorithms/bnlearn_gs
+    structure_learning_algorithms/bnlearn_h2pc
+    structure_learning_algorithms/bnlearn_hc
+    structure_learning_algorithms/bnlearn_hpc
+    structure_learning_algorithms/bnlearn_iamb
+    structure_learning_algorithms/bnlearn_iambfdr
+    structure_learning_algorithms/bnlearn_interiamb
+    structure_learning_algorithms/bnlearn_mmhc
+    structure_learning_algorithms/bnlearn_mmpc
+    structure_learning_algorithms/bnlearn_pcstable
+    structure_learning_algorithms/bnlearn_rsmax2
+    structure_learning_algorithms/bnlearn_sihitonpc
+    structure_learning_algorithms/bnlearn_tabu
+    structure_learning_algorithms/causaldag_gsp
+    structure_learning_algorithms/causallearn_ges
+    structure_learning_algorithms/causallearn_grasp
+    structure_learning_algorithms/corr_thresh
+    structure_learning_algorithms/dualpc
+    structure_learning_algorithms/equsa_psilearner
+    structure_learning_algorithms/gcastle_anm
+    structure_learning_algorithms/gcastle_corl
+    structure_learning_algorithms/gcastle_direct_lingam
+    structure_learning_algorithms/gcastle_gae
+    structure_learning_algorithms/gcastle_golem
+    structure_learning_algorithms/gcastle_grandag
+    structure_learning_algorithms/gcastle_ica_lingam
+    structure_learning_algorithms/gcastle_mcsl
+    structure_learning_algorithms/gcastle_notears
+    structure_learning_algorithms/gcastle_notears_low_rank
+    structure_learning_algorithms/gcastle_notears_nonlinear
+    structure_learning_algorithms/gcastle_pc
+    structure_learning_algorithms/gcastle_rl
+    structure_learning_algorithms/gobnilp
+    structure_learning_algorithms/grues
+    structure_learning_algorithms/huge_glasso
+    structure_learning_algorithms/huge_mb
+    structure_learning_algorithms/huge_tiger
+    structure_learning_algorithms/paralleldg
+    structure_learning_algorithms/pcalg_gies
+    structure_learning_algorithms/pcalg_pc
+    structure_learning_algorithms/prec_thresh
+    structure_learning_algorithms/rblip_asobs
+    structure_learning_algorithms/sklearn_glasso
+    structure_learning_algorithms/tetrad_boss
+    structure_learning_algorithms/tetrad_fas
+    structure_learning_algorithms/tetrad_fask
+    structure_learning_algorithms/tetrad_fges
+    structure_learning_algorithms/tetrad_fofc
+    structure_learning_algorithms/tetrad_ftfc
+    structure_learning_algorithms/tetrad_grasp
+    structure_learning_algorithms/tetrad_ica-lingam
+    structure_learning_algorithms/tetrad_pc
+    structure_learning_algorithms/trilearn_pgibbs
+
+
 Apart from the original parameters of the underlying software, each algorithm module is equipped with an additional parameter, ``timeout``, which is the maximum time in seconds allowed for the algorithm to run.
 After the timeout, the algorithm will be terminated and either an empty file will be created or the current best graph will be saved (if the algorithm supports that).
 
@@ -30,218 +98,234 @@ To add new modules, see :ref:`new_modules`.
    * - Chordal graph samplers
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
-     - athomas_jtsamplers_ 
+     - :ref:`athomas_jtsamplers` 
    * - BDgraph
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
-     - bdgraph_ 
+     - :ref:`bdgraph` 
    * - Iterative MCMC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
-     - bidag_itsearch_ 
+     - :ref:`bidag_itsearch` 
    * - Order MCMC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
-     - bidag_order_mcmc_ 
+     - :ref:`bidag_order_mcmc` 
    * - Partition MCMC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
-     - bidag_partition_mcmc_ 
+     - :ref:`bidag_partition_mcmc` 
    * - Fast IAMB
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_fastiamb_ 
+     - :ref:`bnlearn_fastiamb` 
    * - Grow-shrink
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_gs_ 
+     - :ref:`bnlearn_gs` 
    * - H2PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_h2pc_ 
+     - :ref:`bnlearn_h2pc` 
    * - HC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_hc_ 
+     - :ref:`bnlearn_hc` 
    * - HPC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_hpc_ 
+     - :ref:`bnlearn_hpc` 
    * - IAMB
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_iamb_ 
+     - :ref:`bnlearn_iamb` 
    * - IAMB-FDR
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_iambfdr_ 
+     - :ref:`bnlearn_iambfdr` 
    * - INTER-IAMB
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_interiamb_ 
+     - :ref:`bnlearn_interiamb` 
    * - MMHC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_mmhc_ 
+     - :ref:`bnlearn_mmhc` 
    * - MMPC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_mmpc_ 
+     - :ref:`bnlearn_mmpc` 
    * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_pcstable_ 
+     - :ref:`bnlearn_pcstable` 
    * - RSMAX2
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_rsmax2_ 
+     - :ref:`bnlearn_rsmax2` 
    * - S-I HITON-PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_sihitonpc_ 
+     - :ref:`bnlearn_sihitonpc` 
    * - Tabu
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
-     - bnlearn_tabu_ 
+     - :ref:`bnlearn_tabu` 
    * - GSP
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
-     - causaldag_gsp_ 
+     - :ref:`causaldag_gsp` 
    * - GRaSP
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
-     - causallearn_grasp_ 
+     - :ref:`causallearn_grasp` 
    * - Corrmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
+     - :ref:`corr_thresh` 
      - corr_thresh_ 
    * - Chordal-screening
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
-     - 
-     - dualgl_ 
    * - Dual PC
      - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
-     - dualpc_ 
+     - :ref:`dualpc` 
    * - Psi-learning
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `equSA <https://rdrr.io/cran/equSA/>`__
-     - equsa_psilearner_ 
+     - :ref:`equsa_psilearner` 
    * - ANM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_anm_ 
+     - :ref:`gcastle_anm` 
    * - CORL
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_corl_ 
+     - :ref:`gcastle_corl` 
    * - Direct LINGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_direct_lingam_ 
+     - :ref:`gcastle_direct_lingam` 
    * - GAE
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_gae_ 
+     - :ref:`gcastle_gae` 
    * - GOLEM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_golem_ 
+     - :ref:`gcastle_golem` 
    * - GraNDAG
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_grandag_ 
+     - :ref:`gcastle_grandag` 
    * - ICALiNGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_ica_lingam_ 
+     - :ref:`gcastle_ica_lingam` 
    * - MCSL
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_mcsl_ 
+     - :ref:`gcastle_mcsl` 
    * - NO TEARS
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_notears_ 
+     - :ref:`gcastle_notears` 
    * - NO TEARS low rank
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_notears_low_rank_ 
+     - :ref:`gcastle_notears_low_rank` 
    * - NO TEARS non-linear
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_notears_nonlinear_ 
+     - :ref:`gcastle_notears_nonlinear` 
    * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_pc_ 
+     - :ref:`gcastle_pc` 
    * - RL
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - gcastle_rl_ 
+     - :ref:`gcastle_rl` 
    * - GOBNILP
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
-     - gobnilp_ 
+     - :ref:`gobnilp` 
+   * - GrUES
+     - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
+     - `gues <https://pypi.org/project/gues/>`__
+     - :ref:`grues` 
+   * - Graphical lasso
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_glasso` 
+   * - Meinshausen & Buhlmann cov est
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_mb` 
+   * - TIGER
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_tiger` 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - paralleldg_ 
+     - :ref:`paralleldg` 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
-     - pcalg_gies_ 
+     - :ref:`pcalg_gies` 
    * - PC
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
-     - pcalg_pc_ 
+     - :ref:`pcalg_pc` 
    * - Precmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
-     - prec_thresh_ 
+     - :ref:`prec_thresh` 
    * - ASOBS
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
-     - rblip_asobs_ 
+     - :ref:`rblip_asobs` 
    * - Graphical Lasso
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
-     - sklearn_glasso_ 
+     - :ref:`sklearn_glasso` 
    * - BOSS
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_boss_ 
+     - :ref:`tetrad_boss` 
    * - FASK
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fask_ 
+     - :ref:`tetrad_fask` 
    * - FGES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fges_ 
+     - :ref:`tetrad_fges` 
    * - FOFC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_fofc_ 
+     - :ref:`tetrad_fofc` 
    * - FTFC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_ftfc_ 
+     - :ref:`tetrad_ftfc` 
    * - GRaSP
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_grasp_ 
+     - :ref:`tetrad_grasp` 
    * - ICA-LINGAM
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_ica-lingam_ 
+     - :ref:`tetrad_ica-lingam` 
    * - PC
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
-     - tetrad_pc_ 
+     - :ref:`tetrad_pc` 
    * - Particle Gibbs
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
+     - :ref:`trilearn_pgibbs` 
      - trilearn_pgibbs_ 
 
 
@@ -4262,52 +4346,4 @@ discrete and continuous graphical models.
 .. code-block:: json
 
 
-    [
-      {
-        "id": "trilearn-cont",
-        "datatype": "continuous",
-        "alpha": 0.5,
-        "beta": 0.5,
-        "radii": 80,
-        "n_particles": 50,
-        "M": 1000,
-        "pseudo_obs": 1,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
-      },
-      {
-        "id": "trilearn-disc",
-        "datatype": "discrete",
-        "alpha": 0.5,
-        "beta": 0.5,
-        "radii": 80,
-        "n_particles": 50,
-        "M": 1000,
-        "pseudo_obs": 1,
-        "mcmc_seed": 1,
-        "mcmc_estimator": "threshold",
-        "threshold": [
-          0.1,
-          0.3,
-          0.5,
-          0.7,
-          0.9,
-          1.0
-        ],
-        "burnin_frac": 0.5,
-        "timeout": null
-      }
-    ]
-
-.. footbibliography::
 

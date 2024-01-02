@@ -379,7 +379,7 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
         df = pd.read_csv(snakemake.input["data"])
 
         # Set the seed
-        np.random.seed(int(snakemake.wildcards["replicate"]))
+        np.random.seed(int(snakemake.wildcards["seed"]))
         
         # The algorithm goes here    
         adjmat = my_local_algorithm(df) # returns an adjacency matrix
@@ -415,13 +415,12 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
 Updating the documentation
 ******************************************
 
-When a new module is installed you may also update the documentation.
-First install some requirements 
+When adding a new module you may also update the documentation.
+First install the requirements by 
 
 .. prompt:: bash
 
-
-    pip install -r docs/_source/requirements.txt
+    pip install -r docs/source/requirements.txt
 
 Then make *render_docs.sh* executable then render and build the documentation
 
@@ -436,6 +435,3 @@ Then make *render_docs.sh* executable then render and build the documentation
     make html
 
 Open *build/html/index.html* in a web browser to see the result.
-
-
-.. _ BDgraph: https://cran.r-project.org/web/packages/BDgraph/index.html

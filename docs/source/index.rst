@@ -28,13 +28,12 @@
     :maxdepth: 3
     :name: Modules
     :caption: Modules
-    
+        
     available_graphs
     available_parameters
     available_data
     available_structure_learning_algorithms
     available_evaluations
-
 
 .. toctree::
     :hidden:
@@ -43,14 +42,6 @@
     :caption: Development
     
     module_add
-
-.. .. toctree::
-..     :hidden:
-..     :maxdepth: 3
-..     :name: File formats
-..     :caption: File formats
-
-..     data_formats
 
 .. toctree::
     :hidden:
@@ -71,11 +62,9 @@
 
 ------------------------
 
-
 ##################################
 Benchpress
 ##################################
-
 
 Describing the relationship between the variables in a study domain and modelling
 the data generating mechanism is a fundamental problem in many empirical sciences.
@@ -91,18 +80,18 @@ algorithms from libraries such as `BDgraph <https://cran.r-project.org/web/packa
 Alongside user-defined models and randomly
 generated datasets, the workflow also includes a number of standard datasets and graphical models from the literature.
 
-
 .. rubric:: See also
 
 * The paper :footcite:t:`rios2021benchpress`
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
-* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of questions etc.
-
+* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
 
 .. rubric:: Updates
 
+* 2023-12-04: New version of the Benchpress paper :footcite:t:`rios2021benchpress`.
+* 2023-11-16: Benchpress 2.6.0 released. The new algorithm GrUES (:ref:`grues`) for estimating the unconditional dependence graph (`UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`_) for DAGs is now available. Thanks `Alex Markham <https://causal.dev/>`_ for the contribution.
 * 2023-10-13: Benchpress 2.5.0 released. Added the feature to pass the graph estimate of one algorithm as input of another. Added the algorithm module :ref:`athomas_jtsamplers` for MCMC estimating graphs of undirected decomposable graphical models.
 * 2023-09-24: Benchpress 2.4.0 released. Added the Psi-learner algorithm for learning graphs of undirected Gaussian graphical models (:ref:`equsa_psilearner`).
 * 2023-09-19: Benchpress 2.3.0 released. Updated causal-cmd to version 1.10.0. Added the BOSS algorithm (:ref:`tetrad_boss`).

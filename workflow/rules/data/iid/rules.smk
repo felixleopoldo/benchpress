@@ -8,9 +8,9 @@ rule sample_bin_bn_data:
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
-             "/parameters=/bin_bn/{bn}"\             
+             "/parameters=/bin_bn/{bn}"\
              "/data=/"+pattern_strings["iid"] + "/" \
-             "seed={replicate}.csv"
+             "seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*"
     shell:
@@ -18,7 +18,7 @@ rule sample_bin_bn_data:
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
+        "--seed {wildcards.seed}"
 
 rule sample_loglindata:
     input:
@@ -28,11 +28,11 @@ rule sample_loglindata:
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_hyper-dir/{bn}"\
              "/data=/"+pattern_strings["iid"] + ""\
-             "/seed={replicate}.csv"
+             "/seed={seed}.csv"
     container:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.replicate}  {input.bn} {output.data} {wildcards.n}"
+        "python workflow/scripts/data_sampling/trilearn_sample_loglin_data.py {wildcards.seed}  {input.bn} {output.data} {wildcards.n}"
 
 rule sample_intra_class_data:
     input:
@@ -42,13 +42,13 @@ rule sample_intra_class_data:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_intra-class/{bn}"\
-             "/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+             "/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*"
     container:
         docker_image("trilearn")
     shell:
-        "python workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py  {input.cov} {output.data} {wildcards.n} {wildcards.seed}"
 
 rule sample_g_inverse_wishart:
     input:
@@ -58,11 +58,11 @@ rule sample_g_inverse_wishart:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/parameters=/trilearn_g_inv_wishart/{bn}"\
-             "/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+             "/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     container:
         docker_image("trilearn")
     shell:
-        "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/scripts/data_sampling/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.seed}"
 
 rule sample_rgwish_data:
     input:
@@ -72,13 +72,13 @@ rule sample_rgwish_data:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
              "/parameters=/bdgraph_rgwish/{bn}"\
-             "/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+             "/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*"
     container:
         docker_image("trilearn")
     shell:
-        "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.replicate}"
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.seed}"
 
 """
 TODO: Standardisation should better be done in a separate preprocessing module
@@ -104,16 +104,16 @@ rule sample_data_fixed_bnfit:
         "workflow/rules/data/iid/sample_from_bnlearn_bn.R",
         bn="resources/parameters/myparams/bn.fit_networks/{bn}"
     output:
-        data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+        data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*",
-        bn=".*\.rds"    
+        bn=".*\.rds"
     shell:
         "Rscript workflow/rules/data/iid/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \
-        "--seed {wildcards.replicate}"
+        "--seed {wildcards.seed}"
 
 """
 This rule is for the case when te sem parameters are given as a matrix in
@@ -127,7 +127,7 @@ rule sample_fixed_sem_params_data:
         data="{output_dir}/data/" \
              "adjmat=/{adjmat}/" \
              "parameters=/sem_params/{bn}/" \
-             "data=/"+pattern_strings["iid"]+"/seed={replicate}.csv"
+             "data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*",
         bn=".*\.csv"
@@ -144,7 +144,7 @@ rule sample_sem_data:
             "/adjmat=/{adjmat}"\
             "/parameters=/sem_params/{params}/" \
             "data=/"+pattern_strings["iid"]+"/" \
-            "seed={replicate}.csv"
+            "seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*"
     container:
