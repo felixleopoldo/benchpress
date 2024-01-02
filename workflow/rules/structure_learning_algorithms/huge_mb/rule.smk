@@ -12,8 +12,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        None
-    conda:
-        "snakemake"
+        "docker://bpimages/huge:1.3.5"
     script:
         "script.R"
