@@ -1,5 +1,5 @@
 {
-    "title":  "TIGER: A tuning-insensitive approach for optimally estimating Gaussian graphical models",
+    "title":  "TIGER",
     "version": "1.3.5",
     "package": {
         "title": "huge",

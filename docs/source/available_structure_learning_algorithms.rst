@@ -247,15 +247,15 @@ To add new modules, see :ref:`new_modules`.
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - :ref:`grues` 
-   * - Graphical lasso from huge R package 
+   * - Graphical lasso
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_glasso` 
-   * - Meinshausen & Buhlmann covariance estimation from huge package
+   * - Meinshausen & Buhlmann cov est
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_mb` 
-   * - TIGER: A tuning-insensitive approach for optimally estimating Gaussian graphical models
+   * - TIGER
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_tiger` 
