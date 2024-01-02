@@ -9,7 +9,6 @@ output_filename <- file.path(snakemake@output[["adjmat"]])
 data_filename <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["seed"]])
 
-## data_filename = '~/src/benchpress/results/data/adjmat=/trilearn_cta/order=200/alpha=0.5/beta=0.5/seed=1/parameters=/bdgraph_rgwish/b=5/threshold_conv=0.0001/seed=1/data=/iid/n=100/standardized=False/seed=1.csv'
 
 myalg <- function() {
     # Read in data
@@ -20,19 +19,10 @@ myalg <- function() {
     set.seed(seed)
 
     ## Here is where you should put your algorithm.
-    lambda = NULL
+    lambda = 1
     if (snakemake@wildcards[["lambda"]]!="None") 
         lambda <- as.numeric(snakemake@wildcards[["lambda"]])
 
-    nlambda = NULL
-    if (snakemake@wildcards[["nlambda"]]!="None") 
-        lambda <- as.numeric(snakemake@wildcards[["nlambda"]])
-
-    ## "ric" and "stars" and "ebic" are available
-    select_criterion = 'stars'
-    if (snakemake@wildcards[["select_criterion"]]!="None")
-        select_criterion <-snakemake@wildcards[["select_criterion"]]
-    
     ## estimation
     huge_result <- huge(as.matrix(data),
                         method = "tiger",
@@ -40,13 +30,9 @@ myalg <- function() {
                         nlambda = nlambda,
                         verbose = FALSE)
 
-    ## select the precision matrix
-    out.select = huge.select(huge_result,
-                             criterion = select_criterion,
-                             verbose = FALSE)
     ## transform to an adjmat
-    adjmat <- as.matrix(abs(as.matrix(out.select$opt.icov)) > 0)
-   
+    adjmat <- as.matrix(huge_result$path[[1]])
+    
     # Format and save the results
     totaltime <- proc.time()[1] - start
     colnames(adjmat) <- names(data)
@@ -55,5 +41,4 @@ myalg <- function() {
 
     cat("None", file = snakemake@output[["ntests"]], sep = "\n") 
 }
-
 add_timeout(myalg)

@@ -16,28 +16,19 @@
             }
         },
         "lambda": {
-                "description": "A positive number to control the regularization. Typical usage is to leave the input lambda = NULL and have the program compute its own.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
-            "default": null
+            "description": "A positive number to control the regularization. Typical usage is to leave the input lambda = NULL and have the program compute its own.",
+            "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+            "default": 1
         },
-        "nlambda": {
-                "description": "The number of regularization/thresholding parameters. The default value is 10",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
-                "default": null
-         },
-        "select_criterion": {
-            "description": "Model selection criterion. ric and stars are available. The default value is ric.",
-            "enum": ["ric", "stars", null],
-            "default": "ric"
-         },
         "required": [
             "id",
             "timeout"
         ],
         "examples": [
             {
-            "id": "glasso",
-                "timeout": null
+            "id": "tiger",
+            "timeout": null,
+            "lambda": 2
             }
         ]
     },
