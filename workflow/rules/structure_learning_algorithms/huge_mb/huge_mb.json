@@ -78,7 +78,7 @@
                         0.1,
                         0.05,
                         0.01
-                    ],                    
+                    ],             
                     "nlambda": null,
                     "select_criterion": "stars"
                 }
