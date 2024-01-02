@@ -1,0 +1,16 @@
+{
+    "title": "Chordal-screening",
+    "version": "0.1",
+    "package": {
+        "title": "",
+        "url": "http"
+    },
+    "docs_url": "",
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "UG"
+    ],
+    "language": "Java"
+}

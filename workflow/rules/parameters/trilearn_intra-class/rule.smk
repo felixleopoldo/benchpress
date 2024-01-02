@@ -11,3 +11,4 @@ rule intra_class_cov:
         "docker://bpimages/trilearn:2.0.4.0"
     shell:
         "python workflow/rules/parameters/trilearn_intra-class/trilearn_g_intra_class_cov.py {input.adjmat} {output.params} {wildcards.rho} {wildcards.sigma2}"
+    ruleorder: standardize > data
