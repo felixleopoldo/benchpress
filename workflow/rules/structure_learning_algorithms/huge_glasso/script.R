@@ -9,8 +9,6 @@ output_filename <- file.path(snakemake@output[["adjmat"]])
 data_filename <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["seed"]])
 
-## data_filename = '~/src/benchpress/results/data/adjmat=/trilearn_cta/order=200/alpha=0.5/beta=0.5/seed=1/parameters=/bdgraph_rgwish/b=5/threshold_conv=0.0001/seed=1/data=/iid/n=100/standardized=False/seed=1.csv'
-
 myalg <- function() {
     # Read in data
     data <- read.csv(data_filename, check.names = FALSE)
