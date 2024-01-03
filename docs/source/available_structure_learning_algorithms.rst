@@ -50,6 +50,9 @@ Algorithms
     structure_learning_algorithms/gcastle_rl
     structure_learning_algorithms/gobnilp
     structure_learning_algorithms/grues
+    structure_learning_algorithms/huge_glasso
+    structure_learning_algorithms/huge_mb
+    structure_learning_algorithms/huge_tiger
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/pcalg_gies
     structure_learning_algorithms/pcalg_pc
@@ -244,6 +247,18 @@ To add new modules, see :ref:`new_modules`.
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - :ref:`grues` 
+   * - Graphical lasso
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_glasso` 
+   * - Meinshausen & Buhlmann cov est
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_mb` 
+   * - TIGER
+     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
+     - :ref:`huge_tiger` 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
