@@ -6,7 +6,7 @@ TEMP_FILENAME=${snakemake_output[seqgraph_full]/fulloutput.tar.gz/fulloutput_tob
 if [ ${snakemake_wildcards[timeout]} = "None" ]; then
     if [ ${snakemake_wildcards[full_output]} = "True" ]; then
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
-                      -r ${snakemake_wildcards[replicate]} \
+                      -r ${snakemake_wildcards[mcmc_seed]} \
                       -n ${snakemake_wildcards[num_samples]} \
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
@@ -20,7 +20,7 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
         rm -f $TEMP_FILENAME
     else
         /usr/bin/time -f "%e" -o ${snakemake_output[time]} java -classpath $CP EstimateGM \
-                      -r ${snakemake_wildcards[replicate]} \
+                      -r ${snakemake_wildcards[mcmc_seed]} \
                       -n ${snakemake_wildcards[num_samples]} \
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \

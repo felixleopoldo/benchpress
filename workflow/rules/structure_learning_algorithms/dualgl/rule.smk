@@ -2,7 +2,7 @@ def fix_none_startalg(wildcards):
         if wildcards["startalg"] == "None":
             return []
         else:
-            return "{output_dir}/adjvecs/{data}/algorithm=/"+ wildcards['startalg']+"/seed={replicate}/adjvecs_fulloutput.csv"
+            return "{output_dir}/adjvecs/{data}/algorithm=/"+ wildcards['startalg']+"/seed={seed}/adjvecs_fulloutput.csv"
 
 def extract_filename(filename):
     return filename.replace("_fulloutput.tar.gz", "fulloutput_tobecompressed.csv")

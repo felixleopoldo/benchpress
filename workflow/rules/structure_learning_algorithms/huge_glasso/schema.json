@@ -16,12 +16,12 @@
             },
             "lambda": {
                 "description": "A positive number to control the regularization. Typical usage is to leave the input lambda: null and have the program compute its own.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull",
                 "default": null
             },
             "nlambda": {
                 "description": "The number of regularization/thresholding parameters. The default value is 10",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull",
                 "default": null
             },
             "select_criterion": {
