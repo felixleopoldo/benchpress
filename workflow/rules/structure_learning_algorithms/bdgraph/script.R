@@ -1,6 +1,5 @@
 source("workflow/scripts/utils/helpers.R")
 library(BDgraph)
-library(R.utils)
 
 adjmatToEdgeString <- function(adjmat, labels) {
   edgeinds <- which(adjmat == 1, arr.ind = TRUE)
