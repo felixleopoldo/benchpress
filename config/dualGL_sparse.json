@@ -7,22 +7,49 @@
         "parameters_id": "gwi",
         "seed_range": [
             1,
-            2
+            5
         ]
     },
         {
+        "data_id": "example1",
+        "graph_id": "random-1-sparse",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            5
+        ]
+    },
+      {
         "data_id": "example1",
         "graph_id": "lattice",
         "parameters_id": "gwi",
         "seed_range": [
             1,
-            2
+            5
         ]
-      }
+    },
+        {
+        "data_id": "example1",
+        "graph_id": "ar5",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            5
+        ]
+    },
+        {
+        "data_id": "example1",
+        "graph_id": "circle",
+        "parameters_id": "gwi",
+        "seed_range": [
+            1,
+            5
+        ]
+    }
     ],
     "evaluation": {
       "benchmarks": {
-        "filename_prefix": "dualGraph_p200/",
+        "filename_prefix": "dualGraph_p200_sparse/",
         "show_seed": false,
         "errorbar": true,
         "errorbarh": false,
@@ -44,8 +71,8 @@
         "mcmc_traj_plots": [
             {
             "id": "jtsampler_gts",
-            "burn_in": 0.5,
-            "thinning": 10,
+            "burn_in": 0.0,
+            "thinning": 100,
             "functional": [
                 "score"
             ],
@@ -69,7 +96,14 @@
       ]
     },
     "graph": {
-      "bdgraph_graphsim": [
+        "trilearn_rand_bandmat": [
+            {
+            "id": "ar5",
+            "max_bandwidth": 5,
+            "dim": 200
+        }
+        ],          
+        "bdgraph_graphsim": [
           {
           "id": "random-1-sparse",
           "p": 200,
@@ -93,6 +127,14 @@
           "class": null,
           "size": null,
           "prob": 0.1
+        },
+          {
+          "id": "circle",
+          "p": 200,
+          "graph": "circle",
+          "class": null,
+          "size": null,
+          "prob": 0.2
         }
       ]
     },
@@ -100,7 +142,7 @@
       "bdgraph_rgwish": [
         {
           "id": "gwi",
-          "b": 5,
+          "b": 3,
           "threshold_conv": 0.000001
         }
       ]
@@ -129,10 +171,10 @@
           "mcmc_estimator": ["threshold"],
           "timeout": null,
           "mcmc_seed": 1,                    
-          "num_samples": 3000000,
+          "num_samples": 10000000,
           "sampler": 1,
           "edge_penalty": 0.0,
-          "size_maxclique": 48,
+          "size_maxclique": 100,
           "full_output": true,
           "threshold": [
               0.0,
