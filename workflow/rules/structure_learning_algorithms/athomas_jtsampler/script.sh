@@ -11,6 +11,7 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
                       -c ${snakemake_wildcards[size_maxclique]} \
+                      -pd 5 \
                       -F < ${snakemake_input[data]} > $TEMP_FILENAME
         ## convet to benchpress file
         ## copying the first 4 lines and every line afterwards that has a successfull move
@@ -24,10 +25,11 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -n ${snakemake_wildcards[num_samples]} \
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
+                      -pd 5 \
                       -c ${snakemake_wildcards[size_maxclique]} < ${snakemake_input[data]} > ${snakemake_output[seqgraph]}
    fi
 else
-    /usr/bin/time -f "%e" -o ${snakemake_output[time]} timeout -s SIGINT ${snakemake_wildcards[timeout]} bash -c 'java -classpath $CP EstimateGM -r ${snakemake_wildcards[replicate]} < ${snakemake_input[data]} > ${snakemake_output[seqgraph]}'
+    /usr/bin/time -f "%e" -o ${snakemake_output[time]} timeout -s SIGINT ${snakemake_wildcards[timeout]} bash -c 'java -classpath $CP EstimateGM -r ${snakemake_wildcards[mcmc_seed]} < ${snakemake_input[data]} > ${snakemake_output[seqgraph]}'
 fi
 
 
