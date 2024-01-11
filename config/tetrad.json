@@ -21,8 +21,6 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "itsearch-bge",
-                    "boss-sem-bic",
                     "grasp-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
@@ -63,7 +61,9 @@
                 {
                     "id": "avneigs4_p20",
                     "max_parents": 15,
-                    "n": [30, 60],
+                    "n": [
+                        100
+                    ],
                     "d": 8,
                     "par1": null,
                     "par2": null,
@@ -120,6 +120,7 @@
                 {
                     "id": "grasp-sem-bic",
                     "score": "sem-bic-score",
+                    "test": "fisher-z-test",
                     "datatype": "continuous",
                     "samplePrior": 0,
                     "semBicStructurePrior": 0,
@@ -163,36 +164,6 @@
                     "timeout": null
                 }
             ],
-            "tetrad_gfci": [
-                {
-                    "id": "gfci-sem-bic-fisher-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic-score",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "semBicStructurePrior": 1,
-                    "timeout": null
-                }
-            ],
-            "tetrad_fci": [
-                {
-                    "id": "fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ],  
             "tetrad_ica-lingam": [
                 {
                     "id": "ica-lingam",
@@ -210,19 +181,6 @@
                         0.01,
                         0.1
                     ],
-                    "timeout": null
-                }
-            ],
-            "tetrad_rfci": [
-                {
-                    "id": "rfci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
                     "timeout": null
                 }
             ],
