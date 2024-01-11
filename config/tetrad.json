@@ -2,7 +2,7 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4_p20",
+                "graph_id": "er",
                 "parameters_id": "SEM",
                 "data_id": "standardized",
                 "seed_range": [
@@ -19,9 +19,10 @@
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
-                "text": false,
+                "text": true,
                 "ids": [
                     "grasp-sem-bic",
+                    "boss-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
                     "fofc",
@@ -59,7 +60,7 @@
         "graph": {
             "pcalg_randdag": [
                 {
-                    "id": "avneigs4_p20",
+                    "id": "er",
                     "max_parents": 15,
                     "n": [
                         100
