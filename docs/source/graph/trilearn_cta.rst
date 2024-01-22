@@ -12,7 +12,7 @@ trilearn_cta
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
-     - 2.0.4
+     - 2.0.5
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
@@ -22,7 +22,7 @@ trilearn_cta
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/trilearn:2.0.4.0 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
+     - `bpimages/trilearn:2.0.5 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
    * - Module
      - `trilearn_cta <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/trilearn_cta>`__

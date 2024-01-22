@@ -53,17 +53,17 @@ Below is a list of available modules.
    * - Band matrix
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 2.0.4
+     - 2.0.5
      - :ref:`trilearn_bandmat` 
    * - CTA
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 2.0.4
+     - 2.0.5
      - :ref:`trilearn_cta` 
    * - Random bandmatrix
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
-     - 2.0.4
+     - 2.0.5
      - :ref:`trilearn_rand_bandmat` 
 
 
