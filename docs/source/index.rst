@@ -89,6 +89,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 * The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
 
 .. rubric:: Updates
+* 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).
 * 2024-01-03: Benchpress 2.7.0. New algorithm modules from the `huge <https://cran.r-project.org/web/packages/huge/index.html>`_ package for estimating Gaussian graphical models: :ref:`huge_glasso`, :ref:`huge_mb`, and :ref:`huge_tiger`. Thanks `Mohamad Elmasri <https://www.turing.ac.uk/people/mohamad-elmasri/>`_ for the contribution.
 * 2023-12-04: New version of the Benchpress paper :footcite:t:`rios2021benchpress`.
 * 2023-11-16: Benchpress 2.6.0 released. The new algorithm GrUES (:ref:`grues`) for estimating the unconditional dependence graph (`UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`_) for DAGs is now available. Thanks `Alex Markham <https://causal.dev/>`_ for the contribution.

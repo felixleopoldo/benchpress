@@ -67,36 +67,34 @@ This setup falls into :ref:`II` since the *graph_id* s set to the filename of a 
                 "path": true,
                 "text": false,
                 "ids": [
-                    "notears-l2",
                     "gobnilp-bge",
-                    "gs-zf",
+                    "boss-sem-bic",
+                    "grasp-sem-bic",
+                    "notears-l2",
                     "fges-sem-bic",
                     "hc-bge",
-                    "itsearch_sample-bge",
+                    "itsearch-bge",
                     "mmhc-bge-zf",
-                    "omcmc_itsample-bge",
+                    "omcmc-bge",
                     "pc-gaussCItest",
-                    "tabu-bge",
-                    "interiamb-zf",
-                    "gfci-sem-bic-fisher-z"
+                    "tabu-bge"
                 ]
             },
             "graph_true_stats": true,
             "graph_true_plots": true,
             "ggally_ggpairs": true,
             "graph_plots": [
-                "notears-l2",
-                "gobnilp-bge",
-                "gs-zf",
-                "fges-sem-bic",
-                "hc-bge",
-                "itsearch_sample-bge",
-                "mmhc-bge-zf",
-                "omcmc_itsample-bge",
-                "pc-gaussCItest",
-                "tabu-bge",
-                "interiamb-zf",
-                "gfci-sem-bic-fisher-z"
+                    "gobnilp-bge",
+                    "boss-sem-bic",
+                    "grasp-sem-bic",
+                    "notears-l2",
+                    "fges-sem-bic",
+                    "hc-bge",
+                    "itsearch-bge",
+                    "mmhc-bge-zf",
+                    "omcmc-bge",
+                    "pc-gaussCItest",
+                    "tabu-bge"
             ],
             "mcmc_traj_plots": [],
             "mcmc_heatmaps": [],
@@ -114,7 +112,7 @@ From this figure we can directly conclude that all algorithms have a parametrisa
 
 .. _sachs/SHD_cpdag_joint.png:
 
-.. figure:: _static/sachs/SHD_cpdag_joint.png
+.. figure:: _static/sachs/shd.png
     :width: 300 
     :alt: SHD
     :align: left
@@ -123,7 +121,7 @@ From this figure we can directly conclude that all algorithms have a parametrisa
 
 .. _sachs/f1_skel_joint.png:
 
-.. figure:: _static/sachs/f1_skel_joint.png
+.. figure:: _static/sachs/f1.png
     :width: 300 
     :alt: F1
     
