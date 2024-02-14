@@ -9,7 +9,7 @@ rule:
         time=touch(alg_output_time_path(module_name)),
         ntests=touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/athomas_jtsamplers:76ad20e"
+        "docker://bpimages/athomas_jtsamplers:9eb505f"
     script:
         "script.sh"
 
