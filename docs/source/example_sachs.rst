@@ -113,7 +113,7 @@ From this figure we can directly conclude that all algorithms have a parametrisa
 .. _sachs/SHD_cpdag_joint.png:
 
 .. figure:: _static/sachs/shd.png
-    :width: 300 
+    :width: 315 
     :alt: SHD
     :align: left
 
@@ -122,8 +122,9 @@ From this figure we can directly conclude that all algorithms have a parametrisa
 .. _sachs/f1_skel_joint.png:
 
 .. figure:: _static/sachs/f1.png
-    :width: 300 
+    :width: 315 
     :alt: F1
+    :align: left
     
 
     F1.
