@@ -1,6 +1,16 @@
 library(ggplot2)
 library(dplyr)
 
+# A function factory for getting integer y-axis values.
+integer_breaks <- function(n = 5, ...) {
+  fxn <- function(x) {
+    breaks <- floor(pretty(x, n, ...))
+    names(breaks) <- attr(breaks, "labels")
+    breaks
+  }
+  return(fxn)
+}
+
 stats <- read.csv(snakemake@input[["joint_stats"]])
 
 # The number of in edges
@@ -34,6 +44,7 @@ ggplot(data = df, aes(x = as.factor(seed), y = value, fill = stats)) +
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(. ~ adjmat) +
     ggtitle("True graph properties") +
+    scale_y_continuous(breaks = integer_breaks()) +
     theme_bw() +
     xlab("Graph seed number") +
     ylab("") +
