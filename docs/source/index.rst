@@ -88,6 +88,11 @@ generated datasets, the workflow also includes a number of standard datasets and
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
 * The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
 
+.. .. note::
+
+..     If you have any questions, suggestions, or contributions, please feel free to contact us. Either raise an issue at the `GitHub <https://github.com/felixleopoldo/benchpress>`_, or join the `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat. 
+..     Or simply send an email to felix leopoldo rios at gmail dot com.
+
 .. rubric:: Updates
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).
 * 2024-01-03: Benchpress 2.7.0. New algorithm modules from the `huge <https://cran.r-project.org/web/packages/huge/index.html>`_ package for estimating Gaussian graphical models: :ref:`huge_glasso`, :ref:`huge_mb`, and :ref:`huge_tiger`. Thanks `Mohamad Elmasri <https://www.turing.ac.uk/people/mohamad-elmasri/>`_ for the contribution.
@@ -101,6 +106,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: Outreach
 
+* 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2023-07-31: Benchpress tutorial at UAI 2023: `Structure learning using Benchpress <https://www.auai.org/uai2023/tutorials>`_ (:download:`slides <_static/Benchpress_Tutorial_UAI23.pdf>`, `YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_).
 * 2023-06-20: Benchpress tutorial at KTH
 * 2022-09-06: `Algorithms for learning Bayesian networks (James Cussens) <https://jcussens.github.io/talks/bias22.pdf>`_. `Interactive AI CDT Summer School (BIAS 22) <https://www.bristol.ac.uk/cdt/interactive-ai/events/bias-summer-school-2022/>`_, University of Bristol
