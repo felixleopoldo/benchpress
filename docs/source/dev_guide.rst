@@ -1,10 +1,10 @@
 Authors
 ################
 
-| `Felix Rios <https://www.kth.se/profile/flrios?l=en>`_
+| `Felix Rios <https://felixleopoldo.github.io>`_
 | `Department of Mathematics <https://www.kth.se/math/mathematics-of-data/mathematics-of-data-and-ai-1.947023>`_
 | KTH Stockholm, Sweden
-| (formerly at University of Basel)
+| (formerly at the University of Basel)
 
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
 | `Department of Mathematics and Computer Science <https://dmi.unibas.ch/en/>`_
@@ -32,13 +32,14 @@ Contributors
 Credits
 ########
 
-We would like to thank all the developers and researchers that have made their software available open-source.
+We would like to thank all the developers and researchers who made their software available open-source.
 
 Contributing
 #################
 
 To add more algorithms, datasets or other functionalities fork the repository https://github.com/felixleopoldo/benchpress.
-For problems, bug reporting, or questions please raise an issue or start a discussion there.
+For new feature ideas, problems, bug reporting, or questions please raise an issue or start a discussion there. 
+If you prefer, you can also send an email to felix leopoldo rios at gmail dot com.
 
 Citing
 ########
