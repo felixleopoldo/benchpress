@@ -1,0 +1,33 @@
+{
+    "title": "random_precision",
+    "description": "Generates a random precision matrix",
+    "type": "array",
+    "items": {
+        "title": "random_precision",
+        "description": "Generates a precision matrix from the given list of values, assigned randomly, then coverts it to a correlation matrix",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "precision_values": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+        }
+        },
+        "required": [
+            "id",
+            "precision_values"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+            "id": "rand_K",
+            "precision_values": [0.5, 0.25]
+            }
+        ]
+    },
+    "uniqueItems": true
+}
