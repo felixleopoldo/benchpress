@@ -28,22 +28,24 @@ print(K_values)
 
 precmat <- matrix(0, nrow = p, ncol = p)
 # Sample untill we get a positive definite matrix
+
+print("Simulating random precision matrix")
+if (length(K_values) == 1) {
+    precmat <- 1 * (adjmat != 0) * K_values
+}
+
+if (length(K_values) > 1) {
+    M <- sum(adjmat != 0)
+    v <- sample.int(length(K_values), M, replace = TRUE)
+    precmat <- 1 * (adjmat != 0)
+    precmat[which(adjmat != 0)] <- K_values[v]
+}
 while (TRUE) {
-    print("Simulating random precision matrix")
-    if (length(K_values) == 1) {
-        precmat <- 1 * (adjmat != 0) * K_values
-    }
-
-    if (length(K_values) > 1) {
-        M <- sum(adjmat != 0)
-        v <- sample.int(length(K_values), M, replace = TRUE)
-        precmat <- 1 * (adjmat != 0)
-        precmat[which(adjmat != 0)] <- K_values[v]
-    }
-
     eigen_values <- eigen(precmat)$values
     is_positive_definite <- all(eigen_values > 0)
     if (is_positive_definite) break
+    print("Adding 0.1 to the diagonal")
+    precmat <- precmat + 0.1 * diag(p)
 }
 print("Inverting the precision matrix")
 covmat <- cov2cor(solve(precmat))
