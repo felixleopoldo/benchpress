@@ -114,8 +114,8 @@ for (algorithm in active_algorithms) {
         FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
         time_mean = mean(time),
         time_median = median(time),
-        time_q1 = quantile(time, probs = c(0.05)),
-        time_q3 = quantile(time, probs = c(0.95)),
+        time_q1 = quantile(time, probs = c(0.05), na.rm = TRUE),
+        time_q3 = quantile(time, probs = c(0.95), na.rm = TRUE),
         n_seeds = n(),
         curve_vals = mean(!!as.symbol(curve_param))
       )

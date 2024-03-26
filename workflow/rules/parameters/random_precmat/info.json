@@ -1,0 +1,13 @@
+{
+    "title": "Random-precision",
+    "version": "",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}
