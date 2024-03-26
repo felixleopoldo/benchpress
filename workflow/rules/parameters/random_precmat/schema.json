@@ -18,10 +18,9 @@
         }
         },
         "required": [
-            "id",
-            "precision_values"
+            "id"
         ],
-        "additionalProperties": false,
+        "additionalProperties": true,
         "examples": [
             {
             "id": "rand_K",

@@ -1,4 +1,4 @@
-rule bdgraph_rgwish:
+rule random_precmat:
     input:
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
@@ -7,6 +7,6 @@ rule bdgraph_rgwish:
                 "seed={seed}/"+\
                 "adjmat=/{adjmat}.csv"
     container:
-        None
+         "docker://bpimages/bdgraph:2.72.0"
     script:
         "random_precmat.R"
