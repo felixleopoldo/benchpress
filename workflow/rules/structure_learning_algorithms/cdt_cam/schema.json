@@ -1,0 +1,38 @@
+{
+    "title": "cdt_cam",
+    "description": "List of cdt_cam objects",
+    "type": "array",
+    "items": {
+        "title": "cdt_cam item",
+        "description": "cdt_cam object",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "title": "Unique identifier",
+                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "cdt_cam",
+                "timeout": null,
+                "score": "nonlinear",
+                "cutoff": 0.001,
+                "variablesel": true,
+                "selmethod": "gamboost",
+                "pruning": true,
+                "prunmethod": "gam"
+            }
+        ]
+    },
+    "uniqueItems": true
+}

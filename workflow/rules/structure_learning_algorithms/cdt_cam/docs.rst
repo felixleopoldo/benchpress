@@ -1,0 +1,1 @@
+Fits a causal additive model using the CAM algorithm.
