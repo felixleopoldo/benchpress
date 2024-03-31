@@ -72,6 +72,10 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
                 "default": 100
             },
+	    "delta": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum",
+                "default": 1.0
+            },
             "edge_penalty": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum",
                 "default": 0.0
@@ -101,7 +105,8 @@
             "num_samples": 10000,
             "sampler": 0,
             "edge_penalty": 1.0,
-            "size_maxclique": 10000
+		"size_maxclique": 10000,
+		"delta": 5
         }   
 
         ]

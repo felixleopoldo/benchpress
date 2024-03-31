@@ -11,7 +11,7 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
                       -c ${snakemake_wildcards[size_maxclique]} \
-                      -pd 5 \
+                      -pd ${snakemake_wildcards[delta]} \
                       -F < ${snakemake_input[data]} > $TEMP_FILENAME
         ## convet to benchpress file
         ## copying the first 4 lines and every line afterwards that has a successfull move
@@ -25,7 +25,7 @@ if [ ${snakemake_wildcards[timeout]} = "None" ]; then
                       -n ${snakemake_wildcards[num_samples]} \
                       -s ${snakemake_wildcards[sampler]} \
                       -a ${snakemake_wildcards[edge_penalty]} \
-                      -pd 5 \
+		      -pd ${snakemake_wildcards[delta]}	\
                       -c ${snakemake_wildcards[size_maxclique]} < ${snakemake_input[data]} > ${snakemake_output[seqgraph]}
    fi
 else
