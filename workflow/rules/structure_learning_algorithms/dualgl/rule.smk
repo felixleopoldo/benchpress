@@ -7,6 +7,9 @@ def fix_none_startalg(wildcards):
 def extract_filename(filename):
     return filename.replace("_fulloutput.tar.gz", "fulloutput_tobecompressed.csv")
     
+
+
+
 rule extract_dualgl:
     input:
         "{whatever}/adjvecs_fulloutput.tar.gz"
@@ -14,7 +17,8 @@ rule extract_dualgl:
         temp("{whatever}/adjvecs_fulloutput.csv")
     shell:
         "tar -xf {input} && mv {wildcards.whatever}/adjvecs_fulloutput_tobecompressed.csv {output}"
- 
+
+     
 rule:
     name:
         module_name
