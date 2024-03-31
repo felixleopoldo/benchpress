@@ -1,4 +1,4 @@
-#library(R.utils)
+library(R.utils)
 
 # Helper functions
 

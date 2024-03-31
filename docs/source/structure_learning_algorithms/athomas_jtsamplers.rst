@@ -22,7 +22,7 @@ athomas_jtsamplers
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Docker 
-     - `bpimages/athomas_jtsamplers:76ad20e <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
+     - `bpimages/athomas_jtsamplers:9eb505f <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
 
    * - Module folder
      - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__

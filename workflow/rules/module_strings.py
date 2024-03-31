@@ -11,14 +11,6 @@
 from typing import Optional, List, Union, Tuple
 
 
-def id_to_alg(id):
-    for key, alg in config["resources"]["structure_learning_algorithms"].items():
-        for obj in alg:
-            if obj["id"] == id:
-                return key
-
-    return None
-
 def input_algorithm(wildcards):
     """This algorithm can be use as input field in n algorithm rule to pass the output
     graph of another algorithm as input. The requirement is that the algorithm JSON object
@@ -58,7 +50,6 @@ def idtopath(mylist, json_string):
         return [json_string[input_algorithm][0] for input_algorithm in mylist]
     else:
         return json_string[str(mylist)]
-
 
 
 json_string = {}
@@ -197,29 +188,6 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                 else:
                     return expand(pattern_strings[module]+"/standardized={standardized}",
                                   **data)
-
-
-
-if "dualgl" in pattern_strings:
-    dualgl_list = config["resources"]["structure_learning_algorithms"]["dualgl"]
-    # The path to the startspace algorithm is extended here
-
-    def local_idtopath(idlist):
-
-        # mylist can either be None, an id, or a list of ids.
-        # The id may correspond to an MCMC alg, then the estimator parameters should be added too.
-        alg = id_to_alg(idlist)
-        vals = config["resources"]["structure_learning_algorithms"][alg][0]
-        if idlist is None:
-            return "None"
-        return expand(pattern_strings[alg], **vals)
-
- 
-    for items in dualgl_list:    
-        items["startalg"] = local_idtopath(items["startalg"])
-
-    json_string.update({val["id"]: expand(pattern_strings["dualgl"], **val,) 
-                        for val in dualgl_list } )      
 
 
 # def path_to_input_algorithm_graph(alg_id):

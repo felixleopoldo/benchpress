@@ -1,6 +1,6 @@
 {
     "title": "Chordal graph samplers",
-    "docker_image": "bpimages/athomas_jtsamplers:76ad20e",
+    "docker_image": "bpimages/athomas_jtsamplers:9eb505f",
     "version": "76ad20e",
     "package": {
         "title": "Alun Thomas",

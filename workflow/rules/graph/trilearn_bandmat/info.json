@@ -1,6 +1,6 @@
 {
     "title": "Band matrix",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "package": {
         "title": "trilearn",
         "url": "https://github.com/felixleopoldo/trilearn"

@@ -80,6 +80,23 @@ rule sample_rgwish_data:
     shell:
         "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.seed}"
 
+rule sample_random_precmat_data:
+    input:
+        "workflow/rules/data/iid/numpy_sample_mvn_data.py",
+        cov="{output_dir}/parameters/random_precmat/{bn}/adjmat=/{adjmat}.csv" # This could probably be relaxed
+    output:
+        data="{output_dir}/data" \
+             "/adjmat=/{adjmat}"\
+             "/parameters=/random_precmat/{bn}"\
+             "/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
+    wildcard_constraints:
+        n="[0-9]*"
+    container:
+        docker_image("trilearn")
+    shell:
+        "python workflow/rules/data/iid/numpy_sample_mvn_data.py {input.cov} {output.data} {wildcards.n} {wildcards.seed}"
+
+
 """
 TODO: Standardisation should better be done in a separate preprocessing module
 in the data section in benchmark_setup.
