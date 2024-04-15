@@ -1,22 +1,16 @@
 {
-    "title": "Dualgl",
-    "version": "",
+    "title": "Chordal-screening",
+    "version": "0.1",
     "package": {
-        "title": "Dualgl",
-        "url": "https://github.com/enricogiudice/dualPC"
+        "title": "",
+        "url": "http"
     },
     "docs_url": "",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
         "UG"
     ],
-    "language": "R"
+    "language": "Java"
 }

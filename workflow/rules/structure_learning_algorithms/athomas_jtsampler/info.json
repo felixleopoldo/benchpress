@@ -1,22 +1,23 @@
 {
-    "title": "Alun Thomas samplers",
-    "version": "",
+    "title": "GT13",
+    "docker_image": "onceltuca/thomasgreen:1.19-bp",
+    "version": "1.19-bp",
     "package": {
-        "title": "Dualgl",
-        "url": "https://github.com/enricogiudice/dualPC"
+        "title": "",
+        "url": "http"
     },
     "docs_url": "",
     "papers": [
         {
-            "title": "",
-            "url": ""
+            "title": "P. J. Green and A. Thomas (2013). Sampling decomposable graphs using a Markov chain on junction trees.",
+            "url": "https://www.jstor.org/stable/43304539"
         }
     ],
     "outputs": [
-        "adjmat"
+        "graphtraj"
     ],
     "graph_types": [
-        "UG"
+        "DG"
     ],
-    "language": "R"
+    "language": "Java"
 }
