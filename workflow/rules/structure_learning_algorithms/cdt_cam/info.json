@@ -6,12 +6,6 @@
         "url": "https://github.com/FenTechSolutions/CausalDiscoveryToolbox/tree/master"
     },
     "docs_url": "https://fentechsolutions.github.io/CausalDiscoveryToolbox/html/causality.html#cam",
-    "papers": [
-        {
-            "title": "CAM: Causal additive models, high-dimensional order search and penalized regression",
-            "url": "https://doi.org/10.1214/14-AOS1260"
-        }
-    ],
     "outputs": [
         "adjmat"
     ],

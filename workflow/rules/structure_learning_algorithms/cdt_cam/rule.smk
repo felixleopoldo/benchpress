@@ -1,10 +1,12 @@
-rule cdt_cam:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data(),
+        data=alg_input_data()
     output:
-        adjmat=alg_output_adjmat_path("cdt_cam"),
-        time=alg_output_time_path("cdt_cam"),
-        ntests=alg_output_ntests_path("cdt_cam"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name)
     params:
         alg="cam",
     container:
