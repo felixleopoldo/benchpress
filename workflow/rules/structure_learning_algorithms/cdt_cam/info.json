@@ -3,7 +3,7 @@
     "version": "0.6.0",
     "package": {
         "title": "cdt",
-        "url": "https://github.com/FenTechSolutions/CausalDiscoveryToolbox/tree/master"
+        "url": "https://fentechsolutions.github.io/CausalDiscoveryToolbox/html/index.html"
     },
     "docs_url": "https://fentechsolutions.github.io/CausalDiscoveryToolbox/html/causality.html#cam",
     "outputs": [
