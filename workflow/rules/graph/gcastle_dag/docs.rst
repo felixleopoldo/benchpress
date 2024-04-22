@@ -1,1 +1,1 @@
-A graph (DAG) generation module from the gCastle package :footcite:t:`zhang2021gcastle`. It allows to set the desired number of graph nodes (n_nodes) and edges (n_edges). Two types of simulated graph types are available: Erdos-Renyi (er) and Scale-Free (sf).
+A graph (DAG) generation module from the gCastle package by :footcite:t:`zhang2021gcastle`. It allows to set the desired number of graph nodes (``n_nodes``) and edges (``n_edges``). Two types of simulated graph types (``method``) are available: Erdos-Renyi (er) and Scale-Free (sf).
