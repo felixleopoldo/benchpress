@@ -30,7 +30,7 @@ rule adjmat_plot:
         "data=/{data_string}/"
         "algorithm=/{alg_string}/"
         "seed={seed}/"
-        "adjmat.eps",
+        "adjmat.png",
     params:
         title="Graph: {adjmat_string}\nParameters: {param_string}\nData: {data_string}",
         adjmat_string="{adjmat_string}",
@@ -155,7 +155,7 @@ rule graph_plots:
         for i,f in enumerate(input.graphs):
             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
-            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
+            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".png")
         for i,f in enumerate(input.csv_adjmats):
             shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
         if True:
