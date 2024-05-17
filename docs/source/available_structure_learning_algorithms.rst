@@ -32,7 +32,6 @@ Algorithms
     structure_learning_algorithms/causaldag_gsp
     structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
-    structure_learning_algorithms/cdt_cam
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
     structure_learning_algorithms/equsa_psilearner
@@ -176,10 +175,6 @@ To add new modules, see :ref:`new_modules`.
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
      - :ref:`causallearn_grasp` 
-   * - CAM
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `cdt <https://fentechsolutions.github.io/CausalDiscoveryToolbox/html/index.html>`__
-     - :ref:`cdt_cam` 
    * - Corrmat thresh
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
