@@ -24,19 +24,12 @@ else:
     graph = nx.relabel_nodes(graph, mapping)
 
     # convert to pygrapviz graph and set some edge properties, dir=none for undirected edges
-    agraph = nx.nx_agraph.to_agraph(graph)
-    # iterate over the undirected edges and set the dir attribute to none
+    agraph = nx.nx_agraph.to_agraph(graph)    
     for i in range(adjmat.shape[0]):
         for j in range(adjmat.shape[1]):
             if (adjmat[i, j] == 1) and (adjmat[j, i] == 1):
                 agraph.remove_edge(mapping[j], mapping[i])
                 # add the same edge but without direction
                 agraph.add_edge(mapping[i], mapping[j], dir="none")
-                #agraph.get_edge(mapping[i], mapping[j]).attr['dir' ] = 'none'
-                # remove the other direction
-
 
     agraph.draw(dot_filename, prog= 'dot')
-
-
-
