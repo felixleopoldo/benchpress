@@ -7,7 +7,7 @@ myFun <- function(n = 5000) {
 
 filename <- myFun(n=1) # temporary filemane
 filename <- paste(filename[1], ".png", sep="")
-png(file=filename, width = 1200, height = 1200)
+png(file=filename, width = 1500, height = 1500)
 
 df <- read.csv(snakemake@input[["data"]], check.names=FALSE)[-1,]
 title <- paste("Graph: ", snakemake@wildcards[["adjmat"]],"\n",

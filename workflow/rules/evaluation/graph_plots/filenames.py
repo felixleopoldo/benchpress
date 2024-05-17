@@ -55,7 +55,7 @@ def adjmat_plots():
             "data=/{data_string}/"\
             "algorithm=/{alg_string}/"\
             "seed={seed}/"
-            "adjmat.eps",
+            "adjmat.png",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
             **alg_conf,
