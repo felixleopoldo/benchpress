@@ -60,7 +60,7 @@ if [ $IMAGE = "snakemake" ]; then
     # Special treatment for the snakemake image
     git clone https://github.com/snakemake/snakemake.git && \
     cd snakemake && \
-    git checkout tags/v7.32.3 && \
+    git checkout tags/$VERSION && \
     docker build . -t $DOCKER_REPO/$IMAGE:$VERSION-$ARCH $FLAGS && \
     cd - && \
     rm -rf snakemake    

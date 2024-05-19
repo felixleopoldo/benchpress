@@ -90,7 +90,7 @@ Start an interactive `Docker <https://www.docker.com/>`_ container (based on the
 
 .. prompt:: bash
 
-    docker run -it -w /mnt --privileged -v /absolute/path/to/benchpress:/mnt bpimages/snakemake:v7.32.3
+    docker run -it -w /mnt --privileged -v /absolute/path/to/benchpress:/mnt bpimages/snakemake:v8.11.6
 
 Depending on your system, you may have to prepend the above command by *sudo*. 
 On Windows, you may have to escape spaces in the benchpress path using ^ or \`.
@@ -120,7 +120,7 @@ The following command runs the config file `config/config.json <https://github.c
 
 .. prompt:: bash
 
-    snakemake --cores all --use-singularity --configfile config/config.json
+    snakemake --cores all --software-deployment-method apptainer --configfile config/config.json
 
 The output is stored in subfolders of *path/to/benchpress/results/output* named by the evaluation modules.
 Note that the first run will take some longer time, as about 5-10 GB of `Docker <https://www.docker.com/>`_ images will be downloaded.
