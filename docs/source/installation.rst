@@ -90,7 +90,7 @@ Start an interactive `Docker <https://www.docker.com/>`_ container (based on the
 
 .. prompt:: bash
 
-    docker run -it -w /mnt --privileged -v /absolute/path/to/benchpress:/mnt bpimages/snakemake:v7.32.3
+    docker run -it -w /mnt --privileged -v /absolute/path/to/benchpress:/mnt bpimages/snakemake:v8.11.6
 
 Depending on your system, you may have to prepend the above command by *sudo*. 
 On Windows, you may have to escape spaces in the benchpress path using ^ or \`.
