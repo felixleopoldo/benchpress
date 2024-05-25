@@ -18,7 +18,7 @@ from pathlib import Path
 # -- Project information -----------------------------------------------------
 
 project = 'Benchpress'
-copyright = '2023'
+copyright = '2024'
 author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
@@ -44,6 +44,8 @@ extensions = [
     'sphinx_last_updated_by_git',
     'versionwarning.extension'
 ]
+extensions += ["sphinxawesome_theme.highlighting"]
+
 
 paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
@@ -80,7 +82,10 @@ numfig = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
+#html_theme = "sphinxawesome_theme"
+html_theme = "furo"
+#html_theme = "sphinx_book_theme"
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -93,4 +98,17 @@ html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
+    "light_logo": "benchpress-logo-white-bg.png",
+    "dark_logo": "logo-dark-mode.png",
+}
+html_copy_source = False
+html_show_sourcelink = False
+
+html_theme_options = {
+    "light_css_variables": {
+        "color-brand-primary": "#132b44",
+        "color-brand-content": "#0582bf",
+        "color":"#211d6a",
+        "font-size--small": "87.5%"
+    },
 }
