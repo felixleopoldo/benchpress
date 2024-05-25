@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Generated a graph with band adjacency matrix with maximum bandwith.
 
 from trilearn.graph import decomposable as dlib
@@ -15,6 +15,6 @@ filename = sys.argv[1]
 np.random.seed(seed)
 g = dlib.sample_random_AR_graph(dim, max_bandwidth)
 
-m = nx.to_numpy_matrix(g)
+m = nx.to_numpy_array(g)
 df = pd.DataFrame(m, dtype=int)
 df.to_csv(filename, index=None)

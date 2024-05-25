@@ -2,7 +2,7 @@
     "benchmark_setup": {
         "data": [
             {
-                "graph_id": "avneigs4_p20",
+                "graph_id": "er",
                 "parameters_id": "SEM",
                 "data_id": "standardized",
                 "seed_range": [
@@ -14,25 +14,23 @@
         "evaluation": {
             "benchmarks": {
                 "filename_prefix": "tetrad/",
-                "show_seed": false,
+                "show_seed": true,
                 "errorbar": true,
                 "errorbarh": false,
                 "scatter": true,
                 "path": true,
-                "text": false,
+                "text": true,
                 "ids": [
                     "grasp-sem-bic",
+                    "boss-sem-bic",
                     "fask-fisher-z",
                     "fges-sem-bic",
-                    "fci-fisher-z",
                     "fofc",
-                    "gfci-sem-bic-fisher-z",
-                    "pc-fisher-z",
-                    "rfci-fisher-z"
+                    "pc-fisher-z"
                 ]
             },
             "graph_true_plots": false,
-            "graph_true_stats": false,
+            "graph_true_stats": true,
             "ggally_ggpairs": false,
             "graph_plots": [],
             "mcmc_traj_plots": [],
@@ -62,10 +60,12 @@
         "graph": {
             "pcalg_randdag": [
                 {
-                    "id": "avneigs4_p20",
-                    "max_parents": 5,
-                    "n": 10,
-                    "d": 4,
+                    "id": "er",
+                    "max_parents": 15,
+                    "n": [
+                        100
+                    ],
+                    "d": 8,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -99,10 +99,29 @@
                     "timeout": null
                 }
             ],
+            "tetrad_boss": [
+                {
+                    "id": "boss-sem-bic",
+                    "score": "sem-bic-score",
+                    "datatype": "continuous",
+                    "useBes": true,
+                    "allowInternalRandomess": false,
+                    "samplePrior": 0,
+                    "semBicStructurePrior": 0,
+                    "penaltyDiscount": [
+                        0.75,
+                        0.8,
+                        1,
+                        1.5
+                    ],
+                    "timeout": null
+                }
+            ],
             "tetrad_grasp": [
                 {
                     "id": "grasp-sem-bic",
                     "score": "sem-bic-score",
+                    "test": "fisher-z-test",
                     "datatype": "continuous",
                     "samplePrior": 0,
                     "semBicStructurePrior": 0,
@@ -146,36 +165,6 @@
                     "timeout": null
                 }
             ],
-            "tetrad_gfci": [
-                {
-                    "id": "gfci-sem-bic-fisher-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic-score",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "semBicStructurePrior": 1,
-                    "timeout": null
-                }
-            ],
-            "tetrad_fci": [
-                {
-                    "id": "fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                }
-            ],  
             "tetrad_ica-lingam": [
                 {
                     "id": "ica-lingam",
@@ -193,19 +182,6 @@
                         0.01,
                         0.1
                     ],
-                    "timeout": null
-                }
-            ],
-            "tetrad_rfci": [
-                {
-                    "id": "rfci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
                     "timeout": null
                 }
             ],
@@ -318,8 +294,8 @@
             ],
             "bidag_order_mcmc": [
                 {
-                    "id": "omcmc_itsample-bge",
-                    "startspace_algorithm": "itsample-bge_am01_endspace",
+                    "id": "omcmc-bge",
+                    "input_algorithm_id": "itsample-bge_am01_endspace",
                     "plus1": true,
                     "scoretype": "bge",
                     "chi": null,

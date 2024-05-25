@@ -7,7 +7,7 @@ include: "filenames.py"
 # redefined here.
 # They should probably be defined at a global level.
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"
 
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
@@ -30,7 +30,7 @@ rule adjmat_plot:
         "data=/{data_string}/"
         "algorithm=/{alg_string}/"
         "seed={seed}/"
-        "adjmat.eps",
+        "adjmat.png",
     params:
         title="Graph: {adjmat_string}\nParameters: {param_string}\nData: {data_string}",
         adjmat_string="{adjmat_string}",
@@ -91,7 +91,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -100,7 +100,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     script:
         "bnlearn_graphvizcompare.R"
 # This is actually a quite general rule.
@@ -114,7 +114,7 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -123,7 +123,7 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     params:
         title="Graph: {adjmat}\nParameters: {bn}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -188,7 +188,7 @@ rule graph_plots:
             #    shell("echo "+i+ ",  "+f+" >> results/output/graph_plots/desc.csv ") 
             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
-            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
+            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".png")
         for i,f in enumerate(input.csv_adjmats):
             shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
         

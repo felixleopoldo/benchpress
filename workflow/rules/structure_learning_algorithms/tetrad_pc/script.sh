@@ -1,9 +1,10 @@
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --json-graph"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 # Use data without range header for discrete data 
 if [ ${snakemake_wildcards[datatype]} = "discrete" ]; then

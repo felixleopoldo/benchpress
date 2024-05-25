@@ -3,8 +3,8 @@
         "data": [
             {
                 "data_id": "example1",
-                "graph_id": "cta",
-                "parameters_id": "gwi",
+                "graph_id": "AR1-5",
+                "parameters_id": "intra-class",
                 "seed_range": [
                     1,
                     1
@@ -21,22 +21,20 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "gt13_multipair_test",
-                    "guidicigreen-cont"
+                    "gg99", "trilearn"
                 ]
             },
             "graph_true_plots": true,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": [
-                "gt13_multipair_test",
-                "guidicigreen-cont"
+                "gg99"
             ],
             "mcmc_traj_plots": [
                 {
-                    "id": "gt13_multipair_test",
+                    "id": "gg99",
                     "burn_in": 0.5,
-                    "thinning": 100,
+                    "thinning": 1000,
                     "functional": [
                         "score",
                         "size"
@@ -44,66 +42,40 @@
                     "active": true
                 },
                 {
-                    "id": "guidicigreen-cont",
+                    "id": "trilearn",
                     "burn_in": 0.5,
-                    "thinning": 100,
+                    "thinning": 1,
                     "functional": [
                         "score",
                         "size"
                     ],
                     "active": true
-                },
-                {
-                    "id": "parallelDG_test",
-                    "burn_in": 0,
-                    "thinning": 100,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
                 }
+
             ],
             "mcmc_heatmaps": [
                 {
-                    "id": "gt13_multipair_test",
+                    "id": "gg99",
                     "burn_in": 0.5,
-                    "active": false
+                    "active": true
+                },
+                {
+                    "id": "trilearn",
+                    "burn_in": 0.5,
+                    "active": true
                 }
             ],
             "mcmc_autocorr_plots": [
                 {
-                    "id": "gt13_multipair_test",
+                    "id": "gg99",
                     "burn_in": 0.5,
-                    "thinning": 500,
+                    "thinning": 1000,
                     "lags": 50,
                     "functional": [
                         "score",
                         "size"
                     ],
                     "active": true
-                },
-                {
-                    "id": "guidicigreen-cont",
-                    "burn_in": 0.5,
-                    "thinning": 500,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                },
-                {
-                    "id": "parallelDG_test",
-                    "burn_in": 0,
-                    "thinning": 100,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
                 }
             ]
         }
@@ -115,7 +87,7 @@
                     "id": "example1",
                     "standardized": false,
                     "n": [
-                        100
+                        200
                     ]
                 }
             ]
@@ -141,7 +113,7 @@
             "trilearn_intra-class": [
                 {
                     "id": "intra-class",
-                    "rho": 0.9,
+                    "rho": 0.5,
                     "sigma2": 1.0
                 }
             ],
@@ -154,7 +126,27 @@
             ]
         },
         "structure_learning_algorithms": {
-            "parallelDG": [
+            "athomas_jtsamplers": [
+                {
+                    "id": "gg99",
+                    "burnin_frac": 0.5,
+                    "mcmc_estimator": "threshold",
+                    "timeout": null,
+                    "threshold": [0.2, 0.5, 0.9],
+                    "mcmc_seed": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "num_samples": 1000000,
+                    "sampler": [
+                        1
+                    ],
+                    "edge_penalty": 1.0,
+                    "size_maxclique": 10000
+                }
+            ],
+            "paralleldg": [
                 {
                     "id": "parallelDG_test",
                     "M": 10000,
@@ -178,55 +170,24 @@
                     "timeout": null
                 }
             ],
-            "gt13_multipair": [
+            "trilearn_pgibbs": [
                 {
-                    "id": "gt13_multipair_test",
-                    "n_samples": 200000,
+                    "id": "trilearn",
                     "datatype": "continuous",
-                    "randomits": 100,
-                    "prior": "ep",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 2.0,
-                    "sep": 4.0,
-                    "penalty": [
-                        0.0,
-                        1.0
+                    "alpha": 0.5,
+                    "beta": 0.5,
+                    "radii": 80,
+                    "n_particles": 20,
+                    "M": 2000,
+                    "pseudo_obs": 1,
+                    "mcmc_seed": [1,2,3],
+                    "mcmc_estimator": "threshold",
+                    "threshold": [
+                        0.2,
+                        0.5,
+                        0.9
                     ],
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ],
-                    "threshold": 0.5,
                     "burnin_frac": 0.5,
-                    "mcmc_estimator": "map",
-                    "timeout": null
-                }
-            ],
-            "gg99_singlepair": [
-                {
-                    "id": "guidicigreen-cont",
-                    "n_samples": [
-                        200000
-                    ],
-                    "datatype": "continuous",
-                    "randomits": 100,
-                    "prior": "ep",
-                    "ascore": null,
-                    "bscore": null,
-                    "clq": 2,
-                    "sep": 4,
-                    "penalty": [
-                        0.0,
-                        1.0
-                    ],
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ],
-                    "threshold": 0.5,
-                    "burnin_frac": 0.5,
-                    "mcmc_estimator": "map",
                     "timeout": null
                 }
             ]

@@ -13,7 +13,7 @@ def myalg():
 
     # The algorithm goes here
     p = df.shape[1]
-    np.random.seed(int(snakemake.wildcards["replicate"]))
+    np.random.seed(int(snakemake.wildcards["seed"]))
     
     m = np.random.rand(p*p).reshape((p, p))
     m = m > float(snakemake.wildcards["cutoff"])

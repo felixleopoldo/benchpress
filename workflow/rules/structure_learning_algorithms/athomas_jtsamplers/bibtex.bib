@@ -1,0 +1,27 @@
+@article{10.1093/biomet/86.4.785,
+  author   = {Giudici, P and Green, PJ},
+  title    = {{Decomposable graphical Gaussian model determination}},
+  journal  = {Biometrika},
+  volume   = {86},
+  number   = {4},
+  pages    = {785-801},
+  year     = {1999},
+  month    = {12},
+  abstract = {{We propose a methodology for Bayesian model determination in decomposable graphical Gaussian models. To achieve this aim we consider a hyper inverse Wishart prior distribution on the concentration matrix for each given graph. To ensure compatibility across models, such prior distributions are obtained by marginalisation from the prior conditional on the complete graph. We explore alternative structures for the hyperparameters of the latter, and their consequences for the model. Model determination is carried out by implementing a reversible jump Markov chain Monte Carlo sampler. In particular, the dimension-changing move we propose involves adding or dropping an edge from the graph. We characterise the set of moves which preserve the decomposability of the graph, giving a fast algorithm for maintaining the junction tree representation of the graph at each sweep. As state variable, we use the incomplete variance-covariance matrix, containing only the elements for which the corresponding element of the inverse is nonzero. This allows all computations to be performed locally, at the clique level, which is a clear advantage for the analysis of large and complex datasets. Finally, the statistical and computational performance of the procedure is illustrated by mean of both artificial and real datasets.}},
+  issn     = {0006-3444},
+  url      = {https://doi.org/10.1093/biomet/86.4.785}
+}
+
+@article{10.2307/43304539,
+  issn      = {00063444},
+  url       = {http://www.jstor.org/stable/43304539},
+  abstract  = {Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. The resulting methodology is illustrated with numerical experiments on three models.},
+  author    = {Peter J. Green and Alun Thomas},
+  journal   = {Biometrika},
+  number    = {1},
+  pages     = {91--110},
+  publisher = {[Oxford University Press, Biometrika Trust]},
+  title     = {Sampling decomposable graphs using a Markov chain on junction trees},
+  volume    = {100},
+  year      = {2013}
+}

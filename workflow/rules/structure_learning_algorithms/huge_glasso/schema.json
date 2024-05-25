@@ -1,0 +1,65 @@
+{
+    "title": "Huge glasso R package",
+    "description": "glasso",
+    "type": "array",
+    "items": {
+        "title": "",
+        "description": "",
+        "type": "object",
+        "properties": {
+            "id": {
+                "desciption": "Algorithm identifier",
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "lambda": {
+                "description": "A positive number to control the regularization. Typical usage is to leave the input lambda: null and have the program compute its own.",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "default": null
+            },
+            "nlambda": {
+                "description": "The number of regularization/thresholding parameters. The default value is 10",
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "default": null
+            },
+            "select_criterion": {
+                "description": "Model selection criterion. ric, stars, and ebic are available. The default value is ric.",
+                "enum": [
+                    "ric",
+                    "ebic",
+                    "stars",
+                    null
+                ],
+                "default": "ebic"
+            }
+        },
+        "required": [
+            "id",
+            "timeout"
+        ],
+        "examples": [
+            [
+                {
+                    "id": "huge_glasso",
+                    "lambda": [
+                        2,
+                        1,
+                        0.8,
+                        0.6,
+                        0.4,
+                        0.2,
+                        0.1,
+                        0.05,
+                        0.01
+                    ],
+                    "nlambda": null,
+                    "select_criterion": "ebic",
+                    "timeout": null
+                }
+            ]
+        ]
+    },
+    "uniqueItems": true
+}

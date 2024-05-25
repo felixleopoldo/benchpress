@@ -3,8 +3,8 @@
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(tibble)
-library("rjson")
-library(tidyverse)
+library(rjson)
+library(tidyr)
 library(ggrepel)
 
 f <- function(y) {
@@ -12,8 +12,10 @@ f <- function(y) {
 }
 
 is_outlier <- function(x) {
-  return(x < quantile(x, 0.25) - 1.5 * IQR(x) |
-    x > quantile(x, 0.75) + 1.5 * IQR(x))
+  # Make numeric as it can be vector of strings. Even "NA" is made NA here.
+  x <- as.numeric(x)
+  return(x < quantile(x, 0.25,na.rm = TRUE) - 1.5 * IQR(x, na.rm = TRUE) |
+    x > quantile(x, 0.75,na.rm = TRUE) + 1.5 * IQR(x, na.rm = TRUE))
 }
 
 # The functions are just here without parameters for now, should be fixed at some point..
@@ -59,7 +61,6 @@ fpr_tpr_pattern <- function(){
               )
             }
           } + {
-
             if (!param_annot) {
               geom_point(
                 data = toplot, alpha = 0.5,
@@ -82,7 +83,7 @@ fpr_tpr_pattern <- function(){
                   col = id_numlev
                 ), shape = 20,
                 size = 1
-              )
+              ) 
             }
           } + {
             if (scatter && show_seed) {
@@ -91,7 +92,7 @@ fpr_tpr_pattern <- function(){
                 aes(
                   x = FPRn_pattern,
                   y = TPR_pattern,
-                  label = replicate, col = id_numlev, shape = id_numlev
+                  label = seed, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -104,7 +105,7 @@ fpr_tpr_pattern <- function(){
                   replace_na(list("curve_vals" = 0)) %>%
                   mutate(SHDP_pattern_median = 1 - TPR_pattern_median + FPRn_pattern_median) %>%
                   filter(SHDP_pattern_median == min(SHDP_pattern_median)),
-                alpha = 0.8, position = "dodge", alpha = 1, show.legend = FALSE,
+                alpha = 0.8, position = "dodge", show.legend = FALSE,
                 aes(
                   x = FPRn_pattern_median, y = TPR_pattern_median,
                   col = id_numlev, label = id_num
@@ -124,8 +125,8 @@ fpr_tpr_pattern <- function(){
               )
             }
           } +
-          guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          guides(shape = "none") +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -216,7 +217,7 @@ gg <- ggplot() + {
                 aes(
                   x = FPR_skel,
                   y = TP_skel/true_n_edges_skel,
-                  label = replicate, col = id_numlev, shape = id_numlev
+                  label = seed, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -249,7 +250,7 @@ gg <- ggplot() + {
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -339,7 +340,7 @@ roc_fpr_tpr <- function(){
                 aes(
                   x = FPR_pattern,
                   y = TPR_pattern,
-                  label = replicate, col = id_numlev, shape = id_numlev
+                  label = seed, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -373,7 +374,7 @@ roc_fpr_tpr <- function(){
             }
           } +
           guides(shape = FALSE) +
-              facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+              facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
               xlim(0, 1) +
               ylim(0, 1) +
           xlab("FPR") +
@@ -444,7 +445,7 @@ fpr_fnr_skel <- function(){
                 aes(
                   x = FPR_skel,
                   y = FNR_skel,
-                  label = replicate, col = id_numlev, shape = id_numlev
+                  label = seed, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -476,7 +477,7 @@ fpr_fnr_skel <- function(){
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -554,7 +555,7 @@ fnr_fpr_skel <- function(){
                 aes(
                   y = FPR_skel,
                   x = FNR_skel,
-                  label = replicate, col = id_numlev, shape = id_numlev
+                  label = seed, col = id_numlev, shape = id_numlev
                 ),
                 check_overlap = FALSE
               )
@@ -596,7 +597,7 @@ fnr_fpr_skel <- function(){
             }
           } +
           guides(shape = FALSE) +
-          facet_wrap(. ~ adjmat + parameters + data, nrow = 2) +
+          facet_wrap(. ~ adjmat + parameters + data + n_seeds, nrow = 2) +
           {
             if (!is.null(xlim)) {
               xlim(xlim[1], xlim[2])
@@ -622,7 +623,7 @@ elapsed_time <- function(){
     tibble::rownames_to_column(var = "outlier") %>%
     group_by(interaction(curve_param, curve_value, id)) %>%
     filter(!is.na(time)) %>%
-    mutate(is_outlier = ifelse(is_outlier(time), replicate, as.numeric(NA)))
+    mutate(is_outlier = ifelse(is_outlier(time), seed, as.numeric(NA)))
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
   ggplot() +
           {
@@ -674,6 +675,66 @@ elapsed_time <- function(){
 
 }
 
+elapsed_log_time <- function(){
+  # transforming the data to get the outliers for plotting time
+  dat <- joint_bench %>%
+    tibble::rownames_to_column(var = "outlier") %>%
+    group_by(interaction(curve_param, curve_value, id)) %>%
+    filter(!is.na(log(time))) %>%
+    mutate(is_outlier = ifelse(is_outlier(log(time)), seed, as.numeric(NA)))
+  dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
+
+  ggplot() +
+          {
+            geom_boxplot(
+              data = joint_bench, alpha = ifelse(show_seed, 0.0, 0.7),
+              aes(
+                x = interaction(curve_param, curve_value, id),
+                y = log(time), col = id, group_by = id
+              )
+            )
+          } + {
+            if (param_annot) {
+              stat_summary(
+                data = joint_bench, alpha = 0.5,
+                aes(
+                  x = interaction(curve_param, curve_value, id),
+                  y = log(time)
+                ), fun.data = f, geom = "text", vjust = -0.5, col = "black"
+              )
+            }
+          } + {
+            if (show_seed) {
+              geom_text(
+                data = dat, alpha = 0.7,
+                aes(
+                  y = log(time), x = interaction(curve_param, curve_value, id),
+                  label = is_outlier, col = id
+                ), na.rm = TRUE, nudge_x = 0.0
+              )
+            }
+          } +
+          facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
+          {
+            if (!is.null(xlim)) {
+              xlim(xlim[1], xlim[2])
+            }
+          } + {
+            if (!is.null(ylim)) {
+              ylim(ylim[1], ylim[2])
+            }
+          } +
+          ggtitle("Elapsed ln(time)") +
+          theme_bw() +
+          xlab("Parameter.value.id") +
+          ylab("ln(time) (s.)") +
+          theme(plot.title = element_text(hjust = 0.5)) +
+          scale_x_discrete(guide = guide_axis(angle = 90))
+        ggsave(file = paste(snakemake@output[["elapsed_log_time_joint"]],"/", plt_counter, ".png", sep=""))
+
+}
+
+
 graph_type <- function(){
  ggplot() +
           {
@@ -681,7 +742,7 @@ graph_type <- function(){
               data = joint_bench, alpha = 0.8,
               aes(
                 y = interaction(curve_param, curve_value, id),
-                x = as.factor(replicate),
+                x = as.factor(seed),
                 label = round(time, 1), col = graph_type, group_by = id
               )
             )
@@ -689,12 +750,12 @@ graph_type <- function(){
           #+ {
           #    geom_text(data = joint_bench, alpha=0.8,
           #             aes(y=interaction(curve_param,curve_value, id),
-          #             x = as.factor(replicate), label=round(time, 1), col=id, group_by=id) )
+          #             x = as.factor(seed), label=round(time, 1), col=id, group_by=id) )
           # }  +
           facet_wrap(. ~ adjmat + parameters + data, ncol = 2) +
-          xlab("Seed") +
+          xlab("Dataset seed number") +
           ylab("Parameter.value.id") +
-          ggtitle("Graph type") +
+          ggtitle("Graph type of estimated graphs") +
           theme_bw() +
           theme(plot.title = element_text(hjust = 0.5))
         ggsave(file = paste(snakemake@output[["graph_type"]],"/", plt_counter, ".png", sep=""))
@@ -702,18 +763,23 @@ graph_type <- function(){
 }
 
 shd_cpdag <- function(){
-  # transforming the data to get the outliers for plotting SHD
+  # transforming the data to get the outliers for plotting SHD  
   dat <- joint_bench %>%
     tibble::rownames_to_column(var = "outlier") %>%
     group_by(interaction(curve_param, curve_value, id)) %>%
     filter(!is.na(SHD_cpdag)) %>%
+    filter(SHD_cpdag != "NA") %>%
     mutate(is_outlier = ifelse(is_outlier(SHD_cpdag),
-      replicate, as.numeric(NA)
+      seed, as.numeric(NA)
     ))
+    # convert column to numeric
+    dat$SHD_cpdag <- as.numeric(dat$SHD_cpdag)
+    joint_bench$SHD_cpdag <- as.numeric(joint_bench$SHD_cpdag)
+
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
   ggplot() +
           {
-            geom_boxplot(
+            geom_boxplot( # plotting the boxplot
               data = joint_bench, alpha = 0.2,
               aes(
                 x = interaction(curve_param, curve_value, id),
@@ -721,7 +787,7 @@ shd_cpdag <- function(){
               )
             )
           } + {
-            if (show_seed) {
+            if (show_seed) { # plotting the outliers
               geom_text(
                 data = dat,
                 aes(
@@ -731,7 +797,7 @@ shd_cpdag <- function(){
               )
             }
           } + {
-            if (show_seed) {
+            if (show_seed) { 
               stat_summary(
                 data = joint_bench, alpha = 0.5,
                 aes(
@@ -758,7 +824,7 @@ f1_skel <- function(){
       group_by(interaction(curve_param, curve_value)) %>%
       filter(!is.na(TP_skel / (TP_skel + 0.5 * (FP_skel + FN_skel)))) %>%
       mutate(is_outlier = ifelse(is_outlier(TP_skel / (TP_skel + 0.5 * (FP_skel + FN_skel))),
-        replicate, as.numeric(NA)
+        seed, as.numeric(NA)
       ))
     dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
 
@@ -794,13 +860,58 @@ f1_skel <- function(){
 
 }
 
+f1_pattern <- function(){
+    # transforming the data to get the outliers for plotting F1
+    dat <- joint_bench %>%
+      tibble::rownames_to_column(var = "outlier") %>%
+      group_by(interaction(curve_param, curve_value)) %>%
+      filter(!is.na(TP_pattern / (TP_pattern + 0.5 * (FP_pattern + FN_pattern)))) %>%
+      mutate(is_outlier = ifelse(is_outlier(TP_pattern / (TP_pattern + 0.5 * (FP_pattern + FN_pattern))),
+        seed, as.numeric(NA)
+      ))
+    dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
+
+    ggplot() +
+      {
+        geom_boxplot(
+          data = joint_bench, alpha = 0.2,
+          aes(
+            x = interaction(curve_param, curve_value, id),
+            y = TP_pattern / (TP_pattern + 0.5 * (FP_pattern + FN_pattern)), col = id
+          )
+        )
+      } + {
+        if (show_seed) {
+          geom_text(
+            data = dat,
+            aes(
+              y = TP_pattern / (TP_pattern + 0.5 * (FP_pattern + FN_pattern)),
+              x = interaction(curve_param, curve_value, id),
+              label = is_outlier, col = id
+            ), na.rm = TRUE, nudge_x = 0.0
+          )
+        }
+      } +
+      facet_wrap(. ~ adjmat + parameters + data, ncol = 2, scales = "free_x") +
+      ggtitle("F1 (pattern graph)") +
+      theme_bw() +
+      xlab("Parameter.value.id") +
+      ylab("F1") +
+      theme(plot.title = element_text(hjust = 0.5)) +
+      scale_x_discrete(guide = guide_axis(angle = 90))
+
+    ggsave(file = paste(snakemake@output[["f1_pattern_joint"]], "/", plt_counter, ".png", sep=""))
+
+}
+
+
 n_tests <- function(){
     # transforming the data to get the outliers for plotting ntests
   dat <- joint_bench %>%
     tibble::rownames_to_column(var = "outlier") %>%
     group_by(interaction(curve_param, curve_value)) %>%
     filter(!is.na(ntests)) %>%
-    mutate(is_outlier = ifelse(is_outlier(ntests), replicate, as.numeric(NA)))
+    mutate(is_outlier = ifelse(is_outlier(ntests), seed, as.numeric(NA)))
 
   dat$outlier[which(is.na(dat$is_outlier))] <- as.numeric(NA)
    ggplot() +
@@ -848,9 +959,11 @@ dir.create(snakemake@output[["FPRp_FNR_skel"]])
 dir.create(snakemake@output[["fnr_fprp_skel"]])
 dir.create(snakemake@output[["roc_FPRp_TPR_skel"]])
 dir.create(snakemake@output[["elapsed_time_joint"]])
+dir.create(snakemake@output[["elapsed_log_time_joint"]])
 dir.create(snakemake@output[["graph_type"]])
 dir.create(snakemake@output[["SHD_cpdag_joint"]])
 dir.create(snakemake@output[["f1_skel_joint"]])
+dir.create(snakemake@output[["f1_pattern_joint"]])
 dir.create(snakemake@output[["ntests_joint"]])
 dir.create(snakemake@output[["roc_FPR_TPR"]])
 
@@ -861,10 +974,14 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
   toplot <- read.csv(snakemake@input[["csv"]]) # Median, mean, quantiles, taken over the seeds
   joint_bench <- read.csv(snakemake@input[["raw_bench"]]) # All raw benchmarks in one dataframe
 
-  replacement_list <- list(parameters = "NA") # converts NA to string "NA" in the dataframe
-
-  toplot <- toplot %>% replace_na(replacement_list)
-  joint_bench <- joint_bench %>% replace_na(replacement_list)
+  # ME: converting NA to sting causes mix types in a column
+  # R in this case converts all to string
+  # made an laternative fix below
+  # replacement_list <- list(parameters = "NA") # converts NA to string "NA" in the dataframe
+  # toplot[is.na(toplot)] <- "NA"
+  # joint_bench[is.na(joint_bench)] <- "NA"
+  #toplot <- toplot %>% replace_na(replacement_list)
+  #joint_bench <- joint_bench %>% replace_na(replacement_list)
 
   config <- fromJSON(file = snakemake@input[["config"]])
 
@@ -907,6 +1024,9 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
     mutate(id_numlev = lev_to_levnum(id))
   joint_bench$id_numlev <- factor(joint_bench$id_numlev, levels = numlev)
 
+  # Make NA values in parameters column to string "NA"
+  joint_bench$parameters[is.na(joint_bench$parameters)] <- "NA"
+
   # get unique graph, parameters, data
   unique_adjmats <- unique(joint_bench$adjmat)
   unique_parameters <- unique(joint_bench$parameters)
@@ -928,7 +1048,6 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
           filter(adjmat == adjmat2) %>%
           filter(parameters == parameters2) %>%
           filter(data == data2)
-
         if (nrow(joint_bench) > 0) {
           fpr_tpr_pattern()
           fpr_tpr_skel()
@@ -936,9 +1055,11 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
           fpr_fnr_skel()
           fnr_fpr_skel() # same as above but switced axis
           elapsed_time()
+          elapsed_log_time()
           graph_type()
           shd_cpdag()
           f1_skel()
+          f1_pattern()
           n_tests()
           plt_counter <- plt_counter + 1
         }

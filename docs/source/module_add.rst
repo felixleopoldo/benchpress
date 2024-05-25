@@ -17,7 +17,7 @@ However, to get something working, you only have to consider altering *script.R*
     └── docs.rst
 
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
-  The template modules run by default in a container based on the Docker image "bpimages/sandbox". 
+  The template modules run by default in a container based on the Docker image "bpimages/sandbox:1.0". 
   To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.  
   On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version* (see e.g. `this tutorial <https://www.techrepublic.com/article/how-to-build-a-docker-image-and-upload-it-to-docker-hub/>`_ for building and pushing images to `Docker Hub <https://hub.docker.com/>`__). 
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suit your specific script.
@@ -169,14 +169,14 @@ In order to create a new algorithm module, you may copy the template module `new
     cp -r resources/module_templates/new_alg workflow/rules/structure_learning_algorithms/new_alg
 
 Below are two examples of how to implement an algorithm module, one in R and one in `Python <https://www.python.org/>`_.
-Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rula.smk>`__
+Which one to use is set in `rule.smk <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/rule.smk>`__
 
 R
 ------
 
 :numref:`new_alg_script` shows `script.R <https://github.com/felixleopoldo/benchpress/tree/master/resources/module_templates/new_alg/script.R>`__ , which generates a random binary symmetric matrix (undirected data).
-Note that the actual algorithm is wrapped into the function *wrapper* which is passed to the function *add_timeout*. 
-This is to enable the timeout functionality, which saves an empty data if the algorithm has finished before ``timeout`` seconds, specified in the config file.
+Note that the actual algorithm is wrapped into the function *myalg* which is passed to the function *add_timeout*. 
+This is to enable the timeout functionality, which writes an empty file if the algorithm has finished before ``timeout`` seconds, specified in the config file.
 However, *add_timeout* is not needed if your algorithm is able to produce results after a specified amount of time.
 
 
@@ -267,7 +267,7 @@ However, you may either extend or copy one of the existing ones.
 Local development 
 ************************************************
 
-The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox <https://hub.docker.com/repository/docker/bpimages/sandbox/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
+The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox:1.0 <https://hub.docker.com/repository/docker/bpimages/sandbox:1.0/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
 If you instead prefer to run a module using software installed on your local computer, you should change the ``container`` field in *rule.smk* to *None*, *i.e.*
 
 .. code-block:: python
@@ -379,7 +379,7 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
         df = pd.read_csv(snakemake.input["data"])
 
         # Set the seed
-        np.random.seed(int(snakemake.wildcards["replicate"]))
+        np.random.seed(int(snakemake.wildcards["seed"]))
         
         # The algorithm goes here    
         adjmat = my_local_algorithm(df) # returns an adjacency matrix
@@ -415,13 +415,12 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
 Updating the documentation
 ******************************************
 
-When a new module is installed you may also update the documentation.
-First install some requirements 
+When adding a new module you may also update the documentation.
+First install the requirements by 
 
 .. prompt:: bash
 
-
-    pip install -r docs/_source/requirements.txt
+    pip install -r docs/source/requirements.txt
 
 Then make *render_docs.sh* executable then render and build the documentation
 
@@ -436,6 +435,3 @@ Then make *render_docs.sh* executable then render and build the documentation
     make html
 
 Open *build/html/index.html* in a web browser to see the result.
-
-
-.. _ BDgraph: https://cran.r-project.org/web/packages/BDgraph/index.html

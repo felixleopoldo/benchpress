@@ -1,0 +1,14 @@
+{
+    "title": "Meinshausen & Buhlmann cov est",
+    "version": "1.3.5",
+    "package": {
+        "title": "huge",
+        "url": "https://cran.r-project.org/web/packages/huge/index.html"
+    },
+    "docs_url": "https://cran.r-project.org/web/packages/huge/huge.pdf",
+    "outputs": "adjmat",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}

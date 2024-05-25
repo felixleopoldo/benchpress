@@ -1,5 +1,5 @@
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
@@ -17,14 +17,15 @@ fi
 
 CMD="$CMD --algorithm fges"
 CMD="$CMD --score ${snakemake_wildcards[score]}"
-CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 if [ ${snakemake_wildcards[score]} = "sem-bic-score" ]; then
     CMD="$CMD --penaltyDiscount ${snakemake_wildcards[penaltyDiscount]}"
+    CMD="$CMD --semBicStructurePrior ${snakemake_wildcards[semBicStructurePrior]}"
 fi
 
 if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
-    CMD="$CMD --samplePrior ${snakemake_wildcards[samplePrior]}"
+    CMD="$CMD --priorEquivalentSampleSize ${snakemake_wildcards[samplePrior]}"
 fi
 
 # Run the command

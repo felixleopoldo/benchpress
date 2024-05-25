@@ -8,6 +8,6 @@ rule:
         time=alg_output_time_path(module_name),
         ntests=alg_output_ntests_path(module_name),
     container:
-        "docker://bpimages/bnlearn:4.8.1"
+        "docker://bpimages/bnlearn:4.8.3"
     script:
         "script.R"

@@ -1,0 +1,17 @@
+{
+    "title": "Chordal graph samplers",
+    "docker_image": "bpimages/athomas_jtsamplers:9eb505f",
+    "version": "76ad20e",
+    "package": {
+        "title": "Alun Thomas",
+        "url": "https://medicine.utah.edu/faculty/alun-thomas"
+    },
+    "docs_url": "",
+    "outputs": [
+        "graphtraj"
+    ],
+    "graph_types": [
+        "DG"
+    ],
+    "language": "Java"
+}

@@ -7,7 +7,7 @@
                 "data_id": "example3",
                 "seed_range": [
                     1,
-                    50
+                    100
                 ]
             }
         ],
@@ -26,19 +26,16 @@
                 "text": false,
                 "ids": [
                     "gobnilp-bde",
+                    "grasp-bdeu",
+                    "boss-bdeu",
                     "asobs-bdeu",
                     "tabu-bde",
                     "mmhc-bde-mi",
                     "hc-bde",
-                    "gs-mi",
-                    "interiamb-mi",
-                    "fci-chi-square",
-                    "rfci-chi-square",
-                    "gfci-bdeu-chi-square",
                     "fges-bdeu",
-                    "itsearch_sample-bde",
+                    "itsearch-bde",
                     "pc-binCItest",
-                    "omcmc_itsample-bde"
+                    "omcmc-bde"
                 ]
             },
             "graph_true_stats": false,
@@ -53,49 +50,10 @@
         "data": {
             "iid": [
                 {
-                    "id": "standardized",
-                    "standardized": true,
-                    "n": [
-                        1000
-                    ]
-                },
-                {
-                    "id": "nonstandardized",
-                    "standardized": false,
-                    "n": [
-                        1000
-                    ]
-                },
-                {
-                    "id": "example1",
-                    "standardized": false,
-                    "n": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example2",
-                    "standardized": true,
-                    "n": [
-                        320,
-                        640
-                    ]
-                },
-                {
                     "id": "example3",
                     "standardized": false,
                     "n": [
-                        320,
-                        640
-                    ]
-                },
-                {
-                    "id": "example4",
-                    "standardized": true,
-                    "n": [
-                        320,
-                        640
+                        320
                     ]
                 }
             ]
@@ -112,24 +70,6 @@
                     "method": "er",
                     "DAG": true
                 }
-            ],
-            "trilearn_cta": [
-                {
-                    "id": "trilearn_cta",
-                    "order": 50,
-                    "alpha": 0.5,
-                    "beta": 0.7
-                }
-            ],
-            "bdgraph_graphsim": [
-                {
-                    "id": "circle",
-                    "p": 50,
-                    "graph": "circle",
-                    "class": null,
-                    "size": null,
-                    "prob": 0.2
-                }
             ]
         },
         "parameters": {
@@ -139,71 +79,43 @@
                     "min": 0.1,
                     "max": 0.9
                 }
-            ],
-            "sem_params": [
-                {
-                    "id": "SEM",
-                    "min": 0.25,
-                    "max": 1
-                }
-            ],
-            "trilearn_hyper-dir": [
-                {
-                    "id": "disc-loglin",
-                    "n_levels": 2,
-                    "pseudo_obs": 1.0
-                }
-            ],
-            "trilearn_intra-class": [
-                {
-                    "id": "intra-class",
-                    "rho": 0.4,
-                    "sigma2": 1.0
-                }
-            ],
-            "trilearn_g_inv_wishart": [
-                {
-                    "id": "giw",
-                    "dof": 1
-                }
             ]
         },
         "structure_learning_algorithms": {
-            "sklearn_glasso": [
+            "tetrad_boss": [
                 {
-                    "id": "sklearn_glasso",
-                    "mode": "cd",
-                    "alpha": [
-                        0.05
+                    "id": "boss-bdeu",
+                    "score": "bdeu-score",
+                    "datatype": "discrete",
+                    "useBes": true,
+                    "allowInternalRandomess": false,
+                    "samplePrior": [
+                        1,
+                        10,
+                        20
                     ],
-                    "tol": 0.0004,
-                    "enet_tol": 0.0004,
-                    "precmat_threshold": 0.1,
-                    "max_iter": 100,
-                    "verbose": false,
-                    "assume_centered": false,
+                    "semBicStructurePrior": null,
+                    "penaltyDiscount": null,
+                    "timeout": null
+                }
+            ],
+            "tetrad_grasp": [
+                {
+                    "id": "grasp-bdeu",
+                    "score": "bdeu-score",
+                    "datatype": "discrete",
+                    "test": "chi-square-test",
+                    "samplePrior": [
+                        1,
+                        10,
+                        20
+                    ],
+                    "semBicStructurePrior": null,
+                    "penaltyDiscount": null,
                     "timeout": null
                 }
             ],
             "rblip_asobs": [
-                {
-                    "id": "winasobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "winasobs",
-                    "indeg": 80,
-                    "timeout": [
-                        180
-                    ],
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose_level": 0
-                },
                 {
                     "id": "asobs-bdeu",
                     "scorermethod": "is",
@@ -255,88 +167,8 @@
                         1,
                         2
                     ],
-                    "structurePrior": 1,
+                    "semBicStructurePrior": 1,
                     "penaltyDiscount": null,
-                    "timeout": null
-                }
-            ],
-            "tetrad_fci": [
-                {
-                    "id": "fci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                },
-                {
-                    "id": "fci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
-                    "timeout": null
-                }
-            ],
-            "tetrad_gfci": [
-                {
-                    "id": "gfci-bdeu-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bdeu-score",
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
-                    "penaltyDiscount": null,
-                    "samplePrior": 1,
-                    "structurePrior": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "gfci-sem-bic-fisher-z",
-                    "alpha": 0.05,
-                    "score": "sem-bic",
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "penaltyDiscount": [
-                        0.5,
-                        1,
-                        1.5
-                    ],
-                    "samplePrior": null,
-                    "structurePrior": 1,
-                    "timeout": null
-                }
-            ],
-            "tetrad_rfci": [
-                {
-                    "id": "rfci-fisher-z",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "test": "fisher-z-test",
-                    "datatype": "continuous",
-                    "timeout": null
-                },
-                {
-                    "id": "rfci-chi-square",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "chi-square-test",
-                    "datatype": "discrete",
                     "timeout": null
                 }
             ],
@@ -359,60 +191,6 @@
                     "verbose": false,
                     "indepTest": "binCItest",
                     "timeout": null
-                },
-                {
-                    "id": "pc-gaussCItest",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pcalg005",
-                    "alpha": 0.05,
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pcalg-disCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "disCItest",
-                    "timeout": null
                 }
             ],
             "bnlearn_mmhc": [
@@ -433,41 +211,9 @@
                     "prior": "uniform",
                     "beta": 1,
                     "timeout": null
-                },
-                {
-                    "id": "mmhc-bge-zf",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bge",
-                    "test": "zf",
-                    "iss": 1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": null,
-                    "timeout": null
                 }
             ],
             "bnlearn_interiamb": [
-                {
-                    "id": "interiamb-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                },
                 {
                     "id": "interiamb-mi",
                     "alpha": [
@@ -499,19 +245,6 @@
                     "debug": false,
                     "undirected": false,
                     "timeout": null
-                },
-                {
-                    "id": "gs-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
                 }
             ],
             "bnlearn_tabu": [
@@ -524,23 +257,6 @@
                         0.1
                     ],
                     "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "tabu-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
                     "issw": null,
                     "l": 5,
                     "k": 1,
@@ -567,140 +283,11 @@
                     "restart": 0,
                     "perturb": 1,
                     "timeout": null
-                },
-                {
-                    "id": "hc-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1,
-                    "timeout": null
                 }
             ],
             "bidag_itsearch": [
                 {
-                    "id": "itsearch_map-bde",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bdecat",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": [
-                        0.000248,
-                        0.022300,
-                        0.100000,
-                        0.448000,
-                        0.739000
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 15,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01",
-                    "estimate": "map",
-                    "MAP": true,
-                    "plus1it": null,
-                    "posterior": null,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde",
+                    "id": "itsearch-bde",
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 6,
@@ -713,130 +300,6 @@
                     ],
                     "edgepf": 2,
                     "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bge",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": 2,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsample-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsample-bge_am1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 1,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_map-bge_am01_endspace",
-                    "estimate": "endspace",
-                    "MAP": true,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": null,
-                    "am": 0.1,
                     "aw": null,
                     "softlimit": 9,
                     "hardlimit": 12,
@@ -864,192 +327,17 @@
                     "cpdag": false,
                     "mergetype": "skeleton",
                     "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bdecat_chi1_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bdecat",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 20,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi10_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 10,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
                 }
             ],
             "bidag_order_mcmc": [
                 {
-                    "id": "omcmc_itmap-bde",
+                    "id": "omcmc-bde",
                     "plus1": true,
-                    "startspace_algorithm": "itsearch_map-bde",
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1,
-                        2
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "cpdag": false,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bde",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi01_endspace",
+                    "input_algorithm_id": "itsearch_sample-bde_chi01_endspace",
                     "scoretype": "bde",
                     "chi": [
                         0.1
                     ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bdecat",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi01_endspace",
-                    "scoretype": "bdecat",
-                    "chi": [
-                        0.1
-                    ],
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bde_chi1",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bde_chi1_endspace",
-                    "scoretype": "bde",
-                    "chi": 1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": [
-                        0.5
-                    ],
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                },
-                {
-                    "id": "omcmc_itsample-bdecat_chi1",
-                    "plus1": true,
-                    "startspace_algorithm": "itsearch_sample-bdecat_chi1_endspace",
-                    "scoretype": "bdecat",
-                    "chi": 1,
                     "edgepf": 2,
                     "aw": null,
                     "am": null,

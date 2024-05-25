@@ -1,7 +1,6 @@
 import os
 import json
 
-
 def dict_to_summary(d):
     s = ""
     for key, val in d.items():
@@ -15,7 +14,7 @@ with open(snakemake.params["config"]) as json_file:
 
 cmd="""
 Rscript workflow/rules/evaluation/benchmarks/run_summarise.R  --adjmat_true {adjmat_true} --adjmat_est {adjmat_est}  --filename {res}  
-python workflow/rules/evaluation/benchmarks/add_column.py --filename {res} --colname replicate       --colval {replicate}
+python workflow/rules/evaluation/benchmarks/add_column.py --filename {res} --colname seed       --colval {seed}
 python workflow/rules/evaluation/benchmarks/add_column.py --filename {res} --colname algorithm       --colval {alg} 
 python workflow/rules/evaluation/benchmarks/add_column.py --filename {res} --colname adjmat          --colval {adjmat} 
 python workflow/rules/evaluation/benchmarks/add_column.py --filename {res} --colname parameters      --colval {bn} 

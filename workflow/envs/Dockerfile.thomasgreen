@@ -1,3 +1,0 @@
-FROM bpimages/thomasgreen:1.19
-
-RUN apt install time

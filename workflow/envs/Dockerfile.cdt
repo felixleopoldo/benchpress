@@ -1,0 +1,36 @@
+FROM python:3.7
+RUN pip install cdt
+RUN pip install torch 
+
+#FROM fentechai/cdt-base:latest
+# #MAINTAINER Diviyan Kalainathan <diviyan@lri.fr>
+# LABEL description="Docker image for the Causal Discovery Toolbox"
+
+# RUN git clone https://github.com/FenTechSolutions/CausalDiscoveryToolbox.git CDT
+# #RUN mkdir -p /CDT
+# #COPY . /CDT
+# RUN cd /CDT && \
+#     python3 -m pip install -r docker-requirements.txt && \
+#     python3 -m pip install torch --extra-index-url https://download.pytorch.org/whl/cpu && \
+#     python3 -m pip install pytest pytest-cov && \
+#     python3 -m pip install codecov && \
+#     python3 setup.py install
+# CMD /bin/sh
+
+# The Nvidia version:
+# FROM fentechai/nv-cdt-base:latest
+# # MAINTAINER Diviyan Kalainathan <diviyan@lri.fr>
+# LABEL description="Nvidia Docker image for the Causal Discovery Toolbox"
+
+# # Install the CDT
+# RUN git clone https://github.com/FenTechSolutions/CausalDiscoveryToolbox.git
+
+# RUN mkdir -p /CDT
+# COPY . /CDT
+# RUN cd /CDT && \
+#     python3 -m pip install -r docker-requirements.txt && \
+#     python3 -m pip install torch --extra-index-url https://download.pytorch.org/whl/cpu && \
+#     python3 -m pip install pytest pytest-cov && \
+#     python3 -m pip install codecov && \
+#     python3 setup.py install
+# CMD /bin/sh

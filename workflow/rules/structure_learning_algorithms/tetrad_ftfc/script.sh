@@ -1,5 +1,5 @@
 # Build command string 
-CMD="java -jar /tetrad/causal-cmd-1.9.0-jar-with-dependencies.jar"
+CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --data-type continuous"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --json-graph"
@@ -7,6 +7,7 @@ CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 
 CMD="$CMD --algorithm ftfc"
 CMD="$CMD --dataset ${snakemake_input[data]}"
+CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 # Run the command
 if [ ${snakemake_wildcards[timeout]} != "None" ]; then 
