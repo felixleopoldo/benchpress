@@ -37,10 +37,10 @@
                     "itsearch-bge",
                     "pc-gaussCItest"
                 ],
-                "graphs": false,
+                "graphs": true,
                 "adjmats": true,
-                "diffplots": false,
-                "graphvizcompare": false
+                "diffplots": true,
+                "graphvizcompare": true
             },
             "mcmc_traj_plots": [
                 {

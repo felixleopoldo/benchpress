@@ -1,5 +1,6 @@
 
-def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
+def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf", eval_module="graph_plots", 
+                                  module_feature="grapvizcompare", feature_argstring="layout=True"):
     ret = [[[[expand("{output_dir}/" \
             "evaluation=/{evaluation_string}/"\
             "adjmat=/{adjmat_string}/"\
@@ -19,8 +20,8 @@ def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf"):
             for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
             for sim_setup in config["benchmark_setup"]["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
-            for alg in active_algorithms("graph_plots")]
+                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]]
+            for alg in active_algorithms(eval_module)]
     return ret
 
 def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):

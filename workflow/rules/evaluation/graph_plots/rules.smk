@@ -12,6 +12,43 @@ def summarise_alg_input_data_path():
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
 
+# A rule the converts between different types of graph, e.g. DAG to CPDAG
+rule graph_convert:
+    input:
+        filename="{whatever}/adjmat.csv"
+    output:
+        filename="{whatever}/adjmat_cpdag.csv"
+    container:
+        "docker://bpimages/pcalg:2.7-8"
+    params:
+        to="cpdag"
+    script:
+        convert_graph.r
+# A rule the converts between different types of graph, e.g. DAG to CPDAG
+rule graph_convert2:
+    input:
+        "workflow/scripts/utils/graph_convert.py",
+        filename="{output_dir}/adjmat_estimate/"
+        "adjmat=/{adjmat}/"
+        "parameters=/{param_string}/"
+        "data=/{data_string}/"
+        "algorithm=/{alg_string}/"
+        "seed={seed}/"
+        "adjmat.csv",
+    output:
+        filename="{output_dir}/adjmat_estimate/"
+        "adjmat=/{adjmat}/"
+        "parameters=/{param_string}/"
+        "data=/{data_string}/"
+        "algorithm=/{alg_string}/"
+        "seed={seed}/"
+        "adjmat_converted.csv",
+    container:
+        "docker://bpimages/pcalg:2.7-8"
+    params:
+        to="cpdag"
+    script:
+        convert_graph.r
 
 
 rule adjmat_plot:
@@ -61,7 +98,6 @@ rule adjmat_to_dot:
             touch {output.filename}
         fi
         """
-
 
 rule plot_dot:
     input:
@@ -167,26 +203,31 @@ rule adjmat_diffplot:
 #             for i,f in enumerate(input.adjmat_diffplots):
 #                 shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
 
+#  This new version of the rule graph_plots lets the user specify which plots to include in the output.
 rule graph_plots:
     input:
         conf=configfilename,
         graphs=[d for d in [graph_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
+        cpdags=[d for d in [cpdag_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["cpdags"]],
         adjmats=[d for d in [adjmat_plots()] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
         adjmat_diffplots=[d for d in adjmat_diffplots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
         graphvizcompare=[d for d in bnlearn_graphvizcompare_plots() if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
         csv_adjmats=adjmats()
-    output:    
+    output:    # What happening here? Ah, its just a hack to get the correct output. either [] or one directory [directory(...)]
         [d for d in [directory("results/output/graph_plots/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
+        [d for d in [directory("results/output/graph_plots/cpdags")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["cpdags"] is True],
         [d for d in [directory("results/output/graph_plots/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
         [d for d in [directory("results/output/graph_plots/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
         [d for d in [directory("results/output/graph_plots/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
         directory("results/output/graph_plots/csvs"),
         touch("results/output/graph_plots/graph_plots.done")
     run:
-        #shell("touch results/output/graph_plots/desc.csv") 
-        for i,f in enumerate(input.graphs):
-            #    shell("echo "+i+ ",  "+f+" >> results/output/graph_plots/desc.csv ") 
+        # Goes through the list of graphs etc. and copies them to the output directories.
+        # Maybe this should be a script and I should do the cpdag stuff in the script.
+        for i,f in enumerate(input.graphs): 
             shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
+        for i,f in enumerate(input.cpdags): # if I would iterate over the csv files I could use the same code for cpdags and adjmats, sort of.
+            shell("mkdir -p results/output/graph_plots/cpdags && cp "+f+" results/output/graph_plots/cpdags/cpdag_plot_" +str(i+1) +".png")
         for i,f in enumerate(input.adjmats):
             shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".png")
         for i,f in enumerate(input.csv_adjmats):

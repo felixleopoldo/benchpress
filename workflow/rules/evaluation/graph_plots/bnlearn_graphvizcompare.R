@@ -101,6 +101,8 @@ DAG2EG <- function(incidence) {
   as(dag2essgraph(as(incidence, "graphNEL")), "matrix")
 }
 
+# This is a bad hack to create tmp files with unique names
+# that are not too long for pdf.
 myFun <- function(n = 5000) {
   a <- do.call(paste0, replicate(5, sample(LETTERS, n, TRUE), FALSE))
   paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
