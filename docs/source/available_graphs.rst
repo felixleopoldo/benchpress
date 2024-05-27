@@ -19,6 +19,7 @@ Graphs
     
     graph/bdgraph_graphsim
     graph/fixed_graph
+    graph/gcastle_dag
     graph/pcalg_randdag
     graph/trilearn_bandmat
     graph/trilearn_cta
@@ -45,6 +46,11 @@ Below is a list of available modules.
      - 
      - 
      - :ref:`fixed_graph` 
+   * - gCastleDAG
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
+     - 1.0.3
+     - :ref:`gcastle_dag` 
    * - randDAG
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
