@@ -125,7 +125,9 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     filename <- myFun(n = 1)
     filename <- paste(filename[1], ".pdf", sep = "")
 
+    
     pdf(file = filename)
+    
     graphviz.compare(pattern_true_bn, pattern_estimated_bn,
       layout = "dot",
       main = c(
@@ -142,6 +144,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
   } else {
     file.create(snakemake@output[["filename"]])
   }
+  
 }
 
 if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
@@ -152,7 +155,7 @@ if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
     check.names = FALSE
   ))
 
-  benchmarks(true_adjmat, estimated_adjmat)
+  silent <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
   file.create(snakemake@output[["filename"]])
 }

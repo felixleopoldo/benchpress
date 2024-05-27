@@ -1,117 +1,59 @@
+def graph_plots_feature_pattern(feature, param_string=""):
+    if param_string != "":
+        param_string = param_string + "/"
 
-def bnlearn_graphvizcompare_plots(filename="graphvizcompare",ext="pdf", eval_module="graph_plots", 
-                                  module_feature="grapvizcompare", feature_argstring="layout=True"):
-    ret = [[[[expand("{output_dir}/" \
-            "evaluation=/{evaluation_string}/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "algorithm=/{alg_string}/" \
-            "seed={seed}/" + \
-            filename + "." + ext,
-            output_dir="results",
-            alg_string=json_string[alg_conf["id"]],
-            **alg_conf,
-            seed=seed,
-            evaluation_string="graphvizcompare/layout=True",
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-            for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
-            for sim_setup in config["benchmark_setup"]["data"]]
+    str = (
+        "{output_dir}/"
+        "evaluation/graph_plots/" + feature + "/" + param_string + "adjmat=/{adjmat}/"
+        "parameters=/{parameters}/"
+        "data=/{data}/"
+        "algorithm=/{alg_string}/"
+        "seed={seed}/"
+        "{filename}.{ext}"
+    )
+    return str
+
+
+def graph_plots_conf_to_feature_files(
+    filename, ext, eval_module, module_feature, feature_argstring
+):
+    evaluation_string = module_feature
+    if feature_argstring != "":
+        evaluation_string += "/" + feature_argstring
+
+    ret = [
+        [
+            [
+                [
+                    expand(
+                        graph_plots_feature_pattern(
+                            module_feature, param_string=feature_argstring
+                        ),
+                        output_dir="results",
+                        alg_string=json_string[alg_conf["id"]],
+                        **alg_conf,
+                        seed=seed,
+                        filename=filename,
+                        ext=ext,
+                        evaluation_string=evaluation_string,
+                        adjmat=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
+                        parameters=gen_parameter_string_from_conf(
+                            sim_setup["parameters_id"], seed
+                        ),
+                        data=gen_data_string_from_conf(
+                            sim_setup["data_id"], seed, seed_in_path=False
+                        )
+                    )
+                    for seed in get_seed_range(sim_setup["seed_range"])
+                    if sim_setup["graph_id"] != None
+                ]
+                for sim_setup in config["benchmark_setup"]["data"]
+            ]
             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                 if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]]
-            for alg in active_algorithms(eval_module)]
-    return ret
+            if alg_conf["id"]
+            in config["benchmark_setup"]["evaluation"][eval_module]["ids"]
+        ]
+        for alg in active_algorithms(eval_module)
+    ]
 
-def adjmat_diffplots(filename="adjmat_diffplot",ext="png"):
-    ret = [[[[expand("{output_dir}/" \
-            "evaluation=/{evaluation_string}/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "algorithm=/{alg_string}/" \
-            "seed={seed}/" + \
-            filename + "." + ext,
-            output_dir="results",
-            alg_string=json_string[alg_conf["id"]],
-            **alg_conf,
-            seed=seed,
-            evaluation_string="adjmat_diffplot",
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-            for seed in get_seed_range(sim_setup["seed_range"]) if sim_setup["graph_id"] != None]
-            for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
-            for alg in active_algorithms("graph_plots")]
-    return ret
-
-
-def adjmat_plots():
-    ret = [[[[expand("{output_dir}/adjmat_estimate/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "algorithm=/{alg_string}/"\
-            "seed={seed}/"
-            "adjmat.png",
-            output_dir="results",
-            alg_string=json_string[alg_conf["id"]],
-            **alg_conf,
-            seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-            for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
-            for alg in active_algorithms("graph_plots")]
-    return ret
-
-
-def adjmats():
-
-    ret = [[[[expand("{output_dir}/adjmat_estimate/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "algorithm=/{alg_string}/"\
-            "seed={seed}/"
-            "adjmat.csv",
-            output_dir="results",
-            alg_string=json_string[alg_conf["id"]],
-            **alg_conf,
-            seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-            for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
-            for alg in active_algorithms("graph_plots")]
-    return ret
-
-def graph_plots():
-    ret = [[[[expand("{output_dir}/graph_plot/"\
-            "adjmat=/{adjmat_string}/"\
-            "parameters=/{param_string}/"\
-            "data=/{data_string}/"\
-            "algorithm=/{alg_string}/"\
-            "seed={seed}.png",
-            output_dir="results",
-            alg_string=json_string[alg_conf["id"]],
-            **alg_conf,
-            seed=seed,
-            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-            for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["data"]]
-            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-                if alg_conf["id"] in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]]
-            for alg in active_algorithms("graph_plots")]
     return ret
