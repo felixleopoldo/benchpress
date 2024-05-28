@@ -68,7 +68,6 @@ rule dag_to_cpdag:
     script:
         "convert_graph.R"
 
-ruleorder: dag_to_cpdag > adjmat_csv 
 
 # This rule is very generally specified and relies on that it is called in the right way.
 # I.e with the path of an adjacency matrix.
