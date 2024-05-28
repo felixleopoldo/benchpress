@@ -168,7 +168,7 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
 # Include the evaluation modules
 
 for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
-    if (p / "rules.smk").is_file():
+    if (p / "rules.smk").is_file():        
         include: Path("rules/evaluation/", p.name, "rules.smk")
 
 

@@ -57,17 +57,27 @@ def get_active_rules(wildcards):
         # Check if boolean or list or object wirh nonempty ids field.
         # TODO: this was OrderedDict, so might have to impose order somewhere.
         if isinstance(val, dict) and val["ids"] != []:
-            rules.append("results/output/"+key+"/"+key+".done")
+            if key == "graph_plots":
+                # Create a done key.done file for each graph_type.
+                for graph_type in val["other_graph_types"] :
+                    rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")
+            else:
+                print("This should never happen.")
+                rules.append("results/output/"+key+"/"+key+".done")
+        
         if isinstance(val, bool) and val is True:
             rules.append("results/output/"+key+"/"+key+".done")
+        
         if isinstance(val, list) and val != []:
             if key == "mcmc_traj_plots" or key == "mcmc_heatmaps" or key == "mcmc_autocorr_plots":
                 for item in val:
                     if ("active" not in item) or item["active"] == True:
                         rules.append("results/output/"+key+"/"+key+".done")
                         break
-            else:
+            else: 
+                print("This shold never happen.")
                 rules.append("results/output/"+key+"/"+key+".done")
+    print(rules)
     return rules
 
 

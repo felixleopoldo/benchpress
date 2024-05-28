@@ -1,15 +1,21 @@
-def graph_plots_feature_pattern(feature, param_string=""):
+def graph_plots_feature_pattern(feature, 
+                                param_string="", 
+                                graph_type="{graph_type}",
+                                filename="{filename}",
+                                ext="{ext}"
+                                ):
     if param_string != "":
         param_string = param_string + "/"
 
     str = (
         "{output_dir}/"
-        "evaluation/graph_plots/graph_type={graph_type}/" + feature + "/" + param_string + "adjmat=/{adjmat}/"
+        "evaluation/graph_plots/graph_type="+graph_type+"/" + feature + "/" + param_string + "adjmat=/{adjmat}/"
         "parameters=/{parameters}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
         "seed={seed}/"
-        "{filename}.{ext}"
+        + filename + "." + ext
+        #"{filename}.{ext}"
     )
     return str
 
@@ -20,7 +26,7 @@ def graph_plots_conf_to_feature_files(
     eval_module, 
     module_feature, 
     feature_argstring,
-    graph_type="original"
+    graph_type
 ):
     evaluation_string = module_feature
     if feature_argstring != "":

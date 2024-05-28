@@ -15,10 +15,10 @@ def input_adjmat_true_path():
 
 rule adjmat_plot:
     input:        
-        matrix_filename=graph_plots_feature_pattern(feature="csvs")
+        matrix_filename=graph_plots_feature_pattern(feature="csvs", filename="adjmat", ext="csv")
 
     output:
-        plot_filename=graph_plots_feature_pattern(feature="adjmat_plots")
+        plot_filename=graph_plots_feature_pattern(feature="adjmat_plots") 
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -33,15 +33,15 @@ rule adjmat_plot:
 # This just copies the csv. May this should be the actual estimation rule instead.
 rule adjmat_csv:
     input:
-        matrix_filename="{output_dir}/adjmat_estimate/"
-        "adjmat=/{adjmat}/"
-        "parameters=/{parameters}/"
-        "data=/{data}/"
-        "algorithm=/{alg_string}/"
-        "seed={seed}/"
-        "adjmat.csv",
+        matrix_filename=("{output_dir}/adjmat_estimate/"
+                    "adjmat=/{adjmat}/"
+                    "parameters=/{parameters}/"
+                    "data=/{data}/"
+                    "algorithm=/{alg_string}/"
+                    "seed={seed}/"
+                    "adjmat.csv")
     output:
-        plot_filename=graph_plots_feature_pattern(feature="csvs")
+        plot_filename=graph_plots_feature_pattern(feature="csvs", graph_type="original") # this should be with original graph type.
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -68,6 +68,7 @@ rule dag_to_cpdag:
     script:
         "convert_graph.R"
 
+ruleorder: dag_to_cpdag > adjmat_csv 
 
 # This rule is very generally specified and relies on that it is called in the right way.
 # I.e with the path of an adjacency matrix.
@@ -111,10 +112,12 @@ rule dot_to_plot:
 rule bnlearn_graphvizcompare:
     input:
         data=input_data_path(),
-        adjmat_true=input_adjmat_true_path(),
+        adjmat_true=input_adjmat_true_path(), # should take the right graph, maybe as a paratemer to the rule.
         adjmat_est=graph_plots_feature_pattern(feature="csvs")
     output:
         filename=graph_plots_feature_pattern(feature="graphvizcompare", param_string="layout={layout}")
+    params:
+        graph_type="{wildcards.graph_type}"
     script:
         "bnlearn_graphvizcompare.R"
 
@@ -137,66 +140,79 @@ rule adjmat_diffplot:
     script:
         "adjmat_diffplot.py"
 
-# csv to cpdag -> cpdag.dot -> dot to plot
-#  This new version of the rule graph_plots lets the user specify which plots to include in the output.
-rule graph_plots:
-    input:
-        conf=configfilename,
-        graphs=[d for d in graph_plots_conf_to_feature_files(filename="graph", 
-                                                        ext="png", 
-                                                        eval_module="graph_plots", 
-                                                        module_feature="graphs", 
-                                                        feature_argstring="") if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
+# This new version of the rule graph_plots lets the user specify which plots to include in the output.
+# It generates a rule for each type of graph that is specified in other_graph_types, apart from the original graph.
+for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_graph_types"]:
+    print("generating rule for graph type: "+str(graph_type))
+    rule:
+        name: "graph_plots_"+str(graph_type)
+        input:
+            conf=configfilename,
+            graphs=[d for d in graph_plots_conf_to_feature_files(filename="graph", 
+                                                            ext="png", 
+                                                            eval_module="graph_plots", 
+                                                            module_feature="graphs", 
+                                                            feature_argstring="",
+                                                            graph_type=graph_type) 
+                        if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
 
-        adjmats=[d for d in graph_plots_conf_to_feature_files(filename="adjmats", 
-                                                        ext="png", 
-                                                        eval_module="graph_plots", 
-                                                        module_feature="adjmat_plots", 
-                                                        feature_argstring="") 
-                    if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
-        
-        adjmat_diffplots=[d for d in graph_plots_conf_to_feature_files(filename="adjmat_diffplot", 
-                                                                    ext="png", 
-                                                                    eval_module="graph_plots", 
-                                                                    module_feature="adjmat_diffplot", 
-                                                                    feature_argstring="") if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
-        
-        graphvizcompare=[d for d in graph_plots_conf_to_feature_files(filename="graphhvizcompare", 
-                                                                    ext="pdf", 
-                                                                    eval_module="graph_plots", 
-                                                                    module_feature="graphvizcompare", 
-                                                                    feature_argstring="layout=True") if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
-        csvs=[d for d in graph_plots_conf_to_feature_files(filename="adjmat", 
-                                                                    ext="csv", 
-                                                                    eval_module="graph_plots", 
-                                                                    module_feature="csvs", 
-                                                                    feature_argstring="") if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"]]
-    output:    # What happening here? Ah, its just a hack to get the correct output. either [] or one directory [directory(...)]
-        [d for d in [directory("results/output/graph_plots/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
-        #[d for d in [directory("results/output/graph_plots/cpdags")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["cpdags"] is True],
-        [d for d in [directory("results/output/graph_plots/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
-        [d for d in [directory("results/output/graph_plots/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
-        [d for d in [directory("results/output/graph_plots/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
-        directory("results/output/graph_plots/csvs"),
-        touch("results/output/graph_plots/graph_plots.done")
-    run:
-        # Goes through the list of graphs etc. and copies them to the output directories.
-        # Maybe this should be a script and I should do the cpdag stuff in the script.
-        for i,f in enumerate(input.graphs): 
-            shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
-        
-        #for i,f in enumerate(input.cpdags): # if I would iterate over the csv files I could use the same code for cpdags and adjmats, sort of        #    shell("mkdir -p results/output/graph_plots/cpdags && cp "+f+" results/output/graph_plots/cpdags/cpdag_plot_" +str(i+1) +".png")
-        
-        for i,f in enumerate(input.adjmats):
-            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".png")
-        
-        for i,f in enumerate(input.csvs):
-            shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
-        
-        shell("mkdir -p results/output/graph_plots/graphvizcompare")
-        for i,f in enumerate(input.graphvizcompare):
-            shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
+            adjmats=[d for d in graph_plots_conf_to_feature_files(filename="adjmats", 
+                                                            ext="png", 
+                                                            eval_module="graph_plots", 
+                                                            module_feature="adjmat_plots", 
+                                                            feature_argstring="",
+                                                            graph_type=graph_type) 
+                        if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
+            
+            adjmat_diffplots=[d for d in graph_plots_conf_to_feature_files(filename="adjmat_diffplot", 
+                                                                        ext="png", 
+                                                                        eval_module="graph_plots", 
+                                                                        module_feature="adjmat_diffplot", 
+                                                                        feature_argstring="",
+                                                                        graph_type=graph_type) 
+                        if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
+            
+            graphvizcompare=[d for d in graph_plots_conf_to_feature_files(filename="graphhvizcompare", 
+                                                                        ext="pdf", 
+                                                                        eval_module="graph_plots", 
+                                                                        module_feature="graphvizcompare", 
+                                                                        feature_argstring="layout=True",
+                                                                         graph_type=graph_type) 
+                        if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
+            csvs=[d for d in graph_plots_conf_to_feature_files(filename="adjmat", 
+                                                                        ext="csv", 
+                                                                        eval_module="graph_plots", 
+                                                                        module_feature="csvs", 
+                                                                        feature_argstring="",
+                                                                        graph_type=graph_type) 
+                        if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"]]
 
-        shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
-        for i,f in enumerate(input.adjmat_diffplots):
-            shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+        output:    # What happening here? Ah, its just a hack to get the correct output. either [] or one directory [directory(...)]
+            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
+            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
+            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
+            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
+            directory("results/output/graph_plots/graph_type="+graph_type+"/csvs"),
+            touch("results/output/graph_plots/graph_type="+graph_type+"/graph_plots.done")
+        run:
+            print("graph_plots: "+str(graph_type))
+            # Goes through the list of graphs etc. and copies them to the output directories.
+            # Maybe this should be a script and I should do the cpdag stuff in the script.
+            for i,f in enumerate(input.graphs): 
+                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/graphs/graph_" +str(i+1) +".png")
+                    
+            for i,f in enumerate(input.adjmats):
+                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/adjmats/adjmat_plot_" +str(i+1) +".png")
+            
+            for i,f in enumerate(input.csvs):
+                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/csvs/adjmat_" +str(i+1) +".csv")
+            
+            if len(input.graphvizcompare) > 0:
+                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare")
+                for i,f in enumerate(input.graphvizcompare):
+                    shell("cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare/compare_" +str(i+1) +".pdf")
+
+            if len(input.adjmat_diffplots) > 0:
+                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots")
+                for i,f in enumerate(input.adjmat_diffplots):
+                    shell("cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots/diffplot_" +str(i+1) +".png")

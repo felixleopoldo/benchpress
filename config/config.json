@@ -7,7 +7,7 @@
                 "data_id": "standardized",
                 "seed_range": [
                     1,
-                    3
+                    1
                 ]
             }
         ],
@@ -21,19 +21,17 @@
                 "path": true,
                 "text": false,
                 "ids": [
-                    "fges-sem-bic"
                 ]
             },
             "graph_true_plots": false,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": {
-                "ids": [                  
-                    "fges-sem-bic",
+                "ids": [           
                     "tabu-bge"
                 ],
                 "other_graph_types": [
-                    "cpdag"
+                    "cpdag", "original" 
                 ],
                 "graphs": true,
                 "adjmats": true,
@@ -54,7 +52,7 @@
                 }
             ],
             "mcmc_heatmaps": [
-                {
+               {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
                     "active": false
