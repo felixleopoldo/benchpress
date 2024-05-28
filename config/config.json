@@ -20,18 +20,18 @@
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": [
-                ]
+                "ids": []
             },
             "graph_true_plots": false,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": {
-                "ids": [           
+                "ids": [
                     "tabu-bge"
                 ],
                 "other_graph_types": [
-                    "cpdag", "original" 
+                    "cpdag",
+                    "original"
                 ],
                 "graphs": true,
                 "adjmats": true,
@@ -52,7 +52,7 @@
                 }
             ],
             "mcmc_heatmaps": [
-               {
+                {
                     "id": "omcmc_itsample-bge",
                     "burn_in": 0,
                     "active": false

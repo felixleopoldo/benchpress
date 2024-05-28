@@ -77,7 +77,6 @@ def get_active_rules(wildcards):
             else: 
                 print("This shold never happen.")
                 rules.append("results/output/"+key+"/"+key+".done")
-    print(rules)
     return rules
 
 

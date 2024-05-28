@@ -15,7 +15,6 @@ def graph_plots_feature_pattern(feature,
         "algorithm=/{alg_string}/"
         "seed={seed}/"
         + filename + "." + ext
-        #"{filename}.{ext}"
     )
     return str
 

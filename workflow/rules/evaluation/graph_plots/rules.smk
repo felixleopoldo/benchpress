@@ -18,7 +18,7 @@ rule adjmat_plot:
         matrix_filename=graph_plots_feature_pattern(feature="csvs", filename="adjmat", ext="csv")
 
     output:
-        plot_filename=graph_plots_feature_pattern(feature="adjmat_plots") 
+        plot_filename=graph_plots_feature_pattern(feature="adjmat_plots")   
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -143,7 +143,7 @@ rule adjmat_diffplot:
 # This new version of the rule graph_plots lets the user specify which plots to include in the output.
 # It generates a rule for each type of graph that is specified in other_graph_types, apart from the original graph.
 for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_graph_types"]:
-    print("generating rule for graph type: "+str(graph_type))
+
     rule:
         name: "graph_plots_"+str(graph_type)
         input:
@@ -192,27 +192,28 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
             [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
             [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
             [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
-            directory("results/output/graph_plots/graph_type="+graph_type+"/csvs"),
+            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/csvs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"] is True],
             touch("results/output/graph_plots/graph_type="+graph_type+"/graph_plots.done")
+        params:
+            graph_type=graph_type
         run:
-            print("graph_plots: "+str(graph_type))
             # Goes through the list of graphs etc. and copies them to the output directories.
             # Maybe this should be a script and I should do the cpdag stuff in the script.
             for i,f in enumerate(input.graphs): 
-                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/graphs/graph_" +str(i+1) +".png")
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs/graph_" +str(i+1) +".png")
                     
             for i,f in enumerate(input.adjmats):
-                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/adjmats/adjmat_plot_" +str(i+1) +".png")
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats/adjmat_plot_" +str(i+1) +".png")
             
             for i,f in enumerate(input.csvs):
-                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/csvs/adjmat_" +str(i+1) +".csv")
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs/adjmat_" +str(i+1) +".csv")
             
             if len(input.graphvizcompare) > 0:
-                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare")
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare")
                 for i,f in enumerate(input.graphvizcompare):
-                    shell("cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare/compare_" +str(i+1) +".pdf")
+                    shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare/compare_" +str(i+1) +".pdf")
 
             if len(input.adjmat_diffplots) > 0:
-                shell("mkdir -p results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots")
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots")
                 for i,f in enumerate(input.adjmat_diffplots):
-                    shell("cp "+f+" results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+                    shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots/diffplot_" +str(i+1) +".png")
