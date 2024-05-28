@@ -20,20 +20,25 @@
                 "scatter": true,
                 "path": true,
                 "text": false,
-                "ids": []
+                "ids": [
+                    "fges-sem-bic"
+                ]
             },
             "graph_true_plots": false,
             "graph_true_stats": false,
             "ggally_ggpairs": false,
             "graph_plots": {
-                "ids": [
-                    "pc-gaussCItest", "fges-sem-bic", "tabu-bge", "itsearch-bge"
+                "ids": [                  
+                    "fges-sem-bic",
+                    "tabu-bge"
                 ],
-                "graphs": false,
-                "adjmats": false,
+                "other_graph_types": [
+                    "cpdag"
+                ],
+                "graphs": true,
+                "adjmats": true,
                 "diffplots": false,
                 "csvs": true,
-                "cpdags": true,
                 "graphvizcompare": false
             },
             "mcmc_traj_plots": [
@@ -165,7 +170,7 @@
             "bidag_itsearch": [
                 {
                     "id": "itsearch-bge",
-                    "timeout": 2,
+                    "timeout": null,
                     "estimate": "map",
                     "MAP": false,
                     "plus1it": 2,

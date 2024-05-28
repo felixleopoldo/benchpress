@@ -8,12 +8,12 @@ def join_string_sampled_model(algorithm, mode="result"):
 
     benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]]
 
-    ret = [[[expand("{output_dir}/"+mode+"/"\
+    ret = [[[expand("{output_dir}/"+mode+"/"
             "algorithm=/{alg_string}/"
             "adjmat=/{adjmat_string}/"
             "parameters=/{param_string}/"
             "data=/{data_string}/"
-            "id={id}/" \
+            "id={id}/"
             + mode + ".csv",
             output_dir="results",
             alg_string=json_string[alg_conf["id"]],
@@ -29,47 +29,47 @@ def join_string_sampled_model(algorithm, mode="result"):
 
 # TODO: These should take a pattern string instead of an algorithm.
 def summarise_alg_input_adjmat_est_path(algorithm):
-    return "{output_dir}/adjmat_estimate/"\
-            "adjmat=/{adjmat}/"\
-            "parameters=/{bn}/"\
-            "data=/{data}/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/"  \
-            "seed={seed}/" \
-            "adjmat.csv"
+    return ("{output_dir}/adjmat_estimate/"
+            "adjmat=/{adjmat}/"
+            "parameters=/{bn}/"
+            "data=/{data}/"
+            "algorithm=/" + pattern_strings[algorithm] + "/"
+            "seed={seed}/"
+            "adjmat.csv")
 
 def summarise_alg_input_time_path(algorithm):
-    return "{output_dir}/time/"\
-                    "adjmat=/{adjmat}/"\
-                    "parameters=/{bn}/"\
-                    "data=/{data}/" \
-                    "algorithm=/" + pattern_strings[algorithm] + "/" \
-                    "seed={seed}/" \
-                    "time.txt"
+    return ("{output_dir}/time/"
+            "adjmat=/{adjmat}/"
+            "parameters=/{bn}/"
+            "data=/{data}/"
+            "algorithm=/" + pattern_strings[algorithm] + "/"
+            "seed={seed}/"
+            "time.txt")
 
 # This is code repetition, yes...
 def summarise_alg_input_ntests_path(algorithm):
-    return "{output_dir}/ntests/"\
-                    "adjmat=/{adjmat}/"\
-                    "parameters=/{bn}/"\
-                    "data=/{data}/" \
-                    "algorithm=/" + pattern_strings[algorithm] + "/" \
-                    "seed={seed}/" \
-                    "ntests.txt"
+    return ("{output_dir}/ntests/"
+            "adjmat=/{adjmat}/"
+            "parameters=/{bn}/"
+            "data=/{data}/"
+            "algorithm=/" + pattern_strings[algorithm] + "/"
+            "seed={seed}/"
+            "ntests.txt")
 
 def summarise_alg_output_res_path(algorithm):
-    return "{output_dir}/result/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/"  \
-            "adjmat=/{adjmat}/"\
-            "parameters=/{bn}/"\
-            "data=/{data}/"\
-            "seed={seed}/" \
-            "id={id}/" \
-            "result.csv"
+    return ("{output_dir}/result/"
+            "algorithm=/" + pattern_strings[algorithm] + "/"
+            "adjmat=/{adjmat}/"
+            "parameters=/{bn}/"
+            "data=/{data}/"
+            "seed={seed}/"
+            "id={id}/"
+            "result.csv")
     # this seed belongs to data actually, and gets stripped from data after.
     # this is a build in hack to allow for fixed data, I think..
 
 def join_summaries_shell(algorithm):
-    return "sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
+    return r"sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
 def join_summaries_output(algorithm):
     return "{output_dir}/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
@@ -81,13 +81,12 @@ def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
 
 def result_path_mcmc(algorithm):
-    res = "{output_dir}/result/"\
-            "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"\
-            "adjmat=/{adjmat}/"\
-            "parameters=/{bn}/"\
-            "data=/{data}/"\
-            "seed={seed}/" \
-            "id={id}/" \
-            "result.csv"
-    return res
+    return ("{output_dir}/result/"
+            "algorithm=/" + pattern_strings[algorithm] + "/" + pattern_strings["mcmc_est"] + "/"
+            "adjmat=/{adjmat}/"
+            "parameters=/{bn}/"
+            "data=/{data}/"
+            "seed={seed}/"
+            "id={id}/"
+            "result.csv")
 

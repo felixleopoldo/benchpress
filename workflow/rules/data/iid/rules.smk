@@ -107,7 +107,7 @@ rule sample_data_fixed_bnfit:
         data="{output_dir}/data/adjmat=/{adjmat}/parameters=/bn.fit_networks/{bn}/data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*",
-        bn=".*\.rds"
+        bn=r".*\.rds"
     shell:
         "Rscript workflow/rules/data/iid/sample_from_bnlearn_bn.R " \
         "--filename {output.data} " \
@@ -130,7 +130,7 @@ rule sample_fixed_sem_params_data:
              "data=/"+pattern_strings["iid"]+"/seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*",
-        bn=".*\.csv"
+        bn=r".*\.csv"
     container:
         docker_image("bidag")
     script:
@@ -140,11 +140,11 @@ rule sample_sem_data:
     input:
         bn="{output_dir}/parameters/sem_params/{params}/adjmat=/{adjmat}.csv"
     output:
-        data="{output_dir}/data" \
-            "/adjmat=/{adjmat}"\
-            "/parameters=/sem_params/{params}/" \
-            "data=/"+pattern_strings["iid"]+"/" \
-            "seed={seed}.csv"
+        data=("{output_dir}/data" 
+              "/adjmat=/{adjmat}"
+              "/parameters=/sem_params/{params}/" 
+              "data=/"+pattern_strings["iid"]+"/" 
+              "seed={seed}.csv")
     wildcard_constraints:
         n="[0-9]*"
     container:
