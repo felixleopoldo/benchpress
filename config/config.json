@@ -1,195 +1,162 @@
 {
-    "benchmark_setup": {
-        "data": [
-            {
-                "graph_id": "avneigs4_p20",
-                "parameters_id": "SEM",
-                "data_id": "standardized",
-                "seed_range": [
-                    1,
-                    1
-                ]
-            }
-        ],
-        "evaluation": {
-            "benchmarks": {
-                "filename_prefix": "example/",
-                "show_seed": false,
-                "errorbar": true,
-                "errorbarh": false,
-                "scatter": true,
-                "path": true,
-                "text": false,
-                "ids": []
-            },
-            "graph_true_plots": false,
-            "graph_true_stats": false,
-            "ggally_ggpairs": false,
-            "graph_plots": {
-                "ids": [
-                    "tabu-bge"
-                ],
-                "other_graph_types": [
-                    "cpdag",
-                    "original"
-                ],
-                "graphs": true,
-                "adjmats": true,
-                "diffplots": false,
-                "csvs": true,
-                "graphvizcompare": false
-            },
-            "mcmc_traj_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
-                }
-            ],
-            "mcmc_heatmaps": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "active": false
-                }
-            ],
-            "mcmc_autocorr_plots": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0,
-                    "thinning": 1,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": false
-                }
-            ]
+  "benchmark_setup": {
+    "data": [
+      {
+        "graph_id": "avneigs4_p20",
+        "parameters_id": "SEM",
+        "data_id": "standardized",
+        "seed_range": [1, 1]
+      }
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "example/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": false,
+        "ids": []
+      },
+      "graph_true_plots": false,
+      "graph_true_stats": false,
+      "ggally_ggpairs": false,
+      "graph_plots": {
+        "ids": ["tabu-bge"],
+        "other_graph_types": ["cpdag", "original"],
+        "graphs": true,
+        "adjmats": true,
+        "diffplots": false,
+        "csvs": true,
+        "graphvizcompare": false
+      },
+      "mcmc_traj_plots": [
+        {
+          "id": "omcmc_itsample-bge",
+          "burn_in": 0,
+          "thinning": 1,
+          "functional": ["score", "size"],
+          "active": false
         }
-    },
-    "resources": {
-        "data": {
-            "iid": [
-                {
-                    "id": "standardized",
-                    "standardized": true,
-                    "n": [
-                        300
-                    ]
-                }
-            ]
-        },
-        "graph": {
-            "pcalg_randdag": [
-                {
-                    "id": "avneigs4_p20",
-                    "max_parents": 5,
-                    "n": 20,
-                    "d": 4,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                }
-            ]
-        },
-        "parameters": {
-            "sem_params": [
-                {
-                    "id": "SEM",
-                    "min": 0.25,
-                    "max": 1
-                }
-            ]
-        },
-        "structure_learning_algorithms": {
-            "tetrad_fges": [
-                {
-                    "id": "fges-sem-bic",
-                    "faithfulnessAssumed": true,
-                    "score": "sem-bic-score",
-                    "datatype": "continuous",
-                    "samplePrior": 1,
-                    "semBicStructurePrior": 1,
-                    "penaltyDiscount": [
-                        0.75,
-                        1.5
-                    ],
-                    "timeout": null
-                }
-            ],
-            "pcalg_pc": [
-                {
-                    "id": "pc-gaussCItest",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                }
-            ],
-            "bnlearn_tabu": [
-                {
-                    "id": "tabu-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                }
-            ],
-            "bidag_itsearch": [
-                {
-                    "id": "itsearch-bge",
-                    "timeout": null,
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 2,
-                    "posterior": 0.5,
-                    "scoretype": "bge",
-                    "chi": null,
-                    "edgepf": 2,
-                    "am": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 14,
-                    "alpha": 0.01,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton"
-                }
-            ]
+      ],
+      "mcmc_heatmaps": [
+        {
+          "id": "omcmc_itsample-bge",
+          "burn_in": 0,
+          "active": false
         }
+      ],
+      "mcmc_autocorr_plots": [
+        {
+          "id": "omcmc_itsample-bge",
+          "burn_in": 0,
+          "thinning": 1,
+          "lags": 50,
+          "functional": ["score", "size"],
+          "active": false
+        }
+      ]
     }
+  },
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": [300]
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": 20,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.75, 1.5],
+          "timeout": null
+        }
+      ],
+      "pcalg_pc": [
+        {
+          "id": "pc-gaussCItest",
+          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest",
+          "timeout": null
+        }
+      ],
+      "bnlearn_tabu": [
+        {
+          "id": "tabu-bge",
+          "score": "bge",
+          "iss": 1,
+          "issmu": [0.0001, 0.001, 0.01, 0.05],
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "timeout": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch-bge",
+          "timeout": null,
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": 2,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": 2,
+          "am": [0.01, 0.1, 1],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton"
+        }
+      ]
+    }
+  }
 }

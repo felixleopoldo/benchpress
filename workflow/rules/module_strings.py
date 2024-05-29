@@ -7,7 +7,7 @@
     Order MCMC is special in the sense that it can define a startspace by means 
     of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 """
-
+from pathlib import Path
 from typing import Optional, List, Union, Tuple
 
 
@@ -129,11 +129,10 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return "myadjmats/" + filename_no_ext  # this could be hepar2.csv e.g.
 
     elif adjmat_id is None:
+        print("No adjmat string found")
         return None
 
 # Parameter strings
-
-
 def gen_parameter_string_from_conf(gen_method_id, seed):
 
     for module in config["resources"]["parameters"]:
@@ -151,6 +150,7 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return "sem_params/" + gen_method_id
 
     elif gen_method_id is None:
+        print("No parameter string found")
         return None
 
 
@@ -160,10 +160,13 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
     if Path("resources/data/mydatasets/"+data_id).is_file():
         num_lines = sum(1 for line in open(
             "resources/data/mydatasets/"+data_id)) - 1
-        return "fixed" + \
-            "/filename="+data_id + \
-            "/n="+str(num_lines) + \
-            "/seed="+str(seed)
+        
+        data_string = ("fixed" + 
+                "/filename="+data_id + 
+                "/n="+str(num_lines) +
+                "/seed="+str(seed))
+        print(data_string)
+        return data_string
 
     elif Path("resources/data/mydatasets/"+data_id).exists():
         paths = Path("resources/data/mydatasets/").glob(data_id+'/*.csv')
@@ -189,9 +192,3 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                     return expand(pattern_strings[module]+"/standardized={standardized}",
                                   **data)
 
-
-# def path_to_input_algorithm_graph(alg_id):
-#     return "{output_dir}/adjmat_estimate/{data}/"\
-#         "algorithm=/" + json_string[alg_id][0] + "/" +\
-#         "seed={seed}/" \
-#         "adjmat.csv"

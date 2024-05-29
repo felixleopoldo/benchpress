@@ -196,9 +196,11 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
         params:
             graph_type=graph_type
         run:
+            print("running code")
             # Goes through the list of graphs etc. and copies them to the output directories.
             # Maybe this should be a script and I should do the cpdag stuff in the script.
             for i,f in enumerate(input.graphs): 
+                print(f)
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs/graph_" +str(i+1) +".png")
                     
             for i,f in enumerate(input.adjmats):
