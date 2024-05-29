@@ -62,7 +62,6 @@ def get_active_rules(wildcards):
                 for graph_type in val["other_graph_types"] :
                     rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")
             else:
-                print("This should never happen.")
                 rules.append("results/output/"+key+"/"+key+".done")
         
         if isinstance(val, bool) and val is True:
@@ -75,7 +74,7 @@ def get_active_rules(wildcards):
                         rules.append("results/output/"+key+"/"+key+".done")
                         break
             else: 
-                print("This shold never happen.")
+                # print("This should never happen.")
                 rules.append("results/output/"+key+"/"+key+".done")
     return rules
 

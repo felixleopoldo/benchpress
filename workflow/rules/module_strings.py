@@ -129,7 +129,6 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return "myadjmats/" + filename_no_ext  # this could be hepar2.csv e.g.
 
     elif adjmat_id is None:
-        print("No adjmat string found")
         return None
 
 # Parameter strings
@@ -150,7 +149,6 @@ def gen_parameter_string_from_conf(gen_method_id, seed):
         return "sem_params/" + gen_method_id
 
     elif gen_method_id is None:
-        print("No parameter string found")
         return None
 
 
@@ -165,7 +163,7 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                 "/filename="+data_id + 
                 "/n="+str(num_lines) +
                 "/seed="+str(seed))
-        print(data_string)
+
         return data_string
 
     elif Path("resources/data/mydatasets/"+data_id).exists():

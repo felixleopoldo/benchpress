@@ -196,25 +196,22 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
         params:
             graph_type=graph_type
         run:
-            print("running code")
             # Goes through the list of graphs etc. and copies them to the output directories.
-            # Maybe this should be a script and I should do the cpdag stuff in the script.
-            for i,f in enumerate(input.graphs): 
-                print(f)
+            for i,f in enumerate(sorted(input.graphs)): 
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs/graph_" +str(i+1) +".png")
                     
-            for i,f in enumerate(input.adjmats):
+            for i,f in enumerate(sorted(input.adjmats)):
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats/adjmat_plot_" +str(i+1) +".png")
             
-            for i,f in enumerate(input.csvs):
+            for i,f in enumerate(sorted(input.csvs)):
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs/adjmat_" +str(i+1) +".csv")
             
             if len(input.graphvizcompare) > 0:
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare")
-                for i,f in enumerate(input.graphvizcompare):
+                for i,f in enumerate(sorted(input.graphvizcompare)):
                     shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare/compare_" +str(i+1) +".pdf")
 
             if len(input.adjmat_diffplots) > 0:
                 shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots")
-                for i,f in enumerate(input.adjmat_diffplots):
+                for i,f in enumerate(sorted(input.adjmat_diffplots)):
                     shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots/diffplot_" +str(i+1) +".png")

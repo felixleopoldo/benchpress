@@ -4,6 +4,8 @@ library(pcalg)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
 
+# Wrapper function to run the pc algorithm
+
 wrapper <- function() {
 
   filename <- file.path(snakemake@output[["adjmat"]])
