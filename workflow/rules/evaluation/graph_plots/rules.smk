@@ -3,22 +3,11 @@ from filenames import *
 include: "filenames.py"
 
 
-# These two rules are also defined in thebenchmarks module and temporarliy 
-# redefined here.
-# They should probably be defined at a global level.
-def input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{parameters}/data=/{data}/seed={seed}.csv"
-
-def input_adjmat_true_path():
-    return "{output_dir}/adjmat/{adjmat}.csv"
-
-
 rule adjmat_plot:
     input:        
-        matrix_filename=graph_plots_feature_pattern(feature="csvs", filename="adjmat", ext="csv")
-
+        matrix_filename=eval_module_feature_pattern(module="graph_plots", feature="csvs", filename="adjmat", ext="csv")
     output:
-        plot_filename=graph_plots_feature_pattern(feature="adjmat_plots")   
+        plot_filename=eval_module_feature_pattern(module="graph_plots", feature="adjmat_plots")   
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -33,38 +22,42 @@ rule adjmat_plot:
 # This just copies the csv. May this should be the actual estimation rule instead.
 rule adjmat_csv:
     input:
-        matrix_filename=("{output_dir}/adjmat_estimate/"
-                    "adjmat=/{adjmat}/"
-                    "parameters=/{parameters}/"
-                    "data=/{data}/"
-                    "algorithm=/{alg_string}/"
-                    "seed={seed}/"
-                    "adjmat.csv")
+        ("{output_dir}/adjmat_estimate/"
+         "adjmat=/{adjmat}/"
+         "parameters=/{parameters}/"
+         "data=/{data}/"
+         "algorithm=/{alg_string}/"
+         "seed={seed}/"
+         "adjmat.csv")
     output:
-        plot_filename=graph_plots_feature_pattern(feature="csvs", graph_type="original") # this should be with original graph type.
-    params:
-        title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
-        adjmat_string="{adjmat}",
-        param_string="{parameters}",
-        data_string="{data}",
-        alg_string="{alg_string}",
-    container:
-        docker_image("pydatascience")
+        eval_module_feature_pattern(module="graph_plots", feature="csvs", graph_type="original")
     shell:
-        "cp {input.matrix_filename} {output.plot_filename}"
+        "cp {input} {output}"
+
+# This just copies the csv. 
+# Shit should be in the graph_true_plots module, if activated...
+rule true_adjmat_csv:
+    input:
+        "{output_dir}/adjmat/{adjmat_and_seed}.csv"
+    output:
+        "{output_dir}/evaluation/graph_true_plots/graph_type=original/csvs/adjmat=/{adjmat_and_seed}/adjmat.csv"
+    shell:
+        "cp {input} {output}"
 
 # A rule the converts between different types of graph, e.g. DAG to CPDAG.
 # It assumes that the input is a DAG or a CPDAG. So its up to the user to use it in a correct way.
 # As algorithms may output different types of graphs, we keep it like this.
-rule dag_to_cpdag:
+rule convert_graph:
     input:
-        filename="{whatever}/evaluation/graph_plots/graph_type=original/csvs/{something}/adjmat.csv"
+        filename="{whatever}/evaluation/{eval_module}/graph_type=original/csvs/{something}/adjmat.csv"
     output:
-        filename="{whatever}/evaluation/graph_plots/graph_type=cpdag/csvs/{something}/adjmat.csv"
+        filename="{whatever}/evaluation/{eval_module}/graph_type={graph_type}/csvs/{something}/adjmat.csv"
     container:
         "docker://bpimages/pcalg:2.7-8"
     params:
-        to="cpdag"
+        output_graph_type="{graph_type}"
+    wildcard_constraints:
+        graph_type="cpdag"
     script:
         "convert_graph.R"
 
@@ -74,7 +67,6 @@ rule dag_to_cpdag:
 rule adjmat_to_dot:
     input:
         "workflow/scripts/utils/adjmat_to_dot.py",
-
         filename="{output_dir}/evaluation/graph_plots/graph_type={graph_type}/csvs/{something}/adjmat.csv"  # true graph has adjmat in the path and estimated does not.
     output:
         filename="{output_dir}/evaluation/graph_plots/graph_type={graph_type}/dot/{something}/graph.dot" # maybe need a temp dot folder
@@ -88,7 +80,6 @@ rule adjmat_to_dot:
             touch {output.filename}
         fi
         """
-
 
 rule dot_to_plot:
     input:
@@ -110,11 +101,14 @@ rule dot_to_plot:
 # The adjmat_est pattern could in the future be raplaced byt the adjmat pattern of the modules algorithm.
 rule bnlearn_graphvizcompare:
     input:
-        data=input_data_path(),
-        adjmat_true=input_adjmat_true_path(), # should take the right graph, maybe as a paratemer to the rule.
-        adjmat_est=graph_plots_feature_pattern(feature="csvs")
+        adjmat_true = ("{output_dir}/"
+                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/" 
+                       "adjmat=/{adjmat}/"
+                       "adjmat.csv"),         
+        #        adjmat_true=input_adjmat_true_path(), # should take the right graph, maybe as a paratemer to the rule.
+        adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs")
     output:
-        filename=graph_plots_feature_pattern(feature="graphvizcompare", param_string="layout={layout}")
+        filename=eval_module_feature_pattern(module="graph_plots",feature="graphvizcompare", param_string="layout={layout}")
     params:
         graph_type="{wildcards.graph_type}"
     script:
@@ -123,11 +117,14 @@ rule bnlearn_graphvizcompare:
 # This is actually a quite general rule.
 rule adjmat_diffplot:
     input:
-        data=input_data_path(),
-        adjmat_true=input_adjmat_true_path(),
-        adjmat_est=graph_plots_feature_pattern(feature="csvs")
+        adjmat_true = ("{output_dir}/"
+                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/" 
+                       "adjmat=/{adjmat}/"
+                       "adjmat.csv"),         
+#        adjmat_true=input_adjmat_true_path(), # This should request the true graph in the right graph type.
+        adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs")
     output:
-        filename=graph_plots_feature_pattern(feature="adjmat_diffplot")
+        filename=eval_module_feature_pattern(module="graph_plots", feature="adjmat_diffplot")
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -147,7 +144,7 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
         name: "graph_plots_"+str(graph_type)
         input:
             conf=configfilename,
-            graphs=[d for d in graph_plots_conf_to_feature_files(filename="graph", 
+            graphs=[d for d in eval_module_conf_to_feature_files(filename="graph", 
                                                             ext="png", 
                                                             eval_module="graph_plots", 
                                                             module_feature="graphs", 
@@ -155,7 +152,7 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
                                                             graph_type=graph_type) 
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
 
-            adjmats=[d for d in graph_plots_conf_to_feature_files(filename="adjmats", 
+            adjmats=[d for d in eval_module_conf_to_feature_files(filename="adjmats", 
                                                             ext="png", 
                                                             eval_module="graph_plots", 
                                                             module_feature="adjmat_plots", 
@@ -163,7 +160,7 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
                                                             graph_type=graph_type) 
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
             
-            adjmat_diffplots=[d for d in graph_plots_conf_to_feature_files(filename="adjmat_diffplot", 
+            adjmat_diffplots=[d for d in eval_module_conf_to_feature_files(filename="adjmat_diffplot", 
                                                                         ext="png", 
                                                                         eval_module="graph_plots", 
                                                                         module_feature="adjmat_diffplot", 
@@ -171,14 +168,14 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
                                                                         graph_type=graph_type) 
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
             
-            graphvizcompare=[d for d in graph_plots_conf_to_feature_files(filename="graphhvizcompare", 
+            graphvizcompare=[d for d in eval_module_conf_to_feature_files(filename="graphhvizcompare", 
                                                                         ext="pdf", 
                                                                         eval_module="graph_plots", 
                                                                         module_feature="graphvizcompare", 
                                                                         feature_argstring="layout=True",
                                                                          graph_type=graph_type) 
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
-            csvs=[d for d in graph_plots_conf_to_feature_files(filename="adjmat", 
+            csvs=[d for d in eval_module_conf_to_feature_files(filename="adjmat", 
                                                                         ext="csv", 
                                                                         eval_module="graph_plots", 
                                                                         module_feature="csvs", 

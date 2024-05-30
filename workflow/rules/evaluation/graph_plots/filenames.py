@@ -1,4 +1,13 @@
-def graph_plots_feature_pattern(feature, 
+
+# This is defined in thebenchmarks module and temporarliy 
+# redefined here.
+# Should probably be defined at a global level.
+def input_adjmat_true_path():
+    return "{output_dir}/adjmat/{adjmat}.csv"
+
+# TODO: This has a bad format for e.g. true graphs.
+def eval_module_feature_pattern(module,
+                                feature, 
                                 param_string="", 
                                 graph_type="{graph_type}",
                                 filename="{filename}",
@@ -9,7 +18,7 @@ def graph_plots_feature_pattern(feature,
 
     str = (
         "{output_dir}/"
-        "evaluation/graph_plots/graph_type="+graph_type+"/" + feature + "/" + param_string + 
+        "evaluation/"+module+"/graph_type="+graph_type+"/" + feature + "/" + param_string + 
         "adjmat=/{adjmat}/"
         "parameters=/{parameters}/"
         "data=/{data}/"
@@ -19,8 +28,8 @@ def graph_plots_feature_pattern(feature,
     )
     return str
 
-
-def graph_plots_conf_to_feature_files(
+# TODO: This has a bad format for e.g. true graphs. Its not that general.
+def eval_module_conf_to_feature_files(
     filename, 
     ext, 
     eval_module, 
@@ -37,7 +46,7 @@ def graph_plots_conf_to_feature_files(
             [
                 [
                     expand(
-                        graph_plots_feature_pattern(module_feature, param_string=feature_argstring),
+                        eval_module_feature_pattern(eval_module, module_feature, param_string=feature_argstring),
                         output_dir="results",
                         alg_string=json_string[alg_conf["id"]],
                         **alg_conf,
