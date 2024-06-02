@@ -23,13 +23,13 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": {
-        "ids": ["tabu-bge"],
-        "other_graph_types": ["original", "cpdag"],
+        "ids": ["tabu-bge", "fges-sem-bic", "pc-gaussCItest"],
+        "other_graph_types": ["original", "cpdag", "skeleton", "pattern"],
         "graphs": true,
         "adjmats": true,
         "diffplots": false,
         "csvs": true,
-        "graphvizcompare": false
+        "graphvizcompare": true
       },
       "mcmc_traj_plots": [
         {

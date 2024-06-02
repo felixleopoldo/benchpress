@@ -14,6 +14,7 @@ rule adjmat_plot:
         param_string="{parameters}",
         data_string="{data}",
         alg_string="{alg_string}",
+        graph_type="{graph_type}"
     container:
         docker_image("pydatascience")
     script:
@@ -52,12 +53,10 @@ rule convert_graph:
         filename="{whatever}/evaluation/{eval_module}/graph_type=original/csvs/{something}/adjmat.csv"
     output:
         filename="{whatever}/evaluation/{eval_module}/graph_type={graph_type}/csvs/{something}/adjmat.csv"
-    container:
-        "docker://bpimages/pcalg:2.7-8"
     params:
         output_graph_type="{graph_type}"
     wildcard_constraints:
-        graph_type="cpdag"
+        graph_type="(cpdag|pattern|skeleton)"
     script:
         "convert_graph.R"
 
@@ -106,11 +105,11 @@ rule bnlearn_graphvizcompare:
                        "adjmat=/{adjmat}/"
                        "adjmat.csv"),         
         #        adjmat_true=input_adjmat_true_path(), # should take the right graph, maybe as a paratemer to the rule.
-        adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs")
+        adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs", filename="adjmat", ext="csv")
     output:
         filename=eval_module_feature_pattern(module="graph_plots",feature="graphvizcompare", param_string="layout={layout}")
     params:
-        graph_type="{wildcards.graph_type}"
+        graph_type="{graph_type}"
     script:
         "bnlearn_graphvizcompare.R"
 

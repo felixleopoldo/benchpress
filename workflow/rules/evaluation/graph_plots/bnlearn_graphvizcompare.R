@@ -68,15 +68,21 @@ myFun <- function(n = 5000) {
 }
 
 benchmarks <- function(true_adjmat, estimated_adjmat) {
-  if (isSymmetric(unname(estimated_adjmat)) ||
-    isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) ||
-    isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
-    pattern_true <- getPattern(true_adjmat)
+  #if (isSymmetric(unname(estimated_adjmat)) ||
+  #  isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) ||
+  #  isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+
+    #pattern_true <- getPattern(true_adjmat)
+    pattern_true <- true_adjmat
+    # read in the graph in the correct format
+  
     pattern_true_gnel <- as(pattern_true, "graphNEL") ## convert to graph
     pattern_true_bn <- as.bn(pattern_true_gnel)
 
     # already transposed here?
-    pattern_estimated <- getPattern(estimated_adjmat)
+    #pattern_estimated <- getPattern(estimated_adjmat)
+    pattern_estimated <- estimated_adjmat
+   
     # convert to graph.
     pattern_estimated_gnel <- as(pattern_estimated, "graphNEL")
     pattern_estimated_bn <- as.bn(pattern_estimated_gnel)
@@ -84,14 +90,13 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     filename <- myFun(n = 1)
     filename <- paste(filename[1], ".pdf", sep = "")
 
-    
     pdf(file = filename)
     
     graphviz.compare(pattern_true_bn, pattern_estimated_bn,
       layout = "dot",
       main = c(
-        paste("True pattern graph", sep = ""),
-        paste("Estimated pattern graph (correct=black, incorrect=red, ",
+        paste("True ",snakemake@params[["graph_type"]]," graph", sep = ""),
+        paste("Estimated ",snakemake@params[["graph_type"]]," graph (correct=black, incorrect=red, ",
           "missing=blue)\nAlgorithm: (see adjmat plot with the same number)",
           sep = ""
         )
@@ -100,13 +105,14 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     dev.off()
     file.copy(filename, snakemake@output[["filename"]])
     unlink(filename)
-  } else {
-    file.create(snakemake@output[["filename"]])
-  }
+  #} else {
+  #  file.create(snakemake@output[["filename"]])
+  #}
   
 }
-
+print("Starting graphviz comparison")
 if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
+
   true_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_true"]],
     check.names = FALSE
   ))
@@ -116,5 +122,6 @@ if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
 
   silent <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
+    print("Empty file. Writing empty file.")
   file.create(snakemake@output[["filename"]])
 }
