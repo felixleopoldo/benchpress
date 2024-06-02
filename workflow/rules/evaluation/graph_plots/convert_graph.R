@@ -78,13 +78,19 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
     }
 
 } else if (snakemake@params[["output_graph_type"]] == "pattern"){
-    pattern <- getPattern(orig_adjmat)
-    colnames(pattern) <- names(orig_df)
-    write.csv(pattern, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
+    if (isSymmetric(unname(orig_adjmat)) ||
+        isValidGraph(orig_adjmat, type = "dag", verbose = FALSE) ||
+        isValidGraph(orig_adjmat, type = "cpdag", verbose = FALSE)) {
 
+        pattern <- getPattern(orig_adjmat)
+        colnames(pattern) <- names(orig_df)
+        write.csv(pattern, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
+    } else {
+      file.create(snakemake@output[["filename"]])
+    }
 
-    pattern_true_gnel <- as(pattern, "graphNEL") ## convert to graph
-    pattern_true_bn <- as.bn(pattern_true_gnel)
+    # pattern_true_gnel <- as(pattern, "graphNEL") ## convert to graph
+    # pattern_true_bn <- as.bn(pattern_true_gnel)
 
 } else if (snakemake@params[["output_graph_type"]] == "skeleton"){
     skeleton <- orig_adjmat + t(orig_adjmat)

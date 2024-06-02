@@ -23,7 +23,7 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": {
-        "ids": ["tabu-bge", "fges-sem-bic", "pc-gaussCItest"],
+        "ids": ["tabu-bge", "fges-sem-bic"],
         "other_graph_types": ["original", "cpdag", "skeleton", "pattern"],
         "graphs": true,
         "adjmats": true,
