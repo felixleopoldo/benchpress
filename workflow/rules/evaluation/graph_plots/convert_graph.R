@@ -66,10 +66,10 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
 
         # Convert to graph object
         graph <- as(orig_adjmat, "graphNEL")            
-        cdpag <- dag2cpdag(graph)
-        adjmat <- as(cdpag, "matrix")  
-        colnames(adjmat) <- names(orig_df)
-        write.csv(adjmat, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
+        cpdag <- dag2cpdag(graph)
+        cpdag_adjmat <- as(cpdag, "matrix")  
+        colnames(cpdag_adjmat) <- names(orig_df)
+        write.csv(cpdag_adjmat, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
 
     } else {
 

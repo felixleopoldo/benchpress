@@ -5,6 +5,13 @@ myFun <- function(n = 5000) {
   paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
 }
 
+lowerFn <- function(data, mapping, method = "lm", ...) {
+  p <- ggplot(data = data, mapping = mapping) +
+    geom_point(alpha=0.8) +
+    geom_smooth(method = method, color = "red", ...)
+  p
+}
+
 filename <- myFun(n=1) # temporary filemane
 filename <- paste(filename[1], ".png", sep="")
 png(file=filename, width = 1500, height = 1500)
@@ -22,7 +29,9 @@ if (datatype == "integer")  {
     ggpairs(df, upper = list(continuous = ggally_density, combo = ggally_box_no_facet),
             title=title)
 } else {
-    ggpairs(df, diag=list(continuous="bar"), alpha=0.8, title=title)
+
+    ggpairs(df, diag=list(continuous="bar"), 
+                lower = list(continuous = wrap(lowerFn, method = "lm")), alpha=0.8, title=title)
 }
 dev.off()
 file.copy(filename, snakemake@output[["filename"]])

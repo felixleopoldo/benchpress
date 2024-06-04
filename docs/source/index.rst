@@ -109,5 +109,6 @@ generated datasets, the workflow also includes a number of standard datasets and
 * 2022-09-06: `Algorithms for learning Bayesian networks (James Cussens) <https://jcussens.github.io/talks/bias22.pdf>`_. `Interactive AI CDT Summer School (BIAS 22) <https://www.bristol.ac.uk/cdt/interactive-ai/events/bias-summer-school-2022/>`_, University of Bristol
 * 2022-05-24: Benchpress talk at the `CATS seminar series at KTH <https://www.kth.se/math/kalender/felix-rios-benchpress-a-scalable-and-versatile-workflow-for-benchmarking-structure-learning-algorithms-for-graphical-models-1.1171995?date=2022-05-24&orgdate=2022-05-24&length=1&orglength=1>`_
 * 2022-04-04: Benchpress talk and tutorial at the `Simons Institute, Berkley <https://simons.berkeley.edu/homepage>`_ 
+* 2021-12-18: Benchpress talk at the `14th International Conference on Computational and Methodological Statistics (CMStatistics 2021), London <https://www.cmstatistics.org/CMStatistics2021/index.php>`_
 
 .. footbibliography::

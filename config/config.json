@@ -23,13 +23,13 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": {
-        "ids": ["tabu-bge", "fges-sem-bic"],
-        "other_graph_types": ["original", "cpdag", "skeleton", "pattern"],
+        "ids": ["fges-sem-bic"],
+        "other_graph_types": ["original", "cpdag", "pattern"],
         "graphs": true,
         "adjmats": true,
         "diffplots": false,
         "csvs": true,
-        "graphvizcompare": true
+        "graphvizcompare": false
       },
       "mcmc_traj_plots": [
         {
@@ -74,7 +74,7 @@
         {
           "id": "avneigs4_p20",
           "max_parents": 5,
-          "n": 20,
+          "n": 5,
           "d": 4,
           "par1": null,
           "par2": null,

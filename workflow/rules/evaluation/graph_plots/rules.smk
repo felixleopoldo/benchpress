@@ -4,10 +4,10 @@ include: "filenames.py"
 
 
 rule adjmat_plot:
-    input:        
+    input:
         matrix_filename=eval_module_feature_pattern(module="graph_plots", feature="csvs", filename="adjmat", ext="csv")
     output:
-        plot_filename=eval_module_feature_pattern(module="graph_plots", feature="adjmat_plots")   
+        plot_filename=eval_module_feature_pattern(module="graph_plots", feature="adjmat_plots")
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -35,7 +35,7 @@ rule adjmat_csv:
     shell:
         "cp {input} {output}"
 
-# This just copies the csv. 
+# This just copies the csv.
 # Shit should be in the graph_true_plots module, if activated...
 rule true_adjmat_csv:
     input:
@@ -82,7 +82,7 @@ rule adjmat_to_dot:
 
 rule dot_to_plot:
     input:
-        "{output_dir}/evaluation/graph_plots/graph_type={graph_type}/dot/{something}/graph.dot"        
+        "{output_dir}/evaluation/graph_plots/graph_type={graph_type}/dot/{something}/graph.dot"
     output:
         "{output_dir}/evaluation/graph_plots/graph_type={graph_type}/graphs/{something}/graph.png"
     container:
@@ -101,10 +101,9 @@ rule dot_to_plot:
 rule bnlearn_graphvizcompare:
     input:
         adjmat_true = ("{output_dir}/"
-                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/" 
+                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/"
                        "adjmat=/{adjmat}/"
-                       "adjmat.csv"),         
-        #        adjmat_true=input_adjmat_true_path(), # should take the right graph, maybe as a paratemer to the rule.
+                       "adjmat.csv"),
         adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs", filename="adjmat", ext="csv")
     output:
         filename=eval_module_feature_pattern(module="graph_plots",feature="graphvizcompare", param_string="layout={layout}")
@@ -117,10 +116,9 @@ rule bnlearn_graphvizcompare:
 rule adjmat_diffplot:
     input:
         adjmat_true = ("{output_dir}/"
-                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/" 
+                       "evaluation/graph_true_plots/graph_type={graph_type}/csvs/"
                        "adjmat=/{adjmat}/"
-                       "adjmat.csv"),         
-#        adjmat_true=input_adjmat_true_path(), # This should request the true graph in the right graph type.
+                       "adjmat.csv"),
         adjmat_est=eval_module_feature_pattern(module="graph_plots", feature="csvs")
     output:
         filename=eval_module_feature_pattern(module="graph_plots", feature="adjmat_diffplot")
@@ -143,71 +141,67 @@ for graph_type in config["benchmark_setup"]["evaluation"]["graph_plots"]["other_
         name: "graph_plots_"+str(graph_type)
         input:
             conf=configfilename,
-            graphs=[d for d in eval_module_conf_to_feature_files(filename="graph", 
-                                                            ext="png", 
-                                                            eval_module="graph_plots", 
-                                                            module_feature="graphs", 
+            graphs=[d for d in eval_module_conf_to_feature_files(filename="graph",
+                                                            ext="png",
+                                                            eval_module="graph_plots",
+                                                            module_feature="graphs",
                                                             feature_argstring="",
-                                                            graph_type=graph_type) 
+                                                            graph_type=graph_type)
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"]],
 
-            adjmats=[d for d in eval_module_conf_to_feature_files(filename="adjmats", 
-                                                            ext="png", 
-                                                            eval_module="graph_plots", 
-                                                            module_feature="adjmat_plots", 
+            adjmats=[d for d in eval_module_conf_to_feature_files(filename="adjmats",
+                                                            ext="png",
+                                                            eval_module="graph_plots",
+                                                            module_feature="adjmat_plots",
                                                             feature_argstring="",
-                                                            graph_type=graph_type) 
+                                                            graph_type=graph_type)
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"]],
-            
-            adjmat_diffplots=[d for d in eval_module_conf_to_feature_files(filename="adjmat_diffplot", 
-                                                                        ext="png", 
-                                                                        eval_module="graph_plots", 
-                                                                        module_feature="adjmat_diffplot", 
+
+            adjmat_diffplots=[d for d in eval_module_conf_to_feature_files(filename="adjmat_diffplot",
+                                                                        ext="png",
+                                                                        eval_module="graph_plots",
+                                                                        module_feature="adjmat_diffplot",
                                                                         feature_argstring="",
-                                                                        graph_type=graph_type) 
+                                                                        graph_type=graph_type)
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"]],
-            
-            graphvizcompare=[d for d in eval_module_conf_to_feature_files(filename="graphhvizcompare", 
-                                                                        ext="pdf", 
-                                                                        eval_module="graph_plots", 
-                                                                        module_feature="graphvizcompare", 
+
+            graphvizcompare=[d for d in eval_module_conf_to_feature_files(filename="graphhvizcompare",
+                                                                        ext="pdf",
+                                                                        eval_module="graph_plots",
+                                                                        module_feature="graphvizcompare",
                                                                         feature_argstring="layout=True",
-                                                                         graph_type=graph_type) 
+                                                                         graph_type=graph_type)
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"]],
-            csvs=[d for d in eval_module_conf_to_feature_files(filename="adjmat", 
-                                                                        ext="csv", 
-                                                                        eval_module="graph_plots", 
-                                                                        module_feature="csvs", 
+            csvs=[d for d in eval_module_conf_to_feature_files(filename="adjmat",
+                                                                        ext="csv",
+                                                                        eval_module="graph_plots",
+                                                                        module_feature="csvs",
                                                                         feature_argstring="",
-                                                                        graph_type=graph_type) 
+                                                                        graph_type=graph_type)
                         if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"]]
 
-        output:    # What happening here? Ah, its just a hack to get the correct output. either [] or one directory [directory(...)]
-            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/graphs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] is True],
-            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmats")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] is True],
-            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] is True],
-            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] is True],
-            [d for d in [directory("results/output/graph_plots/graph_type="+graph_type+"/csvs")] if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"] is True],
+        output:
+            directory("results/output/graph_plots/graph_type="+graph_type+"/graphs") if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphs"] else [],            
+            directory("results/output/graph_plots/graph_type="+graph_type+"/adjmats") if config["benchmark_setup"]["evaluation"]["graph_plots"]["adjmats"] else [],
+            directory("results/output/graph_plots/graph_type="+graph_type+"/adjmat_diffplots") if config["benchmark_setup"]["evaluation"]["graph_plots"]["diffplots"] else [],
+            directory("results/output/graph_plots/graph_type="+graph_type+"/graphvizcompare") if config["benchmark_setup"]["evaluation"]["graph_plots"]["graphvizcompare"] else [],
+            directory("results/output/graph_plots/graph_type="+graph_type+"/csvs") if config["benchmark_setup"]["evaluation"]["graph_plots"]["csvs"] else [],
             touch("results/output/graph_plots/graph_type="+graph_type+"/graph_plots.done")
         params:
             graph_type=graph_type
         run:
             # Goes through the list of graphs etc. and copies them to the output directories.
-            for i,f in enumerate(sorted(input.graphs)): 
-                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs/graph_" +str(i+1) +".png")
-                    
-            for i,f in enumerate(sorted(input.adjmats)):
-                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats/adjmat_plot_" +str(i+1) +".png")
-            
-            for i,f in enumerate(sorted(input.csvs)):
-                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs/adjmat_" +str(i+1) +".csv")
-            
-            if len(input.graphvizcompare) > 0:
-                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare")
-                for i,f in enumerate(sorted(input.graphvizcompare)):
-                    shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare/compare_" +str(i+1) +".pdf")
+            for i,f in enumerate(sorted(input.graphs)):
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphs/graph_"+params["graph_type"]+"_" +str(i+1) +".png")
 
-            if len(input.adjmat_diffplots) > 0:
-                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots")
-                for i,f in enumerate(sorted(input.adjmat_diffplots)):
-                    shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+            for i,f in enumerate(sorted(input.adjmats)):
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmats/adjmat_"+params["graph_type"]+"_" +str(i+1) +".png")
+
+            for i,f in enumerate(sorted(input.csvs)):
+                shell("mkdir -p results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs && cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/csvs/adjmat_"+params["graph_type"]+"_" +str(i+1) +".csv")
+
+            for i,f in enumerate(sorted(input.graphvizcompare)):
+                shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/graphvizcompare/compare_"+params["graph_type"]+"_" +str(i+1) +".pdf")
+
+            for i,f in enumerate(sorted(input.adjmat_diffplots)):
+                shell("cp "+f+" results/output/graph_plots/graph_type="+params["graph_type"]+"/adjmat_diffplots/diffplot_"+params["graph_type"]+"_" +str(i+1) +".png")
