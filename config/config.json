@@ -1,11 +1,12 @@
 {
   "benchmark_setup": {
     "data": [
+
       {
-        "graph_id": "avneigs4_p20",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 1]
+        "graph_id": "sachs.csv",
+        "parameters_id": null,
+        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+        "seed_range": null
       }
     ],
     "evaluation": {
@@ -23,13 +24,13 @@
       "graph_true_stats": false,
       "ggally_ggpairs": false,
       "graph_plots": {
-        "ids": ["fges-sem-bic"],
+        "ids": ["fges-sem-bic", "pc-gaussCItest"],
         "other_graph_types": ["original", "cpdag", "pattern"],
         "graphs": true,
         "adjmats": true,
         "diffplots": false,
         "csvs": true,
-        "graphvizcompare": false
+        "graphvizcompare": true
       },
       "mcmc_traj_plots": [
         {

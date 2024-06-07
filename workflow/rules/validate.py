@@ -94,6 +94,22 @@ for data_setup in config["benchmark_setup"]["data"]:
     validate_data_setup(config, data_setup)
 
 
+def validate_graph_plots(config):
+    """
+    If diffplots or graphvizcompare is true, we check if a true graph
+    is provided.    
+    """
+    # Firs ge the
+
+    graph_plots = config["benchmark_setup"]["evaluation"]["graph_plots"]
+    if graph_plots["diffplots"] or graph_plots["graphvizcompare"]:
+        # Loop over data setups in benchmark_setup and check if graph_id is provided everywhere
+        for data_setup in config["benchmark_setup"]["data"]:
+            if data_setup["graph_id"] is None:
+                raise Exception("graph_plots: The options diffplots and graphvizcompare requires graph_id. \n"
+                                "graph_plots: Either provide a graph_id in the data setup or set diffplots and graphvizcompare to false.")
+
+
 def valid_path(run_id: Optional[str]) -> bool:
     """ Returns the path to the estimated graph of each id"""
 
@@ -148,4 +164,7 @@ def validate_algorithms():
                             f"In algorithm {key}, 'input_algorithm_id' {run['input_algorithm_id']} is not available in the config file, or the associated config has parameters with multiple values!")
 
 
+
+
 validate_algorithms()
+validate_graph_plots(config)

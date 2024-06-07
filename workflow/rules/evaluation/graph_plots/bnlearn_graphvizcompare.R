@@ -72,6 +72,10 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
   #  isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) ||
   #  isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
 
+    print("true_adjmat")  
+    print(true_adjmat)
+    print("estimated_adjmat")
+    print(estimated_adjmat)
     #pattern_true <- getPattern(true_adjmat)
     pattern_true <- true_adjmat
     # read in the graph in the correct format
@@ -91,7 +95,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     filename <- paste(filename[1], ".pdf", sep = "")
 
     pdf(file = filename)
-    
+
     graphviz.compare(pattern_true_bn, pattern_estimated_bn,
       layout = "dot",
       main = c(
@@ -110,15 +114,20 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
   #}
   
 }
-print("Starting graphviz comparison")
+
+
 if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {
 
+  print("Reading in the adjacency matrices.")
+  print("Reading in the true adjacency matrices.")
   true_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_true"]],
     check.names = FALSE
   ))
+  print("Reading in the estimated adjacency matrices.")
   estimated_adjmat <- as.matrix(read.csv(snakemake@input[["adjmat_est"]],
     check.names = FALSE
   ))
+  print("Comparing the graphs.")
 
   silent <- benchmarks(true_adjmat, estimated_adjmat)
 } else {

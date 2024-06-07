@@ -73,7 +73,7 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
 
     } else {
 
-        print("Not a DAG nor CPDAG. Writing empty file.")
+        print("Not a DAG nor CPDAG, so cannot convert to CPDAG. Writing empty file.")
         write("", file = snakemake@output[["filename"]])
     }
 
