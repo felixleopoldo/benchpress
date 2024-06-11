@@ -11,23 +11,24 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
-project = 'Benchpress'
-copyright = '2024'
-author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
+project = "Benchpress"
+copyright = "2024"
+author = "Felix L. Rios, Giusi Moffa, and Jack Kuipers"
 
 # The full version, including alpha/beta/rc tags
 
 dirname = os.path.dirname(__file__)
 projdir = os.path.dirname(dirname)
 appdir = Path(projdir).parent
-release = open(os.path.join(appdir, 'VERSION')).read().strip()
-version = '.'.join(release.split('.')[:3])
+release = open(os.path.join(appdir, "VERSION")).read().strip()
+version = ".".join(release.split(".")[:3])
 
 # -- General configuration ---------------------------------------------------
 
@@ -37,29 +38,31 @@ version = '.'.join(release.split('.')[:3])
 # extensions = ['sphinx-jsonschema']
 extensions = [
     # other
-    'recommonmark',
-    'sphinx_copybutton',
-    'sphinx-prompt',
-    'sphinxcontrib.bibtex',
-    'sphinx_last_updated_by_git',
-    'versionwarning.extension'
+    "recommonmark",
+    "sphinx_copybutton",
+    "sphinx-prompt",
+    "sphinxcontrib.bibtex",
+    "sphinx_last_updated_by_git",
+    "versionwarning.extension",
 ]
 extensions += ["sphinxawesome_theme.highlighting"]
 
 
-paths = [Path("../../workflow/rules/structure_learning_algorithms"),
-         Path("../../workflow/rules/parameters"),
-         Path("../../workflow/rules/graph"),
-         Path("../../workflow/rules/data"),
-         Path("../../workflow/rules/evaluation"),
-         Path("../../workflow/rules/data/fixed_data")
-         ]
+paths = [
+    Path("../../workflow/rules/structure_learning_algorithms"),
+    Path("../../workflow/rules/parameters"),
+    Path("../../workflow/rules/graph"),
+    Path("../../workflow/rules/data"),
+    Path("../../workflow/rules/evaluation"),
+    Path("../../workflow/rules/data/fixed_data"),
+]
 
 
 bibtex_bibfiles = []
 for mod in paths:
-    bibtex_bibfiles += [str(p / "bibtex.bib")
-                        for p in mod.iterdir() if (p/"bibtex.bib").is_file()]
+    bibtex_bibfiles += [
+        str(p / "bibtex.bib") for p in mod.iterdir() if (p / "bibtex.bib").is_file()
+    ]
 
 
 # source_suffix = {
@@ -68,7 +71,7 @@ for mod in paths:
 #     '.md': 'markdown',
 # }
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -82,33 +85,34 @@ numfig = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = 'sphinx_rtd_theme'
-#html_theme = "sphinxawesome_theme"
+# html_theme = 'sphinx_rtd_theme'
+# html_theme = "sphinxawesome_theme"
 html_theme = "furo"
-#html_theme = "sphinx_book_theme"
+# html_theme = "sphinx_book_theme"
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
+
+# html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 
 
-html_logo = '_static/benchpress-logo-readthedocs@2x.png'
-html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-    "light_logo": "benchpress-logo-white-bg.png",
-    "dark_logo": "logo-dark-mode.png",
-}
 html_copy_source = False
 html_show_sourcelink = False
 
 html_theme_options = {
+    "sidebar_hide_name": True,
+    "logo_only": False,
+    "display_version": False,
+    # "light_logo": "benchpress-logo-white-bg.png",
+    "light_logo": "bplogo_light_grey_bg.png",
+    "dark_logo": "benchpress-logo-readthedocs@2x_dark.png",
     "light_css_variables": {
         "color-brand-primary": "#132b44",
         "color-brand-content": "#0582bf",
-        "color":"#211d6a",
-        "font-size--small": "87.5%"
+        "color": "#211d6a",
+        "font-size--small": "87.5%",
     },
 }
