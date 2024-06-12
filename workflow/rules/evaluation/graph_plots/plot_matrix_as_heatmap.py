@@ -24,7 +24,7 @@ else:
     cax.tick_params(labelsize=6)
     plt.title(snakemake.params["title"], fontsize=6, ha="center")
     if snakemake.params["alg_string"]:
-        plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n"),
+        plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\n" + "Graph type: " + snakemake.params["graph_type"], 
                 rotation="horizontal", fontsize=6, ha="right", va="center")
     plt.tight_layout()
     plt.savefig(snakemake.output["plot_filename"])
