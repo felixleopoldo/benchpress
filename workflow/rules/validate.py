@@ -11,13 +11,14 @@ for alg, alg_conf_avail in config["resources"]["structure_learning_algorithms"].
         available_conf_ids.append(alg_conf["id"])
 
 # Check that all ids in the benchmarks section actually exist.
-for benchmarksitem in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]:
-    if benchmarksitem not in available_conf_ids:
-        raise Exception(
-            benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
+if "benchmarks" in config["benchmark_setup"]["evaluation"]:
+    for benchmarksitem in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]:
+        if benchmarksitem not in available_conf_ids:
+            raise Exception(
+                benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
-# Check that all ids in the graph_plots actually exist.
-for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_plots"]["ids"]:
+# Check that all ids in the graph_estimation actually exist.
+for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_estimation"]["ids"]:
     if benchmarksitem not in available_conf_ids:
         raise Exception(
             benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
@@ -37,27 +38,28 @@ def validate_data_setup(config, dict):
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += os.listdir("resources/adjmat/myadjmats")
 
-    # Roc rewuires a true graph
-    if config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"] != []:
-        if dict["graph_id"] is None:
-            raise Exception("ROC evaluation requires graph_id.\n"
-                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+    # Benchmarks requires a true graph
+    if "benchmarks" in config["benchmark_setup"]["evaluation"]:
+        if config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"] != []:
+            if dict["graph_id"] is None:
+                raise Exception("ROC evaluation requires graph_id.\n"
+                                "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
-        if not dict["graph_id"] in available_conf_ids:
-            raise Exception(dict["graph_id"] +
-                            " is not an available graph id.\n"
-                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+            if not dict["graph_id"] in available_conf_ids:
+                raise Exception(dict["graph_id"] +
+                                " is not an available graph id.\n"
+                                "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
-    # Roc rewuires a true graph
-    if config["benchmark_setup"]["evaluation"]["graph_true_stats"] == True:
-        if dict["graph_id"] is None:
-            raise Exception("graph_true_stats requires graph_id.\n"
-                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+    if "graph_true_stata" in config["benchmark_setup"]["evaluation"]:
+        if config["benchmark_setup"]["evaluation"]["graph_true_stats"] == True:
+            if dict["graph_id"] is None:
+                raise Exception("graph_true_stats requires graph_id.\n"
+                                "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
-        if not dict["graph_id"] in available_conf_ids:
-            raise Exception(dict["graph_id"] +
-                            " is not an available graph id.\n"
-                            "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
+            if not dict["graph_id"] in available_conf_ids:
+                raise Exception(dict["graph_id"] +
+                                " is not an available graph id.\n"
+                                "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
     available_data_files = os.listdir("resources/data/mydatasets")
 
@@ -94,20 +96,20 @@ for data_setup in config["benchmark_setup"]["data"]:
     validate_data_setup(config, data_setup)
 
 
-def validate_graph_plots(config):
+def validate_graph_estimation(config):
     """
     If diffplots or graphvizcompare is true, we check if a true graph
     is provided.    
     """
     # Firs ge the
 
-    graph_plots = config["benchmark_setup"]["evaluation"]["graph_plots"]
-    if graph_plots["diffplots"] or graph_plots["graphvizcompare"]:
+    graph_estimation = config["benchmark_setup"]["evaluation"]["graph_estimation"]
+    if graph_estimation["diffplots"] or graph_estimation["graphvizcompare"]:
         # Loop over data setups in benchmark_setup and check if graph_id is provided everywhere
         for data_setup in config["benchmark_setup"]["data"]:
             if data_setup["graph_id"] is None:
-                raise Exception("graph_plots: The options diffplots and graphvizcompare requires graph_id. \n"
-                                "graph_plots: Either provide a graph_id in the data setup or set diffplots and graphvizcompare to false.")
+                raise Exception("graph_estimation: The options diffplots and graphvizcompare requires graph_id. \n"
+                                "graph_estimation: Either provide a graph_id in the data setup or set diffplots and graphvizcompare to false.")
 
 
 def valid_path(run_id: Optional[str]) -> bool:
@@ -167,4 +169,4 @@ def validate_algorithms():
 
 
 validate_algorithms()
-validate_graph_plots(config)
+validate_graph_estimation(config)

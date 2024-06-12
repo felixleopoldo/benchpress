@@ -29,7 +29,7 @@ def active_algorithms(eval_method="benchmarks"):
                 # print(alg_conf_id)
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
-    elif (eval_method == "benchmarks") or (eval_method == "graph_plots"):
+    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation"):
         benchmarks_alg_ids = config["benchmark_setup"]["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in benchmarks_alg_ids:        
@@ -57,7 +57,7 @@ def get_active_rules(wildcards):
         # Check if boolean or list or object wirh nonempty ids field.
         # TODO: this was OrderedDict, so might have to impose order somewhere.
         if isinstance(val, dict) and val["ids"] != []:
-            if key == "graph_plots":
+            if key == "graph_estimation":
                 # Create a done key.done file for each graph_type.
                 for graph_type in val["other_graph_types"] :
                     rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")

@@ -23,15 +23,6 @@
                     "description": "This section contains the available evaluation methods.",
                     "properties": {
                     },
-                    "required": [
-                        "benchmarks",
-                        "graph_true_plots",
-                        "graph_true_stats",
-                        "graph_plots",
-                        "mcmc_traj_plots",
-                        "mcmc_heatmaps",
-                        "mcmc_autocorr_plots"
-                    ],
                     "additionalProperties": false
                 }
             },

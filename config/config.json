@@ -1,63 +1,29 @@
 {
   "benchmark_setup": {
     "data": [
-
       {
         "graph_id": "sachs.csv",
         "parameters_id": null,
         "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
         "seed_range": null
+      },
+      {
+        "graph_id": "avneigs4_p20",
+        "parameters_id": "SEM",
+        "data_id": "standardized",
+        "seed_range": [1, 3]
       }
     ],
     "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "example/",
-        "show_seed": false,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": []
-      },
-      "graph_true_plots": false,
-      "graph_true_stats": false,
-      "ggally_ggpairs": false,
-      "graph_plots": {
-        "ids": ["fges-sem-bic", "pc-gaussCItest"],
+      "graph_estimation": {
+        "ids": ["fges-sem-bic", "pc-gaussCItest", "itsearch-bge"],
         "other_graph_types": ["original", "cpdag", "pattern"],
         "graphs": true,
-        "adjmats": true,
-        "diffplots": false,
+        "adjmats": false,
+        "diffplots": true,
         "csvs": true,
         "graphvizcompare": true
-      },
-      "mcmc_traj_plots": [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "thinning": 1,
-          "functional": ["score", "size"],
-          "active": false
-        }
-      ],
-      "mcmc_heatmaps": [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "active": false
-        }
-      ],
-      "mcmc_autocorr_plots": [
-        {
-          "id": "omcmc_itsample-bge",
-          "burn_in": 0,
-          "thinning": 1,
-          "lags": 50,
-          "functional": ["score", "size"],
-          "active": false
-        }
-      ]
+      }
     }
   },
   "resources": {
@@ -75,7 +41,7 @@
         {
           "id": "avneigs4_p20",
           "max_parents": 5,
-          "n": 5,
+          "n": 20,
           "d": 4,
           "par1": null,
           "par2": null,

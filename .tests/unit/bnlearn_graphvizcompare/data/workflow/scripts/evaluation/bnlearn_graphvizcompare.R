@@ -55,44 +55,44 @@ compareEGs <- function(estEG, trueEG) {
   return(compEGs)
 }
 
-#########
-## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
-## and returns the pattern of this pdag in the Meek sense, that is,
-## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
-## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
-## this is from the PC-alg package.
-getPattern <- function(amat) {
+# #########
+# ## this function takes as parameter the adjacency matrix of a pdag (or cpdag)
+# ## and returns the pattern of this pdag in the Meek sense, that is,
+# ## it returns the adjacency matrix of the graph with the same skeleton where the only oriented
+# ## edges are the v-structures (can be easily modified to work for MAGs/PAGs)
+# ## this is from the PC-alg package.
+# getPattern <- function(amat) {
 
-  ## makes the whole graph undirected
-  amat <- t(amat)
+#   ## makes the whole graph undirected
+#   amat <- t(amat)
 
-  tmp <- amat + t(amat)
-  tmp[tmp == 2] <- 1
+#   tmp <- amat + t(amat)
+#   tmp[tmp == 2] <- 1
 
-  ## find all v-structures i -> k <- j s.t. i not adj to k
-  ## and make only those edges directed
-  for (i in 1:(length(tmp[1, ]) - 1))
-    for (j in (i + 1):length(tmp[1, ])) {
-      if ((amat[j, i] == 0) & (amat[i, j] == 0) & (i != j)) {
-        ## if i no adjacent with j in G
+#   ## find all v-structures i -> k <- j s.t. i not adj to k
+#   ## and make only those edges directed
+#   for (i in 1:(length(tmp[1, ]) - 1))
+#     for (j in (i + 1):length(tmp[1, ])) {
+#       if ((amat[j, i] == 0) & (amat[i, j] == 0) & (i != j)) {
+#         ## if i no adjacent with j in G
 
-        possible.k <- which(amat[, i] != 0 & amat[i,] == 0) ## finds all k such that i -> k is in G
+#         possible.k <- which(amat[, i] != 0 & amat[i,] == 0) ## finds all k such that i -> k is in G
 
-        if (length(possible.k) != 0) {
-          ## if there are any such k's then check whether j -> k for any of them
-          for (k in 1:length(possible.k)) {
-            if ((amat[possible.k[k], j] == 1) & (amat[j, possible.k[k]] == 0)) {
-              ## if j -> k add the v-struc orientation to tmp
-              tmp[i, possible.k[k]] <- 0
-              tmp[j, possible.k[k]] <- 0
-            }
-          }
-        }
-      }
-    }
+#         if (length(possible.k) != 0) {
+#           ## if there are any such k's then check whether j -> k for any of them
+#           for (k in 1:length(possible.k)) {
+#             if ((amat[possible.k[k], j] == 1) & (amat[j, possible.k[k]] == 0)) {
+#               ## if j -> k add the v-struc orientation to tmp
+#               tmp[i, possible.k[k]] <- 0
+#               tmp[j, possible.k[k]] <- 0
+#             }
+#           }
+#         }
+#       }
+#     }
 
-    t(tmp)
-}
+#     t(tmp)
+# }
 
 ### This function turns an adjacancy matrix incidence DAG into an adjacancy matric of the EG
 DAG2EG <- function(incidence) {
@@ -106,14 +106,20 @@ myFun <- function(n = 5000) {
 
 benchmarks <- function(true_adjmat, estimated_adjmat) {
 
-  if (isSymmetric(unname(estimated_adjmat)) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
-    pattern_true = getPattern(true_adjmat)
+ # if (isSymmetric(unname(estimated_adjmat)) || isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE) || isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
+    #pattern_true = getPattern(true_adjmat)
+    
+    pattern_true = true_adjmat
     pattern_true_gnel = as(pattern_true, "graphNEL") ## convert to graph
     pattern_true_bn = as.bn(pattern_true_gnel)
 
-    pattern_estimated = getPattern(estimated_adjmat) # already transposed here?
+    pattern_estimated = estimated_adjmat
+    #pattern_estimated = getPattern(estimated_adjmat) # already transposed here?
+    print("get graphnel")
     pattern_estimated_gnel = as(pattern_estimated, "graphNEL") ## convert to graph.
+    print("get bn")
     pattern_estimated_bn = as.bn(pattern_estimated_gnel)
+
 
     filename <- myFun(n = 1) # Since pdf seems to have trouble with long filenames
     filename <- paste(filename[1], ".pdf", sep = "")
@@ -133,9 +139,9 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
     dev.off()
     file.copy(filename, snakemake@output[["filename"]])
     unlink(filename)
-  } else {
-    file.create(snakemake@output[["filename"]])
-  }
+  #} else {
+  #  file.create(snakemake@output[["filename"]])
+  #}
 }
 
 if (file.info(snakemake@input[["adjmat_est"]])$size > 0) {

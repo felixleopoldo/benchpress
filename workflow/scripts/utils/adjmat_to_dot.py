@@ -5,6 +5,7 @@ import pandas as pd
 from networkx.drawing.nx_agraph import write_dot
 import sys
 import numpy as np
+#import pyarrow
 
 adjmat_filename = sys.argv[1]
 dot_filename = sys.argv[2]
