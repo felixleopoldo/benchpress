@@ -1,0 +1,14 @@
+{
+    "title": "My new algorithm",
+    "version": "v0.0.1",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "https://pyagrum.readthedocs.io/en/latest/notebooks/31-Learning_structuralLearning.html",
+    "outputs": "adjmat",
+    "graph_types": [
+        "UG"
+    ],
+    "language": "R"
+}
