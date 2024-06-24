@@ -2,7 +2,7 @@
   "benchmark_setup": {
     "data": [
       {
-        "graph_id": "avneigs4_p20",
+        "graph_id": "avneigs4",
         "parameters_id": "binbn",
         "data_id": "bindata",
         "seed_range": [1, 3]
@@ -19,7 +19,7 @@
         "text": false,
         "ids": [
           "fges-bdeu",
-          "pyagrum"
+          "pyagrum", "itsearch_map-bde"
         ]
       },
       "graph_estimation": {
@@ -52,7 +52,7 @@
     "graph": {
       "pcalg_randdag": [
         {
-          "id": "avneigs4_p20",
+          "id": "avneigs4",
           "max_parents": 5,
           "n": [20, 80],
           "d": 4,
@@ -160,6 +160,29 @@
           "gamma": 1,
           "cpdag": false,
           "mergetype": "skeleton"
+        },
+        {
+          "id": "itsearch_map-bde",
+          "estimate": "map",
+          "MAP": true,
+          "plus1it": null,
+          "posterior": null,
+          "scoretype": "bde",
+          "chi": [
+            0.01,
+            0.1,
+            1
+          ],
+          "edgepf": 2,
+          "am": null,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 12,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null
         }
       ]
     }
