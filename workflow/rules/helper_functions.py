@@ -59,7 +59,10 @@ def get_active_rules(wildcards):
         if isinstance(val, dict) and val["ids"] != []:
             if key == "graph_estimation":
                 # Create a done key.done file for each graph_type.
-                for graph_type in val["other_graph_types"] :
+                graph_types = val["convert_to"] if val["convert_to"] != None else ["original"]
+                graph_types += ["original"]
+                
+                for graph_type in graph_types:
                     rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")
             else:
                 rules.append("results/output/"+key+"/"+key+".done")

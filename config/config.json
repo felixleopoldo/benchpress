@@ -2,12 +2,6 @@
   "benchmark_setup": {
     "data": [
       {
-        "graph_id": "sachs.csv",
-        "parameters_id": null,
-        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
-        "seed_range": null
-      },
-      {
         "graph_id": "avneigs4_p20",
         "parameters_id": "SEM",
         "data_id": "standardized",
@@ -15,15 +9,28 @@
       }
     ],
     "evaluation": {
-      "graph_estimation": {
-        "ids": ["fges-sem-bic", "pc-gaussCItest", "itsearch-bge"],
-        "other_graph_types": ["original", "cpdag", "pattern"],
-        "graphs": true,
-        "adjmats": false,
-        "diffplots": true,
-        "csvs": true,
-        "graphvizcompare": true
-      }
+      "benchmarks": {
+        "filename_prefix": "example/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": false,
+        "ids": ["fges-sem-bic", "tabu-bge", "itsearch-bge", "pc-gaussCItest"]
+      },
+      "graph_true_plots": true,
+      "graph_true_stats": true,
+      "ggally_ggpairs": true,
+      "graph_plots": [
+        "fges-sem-bic",
+        "tabu-bge",
+        "itsearch-bge",
+        "pc-gaussCItest"
+      ],
+      "mcmc_traj_plots": [],
+      "mcmc_heatmaps": [],
+      "mcmc_autocorr_plots": []
     }
   },
   "resources": {
@@ -68,7 +75,7 @@
           "datatype": "continuous",
           "samplePrior": 1,
           "semBicStructurePrior": 1,
-          "penaltyDiscount": [0.75, 1.5],
+          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
           "timeout": null
         }
       ],

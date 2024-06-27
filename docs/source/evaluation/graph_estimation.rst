@@ -1,3 +1,21 @@
+
+
+.. _graph_estimation: 
+
+graph_estimation 
+--------------------
+
+.. rubric:: Graph estimation
+
+.. list-table:: 
+
+   * - Module
+     - `graph_estimation <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/graph_estimation>`__
+
+
+
+.. rubric:: Description
+
 This module estimates, conversions, and plots,
 
 * Fields
@@ -16,3 +34,30 @@ This module estimates, conversions, and plots,
 .. note::
 
     This module replaces the :ref:`graph_plots` module.
+
+.. rubric:: Example
+
+
+.. code-block:: json
+
+
+    {
+      "graph_estimation": {
+        "ids": [
+          "fges-sem-bic",
+          "pc-gaussCItest",
+          "itsearch-bge"
+        ],
+        "convert_to": [
+          "original",
+          "cpdag",
+          "pattern"
+        ],
+        "graphs": true,
+        "adjmats": false,
+        "diffplots": true,
+        "csvs": true,
+        "graphvizcompare": true
+      }
+    }
+

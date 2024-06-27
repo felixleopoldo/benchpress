@@ -1,12 +1,61 @@
 {
-    "title": "graph_plots",
-    "description": "This module plots and saves the estimated graphs in dot-format. The figures are saved in results/adjmat and copied to results/output/graph_plots/.",
+    "title": "graph_estimation",
+    "description": "This module produce graph estimates, comparisons, and plots.",
     "type": "object",
-   
-    "examples": [
-        "fges-sem-bic",
-        "mmhc-bge-zf",
-        "omcmc_itsample-bge",
-        "pc-gaussCItest"
-    ]
+    "properties": {
+        "ids": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of graph estimation methods to compare."
+        },
+        "convert_to": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["cpdag", "pattern", "skeleton"]
+                    }
+                }
+            ],
+            "description": "List of other graph types to convert to."
+        },
+        "graphs": {
+            "type": "boolean",
+            "description": "Plot graphs."
+        },
+        "adjmats": {
+            "type": "boolean",
+            "description": "Plot adjacency matrices."
+        },
+        "diffplots": {
+            "type": "boolean",
+            "description": "Whether to compare difference plots adjacency matrices."
+        },
+        "csvs": {
+            "type": "boolean",
+            "description": "Whether to write CSV files."
+        },
+        "graphvizcompare": {
+            "type": "boolean",
+            "description": "Whether to compare graphs using bnlearn graphviz.compare."
+        }
+    },
+    "additionalProperties": false,   
+    "examples": {
+        "graph_estimation": {
+          "ids": ["fges-sem-bic", "pc-gaussCItest", "itsearch-bge"],
+          "convert_to": ["original", "cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": false,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        }
+      }
 }

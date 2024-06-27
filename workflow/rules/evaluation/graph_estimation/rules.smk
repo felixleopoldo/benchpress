@@ -3,7 +3,7 @@ from filenames import *
 include: "filenames.py"
 
 
-rule adjmat_plot:
+rule graph_estimation_adjmat_plot:
     input:
         matrix_filename=eval_module_feature_pattern(module="graph_estimation", feature="csvs", filename="adjmat", ext="csv")
     output:
@@ -21,7 +21,7 @@ rule adjmat_plot:
         "plot_matrix_as_heatmap.py"
 
 # This just copies the csv. May this should be the actual estimation rule instead.
-rule adjmat_csv:
+rule graph_estimation_adjmat_csv:
     input:
         ("{output_dir}/adjmat_estimate/"
          "adjmat=/{adjmat}/"
@@ -37,7 +37,7 @@ rule adjmat_csv:
 
 # This just copies the csv.
 # Shit should be in the graph_true_plots module, if activated...
-rule true_adjmat_csv:
+rule graph_estimation_true_adjmat_csv:
     input:
         "{output_dir}/adjmat/{adjmat_and_seed}.csv"
     output:
@@ -48,7 +48,7 @@ rule true_adjmat_csv:
 # A rule the converts between different types of graph, e.g. DAG to CPDAG.
 # It assumes that the input is a DAG or a CPDAG. So its up to the user to use it in a correct way.
 # As algorithms may output different types of graphs, we keep it like this.
-rule convert_graph:
+rule graph_estimation_convert_graph:
     input:
         filename="{whatever}/evaluation/{eval_module}/graph_type=original/csvs/{something}/adjmat.csv"
     output:
@@ -63,7 +63,7 @@ rule convert_graph:
 
 # This rule is very generally specified and relies on that it is called in the right way.
 # I.e with the path of an adjacency matrix.
-rule adjmat_to_dot:
+rule graph_estimation_adjmat_to_dot:
     input:
         "workflow/scripts/utils/adjmat_to_dot.py",
         filename="{output_dir}/evaluation/graph_estimation/graph_type={graph_type}/csvs/{something}/adjmat.csv"  # true graph has adjmat in the path and estimated does not.
@@ -80,7 +80,7 @@ rule adjmat_to_dot:
         fi
         """
 
-rule dot_to_plot:
+rule graph_estimation_dot_to_plot:
     input:
         "{output_dir}/evaluation/graph_estimation/graph_type={graph_type}/dot/{something}/graph.dot"
     output:
@@ -97,7 +97,7 @@ rule dot_to_plot:
         """
 
 # The adjmat_est pattern could in the future be raplaced byt the adjmat pattern of the modules algorithm.
-rule bnlearn_graphvizcompare:
+rule graph_estimation_bnlearn_graphvizcompare:
     input:
         adjmat_true = ("{output_dir}/"
                        "evaluation/graph_true_plots/graph_type={graph_type}/csvs/"
@@ -111,7 +111,7 @@ rule bnlearn_graphvizcompare:
     script:
         "bnlearn_graphvizcompare.R"
 
-rule adjmat_diffplot:
+rule graph_estimation_adjmat_diffplot:
     input:
         adjmat_true = ("{output_dir}/"
                        "evaluation/graph_true_plots/graph_type={graph_type}/csvs/"
@@ -135,7 +135,10 @@ rule adjmat_diffplot:
 # This new version of the rule graph_estimation lets the user specify which plots to include in the output.
 # It generates a rule for each type of graph that is specified in other_graph_types, apart from the original graph.
 graph_estimation = config["benchmark_setup"]["evaluation"]["graph_estimation"]
-for graph_type in graph_estimation["other_graph_types"]:
+graph_types = graph_estimation["convert_to"] is not None and graph_estimation["convert_to"] or []
+graph_types += ["original"]
+
+for graph_type in graph_types:
 
     rule:
         name: "graph_estimation_"+str(graph_type)

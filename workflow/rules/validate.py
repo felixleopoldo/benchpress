@@ -17,11 +17,6 @@ if "benchmarks" in config["benchmark_setup"]["evaluation"]:
             raise Exception(
                 benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
-# Check that all ids in the graph_estimation actually exist.
-for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_estimation"]["ids"]:
-    if benchmarksitem not in available_conf_ids:
-        raise Exception(
-            benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))
 
 # Check that the startspace for order mcmc exist.
 # for alg_conf in config["resources"]["structure_learning_algorithms"]["bidag_order_mcmc"]:
@@ -50,7 +45,7 @@ def validate_data_setup(config, dict):
                                 " is not an available graph id.\n"
                                 "The available graph id´s are:\n" + str(sorted(available_conf_ids)))
 
-    if "graph_true_stata" in config["benchmark_setup"]["evaluation"]:
+    if "graph_true_stats" in config["benchmark_setup"]["evaluation"]:
         if config["benchmark_setup"]["evaluation"]["graph_true_stats"] == True:
             if dict["graph_id"] is None:
                 raise Exception("graph_true_stats requires graph_id.\n"
@@ -101,15 +96,23 @@ def validate_graph_estimation(config):
     If diffplots or graphvizcompare is true, we check if a true graph
     is provided.    
     """
-    # Firs ge the
-
-    graph_estimation = config["benchmark_setup"]["evaluation"]["graph_estimation"]
-    if graph_estimation["diffplots"] or graph_estimation["graphvizcompare"]:
-        # Loop over data setups in benchmark_setup and check if graph_id is provided everywhere
-        for data_setup in config["benchmark_setup"]["data"]:
-            if data_setup["graph_id"] is None:
-                raise Exception("graph_estimation: The options diffplots and graphvizcompare requires graph_id. \n"
-                                "graph_estimation: Either provide a graph_id in the data setup or set diffplots and graphvizcompare to false.")
+        
+    # First check if the graph_estimation is active
+    if "graph_estimation" in config["benchmark_setup"]["evaluation"]:
+        
+        # Check that all ids in the graph_estimation actually exist.
+        for benchmarksitem in config["benchmark_setup"]["evaluation"]["graph_estimation"]["ids"]:
+            if benchmarksitem not in available_conf_ids:
+                raise Exception(
+                    benchmarksitem + " not available.\nThe available id's are:\n{ids}".format(ids=sorted(available_conf_ids)))                
+        
+        graph_estimation = config["benchmark_setup"]["evaluation"]["graph_estimation"]
+        if graph_estimation["diffplots"] or graph_estimation["graphvizcompare"]:
+            # Loop over data setups in benchmark_setup and check if graph_id is provided everywhere
+            for data_setup in config["benchmark_setup"]["data"]:
+                if data_setup["graph_id"] is None:
+                    raise Exception("graph_estimation: The options diffplots and graphvizcompare requires graph_id. \n"
+                                    "graph_estimation: Either provide a graph_id in the data setup or set diffplots and graphvizcompare to false.")
 
 
 def valid_path(run_id: Optional[str]) -> bool:
