@@ -49,7 +49,6 @@ This module estimates, conversions, and plots,
           "itsearch-bge"
         ],
         "convert_to": [
-          "original",
           "cpdag",
           "pattern"
         ],
