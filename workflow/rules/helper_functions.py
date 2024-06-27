@@ -62,8 +62,16 @@ def get_active_rules(wildcards):
                 graph_types = val["convert_to"] if val["convert_to"] != None else ["original"]
                 graph_types += ["original"]
                 
-                for graph_type in graph_types:
-                    rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")
+                # go through all active features and create a done file for each.
+
+                for feature, isactive in val.items():
+                    if feature in ["ids", "convert_to"]:
+                        continue
+                    if isactive == True:
+                        for graph_type in graph_types:
+                            rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+feature)
+#                for graph_type in graph_types:
+#                    rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+key+".done")
             else:
                 rules.append("results/output/"+key+"/"+key+".done")
         
