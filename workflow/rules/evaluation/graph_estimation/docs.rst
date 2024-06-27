@@ -4,7 +4,7 @@ This module estimates, conversions, and plots,
     * **ids**: List of algorithm module id's
     * **convert_to**: This option enables conversions to other graph types:        
         
-        * "CPDAG": conversion to CPDAG (requires DAG or CPDAG)
+        * "cpdag": conversion to CPDAG (requires DAG or CPDAG)
         * "pattern": pattern of the CPDAG (requires DAG CPDAG)
         * "skeleton": all edges undirected
     * **graph**: Graphs estimated by the algorithm plotted using graphviz
