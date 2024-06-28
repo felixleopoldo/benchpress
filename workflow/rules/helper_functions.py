@@ -68,6 +68,13 @@ def get_active_rules(wildcards):
                     if feature in ["ids", "convert_to"]:
                         continue
                     if isactive == True:
+                        # Cound the datasetups and create a done file for each.
+                        for sim_setup in config["benchmark_setup"]["data"]:
+                            seed = get_seed_range(sim_setup["seed_range"])[0]
+                            adjmat=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
+                            parameters=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+                            data=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+                            
                         for graph_type in graph_types:
                             rules.append("results/output/"+key+"/graph_type="+graph_type+"/"+feature)
 #                for graph_type in graph_types:

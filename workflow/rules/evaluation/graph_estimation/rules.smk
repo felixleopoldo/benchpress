@@ -209,16 +209,46 @@ for graph_type in graph_types:
     #             shell("mkdir -p results/output/graph_estimation/graph_type="+params["graph_type"]+"/adjmat_diffplots")
     #             shell("cp "+f+" results/output/graph_estimation/graph_type="+params["graph_type"]+"/adjmat_diffplots/diffplot_"+params["graph_type"]+"_" +str(i+1) +".png")
     # split this big rule into smaller rules
+
+    data_index = 0
+    for sim_setup in config["benchmark_setup"]["data"]:
+        for seed in get_seed_range(sim_setup["seed_range"]):
+          
+            for alg in active_algorithms("graph_estimation"):
+                for alg_conf in config["resources"]["structure_learning_algorithms"][alg]:
+
+                    rule:
+                        name: "graph_estimation_graphs_"+str(graph_type)+"_"+str(data_index)
+                        input:
+                            conf=configfilename,
+                            graphs=eval_module_conf_to_feature_files_data(filename="graph",
+                                                                            ext="png",
+                                                                            eval_module="graph_estimation",
+                                                                            module_feature="graphs",
+                                                                            feature_argstring="",
+                                                                            graph_type=graph_type)
+                        output:
+                            directory("results/output/graph_estimation/data/"+data_index+"/graph_type="+graph_type+"/graphs") if ("graphs" in graph_estimation) and graph_estimation["graphs"] else [],
+                            "results/output/graph_estimation/data/"+data_index+"/graph_type="+graph_type+"/graph_estimation.done"
+                        params:
+                            graph_type=graph_type
+                        run:
+                            for i,f in enumerate(sorted(input.graphs)):
+                                shell("mkdir -p results/output/graph_estimation/"+data_index+"/graph_type="+params["graph_type"]+"/graphs && "
+                                    "cp "+f+" results/output/graph_estimation/"+data_index+"/graph_type="+params["graph_type"]+"/graphs/graph_"+params["graph_type"]+"_" +str(i+1) +".png")
+                        
+            data_index += 1
+
     rule:
         name: "graph_estimation_graphs_"+str(graph_type)
         input:
             conf=configfilename,
             graphs=eval_module_conf_to_feature_files(filename="graph",
-                                                    ext="png",
-                                                    eval_module="graph_estimation",
-                                                    module_feature="graphs",
-                                                    feature_argstring="",
-                                                    graph_type=graph_type) if ("graphs" in graph_estimation) and graph_estimation["graphs"] else []
+                                                     ext="png",
+                                                     eval_module="graph_estimation",
+                                                     module_feature="graphs",
+                                                     feature_argstring="",
+                                                     graph_type=graph_type) if ("graphs" in graph_estimation) and graph_estimation["graphs"] else []
         output:
             directory("results/output/graph_estimation/graph_type="+graph_type+"/graphs") if ("graphs" in graph_estimation) and graph_estimation["graphs"] else []
 
