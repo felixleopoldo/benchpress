@@ -126,10 +126,16 @@ def eval_module_conf_to_feature_files(
 def eval_module_conf_to_feature_files_data(
     filename, 
     ext, 
+    sim_setup,
+    seed,
     eval_module, 
     module_feature, 
     feature_argstring,
-    graph_type
+    graph_type,
+    data_string,
+    parameters_string,
+    adjmat_string,
+    alg
 ):
     evaluation_string = module_feature
     if feature_argstring != "":
@@ -138,7 +144,7 @@ def eval_module_conf_to_feature_files_data(
     # first generate a list of all data setups
 
     ret = [
-                [
+                #[
                     expand(
                         eval_module_feature_pattern(eval_module, module_feature, param_string=feature_argstring),
                         output_dir="results",
@@ -149,11 +155,11 @@ def eval_module_conf_to_feature_files_data(
                         graph_type=graph_type,
                         ext=ext,
                         evaluation_string=evaluation_string,
-                        adjmat=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-                        parameters=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-                        data=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+                        adjmat=adjmat_string,
+                        parameters=parameters_string,
+                        data=data_string)
                      for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]
-               ] for alg in active_algorithms(eval_module)
+               #] for alg in active_algorithms(eval_module)
          ]
 
     return ret
