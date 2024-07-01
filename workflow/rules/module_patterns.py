@@ -31,32 +31,36 @@ def dict_to_path(d):
     return ret
 
 # The pattern strings are generated from the json config file.
-pattern_strings = {}
+def gen_pattern_strings(config):
+    
+    pattern_strings = {}
+    # structure learning algorithms. 
+    # May be good to add all since they might be input for other algs.
+    for module in config["resources"]["structure_learning_algorithms"]:
+        pattern_strings[module] = module+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][module])
 
-# structure learning algorithms. 
-# May be good to add all since they might be input for other algs.
-for alg in config["resources"]["structure_learning_algorithms"].keys():
-    pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
+    # graph modules
+    for module in config["resources"]["graph"]:
+        pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["graph"][module])
 
-# graph modules
-for module in config["resources"]["graph"]:
-    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["graph"][module])
+    # parameters modules
+    for module in config["resources"]["parameters"]:
+        pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
 
-# parameters modules
-for module in config["resources"]["parameters"]:
-    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
+    # data modules
+    for module in config["resources"]["data"]:
+        pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])    
 
-# data modules
-for module in config["resources"]["data"]:
-    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])    
+    # Evaluation strings. These have not exactly the same logic as the above, but it works.
+    pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
+    pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"])
+    pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])
 
-# Evaluation strings. These have not exactly the same logic as the above, but it works.
-pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
-pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"])
-pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])
+    # Estimation parameters of mcmc algorithms
+    pattern_strings["mcmc_est"] = "mcmc_params/"\
+                                "mcmc_estimator={mcmc_estimator}/"\
+                                "threshold={threshold}/"\
+                                "burnin_frac={burnin_frac}"
+    return pattern_strings
 
-# Estimation parameters of mcmc algorithms
-pattern_strings["mcmc_est"] = "mcmc_params/"\
-                            "mcmc_estimator={mcmc_estimator}/"\
-                            "threshold={threshold}/"\
-                            "burnin_frac={burnin_frac}"
+

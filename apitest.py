@@ -1,7 +1,9 @@
 import snakemake
 import networkx as nx
 import pandas as pd
-import workflow.rules.filename_patterns as patterns
+import workflow.rules.filename_patterns as fn_patterns
+from workflow.rules.module_patterns import * 
+
 
 import json
 
@@ -11,15 +13,15 @@ def alg_obj_to_path(alg, alg_json_obj, datafile):
     with open("config/config.json") as json_file:
         config = json.load(json_file)
 
-    print(config)
-    import workflow.rules.module_patterns
-    
-    adjmat_pattern = patterns.alg_output_adjmat_path(algorithm=alg)
+
+    pattern_strings = gen_pattern_strings(config) # patterns for all modules
+            
+    adjmat_path_pattern = fn_patterns.alg_output_adjmat_path2(pattern_strings[alg])
     
     # copy the datafile to mydata folder
-    pathstring = adjmat_pattern.format(**alg_json_obj, 
+    pathstring = adjmat_path_pattern.format(**alg_json_obj, 
                           output_dir="results", 
-                          data="fixed_data/filename=datafile/params=None",
+                          data="fixed/filename=resources/data/mydatasets/"+datafile+"/n=100/seed=1/params/=None",
                           replicate="1"
                           )
     # or use expand function

@@ -45,6 +45,12 @@ def alg_output_adjmat_path(algorithm):
         "seed={replicate}/" \
         "adjmat.csv"
 
+def alg_output_adjmat_path2(alg_pattern):
+    return "{output_dir}/adjmat_estimate/{data}/"\
+        "algorithm=/" + alg_pattern + "/" +\
+        "seed={replicate}/" \
+        "adjmat.csv"
+
 
 def alg_output_time_path(algorithm):
     return "{output_dir}/time/{data}/"\

@@ -15,4 +15,4 @@ apitest.estimate("pcalg_pc", {
     "verbose": False,
     "indepTest": "gaussCItest",
     "timeout": None
-}, "mydata.csv")
+}, "2005_sachs_2_cd3cd28icam2_log_std.csv")

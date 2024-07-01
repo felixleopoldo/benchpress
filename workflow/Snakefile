@@ -108,7 +108,10 @@ for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
 
 # Validate JSON file based on its values.
 include: "rules/validate.py"
-include: "rules/module_patterns.py"
+
+from rules.module_patterns import * 
+pattern_strings = gen_pattern_strings(config)
+
 include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
 

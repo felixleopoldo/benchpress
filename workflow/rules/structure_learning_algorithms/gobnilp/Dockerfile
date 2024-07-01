@@ -31,7 +31,7 @@ COPY scipoptsuite-8.0.0.tgz .
 RUN tar xvf scipoptsuite-8.0.0.tgz
 RUN rm scipoptsuite-8.0.0.tgz
 WORKDIR /myappdir/scipoptsuite-8.0.0
-RUN make ARCH=arm
+RUN make 
 RUN make install INSTALLDIR="/myappdir/local/src/scipoptsuite-8.0.0/scip"
 
 # Install Gobnilp

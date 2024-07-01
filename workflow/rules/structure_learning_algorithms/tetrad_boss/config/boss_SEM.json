@@ -108,6 +108,7 @@
                     "id": "grasp-sem-bic",
                     "score": "sem-bic-score",
                     "datatype": "continuous",
+                    "test": "fisher-z-test",
                     "samplePrior": 0,
                     "semBicStructurePrior": 0,
                     "penaltyDiscount": [
