@@ -175,6 +175,9 @@ for feature, feature_dict in features.items():
                     for adjmat_string in adjmat_strings:
                         for parameters_string in parameters_strings:
                             for data_string in data_strings:
+    #                            [f.unlink() for f in Path(r"C:\main directory").glob("*.png") ]
+
+                                #Path("results/output/graph_estimation/dataset_"+str(data_index)+"/graph_type="+graph_type+"/"+feature+"/"+alg+"/*").unlink(missing_ok=True)
                                 rule:
                                     name: 
                                         "results/output/graph_estimation/dataset_"+str(data_index)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
@@ -207,7 +210,7 @@ for feature, feature_dict in features.items():
                                             shell("mkdir -p results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"])
                                             # clean old file while keeping the directory
                                             #newfile = "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["feature"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"]
-                                            Path("results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"]).unlink(missing_ok=True)
+                                            
                                             shell("cp "+f+" " + "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"])
 
                                 data_index += 1
