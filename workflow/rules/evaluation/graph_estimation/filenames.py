@@ -126,7 +126,6 @@ def eval_module_conf_to_feature_files(
 def eval_module_conf_to_feature_files_data(
     filename, 
     ext, 
-    sim_setup,
     seed,
     eval_module, 
     module_feature, 
@@ -144,22 +143,22 @@ def eval_module_conf_to_feature_files_data(
     # first generate a list of all data setups
 
     ret = [
-                #[
-                    expand(
-                        eval_module_feature_pattern(eval_module, module_feature, param_string=feature_argstring),
-                        output_dir="results",
-                        alg_string=json_string[alg_conf["id"]],
-                        **alg_conf,
-                        seed=seed,
-                        filename=filename,
-                        graph_type=graph_type,
-                        ext=ext,
-                        evaluation_string=evaluation_string,
-                        adjmat=adjmat_string,
-                        parameters=parameters_string,
-                        data=data_string)
-                     for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]
-               #] for alg in active_algorithms(eval_module)
+
+            expand(
+                eval_module_feature_pattern(eval_module, module_feature, param_string=feature_argstring),
+                output_dir="results",
+                alg_string=json_string[alg_conf["id"]],
+                **alg_conf,
+                seed=seed,
+                filename=filename,
+                graph_type=graph_type,
+                ext=ext,
+                evaluation_string=evaluation_string,
+                adjmat=adjmat_string,
+                parameters=parameters_string,
+                data=data_string)
+                for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]
+
          ]
 
     return ret

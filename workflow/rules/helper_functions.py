@@ -125,14 +125,14 @@ def get_active_rules(wildcards):
         rules.append("results/output/graph_plots/graph_plots.done")
         
     # ggally_ggpairs
-    if "ggally_ggpairs" in evaluation and evaluation["ggally_ggpairs"]:
+    if "ggally_ggpairs" in evaluation and evaluation["ggally_ggpairs"] == True:
         rules.append("results/output/ggally_ggpairs/ggally_ggpairs.done")
         
     # benchmarks
     if "benchmarks" in evaluation and len(evaluation["benchmarks"]["ids"]) > 0:
         rules.append("results/output/benchmarks/benchmarks.done")
 
-    print(rules)
+    
     # for key, val in config["benchmark_setup"]["evaluation"].items():
     #     # Check if boolean or list or object wirh nonempty ids field.
     #     # TODO: this was OrderedDict, so might have to impose order somewhere.

@@ -7,7 +7,7 @@ rule graph_estimation_adjmat_plot:
     input:
         matrix_filename=eval_module_feature_pattern(module="graph_estimation", feature="csvs", filename="adjmat", ext="csv")
     output:
-        plot_filename=eval_module_feature_pattern(module="graph_estimation", feature="adjmat_plots")
+        plot_filename=eval_module_feature_pattern(module="graph_estimation", feature="adjmats")
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -87,10 +87,10 @@ rule graph_estimation_dot_to_plot:
         "{output_dir}/evaluation/graph_estimation/graph_type={graph_type}/graphs/{something}/graph.png"
     container:
         docker_image("trilearn")
-    shell:
+    shell: # labels could be edded by -Glabel="{wildcards.something}"
         """
         if [ -s {input} ]; then
-            dot -T png {input} -o {output}
+            dot -T png {input} -o {output} -Glabel="Graph type: {wildcards.graph_type}"
         else
             touch {output}
         fi
@@ -119,7 +119,7 @@ rule graph_estimation_adjmat_diffplot:
                        "adjmat.csv"),
         adjmat_est=eval_module_feature_pattern(module="graph_estimation", feature="csvs", filename="adjmat", ext="csv")
     output:
-        filename=eval_module_feature_pattern(module="graph_estimation", feature="adjmat_diffplot")
+        filename=eval_module_feature_pattern(module="graph_estimation", feature="diffplots")
     params:
         title="Graph: {adjmat}\nParameters: {parameters}\nData: {data}",
         adjmat_string="{adjmat}",
@@ -139,11 +139,11 @@ graph_types = graph_estimation["convert_to"] is not None and graph_estimation["c
 graph_types += ["original"]
 
 features = {
-    "graphs": {"ext":"png", "argstring":"", },
-    "adjmats": "",
-    "diffplots": "",
-    "graphvizcompare": "",
-    "csvs": ""
+    "graphs": {"ext":"png", "argstring":"", "filename":"graph"},
+    "adjmats": {"ext":"png", "argstring":"", "filename":"adjmats"},
+    "diffplots": {"ext":"png", "argstring":"", "filename":"diffplots"},
+    "graphvizcompare": {"ext":"pdf", "argstring":"layout=True", "filename":"graphvizcompare"},
+    "csvs": {"ext":"csv", "argstring":"", "filename":"adjmat"}
 }
 
 for feature, feature_dict in features.items():
@@ -177,16 +177,15 @@ for feature, feature_dict in features.items():
                             for data_string in data_strings:
                                 rule:
                                     name: 
-                                        "results/output/graph_estimation/dataset_"+str(data_index)+"/alg="+alg+"/graph_type="+graph_type+"/graphs" 
+                                        "results/output/graph_estimation/dataset_"+str(data_index)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
                                     input:
                                         conf=configfilename,
-                                        graphs=eval_module_conf_to_feature_files_data(filename=feature,
-                                                                                        ext=feature["ext"],
-                                                                                        sim_setup=sim_setup,
+                                        graphs=eval_module_conf_to_feature_files_data(filename=feature_dict["filename"],
+                                                                                        ext=feature_dict["ext"],
                                                                                         seed=seed,
                                                                                         eval_module="graph_estimation",
                                                                                         module_feature=feature,
-                                                                                        feature_argstring=feature["argstring"],
+                                                                                        feature_argstring=feature_dict["argstring"],
                                                                                         graph_type=graph_type,
                                                                                         adjmat_string=adjmat_string,
                                                                                         parameters_string=parameters_string,
@@ -199,13 +198,17 @@ for feature, feature_dict in features.items():
                                     params:
                                         graph_type=graph_type,
                                         data_index=str(data_index),
+                                        feature=feature,
+                                        ext=feature_dict["ext"],
                                         alg=alg
                                     run:
-                                        for i,f in enumerate(input.graphs):
-                                            shell("mkdir -p results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+feature+"/"+params["alg"])
+                                        for i, f in enumerate(input.graphs):
+                                            
+                                            shell("mkdir -p results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"])
                                             # clean old file while keeping the directory
-                                            Path("results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+feature+"/"+params["alg"]+"/"+feature+"_"+params["graph_type"]+"_" +str(i+1) +"."+feature["ext"]).unlink(missing_ok=True)                         
-                                            shell("cp "+f+" results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/graphs/"+params["alg"]+"/graph_"+params["graph_type"]+"_" +str(i+1) +".png")                                
+                                            #newfile = "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["feature"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"]
+                                            Path("results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"]).unlink(missing_ok=True)
+                                            shell("cp "+f+" " + "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"])
 
                                 data_index += 1
 

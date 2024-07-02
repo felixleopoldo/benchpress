@@ -59,7 +59,7 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
     # If already a CDPAG, write to file diectly.
     if (pcalg::isValidGraph(t(orig_adjmat), type = "cpdag", verbose = FALSE)){
         
-        print("Already a CPDAG. Writing to file.")
+        #print("Already a CPDAG. Writing to file.")
         write.csv(orig_adjmat, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
 
     }  else if (pcalg::isValidGraph(t(orig_adjmat), type = "dag", verbose = FALSE)){
@@ -73,7 +73,7 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
 
     } else {
 
-        print("Not a DAG nor CPDAG, so cannot convert to CPDAG. Writing empty file.")
+        #print("Not a DAG nor CPDAG, so cannot convert to CPDAG. Writing empty file.")
         file.create(snakemake@output[["filename"]])
     }
 
@@ -81,16 +81,13 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
     if (isSymmetric(unname(orig_adjmat)) ||
         isValidGraph(orig_adjmat, type = "dag", verbose = FALSE) ||
         isValidGraph(orig_adjmat, type = "cpdag", verbose = FALSE)) {
-        print("it should be a valid graph")
+        
         pattern <- getPattern(orig_adjmat)
         colnames(pattern) <- names(orig_df)
         write.csv(pattern, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
     } else {
       file.create(snakemake@output[["filename"]])
     }
-
-    # pattern_true_gnel <- as(pattern, "graphNEL") ## convert to graph
-    # pattern_true_bn <- as.bn(pattern_true_gnel)
 
 } else if (snakemake@params[["output_graph_type"]] == "skeleton"){
     skeleton <- orig_adjmat + t(orig_adjmat)
@@ -101,6 +98,6 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
     
 } else {
 
-    print("Invalid output graph type. Writing empty file.")
-    write("", file = snakemake@output[["filename"]])
+    #print("Invalid output graph type. Writing empty file.")
+    file.create(snakemake@output[["filename"]])
 }
