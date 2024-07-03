@@ -24,61 +24,72 @@ def heatmap_plots():
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
-# def heatgraph_plots():
-#     ret = [[[[expand("{output_dir}/" \
-#             "evaluation=/{evaluation_string}/"\
-#             "adjmat=/{adjmat_string}/"\
-#             "parameters=/{param_string}/"\
-#             "data=/{data_string}/"\
-#             "algorithm=/{alg_string}/" \
-#             "seed={seed}/"
-#             "heatgraph_plot.png",
-#             output_dir="results",
-#             alg_string=json_string_mcmc_noest[alg_conf["id"]],
-#             **alg_conf,
-#             seed=seed,
-#             evaluation_string=gen_evaluation_string_from_conf("mcmc_heatmaps", alg_conf["id"]),
-#             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-#             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-#             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-#             for seed in get_seed_range(sim_setup["seed_range"])]
-#             for sim_setup in config["benchmark_setup"]["data"]]
-#             for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-#                 if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]
-#                                                     if ("active" not in conf) or (conf["active"] == True)] ]
-#             for alg in active_algorithms("mcmc_heatmaps")]
-#     return ret
+def heatgraph_plots():
+    ret = [[[[expand("{output_dir}/" \
+            "evaluation=/{evaluation_string}/"\
+            "adjmat=/{adjmat_string}/"\
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/" \
+            "seed={seed}/"
+            "heatgraph_plot.png",
+            output_dir="results",
+            alg_string=json_string_mcmc_noest[alg_conf["id"]],
+            **alg_conf,
+            seed=seed,
+            evaluation_string=gen_evaluation_string_from_conf("mcmc_heatmaps", alg_conf["id"]),
+            adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
+            param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
+            data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
+            for seed in get_seed_range(sim_setup["seed_range"])]
+            for sim_setup in config["benchmark_setup"]["data"]]
+            for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
+                if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]
+                                                    if ("active" not in conf) or (conf["active"] == True)] ]
+            for alg in active_algorithms("mcmc_heatmaps")]
+    return ret
 
 
-# rule get_heatmap_csv:
-#     input: "sfs"
-#     output: "heatmap.csv"
+rule graphtraj_to_heatmap_csv:
+    input: "sfs"
+    output: "heatmap.csv"
+    script: "get_heatmap_csv.py" 
 
-# rule heamap_to_dot:
-#     input: "heatmap.csv"
-#     output: "heatmap.dot"
+    input:
+        traj=alg_output_seqgraph_path_fine_match(p.name),
+    output:
+        adjmat=adjmat_estimate_path_mcmc(p.name),  
+    params:
+        graph_type="chordal", # not used
+        estimator="{mcmc_estimator}",
+        threshold="{threshold}",
+        burnin_frac="{burnin_frac}",
+    container:
+        docker_image("pydatascience")
+    script:
+        "scripts/evaluation/graphtraj_est.py"    
 
-# rule dot_to_png:
-#     input: 
-#         filename="{output_dir}/"\
-#         "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \
-#         "adjmat=/{adjmat_string}/"\
-#         "parameters=/{param_string}/"\
-#         "data=/{data_string}/"\
-#         "algorithm=/{alg_string}/"\
-#         "seed={seed}/"
-#         "heatgraph_plot.dot"
+rule heatmap_to_dot:
+     input: 
+        adjmat=adjmat_estimate_path_mcmc("thalg"), # the alg should go here in some way. Matched probably.
+     output:
+        filename="{output_dir}/"\
+        "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \
+        "adjmat=/{adjmat_string}/"\
+        "parameters=/{param_string}/"\
+        "data=/{data_string}/"\
+        "algorithm=/{alg_string}/"\
+        "seed={seed}/"
+        "heatgraph.dot"
+     script: "heatmap_to_dot.py"
 
-#     output:
-#         filename="{output_dir}/"\
-#         "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \
-#         "adjmat=/{adjmat_string}/"\
-#         "parameters=/{param_string}/"\
-#         "data=/{data_string}/"\
-#         "algorithm=/{alg_string}/"\
-#         "seed={seed}/"
-#         "heatgraph_plot.png"
-
+rule dot_to_png:
+    input: 
+        "{whatever}/heatgraph.dot"
+    output:
+        "{whatever}/heatgraph_plot.png"
+    script:
+        "dot -Tpng {input} -o {output}"
 
 rule mcmc_heatmap_plot:
     input:

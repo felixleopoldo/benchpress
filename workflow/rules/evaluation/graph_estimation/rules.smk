@@ -146,6 +146,9 @@ features = {
     "csvs": {"ext":"csv", "argstring":"", "filename":"adjmat"}
 }
 
+# Since we have a lot of different data setups and algs, we need to create a rule for 
+# each combination of them.
+
 for feature, feature_dict in features.items():
     for graph_type in graph_types:
         for alg in active_algorithms("graph_estimation"):
@@ -175,9 +178,7 @@ for feature, feature_dict in features.items():
                     for adjmat_string in adjmat_strings:
                         for parameters_string in parameters_strings:
                             for data_string in data_strings:
-    #                            [f.unlink() for f in Path(r"C:\main directory").glob("*.png") ]
 
-                                #Path("results/output/graph_estimation/dataset_"+str(data_index)+"/graph_type="+graph_type+"/"+feature+"/"+alg+"/*").unlink(missing_ok=True)
                                 rule:
                                     name: 
                                         "results/output/graph_estimation/dataset_"+str(data_index)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
@@ -204,14 +205,16 @@ for feature, feature_dict in features.items():
                                         feature=feature,
                                         ext=feature_dict["ext"],
                                         alg=alg
-                                    run:
-                                        for i, f in enumerate(input.graphs):
-                                            
-                                            shell("mkdir -p results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"])
-                                            # clean old file while keeping the directory
-                                            #newfile = "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["feature"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"]
-                                            
-                                            shell("cp "+f+" " + "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]+"/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"])
+                                    run:                                    
+                                        output_dir = "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
+                                        # clean old file while keeping the directory
+                                        # check if the directory exists
+                                        if Path(output_dir).exists():
+                                            # remove all files in the directory
+                                            [f.unlink() for f in Path(output_dir).glob("*.png") ]
+                                        for i, f in enumerate(input.graphs):                                            
+                                            shell("mkdir -p " + output_dir)                                                                                                                                    
+                                            shell("cp "+f+" " + output_dir + "/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"])
 
                                 data_index += 1
 
