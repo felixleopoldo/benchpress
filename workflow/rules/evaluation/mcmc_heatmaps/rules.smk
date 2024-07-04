@@ -25,30 +25,6 @@ def heatmap_plots():
             for alg in active_algorithms("mcmc_heatmaps")]
     return ret
 
-    # ret["heatgraph"] = [[[[expand("{output_dir}/" \
-    #         "evaluation=/{evaluation_string}/"\
-    #         "adjmat=/{adjmat_string}/"\
-    #         "parameters=/{param_string}/"\
-    #         "data=/{data_string}/"\
-    #         "algorithm=/{alg_string}/" \
-    #         "seed={seed}/" + \
-    #         "heatgraph.png",
-    #         output_dir="results",
-    #         alg_string=json_string_mcmc_noest[alg_conf["id"]],
-    #         **alg_conf,
-    #         seed=seed,
-    #         evaluation_string=gen_evaluation_string_from_conf("mcmc_heatmaps", alg_conf["id"]),
-    #         adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-    #         param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-    #         data_string=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False))
-    #         for seed in get_seed_range(sim_setup["seed_range"])]
-    #         for sim_setup in config["benchmark_setup"]["data"]]
-    #         for alg_conf in config["resources"]["structure_learning_algorithms"][alg]
-    #             if alg_conf["id"] in [conf["id"] for conf in config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"]
-    #                                                 if ("active" not in conf) or (conf["active"] == True)] ]
-    #         for alg in active_algorithms("mcmc_heatmaps")]
-    # return ret
-
 rule mcmc_heatmap_plot:
     input:
         traj="{output_dir}/adjvecs/"\

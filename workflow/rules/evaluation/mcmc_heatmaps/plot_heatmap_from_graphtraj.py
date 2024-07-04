@@ -82,6 +82,6 @@ else:
     A = nx.nx_agraph.to_agraph(graph)
     
     
-    A.draw(snakemake.output["heatmap_plot"]+"-graph.png", prog='dot')
+    A.draw(snakemake.output["heatmap_plot"]+"-graph.png", prog='circo')
 
    
