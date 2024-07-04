@@ -41,7 +41,6 @@ wrapper <- function() {
 
   write.csv(x = res, file = file.path(snakemake@output[["seqgraph"]]), 
             row.names = FALSE, quote = FALSE)
-
   write(totaltime, file = snakemake@output[["time"]])
 }
 

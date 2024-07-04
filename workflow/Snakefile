@@ -155,7 +155,7 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
                     input:
                         traj=alg_output_seqgraph_path_fine_match(p.name),
                     output:
-                        adjmat=adjmat_estimate_path_mcmc(p.name),  
+                        adjmat=adjmat_estimate_path_mcmc(p.name)
                     params:
                         graph_type="chordal", # not used
                         estimator="{mcmc_estimator}",

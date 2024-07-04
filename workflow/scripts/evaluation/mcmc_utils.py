@@ -60,12 +60,13 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
         totaltime = math.ceil(full_time * (1.0- burnin_frac))
         
     full_its = df["index"].iloc[-1]        
-    totalits = int(full_its * (1.0 - burnin_frac))
+    totalits = int(full_its * (1.0 - burnin_frac)) 
+    # BUG: as we dont know what te last one is. Can we get it from somewhere?
     
     burnin_ind = int(full_its * burnin_frac)
 
     # Bug some error here in mcmc_plots
-    
+    weight_sum = 0 
     for index, row in df.iterrows():
         
         if row["index"] == 0:
@@ -80,26 +81,30 @@ def estimate_heatmap(df, burnin_frac, edgesymb):
             if "time" in df.columns:
                 cur_index = df["time"].iloc[index]
                 prev_index = df["time"].iloc[index-1]
-            else:
+            else:            
                 cur_index = df["index"].iloc[index]
                 prev_index = df["index"].iloc[index-1]
-                
+                if prev_index < burnin_ind:
+                    prev_index = burnin_ind 
+
             weight = cur_index - prev_index            
-
+            
             heatmap += nx.to_numpy_array(g, nodelist=nodeorder) * weight
-
+            weight_sum += weight
         added = edges_str_to_list(row["added"], edgesymb)
         removed = edges_str_to_list(row["removed"], edgesymb)
         g.add_edges_from(added)
         g.remove_edges_from(removed)
+        
 
     if "time" in df.columns:
         heatmap /= totaltime 
-    else:
-        heatmap /= totalits                             
-
+    else:        
+        heatmap /= totalits
+        
     heatmap_df = pd.DataFrame(heatmap)
     heatmap_df.columns = g.nodes()
+    
     return heatmap_df
 
 def get_max_score_graph(df):
