@@ -53,7 +53,7 @@ Algorithms
     structure_learning_algorithms/huge_glasso
     structure_learning_algorithms/huge_mb
     structure_learning_algorithms/huge_tiger
-    structure_learning_algorithms/paralleldg
+    structure_learning_algorithms/parallelDG
     structure_learning_algorithms/pcalg_gies
     structure_learning_algorithms/pcalg_pc
     structure_learning_algorithms/prec_thresh
@@ -262,7 +262,7 @@ To add new modules, see :ref:`new_modules`.
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
-     - :ref:`paralleldg` 
+     - :ref:`parallelDG` 
    * - GIES
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
