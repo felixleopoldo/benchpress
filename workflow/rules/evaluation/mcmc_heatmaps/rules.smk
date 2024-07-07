@@ -55,6 +55,35 @@ rule mcmc_heatmap_plot:
     script:
         "plot_heatmap_from_graphtraj.py"
 
+# TODO:
+rule mcmc_heatmap_csv:
+    input:
+        traj="{output_dir}/adjvecs/"\
+            "adjmat=/{adjmat_string}/"\
+            "parameters=/{param_string}/"\
+            "data=/{data_string}/"\
+            "algorithm=/{alg_string}/"\
+            "seed={seed}/"\
+            "adjvecs.csv"
+    output:
+        heatmap_plot="{output_dir}/"\
+        "evaluation=/" + pattern_strings["mcmc_heatmaps"] + "/" \
+        "adjmat=/{adjmat_string}/"\
+        "parameters=/{param_string}/"\
+        "data=/{data_string}/"\
+        "algorithm=/{alg_string}/"\
+        "seed={seed}/"
+        "heatmap.csv",
+        # the graph is also saved in the script. Didnt manage to put it as an output
+    params:
+        burnin_frac="{burn_in}"
+    container:
+        docker_image("trilearn")
+    script:
+        "plot_heatmap_from_graphtraj.py"
+
+
+
 rule mcmc_heatmaps:
     input:    
         configfilename,

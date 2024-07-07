@@ -78,10 +78,11 @@ else:
         edge[2]["label"] = round(weight, 2)        
         edge[2]["color"] = "black"
         edge[2]["penwidth"] = weight
-    # create the pygraphviz graph
+    
+    # create the pygraphviz graph    
     A = nx.nx_agraph.to_agraph(graph)
-    
-    
-    A.draw(snakemake.output["heatmap_plot"]+"-graph.png", prog='circo')
+    print(A)
+    A.layout("circo")
+    A.draw(snakemake.output["heatmap_plot"]+"-graph.png") # args="mindist=2.0")
 
    
