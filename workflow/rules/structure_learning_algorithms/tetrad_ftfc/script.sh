@@ -6,6 +6,10 @@ CMD="$CMD --json-graph"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 
 CMD="$CMD --algorithm ftfc"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --dataset ${snakemake_input[data]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 

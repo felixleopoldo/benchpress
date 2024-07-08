@@ -8,6 +8,10 @@ CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --algorithm ica-lingam"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --dataset ${snakemake_input[data]}"
 
 # Run the command

@@ -68,6 +68,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "additionalProperties": false,
@@ -93,7 +97,8 @@
                 "k": 1,
                 "prior": "uniform",
                 "beta": 1,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "mmhc-bge-zf",
@@ -112,7 +117,8 @@
                 "k": 1,
                 "prior": "uniform",
                 "beta": null,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

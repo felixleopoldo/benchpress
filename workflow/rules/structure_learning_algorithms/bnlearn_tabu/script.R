@@ -3,6 +3,13 @@ library(bnlearn)
 source("resources/code_for_binary_simulations/make_var_names.R")
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
+filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
+
+edgeConstraints <- read.csv(filename_edge_constraints)
+
+# Extract blacklist and whitelist edges
+blacklist <- subset(edgeConstraints, type == "blacklist", select = c("from", "to"))
+whitelist <- subset(edgeConstraints, type == "whitelist", select = c("from", "to"))
 
 wrapper <- function() {
     seed <- as.integer(snakemake@wildcards[["seed"]])
@@ -24,6 +31,8 @@ wrapper <- function() {
         iss = as.numeric(snakemake@wildcards[["iss"]]),
         iss.mu = as.numeric(snakemake@wildcards[["issmu"]]),
         iss.w = iss.w,
+        blacklist = blacklist,
+        whitelist = whitelist,
         l = as.numeric(snakemake@wildcards[["l"]]),
         k = as.numeric(snakemake@wildcards[["k"]]),
         prior = snakemake@wildcards[["prior"]],

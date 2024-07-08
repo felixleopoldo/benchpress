@@ -16,6 +16,10 @@ else
 fi
 
 CMD="$CMD --algorithm fges"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
