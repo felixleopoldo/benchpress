@@ -32,6 +32,10 @@
             },
             "datatype": {
                 "type": "string"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "required": [
@@ -49,7 +53,8 @@
                 "score": "sem-bic-score",
                 "semBicStructurePrior": 1,
                 "datatype": "continuous",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

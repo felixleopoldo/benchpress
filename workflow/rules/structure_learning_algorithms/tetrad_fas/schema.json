@@ -29,6 +29,10 @@
             },
             "datatype": {
                 "type": "string"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "required": [
@@ -42,7 +46,8 @@
                 "id": "fas-fisher-z",
                 "test": "fisher-z-test",
                 "datatype": "continuous",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

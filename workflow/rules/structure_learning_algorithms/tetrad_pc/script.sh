@@ -16,6 +16,9 @@ fi
 
 CMD="$CMD --algorithm pc"
 
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 
 if [ ${snakemake_wildcards[test]} = "fisher-z-test" ]; then
