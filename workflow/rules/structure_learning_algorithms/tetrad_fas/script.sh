@@ -2,6 +2,10 @@
 # Build command string 
 CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --algorithm fas"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --test ${snakemake_wildcards[test]}"

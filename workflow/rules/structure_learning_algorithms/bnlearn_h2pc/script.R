@@ -73,7 +73,9 @@ wrapper <- function() {
             ),
             test = snakemake@wildcards[["test"]]
         ),
-        maximize.args = args
+        maximize.args = args,
+        blacklist = blacklist,
+        whitelist = whitelist
     )
     totaltime <- proc.time()[1] - start
 

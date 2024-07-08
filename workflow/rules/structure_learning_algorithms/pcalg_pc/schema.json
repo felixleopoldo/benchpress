@@ -62,6 +62,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "additionalProperties": false,
@@ -89,7 +93,8 @@
                 "numCores": 1,
                 "verbose": false,
                 "indepTest": "gaussCItest",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "pc-binCItest",
@@ -108,7 +113,8 @@
                 "numCores": 1,
                 "verbose": false,
                 "indepTest": "binCItest",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

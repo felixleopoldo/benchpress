@@ -16,6 +16,10 @@ else
 fi
 
 CMD="$CMD --algorithm grasp"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --default"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 

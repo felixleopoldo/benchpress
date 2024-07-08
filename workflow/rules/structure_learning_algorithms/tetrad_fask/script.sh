@@ -6,6 +6,10 @@ CMD="$CMD --delimiter comma"
 CMD="$CMD --json-graph"
 
 CMD="$CMD --algorithm fask"
+
+CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+cat ${snakemake_input[edgeConstraints_formatted]}
+
 CMD="$CMD --data-type continuous"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 CMD="$CMD --score ${snakemake_wildcards[score]}"

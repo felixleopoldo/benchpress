@@ -36,8 +36,9 @@ wrapper <- function() {
     max.sx <- as.integer(snakemake@wildcards[["maxsx"]])
   }
 
+  print("Running IAMB")
   start <- proc.time()[1]
-  output <- gs(data,
+  output <- iamb(data,
     alpha = as.numeric(snakemake@wildcards[["alpha"]]),
     test = snakemake@wildcards[["test"]],
     B = B,
@@ -73,7 +74,8 @@ if (snakemake@wildcards[["timeout"]] == "None") {
       )
     },
     TimeoutException = function(ex) {
-      message(paste("Timeout after ", snakemake@wildcards[["timeout"]],
+      message(paste("Timeout after ",
+        snakemake@wildcards[["timeout"]],
         " seconds. Writing empty graph and time files.",
         sep = ""
       ))

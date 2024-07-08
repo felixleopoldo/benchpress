@@ -176,3 +176,15 @@ for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
 
     elif (p / "rule.smk").is_file():
         include: Path("rules/evaluation/", p.name, "rule.smk")
+
+rule convert_edge_constraints:
+    input:
+        edgeConstraints="resources/extra_args/{edgeConstraints}"
+    output:
+        edgeConstraints_in_format="resources/constraints/{edgeConstraints}-{package}"
+    wildcard_constraints:
+        edgeConstraints=".*\.json"
+    params:
+        package = "{package}"
+    script:
+        "scripts/utils/convert_edge_constraints_all.R"

@@ -56,6 +56,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "additionalProperties": false,
@@ -81,7 +85,8 @@
                 "maxsx": null,
                 "debug": false,
                 "undirected": false,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "iamb-mi",
@@ -94,7 +99,8 @@
                 "maxsx": null,
                 "debug": false,
                 "undirected": false,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

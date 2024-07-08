@@ -31,6 +31,10 @@
             },
             "semBicStructurePrior": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
             }
         },
         "additionalProperties": false,
@@ -57,7 +61,8 @@
                     1,
                     1.5
                 ],
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }
