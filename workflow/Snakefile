@@ -183,7 +183,7 @@ rule convert_edge_constraints:
     output:
         edgeConstraints_in_format="resources/constraints/{edgeConstraints}-{package}"
     wildcard_constraints:
-        edgeConstraints=".*\.json"
+        edgeConstraints=r".*\.json"
     params:
         package = "{package}"
     script:

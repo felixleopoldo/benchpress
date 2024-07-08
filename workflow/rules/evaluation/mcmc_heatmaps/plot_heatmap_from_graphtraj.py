@@ -81,7 +81,7 @@ else:
     
     # create the pygraphviz graph    
     A = nx.nx_agraph.to_agraph(graph)
-    print(A)
+
     A.layout("circo")
     A.draw(snakemake.output["heatmap_plot"]+"-graph.png") # args="mindist=2.0")
 

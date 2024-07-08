@@ -43,13 +43,22 @@ getPattern <- function(amat) {
   t(tmp)
 }
 
+# Check if filename is an empty file
+is_empty <- file.info(snakemake@input[["filename"]])$size == 0
+
+orig_adjmat <- NULL
+
+if(is_empty){
+  print("The input file is empty so writing an empty file. This could be because the algorithm was timed out.")
+  file.create(snakemake@output[["filename"]])
+  quit()
+}
+
 # Read in the graph
 orig_df <- read.csv(snakemake@input[["filename"]], check.names = FALSE)
-
 orig_adjmat <- as.matrix(orig_df)
 colnames(orig_adjmat) <- names(orig_df)
-
-
+    
 # Check the graph type from output keyword
 if (snakemake@params[["output_graph_type"]] == "cpdag"){
  
@@ -86,18 +95,11 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
         colnames(pattern) <- names(orig_df)
         write.csv(pattern, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
     } else {
-      file.create(snakemake@output[["filename"]])
+        file.create(snakemake@output[["filename"]])
     }
 
 } else if (snakemake@params[["output_graph_type"]] == "skeleton"){
     skeleton <- orig_adjmat + t(orig_adjmat)
-
     colnames(skeleton) <- names(orig_df)
     write.csv(skeleton, file = snakemake@output[["filename"]], row.names = FALSE, quote = FALSE)
-
-    
-} else {
-
-    #print("Invalid output graph type. Writing empty file.")
-    file.create(snakemake@output[["filename"]])
-}
+} 

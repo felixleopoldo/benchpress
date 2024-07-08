@@ -64,7 +64,7 @@ for algname, objlist in config["resources"]["structure_learning_algorithms"].ite
 
 # First generate path strings for those without input graphs.
 # Then we can use them as input algs. This also means that an input algorithm
-# cant take another input algorithm as input, for now.
+# can't take another input algorithm as input, for now.
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if (alg not in has_input_algs):# and (alg not in mcmc_modules):  # not the mcmc_modules yet
@@ -75,7 +75,7 @@ for alg in config["resources"]["structure_learning_algorithms"]:
 
             json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
                                         for val in config["resources"]["structure_learning_algorithms"][alg]})
-        else:        
+        else: 
             json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                                 for val in config["resources"]["structure_learning_algorithms"][alg]})
 
