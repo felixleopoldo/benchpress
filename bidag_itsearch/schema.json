@@ -1,0 +1,146 @@
+{
+    "description": "Iterative +1 search objects",
+    "title": "bidag_itsearch",
+    "type": "array",
+    "items": {
+        "title": "bidag_itsearch item",
+        "description": "Iterative search +1 algorithm instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "estimate": {
+                "type": "string",
+                "enum": [
+                    "map",
+                    "endspace"
+                ]
+            },
+            "MAP": {
+                "type": "boolean"
+            },
+            "plus1it": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+            },
+            "posterior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
+            },
+            "softlimit": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "hardlimit": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "alpha": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "gamma": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "cpdag": {
+                "type": "boolean"
+            },
+            "mergetype": {
+                "type": "string",
+                "enum": [
+                    "skeleton"
+                ]
+            },
+            "scoretype": {
+                "type": "string"
+            },
+            "chi": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgepf": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "am": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "aw": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing background knowledge"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "MAP",
+            "plus1it",
+            "posterior",
+            "scoretype",
+            "chi",
+            "edgepf",
+            "am",
+            "aw",
+            "softlimit",
+            "hardlimit",
+            "alpha",
+            "gamma",
+            "cpdag",
+            "mergetype",
+            "estimate",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "itsearch_map-bge",
+                "estimate": "map",
+                "MAP": true,
+                "plus1it": null,
+                "posterior": null,
+                "scoretype": "bge",
+                "chi": null,
+                "edgepf": null,
+                "am": [
+                    0.000248,
+                    0.0223,
+                    0.1,
+                    0.448,
+                    0.739
+                ],
+                "aw": null,
+                "softlimit": 9,
+                "hardlimit": 15,
+                "alpha": 0.05,
+                "gamma": 1,
+                "cpdag": false,
+                "mergetype": "skeleton",
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "itsearch_map-bde",
+                "estimate": "map",
+                "MAP": true,
+                "plus1it": null,
+                "posterior": null,
+                "scoretype": "bde",
+                "chi": [
+                    0.01,
+                    0.1,
+                    1
+                ],
+                "edgepf": 2,
+                "am": null,
+                "aw": null,
+                "softlimit": 9,
+                "hardlimit": 12,
+                "alpha": 0.05,
+                "gamma": 1,
+                "cpdag": false,
+                "mergetype": "skeleton",
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            }
+        ]
+    }
+}
