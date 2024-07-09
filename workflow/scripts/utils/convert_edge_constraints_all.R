@@ -101,59 +101,60 @@ if (package == "pcalg") {
 
   write.csv(combined_data, file = filename_output, row.names = FALSE, quote = FALSE)
 } else if (package == "tetrad") # tetrad
-  {
-    knowledge <- "/knowledge\n\naddtemporal\n"
+{
+  knowledge <- "/knowledge\n\naddtemporal\n"
 
-    forbid_within_tiers <- if (!is.null(data$tier_settings)) data$tier_settings$forbid_within_tiers else FALSE
-    can_only_cause_next_tier <- if (!is.null(data$tier_settings)) data$tier_settings$can_only_cause_next_tier else FALSE
+  forbid_within_tiers <- if (!is.null(data$tier_settings)) data$tier_settings$forbid_within_tiers else FALSE
+  can_only_cause_next_tier <- if (!is.null(data$tier_settings)) data$tier_settings$can_only_cause_next_tier else FALSE
 
-    if (!is.null(data$tiers)) {
-      for (tier in 1:length(data$tiers)) {
-        tier_num <- tier
-        tier_mark <- ifelse(can_only_cause_next_tier, ifelse(forbid_within_tiers, "*", ""), "")
-        knowledge <- paste(knowledge, tier_num, tier_mark, " ", paste(data$tiers[[tier]], collapse = " "), "\n", sep = "")
-      }
+  if (!is.null(data$tiers)) {
+    for (tier in 1:length(data$tiers)) {
+      tier_num <- tier
+      tier_mark <- ifelse(can_only_cause_next_tier, ifelse(forbid_within_tiers, "*", ""), "")
+      tier_nodes <- paste0("\"", paste(data$tiers[[tier]], collapse = "\" \""), "\"")
+      knowledge <- paste(knowledge, tier_num, tier_mark, " ", tier_nodes, "\n", sep = "")
     }
+  }
 
-    knowledge <- paste(knowledge, "\nforbiddirect\n", sep = "")
-    if (!is.null(data$forbidden_groups)) {
-      for (group in data$forbidden_groups) {
-        causes <- group$cause
-        effects <- group$effect
-        for (cause in causes) {
-          for (effect in effects) {
-            knowledge <- paste(knowledge, paste(cause, effect, sep = " "), "\n", sep = "")
-          }
+  knowledge <- paste(knowledge, "\nforbiddirect\n", sep = "")
+  if (!is.null(data$forbidden_groups)) {
+    for (group in data$forbidden_groups) {
+      causes <- group$cause
+      effects <- group$effect
+      for (cause in causes) {
+        for (effect in effects) {
+          knowledge <- paste(knowledge, paste0("\"", cause, "\" \"", effect, "\""), "\n", sep = "")
         }
       }
     }
+  }
 
-    if (nrow(forbidden_edges) > 0) {
-      for (edge in data$forbidden_edges) {
-        knowledge <- paste(knowledge, paste(edge[1], edge[2], sep = " "), "\n", sep = "")
-      }
+  if (nrow(forbidden_edges) > 0) {
+    for (edge in data$forbidden_edges) {
+      knowledge <- paste(knowledge, paste0("\"", edge[1], "\" \"", edge[2], "\""), "\n", sep = "")
     }
+  }
 
-    knowledge <- paste(knowledge, "\nrequiredirect\n", sep = "")
-    if (!is.null(data$required_groups)) {
-      for (group in data$required_groups) {
-        causes <- group$cause
-        effects <- group$effect
-        for (cause in causes) {
-          for (effect in effects) {
-            knowledge <- paste(knowledge, paste(cause, effect, sep = " "), "\n", sep = "")
-          }
+  knowledge <- paste(knowledge, "\nrequiredirect\n", sep = "")
+  if (!is.null(data$required_groups)) {
+    for (group in data$required_groups) {
+      causes <- group$cause
+      effects <- group$effect
+      for (cause in causes) {
+        for (effect in effects) {
+          knowledge <- paste(knowledge, paste0("\"", cause, "\" \"", effect, "\""), "\n", sep = "")
         }
       }
     }
+  }
 
-    if (nrow(required_edges) > 0) {
-      for (edge in data$required_edges) {
-        knowledge <- paste(knowledge, paste(edge[1], edge[2], sep = " "), "\n", sep = "")
-      }
+  if (nrow(required_edges) > 0) {
+    for (edge in data$required_edges) {
+      knowledge <- paste(knowledge, paste0("\"", edge[1], "\" \"", edge[2], "\""), "\n", sep = "")
     }
+  }
 
-    write(knowledge, file = filename_output)
+  write(knowledge, file = filename_output)
   } else if (package == "gobnilp") # gobnilp
   {
     knowledge <- c()
@@ -253,4 +254,22 @@ if (package == "pcalg") {
     }
 
     comment_blank_lines(filename_output)
+  } else if (package == "bidag") #bidag
+  {
+  forbidden_edges_bidag <- forbidden_edges
+  
+  if (!is.null(data$forbidden_groups)) {
+    for (group in data$forbidden_groups) {
+      for (cause in group$cause) {
+        for (effect in group$effect) {
+          forbidden_edges_bidag <- rbind(forbidden_edges_bidag, data.frame(from = cause, to = effect))
+        }
+      }
+    }
   }
+ 
+  forbidden_edges_bidag <- unique(forbidden_edges_bidag)
+
+  write.csv(forbidden_edges_bidag, file = filename_output, row.names = FALSE, quote = FALSE)
+}
+
