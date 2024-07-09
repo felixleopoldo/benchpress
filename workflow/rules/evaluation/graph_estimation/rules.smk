@@ -162,14 +162,20 @@ for feature, feature_dict in features.items():
                     parameters_strings = gen_parameter_string_from_conf(sim_setup["parameters_id"], seed)
                     data_strings = gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False)
                     
+
                     if adjmat_strings is None:
                         adjmat_strings = [None]
+                    elif isinstance(adjmat_strings, str):
+                        adjmat_strings = [adjmat_strings]
                     if parameters_strings is None:
                         parameters_strings = [None]
+                    elif isinstance(parameters_strings, str):
+                        parameters_strings = [parameters_strings]
                     if data_strings is None:
                         data_strings = [None]
                     elif isinstance(data_strings, str):
                         data_strings = [data_strings]
+
                     # sort them
                     adjmat_strings = sorted(adjmat_strings)
                     parameters_strings = sorted(parameters_strings)
@@ -181,7 +187,7 @@ for feature, feature_dict in features.items():
 
                                 rule:
                                     name: 
-                                        "results/output/graph_estimation/dataset_"+str(data_index)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
+                                        "results/output/graph_estimation/dataset_"+str(data_index+1)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
                                     input:
                                         conf=configfilename,
                                         graphs=eval_module_conf_to_feature_files_data(filename=feature_dict["filename"],
@@ -197,11 +203,11 @@ for feature, feature_dict in features.items():
                                                                                         alg=alg)
                                                                                         
                                     output:
-                                        touch("results/output/graph_estimation/dataset_"+str(data_index)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                                        touch("results/output/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
                                         
                                     params:
                                         graph_type=graph_type,
-                                        data_index=str(data_index),
+                                        data_index=str(data_index+1),
                                         feature=feature,
                                         ext=feature_dict["ext"],
                                         alg=alg

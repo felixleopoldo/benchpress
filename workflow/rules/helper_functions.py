@@ -87,7 +87,7 @@ def get_active_rules(wildcards):
                 for data_index in range(n_comb):                                                        
                     for alg in active_algorithms("graph_estimation"):
                         for graph_type in graph_types:                        
-                            rules.append("results/output/graph_estimation/dataset_"+str(data_index)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                            rules.append("results/output/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
     
     # mcmc_traj_plots
     if "mcmc_traj_plots" in evaluation and len(evaluation["mcmc_traj_plots"]) > 0:
