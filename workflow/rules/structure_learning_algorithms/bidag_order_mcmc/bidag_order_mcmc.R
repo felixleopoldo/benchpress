@@ -3,9 +3,12 @@ source("workflow/scripts/utils/helpers.R")
 
 wrapper <- function() {
   data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
+  filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
 
+  print("Reading startspace")
+  print(snakemake@input[["input_algorithm"]])
   startspace <- read.csv(snakemake@input[["input_algorithm"]])
-
+  print("Reading startspace done")
   rownames(startspace) <- seq(dim(data)[2])
   colnames(startspace) <- seq(dim(data)[2])
 
@@ -18,12 +21,24 @@ wrapper <- function() {
   start <- proc.time()[1]
   set.seed(convert_or_null(wc[["mcmc_seed"]], as.integer))
 
+  edgeConstraints <- read.csv(filename_edge_constraints)
+  p <- ncol(data)
+  node_names <- colnames(data)
+  blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+  for (i in 1:nrow(edgeConstraints)) {
+      from <- as.character(edgeConstraints$from[i])
+      to <- as.character(edgeConstraints$to[i])
+      blacklist[from, to] <- 1
+    } 
+
+
   order_mcmc_res <- orderMCMC(myscore,
     startspace = startspace,
     plus1 = as.logical(wc[["plus1"]]),
     MAP = as.logical(wc[["MAP"]]),
     chainout = TRUE,
     scoreout = TRUE,
+    blacklist = blacklist,
     alpha = convert_or_null(wc[["alpha"]], as.numeric),
     iterations = convert_or_null(wc[["iterations"]], as.integer),
     stepsave = convert_or_null(wc[["stepsave"]], as.integer),
@@ -41,6 +56,7 @@ wrapper <- function() {
 
   write.csv(x = res, file = file.path(snakemake@output[["seqgraph"]]), 
             row.names = FALSE, quote = FALSE)
+
   write(totaltime, file = snakemake@output[["time"]])
 }
 

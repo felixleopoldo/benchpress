@@ -2,6 +2,7 @@ library(BiDAG)
 source("workflow/scripts/utils/helpers.R")
 
 data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
+filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
 
 # This is a wrapper to pass into add_timeout.
 wrapper <- function() {
@@ -15,6 +16,16 @@ wrapper <- function() {
                              aw = wc[["aw"]], am = wc[["am"]], 
                              chi = wc[["chi"]], edgepf = wc[["edgepf"]])
 
+  edgeConstraints <- read.csv(filename_edge_constraints)
+  p <- ncol(data)
+  node_names <- colnames(data)
+  blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+  for (i in 1:nrow(edgeConstraints)) {
+      from <- as.character(edgeConstraints$from[i])
+      to <- as.character(edgeConstraints$to[i])
+      blacklist[from, to] <- 1
+    }
+
   itsearch_res <- iterativeMCMC(
     myscore,
     chainout = FALSE,
@@ -25,6 +36,7 @@ wrapper <- function() {
     MAP = as.logical(wc[["MAP"]]),
     hardlimit = as.integer(wc[["hardlimit"]]),
     scoreout = TRUE,
+    blacklist = blacklist,
     alpha = as.numeric(wc[["alpha"]]),
     gamma = as.numeric(wc[["gamma"]]),
     cpdag = as.logical(wc[["cpdag"]]),
