@@ -13,6 +13,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "required": [
@@ -25,7 +29,8 @@
                 "maxDegree": null,
                 "iterate": true,
                 "verbose": false,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     },
