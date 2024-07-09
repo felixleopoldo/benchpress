@@ -49,7 +49,7 @@
             },
             "edgeConstraints": {
                 "type": "string",
-                "description": "Name of the JSON file containing fixedGaps and fixedEdges"
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
