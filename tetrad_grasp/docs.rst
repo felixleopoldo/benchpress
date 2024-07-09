@@ -1,1 +1,0 @@
-Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
