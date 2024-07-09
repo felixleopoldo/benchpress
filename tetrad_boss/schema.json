@@ -1,0 +1,100 @@
+{
+    "title": "tetrad_boss",
+    "description": "BOSS objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_boss item",
+        "description": "BOSS instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "score": {
+                "type": "string",
+                "enum": [
+                    "sem-bic-score",
+                    "bdeu-score"
+                ]
+            },
+            "useBes": {
+                "description": "True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed.",
+                "type": "boolean"
+            },
+            "allowInternalRandomess": {
+                "description": " If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic.",
+                "type": "boolean"
+            },
+            "datatype": {
+                "type": "string",
+                "enum": [
+                    "continuous",
+                    "discrete"
+                ]
+            },
+            "samplePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "penaltyDiscount": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "semBicStructurePrior": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing background knowledge"
+            }
+        },
+        "additionalProperties": true,
+        "required": [
+            "id",
+            "useBes",
+            "allowInternalRandomess",
+            "score",
+            "datatype",
+            "samplePrior",
+            "semBicStructurePrior",
+            "penaltyDiscount",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "boss-bic",
+                "score": "sem-bic-score",
+                "datatype": "continuous",
+                "samplePrior": null,
+                "useBes": true,
+                "allowInternalRandomess": false,
+                "semBicStructurePrior": 1,
+                "penaltyDiscount": [
+                    0.8,
+                    1,
+                    1.5
+                ],
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "boss-bdeu",
+                "score": "bdeu-score",
+                "datatype": "discrete",
+                "samplePrior": [
+                    1,
+                    10,
+                    20
+                ],
+                "useBes": true,
+                "allowInternalRandomess": false,
+                "semBicStructurePrior": null,
+                "penaltyDiscount": null,
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            }
+        ]
+    }
+}
