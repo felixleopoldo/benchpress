@@ -86,6 +86,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": "string",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -126,7 +130,8 @@
                 "mcmc_seed": 1,
                 "threshold": 0.5,
                 "mcmc_estimator": "threshold",
-                "burnin_frac": 0.5
+                "burnin_frac": 0.5,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "partition_itmap-bde",
@@ -149,7 +154,8 @@
                 "mcmc_seed": 1,
                 "threshold": 0.5,
                 "mcmc_estimator": "threshold",
-                "burnin_frac": 0.5
+                "burnin_frac": 0.5,
+                "edgeConstraints": "edgeConstraints.json"
             }            
         ]
     }

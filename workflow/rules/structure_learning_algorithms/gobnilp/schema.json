@@ -54,7 +54,7 @@
             },
             "edgeConstraints": {
                 "type": "string",
-                "description": "Name of the JSON file containing prior knowledge - edge constraints"
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
