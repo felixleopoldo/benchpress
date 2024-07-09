@@ -1,0 +1,22 @@
+{
+    "title": "H2PC",
+    "version": "4.8.3",
+    "package": {
+        "title": "bnlearn",
+        "url": "https://www.bnlearn.com/"
+    },
+    "docs_url": "https://www.bnlearn.com/documentation/man/constraint.html",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "R"
+}
