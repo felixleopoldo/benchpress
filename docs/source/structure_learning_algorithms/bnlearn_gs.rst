@@ -38,6 +38,8 @@ method which estimates the Markov blanket of a node in a two-stage forward-backw
 dure using conditional independence tests. The Markov blankets are used to first estimate an
 undirected graph and then estimate a DAG in a four-step procedure.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -60,7 +62,8 @@ undirected graph and then estimate a DAG in a four-step procedure.
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "gs-zf",
@@ -73,7 +76,8 @@ undirected graph and then estimate a DAG in a four-step procedure.
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

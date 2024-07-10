@@ -33,6 +33,8 @@ tetrad_grasp
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -54,7 +56,8 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "grasp-bdeu",
@@ -68,7 +71,8 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
         ],
         "semBicStructurePrior": null,
         "penaltyDiscount": null,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

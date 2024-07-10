@@ -31,6 +31,8 @@ bnlearn_iamb
 
 .. rubric:: Description
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -51,7 +53,8 @@ bnlearn_iamb
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "iamb-mi",
@@ -64,7 +67,8 @@ bnlearn_iamb
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

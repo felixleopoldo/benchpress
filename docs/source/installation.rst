@@ -37,7 +37,7 @@ Here we describe two ways to get these in place.
 
 ..  on your server or local machine.
 
-Linux/macOS/Win (Docker)
+Linux/macOS/Windows (Docker)
 --------------------------------
 
 For this alternative, you only need to install `Docker <https://www.docker.com/>`_, following the instructions for your specific system.

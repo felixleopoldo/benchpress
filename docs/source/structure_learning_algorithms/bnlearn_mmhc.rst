@@ -36,6 +36,8 @@ DAG using an algorithm called Max-Min Parents and Children and then performs a g
 hill-climbing search to orient the edges with respect to a Bayesian score. It is a popular approach used as standard benchmark and also well suited for high-
 dimensional domains.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -61,7 +63,8 @@ dimensional domains.
         "k": 1,
         "prior": "uniform",
         "beta": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "mmhc-bge-zf",
@@ -80,7 +83,8 @@ dimensional domains.
         "k": 1,
         "prior": "uniform",
         "beta": null,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

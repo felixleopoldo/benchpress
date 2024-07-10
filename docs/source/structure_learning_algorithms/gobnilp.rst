@@ -40,8 +40,7 @@ the first phase and the optimal sets are determined in a second phase.
   This module only works on the AMD64 architecture.
 
 .. rubric:: Some fields described 
-* ``constraints`` File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs). 
-* ``extra_args`` File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs). 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 * ``gap_limit`` Gap limit. 
 * ``time_limit`` Time limit in seconds for the solver (not including the time to build the score tables). 
 * ``timeout`` Use the best DAG found so far after this number of seconds. 
@@ -58,8 +57,6 @@ the first phase and the optimal sets are determined in a second phase.
         "id": "gobnilp-bge",
         "continuous": true,
         "score_type": "BGe",
-        "extra_args": null,
-        "constraints": null,
         "plot": false,
         "palim": 3,
         "alpha_mu": [
@@ -72,14 +69,13 @@ the first phase and the optimal sets are determined in a second phase.
         "time_limit": null,
         "gap_limit": null,
         "prune": true,
-        "timeout": 800
+        "timeout": 800,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "gobnilp-bde",
         "continuous": false,
         "score_type": "BDeu",
-        "extra_args": null,
-        "constraints": null,
         "plot": false,
         "palim": 4,
         "alpha_mu": null,
@@ -92,7 +88,8 @@ the first phase and the optimal sets are determined in a second phase.
         "time_limit": null,
         "gap_limit": null,
         "prune": true,
-        "timeout": 600
+        "timeout": 600,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

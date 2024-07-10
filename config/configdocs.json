@@ -17,7 +17,7 @@
         "scatter": true,
         "path": true,
         "text": false,
-        "ids": ["fges-sem-bic", "itsearch-bge", "pc", "tabu-bge"]
+        "ids": ["fges-sem-bic", "itsearch-bge"]
       },
       "graph_true_plots": false,
       "graph_true_stats": true,
@@ -193,63 +193,8 @@
           "mcmc_seed": [1, 2, 3],
           "threshold": 0.5,
           "mcmc_estimator": "threshold",
-          "burnin_frac": 0.5
-        }
-      ],
-      "gt13_multipair": [
-        {
-          "id": "gt13",
-          "n_samples": 1000,
-          "datatype": "continuous",
-          "randomits": 100,
-          "prior": "bc",
-          "ascore": 0.1,
-          "bscore": 0.001,
-          "clq": null,
-          "sep": null,
-          "penalty": null,
-          "mcmc_seed": 1,
-          "mcmc_estimator": "threshold",
-          "threshold": 0.5,
           "burnin_frac": 0.5,
-          "timeout": null
-        }
-      ],
-      "gg99_singlepair": [
-        {
-          "id": "gg99",
-          "n_samples": 1000,
-          "datatype": "continuous",
-          "randomits": 100,
-          "prior": "bc",
-          "ascore": 0.9,
-          "bscore": 0.001,
-          "clq": 2,
-          "sep": 4,
-          "penalty": 1.5,
-          "mcmc_seed": 1,
-          "mcmc_estimator": "threshold",
-          "threshold": 0.5,
-          "burnin_frac": 0.5,
-          "timeout": null
-        }
-      ],
-      "parallelDG": [
-        {
-          "id": "pdg",
-          "M": 100000,
-          "R": 100,
-          "datatype": "continuous",
-          "mcmc_seed": 1,
-          "graph_prior": "uniform",
-          "graph_prior_param": 1.0,
-          "graph_prior_param1": 3.0,
-          "pseudo_obs": 2,
-          "delta": 5.0,
-          "mcmc_estimator": "threshold",
-          "threshold": 0.5,
-          "burnin_frac": 0.5,
-          "timeout": null
+          "edgeConstraints": "none.json"
         }
       ],
       "gobnilp": [
@@ -257,8 +202,6 @@
           "id": "gobnilp-bge",
           "continuous": true,
           "score_type": "BGe",
-          "extra_args": null,
-          "constraints": null,
           "time_limit": null,
           "gap_limit": null,
           "plot": false,
@@ -288,7 +231,8 @@
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": "none.json"
         },
         {
           "id": "itsample-bge_am01_endspace",
@@ -307,7 +251,8 @@
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": "none.json"
         }
       ],
       "tetrad_fges": [
@@ -319,7 +264,8 @@
           "samplePrior": 1,
           "semBicStructurePrior": 1,
           "penaltyDiscount": [0.75, 0.8, 1, 1.5],
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": "none.json"
         }
       ],
       "pcalg_pc": [
@@ -336,7 +282,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": "none.json"
         }
       ],
       "bnlearn_tabu": [
@@ -350,7 +297,8 @@
           "k": 1,
           "prior": "uniform",
           "beta": 1,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": "none.json"
         }
       ]
     }

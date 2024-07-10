@@ -34,6 +34,8 @@ bnlearn_tabu
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
 beneficial from a global perspective to avoid local maxima.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -57,7 +59,8 @@ beneficial from a global perspective to avoid local maxima.
         "k": 1,
         "prior": "uniform",
         "beta": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "tabu-bge",
@@ -74,7 +77,8 @@ beneficial from a global perspective to avoid local maxima.
         "k": 1,
         "prior": "uniform",
         "beta": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

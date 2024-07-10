@@ -38,6 +38,8 @@ In the referenced paper, we implement Algorithm A, which is described above. Onc
 Our implementation of LiNGAM has one parameter, penalty discount, used for the FGES adjacency search. The method as implemented does not scale much beyond 10 variables, because it is checking every permutation of all of the variables (twice). The implementation of ICA we use is FastIca  :footcite:t:`hyvarinen2002independent`.
 
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -50,7 +52,8 @@ Our implementation of LiNGAM has one parameter, penalty discount, used for the F
       {
         "id": "lingam",
         "datatype": "continuous",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 
