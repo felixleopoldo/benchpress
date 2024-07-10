@@ -36,6 +36,7 @@
             },
             "edgeConstraints": {
                 "type": "string",
+                "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
         },
