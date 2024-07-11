@@ -148,7 +148,7 @@ features = {
 
 # Since we have a lot of different data setups and algs, we need to create a rule for 
 # each combination of them.
-
+bmark_setup_title = config["benchmark_setup"]["title"]
 for feature, feature_dict in features.items():
     for graph_type in graph_types:
         for alg in active_algorithms("graph_estimation"):
@@ -187,7 +187,7 @@ for feature, feature_dict in features.items():
 
                                 rule:
                                     name: 
-                                        "results/output/graph_estimation/dataset_"+str(data_index+1)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
+                                        "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
                                     input:
                                         conf=configfilename,
                                         graphs=eval_module_conf_to_feature_files_data(filename=feature_dict["filename"],
@@ -203,7 +203,7 @@ for feature, feature_dict in features.items():
                                                                                         alg=alg)
                                                                                         
                                     output:
-                                        touch("results/output/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                                        touch("results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
                                         
                                     params:
                                         graph_type=graph_type,
@@ -212,7 +212,7 @@ for feature, feature_dict in features.items():
                                         ext=feature_dict["ext"],
                                         alg=alg
                                     run:                                    
-                                        output_dir = "results/output/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
+                                        output_dir = "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
                                         # clean old file while keeping the directory
                                         # check if the directory exists
                                         if Path(output_dir).exists():

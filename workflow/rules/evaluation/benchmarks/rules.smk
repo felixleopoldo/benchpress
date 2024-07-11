@@ -9,45 +9,53 @@
 
 include: "path_generators.py"
 
+# Iterate over all benchmark setups
+for i, bmark_setup in enumerate(config["benchmark_setup"]):
 
-rule benchmarks_combine_data:
-    input:
-        "workflow/rules/evaluation/benchmarks/combine_ROC_data.R",
-        "workflow/rules/evaluation/benchmarks/run_summarise.R",
-        conf=configfilename,
-        snake="workflow/Snakefile",
-        algs=active_algorithm_files("benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
-    output:
-        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
-        joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    shell:
-        "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+    bmark_setup_title = bmark_setup["title"]
+    print("Benchmark setup: ", bmark_setup_title)
+    output_dir_prefix = "results/output/"+bmark_setup_title+"/benchmarks/"+bmark_setup["evaluation"]["benchmarks"]["filename_prefix"]
 
-rule benchmarks:
-    input:
-        "workflow/rules/evaluation/benchmarks/plot_ROC.R",
-        "workflow/rules/evaluation/benchmarks/run_summarise.R",
-        "workflow/Snakefile",
-        config=configfilename,
-        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
-        raw_bench="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    output:
-        temp(touch("results/output/benchmarks/benchmarks.done")),
-        fpr_tpr_pattern=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_pattern"),
-        FPRp_FNR_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPRp_FNR_skel"),
-        fnr_fprp_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FNR_FPR_skel"),
-        roc_FPRp_TPR_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_skel"),
-        roc_FPR_TPR=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "roc_FPR_TPR"),
-        elapsed_time_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "elapsed_time_joint"),
-        elapsed_log_time_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "elapsed_log_time_joint"),
-        graph_type=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "graph_type"),
-        SHD_cpdag_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "SHD_cpdag_joint"),
-        f1_skel_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "f1_skel_joint"),
-        f1_pattern_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "f1_pattern_joint"),
-        ntests_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ntests_joint")
+    rule:
+        name:
+            "benchmarks_combine_data_"+bmark_setup_title
+        input:
+            "workflow/rules/evaluation/benchmarks/combine_ROC_data.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
+            conf=configfilename,
+            snake="workflow/Snakefile",
+            algs=active_algorithm_files(bmark_setup, eval_method="benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
+        output:
+            csv=output_dir_prefix +"ROC_data.csv",
+            joint=output_dir_prefix +"joint_benchmarks.csv"
+        shell:
+            "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
-    script:
-        "plot_ROC.R"
+    rule benchmarks:
+        input:
+            "workflow/rules/evaluation/benchmarks/plot_ROC.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
+            "workflow/Snakefile",
+            config=configfilename,
+            csv=output_dir_prefix +"ROC_data.csv",
+            raw_bench=output_dir_prefix +"joint_benchmarks.csv"
+        output:
+            temp(touch("results/output/"+bmark_setup_title+"/benchmarks/benchmarks.done")),
+            fpr_tpr_pattern=directory(output_dir_prefix + "FPR_TPR_pattern"),
+            FPRp_FNR_skel=directory(output_dir_prefix + "FPRp_FNR_skel"),
+            fnr_fprp_skel=directory(output_dir_prefix + "FNR_FPR_skel"),
+            roc_FPRp_TPR_skel=directory(output_dir_prefix + "FPR_TPR_skel"),
+            roc_FPR_TPR=directory(output_dir_prefix + "roc_FPR_TPR"),
+            elapsed_time_joint=directory(output_dir_prefix + "elapsed_time_joint"),
+            elapsed_log_time_joint=directory(output_dir_prefix + "elapsed_log_time_joint"),
+            graph_type=directory(output_dir_prefix + "graph_type"),
+            SHD_cpdag_joint=directory(output_dir_prefix + "SHD_cpdag_joint"),
+            f1_skel_joint=directory(output_dir_prefix + "f1_skel_joint"),
+            f1_pattern_joint=directory(output_dir_prefix + "f1_pattern_joint"),
+            ntests_joint=directory(output_dir_prefix + "ntests_joint")
+
+        script:
+            "plot_ROC.R"
 
 
 

@@ -10,12 +10,13 @@ rule plot_pairs:
     script:
         "pairs.R"
 
+bmark_setup_title = config["benchmark_setup"]["title"]
 rule ggally_ggpairs:
     input:
         "workflow/rules/evaluation/ggally_ggpairs/pairs.R",
         pairsplots=pairs() # This will not trigger the rule if these files have already been generated.
     output:
-        temp(touch("results/output/ggally_ggpairs/ggally_ggpairs.done"))
+        temp(touch("results/output/"+bmark_setup_title+"/ggally_ggpairs/ggally_ggpairs.done"))
     run:
         for i,f in enumerate(input.pairsplots):
-            shell("cp "+f+" results/output/ggally_ggpairs/pairs_" +str(i+1) +".png")
+            shell("cp "+f+" results/output/"+bmark_setup_title+"/ggally_ggpairs/pairs_" +str(i+1) +".png")

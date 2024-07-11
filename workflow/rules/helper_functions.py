@@ -15,7 +15,7 @@ def active_algorithm_files(wildcards):
     return alg_filenames
 
 
-def active_algorithms(eval_method="benchmarks"):
+def active_algorithms(bmark_setup, eval_method="benchmarks"):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
 
@@ -30,7 +30,7 @@ def active_algorithms(eval_method="benchmarks"):
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append( alg )
     elif (eval_method == "benchmarks") or (eval_method == "graph_estimation"):
-        benchmarks_alg_ids = config["benchmark_setup"]["evaluation"][eval_method]["ids"]
+        benchmarks_alg_ids = bmark_setup["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():     
             for alg_conf_id in benchmarks_alg_ids:        
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
@@ -54,7 +54,7 @@ def get_active_rules(wildcards):
     """
     rules = []
     evaluation = config["benchmark_setup"]["evaluation"]
-
+    bmark_setup_title = config["benchmark_setup"]["title"]
     # graph_estimation
     if "graph_estimation" in evaluation and evaluation["graph_estimation"]["ids"] != []:
         # Create a done key.done file for each graph_type.
@@ -87,14 +87,14 @@ def get_active_rules(wildcards):
                 for data_index in range(n_comb):                                                        
                     for alg in active_algorithms("graph_estimation"):
                         for graph_type in graph_types:                        
-                            rules.append("results/output/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                            rules.append("results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
     
     # mcmc_traj_plots
     if "mcmc_traj_plots" in evaluation and len(evaluation["mcmc_traj_plots"]) > 0:
         for item in evaluation["mcmc_traj_plots"]:
             # If at least one is active, create a done file.
             if ("active" not in item) or item["active"] == True:
-                rules.append("results/output/mcmc_traj_plots/mcmc_traj_plots.done")
+                rules.append("results/output/"+bmark_setup_title+"/mcmc_traj_plots/mcmc_traj_plots.done")
                 break
 
     # mcmc_heatmaps
@@ -102,7 +102,7 @@ def get_active_rules(wildcards):
         for item in evaluation["mcmc_heatmaps"]:
             # If at least one is active, create a done file.
             if ("active" not in item) or item["active"] == True:
-                rules.append("results/output/mcmc_heatmaps/mcmc_heatmaps.done")
+                rules.append("results/output/"+bmark_setup_title+"/mcmc_heatmaps/mcmc_heatmaps.done")
                 break
             
     # mcmc_autocorr_plots
@@ -110,27 +110,28 @@ def get_active_rules(wildcards):
         for item in evaluation["mcmc_autocorr_plots"]:
             # If at least one is active, create a done file.
             if ("active" not in item) or item["active"] == True:
-                rules.append("results/output/mcmc_autocorr_plots/mcmc_autocorr_plots.done")
+                rules.append("results/output/"+bmark_setup_title+"/mcmc_autocorr_plots/mcmc_autocorr_plots.done")
                 break
     
     # graph_true_plots
     if "graph_true_plots" in evaluation and evaluation["graph_true_plots"] == True:
-        rules.append("results/output/graph_true_plots/graph_true_plots.done")
+        rules.append("results/output/"+bmark_setup_title+"/graph_true_plots/graph_true_plots.done")
         
     if "graph_true_stats" in evaluation and evaluation["graph_true_stats"] == True:
-        rules.append("results/output/graph_true_stats/graph_true_stats.done")
+        rules.append("results/output/"+bmark_setup_title+"/graph_true_stats/graph_true_stats.done")
     
     # graph_plots
     if "graph_plots" in evaluation and len(evaluation["graph_plots"]) > 0:
-        rules.append("results/output/graph_plots/graph_plots.done")
+        rules.append("results/output/"+bmark_setup_title+"/graph_plots/graph_plots.done")
         
     # ggally_ggpairs
     if "ggally_ggpairs" in evaluation and evaluation["ggally_ggpairs"] == True:
-        rules.append("results/output/ggally_ggpairs/ggally_ggpairs.done")
+        rules.append("results/output/"+bmark_setup_title+"/ggally_ggpairs/ggally_ggpairs.done")
         
     # benchmarks
     if "benchmarks" in evaluation and len(evaluation["benchmarks"]["ids"]) > 0:
-        rules.append("results/output/benchmarks/benchmarks.done")
+        rules.append("results/output/"+bmark_setup_title
+                     +"/benchmarks/benchmarks.done")
 
     
     # for key, val in config["benchmark_setup"]["evaluation"].items():

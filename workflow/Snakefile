@@ -29,6 +29,10 @@ configfile: configfilename
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
 
+with open("workflow/schemas/definitions.schema.json") as json_file:
+    def_schema = json.load(json_file)
+
+
 for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
     item = schema["properties"]["resources"]["properties"][
         "structure_learning_algorithms"
@@ -64,15 +68,25 @@ for p in Path("workflow/rules/data/").iterdir():
     item[p.name] = {
         "$ref": "../rules/data/{}/schema.json".format(p.name)
     }
-
+# This is in the definitions file
+# Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["properties"]["benchmark_setup"]["properties"][
-        "evaluation"
-    ]["properties"]
-
+    print(def_schema)
+    item = def_schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
+
+# write the definitions 
+
+# # Generate the evaluation schemas
+# for p in Path("workflow/rules/evaluation/").iterdir():
+#     print(p.name)
+#     item = schema["properties"]["benchmark_setup"][0]["properties"]["evaluation"]["properties"]
+
+#     item[p.name] = {
+#         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
+#     }
 
 # Yes this is a hack to use snakemakes built in validator.
 with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
@@ -168,14 +182,13 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
 # Include the evaluation modules
 
 for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
-    if p.name not in config["benchmark_setup"]["evaluation"]:
-        continue
-    if (p / "rules.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rules.smk")
-
-
-    elif (p / "rule.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rule.smk")
+    for bmark_setup in config["benchmark_setup"]: # Maybe includes same module multiple times
+        if p.name not in bmark_setup["evaluation"]:
+            continue
+        if (p / "rules.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rules.smk")
+        elif (p / "rule.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rule.smk")
 
 rule convert_edge_constraints:
     input:

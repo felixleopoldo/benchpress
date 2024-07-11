@@ -1,48 +1,36 @@
 {
     "definitions": {
-        "notears_parameters_sampling": {
-            "title": "notears_parameters_sampling item",
-            "description": "Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling",
+        "benchmark_setup": {
+            "title": "benchmark_setup",
+            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
+            "type": "object",
             "properties": {
-                "id": {
-                    "title": "ID",
+                "title": {
+                    "title": "title",
+                    "description": "The title of the benchmark setup.",
                     "type": "string"
                 },
-                "edge_coefficient_range_from": {
-                    "$ref": "#/definitions/nonnegnum"
+                "data": {
+                    "title": "data",
+                    "description": "The data setup for the study.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "definitions.schema.json#/definitions/data_setup_dict"
+                    },
+                    "uniqueItems": true
                 },
-                "edge_coefficient_range_to": {
-                    "$ref": "#/definitions/nonnegnum"
-                }
-            }
-        },
-        "notears_dag_sampling": {
-            "title": "notears_dag_sampling item",
-            "description": "Graph sampling method provided by the notears package. \n Documentation: https://github.com/jmoss20/notears",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "num_nodes": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "num_edges": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "mean": {
-                    "title": "Mean",
-                    "type": "number"
-                },
-                "variance": {
-                    "title": "Variance",
-                    "type": "number"
+                "evaluation": {
+                    "title": "evaluation",
+                    "description": "This section contains the available evaluation methods.",
+                    "properties": {
+                    },
+                    "additionalProperties": false
                 }
             },
             "required": [
-                "id",
-                "num_nodes",
-                "num_edges"
+                "title",
+                "data",
+                "evaluation"
             ],
             "additionalProperties": false
         },

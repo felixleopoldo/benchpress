@@ -4,34 +4,11 @@
     "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
     "type": "object",
     "properties": {
-        "benchmark_setup": {
-            "title": "benchmark_setup",
-            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
-            "type": "object",
-            "properties": {
-                "data": {
-                    "title": "data",
-                    "description": "The data setup for the study.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "definitions.schema.json#/definitions/data_setup_dict"
-                    },
-                    "uniqueItems": true
-                },
-                "evaluation": {
-                    "title": "evaluation",
-                    "description": "This section contains the available evaluation methods.",
-                    "properties": {
-                    },
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "data",
-                "evaluation"
-            ],
-            "additionalProperties": false
-        },
+        "benchmark_setup":{
+            "type":"array"
+            
+        }
+        ,
         "resources": {
             "title": "resources",
             "description": "The available modules for generating graphs, parameters, data, and structure learning algorithms.",
