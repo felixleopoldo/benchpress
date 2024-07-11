@@ -24,7 +24,7 @@ for i, bmark_setup in enumerate(config["benchmark_setup"]):
             "workflow/rules/evaluation/benchmarks/run_summarise.R",
             conf=configfilename,
             snake="workflow/Snakefile",
-            algs=active_algorithm_files(bmark_setup, eval_method="benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
+            algs=active_algorithm_files(bmark_setup) # It should maybe be stated there which kind of benchmarks to be considered..
         output:
             csv=output_dir_prefix +"ROC_data.csv",
             joint=output_dir_prefix +"joint_benchmarks.csv"

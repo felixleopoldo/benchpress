@@ -5,11 +5,11 @@ def get_seed_range(seed_range):
         return range(seed_range[0], seed_range[1]+1)
 
 
-def active_algorithm_files(wildcards):
+def active_algorithm_files(bmark_setup):
     with open(configfilename) as json_file:
         conf = json.load(json_file)
 
-    algs = active_algorithms()
+    algs = active_algorithms(bmark_setup)
     alg_filenames = ["results/output/benchmarks/"+conf["benchmark_setup"]
                      ["evaluation"]["benchmarks"]["filename_prefix"] + alg + ".csv" for alg in algs]
     return alg_filenames
