@@ -71,7 +71,6 @@ for p in Path("workflow/rules/data/").iterdir():
 # This is in the definitions file
 # Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    print(def_schema)
     item = def_schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)

@@ -89,12 +89,10 @@ def validate_data_setup(config, data_setup, bmark_setup):
 
 # validate the data_setup
 for bmark_setup in config["benchmark_setup"]:
-    print("Benchmark setup")
-    print(bmark_setup)
+    #print("Benchmark setup")
+    #print(bmark_setup)
     for data_setup in bmark_setup["data"]:
-        
-        print(data_setup)
-        
+        #print(data_setup)        
         validate_data_setup(config, data_setup, bmark_setup)
 
 

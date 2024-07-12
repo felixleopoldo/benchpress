@@ -8,7 +8,8 @@
                 "title": {
                     "title": "title",
                     "description": "The title of the benchmark setup.",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[^\\s]*$"
                 },
                 "data": {
                     "title": "data",

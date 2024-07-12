@@ -12,8 +12,7 @@ include: "path_generators.py"
 # Iterate over all benchmark setups
 for i, bmark_setup in enumerate(config["benchmark_setup"]):
 
-    bmark_setup_title = bmark_setup["title"]
-    print("Benchmark setup: ", bmark_setup_title)
+    bmark_setup_title = bmark_setup["title"]    
     output_dir_prefix = "results/output/"+bmark_setup_title+"/benchmarks/"+bmark_setup["evaluation"]["benchmarks"]["filename_prefix"]
 
     rule:
@@ -28,10 +27,14 @@ for i, bmark_setup in enumerate(config["benchmark_setup"]):
         output:
             csv=output_dir_prefix +"ROC_data.csv",
             joint=output_dir_prefix +"joint_benchmarks.csv"
+        params:
+            bmark_setup=bmark_setup_title
         shell:
-            "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+            "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --bmark_setup {params.bmark_setup} --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
-    rule benchmarks:
+    rule:
+        name:
+            "benchmarks_"+bmark_setup_title
         input:
             "workflow/rules/evaluation/benchmarks/plot_ROC.R",
             "workflow/rules/evaluation/benchmarks/run_summarise.R",
@@ -52,12 +55,12 @@ for i, bmark_setup in enumerate(config["benchmark_setup"]):
             SHD_cpdag_joint=directory(output_dir_prefix + "SHD_cpdag_joint"),
             f1_skel_joint=directory(output_dir_prefix + "f1_skel_joint"),
             f1_pattern_joint=directory(output_dir_prefix + "f1_pattern_joint"),
-            ntests_joint=directory(output_dir_prefix + "ntests_joint")
-
+            ntests_joint=directory(output_dir_prefix + "ntests_joint"),
+            config=output_dir_prefix + configfilename
+        params:
+            bmark_setup=bmark_setup_title
         script:
             "plot_ROC.R"
-
-
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if alg in pattern_strings:
@@ -101,15 +104,18 @@ for alg in config["resources"]["structure_learning_algorithms"]:
                     # Had to use this wrapper script for some reason to get the right parameters.
                     "benchmarks_csv.py" 
 
-        rule:
-            name:
-                alg+"_joined_benchmarks"
-            input:
-                "workflow/rules/evaluation/benchmarks/run_summarise.R",
-                conf=configfilename,
-                res=join_string_sampled_model(alg) # this is not triggering new run of alg script when altered, Where is it even produced? Should end with results.
-            output:
-                join_summaries_output(alg),
-            script:
-                "../../../scripts/evaluation/join_csv_files.R"
-
+for bmark_setup in config["benchmark_setup"]:
+    bmark_setup_title = bmark_setup["title"]
+    for alg in active_algorithms(bmark_setup):
+        if alg in pattern_strings:
+            rule:
+                name:
+                    alg+"_joined_benchmarks_"+bmark_setup_title
+                input:
+                    "workflow/rules/evaluation/benchmarks/run_summarise.R",
+                    conf=configfilename,
+                    res=join_string_sampled_model(alg, bmark_setup) # this is not triggering new run of alg script when altered, Where is it even produced? Should end with results.
+                output:
+                    join_summaries_output(alg, bmark_setup),
+                script:
+                    "../../../scripts/evaluation/join_csv_files.R"
