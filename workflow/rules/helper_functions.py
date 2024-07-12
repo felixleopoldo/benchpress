@@ -12,17 +12,16 @@ def active_algorithm_files(bmark_setup):
     algs = active_algorithms(bmark_setup)
     alg_filenames = ["results/output/"+bmark_setup["title"]+"/benchmarks/"+bmark_setup
                      ["evaluation"]["benchmarks"]["filename_prefix"] + alg + ".csv" for alg in algs]
+        
     return alg_filenames
 
 
 def active_algorithms(bmark_setup, eval_method="benchmarks"):
-    with open(configfilename) as json_file:
-        conf = json.load(json_file)
 
     algs = []
 
     if (eval_method == "mcmc_traj_plots") or (eval_method == "mcmc_autocorr_plots") or (eval_method == "mcmc_heatmaps"):
-        benchmarks_alg_ids = [benchmarks_dict["id"] for benchmarks_dict in config["benchmark_setup"]
+        benchmarks_alg_ids = [benchmarks_dict["id"] for benchmarks_dict in bmark_setup
                               ["evaluation"][eval_method] if benchmarks_dict["active"] == True]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
             for alg_conf_id in benchmarks_alg_ids:
@@ -38,7 +37,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
 
     else:
         benchmarks_alg_ids = [
-            benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"][eval_method]]
+            benchmarks_dict for benchmarks_dict in bmark_setup["evaluation"][eval_method]]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
             for alg_conf_id in benchmarks_alg_ids:
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
@@ -56,6 +55,8 @@ def get_active_rules(wildcards):
     for bmark_setup in config["benchmark_setup"]:
         evaluation = bmark_setup["evaluation"]
         bmark_setup_title = bmark_setup["title"]
+        print("bmark_setup_title: ", bmark_setup_title)
+        print("evaluation: ", evaluation)
         # graph_estimation
         if "graph_estimation" in evaluation and evaluation["graph_estimation"]["ids"] != []:
             # Create a done key.done file for each graph_type.

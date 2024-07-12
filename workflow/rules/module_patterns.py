@@ -57,6 +57,16 @@ for mcmc_eval in ["mcmc_traj_plots", "mcmc_autocorr_plots", "mcmc_heatmaps"]:
     for bmark_setup in config["benchmark_setup"]:
         if mcmc_eval in bmark_setup["evaluation"]:
             pattern_strings[mcmc_eval] = mcmc_eval + "/" + dict_to_path(bmark_setup["evaluation"][mcmc_eval])
+            # mcmc_traj_plots is needed for all
+            
+            mcmc_traj_plot_template = [{
+                "id": None,
+                "burn_in": None,
+                "thinning": None,
+                "functional": None
+            }]
+
+            pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(mcmc_traj_plot_template)
 
 # Estimation parameters of mcmc algorithms
 pattern_strings["mcmc_est"] = "mcmc_params/"\
