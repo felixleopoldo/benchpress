@@ -1,68 +1,71 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "data_id": "example1",
-        "graph_id": "AR1-5",
-        "parameters_id": "intra-class",
-        "seed_range": [1, 1]
+  "benchmark_setup": [
+    {
+      "title": "chordal_algorithms",
+      "data": [
+        {
+          "data_id": "example1",
+          "graph_id": "AR1-5",
+          "parameters_id": "intra-class",
+          "seed_range": [1, 1]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "mcmc_chordal/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": ["gg99", "trilearn"]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
+        "graph_plots": ["gg99"],
+        "mcmc_traj_plots": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "thinning": 1000,
+            "functional": ["score", "size"],
+            "active": true
+          },
+          {
+            "id": "trilearn",
+            "burn_in": 0.5,
+            "thinning": 1,
+            "functional": ["score", "size"],
+            "active": true
+          }
+        ],
+        "mcmc_heatmaps": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "active": true
+          },
+          {
+            "id": "trilearn",
+            "burn_in": 0.5,
+            "active": true
+          }
+        ],
+        "mcmc_autocorr_plots": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "thinning": 1000,
+            "lags": 50,
+            "functional": ["score", "size"],
+            "active": true
+          }
+        ]
       }
-    ],
-    "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "mcmc_chordal/",
-        "show_seed": false,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": ["gg99", "trilearn"]
-      },
-      "graph_true_plots": true,
-      "graph_true_stats": false,
-      "ggally_ggpairs": false,
-      "graph_plots": ["gg99"],
-      "mcmc_traj_plots": [
-        {
-          "id": "gg99",
-          "burn_in": 0.5,
-          "thinning": 1000,
-          "functional": ["score", "size"],
-          "active": true
-        },
-        {
-          "id": "trilearn",
-          "burn_in": 0.5,
-          "thinning": 1,
-          "functional": ["score", "size"],
-          "active": true
-        }
-      ],
-      "mcmc_heatmaps": [
-        {
-          "id": "gg99",
-          "burn_in": 0.5,
-          "active": true
-        },
-        {
-          "id": "trilearn",
-          "burn_in": 0.5,
-          "active": true
-        }
-      ],
-      "mcmc_autocorr_plots": [
-        {
-          "id": "gg99",
-          "burn_in": 0.5,
-          "thinning": 1000,
-          "lags": 50,
-          "functional": ["score", "size"],
-          "active": true
-        }
-      ]
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
