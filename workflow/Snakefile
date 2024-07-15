@@ -29,10 +29,6 @@ configfile: configfilename
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
 
-with open("workflow/schemas/definitions.schema.json") as json_file:
-    def_schema = json.load(json_file)
-
-
 for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
     item = schema["properties"]["resources"]["properties"][
         "structure_learning_algorithms"
@@ -68,22 +64,11 @@ for p in Path("workflow/rules/data/").iterdir():
     item[p.name] = {
         "$ref": "../rules/data/{}/schema.json".format(p.name)
     }
-    
-# This is in the definitions file
+
+# Write the definitions
 # Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = def_schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
-    item[p.name] = {
-        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
-    }
-
-# write the definitions 
-
-# Generate the evaluation schemas
-for p in Path("workflow/rules/evaluation/").iterdir():
-    print(p.name)
-    item = schema["properties"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
-
+    item = schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }

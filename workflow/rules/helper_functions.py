@@ -56,8 +56,7 @@ def get_active_rules(wildcards):
     for bmark_setup in config["benchmark_setup"]:
         evaluation = bmark_setup["evaluation"]
         bmark_setup_title = bmark_setup["title"]
-        print("bmark_setup_title: ", bmark_setup_title)
-        print("evaluation: ", evaluation)
+
         # graph_estimation
         if "graph_estimation" in evaluation and evaluation["graph_estimation"]["ids"] != []:
             # Create a done key.done file for each graph_type.

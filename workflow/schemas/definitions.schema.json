@@ -1,40 +1,6 @@
 {
     "definitions": {
-        "benchmark_setup": {
-            "title": "benchmark_setup",
-            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
-            "type": "object",
-            "properties": {
-                "title": {
-                    "title": "title",
-                    "description": "The title of the benchmark setup.",
-                    "type": "string",
-                    "pattern": "^[^\\s]*$"
-                },
-                "data": {
-                    "title": "data",
-                    "description": "The data setup for the study.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "definitions.schema.json#/definitions/data_setup_dict"
-                    },
-                    "uniqueItems": true
-                },
-                "evaluation": {
-                    "title": "evaluation",
-                    "description": "This section contains the available evaluation methods.",
-                    "properties": {
-                    },
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "title",
-                "data",
-                "evaluation"
-            ],
-            "additionalProperties": false
-        },
+
         "data_setup_dict": {
             "type": "object",
             "title": "data item",
