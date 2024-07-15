@@ -24,18 +24,9 @@ rule extract:
 # Only get the pattern strings for the actual mcmc algorithms
 mcmc_alg_ids = set()
 
-for bmark_setup in config["benchmark_setup"]:
-    for mcmc_dict in bmark_setup["evaluation"]["mcmc_traj_plots"]:
-        # get the actual conf
-
-        alg_conf = None
-        curalg = None
-        for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():
-            mcmc_alg_ids.add(alg)
-
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
-for algid in mcmc_alg_ids:
-    if algid in mcmc_modules:
+for algid in config["resources"]["structure_learning_algorithms"]:
+    if algid in mcmc_modules: # mcmc_modules is defined in the Snakefile
         # Processed graph trajectory
         rule:
             name: "mcmc_traj_{}".format(algid)
@@ -78,7 +69,7 @@ for bmark_setup in config["benchmark_setup"]:
         name:
             "mcmc_traj_plots_join_trajs_"+bmark_setup_title
         input:
-            trajs=processed_trajs("mcmc_traj_plots")
+            trajs=processed_trajs(bmark_setup, "mcmc_traj_plots")
         output:
             # having constant files makes triggering complicatad
             trajs="results/output/"+bmark_setup_title+"/mcmc_traj_plots/mcmc_filled_trajs.csv"

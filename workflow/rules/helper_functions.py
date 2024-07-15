@@ -17,6 +17,7 @@ def active_algorithm_files(bmark_setup):
 
 
 def active_algorithms(bmark_setup, eval_method="benchmarks"):
+    
 
     algs = []
 

@@ -68,6 +68,7 @@ for p in Path("workflow/rules/data/").iterdir():
     item[p.name] = {
         "$ref": "../rules/data/{}/schema.json".format(p.name)
     }
+    
 # This is in the definitions file
 # Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
@@ -78,14 +79,14 @@ for p in Path("workflow/rules/evaluation/").iterdir():
 
 # write the definitions 
 
-# # Generate the evaluation schemas
-# for p in Path("workflow/rules/evaluation/").iterdir():
-#     print(p.name)
-#     item = schema["properties"]["benchmark_setup"][0]["properties"]["evaluation"]["properties"]
+# Generate the evaluation schemas
+for p in Path("workflow/rules/evaluation/").iterdir():
+    print(p.name)
+    item = schema["properties"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
 
-#     item[p.name] = {
-#         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
-#     }
+    item[p.name] = {
+        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
+    }
 
 # Yes this is a hack to use snakemakes built in validator.
 with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
