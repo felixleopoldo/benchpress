@@ -1,83 +1,87 @@
 {
-    "title": "JSON schema for Benchpress config file.",
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
-    "type": "object",
-    "properties": {
-        "benchmark_setup": {
-            "title": "benchmark_setup",
-            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
-            "type": "object",
-            "properties": {
-                "data": {
-                    "title": "data",
-                    "description": "The data setup for the study.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "definitions.schema.json#/definitions/data_setup_dict"
-                    },
-                    "uniqueItems": true
-                },
-                "evaluation": {
-                    "title": "evaluation",
-                    "description": "This section contains the available evaluation methods.",
-                    "properties": {
-                    },
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "data",
-                "evaluation"
-            ],
-            "additionalProperties": false
+  "title": "JSON schema for Benchpress config file.",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
+  "type": "object",
+  "properties": {
+    "benchmark_setup": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/benchmark_setup"
+      }
+    },
+    "resources": {
+      "title": "resources",
+      "description": "The available modules for generating graphs, parameters, data, and structure learning algorithms.",
+      "properties": {
+        "data": {
+          "title": "data",
+          "description": "Data sampling setup.",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
         },
-        "resources": {
-            "title": "resources",
-            "description": "The available modules for generating graphs, parameters, data, and structure learning algorithms.",
-            "properties": {
-                "data": {
-                    "title": "data",
-                    "description": "Data sampling setup.",
-                    "type": "object",
-                    "properties": {                      
-                    },
-                    "additionalProperties": false
-                },
-                "graph": {
-                    "title": "graph",
-                    "description": "The available graph sampling algorithms.",
-                    "type": "object",
-                    "properties": {
-                    },
-                    "additionalProperties": false
-                },
-                "parameters": {
-                    "title": "parameters",
-                    "description": "The available parameter sampling algorithms",
-                    "type": "object",
-                    "properties": {
- 
-                    },
-                    "additionalProperties": false
-                },
-                "structure_learning_algorithms": {
-                    "title": "structure_learning_algorithms",
-                    "description": "The available structure learning algorithms",
-                    "type": "object",
-                    "properties": {
-                       
-                    },
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "data",
-                "graph",
-                "parameters",
-                "structure_learning_algorithms"
-            ],
-            "additionalProperties": false
+        "graph": {
+          "title": "graph",
+          "description": "The available graph sampling algorithms.",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "parameters": {
+          "title": "parameters",
+          "description": "The available parameter sampling algorithms",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "structure_learning_algorithms": {
+          "title": "structure_learning_algorithms",
+          "description": "The available structure learning algorithms",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
         }
+      },
+      "required": [
+        "data",
+        "graph",
+        "parameters",
+        "structure_learning_algorithms"
+      ],
+      "additionalProperties": false
     }
+  },
+  "definitions": {
+    "benchmark_setup": {
+      "title": "benchmark_setup",
+      "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "title",
+          "description": "The title of the benchmark setup.",
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "data": {
+          "title": "data",
+          "description": "The data setup for the study.",
+          "type": "array",
+          "items": {
+            "$ref": "definitions.schema.json#/definitions/data_setup_dict"
+          },
+          "uniqueItems": true
+        },
+        "evaluation": {
+          "title": "evaluation",
+          "description": "This section contains the available evaluation methods.",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      "required": ["title", "data", "evaluation"],
+      "additionalProperties": false
+    }
+  }
 }

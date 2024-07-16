@@ -40,7 +40,8 @@ def eval_module_conf_to_feature_files_data(
     data_string,
     parameters_string,
     adjmat_string,
-    alg
+    alg,
+    bmark_setup
 ):
     evaluation_string = module_feature
     if feature_argstring != "":
@@ -61,7 +62,7 @@ def eval_module_conf_to_feature_files_data(
                 adjmat=adjmat_string,
                 parameters=parameters_string,
                 data=data_string)
-                for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in config["benchmark_setup"]["evaluation"][eval_module]["ids"]
+                for alg_conf in config["resources"]["structure_learning_algorithms"][alg] if alg_conf["id"] in bmark_setup["evaluation"][eval_module]["ids"]
 
          ]
 

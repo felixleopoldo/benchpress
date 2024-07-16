@@ -1,4 +1,4 @@
-def join_string_sampled_model(algorithm, mode="result"):
+def join_string_sampled_model(algorithm, bmark_setup, mode="result"):
     """ This is the main string for a benchmark.
 
     TOOD: Should contain evaluation=/{eval_param}
@@ -6,7 +6,7 @@ def join_string_sampled_model(algorithm, mode="result"):
     Create rule for benchmarks
     """
 
-    benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in config["benchmark_setup"]["evaluation"]["benchmarks"]["ids"]]
+    benchmarks_alg_ids = [benchmarks_dict for benchmarks_dict in bmark_setup["evaluation"]["benchmarks"]["ids"]]
 
     ret = [[[expand("{output_dir}/"+mode+"/"
             "algorithm=/{alg_string}/"
@@ -23,7 +23,7 @@ def join_string_sampled_model(algorithm, mode="result"):
             param_string=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
             data_string=gen_data_string_from_conf(sim_setup["data_id"], seed))
             for seed in get_seed_range(sim_setup["seed_range"])]
-            for sim_setup in config["benchmark_setup"]["data"]]
+            for sim_setup in bmark_setup["data"]]
             for alg_conf in config["resources"]["structure_learning_algorithms"][algorithm] if alg_conf["id"] in benchmarks_alg_ids]
     return ret
 
@@ -71,8 +71,8 @@ def summarise_alg_output_res_path(algorithm):
 def join_summaries_shell(algorithm):
     return r"sed --in-place 's/\/seed=[0-9]\+//g' {output}" # removes the /seed={seed} :-)
 
-def join_summaries_output(algorithm):
-    return "{output_dir}/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
+def join_summaries_output(algorithm, bmark_setup):
+    return "{output_dir}/output/"+bmark_setup["title"]+"/benchmarks/"+bmark_setup["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
 
 def summarise_alg_input_data_path():
     return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"

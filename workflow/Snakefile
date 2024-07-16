@@ -65,11 +65,10 @@ for p in Path("workflow/rules/data/").iterdir():
         "$ref": "../rules/data/{}/schema.json".format(p.name)
     }
 
+# Write the definitions
+# Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["properties"]["benchmark_setup"]["properties"][
-        "evaluation"
-    ]["properties"]
-
+    item = schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
@@ -168,14 +167,13 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
 # Include the evaluation modules
 
 for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
-    if p.name not in config["benchmark_setup"]["evaluation"]:
-        continue
-    if (p / "rules.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rules.smk")
-
-
-    elif (p / "rule.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rule.smk")
+    for bmark_setup in config["benchmark_setup"]: # Maybe includes same module multiple times
+        if p.name not in bmark_setup["evaluation"]:
+            continue
+        if (p / "rules.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rules.smk")
+        elif (p / "rule.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rule.smk")
 
 rule convert_edge_constraints:
     input:

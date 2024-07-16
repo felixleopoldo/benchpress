@@ -24,16 +24,9 @@ rule extract:
 # Only get the pattern strings for the actual mcmc algorithms
 mcmc_alg_ids = set()
 
-for mcmc_dict in config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"]:
-    # get the actual conf
-
-    alg_conf = None
-    curalg = None
-    for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():
-        mcmc_alg_ids.add(alg)
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
-for algid in mcmc_alg_ids:
-    if algid in mcmc_modules:
+for algid in config["resources"]["structure_learning_algorithms"]:
+    if algid in mcmc_modules: # mcmc_modules is defined in the Snakefile
         # Processed graph trajectory
         rule:
             name: "mcmc_traj_{}".format(algid)
@@ -69,28 +62,35 @@ for algid in mcmc_alg_ids:
                 "../../../scripts/evaluation/write_graph_traj.py"
 
 
-# Joins processed trajs
-rule mcmc_traj_plots_join_trajs:
-    input:
-        trajs=processed_trajs("mcmc_traj_plots")
-    output:
-        # having constant files makes triggering complicatad
-        trajs="results/output/mcmc_traj_plots/mcmc_filled_trajs.csv"
-    script:
-        "../../../scripts/evaluation/join_graph_trajs.py"
+for bmark_setup in config["benchmark_setup"]:
+    # Joins processed trajs
+    bmark_setup_title = bmark_setup["title"]
+    rule:
+        name:
+            "mcmc_traj_plots_join_trajs_"+bmark_setup_title
+        input:
+            trajs=processed_trajs(bmark_setup, "mcmc_traj_plots")
+        output:
+            # having constant files makes triggering complicatad
+            trajs="results/output/"+bmark_setup_title+"/mcmc_traj_plots/mcmc_filled_trajs.csv"
+        script:
+            "../../../scripts/evaluation/join_graph_trajs.py"
 
-# This plots several trajectories in one figure
-rule mcmc_traj_plots_plot_joined_trajs:
-    input:
-        configfilename,
-        trajs=rules.mcmc_traj_plots_join_trajs.output.trajs
-    output:
-        touch("results/output/mcmc_traj_plots/mcmc_traj_plots.done"),
-        single=directory("results/output/mcmc_traj_plots/single_param_settings"),
-        multi=directory("results/output/mcmc_traj_plots/multi_param_settings")
-    params:
-        xlab="Iteration"
-    container:
-        docker_image("pydatascience")
-    script:
-        "../../../scripts/evaluation/plot_multi_trajs.py"
+    # This plots several trajectories in one figure
+    rule:
+        name:
+            "mcmc_traj_plots_plot_joined_trajs_"+bmark_setup_title
+        input:
+            configfilename,
+            trajs="results/output/"+bmark_setup_title+"/mcmc_traj_plots/mcmc_filled_trajs.csv"
+            #trajs=rules.mcmc_traj_plots_join_trajs.output.trajs
+        output:
+            touch("results/output/"+bmark_setup_title+"/mcmc_traj_plots/mcmc_traj_plots.done"),
+            single=directory("results/output/"+bmark_setup_title+"/mcmc_traj_plots/single_param_settings"),
+            multi=directory("results/output/"+bmark_setup_title+"/mcmc_traj_plots/multi_param_settings")
+        params:
+            xlab="Iteration"
+        container:
+            docker_image("pydatascience")
+        script:
+            "../../../scripts/evaluation/plot_multi_trajs.py"
