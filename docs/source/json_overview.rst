@@ -7,24 +7,25 @@ The `JSON <https://www.json.org/json-en.html>`__ configuration file, together wi
 Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between the PC algorithm :footcite:p:`doi:10.1177/089443939100900106` (:ref:`pcalg_pc`) and the Dual PC algorithm :footcite:p:`pmlr-v186-giudice22a` (:ref:`dualpc`). 
 The results of this study can be found in :ref:`pcdualpcstudy`.
 
-At the highest level there are two main sections, ``benchmark_setup`` (Line 2) and ``resources`` (Line 37).
+At the highest level there are two main sections, ``benchmark_setup`` (Line 2) and ``resources`` (Line 40).
 The modules used in ``benchmark_setup`` are specified in ``resources`` and referenced by their corresponding IDs. 
 
 resources
 ************
 
-The ``resources`` section contains the subsections ``graph`` (Line 47), ``parameters`` (Line 61), ``data`` (Line 37), and ``structure_learning_algorithms`` (Line 70), which contain the modules used in the study. 
+The ``resources`` section contains the subsections ``graph`` (Line 50), ``parameters`` (Line 64), ``data`` (Line 41), and ``structure_learning_algorithms`` (Line 73), which contain the modules used in the study. 
 Each module in turn has a list of JSON objects, where each of the objects defines a specific parameter setting. 
-The objects are identified by unique IDs (see Lines 41, 50, 64, 73, and 87).
-The parametrisations for the modules can typically be either single values (see e.g. Line 73) or lists (see e.g. Line 79). 
+The objects are identified by unique IDs (see Lines 44, 53, 67, 76, and 86).
+The parametrisations for the modules can be either single values (see e.g. Line 115) or lists (see e.g. Line 114). 
 In the case of lists, the module runs for each of the values in the list.
 
 benchmark_setup
 **********************
 
-The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and evaluation methods (``evaluation``, Line 11) a user wishes to consider for analysis.
+The ``benchmark_setup`` section contains a list of data setups with the data models (``data``, Line 5) and evaluation methods (``evaluation``, Line 13) a user wishes to consider for analysis. 
+In this example the list contains only one data setup, named *pc_vs_dualpc* (Line 4).
 
-* The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 8), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 5). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 6).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 7).
+* The ``data`` section should contain a list, where each item defines a certain data setup. For each seed number :math:`i` in the range specified by ``seed_range`` (Line 10), a triple (:math:`G_i, \Theta_i, \mathbf Y_i`) is generated, where :math:`G_i` is obtained as specified by ``graph_id`` (Line 7). Conditional on :math:`G_i`, the model parameters :math:`\Theta_i` are obtained according to ``parameters_id`` (Line 8).  The data matrix :math:`\mathbf Y_i = (Y^j)_{j=1}^n` is sampled conditional on :math:`(G_i,\Theta_i)` as specified by ``data_id`` (Line 9).
 
 * The ``evaluation`` section contains the evaluation methods used for the analysis. Descriptions of the available evaluation methods can be found in :ref:`evaluation`.
 
@@ -34,42 +35,45 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
     :name: pcdualpc
     :caption: Comparison between PC vs. dual PC.
 
-    {
-        "benchmark_setup": {
-            "data": [ // the data setups
-                {
-                    "graph_id": "avneigs4_p80", // see line 50
-                    "parameters_id": "SEM", // see line 64
-                    "data_id": "standardized", // see line 41
-                    "seed_range": [1, 10]
-                }
-            ],
-            "evaluation": { // the evaluation modules
-                "benchmarks": {  
-                    "filename_prefix": "paper_pc_vs_dualpc/",
-                    "show_seed": true,
-                    "errorbar": true,
-                    "errorbarh": false,
-                    "scatter": true,
-                    "path": true,
-                    "text": false,
-                    "ids": [
-                        "pc-gaussCItest", // see line 87
-                        "dualpc" // see line 73
-                    ]
-                },
-                "graph_true_plots": true,
-                "graph_true_stats": true,
-                "ggally_ggpairs": false,
-                "graph_plots": [
-                    "pc-gaussCItest",
-                    "dualpc"
+    { 
+        "benchmark_setup": [ // the benchmark_setups (only one here)
+            {
+                "title": "pc_vs_dualpc",
+                "data": [ // the data setups
+                    {
+                        "graph_id": "avneigs4_p80", // see line 53
+                        "parameters_id": "SEM", // see line 67
+                        "data_id": "standardized", // see line 44
+                        "seed_range": [1, 10]
+                    }
                 ],
-                "mcmc_traj_plots": [],
-                "mcmc_heatmaps": [],
-                "mcmc_autocorr_plots": []
+                "evaluation": { // the evaluation modules
+                    "benchmarks": {  
+                        "filename_prefix": "paper_pc_vs_dualpc/",
+                        "show_seed": true,
+                        "errorbar": true,
+                        "errorbarh": false,
+                        "scatter": true,
+                        "path": true,
+                        "text": false,
+                        "ids": [
+                            "pc-gaussCItest", // see line 86
+                            "dualpc" // see line 76
+                        ]
+                    },
+                    "graph_true_plots": true,
+                    "graph_true_stats": true,
+                    "ggally_ggpairs": false,
+                    "graph_plots": [
+                        "pc-gaussCItest",
+                        "dualpc"
+                    ],
+                    "mcmc_traj_plots": [],
+                    "mcmc_heatmaps": [],
+                    "mcmc_autocorr_plots": []
+                }
             }
-        },
+        ],
         "resources": {
             "data": { // the data modules
                 "iid": [
@@ -107,13 +111,9 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
                 "dualpc": [
                     {
                         "id": "dualpc",
-                        "alpha": [
-                            0.001,
-                            0.05,
-                            0.1
-                        ],
+                        "alpha": [0.001, 0.05, 0.1],
                         "skeleton": false,
-                        "pattern_graph": false,
+                        "pattern_graph": false,                        
                         "max_ord": null,
                         "timeout": null
                     }
@@ -121,11 +121,7 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
                 "pcalg_pc": [
                     {
                         "id": "pc-gaussCItest",
-                        "alpha": [
-                            0.001,
-                            0.05,
-                            0.1
-                        ],
+                        "alpha": [0.001, 0.05, 0.1],
                         "NAdelete": true,
                         "mmax": "Inf",
                         "u2pd": "relaxed",
@@ -135,6 +131,7 @@ The ``benchmark_setup`` section specifies the data models (``data``, Line 3) and
                         "solveconfl": false,
                         "numCores": 1,
                         "verbose": false,
+                        "edgeConstrains": null,
                         "indepTest": "gaussCItest",
                         "timeout": null
                     }
