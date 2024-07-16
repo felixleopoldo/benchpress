@@ -8,11 +8,11 @@ if snakemake.wildcards["method"] == "er":
     adjmat = DAG.erdos_renyi(n_nodes=p,
                              n_edges=d,
                              weight_range=None,
-                             seed=int(snakemake.wildcards["replicate"]))
+                             seed=int(snakemake.wildcards["seed"]))
 elif snakemake.wildcards["method"] == "sf":
     adjmat = DAG.scale_free(n_nodes=p,
                             n_edges=d,
                             weight_range=None,
-                            seed=int(snakemake.wildcards["replicate"]))
+                            seed=int(snakemake.wildcards["seed"]))
 
 pd.DataFrame(adjmat, dtype=int).to_csv(snakemake.output["adjmat"], index=None)

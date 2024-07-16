@@ -22,7 +22,7 @@ gcastle_dag
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 
-     - `onceltuca/gcastle:1.0.3 <https://hub.docker.com/r/onceltuca/gcastle/tags>`__
+     - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
    * - Module
      - `gcastle_dag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/graph/gcastle_dag>`__

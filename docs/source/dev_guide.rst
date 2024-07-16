@@ -2,9 +2,8 @@ Authors
 ################
 
 | `Felix Rios <https://felixleopoldo.github.io>`_
-| `Department of Mathematics <https://www.kth.se/math/mathematics-of-data/mathematics-of-data-and-ai-1.947023>`_
-| KTH Stockholm, Sweden
-| (formerly at the University of Basel)
+| `Department of Paediatrics <>`_
+| University of Singapore, Singapore
 
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
 | `Department of Mathematics and Computer Science <https://dmi.unibas.ch/en/>`_
@@ -24,6 +23,10 @@ Contributors
 | `Mohamad Elmasri <https://sites.google.com/view/mohamadelmasri/home>`_
 | `Department of Statistical Sciences  <https://www.statistics.utoronto.ca/>`_
 | University of Toronto, Canada
+
+| Gomathi
+| `Intern at A*Star <http://>`_
+| A*Star, Singapore
 
 | Aditya Singh
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
