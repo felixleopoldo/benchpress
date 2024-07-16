@@ -1,13 +1,15 @@
 {
   "benchmark_setup": [
     {
-      "title": "Minimal",
       "data": [
         {
           "graph_id": "avneigs4_p20",
           "parameters_id": "SEM",
           "data_id": "standardized",
-          "seed_range": [1, 1]
+          "seed_range": [
+            1,
+            1
+          ]
         }
       ],
       "evaluation": {
@@ -19,18 +21,44 @@
           "scatter": true,
           "path": true,
           "text": false,
-          "ids": ["fges-sem-bic"]
+          "ids": [
+            "fges-sem-bic"
+          ]
         },
         "graph_estimation": {
-          "ids": ["fges-sem-bic"],
-          "convert_to": ["cpdag", "pattern"],
+          "ids": [
+            "fges-sem-bic"
+          ],
+          "convert_to": [
+            "cpdag",
+            "pattern"
+          ],
           "graphs": true,
           "adjmats": true,
           "diffplots": false,
           "csvs": true,
           "graphvizcompare": false
-        }
-      }
+        },
+        "ggally_ggpairs": true,
+        "graph_plots": [
+          "fges-sem-bic"
+        ],
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "mcmc_traj_plots": [
+          {
+            "id": "omcmc-bge",
+            "burn_in": 0.5,
+            "thinning": 1,
+            "functional": [
+              "score",
+              "size"
+            ],
+            "active": true
+          }
+        ]
+      },
+      "title": "minimal"
     }
   ],
   "resources": {
@@ -70,10 +98,10 @@
       "tetrad_fges": [
         {
           "id": "fges-sem-bic",
+          "samplePrior": 1,
           "faithfulnessAssumed": true,
           "score": "sem-bic-score",
           "datatype": "continuous",
-          "samplePrior": 1,
           "semBicStructurePrior": 1,
           "penaltyDiscount": 2,
           "timeout": null,
@@ -83,7 +111,12 @@
       "pcalg_pc": [
         {
           "id": "pc-gaussCItest",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+          ],
           "NAdelete": true,
           "mmax": "Inf",
           "u2pd": "relaxed",
@@ -94,7 +127,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bnlearn_tabu": [
@@ -102,13 +136,19 @@
           "id": "tabu-bge",
           "score": "bge",
           "iss": 1,
-          "issmu": [0.0001, 0.001, 0.01, 0.05],
+          "issmu": [
+            0.0001,
+            0.001,
+            0.01,
+            0.05
+          ],
           "issw": null,
           "l": 5,
           "k": 1,
           "prior": "uniform",
           "beta": 1,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
@@ -120,9 +160,14 @@
           "plus1it": 2,
           "posterior": 0.5,
           "scoretype": "bge",
+          "edgeConstraints": "none.json",
           "chi": null,
           "edgepf": 2,
-          "am": [0.01, 0.1, 1],
+          "am": [
+            0.01,
+            0.1,
+            1
+          ],
           "aw": null,
           "softlimit": 9,
           "hardlimit": 14,
@@ -130,6 +175,54 @@
           "gamma": 1,
           "cpdag": false,
           "mergetype": "skeleton"
+        },
+        {
+          "id": "itsample-bge_am01_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": 6,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": 0.1,
+          "aw": null,
+          "softlimit": 9,
+          "edgeConstraints": "none.json",
+          "hardlimit": 12,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null
+        }
+      ],
+      "bidag_order_mcmc": [
+        {
+          "id": "omcmc-bge",
+          "plus1": true,
+          "input_algorithm_id": "itsample-bge_am01_endspace",
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "aw": null,
+          "am": 0.1,
+          "alpha": 0.05,
+          "edgeConstraints": "none.json",
+          "gamma": 1,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": false,
+          "cpdag": false,
+          "mcmc_seed": 1,
+          "threshold": [
+            0.3,
+            0.5,
+            0.7
+          ],
+          "burnin_frac": 0,
+          "mcmc_estimator": "threshold",
+          "timeout": null
         }
       ]
     }

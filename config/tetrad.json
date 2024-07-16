@@ -1,52 +1,62 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "graph_id": "er",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 3]
-      }
-    ],
-    "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "tetrad/",
-        "show_seed": true,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": true,
-        "ids": [
-          "grasp-sem-bic",
-          "boss-sem-bic",
-          "fask-fisher-z",
-          "fges-sem-bic",
-          "fofc",
-          "pc-fisher-z"
-        ]
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "er",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            3
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "tetrad/",
+          "show_seed": true,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": true,
+          "ids": [
+            "grasp-sem-bic",
+            "boss-sem-bic",
+            "fask-fisher-z",
+            "fges-sem-bic",
+            "fofc",
+            "pc-fisher-z"
+          ]
+        },
+        "graph_true_plots": false,
+        "graph_true_stats": true,
+        "ggally_ggpairs": false,
+        "graph_plots": [],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
       },
-      "graph_true_plots": false,
-      "graph_true_stats": true,
-      "ggally_ggpairs": false,
-      "graph_plots": [],
-      "mcmc_traj_plots": [],
-      "mcmc_heatmaps": [],
-      "mcmc_autocorr_plots": []
+      "title": "tetrad"
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
         {
           "id": "standardized",
           "standardized": true,
-          "n": [300]
+          "n": [
+            300
+          ]
         },
         {
           "id": "nonstandardized",
           "standardized": false,
-          "n": [300]
+          "n": [
+            300
+          ]
         }
       ]
     },
@@ -55,7 +65,9 @@
         {
           "id": "er",
           "max_parents": 15,
-          "n": [100],
+          "n": [
+            100
+          ],
           "d": 8,
           "par1": null,
           "par2": null,
@@ -81,8 +93,14 @@
           "datatype": "continuous",
           "score": "sem-bic-score",
           "semBicStructurePrior": 1,
-          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
-          "timeout": null
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_boss": [
@@ -94,8 +112,14 @@
           "allowInternalRandomess": false,
           "samplePrior": 0,
           "semBicStructurePrior": 0,
-          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
-          "timeout": null
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_grasp": [
@@ -106,8 +130,14 @@
           "datatype": "continuous",
           "samplePrior": 0,
           "semBicStructurePrior": 0,
-          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
-          "timeout": null
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_fges": [
@@ -118,29 +148,38 @@
           "datatype": "continuous",
           "samplePrior": 1,
           "semBicStructurePrior": 1,
-          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
-          "timeout": null
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_fofc": [
         {
           "id": "fofc",
           "datatype": "continuous",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_ftfc": [
         {
           "id": "ftfc",
           "datatype": "continuous",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_ica-lingam": [
         {
           "id": "ica-lingam",
           "datatype": "continuous",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "tetrad_pc": [
@@ -148,8 +187,13 @@
           "id": "pc-fisher-z",
           "test": "fisher-z-test",
           "datatype": "continuous",
-          "alpha": [0.001, 0.01, 0.1],
-          "timeout": null
+          "alpha": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "gobnilp": [
@@ -158,22 +202,31 @@
           "continuous": true,
           "score_type": "BGe",
           "extra_args": null,
-          "constraints": null,
           "plot": false,
           "palim": 3,
-          "alpha_mu": [0.00001, 0.0001, 0.001],
+          "alpha_mu": [
+            1e-05,
+            0.0001,
+            0.001
+          ],
           "alpha_omega_minus_nvars": 2,
           "alpha": null,
           "time_limit": null,
           "gap_limit": null,
           "prune": true,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "pcalg_pc": [
         {
           "id": "pc-gaussCItest",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+          ],
           "NAdelete": true,
           "mmax": "Inf",
           "u2pd": "relaxed",
@@ -184,7 +237,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bnlearn_tabu": [
@@ -192,13 +246,19 @@
           "id": "tabu-bge",
           "score": "bge",
           "iss": 1,
-          "issmu": [0.0001, 0.001, 0.01, 0.05],
+          "issmu": [
+            0.0001,
+            0.001,
+            0.01,
+            0.05
+          ],
           "issw": null,
           "l": 5,
           "k": 1,
           "prior": "uniform",
           "beta": 1,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
@@ -212,14 +272,19 @@
           "scoretype": "bge",
           "chi": null,
           "edgepf": 2,
-          "am": [0.01, 0.1, 1],
+          "am": [
+            0.01,
+            0.1,
+            1
+          ],
           "aw": null,
           "softlimit": 9,
           "hardlimit": 14,
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": null
         },
         {
           "id": "itsample-bge_am01_endspace",
@@ -238,7 +303,8 @@
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": null
         }
       ],
       "bidag_order_mcmc": [
@@ -250,7 +316,10 @@
           "chi": null,
           "edgepf": null,
           "aw": null,
-          "am": [0.01, 0.05],
+          "am": [
+            0.01,
+            0.05
+          ],
           "alpha": 0.01,
           "gamma": 1,
           "stepsave": null,
@@ -261,7 +330,8 @@
           "mcmc_seed": 1,
           "threshold": 0.5,
           "mcmc_estimator": "threshold",
-          "burnin_frac": 0.5
+          "burnin_frac": 0.5,
+          "edgeConstraints": null
         }
       ]
     }
