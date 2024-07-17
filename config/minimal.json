@@ -59,7 +59,67 @@
         ]
       },
       "title": "minimal"
-    }
+    },
+    {
+        "data": [
+          {
+            "graph_id": "avneigs4_p20",
+            "parameters_id": "SEM",
+            "data_id": "standardized",
+            "seed_range": [
+              1,
+              1
+            ]
+          }
+        ],
+        "evaluation": {
+          "benchmarks": {
+            "filename_prefix": "example/",
+            "show_seed": false,
+            "errorbar": true,
+            "errorbarh": false,
+            "scatter": true,
+            "path": true,
+            "text": false,
+            "ids": [
+              "fges-sem-bic"
+            ]
+          },
+          "graph_estimation": {
+            "ids": [
+              "fges-sem-bic"
+            ],
+            "convert_to": [
+              "cpdag",
+              "pattern"
+            ],
+            "graphs": true,
+            "adjmats": true,
+            "diffplots": false,
+            "csvs": true,
+            "graphvizcompare": false
+          },
+          "ggally_ggpairs": true,
+          "graph_plots": [
+            "fges-sem-bic"
+          ],
+          "graph_true_plots": true,
+          "graph_true_stats": true,
+          "mcmc_traj_plots": [
+            {
+              "id": "omcmc-bge",
+              "burn_in": 0.5,
+              "thinning": 1,
+              "functional": [
+                "score",
+                "size"
+              ],
+              "active": true
+            }
+          ]
+        },
+        "title": "minimal2"
+      }
   ],
   "resources": {
     "data": {
@@ -106,49 +166,6 @@
           "penaltyDiscount": 2,
           "timeout": null,
           "edgeConstraints": "none.json"
-        }
-      ],
-      "pcalg_pc": [
-        {
-          "id": "pc-gaussCItest",
-          "alpha": [
-            0.001,
-            0.01,
-            0.05,
-            0.1
-          ],
-          "NAdelete": true,
-          "mmax": "Inf",
-          "u2pd": "relaxed",
-          "skelmethod": "stable",
-          "conservative": false,
-          "majrule": false,
-          "solveconfl": false,
-          "numCores": 1,
-          "verbose": false,
-          "indepTest": "gaussCItest",
-          "timeout": null,
-          "edgeConstraints": null
-        }
-      ],
-      "bnlearn_tabu": [
-        {
-          "id": "tabu-bge",
-          "score": "bge",
-          "iss": 1,
-          "issmu": [
-            0.0001,
-            0.001,
-            0.01,
-            0.05
-          ],
-          "issw": null,
-          "l": 5,
-          "k": 1,
-          "prior": "uniform",
-          "beta": 1,
-          "timeout": null,
-          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
