@@ -12,8 +12,8 @@ wrapper <- function() {
   set.seed(wc[["seed"]])
   # Calculate the score tables
 
-  myscore <- get_bidag_score(data, wc[["scoretype"]], 
-                             aw = wc[["aw"]], am = wc[["am"]], 
+  myscore <- get_bidag_score(data, wc[["scoretype"]],
+                             aw = wc[["aw"]], am = wc[["am"]],
                              chi = wc[["chi"]], edgepf = wc[["edgepf"]])
 
     p <- ncol(data)
@@ -23,8 +23,9 @@ wrapper <- function() {
 
     # get the size of the edge constraints file
     size_edge_constraints <- file.info(filename_edge_constraints)$size
-    if(size_edge_constraints > 1) {        
+    if(size_edge_constraints > 1) {
         edgeConstraints <- read.csv(filename_edge_constraints)
+        print(edgeConstraints)
         for (i in 1:nrow(edgeConstraints)) {
             from <- as.character(edgeConstraints$from[i])
             to <- as.character(edgeConstraints$to[i])

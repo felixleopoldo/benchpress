@@ -15,12 +15,13 @@ def active_algorithm_files(bmark_setup):
         
     return alg_filenames
 
+import pprint
 
 def active_algorithms(bmark_setup, eval_method="benchmarks"):
     
 
     algs = []
-
+    
     if (eval_method == "mcmc_traj_plots") or (eval_method == "mcmc_autocorr_plots") or (eval_method == "mcmc_heatmaps"):
         benchmarks_alg_ids = [benchmarks_dict["id"] for benchmarks_dict in bmark_setup
                               ["evaluation"][eval_method] if benchmarks_dict["active"] == True]
@@ -43,7 +44,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
             for alg_conf_id in benchmarks_alg_ids:
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(alg)
-
+                                    
     return list(set(algs))
 
 

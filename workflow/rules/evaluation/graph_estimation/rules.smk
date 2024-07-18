@@ -215,9 +215,11 @@ for bmark_setup in config["benchmark_setup"]:
                                             data_index=str(data_index+1),
                                             feature=feature,
                                             ext=feature_dict["ext"],
-                                            alg=alg
+                                            alg=alg,
+                                            bmark_setup=bmark_setup_title
+
                                         run:                                    
-                                            output_dir = "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
+                                            output_dir = "results/output/{params.bmark_setup}/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
                                             # clean old file while keeping the directory
                                             # check if the directory exists
                                             if Path(output_dir).exists():
