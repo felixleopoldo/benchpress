@@ -22,6 +22,17 @@
                     "BIC"
                 ]
             },
+            "extra_args": {
+                "description": "File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs).",
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
             "plot": {
                 "type": "boolean"
             },
@@ -53,7 +64,7 @@
                 "type": "boolean"
             },
             "edgeConstraints": {
-                "type": "string",
+                "type": ["string", "null"],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
@@ -72,6 +83,7 @@
                 "id": "gobnilp-bge",
                 "continuous": true,
                 "score_type": "BGe",
+                "extra_args": null,
                 "plot": false,
                 "palim": 3,
                 "alpha_mu": [
@@ -91,6 +103,7 @@
                 "id": "gobnilp-bde",
                 "continuous": false,
                 "score_type": "BDeu",
+                "extra_args": null,
                 "plot": false,
                 "palim": 4,
                 "alpha_mu": null,
