@@ -27,18 +27,23 @@ wrapper <- function() {
   p <- ncol(data)  
   node_names <- colnames(data)
 
-  fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-  fixedEdges <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+  if (nrow(edgeConstraints) == 0) {
+    fixedGaps <- NULL
+    fixedEdges <- NULL
+  } else {
+    fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+    fixedEdges <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
 
-  for (i in 1:nrow(edgeConstraints)) {
-    node1 <- edgeConstraints$node1[i]
-    node2 <- edgeConstraints$node2[i]
-    if (edgeConstraints$matrix_type[i] == "fixedGaps") {
-      fixedGaps[node1, node2] <- TRUE
-      fixedGaps[node2, node1] <- TRUE
-    } else if (edgeConstraints$matrix_type[i] == "fixedEdges") {
-      fixedEdges[node1, node2] <- TRUE
-      fixedEdges[node2, node1] <- TRUE
+    for (i in 1:nrow(edgeConstraints)) {
+      node1 <- edgeConstraints$node1[i]
+      node2 <- edgeConstraints$node2[i]
+      if (edgeConstraints$matrix_type[i] == "fixedGaps") {
+        fixedGaps[node1, node2] <- TRUE
+        fixedGaps[node2, node1] <- TRUE
+      } else if (edgeConstraints$matrix_type[i] == "fixedEdges") {
+        fixedEdges[node1, node2] <- TRUE
+        fixedEdges[node2, node1] <- TRUE
+      }
     }
   }
 

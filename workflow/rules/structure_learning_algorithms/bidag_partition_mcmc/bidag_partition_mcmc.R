@@ -19,12 +19,16 @@ wrapper <- function() {
   edgeConstraints <- read.csv(filename_edge_constraints)
   p <- ncol(data)
   node_names <- colnames(data)
-  blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-  for (i in 1:nrow(edgeConstraints)) {
+  if (nrow(edgeConstraints) == 0) {
+    blacklist <- NULL
+  } else {
+    blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+    for (i in 1:nrow(edgeConstraints)) {
       from <- as.character(edgeConstraints$from[i])
       to <- as.character(edgeConstraints$to[i])
       blacklist[from, to] <- 1
-    } 
+    }
+  }
  
   partition_mcmc_res <- partitionMCMC(myscore,
     startspace = startspace,

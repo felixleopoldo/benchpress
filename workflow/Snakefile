@@ -177,7 +177,7 @@ for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
 
 rule convert_edge_constraints:
     input:
-        edgeConstraints="resources/extra_args/{edgeConstraints}"
+        edgeConstraints="resources/constraints/{edgeConstraints}"
     output:
         edgeConstraints_in_format="resources/constraints/{edgeConstraints}-{package}"
     wildcard_constraints:

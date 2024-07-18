@@ -13,25 +13,23 @@ wrapper <- function() {
   # Calculate the score tables
 
   myscore <- get_bidag_score(data, wc[["scoretype"]],
-                             aw = wc[["aw"]], am = wc[["am"]],
-                             chi = wc[["chi"]], edgepf = wc[["edgepf"]])
+    aw = wc[["aw"]], am = wc[["am"]],
+    chi = wc[["chi"]], edgepf = wc[["edgepf"]]
+  )
 
-    p <- ncol(data)
-    node_names <- colnames(data)
+  edgeConstraints <- read.csv(filename_edge_constraints)
+  p <- ncol(data)
+  node_names <- colnames(data)
+  if (nrow(edgeConstraints) == 0) {
+    blacklist <- NULL
+  } else {
     blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-    edgeConstraints <- NULL
-
-    # get the size of the edge constraints file
-    size_edge_constraints <- file.info(filename_edge_constraints)$size
-    if(size_edge_constraints > 1) {
-        edgeConstraints <- read.csv(filename_edge_constraints)
-        print(edgeConstraints)
-        for (i in 1:nrow(edgeConstraints)) {
-            from <- as.character(edgeConstraints$from[i])
-            to <- as.character(edgeConstraints$to[i])
-            blacklist[from, to] <- 1
-        }
+    for (i in 1:nrow(edgeConstraints)) {
+      from <- as.character(edgeConstraints$from[i])
+      to <- as.character(edgeConstraints$to[i])
+      blacklist[from, to] <- 1
     }
+  }
 
   itsearch_res <- iterativeMCMC(
     myscore,
