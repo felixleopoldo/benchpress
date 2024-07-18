@@ -1,55 +1,66 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "graph_id": "avneigs4_p20",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 5]
-      }
-    ],
-    "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "gcastle/",
-        "show_seed": false,
-        "errorbar": true,
-        "xlim": [0, 1],
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": [
-          "gcastle_notears",
-          "gcastle_pc",
-          "gcastle_anm",
-          "gcastle_direct_lingam",
-          "gcastle_ica_lingam",
-          "gcastle_notears_sob",
-          "gcastle_notears_mlp",
-          "gcastle_notears_low_rank",
-          "gcastle_golem",
-          "gcastle_grandag",
-          "gcastle_mcsl",
-          "gcastle_corl",
-          "gcastle_rl"
-        ]
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            5
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "gcastle/",
+          "show_seed": false,
+          "errorbar": true,
+          "xlim": [
+            0,
+            1
+          ],
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "gcastle_notears",
+            "gcastle_pc",
+            "gcastle_anm",
+            "gcastle_direct_lingam",
+            "gcastle_ica_lingam",
+            "gcastle_notears_sob",
+            "gcastle_notears_mlp",
+            "gcastle_notears_low_rank",
+            "gcastle_golem",
+            "gcastle_grandag",
+            "gcastle_mcsl",
+            "gcastle_corl",
+            "gcastle_rl"
+          ]
+        },
+        "graph_true_plots": false,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
+        "graph_plots": [],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
       },
-      "graph_true_plots": false,
-      "graph_true_stats": false,
-      "ggally_ggpairs": false,
-      "graph_plots": [],
-      "mcmc_traj_plots": [],
-      "mcmc_heatmaps": [],
-      "mcmc_autocorr_plots": []
+      "title": "gcastle"
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
         {
           "id": "standardized",
           "standardized": true,
-          "n": [300]
+          "n": [
+            300
+          ]
         }
       ]
     },
@@ -85,7 +96,11 @@
           "max_iter": 100,
           "h_tol": "1e-8",
           "rho_max": "1e+16",
-          "w_threshold": [0.05, 0.1, 0.25],
+          "w_threshold": [
+            0.05,
+            0.1,
+            0.25
+          ],
           "timeout": null
         }
       ],
@@ -215,7 +230,6 @@
         {
           "id": "gcastle_mcsl",
           "model_type": "nn",
-
           "hidden_dim": 16,
           "graph_thresh": 0.5,
           "l1_graph_penalty": "2e-3",

@@ -82,7 +82,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: See also
 
-* The paper :footcite:t:`rios2021benchpress`
+* The paper :footcite:t:`rios2021benchpress` (to appear in `The Journal of Statistical Software	<https://www.jstatsoft.org/>`_)
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
@@ -94,6 +94,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 ..     Or simply send an email to felix leopoldo rios at gmail dot com.
 
 .. rubric:: News
+* 2026-07-17: Benchpress 2.9.0. This version comes with two new great features. I) The ability to incorporate background knowledge in terms of edge constraints (see :ref:`json_config` ). Thanks to Gomathi .., intern at A*Star, Singapore for the contribution. II) The ability to specicy multiple benchmark setups in a config file (See ). Note that this version requires old config files has to be adapted to add ``edgeConstraints: null`` for the modules supporting it () and change the ``benchmark_setup`` section to contain a list, where each item has a ``title`` key. To do this you may run the script .
 * 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
 * 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).

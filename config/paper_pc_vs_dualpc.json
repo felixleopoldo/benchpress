@@ -1,33 +1,45 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "graph_id": "avneigs4_p80",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 10]
-      }
-    ],
-    "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "paper_pc_vs_dualpc/",
-        "show_seed": true,
-        "errorbar": true,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": ["pc-gaussCItest", "dualpc"]
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "avneigs4_p80",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            10
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "paper_pc_vs_dualpc/",
+          "show_seed": true,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "pc-gaussCItest",
+            "dualpc"
+          ]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "ggally_ggpairs": false,
+        "graph_plots": [
+          "pc-gaussCItest",
+          "dualpc"
+        ],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
       },
-      "graph_true_plots": true,
-      "graph_true_stats": true,
-      "ggally_ggpairs": false,
-      "graph_plots": ["pc-gaussCItest", "dualpc"],
-      "mcmc_traj_plots": [],
-      "mcmc_heatmaps": [],
-      "mcmc_autocorr_plots": []
+      "title": "paper_pc_vs_dualpc"
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
@@ -65,7 +77,11 @@
       "dualpc": [
         {
           "id": "dualpc",
-          "alpha": [0.001, 0.05, 0.1],
+          "alpha": [
+            0.001,
+            0.05,
+            0.1
+          ],
           "skeleton": false,
           "pattern_graph": false,
           "max_ord": null,
@@ -75,7 +91,11 @@
       "pcalg_pc": [
         {
           "id": "pc-gaussCItest",
-          "alpha": [0.001, 0.05, 0.1],
+          "alpha": [
+            0.001,
+            0.05,
+            0.1
+          ],
           "NAdelete": true,
           "mmax": "Inf",
           "u2pd": "relaxed",
@@ -86,7 +106,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ]
     }

@@ -28,7 +28,9 @@ The ``benchmark_setup`` section of this study is found in :numref:`pcvsdualpc`.
     :name: pcvsdualpc
     :caption: The `benchmark_setup` section of PC vs. dual PC
 
-    "benchmark_setup": {
+    "benchmark_setup": [
+        {
+        "title": "paper_pc_vs_dualpc",
         "data": [
             {
                 "graph_id": "avneigs4_p80",
@@ -62,7 +64,7 @@ The ``benchmark_setup`` section of this study is found in :numref:`pcvsdualpc`.
             "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": []
         }
-    }
+    }]
 
 
 Results from the :ref:`benchmarks` and the :ref:`graph_true_stats` module, where we have focused on the undirected skeleton for evaluations since this is the part where the algorithms mainly differ.
