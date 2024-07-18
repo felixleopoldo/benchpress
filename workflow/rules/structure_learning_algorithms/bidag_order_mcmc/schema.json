@@ -92,7 +92,7 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
             "edgeConstraints": {
-                "type": "string",
+                "type": ["string", "null"],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
