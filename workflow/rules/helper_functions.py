@@ -18,7 +18,6 @@ def active_algorithm_files(bmark_setup):
 import pprint
 
 def active_algorithms(bmark_setup, eval_method="benchmarks"):
-    
 
     algs = []
     

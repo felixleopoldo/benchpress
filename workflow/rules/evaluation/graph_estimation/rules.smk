@@ -188,8 +188,8 @@ for bmark_setup in config["benchmark_setup"]:
                         for adjmat_string in adjmat_strings:
                             for parameters_string in parameters_strings:
                                 for data_string in data_strings:
-
-                                    rule:
+                                    #print(bmark_setup)
+                                    rule:   
                                         name: 
                                             "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
                                         input:

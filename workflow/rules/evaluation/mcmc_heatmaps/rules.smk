@@ -85,28 +85,29 @@ rule mcmc_heatmap_csv:
 
 
 for bmark_setup in config["benchmark_setup"]:
-    rule:
-        name:
-            "mcmc_heatmaps_"+bmark_setup["title"]
-        input:    
-            configfilename,
-            **heatmap_plots(bmark_setup)
-        output:
-            touch("results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/mcmc_heatmaps.done")
-        run:    
-            output_dir = "results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps"        
-            if Path(output_dir + "/heatmaps").exists():
-                # remove all files in the directory
-                [f.unlink() for f in Path(output_dir + "/heatmaps").glob("*.png") ]
+    if "mcmc_heatmaps" in bmark_setup["evaluation"]:
+        rule:
+            name:
+                "mcmc_heatmaps_"+bmark_setup["title"]
+            input:    
+                configfilename,
+                **heatmap_plots(bmark_setup)
+            output:
+                touch("results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/mcmc_heatmaps.done")
+            run:    
+                output_dir = "results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps"        
+                if Path(output_dir + "/heatmaps").exists():
+                    # remove all files in the directory
+                    [f.unlink() for f in Path(output_dir + "/heatmaps").glob("*.png") ]
 
-            if Path(output_dir+"/heatgraphs").exists():
-                # remove all files in the directory
-                [f.unlink() for f in Path(output_dir + "/heatgraphs").glob("*.png") ]
-            
-            shell("mkdir -p results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatgraphs")
-            shell("mkdir -p  results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps")
-            # remove content if already exists using pathlib
+                if Path(output_dir+"/heatgraphs").exists():
+                    # remove all files in the directory
+                    [f.unlink() for f in Path(output_dir + "/heatgraphs").glob("*.png") ]
+                
+                shell("mkdir -p results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatgraphs")
+                shell("mkdir -p  results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps")
+                # remove content if already exists using pathlib
 
-            for i,f in enumerate(input.heatmap_plot):
-                shell("cp "+f+" results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps/heatmap_" +str(i+1) +".png")
-                shell("cp "+f+"-graph.png results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatgraphs/heatgraph_" +str(i+1) +".png")
+                for i,f in enumerate(input.heatmap_plot):
+                    shell("cp "+f+" results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatmaps/heatmap_" +str(i+1) +".png")
+                    shell("cp "+f+"-graph.png results/output/"+bmark_setup["title"]+"/mcmc_heatmaps/heatgraphs/heatgraph_" +str(i+1) +".png")

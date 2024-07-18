@@ -54,14 +54,12 @@ def autocorr_plots(bmark_setup):
 # Only get the pattern strings for the actual mcmc algorithms
 mcmc_alg_ids = set()
 
-for bmark_setup in config["benchmark_setup"]:
-    for mcmc_dict in bmark_setup["evaluation"]["mcmc_autocorr_plots"]:
-        # get the actual conf
+#for bmark_setup in config["benchmark_setup"]:
+#    for mcmc_dict in bmark_setup["evaluation"]["mcmc_autocorr_plots"]:
+#        # get the actual conf
 
-        alg_conf = None
-        curalg = None
-        for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():
-            mcmc_alg_ids.add(alg)
+for alg, algconfs in config["resources"]["structure_learning_algorithms"].items():
+    mcmc_alg_ids.add(alg)
 
 
 # Create adapted anonymous MCMC rules where the algorithm parameters are matched.
@@ -132,48 +130,49 @@ rule mcmc_autocorr_plot:
 
 for bmark_setup in config["benchmark_setup"]: 
     # Joins processed trajs
-    rule:
-        name: 
-            "mcmc_autocorr_plots_join_trajs_"+bmark_setup["title"]
-        input:
-            trajs=processed_trajs2(bmark_setup, "mcmc_autocorr_plots") # should get lag trajs instead?
-        output:
-            # separate based on the ids
-            trajs="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
-        script:
-            # First compute the autocorrelation at each lag
-            "../../../scripts/evaluation/join_graph_trajs.py" 
+    if "mcmc_autocorr_plots" in bmark_setup["evaluation"]:
+        rule:
+            name: 
+                "mcmc_autocorr_plots_join_trajs_"+bmark_setup["title"]
+            input:
+                trajs=processed_trajs2(bmark_setup, "mcmc_autocorr_plots") # should get lag trajs instead?
+            output:
+                # separate based on the ids
+                trajs="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
+            script:
+                # First compute the autocorrelation at each lag
+                "../../../scripts/evaluation/join_graph_trajs.py" 
 
-    # This plots several trajectories in one figure
-    rule:
-        name: 
-            "mcmc_autocorr_plots_plot_joined_trajs_"+bmark_setup["title"]
-        input:
-            configfilename,
-            #trajs=rules.mcmc_autocorr_plots_join_trajs.output.trajs,
-            trajs="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
-        output:
-            joined=touch("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done"),
-            single=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/single_param_settings"),
-            multi=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/multi_param_settings")
-        params:
-            xlab="Lag"
-        container:
-            docker_image("pydatascience")
-        script:
-            "../../../scripts/evaluation/plot_multi_trajs.py"
+        # This plots several trajectories in one figure
+        rule:
+            name: 
+                "mcmc_autocorr_plots_plot_joined_trajs_"+bmark_setup["title"]
+            input:
+                configfilename,
+                #trajs=rules.mcmc_autocorr_plots_join_trajs.output.trajs,
+                trajs="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/joined_autocorr.csv" # Lag trajs
+            output:
+                joined=touch("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done"),
+                single=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/single_param_settings"),
+                multi=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/multi_param_settings")
+            params:
+                xlab="Lag"
+            container:
+                docker_image("pydatascience")
+            script:
+                "../../../scripts/evaluation/plot_multi_trajs.py"
 
-    rule:
-        name:
-            "mcmc_autocorr_plots_"+bmark_setup["title"]
-        input:
-            configfilename,
-            joined="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done",
-            #joined=rules.mcmc_autocorr_plots_plot_joined_trajs.output.joined,
-            plots=autocorr_plots(bmark_setup)
-        output:
-            touch("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots.done"),
-            dir=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/induvidual")
-        run:
-            for i,f in enumerate(input.plots):
-                shell("mkdir -p {output.dir} && cp "+f+" {output.dir}/mcmc_autocorr_" +str(i+1) +".png")
+        rule:
+            name:
+                "mcmc_autocorr_plots_"+bmark_setup["title"]
+            input:
+                configfilename,
+                joined="results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots_joined.done",
+                #joined=rules.mcmc_autocorr_plots_plot_joined_trajs.output.joined,
+                plots=autocorr_plots(bmark_setup)
+            output:
+                touch("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/mcmc_autocorr_plots.done"),
+                dir=directory("results/output/"+bmark_setup["title"]+"/mcmc_autocorr_plots/induvidual")
+            run:
+                for i,f in enumerate(input.plots):
+                    shell("mkdir -p {output.dir} && cp "+f+" {output.dir}/mcmc_autocorr_" +str(i+1) +".png")
