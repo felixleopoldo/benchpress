@@ -63,6 +63,8 @@ for algid in config["resources"]["structure_learning_algorithms"]:
 
 
 for bmark_setup in config["benchmark_setup"]:
+    if "mcmc_traj_plots" not in bmark_setup["evaluation"]:
+        continue
     # Joins processed trajs
     bmark_setup_title = bmark_setup["title"]
     rule:
