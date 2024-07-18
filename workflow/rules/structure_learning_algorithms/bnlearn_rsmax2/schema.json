@@ -76,7 +76,7 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
             },
             "edgeConstraints": {
-                "type": "string",
+                "type": ["string", "null"],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }

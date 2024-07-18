@@ -5,8 +5,10 @@ wrapper <- function() {
   data <- read.csv(snakemake@input[["data"]], check.names = FALSE)
   filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
 
+  print("Reading startspace")
+  print(snakemake@input[["input_algorithm"]])
   startspace <- read.csv(snakemake@input[["input_algorithm"]])
-
+  print("Reading startspace done")
   rownames(startspace) <- seq(dim(data)[2])
   colnames(startspace) <- seq(dim(data)[2])
 
@@ -19,23 +21,19 @@ wrapper <- function() {
   start <- proc.time()[1]
   set.seed(convert_or_null(wc[["mcmc_seed"]], as.integer))
 
-
-    p <- ncol(data)
-    node_names <- colnames(data)
+  edgeConstraints <- read.csv(filename_edge_constraints)
+  p <- ncol(data)
+  node_names <- colnames(data)
+  if (nrow(edgeConstraints) == 0) {
+    blacklist <- NULL
+  } else {
     blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-    edgeConstraints <- NULL
-
-    # get the size of the edge constraints file
-    size_edge_constraints <- file.info(filename_edge_constraints)$size
-    if(size_edge_constraints > 1) {        
-        edgeConstraints <- read.csv(filename_edge_constraints)
-        for (i in 1:nrow(edgeConstraints)) {
-            from <- as.character(edgeConstraints$from[i])
-            to <- as.character(edgeConstraints$to[i])
-            blacklist[from, to] <- 1
-        }
+    for (i in 1:nrow(edgeConstraints)) {
+      from <- as.character(edgeConstraints$from[i])
+      to <- as.character(edgeConstraints$to[i])
+      blacklist[from, to] <- 1
     }
-
+  }
 
   order_mcmc_res <- orderMCMC(myscore,
     startspace = startspace,

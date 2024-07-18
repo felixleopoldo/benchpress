@@ -7,11 +7,21 @@ filename_data <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["seed"]])
 filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
 
-edgeConstraints <- read.csv(filename_edge_constraints)
-
 # Extract blacklist and whitelist edges
-blacklist <- subset(edgeConstraints, type == "blacklist", select = c("from", "to"))
-whitelist <- subset(edgeConstraints, type == "whitelist", select = c("from", "to"))
+if (nrow(edgeConstraints) == 0) {
+  blacklist <- NULL
+  whitelist <- NULL
+} else {
+  blacklist <- subset(edgeConstraints, type == "blacklist", select = c("from", "to"))
+  whitelist <- subset(edgeConstraints, type == "whitelist", select = c("from", "to"))
+
+  if (nrow(blacklist) == 0) {
+    blacklist <- NULL
+  }
+  if (nrow(whitelist) == 0) {
+    whitelist <- NULL
+  }
+}
 
 wrapper <- function() {
   data <- read.csv(filename_data, check.names = FALSE)
