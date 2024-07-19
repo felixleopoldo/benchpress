@@ -165,7 +165,7 @@
           "semBicStructurePrior": 1,
           "penaltyDiscount": 2,
           "timeout": null,
-          "edgeConstraints": "none.json"
+          "edgeConstraints": "gusto.json"
         }
       ],
       "bidag_itsearch": [
