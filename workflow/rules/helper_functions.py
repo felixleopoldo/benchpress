@@ -36,7 +36,6 @@ def active_algorithm_files(bmark_setup):
         
     return alg_filenames
 
-import pprint
 
 def active_algorithms(bmark_setup, eval_method="benchmarks"):
 
