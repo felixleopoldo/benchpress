@@ -1,3 +1,18 @@
+
+def edge_constraints_tetrad(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/{wildcards.edgeConstraints}-tetrad"    
+
+
+def edge_constraints_bidag(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/{wildcards.edgeConstraints}-bidag"    
+
+
 def get_seed_range(seed_range):
     if seed_range == None:
         return [1]

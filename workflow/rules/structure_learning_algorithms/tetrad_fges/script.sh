@@ -1,4 +1,6 @@
 # Build command string 
+echo "Running Tetrad FGES"
+
 CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"

@@ -1,7 +1,7 @@
 rule bidag_iterative_search:
     input:
         data=alg_input_data(),
-        edgeConstraints_formatted="resources/constraints/{edgeConstraints}-bidag"
+        edgeConstraints_formatted=edge_constraints_bidag
     output:
         adjmat=alg_output_adjmat_path("bidag_itsearch"),
         time=alg_output_time_path("bidag_itsearch"),

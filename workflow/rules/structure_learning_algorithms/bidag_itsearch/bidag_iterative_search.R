@@ -17,12 +17,12 @@ wrapper <- function() {
     chi = wc[["chi"]], edgepf = wc[["edgepf"]]
   )
 
-  edgeConstraints <- read.csv(filename_edge_constraints)
   p <- ncol(data)
   node_names <- colnames(data)
-  if (nrow(edgeConstraints) == 0) {
+  if (is.null(filename_edge_constraints)) {
     blacklist <- NULL
   } else {
+    edgeConstraints <- read.csv(filename_edge_constraints)
     blacklist <- matrix(0, nrow = p, ncol = p, dimnames = list(node_names, node_names))
     for (i in 1:nrow(edgeConstraints)) {
       from <- as.character(edgeConstraints$from[i])
