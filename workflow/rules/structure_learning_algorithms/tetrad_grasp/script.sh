@@ -18,9 +18,9 @@ fi
 CMD="$CMD --algorithm grasp"
 
 # Check if edge constraints are provided
-if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+if [ ! -z ${snakemake_input[edgeConstraints_formatted]} ]; then
     echo "No edge constraints provided"
-else
+else    
     CMD="$CMD --edge-constraints ${snakemake_input[edgeConstraints_formatted]}"
 fi
 

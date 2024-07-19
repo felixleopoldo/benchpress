@@ -87,7 +87,7 @@
           },
           "graph_estimation": {
             "ids": [
-              "fges-sem-bic", "gobnilp-bge"
+              "fges-sem-bic"
             ],
             "convert_to": [
               "cpdag",
