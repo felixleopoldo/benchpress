@@ -1,5 +1,4 @@
 # Build command string 
-echo "Running Tetrad FGES"
 
 CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
@@ -20,10 +19,10 @@ fi
 CMD="$CMD --algorithm fges"
 
 # Check if edge constraints are provided
-if [ ! -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
     echo "No edge constraints provided"
 else
-    CMD="$CMD --edge-constraints ${snakemake_input[edgeConstraints_formatted]}"
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
 fi
 
 CMD="$CMD --score ${snakemake_wildcards[score]}"
