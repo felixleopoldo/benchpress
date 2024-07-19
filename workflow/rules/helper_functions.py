@@ -12,6 +12,12 @@ def edge_constraints_bidag(wildcards):
     else:
         return f"resources/constraints/{wildcards.edgeConstraints}-bidag"    
 
+def edge_constraints_gobnilp(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/{wildcards.edgeConstraints}-gobnilp"
+
 
 def get_seed_range(seed_range):
     if seed_range == None:

@@ -19,7 +19,7 @@ fi
 
 CMD="$CMD --algorithm fges"
 
-# check id edge constraints are provided
+# Check if edge constraints are provided
 if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
     echo "No edge constraints provided"
 else

@@ -87,7 +87,7 @@
           },
           "graph_estimation": {
             "ids": [
-              "fges-sem-bic"
+              "fges-sem-bic", "gobnilp-bge"
             ],
             "convert_to": [
               "cpdag",
@@ -155,7 +155,30 @@
       ]
     },
     "structure_learning_algorithms": {
-      "tetrad_fges": [
+        "gobnilp": [
+            {
+              "id": "gobnilp-bge",
+              "continuous": true,
+              "score_type": "BGe",
+              "plot": false,
+              "palim": 5,
+              "alpha_mu": [
+                0.0001,
+                0.001,
+                0.01,
+                0.1,
+                1
+              ],
+              "alpha_omega_minus_nvars": 2,
+              "alpha": null,
+              "time_limit": null,
+              "gap_limit": null,
+              "prune": true,
+              "edgeConstraints": null,
+              "timeout": 800
+            }
+        ],    
+        "tetrad_fges": [
         {
           "id": "fges-sem-bic",
           "samplePrior": 1,
@@ -165,7 +188,7 @@
           "semBicStructurePrior": 1,
           "penaltyDiscount": 2,
           "timeout": null,
-          "edgeConstraints": "gusto.json"
+          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
