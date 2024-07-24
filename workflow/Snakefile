@@ -73,6 +73,18 @@ for p in Path("workflow/rules/evaluation/").iterdir():
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
 
+
+
+include: "rules/docker_images.smk"
+
+container: docker_image("benchmark")
+
+rule all:
+    input:
+        get_active_rules,
+        #"workflow/schemas/tmp.config.schema.json"
+
+
 # This is to avoid regenerating the schema every time when running snakemake
 # with muliple cores.
 rule generate_config_schema:                    
@@ -86,16 +98,6 @@ rule generate_config_schema:
 
 
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
-
-include: "rules/docker_images.smk"
-
-container: docker_image("benchmark")
-
-rule all:
-    input:
-        get_active_rules,
-        "workflow/schemas/tmp.config.schema.json"
-
 
 # Read which modules are MCMC module (have graphtraj output).
 mcmc_modules = []
