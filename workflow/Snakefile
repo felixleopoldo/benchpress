@@ -73,9 +73,17 @@ for p in Path("workflow/rules/evaluation/").iterdir():
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
 
-# Yes this is a hack to use snakemakes built in validator.
-with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
-    outfile.write(json.dumps(schema, indent=4))
+# This is to avoid regenerating the schema every time when running snakemake
+# with muliple cores.
+rule generate_config_schema:                    
+    input:
+        configfilename # maybe it should be triggered byt the module folders or something
+    output:
+        "workflow/schemas/tmp.config.schema.json"
+    run:
+        with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
+            outfile.write(json.dumps(schema, indent=4))
+
 
 snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
 
@@ -86,14 +94,8 @@ container: docker_image("benchmark")
 rule all:
     input:
         get_active_rules,
+        "workflow/schemas/tmp.config.schema.json"
 
-rule copy_configs:
-    input: 
-        "config/"
-    output:
-        directory("config/copies")
-    shell:
-        "cp -r {input} {output}"
 
 # Read which modules are MCMC module (have graphtraj output).
 mcmc_modules = []
