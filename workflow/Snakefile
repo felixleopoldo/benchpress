@@ -81,9 +81,7 @@ tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
-
 snakemake.utils.validate(config, tmp_schema)
-
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
 
@@ -95,9 +93,6 @@ container: docker_image("benchmark")
 rule all:
     input:
         get_active_rules,
-
-# import random to generate a random number
-import random
 
 
 # Read which modules are MCMC module (have graphtraj output).
