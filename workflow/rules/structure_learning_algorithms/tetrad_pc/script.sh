@@ -16,7 +16,12 @@ fi
 
 CMD="$CMD --algorithm pc"
 
-CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+fi
 cat ${snakemake_input[edgeConstraints_formatted]}
 
 CMD="$CMD --test ${snakemake_wildcards[test]}"

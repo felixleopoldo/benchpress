@@ -18,6 +18,18 @@ def edge_constraints_gobnilp(wildcards):
     else:
         return f"resources/constraints/{wildcards.edgeConstraints}-gobnilp"
 
+def edge_constraints_bnlearn(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/{wildcards.edgeConstraints}-bnlearn"    
+
+def edge_constraints_pcalg(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/{wildcards.edgeConstraints}-pcalg"
+
 
 def get_seed_range(seed_range):
     if seed_range == None:

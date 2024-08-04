@@ -1,0 +1,156 @@
+{
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "avneigs4_p80",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            10
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "paper_all/",
+          "show_seed": true,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": ["pc-gaussCItest", "pcstable-zf","itsearch_map-bge","gobnilp-bge","grasp-bic"]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "ggally_ggpairs": false,
+        "graph_plots": ["pc-gaussCItest", "pcstable-zf","itsearch_map-bge","gobnilp-bge","grasp-bic"],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+      },
+      "title": "paper_all"
+    }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": 300
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p80",
+          "max_parents": 5,
+          "n": 80,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "pcalg_pc": [
+        {
+          "id": "pc-gaussCItest",
+          "alpha": [0.001],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_pcstable": [
+        {
+          "id": "pcstable-zf",
+          "alpha": [0.01],
+          "test": "zf",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "tetrad_grasp": [
+        {
+          "id": "grasp-bic",
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "test": "fisher-z-test",
+          "samplePrior": null,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.8, 1, 1.5],
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "gobnilp": [
+        {
+          "id": "gobnilp-bge",
+          "continuous": true,
+          "score_type": "BGe",
+          "plot": false,
+          "palim": 3,
+          "alpha_mu": [0.00001],
+          "alpha_omega_minus_nvars": 2,
+          "alpha": null,
+          "time_limit": null,
+          "gap_limit": null,
+          "prune": true,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch_map-bge",
+          "estimate": "map",
+          "MAP": true,
+          "plus1it": null,
+          "posterior": null,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": [0.000248],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 15,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ]
+    }
+  }
+}
