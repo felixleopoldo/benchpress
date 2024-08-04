@@ -5,7 +5,6 @@ library(pcalg)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
 wrapper <- function() {
-
   filename <- file.path(snakemake@output[["adjmat"]])
   filename_data <- snakemake@input[["data"]]
   filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
@@ -23,14 +22,11 @@ wrapper <- function() {
   indepTest <- match.fun(snakemake@wildcards[["indepTest"]])
 
   data <- read.csv(filename_data, check.names = FALSE)
-  edgeConstraints <- read.csv(filename_edge_constraints)
-  p <- ncol(data)  
-  node_names <- colnames(data)
 
-  if (nrow(edgeConstraints) == 0) {
-    fixedGaps <- NULL
-    fixedEdges <- NULL
-  } else {
+  if (!is.null(filename_edge_constraints)) {
+    edgeConstraints <- read.csv(filename_edge_constraints)
+    p <- ncol(data)
+    node_names <- colnames(data)
     fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
     fixedEdges <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
 
@@ -45,12 +41,15 @@ wrapper <- function() {
         fixedEdges[node2, node1] <- TRUE
       }
     }
+  } else {
+    fixedGaps <- NULL
+    fixedEdges <- NULL
   }
 
   suffStat <- NULL
   if (snakemake@wildcards[["indepTest"]] != "gaussCItest") {
-    nlev <- as.numeric(data[1,])
-    data <- data[-1,]  # Remove range header
+    nlev <- as.numeric(data[1, ])
+    data <- data[-1, ] # Remove range header
     suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
   } else {
     n <- dim(data)[1]

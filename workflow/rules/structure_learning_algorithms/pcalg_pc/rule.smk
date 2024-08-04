@@ -3,7 +3,7 @@ rule:
         module_name
     input:
         data=alg_input_data(),
-        edgeConstraints_formatted="resources/constraints/{edgeConstraints}-pcalg"
+        edgeConstraints_formatted=edge_constraints_pcalg
     output:
         adjmat=alg_output_adjmat_path(module_name),
         time=alg_output_time_path(module_name),

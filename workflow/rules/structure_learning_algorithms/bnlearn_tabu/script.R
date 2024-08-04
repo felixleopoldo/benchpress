@@ -5,13 +5,12 @@ filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
 
-edgeConstraints <- read.csv(filename_edge_constraints)
-
 # Extract blacklist and whitelist edges
-if (nrow(edgeConstraints) == 0) {
+if (is.null(filename_edge_constraints)) {
   blacklist <- NULL
   whitelist <- NULL
 } else {
+  edgeConstraints <- read.csv(filename_edge_constraints)
   blacklist <- subset(edgeConstraints, type == "blacklist", select = c("from", "to"))
   whitelist <- subset(edgeConstraints, type == "whitelist", select = c("from", "to"))
 

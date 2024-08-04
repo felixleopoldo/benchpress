@@ -15,20 +15,25 @@ myalg <- function() {
 
     idata <- read.csv(filename_data, check.names = FALSE)
 
-    edgeConstraints <- read.csv(filename_edge_constraints)
-    p <- ncol(data)
-    node_names <- colnames(data)
+    if (!is.null(filename_edge_constraints)) {
+        edgeConstraints <- read.csv(filename_edge_constraints)
+        p <- ncol(data)
+        node_names <- colnames(data)
+        fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
+        fixedEdges <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
 
-    fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-
-    for (i in 1:nrow(edgeConstraints)) {
-        node1 <- edgeConstraints$node1[i]
-        node2 <- edgeConstraints$node2[i]
-        if (edgeConstraints$matrix_type[i] == "fixedGaps") {
-            fixedGaps[node1, node2] <- TRUE
-            fixedGaps[node2, node1] <- TRUE
+        for (i in 1:nrow(edgeConstraints)) {
+            node1 <- edgeConstraints$node1[i]
+            node2 <- edgeConstraints$node2[i]
+            if (edgeConstraints$matrix_type[i] == "fixedGaps") {
+                fixedGaps[node1, node2] <- TRUE
+                fixedGaps[node2, node1] <- TRUE
+            }
         }
+    } else {
+        fixedGaps <- NULL
     }
+
 
     p <- length(unique(colnames(idata)))
     n <- nrow(idata)
