@@ -23,8 +23,8 @@ if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
     echo "No edge constraints provided"
 else
     CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
 fi
-cat ${snakemake_input[edgeConstraints_formatted]}
 
 CMD="$CMD --score ${snakemake_wildcards[score]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
