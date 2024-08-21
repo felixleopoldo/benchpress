@@ -31,18 +31,29 @@ if (length(K_values) == 1) {
 }
 
 if (length(K_values) > 1) {
-    M <- sum(adjmat != 0)
-    v <- sample.int(length(K_values), M, replace = TRUE)
-    precmat <- 1 * (adjmat != 0)
-    precmat[which(adjmat != 0)] <- K_values[v]
+    is_positive_definite <- FALSE
+    k = 0
+    while (!is_positive_definite) {
+        M <- sum(adjmat != 0)
+        v <- sample.int(length(K_values), M, replace = TRUE)
+        precmat <- 1 * (adjmat != 0)
+        precmat[which(adjmat != 0)] <- K_values[v]
+        eigen_values <- eigen(precmat)$values
+        is_positive_definite <- all(Re(eigen_values) > 0)
+        print(paste("Iteration", k, "is_positive_definite", is_positive_definite))
+    }
+    #M <- sum(adjmat != 0)
+    #v <- sample.int(length(K_values), M, replace = TRUE)
+    #precmat <- 1 * (adjmat != 0)
+    #precmat[which(adjmat != 0)] <- K_values[v]
 }
-while (TRUE) {
-    eigen_values <- eigen(precmat)$values
-    is_positive_definite <- all(Re(eigen_values) > 0)
-    if (is_positive_definite) break
-    print("Adding 0.1 to the diagonal")
-    precmat <- precmat + 0.1 * diag(p)
-}
+# while (TRUE) {
+#     eigen_values <- eigen(precmat)$values
+#     is_positive_definite <- all(Re(eigen_values) > 0)
+#     if (is_positive_definite) break
+#     print("Adding 0.1 to the diagonal")
+#     precmat <- precmat + 0.1 * diag(p)
+# }
 print("Inverting the precision matrix")
 covmat <- cov2cor(solve(precmat))
 colnames(covmat) <- colnames(df)

@@ -145,8 +145,9 @@
       "random_precmat": [
         {
           "id": "precmat",
-          "prec_val_1": 0.5,
-          "prec_val_2": 0.1
+          "prec_val_1": 0.75,
+          "prec_val_2": 0.25,
+          "prec_val_3": 0.1
         }
       ],
       "trilearn_intra-class": [
