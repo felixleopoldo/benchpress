@@ -38,6 +38,8 @@ if (length(K_values) > 1) {
         v <- sample.int(length(K_values), M, replace = TRUE)
         precmat <- 1 * (adjmat != 0)
         precmat[which(adjmat != 0)] <- K_values[v]
+        
+        diag(precmat) <- diag(precmat) + 0.1
         eigen_values <- eigen(precmat)$values
         is_positive_definite <- all(Re(eigen_values) > 0)
         k = k+1
