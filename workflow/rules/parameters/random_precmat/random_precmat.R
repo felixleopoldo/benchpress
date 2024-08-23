@@ -40,6 +40,7 @@ if (length(K_values) > 1) {
         precmat[which(adjmat != 0)] <- K_values[v]
         eigen_values <- eigen(precmat)$values
         is_positive_definite <- all(Re(eigen_values) > 0)
+        k = k+1
         print(paste("Iteration", k, "is_positive_definite", is_positive_definite))
     }
     #M <- sum(adjmat != 0)
