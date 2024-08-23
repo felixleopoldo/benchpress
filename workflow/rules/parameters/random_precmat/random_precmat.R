@@ -37,9 +37,12 @@ if (length(K_values) > 1) {
         M <- sum(adjmat != 0)
         v <- sample.int(length(K_values), M, replace = TRUE)
         precmat <- 1 * (adjmat != 0)
-        precmat[which(adjmat != 0)] <- K_values[v]
-        
-        diag(precmat) <- diag(precmat) + 0.1
+        indx = which (adjmat != 0, arr.ind = TRUE)
+        rho = K_values[1]
+        distance_to_diag = abs(indx[, 'row'] - indx[, 'col'])
+        r2 = rho^distance_to_diag
+        precmat[indx] <- r2       
+        diag(precmat) <- 1
         eigen_values <- eigen(precmat)$values
         is_positive_definite <- all(Re(eigen_values) > 0)
         k = k+1
