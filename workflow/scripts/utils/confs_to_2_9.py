@@ -3,9 +3,15 @@
 
 from pathlib import Path
 import json
+import shutil
+
+
+shutil.copytree('config', 'config_old', dirs_exist_ok=True)  # Fine
+
 
 # get all the files in the config folder
 config_files = Path("config").rglob("*.json")
+
 
 
 # read all the files and add the edgeCon

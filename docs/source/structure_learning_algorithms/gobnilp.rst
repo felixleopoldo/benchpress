@@ -41,6 +41,7 @@ the first phase and the optimal sets are determined in a second phase.
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
+* ``extra_args`` File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs). 
 * ``gap_limit`` Gap limit. 
 * ``time_limit`` Time limit in seconds for the solver (not including the time to build the score tables). 
 * ``timeout`` Use the best DAG found so far after this number of seconds. 
@@ -57,6 +58,7 @@ the first phase and the optimal sets are determined in a second phase.
         "id": "gobnilp-bge",
         "continuous": true,
         "score_type": "BGe",
+        "extra_args": null,
         "plot": false,
         "palim": 3,
         "alpha_mu": [
@@ -76,6 +78,7 @@ the first phase and the optimal sets are determined in a second phase.
         "id": "gobnilp-bde",
         "continuous": false,
         "score_type": "BDeu",
+        "extra_args": null,
         "plot": false,
         "palim": 4,
         "alpha_mu": null,
