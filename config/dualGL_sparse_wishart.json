@@ -1,0 +1,310 @@
+{
+  "benchmark_setup": {
+    "data": [
+      {
+        "data_id": "example1",
+        "graph_id": "random-1-ultra-sparse",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          5
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "random-1-sparse",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          5
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "lattice",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          5
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "ar5",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          5
+        ]
+      },
+      {
+        "data_id": "example1",
+        "graph_id": "circle",
+        "parameters_id": "gwi",
+        "seed_range": [
+          1,
+          5
+        ]
+      }
+    ],
+    "evaluation": {
+      "benchmarks": {
+        "filename_prefix": "dualGraph_p200_sparse_gwi/",
+        "show_seed": false,
+        "errorbar": true,
+        "errorbarh": false,
+        "scatter": true,
+        "path": true,
+        "text": false,
+        "ids": [
+          "dualGL-gt13",
+          "jtsampler_gts",
+          "psi-learn",
+          "glasso",
+          "mb",
+          "bdgraph"
+        ]
+      },
+      "graph_true_plots": true,
+      "graph_true_stats": false,
+      "ggally_ggpairs": false,
+      "graph_plots": [],
+      "mcmc_traj_plots": [
+        {
+          "id": "jtsampler_gts",
+          "burn_in": 0.0,
+          "thinning": 100,
+          "functional": [
+            "score",
+            "size"
+          ],
+          "active": false
+        }
+      ],
+      "mcmc_heatmaps": [],
+      "mcmc_autocorr_plots": []
+    }
+  },
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "example1",
+          "standardized": false,
+          "n": [
+            20,
+            50,
+            100, 
+            200, 
+            500
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "trilearn_rand_bandmat": [
+        {
+          "id": "ar5",
+          "max_bandwidth": 5,
+          "dim": 200
+        }
+      ],
+      "bdgraph_graphsim": [
+        {
+          "id": "random-1-sparse",
+          "p": 200,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.1
+        },
+        {
+          "id": "random-1-ultra-sparse",
+          "p": 200,
+          "graph": "random",
+          "class": null,
+          "size": null,
+          "prob": 0.01
+        },
+        {
+          "id": "lattice",
+          "p": 200,
+          "graph": "lattice",
+          "class": null,
+          "size": null,
+          "prob": 0.1
+        },
+        {
+          "id": "circle",
+          "p": 200,
+          "graph": "circle",
+          "class": null,
+          "size": null,
+          "prob": 0.2
+        }
+      ]
+    },
+    "parameters": {
+      "random_precmat": [
+        {
+          "id": "precmat",
+          "prec_val_1": 0.5,
+          "prec_val_2": 0.25
+        }
+      ],
+      "trilearn_intra-class": [
+        {
+          "id": "intra-class",
+          "rho": 0.5,
+          "sigma2": 1.0
+        }
+      ],
+      "bdgraph_rgwish": [
+        {
+          "id": "gwi",
+          "b": 5,
+          "threshold_conv": 0.000001
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "equsa_psilearner": [
+        {
+          "id": "psi-learn",
+          "timeout": null,
+          "alpha1": 0.3,
+          "alpha2": [
+            0.01,
+            0.025,
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.9,
+            0.98
+          ]
+        }
+      ],
+      "dualgl": [
+        {
+          "id": "dualGL-gt13",
+          "timeout": null,
+          "startalg": "jtsampler_gts",
+          "alpha": [
+            0.01,
+            0.025,
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.9,
+            0.99
+          ]
+        }
+      ],
+      "bdgraph": [
+        {
+          "id": "bdgraph",
+          "method": "ggm",
+          "algo": ["rjmcmc"],
+          "iter": 10000,
+          "gprior": 0.5,
+          "dfprior": 3,
+          "gstart": "empty",
+          "timeout": null,
+          "mcmc_seed": [1],
+          "thresh": 0.5,
+          "mcmc_estimator": ["threshold"],
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ],
+          "burnin_frac": 0.5
+        }
+      ],
+      "athomas_jtsampler": [
+        {
+          "id": "jtsampler_gts",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": [
+            "threshold"
+          ],
+          "timeout": null,
+          "mcmc_seed": 1,
+          "num_samples": 10000000,
+          "sampler": 1,
+          "delta": 5,
+          "edge_penalty": 0,
+          "size_maxclique": 500,
+          "full_output": true,
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ]
+        }
+      ],
+      "huge_glasso": [
+        {
+          "id": "glasso",
+          "lambda": [
+            2,
+            1,
+            0.8,
+            0.6,
+            0.4,
+            0.2,
+            0.1,
+            0.05,
+            0.01
+          ],
+          "timeout": null
+        }
+      ],
+      "huge_mb": [
+        {
+          "id": "mb",
+          "lambda": [
+            2,
+            1,
+            0.8,
+            0.6,
+            0.4,
+            0.2,
+            0.1,
+            0.05,
+            0.01
+          ],
+          "timeout": null
+        }
+      ]
+    }
+  }
+}
