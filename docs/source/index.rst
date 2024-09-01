@@ -82,7 +82,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: See also
 
-* The paper :footcite:t:`rios2021benchpress`
+* The paper :footcite:t:`rios2021benchpress` (to appear in the `Journal of Statistical Software <https://www.jstatsoft.org/index>`_)
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
