@@ -94,8 +94,8 @@ generated datasets, the workflow also includes a number of standard datasets and
 ..     Or simply send an email to felix leopoldo rios at gmail dot com.
 
 .. rubric:: News
-* 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
-* 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
+* 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster and easier to use. 
+* 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).
 * 2024-01-03: Benchpress 2.7.0. New algorithm modules from the `huge <https://cran.r-project.org/web/packages/huge/index.html>`_ package for estimating Gaussian graphical models: :ref:`huge_glasso`, :ref:`huge_mb`, and :ref:`huge_tiger`. Thanks `Mohamad Elmasri <https://www.turing.ac.uk/people/mohamad-elmasri/>`_ for the contribution.
 * 2023-12-04: New version of the Benchpress paper :footcite:t:`rios2021benchpress`.
