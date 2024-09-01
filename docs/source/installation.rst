@@ -37,7 +37,7 @@ Here we describe two ways to get these in place.
 
 ..  on your server or local machine.
 
-Docker (Linux/macOS/Win)
+Linux/macOS/Windows (Docker)
 --------------------------------
 
 For this alternative, you only need to install `Docker <https://www.docker.com/>`_, following the instructions for your specific system.
@@ -46,7 +46,7 @@ You may configure the resources (memory, cores, disk,... ) to be used through th
 
 .. _linuxx:
 
-Without Docker (Linux)
+Linux (Native)
 -----------------------------
 
 This alternative is preferred e.g. if you will add new modules or if you are working on a server that doesn't support `Docker <https://www.docker.com/>`_ (typically for security reasons).
@@ -75,6 +75,32 @@ This alternative is preferred e.g. if you will add new modules or if you are wor
 
     For cloud or cluster execution however, software such as `Kubernetes <https://kubernetes.io/>`_ or `Slurm <https://slurm.schedmd.com/documentation.html>`_ may also be required.
     See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/>`_  for further information.
+
+Windows (WSL)
+-------------------
+
+Widows users may also use the `Windows Subsystem for Linux (WSL) <https://docs.microsoft.com/en-us/windows/wsl/install>`_ to run Benchpress natively on their system.
+For this alternative, you will need to install `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ and `Apptainer <https://apptainer.org/>`_ in the WSL environment, and run the workflow as if you were using a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system.
+The files will be stored in the WSL file system, but can be accessed from the Windows file system as well among network devices.
+
+To install WSL type the following command in a PowerShell terminal with administrator rights:
+
+.. prompt:: powershell
+
+    wsl --install
+
+To start the WSL terminal, type *wsl* as:
+
+.. prompt:: powershell
+
+    wsl
+
+or search for *Ubuntu* in the start menu.
+
+.. note::
+
+    The `Windows Subsystem for Linux (WSL) <https://docs.microsoft.com/en-us/windows/wsl/install>`_ is only available for Windows 10, 11, and Windows Server 2019, and requires a 64-bit version of Windows.
+    It is also recommended to use WSL2 for better performance.
 
 
 Usage 

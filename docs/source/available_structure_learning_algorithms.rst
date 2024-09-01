@@ -30,6 +30,7 @@ Algorithms
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/bnlearn_tabu
     structure_learning_algorithms/causaldag_gsp
+    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
