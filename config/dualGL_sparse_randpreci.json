@@ -61,7 +61,8 @@
           "jtsampler_gts",
           "psi-learn",
           "glasso",
-          "mb"
+          "mb", 
+          "bdgraph"
         ]
       },
       "graph_true_plots": true,
@@ -187,6 +188,35 @@
           ]
         }
       ],
+      "bdgraph": [
+        {
+          "id": "bdgraph",
+          "method": "ggm",
+          "algo": ["rjmcmc"],
+          "iter": 10000,
+          "gprior": 0.5,
+          "dfprior": 3,
+          "gstart": "empty",
+          "timeout": null,
+          "mcmc_seed": [1],
+          "thresh": 0.5,
+          "mcmc_estimator": ["threshold"],
+          "threshold": [
+            0.0,
+            0.1,
+            0.2,
+            0.3,
+            0.4,
+            0.5,
+            0.6,
+            0.7,
+            0.8,
+            0.9,
+            1.0
+          ],
+          "burnin_frac": 0.5
+        }
+      ],
       "dualgl": [
         {
           "id": "dualGL-gt13",
@@ -218,7 +248,7 @@
           ],
           "timeout": null,
           "mcmc_seed": 1,
-          "num_samples": 20000000,
+          "num_samples": 10000000,
           "sampler": 1,
           "delta": 5,
           "edge_penalty": 0,
