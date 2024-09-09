@@ -2,7 +2,7 @@ Authors
 ################
 
 | `Felix Rios <https://felixleopoldo.github.io>`_
-| `Department of Paediatric, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
+| `Department of Paediatrics, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
 | NUS Singapore
 
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
