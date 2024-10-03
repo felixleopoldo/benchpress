@@ -1,0 +1,515 @@
+{
+  "benchmark_setup": [
+    {
+      "title": "missing_data",
+      "data": [
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_orig_tobefiltered.csv",
+          "seed_range": null
+        }
+      ],
+      "evaluation": {
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": ["pasting"],
+          "convert_to": [],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": [],
+        "mcmc_traj_plots": []
+      }
+    },
+    {
+      "title": "mya",
+      "data": [
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_mya.csv",
+          "seed_range": null
+        }
+      ],
+      "evaluation": {
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": ["gobnilp-bge_minconstraints", "grasp-bic_minconstraints"],
+          "convert_to": ["cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": [],
+        "mcmc_traj_plots": []
+      }
+    },
+    {
+      "title": "gusto_johan",
+      "data": [
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_johan.csv",
+          "seed_range": null
+        },
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_johan_2.csv",
+          "seed_range": null
+        },
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_johan_mental.csv",
+          "seed_range": null
+        }
+      ],
+      "evaluation": {
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": ["gobnilp-bge", "grasp-bic", "itsearch-bge_sample"],
+          "convert_to": ["cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "mcmc_heatmaps": [
+          {
+            "id": "omcmc_itmap-bge_am001",
+            "burn_in": 0.5,
+            "active": true
+          },
+          {
+            "id": "omcmc_itmap-bge_am01",
+            "burn_in": 0.5,
+            "active": true
+          },
+          {
+            "id": "omcmc_itmap-bge_am1",
+            "burn_in": 0.5,
+            "active": true
+          }
+        ],
+        "mcmc_autocorr_plots": [],
+        "mcmc_traj_plots": []
+      }
+    },
+    {
+      "title": "gusto_johan_minimal",
+      "data": [
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_johan_minimal.csv",
+          "seed_range": null
+        }
+      ],
+      "evaluation": {
+        "graph_estimation": {
+          "ids": ["gobnilp-bge_minconstraints", "grasp-bic_minconstraints"],
+          "convert_to": ["cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        }
+      }
+    },
+    {
+      "title": "gusto_brief2",
+      "data": [
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_brief2_leanmass_outdoor_sleep.csv",
+          "seed_range": null
+        },
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "gusto_0missing_brief2_parents_min.csv",
+          "seed_range": null
+        }
+      ],
+      "evaluation": {
+        "graph_true_plots": false,
+        "graph_true_stats": false,
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": [
+            "gobnilp-bge_noconstraints",
+            "grasp-bic_noconstriants",
+            "itsearch-bge_sample_noconstraints"
+          ],
+          "convert_to": ["cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "mcmc_traj_plots": [],
+        "mcmc_autocorr_plots": []
+      }
+    }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": [300]
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": 20,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "pasting": [
+        {
+          "id": "pasting",
+          "min_nonmissing": 170,
+          "timeout": null
+        }
+      ],
+      "gobnilp": [
+        {
+          "id": "gobnilp-bge_noconstraints",
+          "continuous": true,
+          "score_type": "BGe",
+          "plot": false,
+          "palim": 5,
+          "alpha_mu": [0.0001, 0.001, 0.01, 0.1, 1],
+          "alpha_omega_minus_nvars": 2,
+          "alpha": null,
+          "time_limit": null,
+          "gap_limit": null,
+          "prune": true,
+          "edgeConstraints": null,
+          "timeout": 800
+        },
+        {
+          "id": "gobnilp-bge",
+          "continuous": true,
+          "score_type": "BGe",
+          "plot": false,
+          "palim": 5,
+          "alpha_mu": [0.0001, 0.001, 0.01, 0.1, 1],
+          "alpha_omega_minus_nvars": 2,
+          "alpha": null,
+          "time_limit": null,
+          "gap_limit": null,
+          "prune": true,
+          "edgeConstraints": "gusto.json",
+          "timeout": 800
+        },
+        {
+          "id": "gobnilp-bge_minconstraints",
+          "continuous": true,
+          "score_type": "BGe",
+          "plot": false,
+          "palim": 5,
+          "alpha_mu": [0.0001, 0.001, 0.01, 0.1, 1],
+          "alpha_omega_minus_nvars": 2,
+          "alpha": null,
+          "time_limit": null,
+          "gap_limit": null,
+          "prune": true,
+          "edgeConstraints": "gusto_min.json",
+          "timeout": 800
+        }
+      ],
+      "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
+          "timeout": null,
+          "edgeConstraints": "gusto.json"
+        },
+        {
+          "id": "fges-sem-bic_noconstraints",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "tetrad_grasp": [
+        {
+          "id": "grasp-bic_noconstriants",
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "test": "fisher-z-test",
+          "samplePrior": null,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.2, 0.5, 0.8, 1, 1.5, 2],
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "grasp-bic",
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "test": "fisher-z-test",
+          "samplePrior": null,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.2, 0.5, 0.8, 1, 1.5, 2],
+          "timeout": null,
+          "edgeConstraints": "gusto.json"
+        },
+        {
+          "id": "grasp-bic_minconstraints",
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "test": "fisher-z-test",
+          "samplePrior": null,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.2, 0.5, 0.8, 1, 1.5, 2],
+          "timeout": null,
+          "edgeConstraints": "gusto_min.json"
+        }
+      ],
+      "corr_thresh": [
+        {
+          "id": "ct",
+          "thresh": [0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9],
+          "timeout": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch-bge_sample_noconstraints",
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": 2,
+          "am": [0.01, 0.1, 1],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": null,
+          "timeout": null
+        },
+        {
+          "id": "itsearch-bge_sample",
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": 2,
+          "am": [0.01, 0.1, 1],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": "gusto.json",
+          "timeout": null
+        },
+        {
+          "id": "itsearch-bge_map",
+          "estimate": "map",
+          "MAP": true,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": 2,
+          "am": [0.01, 0.1, 1],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": "gusto.json",
+          "timeout": null
+        },
+        {
+          "id": "itsearch-bge_am1_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": 1,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": "gusto.json",
+          "timeout": null
+        },
+        {
+          "id": "itsearch-bge_am01_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": 0.1,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": "gusto.json",
+          "timeout": null
+        },
+        {
+          "id": "itsearch-bge_am001_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": null,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": 0.01,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": "gusto.json",
+          "timeout": null
+        }
+      ],
+      "bidag_order_mcmc": [
+        {
+          "id": "omcmc_itmap-bge_am001",
+          "input_algorithm_id": "itsearch-bge_am001_endspace",
+          "plus1": true,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "aw": null,
+          "am": [0.01],
+          "alpha": 0.01,
+          "gamma": 1,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": true,
+          "cpdag": false,
+          "timeout": null,
+          "mcmc_seed": 1,
+          "threshold": [0.1, 0.2, 0.5, 0.8],
+          "mcmc_estimator": "threshold",
+          "burnin_frac": 0.5,
+          "edgeConstraints": "gusto.json"
+        },
+        {
+          "id": "omcmc_itmap-bge_am01",
+          "input_algorithm_id": "itsearch-bge_am01_endspace",
+          "plus1": true,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "aw": null,
+          "am": [0.1],
+          "alpha": 0.01,
+          "gamma": 1,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": true,
+          "cpdag": false,
+          "timeout": null,
+          "mcmc_seed": 1,
+          "threshold": [0.1, 0.2, 0.5, 0.8],
+          "mcmc_estimator": "threshold",
+          "burnin_frac": 0.5,
+          "edgeConstraints": "gusto.json"
+        },
+        {
+          "id": "omcmc_itmap-bge_am1",
+          "input_algorithm_id": "itsearch-bge_am1_endspace",
+          "plus1": true,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "aw": null,
+          "am": [0.1, 0.01, 1],
+          "alpha": 0.01,
+          "gamma": 1,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": true,
+          "cpdag": false,
+          "timeout": null,
+          "mcmc_seed": 1,
+          "threshold": 0.5,
+          "mcmc_estimator": "threshold",
+          "burnin_frac": 0.5,
+          "edgeConstraints": "gusto.json"
+        }
+      ]
+    }
+  }
+}
