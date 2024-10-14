@@ -35,9 +35,12 @@ The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`,
 consisting of two main steps. The first step is called the adjacency search and amounts to
 finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
 
+.. rubric:: Adding Background Knowledge
+pcalg_pc allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges`` and ``forbidden_edges``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
-
 
 .. rubric:: Example JSON
 
@@ -88,6 +91,15 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_edges": [["2", "3"], ["4", "5"]]
+}
 
 .. footbibliography::
 

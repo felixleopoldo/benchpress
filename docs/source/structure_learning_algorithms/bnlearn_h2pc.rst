@@ -33,6 +33,10 @@ bnlearn_h2pc
 
 Abstract: We present a novel hybrid algorithm for Bayesian network structure learning, called H2PC. It first reconstructs the skeleton of a Bayesian network and then performs a Bayesian-scoring greedy hill-climbing search to orient the edges. The algorithm is based on divide-and-conquer constraint-based subroutines to learn the local structure around a target variable. We conduct two series of experimental comparisons of H2PC against Max–Min Hill-Climbing (MMHC), which is currently the most powerful state-of-the-art algorithm for Bayesian network structure learning. First, we use eight well-known Bayesian network benchmarks with various data sizes to assess the quality of the learned structure returned by the algorithms. Our extensive experiments show that H2PC outperforms MMHC in terms of goodness of fit to new data and quality of the network structure with respect to the true dependence structure of the data. Second, we investigate H2PC’s ability to solve the multi-label learning problem. We provide theoretical results to characterize and identify graphically the so-called minimal label powersets that appear as irreducible factors in the joint distribution under the faithfulness condition. The multi-label learning problem is then decomposed into a series of multi-class classification problems, where each multi-class variable encodes a label powerset. H2PC is shown to compare favorably to MMHC in terms of global classification accuracy over ten multi-label data sets covering different application domains. Overall, our experiments support the conclusions that local structural learning with H2PC in the form of local neighborhood induction is a theoretically well-motivated and empirically effective learning framework that is well suited to multi-label learning. The source code (in R) of H2PC as well as all data sets used for the empirical tests are publicly available.
 
+.. rubric:: Adding Background Knowledge
+bnlearn_h2pc allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -85,6 +89,22 @@ Abstract: We present a novel hybrid algorithm for Bayesian network structure lea
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_edges": [["2", "3"], ["4", "5"]],
+  "tiers": [["1", "2"], ["3", "4"]],
+  "tier_settings": {
+    "forbid_within_tiers": true,
+    "can_only_cause_next_tier": false
+  },
+  "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
+  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+}
 
 .. footbibliography::
 

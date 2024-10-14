@@ -34,6 +34,10 @@ bidag_partition_mcmc
 Abstract: 
 Acyclic digraphs are the underlying representation of Bayesian networks, a widely used class of probabilistic graphical models. Learning the underlying graph from data is a way of gaining insights about the structural properties of a domain. Structure learning forms one of the inference challenges of statistical graphical models. Markov chain Monte Carlo (MCMC) methods, notably structure MCMC, to sample graphs from the posterior distribution given the data are probably the only viable option for Bayesian model averaging. Score modularity and restrictions on the number of parents of each node allow the graphs to be grouped into larger collections, which can be scored as a whole to improve the chain’s convergence. Current examples of algorithms taking advantage of grouping are the biased order MCMC, which acts on the alternative space of permuted triangular matrices, and nonergodic edge reversal moves. Here, we propose a novel algorithm, which employs the underlying combinatorial structure of DAGs to define a new grouping. As a result convergence is improved compared to structure MCMC, while still retaining the property of producing an unbiased sample. Finally, the method can be combined with edge reversal moves to improve the sampler further. Supplementary materials for this article are available online.
 
+.. rubric:: Adding Background Knowledge
+bidag_partition_mcmc allows users to incorporate background knowledge directly into the causal algorithm using ``forbidden_edges`` and ``forbidden_groups``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -93,6 +97,15 @@ Acyclic digraphs are the underlying representation of Bayesian networks, a widel
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+}
 
 .. footbibliography::
 

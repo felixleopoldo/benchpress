@@ -95,6 +95,10 @@ Each dataset contains 300 samples.
     Graph properties.
 
 
+.. rubric:: Adding Background Knowledge
+bidag_itsearch allows users to incorporate background knowledge directly into the causal algorithm using ``forbidden_edges`` and ``forbidden_groups``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -157,6 +161,15 @@ Each dataset contains 300 samples.
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+}
 
 .. footbibliography::
 
