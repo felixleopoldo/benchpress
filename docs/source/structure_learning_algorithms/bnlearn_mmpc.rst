@@ -33,6 +33,10 @@ bnlearn_mmpc
 
 Abstract: Data Mining with Bayesian Network learning has two important characteristics: under conditions learned edges between variables correspond to casual influences, and second, for every variable T in the network a special subset (Markov Blanket) identifiable by the network is the minimal variable set required to predict T. However, all known algorithms learning a complete BN do not scale up beyond a few hundred variables. On the other hand, all known sound algorithms learning a local region of the network require an exponential number of training instances to the size of the learned region.The contribution of this paper is two-fold. We introduce a novel local algorithm that returns all variables with direct edges to and from a target variable T as well as a local algorithm that returns the Markov Blanket of T. Both algorithms (i) are sound, (ii) can be run efficiently in datasets with thousands of variables, and (iii) significantly outperform in terms of approximating the true neighborhood previous state-of-the-art algorithms using only a fraction of the training size required by the existing methods. A fundamental difference between our approach and existing ones is that the required sample depends on the generating graph connectivity and not the size of the local region; this yields up to exponential savings in sample relative to previously known algorithms. The results presented here are promising not only for discovery of local causal structure, and variable selection for classification, but also for the induction of complete BNs.
 
+.. rubric:: Adding Background Knowledge
+bnlearn_mmpc allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -73,6 +77,22 @@ Abstract: Data Mining with Bayesian Network learning has two important character
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_edges": [["2", "3"], ["4", "5"]],
+  "tiers": [["1", "2"], ["3", "4"]],
+  "tier_settings": {
+    "forbid_within_tiers": true,
+    "can_only_cause_next_tier": false
+  },
+  "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
+  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+}
 
 .. footbibliography::
 

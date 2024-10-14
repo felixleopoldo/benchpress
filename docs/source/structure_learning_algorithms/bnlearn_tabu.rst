@@ -34,6 +34,10 @@ bnlearn_tabu
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
 beneficial from a global perspective to avoid local maxima.
 
+.. rubric:: Adding Background Knowledge
+bnlearn_tabu allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
+For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
+
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -81,6 +85,22 @@ beneficial from a global perspective to avoid local maxima.
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
+
+.. rubric:: Example edgeConstraints.json 
+
+.. code-block:: json
+
+{
+  "forbidden_edges": [["1", "2"], ["3", "4"]],
+  "required_edges": [["2", "3"], ["4", "5"]],
+  "tiers": [["1", "2"], ["3", "4"]],
+  "tier_settings": {
+    "forbid_within_tiers": true,
+    "can_only_cause_next_tier": false
+  },
+  "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
+  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+}
 
 .. footbibliography::
 
