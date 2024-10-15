@@ -44,17 +44,17 @@ The edge constraints should be defined in a JSON file located within the ``resou
 
 .. code-block:: json
 
-{
-  "forbidden_edges": [["1", "2"], ["3", "4"]],
-  "required_edges": [["2", "3"], ["4", "5"]],
-  "tiers": [["1", "2"], ["3", "4"]],
-  "tier_settings": {
-    "forbid_within_tiers": true,
-    "can_only_cause_next_tier": false
-  },
-  "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
-  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
-}
+    {
+        "forbidden_edges": [["1", "2"], ["3", "4"]],
+        "required_edges": [["2", "3"], ["4", "5"]],
+        "tiers": [["1", "2"], ["3", "4"]],
+        "tier_settings": {
+            "forbid_within_tiers": true,
+            "can_only_cause_next_tier": false
+        },
+        "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
+        "required_groups": [{"cause": ["2"], "effect": ["5"]}]
+    }
 
 This JSON structure includes forbidden and required edges, tier constraints, and group constraints that can be used across different packages supported by Benchpress.
 - The variable names must match exactly, including case sensitivity, as they appear in the dataset. 

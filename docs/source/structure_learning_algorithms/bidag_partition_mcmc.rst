@@ -102,10 +102,10 @@ For more details on defining edge constraints, see :doc:`../available_background
 
 .. code-block:: json
 
-{
-  "forbidden_edges": [["1", "2"], ["3", "4"]],
-  "required_groups": [{"cause": ["2"], "effect": ["5"]}]
-}
+    {
+        "forbidden_edges": [["1", "2"], ["3", "4"]],
+        "forbidden_groups": [{"cause": ["5"], "effect": ["6", "7"]}]
+    }
 
 .. footbibliography::
 
