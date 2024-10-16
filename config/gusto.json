@@ -6,7 +6,7 @@
         {
           "graph_id": null,
           "parameters_id": null,
-          "data_id": "gusto_orig_tobefiltered.csv",
+          "data_id": "gusto_orig_johan_tofilter.csv",
           "seed_range": null
         }
       ],
@@ -203,7 +203,7 @@
       "pasting": [
         {
           "id": "pasting",
-          "min_nonmissing": 170,
+          "min_nonmissing": 200,
           "timeout": null
         }
       ],
