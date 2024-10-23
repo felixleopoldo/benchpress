@@ -8,30 +8,29 @@ import time
 import numpy as np
 import pandas as pd
 from add_timeout import *
-import main as pasting
+import datadigger as pasting
+import random
 
 
 def myalg():
     # Read in data (not used in this algorithm)
     np.random.seed(int(snakemake.wildcards["seed"]))
+    random.seed(int(snakemake.wildcards["seed"]))
     df = pd.read_csv(snakemake.input["data"])
     min_nonmissing = int(snakemake.wildcards["min_nonmissing"])
-    (jt, cg) = pasting.get_data_jtree(df, max_nas=0, min_n_obs=min_nonmissing)
-    adjmat_df = pasting.estimate_gm(jt, cg, df)
-    
+    bic_lambda = None
+    if snakemake.wildcards["bic_lambda"] != "None":
+        bic_lambda = float(snakemake.wildcards["bic_lambda"])
+   
+    #score_func = snakemake.wildcards["score_func"]
+
+    adjmat_df = pasting.estimate_dag(df, 
+                                     min_n_obs=min_nonmissing, 
+                                     lambda_value=bic_lambda
+                                     #score_func=score_func
+                                     )
     print("The estimated adjacency matrix is:")
-    #print(myadjmat)
-
-
-    # The algorithm goes here
-    # p = df.shape[1]
-    
-    
-    # m = np.random.rand(p*p).reshape((p, p))
-    # m = m > 0.9
-    # adjmat = (m | m.T) * 1
-    # np.fill_diagonal(adjmat, 0)
-    # adjmat.astype(int)
+    print(adjmat_df)
 
     # Save time
     tottime = time.perf_counter() - start
