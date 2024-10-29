@@ -33,10 +33,6 @@ tetrad_grasp
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
-.. rubric:: Adding Background Knowledge
-tetrad_grasp allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
-For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
-
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
