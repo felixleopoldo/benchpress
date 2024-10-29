@@ -35,12 +35,6 @@ Abstract: We present an algorithmic framework for learning local causal structur
 Our experiments demonstrate, consistently with causal feature selection theory, that local causal feature selection methods (under broad assumptions encompassing appropriate family of distributions, types of classifiers, and loss functions) exhibit strong feature set parsimony, high predictivity and local causal interpretability. Although non-causal feature selection methods are often used in practice to shed light on causal relationships, we find that they cannot be interpreted causally even when they achieve excellent predictivity. Therefore we conclude that only local causal techniques should be used when insight into causal structure is sought.
 In a companion paper we examine in depth the behavior of GLL algorithms, provide extensions, and show how local techniques can be used for scalable and accurate global causal graph learning.
 
-
-
-.. rubric:: Adding Background Knowledge
-bnlearn_sihitonpc allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
-For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
-
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -81,22 +75,6 @@ For more details on defining edge constraints, see :doc:`../available_background
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
-
-.. rubric:: Example edgeConstraints.json 
-
-.. code-block:: json
-
-    {
-        "forbidden_edges": [["1", "2"], ["3", "4"]],
-        "required_edges": [["2", "3"], ["4", "5"]],
-        "tiers": [["1", "2"], ["3", "4"]],
-        "tier_settings": {
-            "forbid_within_tiers": true,
-            "can_only_cause_next_tier": false
-        },
-        "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
-        "required_groups": [{"cause": ["2"], "effect": ["5"]}]
-    }
 
 .. footbibliography::
 
