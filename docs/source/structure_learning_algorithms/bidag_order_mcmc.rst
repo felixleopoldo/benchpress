@@ -42,10 +42,6 @@ unfortunately produces a biased sample on the space of DAGs. The implementation 
 in Benchpress is a hybrid version with the sampling performed on a restricted search space
 initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
-.. rubric:: Adding Background Knowledge
-bidag_order_mcmc allows users to incorporate background knowledge directly into the causal algorithm using ``forbidden_edges`` and ``forbidden_groups``, which are specified in a JSON file.
-For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
-
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 * ``input_algorithm_id`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
@@ -114,15 +110,6 @@ For more details on defining edge constraints, see :doc:`../available_background
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
-
-.. rubric:: Example edgeConstraints.json 
-
-.. code-block:: json
-
-    {
-        "forbidden_edges": [["1", "2"], ["3", "4"]],
-        "forbidden_groups": [{"cause": ["5"], "effect": ["6", "7"]}]
-    }
 
 .. footbibliography::
 

@@ -31,10 +31,6 @@ bnlearn_pcstable
 
 .. rubric:: Description
 
-.. rubric:: Adding Background Knowledge
-bnlearn_pcstable allows users to incorporate background knowledge directly into the causal algorithm using ``required_edges``, ``forbidden_edges``, ``tiers``, ``tier_settings``, ``required_groups`` and ``forbidden_groups``, which are specified in a JSON file.
-For more details on defining edge constraints, see :doc:`../available_background_knowledge`.
-
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
@@ -75,22 +71,6 @@ For more details on defining edge constraints, see :doc:`../available_background
         "edgeConstraints": "edgeConstraints.json"
       }
     ]
-
-.. rubric:: Example edgeConstraints.json 
-
-.. code-block:: json
-
-    {
-        "forbidden_edges": [["1", "2"], ["3", "4"]],
-        "required_edges": [["2", "3"], ["4", "5"]],
-        "tiers": [["1", "2"], ["3", "4"]],
-        "tier_settings": {
-            "forbid_within_tiers": true,
-            "can_only_cause_next_tier": false
-        },
-        "forbidden_groups": [{"cause": ["1"], "effect": ["3", "4"]}],
-        "required_groups": [{"cause": ["2"], "effect": ["5"]}]
-    }
 
 .. footbibliography::
 
