@@ -22,6 +22,7 @@
     
     json_overview    
     data_formats
+    available_background_knowledge
 
 .. toctree::
     :hidden:
