@@ -13,7 +13,7 @@
       "evaluation": {
         "ggally_ggpairs": true,
         "graph_estimation": {
-          "ids": ["pasting", "pasting_bdeu"],
+          "ids": ["pasting", "pasting_bdeu","ct"],
           "convert_to": [],
           "graphs": true,
           "adjmats": true,

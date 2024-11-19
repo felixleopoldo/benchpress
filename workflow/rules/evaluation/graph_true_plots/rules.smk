@@ -46,6 +46,24 @@ rule adjmat_true_plot:
     script:
         "plot_matrix_as_heatmap.py"
 
+# This might also appear in th graph_plots module.. 
+# Maybe some checks should be done to see if it is already defined.
+rule plot_true_dot:
+    input:
+        filename="{output_dir}/dotgraph/{something}.dot",
+    output:
+        filename="{output_dir}/graph_plot/{something}.png",
+    container:
+        docker_image("trilearn")
+    shell:
+        """
+        if [ -s {input.filename} ]; then
+            dot -T png {input.filename} -o {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
+
 for bmark_setup in config["benchmark_setup"]:
     bmark_setup_title = bmark_setup["title"]
     rule:
