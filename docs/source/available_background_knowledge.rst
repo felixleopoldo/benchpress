@@ -7,7 +7,7 @@ Edge Constraints
 
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 
 **pcalg**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
-the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden* or 
+the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden or 
 required edges**, **tiers for temporal ordering**, and **group-based constraints**.
 
 The edge constraints should be defined in a JSON file located within the ``resources/constraints`` folder.
