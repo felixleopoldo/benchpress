@@ -33,7 +33,7 @@ The edge constraints should be defined in a JSON file located within the ``resou
 - ``forbidden_edges``: A list of directed edges that are explicitly prohibited from existing between specific nodes. Each edge is defined as a pair of nodes, where the first node cannot directly cause the second node. 
 - ``required_edges``: A list of directed edges that are enforced between specific nodes. Each edge is defined as a pair of nodes, where the first node must directly cause the second node. 
 
-  - *Note: For algorithms in the **pcalg** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
+  - *Note: For algorithms in the* **pcalg** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
 - ``tiers``: Defines a temporal ordering of nodes across multiple levels (or) tiers. Nodes in one tier are constrained from causing nodes in any of the preceding tiers. 
 - ``tier_settings``: 
   
