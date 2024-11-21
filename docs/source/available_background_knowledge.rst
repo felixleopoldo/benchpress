@@ -3,8 +3,6 @@
 Edge Constraints
 ---------------------------------------
 
-.. rubric:: Overview
-
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 
 **pcalg**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
 the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden or 
