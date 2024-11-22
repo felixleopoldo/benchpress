@@ -79,7 +79,7 @@ This alternative is preferred e.g. if you will add new modules or if you are wor
 Windows (WSL)
 -------------------
 
-Widows users may also use the `Windows Subsystem for Linux (WSL) <https://docs.microsoft.com/en-us/windows/wsl/install>`_ to run Benchpress natively on their system.
+Widows users may also use the `Windows Subsystem for Linux (WSL) <https://docs.microsoft.com/en-us/windows/wsl/install>`_ to run Benchpress on their system.
 For this alternative, you will need to install `Snakemake <https://snakemake.readthedocs.io/en/stable/>`_ and `Apptainer <https://apptainer.org/>`_ in the WSL environment, and run the workflow as if you were using a `Linux <https://en.wikipedia.org/wiki/Linux>`_ system.
 The files will be stored in the WSL file system, but can be accessed from the Windows file system as well among network devices.
 

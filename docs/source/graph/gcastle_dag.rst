@@ -16,7 +16,7 @@ gcastle_dag
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - `here <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
+     - `here <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py>`__
    * - Paper
      - :footcite:t:`zhang2021gcastle`
    * - Graph type
