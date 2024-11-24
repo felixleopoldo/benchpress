@@ -87,7 +87,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
-* The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
+.. * The `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat for any kind of discussions etc.
 
 .. .. note::
 
@@ -96,10 +96,16 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: News
 
-* 2024-11-21: Benchpress 2.9.0. This version comes with three new major features. 
+* 2024-11-24: Benchpress 2.9.0. This version comes with three new major features. 
 
-    I) The ability to incorporate background knowledge in terms of edge constraints (see :ref:`json_config` ). Thanks to `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_, intern at `A-Star <https://www.a-star.edu.sg/>`_, Singapore for the contribution. 
-    II) The ability to specify multiple benchmark setups in a config file (See ). Run the script ``python scripts/upgrade_config.py`` to adapt old config files to the new format.
+    I) The ability to incorporate background knowledge in terms of :ref:`edge_constraints`. Thanks to `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_ for this great feature. 
+    II) The ability to specify multiple benchmark setups in the same config file (See :ref:`json_config`). To convert the old config format to this new one run 
+        
+        .. prompt:: bash
+
+            chmod +x scripts/utils/reformat_conf_files.py 
+            workflow/scripts/utils/reformat_conf_files.py
+            
     III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian McLanski <https://dmachlanski.com/>`_.
 * 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
 * 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
