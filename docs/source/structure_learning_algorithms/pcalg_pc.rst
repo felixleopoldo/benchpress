@@ -35,6 +35,8 @@ The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`,
 consisting of two main steps. The first step is called the adjacency search and amounts to
 finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -62,7 +64,8 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
         "numCores": 1,
         "verbose": false,
         "indepTest": "gaussCItest",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "pc-binCItest",
@@ -81,7 +84,8 @@ finding the undirected skeleton of the DAG. The second step amounts to estimatin
         "numCores": 1,
         "verbose": false,
         "indepTest": "binCItest",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

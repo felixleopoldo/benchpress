@@ -1,6 +1,7 @@
 rule bnlearn_fastiamb:
     input:
         data=alg_input_data(),
+        edgeConstraints_formatted=edge_constraints_bnlearn
     output:
         adjmat=alg_output_adjmat_path("bnlearn_fastiamb"),
         time=alg_output_time_path("bnlearn_fastiamb"),

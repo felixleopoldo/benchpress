@@ -29,11 +29,13 @@ else:
     # Create heatmap
     heatmap = estimate_heatmap(df, float(snakemake.params["burnin_frac"]), edgesymb)
     
+    ### Create heatmap plot ###
+    
     # need to reorganize matrix according to node orders..
     sns.set(font_scale=0.4)
     with sns.axes_style("white"):
         sns.heatmap(heatmap, 
-                    #annot=True, 
+                    annot=True, 
                     linewidth=1,
                     fmt=".2f",
                     cmap="Blues",
@@ -50,7 +52,38 @@ else:
     plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\nburn_in=" +
             snakemake.wildcards["burn_in"], rotation="horizontal", fontsize=6, ha="right", va="center")
 
-
     plt.tight_layout()
-    plt.savefig(snakemake.output["filename"])
+    
+    plt.savefig(snakemake.output["heatmap_plot"])
     plt.clf()
+
+    #### Create heatgraph plot ###
+    mapping = {i: val for i, val in enumerate(nodeorder)}
+    
+        # Here we create a networkx graph with edge weights from the heatmap
+    # first check if directed or not.
+    edges = edges_str_to_list(df["added"][0], edgesymb)
+    graph = None
+    
+    if edgesymb == "-":
+        graph = nx.from_numpy_array(heatmap.values, create_using=nx.Graph())
+    elif edgesymb == "->":        
+        graph = nx.from_numpy_array(heatmap.values, create_using=nx.DiGraph())
+    
+    graph = nx.relabel_nodes(graph, mapping)
+
+    for edge in graph.edges(data=True):
+        
+        weight = edge[2]["weight"]
+        edge[2]["label"] = round(weight, 2)        
+        edge[2]["color"] = "black"
+        edge[2]["penwidth"] = weight
+    
+    # create the pygraphviz graph    
+    A = nx.nx_agraph.to_agraph(graph)
+
+    #A.layout("circo")
+    A.layout("dot")
+    A.draw(snakemake.output["heatmap_plot"]+"-graph.png") # args="mindist=2.0")
+
+   

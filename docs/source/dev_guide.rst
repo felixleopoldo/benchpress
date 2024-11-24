@@ -24,6 +24,10 @@ Contributors
 | `Department of Statistical Sciences  <https://www.statistics.utoronto.ca/>`_
 | University of Toronto, Canada
 
+| `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_
+| Intern at `A-Star <https://www.a-star.edu.sg/>`_
+| A*Star, Singapore
+
 | Aditya Singh
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
 | University of Bristol, UK

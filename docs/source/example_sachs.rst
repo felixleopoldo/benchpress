@@ -48,7 +48,8 @@ This setup falls into :ref:`II` since the *graph_id* s set to the filename of a 
     :caption: The `benchmark_setup` section of Sachs study.
 
 
-    "benchmark_setup": {
+    "benchmark_setup": [{
+        "title": "paper_sachs",
         "data": [
             {
                 "graph_id": "sachs.csv",
@@ -100,7 +101,7 @@ This setup falls into :ref:`II` since the *graph_id* s set to the filename of a 
             "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": []
         }
-    }
+    }]
 
     
 

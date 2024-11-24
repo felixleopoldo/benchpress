@@ -1,12 +1,15 @@
-rule bidag_order_mcmc:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
-        input_algorithm=input_algorithm
+        input_algorithm=input_algorithm,
+        edgeConstraints_formatted=edge_constraints_bidag
     output:  
-        seqgraph=alg_output_seqgraph_path("bidag_order_mcmc"),
-        time=alg_output_time_path("bidag_order_mcmc"),
-        ntests=touch(alg_output_ntests_path("bidag_order_mcmc"))
+        seqgraph=alg_output_seqgraph_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name))
     container:
         "docker://bpimages/bidag:2.1.4"
     script:
-        "bidag_order_mcmc.R"
+        "script.R"

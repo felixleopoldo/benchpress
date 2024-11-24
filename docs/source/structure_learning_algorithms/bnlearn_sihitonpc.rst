@@ -37,6 +37,8 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
 
 
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -57,7 +59,8 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "sihitonpc-mi",
@@ -70,7 +73,8 @@ In a companion paper we examine in depth the behavior of GLL algorithms, provide
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

@@ -12,3 +12,5 @@ causal-cmd.log
 .cache/
 __pycache__
 workflow/schemas/tmp.config.schema.json
+.RData
+.Rhistory

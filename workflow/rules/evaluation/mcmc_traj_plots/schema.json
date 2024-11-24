@@ -76,7 +76,8 @@
                 "thinning",
                 "functional"
             ],
-            "additionalItems": false
+            "additionalItems": false,
+            "additionalProperties": false
         }
     }
 }

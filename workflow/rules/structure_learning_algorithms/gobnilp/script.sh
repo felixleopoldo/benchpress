@@ -5,7 +5,14 @@ SETTINGS_FILE=${snakemake_output[adjmat]}.gobnilp.set
 touch $SETTINGS_FILE 
 echo -e gobnilp/outputfile/adjacencymatrix = \"${snakemake_output[adjmat]}\" >> $SETTINGS_FILE
 echo -e gobnilp/outputfile/scoreandtime = \"${snakemake_output[adjmat]}.scoretime\" >> $SETTINGS_FILE
-echo -e gobnilp/dagconstraintsfile = \"${snakemake_input[constraints]}\" >> $SETTINGS_FILE
+
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    echo -e gobnilp/dagconstraintsfile = \"${snakemake_input[edgeConstraints_formatted]}\" >> $SETTINGS_FILE
+fi
+
 echo -e misc/catchctrlc = FALSE >> $SETTINGS_FILE
 echo -e gobnilp/writebestsols = TRUE >> $SETTINGS_FILE
 if [ ${snakemake_wildcards[continuous]} = "True" ]; then
@@ -26,6 +33,7 @@ if [ ${snakemake_wildcards[gap_limit]} != "None" ]; then
 fi
 echo -e gobnilp/scoring/prune = ${snakemake_wildcards[prune]} >> $SETTINGS_FILE
 echo -e gobnilp/delimiter = \",\" >> $SETTINGS_FILE
+
 cat resources/extra_args/${snakemake_wildcards[extra_args]} >> $SETTINGS_FILE
 
 # different execution depending on timeout
