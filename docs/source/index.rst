@@ -106,7 +106,7 @@ generated datasets, the workflow also includes a number of standard datasets and
             chmod +x scripts/utils/reformat_conf_files.py 
             workflow/scripts/utils/reformat_conf_files.py
             
-    III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian McLanski <https://dmachlanski.com/>`_.
+    III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian Machlanski <https://dmachlanski.com/>`_.
 * 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
 * 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).
