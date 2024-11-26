@@ -1,7 +1,6 @@
 rule:
     """ 
-    The variable module_name is determined from the folder name
-    and set in the Snakefile.
+    MVPC algorithm
     """
     name:
         module_name
@@ -13,13 +12,9 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/sandbox:1.0" # Change to None for local run
-
+        "docker://bpimages/mvpc:e95160c" # Change to None for local run
     script:
-        # This is a template R script but it could be any R or Python script, 
-        # even in a different directory.
-        #"script.R"
-        "script.py"
+        "script.R"        
         # If in a different directory, make sure to use the absolute path starting with "/" in your file system if
         # you change to a script outside Benchpress a.s. e.g.            
         #"/home/felix/Desktop/mylib_myalg.R" 
