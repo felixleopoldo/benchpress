@@ -42,8 +42,12 @@ extensions = [
     'sphinx-prompt',
     'sphinxcontrib.bibtex',
     'sphinx_last_updated_by_git',
-    'versionwarning.extension'
+    'versionwarning.extension',
+    "sphinxcontrib.googleanalytics"
+
 ]
+googleanalytics_id = "G-CDYR88PWR3"
+
 
 paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
