@@ -15,17 +15,55 @@
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
       "corrMethod": {
-        "type": "string",
-        "enum": [
-          "gaussCItest.drw",
-          "gaussCItest.permc",
-          "binCItest.drw",
-          "binCItest.permc"
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "gaussCItest.drw",
+                "gaussCItest.permc",
+                "binCItest.drw",
+                "binCItest.permc"
+              ]
+            }
+          },
+          {
+            "type": "string",
+            "enum": [
+              "gaussCItest.drw",
+              "gaussCItest.permc",
+              "binCItest.drw",
+              "binCItest.permc"
+            ]
+          },
+          { "type": "null" }
         ]
       },
       "indepTest": {
-        "type": "string",
-        "enum": ["binCItest", "gaussCItest", "binCItest.td", "gaussCItest.td"]
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "binCItest",
+                "gaussCItest",
+                "binCItest.td",
+                "gaussCItest.td"
+              ]
+            }
+          },
+          {
+            "type": "string",
+            "enum": [
+              "binCItest",
+              "gaussCItest",
+              "binCItest.td",
+              "gaussCItest.td"
+            ]
+          }
+        ]
       },
       "numCores": {
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
