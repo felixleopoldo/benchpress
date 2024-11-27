@@ -1,14 +1,14 @@
 {
-    "title": "My new algorithm",
-    "version": "v0.0.1",
+    "title": "MVPC",
+    "version": "e95160c",
     "package": {
-        "title": "",
-        "url": ""
+        "title": "MVPC",
+        "url": "https://github.com/TURuibo/MVPC"
     },
-    "docs_url": "",
+    "docs_url": "https://github.com/TURuibo/MVPC",
     "outputs": "adjmat",
     "graph_types": [
-        "UG"
+        "CPDAG"
     ],
     "language": "R"
 }
