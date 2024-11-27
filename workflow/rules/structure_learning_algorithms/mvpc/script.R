@@ -95,9 +95,6 @@ myalg <- function() {
     suffStat <- list(data = unname(as.matrix(data)), nlev = nlev, adaptDF = FALSE)
   }
 
-  # suffStat <- list(C = cor(data, use = "complete.obs"), n = nrow(data))
-  # suffStat_m <- list(data = datamat) # including missing values
-
   if (snakemake@wildcards[["corrMethod"]] == "None") {
     if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItest.td", "binCItest.td", "binCItest")) {
       print("TD-PC")
