@@ -13,6 +13,7 @@ Data
     data/fixed_data
     data/gcastle_iidsim
     data/iid
+    data/mvpc_gen_data
 The available data modules are listed below.
 
 
@@ -41,6 +42,11 @@ The available data modules are listed below.
      - 
      - 
      - :ref:`iid` 
+   * - Missing data generation
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - `MVPC <https://github.com/felixleopoldo/MVPC>`__
+     - d901361
+     - :ref:`mvpc_gen_data` 
 
 
 

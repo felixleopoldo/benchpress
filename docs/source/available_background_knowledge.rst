@@ -1,10 +1,10 @@
 .. _edge_constraints:
 
-Edge Constraints
+Edge constraints
 ---------------------------------------
 
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 
-**pcalg**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
+**pcalg**, **mvpc**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
 the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden or 
 required edges**, **tiers for temporal ordering**, and **group-based constraints**.
 
@@ -12,26 +12,28 @@ The edge constraints should be defined in a JSON file located within the ``resou
 
 .. rubric:: Supported Constraints
 
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
-| **Package**        | **forbidden_edges** | **required_edges**  | **tiers**          | **forbidden_groups** | **required_groups**   |
-+====================+=====================+=====================+====================+======================+=======================+
-| pcalg              | X                   | X                   | N/A                | N/A                  | N/A                   |
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
-| bnlearn            | X                   | X                   | X                  | X                    | X                     |
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
-| tetrad             | X                   | X                   | X                  | X                    | X                     |
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
-| gobnilp            | X                   | X                   | X                  | X                    | X                     |
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
-| bidag              | X                   | N/A                 | N/A                | X                    | N/A                   |
-+--------------------+---------------------+---------------------+--------------------+----------------------+-----------------------+
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| **Package** | **forbidden_edges** | **required_edges** | **tiers** | **forbidden_groups** | **required_groups** |
++=============+=====================+====================+===========+======================+=====================+
+| mvpc        | X                   | X                  | N/A       | N/A                  | N/A                 |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| pcalg       | X                   | X                  | N/A       | N/A                  | N/A                 |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| bnlearn     | X                   | X                  | X         | X                    | X                   |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| tetrad      | X                   | X                  | X         | X                    | X                   |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| gobnilp     | X                   | X                  | X         | X                    | X                   |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
+| bidag       | X                   | N/A                | N/A       | X                    | N/A                 |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
 
 .. rubric:: Description
 
 - ``forbidden_edges``: A list of directed edges that are explicitly prohibited from existing between specific nodes. Each edge is defined as a pair of nodes, where the first node cannot directly cause the second node. 
 - ``required_edges``: A list of directed edges that are enforced between specific nodes. Each edge is defined as a pair of nodes, where the first node must directly cause the second node. 
 
-  - *Note: For algorithms in the* **pcalg** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
+  - *Note: For algorithms in the* **pcalg** and **mvpc** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
 - ``tiers``: Defines a temporal ordering of nodes across multiple levels (or) tiers. Nodes in one tier are constrained from causing nodes in any of the preceding tiers. 
 - ``tier_settings``: 
   

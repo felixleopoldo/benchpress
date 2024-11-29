@@ -30,6 +30,11 @@ def edge_constraints_pcalg(wildcards):
     else:
         return f"resources/constraints/data=/"+alg_input_data()+f"/{wildcards.edgeConstraints}-pcalg"
 
+def edge_constraints_mvpc(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/data=/"+alg_input_data()+f"/{wildcards.edgeConstraints}-mvpc"
 
 def get_seed_range(seed_range):
     if seed_range == None:

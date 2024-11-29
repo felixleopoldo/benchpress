@@ -96,6 +96,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: News
 
+* 2024-11-30: Benchpress 2.10.0. This version includes algorithms from the MVPC package for sampling (:ref:`mvpc_gen_data`) and causal discovery (:ref:`mvpc`) in the presence of missing data.
 * 2024-11-24: Benchpress 2.9.0. This version comes with three new major features. 
 
     I) The ability to incorporate background knowledge in terms of :ref:`edge_constraints`. Thanks to `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_ for this great feature. 
