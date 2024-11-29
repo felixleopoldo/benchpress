@@ -1,2 +1,2 @@
-Module for synthetic Gaussian data generation with different types of missingness: missing ar random (MAR), 
+Module for synthetic Gaussian data generation with different types of missingness: missing at random (MAR), 
 missing completely at random (MCAR), and missing not at random (MNAR) :footcite:t:`mohan2013graphical`, :footcite:t:`rubin1976inference`.
