@@ -23,6 +23,9 @@ RUN R -e 'library(remotes); install_version("mvtnorm", "1.0-11")'
 RUN R -e 'BiocManager::install("BiocGenerics")'
 
 RUN apt install git -y
-RUN git clone https://github.com/TURuibo/MVPC.git
+RUN echo hello
+RUN git clone https://github.com/felixleopoldo/MVPC.git
 WORKDIR /MVPC
-RUN git checkout e95160c
+
+RUN git checkout d901361
+
