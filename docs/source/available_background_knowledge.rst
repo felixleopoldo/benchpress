@@ -1,6 +1,6 @@
 .. _edge_constraints:
 
-Edge Constraints
+Edge constraints
 ---------------------------------------
 
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 

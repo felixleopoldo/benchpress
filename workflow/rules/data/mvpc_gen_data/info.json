@@ -5,7 +5,7 @@
         "title": "MVPC",
         "url": "https://github.com/felixleopoldo/MVPC"
     },
-    "docs_url": "https://github.com/felixleopoldo/MVPC",
+    "docs_url": "https://github.com/felixleopoldo/MVPC/blob/d901361e349f4620094fff9e621734f681053d7e/src/SyntheticDataGeneration.R#L3",
     "graph_types": [
         "DAG"
     ],
