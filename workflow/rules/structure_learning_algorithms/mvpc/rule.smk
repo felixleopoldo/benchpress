@@ -12,6 +12,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/mvpc:d901361-arm64"
+        "docker://bpimages/mvpc:d901361"
     script:
         "script.R"        

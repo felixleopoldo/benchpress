@@ -36,6 +36,8 @@
           "num_extra_e": 2,
           "num_m": 5,
           "mode": "mar",
+          "p_missing_h": 0.9,
+          "p_missing_e": 0.1,
           "standardized": false,
           "n": 1001
         }

@@ -261,7 +261,7 @@ To add new modules, see :ref:`new_modules`.
      - :ref:`huge_tiger` 
    * - MVPC
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
-     - `MVPC <https://github.com/TURuibo/MVPC>`__
+     - `MVPC <https://github.com/felixleopoldo/MVPC>`__
      - :ref:`mvpc` 
    * - Parallel DG
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__

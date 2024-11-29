@@ -25,6 +25,8 @@ num_sample <- as.integer(snakemake@wildcards[["n"]])
 num_extra_e <- as.integer(snakemake@wildcards[["num_extra_e"]])
 num_m <- as.integer(snakemake@wildcards[["num_m"]])
 mode <- snakemake@wildcards[["mode"]]
+p_missing_h <- as.numeric(snakemake@wildcards[["p_missing_h"]])
+p_missing_l <- as.numeric(snakemake@wildcards[["p_missing_l"]])
 
 seed <- as.integer(snakemake@wildcards[["seed"]])
 set.seed(seed)
@@ -35,10 +37,16 @@ gen_result_list <- gen_data(
     myDAG = myDAG,
     num_extra_e = num_extra_e,
     num_m = num_m,
+    p_missing_h = p_missing_h,
+    p_missing_l = p_missing_l,
     seed = seed
 )
 
 data <- gen_result_list$data_m
+
+# TODO: binary data support.
+#gen.bin.data(data, DAG, mode = 'mar', num_var=20,num_extra_e=5,num_m = 10)
+
 
 # Set the proper header and write the data to file.
 colnames(data) <- colnames(df_params)
