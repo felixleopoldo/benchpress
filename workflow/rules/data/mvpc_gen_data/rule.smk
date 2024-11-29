@@ -11,9 +11,8 @@ rule:
             "data=/"+pattern_strings[module_name] + "/" \
             "seed={seed}.csv"
     wildcard_constraints:
-        n="[0-9]*",
-        mode="[0-9]*"
+        n="[0-9]*"
     container:
-        "docker://bpimages/mvpc:e95160c-arm64" # Change to None for local run
+        "docker://bpimages/mvpc:d901361-arm64" # Change to None for local run
     script:
         "script.R"
