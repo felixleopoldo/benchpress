@@ -1,13 +1,13 @@
 {
-    "title": "Some title",
-    "version": "v0.0.1",
+    "title": "MVPC_gen_data",
+    "version": "d901361",
     "package": {
-        "title": "",
-        "url": ""
+        "title": "MVPC",
+        "url": "https://github.com/felixleopoldo/MVPC"
     },
-    "docs_url": "",
+    "docs_url": "https://github.com/felixleopoldo/MVPC",
     "graph_types": [
-        ""
+        "DAG"
     ],
-    "language": ""
+    "language": "R"
 }
