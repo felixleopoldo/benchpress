@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Tabu 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Tabu, bnlearn
+    
+    
+
 .. _bnlearn_tabu: 
 
 bnlearn_tabu 

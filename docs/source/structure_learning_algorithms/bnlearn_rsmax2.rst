@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: RSMAX2 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, RSMAX2, bnlearn
+    
+    
+
 .. _bnlearn_rsmax2: 
 
 bnlearn_rsmax2 

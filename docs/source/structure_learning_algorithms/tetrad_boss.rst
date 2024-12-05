@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: BOSS 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, BOSS, causal-cmd
+    
+    
+
 .. _tetrad_boss: 
 
 tetrad_boss 

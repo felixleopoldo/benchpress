@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: H2PC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, H2PC, bnlearn
+    
+    
+
 .. _bnlearn_h2pc: 
 
 bnlearn_h2pc 

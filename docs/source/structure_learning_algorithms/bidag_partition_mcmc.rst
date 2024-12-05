@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Partition MCMC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Partition MCMC, BiDAG
+    
+    
+
 .. _bidag_partition_mcmc: 
 
 bidag_partition_mcmc 

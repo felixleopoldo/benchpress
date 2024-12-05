@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: S-I HITON-PC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, S-I HITON-PC, bnlearn
+    
+    
+
 .. _bnlearn_sihitonpc: 
 
 bnlearn_sihitonpc 

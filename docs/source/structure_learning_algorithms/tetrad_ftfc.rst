@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: FTFC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, FTFC, causal-cmd
+    
+    
+
 .. _tetrad_ftfc: 
 
 tetrad_ftfc 

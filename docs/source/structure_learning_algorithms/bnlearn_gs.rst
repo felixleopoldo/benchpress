@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Grow-shrink 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Grow-shrink, bnlearn
+    
+    
+
 .. _bnlearn_gs: 
 
 bnlearn_gs 

@@ -162,6 +162,14 @@ for p in sorted(algspath.iterdir()):
     # This is the module part
 
     module_str = "\n\n"
+    module_str += """
+    .. meta::
+        :title: {} 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, {}, {}
+    
+    """.format(info["title"], info["title"], info["package"]["title"])
+   
+    module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
     module_str +="" + p.name +" \n"
     module_str +="-"*len(p.name) + "-"*4 + "\n"

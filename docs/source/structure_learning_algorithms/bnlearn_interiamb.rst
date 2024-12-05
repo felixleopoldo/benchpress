@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: INTER-IAMB 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, INTER-IAMB, bnlearn
+    
+    
+
 .. _bnlearn_interiamb: 
 
 bnlearn_interiamb 

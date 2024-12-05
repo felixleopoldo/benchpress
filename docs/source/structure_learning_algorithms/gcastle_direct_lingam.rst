@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Direct LINGAM 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Direct LINGAM, gCastle
+    
+    
+
 .. _gcastle_direct_lingam: 
 
 gcastle_direct_lingam 
