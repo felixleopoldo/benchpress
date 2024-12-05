@@ -3,8 +3,7 @@
 
     .. meta::
         :title: PC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, PC, gCastle
-    
+        :description: A classic causal discovery algorithm based on conditional independence tests.
     
 
 .. _gcastle_pc: 

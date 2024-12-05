@@ -3,8 +3,7 @@
 
     .. meta::
         :title: Precmat thresh 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Precmat thresh, Benchpress
-    
+        :description: Thresholding the estimated precision matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.
     
 
 .. _prec_thresh: 

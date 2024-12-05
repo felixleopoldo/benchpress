@@ -3,8 +3,7 @@
 
     .. meta::
         :title: IAMB 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, IAMB, bnlearn
-    
+        :description: 
     
 
 .. _bnlearn_iamb: 

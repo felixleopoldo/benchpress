@@ -3,8 +3,7 @@
 
     .. meta::
         :title: GOLEM 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, GOLEM, gCastle
-    
+        :description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
     
 
 .. _gcastle_golem: 

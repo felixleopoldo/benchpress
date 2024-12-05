@@ -165,10 +165,9 @@ for p in sorted(algspath.iterdir()):
     module_str += """
     .. meta::
         :title: {} 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, {}, {}
-    
-    """.format(info["title"], info["title"], info["package"]["title"])
-   
+        :description: {}
+    """.format(info["title"], content.replace("\n", " ").replace("\r", " ").replace("\t", " ").replace('"', "'")) 
+    #         :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, {}, {}
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
     module_str +="" + p.name +" \n"

@@ -3,8 +3,7 @@
 
     .. meta::
         :title: Tabu 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Tabu, bnlearn
-    
+        :description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
     
 
 .. _bnlearn_tabu: 

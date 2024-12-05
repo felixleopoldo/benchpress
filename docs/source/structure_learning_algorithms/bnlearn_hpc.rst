@@ -3,8 +3,7 @@
 
     .. meta::
         :title: HPC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, HPC, bnlearn
-    
+        :description: From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
     
 
 .. _bnlearn_hpc: 

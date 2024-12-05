@@ -3,8 +3,7 @@
 
     .. meta::
         :title: NO TEARS 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, NO TEARS, gCastle
-    
+        :description: This score-based method recasts the combinatorial problem of estimating a DAG into a purely continuous non-convex optimization problem over real matrices with a smooth constraint to ensure acyclicity.
     
 
 .. _gcastle_notears: 

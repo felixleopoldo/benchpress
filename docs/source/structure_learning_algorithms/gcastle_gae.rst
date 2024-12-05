@@ -3,8 +3,7 @@
 
     .. meta::
         :title: GAE 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, GAE, gCastle
-    
+        :description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
     
 
 .. _gcastle_gae: 

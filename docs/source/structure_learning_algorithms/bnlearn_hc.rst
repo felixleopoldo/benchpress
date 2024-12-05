@@ -3,8 +3,7 @@
 
     .. meta::
         :title: HC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, HC, bnlearn
-    
+        :description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
     
 
 .. _bnlearn_hc: 

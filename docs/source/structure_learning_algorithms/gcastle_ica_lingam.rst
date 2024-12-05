@@ -3,8 +3,7 @@
 
     .. meta::
         :title: ICALiNGAM 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, ICALiNGAM, gCastle
-    
+        :description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
     
 
 .. _gcastle_ica_lingam: 

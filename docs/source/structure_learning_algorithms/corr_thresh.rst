@@ -3,8 +3,7 @@
 
     .. meta::
         :title: Corrmat thresh 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Corrmat thresh, Benchpress
-    
+        :description: Thresholding the estimated correlation matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
     
 
 .. _corr_thresh: 

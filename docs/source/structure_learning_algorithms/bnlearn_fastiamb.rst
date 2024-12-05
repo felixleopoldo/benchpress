@@ -3,8 +3,7 @@
 
     .. meta::
         :title: Fast IAMB 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Fast IAMB, bnlearn
-    
+        :description: From bnlearn: a variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
     
 
 .. _bnlearn_fastiamb: 

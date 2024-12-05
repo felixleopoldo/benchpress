@@ -3,8 +3,7 @@
 
     .. meta::
         :title: CORL 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, CORL, gCastle
-    
+        :description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
     
 
 .. _gcastle_corl: 
