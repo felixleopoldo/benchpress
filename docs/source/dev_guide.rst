@@ -2,13 +2,8 @@ Authors
 ################
 
 | `Felix Rios <https://felixleopoldo.github.io>`_
-<<<<<<< HEAD
-| `Department of Paediatrics <>`_
-| University of Singapore, Singapore
-=======
 | `Department of Paediatrics, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
 | NUS Singapore
->>>>>>> master
 
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
 | `Department of Mathematics and Computer Science <https://dmi.unibas.ch/en/>`_
@@ -29,8 +24,8 @@ Contributors
 | `Department of Statistical Sciences  <https://www.statistics.utoronto.ca/>`_
 | University of Toronto, Canada
 
-| Gomathi
-| `Intern at A*Star <http://>`_
+| `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_
+| Intern at `A-Star <https://www.a-star.edu.sg/>`_
 | A*Star, Singapore
 
 | Aditya Singh

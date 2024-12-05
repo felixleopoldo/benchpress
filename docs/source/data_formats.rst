@@ -124,6 +124,20 @@ If in the continuous example above there would be two additional observations wh
     1.2,1.2,2.2,4.2,1,0
     1.1,1.5,1.4,2.2,1,1
 
+Missing data
+*************
+
+Missing data is indicated by the absence of a value. 
+
+.. rubric:: Example (missing data)
+
+In this example, the second row for column b is missing.
+
+.. code-block:: text
+
+    a,b,c,d
+    0.2,2.3,5.3,0.5
+    3.2,,2.5,1.2   
 
 
 Parameters
