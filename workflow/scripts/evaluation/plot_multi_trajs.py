@@ -104,8 +104,7 @@ for adjmat in adjmats:
                         # Plot trajectories in different colors for fixed alg settings
                         for algparam in algparams:
                             for algparam_val in algparam_vals:
-                                tmp = df.loc[#(df["adjmat"] == adjmat) &
-                                             #(df["parameters"] == param) &
+                                tmp = df.loc[
                                              (df["data"] == data) &
                                              (df["seed"] == seed) &
                                              (df["alg"] == alg) &
