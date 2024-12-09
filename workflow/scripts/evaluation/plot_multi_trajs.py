@@ -26,6 +26,7 @@ params = df["parameters"].unique()
 adjmats = df["adjmat"].unique()
 datas = df["data"].unique()
 seeds = df["seed"].unique()
+
 #mcmc_seeds = df["mcmc_seed"].unique() 
 
 #algparam_vals = [str(v) for v in algparam_vals]
@@ -36,6 +37,7 @@ cnt1 = 1  # Filename counters
 cnt2 = 1
 
 for adjmat in adjmats:
+    print(adjmat)
     for param in params:
         for data in datas:
             for seed in seeds:
@@ -44,17 +46,22 @@ for adjmat in adjmats:
                     algparams = df.loc[df["alg"]==alg]["param"].unique()
                     algparam_vals = df.loc[df["alg"]==alg]["param_val"].unique()
 
-                    for functional in functionals:
-                        tmp = df.loc[(df["adjmat"] == adjmat) &
-                                     (df["parameters"] == param) &
+                    for functional in functionals:                        
+                        tmp = df.loc[                                     
                                      (df["data"] == data) &
                                      (df["seed"] == seed) &
                                      (df["functional"] == functional) &
                                      (df["alg"] == alg)]
 
+                        # more filtering of adjmat or params are provided
+                        if not np.isnan(adjmat):
+                            tmp = tmp.loc[tmp["adjmat"] == adjmat]
+                        if not np.isnan(param):
+                            tmp = tmp.loc[tmp["parameters"] == param]
+                        
                         if len(tmp) == 0:
                             continue
-
+                        
                         # Remove unnecessary legends
                         tmp['param_val'] = tmp.param_val.astype('category')
                         # Plot trajectories for all parameter settings
@@ -64,8 +71,8 @@ for adjmat in adjmats:
                                          units="mcmc_seed",
                                          estimator=None, lw=0.7, alpha=1.0)
 
-                        plt.title("Graph: "+adjmat +
-                                  "\nParams: " + param + "\nData: " + data,
+                        plt.title("Graph: "+str(adjmat) +
+                                  "\nParams: " + str(param) + "\nData: " + data,
                                   fontsize=6, ha="center")
                         # since there are different mcmc_seeds
                         alg_string = tmp['alg_string'].unique()[0]
@@ -97,8 +104,8 @@ for adjmat in adjmats:
                         # Plot trajectories in different colors for fixed alg settings
                         for algparam in algparams:
                             for algparam_val in algparam_vals:
-                                tmp = df.loc[(df["adjmat"] == adjmat) &
-                                             (df["parameters"] == param) &
+                                tmp = df.loc[#(df["adjmat"] == adjmat) &
+                                             #(df["parameters"] == param) &
                                              (df["data"] == data) &
                                              (df["seed"] == seed) &
                                              (df["alg"] == alg) &
@@ -106,6 +113,12 @@ for adjmat in adjmats:
                                              (df["param"] == algparam) &
                                              (df["param_val"] == algparam_val)]
 
+                                if not np.isnan(adjmat):
+                                    tmp = tmp.loc[tmp["adjmat"] == adjmat]
+                                if not np.isnan(param):
+                                    tmp = tmp.loc[tmp["parameters"] == param]
+                            
+                                    
                                 if len(tmp) == 0:
                                     continue
                                 tmp['mcmc_seed'] = tmp.mcmc_seed.astype(
@@ -115,8 +128,8 @@ for adjmat in adjmats:
                                                  hue="mcmc_seed", #legend=True,
                                                  estimator=None, lw=0.7, alpha=1.0)
                                 plt.legend(fontsize=5, title_fontsize=8)
-                                plt.title("Graph: "+adjmat +
-                                          "\nParams: " + param + "\nData: " + data,
+                                plt.title("Graph: "+str(adjmat) +
+                                          "\nParams: " + str(param) + "\nData: " + data,
                                           fontsize=6, ha="center")
                                 # since there are different mcmc_seeds
                                 alg_string = tmp['alg_string'].unique()[0]
