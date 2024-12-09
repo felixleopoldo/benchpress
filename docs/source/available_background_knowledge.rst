@@ -1,5 +1,9 @@
 .. _edge_constraints:
 
+.. meta:: 
+    :description: Benchpress allows users to incorporate edge constraints to guide structure learning and causal discovery algorithms in several packages: pcalg, mvpc, bnlearn, tetrad, gobnilp, and bidag. These constraints enable the inclusion of prior knowledge to refine the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify forbidden or required edges, tiers for temporal ordering, and group-based constraints.
+    :keywords: edge constraints, causal graph, structure learning,  causal discovery
+
 Edge constraints
 ---------------------------------------
 
