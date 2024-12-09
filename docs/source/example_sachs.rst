@@ -30,7 +30,7 @@ The data is visualised in :numref:`sachs/pairs_1.png` with independent and pairw
 
 .. figure:: _static/sachs/pairs_1.png
     :width: 500 
-    :alt: Scatter plots.
+    :alt: Scatter plots for Sachs et al. 2005 data.
     :align: center
 
 

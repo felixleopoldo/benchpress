@@ -4,6 +4,9 @@
    contain the root `toctree` directive.
 
 
+.. meta::
+    :title: Benchpress: Scalable Open-Source Software for Causal Discovery
+    :description: Benchpress: A flexible, platform-independent open-source tool for developing, executing, and benchmarking causal discovery algorithms. Scales effortlessly across cores, servers, clusters, grids, and cloud environments for seamless performance.
 .. toctree::
     :hidden:
     :glob:
