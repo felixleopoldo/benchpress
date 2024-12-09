@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: HPC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, HPC, bnlearn
+    
+    
+
 .. _bnlearn_hpc: 
 
 bnlearn_hpc 
@@ -33,6 +40,8 @@ bnlearn_hpc
 
 From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -53,7 +62,8 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "hpc-mi",
@@ -68,7 +78,8 @@ From bnlearn: an algorithm building on iamb.fdr to learn the parents and childre
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

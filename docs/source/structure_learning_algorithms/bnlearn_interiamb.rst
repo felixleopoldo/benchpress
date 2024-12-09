@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: INTER-IAMB 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, INTER-IAMB, bnlearn
+    
+    
+
 .. _bnlearn_interiamb: 
 
 bnlearn_interiamb 
@@ -37,6 +44,8 @@ variable to be included in the Markov blankets are not considered in static orde
 and the forward-backward stages are combined into a single procedure, which has the effect of
 reducing the size of the blankets.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -57,7 +66,8 @@ reducing the size of the blankets.
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "interiamb-mi",
@@ -70,7 +80,8 @@ reducing the size of the blankets.
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

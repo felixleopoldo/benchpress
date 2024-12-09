@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Chordal graph samplers 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Chordal graph samplers, Alun Thomas
+    
+    
+
 .. _athomas_jtsamplers: 
 
 athomas_jtsamplers 

@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: GraNDAG 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, GraNDAG, gCastle
+    
+    
+
 .. _gcastle_grandag: 
 
 gcastle_grandag 

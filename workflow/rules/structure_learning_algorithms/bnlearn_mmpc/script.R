@@ -5,6 +5,24 @@ source("resources/code_for_binary_simulations/make_var_names.R")
 filename <- file.path(snakemake@output[["adjmat"]])
 filename_data <- snakemake@input[["data"]]
 seed <- as.integer(snakemake@wildcards[["seed"]])
+filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
+
+# Extract blacklist and whitelist edges
+if (is.null(filename_edge_constraints)) {
+  blacklist <- NULL
+  whitelist <- NULL
+} else {
+  edgeConstraints <- read.csv(filename_edge_constraints)
+  blacklist <- subset(edgeConstraints, type == "blacklist", select = c("from", "to"))
+  whitelist <- subset(edgeConstraints, type == "whitelist", select = c("from", "to"))
+
+  if (nrow(blacklist) == 0) {
+    blacklist <- NULL
+  }
+  if (nrow(whitelist) == 0) {
+    whitelist <- NULL
+  }
+}
 
 wrapper <- function() {
   data <- read.csv(filename_data, check.names = FALSE)
@@ -35,6 +53,8 @@ wrapper <- function() {
     test = snakemake@wildcards[["test"]],
     B = B,
     max.sx = max.sx,
+    blacklist = blacklist,
+    whitelist = whitelist,
     debug = as.logical(snakemake@wildcards[["debug"]]),
     undirected = as.logical(snakemake@wildcards[["undirected"]])
   )

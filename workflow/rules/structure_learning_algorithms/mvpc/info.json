@@ -1,0 +1,14 @@
+{
+    "title": "MVPC",
+    "version": "d901361",
+    "package": {
+        "title": "MVPC",
+        "url": "https://github.com/felixleopoldo/MVPC"
+    },
+    "docs_url": "https://github.com/felixleopoldo/MVPC",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "language": "R"
+}

@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: NO TEARS low rank 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, NO TEARS low rank, gCastle
+    
+    
+
 .. _gcastle_notears_low_rank: 
 
 gcastle_notears_low_rank 

@@ -7,6 +7,9 @@ library(rjson)
 library(tidyr)
 library(ggrepel)
 
+
+
+
 f <- function(y) {
   c(label = length(y), y = median(y))
 }
@@ -954,6 +957,13 @@ n_tests <- function(){
         ggsave(file = paste(snakemake@output[["ntests_joint"]],"/", plt_counter, ".png", sep=""))
 }
 
+# First we copy the config file to the output directory. 
+# This is usefule when going back to see where the results came from.
+
+file.copy(from = snakemake@input[["config"]], to = snakemake@output[["config"]])
+# Maybe we should remove the other benchmarks setups here, but for now we keep them.
+
+
 dir.create(snakemake@output[["fpr_tpr_pattern"]])
 dir.create(snakemake@output[["FPRp_FNR_skel"]])
 dir.create(snakemake@output[["fnr_fprp_skel"]])
@@ -984,15 +994,25 @@ if (file.info(snakemake@input[["csv"]])$size == 0) {
   #joint_bench <- joint_bench %>% replace_na(replacement_list)
 
   config <- fromJSON(file = snakemake@input[["config"]])
+    
+    
+    # find index of the benchmark setup
+    bmark_ind <- 1
+    for (i in 1:length(config$benchmark_setup)) {
+        if (config$benchmark_setup[[i]]$title == snakemake@params[["bmark_setup"]]) {
+        bmark_ind <- i
+        break
+        }
+    }
 
-  param_annot <- config$benchmark_setup$evaluation$benchmarks$text
-  path <- config$benchmark_setup$evaluation$benchmarks$path
-  errorbar <- config$benchmark_setup$evaluation$benchmarks$errorbar
-  scatter <- config$benchmark_setup$evaluation$benchmarks$scatter
-  errorbarh <- config$benchmark_setup$evaluation$benchmarks$errorbarh
-  show_seed <- config$benchmark_setup$evaluation$benchmarks$show_seed
-  xlim <- config$benchmark_setup$evaluation$benchmarks$xlim
-  ylim <- config$benchmark_setup$evaluation$benchmarks$ylim
+  param_annot <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$text
+  path <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$path
+  errorbar <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$errorbar
+  scatter <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$scatter
+  errorbarh <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$errorbarh
+  show_seed <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$show_seed
+  xlim <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$xlim
+  ylim <- config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$ylim
 
   revlevlist <- c()
   revlevnumlist <- c()

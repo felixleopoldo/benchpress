@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: FGES 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, FGES, causal-cmd
+    
+    
+
 .. _tetrad_fges: 
 
 tetrad_fges 
@@ -38,6 +45,8 @@ The reference is :footcite:t:`ramsey2017million`.
 
 The algorithms requires a decomposable score—that is, a score that for the entire DAG model is a sum of logged scores of each variables given its parents in the model. The algorithms can take all continuous data (using the SEM BIC score), all discrete data (using the BDeu score).
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -59,7 +68,8 @@ The algorithms requires a decomposable score—that is, a score that for the ent
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

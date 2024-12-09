@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Fast IAMB 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Fast IAMB, bnlearn
+    
+    
+
 .. _bnlearn_fastiamb: 
 
 bnlearn_fastiamb 
@@ -33,6 +40,8 @@ bnlearn_fastiamb
 
 From bnlearn: a variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -53,7 +62,8 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "fastiamb-mi",
@@ -68,7 +78,8 @@ From bnlearn: a variant of IAMB which uses speculative stepwise forward selectio
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

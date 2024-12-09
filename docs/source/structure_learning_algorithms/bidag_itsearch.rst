@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Iterative MCMC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Iterative MCMC, BiDAG
+    
+    
+
 .. _bidag_itsearch: 
 
 bidag_itsearch 
@@ -95,6 +102,8 @@ Each dataset contains 300 samples.
     Graph properties.
 
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -127,7 +136,8 @@ Each dataset contains 300 samples.
         "gamma": 1,
         "cpdag": false,
         "mergetype": "skeleton",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "itsearch_map-bde",
@@ -150,7 +160,8 @@ Each dataset contains 300 samples.
         "gamma": 1,
         "cpdag": false,
         "mergetype": "skeleton",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

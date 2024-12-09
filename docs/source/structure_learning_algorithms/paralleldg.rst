@@ -1,8 +1,15 @@
 
 
-.. _parallelDG: 
 
-parallelDG 
+    .. meta::
+        :title: Parallel DG 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Parallel DG, parallelDG
+    
+    
+
+.. _paralleldg: 
+
+paralleldg 
 --------------
 
 .. rubric:: Parallel DG
@@ -25,7 +32,7 @@ parallelDG
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
    * - Module folder
-     - `parallelDG <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/parallelDG>`__
+     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
 
 
 

@@ -1,0 +1,19 @@
+{
+    "title": "Graph estimation",
+    "version": "v1.0.0",
+    "package": {
+        "title": "",
+        "url": "http"
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "the paper title",
+            "url": "the_url"
+        }
+    ],
+    "graph_types": [
+        ""
+    ],
+    "language": ""
+}

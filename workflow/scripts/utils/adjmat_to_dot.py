@@ -1,10 +1,11 @@
-# Converts an adjacency matric of a graph into dot format.
+# Converts an adjacency matrix of a graph into dot format.
 
 import networkx as nx
 import pandas as pd
 from networkx.drawing.nx_agraph import write_dot
 import sys
 import numpy as np
+#import pyarrow
 
 adjmat_filename = sys.argv[1]
 dot_filename = sys.argv[2]
@@ -14,6 +15,7 @@ adjmat = df.values
 
 mapping = {i: val for i, val in enumerate(list(df))}
 
+# Separate cases for the undirected and directed/mixed graphs
 graph = None
 if (np.transpose(adjmat) == adjmat).all():
     graph = nx.from_numpy_array(adjmat, create_using=nx.Graph())

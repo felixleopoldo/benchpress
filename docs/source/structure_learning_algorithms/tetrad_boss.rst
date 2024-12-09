@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: BOSS 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, BOSS, causal-cmd
+    
+    
+
 .. _tetrad_boss: 
 
 tetrad_boss 
@@ -89,6 +96,7 @@ Each dataset contains 300 samples.
 
 .. rubric:: Some fields described 
 * ``allowInternalRandomess``  If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic. 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 * ``useBes`` True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed. 
 
 
@@ -112,7 +120,8 @@ Each dataset contains 300 samples.
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "boss-bdeu",
@@ -127,7 +136,8 @@ Each dataset contains 300 samples.
         "allowInternalRandomess": false,
         "semBicStructurePrior": null,
         "penaltyDiscount": null,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

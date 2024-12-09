@@ -1,0 +1,348 @@
+{
+    "title": "JSON schema for Benchpress config file.",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "http://github.com/felixleopoldo/benchpress/workflow/schemas/config.schema.json",
+    "type": "object",
+    "properties": {
+        "benchmark_setup": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/benchmark_setup"
+            }
+        },
+        "resources": {
+            "title": "resources",
+            "description": "The available modules for generating graphs, parameters, data, and structure learning algorithms.",
+            "properties": {
+                "data": {
+                    "title": "data",
+                    "description": "Data sampling setup.",
+                    "type": "object",
+                    "properties": {
+                        "fixed_data": {
+                            "$ref": "../rules/data/fixed_data/schema.json"
+                        },
+                        "gcastle_iidsim": {
+                            "$ref": "../rules/data/gcastle_iidsim/schema.json"
+                        },
+                        "iid": {
+                            "$ref": "../rules/data/iid/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "graph": {
+                    "title": "graph",
+                    "description": "The available graph sampling algorithms.",
+                    "type": "object",
+                    "properties": {
+                        "bdgraph_graphsim": {
+                            "$ref": "../rules/graph/bdgraph_graphsim/schema.json"
+                        },
+                        "fixed_graph": {
+                            "$ref": "../rules/graph/fixed_graph/schema.json"
+                        },
+                        "gcastle_dag": {
+                            "$ref": "../rules/graph/gcastle_dag/schema.json"
+                        },
+                        "pcalg_randdag": {
+                            "$ref": "../rules/graph/pcalg_randdag/schema.json"
+                        },
+                        "trilearn_bandmat": {
+                            "$ref": "../rules/graph/trilearn_bandmat/schema.json"
+                        },
+                        "trilearn_cta": {
+                            "$ref": "../rules/graph/trilearn_cta/schema.json"
+                        },
+                        "trilearn_rand_bandmat": {
+                            "$ref": "../rules/graph/trilearn_rand_bandmat/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "parameters": {
+                    "title": "parameters",
+                    "description": "The available parameter sampling algorithms",
+                    "type": "object",
+                    "properties": {
+                        "bdgraph_rgwish": {
+                            "$ref": "../rules/parameters/bdgraph_rgwish/schema.json"
+                        },
+                        "bin_bn": {
+                            "$ref": "../rules/parameters/bin_bn/schema.json"
+                        },
+                        "fixed_params": {
+                            "$ref": "../rules/parameters/fixed_params/schema.json"
+                        },
+                        "sem_params": {
+                            "$ref": "../rules/parameters/sem_params/schema.json"
+                        },
+                        "trilearn_g_inv_wishart": {
+                            "$ref": "../rules/parameters/trilearn_g_inv_wishart/schema.json"
+                        },
+                        "trilearn_hyper-dir": {
+                            "$ref": "../rules/parameters/trilearn_hyper-dir/schema.json"
+                        },
+                        "trilearn_intra-class": {
+                            "$ref": "../rules/parameters/trilearn_intra-class/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "structure_learning_algorithms": {
+                    "title": "structure_learning_algorithms",
+                    "description": "The available structure learning algorithms",
+                    "type": "object",
+                    "properties": {
+                        "athomas_jtsamplers": {
+                            "$ref": "../rules/structure_learning_algorithms/athomas_jtsamplers/schema.json"
+                        },
+                        "bdgraph": {
+                            "$ref": "../rules/structure_learning_algorithms/bdgraph/schema.json"
+                        },
+                        "bidag_itsearch": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_itsearch/schema.json"
+                        },
+                        "bidag_order_mcmc": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_order_mcmc/schema.json"
+                        },
+                        "bidag_partition_mcmc": {
+                            "$ref": "../rules/structure_learning_algorithms/bidag_partition_mcmc/schema.json"
+                        },
+                        "bnlearn_fastiamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_fastiamb/schema.json"
+                        },
+                        "bnlearn_gs": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_gs/schema.json"
+                        },
+                        "bnlearn_h2pc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_h2pc/schema.json"
+                        },
+                        "bnlearn_hc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_hc/schema.json"
+                        },
+                        "bnlearn_hpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_hpc/schema.json"
+                        },
+                        "bnlearn_iamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_iamb/schema.json"
+                        },
+                        "bnlearn_iambfdr": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_iambfdr/schema.json"
+                        },
+                        "bnlearn_interiamb": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_interiamb/schema.json"
+                        },
+                        "bnlearn_mmhc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_mmhc/schema.json"
+                        },
+                        "bnlearn_mmpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_mmpc/schema.json"
+                        },
+                        "bnlearn_pcstable": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_pcstable/schema.json"
+                        },
+                        "bnlearn_rsmax2": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_rsmax2/schema.json"
+                        },
+                        "bnlearn_sihitonpc": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_sihitonpc/schema.json"
+                        },
+                        "bnlearn_tabu": {
+                            "$ref": "../rules/structure_learning_algorithms/bnlearn_tabu/schema.json"
+                        },
+                        "causaldag_gsp": {
+                            "$ref": "../rules/structure_learning_algorithms/causaldag_gsp/schema.json"
+                        },
+                        "causallearn_grasp": {
+                            "$ref": "../rules/structure_learning_algorithms/causallearn_grasp/schema.json"
+                        },
+                        "corr_thresh": {
+                            "$ref": "../rules/structure_learning_algorithms/corr_thresh/schema.json"
+                        },
+                        "dualpc": {
+                            "$ref": "../rules/structure_learning_algorithms/dualpc/schema.json"
+                        },
+                        "equsa_psilearner": {
+                            "$ref": "../rules/structure_learning_algorithms/equsa_psilearner/schema.json"
+                        },
+                        "gcastle_anm": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_anm/schema.json"
+                        },
+                        "gcastle_corl": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_corl/schema.json"
+                        },
+                        "gcastle_direct_lingam": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_direct_lingam/schema.json"
+                        },
+                        "gcastle_gae": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_gae/schema.json"
+                        },
+                        "gcastle_golem": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_golem/schema.json"
+                        },
+                        "gcastle_grandag": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_grandag/schema.json"
+                        },
+                        "gcastle_ica_lingam": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_ica_lingam/schema.json"
+                        },
+                        "gcastle_mcsl": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_mcsl/schema.json"
+                        },
+                        "gcastle_notears": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_notears/schema.json"
+                        },
+                        "gcastle_notears_low_rank": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_notears_low_rank/schema.json"
+                        },
+                        "gcastle_notears_nonlinear": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_notears_nonlinear/schema.json"
+                        },
+                        "gcastle_pc": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_pc/schema.json"
+                        },
+                        "gcastle_rl": {
+                            "$ref": "../rules/structure_learning_algorithms/gcastle_rl/schema.json"
+                        },
+                        "gobnilp": {
+                            "$ref": "../rules/structure_learning_algorithms/gobnilp/schema.json"
+                        },
+                        "grues": {
+                            "$ref": "../rules/structure_learning_algorithms/grues/schema.json"
+                        },
+                        "huge_glasso": {
+                            "$ref": "../rules/structure_learning_algorithms/huge_glasso/schema.json"
+                        },
+                        "huge_mb": {
+                            "$ref": "../rules/structure_learning_algorithms/huge_mb/schema.json"
+                        },
+                        "huge_tiger": {
+                            "$ref": "../rules/structure_learning_algorithms/huge_tiger/schema.json"
+                        },
+                        "paralleldg": {
+                            "$ref": "../rules/structure_learning_algorithms/paralleldg/schema.json"
+                        },
+                        "pcalg_gies": {
+                            "$ref": "../rules/structure_learning_algorithms/pcalg_gies/schema.json"
+                        },
+                        "pcalg_pc": {
+                            "$ref": "../rules/structure_learning_algorithms/pcalg_pc/schema.json"
+                        },
+                        "prec_thresh": {
+                            "$ref": "../rules/structure_learning_algorithms/prec_thresh/schema.json"
+                        },
+                        "rblip_asobs": {
+                            "$ref": "../rules/structure_learning_algorithms/rblip_asobs/schema.json"
+                        },
+                        "sklearn_glasso": {
+                            "$ref": "../rules/structure_learning_algorithms/sklearn_glasso/schema.json"
+                        },
+                        "tetrad_boss": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_boss/schema.json"
+                        },
+                        "tetrad_fas": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fas/schema.json"
+                        },
+                        "tetrad_fask": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fask/schema.json"
+                        },
+                        "tetrad_fges": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fges/schema.json"
+                        },
+                        "tetrad_fofc": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_fofc/schema.json"
+                        },
+                        "tetrad_ftfc": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_ftfc/schema.json"
+                        },
+                        "tetrad_grasp": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_grasp/schema.json"
+                        },
+                        "tetrad_ica-lingam": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_ica-lingam/schema.json"
+                        },
+                        "tetrad_pc": {
+                            "$ref": "../rules/structure_learning_algorithms/tetrad_pc/schema.json"
+                        },
+                        "trilearn_pgibbs": {
+                            "$ref": "../rules/structure_learning_algorithms/trilearn_pgibbs/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "data",
+                "graph",
+                "parameters",
+                "structure_learning_algorithms"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "definitions": {
+        "benchmark_setup": {
+            "title": "benchmark_setup",
+            "description": "Defines the actual benchmarking setup, where the resources are references by their corresponding id.",
+            "type": "object",
+            "properties": {
+                "title": {
+                    "title": "title",
+                    "description": "The title of the benchmark setup.",
+                    "type": "string",
+                    "pattern": "^[^\\s]*$"
+                },
+                "data": {
+                    "title": "data",
+                    "description": "The data setup for the study.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "definitions.schema.json#/definitions/data_setup_dict"
+                    },
+                    "uniqueItems": true
+                },
+                "evaluation": {
+                    "title": "evaluation",
+                    "description": "This section contains the available evaluation methods.",
+                    "properties": {
+                        "benchmarks": {
+                            "$ref": "../rules/evaluation/benchmarks/schema.json"
+                        },
+                        "ggally_ggpairs": {
+                            "$ref": "../rules/evaluation/ggally_ggpairs/schema.json"
+                        },
+                        "graph_estimation": {
+                            "$ref": "../rules/evaluation/graph_estimation/schema.json"
+                        },
+                        "graph_plots": {
+                            "$ref": "../rules/evaluation/graph_plots/schema.json"
+                        },
+                        "graph_true_plots": {
+                            "$ref": "../rules/evaluation/graph_true_plots/schema.json"
+                        },
+                        "graph_true_stats": {
+                            "$ref": "../rules/evaluation/graph_true_stats/schema.json"
+                        },
+                        "mcmc_autocorr_plots": {
+                            "$ref": "../rules/evaluation/mcmc_autocorr_plots/schema.json"
+                        },
+                        "mcmc_heatmaps": {
+                            "$ref": "../rules/evaluation/mcmc_heatmaps/schema.json"
+                        },
+                        "mcmc_traj_plots": {
+                            "$ref": "../rules/evaluation/mcmc_traj_plots/schema.json"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "title",
+                "data",
+                "evaluation"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

@@ -43,9 +43,12 @@ extensions = [
     "sphinx-prompt",
     "sphinxcontrib.bibtex",
     "sphinx_last_updated_by_git",
-    "versionwarning.extension",
+    "versionwarning.extension"
 ]
-extensions += ["sphinxawesome_theme.highlighting"]
+extensions += ["sphinxawesome_theme.highlighting",
+        "sphinxcontrib.googleanalytics"
+]
+googleanalytics_id = "G-CDYR88PWR3"
 
 
 paths = [
@@ -90,6 +93,9 @@ numfig = True
 html_theme = "furo"
 # html_theme = "sphinx_book_theme"
 
+#html_theme = 'sphinx_rtd_theme'
+html_title = 'Benchpress causal discovery platform'
+html_short_title = 'Benchpress causal discovery platform'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

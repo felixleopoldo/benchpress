@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: PC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, PC, bnlearn
+    
+    
+
 .. _bnlearn_pcstable: 
 
 bnlearn_pcstable 
@@ -31,6 +38,8 @@ bnlearn_pcstable
 
 .. rubric:: Description
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -51,7 +60,8 @@ bnlearn_pcstable
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "pcstable-mi",
@@ -64,7 +74,8 @@ bnlearn_pcstable
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

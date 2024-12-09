@@ -8,6 +8,15 @@ CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 
 CMD="$CMD --algorithm ica-lingam"
+
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
+fi
+
 CMD="$CMD --dataset ${snakemake_input[data]}"
 
 # Run the command

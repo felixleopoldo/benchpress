@@ -74,6 +74,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -102,7 +107,8 @@
                 "k": 1,
                 "prior": "uniform",
                 "beta": null,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "rsmax2-bde-mi",
@@ -123,7 +129,8 @@
                 "k": 1,
                 "prior": "uniform",
                 "beta": null,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

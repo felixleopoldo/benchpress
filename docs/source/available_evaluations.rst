@@ -12,6 +12,7 @@ Evaluation
     
     evaluation/benchmarks
     evaluation/ggally_ggpairs
+    evaluation/graph_estimation
     evaluation/graph_plots
     evaluation/graph_true_plots
     evaluation/graph_true_stats
@@ -35,6 +36,9 @@ The output of the modules are copied to *results/output* for easy access.
    * - Pairs plot
 
      - :ref:`ggally_ggpairs` 
+   * - Graph estimation
+
+     - :ref:`graph_estimation` 
    * - Graph plots
 
      - :ref:`graph_plots` 

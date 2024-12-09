@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: MCSL 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, MCSL, gCastle
+    
+    
+
 .. _gcastle_mcsl: 
 
 gcastle_mcsl 

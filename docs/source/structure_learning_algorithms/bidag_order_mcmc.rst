@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: Order MCMC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Order MCMC, BiDAG
+    
+    
+
 .. _bidag_order_mcmc: 
 
 bidag_order_mcmc 
@@ -43,6 +50,7 @@ in Benchpress is a hybrid version with the sampling performed on a restricted se
 initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 
 .. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 * ``input_algorithm_id`` Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package. 
 
 
@@ -76,7 +84,8 @@ initialised with constraint-based testing and improved with a score-based search
         "mcmc_seed": 1,
         "threshold": 0.5,
         "mcmc_estimator": "threshold",
-        "burnin_frac": 0.5
+        "burnin_frac": 0.5,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "omcmc_itmap-bde",
@@ -104,7 +113,8 @@ initialised with constraint-based testing and improved with a score-based search
         ],
         "burnin_frac": 0,
         "mcmc_estimator": "threshold",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

@@ -7,7 +7,7 @@
     Order MCMC is special in the sense that it can define a startspace by means 
     of the id of some algorithm. Thus the id has to be exptracted into a path string first.
 """
-
+from pathlib import Path
 from typing import Optional, List, Union, Tuple
 
 
@@ -64,7 +64,7 @@ for algname, objlist in config["resources"]["structure_learning_algorithms"].ite
 
 # First generate path strings for those without input graphs.
 # Then we can use them as input algs. This also means that an input algorithm
-# cant take another input algorithm as input, for now.
+# can't take another input algorithm as input, for now.
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if (alg not in has_input_algs):# and (alg not in mcmc_modules):  # not the mcmc_modules yet
@@ -75,7 +75,7 @@ for alg in config["resources"]["structure_learning_algorithms"]:
 
             json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
                                         for val in config["resources"]["structure_learning_algorithms"][alg]})
-        else:        
+        else: 
             json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                                 for val in config["resources"]["structure_learning_algorithms"][alg]})
 
@@ -105,11 +105,11 @@ for alg, alg_objects in config["resources"]["structure_learning_algorithms"].ite
 
 # Evaluation strings
 
-def gen_evaluation_string_from_conf(method, alg_id):
+def gen_evaluation_string_from_conf(bmark_setup, method, alg_id):
     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern
     # specified in pattern_strings.
     eval_dict = next(
-        item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
+        item for item in bmark_setup["evaluation"][method] if item["id"] == alg_id)
     return expand(pattern_strings[method], **eval_dict)
 
 # Graph strings
@@ -132,8 +132,6 @@ def gen_adjmat_string_from_conf(adjmat_id, seed):
         return None
 
 # Parameter strings
-
-
 def gen_parameter_string_from_conf(gen_method_id, seed):
 
     for module in config["resources"]["parameters"]:
@@ -160,10 +158,13 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
     if Path("resources/data/mydatasets/"+data_id).is_file():
         num_lines = sum(1 for line in open(
             "resources/data/mydatasets/"+data_id)) - 1
-        return "fixed" + \
-            "/filename="+data_id + \
-            "/n="+str(num_lines) + \
-            "/seed="+str(seed)
+        
+        data_string = ("fixed" + 
+                "/filename="+data_id + 
+                "/n="+str(num_lines) +
+                "/seed="+str(seed))
+
+        return data_string
 
     elif Path("resources/data/mydatasets/"+data_id).exists():
         paths = Path("resources/data/mydatasets/").glob(data_id+'/*.csv')
@@ -189,9 +190,3 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                     return expand(pattern_strings[module]+"/standardized={standardized}",
                                   **data)
 
-
-# def path_to_input_algorithm_graph(alg_id):
-#     return "{output_dir}/adjmat_estimate/{data}/"\
-#         "algorithm=/" + json_string[alg_id][0] + "/" +\
-#         "seed={seed}/" \
-#         "adjmat.csv"

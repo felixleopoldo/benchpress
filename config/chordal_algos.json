@@ -1,196 +1,207 @@
 {
-    "benchmark_setup": {
-        "data": [
-            {
-                "data_id": "example1",
-                "graph_id": "AR1-5",
-                "parameters_id": "intra-class",
-                "seed_range": [
-                    1,
-                    1
-                ]
-            }
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "data_id": "example1",
+          "graph_id": "AR1-5",
+          "parameters_id": "intra-class",
+          "seed_range": [
+            1,
+            1
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "mcmc_chordal/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "gg99",
+            "trilearn"
+          ]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
+        "graph_plots": [
+          "gg99"
         ],
-        "evaluation": {
-            "benchmarks": {
-                "filename_prefix": "mcmc_chordal/",
-                "show_seed": false,
-                "errorbar": true,
-                "errorbarh": false,
-                "scatter": true,
-                "path": true,
-                "text": false,
-                "ids": [
-                    "gg99", "trilearn"
-                ]
-            },
-            "graph_true_plots": true,
-            "graph_true_stats": false,
-            "ggally_ggpairs": false,
-            "graph_plots": [
-                "gg99"
+        "mcmc_traj_plots": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "thinning": 1000,
+            "functional": [
+              "score",
+              "size"
             ],
-            "mcmc_traj_plots": [
-                {
-                    "id": "gg99",
-                    "burn_in": 0.5,
-                    "thinning": 1000,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                },
-                {
-                    "id": "trilearn",
-                    "burn_in": 0.5,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-
+            "active": true
+          },
+          {
+            "id": "trilearn",
+            "burn_in": 0.5,
+            "thinning": 1,
+            "functional": [
+              "score",
+              "size"
             ],
-            "mcmc_heatmaps": [
-                {
-                    "id": "gg99",
-                    "burn_in": 0.5,
-                    "active": true
-                },
-                {
-                    "id": "trilearn",
-                    "burn_in": 0.5,
-                    "active": true
-                }
+            "active": true
+          }
+        ],
+        "mcmc_heatmaps": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "active": true
+          },
+          {
+            "id": "trilearn",
+            "burn_in": 0.5,
+            "active": true
+          }
+        ],
+        "mcmc_autocorr_plots": [
+          {
+            "id": "gg99",
+            "burn_in": 0.5,
+            "thinning": 1000,
+            "lags": 50,
+            "functional": [
+              "score",
+              "size"
             ],
-            "mcmc_autocorr_plots": [
-                {
-                    "id": "gg99",
-                    "burn_in": 0.5,
-                    "thinning": 1000,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ]
-        }
-    },
-    "resources": {
-        "data": {
-            "iid": [
-                {
-                    "id": "example1",
-                    "standardized": false,
-                    "n": [
-                        200
-                    ]
-                }
-            ]
-        },
-        "graph": {
-            "trilearn_rand_bandmat": [
-                {
-                    "id": "AR1-5",
-                    "max_bandwidth": 5,
-                    "dim": 50
-                }
-            ],
-            "trilearn_cta": [
-                {
-                    "id": "cta",
-                    "order": 50,
-                    "alpha": 0.5,
-                    "beta": 0.5
-                }
-            ]
-        },
-        "parameters": {
-            "trilearn_intra-class": [
-                {
-                    "id": "intra-class",
-                    "rho": 0.5,
-                    "sigma2": 1.0
-                }
-            ],
-            "bdgraph_rgwish": [
-                {
-                    "id": "gwi",
-                    "b": 3,
-                    "threshold_conv": 1e-8
-                }
-            ]
-        },
-        "structure_learning_algorithms": {
-            "athomas_jtsamplers": [
-                {
-                    "id": "gg99",
-                    "burnin_frac": 0.5,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null,
-                    "threshold": [0.2, 0.5, 0.9],
-                    "mcmc_seed": [
-                        1,
-                        2,
-                        3
-                    ],
-                    "num_samples": 1000000,
-                    "sampler": [
-                        1
-                    ],
-                    "edge_penalty": 1.0,
-                    "size_maxclique": 10000
-                }
-            ],
-            "paralleldg": [
-                {
-                    "id": "parallelDG_test",
-                    "M": 10000,
-                    "R": [
-                        100,
-                        200
-                    ],
-                    "datatype": "continuous",
-                    "mcmc_seed": [
-                        1,
-                        2
-                    ],
-                    "graph_prior": "uniform",
-                    "graph_prior_param": 1.0,
-                    "graph_prior_param1": 3.0,
-                    "pseudo_obs": 2,
-                    "delta": 5.0,
-                    "threshold": 0.5,
-                    "burnin_frac": 0.5,
-                    "mcmc_estimator": "map",
-                    "timeout": null
-                }
-            ],
-            "trilearn_pgibbs": [
-                {
-                    "id": "trilearn",
-                    "datatype": "continuous",
-                    "alpha": 0.5,
-                    "beta": 0.5,
-                    "radii": 80,
-                    "n_particles": 20,
-                    "M": 2000,
-                    "pseudo_obs": 1,
-                    "mcmc_seed": [1,2,3],
-                    "mcmc_estimator": "threshold",
-                    "threshold": [
-                        0.2,
-                        0.5,
-                        0.9
-                    ],
-                    "burnin_frac": 0.5,
-                    "timeout": null
-                }
-            ]
-        }
+            "active": true
+          }
+        ]
+      },
+      "title": "chordal_algos"
     }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "example1",
+          "standardized": false,
+          "n": [
+            200
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "trilearn_rand_bandmat": [
+        {
+          "id": "AR1-5",
+          "max_bandwidth": 5,
+          "dim": 50
+        }
+      ],
+      "trilearn_cta": [
+        {
+          "id": "cta",
+          "order": 50,
+          "alpha": 0.5,
+          "beta": 0.5
+        }
+      ]
+    },
+    "parameters": {
+      "trilearn_intra-class": [
+        {
+          "id": "intra-class",
+          "rho": 0.5,
+          "sigma2": 1.0
+        }
+      ],
+      "bdgraph_rgwish": [
+        {
+          "id": "gwi",
+          "b": 3,
+          "threshold_conv": 1e-08
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "athomas_jtsamplers": [
+        {
+          "id": "gg99",
+          "burnin_frac": 0.5,
+          "mcmc_estimator": "threshold",
+          "timeout": null,
+          "threshold": [
+            0.2,
+            0.5,
+            0.9
+          ],
+          "mcmc_seed": [
+            1,
+            2,
+            3
+          ],
+          "num_samples": 1000000,
+          "sampler": [
+            1
+          ],
+          "edge_penalty": 1.0,
+          "size_maxclique": 10000
+        }
+      ],
+      "paralleldg": [
+        {
+          "id": "parallelDG_test",
+          "M": 10000,
+          "R": [
+            100,
+            200
+          ],
+          "datatype": "continuous",
+          "mcmc_seed": [
+            1,
+            2
+          ],
+          "graph_prior": "uniform",
+          "graph_prior_param": 1.0,
+          "graph_prior_param1": 3.0,
+          "pseudo_obs": 2,
+          "delta": 5.0,
+          "threshold": 0.5,
+          "burnin_frac": 0.5,
+          "mcmc_estimator": "map",
+          "timeout": null
+        }
+      ],
+      "trilearn_pgibbs": [
+        {
+          "id": "trilearn",
+          "datatype": "continuous",
+          "alpha": 0.5,
+          "beta": 0.5,
+          "radii": 80,
+          "n_particles": 20,
+          "M": 2000,
+          "pseudo_obs": 1,
+          "mcmc_seed": [
+            1,
+            2,
+            3
+          ],
+          "mcmc_estimator": "threshold",
+          "threshold": [
+            0.2,
+            0.5,
+            0.9
+          ],
+          "burnin_frac": 0.5,
+          "timeout": null
+        }
+      ]
+    }
+  }
 }

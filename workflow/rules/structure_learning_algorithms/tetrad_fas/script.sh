@@ -2,6 +2,15 @@
 # Build command string 
 CMD="java -jar /tetrad/causal-cmd-1.10.0-jar-with-dependencies.jar"
 CMD="$CMD --algorithm fas"
+
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
+fi
+
 CMD="$CMD --data-type ${snakemake_wildcards[datatype]}"
 CMD="$CMD --delimiter comma"
 CMD="$CMD --test ${snakemake_wildcards[test]}"

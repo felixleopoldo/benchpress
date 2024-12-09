@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: HC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, HC, bnlearn
+    
+    
+
 .. _bnlearn_hc: 
 
 bnlearn_hc 
@@ -34,6 +41,8 @@ bnlearn_hc
 Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and
 adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -59,7 +68,8 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
         "beta": 1,
         "restart": 0,
         "perturb": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "hc-bge",
@@ -78,7 +88,8 @@ adds, deletes or reverses edges in a greedy manner until an optimum is reached.
         "beta": 1,
         "restart": 0,
         "perturb": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

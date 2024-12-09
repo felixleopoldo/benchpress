@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: FASK 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, FASK, causal-cmd
+    
+    
+
 .. _tetrad_fask: 
 
 tetrad_fask 
@@ -41,6 +48,8 @@ We include pairwise orientation rule RSkew, Skew, and Tanh from :footcite:t:`hyv
 See  :footcite:t:`sanchez2018causal`.
 
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -56,7 +65,8 @@ See  :footcite:t:`sanchez2018causal`.
         "score": "sem-bic-score",
         "semBicStructurePrior": 1,
         "datatype": "continuous",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

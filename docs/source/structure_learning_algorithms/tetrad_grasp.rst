@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: GRaSP 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, GRaSP, causal-cmd
+    
+    
+
 .. _tetrad_grasp: 
 
 tetrad_grasp 
@@ -33,6 +40,8 @@ tetrad_grasp
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -54,7 +63,8 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "grasp-bdeu",
@@ -68,7 +78,8 @@ Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
         ],
         "semBicStructurePrior": null,
         "penaltyDiscount": null,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

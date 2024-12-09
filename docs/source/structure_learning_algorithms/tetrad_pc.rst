@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: PC 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, PC, causal-cmd
+    
+    
+
 .. _tetrad_pc: 
 
 tetrad_pc 
@@ -37,6 +44,8 @@ The PC algorithm is correct whenever decision procedures for independence and co
 
 The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirtes2000causation` comes with three heuristics designed to reduce dependence on the order of the variables. The heuristic PC-1 simple sorts the variables in alphabetical order. The heuristic PC-2 and PC-3 sort edges by their p-values in the search. PP-3 further sorts parents of nodes in reverse order by the p-values of the conditional independence facts used to removed edges in the search. Please see Causation, Prediction, and Search for more details for these heuristics.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -51,7 +60,8 @@ The PC algorithm as given in Causation, Prediction and Search :footcite:t:`spirt
         "test": "fisher-z-test",
         "alpha": 0.01,
         "datatype": "continuous",
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: IAMB 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, IAMB, bnlearn
+    
+    
+
 .. _bnlearn_iamb: 
 
 bnlearn_iamb 
@@ -31,6 +38,8 @@ bnlearn_iamb
 
 .. rubric:: Description
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -51,7 +60,8 @@ bnlearn_iamb
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "iamb-mi",
@@ -64,7 +74,8 @@ bnlearn_iamb
         "maxsx": null,
         "debug": false,
         "undirected": false,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

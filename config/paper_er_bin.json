@@ -1,520 +1,544 @@
 {
-    "benchmark_setup": {
-        "data": [
-            {
-                "graph_id": "avneigs4",
-                "parameters_id": "binbn",
-                "data_id": "example1",
-                "seed_range": [
-                    1,
-                    100
-                ]
-            }
-        ],
-        "evaluation": {
-            "benchmarks": {
-                "filename_prefix": "paper_er_bin/",
-                "show_seed": false,
-                "xlim": [
-                    0,
-                    0.35
-                ],
-                "errorbar": true,
-                "errorbarh": false,
-                "scatter": true,
-                "path": true,
-                "text": false,
-                "ids": [
-                    "gobnilp-bde",
-                    "grasp-bdeu",
-                    "boss-bdeu",
-                    "asobs-bdeu",
-                    "tabu-bde",
-                    "mmhc-bde-mi",
-                    "hc-bde",
-                    "fges-bdeu",
-                    "itsearch-bde",
-                    "pc-binCItest",
-                    "omcmc-bde"
-                ]
-            },
-            "graph_true_stats": false,
-            "graph_true_plots": false,
-            "graph_plots": [],
-            "mcmc_traj_plots": [],
-            "mcmc_heatmaps": [],
-            "mcmc_autocorr_plots": []
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "avneigs4",
+          "parameters_id": "binbn",
+          "data_id": "example1",
+          "seed_range": [
+            1,
+            100
+          ]
         }
-    },
-    "resources": {
-        "data": {
-            "iid": [
-                {
-                    "id": "example1",
-                    "standardized": false,
-                    "n": [
-                        320
-                    ]
-                }
-            ]
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "paper_er_bin/",
+          "show_seed": false,
+          "xlim": [
+            0,
+            0.35
+          ],
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "gobnilp-bde",
+            "grasp-bdeu",
+            "boss-bdeu",
+            "asobs-bdeu",
+            "tabu-bde",
+            "mmhc-bde-mi",
+            "hc-bde",
+            "fges-bdeu",
+            "itsearch-bde",
+            "pc-binCItest",
+            "omcmc-bde"
+          ]
         },
-        "graph": {
-            "pcalg_randdag": [
-                {
-                    "id": "avneigs4",
-                    "max_parents": 5,
-                    "n": 80,
-                    "d": 4,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                }
-            ]
-        },
-        "parameters": {
-            "bin_bn": [
-                {
-                    "id": "binbn",
-                    "min": 0.1,
-                    "max": 0.9
-                }
-            ]
-        },
-        "structure_learning_algorithms": {
-            "tetrad_boss": [
-                {
-                    "id": "boss-bdeu",
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "useBes": true,
-                    "allowInternalRandomess": false,
-                    "samplePrior": [
-                        1,
-                        10,
-                        20
-                    ],
-                    "semBicStructurePrior": null,
-                    "penaltyDiscount": null,
-                    "timeout": null
-                }
-            ],
-            "tetrad_grasp": [
-                {
-                    "id": "grasp-bdeu",
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "test": "chi-square-test",
-                    "samplePrior": [
-                        1,
-                        10,
-                        20
-                    ],
-                    "semBicStructurePrior": null,
-                    "penaltyDiscount": null,
-                    "timeout": null
-                }
-            ],
-            "rblip_asobs": [
-                {
-                    "id": "winasobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "winasobs",
-                    "indeg": 80,
-                    "timeout": 300,
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose_level": 0
-                },
-                {
-                    "id": "asobs-bdeu",
-                    "scorermethod": "is",
-                    "solvermethod": "asobs",
-                    "indeg": 80,
-                    "timeout": 300,
-                    "allocated": 80,
-                    "scorefunction": "bdeu",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "cores": 1,
-                    "verbose_level": 0
-                }
-            ],
-            "gobnilp": [
-                {
-                    "id": "gobnilp-bde",
-                    "continuous": false,
-                    "score_type": "BDeu",
-                    "extra_args": null,
-                    "constraints": null,
-                    "plot": false,
-                    "palim": 4,
-                    "alpha_mu": null,
-                    "alpha_omega_minus_nvars": null,
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "time_limit": null,
-                    "gap_limit": null,
-                    "prune": true,
-                    "timeout": 600
-                }
-            ],
-            "tetrad_fges": [
-                {
-                    "id": "fges-sem-bic",
-                    "faithfulnessAssumed": true,
-                    "score": "sem-bic-score",
-                    "datatype": "continuous",
-                    "samplePrior": 1,
-                    "semBicStructurePrior": 1,
-                    "penaltyDiscount": [
-                        0.8,
-                        1,
-                        1.5
-                    ],
-                    "timeout": null
-                },
-                {
-                    "id": "fges-bdeu",
-                    "faithfulnessAssumed": true,
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "samplePrior": [
-                        1,
-                        2
-                    ],
-                    "semBicStructurePrior": 1,
-                    "penaltyDiscount": null,
-                    "timeout": null
-                }
-            ],
-            "pcalg_pc": [
-                {
-                    "id": "pc-binCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "binCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pc-gaussCItest",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pcalg005",
-                    "alpha": 0.05,
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "gaussCItest",
-                    "timeout": null
-                },
-                {
-                    "id": "pcalg-disCItest",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "NAdelete": true,
-                    "mmax": "Inf",
-                    "u2pd": "relaxed",
-                    "skelmethod": "stable",
-                    "conservative": false,
-                    "majrule": false,
-                    "solveconfl": false,
-                    "numCores": 1,
-                    "verbose": false,
-                    "indepTest": "disCItest",
-                    "timeout": null
-                }
-            ],
-            "bnlearn_mmhc": [
-                {
-                    "id": "mmhc-bde-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "test": "mi",
-                    "score": "bde",
-                    "iss": 0.1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "mmhc-bge-zf",
-                    "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
-                    ],
-                    "score": "bge",
-                    "test": "zf",
-                    "iss": 1,
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": null,
-                    "timeout": null
-                }
-            ],
-            "bnlearn_interiamb": [
-                {
-                    "id": "interiamb-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                },
-                {
-                    "id": "interiamb-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                }
-            ],
-            "bnlearn_gs": [
-                {
-                    "id": "gs-mi",
-                    "alpha": [
-                        0.01,
-                        0.05,
-                        0.1,
-                        0.2
-                    ],
-                    "test": "mi",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                },
-                {
-                    "id": "gs-zf",
-                    "alpha": [
-                        0.01,
-                        0.05
-                    ],
-                    "test": "zf",
-                    "B": null,
-                    "maxsx": null,
-                    "debug": false,
-                    "undirected": false,
-                    "timeout": null
-                }
-            ],
-            "bnlearn_tabu": [
-                {
-                    "id": "tabu-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "tabu-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "timeout": null
-                }
-            ],
-            "bnlearn_hc": [
-                {
-                    "id": "hc-bde",
-                    "score": "bde",
-                    "iss": [
-                        0.001,
-                        0.01,
-                        0.1
-                    ],
-                    "issmu": 1,
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1,
-                    "timeout": null
-                },
-                {
-                    "id": "hc-bge",
-                    "score": "bge",
-                    "iss": 1,
-                    "issmu": [
-                        0.0001,
-                        0.001,
-                        0.01,
-                        0.05
-                    ],
-                    "issw": null,
-                    "l": 5,
-                    "k": 1,
-                    "prior": "uniform",
-                    "beta": 1,
-                    "restart": 0,
-                    "perturb": 1,
-                    "timeout": null
-                }
-            ],
-            "bidag_itsearch": [
-                {
-                    "id": "itsearch-bde",
-                    "estimate": "map",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": [
-                        0.01,
-                        0.1,
-                        1
-                    ],
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                },
-                {
-                    "id": "itsearch_sample-bde_chi01_endspace",
-                    "estimate": "endspace",
-                    "MAP": false,
-                    "plus1it": 6,
-                    "posterior": 0.5,
-                    "scoretype": "bde",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "am": null,
-                    "aw": null,
-                    "softlimit": 9,
-                    "hardlimit": 12,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "mergetype": "skeleton",
-                    "timeout": null
-                }
-            ],
-            "bidag_order_mcmc": [
-                {
-                    "id": "omcmc-bde",
-                    "plus1": true,
-                    "input_algorithm_id": "itsearch_sample-bde_chi01_endspace",
-                    "scoretype": "bde",
-                    "chi": 0.1,
-                    "edgepf": 2,
-                    "aw": null,
-                    "am": null,
-                    "alpha": 0.05,
-                    "gamma": 1,
-                    "cpdag": false,
-                    "stepsave": null,
-                    "iterations": null,
-                    "MAP": true,
-                    "mcmc_seed": 1,
-                    "threshold": 0.5,
-                    "burnin_frac": 0,
-                    "mcmc_estimator": "threshold",
-                    "timeout": null
-                }
-            ]
-        }
+        "graph_true_stats": false,
+        "graph_true_plots": false,
+        "graph_plots": [],
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+      },
+      "title": "paper_er_bin"
     }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "example1",
+          "standardized": false,
+          "n": [
+            320
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4",
+          "max_parents": 5,
+          "n": 80,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "bin_bn": [
+        {
+          "id": "binbn",
+          "min": 0.1,
+          "max": 0.9
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "tetrad_boss": [
+        {
+          "id": "boss-bdeu",
+          "score": "bdeu-score",
+          "datatype": "discrete",
+          "useBes": true,
+          "allowInternalRandomess": false,
+          "samplePrior": [
+            1,
+            10,
+            20
+          ],
+          "semBicStructurePrior": null,
+          "penaltyDiscount": null,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "tetrad_grasp": [
+        {
+          "id": "grasp-bdeu",
+          "score": "bdeu-score",
+          "datatype": "discrete",
+          "test": "chi-square-test",
+          "samplePrior": [
+            1,
+            10,
+            20
+          ],
+          "semBicStructurePrior": null,
+          "penaltyDiscount": null,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "rblip_asobs": [
+        {
+          "id": "winasobs-bdeu",
+          "scorermethod": "is",
+          "solvermethod": "winasobs",
+          "indeg": 80,
+          "timeout": 300,
+          "allocated": 80,
+          "scorefunction": "bdeu",
+          "alpha": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "cores": 1,
+          "verbose_level": 0
+        },
+        {
+          "id": "asobs-bdeu",
+          "scorermethod": "is",
+          "solvermethod": "asobs",
+          "indeg": 80,
+          "timeout": 300,
+          "allocated": 80,
+          "scorefunction": "bdeu",
+          "alpha": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "cores": 1,
+          "verbose_level": 0
+        }
+      ],
+      "gobnilp": [
+        {
+          "id": "gobnilp-bde",
+          "continuous": false,
+          "score_type": "BDeu",
+          "extra_args": null,
+          "plot": false,
+          "palim": 4,
+          "alpha_mu": null,
+          "alpha_omega_minus_nvars": null,
+          "alpha": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "time_limit": null,
+          "gap_limit": null,
+          "prune": true,
+          "timeout": 600,
+          "edgeConstraints": null
+        }
+      ],
+      "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "fges-bdeu",
+          "faithfulnessAssumed": true,
+          "score": "bdeu-score",
+          "datatype": "discrete",
+          "samplePrior": [
+            1,
+            2
+          ],
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": null,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "pcalg_pc": [
+        {
+          "id": "pc-binCItest",
+          "alpha": [
+            0.01,
+            0.05,
+            0.1
+          ],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "binCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "pc-gaussCItest",
+          "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+          ],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "pcalg005",
+          "alpha": 0.05,
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "pcalg-disCItest",
+          "alpha": [
+            0.01,
+            0.05,
+            0.1
+          ],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "disCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_mmhc": [
+        {
+          "id": "mmhc-bde-mi",
+          "alpha": [
+            0.01,
+            0.05,
+            0.1
+          ],
+          "test": "mi",
+          "score": "bde",
+          "iss": 0.1,
+          "issmu": 1,
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "mmhc-bge-zf",
+          "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+          ],
+          "score": "bge",
+          "test": "zf",
+          "iss": 1,
+          "issmu": 1,
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": null,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_interiamb": [
+        {
+          "id": "interiamb-zf",
+          "alpha": [
+            0.01,
+            0.05
+          ],
+          "test": "zf",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "interiamb-mi",
+          "alpha": [
+            0.01,
+            0.05,
+            0.1,
+            0.2
+          ],
+          "test": "mi",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_gs": [
+        {
+          "id": "gs-mi",
+          "alpha": [
+            0.01,
+            0.05,
+            0.1,
+            0.2
+          ],
+          "test": "mi",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "gs-zf",
+          "alpha": [
+            0.01,
+            0.05
+          ],
+          "test": "zf",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_tabu": [
+        {
+          "id": "tabu-bde",
+          "score": "bde",
+          "iss": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "issmu": 1,
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "tabu-bge",
+          "score": "bge",
+          "iss": 1,
+          "issmu": [
+            0.0001,
+            0.001,
+            0.01,
+            0.05
+          ],
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_hc": [
+        {
+          "id": "hc-bde",
+          "score": "bde",
+          "iss": [
+            0.001,
+            0.01,
+            0.1
+          ],
+          "issmu": 1,
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "restart": 0,
+          "perturb": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "hc-bge",
+          "score": "bge",
+          "iss": 1,
+          "issmu": [
+            0.0001,
+            0.001,
+            0.01,
+            0.05
+          ],
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "restart": 0,
+          "perturb": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch-bde",
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": 6,
+          "posterior": 0.5,
+          "scoretype": "bde",
+          "chi": [
+            0.01,
+            0.1,
+            1
+          ],
+          "edgepf": 2,
+          "am": null,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 12,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null,
+          "edgeConstraints": null
+        },
+        {
+          "id": "itsearch_sample-bde_chi01_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": 6,
+          "posterior": 0.5,
+          "scoretype": "bde",
+          "chi": 0.1,
+          "edgepf": 2,
+          "am": null,
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 12,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bidag_order_mcmc": [
+        {
+          "id": "omcmc-bde",
+          "plus1": true,
+          "input_algorithm_id": "itsearch_sample-bde_chi01_endspace",
+          "scoretype": "bde",
+          "chi": 0.1,
+          "edgepf": 2,
+          "aw": null,
+          "am": null,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": true,
+          "mcmc_seed": 1,
+          "threshold": 0.5,
+          "burnin_frac": 0,
+          "mcmc_estimator": "threshold",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ]
+    }
+  }
 }

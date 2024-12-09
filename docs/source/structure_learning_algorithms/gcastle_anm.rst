@@ -1,5 +1,12 @@
 
 
+
+    .. meta::
+        :title: ANM 
+        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, ANM, gCastle
+    
+    
+
 .. _gcastle_anm: 
 
 gcastle_anm 

@@ -33,17 +33,6 @@
                     }
                 ]
             },
-            "constraints": {
-                "description": "File with constraints to pass to the solver. The file should be placed in resources/constraints and the format is the same as used by gobnilp (see the docs).",
-                "anyOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
             "plot": {
                 "type": "boolean"
             },
@@ -73,6 +62,11 @@
             },
             "prune": {
                 "type": "boolean"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -90,7 +84,6 @@
                 "continuous": true,
                 "score_type": "BGe",
                 "extra_args": null,
-                "constraints": null,
                 "plot": false,
                 "palim": 3,
                 "alpha_mu": [
@@ -103,14 +96,14 @@
                 "time_limit": null,
                 "gap_limit": null,
                 "prune": true,
-                "timeout": 800
+                "timeout": 800,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "gobnilp-bde",
                 "continuous": false,
                 "score_type": "BDeu",
                 "extra_args": null,
-                "constraints": null,
                 "plot": false,
                 "palim": 4,
                 "alpha_mu": null,
@@ -123,7 +116,8 @@
                 "time_limit": null,
                 "gap_limit": null,
                 "prune": true,
-                "timeout": 600
+                "timeout": 600,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }
