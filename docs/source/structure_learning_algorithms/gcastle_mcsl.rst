@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: MCSL 
+        :description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
+    
+
 .. _gcastle_mcsl: 
 
 gcastle_mcsl 

@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: GraNDAG 
+        :description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
+    
+
 .. _gcastle_grandag: 
 
 gcastle_grandag 

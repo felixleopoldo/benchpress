@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: NO TEARS low rank 
+        :description: Adapting NOTEARS for large problems with low-rank causal graphs.
+    
+
 .. _gcastle_notears_low_rank: 
 
 gcastle_notears_low_rank 

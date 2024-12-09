@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: IAMB 
+        :description: 
+    
+
 .. _bnlearn_iamb: 
 
 bnlearn_iamb 

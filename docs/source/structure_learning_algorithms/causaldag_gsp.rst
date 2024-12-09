@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: GSP 
+        :description: 
+    
+
 .. _causaldag_gsp: 
 
 causaldag_gsp 

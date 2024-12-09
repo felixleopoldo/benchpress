@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: GRaSP 
+        :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+    
+
 .. _causallearn_grasp: 
 
 causallearn_grasp 

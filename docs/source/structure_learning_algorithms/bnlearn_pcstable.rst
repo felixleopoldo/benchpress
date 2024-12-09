@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: PC 
+        :description: 
+    
+
 .. _bnlearn_pcstable: 
 
 bnlearn_pcstable 

@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: Graphical Lasso 
+        :description: 
+    
+
 .. _sklearn_glasso: 
 
 sklearn_glasso 

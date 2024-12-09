@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: PC 
+        :description: A classic causal discovery algorithm based on conditional independence tests.
+    
+
 .. _gcastle_pc: 
 
 gcastle_pc 

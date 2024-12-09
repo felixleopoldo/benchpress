@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: Direct LINGAM 
+        :description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+    
+
 .. _gcastle_direct_lingam: 
 
 gcastle_direct_lingam 

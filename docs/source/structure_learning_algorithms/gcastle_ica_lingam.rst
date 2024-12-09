@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: ICALiNGAM 
+        :description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+    
+
 .. _gcastle_ica_lingam: 
 
 gcastle_ica_lingam 

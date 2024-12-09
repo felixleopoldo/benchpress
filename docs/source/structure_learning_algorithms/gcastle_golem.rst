@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: GOLEM 
+        :description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
+    
+
 .. _gcastle_golem: 
 
 gcastle_golem 

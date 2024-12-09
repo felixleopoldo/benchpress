@@ -1,5 +1,11 @@
 
 
+
+    .. meta::
+        :title: GAE 
+        :description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
+    
+
 .. _gcastle_gae: 
 
 gcastle_gae 
