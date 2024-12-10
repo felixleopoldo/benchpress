@@ -5,7 +5,7 @@
 
 
 .. meta::
-    :title: Benchpress: Scalable Open-Source Causal Discovery
+    :title: Benchpress: Open-Source Causal Discovery Suite
     :description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.
 .. toctree::
     :hidden:
@@ -67,13 +67,13 @@
 ------------------------
 
 #############################################################
-Scalable and open-source causal discovery
+Open-source causal discovery platform
 #############################################################
 
 Describing the relationship between the variables in a study domain and modelling
 the data generating mechanism is a fundamental problem in many empirical sciences.
 `Probabilistic graphical models <https://en.wikipedia.org/wiki/Graphical_model>`_ are one common approach to tackle the problem. 
-Learning the graphical structure for such models, referred to as **structure learning** or **causal discovery**, is computationally challenging and a fervent
+Learning the graphical structure for such models, referred to as **causal discovery** and **structure learning** in general, is computationally challenging and a fervent
 area of current research with a plethora of algorithms being developed. 
 To facilitate the access to the different methods we present Benchpress, a scalable and platform-independent `Snakemake <https://snakemake.github.io/>`_ workflow to **run**, **develop**, and to create reproducible **benchmarks**
 of **structure learning algorithms** for probabilistic graphical models.
