@@ -9,9 +9,9 @@
 .. _gobnilp: 
 
 gobnilp 
------------
+***********
 
-.. rubric:: GOBNILP
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gobnilp
 
 
 
-.. rubric:: Description
+GOBNILP 
+-----------
+
 
 Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG
 for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in

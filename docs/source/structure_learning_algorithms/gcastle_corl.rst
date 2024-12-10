@@ -9,9 +9,9 @@
 .. _gcastle_corl: 
 
 gcastle_corl 
-----------------
+****************
 
-.. rubric:: CORL
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_corl
 
 
 
-.. rubric:: Description
+CORL 
+--------
+
 
 A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 

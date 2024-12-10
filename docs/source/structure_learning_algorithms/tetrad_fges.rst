@@ -9,9 +9,9 @@
 .. _tetrad_fges: 
 
 tetrad_fges 
----------------
+***************
 
-.. rubric:: FGES
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_fges
 
 
 
-.. rubric:: Description
+FGES 
+--------
+
 
 From the Tetrad manual:  FGES is an optimized and parallelized version of an algorithm developed by :footcite:t:`meek1997graphical` called the Greedy Equivalence Search (GES). 
 The algorithm was further developed and studied by :footcite:t:`chickering2002optimal`. 

@@ -9,9 +9,9 @@
 .. _bnlearn_gs: 
 
 bnlearn_gs 
---------------
+**************
 
-.. rubric:: Grow-shrink
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_gs
 
 
 
-.. rubric:: Description
+Grow-shrink 
+---------------
+
 
 The grow-shrink (GS) algorithm is based on the Markov blanket of the nodes in a DAG. For
 a specific node, the Markov blanket it the set of nodes which conditioning upon renders it

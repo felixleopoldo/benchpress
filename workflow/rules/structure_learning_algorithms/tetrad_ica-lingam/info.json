@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "java"
+    "language": "java",
+    "title_full": "ICA-LINGAM",
+    "meta_description": "ICA-LINGAM",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

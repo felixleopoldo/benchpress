@@ -9,9 +9,9 @@
 .. _bdgraph: 
 
 bdgraph 
------------
+***********
 
-.. rubric:: BDgraph
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bdgraph
 
 
 
-.. rubric:: Description
+BDgraph 
+-----------
+
 
 
 

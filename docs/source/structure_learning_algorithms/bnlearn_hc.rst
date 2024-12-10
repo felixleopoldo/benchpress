@@ -2,16 +2,16 @@
 
 
     .. meta::
-        :title: HC 
+        :title: Hill-Climbing 
         :description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
     
 
 .. _bnlearn_hc: 
 
 bnlearn_hc 
---------------
+**************
 
-.. rubric:: HC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_hc
 
 
 
-.. rubric:: Description
+Hill-Climbing 
+-----------------
+
 
 Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and
 adds, deletes or reverses edges in a greedy manner until an optimum is reached.

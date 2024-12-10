@@ -9,9 +9,9 @@
 .. _bnlearn_interiamb: 
 
 bnlearn_interiamb 
----------------------
+*********************
 
-.. rubric:: INTER-IAMB
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_interiamb
 
 
 
-.. rubric:: Description
+INTER-IAMB 
+--------------
+
 
 As in GS, this algorithm is also based on the Markov blanket method to first determine the
 undirected skeleton. However, in incremental association Markov blanket (inter-IAMB) the

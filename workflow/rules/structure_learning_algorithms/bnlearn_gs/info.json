@@ -19,5 +19,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Grow-shrink",
+    "meta_description": "Grow-shrink",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

@@ -9,9 +9,9 @@
 .. _tetrad_fofc: 
 
 tetrad_fofc 
----------------
+***************
 
-.. rubric:: FOFC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_fofc
 
 
 
-.. rubric:: Description
+FOFC 
+--------
+
 
 From the Tetrad manual: Searches for causal structure over latent variables, where the true models are Multiple Indicator Models (MIM’s) as described in the Graphs section. 
 The idea is this. 

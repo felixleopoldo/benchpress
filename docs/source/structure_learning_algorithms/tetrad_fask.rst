@@ -9,9 +9,9 @@
 .. _tetrad_fask: 
 
 tetrad_fask 
----------------
+***************
 
-.. rubric:: FASK
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_fask
 
 
 
-.. rubric:: Description
+FASK 
+--------
+
 
 From the Tetrad manual: FASK learns a linear model in which all of the variables are skewed.
 

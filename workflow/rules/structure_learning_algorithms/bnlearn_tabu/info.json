@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Tabu",
+    "meta_description": "Tabu",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

@@ -9,9 +9,9 @@
 .. _paralleldg: 
 
 paralleldg 
---------------
+**************
 
-.. rubric:: Parallel DG
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ paralleldg
 
 
 
-.. rubric:: Description
+Parallel DG 
+---------------
+
 
 Abstract: Bayesian inference for undirected graphical models is mostly restricted to
 the class of decomposable graphs, as they enjoy a rich set of properties making them amenable to high-dimensional problems. While parameter inference is

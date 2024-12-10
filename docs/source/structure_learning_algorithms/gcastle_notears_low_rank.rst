@@ -9,9 +9,9 @@
 .. _gcastle_notears_low_rank: 
 
 gcastle_notears_low_rank 
-----------------------------
+****************************
 
-.. rubric:: NO TEARS low rank
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_notears_low_rank
 
 
 
-.. rubric:: Description
+NO TEARS low rank 
+---------------------
+
 
 Adapting NOTEARS for large problems with low-rank causal graphs.
 

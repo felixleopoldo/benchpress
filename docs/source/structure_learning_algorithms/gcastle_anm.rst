@@ -9,9 +9,9 @@
 .. _gcastle_anm: 
 
 gcastle_anm 
----------------
+***************
 
-.. rubric:: ANM
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_anm
 
 
 
-.. rubric:: Description
+ANM 
+-------
+
 
 Nonlinear causal discovery with additive noise models.
 

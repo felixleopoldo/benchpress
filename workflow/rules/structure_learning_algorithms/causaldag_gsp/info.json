@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "GSP",
+    "meta_description": "GSP",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

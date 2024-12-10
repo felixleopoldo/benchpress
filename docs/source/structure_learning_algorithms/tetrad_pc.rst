@@ -9,9 +9,9 @@
 .. _tetrad_pc: 
 
 tetrad_pc 
--------------
+*************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_pc
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 From TETRAD docs: PC algorithm :footcite:t:`doi:10.1177/089443939100900106` is a CPDAG search which assumes that the underlying causal structure of the input data is acyclic, and that no two variables are caused by the same latent (unmeasured) variable. In addition, it is assumed that the input data set is either entirely continuous or entirely discrete; if the data set is continuous, it is assumed that the causal relation between any two variables is linear, and that the distribution of each variable is Normal. Finally, the sample should ideally be i.i.d.. Simulations show that PC and several of the other algorithms described here often succeed when these assumptions, needed to prove their correctness, do not strictly hold. The PC algorithm will sometimes output double headed edges. In the large sample limit, double headed edges in the output indicate that the adjacent variables have an unrecorded common cause, but PC tends to produce false positive double headed edges on small samples.
 

@@ -5,8 +5,8 @@
 
 
 .. meta::
-    :title: Benchpress: Scalable Open-Source Software for Causal Discovery
-    :description: Benchpress: A flexible, platform-independent open-source tool for developing, executing, and benchmarking causal discovery algorithms. Scales effortlessly across cores, servers, clusters, grids, and cloud environments for seamless performance.
+    :title: Benchpress: Scalable Open-Source Causal Discovery
+    :description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.
 .. toctree::
     :hidden:
     :glob:
@@ -29,7 +29,7 @@
 
 .. toctree::
     :hidden:
-    :maxdepth: 3
+    :maxdepth: 1
     :name: Modules
     :caption: Modules
         
@@ -66,17 +66,17 @@
 
 ------------------------
 
-##################################
-Benchpress
-##################################
+#############################################################
+Scalable and open-source causal discovery
+#############################################################
 
 Describing the relationship between the variables in a study domain and modelling
 the data generating mechanism is a fundamental problem in many empirical sciences.
 `Probabilistic graphical models <https://en.wikipedia.org/wiki/Graphical_model>`_ are one common approach to tackle the problem. 
-Learning the graphical structure for such models (sometimes called causal discovery) is computationally challenging and a fervent
+Learning the graphical structure for such models, referred to as **structure learning** or **causal discovery**, is computationally challenging and a fervent
 area of current research with a plethora of algorithms being developed. 
 To facilitate the access to the different methods we present Benchpress, a scalable and platform-independent `Snakemake <https://snakemake.github.io/>`_ workflow to **run**, **develop**, and to create reproducible **benchmarks**
-of **structure learning algorithms** for probabilistic graphical models. 
+of **structure learning algorithms** for probabilistic graphical models.
 Benchpress is interfaced via a simple `JSON <https://www.json.org/json-en.html>`_-file, which makes it accessible for all users, while the code is
 designed in a fully modular fashion to enable researchers to contribute additional methodologies. 
 Benchpress  provides an interface to a large number of state-of-the-art

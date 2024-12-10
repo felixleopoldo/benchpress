@@ -10,5 +10,10 @@
     "graph_types": [
         "UG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Precmat thresh",
+    "meta_description": "Precmat thresh",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

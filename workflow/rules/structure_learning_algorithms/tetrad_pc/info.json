@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "java"
+    "language": "java",
+    "title_full": "PC",
+    "meta_description": "PC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

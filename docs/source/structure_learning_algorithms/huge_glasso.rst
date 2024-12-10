@@ -9,9 +9,9 @@
 .. _huge_glasso: 
 
 huge_glasso 
----------------
+***************
 
-.. rubric:: Graphical lasso
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ huge_glasso
 
 
 
-.. rubric:: Description
+Graphical lasso 
+-------------------
+
 
 Abstract: We consider the problem of estimating sparse graphs by a lasso penalty applied to the inverse covariance matrix. Using a coordinate descent procedure for the lasso, we develop a simple algorithm—the graphical lasso—that is remarkably fast: It solves a 1000-node problem (∼500000 parameters) in at most a minute and is 30–4000 times faster than competing methods. It also provides a conceptual link between the exact problem and the approximation suggested by Meinshausen and Bühlmann (2006). We illustrate the method on some cell-signaling data from proteomics.
 

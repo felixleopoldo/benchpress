@@ -1,16 +1,19 @@
 {
     "title": "Corrmat thresh",
     "version": "",
-
     "package": {
         "title": "Benchpress",
         "url": "https://github.com/felixleopoldo/benchpress"
     },
-
     "docs_url": "",
     "outputs": "adjmat",
     "graph_types": [
         "UG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Corrmat thresh",
+    "meta_description": "Corrmat thresh",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

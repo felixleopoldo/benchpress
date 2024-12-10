@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "GOLEM",
+    "meta_description": "GOLEM",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

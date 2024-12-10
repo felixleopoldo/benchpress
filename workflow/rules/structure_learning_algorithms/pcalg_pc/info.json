@@ -16,7 +16,13 @@
         "adjmat"
     ],
     "graph_types": [
-        "CPDAG", "CG"
+        "CPDAG",
+        "CG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "PC",
+    "meta_description": "PC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

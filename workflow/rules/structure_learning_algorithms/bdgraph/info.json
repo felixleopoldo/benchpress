@@ -12,5 +12,10 @@
     "graph_types": [
         "UG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "BDgraph",
+    "meta_description": "BDgraph",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

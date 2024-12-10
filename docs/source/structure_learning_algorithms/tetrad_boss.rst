@@ -9,9 +9,9 @@
 .. _tetrad_boss: 
 
 tetrad_boss 
----------------
+***************
 
-.. rubric:: BOSS
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_boss
 
 
 
-.. rubric:: Description
+BOSS 
+--------
+
 
 BOSS (Best Order Score Search) is an algorithm that, like GRaSP, generalizes and extends the GSP (Greedy Sparsest Permutation) algorithm. It has been tested to 1000 variables with an average degree of 20 and gives near perfect precisions and recalls for N = 10,000 (with recall that drop to 0.9 for N = 1000). The algorithms works by building DAGs given permutations in ways similar to those described in Raskutti and Uhler and Solus et al.
 

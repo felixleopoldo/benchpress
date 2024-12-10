@@ -9,9 +9,9 @@
 .. _trilearn_pgibbs: 
 
 trilearn_pgibbs 
--------------------
+*******************
 
-.. rubric:: Particle Gibbs
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ trilearn_pgibbs
 
 
 
-.. rubric:: Description
+Particle Gibbs 
+------------------
+
 
 Abstract: We present a sequential sampling methodology for weakly structural Markov laws, arising naturally in a Bayesian structure learning context for decomposable graphical models. As a key component of our sug-
 gested approach, we show that the problem of graph estimation, which in

@@ -9,9 +9,9 @@
 .. _bnlearn_tabu: 
 
 bnlearn_tabu 
-----------------
+****************
 
-.. rubric:: Tabu
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_tabu
 
 
 
-.. rubric:: Description
+Tabu 
+--------
+
 
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
 beneficial from a global perspective to avoid local maxima.

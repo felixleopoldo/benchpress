@@ -9,9 +9,9 @@
 .. _gcastle_grandag: 
 
 gcastle_grandag 
--------------------
+*******************
 
-.. rubric:: GraNDAG
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_grandag
 
 
 
-.. rubric:: Description
+GraNDAG 
+-----------
+
 
 A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 

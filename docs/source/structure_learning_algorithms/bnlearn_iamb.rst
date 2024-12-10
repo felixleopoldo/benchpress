@@ -9,9 +9,9 @@
 .. _bnlearn_iamb: 
 
 bnlearn_iamb 
-----------------
+****************
 
-.. rubric:: IAMB
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_iamb
 
 
 
-.. rubric:: Description
+IAMB 
+--------
+
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 

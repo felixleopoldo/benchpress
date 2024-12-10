@@ -9,9 +9,9 @@
 .. _tetrad_grasp: 
 
 tetrad_grasp 
-----------------
+****************
 
-.. rubric:: GRaSP
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_grasp
 
 
 
-.. rubric:: Description
+GRaSP 
+---------
+
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 

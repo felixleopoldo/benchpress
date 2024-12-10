@@ -13,5 +13,10 @@
         "DG"
     ],
     "language": "Python",
-    "in_docs": true
+    "in_docs": true,
+    "title_full": "Particle Gibbs",
+    "meta_description": "Particle Gibbs",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

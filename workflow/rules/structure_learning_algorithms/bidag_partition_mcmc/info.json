@@ -16,7 +16,13 @@
         "graphtraj"
     ],
     "graph_types": [
-        "DAG", "CPDAG"
+        "DAG",
+        "CPDAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Partition MCMC",
+    "meta_description": "Partition MCMC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

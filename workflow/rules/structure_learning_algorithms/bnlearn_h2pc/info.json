@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "H2PC",
+    "meta_description": "H2PC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

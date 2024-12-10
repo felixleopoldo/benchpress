@@ -9,9 +9,9 @@
 .. _gcastle_notears: 
 
 gcastle_notears 
--------------------
+*******************
 
-.. rubric:: NO TEARS
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_notears
 
 
 
-.. rubric:: Description
+NO TEARS 
+------------
+
 
 This score-based method recasts the combinatorial problem of estimating a DAG into a purely
 continuous non-convex optimization problem over real matrices with a smooth constraint to

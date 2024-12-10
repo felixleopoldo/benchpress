@@ -9,9 +9,9 @@
 .. _bnlearn_pcstable: 
 
 bnlearn_pcstable 
---------------------
+********************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_pcstable
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 

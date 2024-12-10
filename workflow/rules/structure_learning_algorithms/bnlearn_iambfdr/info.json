@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "IAMB-FDR",
+    "meta_description": "IAMB-FDR",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

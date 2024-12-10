@@ -9,9 +9,9 @@
 .. _sklearn_glasso: 
 
 sklearn_glasso 
-------------------
+******************
 
-.. rubric:: Graphical Lasso
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ sklearn_glasso
 
 
 
-.. rubric:: Description
+Graphical Lasso 
+-------------------
+
 
 
 

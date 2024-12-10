@@ -9,9 +9,9 @@
 .. _corr_thresh: 
 
 corr_thresh 
----------------
+***************
 
-.. rubric:: Corrmat thresh
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ corr_thresh
 
 
 
-.. rubric:: Description
+Corrmat thresh 
+------------------
+
 
 Thresholding the estimated correlation matrix.
 Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.

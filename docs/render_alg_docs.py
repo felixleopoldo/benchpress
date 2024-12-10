@@ -162,23 +162,42 @@ for p in sorted(algspath.iterdir()):
     # This is the module part
 
     module_str = "\n\n"
+
+    meta_description = ""
+    if info["meta_description"] == info["title"]:
+        meta_description = content.replace("\n", " ").replace("\r", " ").replace("\t", " ").replace('"', "'")
+    else:
+        meta_description = info["meta_description"]
+
     module_str += """
     .. meta::
         :title: {} 
         :description: {}
-    """.format(info["title"], content.replace("\n", " ").replace("\r", " ").replace("\t", " ").replace('"', "'")) 
-    #         :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, {}, {}
+    """.format(info["title_full"], meta_description) 
+    
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
+    #module_str +="" + p.name +" - " + info["title_full"] +" \n"
+    #module_str +="-"*len(p.name) + "-"*4 + "-"*len(info["title_full"]) + "-"*4 + "\n"
+    
+
     module_str +="" + p.name +" \n"
-    module_str +="-"*len(p.name) + "-"*4 + "\n"
+    module_str +="*"*len(p.name) + "*"*4 + "\n"
+
+
     
     module_str += "\n"
-    module_str += ".. rubric:: "+ info["title"]    
+    #module_str += ".. rubric:: "+ info["title_full"]    
+    #module_str += info["title_full"] + "\n"    
+    #module_str +="-"*len(info["title_full"]) + "-"*4 + "\n"
     module_str += "\n\n"
     module_str += info_to_table(info, p)
     module_str += "\n\n"
-    module_str += ".. rubric:: Description"    
+    module_str +="" + info["title_full"] +" \n"
+    module_str +="-"*len(info["title_full"]) + "-"*4 + "\n"
+    
+    
+    #module_str += ".. rubric:: " + info["title_full"]    
     if content != "":    
         module_str += "\n\n"
         module_str += content

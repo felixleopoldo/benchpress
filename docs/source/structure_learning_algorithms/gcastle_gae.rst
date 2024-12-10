@@ -9,9 +9,9 @@
 .. _gcastle_gae: 
 
 gcastle_gae 
----------------
+***************
 
-.. rubric:: GAE
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_gae
 
 
 
-.. rubric:: Description
+GAE 
+-------
+
 
 A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 

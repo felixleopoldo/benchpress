@@ -12,5 +12,10 @@
     "graph_types": [
         "CPDAG"
     ],
-    "language": "Java"
+    "language": "Java",
+    "title_full": "FGES",
+    "meta_description": "FGES",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

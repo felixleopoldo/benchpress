@@ -9,9 +9,9 @@
 .. _gcastle_direct_lingam: 
 
 gcastle_direct_lingam 
--------------------------
+*************************
 
-.. rubric:: Direct LINGAM
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_direct_lingam
 
 
 
-.. rubric:: Description
+Direct LINGAM 
+-----------------
+
 
 A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 

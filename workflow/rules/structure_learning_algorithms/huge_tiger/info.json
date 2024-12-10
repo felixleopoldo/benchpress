@@ -1,5 +1,5 @@
 {
-    "title":  "TIGER",
+    "title": "TIGER",
     "version": "1.3.5",
     "package": {
         "title": "huge",
@@ -10,5 +10,10 @@
     "graph_types": [
         "UG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "TIGER",
+    "meta_description": "TIGER",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

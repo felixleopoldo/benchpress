@@ -9,9 +9,9 @@
 .. _dualpc: 
 
 dualpc 
-----------
+**********
 
-.. rubric:: Dual PC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ dualpc
 
 
 
-.. rubric:: Description
+Dual PC 
+-----------
+
 
 The dual PC algorithm is a novel scheme to carry out the
 conditional independence tests within the PC algorithm for Gaussian data, by leveraging the

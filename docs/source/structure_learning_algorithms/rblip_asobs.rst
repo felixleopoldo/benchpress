@@ -9,9 +9,9 @@
 .. _rblip_asobs: 
 
 rblip_asobs 
----------------
+***************
 
-.. rubric:: ASOBS
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ rblip_asobs
 
 
 
-.. rubric:: Description
+ASOBS 
+---------
+
 
 A score-based two-phase algorithm where the first phase aims to identify the possible parent
 sets, :footcite:t:`scanagatta2015learning`; :footcite:t:`scanagatta2018approximate`. 

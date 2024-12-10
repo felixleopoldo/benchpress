@@ -9,9 +9,9 @@
 .. _tetrad_ica-lingam: 
 
 tetrad_ica-lingam 
----------------------
+*********************
 
-.. rubric:: ICA-LINGAM
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ tetrad_ica-lingam
 
 
 
-.. rubric:: Description
+ICA-LINGAM 
+--------------
+
 
 From the Tetrad manual: LiNGAM :footcite:t:`shimizu2006linear` was one of the first of the algorithms that assumed linearity among the variables and non-Gaussianity of error term, and still one of the best for smaller models, for the basic algorithm, implemented here. The idea is to use the Independent Components Analysis (ICA) algorithm to check all permutations of the variables to find one that is a causal order—that is, one in which earlier variables can cause later variables but not vice-versa. The method is clever. First, since we assume the model is a directed acyclic graph (DAG), there must be some permutation of the variables for which the main diagonal of the inverse of the weight matrix contains no zeros. This gives us a permuted estimate of the weight matrix. Then we look for a permutation of this weight matrix that is lower triangular. There must be one, since the model is assumed to be a DAG. But a lower triangular weight matrix just gives a causal order, so we’re done.
 

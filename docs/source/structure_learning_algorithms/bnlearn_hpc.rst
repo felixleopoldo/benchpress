@@ -9,9 +9,9 @@
 .. _bnlearn_hpc: 
 
 bnlearn_hpc 
----------------
+***************
 
-.. rubric:: HPC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_hpc
 
 
 
-.. rubric:: Description
+HPC 
+-------
+
 
 From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
 

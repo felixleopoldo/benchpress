@@ -9,9 +9,9 @@
 .. _gcastle_pc: 
 
 gcastle_pc 
---------------
+**************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_pc
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 A classic causal discovery algorithm based on conditional independence tests.
 

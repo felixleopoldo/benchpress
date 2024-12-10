@@ -9,9 +9,9 @@
 .. _pcalg_pc: 
 
 pcalg_pc 
-------------
+************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ pcalg_pc
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`, is a constraint based method
 consisting of two main steps. The first step is called the adjacency search and amounts to

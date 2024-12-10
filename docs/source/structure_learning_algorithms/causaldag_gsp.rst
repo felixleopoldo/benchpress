@@ -9,9 +9,9 @@
 .. _causaldag_gsp: 
 
 causaldag_gsp 
------------------
+*****************
 
-.. rubric:: GSP
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ causaldag_gsp
 
 
 
-.. rubric:: Description
+GSP 
+-------
+
 
 
 

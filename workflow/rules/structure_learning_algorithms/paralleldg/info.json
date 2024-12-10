@@ -13,5 +13,10 @@
     "graph_types": [
         "DG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Parallel DG",
+    "meta_description": "Parallel DG",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

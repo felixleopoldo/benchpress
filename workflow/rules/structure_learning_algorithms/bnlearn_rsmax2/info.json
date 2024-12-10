@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "RSMAX2",
+    "meta_description": "RSMAX2",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

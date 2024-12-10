@@ -13,5 +13,10 @@
     "graph_types": [
         "DG"
     ],
-    "language": "Java"
+    "language": "Java",
+    "title_full": "Chordal graph samplers",
+    "meta_description": "Chordal graph samplers",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

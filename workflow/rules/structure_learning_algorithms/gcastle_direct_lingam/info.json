@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Direct LINGAM",
+    "meta_description": "Direct LINGAM",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

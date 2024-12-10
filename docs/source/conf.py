@@ -85,8 +85,8 @@ numfig = True
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_title = 'Benchpress causal discovery platform'
-html_short_title = 'Benchpress causal discovery platform'
+html_title = 'Benchpress'
+html_short_title = 'Benchpress'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

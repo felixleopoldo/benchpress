@@ -9,9 +9,9 @@
 .. _gcastle_ica_lingam: 
 
 gcastle_ica_lingam 
-----------------------
+**********************
 
-.. rubric:: ICALiNGAM
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_ica_lingam
 
 
 
-.. rubric:: Description
+ICALiNGAM 
+-------------
+
 
 An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 

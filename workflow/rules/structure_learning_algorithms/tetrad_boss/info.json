@@ -13,5 +13,10 @@
         "CPDAG"
     ],
     "language": "Java",
-    "in_docs": true
+    "in_docs": true,
+    "title_full": "BOSS",
+    "meta_description": "BOSS",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

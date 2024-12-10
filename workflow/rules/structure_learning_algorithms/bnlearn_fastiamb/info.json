@@ -19,5 +19,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Fast IAMB",
+    "meta_description": "Fast IAMB",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

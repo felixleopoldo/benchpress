@@ -9,9 +9,9 @@
 .. _bidag_itsearch: 
 
 bidag_itsearch 
-------------------
+******************
 
-.. rubric:: Iterative MCMC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bidag_itsearch
 
 
 
-.. rubric:: Description
+Iterative MCMC 
+------------------
+
 
 This is a hybrid score-based optimisation technique based on Markov chain Monte Carlo
 schemes :footcite:t:`doi:10.1080/10618600.2021.2020127`. The algorithm starts from a skeleton obtained

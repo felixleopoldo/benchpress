@@ -16,7 +16,13 @@
         "adjmat"
     ],
     "graph_types": [
-        "CG", "CPDAG"
+        "CG",
+        "CPDAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Dual PC",
+    "meta_description": "Dual PC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

@@ -9,9 +9,9 @@
 .. _gcastle_rl: 
 
 gcastle_rl 
---------------
+**************
 
-.. rubric:: RL
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_rl
 
 
 
-.. rubric:: Description
+RL 
+------
+
 
 A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 

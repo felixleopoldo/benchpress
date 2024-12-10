@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "GAE",
+    "meta_description": "GAE",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

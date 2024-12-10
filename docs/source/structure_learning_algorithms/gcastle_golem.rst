@@ -9,9 +9,9 @@
 .. _gcastle_golem: 
 
 gcastle_golem 
------------------
+*****************
 
-.. rubric:: GOLEM
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_golem
 
 
 
-.. rubric:: Description
+GOLEM 
+---------
+
 
 A more efficient version of NOTEARS that can reduce number of optimization iterations.
 

@@ -10,7 +10,13 @@
         "adjmat"
     ],
     "graph_types": [
-        "DAG", "CPDAG"
+        "DAG",
+        "CPDAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Iterative MCMC",
+    "meta_description": "Iterative MCMC",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

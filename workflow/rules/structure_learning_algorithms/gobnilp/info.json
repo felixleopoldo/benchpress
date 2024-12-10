@@ -19,5 +19,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "C"
+    "language": "C",
+    "title_full": "GOBNILP",
+    "meta_description": "GOBNILP",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

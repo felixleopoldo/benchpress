@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "NO TEARS",
+    "meta_description": "NO TEARS",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

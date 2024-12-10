@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "java"
+    "language": "java",
+    "title_full": "FASK",
+    "meta_description": "FASK",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

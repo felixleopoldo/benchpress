@@ -12,5 +12,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "CORL",
+    "meta_description": "CORL",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

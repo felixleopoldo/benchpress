@@ -9,9 +9,9 @@
 .. _gcastle_mcsl: 
 
 gcastle_mcsl 
-----------------
+****************
 
-.. rubric:: MCSL
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_mcsl
 
 
 
-.. rubric:: Description
+MCSL 
+--------
+
 
 A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 

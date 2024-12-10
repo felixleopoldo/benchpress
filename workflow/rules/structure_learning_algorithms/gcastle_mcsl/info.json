@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "MCSL",
+    "meta_description": "MCSL",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

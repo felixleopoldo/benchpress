@@ -10,5 +10,10 @@
     "graph_types": [
         "CPDAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "GIES",
+    "meta_description": "GIES",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

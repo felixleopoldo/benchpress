@@ -9,9 +9,9 @@
 .. _gcastle_notears_nonlinear: 
 
 gcastle_notears_nonlinear 
------------------------------
+*****************************
 
-.. rubric:: NO TEARS non-linear
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ gcastle_notears_nonlinear
 
 
 
-.. rubric:: Description
+NO TEARS non-linear 
+-----------------------
+
 
 
 

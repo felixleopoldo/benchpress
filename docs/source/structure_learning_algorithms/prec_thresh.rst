@@ -9,9 +9,9 @@
 .. _prec_thresh: 
 
 prec_thresh 
----------------
+***************
 
-.. rubric:: Precmat thresh
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ prec_thresh
 
 
 
-.. rubric:: Description
+Precmat thresh 
+------------------
+
 
 Thresholding the estimated precision matrix.
 Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.

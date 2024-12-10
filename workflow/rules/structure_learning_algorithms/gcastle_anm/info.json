@@ -22,5 +22,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "ANM",
+    "meta_description": "ANM",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

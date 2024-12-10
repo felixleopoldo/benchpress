@@ -9,9 +9,9 @@
 .. _bnlearn_fastiamb: 
 
 bnlearn_fastiamb 
---------------------
+********************
 
-.. rubric:: Fast IAMB
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_fastiamb
 
 
 
-.. rubric:: Description
+Fast IAMB 
+-------------
+
 
 From bnlearn: a variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 

@@ -18,5 +18,10 @@
     "graph_types": [
         "UG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Graphical Lasso",
+    "meta_description": "Graphical Lasso",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

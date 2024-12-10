@@ -9,9 +9,9 @@
 .. _bidag_order_mcmc: 
 
 bidag_order_mcmc 
---------------------
+********************
 
-.. rubric:: Order MCMC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bidag_order_mcmc
 
 
 
-.. rubric:: Description
+Order MCMC 
+--------------
+
 
 This technique relies on a Bayesian perspective on structure learning, where the score of a DAG
 is defined as its posterior distribution. To overcome the limitation of simple structure-based

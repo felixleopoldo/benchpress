@@ -11,5 +11,10 @@
         "CPDAG"
     ],
     "language": "Python",
-    "in_docs": true
+    "in_docs": true,
+    "title_full": "GRaSP",
+    "meta_description": "GRaSP",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

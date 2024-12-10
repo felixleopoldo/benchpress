@@ -10,5 +10,10 @@
     "graph_types": [
         "UDG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "GrUES",
+    "meta_description": "GrUES",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

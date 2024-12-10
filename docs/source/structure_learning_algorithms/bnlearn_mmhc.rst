@@ -9,9 +9,9 @@
 .. _bnlearn_mmhc: 
 
 bnlearn_mmhc 
-----------------
+****************
 
-.. rubric:: MMHC
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ bnlearn_mmhc
 
 
 
-.. rubric:: Description
+MMHC 
+--------
+
 
 Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a
 DAG using an algorithm called Max-Min Parents and Children and then performs a greedy

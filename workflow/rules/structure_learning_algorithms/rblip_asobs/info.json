@@ -18,5 +18,10 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "ASOBS",
+    "meta_description": "ASOBS",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }

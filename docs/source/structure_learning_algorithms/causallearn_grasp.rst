@@ -9,9 +9,9 @@
 .. _causallearn_grasp: 
 
 causallearn_grasp 
----------------------
+*********************
 
-.. rubric:: GRaSP
+
 
 .. list-table:: 
 
@@ -35,7 +35,9 @@ causallearn_grasp
 
 
 
-.. rubric:: Description
+GRaSP 
+---------
+
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 

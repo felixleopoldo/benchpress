@@ -10,5 +10,10 @@
     "graph_types": [
         "UG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Meinshausen & Buhlmann cov est",
+    "meta_description": "Meinshausen & Buhlmann cov est",
+    "data_types": [],
+    "data_missingess": [],
+    "intervention_types": []
 }
