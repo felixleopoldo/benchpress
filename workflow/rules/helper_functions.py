@@ -36,6 +36,12 @@ def edge_constraints_mvpc(wildcards):
     else:
         return f"resources/constraints/data=/"+alg_input_data()+f"/{wildcards.edgeConstraints}-mvpc"
 
+def edge_constraints_bips_tpc(wildcards):
+    if wildcards.edgeConstraints == "None":
+        return []
+    else:
+        return f"resources/constraints/data=/"+alg_input_data()+f"/{wildcards.edgeConstraints}-bips_tpc"
+
 def get_seed_range(seed_range):
     if seed_range == None:
         return [1]

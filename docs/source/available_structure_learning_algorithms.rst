@@ -30,7 +30,6 @@ Algorithms
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/bnlearn_tabu
     structure_learning_algorithms/causaldag_gsp
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
@@ -69,6 +68,7 @@ Algorithms
     structure_learning_algorithms/tetrad_grasp
     structure_learning_algorithms/tetrad_ica-lingam
     structure_learning_algorithms/tetrad_pc
+    structure_learning_algorithms/tpc
     structure_learning_algorithms/trilearn_pgibbs
 
 
@@ -320,6 +320,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
      - :ref:`tetrad_pc` 
+   * - tpc
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `tpc <https://github.com/bips-hb/tpc>`__
+     - :ref:`tpc` 
    * - Particle Gibbs
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__

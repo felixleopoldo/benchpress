@@ -1,0 +1,24 @@
+{
+    "title": "tPC",
+    "title_full": "tPC",
+    "version": "137e18b",
+    "package": {
+        "title": "tpc",
+        "url": "https://github.com/bips-hb/tpc"
+    },
+    "docs_url": "https://github.com/bips-hb/tpc",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "meta_description": "This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available.",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingess": [
+        "MCAR"
+    ],
+    "language": "R"
+}
