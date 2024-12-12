@@ -51,13 +51,44 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
     required_edges <- required_edges[required_edges$from %in% node_labels & required_edges$to %in% node_labels, ]
 
     # pcalg and mvpc
-    if (package == "pcalg" || package == "mvpc" || package == "bips_tpc") {
+    if (package == "pcalg" || package == "mvpc") {
         # pcalg - "fixedGaps" and "fixedEdges"
         matrix_data <- rbind(forbidden_edges, required_edges)
         matrix_type <- c(rep("fixedGaps", nrow(forbidden_edges)), rep("fixedEdges", nrow(required_edges)))
         matrix_data <- cbind(matrix_data, matrix_type)
         colnames(matrix_data)[1:2] <- c("node1", "node2")
         write.csv(matrix_data, file = filename_output, row.names = FALSE, quote = FALSE)
+    } else if (package == "bips_tpc") { # bips_tpc
+    
+        # handle forbidden edges and tiers. Later, context and context.tiers.
+        print("edge constraints")
+        p <- ncol(datafile)
+
+        tiers <- rep(NULL, p)
+        # for each tier in data$tiers,
+
+        tier_no <- 1
+        for (t in data$tiers) {
+            for (v in t){
+                # get the index of the variable in the node_labels
+                index <- which(node_labels == v)
+
+                tiers[index] <- tier_no
+            }
+            tier_no <- tier_no + 1
+        }
+
+        print("tiers")
+        print(tiers)
+
+
+        constraints <- list()
+
+
+        saveRDS(constraints, file = filename_output)
+
+        print(data)
+    
     } else if (package == "bnlearn") { # bnlearn
         # bnlearn - "blacklists" and "whitelists"
         blacklist <- forbidden_edges

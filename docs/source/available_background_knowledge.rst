@@ -8,7 +8,7 @@ Edge constraints
 ---------------------------------------
 
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 
-**pcalg**, **mvpc**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
+**pcalg**, **tpc**, **mvpc**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
 the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden or 
 required edges**, **tiers for temporal ordering**, and **group-based constraints**.
 
@@ -19,6 +19,8 @@ The edge constraints should be defined in a JSON file located within the ``resou
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+
 | **Package** | **forbidden_edges** | **required_edges** | **tiers** | **forbidden_groups** | **required_groups** |
 +=============+=====================+====================+===========+======================+=====================+
+| tpc         | X                   | N/A                | X         | N/A                  | N/A                 |
++-------------+---------------------+--------------------+-----------+----------------------+---------------------+
 | mvpc        | X                   | X                  | N/A       | N/A                  | N/A                 |
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+
 | pcalg       | X                   | X                  | N/A       | N/A                  | N/A                 |
@@ -36,19 +38,20 @@ The edge constraints should be defined in a JSON file located within the ``resou
 
 - ``forbidden_edges``: A list of directed edges that are explicitly prohibited from existing between specific nodes. Each edge is defined as a pair of nodes, where the first node cannot directly cause the second node. 
 - ``required_edges``: A list of directed edges that are enforced between specific nodes. Each edge is defined as a pair of nodes, where the first node must directly cause the second node. 
-
-  - *Note: For algorithms in the* **pcalg** and **mvpc** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
 - ``tiers``: Defines a temporal ordering of nodes across multiple levels (or) tiers. Nodes in one tier are constrained from causing nodes in any of the preceding tiers. 
 - ``tier_settings``: 
   
   - ``forbidden_within_tiers``: If set to `true`, prevents edges between nodes that reside within the same tier. 
   - ``can_only_cause_next_tier``: If set to `true`, restricts nodes in one tier to only influence or cause nodes in the immediate next tier. 
 
-- ``Groups``: Defines relationships between sets of nodes, grouping them for the purpose of controlling edge behavior across multiple nodes at once. Each group is defined by a collection of "cause" nodes and "effect" nodes.
+- *Groups*: Defines relationships between sets of nodes, grouping them for the purpose of controlling edge behavior across multiple nodes at once. Each group is defined by a collection of "cause" nodes and "effect" nodes.
   
   - ``forbidden_groups``: A set of constraints that prohibits directed edges between specified groups of nodes. 
   - ``required_groups``: A set of requirements that enforces directed edges between specified groups of nodes. 
 
+.. note::
+
+    For algorithms in the* **pcalg** and **mvpc** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
 
 .. rubric:: Example JSON
 

@@ -1,12 +1,9 @@
-.. Benchpress documentation master file, created by
-   sphinx-quickstart on Mon Oct 26 10:03:54 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
+:og:description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.
 
 .. meta::
     :title: Benchpress: Open-Source Causal Discovery Suite
     :description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.
+
 .. toctree::
     :hidden:
     :glob:

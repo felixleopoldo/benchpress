@@ -1,31 +1,96 @@
 {
-    "title": "Some title",
-    "description": "List of objects",
-    "type": "array",
-    "items": {
-        "title": "Some item",
-        "description": "Some description.",
-        "type": "object",
-        "properties": {
-            "id": {
-                "description": "Algorithm identifier",
-                "type": "string"
-            },
-            "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+  "title": "MVPC",
+  "description": "List of objects",
+  "type": "array",
+  "items": {
+    "title": "Some item",
+    "description": "Some description.",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Algorithm identifier",
+        "type": "string"
+      },
+      "alpha": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+      },
+      "indepTest": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "gaussCItest",
+                "binCItest",
+                "gaussCItwd",
+                "disCItwd",
+                "mixedCItwd"
+              ]
             }
-        },
-        "required": [
-            "id",
-            "timeout"
-        ],
-        "examples": [
-            {
-                "id": "myalg",
-                "cutoff": 0.5,
-                "timeout": null
-            }
+          },
+          {
+            "type": "string",
+            "enum": [
+              "gaussCItest",
+              "binCItest",
+              "gaussCItwd",
+              "disCItwd",
+              "mixedCItwd"
+            ]
+          }
         ]
+      },
+      "verbose": {
+        "type": "boolean"
+      },
+      "mmax": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintstring"
+      },
+      "conservative": {
+        "type": "boolean"
+      },
+      "majrule": {
+        "type": "boolean"
+      },
+      "solveconfl": {
+        "type": "boolean"
+      },
+      "timeout": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+      },
+      "edgeConstraints": {
+        "type": ["string", "null"],
+        "pattern": ".*\\.json$",
+        "description": "Name of the JSON file containing background knowledge"
+      }
     },
-    "uniqueItems": true
+    "required": [
+      "id",
+      "timeout",
+      "alpha",
+      "indepTest",
+      "verbose",
+      "mmax",
+      "conservative",
+      "majrule",
+      "timeout",
+      "edgeConstraints"
+    ],
+    "examples": [
+      {
+        "id": "tpc",
+        "alpha": [0.001, 0.01, 0.05, 0.1],
+        "indepTest": "gaussCItwd",
+        "mmax": "Inf",
+        "conservative": false,
+        "majrule": false,
+        "solveconfl": false,
+        "verbose": false,
+        "timeout": null,
+        "edgeConstraints": null
+      }
+    ]
+  },
+  "uniqueItems": true
 }
