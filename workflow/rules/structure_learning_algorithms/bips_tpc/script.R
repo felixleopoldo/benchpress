@@ -22,29 +22,31 @@ wrapper <- function() {
 
     data <- read.csv(filename_data, check.names = FALSE)
 
+    tiers <- NULL
+    context.all <- NULL
+    context.tier <- NULL
+    forbEdges <- NULL
+
     if (!is.null(filename_edge_constraints)) {
-        edgeConstraints <- read.csv(filename_edge_constraints)
+        edgeConstraints <- readRDS(filename_edge_constraints)
         p <- ncol(data)
         node_names <- colnames(data)
-        fixedGaps <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
-        fixedEdges <- matrix(FALSE, nrow = p, ncol = p, dimnames = list(node_names, node_names))
 
-        for (i in 1:nrow(edgeConstraints)) {
-            node1 <- edgeConstraints$node1[i]
-            node2 <- edgeConstraints$node2[i]
-            if (edgeConstraints$matrix_type[i] == "fixedGaps") {
-                fixedGaps[node1, node2] <- TRUE
-                fixedGaps[node2, node1] <- TRUE
-            } else if (edgeConstraints$matrix_type[i] == "fixedEdges") {
-                fixedEdges[node1, node2] <- TRUE
-                fixedEdges[node2, node1] <- TRUE
-            }
+        if (length((edgeConstraints$tiers)) > 0) {
+            tiers <- edgeConstraints$tiers
         }
-    } else {
-        fixedGaps <- NULL
-        fixedEdges <- NULL
-    }
 
+        if (length((edgeConstraints$context.all)) > 0) {
+            context.all <- edgeConstraints$context.all
+        }
+
+        if (length(edgeConstraints$context.tier) > 0) {
+            context.tier <- edgeConstraints$context.tier
+        }
+
+        forbEdges <- edgeConstraints$forbEdges
+
+    }
     suffStat <- NULL
     if (!snakemake@wildcards[["indepTest"]] %in% c("gaussCItest", "gaussCItwd")) {
         # the discrete case
@@ -55,22 +57,15 @@ wrapper <- function() {
         n <- dim(data)[1]
         suffStat <- list(C = cor(data), n = n)
         print("cont data")
-        
     }
 
     if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd")) {
-        suffStat = data
+        suffStat <- data
     }
 
-    print(suffStat)
-    
     start <- proc.time()[1]
     set.seed(seed)
-    print("Starting TPC")
-    print("conservative")
-    print(conservative)
-    print("majrule")
-    print(majrule)
+
 
     pc.fit <- tpc(
         suffStat,
@@ -82,14 +77,13 @@ wrapper <- function() {
         maj.rule = majrule,
         numCores = numCores,
         cl.type = "PSOCK",
-        forbEdges = NULL,
-        tiers = NULL,
-        context.all = NULL,
-        context.tier = NULL,
+        forbEdges = forbEdges,
+        tiers = tiers,
+        context.all = context.all,
+        context.tier = context.tier,
         verbose = verbose
     )
 
-    print("Finished TPC")
     totaltime <- proc.time()[1] - start
 
     graph <- pc.fit@graph
