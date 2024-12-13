@@ -24,7 +24,7 @@ bips_tpc
    * - Docs
      - `here <https://github.com/bips-hb/tpc>`__
    * - Paper
-     - :footcite:t:`mykey`
+     - :footcite:t:`andrews2023practicalguidecausaldiscovery`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 

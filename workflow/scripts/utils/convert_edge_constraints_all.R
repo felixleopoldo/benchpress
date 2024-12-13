@@ -66,6 +66,10 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
 
         tiers <- rep(NULL, p)
         # for each tier in data$tiers,
+    print("node_labels")
+    print(node_labels)
+    print("data")
+    print(data)
 
         tier_no <- 1
         for (t in data$tiers) {
@@ -134,6 +138,8 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
         constraints$forbEdges <- forbEdges
         constraints$context.all <- data$context_all
         constraints$context.tier <- data$context_tier
+        print("tiers")
+        print(tiers)
 
         saveRDS(constraints, file = filename_output)
 

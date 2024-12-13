@@ -65,7 +65,11 @@ wrapper <- function() {
 
     start <- proc.time()[1]
     set.seed(seed)
+    print("labels")
+    print(colnames(data))
 
+    print("edgeConstraints")
+    print(edgeConstraints)
 
     pc.fit <- tpc(
         suffStat,
