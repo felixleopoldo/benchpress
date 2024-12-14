@@ -67,7 +67,7 @@
 ------------------------
 
 #############################################################
-Develop, run, and benchmark causal discovery algorithms
+Open-source causal discovery platform
 #############################################################
 
 Describing the relationship between the variables in a study domain and modelling
