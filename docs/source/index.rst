@@ -67,7 +67,7 @@
 ------------------------
 
 #############################################################
-Open-source causal discovery platform
+Develop, run, and benchmark causal discovery algorithms
 #############################################################
 
 Describing the relationship between the variables in a study domain and modelling
@@ -112,7 +112,7 @@ generated datasets, the workflow also includes a number of standard datasets and
             
     III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian Machlanski <https://dmachlanski.com/>`_.
 * 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
-* 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ will give a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
+* 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ gives a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).
 * 2024-01-03: Benchpress 2.7.0. New algorithm modules from the `huge <https://cran.r-project.org/web/packages/huge/index.html>`_ package for estimating Gaussian graphical models: :ref:`huge_glasso`, :ref:`huge_mb`, and :ref:`huge_tiger`. Thanks `Mohamad Elmasri <https://www.turing.ac.uk/people/mohamad-elmasri/>`_ for the contribution.
 * 2023-12-04: New version of the Benchpress paper :footcite:t:`rios2021benchpress`.
@@ -126,7 +126,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 * 2023-06-20: Benchpress tutorial at KTH
 * 2022-09-06: `Algorithms for learning Bayesian networks (James Cussens) <https://jcussens.github.io/talks/bias22.pdf>`_. `Interactive AI CDT Summer School (BIAS 22) <https://www.bristol.ac.uk/cdt/interactive-ai/events/bias-summer-school-2022/>`_, University of Bristol
 * 2022-05-24: Benchpress talk at the `CATS seminar series at KTH <https://www.kth.se/math/kalender/felix-rios-benchpress-a-scalable-and-versatile-workflow-for-benchmarking-structure-learning-algorithms-for-graphical-models-1.1171995?date=2022-05-24&orgdate=2022-05-24&length=1&orglength=1>`_
-* 2022-04-04: Benchpress talk and tutorial at the `Simons Institute, Berkley <https://simons.berkeley.edu/homepage>`_ 
+* 2022-04-04: Benchpress talk and tutorial at the `Simons Institute, Berkley <https://simons.berkeley.edu/events/causality-reading-group-causal-discovery-5>`_ 
 * 2021-12-18: Benchpress talk at the `14th International Conference on Computational and Methodological Statistics (CMStatistics 2021), London <https://www.cmstatistics.org/CMStatistics2021/index.php>`_
 
 .. footbibliography::
