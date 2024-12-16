@@ -4,10 +4,13 @@
     ["3", "4"],
     ["5", "2", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
   ],
+  "context_tier":["3", "7"],
   "tier_settings": {
-    "forbid_within_tiers": true,
+    "forbid_within_tiers": false,
     "can_only_cause_next_tier": true
   },
+  "context_all":[]
+  ,
   "forbidden_groups": [
     {
       "cause": ["5"],

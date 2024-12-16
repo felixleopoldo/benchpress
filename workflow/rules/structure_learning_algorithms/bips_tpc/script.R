@@ -1,7 +1,6 @@
 source("workflow/scripts/utils/helpers.R")
 
 library(RBGL)
-# library(pcalg)
 library(tpc)
 library(micd)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
@@ -63,13 +62,9 @@ wrapper <- function() {
         suffStat <- data
     }
 
+
     start <- proc.time()[1]
     set.seed(seed)
-    print("labels")
-    print(colnames(data))
-
-    print("edgeConstraints")
-    print(edgeConstraints)
 
     pc.fit <- tpc(
         suffStat,
@@ -94,7 +89,7 @@ wrapper <- function() {
     adjmat <- as(graph, "matrix")
 
     colnames(adjmat) <- names(data)
-    print(adjmat)
+    
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 
     write(totaltime, file = snakemake@output[["time"]])

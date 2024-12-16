@@ -66,10 +66,6 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
 
         tiers <- rep(NULL, p)
         # for each tier in data$tiers,
-    print("node_labels")
-    print(node_labels)
-    print("data")
-    print(data)
 
         tier_no <- 1
         for (t in data$tiers) {
@@ -135,11 +131,19 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
             }
         }
 
+        # Now forbid edges to the source_nodes
+        if (!is.null(data$source_nodes)) {
+            for (source_node in data$source_nodes) {
+                from <- which(node_labels == source_node)
+                for (i in 1:p) {
+                    forbEdges[i, from] <- 1
+                }
+            }
+        }
+
         constraints$forbEdges <- forbEdges
         constraints$context.all <- data$context_all
         constraints$context.tier <- data$context_tier
-        print("tiers")
-        print(tiers)
 
         saveRDS(constraints, file = filename_output)
 
