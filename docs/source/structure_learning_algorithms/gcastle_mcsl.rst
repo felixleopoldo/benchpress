@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: MCSL 
-        :description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
-    
+:og:description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: MCSL 
+    :description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
+
 
 .. _gcastle_mcsl: 
 

@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: Missing Value PC 
-        :description: MVPC extends the PC algorithm to incorporate additional corrections for missing values of type missing at random (MAR) and missing not at random (MNAR).
-    
+:og:description: MVPC extends the PC algorithm to incorporate additional corrections for missing values of type missing at random (MAR) and missing not at random (MNAR).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: Missing Value PC 
+    :description: MVPC extends the PC algorithm to incorporate additional corrections for missing values of type missing at random (MAR) and missing not at random (MNAR).
+
 
 .. _mvpc: 
 

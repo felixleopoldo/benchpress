@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: GRaSP 
-        :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
-    
+:og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: GRaSP 
+    :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
 
 .. _tetrad_grasp: 
 
