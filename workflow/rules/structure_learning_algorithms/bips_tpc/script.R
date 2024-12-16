@@ -18,6 +18,7 @@ wrapper <- function() {
     numCores <- as.integer(snakemake@wildcards[["numCores"]])
     verbose <- as.logical(snakemake@wildcards[["verbose"]])
     indepTest <- match.fun(snakemake@wildcards[["indepTest"]])
+    cl_type <- snakemake@wildcards[["cl_type"]]
 
     data <- read.csv(filename_data, check.names = FALSE)
 
@@ -47,20 +48,17 @@ wrapper <- function() {
 
     }
     suffStat <- NULL
-    if (!snakemake@wildcards[["indepTest"]] %in% c("gaussCItest", "gaussCItwd")) {
+    if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
         nlev <- as.numeric(data[1, ])
         data <- data[-1, ] # Remove range header
         suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
-    } else {
+    } else if (snakemake@wildcards[["indepTest"]] == "gaussCItest") {
         n <- dim(data)[1]
         suffStat <- list(C = cor(data), n = n)
-        print("cont data")
-    }
-
-    if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd")) {
+    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd")) {
         suffStat <- data
-    }
+    } 
 
 
     start <- proc.time()[1]
@@ -75,7 +73,7 @@ wrapper <- function() {
         conservative = conservative,
         maj.rule = majrule,
         numCores = numCores,
-        cl.type = "PSOCK",
+        cl.type = cl_type,
         forbEdges = forbEdges,
         tiers = tiers,
         context.all = context.all,

@@ -6,3 +6,4 @@ RUN apt update -y
 RUN apt install cmake -y
 RUN apt-get install libgsl-dev -y
 RUN R -e 'library(remotes); install_github("bips-hb/micd", ref="3babeb0")'
+RUN R -e 'library(remotes); install_version("ranger", version="0.17.0")'

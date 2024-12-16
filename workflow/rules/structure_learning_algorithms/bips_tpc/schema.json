@@ -15,6 +15,7 @@
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
       "indepTest": {
+        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd" ,
         "anyOf": [
           {
             "type": "array",
@@ -25,7 +26,8 @@
                 "binCItest",
                 "gaussCItwd",
                 "disCItwd",
-                "mixedCItwd"
+                "mixCItwd",
+                "disCItest"
               ]
             }
           },
@@ -34,9 +36,10 @@
             "enum": [
               "gaussCItest",
               "binCItest",
+              "disCItest",
               "gaussCItwd",
               "disCItwd",
-              "mixedCItwd"
+              "mixCItwd"
             ]
           }
         ]
@@ -81,12 +84,13 @@
       {
         "id": "tpc",
         "alpha": [0.001, 0.01, 0.05, 0.1],
-        "indepTest": "gaussCItwd",
         "mmax": "Inf",
         "conservative": false,
-        "majrule": false,
-        "solveconfl": false,
+        "majrule": true,
+        "numCores": 1,
+        "cl_type": "PSOCK",
         "verbose": false,
+        "indepTest": "mixedCItwd",
         "timeout": null,
         "edgeConstraints": null
       }

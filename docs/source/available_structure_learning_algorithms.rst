@@ -252,7 +252,7 @@ To add new modules, see :ref:`new_modules`.
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - :ref:`grues` 
-   * - Graphical lasso
+   * - GLasso
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_glasso` 
