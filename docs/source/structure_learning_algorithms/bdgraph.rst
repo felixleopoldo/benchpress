@@ -4,6 +4,7 @@
 :og:description: BDgraph performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables using MCMC.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: BDgraph (bdgraph)
  
 .. meta::
     :title: BDgraph 

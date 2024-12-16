@@ -4,6 +4,7 @@
 :og:description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Hill-Climbing (bnlearn_hc)
  
 .. meta::
     :title: Hill-Climbing 

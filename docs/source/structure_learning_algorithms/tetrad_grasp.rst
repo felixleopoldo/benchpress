@@ -4,6 +4,7 @@
 :og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: GRaSP (tetrad_grasp)
  
 .. meta::
     :title: GRaSP 

@@ -4,6 +4,7 @@
 :og:description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: ICALiNGAM (gcastle_ica_lingam)
  
 .. meta::
     :title: ICALiNGAM 

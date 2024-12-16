@@ -4,6 +4,7 @@
 :og:description: The grow-shrink (GS) algorithm is based on the Markov blanket of the nodes in a DAG. For a specific node, the Markov blanket it the set of nodes which conditioning upon renders it conditionally independent from all other variables.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Grow-shrink (bnlearn_gs)
  
 .. meta::
     :title: Grow-shrink 

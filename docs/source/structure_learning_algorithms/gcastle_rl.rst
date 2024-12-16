@@ -4,6 +4,7 @@
 :og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: RL (gcastle_rl)
  
 .. meta::
     :title: RL 

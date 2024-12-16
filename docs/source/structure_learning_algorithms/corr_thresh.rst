@@ -4,6 +4,7 @@
 :og:description: Thresholding the estimated correlation matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Corrmat thresh (corr_thresh)
  
 .. meta::
     :title: Corrmat thresh 

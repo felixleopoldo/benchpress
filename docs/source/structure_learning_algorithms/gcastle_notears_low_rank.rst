@@ -4,6 +4,7 @@
 :og:description: Adapting NOTEARS for large problems with low-rank causal graphs.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: NO TEARS low rank (gcastle_notears_low_rank)
  
 .. meta::
     :title: NO TEARS low rank 

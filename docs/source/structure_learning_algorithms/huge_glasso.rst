@@ -4,6 +4,7 @@
 :og:description: Estimates sparse graphs by a lasso penalty applied to the inverse covariance matrix.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Graphical lasso (huge_glasso)
  
 .. meta::
     :title: Graphical lasso 

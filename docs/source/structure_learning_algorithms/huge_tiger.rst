@@ -4,6 +4,7 @@
 :og:description: Abstract: We propose a new procedure for optimally estimating high dimensional Gaussian graphical models. Our approach is asymptotically tuning-free and non-asymptotically tuning-insensitive: It requires very little effort to choose the tuning parameter in finite sample settings. Computationally, our procedure is significantly faster than existing methods due to its tuning-insensitive property. Theoretically, the obtained estimator simultaneously achieves minimax lower bounds for precision matrix estimation under different norms. Empirically, we illustrate the advantages of the proposed method using simulated and real examples. The R package camel implementing the proposed methods is also available on the Comprehensive R Archive Network.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: TIGER (huge_tiger)
  
 .. meta::
     :title: TIGER 
