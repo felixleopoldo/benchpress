@@ -6,10 +6,39 @@ Which is and add-on to the R package pcalg for handling missing data in contrata
 
 .. rubric:: Example 
 
-Config file: `tpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/bips_tpc/config/tpc.json>`_
+Config file: `bips_tpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/bips_tpc/bips_tpc.json>`_
 
 Command:
 
 .. code:: bash
 
-    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/bips_tpc/config/tpc.json
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/bips_tpc/bips_tpc.json
+
+
+.. rubric:: Example 
+
+Config file: `bips_tpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/bips_tpc/config/bips_tpc.json>`_
+
+
+:numref:`bips_tpcplot` and :numref:`bips_tpcplot2`  show FP/P vs. TP/P for pattern graphs and skeletons based on 3 datsets corresponding to 3 realisations of a 20-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 10000 samples and contains data that is missing not at random (MNAR) and was sampled using :ref:`mvpc_gen_data`.
+
+
+.. _bips_tpcplot:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bips_tpc/pattern.png
+    :width: 320 
+    :alt: FP/P vs. TP/P tPC example
+    :align: left
+
+    FP/P vs. TP/P. for pattern graphs
+
+.. _bips_tpcplot2:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/bips_tpc/skeleton.png
+    :width: 320 
+    :alt: FP/P vs. TP/P tPC example
+    :align: right
+
+    FP/P vs. TP/P. for  skeletons
+

@@ -58,12 +58,35 @@ Command:
 
 .. code:: bash
 
-    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/mvpc/mvpc.json
+
+:numref:`mvpcplot` and :numref:`mvpcplot2`  show FP/P vs. TP/P for pattern graphs and skeletons based on 3 datsets corresponding to 3 realisations of a 20-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 10000 samples and contains data that is missing not at random (MNAR) and was sampled using :ref:`mvpc_gen_data`.
+
+
+.. _mvpcplot:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/mvpc/pattern.png
+    :width: 320 
+    :alt: FP/P vs. TP/P MVPC example
+    :align: left
+
+    FP/P vs. TP/P. for pattern graphs
+
+.. _mvpcplot2:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/mvpc/skeleton.png
+    :width: 320 
+    :alt: FP/P vs. TP/P MVPC example
+    :align: right
+
+    FP/P vs. TP/P. for  skeletons
+
 
 
 .. rubric:: Some fields described 
 * ``corrMethod`` gaussCItest.drw, gaussCItest.permc, binCItest.drw, binCItest.permc 
-* ``edgeConstraints`` Name of the JSON file containing background knowledge 
+* ``edgeConstraints`` Name of the JSON file containing :ref:`edge_constraints` 
 * ``indepTest`` gaussCItest, binCItest, gaussCItest.td, binCItest.td 
 
 
@@ -89,8 +112,8 @@ Command:
         "u2pd": "relaxed",
         "skelmethod": "stable",
         "conservative": false,
-        "majrule": false,
-        "solveconfl": false,
+        "majrule": true,
+        "solveconfl": true,
         "numCores": 1,
         "verbose": false,
         "timeout": null,
