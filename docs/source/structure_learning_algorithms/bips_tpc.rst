@@ -33,7 +33,7 @@ bips_tpc
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/bips_tpc:137e18b-amd64 <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
+     - `bpimages/bips_tpc:137e18b <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
 
    * - Module folder
      - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
