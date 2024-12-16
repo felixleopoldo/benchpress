@@ -8,7 +8,7 @@ Edge constraints
 ---------------------------------------
 
 Benchpress allows users to incorporate edge constraints to guide structure learning algorithms in several packages: 
-**pcalg**, **tpc**, **mvpc**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
+**pcalg**, **bips_tpc**, **mvpc**, **bnlearn**, **tetrad**, **gobnilp**, and **bidag**. These constraints enable the inclusion of prior knowledge to refine 
 the search space of causal graphs, improving the reliability of the inferred relationships. Users can specify **forbidden or 
 required edges**, **tiers for temporal ordering**, and **group-based constraints**.
 
@@ -19,7 +19,7 @@ The edge constraints should be defined in a JSON file located within the ``resou
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+-----------------+------------------+------------------+
 | **Package** | **forbidden_edges** | **required_edges** | **tiers** | **forbidden_groups** | **required_groups** | **context_all** | **context_tier** | **source_nodes** |
 +=============+=====================+====================+===========+======================+=====================+=================+==================+==================+
-| tpc         | X                   | N/A                | X         | X                    | N/A                 | X               | X                | X                |
+| bips_tpc    | X                   | N/A                | X         | X                    | N/A                 | X               | X                | X                |
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+-----------------+------------------+------------------+
 | mvpc        | X                   | X                  | N/A       | N/A                  | N/A                 | N/A             | N/A              | N/A              |
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+-----------------+------------------+------------------+
@@ -33,6 +33,7 @@ The edge constraints should be defined in a JSON file located within the ``resou
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+-----------------+------------------+------------------+
 | bidag       | X                   | N/A                | N/A       | X                    | N/A                 | N/A             | N/A              | N/A              |
 +-------------+---------------------+--------------------+-----------+----------------------+---------------------+-----------------+------------------+------------------+
+
 
 .. rubric:: Description
 
@@ -54,7 +55,7 @@ The edge constraints should be defined in a JSON file located within the ``resou
 
 .. note::
 
-    For algorithms in the* **pcalg** and **mvpc** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
+    For algorithms in the **pcalg** and **mvpc** *package, the above attributes only specify the presence or absence of edges and do not control their directionality.*
 
 .. rubric:: Example JSON
 
@@ -95,7 +96,10 @@ The edge constraints should be defined in a JSON file located within the ``resou
                 "cause": ["22"],
                 "effect": ["23"]
             }
-        ]
+        ],
+        "context_all": ["1"],
+        "context_tier": ["3"],
+        "source_nodes": ["11"]
     }
 
 

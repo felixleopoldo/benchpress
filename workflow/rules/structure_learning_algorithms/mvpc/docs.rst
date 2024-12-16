@@ -7,3 +7,14 @@ MVPC is a framework of causal discovery in the presence of different missingness
 MVPC is based on the PC algorithm and contains two methods for correcting wrong results produced by missing value issues, Permutation-based Correction (PermC) and Density Ratio Weighted (DRW) correction method. 
 More details can be found in the paper :footcite:t:`tu2019causal` and the long paper version :footcite:t:`tu2020causald`. 
 The implementation is based on the R package pcalg.
+
+
+.. rubric:: Example 
+
+Config file: `mvpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json

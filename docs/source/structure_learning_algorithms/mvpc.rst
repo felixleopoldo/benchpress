@@ -49,8 +49,22 @@ MVPC is based on the PC algorithm and contains two methods for correcting wrong 
 More details can be found in the paper :footcite:t:`tu2019causal` and the long paper version :footcite:t:`tu2020causald`. 
 The implementation is based on the R package pcalg.
 
+
+.. rubric:: Example 
+
+Config file: `mvpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json
+
+
 .. rubric:: Some fields described 
+* ``corrMethod`` gaussCItest.drw, gaussCItest.permc, binCItest.drw, binCItest.permc 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 
+* ``indepTest`` gaussCItest, binCItest, gaussCItest.td, binCItest.td 
 
 
 .. rubric:: Example JSON

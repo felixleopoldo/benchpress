@@ -96,18 +96,21 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: News
 
-* 2024-11-30: Benchpress 2.10.0. This version includes algorithms from the MVPC package for sampling (:ref:`mvpc_gen_data`) and causal discovery (:ref:`mvpc`) in the presence of missing data.
+* 2024-12-16: Benchpress 2.11.0. This version introduces the :ref:`bips_tpc` module, based on the temporal PC (`tPC <https://github.com/bips-hb/tpc>`_) and the `micd <https://github.com/bips-hb/micd>`_ package. It enables causal discovery through the PC algorithm allowing for :ref:`edge_constraints`, mixed data, and missing data handling. Thanks `Leibniz-Institut für Präventionsforschung und Epidemiologie – (BIPS GmbH)  <https://github.com/bips-hb>`_. 
+* 2024-11-30: Benchpress 2.10.0. This version includes algorithms from the `missing value PC (MVPC) <https://github.com/TURuibo/MVPC>`_ package for sampling data with missing values (:ref:`mvpc_gen_data`) and causal discovery (:ref:`mvpc`) in the presence of missing values.
 * 2024-11-24: Benchpress 2.9.0. This version comes with three new major features. 
 
     I) The ability to incorporate background knowledge in terms of :ref:`edge_constraints`. Thanks to `Gomathi Lakshmanan <https://www.linkedin.com/in/gomathi-l/>`_ for this great feature. 
-    II) The ability to specify multiple benchmark setups in the same config file (See :ref:`json_config`). To convert the old config format to this new one run 
+    II) The ability to specify multiple benchmark setups in the same config file (See :ref:`json_config`).             
+    III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian Machlanski <https://dmachlanski.com/>`_.
+
+    To convert the config files (<2.9.0) to this new format run 
         
         .. prompt:: bash
 
             chmod +x scripts/utils/reformat_conf_files.py 
             workflow/scripts/utils/reformat_conf_files.py
-            
-    III) Generating DAGs using the `gCastle <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/README.md>`_  package (:ref:`gcastle_dag`). Thanks to `Damian Machlanski <https://dmachlanski.com/>`_.
+
 * 2024-06-27: Benchpress 2.8.0. The new :ref:`graph_estimation` module enables graph estimation and plotting. It will replace the :ref:`graph_plots` module as it is faster an easier to use. 
 * 2024-03-20: `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_ gives a `Zoom seminar <https://ethz.zoom.us/j/65832714361>`_ on Benchpress today at 5 PM CET at `The Swiss Reproducibility Network <https://www.swissrn.org/computational/>`_
 * 2024-02-13: Updated :ref:`examples` with timings and the algorithms BOSS (:ref:`tetrad_boss`) and GRaSP (:ref:`tetrad_grasp`).

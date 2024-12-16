@@ -65,7 +65,7 @@
       "edgeConstraints": {
         "type": ["string", "null"],
         "pattern": ".*\\.json$",
-        "description": "Name of the JSON file containing background knowledge"
+        "description": "Name of the JSON file containing :ref:`edge_constraints`"
       }
     },
     "required": [
@@ -90,7 +90,7 @@
         "numCores": 1,
         "cl_type": "PSOCK",
         "verbose": false,
-        "indepTest": "mixedCItwd",
+        "indepTest": "gaussCItwd",
         "timeout": null,
         "edgeConstraints": null
       }
