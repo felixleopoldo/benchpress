@@ -1,5 +1,5 @@
 {
-    "title": "Graphical lasso",
+    "title": "GLasso",
     "version": "1.3.5",
     "package": {
         "title": "huge",
@@ -12,7 +12,7 @@
     ],
     "language": "R",
     "title_full": "Graphical lasso",
-    "meta_description": "Graphical lasso",
+    "meta_description": "Estimates sparse graphs by a lasso penalty applied to the inverse covariance matrix.",
     "data_types": [],
     "data_missingess": [],
     "intervention_types": []
