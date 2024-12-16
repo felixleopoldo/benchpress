@@ -1,42 +1,43 @@
 {
   "benchmark_setup": [
     {
-      "title": "mvpc_example",
       "data": [
         {
           "graph_id": "avneigs4_p20",
           "parameters_id": "SEM",
-          "data_id": "missing",
+          "data_id": "standardized",
           "seed_range": [1, 3]
         }
       ],
       "evaluation": {
-        "graph_true_plots": true,
-        "graph_true_stats": false,
-        "ggally_ggpairs": false,
+        "graph_estimation": {
+          "ids": ["tpc"],
+          "convert_to": [],
+          "graphs": true,
+          "adjmats": false,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        },
         "benchmarks": {
-          "filename_prefix": "example/",
+          "filename_prefix": "bips_tpc_example/",
           "show_seed": false,
           "errorbar": true,
           "errorbarh": false,
           "scatter": true,
           "path": true,
           "text": false,
-          "ids": ["mvpc", "td-pc", "bips_tpc"]
+          "ids": ["tpc"]
         },
-        "graph_estimation": {
-          "ids": ["mvpc", "td-pc", "bips_tpc"],
-          "convert_to": [],
-          "graphs": false,
-          "adjmats": false,
-          "diffplots": false,
-          "csvs": true,
-          "graphvizcompare": false
-        },
+        "graph_true_plots": false,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
+        "graph_plots": [],
         "mcmc_traj_plots": [],
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
-      }
+      },
+      "title": "bips_tpc"
     }
   ],
   "resources": {
@@ -45,19 +46,7 @@
         {
           "id": "standardized",
           "standardized": true,
-          "n": [1000]
-        }
-      ],
-      "mvpc_gen_data": [
-        {
-          "id": "missing",
-          "num_extra_e": 5,
-          "num_m": 10,
-          "mode": "mnar",
-          "p_missing_h": 0.9,
-          "p_missing_e": 0.1,
-          "standardized": false,
-          "n": 10000
+          "n": [300]
         }
       ]
     },
@@ -116,55 +105,18 @@
           "edgeConstraints": null
         }
       ],
-      "mvpc": [
-        {
-          "id": "mvpc",
-          "alpha": [0.001, 0.01, 0.05, 0.11],
-          "corrMethod": "gaussCItest.permc",
-          "NAdelete": true,
-          "mmax": "Inf",
-          "u2pd": "relaxed",
-          "skelmethod": "stable",
-          "conservative": false,
-          "majrule": true,
-          "solveconfl": true,
-          "numCores": 1,
-          "verbose": false,
-          "indepTest": "gaussCItest.td",
-          "timeout": null,
-          "edgeConstraints": null
-        },
-        {
-          "id": "td-pc",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
-          "corrMethod": null,
-          "NAdelete": true,
-          "mmax": "Inf",
-          "u2pd": "relaxed",
-          "skelmethod": "stable",
-          "conservative": false,
-          "majrule": true,
-          "solveconfl": true,
-          "numCores": 1,
-          "verbose": false,
-          "indepTest": "gaussCItest.td",
-          "timeout": null,
-          "edgeConstraints": null
-        }
-      ],
       "bips_tpc": [
         {
-          "id": "bips_tpc",
+          "id": "tpc",
           "alpha": [0.001, 0.01, 0.05, 0.1],
           "mmax": "Inf",          
           "conservative": false,
           "majrule": true,
           "numCores": 1,
-          "cl_type": "PSOCK",
           "verbose": false,
           "indepTest": "gaussCItwd",
           "timeout": null,
-          "edgeConstraints": null
+          "edgeConstraints": "edgeConstraints.json"
         }
       ],
       "bnlearn_tabu": [

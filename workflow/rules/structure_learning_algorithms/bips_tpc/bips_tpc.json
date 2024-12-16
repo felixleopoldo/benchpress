@@ -1,7 +1,7 @@
 {
   "benchmark_setup": [
     {
-      "title": "mvpc_example",
+      "title": "tpc_example",
       "data": [
         {
           "graph_id": "avneigs4_p20",
@@ -22,10 +22,10 @@
           "scatter": true,
           "path": true,
           "text": false,
-          "ids": ["mvpc", "td-pc", "bips_tpc"]
+          "ids": ["mvpc", "bips_tpc"]
         },
         "graph_estimation": {
-          "ids": ["mvpc", "td-pc", "bips_tpc"],
+          "ids": ["mvpc", "bips_tpc"],
           "convert_to": [],
           "graphs": false,
           "adjmats": false,

@@ -21,7 +21,7 @@
     ],
     "language": "R",
     "title_full": "Grow-shrink",
-    "meta_description": "Grow-shrink",
+    "meta_description": "The grow-shrink (GS) algorithm is based on the Markov blanket of the nodes in a DAG. For a specific node, the Markov blanket it the set of nodes which conditioning upon renders it conditionally independent from all other variables.",
     "data_types": [],
     "data_missingess": [],
     "intervention_types": []

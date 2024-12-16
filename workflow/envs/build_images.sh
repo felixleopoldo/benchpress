@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/bash
 # Using bash 5
 
 # ARCH should be arm64 or amd64

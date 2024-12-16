@@ -15,6 +15,7 @@ Algorithms
     structure_learning_algorithms/bidag_itsearch
     structure_learning_algorithms/bidag_order_mcmc
     structure_learning_algorithms/bidag_partition_mcmc
+    structure_learning_algorithms/bips_tpc
     structure_learning_algorithms/bnlearn_fastiamb
     structure_learning_algorithms/bnlearn_gs
     structure_learning_algorithms/bnlearn_h2pc
@@ -30,7 +31,6 @@ Algorithms
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/bnlearn_tabu
     structure_learning_algorithms/causaldag_gsp
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
@@ -112,6 +112,10 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      - :ref:`bidag_partition_mcmc` 
+   * - tPC
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `tpc <https://github.com/bips-hb/tpc>`__
+     - :ref:`bips_tpc` 
    * - Fast IAMB
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `bnlearn <https://www.bnlearn.com/>`__
@@ -248,7 +252,7 @@ To add new modules, see :ref:`new_modules`.
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - `gues <https://pypi.org/project/gues/>`__
      - :ref:`grues` 
-   * - Graphical lasso
+   * - GLasso
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_glasso` 

@@ -1,5 +1,6 @@
 {
-    "title": "My new MCMC algorithm",
+    "title": "MNMCMCA",
+    "title_full": "My new MCMC algorithm",
     "version": "v0.0.1",
     "package": {
         "title": "",
@@ -9,6 +10,15 @@
     "outputs": "graphtraj",
     "graph_types": [
         "UG"
+    ],
+    "meta_description": "This text will be shown by search engines e.g. Keep it less than 160 characters",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingess": [
+        "MCAR"
     ],
     "language": "R"
 }

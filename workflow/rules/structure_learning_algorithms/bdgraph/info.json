@@ -14,8 +14,8 @@
     ],
     "language": "R",
     "title_full": "BDgraph",
-    "meta_description": "BDgraph",
-    "data_types": [],
-    "data_missingess": [],
+    "meta_description": "BDgraph performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables using MCMC.",
+    "data_types": ["continuous", "discrete", "mixed"],
+    "data_missingess": ["MCAR"],
     "intervention_types": []
 }

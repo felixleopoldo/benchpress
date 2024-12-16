@@ -12,7 +12,7 @@ node_labels <- colnames(datafile)
 
 # Handle null value for edgeConstraints
 if (filename_data == "null" || file.size(filename_data) == 0) {
-    if (package == "pcalg" || package == "mvpc") {
+    if (package == "pcalg" || package == "mvpc" || package == "bips_tpc") {
         # Empty data frame - pcalg and mvpc
         matrix_data <- data.frame(node1 = character(), node2 = character(), matrix_type = character(), stringsAsFactors = FALSE)
         write.csv(matrix_data, file = filename_output, row.names = FALSE, quote = FALSE)
@@ -58,6 +58,95 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
         matrix_data <- cbind(matrix_data, matrix_type)
         colnames(matrix_data)[1:2] <- c("node1", "node2")
         write.csv(matrix_data, file = filename_output, row.names = FALSE, quote = FALSE)
+    } else if (package == "bips_tpc") { # bips_tpc
+
+        # handle forbidden edges and tiers. Later, context and context.tiers.
+        p <- ncol(datafile)
+        constraints <- list() # save this to file serialized
+
+        tiers <- rep(NULL, p)
+        # for each tier in data$tiers,
+
+        tier_no <- 1
+        for (t in data$tiers) {
+            for (v in t) {
+                # get the index of the variable in the node_labels
+                index <- which(node_labels == v)
+
+                tiers[index] <- tier_no
+            }
+            tier_no <- tier_no + 1
+        }
+        constraints$tiers <- tiers
+
+        forbEdges <- matrix(0, p, p)
+        # loop over the forbidden edges and add them to forbEdges
+        for (edge in data$forbidden_edges) {
+            from <- which(node_labels == edge[1])
+            to <- which(node_labels == edge[2])
+            forbEdges[from, to] <- 1
+        }
+
+        # loop over the forbidden groups and add them to forbEdges
+        for (group in data$forbidden_groups) {
+            for (cause in group$cause) {
+                for (effect in group$effect) {
+                    from <- which(node_labels == cause)
+                    to <- which(node_labels == effect)
+                    forbEdges[from, to] <- 1
+                }
+            }
+        }
+
+        # Now, check if data$tier_setting$forbid_withid_tiers == true
+        # if so fot the edges within the tiers, add them to forbEdges
+
+        if (!is.null(data$tier_settings) && data$tier_settings$forbid_within_tiers) {
+            for (tier in data$tiers) {
+                for (i in 1:(length(tier) - 1)) {
+                    for (j in (i + 1):length(tier)) {
+                        from <- which(node_labels == tier[i])
+                        to <- which(node_labels == tier[j])
+                        forbEdges[from, to] <- 1
+                    }
+                }
+            }
+        }
+
+        # Now, check if data$tier_setting$can_only_cause_next_tier == true
+        # if so fot the edges within the tiers, add them to forbEdges
+        if (!is.null(data$tier_settings) && data$tier_settings$can_only_cause_next_tier) {
+            for (i in 1:(length(data$tiers) - 1)) {
+                current_tier <- data$tiers[[i]]
+                future_tiers <- data$tiers[(i + 2):length(data$tiers)]
+                for (var in current_tier) {
+                    for (future_tier in future_tiers) {
+                        for (future_var in future_tier) {
+                            from <- which(node_labels == var)
+                            to <- which(node_labels == future_var)
+                            forbEdges[from, to] <- 1
+                        }
+                    }
+                }
+            }
+        }
+
+        # Now forbid edges to the source_nodes
+        if (!is.null(data$source_nodes)) {
+            for (source_node in data$source_nodes) {
+                from <- which(node_labels == source_node)
+                for (i in 1:p) {
+                    forbEdges[i, from] <- 1
+                }
+            }
+        }
+
+        constraints$forbEdges <- forbEdges
+        constraints$context.all <- data$context_all
+        constraints$context.tier <- data$context_tier
+
+        saveRDS(constraints, file = filename_output)
+
     } else if (package == "bnlearn") { # bnlearn
         # bnlearn - "blacklists" and "whitelists"
         blacklist <- forbidden_edges

@@ -1,6 +1,7 @@
 {
   "benchmark_setup": [
     {
+      "title": "example_config",
       "data": [
         {
           "graph_id": "avneigs4_p20",
@@ -31,17 +32,24 @@
         "graph_true_plots": true,
         "graph_true_stats": true,
         "ggally_ggpairs": true,
-        "graph_plots": [
-          "fges-sem-bic",
-          "tabu-bge",
-          "itsearch-bge",
-          "pc-gaussCItest"
-        ],
+        "graph_estimation": {
+          "ids": [
+            "fges-sem-bic",
+            "tabu-bge",
+            "itsearch-bge",
+            "pc-gaussCItest"
+          ],
+          "convert_to": [],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        },
         "mcmc_traj_plots": [],
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
-      },
-      "title": "config"
+      }      
     }
   ],
   "resources": {

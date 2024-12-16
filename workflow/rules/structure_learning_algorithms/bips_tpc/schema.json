@@ -14,78 +14,41 @@
       "alpha": {
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
-      "corrMethod": {
-        "description": "gaussCItest.drw, gaussCItest.permc, binCItest.drw, binCItest.permc",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "gaussCItest.drw",
-                "gaussCItest.permc",
-                "binCItest.drw",
-                "binCItest.permc"
-              ]
-            }
-          },
-          {
-            "type": "string",
-            "enum": [
-              "gaussCItest.drw",
-              "gaussCItest.permc",
-              "binCItest.drw",
-              "binCItest.permc"
-            ]
-          },
-          { "type": "null" }
-        ]
-      },
       "indepTest": {
-        "description": "gaussCItest, binCItest, gaussCItest.td, binCItest.td",
+        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd" ,
         "anyOf": [
           {
             "type": "array",
             "items": {
               "type": "string",
               "enum": [
-                "binCItest",
                 "gaussCItest",
-                "binCItest.td",
-                "gaussCItest.td"
+                "binCItest",
+                "gaussCItwd",
+                "disCItwd",
+                "mixCItwd",
+                "disCItest"
               ]
             }
           },
           {
             "type": "string",
             "enum": [
-              "binCItest",
               "gaussCItest",
-              "binCItest.td",
-              "gaussCItest.td"
+              "binCItest",
+              "disCItest",
+              "gaussCItwd",
+              "disCItwd",
+              "mixCItwd"
             ]
           }
         ]
       },
-      "numCores": {
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-      },
       "verbose": {
-        "type": "boolean"
-      },
-      "NAdelete": {
         "type": "boolean"
       },
       "mmax": {
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintstring"
-      },
-      "u2pd": {
-        "type": "string",
-        "enum": ["relaxed", "rand", "retry"]
-      },
-      "skelmethod": {
-        "type": "string",
-        "enum": ["stable", "original", "stable.fast"]
       },
       "conservative": {
         "type": "boolean"
@@ -109,35 +72,25 @@
       "id",
       "timeout",
       "alpha",
-      "corrMethod",
       "indepTest",
-      "numCores",
       "verbose",
-      "NAdelete",
       "mmax",
-      "u2pd",
-      "skelmethod",
       "conservative",
       "majrule",
-      "solveconfl",
       "timeout",
       "edgeConstraints"
     ],
     "examples": [
       {
-        "id": "mvpc",
+        "id": "tpc",
         "alpha": [0.001, 0.01, 0.05, 0.1],
-        "indepTest": "gaussCItest.td",
-        "corrMethod": "gaussCItest.permc",
-        "NAdelete": true,
         "mmax": "Inf",
-        "u2pd": "relaxed",
-        "skelmethod": "stable",
         "conservative": false,
         "majrule": true,
-        "solveconfl": true,
         "numCores": 1,
+        "cl_type": "PSOCK",
         "verbose": false,
+        "indepTest": "gaussCItwd",
         "timeout": null,
         "edgeConstraints": null
       }

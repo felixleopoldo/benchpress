@@ -1,5 +1,6 @@
 {
-    "title": "My new algorithm",
+    "title": "MNA",
+    "title_full": "My new algorithm",
     "version": "v0.0.1",
     "package": {
         "title": "",
@@ -9,6 +10,15 @@
     "outputs": "adjmat",
     "graph_types": [
         "UG"
+    ],
+    "meta_description": "This text will be shown by search engines e.g.",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingess": [
+        "MCAR"
     ],
     "language": "R"
 }
