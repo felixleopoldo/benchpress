@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: IAMB 
-        :description: 
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: IAMB 
+    :description: 
+
 
 .. _bnlearn_iamb: 
 

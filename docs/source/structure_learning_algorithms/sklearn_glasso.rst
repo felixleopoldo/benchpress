@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: Graphical Lasso 
-        :description: 
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: Graphical Lasso 
+    :description: 
+
 
 .. _sklearn_glasso: 
 

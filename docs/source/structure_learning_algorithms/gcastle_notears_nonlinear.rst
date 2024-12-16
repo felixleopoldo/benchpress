@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: NO TEARS non-linear 
-        :description: 
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: NO TEARS non-linear 
+    :description: 
+
 
 .. _gcastle_notears_nonlinear: 
 

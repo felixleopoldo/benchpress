@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: PC 
-        :description: A classic causal discovery algorithm based on conditional independence tests.
-    
+:og:description: A classic causal discovery algorithm based on conditional independence tests.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: PC 
+    :description: A classic causal discovery algorithm based on conditional independence tests.
+
 
 .. _gcastle_pc: 
 

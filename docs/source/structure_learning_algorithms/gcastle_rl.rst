@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: RL 
-        :description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
-    
+:og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: RL 
+    :description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
+
 
 .. _gcastle_rl: 
 

@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: GSP 
-        :description: 
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: GSP 
+    :description: 
+
 
 .. _causaldag_gsp: 
 

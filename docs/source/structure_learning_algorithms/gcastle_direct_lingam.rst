@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: Direct LINGAM 
-        :description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
-    
+:og:description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: Direct LINGAM 
+    :description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+
 
 .. _gcastle_direct_lingam: 
 
