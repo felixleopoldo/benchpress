@@ -11,7 +11,7 @@ The implementation is based on the R package pcalg.
 
 .. rubric:: Example 
 
-Config file: `mvpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/mvpc/config/mvpc.json>`_
+Config file: `mvpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/mvpc/mvpc.json>`_
 
 Command:
 
