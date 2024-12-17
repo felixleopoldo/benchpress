@@ -6,9 +6,13 @@ library(micd)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
 wrapper <- function() {
+    print("In wrapper")
     filename <- file.path(snakemake@output[["adjmat"]])
     filename_data <- snakemake@input[["data"]]
     filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
+
+    filename_mice_data <- snakemake@input[["input_algorithm"]]
+
     seed <- as.integer(snakemake@wildcards[["seed"]])
     alpha <- as.numeric(snakemake@wildcards[["alpha"]])
     mmax <- as.numeric(snakemake@wildcards[["mmax"]])
@@ -21,6 +25,12 @@ wrapper <- function() {
     cl_type <- snakemake@wildcards[["cl_type"]]
 
     data <- read.csv(filename_data, check.names = FALSE)
+
+    mice_data <- NULL
+
+    if (filename_mice_data != "None") {
+        mice_data <- read.csv(filename_mice_data, check.names = FALSE)
+    }
 
     tiers <- NULL
     context.all <- NULL
@@ -45,8 +55,8 @@ wrapper <- function() {
         }
 
         forbEdges <- edgeConstraints$forbEdges
-
     }
+
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
@@ -58,8 +68,7 @@ wrapper <- function() {
         suffStat <- list(C = cor(data), n = n)
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd")) {
         suffStat <- data
-    } 
-
+    }
 
     start <- proc.time()[1]
     set.seed(seed)
@@ -87,7 +96,7 @@ wrapper <- function() {
     adjmat <- as(graph, "matrix")
 
     colnames(adjmat) <- names(data)
-    
+
     write.csv(adjmat, file = filename, row.names = FALSE, quote = FALSE)
 
     write(totaltime, file = snakemake@output[["time"]])
