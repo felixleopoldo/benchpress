@@ -1,7 +1,7 @@
 {
   "benchmark_setup": [
     {
-      "title": "tpc_example",
+      "title": "bips_tpc_example",
       "data": [
         {
           "graph_id": "avneigs4_p20",
@@ -119,7 +119,7 @@
       "mvpc": [
         {
           "id": "mvpc",
-          "alpha": [0.001, 0.01, 0.05, 0.11],
+          "alpha": [0.001, 0.01, 0.05, 0.1],
           "corrMethod": "gaussCItest.permc",
           "NAdelete": true,
           "mmax": "Inf",
