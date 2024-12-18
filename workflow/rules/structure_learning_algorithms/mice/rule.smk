@@ -11,6 +11,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/mice:3.17.0" # Change to None for local run
+        "docker://bpimages/mice:3.17.0-ranger-amd64" # Change to None for local run
     script:
         "script.R"

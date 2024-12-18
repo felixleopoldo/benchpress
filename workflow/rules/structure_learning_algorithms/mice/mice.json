@@ -51,13 +51,13 @@
       "mvpc_gen_data": [
         {
           "id": "missing",
-          "num_extra_e": 5,
-          "num_m": 10,
+          "num_extra_e": 3,
+          "num_m": 5,
           "mode": "mnar",
           "p_missing_h": 0.9,
           "p_missing_e": 0.1,
           "standardized": false,
-          "n": 50
+          "n": 100
         }
       ]
     },
@@ -66,7 +66,7 @@
         {
           "id": "avneigs4_p20",
           "max_parents": 5,
-          "n": 20,
+          "n": 10,
           "d": 4,
           "par1": null,
           "par2": null,
@@ -88,10 +88,10 @@
       "mice": [
         {
           "id": "mice",
-          "m": 2,
+          "m": 5,
           "maxit": 3,
-          "method": "pmm",
-          "defaultMethod": "pmm",
+          "method": "rf",
+          "defaultMethod": "rf",
           "action": "all",
           "include": false,
           "mild": true,
@@ -176,7 +176,7 @@
           "numCores": 1,
           "cl_type": "PSOCK",
           "verbose": false,
-          "indepTest": "gaussMItest",
+          "indepTest": "mixMItest",
           "input_algorithm_id": "mice",
           "timeout": null,
           "edgeConstraints": null

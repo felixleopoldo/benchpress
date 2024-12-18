@@ -1,5 +1,5 @@
 :og:description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.
-
+:og:video: https://www.youtube.com/watch?v=tx3hIH3b9Hg
 .. meta::
     :title: Benchpress: Open-Source Causal Discovery Suite
     :description: Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms.

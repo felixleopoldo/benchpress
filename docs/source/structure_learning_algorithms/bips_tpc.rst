@@ -33,7 +33,7 @@ bips_tpc
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Docker 
-     - `bpimages/bips_tpc:137e18b <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
+     - `bpimages/bips_tpc:137e18be <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
 
    * - Module folder
      - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
@@ -86,7 +86,7 @@ Each dataset contains 10000 samples and contains data that is missing not at ran
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing :ref:`edge_constraints` 
-* ``indepTest`` gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd 
+* ``indepTest`` gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest 
 
 
 .. rubric:: Example JSON

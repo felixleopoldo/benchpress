@@ -51,8 +51,8 @@
       "mvpc_gen_data": [
         {
           "id": "missing",
-          "num_extra_e": 5,
-          "num_m": 10,
+          "num_extra_e": 2,
+          "num_m": 5,
           "mode": "mnar",
           "p_missing_h": 0.9,
           "p_missing_e": 0.1,
@@ -66,7 +66,7 @@
         {
           "id": "avneigs4_p20",
           "max_parents": 5,
-          "n": 20,
+          "n": 10,
           "d": 4,
           "par1": null,
           "par2": null,

@@ -66,24 +66,30 @@ myalg <- function() {
         order = order # c("last", "first")
     )
 
-    mi_data_joined <- NULL
+    print("Mice imputation done. from complete:")
+    #print(mi_data)
 
-    # for datafram in the mi_data list, join them in one dataframe wiht a column for the imputed values
-    for (i in 1:length(mi_data)) {
-        if (is.null(mi_data_joined)) {
-            mi_data_joined <- mi_data[[i]]
-            mi_data_joined$imputed <- i
-        } else {
-            mi_data[[i]]$imputed <- i
-            mi_data_joined <- rbind(mi_data_joined, mi_data[[i]])
-        }
-    }
-    print("mi data joined")
-    print(mi_data_joined)
-    print(names(mi_data))
+    # mi_data_joined <- NULL
+
+    # # for datafram in the mi_data list, join them in one dataframe wiht a column for the imputed values
+    # for (i in 1:length(mi_data)) {
+    #     if (is.null(mi_data_joined)) {
+    #         mi_data_joined <- mi_data[[i]]
+    #         mi_data_joined$imputed <- i
+    #     } else {
+    #         mi_data[[i]]$imputed <- i
+    #         mi_data_joined <- rbind(mi_data_joined, mi_data[[i]])
+    #     }
+    # }
+    # print("mi data joined")
+    # #print(mi_data_joined)
+    # print(names(mi_data))
+    
+    # # colnames(mi_data) <- names(data) # Get the labels from the data
+    # write.csv(mi_data_joined, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
+
     totaltime <- proc.time()[1] - start
-    # colnames(mi_data) <- names(data) # Get the labels from the data
-    write.csv(mi_data_joined, file = snakemake@output[["adjmat"]], row.names = FALSE, quote = FALSE)
+    saveRDS(mi_data, file = snakemake@output[["adjmat"]])
 
 
     write(totaltime, file = snakemake@output[["time"]])

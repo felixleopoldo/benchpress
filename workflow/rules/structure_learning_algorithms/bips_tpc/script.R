@@ -27,23 +27,6 @@ wrapper <- function() {
     data <- read.csv(filename_data, check.names = FALSE)
 
     mice_data <- NULL
-
-    # if (filename_mice_data != "None") {
-    #     mice_data <- read.csv(filename_mice_data, check.names = FALSE)
-
-    #     impute_no <- unique(mice_data$imputed)
-    #     # create a list of datasets indexed by the imputation number
-    #     suffStat_list <- list()
-    #     for (i in 1:length(impute_no)) {
-    #         suffStat_list[[i]] <- mice_data[mice_data$imputed == impute_no[i], ]
-    #         # drop the imputed column
-    #         suffStat_list[[i]] <- suffStat_list[[i]][, -which(names(suffStat_list[[i]]) == "imputed")]
-    #     }
-    #     mice_data_list <- split(mice_data, mice_data$imputation)
-    # }
-
-    print("Data loaded")
-
     tiers <- NULL
     context.all <- NULL
     context.tier <- NULL
@@ -83,30 +66,36 @@ wrapper <- function() {
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "disMItest")) {
         
         print("Multiple imputation data")
-        if (filename_mice_data != "None") {
-
+        if (filename_mice_data != "None" ) {
             print("Multiple imputation data")
-            mice_data <- read.csv(filename_mice_data, check.names = FALSE)
+            suffStat <- readRDS(filename_mice_data)
+            
+            # mice_data <- read.csv(filename_mice_data, check.names = FALSE)
 
-            #print(mice_data)
-            impute_no <- unique(mice_data$imputed)
-            # create a list of datasets indexed by the imputation number
-            suffStat_list <- list()
-            for (i in 1:length(impute_no)) {
-                suffStat_list[[i]] <- mice_data[mice_data$imputed == impute_no[i], ]
-                # drop the imputed column
-                suffStat_list[[i]] <- suffStat_list[[i]][, -which(names(suffStat_list[[i]]) == "imputed")]
-            }
-            #mice_data_list <- split(mice_data, mice_data$imputation)
+            # #print(mice_data)
+            # impute_no <- unique(mice_data$imputed)
+            # # create a list of datasets indexed by the imputation number
+            # suffStat_list <- list()
+            # for (i in 1:length(impute_no)) {
+            #     suffStat_list[[i]] <- mice_data[mice_data$imputed == impute_no[i], ]
+            #     # drop the imputed column
+            #     suffStat_list[[i]] <- suffStat_list[[i]][, -which(names(suffStat_list[[i]]) == "imputed")]
+            # }
+            # #mice_data_list <- split(mice_data, mice_data$imputation)
         
-            suffStat <- suffStat_list
-            print(suffStat_list)
+            # suffStat <- suffStat_list
+            # print(suffStat_list)
         }        
     }
+
+    print(suffStat)
 
     start <- proc.time()[1]
     set.seed(seed)
 
+    print("Indep test")
+    print(indepTest)
+    warnings()
     pc.fit <- tpc(
         suffStat,
         indepTest,
