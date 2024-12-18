@@ -15,7 +15,7 @@
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
       "indepTest": {
-        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd" ,
+        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest", 
         "anyOf": [
           {
             "type": "array",
@@ -27,7 +27,10 @@
                 "gaussCItwd",
                 "disCItwd",
                 "mixCItwd",
-                "disCItest"
+                "disCItest",
+                "gaussMItest",
+                "mixMItest",
+                "disMItest"
               ]
             }
           },
@@ -39,7 +42,10 @@
               "disCItest",
               "gaussCItwd",
               "disCItwd",
-              "mixCItwd"
+              "mixCItwd",
+              "gaussMItest",
+              "mixMItest",
+              "disMItest"
             ]
           }
         ]

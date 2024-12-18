@@ -169,14 +169,14 @@
       "bips_tpc": [
         {
           "id": "bips_tpc",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [0.001, 0.01, 0.05, 0.11],
           "mmax": "Inf",
           "conservative": false,
           "majrule": true,
           "numCores": 1,
           "cl_type": "PSOCK",
           "verbose": false,
-          "indepTest": "gaussCItwd",
+          "indepTest": "gaussMItest",
           "input_algorithm_id": "mice",
           "timeout": null,
           "edgeConstraints": null
