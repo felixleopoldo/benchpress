@@ -4,6 +4,7 @@
 :og:description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: GraNDAG (gcastle_grandag)
  
 .. meta::
     :title: GraNDAG 

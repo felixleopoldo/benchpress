@@ -4,6 +4,7 @@
 :og:description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: GAE (gcastle_gae)
  
 .. meta::
     :title: GAE 

@@ -1,8 +1,15 @@
-@misc{andrews2023practicalguidecausaldiscovery,
-      title={A practical guide to causal discovery with cohort data}, 
-      author={Ryan M. Andrews and Ronja Foraita and Vanessa Didelez and Janine Witte},
-      year={2023},
-      archivePrefix={arXiv},
-      primaryClass={stat.AP},
-      url={https://arxiv.org/abs/2108.13395}, 
+
+
+@article{andrews2023practicalguidecausaldiscovery,
+    author = {Andrews, Ryan M and Bang, Christine W and Didelez, Vanessa and Witte, Janine and Foraita, Ronja},
+    title = {Software application profile: tpc and micd—R packages for causal discovery with incomplete cohort data},
+    journal = {International Journal of Epidemiology},
+    volume = {53},
+    number = {5},
+    pages = {dyae113},
+    year = {2024},
+    month = {08},
+    abstract = {The Peter Clark (PC) algorithm is a popular causal discovery method to learn causal graphs in a data-driven way. Until recently, existing PC algorithm implementations in R had important limitations regarding missing values, temporal structure or mixed measurement scales (categorical/continuous), which are all common features of cohort data. The new R packages presented here, micd and tpc, fill these gaps.micd and tpc packages are R packages.The micd package provides add-on functionality for dealing with missing values to the existing pcalg R package, including methods for multiple imputations relying on the Missing At Random assumption. Also, micd allows for mixed measurement scales assuming conditional Gaussianity. The tpc package efficiently exploits temporal information in a way that results in a more informative output that is less prone to statistical errors.The tpc and micd packages are freely available on the Comprehensive R Archive Network (CRAN). Their source code is also available on GitHub (https://github.com/bips-hb/micd; https://github.com/bips-hb/tpc).},
+    issn = {1464-3685},
+    url = {https://doi.org/10.1093/ije/dyae113},
 }

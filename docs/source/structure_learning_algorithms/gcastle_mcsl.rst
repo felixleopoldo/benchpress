@@ -4,6 +4,7 @@
 :og:description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: MCSL (gcastle_mcsl)
  
 .. meta::
     :title: MCSL 

@@ -97,6 +97,7 @@ ogp_site_url = "https://benchpressdocs.readthedocs.io"
 ogp_image = "https://github.com/felixleopoldo/benchpress/raw/master/docs/source/_static/benchpress-logo-white-bg.png"
 ogp_description = "Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms."
 ogp_enable_meta_description = False
+ogp_video = "https://www.youtube.com/watch?v=tx3hIH3b9Hg"
 
 html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 html_theme_options = {

@@ -170,14 +170,15 @@ for p in sorted(algspath.iterdir()):
         meta_description = info["meta_description"]
 
     module_str += """
-:og:description: {}
+:og:description: {desc}
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: {title_full} ({title})
  
 .. meta::
-    :title: {} 
-    :description: {}
-""".format(meta_description, info["title_full"], meta_description) 
+    :title: {title_full} 
+    :description: {desc}
+""".format(desc=meta_description, title_full=info["title_full"], title=p.name) 
     
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"

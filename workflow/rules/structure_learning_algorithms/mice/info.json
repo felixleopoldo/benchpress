@@ -1,0 +1,22 @@
+{
+    "title": "mice",
+    "title_full": "Multivariate Imputation by Chained Equations",
+    "version": "3.17.0",
+    "package": {
+        "title": "mice",
+        "url": "https://amices.org/mice/"
+    },
+    "docs_url": "https://amices.org/mice/",
+    "outputs": "adjmat",
+    "graph_types": [
+        ""        
+    ],
+    "meta_description": "mice data imputation for the temporal PC algorithm.",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingess": [],
+    "language": "R"
+}

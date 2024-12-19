@@ -4,6 +4,7 @@
 :og:description: 
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Graphical Lasso (sklearn_glasso)
  
 .. meta::
     :title: Graphical Lasso 

@@ -4,6 +4,7 @@
 :og:description: Nonlinear causal discovery with additive noise models.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: ANM (gcastle_anm)
  
 .. meta::
     :title: ANM 

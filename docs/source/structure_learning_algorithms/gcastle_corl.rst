@@ -4,6 +4,7 @@
 :og:description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: CORL (gcastle_corl)
  
 .. meta::
     :title: CORL 

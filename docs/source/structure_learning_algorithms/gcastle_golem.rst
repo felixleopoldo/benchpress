@@ -4,6 +4,7 @@
 :og:description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: GOLEM (gcastle_golem)
  
 .. meta::
     :title: GOLEM 

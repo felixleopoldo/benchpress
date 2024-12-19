@@ -4,6 +4,7 @@
 :og:description: A variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
+:og:title: Fast IAMB (bnlearn_fastiamb)
  
 .. meta::
     :title: Fast IAMB 
