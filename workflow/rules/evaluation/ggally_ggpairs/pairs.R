@@ -26,7 +26,6 @@ datatype <- class(df[1, 1])
 # apply that to all columns first row
 
 if (datatype == "integer") {
-    print("Discrete data")
     df <- df[-1, ]
     df[] <- lapply(df, factor)
     ggpairs(df,
@@ -37,14 +36,11 @@ if (datatype == "integer") {
     # discrete data is converted to factors to to make different boxplots
     for (i in 1:ncol(df)) {
         if (datatype != class(df[1, i])) {
-            print("Mixed data")
             # get columnd i and make it a factor
             df[[i]] <- as.factor(df[[i]])
         }
     }
     
-    # diag = list(continuous = "bar"),
-    # lower = list(continuous = wrap(lowerFn, method = "lm")),
     ggpairs(df,
         diag = list(continuous = "bar"),
         lower = list(continuous = wrap(lowerFn, method = "lm")), alpha = 0.8, title = title
