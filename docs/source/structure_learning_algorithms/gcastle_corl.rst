@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: CORL 
-        :description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
-    
+:og:description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: CORL 
+    :description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
+
 
 .. _gcastle_corl: 
 

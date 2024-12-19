@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: ANM 
-        :description: Nonlinear causal discovery with additive noise models.
-    
+:og:description: Nonlinear causal discovery with additive noise models.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: ANM 
+    :description: Nonlinear causal discovery with additive noise models.
+
 
 .. _gcastle_anm: 
 

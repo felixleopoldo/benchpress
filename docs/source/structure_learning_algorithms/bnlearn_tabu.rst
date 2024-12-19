@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: Tabu 
-        :description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
-    
+:og:description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: Tabu 
+    :description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
+
 
 .. _bnlearn_tabu: 
 

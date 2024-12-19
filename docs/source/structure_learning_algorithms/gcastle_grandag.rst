@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: GraNDAG 
-        :description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
-    
+:og:description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: GraNDAG 
+    :description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
+
 
 .. _gcastle_grandag: 
 

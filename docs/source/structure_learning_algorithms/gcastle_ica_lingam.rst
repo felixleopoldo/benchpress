@@ -1,10 +1,14 @@
 
 
 
-    .. meta::
-        :title: ICALiNGAM 
-        :description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
-    
+:og:description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+ 
+.. meta::
+    :title: ICALiNGAM 
+    :description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+
 
 .. _gcastle_ica_lingam: 
 
