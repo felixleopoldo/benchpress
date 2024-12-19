@@ -1,24 +1,22 @@
 {
-    "title": "MNA",
-    "title_full": "My new algorithm",
-    "version": "v0.0.1",
+    "title": "mice",
+    "title_full": "Multivariate Imputation by Chained Equations",
+    "version": "3.17.0",
     "package": {
-        "title": "",
-        "url": ""
+        "title": "mice",
+        "url": "https://amices.org/mice/"
     },
-    "docs_url": "",
+    "docs_url": "https://amices.org/mice/",
     "outputs": "adjmat",
     "graph_types": [
-        "UG"
+        ""        
     ],
-    "meta_description": "This text will be shown by search engines e.g.",
+    "meta_description": "mice data imputation for the temporal PC algorithm.",
     "data_types": [
         "continuous",
         "discrete",
         "mixed"
     ],
-    "data_missingess": [
-        "MCAR"
-    ],
+    "data_missingess": [],
     "language": "R"
 }

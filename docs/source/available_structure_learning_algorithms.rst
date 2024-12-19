@@ -265,9 +265,9 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_tiger` 
-   * - MNA
-     - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - mice
      - 
+     - `mice <https://amices.org/mice/>`__
      - :ref:`mice` 
    * - MVPC
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__

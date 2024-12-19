@@ -6,7 +6,7 @@ library(micd)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
 wrapper <- function() {
-    print("In wrapper")
+
     filename <- file.path(snakemake@output[["adjmat"]])
     filename_data <- snakemake@input[["data"]]
     filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
@@ -26,7 +26,6 @@ wrapper <- function() {
 
     data <- read.csv(filename_data, check.names = FALSE)
 
-    mice_data <- NULL
     tiers <- NULL
     context.all <- NULL
     context.tier <- NULL
@@ -65,37 +64,15 @@ wrapper <- function() {
         suffStat <- data
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "disMItest")) {
         
-        print("Multiple imputation data")
         if (filename_mice_data != "None" ) {
-            print("Multiple imputation data")
-            suffStat <- readRDS(filename_mice_data)
-            
-            # mice_data <- read.csv(filename_mice_data, check.names = FALSE)
-
-            # #print(mice_data)
-            # impute_no <- unique(mice_data$imputed)
-            # # create a list of datasets indexed by the imputation number
-            # suffStat_list <- list()
-            # for (i in 1:length(impute_no)) {
-            #     suffStat_list[[i]] <- mice_data[mice_data$imputed == impute_no[i], ]
-            #     # drop the imputed column
-            #     suffStat_list[[i]] <- suffStat_list[[i]][, -which(names(suffStat_list[[i]]) == "imputed")]
-            # }
-            # #mice_data_list <- split(mice_data, mice_data$imputation)
-        
-            # suffStat <- suffStat_list
-            # print(suffStat_list)
+            imputed_datasets <- readRDS(filename_mice_data)            
+            suffStat <- getSuff(imputed_datasets, test = snakemake@wildcards[["indepTest"]])
         }        
     }
-
-    print(suffStat)
 
     start <- proc.time()[1]
     set.seed(seed)
 
-    print("Indep test")
-    print(indepTest)
-    warnings()
     pc.fit <- tpc(
         suffStat,
         indepTest,

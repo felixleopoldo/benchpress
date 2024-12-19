@@ -15,7 +15,7 @@
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
       "indepTest": {
-        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest", 
+        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest",
         "anyOf": [
           {
             "type": "array",
@@ -47,6 +47,25 @@
               "mixMItest",
               "disMItest"
             ]
+          }
+        ]
+      },
+      "input_algorithm_id": {
+        "description": "When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice` module. It is a workaround to get imputed data.",
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]+$"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_]+$"
+            }
+          },
+          {
+            "type": "null"
           }
         ]
       },
@@ -84,6 +103,7 @@
       "conservative",
       "majrule",
       "timeout",
+      "input_algorithm_id",
       "edgeConstraints"
     ],
     "examples": [
@@ -97,6 +117,7 @@
         "cl_type": "PSOCK",
         "verbose": false,
         "indepTest": "gaussCItwd",
+        "input_algorithm_id": null,
         "timeout": null,
         "edgeConstraints": null
       }

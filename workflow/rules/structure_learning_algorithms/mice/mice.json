@@ -176,7 +176,7 @@
           "numCores": 1,
           "cl_type": "PSOCK",
           "verbose": false,
-          "indepTest": "mixMItest",
+          "indepTest": "gaussMItest",
           "input_algorithm_id": "mice",
           "timeout": null,
           "edgeConstraints": null

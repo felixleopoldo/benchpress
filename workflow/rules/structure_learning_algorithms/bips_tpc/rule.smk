@@ -10,6 +10,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = touch(alg_output_ntests_path(module_name))
     container:
-        "docker://bpimages/bips_tpc:137e18be-mice-amd64"
+        "docker://bpimages/bips_tpc:137e18be"
     script:
         "script.R"

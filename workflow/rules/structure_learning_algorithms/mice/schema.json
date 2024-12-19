@@ -1,31 +1,73 @@
 {
-    "title": "Some title",
-    "description": "List of objects",
-    "type": "array",
-    "items": {
-        "title": "Some item",
-        "description": "Some description.",
-        "type": "object",
-        "properties": {
-            "id": {
-                "description": "Algorithm identifier",
-                "type": "string"
-            },
-            "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-            }
-        },
-        "required": [
-            "id",
-            "timeout"
-        ],
-        "examples": [
-            {
-                "id": "myalg",
-                "cutoff": 0.5,
-                "timeout": null
-            }
-        ]
+  "title": "Some title",
+  "description": "List of objects",
+  "type": "array",
+  "items": {
+    "title": "Some item",
+    "description": "Some description.",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Algorithm identifier",
+        "type": "string"
+      },
+      "m": {
+        "description": "Parameter for the mice function: Number of imputations",
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+      },
+      "maxit": {
+        "description": "Parameter for the mice function: Maximum number of iterations",
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+      },
+      "method": {
+        
+        "description": "Parameter for the complete function: Method to use for imputation",
+        "type": "string",
+        "enum": ["rf", "ppm", "logreg", "polr"]
+      },
+      "defaultMethod": {
+        "description": "Parameter for the complete function: Default method to use for imputation",
+        "type": "string",
+        "enum": ["rf", "ppm", "logreg", "polr"]
+      },
+
+      "timeout": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+      },
+      "action": {
+        "description": "Parameter for the complete function",
+        "type": "string",
+        "enum": ["all", "pmm", "norm", "mid", "cart", "rf"]
+      },
+      "include": {
+        "description": "Parameter for the complete function",
+        "type": "boolean"
+      },
+      "mild": {
+        "description": "Parameter for the complete function",
+        "type": "boolean"
+      },
+      "order": {
+        "description": "Parameter for the complete function",
+        "type": "string",
+        "enum": ["first", "last"]
+      }
     },
-    "uniqueItems": true
+    "required": ["id", "timeout"],
+    "examples": [
+      {
+        "id": "mice",
+        "m": 5,
+        "maxit": 3,
+        "method": "rf",
+        "defaultMethod": "rf",
+        "action": "all",
+        "include": false,
+        "mild": true,
+        "order": "last",
+        "timeout": null
+      }
+    ]
+  },
+  "uniqueItems": true
 }
