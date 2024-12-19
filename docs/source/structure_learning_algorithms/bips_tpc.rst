@@ -61,7 +61,7 @@ Command:
     snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/bips_tpc/bips_tpc.json
 
 :numref:`bips_tpcplot` and :numref:`bips_tpcplot2`  show FP/P vs. TP/P for pattern graphs and skeletons based on 3 datsets corresponding to 3 realisations of a 20-variables random Gaussian SEM, with an average indegree of 4.
-Each dataset contains 10000 samples and contains data that is missing not at random (MNAR) and was sampled using :ref:`mvpc_gen_data`.
+Each dataset contains 10000 samples and has values that are missing not at random (MNAR), sampled using :ref:`mvpc_gen_data`.
 
 
 .. _bips_tpcplot:

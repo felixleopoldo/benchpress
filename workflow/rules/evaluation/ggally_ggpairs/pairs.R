@@ -22,7 +22,7 @@ title <- paste("Graph: ", snakemake@wildcards[["adjmat"]], "\n",
     "Data: ", snakemake@wildcards[["data"]], "\n",
     sep = ""
 )
-datatype <- class(df[1, 1])
+datatype <- class(sum(na.omit(df[, 1])))
 # apply that to all columns first row
 
 if (datatype == "integer") {
@@ -34,8 +34,8 @@ if (datatype == "integer") {
     )
 } else {
     # discrete data is converted to factors to to make different boxplots
-    for (i in 1:ncol(df)) {
-        if (datatype != class(df[1, i])) {
+    for (i in 1:ncol(df)) {        
+        if (is.integer(sum(na.omit(df[, i])))) {
             # get columnd i and make it a factor
             df[[i]] <- as.factor(df[[i]])
         }
