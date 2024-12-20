@@ -13,23 +13,15 @@
 
 .. _mice: 
 
-<<<<<<< HEAD
-mice 
-********
-=======
 mice (mice) 
 ************
->>>>>>> dev
 
 
 
 .. list-table:: 
 
-<<<<<<< HEAD
-=======
    * - Module name
      - `mice <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mice>`__
->>>>>>> dev
    * - Package
      - `mice <https://amices.org/mice/>`__
    * - Version
@@ -43,15 +35,8 @@ mice (mice)
    * - Graph type
      - 
    * - Docker 
-<<<<<<< HEAD
      - `bpimages/mice:3.17.0-ranger-amd64 <https://hub.docker.com/r/bpimages/mice/tags>`__
 
-   * - Module folder
-     - `mice <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mice>`__
-=======
-     - `bpimages/mice:3.17.0-ranger <https://hub.docker.com/r/bpimages/mice/tags>`__
-
->>>>>>> dev
 
 
 
