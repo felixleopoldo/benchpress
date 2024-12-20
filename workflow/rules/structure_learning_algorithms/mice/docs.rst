@@ -2,5 +2,5 @@ The mice package implements a method to deal with missing data. The package crea
 
 .. important::
 
-    This is not a structure learning algorithm, just a workaround to use imputed data for the :ref:`bips_tpc` module.
+    This is not a structure learning algorithm, just a workaround to use imputed data for the :ref:`bips_tpc <bips_tpc>` module.
 

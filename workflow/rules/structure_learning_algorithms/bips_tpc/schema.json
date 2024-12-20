@@ -51,7 +51,7 @@
         ]
       },
       "input_algorithm_id": {
-        "description": "When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice` module. It is a workaround to get imputed data.",
+        "description": "When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice <mice>` module. It is a workaround to get imputed data.",
         "anyOf": [
           {
             "type": "string",
