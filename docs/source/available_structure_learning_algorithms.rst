@@ -300,19 +300,19 @@ To add new modules, see :ref:`new_modules`.
      -  :ref:`sklearn_glasso <sklearn_glasso>`
    * - :ref:`BOSS <tetrad_boss>`
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
      -  :ref:`tetrad_boss <tetrad_boss>`
    * - :ref:`FASK <tetrad_fask>`
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
      -  :ref:`tetrad_fask <tetrad_fask>`
    * - :ref:`FGES <tetrad_fges>`
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
      -  :ref:`tetrad_fges <tetrad_fges>`
    * - :ref:`FOFC <tetrad_fofc>`
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
      -  :ref:`tetrad_fofc <tetrad_fofc>`
    * - :ref:`FTFC <tetrad_ftfc>`
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__

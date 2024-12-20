@@ -13,8 +13,8 @@
 
 .. _tetrad_fask: 
 
-FASK (causal-cmd) 
-******************
+FASK (TETRAD) 
+**************
 
 
 
@@ -23,7 +23,7 @@ FASK (causal-cmd)
    * - Module name
      - `tetrad_fask <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fask>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
