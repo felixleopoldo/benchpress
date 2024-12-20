@@ -52,14 +52,15 @@ Algorithms
     structure_learning_algorithms/bnlearn_mmhc
     structure_learning_algorithms/bnlearn_mmpc
     structure_learning_algorithms/mvpc
+    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/gcastle_notears
     structure_learning_algorithms/gcastle_notears_low_rank
     structure_learning_algorithms/gcastle_notears_nonlinear
     structure_learning_algorithms/bidag_order_mcmc
-    structure_learning_algorithms/gcastle_pc
     structure_learning_algorithms/pcalg_pc
-    structure_learning_algorithms/tetrad_pc
     structure_learning_algorithms/bnlearn_pcstable
+    structure_learning_algorithms/tetrad_pc
+    structure_learning_algorithms/gcastle_pc
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/trilearn_pgibbs
     structure_learning_algorithms/bidag_partition_mcmc

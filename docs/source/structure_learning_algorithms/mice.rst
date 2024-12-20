@@ -35,7 +35,7 @@ MICE (mice)
    * - Graph type
      - 
    * - Docker 
-     - `bpimages/mice:3.17.0-ranger-amd64 <https://hub.docker.com/r/bpimages/mice/tags>`__
+     - `bpimages/mice:3.17.0-ranger <https://hub.docker.com/r/bpimages/mice/tags>`__
 
 
 
