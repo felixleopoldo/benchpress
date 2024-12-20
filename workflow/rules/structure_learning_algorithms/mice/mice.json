@@ -51,13 +51,13 @@
       "mvpc_gen_data": [
         {
           "id": "missing",
-          "num_extra_e": 2,
+          "num_extra_e": 3,
           "num_m": 5,
           "mode": "mnar",
           "p_missing_h": 0.9,
           "p_missing_e": 0.1,
           "standardized": false,
-          "n": 10000
+          "n": 100
         }
       ]
     },
@@ -85,6 +85,20 @@
       ]
     },
     "structure_learning_algorithms": {
+      "mice": [
+        {
+          "id": "mice",
+          "m": 5,
+          "maxit": 3,
+          "method": "rf",
+          "defaultMethod": "rf",
+          "action": "all",
+          "include": false,
+          "mild": true,
+          "order": "last",
+          "timeout":null
+        }
+      ],
       "tetrad_fges": [
         {
           "id": "fges-sem-bic",
@@ -132,7 +146,7 @@
           "verbose": false,
           "indepTest": "gaussCItest.td",
           "timeout": null,
-          "edgeConstraints": null
+          "edgeConstraints": null          
         },
         {
           "id": "td-pc",
@@ -155,7 +169,7 @@
       "bips_tpc": [
         {
           "id": "bips_tpc",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [0.001, 0.01, 0.05, 0.11],
           "mmax": "Inf",
           "conservative": false,
           "majrule": true,
@@ -166,20 +180,6 @@
           "input_algorithm_id": "mice",
           "timeout": null,
           "edgeConstraints": null
-        }
-      ],
-      "mice": [
-        {
-          "id": "mice",
-          "m": 5,
-          "maxit": 3,
-          "method": "rf",
-          "defaultMethod": "rf",
-          "action": "all",
-          "include": false,
-          "mild": true,
-          "order": "last",
-          "timeout": null
         }
       ],
       "bnlearn_tabu": [

@@ -31,7 +31,6 @@ Algorithms
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/bnlearn_tabu
     structure_learning_algorithms/causaldag_gsp
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/causallearn_grasp
     structure_learning_algorithms/corr_thresh
     structure_learning_algorithms/dualpc
@@ -54,6 +53,7 @@ Algorithms
     structure_learning_algorithms/huge_glasso
     structure_learning_algorithms/huge_mb
     structure_learning_algorithms/huge_tiger
+    structure_learning_algorithms/mice
     structure_learning_algorithms/mvpc
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/pcalg_gies
@@ -265,6 +265,10 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      - :ref:`huge_tiger` 
+   * - mice
+     - 
+     - `mice <https://amices.org/mice/>`__
+     - :ref:`mice` 
    * - MVPC
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `MVPC <https://github.com/felixleopoldo/MVPC>`__
