@@ -13,8 +13,8 @@
 
 .. _gobnilp: 
 
-GOBNILP (GOBNILP (BitBucket)) 
-******************************
+GOBNILP (GOBNILP) 
+******************
 
 
 
@@ -23,7 +23,7 @@ GOBNILP (GOBNILP (BitBucket))
    * - Module name
      - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
    * - Package
-     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
+     - `GOBNILP <https://bitbucket.org/jamescussens/gobnilp>`__
    * - Version
      - #4347c64
    * - Language

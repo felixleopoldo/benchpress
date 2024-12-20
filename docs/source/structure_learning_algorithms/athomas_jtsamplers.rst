@@ -13,8 +13,8 @@
 
 .. _athomas_jtsamplers: 
 
-Chordal graph samplers (Alun Thomas) 
-*************************************
+Chordal graph samplers (A. Thomas) 
+***********************************
 
 
 
@@ -23,7 +23,7 @@ Chordal graph samplers (Alun Thomas)
    * - Module name
      - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
    * - Package
-     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
+     - `A. Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
    * - Version
      - 76ad20e
    * - Language

@@ -13,8 +13,8 @@
 
 .. _tetrad_ica-lingam: 
 
-ICA-LINGAM (causal-cmd) 
-************************
+ICA-LINGAM (TETRAD) 
+********************
 
 
 
@@ -23,7 +23,7 @@ ICA-LINGAM (causal-cmd)
    * - Module name
      - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language

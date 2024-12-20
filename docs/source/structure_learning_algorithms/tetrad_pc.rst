@@ -13,8 +13,8 @@
 
 .. _tetrad_pc: 
 
-PC (causal-cmd) 
-****************
+PC (TETRAD) 
+************
 
 
 
@@ -23,7 +23,7 @@ PC (causal-cmd)
    * - Module name
      - `tetrad_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_pc>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language

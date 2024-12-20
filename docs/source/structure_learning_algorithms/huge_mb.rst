@@ -1,20 +1,20 @@
 
 
 
-:og:description: Abstract: The pattern of zero entries in the inverse covariance matrix of a multivariate normal distribution corresponds to conditional independence restrictions between variables. Covariance selection aims at estimating those structural zeros from data. We show that neighborhood selection with the Lasso is a computationally attractive alternative to standard covariance selection for sparse high-dimensional graphs. Neighborhood selection estimates the conditional independence restrictions separately for each node in the graph and is hence equivalent to variable selection for Gaussian linear models. We show that the proposed neighborhood selection scheme is consistent for sparse high-dimensional graphs. Consistency hinges on the choice of the penalty parameter. The oracle value for optimal prediction does not lead to a consistent neighborhood estimate. Controlling instead the probability of falsely joining some distinct connectivity components of the graph, consistent estimation for sparse graphs is achieved (with exponential rates), even when the number of variables grows as the number of observations raised to an arbitrary power.
+:og:description: Meinshausen & Buhlmann cov est
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
 :og:title: Meinshausen & Buhlmann cov est (huge_mb)
  
 .. meta::
     :title: Meinshausen & Buhlmann cov est 
-    :description: Abstract: The pattern of zero entries in the inverse covariance matrix of a multivariate normal distribution corresponds to conditional independence restrictions between variables. Covariance selection aims at estimating those structural zeros from data. We show that neighborhood selection with the Lasso is a computationally attractive alternative to standard covariance selection for sparse high-dimensional graphs. Neighborhood selection estimates the conditional independence restrictions separately for each node in the graph and is hence equivalent to variable selection for Gaussian linear models. We show that the proposed neighborhood selection scheme is consistent for sparse high-dimensional graphs. Consistency hinges on the choice of the penalty parameter. The oracle value for optimal prediction does not lead to a consistent neighborhood estimate. Controlling instead the probability of falsely joining some distinct connectivity components of the graph, consistent estimation for sparse graphs is achieved (with exponential rates), even when the number of variables grows as the number of observations raised to an arbitrary power.
+    :description: Meinshausen & Buhlmann cov est
 
 
 .. _huge_mb: 
 
-Meinshausen & Buhlmann cov est (huge) 
-**************************************
+M&B cov est (huge) 
+*******************
 
 
 

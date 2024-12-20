@@ -65,7 +65,7 @@ def info_to_small_table():
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
     tab +="   :header-rows: 1 \n\n"
-    tab += "   * - Algorithm (source)\n" 
+    tab += "   * - Algorithm\n" 
     tab += "     - Graph\n" 
     #tab += "     - Lang.\n" 
     tab += "     - Package\n" 
@@ -86,7 +86,7 @@ def info_to_small_table():
             continue
 
         #tab += "   * - "+info["title"]+"\n"
-        tab += "   * - :ref:`{}`\n".format(p.name)
+        tab += "   * - :ref:`"+info["title"]+" <{}>`\n".format(p.name)
         tab += "     - "
         for i in range(len(info["graph_types"])):
             tab += str2link(info["graph_types"][i]) +", "
@@ -124,7 +124,27 @@ outpur_str += """.. toctree::
     :caption: Structure learning algorithms
     
 """
-for p in sorted(algspath.iterdir()):
+algs = []
+for p in algspath.iterdir():
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    infofile = p/"info.json"
+    with open(infofile) as json_file:
+        info = json.load(json_file)        
+        info["name"] = p.name
+        info["p"] = p  
+    algs.append(info)
+
+# sort by title
+algs = sorted(algs, key=lambda x: x["title"])
+
+# TNhis is the overall rst file for the algorithms page. It has all the algorithms listed for the toc 
+# tree and the overview table.
+#for p in algspath.iterdir():
+for info in algs:    
+    p = info["p"]    
     if not p.is_dir():
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":
@@ -135,6 +155,9 @@ outpur_str += content
 outpur_str += "\n\n"
 outpur_str += info_to_small_table()
 outpur_str += "\n\n"
+
+
+#### This is the modules docs files:
 for p in sorted(algspath.iterdir()):
 
     if not p.is_dir():
