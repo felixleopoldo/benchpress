@@ -13,13 +13,15 @@
 
 .. _gcastle_notears_low_rank: 
 
-gcastle_notears_low_rank 
+NO TEARS low rank (gCastle) 
 ****************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -35,8 +37,6 @@ gcastle_notears_low_rank
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 

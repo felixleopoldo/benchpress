@@ -13,13 +13,15 @@
 
 .. _gcastle_notears_nonlinear: 
 
-gcastle_notears_nonlinear 
-*****************************
+NO TEARS non-linear (gCastle) 
+******************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -35,8 +37,6 @@ gcastle_notears_nonlinear
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
 
 

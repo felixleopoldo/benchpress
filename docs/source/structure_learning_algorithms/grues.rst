@@ -13,13 +13,15 @@
 
 .. _grues: 
 
-grues 
-*********
+GrUES (gues) 
+*************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `grues <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/grues>`__
    * - Package
      - `gues <https://pypi.org/project/gues/>`__
    * - Version
@@ -35,8 +37,6 @@ grues
    * - Docker 
      - `bpimages/grues:0.3.0 <https://hub.docker.com/r/bpimages/grues/tags>`__
 
-   * - Module folder
-     - `grues <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/grues>`__
 
 
 

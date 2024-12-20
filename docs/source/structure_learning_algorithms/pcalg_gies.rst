@@ -13,13 +13,15 @@
 
 .. _pcalg_gies: 
 
-pcalg_gies 
-**************
+GIES (pcalg) 
+*************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `pcalg_gies <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ pcalg_gies
    * - Docker 
      - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module folder
-     - `pcalg_gies <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_gies>`__
 
 
 

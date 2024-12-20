@@ -13,13 +13,15 @@
 
 .. _causallearn_grasp: 
 
-causallearn_grasp 
+GRaSP (causal-learn) 
 *********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `causallearn_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causallearn_grasp>`__
    * - Package
      - `causal-learn <https://causal-learn.readthedocs.io/en/latest/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ causallearn_grasp
    * - Docker 
      - `bpimages/causal-learn:0.1.3.4 <https://hub.docker.com/r/bpimages/causal-learn/tags>`__
 
-   * - Module folder
-     - `causallearn_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causallearn_grasp>`__
 
 
 

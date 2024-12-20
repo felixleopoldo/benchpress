@@ -13,13 +13,15 @@
 
 .. _sklearn_glasso: 
 
-sklearn_glasso 
-******************
+Graphical Lasso (scikit-learn) 
+*******************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
    * - Package
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
    * - Version
@@ -35,8 +37,6 @@ sklearn_glasso
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module folder
-     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
 
 

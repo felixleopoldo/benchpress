@@ -13,13 +13,15 @@
 
 .. _trilearn_pgibbs: 
 
-trilearn_pgibbs 
-*******************
+Particle Gibbs (trilearn) 
+**************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
@@ -35,8 +37,6 @@ trilearn_pgibbs
    * - Docker 
      - `bpimages/trilearn:2.0.5 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
-   * - Module folder
-     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 
 
 

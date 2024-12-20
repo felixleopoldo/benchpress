@@ -13,13 +13,15 @@
 
 .. _bnlearn_sihitonpc: 
 
-bnlearn_sihitonpc 
-*********************
+S-I HITON-PC (bnlearn) 
+***********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_sihitonpc
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_sihitonpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_sihitonpc>`__
 
 
 

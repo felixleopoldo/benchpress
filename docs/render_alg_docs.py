@@ -6,7 +6,11 @@ import bibtexparser
 def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
 
+    tab += "   * - Module name\n"
+    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+
     if info["package"]["title"] == "":
+        
         tab += "   * - Package\n"    
         tab += "     - \n"
         tab += "   * - Version\n"
@@ -52,8 +56,7 @@ def info_to_table(info, p):
     tab += "   * - Docker \n"
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
     #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
-    tab += "   * - Module folder\n"
-    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+    
     tab += "\n"
     return tab
 
@@ -62,14 +65,14 @@ def info_to_small_table():
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
     tab +="   :header-rows: 1 \n\n"
-    tab += "   * - Algorithm\n" 
+    tab += "   * - Algorithm (source)\n" 
     tab += "     - Graph\n" 
     #tab += "     - Lang.\n" 
     tab += "     - Package\n" 
     #tab += "     - Version\n" 
     tab += "     - Module\n" 
     
-    for p in sorted(algspath.iterdir()):
+    for p in sorted(algspath.iterdir()):        
         if p.name.startswith("."):
             continue
         #print(p.name)
@@ -82,8 +85,8 @@ def info_to_small_table():
         if "in_docs" in info and info["in_docs"] is False:
             continue
 
-        #tab += "     - "+info["title"]+"\n"
-        tab += "   * - "+info["title"]+"\n"
+        #tab += "   * - "+info["title"]+"\n"
+        tab += "   * - :ref:`{}`\n".format(p.name)
         tab += "     - "
         for i in range(len(info["graph_types"])):
             tab += str2link(info["graph_types"][i]) +", "
@@ -96,7 +99,9 @@ def info_to_small_table():
         else:
             tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
         #tab += "     - "+info["version"]+"\n"
-        tab += "     - :ref:`"+p.name+"` \n"    
+        
+        tab += "     -  :ref:`{module} <{module}>`\n".format(module=p.name)    
+        #tab += "     -  :ref:`{}`\n".format(p.name)    
         
     tab += "\n"
     return tab
@@ -114,7 +119,7 @@ outpur_str += "\n\n"
 outpur_str += """.. toctree::
     :hidden:
     :glob:
-    :maxdepth: 3
+    :maxdepth: 1
     :name: Structure learning algorithms
     :caption: Structure learning algorithms
     
@@ -182,14 +187,11 @@ for p in sorted(algspath.iterdir()):
     
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
-    #module_str +="" + p.name +" - " + info["title_full"] +" \n"
+    #module_str += p.name +" HOHOHO\n"
     #module_str +="-"*len(p.name) + "-"*4 + "-"*len(info["title_full"]) + "-"*4 + "\n"
     
-
-    module_str +="" + p.name +" \n"
-    module_str +="*"*len(p.name) + "*"*4 + "\n"
-
-
+    module_str +="{} ({}) \n".format(info["title"], info["package"]["title"])
+    module_str +="*"*len(info["title"] + info["package"]["title"]) + "*"*4 + "\n"
     
     module_str += "\n"
     #module_str += ".. rubric:: "+ info["title_full"]    

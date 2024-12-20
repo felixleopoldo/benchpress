@@ -13,13 +13,15 @@
 
 .. _causaldag_gsp: 
 
-causaldag_gsp 
-*****************
+GSP (CausalDAG) 
+****************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
    * - Package
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
    * - Version
@@ -35,8 +37,6 @@ causaldag_gsp
    * - Docker 
      - `bpimages/causaldag:0.1a163 <https://hub.docker.com/r/bpimages/causaldag/tags>`__
 
-   * - Module folder
-     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
 
 

@@ -13,13 +13,15 @@
 
 .. _equsa_psilearner: 
 
-equsa_psilearner 
-********************
+Psi-learning (equSA) 
+*********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
    * - Package
      - `equSA <https://rdrr.io/cran/equSA/>`__
    * - Version
@@ -35,8 +37,6 @@ equsa_psilearner
    * - Docker 
      - `bpimages/equsa_psilearner:1.2.1 <https://hub.docker.com/r/bpimages/equsa_psilearner/tags>`__
 
-   * - Module folder
-     - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
 
 
 

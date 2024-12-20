@@ -13,13 +13,15 @@
 
 .. _huge_mb: 
 
-huge_mb 
-***********
+Meinshausen & Buhlmann cov est (huge) 
+**************************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `huge_mb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/huge_mb>`__
    * - Package
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ huge_mb
    * - Docker 
      - `bpimages/huge:1.3.5 <https://hub.docker.com/r/bpimages/huge/tags>`__
 
-   * - Module folder
-     - `huge_mb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/huge_mb>`__
 
 
 

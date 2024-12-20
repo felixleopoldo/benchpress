@@ -13,13 +13,15 @@
 
 .. _huge_tiger: 
 
-huge_tiger 
-**************
+TIGER (huge) 
+*************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `huge_tiger <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/huge_tiger>`__
    * - Package
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ huge_tiger
    * - Docker 
      - `bpimages/huge:1.3.5 <https://hub.docker.com/r/bpimages/huge/tags>`__
 
-   * - Module folder
-     - `huge_tiger <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/huge_tiger>`__
 
 
 

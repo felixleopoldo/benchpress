@@ -13,13 +13,15 @@
 
 .. _bips_tpc: 
 
-bips_tpc 
-************
+tPC (tpc) 
+**********
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
    * - Package
      - `tpc <https://github.com/bips-hb/tpc>`__
    * - Version
@@ -35,8 +37,6 @@ bips_tpc
    * - Docker 
      - `bpimages/bips_tpc:137e18be <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
 
-   * - Module folder
-     - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
 
 
 

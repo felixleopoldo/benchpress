@@ -13,13 +13,15 @@
 
 .. _pcalg_pc: 
 
-pcalg_pc 
-************
+PC (pcalg) 
+***********
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ pcalg_pc
    * - Docker 
      - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module folder
-     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
 
 
