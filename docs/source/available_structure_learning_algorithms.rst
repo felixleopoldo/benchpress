@@ -48,18 +48,18 @@ Algorithms
     structure_learning_algorithms/bidag_itsearch
     structure_learning_algorithms/huge_mb
     structure_learning_algorithms/gcastle_mcsl
+    structure_learning_algorithms/mice
     structure_learning_algorithms/bnlearn_mmhc
     structure_learning_algorithms/bnlearn_mmpc
     structure_learning_algorithms/mvpc
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/gcastle_notears
     structure_learning_algorithms/gcastle_notears_low_rank
     structure_learning_algorithms/gcastle_notears_nonlinear
     structure_learning_algorithms/bidag_order_mcmc
-    structure_learning_algorithms/pcalg_pc
-    structure_learning_algorithms/bnlearn_pcstable
-    structure_learning_algorithms/tetrad_pc
     structure_learning_algorithms/gcastle_pc
+    structure_learning_algorithms/pcalg_pc
+    structure_learning_algorithms/tetrad_pc
+    structure_learning_algorithms/bnlearn_pcstable
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/trilearn_pgibbs
     structure_learning_algorithms/bidag_partition_mcmc
@@ -69,9 +69,8 @@ Algorithms
     structure_learning_algorithms/bnlearn_rsmax2
     structure_learning_algorithms/bnlearn_sihitonpc
     structure_learning_algorithms/huge_tiger
-    structure_learning_algorithms/bnlearn_tabu
-    structure_learning_algorithms/mice
     structure_learning_algorithms/bips_tpc
+    structure_learning_algorithms/bnlearn_tabu
 
 
 Apart from the original parameters of the underlying software, each algorithm module is equipped with an additional parameter, ``timeout``, which is the maximum time in seconds allowed for the algorithm to run.
@@ -114,7 +113,7 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
      -  :ref:`bidag_partition_mcmc <bidag_partition_mcmc>`
-   * - :ref:`tPC <bips_tpc>`
+   * - :ref:`TPC <bips_tpc>`
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - `tpc <https://github.com/bips-hb/tpc>`__
      -  :ref:`bips_tpc <bips_tpc>`
@@ -266,7 +265,7 @@ To add new modules, see :ref:`new_modules`.
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `huge <https://cran.r-project.org/web/packages/huge/index.html>`__
      -  :ref:`huge_tiger <huge_tiger>`
-   * - :ref:`mice <mice>`
+   * - :ref:`MICE <mice>`
      - 
      - `mice <https://amices.org/mice/>`__
      -  :ref:`mice <mice>`

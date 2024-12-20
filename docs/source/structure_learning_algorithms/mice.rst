@@ -13,7 +13,7 @@
 
 .. _mice: 
 
-mice (mice) 
+MICE (mice) 
 ************
 
 

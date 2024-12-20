@@ -159,7 +159,7 @@ outpur_str += "\n\n"
 
 #### This is the modules docs files:
 for p in sorted(algspath.iterdir()):
-    print(p.name)
+
     if not p.is_dir():
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":

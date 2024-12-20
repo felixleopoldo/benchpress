@@ -4,16 +4,16 @@
 :og:description: This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: temporal PC (bips_tpc)
+:og:title: Temporal PC (bips_tpc)
  
 .. meta::
-    :title: temporal PC 
+    :title: Temporal PC 
     :description: This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available.
 
 
 .. _bips_tpc: 
 
-tPC (tpc) 
+TPC (tpc) 
 **********
 
 
@@ -40,11 +40,11 @@ tPC (tpc)
 
 
 
-temporal PC 
+Temporal PC 
 ---------------
 
 
-This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available. Our implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with the following additional options:
+This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available. Our implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with more :ref:`edge_constraints` supported.
 
 It also supports the Multiple Imputation for Causal Graph Discovery (micd) package.
 Which is and add-on to the R package pcalg for handling missing data in contrataint-based causal graph discovery. Supports continuous, discrete and mixed data. Two options are available: 1) gaussCItwd, disCItwd and mixCItwd perform test-wise deletion, where missing observations are deleted as necessary on a test-by-test basis; 2) gaussMItest, disMItest and mixMItest perform conditional independence tests on multiply imputed data. 
