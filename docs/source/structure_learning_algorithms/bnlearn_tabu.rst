@@ -13,13 +13,15 @@
 
 .. _bnlearn_tabu: 
 
-bnlearn_tabu 
-****************
+Tabu (bnlearn) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_tabu
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
 
 

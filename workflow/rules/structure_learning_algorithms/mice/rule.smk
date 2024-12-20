@@ -11,6 +11,10 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
+<<<<<<< HEAD
         "docker://bpimages/mice:3.17.0-ranger-amd64"
+=======
+        "docker://bpimages/mice:3.17.0-ranger"
+>>>>>>> dev
     script:
         "script.R"

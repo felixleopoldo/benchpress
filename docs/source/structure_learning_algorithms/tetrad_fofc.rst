@@ -13,13 +13,15 @@
 
 .. _tetrad_fofc: 
 
-tetrad_fofc 
-***************
+FOFC (causal-cmd) 
+******************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
@@ -35,8 +37,6 @@ tetrad_fofc
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_fofc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fofc>`__
 
 
 

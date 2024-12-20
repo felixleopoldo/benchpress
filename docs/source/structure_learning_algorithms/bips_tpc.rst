@@ -13,13 +13,15 @@
 
 .. _bips_tpc: 
 
-bips_tpc 
-************
+tPC (tpc) 
+**********
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
    * - Package
      - `tpc <https://github.com/bips-hb/tpc>`__
    * - Version
@@ -35,8 +37,6 @@ bips_tpc
    * - Docker 
      - `bpimages/bips_tpc:137e18be <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
 
-   * - Module folder
-     - `bips_tpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bips_tpc>`__
 
 
 
@@ -87,7 +87,11 @@ Each dataset contains 10000 samples and has values that are missing not at rando
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing :ref:`edge_constraints` 
 * ``indepTest`` gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest 
+<<<<<<< HEAD
 * ``input_algorithm_id`` When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice` module. It is a workaround to get imputed data. 
+=======
+* ``input_algorithm_id`` When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice <mice>` module. It is a workaround to get imputed data. 
+>>>>>>> dev
 
 
 .. rubric:: Example JSON

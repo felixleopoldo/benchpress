@@ -13,15 +13,17 @@
 
 .. _tetrad_ica-lingam: 
 
-tetrad_ica-lingam 
-*********************
+ICA-LINGAM (TETRAD) 
+********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
@@ -35,8 +37,6 @@ tetrad_ica-lingam
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_ica-lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ica-lingam>`__
 
 
 

@@ -13,13 +13,15 @@
 
 .. _bnlearn_iamb: 
 
-bnlearn_iamb 
-****************
+IAMB (bnlearn) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_iamb
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_iamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iamb>`__
 
 
 

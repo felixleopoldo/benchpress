@@ -13,15 +13,17 @@
 
 .. _gobnilp: 
 
-gobnilp 
-***********
+GOBNILP (GOBNILP) 
+******************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
    * - Package
-     - `GOBNILP (BitBucket) <https://bitbucket.org/jamescussens/gobnilp>`__
+     - `GOBNILP <https://bitbucket.org/jamescussens/gobnilp>`__
    * - Version
      - #4347c64
    * - Language
@@ -35,8 +37,6 @@ gobnilp
    * - Docker 
      - `bpimages/gobnilp:4347c64 <https://hub.docker.com/r/bpimages/gobnilp/tags>`__
 
-   * - Module folder
-     - `gobnilp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gobnilp>`__
 
 
 

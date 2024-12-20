@@ -13,13 +13,15 @@
 
 .. _bnlearn_iambfdr: 
 
-bnlearn_iambfdr 
+IAMB-FDR (bnlearn) 
 *******************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_iambfdr
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_iambfdr <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_iambfdr>`__
 
 
 

@@ -13,13 +13,15 @@
 
 .. _bnlearn_h2pc: 
 
-bnlearn_h2pc 
-****************
+H2PC (bnlearn) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_h2pc
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_h2pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_h2pc>`__
 
 
 

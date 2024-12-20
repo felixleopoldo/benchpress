@@ -13,13 +13,15 @@
 
 .. _dualpc: 
 
-dualpc 
-**********
+Dual PC (dualPC) 
+*****************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
    * - Package
      - `dualPC <https://github.com/enricogiudice/dualPC>`__
    * - Version
@@ -35,8 +37,6 @@ dualpc
    * - Docker 
      - `bpimages/dualpc:585751b <https://hub.docker.com/r/bpimages/dualpc/tags>`__
 
-   * - Module folder
-     - `dualpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/dualpc>`__
 
 
 

@@ -13,13 +13,15 @@
 
 .. _prec_thresh: 
 
-prec_thresh 
-***************
+Precmat thresh (Benchpress) 
+****************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
    * - Package
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
    * - Version
@@ -35,8 +37,6 @@ prec_thresh
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module folder
-     - `prec_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/prec_thresh>`__
 
 
 

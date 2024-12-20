@@ -13,15 +13,17 @@
 
 .. _athomas_jtsamplers: 
 
-athomas_jtsamplers 
-**********************
+Chordal graph samplers (A. Thomas) 
+***********************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
    * - Package
-     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
+     - `A. Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
    * - Version
      - 76ad20e
    * - Language
@@ -35,8 +37,6 @@ athomas_jtsamplers
    * - Docker 
      - `bpimages/athomas_jtsamplers:9eb505f <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
 
-   * - Module folder
-     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
 
 
 

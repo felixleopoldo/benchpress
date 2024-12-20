@@ -13,15 +13,17 @@
 
 .. _tetrad_ftfc: 
 
-tetrad_ftfc 
-***************
+FTFC (TETRAD) 
+**************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
@@ -35,8 +37,6 @@ tetrad_ftfc
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_ftfc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_ftfc>`__
 
 
 

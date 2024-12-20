@@ -3,7 +3,7 @@
     "docker_image": "bpimages/gobnilp:4347c64",
     "version": "#4347c64",
     "package": {
-        "title": "GOBNILP (BitBucket)",
+        "title": "GOBNILP",
         "url": "https://bitbucket.org/jamescussens/gobnilp"
     },
     "docs_url": "https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf",

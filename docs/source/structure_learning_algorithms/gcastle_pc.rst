@@ -13,13 +13,15 @@
 
 .. _gcastle_pc: 
 
-gcastle_pc 
-**************
+PC (gCastle) 
+*************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -35,8 +37,6 @@ gcastle_pc
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 

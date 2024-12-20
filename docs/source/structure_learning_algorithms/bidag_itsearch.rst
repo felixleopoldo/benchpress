@@ -13,13 +13,15 @@
 
 .. _bidag_itsearch: 
 
-bidag_itsearch 
-******************
+Iterative MCMC (BiDAG) 
+***********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ bidag_itsearch
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module folder
-     - `bidag_itsearch <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_itsearch>`__
 
 
 

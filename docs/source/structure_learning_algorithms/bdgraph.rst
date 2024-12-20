@@ -13,13 +13,15 @@
 
 .. _bdgraph: 
 
-bdgraph 
-***********
+BDgraph (BDgraph) 
+******************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
    * - Package
      - `BDgraph <https://cran.r-project.org/web/packages/BDgraph/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ bdgraph
    * - Docker 
      - `bpimages/bdgraph:2.72.0 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 
-   * - Module folder
-     - `bdgraph <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bdgraph>`__
 
 
 

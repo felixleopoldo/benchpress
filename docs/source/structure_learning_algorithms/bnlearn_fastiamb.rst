@@ -13,13 +13,15 @@
 
 .. _bnlearn_fastiamb: 
 
-bnlearn_fastiamb 
+Fast IAMB (bnlearn) 
 ********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_fastiamb
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_fastiamb <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_fastiamb>`__
 
 
 

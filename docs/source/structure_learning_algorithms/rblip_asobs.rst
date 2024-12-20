@@ -13,13 +13,15 @@
 
 .. _rblip_asobs: 
 
-rblip_asobs 
+ASOBS (r.blip) 
 ***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
    * - Package
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ rblip_asobs
    * - Docker 
      - `bpimages/rblip:1.1 <https://hub.docker.com/r/bpimages/rblip/tags>`__
 
-   * - Module folder
-     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
 
 

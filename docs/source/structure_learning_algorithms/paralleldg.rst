@@ -13,13 +13,15 @@
 
 .. _paralleldg: 
 
-paralleldg 
-**************
+Parallel DG (parallelDG) 
+*************************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
    * - Package
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
    * - Version
@@ -35,8 +37,6 @@ paralleldg
    * - Docker 
      - `hallawalla/paralleldg:0.9.5 <https://hub.docker.com/r/hallawalla/paralleldg/tags>`__
 
-   * - Module folder
-     - `paralleldg <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/paralleldg>`__
 
 
 

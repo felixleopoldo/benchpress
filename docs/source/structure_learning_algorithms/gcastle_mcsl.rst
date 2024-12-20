@@ -13,13 +13,15 @@
 
 .. _gcastle_mcsl: 
 
-gcastle_mcsl 
-****************
+MCSL (gCastle) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -35,8 +37,6 @@ gcastle_mcsl
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 

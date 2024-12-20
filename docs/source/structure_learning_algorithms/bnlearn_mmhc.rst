@@ -13,13 +13,15 @@
 
 .. _bnlearn_mmhc: 
 
-bnlearn_mmhc 
-****************
+MMHC (bnlearn) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_mmhc
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
 
 

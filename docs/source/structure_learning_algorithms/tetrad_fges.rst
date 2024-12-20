@@ -13,13 +13,15 @@
 
 .. _tetrad_fges: 
 
-tetrad_fges 
-***************
+FGES (causal-cmd) 
+******************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
    * - Package
      - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
@@ -35,8 +37,6 @@ tetrad_fges
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
 
 

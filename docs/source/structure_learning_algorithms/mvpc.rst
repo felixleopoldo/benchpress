@@ -13,13 +13,15 @@
 
 .. _mvpc: 
 
-mvpc 
-********
+MVPC (MVPC) 
+************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `mvpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mvpc>`__
    * - Package
      - `MVPC <https://github.com/felixleopoldo/MVPC>`__
    * - Version
@@ -35,8 +37,6 @@ mvpc
    * - Docker 
      - `bpimages/mvpc:d901361 <https://hub.docker.com/r/bpimages/mvpc/tags>`__
 
-   * - Module folder
-     - `mvpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/mvpc>`__
 
 
 

@@ -13,13 +13,15 @@
 
 .. _bnlearn_mmpc: 
 
-bnlearn_mmpc 
-****************
+MMPC (bnlearn) 
+***************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -35,8 +37,6 @@ bnlearn_mmpc
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_mmpc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmpc>`__
 
 
 

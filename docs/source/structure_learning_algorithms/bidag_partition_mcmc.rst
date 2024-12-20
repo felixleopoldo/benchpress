@@ -13,13 +13,15 @@
 
 .. _bidag_partition_mcmc: 
 
-bidag_partition_mcmc 
-************************
+Partition MCMC (BiDAG) 
+***********************
 
 
 
 .. list-table:: 
 
+   * - Module name
+     - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
    * - Package
      - `BiDAG <https://cran.r-project.org/web/packages/BiDAG/index.html>`__
    * - Version
@@ -35,8 +37,6 @@ bidag_partition_mcmc
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 
-   * - Module folder
-     - `bidag_partition_mcmc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bidag_partition_mcmc>`__
 
 
 
