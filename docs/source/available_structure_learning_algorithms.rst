@@ -27,6 +27,7 @@ Algorithms
     structure_learning_algorithms/bnlearn_fastiamb
     structure_learning_algorithms/gcastle_gae
     structure_learning_algorithms/pcalg_gies
+    structure_learning_algorithms/sklearn_glasso
     structure_learning_algorithms/huge_glasso
     structure_learning_algorithms/gobnilp
     structure_learning_algorithms/gcastle_golem
@@ -35,7 +36,6 @@ Algorithms
     structure_learning_algorithms/causaldag_gsp
     structure_learning_algorithms/grues
     structure_learning_algorithms/gcastle_grandag
-    structure_learning_algorithms/sklearn_glasso
     structure_learning_algorithms/bnlearn_gs
     structure_learning_algorithms/bnlearn_h2pc
     structure_learning_algorithms/bnlearn_hc
@@ -294,7 +294,7 @@ To add new modules, see :ref:`new_modules`.
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
      -  :ref:`rblip_asobs <rblip_asobs>`
-   * - :ref:`Graphical Lasso <sklearn_glasso>`
+   * - :ref:`GLasso <sklearn_glasso>`
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
      -  :ref:`sklearn_glasso <sklearn_glasso>`

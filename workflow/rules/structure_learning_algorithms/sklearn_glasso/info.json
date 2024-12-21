@@ -1,5 +1,5 @@
 {
-    "title": "Graphical Lasso",
+    "title": "GLasso",
     "version": "0.22.1",
     "package": {
         "title": "scikit-learn",

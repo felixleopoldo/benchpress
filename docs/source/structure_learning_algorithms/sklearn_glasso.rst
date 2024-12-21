@@ -1,20 +1,20 @@
 
 
 
-:og:description: 
+:og:description: Graphical Lasso
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
 :og:title: Graphical Lasso (sklearn_glasso)
  
 .. meta::
     :title: Graphical Lasso 
-    :description: 
+    :description: Graphical Lasso
 
 
 .. _sklearn_glasso: 
 
-Graphical Lasso (scikit-learn) 
-*******************************
+GLasso (scikit-learn) 
+**********************
 
 
 
