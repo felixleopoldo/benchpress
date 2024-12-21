@@ -4,7 +4,7 @@
 :og:description: Meinshausen & Buhlmann cov est
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Meinshausen & Buhlmann cov est (huge_mb)
+:og:title: Meinshausen & Buhlmann cov est (M&B cov est)
  
 .. meta::
     :title: Meinshausen & Buhlmann cov est 
@@ -34,6 +34,12 @@ M&B cov est (huge)
      - :footcite:t:`zhao2012huge`, :footcite:t:`10.1214/009053606000000281`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/huge:1.3.5 <https://hub.docker.com/r/bpimages/huge/tags>`__
 

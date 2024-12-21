@@ -4,7 +4,7 @@
 :og:description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GAE (gcastle_gae)
+:og:title: GAE (GAE)
  
 .. meta::
     :title: GAE 
@@ -34,6 +34,12 @@ GAE (gCastle)
      - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

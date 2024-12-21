@@ -4,7 +4,7 @@
 :og:description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: MCSL (gcastle_mcsl)
+:og:title: MCSL (MCSL)
  
 .. meta::
     :title: MCSL 
@@ -34,6 +34,12 @@ MCSL (gCastle)
      - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

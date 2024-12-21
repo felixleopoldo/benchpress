@@ -4,7 +4,7 @@
 :og:description: MVPC extends the PC algorithm to incorporate additional corrections for missing values of type missing at random (MAR) and missing not at random (MNAR).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Missing Value PC (mvpc)
+:og:title: Missing Value PC (MVPC)
  
 .. meta::
     :title: Missing Value PC 
@@ -34,6 +34,12 @@ MVPC (MVPC)
      - :footcite:t:`tu2019causal`, :footcite:t:`tu2020causald`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Data type
+     - C, D
+   * - Data missingness
+     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MNAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MCAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/mvpc:d901361 <https://hub.docker.com/r/bpimages/mvpc/tags>`__
 

@@ -15,8 +15,8 @@
     ],
     "language": "Java",
     "title_full": "Chordal graph samplers",
-    "meta_description": "Chordal graph samplers",
-    "data_types": [],
-    "data_missingess": [],
+    "meta_description": "Chordal graph samplers based on junction trees and MCMC.",
+    "data_types": ["continuous", "discrete"],
+    "data_missingness": [],
     "intervention_types": []
 }

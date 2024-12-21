@@ -17,8 +17,9 @@
         "discrete",
         "mixed"
     ],
-    "data_missingess": [
-        "MCAR"
+    "data_missingness": [
+        "MAR"
     ],
+    "intervention_types": [],
     "language": "R"
 }

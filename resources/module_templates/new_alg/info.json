@@ -17,7 +17,7 @@
         "discrete",
         "mixed"
     ],
-    "data_missingess": [
+    "data_missingness": [
         "MCAR"
     ],
     "language": "R"

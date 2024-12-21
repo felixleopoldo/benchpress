@@ -4,7 +4,7 @@
 :og:description: This technique relies on a Bayesian perspective on structure learning, where the score of a DAG is defined as its posterior distribution. To overcome the limitation of simple structure-based MCMC schemes, :footcite:t:`friedman2003being` turned to a score defined as the sum of the posterior scores of all DAG which are consistent with a given topological ordering of the nodes. One can then run a Metropolis-Hasting algorithm to sample from the distribution induced by the order score, and later draw a DAG consistent with the order. This strategy substantially improves convergence with respect to earlier structure MCMC scheme, though it unfortunately produces a biased sample on the space of DAGs. The implementation considered in Benchpress is a hybrid version with the sampling performed on a restricted search space initialised with constraint-based testing and improved with a score-based search :footcite:t:`doi:10.1080/10618600.2021.2020127`.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Order MCMC (bidag_order_mcmc)
+:og:title: Order MCMC (Order MCMC)
  
 .. meta::
     :title: Order MCMC 
@@ -34,6 +34,12 @@ Order MCMC (BiDAG)
      - :footcite:t:`friedman2003being`, :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bidag:2.1.4 <https://hub.docker.com/r/bpimages/bidag/tags>`__
 

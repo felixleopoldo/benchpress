@@ -4,7 +4,7 @@
 :og:description: Estimates sparse graphs by a lasso penalty applied to the inverse covariance matrix.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Graphical lasso (huge_glasso)
+:og:title: Graphical lasso (GLasso)
  
 .. meta::
     :title: Graphical lasso 
@@ -34,6 +34,12 @@ GLasso (huge)
      - :footcite:t:`zhao2012huge`, :footcite:t:`friedman2008sparse`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/huge:1.3.5 <https://hub.docker.com/r/bpimages/huge/tags>`__
 

@@ -4,7 +4,7 @@
 :og:description: Nonlinear causal discovery with additive noise models.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: ANM (gcastle_anm)
+:og:title: ANM (ANM)
  
 .. meta::
     :title: ANM 
@@ -34,6 +34,12 @@ ANM (gCastle)
      - :footcite:t:`hoyer2008nonlinear`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

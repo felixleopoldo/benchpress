@@ -4,7 +4,7 @@
 :og:description: BDgraph performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables using MCMC.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: BDgraph (bdgraph)
+:og:title: BDgraph (BDgraph)
  
 .. meta::
     :title: BDgraph 
@@ -34,6 +34,12 @@ BDgraph (BDgraph)
      - :footcite:t:`JSSv089i03`, :footcite:t:`mohammadi2015bayesian`, :footcite:t:`doi:10.1080/01621459.2021.1996377`, :footcite:t:`10.1214/18-AOAS1164`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - `MCAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bdgraph:2.72.0 <https://hub.docker.com/r/bpimages/bdgraph/tags>`__
 

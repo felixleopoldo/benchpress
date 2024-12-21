@@ -13,9 +13,9 @@
         "DAG"
     ],
     "language": "java",
-    "title_full": "FTFC",
-    "meta_description": "FTFC",
-    "data_types": [],
-    "data_missingess": [],
+    "title_full": "Find Two Factor Clusters",
+    "meta_description": "FTFC (Find Two Factor Clusters) is similar to FOFC, but instead of each cluster having one latent that is the parent of all of the measure in the cluster, it instead has two such latents.",
+    "data_types": ["continuous", "discrete"],
+    "data_missingness": [],
     "intervention_types": []
 }

@@ -4,7 +4,7 @@
 :og:description: This score-based method recasts the combinatorial problem of estimating a DAG into a purely continuous non-convex optimization problem over real matrices with a smooth constraint to ensure acyclicity.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: NO TEARS (gcastle_notears)
+:og:title: NO TEARS (NO TEARS)
  
 .. meta::
     :title: NO TEARS 
@@ -34,6 +34,12 @@ NO TEARS (gCastle)
      - :footcite:t:`NEURIPS2018_e347c514`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

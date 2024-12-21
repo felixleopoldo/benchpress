@@ -13,7 +13,7 @@
     "language": "R",
     "title_full": "Meinshausen & Buhlmann cov est",
     "meta_description": "Meinshausen & Buhlmann cov est",
-    "data_types": [],
-    "data_missingess": [],
+    "data_types": ["continuous"],
+    "data_missingness": [],
     "intervention_types": []
 }

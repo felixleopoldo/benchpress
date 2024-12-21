@@ -4,7 +4,7 @@
 :og:description: 
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: IAMB (bnlearn_iamb)
+:og:title: IAMB (IAMB)
  
 .. meta::
     :title: IAMB 
@@ -34,6 +34,12 @@ IAMB (bnlearn)
      - :footcite:t:`tsamardinos2003algorithms`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

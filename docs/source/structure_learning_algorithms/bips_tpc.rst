@@ -4,7 +4,7 @@
 :og:description: This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Temporal PC (bips_tpc)
+:og:title: Temporal PC (TPC)
  
 .. meta::
     :title: Temporal PC 
@@ -34,6 +34,12 @@ TPC (tpc)
      - :footcite:t:`andrews2023practicalguidecausaldiscovery`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bips_tpc:137e18be <https://hub.docker.com/r/bpimages/bips_tpc/tags>`__
 

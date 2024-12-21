@@ -4,7 +4,7 @@
 :og:description: mice data imputation for the temporal PC algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Multivariate Imputation by Chained Equations (mice)
+:og:title: Multivariate Imputation by Chained Equations (MICE)
  
 .. meta::
     :title: Multivariate Imputation by Chained Equations 
@@ -33,6 +33,12 @@ MICE (mice)
    * - Paper
      - :footcite:t:`mice`
    * - Graph type
+     - 
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
      - 
    * - Docker 
      - `bpimages/mice:3.17.0-ranger <https://hub.docker.com/r/bpimages/mice/tags>`__

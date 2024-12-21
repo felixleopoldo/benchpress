@@ -4,7 +4,7 @@
 :og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: RL (gcastle_rl)
+:og:title: RL (RL)
  
 .. meta::
     :title: RL 
@@ -34,6 +34,12 @@ RL (gCastle)
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.04477`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

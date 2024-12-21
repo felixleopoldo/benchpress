@@ -4,7 +4,7 @@
 :og:description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GOLEM (gcastle_golem)
+:og:title: GOLEM (GOLEM)
  
 .. meta::
     :title: GOLEM 
@@ -34,6 +34,12 @@ GOLEM (gCastle)
      - :footcite:t:`NEURIPS2020_d04d42cd`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

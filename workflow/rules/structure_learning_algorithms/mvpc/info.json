@@ -13,7 +13,7 @@
     "language": "R",
     "title_full": "Missing Value PC",
     "meta_description": "MVPC extends the PC algorithm to incorporate additional corrections for missing values of type missing at random (MAR) and missing not at random (MNAR).",
-    "data_types": [],
-    "data_missingess": [],
+    "data_types": ["continuous", "discrete"],
+    "data_missingness": ["MAR", "MNAR", "MCAR"],
     "intervention_types": []
 }

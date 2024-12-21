@@ -4,7 +4,7 @@
 :og:description: A classic causal discovery algorithm based on conditional independence tests.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: PC (gcastle_pc)
+:og:title: PC (PC)
  
 .. meta::
     :title: PC 
@@ -34,6 +34,12 @@ PC (gCastle)
      - :footcite:t:`kalisch2007estimating`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

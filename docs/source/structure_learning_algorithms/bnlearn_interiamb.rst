@@ -4,7 +4,7 @@
 :og:description: As in GS, this algorithm is also based on the Markov blanket method to first determine the undirected skeleton. However, in incremental association Markov blanket (inter-IAMB) the variable to be included in the Markov blankets are not considered in static order as in GS and the forward-backward stages are combined into a single procedure, which has the effect of reducing the size of the blankets.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: INTER-IAMB (bnlearn_interiamb)
+:og:title: INTER-IAMB (INTER-IAMB)
  
 .. meta::
     :title: INTER-IAMB 
@@ -34,6 +34,12 @@ INTER-IAMB (bnlearn)
      - :footcite:t:`1565788`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

@@ -17,6 +17,6 @@
     "title_full": "Fast IAMB",
     "meta_description": "A variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.",
     "data_types": ["continuous", "discrete"],
-    "data_missingess": [],
+    "data_missingness": [],
     "intervention_types": []
 }

@@ -4,7 +4,7 @@
 :og:description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: CORL (gcastle_corl)
+:og:title: CORL (CORL)
  
 .. meta::
     :title: CORL 
@@ -34,6 +34,12 @@ CORL (gCastle)
      - :footcite:t:`wang2021ordering`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

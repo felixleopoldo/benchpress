@@ -4,7 +4,7 @@
 :og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GRaSP (causallearn_grasp)
+:og:title: GRaSP (GRaSP)
  
 .. meta::
     :title: GRaSP 
@@ -34,6 +34,12 @@ GRaSP (causal-learn)
      - :footcite:t:`lam2022greedy`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/causal-learn:0.1.3.4 <https://hub.docker.com/r/bpimages/causal-learn/tags>`__
 

@@ -4,7 +4,7 @@
 :og:description: An ICA-based learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: ICALiNGAM (gcastle_ica_lingam)
+:og:title: ICALiNGAM (ICALiNGAM)
  
 .. meta::
     :title: ICALiNGAM 
@@ -34,6 +34,12 @@ ICALiNGAM (gCastle)
      - :footcite:t:`10.5555/1248547.1248619`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - Data type
+     - 
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

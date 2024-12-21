@@ -53,6 +53,27 @@ def info_to_table(info, p):
         tab += str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
+    tab += "   * - Data type\n"
+    tab += "     - "
+    if len(info["data_types"]) > 0:
+        for i in range(len(info["data_types"])):
+            tab += str2link(info["data_types"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
+    tab += "   * - Data missingness\n"
+    tab += "     - "
+    if len(info["data_missingness"]) > 0:
+        for i in range(len(info["data_missingness"])):
+            tab += str2link(info["data_missingness"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
+    tab += "   * - Intervention type\n"
+    tab += "     - "
+    if len(info["intervention_types"]) > 0:
+        for i in range(len(info["intervention_types"])):
+            tab += str2link(info["intervention_types"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
     tab += "   * - Docker \n"
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
     #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
@@ -60,6 +81,7 @@ def info_to_table(info, p):
     tab += "\n"
     return tab
 
+# This is the table with allr the algorithms
 def info_to_small_table():
     algspath = Path("../workflow/rules/structure_learning_algorithms")
     tab = ""
@@ -67,15 +89,33 @@ def info_to_small_table():
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
     tab += "     - Graph\n" 
-    #tab += "     - Lang.\n" 
+    tab += "     - Data\n" 
+    tab += "     - Data missingness\n" 
+    tab += "     - Intervention type\n"
     tab += "     - Package\n" 
-    #tab += "     - Version\n" 
     tab += "     - Module\n" 
     
-    for p in sorted(algspath.iterdir()):        
+    
+    # sort by title
+    algs = []
+    for p in algspath.iterdir():
+        if not p.is_dir():
+            continue
+        if p.name == "docs.rst" or p.name == ".DS_Store":
+            continue
+        infofile = p/"info.json"
+        with open(infofile) as json_file:
+            info = json.load(json_file)        
+            info["name"] = p.name
+            info["p"] = p  
+        algs.append(info)
+    
+    #for p in sorted(algspath.iterdir()):        
+    for alg in sorted(algs, key=lambda x: x["title"]):  
+        p = alg["p"]
         if p.name.startswith("."):
             continue
-        #print(p.name)
+
         j = p/"info.json"
         if p.name == "docs.rst" or p.name == ".DS_Store":
             continue
@@ -90,9 +130,36 @@ def info_to_small_table():
         tab += "     - "
         for i in range(len(info["graph_types"])):
             tab += str2link(info["graph_types"][i]) +", "
-        tab = tab[:-2]
-        
+        tab = tab[:-2]        
         tab += "\n"
+        # Data types:
+        tab += "     - "
+        if len(info["data_types"]) > 0:
+            for i in range(len(info["data_types"])):
+                tab += str2link(info["data_types"][i]) +", "
+            tab = tab[:-2]
+        else:
+            tab += "\-"        
+        tab += "\n"
+        # Data missingness:
+        tab += "     - "
+        if len(info["data_missingness"]) > 0:
+            for i in range(len(info["data_missingness"])):
+                tab += str2link(info["data_missingness"][i]) +", "
+            tab = tab[:-2]
+        else:
+            tab += "\-"        
+        tab += "\n"
+        # Intervention types:
+        tab += "     - "
+        if len(info["intervention_types"]) > 0:
+            for i in range(len(info["intervention_types"])):
+                tab += str2link(info["intervention_types"][i])+", "
+            tab = tab[:-2]
+        else:
+            tab += ""        
+        tab += "\n"
+        
         #tab += "     - "+info["language"]+"\n"
         if info["package"]["title"] == "":
             tab += "     - \n"
@@ -104,6 +171,8 @@ def info_to_small_table():
         #tab += "     -  :ref:`{}`\n".format(p.name)    
         
     tab += "\n"
+    # translate the C, D, M, B,
+    #tab +="C: continuous, D: discrete, M: mixed, B: binary, MCAR: missing completely at random \n\n"
     return tab
 
 algspath = Path("../workflow/rules/structure_learning_algorithms")
@@ -206,7 +275,7 @@ for p in sorted(algspath.iterdir()):
 .. meta::
     :title: {title_full} 
     :description: {desc}
-""".format(desc=meta_description, title_full=info["title_full"], title=p.name) 
+""".format(desc=meta_description, title_full=info["title_full"], title=info["title"]) 
     
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
