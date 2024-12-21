@@ -88,12 +88,14 @@ def info_to_small_table():
     tab += ".. list-table:: \n"#+p.name+"\n\n"
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
+    tab += "     - Package\n" 
+    #tab += "     - Module\n" 
     tab += "     - Graph\n" 
     tab += "     - Data\n" 
     tab += "     - Data missingness\n" 
     tab += "     - Intervention type\n"
-    tab += "     - Package\n" 
-    tab += "     - Module\n" 
+    
+
     
     
     # sort by title
@@ -110,7 +112,6 @@ def info_to_small_table():
             info["p"] = p  
         algs.append(info)
     
-    #for p in sorted(algspath.iterdir()):        
     for alg in sorted(algs, key=lambda x: x["title"]):  
         p = alg["p"]
         if p.name.startswith("."):
@@ -125,13 +126,21 @@ def info_to_small_table():
         if "in_docs" in info and info["in_docs"] is False:
             continue
 
-        #tab += "   * - "+info["title"]+"\n"
         tab += "   * - :ref:`"+info["title"]+" <{}>`\n".format(p.name)
+                # package:
+        if info["package"]["title"] == "":
+            tab += "     - \n"
+        else:
+            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
+        # module:        
+        #tab += "     -  :ref:`{module} <{module}>`\n".format(module=p.name)    
+
         tab += "     - "
         for i in range(len(info["graph_types"])):
             tab += str2link(info["graph_types"][i]) +", "
         tab = tab[:-2]        
         tab += "\n"
+        
         # Data types:
         tab += "     - "
         if len(info["data_types"]) > 0:
@@ -159,16 +168,8 @@ def info_to_small_table():
         else:
             tab += ""        
         tab += "\n"
-        
-        #tab += "     - "+info["language"]+"\n"
-        if info["package"]["title"] == "":
-            tab += "     - \n"
-        else:
-            tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
-        #tab += "     - "+info["version"]+"\n"
-        
-        tab += "     -  :ref:`{module} <{module}>`\n".format(module=p.name)    
-        #tab += "     -  :ref:`{}`\n".format(p.name)    
+
+    
         
     tab += "\n"
     # translate the C, D, M, B,
