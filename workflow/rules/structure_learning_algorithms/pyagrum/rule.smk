@@ -8,6 +8,6 @@ rule:
         time = alg_output_time_path(module_name),
         ntests = alg_output_ntests_path(module_name)
     container:
-        "docker://bpimages/pyagrum:1.14.0-arm64" 
+        "docker://bpimages/pyagrum:1.14.0" 
     script:
         "script.py"
