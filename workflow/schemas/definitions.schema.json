@@ -1,51 +1,6 @@
 {
     "definitions": {
-        "notears_parameters_sampling": {
-            "title": "notears_parameters_sampling item",
-            "description": "Notears parameter sampling for Gaissian Bayesian networks. This requires that the adjaceny_matrix (graph) is of type notears_dag_sampling",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "edge_coefficient_range_from": {
-                    "$ref": "#/definitions/nonnegnum"
-                },
-                "edge_coefficient_range_to": {
-                    "$ref": "#/definitions/nonnegnum"
-                }
-            }
-        },
-        "notears_dag_sampling": {
-            "title": "notears_dag_sampling item",
-            "description": "Graph sampling method provided by the notears package. \n Documentation: https://github.com/jmoss20/notears",
-            "properties": {
-                "id": {
-                    "title": "ID",
-                    "type": "string"
-                },
-                "num_nodes": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "num_edges": {
-                    "$ref": "#/definitions/flexnonnegint"
-                },
-                "mean": {
-                    "title": "Mean",
-                    "type": "number"
-                },
-                "variance": {
-                    "title": "Variance",
-                    "type": "number"
-                }
-            },
-            "required": [
-                "id",
-                "num_nodes",
-                "num_edges"
-            ],
-            "additionalProperties": false
-        },
+
         "data_setup_dict": {
             "type": "object",
             "title": "data item",

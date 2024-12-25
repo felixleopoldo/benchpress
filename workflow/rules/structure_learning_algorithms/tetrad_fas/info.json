@@ -2,7 +2,7 @@
     "title": "FAS",
     "version": "1.10.0",
     "package": {
-        "title": "causal-cmd",
+        "title": "TETRAD",
         "url": "https://github.com/bd2kccd/causal-cmd"
     },
     "docs_url": "https://cmu-phil.github.io/tetrad/manual/#search_box",
@@ -13,5 +13,15 @@
         "UG"
     ],
     "language": "java",
-    "in_docs": false
+    "in_docs": false,
+    "title_full": "FAS",
+    "meta_description": "FAS",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

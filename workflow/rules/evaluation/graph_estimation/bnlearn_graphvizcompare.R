@@ -110,7 +110,7 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
                 print("Writing empty file.")
                 file.create(snakemake@output[["filename"]])
               }, finally={
-                print("Finally who cares")
+                #print("Finally who cares")
               })
 }
 

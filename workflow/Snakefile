@@ -7,6 +7,7 @@ import shutil
 import filecmp
 from pathlib import Path
 import os
+import random
 
 include: "rules/helper_functions.py"
 
@@ -65,20 +66,25 @@ for p in Path("workflow/rules/data/").iterdir():
         "$ref": "../rules/data/{}/schema.json".format(p.name)
     }
 
+# Write the definitions
+# Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["properties"]["benchmark_setup"]["properties"][
-        "evaluation"
-    ]["properties"]
-
+    item = schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
         "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
     }
 
-# Yes this is a hack to use snakemakes built in validator.
-with open("workflow/schemas/tmp.config.schema.json", "w") as outfile:
-    outfile.write(json.dumps(schema, indent=4))
 
-snakemake.utils.validate(config, "schemas/tmp.config.schema.json")
+# Yes this is a hack. But it works probably. Any better ideas?
+# Generate random hash for the temporary schema file
+tmp_hash = random.getrandbits(128)
+tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
+with open("workflow/"+tmp_schema, "w") as outfile:
+    outfile.write(json.dumps(schema, indent=4))
+snakemake.utils.validate(config, tmp_schema)
+# remove the temporary schema file
+os.remove("workflow/"+tmp_schema)
+
 
 include: "rules/docker_images.smk"
 
@@ -88,13 +94,6 @@ rule all:
     input:
         get_active_rules,
 
-rule copy_configs:
-    input: 
-        "config/"
-    output:
-        directory("config/copies")
-    shell:
-        "cp -r {input} {output}"
 
 # Read which modules are MCMC module (have graphtraj output).
 mcmc_modules = []
@@ -155,9 +154,9 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
                     input:
                         traj=alg_output_seqgraph_path_fine_match(p.name),
                     output:
-                        adjmat=adjmat_estimate_path_mcmc(p.name),  # here is the difference from order_mcmc. matching diffferently.
+                        adjmat=adjmat_estimate_path_mcmc(p.name)
                     params:
-                        graph_type="chordal",
+                        graph_type="chordal", # not used
                         estimator="{mcmc_estimator}",
                         threshold="{threshold}",
                         burnin_frac="{burnin_frac}",
@@ -168,11 +167,27 @@ for p in Path("workflow/rules/structure_learning_algorithms/").glob("[!.]*"):
 # Include the evaluation modules
 
 for p in Path("workflow/rules/evaluation/").glob("[!.]*"):
-    if p.name not in config["benchmark_setup"]["evaluation"]:
-        continue
-    if (p / "rules.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rules.smk")
+    for bmark_setup in config["benchmark_setup"]: # Maybe includes same module multiple times
+        if p.name not in bmark_setup["evaluation"]:
+            continue
+        if (p / "rules.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rules.smk")
+        elif (p / "rule.smk").is_file():
+            include: Path("rules/evaluation/", p.name, "rule.smk")
 
-
-    elif (p / "rule.smk").is_file():
-        include: Path("rules/evaluation/", p.name, "rule.smk")
+# This one should thake the dataset as well, just to be able to
+# ignore constrains including variables not in the dataset.
+# Amaaybe inclue alg_input_data() in the path somehow?
+rule convert_edge_constraints:
+    input:
+        edgeConstraints="resources/constraints/{edgeConstraints}",
+        data=alg_input_data()
+    output:
+        #edgeConstraints_in_format="resources/constraints/{edgeConstraints}-{package}"
+        edgeConstraints_in_format=temp("resources/constraints/data=/"+alg_input_data()+"/{edgeConstraints}-{package}")
+    wildcard_constraints:
+        edgeConstraints=r".*\.json"
+    params:
+        package = "{package}"
+    script:
+        "scripts/utils/convert_edge_constraints_all.R"

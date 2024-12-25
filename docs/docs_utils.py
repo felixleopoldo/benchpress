@@ -23,9 +23,15 @@ def str2link(s):
     if s == "C":
         return "`C <https://en.wikipedia.org/wiki/C_(programming_language)>`__"
     if s == "continuous":
-        return "cont"
+        return "C"
     if s == "binary":
-        return "bin"
+        return "B"
+    if s == "mixed":
+        return "M"
+    if s == "discrete":
+        return "D"
+    if s in ["MNAR","MCAR","MAR"]:
+        return "`"+s+" <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__"
     if s == "interventional":
         return "interv"
     return s

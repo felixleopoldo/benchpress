@@ -1,14 +1,27 @@
 
 
+
+:og:description: Learning decomposable graphs using Particle Gibbs sampler.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Particle Gibbs (trilearn)
+ 
+.. meta::
+    :title: Particle Gibbs (trilearn)
+    :description: Learning decomposable graphs using Particle Gibbs sampler.
+
+
 .. _trilearn_pgibbs: 
 
-trilearn_pgibbs 
--------------------
+Particle Gibbs (trilearn) 
+**************************
 
-.. rubric:: Particle Gibbs
+
 
 .. list-table:: 
 
+   * - Module name
+     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
    * - Package
      - `trilearn <https://github.com/felixleopoldo/trilearn>`__
    * - Version
@@ -21,15 +34,25 @@ trilearn_pgibbs
      - :footcite:t:`10.1214/19-EJS1585`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/trilearn:2.0.5 <https://hub.docker.com/r/bpimages/trilearn/tags>`__
 
-   * - Module folder
-     - `trilearn_pgibbs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/trilearn_pgibbs>`__
 
 
 
-.. rubric:: Description
+Particle Gibbs 
+------------------
+
 
 Abstract: We present a sequential sampling methodology for weakly structural Markov laws, arising naturally in a Bayesian structure learning context for decomposable graphical models. As a key component of our sug-
 gested approach, we show that the problem of graph estimation, which in

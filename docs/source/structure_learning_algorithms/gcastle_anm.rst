@@ -1,14 +1,27 @@
 
 
+
+:og:description: Nonlinear causal discovery with additive noise models.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: ANM (gCastle)
+ 
+.. meta::
+    :title: ANM (gCastle)
+    :description: Nonlinear causal discovery with additive noise models.
+
+
 .. _gcastle_anm: 
 
-gcastle_anm 
----------------
+ANM (gCastle) 
+**************
 
-.. rubric:: ANM
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -21,15 +34,25 @@ gcastle_anm
      - :footcite:t:`hoyer2008nonlinear`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_anm <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_anm>`__
 
 
 
-.. rubric:: Description
+ANM 
+-------
+
 
 Nonlinear causal discovery with additive noise models.
 

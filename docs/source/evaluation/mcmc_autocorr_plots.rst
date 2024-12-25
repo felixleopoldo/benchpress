@@ -42,6 +42,9 @@ This module plots the auto-correlation of a functional of the graphs in a MCMC t
     Auto-correlation of the scores in trajectory of order MCMC for differnt algorithm seeds and parameter settings.
 
 
+.. note:: 
+    
+    Bug fix: For this to run, the ``mcmc_traj_plots`` module should also be present in the evaluation section. E.g. ``mcmc_traj_plots=[]``. 
 
 .. rubric:: Example
 

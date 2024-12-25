@@ -29,6 +29,11 @@
             },
             "datatype": {
                 "type": "string"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "required": [
@@ -42,7 +47,8 @@
                 "id": "fas-fisher-z",
                 "test": "fisher-z-test",
                 "datatype": "continuous",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

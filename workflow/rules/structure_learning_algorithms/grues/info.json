@@ -10,5 +10,14 @@
     "graph_types": [
         "UDG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Gr\u00f6bner-based Unconditional Equivalence Search",
+    "meta_description": "We consider the problem of estimating the marginal independence structure of a Bayesian network from observational data in the form of an undirected graph called the unconditional dependence graph.",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": false
 }

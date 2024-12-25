@@ -138,6 +138,9 @@ bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels, directed = TRUE) {
   m <- length(adjmat_traj)
 
   prevmat <- adjmat_traj[[1]]
+  df <- NULL
+  added_edges <- NULL
+  removed_edges <- NULL
   for (i in seq(2, m)) {
     if (all(adjmat_traj[[i]] == prevmat)) {
       next
@@ -158,6 +161,19 @@ bidagtraj_to_bptraj <- function(adjmat_traj, scores, labels, directed = TRUE) {
     res <- rbind(res, df)
     prevmat <- adjmat_traj[[i]]
   }
+
+  # If the index in th df is not m, we should add a final row where we
+  # remove all edges. Just to mark the end of the trajectory.
+  
+  if (df$index != m) {
+    # previous score
+    # get last row of df
+    score <- res[nrow(res)-1,]$score
+
+    # remove and add back just to mark the end of the trajectory
+    res <- rbind(res, data.frame("index" = c(m), "score" = c(score), "added" = c(df$removed), "removed" = c(df$added)))
+    res <- rbind(res, data.frame("index" = c(m)+1, "score" = c(df$score), "added" = c(df$added), "removed" = c(df$removed)))
+    }
 
   return(res)
 }

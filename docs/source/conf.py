@@ -42,8 +42,12 @@ extensions = [
     'sphinx-prompt',
     'sphinxcontrib.bibtex',
     'sphinx_last_updated_by_git',
-    'versionwarning.extension'
+    'versionwarning.extension',
+    "sphinxext.opengraph",
+    "sphinxcontrib.googleanalytics"
 ]
+googleanalytics_id = "G-CDYR88PWR3"
+
 
 paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
@@ -81,13 +85,19 @@ numfig = True
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-
+html_title = 'Benchpress causal discovery platform'
+html_short_title = 'Benchpress causal discovery platform'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+ogp_site_url = "https://benchpressdocs.readthedocs.io"
+ogp_image = "https://github.com/felixleopoldo/benchpress/raw/master/docs/source/_static/benchpress-logo-white-bg.png"
+ogp_description = "Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms."
+ogp_enable_meta_description = False
+ogp_video = "https://www.youtube.com/watch?v=tx3hIH3b9Hg"
 
 html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 html_theme_options = {

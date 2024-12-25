@@ -44,6 +44,11 @@
             },
             "semBicStructurePrior": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": true,
@@ -72,7 +77,8 @@
                     1,
                     1.5
                 ],
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             },
             {
                 "id": "boss-bdeu",
@@ -87,7 +93,8 @@
                 "allowInternalRandomess": false,
                 "semBicStructurePrior": null,
                 "penaltyDiscount": null,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

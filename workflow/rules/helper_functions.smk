@@ -157,11 +157,12 @@ def join_summaries_shell(algorithm):
 def join_summaries_output(algorithm):
     return "{output_dir}/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +algorithm+".csv"
 
-def gen_evaluation_string_from_conf(method, alg_id):
-    # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern 
-    # specified in pattern_strings.
-    eval_dict = next(item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
-    return expand(pattern_strings[method], **eval_dict)
+# # BUG: This is also defined in module strings
+# def gen_evaluation_string_from_conf(method, alg_id):
+#     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern 
+#     # specified in pattern_strings.
+#     eval_dict = next(item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
+#     return expand(pattern_strings[method], **eval_dict)
 
 def gen_adjmat_string_from_conf(adjmat_id, seed):
     # find the adjmat_gen_method from adjmat_gen_id

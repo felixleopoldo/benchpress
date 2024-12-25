@@ -1,16 +1,29 @@
 
 
+
+:og:description: FGES is an optimized and parallelized version of an algorithm developed by Meek called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: FGES (TETRAD)
+ 
+.. meta::
+    :title: FGES (TETRAD)
+    :description: FGES is an optimized and parallelized version of an algorithm developed by Meek called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering.
+
+
 .. _tetrad_fges: 
 
-tetrad_fges 
----------------
+FGES (TETRAD) 
+**************
 
-.. rubric:: FGES
+
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
@@ -21,15 +34,25 @@ tetrad_fges
      - :footcite:t:`meek1997graphical`, :footcite:t:`chickering2002optimal`, :footcite:t:`ramsey2017million`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_fges <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_fges>`__
 
 
 
-.. rubric:: Description
+Fast Greedy Equivalence Search 
+----------------------------------
+
 
 From the Tetrad manual:  FGES is an optimized and parallelized version of an algorithm developed by :footcite:t:`meek1997graphical` called the Greedy Equivalence Search (GES). 
 The algorithm was further developed and studied by :footcite:t:`chickering2002optimal`. 
@@ -38,6 +61,8 @@ The reference is :footcite:t:`ramsey2017million`.
 
 The algorithms requires a decomposable score—that is, a score that for the entire DAG model is a sum of logged scores of each variables given its parents in the model. The algorithms can take all continuous data (using the SEM BIC score), all discrete data (using the BDeu score).
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -59,7 +84,8 @@ The algorithms requires a decomposable score—that is, a score that for the ent
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

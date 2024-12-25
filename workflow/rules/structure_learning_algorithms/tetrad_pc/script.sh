@@ -16,6 +16,15 @@ fi
 
 CMD="$CMD --algorithm pc"
 
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
+fi
+
+
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 
 if [ ${snakemake_wildcards[test]} = "fisher-z-test" ]; then

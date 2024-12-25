@@ -64,7 +64,7 @@ for algname, objlist in config["resources"]["structure_learning_algorithms"].ite
 
 # First generate path strings for those without input graphs.
 # Then we can use them as input algs. This also means that an input algorithm
-# cant take another input algorithm as input, for now.
+# can't take another input algorithm as input, for now.
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if (alg not in has_input_algs):# and (alg not in mcmc_modules):  # not the mcmc_modules yet
@@ -75,7 +75,7 @@ for alg in config["resources"]["structure_learning_algorithms"]:
 
             json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
                                         for val in config["resources"]["structure_learning_algorithms"][alg]})
-        else:        
+        else: 
             json_string.update({val["id"]: expand(pattern_strings[alg], **val)
                                 for val in config["resources"]["structure_learning_algorithms"][alg]})
 
@@ -105,11 +105,11 @@ for alg, alg_objects in config["resources"]["structure_learning_algorithms"].ite
 
 # Evaluation strings
 
-def gen_evaluation_string_from_conf(method, alg_id):
+def gen_evaluation_string_from_conf(bmark_setup, method, alg_id):
     # This essentially converts a dict in (from an evaluation method conf) to a path string following a pattern
     # specified in pattern_strings.
     eval_dict = next(
-        item for item in config["benchmark_setup"]["evaluation"][method] if item["id"] == alg_id)
+        item for item in bmark_setup["evaluation"][method] if item["id"] == alg_id)
     return expand(pattern_strings[method], **eval_dict)
 
 # Graph strings

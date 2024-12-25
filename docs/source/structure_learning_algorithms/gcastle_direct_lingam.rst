@@ -1,14 +1,27 @@
 
 
+
+:og:description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Direct LINGAM (gCastle)
+ 
+.. meta::
+    :title: Direct LINGAM (gCastle)
+    :description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
+
+
 .. _gcastle_direct_lingam: 
 
-gcastle_direct_lingam 
--------------------------
+Direct LINGAM (gCastle) 
+************************
 
-.. rubric:: Direct LINGAM
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -21,15 +34,25 @@ gcastle_direct_lingam
      - :footcite:t:`shimizu2011directlingam`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_direct_lingam <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_direct_lingam>`__
 
 
 
-.. rubric:: Description
+Direct LINGAM 
+-----------------
+
 
 A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 

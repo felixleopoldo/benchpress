@@ -1,14 +1,27 @@
 
 
+
+:og:description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Tabu (bnlearn)
+ 
+.. meta::
+    :title: Tabu (bnlearn)
+    :description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
+
+
 .. _bnlearn_tabu: 
 
-bnlearn_tabu 
-----------------
+Tabu (bnlearn) 
+***************
 
-.. rubric:: Tabu
+
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -21,19 +34,31 @@ bnlearn_tabu
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_tabu <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_tabu>`__
 
 
 
-.. rubric:: Description
+Tabu 
+--------
+
 
 Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be
 beneficial from a global perspective to avoid local maxima.
 
+.. rubric:: Some fields described 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 
 
 .. rubric:: Example JSON
@@ -57,7 +82,8 @@ beneficial from a global perspective to avoid local maxima.
         "k": 1,
         "prior": "uniform",
         "beta": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "tabu-bge",
@@ -74,7 +100,8 @@ beneficial from a global perspective to avoid local maxima.
         "k": 1,
         "prior": "uniform",
         "beta": 1,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

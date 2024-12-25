@@ -30,7 +30,7 @@ The data is visualised in :numref:`sachs/pairs_1.png` with independent and pairw
 
 .. figure:: _static/sachs/pairs_1.png
     :width: 500 
-    :alt: Scatter plots.
+    :alt: Scatter plots for Sachs et al. 2005 data.
     :align: center
 
 
@@ -48,7 +48,8 @@ This setup falls into :ref:`II` since the *graph_id* s set to the filename of a 
     :caption: The `benchmark_setup` section of Sachs study.
 
 
-    "benchmark_setup": {
+    "benchmark_setup": [{
+        "title": "paper_sachs",
         "data": [
             {
                 "graph_id": "sachs.csv",
@@ -100,7 +101,7 @@ This setup falls into :ref:`II` since the *graph_id* s set to the filename of a 
             "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": []
         }
-    }
+    }]
 
     
 

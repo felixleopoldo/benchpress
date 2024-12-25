@@ -1,0 +1,270 @@
+{
+  "benchmark_setup": [
+    {
+      "data": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            1
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "example/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "fges-sem-bic"
+          ]
+        },
+        "graph_estimation": {
+          "ids": [
+            "fges-sem-bic"
+          ],
+          "convert_to": [
+            "cpdag",
+            "pattern"
+          ],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "ggally_ggpairs": true,
+        "graph_plots": [
+          "fges-sem-bic"
+        ],
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "mcmc_traj_plots": [
+          {
+            "id": "omcmc-bge",
+            "burn_in": 0.5,
+            "thinning": 1,
+            "functional": [
+              "score",
+              "size"
+            ],
+            "active": true
+          }
+        ]
+      },
+      "title": "minimal"
+    },
+    {
+        "data": [
+          {
+            "graph_id": "avneigs4_p20",
+            "parameters_id": "SEM",
+            "data_id": "standardized",
+            "seed_range": [
+              1,
+              1
+            ]
+          }
+        ],
+        "evaluation": {
+          "benchmarks": {
+            "filename_prefix": "example/",
+            "show_seed": false,
+            "errorbar": true,
+            "errorbarh": false,
+            "scatter": true,
+            "path": true,
+            "text": false,
+            "ids": [
+              "fges-sem-bic"
+            ]
+          },
+          "graph_estimation": {
+            "ids": [
+              "fges-sem-bic"
+            ],
+            "convert_to": [
+              "cpdag",
+              "pattern"
+            ],
+            "graphs": true,
+            "adjmats": true,
+            "diffplots": false,
+            "csvs": true,
+            "graphvizcompare": false
+          },
+          "ggally_ggpairs": true,
+          "graph_plots": [
+            "fges-sem-bic"
+          ],
+          "graph_true_plots": true,
+          "graph_true_stats": true,
+          "mcmc_traj_plots": [
+            {
+              "id": "omcmc-bge",
+              "burn_in": 0.5,
+              "thinning": 1,
+              "functional": [
+                "score",
+                "size"
+              ],
+              "active": true
+            }
+          ]
+        },
+        "title": "minimal2"
+      }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": 300
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": 20,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+        "gobnilp": [
+            {
+              "id": "gobnilp-bge",
+              "continuous": true,
+              "score_type": "BGe",
+              "plot": false,
+              "palim": 5,
+              "alpha_mu": [
+                0.0001,
+                0.001,
+                0.01,
+                0.1,
+                1
+              ],
+              "alpha_omega_minus_nvars": 2,
+              "alpha": null,
+              "time_limit": null,
+              "gap_limit": null,
+              "prune": true,
+              "edgeConstraints": null,
+              "timeout": 800
+            }
+        ],    
+        "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "samplePrior": 1,
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": 2,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch-bge",
+          "timeout": null,
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": 2,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "edgeConstraints": null,
+          "chi": null,
+          "edgepf": 2,
+          "am": [
+            0.01,
+            0.1,
+            1
+          ],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton"
+        },
+        {
+          "id": "itsample-bge_am01_endspace",
+          "estimate": "endspace",
+          "MAP": false,
+          "plus1it": 6,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "am": 0.1,
+          "aw": null,
+          "softlimit": 9,
+          "edgeConstraints": null,
+          "hardlimit": 12,
+          "alpha": 0.05,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "timeout": null
+        }
+      ],
+      "bidag_order_mcmc": [
+        {
+          "id": "omcmc-bge",
+          "plus1": true,
+          "input_algorithm_id": "itsample-bge_am01_endspace",
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": null,
+          "aw": null,
+          "am": 0.1,
+          "alpha": 0.05,
+          "edgeConstraints": null,
+          "gamma": 1,
+          "stepsave": null,
+          "iterations": null,
+          "MAP": false,
+          "cpdag": false,
+          "mcmc_seed": 1,
+          "threshold": [
+            0.3,
+            0.5,
+            0.7
+          ],
+          "burnin_frac": 0,
+          "mcmc_estimator": "threshold",
+          "timeout": null
+        }
+      ]
+    }
+  }
+}

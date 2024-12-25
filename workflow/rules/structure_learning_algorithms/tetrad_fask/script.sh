@@ -6,6 +6,15 @@ CMD="$CMD --delimiter comma"
 CMD="$CMD --json-graph"
 
 CMD="$CMD --algorithm fask"
+
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
+fi
+
 CMD="$CMD --data-type continuous"
 CMD="$CMD --test ${snakemake_wildcards[test]}"
 CMD="$CMD --score ${snakemake_wildcards[score]}"

@@ -1,7 +1,7 @@
 .. _examples:
 
-Example studies
-########################
+Causal discovery examples
+#################################
 
 .. include:: example_conf.rst
 

@@ -1,14 +1,27 @@
 
 
+
+:og:description: Ordering-based Reinforcement Learning
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: CORL (gCastle)
+ 
+.. meta::
+    :title: CORL (gCastle)
+    :description: Ordering-based Reinforcement Learning
+
+
 .. _gcastle_corl: 
 
-gcastle_corl 
-----------------
+CORL (gCastle) 
+***************
 
-.. rubric:: CORL
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -21,15 +34,25 @@ gcastle_corl
      - :footcite:t:`wang2021ordering`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_corl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_corl>`__
 
 
 
-.. rubric:: Description
+Ordering-based Reinforcement Learning 
+-----------------------------------------
+
 
 A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
 

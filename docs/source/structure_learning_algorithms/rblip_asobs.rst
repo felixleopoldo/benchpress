@@ -1,14 +1,27 @@
 
 
+
+:og:description: A score-based two-phase algorithm where the first phase aims to identify the possible parent sets, :footcite:t:`scanagatta2015learning`; :footcite:t:`scanagatta2018approximate`.  The second phase performs an optimisation on a modification of the space of node orders introduced in :footcite:t:`teyssier2012ordering`, allowing edges from nodes of higher to lower order, provided that no cycles are introduced.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: ASOBS (r.blip)
+ 
+.. meta::
+    :title: ASOBS (r.blip)
+    :description: A score-based two-phase algorithm where the first phase aims to identify the possible parent sets, :footcite:t:`scanagatta2015learning`; :footcite:t:`scanagatta2018approximate`.  The second phase performs an optimisation on a modification of the space of node orders introduced in :footcite:t:`teyssier2012ordering`, allowing edges from nodes of higher to lower order, provided that no cycles are introduced.
+
+
 .. _rblip_asobs: 
 
-rblip_asobs 
----------------
+ASOBS (r.blip) 
+***************
 
-.. rubric:: ASOBS
+
 
 .. list-table:: 
 
+   * - Module name
+     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
    * - Package
      - `r.blip <https://cran.r-project.org/web/packages/r.blip/index.html>`__
    * - Version
@@ -21,15 +34,25 @@ rblip_asobs
      - :footcite:t:`scanagatta2018approximate`, :footcite:t:`scanagatta2015learning`, :footcite:t:`teyssier2012ordering`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/rblip:1.1 <https://hub.docker.com/r/bpimages/rblip/tags>`__
 
-   * - Module folder
-     - `rblip_asobs <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/rblip_asobs>`__
 
 
 
-.. rubric:: Description
+Acyclic Selection Ordering-Based Search 
+-------------------------------------------
+
 
 A score-based two-phase algorithm where the first phase aims to identify the possible parent
 sets, :footcite:t:`scanagatta2015learning`; :footcite:t:`scanagatta2018approximate`. 

@@ -1,14 +1,27 @@
 
 
+
+:og:description: Greedy sparsest permutation
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: GSP (CausalDAG)
+ 
+.. meta::
+    :title: GSP (CausalDAG)
+    :description: Greedy sparsest permutation
+
+
 .. _causaldag_gsp: 
 
-causaldag_gsp 
------------------
+GSP (CausalDAG) 
+****************
 
-.. rubric:: GSP
+
 
 .. list-table:: 
 
+   * - Module name
+     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
    * - Package
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
    * - Version
@@ -21,15 +34,25 @@ causaldag_gsp
      - :footcite:t:`10.1093/biomet/asaa104`, :footcite:t:`squires2018causaldag`, :footcite:t:`https://doi.org/10.1002/sta4.183`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/causaldag:0.1a163 <https://hub.docker.com/r/bpimages/causaldag/tags>`__
 
-   * - Module folder
-     - `causaldag_gsp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causaldag_gsp>`__
 
 
 
-.. rubric:: Description
+Greedy sparsest permutation 
+-------------------------------
+
 
 
 

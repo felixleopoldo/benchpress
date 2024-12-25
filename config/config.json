@@ -1,38 +1,66 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "graph_id": "sachs.csv",
-        "parameters_id": null,
-        "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
-        "seed_range": null
-      },
-      {
-        "graph_id": "avneigs4_p20",
-        "parameters_id": "SEM",
-        "data_id": "standardized",
-        "seed_range": [1, 3]
-      }
-    ],
-    "evaluation": {
-      "graph_estimation": {
-        "ids": ["fges-sem-bic", "pc-gaussCItest", "itsearch-bge"],
-        "other_graph_types": ["original", "cpdag", "pattern"],
-        "graphs": true,
-        "adjmats": false,
-        "diffplots": true,
-        "csvs": true,
-        "graphvizcompare": true
-      }
+  "benchmark_setup": [
+    {
+      "title": "example_config",
+      "data": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            3
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "example/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "fges-sem-bic",
+            "tabu-bge",
+            "itsearch-bge",
+            "pc-gaussCItest"
+          ]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": [
+            "fges-sem-bic",
+            "tabu-bge",
+            "itsearch-bge",
+            "pc-gaussCItest"
+          ],
+          "convert_to": [],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        },
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+      }      
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
         {
           "id": "standardized",
           "standardized": true,
-          "n": [300]
+          "n": [
+            300
+          ]
         }
       ]
     },
@@ -68,14 +96,25 @@
           "datatype": "continuous",
           "samplePrior": 1,
           "semBicStructurePrior": 1,
-          "penaltyDiscount": [0.75, 1.5],
-          "timeout": null
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "pcalg_pc": [
         {
           "id": "pc-gaussCItest",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [
+            0.001,
+            0.01,
+            0.05,
+            0.1
+          ],
           "NAdelete": true,
           "mmax": "Inf",
           "u2pd": "relaxed",
@@ -86,7 +125,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bnlearn_tabu": [
@@ -94,13 +134,19 @@
           "id": "tabu-bge",
           "score": "bge",
           "iss": 1,
-          "issmu": [0.0001, 0.001, 0.01, 0.05],
+          "issmu": [
+            0.0001,
+            0.001,
+            0.01,
+            0.05
+          ],
           "issw": null,
           "l": 5,
           "k": 1,
           "prior": "uniform",
           "beta": 1,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
@@ -114,14 +160,19 @@
           "scoretype": "bge",
           "chi": null,
           "edgepf": 2,
-          "am": [0.01, 0.1, 1],
+          "am": [
+            0.01,
+            0.1,
+            1
+          ],
           "aw": null,
           "softlimit": 9,
           "hardlimit": 14,
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": null
         }
       ]
     }

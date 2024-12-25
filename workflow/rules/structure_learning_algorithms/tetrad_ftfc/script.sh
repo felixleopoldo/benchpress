@@ -6,6 +6,15 @@ CMD="$CMD --json-graph"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 
 CMD="$CMD --algorithm ftfc"
+
+# Check if edge constraints are provided
+if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
+    echo "No edge constraints provided"
+else
+    CMD="$CMD --knowledge ${snakemake_input[edgeConstraints_formatted]}"
+    cat ${snakemake_input[edgeConstraints_formatted]}
+fi
+
 CMD="$CMD --dataset ${snakemake_input[data]}"
 CMD="$CMD --seed ${snakemake_wildcards[seed]}"
 

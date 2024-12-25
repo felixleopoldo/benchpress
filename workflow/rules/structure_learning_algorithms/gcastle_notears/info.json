@@ -18,5 +18,14 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning",
+    "meta_description": "Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

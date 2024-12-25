@@ -1,16 +1,29 @@
 
 
+
+:og:description: Best Order Score Search
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: BOSS (TETRAD)
+ 
+.. meta::
+    :title: BOSS (TETRAD)
+    :description: Best Order Score Search
+
+
 .. _tetrad_boss: 
 
-tetrad_boss 
----------------
+BOSS (TETRAD) 
+**************
 
-.. rubric:: BOSS
+
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_boss <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_boss>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
@@ -21,15 +34,25 @@ tetrad_boss
      - :footcite:t:`ramsey2021improving`, :footcite:t:`andrews2023fast`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_boss <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_boss>`__
 
 
 
-.. rubric:: Description
+Best Order Score Search 
+---------------------------
+
 
 BOSS (Best Order Score Search) is an algorithm that, like GRaSP, generalizes and extends the GSP (Greedy Sparsest Permutation) algorithm. It has been tested to 1000 variables with an average degree of 20 and gives near perfect precisions and recalls for N = 10,000 (with recall that drop to 0.9 for N = 1000). The algorithms works by building DAGs given permutations in ways similar to those described in Raskutti and Uhler and Solus et al.
 
@@ -89,6 +112,7 @@ Each dataset contains 300 samples.
 
 .. rubric:: Some fields described 
 * ``allowInternalRandomess``  If true, the algorithm allow the algorithm to use certain heuristic random steps. This can improve performance, but may make the algorithm non-deterministic. 
+* ``edgeConstraints`` Name of the JSON file containing background knowledge 
 * ``useBes`` True if the final BES (Backward Equivalence Search) step is used from the GES (Greedy Equivalence Search) algorithm. This step is needed for correctness but for large models, since usually nearly all edges are oriented in the CPDAG, it is heurically not needed. 
 
 
@@ -112,7 +136,8 @@ Each dataset contains 300 samples.
           1,
           1.5
         ],
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       },
       {
         "id": "boss-bdeu",
@@ -127,7 +152,8 @@ Each dataset contains 300 samples.
         "allowInternalRandomess": false,
         "semBicStructurePrior": null,
         "penaltyDiscount": null,
-        "timeout": null
+        "timeout": null,
+        "edgeConstraints": "edgeConstraints.json"
       }
     ]
 

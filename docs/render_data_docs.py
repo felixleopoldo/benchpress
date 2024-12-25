@@ -206,13 +206,29 @@ for p in sorted(algspath.iterdir()):
         module_str += "\n\n"
         module_str += content
         module_str += "\n\n"
+
         
     if p.name == "fixed_data":
         with open(p/"data_info.json") as json_data_file:
             fixed_data_info = json.load(json_data_file)
         module_str += fixed_data_to_table(fixed_data_info, p)
         module_str += "\n\n"
-        
+    else:
+        with open(s) as json_file:    
+            schema = json.load(json_file)
+
+        tmp = any(["description" in obj 
+            for prop, obj in schema["items"]["properties"].items() 
+            if prop != "id"])
+
+        if tmp:
+            module_str += ".. rubric:: Some fields described \n"
+            for prop, obj in sorted(schema["items"]["properties"].items()):
+                if prop == "id":
+                    continue
+                if "description" in obj:                
+                    module_str += "* ``{}`` {} \n".format(prop, obj["description"])
+
 
     if dump != "":
         module_str += "\n\n"
