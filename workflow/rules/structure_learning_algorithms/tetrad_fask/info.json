@@ -13,9 +13,9 @@
         "DAG"
     ],
     "language": "java",
-    "title_full": "FASK",
+    "title_full": "Fast Adjacency Skewness",
     "meta_description": "FASK",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

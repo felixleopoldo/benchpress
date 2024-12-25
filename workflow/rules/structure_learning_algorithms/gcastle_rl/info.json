@@ -13,9 +13,9 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "RL",
+    "title_full": "Causal discovery with reinforcement learning",
     "meta_description": "RL",
-    "data_types": [],
+    "data_types": ["continuous"],
     "data_missingness": [],
     "intervention_types": []
 }

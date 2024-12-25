@@ -12,9 +12,9 @@
     ],
     "language": "Python",
     "in_docs": true,
-    "title_full": "GRaSP",
+    "title_full": "Greedy relaxation of the sparsest permutation",
     "meta_description": "GRaSP",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

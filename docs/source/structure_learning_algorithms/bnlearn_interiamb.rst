@@ -35,7 +35,7 @@ INTER-IAMB (bnlearn)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C, D, M
    * - Data missingness
      - 
    * - Intervention type

@@ -25,7 +25,7 @@
     "language": "Python",
     "title_full": "ANM",
     "meta_description": "ANM",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

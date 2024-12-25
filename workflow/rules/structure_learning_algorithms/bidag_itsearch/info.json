@@ -16,7 +16,7 @@
     "language": "R",
     "title_full": "Iterative MCMC",
     "meta_description": "Iterative MCMC",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

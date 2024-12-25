@@ -1,14 +1,14 @@
 
 
 
-:og:description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
+:og:description: Ordering-based Reinforcement Learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: CORL (CORL)
+:og:title: Ordering-based Reinforcement Learning (CORL)
  
 .. meta::
-    :title: CORL 
-    :description: A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.
+    :title: Ordering-based Reinforcement Learning 
+    :description: Ordering-based Reinforcement Learning
 
 
 .. _gcastle_corl: 
@@ -35,7 +35,7 @@ CORL (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ CORL (gCastle)
 
 
 
-CORL 
---------
+Ordering-based Reinforcement Learning 
+-----------------------------------------
 
 
 A RL- and order-based algorithm that improves the efficiency and scalability of previous RL-based approach.

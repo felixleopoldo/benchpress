@@ -16,7 +16,7 @@
     "language": "Python",
     "title_full": "Parallel DG",
     "meta_description": "Parallel DG",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

@@ -1,14 +1,14 @@
 
 
 
-:og:description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
+:og:description: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GOLEM (GOLEM)
+:og:title: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models (GOLEM)
  
 .. meta::
-    :title: GOLEM 
-    :description: A more efficient version of NOTEARS that can reduce number of optimization iterations.
+    :title: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models 
+    :description: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models
 
 
 .. _gcastle_golem: 
@@ -35,7 +35,7 @@ GOLEM (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ GOLEM (gCastle)
 
 
 
-GOLEM 
----------
+Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models 
+------------------------------------------------------------------------------------------
 
 
 A more efficient version of NOTEARS that can reduce number of optimization iterations.

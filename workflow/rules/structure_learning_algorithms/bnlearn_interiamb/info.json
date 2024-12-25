@@ -15,7 +15,7 @@
     "language": "R",
     "title_full": "INTER-IAMB",
     "meta_description": "INTER-IAMB",
-    "data_types": [],
+    "data_types": ["continuous", "discrete", "mixed"],
     "data_missingness": [],
     "intervention_types": []
 }

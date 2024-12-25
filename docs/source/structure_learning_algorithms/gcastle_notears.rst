@@ -1,14 +1,14 @@
 
 
 
-:og:description: This score-based method recasts the combinatorial problem of estimating a DAG into a purely continuous non-convex optimization problem over real matrices with a smooth constraint to ensure acyclicity.
+:og:description: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: NO TEARS (NO TEARS)
+:og:title: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning (NO TEARS)
  
 .. meta::
-    :title: NO TEARS 
-    :description: This score-based method recasts the combinatorial problem of estimating a DAG into a purely continuous non-convex optimization problem over real matrices with a smooth constraint to ensure acyclicity.
+    :title: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning 
+    :description: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning
 
 
 .. _gcastle_notears: 
@@ -35,7 +35,7 @@ NO TEARS (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ NO TEARS (gCastle)
 
 
 
-NO TEARS 
-------------
+Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning 
+--------------------------------------------------------------------------------------------------------
 
 
 This score-based method recasts the combinatorial problem of estimating a DAG into a purely

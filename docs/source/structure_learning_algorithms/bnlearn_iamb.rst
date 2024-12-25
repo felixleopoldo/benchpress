@@ -1,14 +1,14 @@
 
 
 
-:og:description: 
+:og:description: Abstract: This paper presents a number of new algorithms for discovering the Markov Blanket of a target variable T from training data. The Markov Blanket can be used for variable selection for classification, for causal discovery, and for Bayesian Network learning. We introduce a low-order polynomial algorithm and several variants that soundly induce the Markov Blanket under certain broad conditions in datasets with thousands of variables and compare them to other state-of-the-art local and global methods with excellent results.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: IAMB (IAMB)
+:og:title: Incremental Association Markov Blanket (IAMB)
  
 .. meta::
-    :title: IAMB 
-    :description: 
+    :title: Incremental Association Markov Blanket 
+    :description: Abstract: This paper presents a number of new algorithms for discovering the Markov Blanket of a target variable T from training data. The Markov Blanket can be used for variable selection for classification, for causal discovery, and for Bayesian Network learning. We introduce a low-order polynomial algorithm and several variants that soundly induce the Markov Blanket under certain broad conditions in datasets with thousands of variables and compare them to other state-of-the-art local and global methods with excellent results.
 
 
 .. _bnlearn_iamb: 
@@ -35,7 +35,7 @@ IAMB (bnlearn)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C, D, M
    * - Data missingness
      - 
    * - Intervention type
@@ -46,9 +46,11 @@ IAMB (bnlearn)
 
 
 
-IAMB 
---------
+Incremental Association Markov Blanket 
+------------------------------------------
 
+
+Abstract: This paper presents a number of new algorithms for discovering the Markov Blanket of a target variable T from training data. The Markov Blanket can be used for variable selection for classification, for causal discovery, and for Bayesian Network learning. We introduce a low-order polynomial algorithm and several variants that soundly induce the Markov Blanket under certain broad conditions in datasets with thousands of variables and compare them to other state-of-the-art local and global methods with excellent results.
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 

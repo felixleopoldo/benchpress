@@ -35,7 +35,7 @@ Partition MCMC (BiDAG)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Data type
-     - 
+     - C, D
    * - Data missingness
      - 
    * - Intervention type

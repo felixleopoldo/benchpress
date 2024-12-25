@@ -35,7 +35,7 @@ PC (pcalg)
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
    * - Data type
-     - 
+     - C, D
    * - Data missingness
      - 
    * - Intervention type

@@ -35,7 +35,7 @@ NO TEARS low rank (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type

@@ -1,5 +1,5 @@
 {
-    "title": "ICALiNGAM",
+    "title": "ICA-LiNGAM",
     "version": "1.0.3",
     "package": {
         "title": "gCastle",
@@ -19,9 +19,9 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "ICALiNGAM",
-    "meta_description": "ICALiNGAM",
-    "data_types": [],
+    "title_full": "Independent component analysis for linear non-Gaussian acyclic models",
+    "meta_description": "Independent component analysis for linear non-Gaussian acyclic models",
+    "data_types": ["continuous"],
     "data_missingness": [],
     "intervention_types": []
 }

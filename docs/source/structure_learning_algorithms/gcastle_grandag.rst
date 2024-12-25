@@ -4,10 +4,10 @@
 :og:description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GraNDAG (GraNDAG)
+:og:title: Gradient-based neural DAG learning (GraNDAG)
  
 .. meta::
-    :title: GraNDAG 
+    :title: Gradient-based neural DAG learning 
     :description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 
 
@@ -35,7 +35,7 @@ GraNDAG (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ GraNDAG (gCastle)
 
 
 
-GraNDAG 
------------
+Gradient-based neural DAG learning 
+--------------------------------------
 
 
 A gradient-based algorithm using neural network modeling for non-linear additive noise data.

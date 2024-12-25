@@ -1,14 +1,14 @@
 
 
 
-:og:description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
+:og:description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GAE (GAE)
+:og:title: Graph autoencoder (GAE)
  
 .. meta::
-    :title: GAE 
-    :description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
+    :title: Graph autoencoder 
+    :description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
 
 
 .. _gcastle_gae: 
@@ -35,7 +35,7 @@ GAE (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ GAE (gCastle)
 
 
 
-GAE 
--------
+Graph autoencoder 
+---------------------
 
 
 A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.

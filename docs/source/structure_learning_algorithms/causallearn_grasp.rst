@@ -4,10 +4,10 @@
 :og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GRaSP (GRaSP)
+:og:title: Greedy relaxation of the sparsest permutation (GRaSP)
  
 .. meta::
-    :title: GRaSP 
+    :title: Greedy relaxation of the sparsest permutation 
     :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
 
@@ -35,7 +35,7 @@ GRaSP (causal-learn)
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - Data type
-     - 
+     - C, D
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ GRaSP (causal-learn)
 
 
 
-GRaSP 
----------
+Greedy relaxation of the sparsest permutation 
+-------------------------------------------------
 
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.

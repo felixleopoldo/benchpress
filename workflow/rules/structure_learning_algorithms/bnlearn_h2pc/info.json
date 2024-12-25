@@ -21,7 +21,7 @@
     "language": "R",
     "title_full": "H2PC",
     "meta_description": "H2PC",
-    "data_types": [],
+    "data_types": ["continuous", "discrete", "mixed"],
     "data_missingness": [],
     "intervention_types": []
 }

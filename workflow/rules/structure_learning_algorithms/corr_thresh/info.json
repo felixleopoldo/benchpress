@@ -13,7 +13,7 @@
     "language": "Python",
     "title_full": "Corrmat thresh",
     "meta_description": "Corrmat thresh",
-    "data_types": [],
+    "data_types": ["continuous"],
     "data_missingness": [],
     "intervention_types": []
 }

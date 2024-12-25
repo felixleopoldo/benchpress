@@ -1,14 +1,14 @@
 
 
 
-:og:description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
+:og:description: Masked Gradient-Based Causal Structure Learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: MCSL (MCSL)
+:og:title: Masked Gradient-Based Causal Structure Learning (MCSL)
  
 .. meta::
-    :title: MCSL 
-    :description: A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
+    :title: Masked Gradient-Based Causal Structure Learning 
+    :description: Masked Gradient-Based Causal Structure Learning
 
 
 .. _gcastle_mcsl: 
@@ -35,7 +35,7 @@ MCSL (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ MCSL (gCastle)
 
 
 
-MCSL 
---------
+Masked Gradient-Based Causal Structure Learning 
+---------------------------------------------------
 
 
 A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.

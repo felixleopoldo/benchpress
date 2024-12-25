@@ -35,7 +35,7 @@ Psi-learning (equSA)
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type

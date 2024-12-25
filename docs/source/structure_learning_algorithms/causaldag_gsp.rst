@@ -1,14 +1,14 @@
 
 
 
-:og:description: 
+:og:description: Greedy sparsest permutation
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GSP (GSP)
+:og:title: Greedy sparsest permutation (GSP)
  
 .. meta::
-    :title: GSP 
-    :description: 
+    :title: Greedy sparsest permutation 
+    :description: Greedy sparsest permutation
 
 
 .. _causaldag_gsp: 
@@ -35,7 +35,7 @@ GSP (CausalDAG)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ GSP (CausalDAG)
 
 
 
-GSP 
--------
+Greedy sparsest permutation 
+-------------------------------
 
 
 

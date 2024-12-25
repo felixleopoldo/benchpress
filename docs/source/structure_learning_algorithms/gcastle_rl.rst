@@ -4,10 +4,10 @@
 :og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: RL (RL)
+:og:title: Causal discovery with reinforcement learning (RL)
  
 .. meta::
-    :title: RL 
+    :title: Causal discovery with reinforcement learning 
     :description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 
 
@@ -35,7 +35,7 @@ RL (gCastle)
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type
@@ -46,8 +46,8 @@ RL (gCastle)
 
 
 
-RL 
-------
+Causal discovery with reinforcement learning 
+------------------------------------------------
 
 
 A RL-based algorithm that can work with flexible score functions (including non-smooth ones).

@@ -15,7 +15,7 @@
     "language": "R",
     "title_full": "PC",
     "meta_description": "PC",
-    "data_types": [],
+    "data_types": ["continuous", "discrete", "mixed"],
     "data_missingness": [],
     "intervention_types": []
 }

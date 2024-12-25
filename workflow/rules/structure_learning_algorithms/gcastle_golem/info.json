@@ -19,9 +19,9 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "GOLEM",
-    "meta_description": "GOLEM",
-    "data_types": [],
+    "title_full": "Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models",
+    "meta_description": "Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models",
+    "data_types": ["continuous"],
     "data_missingness": [],
     "intervention_types": []
 }

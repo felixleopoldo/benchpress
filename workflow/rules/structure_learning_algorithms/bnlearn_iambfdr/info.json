@@ -15,7 +15,7 @@
     "language": "R",
     "title_full": "IAMB-FDR",
     "meta_description": "IAMB-FDR",
-    "data_types": [],
+    "data_types": ["continuous", "discrete", "mixed"],
     "data_missingness": [],
     "intervention_types": []
 }

@@ -35,7 +35,7 @@ Parallel DG (parallelDG)
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
    * - Data type
-     - 
+     - C, D
    * - Data missingness
      - 
    * - Intervention type

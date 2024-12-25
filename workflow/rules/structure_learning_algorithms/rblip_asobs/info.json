@@ -19,9 +19,9 @@
         "DAG"
     ],
     "language": "R",
-    "title_full": "ASOBS",
+    "title_full": "Acyclic Selection Ordering-Based Search",
     "meta_description": "ASOBS",
-    "data_types": [],
+    "data_types": ["discrete"],
     "data_missingness": [],
     "intervention_types": []
 }

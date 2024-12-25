@@ -35,7 +35,7 @@ GrUES (gues)
    * - Graph type
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
    * - Data type
-     - 
+     - C
    * - Data missingness
      - 
    * - Intervention type

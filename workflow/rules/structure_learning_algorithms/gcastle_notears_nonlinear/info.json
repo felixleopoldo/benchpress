@@ -21,7 +21,7 @@
     "language": "Python",
     "title_full": "NO TEARS non-linear",
     "meta_description": "NO TEARS non-linear",
-    "data_types": [],
+    "data_types": ["continuous"],
     "data_missingness": [],
     "intervention_types": []
 }

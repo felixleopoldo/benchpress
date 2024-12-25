@@ -22,7 +22,7 @@
     "language": "R",
     "title_full": "Partition MCMC",
     "meta_description": "Partition MCMC",
-    "data_types": [],
+    "data_types": ["continuous", "discrete"],
     "data_missingness": [],
     "intervention_types": []
 }
