@@ -3,29 +3,7 @@ import json
 
 
 def info_to_table(json, p):
-    tab = ".. list-table:: \n\n"#+p.name+"\n\n"
-    #tab += "   * - Title\n"
-    #tab += "     - "+info["title"]+"\n"
-    #tab += "   * - Package\n"
-    #tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`_\n"
-    #tab += "   * - Version\n"
-    #tab += "     - "+info["version"]+"\n"
-    #tab += "   * - Language\n"
-    #tab += "     - "+info["language"]+"\n"
-    #tab += "   * - Docs\n"
-    #tab += "     - `here <"+info["docs_url"]+">`_\n"
-    #tab += "   * - Paper\n"
-    #for i in range(len(info["papers"])):
-    #    tab += "     - `"+info["papers"][i]["title"]+" <"+info["papers"][i]["url"]+">`_, "  
-    #tab = tab[:-2]
-    #tab += "\n"
-    #tab += "   * - Graph type\n"
-    #for i in range(len(info["graph_types"])):
-    #    tab += "     - "+info["graph_types"][i] +", "
-    #tab = tab[:-2]
-    #tab += "\n"
-#    tab += "   * - Docker\n"
-#    tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`_\n"
+    tab = ".. list-table:: \n\n"
     tab += "   * - Module\n"
     tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/evaluation/"+p.name+">`__\n"
     tab += "\n"
@@ -34,37 +12,22 @@ def info_to_table(json, p):
 def info_to_small_table():
     algspath = Path("../workflow/rules/evaluation")
     tab = ""
-    tab += ".. list-table:: \n"#+p.name+"\n\n"
-    #tab += "   :width: 100 \n"
+    tab += ".. list-table:: \n"
     tab += "   :header-rows: 1 \n\n"
     tab += "   * - Evaluation\n" 
-    #tab += "     - Graph\n" 
-    #tab += "     - Language\n" 
-    #tab += "     - Package\n" 
-    #tab += "     - Version\n" 
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
             info = json.load(json_file)
-        #tab += "     - "+info["title"]+"\n"
         tab += "   * - "+info["title"]+"\n"
-        #for i in range(len(info["graph_types"])):
-        #    tab += "     - "+info["graph_types"][i] +", "
-        #tab = tab[:-2]
         
         tab += "\n"
-        #tab += "     - "+info["language"]+"\n"
-        # if info["package"]["url"]:
-        #     tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
-        # else:
-        #     tab += "     - "+info["package"]["title"]+"\n"    
-
-        # tab += "     - "+info["version"]+"\n"
-        tab += "     - "+p.name+"_ \n"    
+        tab += "     - :ref:`"+p.name+"` \n"    
         
     tab += "\n"
     return tab
@@ -77,17 +40,35 @@ content = f.read()
 
 str = ""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+str += "Evaluation\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
+
+# Toc tree for the evaluation modules
+str += """.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Evaluation modules
+    :caption: Evaluation modules
+    
+"""
+for p in sorted(algspath.iterdir()):
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    str += "    evaluation/{}\n".format(p.name)
+
 str += content
 str += "\n\n"
 
 str += info_to_small_table()
 str += "\n\n"
 for p in sorted(algspath.iterdir()):
-    #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"
@@ -99,7 +80,6 @@ for p in sorted(algspath.iterdir()):
 
     with open(j) as json_file:
         info = json.load(json_file)
-
     
     schema = None
     dump = ""
@@ -112,33 +92,32 @@ for p in sorted(algspath.iterdir()):
                 dump = json.dumps(schema["items"]["examples"], indent=2)
             elif "examples" in schema:
                 dump = json.dumps(schema["examples"], indent=2)
-                
-  
-    #str += "\n\n\n"
-    #str +=".. _" + p.name +": "
-    str += "\n\n"
-    str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
-    str +="-"*len(p.name) + "-"*4 + "\n"
-
     
-    str += "\n"
-    str += ".. rubric:: "+ info["title"]    
-    str += "\n\n"
+    # This is the module part, written to rst file.
+    module_str = "\n\n"
+    module_str += ".. _"+p.name+": \n\n"
+    module_str +="" + p.name +" \n"
+    module_str +="-"*len(p.name) + "-"*4 + "\n"
+    module_str += "\n"
+    module_str += ".. rubric:: "+ info["title"]    
+    module_str += "\n\n"
     if p.name != "fixed":
-        str += info_to_table(info, p)
-        str += "\n\n"
-    str += ".. rubric:: Description"    
+        module_str += info_to_table(info, p)
+        module_str += "\n\n"
+    module_str += ".. rubric:: Description"    
     if content != "":    
-        str += "\n\n"
-        str += content
+        module_str += "\n\n"
+        module_str += content
     if dump != "":
-        str += "\n\n"
-        str += ".. rubric:: Example"
-        str += "\n\n\n"
-        str += ".. code-block:: json"    
-        str += "\n\n"
-        str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+        module_str += "\n\n"
+        module_str += ".. rubric:: Example"
+        module_str += "\n\n\n"
+        module_str += ".. code-block:: json"    
+        module_str += "\n\n"
+        module_str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
+    module_str += "\n\n"
+    with open("source/evaluation/{}.rst".format(p.name), "w") as text_file:
+        text_file.write(module_str)
 
 
 with open("source/available_evaluations.rst", "w") as text_file:

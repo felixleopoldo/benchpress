@@ -1,0 +1,41 @@
+{
+    "title": "tetrad_lingam",
+    "description": "lingam objects",
+    "type": "array",
+    "items": {
+        "title": "tetrad_lingam item",
+        "description": "lingam instance",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "datatype": {
+                "type": "string"
+            },
+            "timeout": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "datatype",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "lingam",
+                "datatype": "continuous",
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            }
+        ]
+    }
+}

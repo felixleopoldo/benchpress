@@ -5,10 +5,12 @@
 results
 docs/build
 .DS_Store
-.R*
 docs/source/_build
 Rplots.pdf
 causal-cmd.log
 .java/
 .cache/
 __pycache__
+workflow/schemas/tmp.config.schema.json
+.RData
+.Rhistory

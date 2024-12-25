@@ -18,7 +18,7 @@ compareEGs <- function(estEG, trueEG) {
   estSkel <- EGskel(estEG) # estimated skeleton
   trueSkel <- EGskel(trueEG) # true skeleton
   P <- sum(trueSkel) / 2 # number of positives
-  N <- sum(1-trueSkel) /2 # number of negative
+  N <- sum(1 - trueSkel) / 2 # number of negative
   diffSkel <- estSkel - trueSkel
   extra_edges <- which(diffSkel > 0) # edges in estimated but not true EG
   FP <- length(extra_edges) / 2 # count to FPs
@@ -51,9 +51,9 @@ compareEGs <- function(estEG, trueEG) {
     }
   } else {
     # true graph is non-empty
-      TPR <- TP / P
-      FPR_P <- FP / P
-      FPR <- FP / N
+    TPR <- TP / P
+    FPR_P <- FP / P
+    FPR <- FP / N
   }
   compEGs <- c(TP, FP, SHD, TPR, FPR_P, FPR)
   names(compEGs) <- c("TP", "FP", "SHD", "TPR", "FPR_P", "FPR")
@@ -105,7 +105,7 @@ getPattern <- function(amat) {
 ### This function turns an adjacancy matrix incidence DAG
 ### into an adjacancy matric of the EG
 DAG2EG <- function(incidence) {
-  as(dag2essgraph(as(incidence, "graphNEL")), "matrix")
+  as(pcalg::dag2essgraph(as(incidence, "graphNEL")), "matrix")
 }
 
 p <- arg_parser("A program for summarising and save to file.")
@@ -117,15 +117,19 @@ argv <- parse_args(p)
 benchmarks <- function(true_adjmat, estimated_adjmat) {
   skel_true <- (true_adjmat | t(true_adjmat)) * 1
   skel_est <- (estimated_adjmat | t(estimated_adjmat)) * 1
+  n_nodes <- ncol(skel_true)
+
+  ones <- matrix(1, n_nodes, n_nodes)
+  diag(ones) <- 0
+
 
   TP <- sum(skel_true * skel_est) / 2
-  TN <- sum((1 - skel_true) * (1 - skel_est)) / 2
-  FP <- sum((1 - skel_true) * skel_est) / 2
-  FN <- sum(skel_true * (1 - skel_est)) / 2
+  TN <- sum((ones - skel_true) * (ones - skel_est)) / 2
+  FP <- sum((ones - skel_true) * skel_est) / 2
+  FN <- sum(skel_true * (ones - skel_est)) / 2
 
   n_edges <- sum(skel_true) / 2
-  n_nonedges <- sum(1 - skel_true) / 2
-  n_nodes <- ncol(skel_true)
+  n_nonedges <- sum(ones - skel_true) / 2
 
   compres <- compareEGs(getPattern(estimated_adjmat), getPattern(true_adjmat))
 
@@ -136,18 +140,24 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
   if (isSymmetric(unname(estimated_adjmat))) {
     graph_type <- "ug"
   }
-  if (isValidGraph(estimated_adjmat, type = "cpdag", verbose = FALSE)) {
-    compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
+  if (pcalg::isValidGraph(t(estimated_adjmat), type = "cpdag", verbose = FALSE)) {
+    compres_cpdag <- BiDAG::compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
     SHD_cpdag <- compres_cpdag["SHD"]
     graph_type <- "cpdag"
-  } else if (isValidGraph(estimated_adjmat, type = "dag", verbose = FALSE)) {
-    compres_cpdag <- compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
+  } else if (pcalg::isValidGraph(t(estimated_adjmat),
+    type = "dag",
+    verbose = FALSE
+  )) {
+    compres_cpdag <- BiDAG::compareDAGs(estimated_adjmat, true_adjmat, cpdag = TRUE)
     SHD_cpdag <- compres_cpdag["SHD"]
     graph_type <- "dag"
   }
   df <- data.frame(
-      TPR_pattern = compres["TPR"], # should be for all times
-      FPR_pattern = compres["FPR"],
+    TP_pattern = compres["TP"],
+    FP_pattern = compres["FP"],
+    FN_pattern = n_edges - compres["TP"], # shouldn't store simple calculations but anyway..
+    TPR_pattern = compres["TPR"], 
+    FPR_pattern = compres["FPR"],
     FPRn_pattern = compres["FPR_P"],
     SHD_pattern = compres["SHD"],
     SHD_cpdag = SHD_cpdag,
@@ -171,8 +181,11 @@ if (file.info(argv$adjmat_est)$size > 0) {
   df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
   df <- data.frame(
-      TPR_pattern = "None", # should be for all times
-      FPR_pattern = "None",
+    TP_pattern = "None",
+    FP_pattern = "None",
+    FN_pattern = "None",
+    TPR_pattern = "None", # should be for all times
+    FPR_pattern = "None",
     FPRn_pattern = "None",
     SHD_pattern = "None",
     SHD_cpdag = "None",

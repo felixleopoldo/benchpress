@@ -1,11 +1,14 @@
-rule bnlearn_mmpc:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
+        edgeConstraints_formatted=edge_constraints_bnlearn
     output:
-        adjmat=alg_output_adjmat_path("bnlearn_mmpc"),
-        time=alg_output_time_path("bnlearn_mmpc"),
-        ntests=alg_output_ntests_path("bnlearn_mmpc"),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name)
     container:
-        "docker://onceltuca/bnlearn:4.7"
+        "docker://bpimages/bnlearn:4.8.3"
     script:
-        "bnlearn_mmpc.R"
+        "script.R"

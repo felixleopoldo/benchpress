@@ -1,5 +1,5 @@
 {
-    "title": "Graphical Lasso",
+    "title": "GLasso",
     "version": "0.22.1",
     "package": {
         "title": "scikit-learn",
@@ -18,5 +18,14 @@
     "graph_types": [
         "UG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Graphical Lasso",
+    "meta_description": "Graphical Lasso",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

@@ -62,6 +62,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -89,7 +94,28 @@
                 "numCores": 1,
                 "verbose": false,
                 "indepTest": "gaussCItest",
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "pc-binCItest",
+                "alpha": [
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "NAdelete": true,
+                "mmax": "Inf",
+                "u2pd": "relaxed",
+                "skelmethod": "stable",
+                "conservative": false,
+                "majrule": false,
+                "solveconfl": false,
+                "numCores": 1,
+                "verbose": false,
+                "indepTest": "binCItest",
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

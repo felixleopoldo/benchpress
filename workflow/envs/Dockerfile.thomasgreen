@@ -1,3 +1,0 @@
-FROM onceltuca/thomasgreen:1.19
-
-RUN apt install time

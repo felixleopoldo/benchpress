@@ -1,0 +1,15 @@
+FROM ubuntu:23.10
+
+RUN apt upgrade -y
+RUN apt update -y
+RUN apt install -y default-jre
+RUN apt install default-jdk -y
+RUN apt install time
+RUN apt install build-essential -y
+
+ADD jtsampler jtsampler
+WORKDIR /jtsampler
+
+RUN make allclean
+RUN mkdir /packaging
+RUN make all

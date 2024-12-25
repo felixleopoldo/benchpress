@@ -9,60 +9,74 @@
 
 include: "path_generators.py"
 
+# Iterate over all benchmark setups
+for i, bmark_setup in enumerate(config["benchmark_setup"]):
 
-rule benchmarks_combine_data:
-    input:
-        "workflow/rules/evaluation/benchmarks/combine_ROC_data.R",
-        "workflow/rules/evaluation/benchmarks/run_summarise.R",
-        conf=configfilename,
-        snake="workflow/Snakefile",
-        algs=active_algorithm_files("benchmarks") # It should maybe be stated there which kind of benchmarks to be considered..
-    output:
-        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
-        joint="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    shell:
-        "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
+    bmark_setup_title = bmark_setup["title"]    
+    output_dir_prefix = "results/output/"+bmark_setup_title+"/benchmarks/"+bmark_setup["evaluation"]["benchmarks"]["filename_prefix"]
 
-rule benchmarks:
-    input:
-        "workflow/rules/evaluation/benchmarks/plot_ROC.R",
-        "workflow/rules/evaluation/benchmarks/run_summarise.R",
-        "workflow/Snakefile",
-        config=configfilename,
-        csv="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"ROC_data.csv",
-        raw_bench="results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] +"joint_benchmarks.csv"
-    output:
-        temp(touch("results/output/benchmarks/benchmarks.done")),
-        fpr_tpr_pattern=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_pattern"),
-        FPRp_FNR_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPRp_FNR_skel"),
-        fnr_fprp_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FNR_FPR_skel"),
-        roc_FPRp_TPR_skel=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "FPR_TPR_skel"),
-        roc_FPR_TPR=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "roc_FPR_TPR"),
-        elapsed_time_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "elapsed_time_joint"),
-        graph_type=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "graph_type"),
-        SHD_cpdag_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "SHD_cpdag_joint"),
-        f1_skel_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "f1_skel_joint"),
-        ntests_joint=directory("results/output/benchmarks/"+config["benchmark_setup"]["evaluation"]["benchmarks"]["filename_prefix"] + "ntests_joint")
+    rule:
+        name:
+            "benchmarks_combine_data_"+bmark_setup_title
+        input:
+            "workflow/rules/evaluation/benchmarks/combine_ROC_data.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
+            conf=configfilename,
+            snake="workflow/Snakefile",
+            algs=active_algorithm_files(bmark_setup) # It should maybe be stated there which kind of benchmarks to be considered..
+        output:
+            csv=output_dir_prefix +"ROC_data.csv",
+            joint=output_dir_prefix +"joint_benchmarks.csv"
+        params:
+            bmark_setup=bmark_setup_title
+        shell:
+            "Rscript workflow/rules/evaluation/benchmarks/combine_ROC_data.R --bmark_setup {params.bmark_setup} --joint_bench {output.joint} --filename {output.csv} --algorithms {input.algs} --config_filename {input.conf} "
 
-    script:
-        "plot_ROC.R"
-
-
+    rule:
+        name:
+            "benchmarks_"+bmark_setup_title
+        input:
+            "workflow/rules/evaluation/benchmarks/plot_ROC.R",
+            "workflow/rules/evaluation/benchmarks/run_summarise.R",
+            "workflow/Snakefile",
+            config=configfilename,
+            csv=output_dir_prefix +"ROC_data.csv",
+            raw_bench=output_dir_prefix +"joint_benchmarks.csv"
+        output:
+            temp(touch("results/output/"+bmark_setup_title+"/benchmarks/benchmarks.done")),
+            fpr_tpr_pattern=directory(output_dir_prefix + "FPR_TPR_pattern"),
+            FPRp_FNR_skel=directory(output_dir_prefix + "FPRp_FNR_skel"),
+            fnr_fprp_skel=directory(output_dir_prefix + "FNR_FPR_skel"),
+            roc_FPRp_TPR_skel=directory(output_dir_prefix + "FPR_TPR_skel"),
+            roc_FPR_TPR=directory(output_dir_prefix + "roc_FPR_TPR"),
+            elapsed_time_joint=directory(output_dir_prefix + "elapsed_time_joint"),
+            elapsed_log_time_joint=directory(output_dir_prefix + "elapsed_log_time_joint"),
+            graph_type=directory(output_dir_prefix + "graph_type"),
+            SHD_cpdag_joint=directory(output_dir_prefix + "SHD_cpdag_joint"),
+            f1_skel_joint=directory(output_dir_prefix + "f1_skel_joint"),
+            f1_pattern_joint=directory(output_dir_prefix + "f1_pattern_joint"),
+            ntests_joint=directory(output_dir_prefix + "ntests_joint"),
+            config=output_dir_prefix + configfilename
+        params:
+            bmark_setup=bmark_setup_title
+        script:
+            "plot_ROC.R"
 
 for alg in config["resources"]["structure_learning_algorithms"]:
     if alg in pattern_strings:
         if alg not in mcmc_modules:
+            # These dont get triggered when updating alg script for some reason when the benchmarks module has run
             rule: 
                 name: 
                     alg+"_summary"
                 input:
                     dataset=summarise_alg_input_data_path(),
                     adjmat_true=summarise_alg_input_adjmat_true_path(),
-                    adjmat_est=summarise_alg_input_adjmat_est_path(alg),
+                    adjmat_est=summarise_alg_input_adjmat_est_path(alg), # BUG: this should trigger new run when altering alg script
                     time=summarise_alg_input_time_path(alg),
                     ntests=summarise_alg_input_ntests_path(alg),
                 output:
-                    res=summarise_alg_output_res_path(alg)
+                    res=summarise_alg_output_res_path(alg) # this is containing the SHD, TP,.. etc for each run.
                 
                 params: 
                     alg=alg,
@@ -90,15 +104,18 @@ for alg in config["resources"]["structure_learning_algorithms"]:
                     # Had to use this wrapper script for some reason to get the right parameters.
                     "benchmarks_csv.py" 
 
-        rule:
-            name:
-                alg+"_joined_benchmarks"
-            input:
-                "workflow/rules/evaluation/benchmarks/run_summarise.R",
-                conf=configfilename,
-                res=join_string_sampled_model(alg),
-            output:
-                join_summaries_output(alg),
-            script:
-                "../../../scripts/evaluation/join_csv_files.R"
-
+for bmark_setup in config["benchmark_setup"]:
+    bmark_setup_title = bmark_setup["title"]
+    for alg in active_algorithms(bmark_setup):
+        if alg in pattern_strings:
+            rule:
+                name:
+                    alg+"_joined_benchmarks_"+bmark_setup_title
+                input:
+                    "workflow/rules/evaluation/benchmarks/run_summarise.R",
+                    conf=configfilename,
+                    res=join_string_sampled_model(alg, bmark_setup) # this is not triggering new run of alg script when altered, Where is it even produced? Should end with results.
+                output:
+                    join_summaries_output(alg, bmark_setup),
+                script:
+                    "../../../scripts/evaluation/join_csv_files.R"

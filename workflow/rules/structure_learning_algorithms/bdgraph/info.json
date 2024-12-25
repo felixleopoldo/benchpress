@@ -1,22 +1,29 @@
 {
     "title": "BDgraph",
-    "version": "2.64",
+    "version": "2.72",
     "package": {
         "title": "BDgraph",
         "url": "https://cran.r-project.org/web/packages/BDgraph/index.html"
     },
     "docs_url": "https://cran.r-project.org/web/packages/BDgraph/BDgraph.pdf",
-    "papers": [
-        {
-            "title": "BDgraph: An R Package for Bayesian Structure Learning in Graphical Models",
-            "url": "https://www.jstatsoft.org/article/view/v089i03"
-        }
-    ],
     "outputs": [
         "graphtraj"
     ],
     "graph_types": [
         "UG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "BDgraph",
+    "meta_description": "BDgraph performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables using MCMC.",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [
+        "MCAR"
+    ],
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": false
 }

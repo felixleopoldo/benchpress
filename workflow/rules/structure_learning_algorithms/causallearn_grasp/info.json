@@ -1,0 +1,25 @@
+{
+    "title": "GRaSP",
+    "version": "v0.1.3.3",
+    "package": {
+        "title": "causal-learn",
+        "url": "https://causal-learn.readthedocs.io/en/latest/index.html"
+    },
+    "docs_url": "https://causal-learn.readthedocs.io/en/latest/search_methods_index/Permutation-based%20causal%20discovery%20methods/GRaSP.html#id10",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "language": "Python",
+    "in_docs": true,
+    "title_full": "Greedy relaxation of the sparsest permutation",
+    "meta_description": "GRaSP",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
+}

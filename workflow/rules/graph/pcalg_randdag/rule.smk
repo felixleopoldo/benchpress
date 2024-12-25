@@ -1,7 +1,7 @@
 rule sample_adjmat:
     output:
-        adjmat = "{output_dir}/adjmat/" + pattern_strings["pcalg_randdag"] + "/seed={replicate}.csv"
+        adjmat = "{output_dir}/adjmat/" + pattern_strings["pcalg_randdag"] + "/seed={seed}.csv"
     container:
-        "docker://onceltuca/bidag:2.0.3"
+        "docker://bpimages/bidag:2.1.4"
     script: 
         "sample_dags.R"

@@ -23,16 +23,7 @@
                 ]
             },
             "extra_args": {
-                "anyOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
-            "constraints": {
+                "description": "File with extra arguments to pass to the solver. The file should be placed in resources/extra_args and the format is the same as used by gobnilp (see the docs).",
                 "anyOf": [
                     {
                         "type": "string"
@@ -58,16 +49,24 @@
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "timeout": {
+                "description": "Use the best DAG found so far after this number of seconds.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "time_limit": {
+                "description": "Time limit in seconds for the solver (not including the time to build the score tables).",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "gap_limit": {
+                "description": "Gap limit.",
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
             "prune": {
                 "type": "boolean"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -85,7 +84,6 @@
                 "continuous": true,
                 "score_type": "BGe",
                 "extra_args": null,
-                "constraints": null,
                 "plot": false,
                 "palim": 3,
                 "alpha_mu": [
@@ -98,7 +96,28 @@
                 "time_limit": null,
                 "gap_limit": null,
                 "prune": true,
-                "timeout": 800
+                "timeout": 800,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "gobnilp-bde",
+                "continuous": false,
+                "score_type": "BDeu",
+                "extra_args": null,
+                "plot": false,
+                "palim": 4,
+                "alpha_mu": null,
+                "alpha_omega_minus_nvars": null,
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "time_limit": null,
+                "gap_limit": null,
+                "prune": true,
+                "timeout": 600,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

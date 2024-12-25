@@ -43,6 +43,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -61,6 +66,25 @@
         ],
         "examples": [
             {
+                "id": "hc-bde",
+                "score": "bde",
+                "iss": [
+                    0.001,
+                    0.01,
+                    0.1
+                ],
+                "issmu": null,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": 1,
+                "restart": 0,
+                "perturb": 1,
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
                 "id": "hc-bge",
                 "score": "bge",
                 "iss": 1,
@@ -77,7 +101,8 @@
                 "beta": 1,
                 "restart": 0,
                 "perturb": 1,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

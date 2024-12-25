@@ -16,19 +16,21 @@ Command:
 
 Approximate time: 20 min.
 
-We demonstrate a small scale simulation study from data scenario :ref:`V` where the PC (:ref:`pcalg_pc`) and the dual PC (:ref:`dualpc`) algorithms  are compared side-by-side.
+This is a small scale simulation study from data scenario :ref:`V` where the PC (:ref:`pcalg_pc`) and the dual PC (:ref:`dualpc`) algorithms  are compared side-by-side.
 We consider data from 10 random `Bayesian network <https://en.wikipedia.org/wiki/Bayesian_network>`_ models :math:`\{(G_i,\Theta_i)\}_{i=1}^{10}`, where each graph :math:`G_i` has :math:`p=80`` nodes and is sampled using the :ref:`pcalg_randdag` module.
 The parameters :math:`\Theta_i` are sampled from the random linear Gaussian SEM using the :ref:`sem_params` module  with ``min`` =0.25, ``max`` =1.
 We draw one standardised dataset :math:`\mathbf Y_i` of size :math:`n=300` from each of the models using the :ref:`iid`, module. 
+The ``benchmark_setup`` section of this study is found in :numref:`pcvsdualpc`.
 
-The ``benchmark_setup`` section looks like this
 
 .. code-block:: json
     :linenos:
     :name: pcvsdualpc
     :caption: The `benchmark_setup` section of PC vs. dual PC
 
-    "benchmark_setup": {
+    "benchmark_setup": [
+        {
+        "title": "paper_pc_vs_dualpc",
         "data": [
             {
                 "graph_id": "avneigs4_p80",
@@ -62,7 +64,7 @@ The ``benchmark_setup`` section looks like this
             "mcmc_heatmaps": [],
             "mcmc_autocorr_plots": []
         }
-    }
+    }]
 
 
 Results from the :ref:`benchmarks` and the :ref:`graph_true_stats` module, where we have focused on the undirected skeleton for evaluations since this is the part where the algorithms mainly differ.
@@ -72,9 +74,6 @@ We note that model with seed number 3 seems give to good results for both algori
 The box plots from  :numref:`study_1/elapsed_time_joint.png` shows the computational times for the two algorithms, where the outliers are labeled by the model seed numbers.
 We note e.g., that seed number 1 gave a bit longer computational time for the standard PC algorithm and from :numref:`study_1/graph_density_plot.png` we find that the graph with seed number 1 has relatively high graph density.
 The conclusion of the `F1 <https://en.wikipedia.org/wiki/F-score>`_ score plot in :numref:`study_1/F1_skel_joint.png`. are in line with the `FP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ / `TP/P <https://en.wikipedia.org/wiki/Receiver_operating_characteristic>`_ results from :numref:`study_1/FPR_TPR_skel.png`.
-
-
-
 
 
 .. _study_1/FPR_TPR_skel.png:

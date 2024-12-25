@@ -21,17 +21,22 @@ def dict_to_path(d):
         c.pop("mcmc_estimator")
     if "active" in c:
         c.pop("active")
+    if "standardized" in c:
+        c.pop("standardized")
+    
     sep = "/"
-    ret = sep.join([key+"={"+key+"}" for key,val in c.items()])
+    # HACK: Should put standardized first if it exists.. 
+    tmp = [key+"={"+key+"}" for key, val in c.items()]
+    ret = sep.join(tmp)
     return ret
 
 # The pattern strings are generated from the json config file.
 pattern_strings = {}
 
 # structure learning algorithms. 
+# May be good to add all since they might be input for other algs.
 for alg in config["resources"]["structure_learning_algorithms"].keys():
     pattern_strings[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
-
 
 # graph modules
 for module in config["resources"]["graph"]:
@@ -40,11 +45,17 @@ for module in config["resources"]["graph"]:
 # parameters modules
 for module in config["resources"]["parameters"]:
     pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
+# data modules
+for module in config["resources"]["data"]:
+    pattern_strings[module] = module + "/" + dict_to_path(config["resources"]["data"][module])    
 
 # Evaluation strings. These have not exactly the same logic as the above, but it works.
-pattern_strings["mcmc_traj_plots"] = "mcmc_traj_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_traj_plots"])
-pattern_strings["mcmc_autocorr_plots"] = "mcmc_autocorr_plots/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_autocorr_plots"])
-pattern_strings["mcmc_heatmaps"] = "mcmc_heatmaps/" + dict_to_path(config["benchmark_setup"]["evaluation"]["mcmc_heatmaps"])
+# check if the evaluation is active.
+for mcmc_eval in ["mcmc_traj_plots", "mcmc_autocorr_plots", "mcmc_heatmaps"]:
+    # check if in json config file.
+    for bmark_setup in config["benchmark_setup"]:
+        if mcmc_eval in bmark_setup["evaluation"]:
+            pattern_strings[mcmc_eval] = mcmc_eval + "/" + dict_to_path(bmark_setup["evaluation"][mcmc_eval])
 
 # Estimation parameters of mcmc algorithms
 pattern_strings["mcmc_est"] = "mcmc_params/"\

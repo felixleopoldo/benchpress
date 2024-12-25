@@ -5,8 +5,6 @@ import bibtexparser
 
 def info_to_table(json, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
-    #tab += "   * - Title\n"
-    #tab += "     - "+info["title"]+"\n"
     tab += "   * - Package\n"    
     tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"
     tab += "   * - Version\n"
@@ -61,7 +59,8 @@ def info_to_small_table():
     tab += "     - Module\n" 
     
     for p in sorted(algspath.iterdir()):
-    
+        if p.name.startswith("."):
+            continue
         j = p/"info.json"
 
         with open(j) as json_file:
@@ -85,7 +84,7 @@ def info_to_small_table():
         else:
             tab += "     - "+info["package"]["title"]+"\n"    
         tab += "     - "+info["version"]+"\n"
-        tab += "     - "+p.name+"_ \n"    
+        tab += "     - :ref:`"+p.name+"` \n"    
         
     tab += "\n"
     return tab
@@ -95,20 +94,62 @@ algspath = Path("../workflow/rules/graph")
 
 f = open("source/graphs_desc.rst", "r")
 content = f.read()
+str= """
+All the modules run in Apptainer (Singularity) containers created from the Docker images corresponding used by the modules.
+To start an interactive `Docker <https://www.docker.com/>`_ shell for a module run
 
-str = ""
+ .. prompt:: bash
+
+     docker run -it username/image:version
+
+ or using `Apptainer <https://apptainer.org/>`_
+
+ .. prompt:: bash
+
+     apptainer run docker://username/image:version
+
+
+"""
+str = """The names of the fields of the modules are directly transferred or translated from the original libraries or code. 
+Thus, for further details of each field see the documentation of the original sources.
+Most of the parameters can be given as either a single value or a list.
+However, some parametrers might be missing for some modules, to see which parameters are available please review the JSON schemas.
+Dots (.) in the original parameter names are omitted for implementational reasons.
+
+
+"""
 str += ".. _"+algspath.name+": \n\n"
-str += "``"+algspath.name+"``\n"
+#str += "``"+algspath.name+"``\n"
+str += "Graphs\n"
 str += "="*len(algspath.name) + "="*10
 str += "\n\n"
-str += content
+
+
+str += """.. toctree::
+    :hidden:
+    :glob:
+    :maxdepth: 3
+    :name: Graph modules
+    :caption: Graph modules
+    
+"""
+for p in sorted(algspath.iterdir()):
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    str += "    graph/{}\n".format(p.name)
+
+
+str += content # the overall description
 str += "\n\n"
 
 str += info_to_small_table()
 str += "\n\n"
 for p in sorted(algspath.iterdir()):
-    #print(p.name)
     if p.name == "docs.rst":
+        continue
+    if p.name.startswith("."):
         continue
     
     d = p/"docs.rst"
@@ -133,37 +174,34 @@ for p in sorted(algspath.iterdir()):
             if "examples" in schema["items"]:
                 dump = json.dumps(schema["items"]["examples"], indent=2)
 
-    
-  
-    #str += "\n\n\n"
-    #str +=".. _" + p.name +": "
-    str += "\n\n"
-    str += ".. _"+p.name+": \n\n"
-    str +="``" + p.name +"`` \n"
-    str +="-"*len(p.name) + "-"*4 + "\n"
-
-    
-    str += "\n"
-    str += ".. rubric:: "+ info["title"]    
-    str += "\n\n"
+    # This is the module part
+    module_str = "\n\n"
+    module_str += ".. _"+p.name+": \n\n"
+    module_str +="" + p.name +" \n"
+    module_str +="-"*len(p.name) + "-"*4 + "\n"    
+    module_str += "\n"
+    module_str += ".. rubric:: "+ info["title"]    
+    module_str += "\n\n"
     if p.name != "fixed_graph":
-        str += info_to_table(info, p)
-        str += "\n\n"
-    str += ".. rubric:: Description"    
+        module_str += info_to_table(info, p)
+        module_str += "\n\n"
+    module_str += ".. rubric:: Description"    
     if content != "":    
-        str += "\n\n"
-        str += content
+        module_str += "\n\n"
+        module_str += content
     if dump != "":
-        str += "\n\n"
-        str += ".. rubric:: Example"
-        str += "\n\n\n"
-        str += ".. code-block:: json"    
-        str += "\n\n"
-        str += '    '.join(('\n'+dump.lstrip()).splitlines(True))
-    str += "\n\n"
-    str += ".. footbibliography::"
-    str += "\n\n"
-
+        module_str += "\n\n"
+        module_str += ".. rubric:: Example"
+        module_str += "\n\n\n"
+        module_str += ".. code-block:: json"    
+        module_str += "\n\n"
+        module_str += '    '.join(('\n'+dump.strip()).splitlines(True))
+    module_str += "\n\n"
+    module_str += ".. footbibliography::"
+    module_str += "\n\n"
+    
+    with open("source/graph/{}.rst".format(p.name), "w") as text_file:
+        text_file.write(module_str)
 
 with open("source/available_graphs.rst", "w") as text_file:
     text_file.write(str)

@@ -11,7 +11,7 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            "startspace_algorithm": {
+            "input_algorithm_id": {
                 "anyOf": [
                     {
                         "type": "string"
@@ -86,6 +86,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -99,7 +104,7 @@
             "mcmc_seed",
             "mcmc_estimator",
             "threshold",
-            "startspace_algorithm",
+            "input_algorithm_id",
             "verbose",
             "stepsave",
             "iterations",
@@ -108,7 +113,7 @@
         "examples": [
             {
                 "id": "partition_itmap-bge",
-                "startspace_algorithm": "itsearch_map-bge_am01_endspace",
+                "input_algorithm_id": "itsearch_map-bge_am01_endspace",
                 "verbose": true,
                 "scoretype": "bge",
                 "chi": null,
@@ -126,8 +131,33 @@
                 "mcmc_seed": 1,
                 "threshold": 0.5,
                 "mcmc_estimator": "threshold",
-                "burnin_frac": 0.5
-            }
+                "burnin_frac": 0.5,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "partition_itmap-bde",
+                "input_algorithm_id": "itsearch_map-bde_endspace",
+                "verbose": true,
+                "scoretype": "bde",
+                "chi": [
+                    0.01,
+                    0.1,
+                    1,
+                    2
+                ],
+                "edgepf": 2,
+                "aw": null,
+                "am": null,
+                "gamma": 1,
+                "stepsave": null,
+                "iterations": null,
+                "timeout": null,
+                "mcmc_seed": 1,
+                "threshold": 0.5,
+                "mcmc_estimator": "threshold",
+                "burnin_frac": 0.5,
+                "edgeConstraints": "edgeConstraints.json"
+            }            
         ]
     }
 }

@@ -10,7 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from pathlib import Path
@@ -22,8 +22,12 @@ copyright = '2023'
 author = 'Felix L. Rios, Giusi Moffa, and Jack Kuipers'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.1'
 
+dirname = os.path.dirname(__file__)
+projdir = os.path.dirname(dirname)
+appdir = Path(projdir).parent
+release = open(os.path.join(appdir, 'VERSION')).read().strip()
+version = '.'.join(release.split('.')[:3])
 
 # -- General configuration ---------------------------------------------------
 
@@ -36,14 +40,22 @@ extensions = [
     'recommonmark',
     'sphinx_copybutton',
     'sphinx-prompt',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'sphinx_last_updated_by_git',
+    'versionwarning.extension',
+    "sphinxext.opengraph",
+    "sphinxcontrib.googleanalytics"
 ]
+googleanalytics_id = "G-CDYR88PWR3"
 
-paths = [Path("../../workflow/rules/structure_learning_algorithms"), 
+
+paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/parameters"),
-         Path("../../workflow/rules/graph"),  
-         Path("../../workflow/rules/data"),  
-         Path("../../workflow/rules/evaluation")]
+         Path("../../workflow/rules/graph"),
+         Path("../../workflow/rules/data"),
+         Path("../../workflow/rules/evaluation"),
+         Path("../../workflow/rules/data/fixed_data")
+         ]
 
 
 bibtex_bibfiles = []
@@ -73,13 +85,19 @@ numfig = True
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-
+html_title = 'Benchpress causal discovery platform'
+html_short_title = 'Benchpress causal discovery platform'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+ogp_site_url = "https://benchpressdocs.readthedocs.io"
+ogp_image = "https://github.com/felixleopoldo/benchpress/raw/master/docs/source/_static/benchpress-logo-white-bg.png"
+ogp_description = "Benchpress is a platform-independent open-source software to develop, execute, and benchmark causal discovery algorithms."
+ogp_enable_meta_description = False
+ogp_video = "https://www.youtube.com/watch?v=tx3hIH3b9Hg"
 
 html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 html_theme_options = {

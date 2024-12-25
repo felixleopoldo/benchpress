@@ -1,17 +1,11 @@
 {
     "title": "Particle Gibbs",
-    "version": "1.25",
+    "version": "2.0.5",
     "package": {
         "title": "trilearn",
         "url": "https://github.com/felixleopoldo/trilearn"
     },
-    "docs_url": "https://cmu-phil.github.io/tetrad/manual/#search_box",
-    "papers": [
-        {
-            "title": "",
-            "url": ""
-        }
-    ],
+    "docs_url": "",
     "outputs": [
         "graphtraj"
     ],
@@ -19,5 +13,15 @@
         "DG"
     ],
     "language": "Python",
-    "in_docs": true
+    "in_docs": true,
+    "title_full": "Particle Gibbs",
+    "meta_description": "Learning decomposable graphs using Particle Gibbs sampler.",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": false
 }

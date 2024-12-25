@@ -1,0 +1,40 @@
+{
+    "title": "gcastle_dag",
+    "description": "Some description",
+    "type": "array",
+    "items": {
+        "title": "gcastle_dag item",
+        "description": "Some description",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "n_nodes": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "n_edges": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "method": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",            
+            "n_nodes",
+            "n_edges",
+            "method"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "er_10_10",
+                "n_nodes": 10,
+                "n_edges": 10,
+                "method": "er"
+            }
+        ]
+    },
+    "uniqueItems": true
+}

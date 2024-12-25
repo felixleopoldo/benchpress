@@ -68,6 +68,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -94,7 +99,28 @@
                 "k": 1,
                 "prior": "uniform",
                 "beta": null,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "h2pc-bde",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "score": "bge",
+                "test": "zf",
+                "iss": 1,
+                "issmu": null,
+                "issw": null,
+                "l": 5,
+                "k": 1,
+                "prior": "uniform",
+                "beta": null,
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

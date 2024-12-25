@@ -1,23 +1,27 @@
 {
     "title": "Iterative MCMC",
-    "docker_image": "onceltuca/bidag:2.0.3",
-    "version": "2.0.3",
+    "version": "2.1.4",
     "package": {
         "title": "BiDAG",
         "url": "https://cran.r-project.org/web/packages/BiDAG/index.html"
     },
     "docs_url": "https://cran.r-project.org/web/packages/BiDAG/BiDAG.pdf",
-    "papers": [
-        {
-            "title": "Jack Kuipers, Polina Suter & Giusi Moffa (2022). Efficient Sampling and Structure Learning of Bayesian Networks",
-            "url": "https://www.tandfonline.com/doi/full/10.1080/10618600.2021.2020127"
-        }
-    ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
-        "DAG", "CPDAG"
+        "DAG",
+        "CPDAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Iterative MCMC",
+    "meta_description": "Iterative MCMC",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": true
 }

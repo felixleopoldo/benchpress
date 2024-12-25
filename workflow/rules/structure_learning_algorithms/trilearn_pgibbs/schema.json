@@ -104,6 +104,28 @@
                 ],
                 "burnin_frac": 0.5,
                 "timeout": null
+            },
+            {
+                "id": "trilearn-disc",
+                "datatype": "discrete",
+                "alpha": 0.5,
+                "beta": 0.5,
+                "radii": 80,
+                "n_particles": 50,
+                "M": 1000,
+                "pseudo_obs": 1,
+                "mcmc_seed": 1,
+                "mcmc_estimator": "threshold",
+                "threshold": [
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.7,
+                    0.9,
+                    1.0
+                ],
+                "burnin_frac": 0.5,
+                "timeout": null
             }
         ]
     },

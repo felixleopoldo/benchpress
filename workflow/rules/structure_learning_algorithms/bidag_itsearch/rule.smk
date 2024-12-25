@@ -1,11 +1,14 @@
-rule bidag_iterative_search:
+rule:
+    name:
+        module_name
     input:
-        data=alg_input_data()
+        data=alg_input_data(),
+        edgeConstraints_formatted=edge_constraints_bidag
     output:
-        adjmat=alg_output_adjmat_path("bidag_itsearch"),
-        time=alg_output_time_path("bidag_itsearch"),
-        ntests=touch(alg_output_ntests_path("bidag_itsearch")),
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=touch(alg_output_ntests_path(module_name)),
     container:
-        "docker://onceltuca/bidag:2.0.3"
+        "docker://bpimages/bidag:2.1.4"
     script:
-        "bidag_iterative_search.R"
+        "script.R"

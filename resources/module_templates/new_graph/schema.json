@@ -23,7 +23,7 @@
             {
                 "id": "test",
                 "p": 10,
-                "par1": null
+                "cutoff": 0.8
             }
         ]
     },

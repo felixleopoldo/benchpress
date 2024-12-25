@@ -1,0 +1,10 @@
+FROM r-base:4.3.1
+
+RUN R -e "install.packages(\"remotes\")" 
+RUN R -e 'library(remotes); install_version("R.utils", "2.12.2")' 
+RUN R -e 'library(remotes); install_version("BiocManager", "1.30.22")'
+
+RUN R -e "BiocManager::install(\"gRbase\")"
+RUN R -e "BiocManager::install(\"RBGL\")" 
+RUN R -e "BiocManager::install(\"Rgraphviz\")"
+RUN R -e "BiocManager::install(\"gRain\")" 

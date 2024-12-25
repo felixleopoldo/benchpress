@@ -11,10 +11,6 @@
                 "type": "string",
                 "description": "Unique identifier"
             },
-            "plot_legend": {
-                "description": "Legend to show in plotting",
-                "type": "string"
-            },
             "alpha": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
             },
@@ -60,6 +56,11 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -85,7 +86,22 @@
                 "maxsx": null,
                 "debug": false,
                 "undirected": false,
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
+            },
+            {
+                "id": "interiamb-mi",
+                "alpha": [
+                    0.01,
+                    0.05
+                ],
+                "test": "mi",
+                "B": null,
+                "maxsx": null,
+                "debug": false,
+                "undirected": false,
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

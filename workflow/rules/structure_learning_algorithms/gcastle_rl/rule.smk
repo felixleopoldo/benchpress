@@ -1,14 +1,16 @@
 
-rule gcastle_rl:
+rule:
+    name:
+        module_name
     input:
         data=alg_input_data(),
     output:
-        adjmat=alg_output_adjmat_path("gcastle_rl"),
-        time=alg_output_time_path("gcastle_rl"),
-        ntests=alg_output_ntests_path("gcastle_rl")
+        adjmat=alg_output_adjmat_path(module_name),
+        time=alg_output_time_path(module_name),
+        ntests=alg_output_ntests_path(module_name)
     params:
         alg="rl"
     container:
-        "docker://onceltuca/gcastle:1.0.3"
+        "docker://bpimages/gcastle:1.0.3"
     script:
         "../../../scripts/structure_learning_algorithms/gcastle.py"

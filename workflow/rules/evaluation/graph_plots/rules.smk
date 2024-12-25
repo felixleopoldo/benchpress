@@ -7,7 +7,7 @@ include: "filenames.py"
 # redefined here.
 # They should probably be defined at a global level.
 def summarise_alg_input_data_path():
-    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={replicate}.csv"
+    return "{output_dir}/data/adjmat=/{adjmat}/parameters=/{bn}/data=/{data}/seed={seed}.csv"
 
 def summarise_alg_input_adjmat_true_path():
     return "{output_dir}/adjmat/{adjmat}.csv"
@@ -30,7 +30,7 @@ rule adjmat_plot:
         "data=/{data_string}/"
         "algorithm=/{alg_string}/"
         "seed={seed}/"
-        "adjmat.eps",
+        "adjmat.png",
     params:
         title="Graph: {adjmat_string}\nParameters: {param_string}\nData: {data_string}",
         adjmat_string="{adjmat_string}",
@@ -91,7 +91,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -100,7 +100,7 @@ rule bnlearn_graphvizcompare:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     script:
         "bnlearn_graphvizcompare.R"
 # This is actually a quite general rule.
@@ -114,7 +114,7 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/"
+        "seed={seed}/"
         "adjmat.csv",
     output:
         filename="{output_dir}/"
@@ -123,10 +123,10 @@ rule adjmat_diffplot:
         "parameters=/{bn}/"
         "data=/{data}/"
         "algorithm=/{alg_string}/"
-        "seed={replicate}/{filename}",
+        "seed={seed}/{filename}",
     params:
         title="Graph: {adjmat}\nParameters: {bn}\nData: {data}",
-        adjmat_string="{adjmat}",
+        adjmat_string="{adjmat}",   
         param_string="{bn}",
         data_string="{data}",
         alg_string="{alg_string}",
@@ -135,35 +135,40 @@ rule adjmat_diffplot:
     script:
         "adjmat_diffplot.py"
 
+for bmark_setup in config["benchmark_setup"]:
+    bmark_setup_title = bmark_setup["title"]
+    rule:
+        name: 
+            "graph_plots_"+bmark_setup_title
+        input:
+            conf=configfilename,
+            graphs=graph_plots(bmark_setup),
+            adjmats=adjmat_plots(bmark_setup),
+            adjmat_diffplots=adjmat_diffplots(bmark_setup),
+            graphvizcompare=bnlearn_graphvizcompare_plots(bmark_setup),
+            csv_adjmats=adjmats(bmark_setup)
+        output:
+            directory("results/output/"+bmark_setup_title+"/graph_plots/graphs"),
+            directory("results/output/"+bmark_setup_title+"/graph_plots/adjmats"),
+            directory("results/output/"+bmark_setup_title+"/graph_plots/adjmat_diffplots"),
+            directory("results/output/"+bmark_setup_title+"/graph_plots/csvs"),
+            directory("results/output/"+bmark_setup_title+"/graph_plots/graphvizcompare"),
+            touch("results/output/"+bmark_setup_title+"/graph_plots/graph_plots.done")
+        params:
+            bmark_setup=bmark_setup_title
+        run:
+            for i,f in enumerate(input.graphs):
+                shell("mkdir -p results/output/{params.bmark_setup}/graph_plots/graphs && cp "+f+" results/output/{params.bmark_setup}/graph_plots/graphs/graph_" +str(i+1) +".png")
+            for i,f in enumerate(input.adjmats):
+                shell("mkdir -p results/output/{params.bmark_setup}/graph_plots/adjmats && cp "+f+" results/output/{params.bmark_setup}/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".png")
+            for i,f in enumerate(input.csv_adjmats):
+                shell("mkdir -p results/output/{params.bmark_setup}/graph_plots/csvs && cp "+f+" results/output/{params.bmark_setup}/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
+            if True:
+                shell("mkdir -p results/output/{params.bmark_setup}/graph_plots/graphvizcompare")
+                for i,f in enumerate(input.graphvizcompare):
+                    shell("cp "+f+" results/output/{params.bmark_setup}/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
 
-rule graph_plots:
-    input:
-        conf=configfilename,
-        graphs=graph_plots(),
-        adjmats=adjmat_plots(),
-        adjmat_diffplots=adjmat_diffplots(),
-        graphvizcompare=bnlearn_graphvizcompare_plots(),
-        csv_adjmats=adjmats()
-    output:
-        directory("results/output/graph_plots/graphs"),
-        directory("results/output/graph_plots/adjmats"),
-        directory("results/output/graph_plots/adjmat_diffplots"),
-        directory("results/output/graph_plots/csvs"),
-        directory("results/output/graph_plots/graphvizcompare"),
-        touch("results/output/graph_plots/graph_plots.done")
-    run:
-        for i,f in enumerate(input.graphs):
-            shell("mkdir -p results/output/graph_plots/graphs && cp "+f+" results/output/graph_plots/graphs/graph_" +str(i+1) +".png")
-        for i,f in enumerate(input.adjmats):
-            shell("mkdir -p results/output/graph_plots/adjmats && cp "+f+" results/output/graph_plots/adjmats/adjmat_plot_" +str(i+1) +".eps")
-        for i,f in enumerate(input.csv_adjmats):
-            shell("mkdir -p results/output/graph_plots/csvs && cp "+f+" results/output/graph_plots/csvs/adjmat_" +str(i+1) +".csv")
-        if True:
-            shell("mkdir -p results/output/graph_plots/graphvizcompare")
-            for i,f in enumerate(input.graphvizcompare):
-                shell("cp "+f+" results/output/graph_plots/graphvizcompare/compare_" +str(i+1) +".pdf")
-
-            shell("mkdir -p results/output/graph_plots/adjmat_diffplots")
-            for i,f in enumerate(input.adjmat_diffplots):
-                shell("cp "+f+" results/output/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
+                shell("mkdir -p results/output/{params.bmark_setup}/graph_plots/adjmat_diffplots")
+                for i,f in enumerate(input.adjmat_diffplots):
+                    shell("cp "+f+" results/output/{params.bmark_setup}/graph_plots/adjmat_diffplots/diffplot_" +str(i+1) +".png")
 

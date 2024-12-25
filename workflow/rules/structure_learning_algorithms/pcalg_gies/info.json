@@ -1,0 +1,25 @@
+{
+    "title": "GIES",
+    "version": "2.7-8",
+    "package": {
+        "title": "pcalg",
+        "url": "https://cran.r-project.org/web/packages/pcalg/index.html"
+    },
+    "docs_url": "https://cran.r-project.org/web/packages/pcalg/index.html",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "language": "R",
+    "title_full": "Greedy Interventional Equivalence Search",
+    "meta_description": "GIES",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [
+        "hard"
+    ],
+    "mcmc": false,
+    "edge_constraints": true
+}

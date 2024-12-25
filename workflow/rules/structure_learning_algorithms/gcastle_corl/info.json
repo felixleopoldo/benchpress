@@ -6,17 +6,20 @@
         "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
     "docs_url": "",
-    "papers": [
-        {
-            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
-            "url": "https://arxiv.org/abs/2111.15155"
-        }
-    ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "title_full": "Ordering-based Reinforcement Learning",
+    "meta_description": "Ordering-based Reinforcement Learning",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

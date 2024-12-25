@@ -4,11 +4,12 @@
 # Averages are usually taken over different seeds.
 
 library(dplyr, warn.conflicts = FALSE)
-library("rjson")
+library(rjson)
 library(argparser)
 
 p <- arg_parser("Combining benchmarks data from differents sources.")
 p <- add_argument(p, "--filename", help = "Filename")
+p <- add_argument(p, "--bmark_setup", help = "Benchmark setup title")
 p <- add_argument(p, "--joint_bench", help = "Joint")
 p <- add_argument(p, "--config_filename", help = "Filename config file")
 p <- add_argument(p, "--algorithms", help = "Algorithms", nargs = Inf)
@@ -38,14 +39,29 @@ for (algorithm in active_algorithms) {
   # same could be read more than once.
   # The problem is that the curve variable is needed.
   # It is fixed by running the distinct function.
-  ROCdf <- read.csv(file.path(
-    "results/output/benchmarks/",
-    paste(config$benchmark_setup$evaluation$benchmarks$filename_prefix,
-      algorithm,
-      ".csv",
-      sep = ""
-    )
-  ))
+  
+    # find index of the benchmark setup
+    bmark_ind <- 1
+    for (i in 1:length(config$benchmark_setup)) {
+        if (config$benchmark_setup[[i]]$title == argv$bmark_setup) {
+            bmark_ind <- i
+            break
+        }
+    }
+
+
+    fp <- file.path(
+        "results/output",argv$bmark_setup,"benchmarks",
+        paste(config$benchmark_setup[[bmark_ind]]$evaluation$benchmarks$filename_prefix,
+        algorithm,
+        ".csv",
+        sep = ""
+        )
+        )
+
+    ROCdf <- read.csv(fp)
+    #print(ROCdf)
+
   unique_ids <- ROCdf %>% distinct(id)
 
 
@@ -116,7 +132,7 @@ for (algorithm in active_algorithms) {
         time_median = median(time),
         time_q1 = quantile(time, probs = c(0.05)),
         time_q3 = quantile(time, probs = c(0.95)),
-        N = n(),
+        n_seeds = n(),
         curve_vals = mean(!!as.symbol(curve_param))
       )
 

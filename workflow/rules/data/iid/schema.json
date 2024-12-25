@@ -11,7 +11,7 @@
                 "title": "Unique ID",
                 "type": "string"
             },
-            "sample_sizes": {
+            "n": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
             },
             "standardized": {
@@ -20,7 +20,7 @@
         },
         "required": [
             "id",
-            "sample_sizes",
+            "n",
             "standardized"
         ],
         "additionalProperties": false,
@@ -28,7 +28,7 @@
             {
                 "id": "standardized",
                 "standardized": true,
-                "sample_sizes": [
+                "n": [
                     100
                 ]
             }

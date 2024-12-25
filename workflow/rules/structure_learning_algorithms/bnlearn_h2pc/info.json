@@ -1,6 +1,6 @@
 {
     "title": "H2PC",
-    "version": "4.7",
+    "version": "4.8.3",
     "package": {
         "title": "bnlearn",
         "url": "https://www.bnlearn.com/"
@@ -18,5 +18,16 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "H2PC",
+    "meta_description": "H2PC",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

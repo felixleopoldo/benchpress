@@ -29,8 +29,13 @@
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
             },
-            "structurePrior": {
+            "semBicStructurePrior": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+            },
+            "edgeConstraints": {
+                "type": ["string", "null"],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing background knowledge"
             }
         },
         "additionalProperties": false,
@@ -40,7 +45,7 @@
             "score",
             "datatype",
             "samplePrior",
-            "structurePrior",
+            "semBicStructurePrior",
             "penaltyDiscount",
             "timeout"
         ],
@@ -48,16 +53,17 @@
             {
                 "id": "fges-sem-bic",
                 "faithfulnessAssumed": true,
-                "score": "sem-bic",
+                "score": "sem-bic-score",
                 "datatype": "continuous",
                 "samplePrior": 1,
-                "structurePrior": 1,
+                "semBicStructurePrior": 1,
                 "penaltyDiscount": [
                     0.8,
                     1,
                     1.5
                 ],
-                "timeout": null
+                "timeout": null,
+                "edgeConstraints": "edgeConstraints.json"
             }
         ]
     }

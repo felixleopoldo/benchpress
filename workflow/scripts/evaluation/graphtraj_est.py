@@ -29,6 +29,7 @@ if os.stat(snakemake.input["traj"]).st_size > 0:
         df_heatmap.to_csv(snakemake.output["heatmap"], index=False)
 
     if snakemake.params["estimator"] == "threshold":
+        # this is quite slow as it reads the whole trajectory.
         df_heatmap = estimate_heatmap(df, float(snakemake.params["burnin_frac"]), edgesymb)
         df_adjmat = (df_heatmap > float(snakemake.params["threshold"])) * 1
         df_adjmat.to_csv(snakemake.output["adjmat"], index=False)
