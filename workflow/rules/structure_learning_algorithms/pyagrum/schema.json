@@ -1,31 +1,29 @@
 {
-    "title": "Some title",
-    "description": "List of objects",
-    "type": "array",
-    "items": {
-        "title": "Some item",
-        "description": "Some description.",
-        "type": "object",
-        "properties": {
-            "id": {
-                "description": "Algorithm identifier",
-                "type": "string"
-            },
-            "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-            }
-        },
-        "required": [
-            "id",
-            "timeout"
-        ],
-        "examples": [
-            {
-                "id": "myalg",
-                "cutoff": 0.5,
-                "timeout": null
-            }
-        ]
+  "title": "Some title",
+  "description": "List of objects",
+  "type": "array",
+  "items": {
+    "title": "Some item",
+    "description": "Some description.",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Algorithm identifier",
+        "type": "string"
+      },
+      "timeout": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+      }
     },
-    "uniqueItems": true
+    "required": ["id", "timeout"],
+    "examples": [
+      {
+        "id": "pyagrum",
+        "useMDLCorrection": [true],
+        "useSmoothingPrior": [true, false],
+        "timeout": null
+      }
+    ]
+  },
+  "uniqueItems": true
 }

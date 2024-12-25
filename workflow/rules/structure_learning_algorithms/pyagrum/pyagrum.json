@@ -1,38 +1,38 @@
 {
-  "benchmark_setup": {
-    "data": [
-      {
-        "graph_id": "avneigs4",
-        "parameters_id": "binbn",
-        "data_id": "bindata",
-        "seed_range": [1, 3]
-      }
-    ],    
-    "evaluation": {
-      "benchmarks": {
-        "filename_prefix": "pyagrum/",
-        "show_seed": false,
-        "errorbar": false,
-        "errorbarh": false,
-        "scatter": true,
-        "path": true,
-        "text": false,
-        "ids": [
-          "fges-bdeu",
-          "pyagrum", "itsearch_map-bde"
-        ]
-      },
-      "graph_estimation": {
-        "ids": ["pyagrum", "fges-bdeu"],
-        "other_graph_types": ["original", "cpdag", "pattern"],
-        "graphs": true,
-        "adjmats": false,
-        "diffplots": true,
-        "csvs": true,
-        "graphvizcompare": true
+  "benchmark_setup": [
+    {
+      "title": "pyagrum_config",
+      "data": [
+        {
+          "graph_id": "avneigs4",
+          "parameters_id": "binbn",
+          "data_id": "bindata",
+          "seed_range": [1, 5]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "pyagrum/",
+          "show_seed": false,
+          "errorbar": false,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": ["fges-bdeu", "pyagrum", "itsearch_map-bde"]
+        },
+        "graph_estimation": {
+          "ids": ["pyagrum", "fges-bdeu"],
+          "convert_to": null,
+          "graphs": true,
+          "adjmats": false,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        }
       }
     }
-  },
+  ],
   "resources": {
     "data": {
       "iid": [
@@ -46,7 +46,6 @@
           "standardized": false,
           "n": [300]
         }
-
       ]
     },
     "graph": {
@@ -71,7 +70,7 @@
           "max": 1
         }
       ],
-      "bin_bn":[
+      "bin_bn": [
         {
           "id": "binbn",
           "min": 0.1,
@@ -89,7 +88,8 @@
           "samplePrior": 1,
           "semBicStructurePrior": 1,
           "penaltyDiscount": [0.75, 1.5],
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         },
         {
           "id": "fges-bdeu",
@@ -99,7 +99,8 @@
           "samplePrior": [1, 2],
           "semBicStructurePrior": 1,
           "penaltyDiscount": null,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "pcalg_pc": [
@@ -116,7 +117,8 @@
           "numCores": 1,
           "verbose": false,
           "indepTest": "gaussCItest",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "pyagrum": [
@@ -138,7 +140,8 @@
           "k": 1,
           "prior": "uniform",
           "beta": 1,
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bidag_itsearch": [
@@ -159,7 +162,8 @@
           "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
-          "mergetype": "skeleton"
+          "mergetype": "skeleton",
+          "edgeConstraints": null
         },
         {
           "id": "itsearch_map-bde",
@@ -168,11 +172,7 @@
           "plus1it": null,
           "posterior": null,
           "scoretype": "bde",
-          "chi": [
-            0.01,
-            0.1,
-            1
-          ],
+          "chi": [0.01, 0.1, 1],
           "edgepf": 2,
           "am": null,
           "aw": null,
@@ -182,7 +182,8 @@
           "gamma": 1,
           "cpdag": false,
           "mergetype": "skeleton",
-          "timeout": null
+          "timeout": null,
+          "edgeConstraints": null
         }
       ]
     }

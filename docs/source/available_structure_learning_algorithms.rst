@@ -66,6 +66,7 @@ Algorithms
     structure_learning_algorithms/bidag_partition_mcmc
     structure_learning_algorithms/prec_thresh
     structure_learning_algorithms/equsa_psilearner
+    structure_learning_algorithms/pyagrum
     structure_learning_algorithms/gcastle_rl
     structure_learning_algorithms/bnlearn_rsmax2
     structure_learning_algorithms/bnlearn_sihitonpc
@@ -526,6 +527,14 @@ To add new modules, see :ref:`new_modules`.
      - `equSA <https://rdrr.io/cran/equSA/>`__
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
      - C
+     - 
+     - 
+     - 
+     - 
+   * - :ref:`PyAgrum <pyagrum>`
+     - `pyagrum <https://pyagrum.readthedocs.io/en/latest/>`__
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - B
      - 
      - 
      - 
