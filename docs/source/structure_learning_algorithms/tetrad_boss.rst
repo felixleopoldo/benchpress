@@ -4,10 +4,10 @@
 :og:description: Best Order Score Search
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Best Order Score Search (BOSS)
+:og:title: BOSS (TETRAD)
  
 .. meta::
-    :title: Best Order Score Search 
+    :title: BOSS (TETRAD)
     :description: Best Order Score Search
 
 

@@ -4,10 +4,10 @@
 :og:description: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models (GOLEM)
+:og:title: GOLEM (gCastle)
  
 .. meta::
-    :title: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models 
+    :title: GOLEM (gCastle)
     :description: Gradient-based Optimization of dag-penalized Likelihood for learning linEar dag Models
 
 

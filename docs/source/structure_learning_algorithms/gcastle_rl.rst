@@ -4,10 +4,10 @@
 :og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Causal discovery with reinforcement learning (RL)
+:og:title: RL (gCastle)
  
 .. meta::
-    :title: Causal discovery with reinforcement learning 
+    :title: RL (gCastle)
     :description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 
 

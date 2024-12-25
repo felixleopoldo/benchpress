@@ -4,10 +4,10 @@
 :og:description: Semi-Interleaved HITON-PC
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Semi-Interleaved HITON-PC (S-I HITON-PC)
+:og:title: S-I HITON-PC (bnlearn)
  
 .. meta::
-    :title: Semi-Interleaved HITON-PC 
+    :title: S-I HITON-PC (bnlearn)
     :description: Semi-Interleaved HITON-PC
 
 

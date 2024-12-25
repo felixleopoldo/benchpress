@@ -4,10 +4,10 @@
 :og:description: Ordering-based Reinforcement Learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Ordering-based Reinforcement Learning (CORL)
+:og:title: CORL (gCastle)
  
 .. meta::
-    :title: Ordering-based Reinforcement Learning 
+    :title: CORL (gCastle)
     :description: Ordering-based Reinforcement Learning
 
 

@@ -4,10 +4,10 @@
 :og:description: FGES is an optimized and parallelized version of an algorithm developed by Meek called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Fast Greedy Equivalence Search (FGES)
+:og:title: FGES (TETRAD)
  
 .. meta::
-    :title: Fast Greedy Equivalence Search 
+    :title: FGES (TETRAD)
     :description: FGES is an optimized and parallelized version of an algorithm developed by Meek called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering.
 
 

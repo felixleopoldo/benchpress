@@ -4,10 +4,10 @@
 :og:description: A classic causal discovery algorithm based on conditional independence tests.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: PC (PC)
+:og:title: PC (gCastle)
  
 .. meta::
-    :title: PC 
+    :title: PC (gCastle)
     :description: A classic causal discovery algorithm based on conditional independence tests.
 
 

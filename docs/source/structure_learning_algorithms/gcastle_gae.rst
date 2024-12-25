@@ -4,10 +4,10 @@
 :og:description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Graph autoencoder (GAE)
+:og:title: GAE (gCastle)
  
 .. meta::
-    :title: Graph autoencoder 
+    :title: GAE (gCastle)
     :description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
 
 

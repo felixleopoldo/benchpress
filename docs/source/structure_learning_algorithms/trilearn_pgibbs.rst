@@ -4,10 +4,10 @@
 :og:description: Learning decomposable graphs using Particle Gibbs sampler.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Particle Gibbs (Particle Gibbs)
+:og:title: Particle Gibbs (trilearn)
  
 .. meta::
-    :title: Particle Gibbs 
+    :title: Particle Gibbs (trilearn)
     :description: Learning decomposable graphs using Particle Gibbs sampler.
 
 

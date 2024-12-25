@@ -4,10 +4,10 @@
 :og:description: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning (NO TEARS)
+:og:title: NO TEARS (gCastle)
  
 .. meta::
-    :title: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning 
+    :title: NO TEARS (gCastle)
     :description: Non-combinatorial Optimization via Trace Exponential and Augmented lagRangian for Structure learning
 
 

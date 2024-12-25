@@ -4,10 +4,10 @@
 :og:description: Greedy sparsest permutation
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Greedy sparsest permutation (GSP)
+:og:title: GSP (CausalDAG)
  
 .. meta::
-    :title: Greedy sparsest permutation 
+    :title: GSP (CausalDAG)
     :description: Greedy sparsest permutation
 
 

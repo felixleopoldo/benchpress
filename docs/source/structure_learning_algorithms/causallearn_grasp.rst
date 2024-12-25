@@ -4,10 +4,10 @@
 :og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Greedy relaxation of the sparsest permutation (GRaSP)
+:og:title: GRaSP (causal-learn)
  
 .. meta::
-    :title: Greedy relaxation of the sparsest permutation 
+    :title: GRaSP (causal-learn)
     :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 
 

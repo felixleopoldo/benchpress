@@ -4,10 +4,10 @@
 :og:description: We consider the problem of estimating the marginal independence structure of a Bayesian network from observational data in the form of an undirected graph called the unconditional dependence graph.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Gröbner-based Unconditional Equivalence Search (GrUES)
+:og:title: GrUES (gues)
  
 .. meta::
-    :title: Gröbner-based Unconditional Equivalence Search 
+    :title: GrUES (gues)
     :description: We consider the problem of estimating the marginal independence structure of a Bayesian network from observational data in the form of an undirected graph called the unconditional dependence graph.
 
 

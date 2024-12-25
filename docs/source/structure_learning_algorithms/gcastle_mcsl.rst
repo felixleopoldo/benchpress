@@ -4,10 +4,10 @@
 :og:description: Masked Gradient-Based Causal Structure Learning
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Masked Gradient-Based Causal Structure Learning (MCSL)
+:og:title: MCSL (gCastle)
  
 .. meta::
-    :title: Masked Gradient-Based Causal Structure Learning 
+    :title: MCSL (gCastle)
     :description: Masked Gradient-Based Causal Structure Learning
 
 

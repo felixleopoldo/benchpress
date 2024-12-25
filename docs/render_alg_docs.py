@@ -302,12 +302,12 @@ for p in sorted(algspath.iterdir()):
 :og:description: {desc}
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: {title_full} ({title})
+:og:title: {title} ({package})
  
 .. meta::
-    :title: {title_full} 
+    :title: {title} ({package})
     :description: {desc}
-""".format(desc=meta_description, title_full=info["title_full"], title=info["title"]) 
+""".format(desc=meta_description, title_full=info["title_full"], title=info["title"], package=info["package"]["title"]) 
     
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"

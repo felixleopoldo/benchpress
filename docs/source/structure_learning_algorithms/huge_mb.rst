@@ -4,10 +4,10 @@
 :og:description: Meinshausen & Buhlmann cov est
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Meinshausen & Buhlmann cov est (M&B cov est)
+:og:title: M&B cov est (huge)
  
 .. meta::
-    :title: Meinshausen & Buhlmann cov est 
+    :title: M&B cov est (huge)
     :description: Meinshausen & Buhlmann cov est
 
 

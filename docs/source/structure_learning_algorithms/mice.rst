@@ -4,10 +4,10 @@
 :og:description: mice data imputation for the temporal PC algorithm.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Multivariate Imputation by Chained Equations (MICE)
+:og:title: MICE (mice)
  
 .. meta::
-    :title: Multivariate Imputation by Chained Equations 
+    :title: MICE (mice)
     :description: mice data imputation for the temporal PC algorithm.
 
 

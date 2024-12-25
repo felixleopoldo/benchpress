@@ -4,10 +4,10 @@
 :og:description: 
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: PC (PC)
+:og:title: PC (bnlearn)
  
 .. meta::
-    :title: PC 
+    :title: PC (bnlearn)
     :description: 
 
 

@@ -4,10 +4,10 @@
 :og:description: Independent component analysis for linear non-Gaussian acyclic models
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: ICA linear non-Gaussian acyclic model (ICA-LiNGAM)
+:og:title: ICA-LiNGAM (TETRAD)
  
 .. meta::
-    :title: ICA linear non-Gaussian acyclic model 
+    :title: ICA-LiNGAM (TETRAD)
     :description: Independent component analysis for linear non-Gaussian acyclic models
 
 

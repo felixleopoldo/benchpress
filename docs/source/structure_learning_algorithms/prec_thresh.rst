@@ -4,10 +4,10 @@
 :og:description: Thresholding the estimated precision matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Precmat thresh (Precmat thresh)
+:og:title: Precmat thresh (Benchpress)
  
 .. meta::
-    :title: Precmat thresh 
+    :title: Precmat thresh (Benchpress)
     :description: Thresholding the estimated precision matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to conditional independence given a separating set of nodes.
 
 

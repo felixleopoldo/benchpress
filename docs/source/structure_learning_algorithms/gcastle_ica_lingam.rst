@@ -4,10 +4,10 @@
 :og:description: Independent component analysis for linear non-Gaussian acyclic models
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Independent component analysis for linear non-Gaussian acyclic models (ICA-LiNGAM)
+:og:title: ICA-LiNGAM (gCastle)
  
 .. meta::
-    :title: Independent component analysis for linear non-Gaussian acyclic models 
+    :title: ICA-LiNGAM (gCastle)
     :description: Independent component analysis for linear non-Gaussian acyclic models
 
 

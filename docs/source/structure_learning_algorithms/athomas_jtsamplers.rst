@@ -4,10 +4,10 @@
 :og:description: Chordal graph samplers based on junction trees and MCMC.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Chordal graph samplers (Chordal graph samplers)
+:og:title: Chordal graph samplers (A. Thomas)
  
 .. meta::
-    :title: Chordal graph samplers 
+    :title: Chordal graph samplers (A. Thomas)
     :description: Chordal graph samplers based on junction trees and MCMC.
 
 

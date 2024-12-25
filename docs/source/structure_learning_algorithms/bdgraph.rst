@@ -7,7 +7,7 @@
 :og:title: BDgraph (BDgraph)
  
 .. meta::
-    :title: BDgraph 
+    :title: BDgraph (BDgraph)
     :description: BDgraph performs Bayesian structure learning for general undirected graphical models (decomposable and non-decomposable) with continuous, discrete, and mixed variables using MCMC.
 
 

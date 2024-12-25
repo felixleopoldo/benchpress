@@ -4,10 +4,10 @@
 :og:description: FTFC (Find Two Factor Clusters) is similar to FOFC, but instead of each cluster having one latent that is the parent of all of the measure in the cluster, it instead has two such latents.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Find Two Factor Clusters (FTFC)
+:og:title: FTFC (TETRAD)
  
 .. meta::
-    :title: Find Two Factor Clusters 
+    :title: FTFC (TETRAD)
     :description: FTFC (Find Two Factor Clusters) is similar to FOFC, but instead of each cluster having one latent that is the parent of all of the measure in the cluster, it instead has two such latents.
 
 
