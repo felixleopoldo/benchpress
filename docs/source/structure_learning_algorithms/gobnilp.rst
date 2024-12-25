@@ -34,6 +34,10 @@ GOBNILP (GOBNILP)
      - :footcite:t:`https://doi.org/10.48550/arxiv.1202.3713`, :footcite:t:`BARTLETT2017258`, :footcite:t:`cussens2017bayesian`, :footcite:t:`pmlr-v138-cussens20a`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

@@ -34,6 +34,10 @@ Psi-learning (equSA)
      - :footcite:t:`liang2015equivalent`, :footcite:t:`liang2008estimating`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C
    * - Data missingness

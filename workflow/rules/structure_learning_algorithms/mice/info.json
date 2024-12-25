@@ -9,7 +9,7 @@
     "docs_url": "https://amices.org/mice/",
     "outputs": "adjmat",
     "graph_types": [
-        ""        
+        ""
     ],
     "meta_description": "mice data imputation for the temporal PC algorithm.",
     "data_types": [
@@ -19,5 +19,7 @@
     ],
     "data_missingness": [],
     "intervention_types": [],
-    "language": "R"
+    "language": "R",
+    "mcmc": false,
+    "edge_constraints": false
 }

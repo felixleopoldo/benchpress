@@ -34,6 +34,10 @@ TIGER (huge)
      - :footcite:t:`liu2017tiger`, :footcite:t:`zhao2012huge`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C
    * - Data missingness

@@ -34,6 +34,10 @@ PC (pcalg)
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

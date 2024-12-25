@@ -14,7 +14,12 @@
     "in_docs": true,
     "title_full": "Greedy relaxation of the sparsest permutation",
     "meta_description": "GRaSP",
-    "data_types": ["continuous", "discrete"],
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

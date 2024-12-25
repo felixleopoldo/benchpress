@@ -34,6 +34,10 @@ HPC (bnlearn)
      - :footcite:t:`GASSE20146755`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D, M
    * - Data missingness

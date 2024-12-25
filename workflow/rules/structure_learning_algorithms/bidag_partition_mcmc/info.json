@@ -22,7 +22,12 @@
     "language": "R",
     "title_full": "Partition MCMC",
     "meta_description": "Partition MCMC",
-    "data_types": ["continuous", "discrete"],
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": true
 }

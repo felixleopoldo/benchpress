@@ -53,6 +53,21 @@ def info_to_table(info, p):
         tab += str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
+    tab += "   * - MCMC\n"
+    tab += "     - "
+    if info["mcmc"]:
+        tab += "Yes"
+    else:
+        tab += "No"
+    tab += "\n"
+    tab += "   * - Edge constraints\n"
+    tab += "     - "
+    if info["edge_constraints"]:
+        tab += ":ref:`Yes <edge_constraints>`"
+    else:
+        tab += "No"
+    tab += "\n"
+    
     tab += "   * - Data type\n"
     tab += "     - "
     if len(info["data_types"]) > 0:
@@ -76,12 +91,11 @@ def info_to_table(info, p):
     tab += "\n"
     tab += "   * - Docker \n"
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
-    #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
     
     tab += "\n"
     return tab
 
-# This is the table with allr the algorithms
+# This is the table with all the algorithms
 def info_to_small_table():
     algspath = Path("../workflow/rules/structure_learning_algorithms")
     tab = ""
@@ -92,11 +106,11 @@ def info_to_small_table():
     #tab += "     - Module\n" 
     tab += "     - Graph\n" 
     tab += "     - Data\n" 
+    tab += "     - MCMC\n"
+    tab += "     - Edge constraints\n"
     tab += "     - Data missingness\n" 
     tab += "     - Intervention type\n"
-    
-
-    
+        
     
     # sort by title
     algs = []
@@ -150,6 +164,23 @@ def info_to_small_table():
         else:
             tab += "\-"        
         tab += "\n"
+        
+        # MCMC:
+        tab += "     - "
+        if info["mcmc"]:
+            tab += "Yes"
+        else:
+            tab += ""
+        tab += "\n"
+        
+        # Edge constraints:
+        tab += "     - "
+        if info["edge_constraints"]:
+            tab += ":ref:`Yes <edge_constraints>`"
+        else:
+            tab += ""
+        tab += "\n"
+        
         # Data missingness:
         tab += "     - "
         if len(info["data_missingness"]) > 0:
@@ -157,7 +188,7 @@ def info_to_small_table():
                 tab += str2link(info["data_missingness"][i]) +", "
             tab = tab[:-2]
         else:
-            tab += "\-"        
+            tab += ""        
         tab += "\n"
         # Intervention types:
         tab += "     - "
@@ -280,16 +311,9 @@ for p in sorted(algspath.iterdir()):
     
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
-    #module_str += p.name +" HOHOHO\n"
-    #module_str +="-"*len(p.name) + "-"*4 + "-"*len(info["title_full"]) + "-"*4 + "\n"
-    
     module_str +="{} ({}) \n".format(info["title"], info["package"]["title"])
-    module_str +="*"*len(info["title"] + info["package"]["title"]) + "*"*4 + "\n"
-    
+    module_str +="*"*len(info["title"] + info["package"]["title"]) + "*"*4 + "\n"    
     module_str += "\n"
-    #module_str += ".. rubric:: "+ info["title_full"]    
-    #module_str += info["title_full"] + "\n"    
-    #module_str +="-"*len(info["title_full"]) + "-"*4 + "\n"
     module_str += "\n\n"
     module_str += info_to_table(info, p)
     module_str += "\n\n"

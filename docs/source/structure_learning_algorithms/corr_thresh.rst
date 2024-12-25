@@ -34,6 +34,10 @@ Corrmat thresh (Benchpress)
      - :footcite:t:`lauritzen1996graphical`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C
    * - Data missingness

@@ -34,6 +34,10 @@ BDgraph (BDgraph)
      - :footcite:t:`JSSv089i03`, :footcite:t:`mohammadi2015bayesian`, :footcite:t:`doi:10.1080/01621459.2021.1996377`, :footcite:t:`10.1214/18-AOAS1164`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
    * - Data type
      - C, D, M
    * - Data missingness

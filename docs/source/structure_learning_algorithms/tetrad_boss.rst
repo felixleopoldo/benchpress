@@ -34,6 +34,10 @@ BOSS (TETRAD)
      - :footcite:t:`ramsey2021improving`, :footcite:t:`andrews2023fast`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

@@ -21,7 +21,11 @@
     "language": "Python",
     "title_full": "Masked Gradient-Based Causal Structure Learning",
     "meta_description": "Masked Gradient-Based Causal Structure Learning",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

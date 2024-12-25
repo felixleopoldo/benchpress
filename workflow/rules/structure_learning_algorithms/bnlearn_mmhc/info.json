@@ -15,7 +15,13 @@
     "language": "R",
     "title_full": "Max-Min Hill-Climbing",
     "meta_description": "Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a DAG using an algorithm called Max-Min Parents and Children and then performs a greedy hill-climbing search to orient the edges with respect to a Bayesian score.",
-    "data_types": ["continuous", "discrete", "mixed"],
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

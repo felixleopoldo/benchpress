@@ -34,6 +34,10 @@ MCSL (gCastle)
      - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C
    * - Data missingness

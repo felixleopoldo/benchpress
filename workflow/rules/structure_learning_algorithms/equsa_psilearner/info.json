@@ -15,7 +15,11 @@
     "language": "R",
     "title_full": "Psi-learning",
     "meta_description": "Psi-learning",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

@@ -15,7 +15,12 @@
     "language": "java",
     "title_full": "Fast Adjacency Skewness",
     "meta_description": "FASK",
-    "data_types": ["continuous", "discrete"],
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

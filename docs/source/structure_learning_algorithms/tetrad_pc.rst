@@ -34,6 +34,10 @@ PC (TETRAD)
      - :footcite:t:`doi:10.1177/089443939100900106`, :footcite:t:`spirtes2000causation`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D, M
    * - Data missingness

@@ -34,6 +34,10 @@ ASOBS (r.blip)
      - :footcite:t:`scanagatta2018approximate`, :footcite:t:`scanagatta2015learning`, :footcite:t:`teyssier2012ordering`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - D
    * - Data missingness

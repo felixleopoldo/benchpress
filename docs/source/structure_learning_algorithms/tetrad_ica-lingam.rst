@@ -34,6 +34,10 @@ ICA-LiNGAM (TETRAD)
      - :footcite:t:`shimizu2006linear`, :footcite:t:`hyvarinen2002independent`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C
    * - Data missingness

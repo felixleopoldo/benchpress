@@ -15,7 +15,11 @@
     "language": "Python",
     "title_full": "Greedy sparsest permutation",
     "meta_description": "Greedy sparsest permutation",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

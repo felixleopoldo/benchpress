@@ -34,6 +34,10 @@ GRaSP (causal-learn)
      - :footcite:t:`lam2022greedy`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C, D
    * - Data missingness

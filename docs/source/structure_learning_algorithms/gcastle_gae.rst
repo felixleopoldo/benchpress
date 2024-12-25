@@ -34,6 +34,10 @@ GAE (gCastle)
      - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C
    * - Data missingness

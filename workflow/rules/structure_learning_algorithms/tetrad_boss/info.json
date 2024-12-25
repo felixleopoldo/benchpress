@@ -16,7 +16,12 @@
     "in_docs": true,
     "title_full": "Best Order Score Search",
     "meta_description": "Best Order Score Search",
-    "data_types": ["continuous", "discrete"],
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

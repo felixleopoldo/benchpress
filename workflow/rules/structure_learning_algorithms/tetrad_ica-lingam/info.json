@@ -15,7 +15,11 @@
     "language": "java",
     "title_full": "ICA linear non-Gaussian acyclic model",
     "meta_description": "Independent component analysis for linear non-Gaussian acyclic models",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

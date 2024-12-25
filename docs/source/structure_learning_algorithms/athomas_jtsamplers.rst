@@ -34,6 +34,10 @@ Chordal graph samplers (A. Thomas)
      - :footcite:t:`10.1093/biomet/86.4.785`, :footcite:t:`10.2307/43304539`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
    * - Data type
      - C, D
    * - Data missingness

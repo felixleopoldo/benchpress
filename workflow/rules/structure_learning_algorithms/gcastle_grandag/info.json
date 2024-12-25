@@ -21,7 +21,11 @@
     "language": "Python",
     "title_full": "Gradient-based neural DAG learning",
     "meta_description": "A gradient-based algorithm using neural network modeling for non-linear additive noise data.",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": []
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

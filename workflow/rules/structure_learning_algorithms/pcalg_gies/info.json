@@ -13,7 +13,13 @@
     "language": "R",
     "title_full": "Greedy Interventional Equivalence Search",
     "meta_description": "GIES",
-    "data_types": ["continuous"],
+    "data_types": [
+        "continuous"
+    ],
     "data_missingness": [],
-    "intervention_types": ["hard"]
+    "intervention_types": [
+        "hard"
+    ],
+    "mcmc": false,
+    "edge_constraints": true
 }

@@ -34,6 +34,10 @@ FASK (TETRAD)
      - :footcite:t:`sanchez2018causal`, :footcite:t:`hyvarinen2013pairwise`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

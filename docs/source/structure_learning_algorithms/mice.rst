@@ -34,6 +34,10 @@ MICE (mice)
      - :footcite:t:`mice`
    * - Graph type
      - 
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C, D, M
    * - Data missingness

@@ -34,6 +34,10 @@ GRaSP (TETRAD)
      - :footcite:t:`lam2022greedy`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

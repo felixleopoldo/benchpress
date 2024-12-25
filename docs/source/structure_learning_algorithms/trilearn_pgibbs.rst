@@ -34,6 +34,10 @@ Particle Gibbs (trilearn)
      - :footcite:t:`10.1214/19-EJS1585`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
    * - Data type
      - C, D
    * - Data missingness

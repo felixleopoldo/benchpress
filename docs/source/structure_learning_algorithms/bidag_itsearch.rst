@@ -34,6 +34,10 @@ Iterative MCMC (BiDAG)
      - :footcite:t:`doi:10.1080/10618600.2021.2020127`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C, D
    * - Data missingness

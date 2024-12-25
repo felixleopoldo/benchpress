@@ -34,6 +34,10 @@ GLasso (huge)
      - :footcite:t:`zhao2012huge`, :footcite:t:`friedman2008sparse`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C
    * - Data missingness

@@ -34,6 +34,10 @@ GIES (pcalg)
      - :footcite:t:`JMLR:v13:hauser12a`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
    * - Data type
      - C
    * - Data missingness

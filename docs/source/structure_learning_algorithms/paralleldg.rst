@@ -34,6 +34,10 @@ Parallel DG (parallelDG)
      - :footcite:t:`https://doi.org/10.48550/arxiv.2209.02008`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
    * - Data type
      - C, D
    * - Data missingness

@@ -34,6 +34,10 @@ Dual PC (dualPC)
      - :footcite:t:`pmlr-v186-giudice22a`
    * - Graph type
      - `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__, `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
    * - Data type
      - C
    * - Data missingness
