@@ -294,7 +294,7 @@ To add new modules, see :ref:`new_modules`.
      - `gues <https://pypi.org/project/gues/>`__
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
      - C
-     - 
+     - Yes
      - 
      - 
      - 

@@ -1,14 +1,14 @@
 
 
 
-:og:description: Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in the first phase and the optimal sets are determined in a second phase.  .. important::     This module only works on the AMD64 architecture.
+:og:description: GOBNILP is a score based method using integer linear programming (ILP) for learning an optimal DAG for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in the first phase and the optimal sets are determined in a second phase.  .. important::     This module only works on the AMD64 architecture.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: GOBNILP (GOBNILP)
+:og:title: Globally optimal Bayesian network learning using integer linear programming (GOBNILP)
  
 .. meta::
-    :title: GOBNILP 
-    :description: Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in the first phase and the optimal sets are determined in a second phase.  .. important::     This module only works on the AMD64 architecture.
+    :title: Globally optimal Bayesian network learning using integer linear programming 
+    :description: GOBNILP is a score based method using integer linear programming (ILP) for learning an optimal DAG for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in the first phase and the optimal sets are determined in a second phase.  .. important::     This module only works on the AMD64 architecture.
 
 
 .. _gobnilp: 
@@ -50,11 +50,11 @@ GOBNILP (GOBNILP)
 
 
 
-GOBNILP 
------------
+Globally optimal Bayesian network learning using integer linear programming 
+-------------------------------------------------------------------------------
 
 
-Globally optimal Bayesian network learning using integer linear programming (GOBNILP) is a score based method using integer linear programming (ILP) for learning an optimal DAG
+GOBNILP is a score based method using integer linear programming (ILP) for learning an optimal DAG
 for a Bayesian network with limit on the maximal number of parents for each node. It is a two-stage approach where candidate parent sets for each node are discovered in
 the first phase and the optimal sets are determined in a second phase.
 

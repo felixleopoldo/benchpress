@@ -20,7 +20,7 @@
         "DAG"
     ],
     "language": "C",
-    "title_full": "GOBNILP",
+    "title_full": "Globally optimal Bayesian network learning using integer linear programming",
     "meta_description": "GOBNILP",
     "data_types": [
         "continuous",
