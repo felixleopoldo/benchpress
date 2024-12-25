@@ -2,9 +2,19 @@ FROM r-base:4.2.2
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential libpq-dev python3.11 python3-pip python3-setuptools python3-dev
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential libpq-dev python3.12 python3-pip python3-setuptools python3-dev
 RUN apt install python-is-python3
 RUN apt install -y git-all
+
+# Install python packages
+
+# start virtual environment
+RUN apt install python3.12-venv -y
+
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 
 RUN pip install contextlib2
 RUN pip install numpy

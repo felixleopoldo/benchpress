@@ -10,5 +10,14 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "Python"
+    "language": "Python",
+    "data_types": [
+        "continuous"
+    ],
+    "meta_description": "Diffusion Models for Causal Discovery via Topological Ordering",
+    "title_full": "DiffAN",
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

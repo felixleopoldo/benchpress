@@ -17,6 +17,7 @@ Algorithms
     structure_learning_algorithms/gcastle_corl
     structure_learning_algorithms/athomas_jtsamplers
     structure_learning_algorithms/corr_thresh
+    structure_learning_algorithms/vioss_diffan
     structure_learning_algorithms/gcastle_direct_lingam
     structure_learning_algorithms/dualpc
     structure_learning_algorithms/tetrad_fas
@@ -61,7 +62,7 @@ Algorithms
     structure_learning_algorithms/bnlearn_pcstable
     structure_learning_algorithms/tetrad_pc
     structure_learning_algorithms/gcastle_pc
-    structure_learning_algorithms/paralleldg
+    structure_learning_algorithms/parallelDG
     structure_learning_algorithms/trilearn_pgibbs
     structure_learning_algorithms/bidag_partition_mcmc
     structure_learning_algorithms/prec_thresh
@@ -149,6 +150,14 @@ To add new modules, see :ref:`new_modules`.
    * - :ref:`Corrmat thresh <corr_thresh>`
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+     - C
+     - 
+     - 
+     - 
+     - 
+   * - :ref:`DiffAN <vioss_diffan>`
+     - `DiffAN <https://github.com/vios-s/DiffAN>`__
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
      - 
@@ -490,7 +499,7 @@ To add new modules, see :ref:`new_modules`.
      - :ref:`Yes <edge_constraints>`
      - 
      - 
-   * - :ref:`Parallel DG <paralleldg>`
+   * - :ref:`Parallel DG <parallelDG>`
      - `parallelDG <https://github.com/melmasri/parallelDG>`__
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
      - C, D
