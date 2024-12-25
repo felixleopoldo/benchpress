@@ -13,9 +13,13 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "CORL",
-    "meta_description": "CORL",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "title_full": "Ordering-based Reinforcement Learning",
+    "meta_description": "Ordering-based Reinforcement Learning",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

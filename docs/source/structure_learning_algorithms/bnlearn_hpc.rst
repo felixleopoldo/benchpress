@@ -4,7 +4,7 @@
 :og:description: From bnlearn: an algorithm building on iamb.fdr to learn the parents and children of each node like mmpc and si.hiton.pc. The reference publication is the same as that for Hybrid HPC.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: HPC (bnlearn_hpc)
+:og:title: HPC (HPC)
  
 .. meta::
     :title: HPC 
@@ -34,6 +34,16 @@ HPC (bnlearn)
      - :footcite:t:`GASSE20146755`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

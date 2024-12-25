@@ -4,7 +4,7 @@
 :og:description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Hill-Climbing (bnlearn_hc)
+:og:title: Hill-Climbing (HC)
  
 .. meta::
     :title: Hill-Climbing 
@@ -34,6 +34,16 @@ HC (bnlearn)
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

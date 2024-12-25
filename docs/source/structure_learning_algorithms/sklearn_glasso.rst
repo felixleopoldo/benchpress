@@ -4,7 +4,7 @@
 :og:description: Graphical Lasso
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Graphical Lasso (sklearn_glasso)
+:og:title: Graphical Lasso (GLasso)
  
 .. meta::
     :title: Graphical Lasso 
@@ -34,6 +34,16 @@ GLasso (scikit-learn)
      - :footcite:t:`friedman2008sparse`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 

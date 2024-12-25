@@ -26,42 +26,42 @@ The files should be on the csv format specified in :ref:`data_formats`.
    * - :ref:`2005_sachs/`
      - 11
      - 
-     - cont
+     - C
      - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
    * - :ref:`2005_sachs_1_cd3cd28_log.csv`
      - 11
      - 992
-     - cont
+     - C
      - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
    * - :ref:`2005_sachs_2_cd3cd28icam2_log.csv`
      - 11
      - 992
-     - cont
+     - C
      - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
    * - :ref:`2005_sachs_2_cd3cd28icam2_log_std.csv`
      - 11
      - 992
-     - cont
+     - C
      - `sachs.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/sachs.csv>`__
    * - :ref:`2013_green_thomas_p50_n1000.csv`
      - 50
      - 1000
-     - cont
+     - C
      - `greenthomas2013_ar2.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/greenthomas2013_ar2.csv>`__
    * - :ref:`2019_olsson_pavlenko_rios_p15_n1000.csv`
      - 15
      - 1000
-     - bin
+     - B
      - `jonesp15.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/jonesp15.csv>`__
    * - :ref:`czech_autoworkers.csv`
      - 6
      - 1841
-     - bin
+     - B
      - `unknown <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/unknown>`__
    * - :ref:`gmint.csv`
      - 8
      - 5000
-     - cont, interv
+     - C, interv
      - `gmint.csv <https://github.com/felixleopoldo/benchpress/blob/master/resources/adjmat/myadjmats/gmint.csv>`__
 
 

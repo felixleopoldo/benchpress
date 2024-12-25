@@ -4,7 +4,7 @@
 :og:description: A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Direct LINGAM (gcastle_direct_lingam)
+:og:title: Direct LINGAM (Direct LINGAM)
  
 .. meta::
     :title: Direct LINGAM 
@@ -34,6 +34,16 @@ Direct LINGAM (gCastle)
      - :footcite:t:`shimizu2011directlingam`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

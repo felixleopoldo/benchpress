@@ -16,7 +16,12 @@
     "in_docs": false,
     "title_full": "FAS",
     "meta_description": "FAS",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

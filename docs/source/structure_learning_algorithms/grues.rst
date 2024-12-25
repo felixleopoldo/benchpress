@@ -4,7 +4,7 @@
 :og:description: We consider the problem of estimating the marginal independence structure of a Bayesian network from observational data in the form of an undirected graph called the unconditional dependence graph.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Gröbner-based Unconditional Equivalence Search) (grues)
+:og:title: Gröbner-based Unconditional Equivalence Search) (GrUES)
  
 .. meta::
     :title: Gröbner-based Unconditional Equivalence Search) 
@@ -34,6 +34,16 @@ GrUES (gues)
      - :footcite:t:`grues2023`
    * - Graph type
      - `UDG <https://arxiv.org/pdf/2210.00822.pdf#subsection.2.2>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/grues:0.3.0 <https://hub.docker.com/r/bpimages/grues/tags>`__
 

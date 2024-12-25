@@ -4,7 +4,7 @@
 :og:description: Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Tabu (bnlearn_tabu)
+:og:title: Tabu (Tabu)
  
 .. meta::
     :title: Tabu 
@@ -34,6 +34,16 @@ Tabu (bnlearn)
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

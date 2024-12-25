@@ -4,7 +4,7 @@
 :og:description: 
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: PC (bnlearn_pcstable)
+:og:title: PC (PC)
  
 .. meta::
     :title: PC 
@@ -34,6 +34,16 @@ PC (bnlearn)
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

@@ -4,7 +4,7 @@
 :og:description: Adapting NOTEARS for large problems with low-rank causal graphs.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: NO TEARS low rank (gcastle_notears_low_rank)
+:og:title: NO TEARS low rank (NO TEARS low rank)
  
 .. meta::
     :title: NO TEARS low rank 
@@ -34,6 +34,16 @@ NO TEARS low rank (gCastle)
      - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

@@ -4,7 +4,7 @@
 :og:description: A variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Fast IAMB (bnlearn_fastiamb)
+:og:title: Fast IAMB (Fast IAMB)
  
 .. meta::
     :title: Fast IAMB 
@@ -34,6 +34,16 @@ Fast IAMB (bnlearn)
      - :footcite:t:`1565788`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 

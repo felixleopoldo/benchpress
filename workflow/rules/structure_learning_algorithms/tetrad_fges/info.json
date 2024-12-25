@@ -13,9 +13,14 @@
         "CPDAG"
     ],
     "language": "Java",
-    "title_full": "FGES",
-    "meta_description": "FGES",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "title_full": "Fast Greedy Equivalence Search",
+    "meta_description": "FGES is an optimized and parallelized version of an algorithm developed by Meek called the Greedy Equivalence Search (GES). The algorithm was further developed and studied by Chickering.",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

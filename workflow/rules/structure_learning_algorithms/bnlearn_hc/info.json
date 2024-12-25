@@ -15,7 +15,13 @@
     "language": "R",
     "title_full": "Hill-Climbing",
     "meta_description": "Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

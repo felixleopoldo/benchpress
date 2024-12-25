@@ -21,7 +21,13 @@
     "language": "R",
     "title_full": "HPC",
     "meta_description": "HPC",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

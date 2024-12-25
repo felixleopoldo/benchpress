@@ -21,7 +21,11 @@
     "language": "Python",
     "title_full": "NO TEARS low rank",
     "meta_description": "NO TEARS low rank",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

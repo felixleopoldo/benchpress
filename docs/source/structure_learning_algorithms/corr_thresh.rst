@@ -4,7 +4,7 @@
 :og:description: Thresholding the estimated correlation matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: Corrmat thresh (corr_thresh)
+:og:title: Corrmat thresh (Corrmat thresh)
  
 .. meta::
     :title: Corrmat thresh 
@@ -34,6 +34,16 @@ Corrmat thresh (Benchpress)
      - :footcite:t:`lauritzen1996graphical`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 

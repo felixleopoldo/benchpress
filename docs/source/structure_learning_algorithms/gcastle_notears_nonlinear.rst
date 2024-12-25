@@ -4,7 +4,7 @@
 :og:description: 
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: NO TEARS non-linear (gcastle_notears_nonlinear)
+:og:title: NO TEARS non-linear (NO TEARS non-linear)
  
 .. meta::
     :title: NO TEARS non-linear 
@@ -34,6 +34,16 @@ NO TEARS non-linear (gCastle)
      - :footcite:t:`pmlr-v108-zheng20a`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 

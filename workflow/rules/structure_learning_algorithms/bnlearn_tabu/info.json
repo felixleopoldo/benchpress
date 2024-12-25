@@ -15,7 +15,13 @@
     "language": "R",
     "title_full": "Tabu",
     "meta_description": "Tabu is a less greedy version of the HC algorithm allowing for non-optimal moves that might be beneficial from a global perspective to avoid local maxima.",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

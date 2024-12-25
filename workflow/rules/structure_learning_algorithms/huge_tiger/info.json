@@ -11,9 +11,13 @@
         "UG"
     ],
     "language": "R",
-    "title_full": "TIGER",
+    "title_full": "Tuning-Insensitive Graph Estimation and Regression",
     "meta_description": "TIGER",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
 }

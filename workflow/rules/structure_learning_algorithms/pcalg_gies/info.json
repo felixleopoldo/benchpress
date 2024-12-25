@@ -11,9 +11,15 @@
         "CPDAG"
     ],
     "language": "R",
-    "title_full": "GIES",
+    "title_full": "Greedy Interventional Equivalence Search",
     "meta_description": "GIES",
-    "data_types": [],
-    "data_missingess": [],
-    "intervention_types": []
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [
+        "hard"
+    ],
+    "mcmc": false,
+    "edge_constraints": true
 }
