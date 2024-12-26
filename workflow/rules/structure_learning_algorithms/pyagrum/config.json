@@ -1,7 +1,7 @@
 {
   "benchmark_setup": [
     {
-      "title": "pyagrum_config",
+      "title": "pyagrum_demo",
       "data": [
         {
           "graph_id": "avneigs4",

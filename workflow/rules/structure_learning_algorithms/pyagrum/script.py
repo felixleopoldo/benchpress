@@ -20,9 +20,10 @@ def adjacency_to_csv(bn: BayesNet, *, to_file: str):
         writer = csv.writer(csvfile)
         # write header
         writer.writerow(id_to_name[col_id] for col_id in range(bn.size()))
-        #write rows
+        # write rows
         adj_mat = bn.adjacencyMatrix()
         writer.writerows(row for row in adj_mat)
+
 
 def myalg():
     # Read in data (not used in this algorithm)
@@ -30,24 +31,28 @@ def myalg():
 
     # The algorithm goes here
     np.random.seed(int(snakemake.wildcards["seed"]))
-    
-    df = df.iloc[1:] # remove the first row with cardinalities
 
-    tmpfile = snakemake.output["adjmat"] + ".tmp.csv"  # save the data to a temporary file
-    df.to_csv(tmpfile, index=False) 
+    df = df.iloc[1:]  # remove the first row with cardinalities
 
-    learner=gum.BNLearner(tmpfile) # MIIC is used as default (some score-based are also implented)
-    
-    os.remove(tmpfile) # remove the temporary file
-   
+    tmpfile = (
+        snakemake.output["adjmat"] + ".tmp.csv"
+    )  # save the data to a temporary file
+    df.to_csv(tmpfile, index=False)
+
+    learner = gum.BNLearner(
+        tmpfile
+    )  # MIIC is used as default (some score-based are also implented)
+
+    os.remove(tmpfile)  # remove the temporary file
+
     if eval(snakemake.wildcards["useMDLCorrection"]):
-        learner.useMDLCorrection() # for small dataset
-        
-    if eval(snakemake.wildcards["useSmoothingPrior"]):
-        learner.useSmoothingPrior() # smoothing (default weight=1) for parameters
+        learner.useMDLCorrection()  # for small dataset
 
-    bn = learner.learnBN() # learning
-    
+    if eval(snakemake.wildcards["useSmoothingPrior"]):
+        learner.useSmoothingPrior()  # smoothing (default weight=1) for parameters
+
+    bn = learner.learnBN()  # learning
+
     # Save time
     tottime = time.perf_counter() - start
     with open(snakemake.output["time"], "w") as text_file:
@@ -61,15 +66,17 @@ def myalg():
         text_file.write("None")
 
 
-# This part starts the timer 
+# This part starts the timer
 start = time.perf_counter()
 
 if snakemake.wildcards["timeout"] == "None":
     myalg()
 else:
-    with timeoutf(int(snakemake.wildcards["timeout"]),
-                  snakemake.output["adjmat"],
-                  snakemake.output["time"],
-                  snakemake.output["ntests"],
-                  start):
+    with timeoutf(
+        int(snakemake.wildcards["timeout"]),
+        snakemake.output["adjmat"],
+        snakemake.output["time"],
+        snakemake.output["ntests"],
+        start,
+    ):
         myalg()

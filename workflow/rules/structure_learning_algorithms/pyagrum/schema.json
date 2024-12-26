@@ -11,15 +11,41 @@
         "description": "Algorithm identifier",
         "type": "string"
       },
+        "useMDLCorrection": {
+            "anyOf":[
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            ]
+        },
+        "useSmoothingPrior": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            ]
+        },
       "timeout": {
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
       }
     },
-    "required": ["id", "timeout"],
+    "required": ["id", "timeout", "useMDLCorrection", "useSmoothingPrior"],
     "examples": [
       {
         "id": "pyagrum",
-        "useMDLCorrection": [true],
+        "useMDLCorrection": true,
         "useSmoothingPrior": [true, false],
         "timeout": null
       }
