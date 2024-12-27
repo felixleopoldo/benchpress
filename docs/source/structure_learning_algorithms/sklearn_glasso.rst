@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: Graphical Lasso 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Graphical Lasso, scikit-learn
-    
-    
+:og:description: Graphical Lasso
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: GLasso (scikit-learn)
+ 
+.. meta::
+    :title: GLasso (scikit-learn)
+    :description: Graphical Lasso
+
 
 .. _sklearn_glasso: 
 
-sklearn_glasso 
-------------------
+GLasso (scikit-learn) 
+**********************
 
-.. rubric:: Graphical Lasso
+
 
 .. list-table:: 
 
+   * - Module name
+     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
    * - Package
      - `scikit-learn <https://scikit-learn.org/0.22/>`__
    * - Version
@@ -28,15 +34,25 @@ sklearn_glasso
      - :footcite:t:`friedman2008sparse`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module folder
-     - `sklearn_glasso <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/sklearn_glasso>`__
 
 
 
-.. rubric:: Description
+Graphical Lasso 
+-------------------
+
 
 
 

@@ -3,7 +3,7 @@
     "docker_image": "bpimages/gobnilp:4347c64",
     "version": "#4347c64",
     "package": {
-        "title": "GOBNILP (BitBucket)",
+        "title": "GOBNILP",
         "url": "https://bitbucket.org/jamescussens/gobnilp"
     },
     "docs_url": "https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf",
@@ -19,5 +19,15 @@
     "graph_types": [
         "DAG"
     ],
-    "language": "C"
+    "language": "C",
+    "title_full": "Globally optimal Bayesian network learning using integer linear programming",
+    "meta_description": "GOBNILP",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

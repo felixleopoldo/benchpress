@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: MCSL 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, MCSL, gCastle
-    
-    
+:og:description: Masked Gradient-Based Causal Structure Learning
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: MCSL (gCastle)
+ 
+.. meta::
+    :title: MCSL (gCastle)
+    :description: Masked Gradient-Based Causal Structure Learning
+
 
 .. _gcastle_mcsl: 
 
-gcastle_mcsl 
-----------------
+MCSL (gCastle) 
+***************
 
-.. rubric:: MCSL
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -28,15 +34,25 @@ gcastle_mcsl
      - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_mcsl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_mcsl>`__
 
 
 
-.. rubric:: Description
+Masked Gradient-Based Causal Structure Learning 
+---------------------------------------------------
+
 
 A gradient-based algorithm for non-linear additive noise data by learning the binary adjacency matrix.
 

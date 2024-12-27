@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: Psi-learning 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Psi-learning, equSA
-    
-    
+:og:description: Abstract: Gaussian graphical models (GGMs) are frequently used to explore networks, such as gene regulatory networks, among a set of variables. Under the classical theory of GGMs, the construction of Gaussian graphical networks amounts to finding the pairs of variables with nonzero partial correlation coefficients. However, this is infeasible for high-dimensional problems for which the number of variables is larger than the sample size. In this article, we propose a new measure of partial correlation coefficient, which is evaluated with a reduced conditional set and thus feasible for high-dimensional problems. Under the Markov property and adjacency faithfulness conditions, the new measure of partial correlation coefficient is equivalent to the true partial correlation coefficient in construction of Gaussian graphical networks. Based on the new measure of partial correlation coefficient, we propose a multiple hypothesis test-based method for the construction of Gaussian graphical networks. Furthermore, we establish the consistency of the proposed method under mild conditions. The proposed method outperforms the existing methods, such as the PC, graphical Lasso, nodewise regression, and qp-average methods, especially for the problems for which a large number of indirect associations are present. The proposed method has a computational complexity of nearly O(p2), and is flexible in data integration, network comparison, and covariate adjustment. 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Psi-learning (equSA)
+ 
+.. meta::
+    :title: Psi-learning (equSA)
+    :description: Abstract: Gaussian graphical models (GGMs) are frequently used to explore networks, such as gene regulatory networks, among a set of variables. Under the classical theory of GGMs, the construction of Gaussian graphical networks amounts to finding the pairs of variables with nonzero partial correlation coefficients. However, this is infeasible for high-dimensional problems for which the number of variables is larger than the sample size. In this article, we propose a new measure of partial correlation coefficient, which is evaluated with a reduced conditional set and thus feasible for high-dimensional problems. Under the Markov property and adjacency faithfulness conditions, the new measure of partial correlation coefficient is equivalent to the true partial correlation coefficient in construction of Gaussian graphical networks. Based on the new measure of partial correlation coefficient, we propose a multiple hypothesis test-based method for the construction of Gaussian graphical networks. Furthermore, we establish the consistency of the proposed method under mild conditions. The proposed method outperforms the existing methods, such as the PC, graphical Lasso, nodewise regression, and qp-average methods, especially for the problems for which a large number of indirect associations are present. The proposed method has a computational complexity of nearly O(p2), and is flexible in data integration, network comparison, and covariate adjustment. 
+
 
 .. _equsa_psilearner: 
 
-equsa_psilearner 
---------------------
+Psi-learning (equSA) 
+*********************
 
-.. rubric:: Psi-learning
+
 
 .. list-table:: 
 
+   * - Module name
+     - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
    * - Package
      - `equSA <https://rdrr.io/cran/equSA/>`__
    * - Version
@@ -28,15 +34,25 @@ equsa_psilearner
      - :footcite:t:`liang2015equivalent`, :footcite:t:`liang2008estimating`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/equsa_psilearner:1.2.1 <https://hub.docker.com/r/bpimages/equsa_psilearner/tags>`__
 
-   * - Module folder
-     - `equsa_psilearner <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/equsa_psilearner>`__
 
 
 
-.. rubric:: Description
+Psi-learning 
+----------------
+
 
 Abstract: Gaussian graphical models (GGMs) are frequently used to explore networks, such as gene regulatory networks, among a set of variables. Under the classical theory of GGMs, the construction of Gaussian graphical networks amounts to finding the pairs of variables with nonzero partial correlation coefficients. However, this is infeasible for high-dimensional problems for which the number of variables is larger than the sample size. In this article, we propose a new measure of partial correlation coefficient, which is evaluated with a reduced conditional set and thus feasible for high-dimensional problems. Under the Markov property and adjacency faithfulness conditions, the new measure of partial correlation coefficient is equivalent to the true partial correlation coefficient in construction of Gaussian graphical networks. Based on the new measure of partial correlation coefficient, we propose a multiple hypothesis test-based method for the construction of Gaussian graphical networks. Furthermore, we establish the consistency of the proposed method under mild conditions. The proposed method outperforms the existing methods, such as the PC, graphical Lasso, nodewise regression, and qp-average methods, especially for the problems for which a large number of indirect associations are present. The proposed method has a computational complexity of nearly O(p2), and is flexible in data integration, network comparison, and covariate adjustment.
 

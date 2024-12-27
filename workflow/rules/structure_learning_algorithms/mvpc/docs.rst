@@ -7,3 +7,37 @@ MVPC is a framework of causal discovery in the presence of different missingness
 MVPC is based on the PC algorithm and contains two methods for correcting wrong results produced by missing value issues, Permutation-based Correction (PermC) and Density Ratio Weighted (DRW) correction method. 
 More details can be found in the paper :footcite:t:`tu2019causal` and the long paper version :footcite:t:`tu2020causald`. 
 The implementation is based on the R package pcalg.
+
+
+.. rubric:: Example 
+
+Config file: `mvpc.json <https://github.com/felixleopoldo/benchpress/blob/master/workflow/rules/structure_learning_algorithms/mvpc/mvpc.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/mvpc/mvpc.json
+
+:numref:`mvpcplot` and :numref:`mvpcplot2`  show FP/P vs. TP/P for pattern graphs and skeletons based on 3 datsets corresponding to 3 realisations of a 20-variables random Gaussian SEM, with an average indegree of 4.
+Each dataset contains 10000 samples and contains data that is missing not at random (MNAR) and was sampled using :ref:`mvpc_gen_data`.
+
+
+.. _mvpcplot:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/mvpc/pattern.png
+    :width: 320 
+    :alt: FP/P vs. TP/P MVPC example
+    :align: left
+
+    FP/P vs. TP/P. for pattern graphs
+
+.. _mvpcplot2:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/mvpc/skeleton.png
+    :width: 320 
+    :alt: FP/P vs. TP/P MVPC example
+    :align: right
+
+    FP/P vs. TP/P. for  skeletons
+

@@ -1,23 +1,29 @@
 
 
 
-    .. meta::
-        :title: Chordal graph samplers 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Chordal graph samplers, Alun Thomas
-    
-    
+:og:description: Chordal graph samplers based on junction trees and MCMC.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Chordal graph samplers (A. Thomas)
+ 
+.. meta::
+    :title: Chordal graph samplers (A. Thomas)
+    :description: Chordal graph samplers based on junction trees and MCMC.
+
 
 .. _athomas_jtsamplers: 
 
-athomas_jtsamplers 
-----------------------
+Chordal graph samplers (A. Thomas) 
+***********************************
 
-.. rubric:: Chordal graph samplers
+
 
 .. list-table:: 
 
+   * - Module name
+     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
    * - Package
-     - `Alun Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
+     - `A. Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
    * - Version
      - 76ad20e
    * - Language
@@ -28,15 +34,25 @@ athomas_jtsamplers
      - :footcite:t:`10.1093/biomet/86.4.785`, :footcite:t:`10.2307/43304539`
    * - Graph type
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
+   * - MCMC
+     - Yes
+   * - Edge constraints
+     - No
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/athomas_jtsamplers:9eb505f <https://hub.docker.com/r/bpimages/athomas_jtsamplers/tags>`__
 
-   * - Module folder
-     - `athomas_jtsamplers <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/athomas_jtsamplers>`__
 
 
 
-.. rubric:: Description
+Chordal graph samplers 
+--------------------------
+
 
 Abstract :footcite:p:`10.2307/43304539`: Full Bayesian computational inference for model determination in undirected graphical models is currently restricted to decomposable graphs or other special cases, except for small-scale problems, say up to 15 variables. In this paper we develop new, more efficient methodology for such inference, by making two contributions to the computational geometry of decomposable graphs. The first of these provides sufficient conditions under which it is possible to completely connect two disconnected complete subsets of vertices, or perform the reverse procedure, yet maintain decomposability of the graph. The second is a new Markov chain Monte Carlo sampler for arbitrary positive distributions on decomposable graphs, taking a junction tree representing the graph as its state variable. 
 

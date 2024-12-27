@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: GraNDAG 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, GraNDAG, gCastle
-    
-    
+:og:description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: GraNDAG (gCastle)
+ 
+.. meta::
+    :title: GraNDAG (gCastle)
+    :description: A gradient-based algorithm using neural network modeling for non-linear additive noise data.
+
 
 .. _gcastle_grandag: 
 
-gcastle_grandag 
--------------------
+GraNDAG (gCastle) 
+******************
 
-.. rubric:: GraNDAG
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -28,15 +34,25 @@ gcastle_grandag
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_grandag <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_grandag>`__
 
 
 
-.. rubric:: Description
+Gradient-based neural DAG learning 
+--------------------------------------
+
 
 A gradient-based algorithm using neural network modeling for non-linear additive noise data.
 

@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: PC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, PC, pcalg
-    
-    
+:og:description: The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`, is a constraint based method consisting of two main steps. The first step is called the adjacency search and amounts to finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: PC (pcalg)
+ 
+.. meta::
+    :title: PC (pcalg)
+    :description: The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`, is a constraint based method consisting of two main steps. The first step is called the adjacency search and amounts to finding the undirected skeleton of the DAG. The second step amounts to estimating a CPDAG.
+
 
 .. _pcalg_pc: 
 
-pcalg_pc 
-------------
+PC (pcalg) 
+***********
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
+   * - Module name
+     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
    * - Package
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
    * - Version
@@ -28,15 +34,25 @@ pcalg_pc
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/pcalg:2.7-8 <https://hub.docker.com/r/bpimages/pcalg/tags>`__
 
-   * - Module folder
-     - `pcalg_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/pcalg_pc>`__
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 The Peter and Clark (PC) algorithm :footcite:t:`doi:10.1177/089443939100900106`, is a constraint based method
 consisting of two main steps. The first step is called the adjacency search and amounts to

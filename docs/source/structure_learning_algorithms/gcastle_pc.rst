@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: PC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, PC, gCastle
-    
-    
+:og:description: A classic causal discovery algorithm based on conditional independence tests.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: PC (gCastle)
+ 
+.. meta::
+    :title: PC (gCastle)
+    :description: A classic causal discovery algorithm based on conditional independence tests.
+
 
 .. _gcastle_pc: 
 
-gcastle_pc 
---------------
+PC (gCastle) 
+*************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -28,15 +34,25 @@ gcastle_pc
      - :footcite:t:`kalisch2007estimating`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_pc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_pc>`__
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 A classic causal discovery algorithm based on conditional independence tests.
 

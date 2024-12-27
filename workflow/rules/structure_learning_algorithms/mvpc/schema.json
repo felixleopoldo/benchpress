@@ -15,6 +15,7 @@
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
       },
       "corrMethod": {
+        "description": "gaussCItest.drw, gaussCItest.permc, binCItest.drw, binCItest.permc",
         "anyOf": [
           {
             "type": "array",
@@ -41,6 +42,7 @@
         ]
       },
       "indepTest": {
+        "description": "gaussCItest, binCItest, gaussCItest.td, binCItest.td",
         "anyOf": [
           {
             "type": "array",
@@ -100,7 +102,7 @@
       "edgeConstraints": {
         "type": ["string", "null"],
         "pattern": ".*\\.json$",
-        "description": "Name of the JSON file containing background knowledge"
+        "description": "Name of the JSON file containing :ref:`edge_constraints`"
       }
     },
     "required": [
@@ -132,8 +134,8 @@
         "u2pd": "relaxed",
         "skelmethod": "stable",
         "conservative": false,
-        "majrule": false,
-        "solveconfl": false,
+        "majrule": true,
+        "solveconfl": true,
         "numCores": 1,
         "verbose": false,
         "timeout": null,

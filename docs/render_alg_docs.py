@@ -6,7 +6,11 @@ import bibtexparser
 def info_to_table(info, p):
     tab = ".. list-table:: \n\n"#+p.name+"\n\n"
 
+    tab += "   * - Module name\n"
+    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+
     if info["package"]["title"] == "":
+        
         tab += "   * - Package\n"    
         tab += "     - \n"
         tab += "   * - Version\n"
@@ -49,30 +53,84 @@ def info_to_table(info, p):
         tab += str2link(info["graph_types"][i]) +", "
     tab = tab[:-2]
     tab += "\n"
+    tab += "   * - MCMC\n"
+    tab += "     - "
+    if info["mcmc"]:
+        tab += "Yes"
+    else:
+        tab += "No"
+    tab += "\n"
+    tab += "   * - Edge constraints\n"
+    tab += "     - "
+    if info["edge_constraints"]:
+        tab += ":ref:`Yes <edge_constraints>`"
+    else:
+        tab += "No"
+    tab += "\n"
+    
+    tab += "   * - Data type\n"
+    tab += "     - "
+    if len(info["data_types"]) > 0:
+        for i in range(len(info["data_types"])):
+            tab += str2link(info["data_types"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
+    tab += "   * - Data missingness\n"
+    tab += "     - "
+    if len(info["data_missingness"]) > 0:
+        for i in range(len(info["data_missingness"])):
+            tab += str2link(info["data_missingness"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
+    tab += "   * - Intervention type\n"
+    tab += "     - "
+    if len(info["intervention_types"]) > 0:
+        for i in range(len(info["intervention_types"])):
+            tab += str2link(info["intervention_types"][i]) +", "
+        tab = tab[:-2]
+    tab += "\n"
     tab += "   * - Docker \n"
     tab += "     - " +get_docker_img(p / "rule.smk") + "\n"
-    #tab += "     - `"+info["docker_image"]+" <https://hub.docker.com/r/"+info["docker_image"].split("/")[0]+"/"+info["docker_image"].split("/")[1].split(":")[0]+">`__\n"
-    tab += "   * - Module folder\n"
-    tab += "     - `"+p.name+" <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/"+p.name+">`__\n"
+    
     tab += "\n"
     return tab
 
+# This is the table with all the algorithms
 def info_to_small_table():
     algspath = Path("../workflow/rules/structure_learning_algorithms")
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
     tab +="   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
-    tab += "     - Graph\n" 
-    #tab += "     - Lang.\n" 
     tab += "     - Package\n" 
-    #tab += "     - Version\n" 
-    tab += "     - Module\n" 
+    #tab += "     - Module\n" 
+    tab += "     - Graph\n" 
+    tab += "     - Data\n" 
+    tab += "     - MCMC\n"
+    tab += "     - Edge constraints\n"
+    tab += "     - Data missingness\n" 
+    tab += "     - Intervention type\n"
+        
     
-    for p in sorted(algspath.iterdir()):
+    # sort by title
+    algs = []
+    for p in algspath.iterdir():
+        if not p.is_dir():
+            continue
+        if p.name == "docs.rst" or p.name == ".DS_Store":
+            continue
+        infofile = p/"info.json"
+        with open(infofile) as json_file:
+            info = json.load(json_file)        
+            info["name"] = p.name
+            info["p"] = p  
+        algs.append(info)
+    
+    for alg in sorted(algs, key=lambda x: x["title"]):  
+        p = alg["p"]
         if p.name.startswith("."):
             continue
-        #print(p.name)
+
         j = p/"info.json"
         if p.name == "docs.rst" or p.name == ".DS_Store":
             continue
@@ -82,23 +140,71 @@ def info_to_small_table():
         if "in_docs" in info and info["in_docs"] is False:
             continue
 
-        #tab += "     - "+info["title"]+"\n"
-        tab += "   * - "+info["title"]+"\n"
-        tab += "     - "
-        for i in range(len(info["graph_types"])):
-            tab += str2link(info["graph_types"][i]) +", "
-        tab = tab[:-2]
-        
-        tab += "\n"
-        #tab += "     - "+info["language"]+"\n"
+        tab += "   * - :ref:`"+info["title"]+" <{}>`\n".format(p.name)
+                # package:
         if info["package"]["title"] == "":
             tab += "     - \n"
         else:
             tab += "     - `"+info["package"]["title"]+" <"+info["package"]["url"]+">`__\n"    
-        #tab += "     - "+info["version"]+"\n"
-        tab += "     - :ref:`"+p.name+"` \n"    
+        # module:        
+        #tab += "     -  :ref:`{module} <{module}>`\n".format(module=p.name)    
+
+        tab += "     - "
+        for i in range(len(info["graph_types"])):
+            tab += str2link(info["graph_types"][i]) +", "
+        tab = tab[:-2]        
+        tab += "\n"
+        
+        # Data types:
+        tab += "     - "
+        if len(info["data_types"]) > 0:
+            for i in range(len(info["data_types"])):
+                tab += str2link(info["data_types"][i]) +", "
+            tab = tab[:-2]
+        else:
+            tab += "\-"        
+        tab += "\n"
+        
+        # MCMC:
+        tab += "     - "
+        if info["mcmc"]:
+            tab += "Yes"
+        else:
+            tab += ""
+        tab += "\n"
+        
+        # Edge constraints:
+        tab += "     - "
+        if info["edge_constraints"]:
+            tab += ":ref:`Yes <edge_constraints>`"
+        else:
+            tab += ""
+        tab += "\n"
+        
+        # Data missingness:
+        tab += "     - "
+        if len(info["data_missingness"]) > 0:
+            for i in range(len(info["data_missingness"])):
+                tab += str2link(info["data_missingness"][i]) +", "
+            tab = tab[:-2]
+        else:
+            tab += ""        
+        tab += "\n"
+        # Intervention types:
+        tab += "     - "
+        if len(info["intervention_types"]) > 0:
+            for i in range(len(info["intervention_types"])):
+                tab += str2link(info["intervention_types"][i])+", "
+            tab = tab[:-2]
+        else:
+            tab += ""        
+        tab += "\n"
+
+    
         
     tab += "\n"
+    # translate the C, D, M, B,
+    #tab +="C: continuous, D: discrete, M: mixed, B: binary, MCAR: missing completely at random \n\n"
     return tab
 
 algspath = Path("../workflow/rules/structure_learning_algorithms")
@@ -107,6 +213,8 @@ f = open("source/algs_desc.rst", "r")
 content = f.read()
 
 outpur_str = ""
+outpur_str += ":og:description: Benchpress provides access to a wide range of open-source packages for causal discovery and structure learning such as pcalg, BDgraph, gCastle, TETRAD, bnlearn, causal-learn, and many others."
+outpur_str = "\n\n"
 outpur_str += ".. _"+algspath.name+": \n\n"
 outpur_str += "Algorithms\n"
 outpur_str += "="*len(algspath.name) + "="*10
@@ -114,12 +222,32 @@ outpur_str += "\n\n"
 outpur_str += """.. toctree::
     :hidden:
     :glob:
-    :maxdepth: 3
+    :maxdepth: 1
     :name: Structure learning algorithms
     :caption: Structure learning algorithms
     
 """
-for p in sorted(algspath.iterdir()):
+algs = []
+for p in algspath.iterdir():
+    if not p.is_dir():
+        continue
+    if p.name == "docs.rst" or p.name == ".DS_Store":
+        continue
+    infofile = p/"info.json"
+    with open(infofile) as json_file:
+        info = json.load(json_file)        
+        info["name"] = p.name
+        info["p"] = p  
+    algs.append(info)
+
+# sort by title
+algs = sorted(algs, key=lambda x: x["title"])
+
+# TNhis is the overall rst file for the algorithms page. It has all the algorithms listed for the toc 
+# tree and the overview table.
+#for p in algspath.iterdir():
+for info in algs:    
+    p = info["p"]    
     if not p.is_dir():
         continue
     if p.name == "docs.rst" or p.name == ".DS_Store":
@@ -130,6 +258,9 @@ outpur_str += content
 outpur_str += "\n\n"
 outpur_str += info_to_small_table()
 outpur_str += "\n\n"
+
+
+#### This is the modules docs files:
 for p in sorted(algspath.iterdir()):
 
     if not p.is_dir():
@@ -162,24 +293,37 @@ for p in sorted(algspath.iterdir()):
     # This is the module part
 
     module_str = "\n\n"
+
+    meta_description = ""
+    if info["meta_description"] == info["title"]:
+        meta_description = content.replace("\n", " ").replace("\r", " ").replace("\t", " ").replace('"', "'")
+    else:
+        meta_description = info["meta_description"]
+
     module_str += """
-    .. meta::
-        :title: {} 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, {}, {}
+:og:description: {desc}
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: {title} ({package})
+ 
+.. meta::
+    :title: {title} ({package})
+    :description: {desc}
+""".format(desc=meta_description, title_full=info["title_full"], title=info["title"], package=info["package"]["title"]) 
     
-    """.format(info["title"], info["title"], info["package"]["title"])
-   
     module_str += "\n\n"
     module_str += ".. _"+p.name+": \n\n"
-    module_str +="" + p.name +" \n"
-    module_str +="-"*len(p.name) + "-"*4 + "\n"
-    
+    module_str +="{} ({}) \n".format(info["title"], info["package"]["title"])
+    module_str +="*"*len(info["title"] + info["package"]["title"]) + "*"*4 + "\n"    
     module_str += "\n"
-    module_str += ".. rubric:: "+ info["title"]    
     module_str += "\n\n"
     module_str += info_to_table(info, p)
     module_str += "\n\n"
-    module_str += ".. rubric:: Description"    
+    module_str +="" + info["title_full"] +" \n"
+    module_str +="-"*len(info["title_full"]) + "-"*4 + "\n"
+    
+    
+    #module_str += ".. rubric:: " + info["title_full"]    
     if content != "":    
         module_str += "\n\n"
         module_str += content

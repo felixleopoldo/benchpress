@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: NO TEARS non-linear 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, NO TEARS non-linear, gCastle
-    
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: NO TEARS non-linear (gCastle)
+ 
+.. meta::
+    :title: NO TEARS non-linear (gCastle)
+    :description: 
+
 
 .. _gcastle_notears_nonlinear: 
 
-gcastle_notears_nonlinear 
------------------------------
+NO TEARS non-linear (gCastle) 
+******************************
 
-.. rubric:: NO TEARS non-linear
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -28,15 +34,25 @@ gcastle_notears_nonlinear
      - :footcite:t:`pmlr-v108-zheng20a`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_notears_nonlinear <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_nonlinear>`__
 
 
 
-.. rubric:: Description
+NO TEARS non-linear 
+-----------------------
+
 
 
 

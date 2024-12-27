@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: MMHC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, MMHC, bnlearn
-    
-    
+:og:description: Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a DAG using an algorithm called Max-Min Parents and Children and then performs a greedy hill-climbing search to orient the edges with respect to a Bayesian score.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: MMHC (bnlearn)
+ 
+.. meta::
+    :title: MMHC (bnlearn)
+    :description: Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a DAG using an algorithm called Max-Min Parents and Children and then performs a greedy hill-climbing search to orient the edges with respect to a Bayesian score.
+
 
 .. _bnlearn_mmhc: 
 
-bnlearn_mmhc 
-----------------
+MMHC (bnlearn) 
+***************
 
-.. rubric:: MMHC
+
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -28,15 +34,25 @@ bnlearn_mmhc
      - :footcite:t:`tsamardinos2006max`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_mmhc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_mmhc>`__
 
 
 
-.. rubric:: Description
+Max-Min Hill-Climbing 
+-------------------------
+
 
 Max-min hill-climbing (MMHC) is a hybrid method which first estimates the skeleton of a
 DAG using an algorithm called Max-Min Parents and Children and then performs a greedy

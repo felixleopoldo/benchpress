@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: Corrmat thresh 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, Corrmat thresh, Benchpress
-    
-    
+:og:description: Thresholding the estimated correlation matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Corrmat thresh (Benchpress)
+ 
+.. meta::
+    :title: Corrmat thresh (Benchpress)
+    :description: Thresholding the estimated correlation matrix. Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.
+
 
 .. _corr_thresh: 
 
-corr_thresh 
----------------
+Corrmat thresh (Benchpress) 
+****************************
 
-.. rubric:: Corrmat thresh
+
 
 .. list-table:: 
 
+   * - Module name
+     - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
    * - Package
      - `Benchpress <https://github.com/felixleopoldo/benchpress>`__
    * - Version
@@ -28,15 +34,25 @@ corr_thresh
      - :footcite:t:`lauritzen1996graphical`
    * - Graph type
      - `UG <https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/datascience-python:1.1 <https://hub.docker.com/r/bpimages/datascience-python/tags>`__
 
-   * - Module folder
-     - `corr_thresh <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/corr_thresh>`__
 
 
 
-.. rubric:: Description
+Corrmat thresh 
+------------------
+
 
 Thresholding the estimated correlation matrix.
 Assuming Gaussian data, absense of an edge between a pair of nodes corresponds to marginal independence.

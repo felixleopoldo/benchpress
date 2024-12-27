@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: HC 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, HC, bnlearn
-    
-    
+:og:description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: HC (bnlearn)
+ 
+.. meta::
+    :title: HC (bnlearn)
+    :description: Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and adds, deletes or reverses edges in a greedy manner until an optimum is reached.
+
 
 .. _bnlearn_hc: 
 
-bnlearn_hc 
---------------
+HC (bnlearn) 
+*************
 
-.. rubric:: HC
+
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -28,15 +34,25 @@ bnlearn_hc
      - :footcite:t:`scutari2019learning`, :footcite:t:`norvig2002modern`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_hc <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_hc>`__
 
 
 
-.. rubric:: Description
+Hill-Climbing 
+-----------------
+
 
 Hill climbing (HC) is a score-based algorithm which starts with a DAG with no edges and
 adds, deletes or reverses edges in a greedy manner until an optimum is reached.

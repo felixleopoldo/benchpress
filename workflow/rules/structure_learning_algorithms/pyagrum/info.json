@@ -1,0 +1,23 @@
+{
+    "title": "PyAgrum",
+    "version": "1.14.0",
+    "package": {
+        "title": "pyagrum",
+        "url": "https://pyagrum.readthedocs.io/en/latest/"
+    },
+    "docs_url": "https://pyagrum.readthedocs.io/en/latest/notebooks/31-Learning_structuralLearning.html",
+    "outputs": "adjmat",
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "Python",
+    "title_full": "PyAgrum",
+    "meta_description": "Based on the C++ aGrUM library, it provides a high-level interface to the C++ part of aGrUM allowing to create, manage and perform efficient computations with Bayesian networks and others probabilistic graphical models : Markov random fields (MRF), influence diagrams (ID) and LIMIDs, credal networks (CN), dynamic BN (dBN), probabilistic relational models (PRM).",
+    "data_types": [
+        "binary"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false
+}

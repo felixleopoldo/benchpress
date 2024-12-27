@@ -1,21 +1,27 @@
 
 
 
-    .. meta::
-        :title: RL 
-        :keywords: causal discovery, causal discovery algorithm, Benchpress, graphical models, probabilistic graphical models, structure learning, benchmarking, graph estimation, graph learning, graph structure, structure learning algorithms, RL, gCastle
-    
-    
+:og:description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: RL (gCastle)
+ 
+.. meta::
+    :title: RL (gCastle)
+    :description: A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
+
 
 .. _gcastle_rl: 
 
-gcastle_rl 
---------------
+RL (gCastle) 
+*************
 
-.. rubric:: RL
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -28,15 +34,25 @@ gcastle_rl
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.04477`, :footcite:t:`zhang2021gcastle`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_rl <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_rl>`__
 
 
 
-.. rubric:: Description
+Causal discovery with reinforcement learning 
+------------------------------------------------
+
 
 A RL-based algorithm that can work with flexible score functions (including non-smooth ones).
 
