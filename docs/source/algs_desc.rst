@@ -1,5 +1,5 @@
 Benchpress provides access to a wide range of open-source packages for causal discovery and structure learning such as `pcalg <https://cran.r-project.org/web/packages/pcalg/>`__, `BDgraph <https://cran.r-project.org/web/packages/BDgraph/>`__, `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__, `TETRAD <https://github.com/cmu-phil/tetrad>`__, `bnlearn <https://www.bnlearn.com/>`__, `causal-learn <https://github.com/cmu-phil/causal-learn>`__, and many others, making it easy to use and compare different algorithms within a unified framework.
-The algorithms are accest through their corresponding modules, which are listed below. 
+The algorithms are accesed through their corresponding modules, which are listed below. 
 To use an algorithm module, a section with the corresponding name is simply added to the ``structure_learning_algorithms`` section of the JSON config file. 
 Sample JSON snippets are provided for each module and you may also review :ref:`json_config` to see how it works.
 
