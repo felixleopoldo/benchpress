@@ -53,29 +53,8 @@ Algorithms
     structure_learning_algorithms/mice
     structure_learning_algorithms/bnlearn_mmhc
     structure_learning_algorithms/bnlearn_mmpc
-<<<<<<< HEAD
-    structure_learning_algorithms/bnlearn_pcstable
-    structure_learning_algorithms/bnlearn_rsmax2
-    structure_learning_algorithms/bnlearn_sihitonpc
-    structure_learning_algorithms/bnlearn_tabu
-    structure_learning_algorithms/causaldag_gsp
-    structure_learning_algorithms/causallearn_ges
-    structure_learning_algorithms/causallearn_grasp
-    structure_learning_algorithms/corr_thresh
-    structure_learning_algorithms/dualpc
-    structure_learning_algorithms/equsa_psilearner
-    structure_learning_algorithms/gcastle_anm
-    structure_learning_algorithms/gcastle_corl
-    structure_learning_algorithms/gcastle_direct_lingam
-    structure_learning_algorithms/gcastle_gae
-    structure_learning_algorithms/gcastle_golem
-    structure_learning_algorithms/gcastle_grandag
-    structure_learning_algorithms/gcastle_ica_lingam
-    structure_learning_algorithms/gcastle_mcsl
-=======
     structure_learning_algorithms/mvpc
     structure_learning_algorithms/causallearn_ges
->>>>>>> dev
     structure_learning_algorithms/gcastle_notears
     structure_learning_algorithms/gcastle_notears_low_rank
     structure_learning_algorithms/gcastle_notears_nonlinear

@@ -107,18 +107,22 @@ ogp_description = "Benchpress is a platform-independent open-source software to 
 ogp_enable_meta_description = False
 ogp_video = "https://www.youtube.com/watch?v=tx3hIH3b9Hg"
 
-html_logo = '_static/benchpress-logo-readthedocs@2x.png'
+#html_logo = '_static/benchpress-logo-readthedocs@2x.png'
 html_theme_options = {
     "sidebar_hide_name": True,
     "logo_only": False,
     "display_version": False,
-    # "light_logo": "benchpress-logo-white-bg.png",
     "light_logo": "bplogo_light_grey_bg.png",
     "dark_logo": "benchpress-logo-readthedocs@2x_dark.png",
     "light_css_variables": {
-        "color-brand-primary": "#132b44",
-        "color-brand-content": "#0582bf",
-        "color": "#211d6a",
+        "color-brand-primary": "#2c5282",    # Softer navy blue
+        "color-brand-content": "#3182ce",    # Lighter blue for content
+        "color": "#2d3748",                  # Softer dark gray for text
         "font-size--small": "87.5%",
+        "color-header": "#4a5568",           # Softer gray for headings
+        "color-h1": "#4a5568",              
+        "color-h2": "#4a5568",
+        "color-h3": "#4a5568",
+        "color-background-primary": "#f7f7f7",  # Light grey background for main content
     },
 }
