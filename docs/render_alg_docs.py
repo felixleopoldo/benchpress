@@ -213,6 +213,8 @@ f = open("source/algs_desc.rst", "r")
 content = f.read()
 
 outpur_str = ""
+outpur_str += ":og:description: Benchpress provides access to a wide range of open-source packages for causal discovery and structure learning such as pcalg, BDgraph, gCastle, TETRAD, bnlearn, causal-learn, and many others."
+outpur_str = "\n\n"
 outpur_str += ".. _"+algspath.name+": \n\n"
 outpur_str += "Algorithms\n"
 outpur_str += "="*len(algspath.name) + "="*10
