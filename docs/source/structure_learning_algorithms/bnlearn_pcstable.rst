@@ -1,20 +1,27 @@
 
 
 
-    .. meta::
-        :title: PC 
-        :description: 
-    
+:og:description: 
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: PC (bnlearn)
+ 
+.. meta::
+    :title: PC (bnlearn)
+    :description: 
+
 
 .. _bnlearn_pcstable: 
 
-bnlearn_pcstable 
---------------------
+PC (bnlearn) 
+*************
 
-.. rubric:: PC
+
 
 .. list-table:: 
 
+   * - Module name
+     - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
    * - Package
      - `bnlearn <https://www.bnlearn.com/>`__
    * - Version
@@ -27,15 +34,25 @@ bnlearn_pcstable
      - :footcite:t:`doi:10.1177/089443939100900106`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D, M
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/bnlearn:4.8.3 <https://hub.docker.com/r/bpimages/bnlearn/tags>`__
 
-   * - Module folder
-     - `bnlearn_pcstable <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/bnlearn_pcstable>`__
 
 
 
-.. rubric:: Description
+PC 
+------
+
 
 .. rubric:: Some fields described 
 * ``edgeConstraints`` Name of the JSON file containing background knowledge 

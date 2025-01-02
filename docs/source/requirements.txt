@@ -10,3 +10,4 @@ requests
 sphinx-version-warning
 sphinx-last-updated-by-git
 sphinxcontrib-googleanalytics==0.4
+sphinxext-opengraph

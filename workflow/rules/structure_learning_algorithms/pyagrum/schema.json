@@ -1,0 +1,55 @@
+{
+  "title": "Some title",
+  "description": "List of objects",
+  "type": "array",
+  "items": {
+    "title": "Some item",
+    "description": "Some description.",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Algorithm identifier",
+        "type": "string"
+      },
+        "useMDLCorrection": {
+            "anyOf":[
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            ]
+        },
+        "useSmoothingPrior": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            ]
+        },
+      "timeout": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+      }
+    },
+    "required": ["id", "timeout", "useMDLCorrection", "useSmoothingPrior"],
+    "examples": [
+      {
+        "id": "pyagrum",
+        "useMDLCorrection": true,
+        "useSmoothingPrior": [true, false],
+        "timeout": null
+      }
+    ]
+  },
+  "uniqueItems": true
+}

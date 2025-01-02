@@ -1,0 +1,224 @@
+{
+  "benchmark_setup": [
+    {
+      "title": "bips_tpc_example",
+      "data": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "missing",
+          "seed_range": [1, 3]
+        }
+      ],
+      "evaluation": {
+        "graph_true_plots": true,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
+        "benchmarks": {
+          "filename_prefix": "example/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": ["mvpc", "bips_tpc"]
+        },
+        "graph_estimation": {
+          "ids": ["mvpc", "bips_tpc"],
+          "convert_to": [],
+          "graphs": false,
+          "adjmats": false,
+          "diffplots": false,
+          "csvs": true,
+          "graphvizcompare": false
+        },
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+      }
+    }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": [1000]
+        }
+      ],
+      "mvpc_gen_data": [
+        {
+          "id": "missing",
+          "num_extra_e": 3,
+          "num_m": 5,
+          "mode": "mnar",
+          "p_missing_h": 0.9,
+          "p_missing_e": 0.1,
+          "standardized": false,
+          "n": 100
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": 10,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "mice": [
+        {
+          "id": "mice",
+          "m": 5,
+          "maxit": 3,
+          "method": "rf",
+          "defaultMethod": "rf",
+          "action": "all",
+          "include": false,
+          "mild": true,
+          "order": "last",
+          "timeout":null
+        }
+      ],
+      "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [0.75, 0.8, 1, 1.5],
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "pcalg_pc": [
+        {
+          "id": "pc-gaussCItest",
+          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": false,
+          "solveconfl": false,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "mvpc": [
+        {
+          "id": "mvpc",
+          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "corrMethod": "gaussCItest.permc",
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": true,
+          "solveconfl": true,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest.td",
+          "timeout": null,
+          "edgeConstraints": null          
+        },
+        {
+          "id": "td-pc",
+          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "corrMethod": null,
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": true,
+          "solveconfl": true,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest.td",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bips_tpc": [
+        {
+          "id": "bips_tpc",
+          "alpha": [0.001, 0.01, 0.05, 0.11],
+          "mmax": "Inf",
+          "conservative": false,
+          "majrule": true,
+          "numCores": 1,
+          "cl_type": "PSOCK",
+          "verbose": false,
+          "indepTest": "gaussMItest",
+          "input_algorithm_id": "mice",
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_tabu": [
+        {
+          "id": "tabu-bge",
+          "score": "bge",
+          "iss": 1,
+          "issmu": [0.0001, 0.001, 0.01, 0.05],
+          "issw": null,
+          "l": 5,
+          "k": 1,
+          "prior": "uniform",
+          "beta": 1,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bidag_itsearch": [
+        {
+          "id": "itsearch-bge",
+          "timeout": null,
+          "estimate": "map",
+          "MAP": false,
+          "plus1it": 2,
+          "posterior": 0.5,
+          "scoretype": "bge",
+          "chi": null,
+          "edgepf": 2,
+          "am": [0.01, 0.1, 1],
+          "aw": null,
+          "softlimit": 9,
+          "hardlimit": 14,
+          "alpha": 0.01,
+          "gamma": 1,
+          "cpdag": false,
+          "mergetype": "skeleton",
+          "edgeConstraints": null
+        }
+      ]
+    }
+  }
+}

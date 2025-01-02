@@ -3,7 +3,7 @@
     "docker_image": "bpimages/athomas_jtsamplers:9eb505f",
     "version": "76ad20e",
     "package": {
-        "title": "Alun Thomas",
+        "title": "A. Thomas",
         "url": "https://medicine.utah.edu/faculty/alun-thomas"
     },
     "docs_url": "",
@@ -13,5 +13,15 @@
     "graph_types": [
         "DG"
     ],
-    "language": "Java"
+    "language": "Java",
+    "title_full": "Chordal graph samplers",
+    "meta_description": "Chordal graph samplers based on junction trees and MCMC.",
+    "data_types": [
+        "continuous",
+        "discrete"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": true,
+    "edge_constraints": false
 }

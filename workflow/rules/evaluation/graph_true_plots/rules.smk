@@ -7,7 +7,7 @@ def adjmat_true_plots(bmark_setup):
             for sim_setup in bmark_setup["data"] ]
 
 def graph_true_plots(bmark_setup):
-    return [[expand("{output_dir}/graph_plot/{adjmat_string}.png",
+    return [[expand("{output_dir}/graph_true_plot/{adjmat_string}.png",
             output_dir="results",
             seed=seed,
             adjmat_string=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed))
@@ -28,6 +28,22 @@ rule true_adjmat_to_dot:
         """
         if [ -s {input.filename} ]; then
             python workflow/scripts/utils/adjmat_to_dot.py {input.filename} {output.filename}
+        else
+            touch {output.filename}
+        fi
+        """
+
+rule plot_true_dot:
+    input:
+        filename="{output_dir}/dotgraph/{something}.dot",
+    output:
+        filename="{output_dir}/graph_true_plot/{something}.png",
+    container:
+        docker_image("trilearn")
+    shell:
+        """
+        if [ -s {input.filename} ]; then
+            dot -T png {input.filename} -o {output.filename}
         else
             touch {output.filename}
         fi

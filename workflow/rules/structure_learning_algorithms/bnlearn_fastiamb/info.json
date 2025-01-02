@@ -7,17 +7,22 @@
         "url": "https://www.bnlearn.com/"
     },
     "docs_url": "https://www.bnlearn.com/documentation/man/constraint.html",
-    "papers": [
-        {
-            "title": "Margaritis D (2003). Learning Bayesian network model structure from data.",
-            "url": "https://apps.dtic.mil/sti/pdfs/ADA461103.pdf"
-        }
-    ],
     "outputs": [
         "adjmat"
     ],
     "graph_types": [
         "DAG"
     ],
-    "language": "R"
+    "language": "R",
+    "title_full": "Fast IAMB",
+    "meta_description": "A variant of IAMB which uses speculative stepwise forward selection to reduce the number of conditional independence tests.",
+    "data_types": [
+        "continuous",
+        "discrete",
+        "mixed"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": true
 }

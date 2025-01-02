@@ -158,22 +158,23 @@ def is_single_output_run(run_config: dict) -> bool:
 def validate_algorithms():
     """ Random validation tests for config"""
     # Testing if input_graph_id has an actual run.
-    for key, runs in config["resources"]["structure_learning_algorithms"].items():
-        for run in runs:
-            if 'input_algorithm_id' in run:
-                if isinstance(run['input_algorithm_id'], list):
-                    for input_graph in run['input_algorithm_id']:
-                        path = valid_path(input_graph)
+    for module, module_obj_list in config["resources"]["structure_learning_algorithms"].items():
+        for module_obj in module_obj_list:
+            if 'input_algorithm_id' in module_obj:
+                                
+                if isinstance(module_obj['input_algorithm_id'], list):
+                    for input_graph in module_obj['input_algorithm_id']:                        
+                        path = valid_path(input_graph)                                                
                         if not path:
                             raise Exception(
-                                f"In algorithm {key}, 'input_algorithm_id' {input_graph} is not available in the config file, or the associated config has parameters with multiple values!")
+                                f"In algorithm {module}, 'input_algorithm_id' {input_graph} is not available in the config file, or the associated config has parameters with multiple values!")
                 else:
-                    path = valid_path(run['input_algorithm_id'])
+                    if module_obj['input_algorithm_id'] == None:
+                        continue
+                    path = valid_path(module_obj['input_algorithm_id'])
                     if not path:
                         raise Exception(
-                            f"In algorithm {key}, 'input_algorithm_id' {run['input_algorithm_id']} is not available in the config file, or the associated config has parameters with multiple values!")
-
-
+                            f"In algorithm {module}, 'input_algorithm_id' {module_obj['input_algorithm_id']} is not available in the config file, or the associated config has parameters with multiple values!")
 
 
 validate_algorithms()

@@ -1,22 +1,29 @@
 
 
 
-    .. meta::
-        :title: GRaSP 
-        :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
-    
+:og:description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: GRaSP (TETRAD)
+ 
+.. meta::
+    :title: GRaSP (TETRAD)
+    :description: Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
+
 
 .. _tetrad_grasp: 
 
-tetrad_grasp 
-----------------
+GRaSP (TETRAD) 
+***************
 
-.. rubric:: GRaSP
+
 
 .. list-table:: 
 
+   * - Module name
+     - `tetrad_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_grasp>`__
    * - Package
-     - `causal-cmd <https://github.com/bd2kccd/causal-cmd>`__
+     - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
    * - Version
      - 1.10.0
    * - Language
@@ -27,15 +34,25 @@ tetrad_grasp
      - :footcite:t:`lam2022greedy`
    * - Graph type
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C, D
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/causal-cmd:1.10.0 <https://hub.docker.com/r/bpimages/causal-cmd/tags>`__
 
-   * - Module folder
-     - `tetrad_grasp <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/tetrad_grasp>`__
 
 
 
-.. rubric:: Description
+Greedy relaxation of the sparsest permutation 
+-------------------------------------------------
+
 
 Greedy relaxation of the sparsest permutation (GRaSP) algorithm.
 

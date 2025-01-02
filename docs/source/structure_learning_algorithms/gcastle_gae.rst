@@ -1,20 +1,27 @@
 
 
 
-    .. meta::
-        :title: GAE 
-        :description: A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
-    
+:og:description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: GAE (gCastle)
+ 
+.. meta::
+    :title: GAE (gCastle)
+    :description: The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.
+
 
 .. _gcastle_gae: 
 
-gcastle_gae 
----------------
+GAE (gCastle) 
+**************
 
-.. rubric:: GAE
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -27,15 +34,25 @@ gcastle_gae
      - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_gae <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_gae>`__
 
 
 
-.. rubric:: Description
+Graph autoencoder 
+---------------------
+
 
 A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 

@@ -1,20 +1,27 @@
 
 
 
-    .. meta::
-        :title: NO TEARS low rank 
-        :description: Adapting NOTEARS for large problems with low-rank causal graphs.
-    
+:og:description: Adapting NOTEARS for large problems with low-rank causal graphs.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: NO TEARS low rank (gCastle)
+ 
+.. meta::
+    :title: NO TEARS low rank (gCastle)
+    :description: Adapting NOTEARS for large problems with low-rank causal graphs.
+
 
 .. _gcastle_notears_low_rank: 
 
-gcastle_notears_low_rank 
-----------------------------
+NO TEARS low rank (gCastle) 
+****************************
 
-.. rubric:: NO TEARS low rank
+
 
 .. list-table:: 
 
+   * - Module name
+     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
    * - Package
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
    * - Version
@@ -27,15 +34,25 @@ gcastle_notears_low_rank
      - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+   * - MCMC
+     - No
+   * - Edge constraints
+     - :ref:`Yes <edge_constraints>`
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
    * - Docker 
      - `bpimages/gcastle:1.0.3 <https://hub.docker.com/r/bpimages/gcastle/tags>`__
 
-   * - Module folder
-     - `gcastle_notears_low_rank <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/gcastle_notears_low_rank>`__
 
 
 
-.. rubric:: Description
+NO TEARS low rank 
+---------------------
+
 
 Adapting NOTEARS for large problems with low-rank causal graphs.
 
