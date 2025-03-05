@@ -43,7 +43,7 @@ Contributing
 To add more algorithms, datasets or other functionalities fork the repository https://github.com/felixleopoldo/benchpress.
 For new feature ideas, problems, bug reporting, or questions please raise an issue or start a discussion there. 
 
-Papers using Benchpress
+Benchpress in research
 ########################
 
 - `Mohamad Elmasri. Parallel Sampling of Decomposable Graphs Using Markov Chains on Junction Trees. <https://www.tandfonline.com/doi/abs/10.1080/01621459.2024.2388908>`_ *Journal of the American Statistical Association*, 2024
