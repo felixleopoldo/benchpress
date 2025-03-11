@@ -141,7 +141,9 @@ In this example the list contains only one data setup, named *pc_vs_dualpc* (Lin
     }
 
 
-Example data scenarios
+.. _scenarios:
+
+Data scenarios
 ************************
 
 Apart from the modules used in :numref:`pcdualpc`, Benchpress also provides the special modules :ref:`fixed_graph`, :ref:`fixed_params`, and :ref:`fixed_data`, which allow the user to provide files in their analysis.
@@ -149,13 +151,14 @@ These modules are not part of the resources section of the `JSON <https://www.js
 The file formats are described in :ref:`file_formats`.
 
 The different sources of data, obtained by combining the fixed files and the ordinary modules, can be summarised in five scenarios
-shown in the table below. Scenario I is the typical scenario for data analysts, where the user provides
-one or more datasets by hand. Scenario II is similar to Scenario I, with the difference that
+shown in the table below. 
+:ref:`I` is the typical scenario for data analysts, where the user provides
+one or more datasets by hand. :ref:`II` is similar to :ref:`I`, with the difference that
 the user also provides the true graph underlying the data. This situation arises e.g. when
 replicating a simulation study from the literature, where both the true graph and the dataset
-are given. Scenarios III-V are pure benchmarking scenarios, where either all of the graphs,
-parameters and data are generated (V) or the graphs and possibly parameters are specified by
-the user (III, IV). 
+are given. Scenarios :ref:`III` - :ref:`V` are pure benchmarking scenarios, where either all of the graphs,
+parameters and data are generated (:ref:`V`) or the graphs and possibly parameters are specified by
+the user (:ref:`III`, :ref:`IV`). 
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -222,6 +225,8 @@ II) Data analysis with validation
         "seed_range": null
     }
 
+
+.. _III:
 III) Fixed graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -239,6 +244,9 @@ III) Fixed graph
             ]
         }
 
+
+
+.. _IV:
 
 IV) Fixed graph and parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

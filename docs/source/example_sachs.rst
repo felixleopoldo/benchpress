@@ -1,8 +1,8 @@
 
-.. _sachsstudy:
+.. _sachsstudy_graph:
 
-Sachs et al. 2005 data
-******************************
+Sachs et al. 2005 data (known graph)
+******************************************
 
 Config file: `config/paper_sachs.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_sachs.json>`__.
 
