@@ -24,10 +24,10 @@ The following example falls into scenario :ref:`II` of the :ref:`scenarios`.
 -----
 
 
-III) Fixed graph
+IV) Fixed graph
 ^^^^^^^^^^^^^^^^
 
-The following examples falls into scenario :ref:`III` of the :ref:`scenarios`.
+The following examples falls into scenario :ref:`IV` of the :ref:`scenarios`.
 
 .. include:: example_study5.rst
 

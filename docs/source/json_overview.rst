@@ -226,8 +226,26 @@ II) Data analysis with validation
     }
 
 
+
+
 .. _III:
-III) Fixed graph
+
+III) Fixed graph and parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: json
+
+    { 
+        "graph_id": "my_graph_file.csv",
+        "parameters_id": "my_params_file.rds",
+        "data_id": "my_data_id",
+        "seed_range": [1, 10]
+    }
+
+
+.. _IV:
+
+IV) Fixed graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -243,22 +261,6 @@ III) Fixed graph
                 3
             ]
         }
-
-
-
-.. _IV:
-
-IV) Fixed graph and parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: json
-
-    { 
-        "graph_id": "my_graph_file.csv",
-        "parameters_id": "my_params_file.rds",
-        "data_id": "my_data_id",
-        "seed_range": [1, 10]
-    }
 
 
 .. _V:
