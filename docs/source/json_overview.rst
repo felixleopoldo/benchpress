@@ -186,6 +186,7 @@ The following subsections show some template data examples in the ``benchmark_se
 I) Data analysis (fixed data)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
 In the example below, *my_data_file.csv* should be a file in  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_.
 
 .. code-block:: json
@@ -209,6 +210,7 @@ In the example below, *my_data_folder* should be a subfolder of  `resources/data
         "seed_range": null
     }
 
+See :ref:`I_examples` for an example of this scenario.
 
 .. _II:
 
@@ -226,7 +228,7 @@ II) Data analysis with validation
     }
 
 
-
+See :ref:`II_examples` for an example of this scenario.
 
 .. _III:
 
@@ -262,6 +264,7 @@ IV) Fixed graph
             ]
         }
 
+See :ref:`IV_examples` for examples of this scenario.
 
 .. _V:
 
@@ -276,6 +279,8 @@ V) Fully generated
         "data_id": "my_data_id",
         "seed_range": [1, 10]
     }
+
+See :ref:`V_examples` for examples of this scenario.
 
 
 .. rubric:: References

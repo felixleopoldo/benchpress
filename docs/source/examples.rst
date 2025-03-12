@@ -3,6 +3,8 @@
 Causal discovery examples
 #################################
 
+.. _I_examples:
+
 I) Data analysis (fixed data)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -12,6 +14,7 @@ The following example falls into scenario :ref:`I` of the :ref:`scenarios`.
 
 -----
 
+.. _II_examples:
 
 II) Data analysis with validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,6 +26,8 @@ The following example falls into scenario :ref:`II` of the :ref:`scenarios`.
 
 -----
 
+
+.. _IV_examples:
 
 IV) Fixed graph
 ^^^^^^^^^^^^^^^^
@@ -37,6 +42,8 @@ The following examples falls into scenario :ref:`IV` of the :ref:`scenarios`.
 
 
 -----
+
+.. _V_examples:
 
 V) Fully generated
 ^^^^^^^^^^^^^^^^^^
