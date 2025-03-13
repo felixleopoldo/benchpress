@@ -15,7 +15,7 @@ Command:
 
 
 We show estimation results for the logged and standardized version (:ref:`2005_sachs_2_cd3cd28icam2_log_std.csv`) of the second dataset *anti-CD3/CD28 + ICAM-2*  from :footcite:t:`doi:10.1126/science.1105809` with 902 observations. 
-The data is visualised in :numref:`sachs/pairs_1.png_real` with independent and pairwise scatter plots using the :ref:`ggally_ggpairs` module.
+The data is visualised in :numref:`sachs/pairs_1.png_real` with pairwise scatter plots using the :ref:`ggally_ggpairs` module.
 
 
 .. _sachs/pairs_1.png_real:
