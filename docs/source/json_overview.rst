@@ -4,7 +4,7 @@ JSON config
 ##############################
 
 The `JSON <https://www.json.org/json-en.html>`__ configuration file, together with Snakemake's command line tool, serve as the interface for the user.
-Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between the PC algorithm :footcite:p:`doi:10.1177/089443939100900106` (:ref:`pcalg_pc`) and the Dual PC algorithm :footcite:p:`pmlr-v186-giudice22a` (:ref:`dualpc`). 
+Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between :ref:`pcalg_pc`  and :ref:`dualpc`. 
 The results of this study can be found in :ref:`pcdualpcstudy`.
 
 At the highest level there are two main sections, ``benchmark_setup`` (Line 2) and ``resources`` (Line 40).
@@ -33,10 +33,10 @@ In this example the list contains only one data setup, named *pc_vs_dualpc* (Lin
 .. code-block:: json
     :linenos:
     :name: pcdualpc
-    :caption: Comparison between PC vs. dual PC.
+    :caption: Comparison between PC and dual PC.
 
     { 
-        "benchmark_setup": [ // the benchmark_setups (only one here)
+        "benchmark_setup": [ // the benchmark_setup (only one in this study)
             {
                 "title": "pc_vs_dualpc",
                 "data": [ // the data setups
@@ -281,9 +281,3 @@ V) Fully generated
     }
 
 See :ref:`V_examples` for examples of this scenario.
-
-
-.. rubric:: References
-
-
-.. footbibliography::
