@@ -41,15 +41,6 @@
         },
         "graph_true_stats": true,
         "graph_true_plots": false,
-        "graph_plots": {
-          "ids": [],
-          "other_graph_types": [],
-          "graphs": true,
-          "adjmats": true,
-          "diffplots": false,
-          "csvs": true,
-          "graphvizcompare": false
-        },
         "mcmc_traj_plots": [],
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
