@@ -41,7 +41,7 @@ TPC (tpc)
    * - Data type
      - C, D, M
    * - Data missingness
-     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MNAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MCAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
    * - Intervention type
      - 
    * - Docker 
