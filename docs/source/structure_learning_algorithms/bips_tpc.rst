@@ -33,7 +33,7 @@ TPC (tpc)
    * - Paper
      - :footcite:t:`andrews2023practicalguidecausaldiscovery`
    * - Graph type
-     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `MPDAG <https://auai.org/uai2017/proceedings/papers/120.pdf>`__, `TMPDAG <https://proceedings.mlr.press/v216/bang23a.html>`__
    * - MCMC
      - No
    * - Edge constraints

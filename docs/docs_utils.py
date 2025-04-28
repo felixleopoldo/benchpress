@@ -14,6 +14,10 @@ def str2link(s):
         return "`PAG <https://cmu-phil.github.io/tetrad/manual/#appendix>`__"
     if s == "CPDAG":
         return "`CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__"
+    if s == "MPDAG":
+        return "`MPDAG <https://auai.org/uai2017/proceedings/papers/120.pdf>`__"
+    if s == "TMPDAG":
+        return "`TMPDAG <https://proceedings.mlr.press/v216/bang23a.html>`__"
     if s == "R":
         return "`R <https://www.r-project.org/>`__"
     if s == "Python":

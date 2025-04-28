@@ -581,7 +581,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - 
    * - :ref:`TPC <bips_tpc>`
      - `tpc <https://github.com/bips-hb/tpc>`__
-     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `MPDAG <https://auai.org/uai2017/proceedings/papers/120.pdf>`__, `TMPDAG <https://proceedings.mlr.press/v216/bang23a.html>`__
      - C, D, M
      - 
      - :ref:`Yes <edge_constraints>`
