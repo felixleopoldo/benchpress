@@ -1,11 +1,8 @@
 This package implements the tPC algorithm for causal discovery. 
 The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available. 
-The implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with more :ref:`edge_constraints` supported.
-
-It also supports the Multiple Imputation for Causal Graph Discovery (micd) package, which is an add-on to the R package pcalg for handling missing data.
+The implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with more :ref:`edge_constraints` supported and the ability to handle missing values.
 It supports continuous, discrete and mixed data. 
-Two options for handling missing data are available: 1) gaussCItwd, disCItwd and mixCItwd perform test-wise deletion, where missing observations are deleted as necessary on a test-by-test basis; 2) gaussMItest, disMItest and mixMItest perform conditional independence tests on MICE imputed data. 
-
+Two options for handling missing values are available: 1) gaussCItwd, disCItwd and mixCItwd perform test-wise deletion, where missing observations are deleted as necessary on a test-by-test basis; 2) gaussMItest, disMItest and mixMItest perform conditional independence tests on :ref:`mice` imputed data. 
 
 .. rubric:: Example 
 
