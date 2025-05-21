@@ -1,0 +1,21 @@
+{
+    "forbidden_edges": [
+        ["DGLA", "rs6498540"],
+        ["DGLA", "rs968567"],
+        ["DGLA", "rs174556"],
+        ["EPA", "rs6498540"],
+        ["EPA", "rs968567"],
+        ["EPA", "rs174556"],
+        ["BMI", "rs6498540"],
+        ["BMI", "rs968567"],
+        ["BMI", "rs174556"]
+    ],
+    "required_edges": null,
+    "tiers": null,
+    "tier_settings": null,
+    "forbidden_groups": null,
+    "required_groups": null,
+    "context_all": null,
+    "context_tier": null,
+    "source_nodes": null
+}
