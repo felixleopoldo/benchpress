@@ -13,7 +13,11 @@
     "required_edges": null,
     "tiers": null,
     "tier_settings": null,
-    "forbidden_groups": null,
+    "forbidden_groups":[
+        {
+            "cause": ["rs6498540", "rs968567", "rs174556"],
+            "effect": ["rs6498540", "rs968567", "rs174556"]
+        }],
     "required_groups": null,
     "context_all": null,
     "context_tier": null,
