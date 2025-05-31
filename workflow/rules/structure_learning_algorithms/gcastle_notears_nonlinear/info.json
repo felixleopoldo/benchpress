@@ -27,5 +27,5 @@
     "data_missingness": [],
     "intervention_types": [],
     "mcmc": false,
-    "edge_constraints": true
+    "edge_constraints": false
 }

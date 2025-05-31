@@ -53,13 +53,19 @@ filename_dag <- argv$filename_dag
 
 adjmat <- read.csv(filename_dag, check.names = FALSE)
 n <- dim(adjmat)[2]
+labels <- colnames(adjmat)
+rownames(adjmat) <- colnames(adjmat)
+
+# First we have to use integers as labels. Then convert back to the original labels below.
 rownames(adjmat) <- seq(n)
 colnames(adjmat) <- seq(n)
 
-DAG <- adjacency2dag(adjmat)
+DAG <- adjacency2dag(adjmat)#, nodes = colnames(adjmat))
 
-## TODO: This should pass the column names as well.
 set.seed(seed_number)
 binBN <- generateBinaryBN(DAG, c(argv$min, argv$max))
+# Set the node labels
+nodes(binBN$DAG) <- labels
+colnames(binBN$adj) <- labels
 
 saveRDS(binBN, file = filename)

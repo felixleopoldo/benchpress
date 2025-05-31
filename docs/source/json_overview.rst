@@ -4,7 +4,7 @@ JSON config
 ##############################
 
 The `JSON <https://www.json.org/json-en.html>`__ configuration file, together with Snakemake's command line tool, serve as the interface for the user.
-Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between the PC algorithm :footcite:p:`doi:10.1177/089443939100900106` (:ref:`pcalg_pc`) and the Dual PC algorithm :footcite:p:`pmlr-v186-giudice22a` (:ref:`dualpc`). 
+Below we describe the main structure of a config file, where we for reference show (in :numref:`pcdualpc` with additional comments) the content of `config/paper_pc_vs_dualpc.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_pc_vs_dualpc.json>`__ , which is a comparison study between :ref:`pcalg_pc`  and :ref:`dualpc`. 
 The results of this study can be found in :ref:`pcdualpcstudy`.
 
 At the highest level there are two main sections, ``benchmark_setup`` (Line 2) and ``resources`` (Line 40).
@@ -33,10 +33,10 @@ In this example the list contains only one data setup, named *pc_vs_dualpc* (Lin
 .. code-block:: json
     :linenos:
     :name: pcdualpc
-    :caption: Comparison between PC vs. dual PC.
+    :caption: Comparison between PC and dual PC.
 
     { 
-        "benchmark_setup": [ // the benchmark_setups (only one here)
+        "benchmark_setup": [ // the benchmark_setup (only one in this study)
             {
                 "title": "pc_vs_dualpc",
                 "data": [ // the data setups
@@ -141,7 +141,9 @@ In this example the list contains only one data setup, named *pc_vs_dualpc* (Lin
     }
 
 
-Example data scenarios
+.. _scenarios:
+
+Data scenarios
 ************************
 
 Apart from the modules used in :numref:`pcdualpc`, Benchpress also provides the special modules :ref:`fixed_graph`, :ref:`fixed_params`, and :ref:`fixed_data`, which allow the user to provide files in their analysis.
@@ -149,13 +151,14 @@ These modules are not part of the resources section of the `JSON <https://www.js
 The file formats are described in :ref:`file_formats`.
 
 The different sources of data, obtained by combining the fixed files and the ordinary modules, can be summarised in five scenarios
-shown in the table below. Scenario I is the typical scenario for data analysts, where the user provides
-one or more datasets by hand. Scenario II is similar to Scenario I, with the difference that
+shown in the table below. 
+:ref:`I` is the typical scenario for data analysts, where the user provides
+one or more datasets by hand. :ref:`II` is similar to :ref:`I`, with the difference that
 the user also provides the true graph underlying the data. This situation arises e.g. when
 replicating a simulation study from the literature, where both the true graph and the dataset
-are given. Scenarios III-V are pure benchmarking scenarios, where either all of the graphs,
-parameters and data are generated (V) or the graphs and possibly parameters are specified by
-the user (III, IV). 
+are given. Scenarios :ref:`III` - :ref:`V` are pure benchmarking scenarios, where either all of the graphs,
+parameters and data are generated (:ref:`V`) or the graphs and possibly parameters are specified by
+the user (:ref:`III`, :ref:`IV`). 
 
 +-----+-----------+------------+-----------+
 |     | Graph     | Parameters | Data      |
@@ -183,6 +186,7 @@ The following subsections show some template data examples in the ``benchmark_se
 I) Data analysis (fixed data)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
 In the example below, *my_data_file.csv* should be a file in  `resources/data/mydatasets <https://github.com/felixleopoldo/benchpress/blob/master/resources/data/mydatasets/>`_.
 
 .. code-block:: json
@@ -206,6 +210,7 @@ In the example below, *my_data_folder* should be a subfolder of  `resources/data
         "seed_range": null
     }
 
+See :ref:`I_examples` for an example of this scenario.
 
 .. _II:
 
@@ -222,7 +227,27 @@ II) Data analysis with validation
         "seed_range": null
     }
 
-III) Fixed graph
+
+See :ref:`II_examples` for an example of this scenario.
+
+.. _III:
+
+III) Fixed graph and parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: json
+
+    { 
+        "graph_id": "my_graph_file.csv",
+        "parameters_id": "my_params_file.rds",
+        "data_id": "my_data_id",
+        "seed_range": [1, 10]
+    }
+
+
+.. _IV:
+
+IV) Fixed graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -239,19 +264,7 @@ III) Fixed graph
             ]
         }
 
-
-IV) Fixed graph and parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: json
-
-    { 
-        "graph_id": "my_graph_file.csv",
-        "parameters_id": "my_params_file.rds",
-        "data_id": "my_data_id",
-        "seed_range": [1, 10]
-    }
-
+See :ref:`IV_examples` for examples of this scenario.
 
 .. _V:
 
@@ -267,8 +280,4 @@ V) Fully generated
         "seed_range": [1, 10]
     }
 
-
-.. rubric:: References
-
-
-.. footbibliography::
+See :ref:`V_examples` for examples of this scenario.

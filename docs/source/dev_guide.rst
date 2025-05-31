@@ -43,6 +43,13 @@ Contributing
 To add more algorithms, datasets or other functionalities fork the repository https://github.com/felixleopoldo/benchpress.
 For new feature ideas, problems, bug reporting, or questions please raise an issue or start a discussion there. 
 
+Benchpress in research
+########################
+
+- `Mohamad Elmasri. Parallel Sampling of Decomposable Graphs Using Markov Chains on Junction Trees. <https://www.tandfonline.com/doi/abs/10.1080/01621459.2024.2388908>`_ *Journal of the American Statistical Association*, 2024
+- `Ruta Binkyte, Carlos Antonio Pinzón, Szilvia Lestyán, Kangsoo Jung, Héber Hwang Arcolezi, Catuscia Palamidessi. Causal Discovery Under Local Privacy. <https://proceedings.mlr.press/v236/binkyte24a.html>`_ *Proceedings of the Third Conference on Causal Learning and Reasoning*, PMLR 236:325-383, 2024. 
+- `Damian Machlanski, Spyridon Samothrakis, Paul S Clarke. Robustness of Algorithms for Causal Structure Learning to Hyperparameter Choice. <https://proceedings.mlr.press/v236/machlanski24a.html>`_ *Proceedings of the Third Conference on Causal Learning and Reasoning*, PMLR 236:703-739, 2024. 
+
 Citing
 ########
 
@@ -58,4 +65,6 @@ BibTeX entry for citing Benchpress:
       archivePrefix={arXiv (to appear in the Journal of Statistical Software)},
       primaryClass={stat.ML}
   }
+
+.. footbibliography::
 

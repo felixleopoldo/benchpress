@@ -14,7 +14,7 @@ Approximate time: 10 min. on a 3.1 GHz Dual-Core Intel Core i5.
 
 This study is an example of data scenario :ref:`V` based on three continuous datasets, sampled using the :ref:`iid` module, corresponding to three realisations of a random linear Gaussian `structural equation model (SEM) <https://en.wikipedia.org/wiki/Structural_equation_modeling>`__ with random `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`_. 
 The `DAGs <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__ are sampled from a restricted `Erdős–Rényi model <https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model>`__ using the :ref:`pcalg_randdag` module and the weight parameters are sampled uniformly using the :ref:`sem_params` module. 
-For simplicity, we use only a few structure learning modules here (:ref:`bidag_itsearch`, :ref:`tetrad_fges`, :ref:`bnlearn_tabu`, :ref:`pcalg_pc` ) with different parameter settings. 
+For simplicity, we use only a few structure learning modules here, namely :ref:`bidag_itsearch`, :ref:`tetrad_fges`, :ref:`bnlearn_tabu`, and :ref:`pcalg_pc`, with different parameter settings. 
 The ``benchmark_setup`` section of this study is found in :numref:`smallex`.
 
 

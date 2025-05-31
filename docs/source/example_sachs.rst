@@ -1,8 +1,8 @@
 
-.. _sachsstudy:
+.. _sachsstudy_graph:
 
-Sachs et al. 2005 data
-******************************
+Sachs et al. 2005 data (known graph)
+******************************************
 
 Config file: `config/paper_sachs.json <https://github.com/felixleopoldo/benchpress/blob/master/config/paper_sachs.json>`__.
 
@@ -23,21 +23,11 @@ Command:
 .. However, since the purpose here is to benchmark algorithms suited for observational data, we consider only the first two interventions, referred to as \emph{(anti-CD3/CD28)} and \emph{(anti-CD3/CD28 + ICAM-2)} as only these are expected to be independent of the nodes in the network and just activate the T-cells generally. 
 
 We show estimation results for the logged and standardized version (:ref:`2005_sachs_2_cd3cd28icam2_log_std.csv`) of the second dataset *anti-CD3/CD28 + ICAM-2*  from :footcite:t:`doi:10.1126/science.1105809` with 902 observations. 
-The data is visualised in :numref:`sachs/pairs_1.png` with independent and pairwise scatter plots using the :ref:`ggally_ggpairs` module.
+The data is visualised in :numref:`sachs/pairs_1.png_real` with pairwise scatter plots using the :ref:`ggally_ggpairs` module.
 
 
-.. _sachs/pairs_1.png:
-
-.. figure:: _static/sachs/pairs_1.png
-    :width: 500 
-    :alt: Scatter plots for Sachs et al. 2005 data.
-    :align: center
-
-
-    Scatter plots.
 
 :numref:`sachs` shows the ``benchmark_setup`` section of the config file. 
-This setup falls into :ref:`II` since the *graph_id* s set to the filename of a fixed graph.
 
 .. For Scenario I, when the underling graph is unknown, \texttt{graph\_id} would be set to \vals{null}.
 

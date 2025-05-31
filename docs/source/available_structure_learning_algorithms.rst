@@ -168,7 +168,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`Dual PC <dualpc>`
@@ -264,7 +264,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`GRaSP <causallearn_grasp>`
@@ -312,7 +312,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`H2PC <bnlearn_h2pc>`
@@ -360,7 +360,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`ICA-LiNGAM <tetrad_ica-lingam>`
@@ -400,7 +400,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`MICE <mice>`
@@ -440,7 +440,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`NO TEARS low rank <gcastle_notears_low_rank>`
@@ -448,7 +448,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`NO TEARS non-linear <gcastle_notears_nonlinear>`
@@ -456,7 +456,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`Order MCMC <bidag_order_mcmc>`
@@ -496,7 +496,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`Parallel DG <paralleldg>`
@@ -552,7 +552,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`RSMAX2 <bnlearn_rsmax2>`
@@ -581,11 +581,11 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - 
    * - :ref:`TPC <bips_tpc>`
      - `tpc <https://github.com/bips-hb/tpc>`__
-     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `MPDAG <https://auai.org/uai2017/proceedings/papers/120.pdf>`__, `TMPDAG <https://proceedings.mlr.press/v216/bang23a.html>`__
      - C, D, M
      - 
      - :ref:`Yes <edge_constraints>`
-     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MNAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MCAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
      - 
    * - :ref:`Tabu <bnlearn_tabu>`
      - `bnlearn <https://www.bnlearn.com/>`__

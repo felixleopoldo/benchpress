@@ -3,86 +3,39 @@
     {
       "data": [
         {
-          "graph_id": "avneigs4_p20",
-          "parameters_id": "SEM",
-          "data_id": "example2",
-          "seed_range": [
-            1,
-            3
-          ]
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "2005_sachs_2_cd3cd28icam2_log_std.csv",
+          "seed_range": null
         }
       ],
       "evaluation": {
-        "benchmarks": {
-          "filename_prefix": "paper_er_sem_small/",
-          "show_seed": false,
-          "xlim": [
-            0,
-            0.75
-          ],
-          "errorbar": false,
-          "errorbarh": false,
-          "scatter": true,
-          "path": true,
-          "text": false,
-          "ids": [
-            "boss-sem-bic",
-            "grasp-sem-bic",
-            "notears-l2",
-            "itsearch-bge",
-            "dualpc",
-            "fges-sem-bic",
-            "hc-bge",
-            "mmhc-bge-zf",
-            "pc-gaussCItest",
-            "tabu-bge",
-            "omcmc-bge"
-          ]
-        },
-        "graph_true_stats": true,
-        "graph_true_plots": false,
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+            "ids": [
+              "fges-sem-bic",
+              "tabu-bge",
+              "itsearch-bge",
+              "pc-gaussCItest"
+            ],
+            "convert_to": ["cpdag"],
+            "graphs": true,
+            "adjmats": true,
+            "diffplots": false,
+            "csvs": true,
+            "graphvizcompare": false
+          },
         "mcmc_traj_plots": [],
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
       },
-      "title": "paper_er_sem_small"
+      "title": "real_data"
     }
   ],
   "resources": {
-    "data": {
-      "iid": [
-        {
-          "id": "example2",
-          "standardized": true,
-          "n": [
-            640
-          ]
-        }
-      ]
-    },
-    "graph": {
-      "pcalg_randdag": [
-        {
-          "id": "avneigs4_p20",
-          "max_parents": 5,
-          "n": 20,
-          "d": 4,
-          "par1": null,
-          "par2": null,
-          "method": "er",
-          "DAG": true
-        }
-      ]
-    },
-    "parameters": {
-      "sem_params": [
-        {
-          "id": "SEM",
-          "min": 0.25,
-          "max": 1
-        }
-      ]
-    },
+    "data": {},
+    "graph": {},
+    "parameters": {},
     "structure_learning_algorithms": {
       "tetrad_boss": [
         {
@@ -128,7 +81,7 @@
           "id": "notears-l2",
           "lambda1": 0.1,
           "loss_type": "l2",
-          "max_iter": 50,
+          "max_iter": 100,
           "h_tol": "1e-8",
           "rho_max": "1e+16",
           "w_threshold": [
@@ -136,20 +89,6 @@
             0.1,
             0.25
           ],
-          "timeout": null
-        }
-      ],
-      "dualpc": [
-        {
-          "id": "dualpc",
-          "alpha": [
-            0.001,
-            0.01,
-            0.05
-          ],
-          "pattern_graph": false,
-          "skeleton": false,
-          "max_ord": null,
           "timeout": null
         }
       ],
@@ -161,18 +100,13 @@
           "extra_args": null,
           "plot": false,
           "palim": 2,
-          "alpha_mu": [
-            0.001,
-            0.01,
-            0.05,
-            0.1
-          ],
+          "alpha_mu": 1.0,
           "alpha_omega_minus_nvars": 2,
           "alpha": null,
           "time_limit": null,
           "gap_limit": null,
           "prune": true,
-          "timeout": 12,
+          "timeout": null,
           "edgeConstraints": null
         }
       ],
@@ -238,6 +172,38 @@
           "edgeConstraints": null
         }
       ],
+      "bnlearn_interiamb": [
+        {
+          "id": "interiamb-zf",
+          "alpha": [
+            0.01,
+            0.05
+          ],
+          "test": "zf",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
+      "bnlearn_gs": [
+        {
+          "id": "gs-zf",
+          "alpha": [
+            0.01,
+            0.05
+          ],
+          "test": "zf",
+          "B": null,
+          "maxsx": null,
+          "debug": false,
+          "undirected": false,
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ],
       "bnlearn_tabu": [
         {
           "id": "tabu-bge",
@@ -247,8 +213,7 @@
             0.0001,
             0.001,
             0.01,
-            0.05,
-            1
+            0.05
           ],
           "issw": null,
           "l": 5,
@@ -268,8 +233,7 @@
             0.0001,
             0.001,
             0.01,
-            0.05,
-            1
+            0.05
           ],
           "issw": null,
           "l": 5,
@@ -287,15 +251,12 @@
           "id": "itsearch-bge",
           "estimate": "map",
           "MAP": false,
-          "plus1it": 1,
+          "plus1it": 6,
           "posterior": 0.5,
           "scoretype": "bge",
           "chi": null,
           "edgepf": 2,
-          "am": [
-            0.01,
-            0.1
-          ],
+          "am": 0.1,
           "aw": null,
           "softlimit": 9,
           "hardlimit": 14,
@@ -318,8 +279,8 @@
           "am": 0.1,
           "aw": null,
           "softlimit": 9,
-          "hardlimit": 12,
-          "alpha": 0.05,
+          "hardlimit": 14,
+          "alpha": 0.01,
           "gamma": 1,
           "cpdag": false,
           "mergetype": "skeleton",
@@ -345,9 +306,7 @@
           "cpdag": false,
           "mcmc_seed": 1,
           "threshold": [
-            0.3,
-            0.5,
-            0.7
+            0.5
           ],
           "burnin_frac": 0,
           "mcmc_estimator": "threshold",

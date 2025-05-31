@@ -37,7 +37,7 @@ NO TEARS low rank (gCastle)
    * - MCMC
      - No
    * - Edge constraints
-     - :ref:`Yes <edge_constraints>`
+     - No
    * - Data type
      - C
    * - Data missingness

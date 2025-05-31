@@ -4,7 +4,8 @@
 
 rule sample_bin_bn_data:
     input:
-        bn="{output_dir}/parameters/bin_bn/{bn}/adjmat=/{adjmat}.rds"
+        bn="{output_dir}/parameters/bin_bn/{bn}/adjmat=/{adjmat}.rds",
+        script="workflow/rules/data/iid/sample_data_with_range_header.R"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\

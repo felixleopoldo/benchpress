@@ -33,7 +33,7 @@ TPC (tpc)
    * - Paper
      - :footcite:t:`andrews2023practicalguidecausaldiscovery`
    * - Graph type
-     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `MPDAG <https://auai.org/uai2017/proceedings/papers/120.pdf>`__, `TMPDAG <https://proceedings.mlr.press/v216/bang23a.html>`__
    * - MCMC
      - No
    * - Edge constraints
@@ -41,7 +41,7 @@ TPC (tpc)
    * - Data type
      - C, D, M
    * - Data missingness
-     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
+     - `MAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MNAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__, `MCAR <https://en.wikipedia.org/wiki/Missing_data#Missing_completely_at_random>`__
    * - Intervention type
      - 
    * - Docker 
@@ -54,11 +54,11 @@ Temporal PC
 ---------------
 
 
-This package implements the tPC algorithm for causal discovery. The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available. Our implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with more :ref:`edge_constraints` supported.
-
-It also supports the Multiple Imputation for Causal Graph Discovery (micd) package.
-Which is and add-on to the R package pcalg for handling missing data in contrataint-based causal graph discovery. Supports continuous, discrete and mixed data. Two options are available: 1) gaussCItwd, disCItwd and mixCItwd perform test-wise deletion, where missing observations are deleted as necessary on a test-by-test basis; 2) gaussMItest, disMItest and mixMItest perform conditional independence tests on multiply imputed data. 
-
+This package implements the tPC algorithm for causal discovery. 
+The 't' stands for 'temporal' or 'tiers' and indicates that background knowledge in the form of a partial node/variable ordering is available. 
+The implementation is a modified version of pc from the pcalg package (Kalisch et al. 2012) with more :ref:`edge_constraints` supported and the ability to handle missing values.
+It supports continuous, discrete and mixed data. 
+Two options for handling missing values are available: 1) gaussCItwd, disCItwd and mixCItwd perform test-wise deletion, where missing observations are deleted as necessary on a test-by-test basis; 2) gaussMItest, disMItest and mixMItest perform conditional independence tests on :ref:`mice` imputed data. 
 
 .. rubric:: Example 
 
