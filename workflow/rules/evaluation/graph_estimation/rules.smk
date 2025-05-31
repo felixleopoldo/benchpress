@@ -143,11 +143,11 @@ features = {
     "csvs": {"ext":"csv", "argstring":"", "filename":"adjmat"}
 }
 
-# Since we have a lot of different data setups and algs, we need to create a rule for 
+# Since we have a lot of different data setups and algs, we need to create a rule for
 # each combination of them.
 
 for bmark_setup in config["benchmark_setup"]:
-    
+
     graph_estimation = bmark_setup["evaluation"]["graph_estimation"]
     graph_types = graph_estimation["convert_to"] is not None and graph_estimation["convert_to"] or []
     graph_types += ["original"]
@@ -158,14 +158,14 @@ for bmark_setup in config["benchmark_setup"]:
             for alg in active_algorithms(bmark_setup, eval_method="graph_estimation"):
                 data_index = 0
                 # We want one folder per data setup, so we create one rule for each of them.
-                
+
                 for sim_setup in bmark_setup["data"]:
-                    for seed in get_seed_range(sim_setup["seed_range"]):  
-                        
-                        adjmat_strings = gen_adjmat_string_from_conf(sim_setup["graph_id"], seed) 
+                    for seed in get_seed_range(sim_setup["seed_range"]):
+
+                        adjmat_strings = gen_adjmat_string_from_conf(sim_setup["graph_id"], seed)
                         parameters_strings = gen_parameter_string_from_conf(sim_setup["parameters_id"], seed)
                         data_strings = gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False)
-                        
+
 
                         if adjmat_strings is None:
                             adjmat_strings = [None]
@@ -188,10 +188,9 @@ for bmark_setup in config["benchmark_setup"]:
                         for adjmat_string in adjmat_strings:
                             for parameters_string in parameters_strings:
                                 for data_string in data_strings:
-                                    #print(bmark_setup)
-                                    rule:   
-                                        name: 
-                                            "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/"+alg+"/graph_type="+graph_type+"/"+feature 
+                                    rule:
+                                        name:
+                                            "results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(sim_setup["graph_id"]) + "_" + str(sim_setup["parameters_id"]) + "_" + str(sim_setup["data_id"]) + "_" + str(seed)+"/"+alg+"/graph_type="+graph_type+"/"+feature
                                         input:
                                             conf=configfilename,
                                             graphs=eval_module_conf_to_feature_files_data(filename=feature_dict["filename"],
@@ -206,9 +205,9 @@ for bmark_setup in config["benchmark_setup"]:
                                                                                             data_string=data_string,
                                                                                             alg=alg,
                                                                                             bmark_setup=bmark_setup)
-                                                                                            
+
                                         output:
-                                            touch("results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                                            touch("results/output/"+bmark_setup_title+"/graph_estimation/graph_id=" + str(sim_setup["graph_id"]) + "_parameters_id=" + str(sim_setup["parameters_id"]) + "_data_id=" + str(sim_setup["data_id"]) + "_seed=" + str(seed) +"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
                                             
                                         params:
                                             graph_type=graph_type,
@@ -216,18 +215,21 @@ for bmark_setup in config["benchmark_setup"]:
                                             feature=feature,
                                             ext=feature_dict["ext"],
                                             alg=alg,
-                                            bmark_setup=bmark_setup_title
+                                            bmark_setup=bmark_setup_title,
+                                            output_dir="results/output/"+bmark_setup_title+"/graph_estimation/graph_id="+ str(sim_setup["graph_id"]) + "_parameters_id=" + str(sim_setup["parameters_id"]) + "_data_id=" + str(sim_setup["data_id"]) + "_seed=" + str(seed) +"/graph_type="+graph_type+"/"+feature+"/"+alg
 
-                                        run:                                    
-                                            output_dir = "results/output/{params.bmark_setup}/graph_estimation/dataset_"+params["data_index"]+"/graph_type="+params["graph_type"]+"/"+params["feature"]+"/"+params["alg"]
+                                        run:
+
                                             # clean old file while keeping the directory
                                             # check if the directory exists
-                                            if Path(output_dir).exists():
+                                            if Path(params["output_dir"]).exists():
                                                 # remove all files in the directory
-                                                [f.unlink() for f in Path(output_dir).glob("*.png") ]
-                                            for i, f in enumerate(input.graphs):                                            
-                                                shell("mkdir -p " + output_dir)                                                                                                                                    
-                                                shell("cp "+f+" " + output_dir + "/"+params["alg"]+"_"+params["graph_type"]+"_" +str(i+1) +"."+params["ext"])
+                                                [f.unlink() for f in Path(params["output_dir"]).glob("*.png") ]
+
+                                            # This is to iterate over all the parameter settings.
+                                            for j, f in enumerate(input.graphs):
+                                                shell("mkdir -p " + params["output_dir"])
+                                                shell("cp "+f+" " + params["output_dir"] + "/"+params["alg"]+"_"+params["graph_type"]+ "_" + str(j+1) +"."+params["ext"])
 
                                     data_index += 1
 

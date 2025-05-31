@@ -89,6 +89,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
 
     return list(set(algs))
 
+import pprint as pp
 
 def get_active_rules(wildcards):
     """
@@ -106,8 +107,7 @@ def get_active_rules(wildcards):
             graph_types = evaluation["graph_estimation"]["convert_to"] if evaluation["graph_estimation"]["convert_to"] != None else ["original"]
             graph_types += ["original"]
 
-            # go through all active features and create a done file for each.
-
+            # Go through all active features and create a .done file for each.
             for feature, isactive in evaluation["graph_estimation"].items():
 
                 # These are not features, so skip
@@ -115,24 +115,13 @@ def get_active_rules(wildcards):
                     continue
 
                 if isactive == True:
-                    # Cound the data setups and create a done file for each.
-                    n_comb = 0
                     for sim_setup in bmark_setup["data"]:
-                        seed=get_seed_range(sim_setup["seed_range"])
-                        adjmat=gen_adjmat_string_from_conf(sim_setup["graph_id"], seed),
-                        parameters=gen_parameter_string_from_conf(sim_setup["parameters_id"], seed),
-                        data=gen_data_string_from_conf(sim_setup["data_id"], seed, seed_in_path=False)
-
-                        # count total number of combinations of the three above
-                        n_data = len(data) if isinstance(data, list) and len(data) != 0 else 1
-                        n_parameters = len(parameters) if isinstance(parameters, list) and parameters != [] else 1
-                        n_adjmat = len(adjmat) if isinstance(adjmat, list) and adjmat != [] else 1
-                        n_comb += n_data*n_parameters*n_adjmat if n_data*n_parameters*n_adjmat != 0 else 1
-
-                    for data_index in range(n_comb):
-                        for alg in active_algorithms(bmark_setup, eval_method="graph_estimation"):
-                            for graph_type in graph_types:
-                                rules.append("results/output/"+bmark_setup_title+"/graph_estimation/dataset_"+str(data_index+1)+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
+                        seed_range=get_seed_range(sim_setup["seed_range"])                                                
+                        for seed in seed_range:                    
+                            dataset = str("graph_id=" + str(sim_setup["graph_id"]) + "_parameters_id=" + str(sim_setup["parameters_id"]) + "_data_id=" + str(sim_setup["data_id"]) + "_seed=" + str(seed))
+                            for alg in active_algorithms(bmark_setup, eval_method="graph_estimation"):
+                                for graph_type in graph_types:
+                                    rules.append("results/output/"+bmark_setup_title+"/graph_estimation/"+dataset+"/graph_type="+graph_type+"/"+feature+"/"+alg+".done")
 
         # mcmc_traj_plots
         if "mcmc_traj_plots" in evaluation and len(evaluation["mcmc_traj_plots"]) > 0:
