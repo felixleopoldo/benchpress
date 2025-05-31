@@ -13,7 +13,7 @@
       "evaluation": {
         "ggally_ggpairs": true,
         "graph_estimation": {
-          "ids": ["pasting", "pasting_bdeu","ct"],
+          "ids": ["ct"],
           "convert_to": [],
           "graphs": true,
           "adjmats": true,
@@ -324,6 +324,8 @@
         {
           "id": "ct",
           "thresh": [0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9],
+          "method": "corr",
+
           "timeout": null
         }
       ],

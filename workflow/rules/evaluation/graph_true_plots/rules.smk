@@ -64,7 +64,7 @@ rule adjmat_true_plot:
 
 # This might also appear in th graph_plots module.. 
 # Maybe some checks should be done to see if it is already defined.
-rule plot_true_dot:
+rule plot_true_dot_tmpfix:
     input:
         filename="{output_dir}/dotgraph/{something}.dot",
     output:

@@ -30,7 +30,10 @@
                 "disCItest",
                 "gaussMItest",
                 "mixMItest",
-                "disMItest"
+                "disMItest",
+                "flexMItest",
+                "flexCItwd",
+                "flexCItest"
               ]
             }
           },
@@ -40,12 +43,16 @@
               "gaussCItest",
               "binCItest",
               "disCItest",
+              
               "gaussCItwd",
               "disCItwd",
               "mixCItwd",
               "gaussMItest",
               "mixMItest",
-              "disMItest"
+              "disMItest",
+              "flexMItest",
+              "flexCItwd",
+              "flexCItest"
             ]
           }
         ]

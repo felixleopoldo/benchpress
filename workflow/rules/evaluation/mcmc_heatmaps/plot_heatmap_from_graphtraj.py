@@ -35,7 +35,7 @@ else:
     sns.set(font_scale=0.4)
     with sns.axes_style("white"):
         sns.heatmap(heatmap, 
-                    annot=True, 
+                    annot=False, 
                     linewidth=1,
                     fmt=".2f",
                     cmap="Blues",

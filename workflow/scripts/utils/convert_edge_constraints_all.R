@@ -64,6 +64,23 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
         p <- ncol(datafile)
         constraints <- list() # save this to file serialized
 
+        tiers_vars <- c()
+        if (!is.null(data$tiers)) {
+            for (tier in data$tiers) {
+                tiers_vars <- c(tiers_vars, tier)
+            }
+        }
+        # check that tiers_vars has the same variables as node_labels
+
+        print("Checking tiers  variables")
+        if (!all(tiers_vars %in% node_labels)) {
+            # check whcih variables are not in the tiers
+            print("Some variables in the tiers are not in the data")
+            print(setdiff(tiers_vars, node_labels))
+            stop("Some variables in the tiers are not in the data")
+        }
+        
+
         tiers <- rep(NULL, p)
         # for each tier in data$tiers,
 
@@ -78,6 +95,10 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
             tier_no <- tier_no + 1
         }
         constraints$tiers <- tiers
+
+        # checl that tiers has the same variables as node_labels
+        print("Constraints:")
+        print(data)
 
         forbEdges <- matrix(0, p, p)
         # loop over the forbidden edges and add them to forbEdges

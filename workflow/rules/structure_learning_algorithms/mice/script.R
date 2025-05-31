@@ -39,6 +39,8 @@ myalg <- function() {
         #print("range header removed. discrete")
     }
 
+    print("Starting MICE imputation")
+    print(head(data, 20))
     mi_object <- mice(data,
         m = m,
         method = method,
