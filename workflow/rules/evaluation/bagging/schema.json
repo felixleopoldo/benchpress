@@ -1,0 +1,32 @@
+{
+    "description": "Schema for bagging evaluation rules in workflow",
+    "title": "bagging",
+    "oneOf": [
+        { "type": "null" },
+        { "enum": ["standard"] },
+        {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": [
+                { "enum": ["weighted"] },
+                {
+                    "type": "object",
+                    "properties": {
+                        "threshold": { "type": "number", "minimum": 0, "maximum": 1 }
+                    },
+                    "required": ["threshold"],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "minProperties": 1,
+                    "patternProperties": {
+                        "^[^\\s]+$": {"$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegnum"}
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        }
+    ]
+}
