@@ -4,14 +4,28 @@ import pandas as pd
 import sys
 import os
 
+
 print("--------------------------------")
 print("BAGGING PYTHON SCRIPT")
 print("--------------------------------")
 
+
 # Snakemake injects these for you:
 adjs = snakemake.input
 bag_value = snakemake.params.bag_value
-out_csv = snakemake.output[0]
+config = snakemake.params.configfile
+out_csv_adj = snakemake.output[0]
+out_csv_avg = snakemake.output[1]
+
+
+def idtoalg(run_id: str):
+    """ Returns the algorithm name that the id belongs to, otherwise None """
+    for key, alg in config["resources"]["structure_learning_algorithms"].items():
+        for obj in alg:
+            if obj["id"] == run_id:
+
+                return key, obj
+    return None, None
 
 
 # print out the input:
@@ -23,8 +37,6 @@ out_csv = snakemake.output[0]
 
 # 1. Load all adjacency matrices into a list of DataFrames
 # mats = [pd.read_csv(path, index_col=0) for path in adjs]
-
-
 mats = [pd.read_csv(path, header=0).loc[:, lambda df: ~
                                         df.columns.str.contains('^Unnamed')] for path in adjs]
 
@@ -46,7 +58,8 @@ if len(mats) == 0:
 
 if bag_value is None:
     # No bagging: blank csv file as output:
-    pd.DataFrame().to_csv(out_csv)
+    pd.DataFrame().to_csv(out_csv_adj)
+    pd.DataFram().to_csv(out_csv_avg)
 else:
     if bag_value == "standard":
         weights = [1/len(mats)] * len(mats)
@@ -59,13 +72,18 @@ else:
 
         name_weight = dict()
         for key, value in weight_obj.items():
-            name_weight[idtoalg(key)] = value
+            name_weight[idtoalg(key)[0]] = value
 
         # get the name of the adjmat
         for path in adjs:
 
+            print("===================")
+            print("HERE IS THE PATH: ")
+            print(path)
+            print("===================")
+
             # get the name of the adjmat
-            parts = path.split('adjmat=/')
+            parts = path.split('algorithm=/')
             if len(parts) > 1:
                 name = parts[1].split('/')[0]
 
@@ -81,7 +99,8 @@ else:
     bin_mat = (avg_df >= threshold).astype(int)
 
     # Save back out
-    pd.DataFrame(bin_mat).to_csv(out_csv, index=False)
+    pd.DataFrame(avg_df).to_csv(out_csv_avg, index=False)
+    pd.DataFrame(bin_mat).to_csv(out_csv_adj, index=False)
 
     # print("--------------------")
     # print("Here is the final bagging file:")

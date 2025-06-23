@@ -11,28 +11,6 @@ include: "../graph_plots/filenames.py"
 bmark_setup = config["benchmark_setup"][0]
 bmark_setup_title = bmark_setup["title"]
 
-
-
-# the input from the adjmats() function is many nested lists so we need to flatten it into the format: ['str1', 'str2', 'str3', ...]
-def flatten(list_to_flatten):
-    result = []
-    for item in list_to_flatten:
-        if isinstance(item, list):
-            result.extend(flatten(item))
-        else:
-            result.append(item)
-    print("--------------------------------")
-    print("Here is the flattened list:")
-    print(result)
-    print("--------------------------------")
-    return result
-
-
-
-def get_csv_adjmats(bmark_setup):
-    return flatten(adjmats(bmark_setup))
-
-
 if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't want to generate any csv file if bagging is null (rule will not be triggered)
     rule bagging:
         """
@@ -45,15 +23,16 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
 
         # This wildcard picks up the graph_type from the output path:
         output:
-            adjmat="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv"
+            adjmat="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv",
+            avgmat="results/evaluation/bagging/"+bmark_setup_title+"/bagged_avg.csv"
 
         # Pull in the bagging spec (null / "standard" / weighted array):
         params:
-            bag_value=config["benchmark_setup"][0]["evaluation"]["bagging"]
+            bag_value=config["benchmark_setup"][0]["evaluation"]["bagging"],
+            configfile=config
         # Delegate all the heavy lifting to your Python script
         script:
             "bagging.py"
-
 
     rule heatmap_bagging: # this gets the heatmap
         input:
@@ -68,24 +47,42 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
         script:
             "../graph_plots/plot_matrix_as_heatmap.py"
         
-
-
-    # not sure where the output for this is.
-
-    # rule graph_bagging: # this gets the graph
-    #     input:
-    #         matrix_filename="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv"
-    #     output:
-    #         plot_filename="results/evaluation/bagging/"+bmark_setup_title+"/bagged_graph.png"
-    #     script:
-    #         "../graph_plots/plot_matrix_as_graph.py"
-
-
+    rule adjmat_to_dot_bagging:
+        input:
+            "workflow/scripts/utils/adjmat_to_dot.py",
+            filename="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv",  # true graph has adjmat in the path and estimated does not.
+        output:
+            filename="results/evaluation/bagging/"+bmark_setup_title+"/bag.dot"
+        container:
+            docker_image("trilearn")
+        shell:
+            """
+            if [ -s {input.filename} ]; then
+                python workflow/scripts/utils/adjmat_to_dot.py {input.filename} {output.filename}
+            else
+                touch {output.filename}
+            fi
+            """
+    rule plot_dot_bagging:
+        input:
+            filename="results/evaluation/bagging/"+bmark_setup_title+"/bag.dot"
+        output:
+            filename="results/evaluation/bagging/"+bmark_setup_title+"/bagged_graph.png"
+        container:
+            docker_image("trilearn")
+        shell:
+            """
+            if [ -s {input.filename} ]; then
+                dot -T png {input.filename} -o {output.filename}
+            else
+                touch {output.filename}
+            fi
+            """
+            
     rule complete_bagging:
         input:
-            # "results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv",
             "results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.png",
-            # "results/evaluation/bagging/"+bmark_setup_title+"/bagged_graph.png"
+            "results/evaluation/bagging/"+bmark_setup_title+"/bagged_graph.png"
         output:
             donefile="results/evaluation/bagging/"+bmark_setup_title +"/bagging.done"
         shell:
