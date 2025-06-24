@@ -70,9 +70,17 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
                 tiers_vars <- c(tiers_vars, tier)
             }
         }
-        # check that tiers_vars has the same variables as node_labels
 
-        print("Checking tiers  variables")
+        # check that tiers_vars has the same variables as node_labels
+        #  check if the node_labels are a subset of tiers_vars
+        if (!all(node_labels %in% tiers_vars)) {
+            print("Some variables in the data are not in the tiers")
+            print(setdiff(node_labels, tiers_vars))
+            stop("Some variables in the data are not in the tiers")
+        }
+
+        
+       #print ("Checking tiers  variables")
         if (!all(tiers_vars %in% node_labels)) {
             # check whcih variables are not in the tiers
             print("Some variables in the tiers are not in the data")
@@ -97,8 +105,8 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
         constraints$tiers <- tiers
 
         # checl that tiers has the same variables as node_labels
-        print("Constraints:")
-        print(data)
+        #print("Constraints:")
+       # print(data)
 
         forbEdges <- matrix(0, p, p)
         # loop over the forbidden edges and add them to forbEdges

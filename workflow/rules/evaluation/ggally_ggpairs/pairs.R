@@ -24,10 +24,10 @@ title <- paste("Graph: ", snakemake@wildcards[["adjmat"]], "\n",
 )
 datatype <- class(sum(na.omit(t(df)[, 1])))
 # apply that to all columns first row
-print(head(df, 5))
-print(na.omit(t(df)[, 1]))
+#print(head(df, 5))
+#print(na.omit(t(df)[, 1]))
 #print(na.omit(df[2, ]))
-print(paste0("sum of first row: ", sum(na.omit(t(df)[, 1]))))
+#print(paste0("sum of first row: ", sum(na.omit(t(df)[, 1]))))
 
 if (datatype == "integer") {
     print("datatypes is integer")
@@ -41,8 +41,8 @@ if (datatype == "integer") {
     
     # discrete data is converted to factors to to make different boxplots
     for (i in 1:ncol(df)) {
-        print(paste0("checking column ", i, " datatype: ", class(sum(na.omit(df[, i])))))      
-        print(sum(na.omit(df[, i])))
+ #       print(paste0("checking column ", i, " datatype: ", class(sum(na.omit(df[, i])))))      
+  #      print(sum(na.omit(df[, i])))
         if (is.integer(sum(na.omit(df[, i])))) {
             # get columnd i and make it a factor
             tmp <- df[[i]]
