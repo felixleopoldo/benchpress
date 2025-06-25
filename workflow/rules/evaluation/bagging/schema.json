@@ -13,7 +13,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "threshold": { "type": "number", "minimum": 0, "maximum": 1 }
+                        "threshold": { "$ref": "../../../schemas/definitions.schema.json#/definitions/nonzeroprob"}
                     },
                     "required": ["threshold"],
                     "additionalProperties": false

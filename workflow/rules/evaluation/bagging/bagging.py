@@ -4,12 +4,6 @@ import pandas as pd
 import sys
 import os
 
-
-print("--------------------------------")
-print("BAGGING PYTHON SCRIPT")
-print("--------------------------------")
-
-
 # Snakemake injects these for you:
 adjs = snakemake.input
 bag_value = snakemake.params.bag_value
@@ -28,29 +22,10 @@ def idtoalg(run_id: str):
     return None, None
 
 
-# print out the input:
-# print("--------------------------------")
-# print("Here are the input paths (from bagging.py):")
-# print(adjs)
-# print("--------------------------------")
-
-
 # 1. Load all adjacency matrices into a list of DataFrames
 # mats = [pd.read_csv(path, index_col=0) for path in adjs]
 mats = [pd.read_csv(path, header=0).loc[:, lambda df: ~
                                         df.columns.str.contains('^Unnamed')] for path in adjs]
-
-
-print("--------------------------------")
-print("here is the bagging parameters")
-print(bag_value)
-print("--------------------------------")
-
-
-# print("--------------------------------")
-# print("Here are the adjmats (from bagging.py):")
-# print(mats)
-# print("--------------------------------")
 
 if len(mats) == 0:
     print("ERROR: No adjacency matrices found, try adding some algorithms to the config file or check the input paths")
@@ -77,11 +52,6 @@ else:
         # get the name of the adjmat
         for path in adjs:
 
-            print("===================")
-            print("HERE IS THE PATH: ")
-            print(path)
-            print("===================")
-
             # get the name of the adjmat
             parts = path.split('algorithm=/')
             if len(parts) > 1:
@@ -101,13 +71,3 @@ else:
     # Save back out
     pd.DataFrame(avg_df).to_csv(out_csv_avg, index=False)
     pd.DataFrame(bin_mat).to_csv(out_csv_adj, index=False)
-
-    # print("--------------------")
-    # print("Here is the final bagging file:")
-    # print(bin_mat)
-    # print("--------------------")
-
-    # print("--------------------")
-    # print("Here is the output path: ")
-    # print(out_csv)
-    # print("--------------------")

@@ -1,9 +1,4 @@
 # This is the bagging rule. It takes in the adjmat.csv files and performs bagging over them.
-# include: "../../validate.py" # to use idtoalg function
-print("--------------------------------")
-print("BAGGING RULE")
-print("--------------------------------")
-
 
 # maybe include the filenames.py here? (should be included already)
 include: "../graph_plots/filenames.py"
@@ -19,7 +14,7 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
         """
         # Expand all the per‐seed adjmat inputs using the seed_range from your config:
         input:
-            csv_adjmats = adjmats(bmark_setup)
+            csv_adjmats = adjmats(bmark_setup,"graph_estimation")
 
         # This wildcard picks up the graph_type from the output path:
         output:
@@ -78,7 +73,7 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
                 touch {output.filename}
             fi
             """
-            
+
     rule complete_bagging:
         input:
             "results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.png",
