@@ -8,8 +8,8 @@ matplotlib.use('Agg')
 sns.set(rc={"figure.dpi": 300, 'savefig.dpi': 300})
 
 # If the algorithm was timed out
-if os.stat(snakemake.input["matrix_filename"]).st_size== 0:
-    open(snakemake.output["plot_filename"],'a').close()
+if os.stat(snakemake.input["matrix_filename"]).st_size == 0:
+    open(snakemake.output["plot_filename"], 'a').close()
 else:
     heatmap = pd.read_csv(snakemake.input["matrix_filename"])
     heatmap.index = heatmap.columns
@@ -25,7 +25,7 @@ else:
     plt.title(snakemake.params["title"], fontsize=6, ha="center")
     if snakemake.params["alg_string"]:
         plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n"),
-                rotation="horizontal", fontsize=6, ha="right", va="center")
+                   rotation="horizontal", fontsize=6, ha="right", va="center")
     plt.tight_layout()
     plt.savefig(snakemake.output["plot_filename"])
     plt.clf()
