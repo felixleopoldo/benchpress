@@ -36,11 +36,12 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
             plot_filename="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.png"
         params: 
             title="Bagging Adjacency Matrix: "+bmark_setup_title,
-            alg_string="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv"
+            alg_string="results/evaluation/bagging/"+bmark_setup_title+"/bagged_adjmat.csv",
+            configfile=config
         container:
             docker_image("pydatascience")
         script:
-            "../graph_plots/plot_matrix_as_heatmap.py"
+            "plot_bag_heatmap.py"
         
     rule adjmat_to_dot_bagging:
         input:

@@ -113,8 +113,7 @@
             "title": "nonnegnum type",
             "description": "Non-negative number",
             "type": "number",
-            "minimum": 0,
-            "exclusiveMinimum": true
+            "minimum": 0
         },
         "posnum":{
             "title": "posnum type",
