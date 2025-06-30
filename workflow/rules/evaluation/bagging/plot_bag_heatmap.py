@@ -28,7 +28,7 @@ else:
     heatmap.index = heatmap.columns
 
     # Create figure with larger size to accommodate legend
-    plt.figure(figsize=(14, 8))
+    plt.figure(figsize=(10, 8))
 
     with sns.axes_style("white"):
         sns.heatmap(heatmap,  annot=False, linewidth=1,
@@ -44,16 +44,9 @@ else:
         # here we add the bagging legend:
         num_edges = len(heatmap.values[heatmap.values > 0])
 
-        legend_elements = []
-
-        # Add algorithm info to legend
-        legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                          markerfacecolor='lightblue', markersize=8,
-                                          label=f'Bagging Path: {snakemake.params["alg_string"]}'))
-
-        legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                          markerfacecolor='lightblue', markersize=8,
-                                          label=f'Edges: {num_edges}'))
+        # Build y-axis label string
+        y_label_lines = [f'Bagging Path: {snakemake.params["alg_string"]}',
+                         f'Edges: {num_edges}']
         # Add parameter info to legend
         if snakemake.params["configfile"]:
             config = snakemake.params.configfile
@@ -95,26 +88,15 @@ else:
 
                 # Add weight statistics to legend
 
-            legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                              markerfacecolor='lightblue', markersize=8,
-                                              label=f'Bagging Type: {type}'))
+            y_label_lines.append(f'Bagging Type: {type}')
+            y_label_lines.append(f'Threshold: {threshold}')
+            y_label_lines.append("Weights:")
+            for i, alg in enumerate(algs):
+                alg_name = idtoalg(alg)[0]
+                y_label_lines.append(f'{alg_name}: {weights[i]:.3f}')
 
-            legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                              markerfacecolor='lightblue', markersize=8,
-                                              label=f'Threshold: {threshold}'))
-
-            legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                              markerfacecolor='lightblue', markersize=8,
-                                              label=f'Weights:'))
-
-            for index, alg in enumerate(algs):
-                legend_elements.append(plt.Line2D([0], [0], marker='s', color='w',
-                                                  markerfacecolor='lightblue', markersize=8,
-                                                  label=f'{idtoalg(alg)[0]}: {weights[index]}'))
-
-        if legend_elements:
-            plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1),
-                       fontsize=6, title='Graph Information', title_fontsize=7)
+# Set y-axis label
+    plt.ylabel('\n'.join(y_label_lines), fontsize=6, labelpad=10)
 
     plt.tight_layout()
     plt.savefig(snakemake.output["plot_filename"])
