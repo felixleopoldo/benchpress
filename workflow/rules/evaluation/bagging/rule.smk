@@ -2,11 +2,21 @@
 
 # maybe include the filenames.py here? (should be included already)
 include: "../graph_plots/filenames.py"
+# include: "../graph_plots/rules.smk"
 
 bmark_setup = config["benchmark_setup"][0]
 bmark_setup_title = bmark_setup["title"]
+evaluation = bmark_setup["evaluation"]
 
-if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't want to generate any csv file if bagging is null (rule will not be triggered)
+
+def bagging_input_adjmats():
+    if "graph_estimation" in bmark_setup["evaluation"]:
+        return adjmats(bmark_setup,"graph_estimation")
+    else:
+        return adjmats(bmark_setup,"graph_plots")
+
+if "bagging" in config["benchmark_setup"][0]["evaluation"] and config["benchmark_setup"][0]["evaluation"]["bagging"] != None:
+     # we don't want to generate any csv file if bagging is null (rule will not be triggered)
     rule bagging:
         """
         Perform standard or weighted bagging over multiple
@@ -14,7 +24,7 @@ if config["benchmark_setup"][0]["evaluation"]["bagging"] is not None: # we don't
         """
         # Expand all the per‐seed adjmat inputs using the seed_range from your config:
         input:
-            csv_adjmats = adjmats(bmark_setup,"graph_estimation")
+            csv_adjmats = bagging_input_adjmats()
 
         # This wildcard picks up the graph_type from the output path:
         output:
