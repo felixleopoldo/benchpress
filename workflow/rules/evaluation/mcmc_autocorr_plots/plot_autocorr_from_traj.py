@@ -12,7 +12,7 @@ import networkx as nx
 import matplotlib
 matplotlib.use('Agg')
 
-#from pandas.compat import lmap
+# from pandas.compat import lmap
 
 
 def autocorrelation_plot(series, n_samples=None, ax=None, **kwds):
@@ -73,8 +73,8 @@ def edges_str_to_list(str, edgesymb="-"):
 
 # Treating the case when empty files are created. Such files
 # are created if the algorithm was timed out.
-if os.stat(snakemake.input["traj"]).st_size== 0:
-    open(snakemake.output["plot"],'a').close()
+if os.stat(snakemake.input["traj"]).st_size == 0:
+    open(snakemake.output["plot"], 'a').close()
 else:
 
     df = pd.read_csv(snakemake.input["traj"], sep=",")
@@ -109,12 +109,12 @@ else:
             columns=df2.columns)
         # incase series index doens't start at 0
         if not np.char.isnumeric(['size'][0]):
-            df2.at[0,'size'] = int(0)
+            df2.at[0, 'size'] = int(0)
 
         df2 = df2.fillna(method="ffill")
 
         burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
-        
+
         if snakemake.wildcards["thinning"] != "None":
             thinning = int(snakemake.wildcards["thinning"])
             dfplot = df2["size"][burnin:].iloc[::thinning]
@@ -133,7 +133,7 @@ else:
             columns=df2.columns)
         # incase series index doens't start at 0
         if not np.char.isnumeric(['score'][0]):
-            df2.at[0,'score'] = int(0)
+            df2.at[0, 'score'] = int(0)
 
         df2 = df2.fillna(method="ffill")
         burnin = int(float(snakemake.wildcards["burn_in"]) * df2.shape[0])
@@ -147,7 +147,7 @@ else:
         sm.graphics.tsa.plot_acf(dfplot, lags=int(snakemake.wildcards["lags"]))
     else:
         sm.graphics.tsa.plot_acf(dfplot)
-    #autocorrelation_plot(df2["size"][int(snakemake.wildcards["burn_in"]):], n_samples=int(snakemake.wildcards["lags"]))
+    # autocorrelation_plot(df2["size"][int(snakemake.wildcards["burn_in"]):], n_samples=int(snakemake.wildcards["lags"]))
 
     # nlags = int(snakemake.wildcards["lags"])
     # lags = [dfplot.autocorr(lag=l) for l in range(1, nlags + 1)]
@@ -156,15 +156,24 @@ else:
 
     # df.dropna().plot(x="nlags", y="autocorr")
 
-    #plt.acorr(dfplot.values, usevlines=True, normed=True, maxlags=nlags)
+    # plt.acorr(dfplot.values, usevlines=True, normed=True, maxlags=nlags)
     plt.title("Graph: "+snakemake.params["adjmat_string"] + "\nParameters: " +
-            snakemake.params["param_string"] + "\nData: " + snakemake.params["data_string"], fontsize=6, ha="center")
-    plt.ylabel(
-        "Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") +
-        "\n\nPlot:\n\nburn_in="+snakemake.wildcards["burn_in"] +
-        "\nthinning="+snakemake.wildcards["thinning"] +
-        "\nlags="+snakemake.wildcards["lags"] +
-        "\nfunctional="+snakemake.wildcards["functional"], rotation="horizontal", fontsize=6, ha="right", va="center")
+              snakemake.params["param_string"] + "\nData: " + snakemake.params["data_string"], fontsize=6, ha="center")
+
+    unwrapped = snakemake.params["alg_string"].replace(
+        "/", "\n")  # newlines separate the parameters
+    wrapped_lines = []
+    for line in unwrapped.splitlines():
+        wrapped = [line[i:i+25] for i in range(0, len(line), 25)]
+        wrapped_lines.extend(wrapped)
+    wrapped_alg_string = "\n".join(wrapped_lines)
+    type = snakemake.params["graph_type"]
+    ylabel_text = "Algorithm:\n\n" + wrapped_alg_string + "\n\nPlot:\n\nburn_in=" + \
+        snakemake.wildcards["burn_in"] + "\nthinning="+snakemake.wildcards["thinning"] + \
+        "\nlags="+snakemake.wildcards["lags"] + \
+        "\nfunctional="+snakemake.wildcards["functional"]
+    plt.ylabel(ylabel_text, rotation="horizontal",
+               fontsize=6, ha="right", va="center")
 
     plt.xlabel("Lag/"+snakemake.wildcards["thinning"], fontsize=6)
     cax = plt.gcf().axes[-1]
