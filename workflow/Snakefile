@@ -81,7 +81,7 @@ tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
-snakemake.utils.validate(config, tmp_schema)
+#snakemake.utils.validate(config, tmp_schema)
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
 

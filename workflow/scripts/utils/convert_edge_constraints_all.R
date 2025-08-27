@@ -12,7 +12,7 @@ node_labels <- colnames(datafile)
 
 # Handle null value for edgeConstraints
 if (filename_data == "null" || file.size(filename_data) == 0) {
-    if (package == "pcalg" || package == "mvpc" || package == "bips_tpc") {
+    if (package == "pcalg" || package == "mvpc" || package == "bips_tpc" || package == "tpc") {
         # Empty data frame - pcalg and mvpc
         matrix_data <- data.frame(node1 = character(), node2 = character(), matrix_type = character(), stringsAsFactors = FALSE)
         write.csv(matrix_data, file = filename_output, row.names = FALSE, quote = FALSE)
@@ -51,14 +51,14 @@ if (filename_data == "null" || file.size(filename_data) == 0) {
     required_edges <- required_edges[required_edges$from %in% node_labels & required_edges$to %in% node_labels, ]
 
     # pcalg and mvpc
-    if (package == "pcalg" || package == "mvpc") {
+if (package == "pcalg" || package == "mvpc") {
         # pcalg - "fixedGaps" and "fixedEdges"
         matrix_data <- rbind(forbidden_edges, required_edges)
         matrix_type <- c(rep("fixedGaps", nrow(forbidden_edges)), rep("fixedEdges", nrow(required_edges)))
         matrix_data <- cbind(matrix_data, matrix_type)
         colnames(matrix_data)[1:2] <- c("node1", "node2")
         write.csv(matrix_data, file = filename_output, row.names = FALSE, quote = FALSE)
-    } else if (package == "bips_tpc") { # bips_tpc
+    } else if (package == "bips_tpc" || package == "tpc") { # bips_tpc
 
         # handle forbidden edges and tiers. Later, context and context.tiers.
         p <- ncol(datafile)

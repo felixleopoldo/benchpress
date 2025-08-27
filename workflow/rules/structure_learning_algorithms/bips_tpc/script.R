@@ -51,6 +51,13 @@ wrapper <- function() {
         forbEdges <- edgeConstraints$forbEdges
     }
 
+    #print("Edge constraints")
+    #print(edgeConstraints)
+
+    #print("context.tier")
+    #print(context.tier)
+
+
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
