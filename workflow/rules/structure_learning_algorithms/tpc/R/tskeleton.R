@@ -223,6 +223,10 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         done <- FALSE
                     }
                     S <- seq_len(ord)
+                    # split S into substantive and missingness variables
+                    S_substantive <- S[!grepl("^R_", labels[nbrs[S]])]
+                    S_missingness <- S[grepl("^R_", labels[nbrs[S]])]
+
                     repeat { # the repeat loop goes over all subsets of the
                         # neighbours with length ord
                         n.edgetests[ord1] <- n.edgetests[ord1] +
@@ -253,7 +257,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         # if R_X (or R_Y) is in the independent set, and X (or Y) is in the conditioning set, set pval=1
                         # check if some of x starts with R_
                         if (grepl("^R_", labels[x])) {
-                            print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
+                            #print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[x])
                             S_index_node_name <- which(labels[S_fixed] == node_name)
 
@@ -268,7 +272,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         }
 
                         if (grepl("^R_", labels[y])) {
-                            print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
+                            #print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[y])
                             S_index_node_name <- which(labels[S_fixed] == node_name)
                             if (node_name %in% labels[nbrs[S_fixed]]) {
@@ -352,7 +356,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             break # exit repeat loop (?)
                         } else {
                             # chose ord elements from the neighbours as the new S
-                            nextSet <- getNextSet(
+                            nextSet <- getNextSet( # TODO: Look at this function
                                 length_nbrs, ord,
                                 S
                             )
