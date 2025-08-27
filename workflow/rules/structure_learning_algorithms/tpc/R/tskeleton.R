@@ -228,96 +228,115 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         n.edgetests[ord1] <- n.edgetests[ord1] +
                             1
 
+                        S_fixed <- S
                         # first chech if a corresponding missingess variable is in the conditioning set.
-                        # if so, remove it from the conditioning set just to perform the test. 
+                        # if so, remove it from the conditioning set just to perform the test.
                         # This is motivated by the faithful observability assumption.
-                        # X _|_ Y | R_X would be X _|_ Y 
+                        # X _|_ Y | R_X would be X _|_ Y
                         # Hovever, X _|_ R_Y | Y is not considered as it is not testable. Return pval=1 directly?
                         # It is hard to bann such relations in constraints
-                        # For self-making missingness: R_X _|_ X we can bann edges X-R_X. 
+                        # For self-making missingness: R_X _|_ X we can bann edges X-R_X.
 
                         # check if the edge is forbidden
                         pval <- NULL
                         if (verbose) {
                             cat(
-                                "\nTesting: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S]], "\n"                                
+                                "\nTesting: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]], "\n"
                             )
                         }
-                        #self_masking <- paste0("R_", labels[x]) == labels[y] || paste0("R_", labels[y]) == labels[x]
+                        # self_masking <- paste0("R_", labels[x]) == labels[y] || paste0("R_", labels[y]) == labels[x]
 
                         untestable <- NULL
                         faith_obs <- FALSE
 
-                        # if the missingness variable of x or y is in the conditioning set, remove it from S
-                        if (paste0("R_", labels[x]) %in% labels[nbrs[S]]) {
-                            #print("Checking X")
-                            #print(paste0("R_", labels[x], " is in the conditioning set"))
-
-                            # get the index of the missingness variable in the conditioning set 
-                            index_missingness <- which(labels[S] == paste0("R_", labels[x]))
-                            #print(paste0("index_missingness: ", index_missingness))
-                            
-                            S_faith_obs <- S[S != index_missingness]
-                            #print(paste0("Removed missingness variable from conditioning set: ", paste0(labels[index_missingness])))
-                            #print(paste0("New conditioning set: ", labels[nbrs[S_faith_obs]]))
-                            faith_obs <- TRUE
-                        }
-
-                        if (paste0("R_", labels[y]) %in% labels[nbrs[S]]) {
-                            #print("Checking Y")
-                            #print(paste0("R_", labels[y], " is in the conditioning set"))
-                            
-                            # If one missingess variable was already removed above, we need to update the conditioning set
-                            if(faith_obs) {
-                                S <- S_faith_obs
-                            }
-                            #print(paste0("nbrs[S]: ", labels[nbrs[S]]))
-                            # get the index of the missingness variable in the conditioning set 
-                            index_missingness <- which(labels[S] == paste0("R_", labels[y]))                            
-                            #print(paste0("index_missingness: ", index_missingness))
-                            S_faith_obs <- S[S != index_missingness]
-                            #print(paste0("Removed missingness variable from conditioning set: ", paste0("R_", labels[y])))
-                            #print(paste0("New conditioning set: ", labels[nbrs[S_faith_obs]]))
-                            faith_obs <- TRUE
-                        }
 
                         # if R_X (or R_Y) is in the independent set, and X (or Y) is in the conditioning set, set pval=1
                         # check if some of x starts with R_
                         if (grepl("^R_", labels[x])) {
-                            #print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
+                            print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[x])
-                            #print(paste0("node_name: ", node_name))
-                            #print(paste0("nbrs[S]: ", labels[nbrs[S]]))
-                            if (node_name %in% labels[nbrs[S]]) {
-                                print(paste0("R_", labels[x], " is in the independent set, and ", node_name, " is in the conditioning set, setting pval=1"))
-                                pval <- 1
-                                untestable <- TRUE
-                            } else {
-                                #print("NO")
+                            S_index_node_name <- which(labels[S_fixed] == node_name)
+
+                            # print(paste0("node_name: ", node_name))
+                            # print(paste0("nbrs[S]: ", labels[nbrs[S]]))
+                            if (node_name %in% labels[nbrs[S_fixed]]) {
+                                print(paste0(labels[x], " is in the independent set, and ", node_name, " is in the conditioning set"))
+                                # remove x from the conditioning set
+                                print(paste0("Removing ", node_name, " from the conditioning set"))
+                                S_fixed <- S_fixed[S_fixed != S_index_node_name]
                             }
-                        }                                            
+                        }
+
+                        if (grepl("^R_", labels[y])) {
+                            print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
+                            node_name <- gsub("^R_", "", labels[y])
+                            S_index_node_name <- which(labels[S_fixed] == node_name)
+                            if (node_name %in% labels[nbrs[S_fixed]]) {
+                                print(paste0(labels[y], " is in the independent set, and ", node_name, " is in the conditioning set"))
+                                # remove y from the conditioning set
+                                print(paste0("Removing ", node_name, " from the conditioning set"))
+                                print(paste0("Current conditioning set: ", labels[nbrs[S_fixed]]))
+                                S_fixed <- S_fixed[S_fixed != S_index_node_name]
+                                print(paste0("New conditioning set: ", labels[nbrs[S_fixed]]))
+                            }
+                        }
+                        # if the missingness variable of x or y is in the conditioning set, remove it from S
+                        if (paste0("R_", labels[x]) %in% labels[nbrs[S]]) {
+                            # print("Checking X")
+                            # print(paste0("R_", labels[x], " is in the conditioning set"))
+
+                            # get the index of the missingness variable in the conditioning set
+                            index_missingness <- which(labels[S_fixed] == paste0("R_", labels[x]))
+                            # print(paste0("index_missingness: ", index_missingness))
+
+                            S_fixed <- S_fixed[S_fixed != index_missingness]
+                            # print(paste0("Removed missingness variable from conditioning set: ", paste0(labels[index_missingness])))
+                            # print(paste0("New conditioning set: ", labels[nbrs[S_faith_obs]]))
+                            faith_obs <- TRUE
+                        }
+
+                        if (paste0("R_", labels[y]) %in% labels[nbrs[S_fixed]]) {
+                            # print("Checking Y")
+                            # print(paste0("R_", labels[y], " is in the conditioning set"))
+
+                            # If one missingess variable was already removed above, we need to update the conditioning set
+                            #S_tmp <- S
+                            #if (faith_obs) {
+                            ##    S_tmp <- S_faith_obs
+                            #}
+                            # print(paste0("nbrs[S]: ", labels[nbrs[S]]))
+                            # get the index of the missingness variable in the conditioning set
+                            index_missingness <- which(labels[S_fixed] == paste0("R_", labels[y]))
+                            # print(paste0("index_missingness: ", index_missingness))
+                            S_fixed <- S_fixed[S_fixed != index_missingness]
+                            # print(paste0("Removed missingness variable from conditioning set: ", paste0("R_", labels[y])))
+                            # print(paste0("New conditioning set: ", labels[nbrs[S_faith_obs]]))
+                            faith_obs <- TRUE
+                        }
+
+
 
                         if (faith_obs) {
-                            print(paste0("Faithful observability assumption removes the missingness variable from the conditioning set for implmentational reasons: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_faith_obs]]))
-                            pval <- indepTest(x, y, nbrs[S_faith_obs], suffStat)
+                            print(paste0("Faithful observability assumption removes the missingness variable from the conditioning set for implmentational reasons: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]]))
+                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
                         } else {
-                            pval <- indepTest(x, y, nbrs[S], suffStat)
+                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
                         }
 
                         if (verbose) {
                             if (faith_obs) {
                                 cat(
-                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_faith_obs]],
+                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]],
                                     ": pval =", pval, "\n"
                                 )
                             } else {
                                 cat(
-                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S]],
-                                ": pval =", pval, "\n"
+                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]],
+                                    ": pval =", pval, "\n"
                                 )
                             }
                         }
-                        
+
                         if (is.na(pval)) {
                             pval <- as.numeric(NAdelete)
                         }
