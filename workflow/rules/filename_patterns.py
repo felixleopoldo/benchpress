@@ -38,8 +38,11 @@ def alg_output_seqgraph_path_nocomp(algorithm):
 
 # Standard algorithms
 
-
 def alg_output_adjmat_path(algorithm):
+    """ The data wildcard contains info about adjmat and parameters. Bad naming..
+        It is used in alg_input_data() below.    
+    """
+
     return "{output_dir}/adjmat_estimate/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" +\
         "seed={seed}/" \
@@ -53,14 +56,11 @@ def alg_output_time_path(algorithm):
         "time.txt"
 
 # This is code repetition, yes...
-
-
 def alg_output_ntests_path(algorithm):
     return "{output_dir}/ntests/{data}/"\
         "algorithm=/" + pattern_strings[algorithm] + "/" +\
         "seed={seed}/" \
         "ntests.txt"
-
 
 def alg_input_data():
     return "{output_dir}/data/{data}/seed={seed}.csv"

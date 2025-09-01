@@ -69,9 +69,9 @@ for p in Path("workflow/rules/data/").iterdir():
 # Write the definitions
 # Generate the evaluation schemas
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
+    item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
     item[p.name] = {
-        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
+        "$ref": "workflow/rules/evaluation/{}/schema.json".format(p.name)
     }
 
 
@@ -81,6 +81,7 @@ tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
+
 snakemake.utils.validate(config, tmp_schema)
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
@@ -92,24 +93,24 @@ container: docker_image("benchmark")
 
 rule all:
     input:
-        get_active_rules,
-
-
-# Read which modules are MCMC module (have graphtraj output).
-mcmc_modules = []
-for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
-    if p.name.startswith("."): # Skip hidden files
-        continue
-    with open(p/"info.json") as json_file:
-        info = json.load(json_file)
-        if "graphtraj" in info["outputs"]:
-            mcmc_modules.append(p.name)
+        get_active_rules
 
 # Validate JSON file based on its values.
 include: "rules/validate.py"
-include: "rules/module_patterns.py"
+# The pattern strings are generated from the json config file.
+pattern_strings = {}
+pattern_strings.update(get_algorithm_patterns(config))
+pattern_strings.update(get_graph_patterns(config))
+pattern_strings.update(get_parameter_patterns(config))
+pattern_strings.update(get_data_patterns(config))
+pattern_strings.update(get_mcmc_eval_patterns(config))
+pattern_strings["mcmc_est"] = get_mcmc_est_pattern()
 include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
+
+# Read which modules are MCMC module (have graphtraj output).
+mcmc_modules = get_mcmc_modules()
+json_string, json_string_mcmc_noest = gen_json_strings(config, pattern_strings, mcmc_modules)
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("[!.]*"):

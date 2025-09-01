@@ -1,3 +1,5 @@
+from snakemake.io import expand
+from pathlib import Path
 
 """
     This file procudes a dict where the paths for all algorithms are generated based on the
@@ -50,57 +52,6 @@ def idtopath(mylist, json_string):
         return [json_string[input_algorithm][0] for input_algorithm in mylist]
     else:
         return json_string[str(mylist)]
-
-
-json_string = {}
-json_string_mcmc_noest = {}
-
-# List the algorithms that take input algorithms.
-has_input_algs = []
-# BUG: should check for each object in the list.
-for algname, objlist in config["resources"]["structure_learning_algorithms"].items():
-    if "input_algorithm_id" in objlist[0]:
-        has_input_algs.append(algname)
-
-# First generate path strings for those without input graphs.
-# Then we can use them as input algs. This also means that an input algorithm
-# can't take another input algorithm as input, for now.
-
-for alg in config["resources"]["structure_learning_algorithms"]:
-    if (alg not in has_input_algs):# and (alg not in mcmc_modules):  # not the mcmc_modules yet
-        if alg in mcmc_modules:
-            
-            json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
-                                for val in config["resources"]["structure_learning_algorithms"][alg]})
-
-            json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
-                                        for val in config["resources"]["structure_learning_algorithms"][alg]})
-        else: 
-            json_string.update({val["id"]: expand(pattern_strings[alg], **val)
-                                for val in config["resources"]["structure_learning_algorithms"][alg]})
-
-# Those without input graphs
-for alg, alg_objects in config["resources"]["structure_learning_algorithms"].items():
-    if (alg in has_input_algs): #and (alg not in mcmc_modules):  # not the mcmc_modules yet
-        # NOTE
-        # Here we manipulate the json object before we generate the path string.
-        # More speceifcally we expande the id of the input algorithm to a path string.
-        # Its ugly but works for now.. Iw we change the name we would also have to  remove it from the pattern string.
-        for items in alg_objects:
-            items["input_algorithm_id"] = idtopath(
-                items["input_algorithm_id"], json_string)
-            
-        if alg in mcmc_modules:
-           
-            json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
-                                for val in config["resources"]["structure_learning_algorithms"][alg]})
-
-            json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
-                                        for val in config["resources"]["structure_learning_algorithms"][alg]})
-           
-        else:
-            json_string.update({val["id"]: expand(pattern_strings[alg], **val)
-                                for val in config["resources"]["structure_learning_algorithms"][alg]})
 
 
 # Evaluation strings
@@ -157,7 +108,7 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
 
     if Path("resources/data/mydatasets/"+data_id).is_file():
         num_lines = sum(1 for line in open(
-            "resources/data/mydatasets/"+data_id)) - 1
+            "resources/data/mydatasets/"+data_id)) - 1 # BAD idea to include number of lines in the path string
         
         data_string = ("fixed" + 
                 "/filename="+data_id + 
@@ -189,4 +140,89 @@ def gen_data_string_from_conf(data_id, seed, seed_in_path=True):
                 else:
                     return expand(pattern_strings[module]+"/standardized={standardized}",
                                   **data)
+
+def gen_json_strings(config, pattern_strings, mcmc_modules):
+    """
+    This function generates the json string for all algorithms.
+    It also generates the json string for the MCMC algorithms without the estimation parameters.
+    This is used to generate the path strings for the MCMC algorithms.
+
+    Args:
+        config (dict): The config dictionary.
+        pattern_strings (dict): The pattern strings dictionary.
+        mcmc_modules (list): The list of MCMC modules.
+
+    Returns:
+        tuple: A tuple containing the json string for all algorithms and the json string for the MCMC algorithms without the estimation parameters.
+    """
+    #print("Hey in gen_json_strings")
+    import pprint as pp
+    
+    #pp.pprint("config")
+    #pp.pprint(config)
+    #pp.pprint("pattern_strings")
+    #pp.pprint(pattern_strings)
+    #pp.pprint("mcmc_modules")
+    #pp.pprint(mcmc_modules)
+    
+    json_string = {}
+    json_string_mcmc_noest = {}
+
+    # List the algorithms that take input algorithms.
+    has_input_algs = []
+    # BUG: should check for each object in the list.
+    for algname, objlist in config["resources"]["structure_learning_algorithms"].items():
+        #print("algname:", algname)
+        if "input_algorithm_id" in objlist[0]:
+            has_input_algs.append(algname)
+
+    #print("has_input_algs", has_input_algs)
+
+    # First generate path strings for those without input graphs.
+    # Then we can use them as input algs. This also means that an input algorithm
+    # can't take another input algorithm as input, for now.
+
+    for alg in config["resources"]["structure_learning_algorithms"]:
+        if (alg not in has_input_algs):# and (alg not in mcmc_modules):  # not the mcmc_modules yet
+            if alg in mcmc_modules:
+                
+                json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
+                                    for val in config["resources"]["structure_learning_algorithms"][alg]})
+
+                json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
+                                            for val in config["resources"]["structure_learning_algorithms"][alg]})
+            else: 
+                json_string.update({val["id"]: expand(pattern_strings[alg], **val)
+                                    for val in config["resources"]["structure_learning_algorithms"][alg]})
+
+    #print("json_string:")
+    #pp.pprint(json_string)
+
+    # Those without input graphs
+    for alg, alg_objects in config["resources"]["structure_learning_algorithms"].items():
+        if (alg in has_input_algs): #and (alg not in mcmc_modules):  # not the mcmc_modules yet
+            # NOTE
+            # Here we manipulate the json object before we generate the path string.
+            # More speceifcally we expande the id of the input algorithm to a path string.
+            # Its ugly but works for now.. Iw we change the name we would also have to  remove it from the pattern string.
+            for items in alg_objects:
+                items["input_algorithm_id"] = idtopath(
+                    items["input_algorithm_id"], json_string)
+                
+            if alg in mcmc_modules:
+            
+                json_string.update({val["id"]: expand(pattern_strings[alg]+"/"+pattern_strings["mcmc_est"], **val)
+                                    for val in config["resources"]["structure_learning_algorithms"][alg]})
+
+                json_string_mcmc_noest.update({val["id"]: expand(pattern_strings[alg], **val)
+                                            for val in config["resources"]["structure_learning_algorithms"][alg]})
+            
+            else:
+                json_string.update({val["id"]: expand(pattern_strings[alg], **val)
+                                    for val in config["resources"]["structure_learning_algorithms"][alg]})
+
+
+    return json_string, json_string_mcmc_noest
+
+
 

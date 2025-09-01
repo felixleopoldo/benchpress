@@ -1,9 +1,10 @@
 {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "mcmc_autocorr_plots",
     "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
     "type": "array",
     "items": {
-        "$ref": "#/definitions/mcmc_autocorr_plots"
+        "$ref": "#/$defs/mcmc_autocorr_plots"
     },
     "additionalItems": false,
     "examples": [
@@ -19,7 +20,7 @@
             "active": true
         }
     ],
-    "definitions": {
+    "$defs": {
         "mcmc_autocorr_plots": {
             "title": "mcmc_autocorr_plots item",
             "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
