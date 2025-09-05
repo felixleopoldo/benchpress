@@ -1,3 +1,50 @@
+getNextSetMDAG <- function(n, k, set) {
+    ## Purpose: Generate the next set in a list of all possible sets of size
+    ##          k out of 1:n;
+    ##  Also returns a boolean whether this set was the last in the list.
+    ## ----------------------------------------------------------------------
+    ## Arguments:
+    ## - n,k: Choose a set of size k out of numbers 1:n
+    ## - set: previous set in list
+    ## ----------------------------------------------------------------------
+    ## Author: Markus Kalisch, Date: 26 Jan 2006, 17:37
+
+    ## chInd := changing Index
+    chInd <- k - (zeros <- sum((seq(n - k + 1, n) - set) == 0))
+    wasLast <- (chInd == 0)
+    if (!wasLast) {
+        set[chInd] <- s.ch <- set[chInd] + 1
+        if (chInd < k) {
+            set[(chInd + 1):k] <- seq(s.ch + 1L, s.ch + zeros)
+        }
+    }
+    list(nextSet = set, wasLast = wasLast)
+}
+
+
+get_S_substantive_and_missingness <- function(S_fixed, nbrs) {
+    gr <- grepl("^R_", labels[nbrs[S_fixed]])
+    print(gr)
+
+    S_substantive <- NULL
+    S_missingness <- NULL
+    # this fails when the subset contains only one variable
+
+    if (length(S_fixed) == 1) {
+        if (gr) {
+            S_missingness <- S_fixed
+            S_substantive <- c()
+        } else {
+            S_missingness <- c()
+            S_substantive <- S_fixed
+        }
+    } else {
+        S_substantive <- S_fixed[!gr]
+        S_missingness <- S_fixed[gr]
+    }
+    return(list(S_substantive = S_substantive, S_missingness = S_missingness))
+}
+
 #' Estimate the Skeleton of a DAG while Accounting for a Partial Ordering
 #'
 #' Like \code{pcalg::\link[pcalg]{skeleton}}, but takes a user-specified partial node
@@ -194,24 +241,73 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             x <- ind[i, 1]
             # endpoint 2 of current edge
             y <- ind[i, 2]
+
+            # now find the R-variables and correspoding index of x and y (if they are not themselves R-variables)
+            R_x_index <- which(labels[nbrs_x] == paste0("R_", labels[x]))
+            R_y_index <- which(labels[nbrs_y] == paste0("R_", labels[y]))
+            R_vars_x <- labels[nbrs_x[R_x_index]]
+            R_vars_y <- labels[nbrs_y[R_y_index]]
+
             if (G[y, x] && !fixedEdges[y, x]) {
                 # only edges are considered that are still in the current skeleton
                 # else go to next remaining edge
                 # in nbrsBool, the neighbours of the current node are TRUE
-                nbrsBool <- if (method == "stable") {
+                nbrsBool_x <- if (method == "stable") {
                     G.l[[x]]
                 } #
                 else {
                     G[, x]
                 }
+
+                nbrsBool_y <- if (method == "stable") {
+                    G.l[[y]]
+                } #
+                else {
+                    G[, y]
+                }
+                
+                nbrsBool_Rx <- if (method == "stable") {
+                    G.l[[R_x_index]]
+                } #
+                else {
+                    G[[R_x_index]]
+                }
+                nbrsBool_Ry <- if (method == "stable") {
+                    G.l[[R_y_index]]
+                } #
+                else {
+                    G[[R_y_index]]
+                }
+
                 #################################################
                 # this excludes neighbours in a later tier than x from the
                 # conditioning set
-                nbrsBool[tiers > tiers[x]] <- FALSE
+                nbrsBool_x[tiers > tiers[x]] <- FALSE
+                nbrsBool_y[tiers > tiers[y]] <- FALSE
+                nbrsBool_Rx[tiers > tiers[R_x_index]] <- FALSE
+                nbrsBool_Ry[tiers > tiers[R_y_index]] <- FALSE
                 #################################################
-                nbrsBool[y] <- FALSE
+                
+                nbrsBool_x[y] <- FALSE
+                nbrsBool_y[x] <- FALSE
                 # nbrs contains the indices of all eligible neighbours
-                nbrs <- seq_p[nbrsBool]
+                nbrs_x <- seq_p[nbrsBool_x]
+                nbrs_y <- seq_p[nbrsBool_y]
+
+                # The neighbours of the R-variables for x and y:
+                nbrsBool_Rx[x] <- FALSE
+                nbrsBool_Ry[y] <- FALSE
+
+                nbrs_Rx <- seq_p[nbrsBool_Rx]
+                nbrs_Ry <- seq_p[nbrsBool_Ry]
+
+                # union of nbrs_x and nbrs_y
+                nbrs_all <- union(nbrs_x, nbrs_y, nbrs_Rx, nbrs_Ry)
+
+                # now remove the R- variables if the substantive variables are in the conditioning set
+                nbrs <- nbrs_all #[!grepl("^R_", labels[nbrs_all])]
+              
+
                 length_nbrs <- length(nbrs)
                 # next steps only possible if there are enough neighbours to form
                 # conditioning sets of cardinality length_nbrs
@@ -224,15 +320,15 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     S <- seq_len(ord)
                     # split S into substantive and missingness variables
-                    S_substantive <- S[!grepl("^R_", labels[nbrs[S]])]
-                    S_missingness <- S[grepl("^R_", labels[nbrs[S]])]
 
                     repeat { # the repeat loop goes over all subsets of the
                         # neighbours with length ord
-                        n.edgetests[ord1] <- n.edgetests[ord1] +
-                            1
+                        n.edgetests[ord1] <- n.edgetests[ord1] + 1
 
                         S_fixed <- S
+                        # Somewhere here we add back the R-variables if the variable in S has missingness.
+
+
                         # first chech if a corresponding missingess variable is in the conditioning set.
                         # if so, remove it from the conditioning set just to perform the test.
                         # This is motivated by the faithful observability assumption.
@@ -248,16 +344,48 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                                 "\nTesting: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]], "\n"
                             )
                         }
+
+                        tmp <- get_S_substantive_and_missingness(S_fixed, nbrs)
+                        S_substantive <- tmp$S_substantive
+                        S_missingness <- tmp$S_missingness
+
+                        R_x <- NULL
+                        if (paste0("R_", labels[x]) %in% labels) {
+                            R_x <- paste0("R_", labels[x])
+                            R_x_index <- which(labels == R_x)
+                        }
+
+                        R_y <- NULL
+
+                        if (paste0("R_", labels[y]) %in% labels) {
+                            R_y <- paste0("R_", labels[y])
+                            R_y_index <- which(labels == R_y)
+                        }
+
+                        print("R(x):")
+                        print(R_x)
+                        print("R(y):")
+                        print(R_y)
+                        print("S:")
+                        print(labels[nbrs[S_fixed]])
+                        print("S_substantive:")
+                        print(labels[nbrs[S_substantive]])
+                        print("S_missingness:")
+                        print(labels[nbrs[S_missingness]])
+
+                        # now get all missingness indicators of S and x and y
+                        # And get theyr parents. This is the set to take all subsets of.
+                        # we may need a anouther loop.
+                        
                         # self_masking <- paste0("R_", labels[x]) == labels[y] || paste0("R_", labels[y]) == labels[x]
 
                         untestable <- NULL
                         faith_obs <- FALSE
 
-
                         # if R_X (or R_Y) is in the independent set, and X (or Y) is in the conditioning set, set pval=1
                         # check if some of x starts with R_
                         if (grepl("^R_", labels[x])) {
-                            #print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
+                            # print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[x])
                             S_index_node_name <- which(labels[S_fixed] == node_name)
 
@@ -272,7 +400,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         }
 
                         if (grepl("^R_", labels[y])) {
-                            #print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
+                            # print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[y])
                             S_index_node_name <- which(labels[S_fixed] == node_name)
                             if (node_name %in% labels[nbrs[S_fixed]]) {
@@ -304,10 +432,10 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             # print(paste0("R_", labels[y], " is in the conditioning set"))
 
                             # If one missingess variable was already removed above, we need to update the conditioning set
-                            #S_tmp <- S
-                            #if (faith_obs) {
+                            # S_tmp <- S
+                            # if (faith_obs) {
                             ##    S_tmp <- S_faith_obs
-                            #}
+                            # }
                             # print(paste0("nbrs[S]: ", labels[nbrs[S]]))
                             # get the index of the missingness variable in the conditioning set
                             index_missingness <- which(labels[S_fixed] == paste0("R_", labels[y]))

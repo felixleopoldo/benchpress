@@ -2,6 +2,7 @@ source("workflow/scripts/utils/helpers.R")
 
 library(RBGL)
 library(tpc)
+insertSource("workflow/rules/structure_learning_algorithms/bips_tpc/R/tskeleton.R", package="tpc")
 library(micd)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
