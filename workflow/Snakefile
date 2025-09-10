@@ -74,17 +74,98 @@ for p in Path("workflow/rules/evaluation/").iterdir():
         "$ref": "workflow/rules/evaluation/{}/schema.json".format(p.name)
     }
 
+import pprint as pp
 
+# Replace all $ref paths to use local definitions, recursively checking all levels
+def fix_refs(obj):
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            if key == "$ref" and isinstance(value, str):
+                # Match any path pattern leading to definitions.schema.json
+                if "definitions.schema.json#/definitions/" in value:
+                    # Extract just the definition name after definitions/
+                    #print("found ref: ", value)
+                    definition_name = value.split("definitions/")[-1]
+                    obj[key] = "definitions.schema.json#/$defs/" + definition_name
+            else:
+                # Recursively check nested dictionaries and lists
+                fix_refs(value)
+    elif isinstance(obj, list):
+        # Recursively check each item in lists
+        for item in obj:
+            fix_refs(item)
+
+def flattern_refs(obj):
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            if key == "$ref" and isinstance(value, str):
+                print(value.split("definitions/"))
+                obj[key] = value.split("definitions/")[-1]
+            else:
+                flattern_refs(value)
+    elif isinstance(obj, list):
+        for item in obj:
+            flattern_refs(item)
+
+# Write the definitions
+# Generate the evaluation schemas
+for p in Path("workflow/rules/evaluation/").iterdir():
+    # skip .DS_Store
+    if p.name == ".DS_Store":
+        continue
+    print("--------------------------------")
+    print(p.name)
+    item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
+
+    module_schema_filename = "workflow/rules/evaluation/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    # Apply the fix to the entire module schema
+    fix_refs(module_schema)
+    print("module schema after fix:")
+    pp.pprint(module_schema)
+    item[p.name] = module_schema
+
+#print("schema:")
+#pp.pprint(schema)
+#quit()
+
+# now the same for the data modules
+for p in Path("workflow/rules/data/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_data":
+        continue
+    print("--------------------------------")
+    print(p.name)
+
+    #item = schema["$defs"]["benchmark_setup"]["properties"]["data"]["properties"]
+    module_schema_filename = "workflow/rules/data/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    print("module schema:")
+    pp.pprint(module_schema)
+    # Apply the fix to the entire module schema
+    fix_refs(module_schema)
+    print("module schema after fix:")
+    pp.pprint(module_schema)
+
+    item[p.name] = module_schema
+
+quit()
 # Yes this is a hack. But it works probably. Any better ideas?
 # Generate random hash for the temporary schema file
 tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
-
+print("Full schema:")
+pp.pprint(schema)
 snakemake.utils.validate(config, tmp_schema)
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
+
+
 
 
 include: "rules/docker_images.smk"
