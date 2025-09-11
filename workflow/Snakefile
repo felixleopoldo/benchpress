@@ -30,39 +30,6 @@ configfile: configfilename
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
 
-import pprint as pp
-
-# Replace all $ref paths to use local definitions, recursively checking all levels
-def fix_refs(obj):
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if key == "$ref" and isinstance(value, str):
-                # Match any path pattern leading to definitions.schema.json
-                if "definitions.schema.json#/$defs/" in value:
-                    # Extract just the definition name after definitions/
-                    #print("found ref: ", value)
-                    definition_name = value.split("$defs/")[-1]
-                    obj[key] = "#/$defs/" + definition_name
-            else:
-                # Recursively check nested dictionaries and lists
-                fix_refs(value)
-    elif isinstance(obj, list):
-        # Recursively check each item in lists
-        for item in obj:
-            fix_refs(item)
-
-def flattern_refs(obj):
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if key == "$ref" and isinstance(value, str):
-                print(value.split("definitions/"))
-                obj[key] = value.split("definitions/")[-1]
-            else:
-                flattern_refs(value)
-    elif isinstance(obj, list):
-        for item in obj:
-            flattern_refs(item)
-
 # Write the definitions
 # Generate the evaluation schemas
 item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
