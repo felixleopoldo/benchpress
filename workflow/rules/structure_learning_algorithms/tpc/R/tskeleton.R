@@ -242,13 +242,12 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             # endpoint 2 of current edge
             y <- ind[i, 2]
 
-            # now find the R-variables and correspoding index of x and y (if they are not themselves R-variables)
-            R_x_index <- which(labels[nbrs_x] == paste0("R_", labels[x]))
-            R_y_index <- which(labels[nbrs_y] == paste0("R_", labels[y]))
-            R_vars_x <- labels[nbrs_x[R_x_index]]
-            R_vars_y <- labels[nbrs_y[R_y_index]]
 
             if (G[y, x] && !fixedEdges[y, x]) {
+                print(paste0("x: ", labels[x], " y: ", labels[y]))
+                print("G:")
+                print(G)
+         
                 # only edges are considered that are still in the current skeleton
                 # else go to next remaining edge
                 # in nbrsBool, the neighbours of the current node are TRUE
@@ -265,6 +264,40 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 else {
                     G[, y]
                 }
+
+                print("nbrsBool_x:")
+                print(nbrsBool_x)
+                print("nbrsBool_y:")
+                print(nbrsBool_y)
+                #################################################
+                # this excludes neighbours in a later tier than x from the
+                # conditioning set
+                nbrsBool_x[tiers > tiers[x]] <- FALSE
+                nbrsBool_y[tiers > tiers[y]] <- FALSE
+
+                print("nbrsBool_x after tiers:")
+                print(nbrsBool_x)
+                print("nbrsBool_y after tiers:")
+                print(nbrsBool_y)
+
+                #################################################
+                
+                nbrsBool_x[y] <- FALSE
+                nbrsBool_y[x] <- FALSE
+                # nbrs contains the indices of all eligible neighbours
+                nbrs_x <- seq_p[nbrsBool_x]
+                nbrs_y <- seq_p[nbrsBool_y]
+
+                print("Neighbours of x:")
+                print(labels[nbrs_x])
+                print("Neighbours of y:")
+                print(labels[nbrs_y])
+                # now find the R-variables and correspoding index of x and y (if they are not themselves R-variables)
+                
+               
+                R_x_index <- which(labels[nbrs_x] == paste0("R_", labels[x]))
+                R_y_index <- which(labels[nbrs_y] == paste0("R_", labels[y]))
+
                 
                 nbrsBool_Rx <- if (method == "stable") {
                     G.l[[R_x_index]]
@@ -279,27 +312,22 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     G[[R_y_index]]
                 }
 
-                #################################################
-                # this excludes neighbours in a later tier than x from the
-                # conditioning set
-                nbrsBool_x[tiers > tiers[x]] <- FALSE
-                nbrsBool_y[tiers > tiers[y]] <- FALSE
                 nbrsBool_Rx[tiers > tiers[R_x_index]] <- FALSE
                 nbrsBool_Ry[tiers > tiers[R_y_index]] <- FALSE
-                #################################################
-                
-                nbrsBool_x[y] <- FALSE
-                nbrsBool_y[x] <- FALSE
-                # nbrs contains the indices of all eligible neighbours
-                nbrs_x <- seq_p[nbrsBool_x]
-                nbrs_y <- seq_p[nbrsBool_y]
-
-                # The neighbours of the R-variables for x and y:
+                                # The neighbours of the R-variables for x and y:
                 nbrsBool_Rx[x] <- FALSE
                 nbrsBool_Ry[y] <- FALSE
 
                 nbrs_Rx <- seq_p[nbrsBool_Rx]
                 nbrs_Ry <- seq_p[nbrsBool_Ry]
+
+                R_vars_x <- labels[nbrs_x[R_x_index]]
+                R_vars_y <- labels[nbrs_y[R_y_index]]
+
+                #print(paste0("R_x_index: ", R_x_index, " R_y_index: ", R_y_index))
+                print(paste0("R_vars_x: ", R_vars_x, " R_vars_y: ", R_vars_y))
+           
+
 
                 # union of nbrs_x and nbrs_y
                 nbrs_all <- union(nbrs_x, nbrs_y, nbrs_Rx, nbrs_Ry)
@@ -307,7 +335,6 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 # now remove the R- variables if the substantive variables are in the conditioning set
                 nbrs <- nbrs_all #[!grepl("^R_", labels[nbrs_all])]
               
-
                 length_nbrs <- length(nbrs)
                 # next steps only possible if there are enough neighbours to form
                 # conditioning sets of cardinality length_nbrs
