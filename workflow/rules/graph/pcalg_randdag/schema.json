@@ -11,22 +11,22 @@
                 "type": "string"
             },
             "n": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "d": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "par1": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "par2": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "method": {
                 "type": "string"
             },
             "max_parents": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+                "$ref": "#/$defs/flexnonnegintnull"
             },
             "DAG": {
                 "type": "boolean"

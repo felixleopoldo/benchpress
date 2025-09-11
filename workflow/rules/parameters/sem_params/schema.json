@@ -11,10 +11,10 @@
                 "type": "string"
             },
             "min": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "max": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             }
         },
         "required": [

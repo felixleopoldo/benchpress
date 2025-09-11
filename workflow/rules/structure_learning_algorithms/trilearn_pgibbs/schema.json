@@ -19,28 +19,28 @@
                 ]
             },
             "alpha": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "beta": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "pseudo_obs": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             },
             "radii": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "n_particles": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "M": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "mcmc_seed": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "threshold": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "mcmc_estimator": {
                 "anyOf": [
@@ -64,10 +64,10 @@
                 ]
             },
             "burnin_frac": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             }
         },
         "required": [

@@ -1,6 +1,7 @@
 {
-    "definitions": {
-
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "definitions.schema.json",
+    "$defs": {
         "data_setup_dict": {
             "type": "object",
             "title": "data item",
@@ -86,7 +87,7 @@
             "type": "array",
             "description": "Probability list",
             "items": {
-                "$ref": "#/definitions/prob"
+                "$ref": "#/$defs/prob"
             }
         },
         "natnum": {
@@ -112,17 +113,17 @@
             "type": "array",
             "description": "List of non-negative numbers",
             "items": {
-                "$ref": "#/definitions/nonnegnum"
+                "$ref": "#/$defs/nonnegnum"
             }
         },
         "flexnonnegnum": {
             "description": "Non-negative number(s).",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/nonnegnum"
+                    "$ref": "#/$defs/nonnegnum"
                 },
                 {
-                    "$ref": "#/definitions/nonnegnumlist"
+                    "$ref": "#/$defs/nonnegnumlist"
                 }
             ]
         },
@@ -131,7 +132,7 @@
             "description": "E.g. 1.5 or [1.6, 3.8] or null.",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/flexnonnegnum"
+                    "$ref": "#/$defs/flexnonnegnum"
                 },
                 {
                     "type": "null"
@@ -143,10 +144,10 @@
             "description": "Non-negative integers, (0,1,2,...), or array of the same.",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/nonnegint"
+                    "$ref": "#/$defs/nonnegint"
                 },
                 {
-                    "$ref": "#/definitions/nonnegintlist"
+                    "$ref": "#/$defs/nonnegintlist"
                 }
             ]
         },
@@ -155,14 +156,14 @@
             "title": "nonnegint list",
             "description": "Non-negative integer list",
             "items": {
-                "$ref": "#/definitions/nonnegint"
+                "$ref": "#/$defs/nonnegint"
             }
         },
         "flexnonnegintnull": {
             "title": "Non-negative integer(s), or null.",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/$defs/flexnonnegint"
                 },
                 {
                     "type": "null"
@@ -174,7 +175,7 @@
             "description": "Non-negative integer(s), or Inf string.",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/flexnonnegint"
+                    "$ref": "#/$defs/flexnonnegint"
                 },
                 {
                     "type": "string",
@@ -188,22 +189,22 @@
             "title": "Non-negative integer(s)",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/natnum"
+                    "$ref": "#/$defs/natnum"
                 },
                 {
                     "title": "Positive integer list",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/natnum"
+                        "$ref": "#/$defs/natnum"
                     }
                 }
             ]
         },
         "flexnatnumnull": {
-            "title": "Npn-negative integer or null",
+            "title": "Non-negative integer or null",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/flexnatnum"
+                    "$ref": "#/$defs/flexnatnum"
                 },
                 {
                     "type": "null"
@@ -214,10 +215,10 @@
             "description": "Number(s) in the range [0,1].",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/prob"
+                    "$ref": "#/$defs/prob"
                 },
                 {
-                    "$ref": "#/definitions/problist"
+                    "$ref": "#/$defs/problist"
                 }
             ]
         },
@@ -226,7 +227,7 @@
             "description": "Number(s) in the range [0,1], or null.",
             "anyOf": [
                 {
-                    "$ref": "#/definitions/flexprob"
+                    "$ref": "#/$defs/flexprob"
                 },
                 {
                     "type": "null"
@@ -239,11 +240,11 @@
             "type": "object",
             "properties": {
                 "id": {
-                    "desciption": "Algorithm identifier",
+                    "description": "Algorithm identifier",
                     "type": "string"
                 },
                 "timeout": {
-                    "$ref": "#/definitions/flexnonnegnumnull"
+                    "$ref": "#/$defs/flexnonnegnumnull"
                 }
             },
             "required": [
@@ -262,6 +263,5 @@
             ]
         }
     },
-    "type": "object",
-    "schema": "http://json-schema.org/draft-04/schema#"
+    "type": "object"
 }

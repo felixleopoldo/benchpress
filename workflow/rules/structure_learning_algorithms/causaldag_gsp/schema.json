@@ -13,10 +13,10 @@
                 "description": "Unique identifier for that can be used as reference in the benchmark_setup."
             },
             "nruns": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "depth": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "verbose": {
                 "type": "boolean"
@@ -35,7 +35,7 @@
                 "type": "boolean"
             },
             "factor": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "progress_bar": {
                 "type": "boolean"
@@ -57,13 +57,13 @@
                 "type": "boolean"
             },
             "alpha": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
+                "$ref": "#/$defs/flexprobnull"
             },
             "invert": {
                 "type": "boolean"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             }
         },
         "additionalProperties": false,

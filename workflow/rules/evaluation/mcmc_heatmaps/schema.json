@@ -22,7 +22,7 @@
             },
             "burn_in": {
                 "title": "Burn-in percentage.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             }
         },
         "required": [

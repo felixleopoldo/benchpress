@@ -30,50 +30,67 @@ configfile: configfilename
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
 
-for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "structure_learning_algorithms"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/graph/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "graph"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/graph/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/parameters/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "parameters"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/parameters/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/data/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "data"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/data/{}/schema.json".format(p.name)
-    }
-
 # Write the definitions
 # Generate the evaluation schemas
+item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
 for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["definitions"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
-    item[p.name] = {
-        "$ref": "../rules/evaluation/{}/schema.json".format(p.name)
-    }
+    # skip .DS_Store
+    if p.name == ".DS_Store":
+        continue
 
+    module_schema_filename = "workflow/rules/evaluation/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    item[p.name] = module_schema
+
+
+# now the same for the data modules
+data_module_schemas = schema["properties"]["resources"]["properties"]["data"]["properties"]
+for p in Path("workflow/rules/data/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_data":
+        continue
+    module_schema_filename = "workflow/rules/data/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+    
+    data_module_schemas[p.name] = module_schema
+
+# now for the parameters modules
+parameters_module_schemas = schema["properties"]["resources"]["properties"]["parameters"]["properties"]
+for p in Path("workflow/rules/parameters/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_params":
+        continue
+
+    module_schema_filename = "workflow/rules/parameters/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    parameters_module_schemas[p.name] = module_schema
+
+# now the same for thr graphs modules
+graph_module_schemas = schema["properties"]["resources"]["properties"]["graph"]["properties"]
+for p in Path("workflow/rules/graph/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_graph":
+        continue
+
+    module_schema_filename = "workflow/rules/graph/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    graph_module_schemas[p.name] = module_schema
+
+# now the same for the structure_learning_algorithms modules
+structure_learning_algorithms_module_schemas = schema["properties"]["resources"]["properties"]["structure_learning_algorithms"]["properties"]
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    if p.name == ".DS_Store":
+        continue
+
+    module_schema_filename = "workflow/rules/structure_learning_algorithms/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    structure_learning_algorithms_module_schemas[p.name] = module_schema
 
 # Yes this is a hack. But it works probably. Any better ideas?
 # Generate random hash for the temporary schema file
@@ -81,10 +98,10 @@ tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
+
 snakemake.utils.validate(config, tmp_schema)
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
-
 
 include: "rules/docker_images.smk"
 
@@ -92,24 +109,25 @@ container: docker_image("benchmark")
 
 rule all:
     input:
-        get_active_rules,
+        get_active_rules
 
+if "validate" not in config or config["validate"] is True:
+    include: "rules/validate.py"
 
-# Read which modules are MCMC module (have graphtraj output).
-mcmc_modules = []
-for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
-    if p.name.startswith("."): # Skip hidden files
-        continue
-    with open(p/"info.json") as json_file:
-        info = json.load(json_file)
-        if "graphtraj" in info["outputs"]:
-            mcmc_modules.append(p.name)
-
-# Validate JSON file based on its values.
-include: "rules/validate.py"
-include: "rules/module_patterns.py"
+# The pattern strings are generated from the json config file.
+pattern_strings = {}
+pattern_strings.update(get_algorithm_patterns(config))
+pattern_strings.update(get_graph_patterns(config))
+pattern_strings.update(get_parameter_patterns(config))
+pattern_strings.update(get_data_patterns(config))
+pattern_strings.update(get_mcmc_eval_patterns(config))
+pattern_strings["mcmc_est"] = get_mcmc_est_pattern()
 include: "rules/module_strings.py"
 include: "rules/filename_patterns.py"
+
+# Read which modules are MCMC module (have graphtraj output).
+mcmc_modules = get_mcmc_modules()
+json_string, json_string_mcmc_noest = gen_json_strings(config, pattern_strings, mcmc_modules)
 
 # Include the graph modules
 for p in Path("workflow/rules/graph/").glob("[!.]*"):

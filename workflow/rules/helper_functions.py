@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+import pprint as pp
 
 def edge_constraints_tetrad(wildcards):
     if wildcards.edgeConstraints == "None":
@@ -48,6 +51,79 @@ def get_seed_range(seed_range):
     else:
         return range(seed_range[0], seed_range[1]+1)
 
+def get_algorithm_patterns(config):
+    """Generate pattern strings for structure learning algorithms"""
+    patterns = {}
+    for alg in config["resources"]["structure_learning_algorithms"].keys():
+        patterns[alg] = alg+"/alg_params=/"+dict_to_path(config["resources"]["structure_learning_algorithms"][alg])
+    return patterns
+
+def get_graph_patterns(config):
+    """Generate pattern strings for graph modules"""
+    patterns = {}
+    for module in config["resources"]["graph"]:
+        patterns[module] = module + "/" + dict_to_path(config["resources"]["graph"][module])
+    return patterns
+
+def get_parameter_patterns(config):
+    """Generate pattern strings for parameter modules"""
+    patterns = {}
+    for module in config["resources"]["parameters"]:
+        patterns[module] = module + "/" + dict_to_path(config["resources"]["parameters"][module])
+    return patterns
+
+def get_data_patterns(config):
+    """Generate pattern strings for data modules"""
+    patterns = {}
+    for module in config["resources"]["data"]:
+        patterns[module] = module + "/" + dict_to_path(config["resources"]["data"][module])
+    return patterns
+
+def get_mcmc_eval_patterns(config):
+    """Generate pattern strings for MCMC evaluation methods"""
+    patterns = {}
+    for mcmc_eval in ["mcmc_traj_plots", "mcmc_autocorr_plots", "mcmc_heatmaps"]:
+        for bmark_setup in config["benchmark_setup"]:
+            if mcmc_eval in bmark_setup["evaluation"]:
+                patterns[mcmc_eval] = mcmc_eval + "/" + dict_to_path(bmark_setup["evaluation"][mcmc_eval])
+    return patterns
+
+def get_mcmc_est_pattern():
+    """Generate pattern string for MCMC estimation parameters"""
+    return "mcmc_params/"\
+           "mcmc_estimator={mcmc_estimator}/"\
+           "threshold={threshold}/"\
+           "burnin_frac={burnin_frac}"
+
+def dict_to_path(d):
+    """
+    This function takes the first element in a JSON object and creates a
+    pattern string based on the keys. 
+    """
+    
+    # If the dictionary is empty, return an empty string.
+    if len(d) == 0:
+        return ""
+
+    c = d[0].copy() # take the first element in the list. BUG
+    c.pop("id") # remove id from the string as only the parameters should identify the computation.
+    if "burnin_frac" in c: 
+        c.pop("burnin_frac")
+    if "threshold" in c:      
+        c.pop("threshold")
+    if "mcmc_estimator" in c:      
+        c.pop("mcmc_estimator")
+    if "active" in c:
+        c.pop("active")
+    if "standardized" in c:
+        c.pop("standardized")
+    
+    sep = "/"
+    # HACK: Should put standardized first if it exists.. 
+    tmp = [key+"={"+key+"}" for key, val in c.items()]
+    ret = sep.join(tmp)
+    return ret
+
 
 def active_algorithm_files(bmark_setup):
     with open(configfilename) as json_file:
@@ -89,7 +165,6 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
 
     return list(set(algs))
 
-import pprint as pp
 
 def get_active_rules(wildcards):
     """
@@ -168,6 +243,21 @@ def get_active_rules(wildcards):
                         +"/benchmarks/benchmarks.done")
 
     return rules
+
+
+def get_mcmc_modules(alg_module_path="workflow/rules/structure_learning_algorithms/"):
+    """
+    This function returns the list of MCMC modules.
+    """
+    mcmc_modules = []
+    for p in Path(alg_module_path).iterdir():
+        if p.name.startswith("."): # Skip hidden files
+            continue
+        with open(p/"info.json") as json_file:
+            info = json.load(json_file)
+            if "graphtraj" in info["outputs"]:
+                mcmc_modules.append(p.name)
+    return mcmc_modules
 
 
 def check_system_requirements():

@@ -12,10 +12,10 @@
                 "type": "string"
             },
             "maxP": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+                "$ref": "#/$defs/flexnonnegintnull"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             }
         },
         "required": [

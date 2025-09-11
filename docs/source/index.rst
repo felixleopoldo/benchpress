@@ -83,11 +83,17 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: See also
 
-* The paper :footcite:t:`rios2021benchpress` (to appear in the `Journal of Statistical Software <https://www.jstatsoft.org/index>`_)
+* The paper :footcite:t:`rios2025benchpress` (to appear in the `Journal of Statistical Software <https://www.jstatsoft.org/index>`_)
 * The `GitHub <https://github.com/felixleopoldo/benchpress>`_ repository
 * This `Medium story <https://medium.com/@felixleopoldorios/structure-learning-using-benchpress-826847db0aa8>`_
 * This video tutorial `UAI 2023 Tutorial: Structure Learning Using Benchpress - YouTube <https://www.youtube.com/watch?v=tx3hIH3b9Hg>`_
-* The `Discord <https://discord.gg/9zzPwMDW>`_ chat for any kind of discussions etc.
+
+.. * The `Discord <https://discord.gg/9zzPwMDW>`_ chat for any kind of discussions etc.
+
+
+..  youtube:: tx3hIH3b9Hg
+   :width: 640
+   :height: 480
 
 .. .. note::
 
@@ -96,6 +102,7 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: News
 
+* 2025-09-10: Benchpress 2.13.0. This version supports `Snakemake 9 <https://snakemake.readthedocs.io/en/stable/>`_.
 * 2024-12-26: Benchpress 2.12.0. This version introduces the :ref:`pyagrum` module, providing access to the `pyAgrum <https://agrum.gitlab.io/>`_ library's structure learning capabilities for discrete valued Bayesian networks. 
 * 2024-12-16: Benchpress 2.11.0. This version introduces the :ref:`bips_tpc` module, based on the temporal PC (`tPC <https://github.com/bips-hb/tpc>`_) and the `micd <https://github.com/bips-hb/micd>`_ package. It enables causal discovery through the PC algorithm allowing for :ref:`edge_constraints`, mixed data, and missing data handling. Thanks `Leibniz-Institut für Präventionsforschung und Epidemiologie – (BIPS GmbH)  <https://github.com/bips-hb>`_. 
 * 2024-11-30: Benchpress 2.10.0. This version includes algorithms from the `missing value PC (MVPC) <https://github.com/TURuibo/MVPC>`_ package for sampling data with missing values (:ref:`mvpc_gen_data`) and causal discovery (:ref:`mvpc`) in the presence of missing values.

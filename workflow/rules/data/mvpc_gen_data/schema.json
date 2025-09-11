@@ -1,66 +1,70 @@
 {
-  "title": "Missing data generation",
-  "description": "Some description",
-  "type": "array",
-  "items": {
-    "title": "Some title",
+    "title": "Missing data generation",
     "description": "Some description",
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "standardized": {
-        "type": "boolean"
-      },
-      "n": {
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-      },
-      "num_extra_e": {
-        "description": "number of the variables with missing values that lead to wrong results",
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-      },
-      "num_m": {
-        "description": "number of the variables with missing values",
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
-      },
-      "mode": {
-        "description": "different methods to generate data sets with different missingness mechanisms, such as mcar, mar and mnar",
-        "type": "string",
-        "enum": ["mar", "mnar", "mcar"]
-      },
-      "p_missing_h": {
-        "description": "The probability of missing values when the missingness condition is satisfied, e.g., missingness indicator R = 1",
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-      },
-      "p_missing_e": {
-        "description": "The probability of missing values when the missingness condition is not satisfied, e.g., missingness indicator R = 0",
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-      }
+    "type": "array",
+    "items": {
+        "title": "Some title",
+        "description": "Some description",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "standardized": {
+                "type": "boolean"
+            },
+            "n": {
+                "$ref": "#/$defs/flexnonnegint"
+            },
+            "num_extra_e": {
+                "description": "number of the variables with missing values that lead to wrong results",
+                "$ref": "#/$defs/flexnonnegint"
+            },
+            "num_m": {
+                "description": "number of the variables with missing values",
+                "$ref": "#/$defs/flexnonnegint"
+            },
+            "mode": {
+                "description": "different methods to generate data sets with different missingness mechanisms, such as mcar, mar and mnar",
+                "type": "string",
+                "enum": [
+                    "mar",
+                    "mnar",
+                    "mcar"
+                ]
+            },
+            "p_missing_h": {
+                "description": "The probability of missing values when the missingness condition is satisfied, e.g., missingness indicator R = 1",
+                "$ref": "#/$defs/flexprob"
+            },
+            "p_missing_e": {
+                "description": "The probability of missing values when the missingness condition is not satisfied, e.g., missingness indicator R = 0",
+                "$ref": "#/$defs/flexprob"
+            }
+        },
+        "required": [
+            "id",
+            "standardized",
+            "n",
+            "num_extra_e",
+            "num_m",
+            "mode",
+            "p_missing_h",
+            "p_missing_e"
+        ],
+        "additionalProperties": true,
+        "examples": [
+            {
+                "id": "missing",
+                "num_extra_e": 2,
+                "num_m": 5,
+                "mode": "mar",
+                "p_missing_h": 0.9,
+                "p_missing_e": 0.1,
+                "standardized": false,
+                "n": 1001
+            }
+        ]
     },
-    "required": [
-      "id",
-      "standardized",
-      "n",
-      "num_extra_e",
-      "num_m",
-      "mode",
-      "p_missing_h",
-      "p_missing_e"
-    ],
-    "additionalProperties": true,
-    "examples": [
-      {
-        "id": "missing",
-        "num_extra_e": 2,
-        "num_m": 5,
-        "mode": "mar",
-        "p_missing_h": 0.9,
-        "p_missing_e": 0.1,
-        "standardized": false,
-        "n": 1001
-      }
-    ]
-  },
-  "uniqueItems": true
+    "uniqueItems": true
 }

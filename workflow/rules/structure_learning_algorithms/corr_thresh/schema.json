@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             }
         },
         "required": [

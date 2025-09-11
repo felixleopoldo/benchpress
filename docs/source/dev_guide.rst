@@ -1,13 +1,26 @@
 Authors
 ################
 
+.. image:: _static/IMG_784FC721EEEE-1.png
+   :width: 250
+
 | `Felix Rios <https://felixleopoldo.github.io>`_
 | `Department of Paediatrics, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
 | NUS Singapore
 
+
+
+.. image:: https://avatar.unibas.ch/image/236B4DEB-A2B0-47C4-BDA0-D9D46334F7E9
+   :width: 250
+
+
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
 | `Department of Mathematics and Computer Science <https://dmi.unibas.ch/en/>`_
 | University of Basel, Switzerland
+
+.. image:: https://bsse.ethz.ch/cbg/group/people/person-detail.person_image.jpeg?persid=MjA3Mjc0
+   :width: 250
+
 
 | `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_
 | `Department of Biosystems Science and Eng. <https://bsse.ethz.ch/>`_
@@ -57,14 +70,16 @@ BibTeX entry for citing Benchpress:
 
 .. code:: bibtex
 
-  @misc{rios2021benchpress,
-      title={Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models}, 
-      author={Felix L. Rios and Giusi Moffa and Jack Kuipers},
-      year={2021},
-      eprint={2107.03863},
-      archivePrefix={arXiv (to appear in the Journal of Statistical Software)},
-      primaryClass={stat.ML}
-  }
+    @Article{rios2025benchpress,
+        author = {Felix L. Rios and Giusi Moffa and Jack Kuipers},
+        title = {{Benchpress}: A Versatile Platform for Structure Learning in Causal and Probabilistic Graphical Models},
+        journal = {Journal of Statistical Software},
+        year = {2025},
+        volume = {114},
+        number = {12},
+        pages = {1--43},
+        doi = {10.18637/jss.v114.i12}
+    }
 
 .. footbibliography::
 

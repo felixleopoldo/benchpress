@@ -13,7 +13,7 @@
                 "description": "Unique identifier for that can be used as reference in the benchmark_setup."
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             }
         },
         "additionalProperties": true,
@@ -45,7 +45,6 @@
                 "graph_thres": 0.3,
                 "timeout": null
             }
-
         ]
     },
     "uniqueItems": true

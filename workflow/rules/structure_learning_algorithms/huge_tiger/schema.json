@@ -12,11 +12,11 @@
                 "type": "string"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "lambda": {
                 "description": "A positive number to control the regularization. Typical usage is to leave the input lambda: null and have the program compute its own.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum",
+                "$ref": "#/$defs/flexnonnegnum",
                 "default": 1
             }
         },
