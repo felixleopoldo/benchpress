@@ -1,13 +1,26 @@
 Authors
 ################
 
+.. image:: _static/IMG_784FC721EEEE-1.png
+   :width: 250
+
 | `Felix Rios <https://felixleopoldo.github.io>`_
 | `Department of Paediatrics, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
 | NUS Singapore
 
+
+
+.. image:: https://avatar.unibas.ch/image/236B4DEB-A2B0-47C4-BDA0-D9D46334F7E9
+   :width: 250
+
+
 | `Giusi Moffa <https://dmi.unibas.ch/en/persons/moffa-giusi/>`_
 | `Department of Mathematics and Computer Science <https://dmi.unibas.ch/en/>`_
 | University of Basel, Switzerland
+
+.. image:: https://bsse.ethz.ch/cbg/group/people/person-detail.person_image.jpeg?persid=MjA3Mjc0
+   :width: 250
+
 
 | `Jack Kuipers <https://bsse.ethz.ch/cbg/group/people/person-detail.MjA3Mjc0.TGlzdC81MTYsOTQ0ODM3Mzc2.html>`_
 | `Department of Biosystems Science and Eng. <https://bsse.ethz.ch/>`_

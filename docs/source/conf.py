@@ -44,7 +44,8 @@ extensions = [
     'sphinx_last_updated_by_git',
     'versionwarning.extension',
     "sphinxext.opengraph",
-    "sphinxcontrib.googleanalytics"
+    "sphinxcontrib.googleanalytics",
+    "sphinxcontrib.youtube"
 ]
 googleanalytics_id = "G-CDYR88PWR3"
 
