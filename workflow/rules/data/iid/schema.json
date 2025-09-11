@@ -12,7 +12,7 @@
                 "type": "string"
             },
             "n": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "standardized": {
                 "type": "boolean"

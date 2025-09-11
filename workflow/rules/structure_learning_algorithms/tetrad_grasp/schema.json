@@ -36,19 +36,22 @@
                 ]
             },
             "samplePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "penaltyDiscount": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "semBicStructurePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "edgeConstraints": {
-                "type": ["string", "null"],
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
@@ -85,7 +88,7 @@
                 "score": "bdeu-score",
                 "test": "chi-square-test",
                 "datatype": "discrete",
-                "samplePrior": [                    
+                "samplePrior": [
                     1,
                     10,
                     20

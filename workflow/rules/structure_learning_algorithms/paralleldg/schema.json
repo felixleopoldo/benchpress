@@ -19,22 +19,22 @@
                 ]
             },
             "pseudo_obs": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             },
             "R": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "M": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "mcmc_seed": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "threshold": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "mcmc_estimator": {
                 "anyOf": [
@@ -58,7 +58,7 @@
                 ]
             },
             "burnin_frac": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             }
         },
         "required": [

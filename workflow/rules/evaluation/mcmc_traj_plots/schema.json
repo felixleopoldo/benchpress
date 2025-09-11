@@ -41,10 +41,10 @@
                     "type": "string"
                 },
                 "burn_in": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                    "$ref": "#/$defs/flexprob"
                 },
                 "thinning": {
-                    "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull"
+                    "$ref": "#/$defs/flexnonnegintnull"
                 },
                 "active": {
                     "type": "boolean"

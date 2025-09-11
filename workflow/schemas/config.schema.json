@@ -84,264 +84,248 @@
       "additionalProperties": false
     },
     "data_setup_dict": {
-            "type": "object",
-            "title": "data item",
-            "description": "Description of the data model and sampling setup. Make sure that the id's are properly combined.\n If a CSV file is specified as data_id then parameters_id and seed_range should be null whereas graph_id should be the true graphs that generated the dataset.",
-            "properties": {
-                "graph_id": {
-                    "title": "graph_id",
-                    "description": "ID of the graph object.",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "parameters_id": {
-                    "title": "parameters_id",
-                    "description": "ID of a module object in the parameters section.",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "data_id": {
-                    "title": "data_id",
-                    "description": "Data sampling method ID.",
-                    "type": "string"
-                },
-                "seed_range": {
-                    "title": "seed_range",
-                    "description": "This data setup will be simulated for this range of seeds. E.g. seed_range:[1,3] will generate 3 datsets (and corresponding models) with seeds 1,2,3.",
-                    "anyOf": [
-                        {
-                            "title": "range",
-                            "description": "List of 2 integers [a, b], where a<=b.",
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            },
-                            "maxLength": 2,
-                            "minLength": 2
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                }
+      "type": "object",
+      "title": "data item",
+      "description": "Description of the data model and sampling setup. Make sure that the id's are properly combined.\n If a CSV file is specified as data_id then parameters_id and seed_range should be null whereas graph_id should be the true graphs that generated the dataset.",
+      "properties": {
+        "graph_id": {
+          "title": "graph_id",
+          "description": "ID of the graph object.",
+          "anyOf": [
+            {
+              "type": "string"
             },
-            "required": [
-                "graph_id",
-                "parameters_id",
-                "data_id",
-                "seed_range"
-            ],
-            "additionalProperties": false,
-            "examples": [
-                {
-                    "graph_id": "avneigs4_p20",
-                    "parameters_id": "SEM",
-                    "data_id": "standardized",
-                    "seed_range": [
-                        1,
-                        3
-                    ]
-                }
-            ]
-        },
-        "prob": {
-            "title": "prob type",
-            "description": "Number in the range [0,1].",
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1
-        },
-        "problist": {
-            "title": "problist type",
-            "type": "array",
-            "description": "Probability list",
-            "items": {
-                "$ref": "#/$defs/prob"
+            {
+              "type": "null"
             }
+          ]
         },
-        "natnum": {
-            "title": "natnum type",
-            "description": "Positive integer",
-            "type": "integer",
-            "minimum": 1
-        },
-        "nonnegint": {
-            "title": "nonnegint type",
-            "description": "Non-negative integer, 0,1,2,...",
-            "type": "integer",
-            "minimum": 0
-        },
-        "nonnegnum": {
-            "title": "nonnegnum type",
-            "description": "Non-negative number",
-            "type": "number",
-            "minimum": 0
-        },
-        "nonnegnumlist": {
-            "title": "nonnegnumlist",
-            "type": "array",
-            "description": "List of non-negative numbers",
-            "items": {
-                "$ref": "#/$defs/nonnegnum"
-            }
-        },
-        "flexnonnegnum": {
-            "description": "Non-negative number(s).",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/nonnegnum"
-                },
-                {
-                    "$ref": "#/$defs/nonnegnumlist"
-                }
-            ]
-        },
-        "flexnonnegnumnull": {
-            "title": "Non-negative number(s) or null",
-            "description": "E.g. 1.5 or [1.6, 3.8] or null.",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/flexnonnegnum"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "flexnonnegint": {
-            "title": "Non-negative integer(s)",
-            "description": "Non-negative integers, (0,1,2,...), or array of the same.",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/nonnegint"
-                },
-                {
-                    "$ref": "#/$defs/nonnegintlist"
-                }
-            ]
-        },
-        "nonnegintlist": {
-            "type": "array",
-            "title": "nonnegint list",
-            "description": "Non-negative integer list",
-            "items": {
-                "$ref": "#/$defs/nonnegint"
-            }
-        },
-        "flexnonnegintnull": {
-            "title": "Non-negative integer(s), or null.",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/flexnonnegint"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "flexnonnegintstring": {
-            "title": "flexnonnegintstring",
-            "description": "Non-negative integer(s), or Inf string.",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/flexnonnegint"
-                },
-                {
-                    "type": "string",
-                    "enum": [
-                        "Inf"
-                    ]
-                }
-            ]
-        },
-        "flexnatnum": {
-            "title": "Non-negative integer(s)",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/natnum"
-                },
-                {
-                    "title": "Positive integer list",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/natnum"
-                    }
-                }
-            ]
-        },
-        "flexnatnumnull": {
-            "title": "Non-negative integer or null",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/flexnatnum"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "flexprob": {
-            "description": "Number(s) in the range [0,1].",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/prob"
-                },
-                {
-                    "$ref": "#/$defs/problist"
-                }
-            ]
-        },
-        "flexprobnull": {
-            "title": "flexprobnull",
-            "description": "Number(s) in the range [0,1], or null.",
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/flexprob"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "mylib_myalg": {
-            "title": "mylib_myalg item",
-            "description": "Parameter setting for mylib_myalg.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "description": "Algorithm identifier",
-                    "type": "string"
-                },
-                "timeout": {
-                    "$ref": "#/$defs/flexnonnegnumnull"
-                }
+        "parameters_id": {
+          "title": "parameters_id",
+          "description": "ID of a module object in the parameters section.",
+          "anyOf": [
+            {
+              "type": "string"
             },
-            "required": [
-                "id"
-            ],
-            "examples": [
-                {
-                    "id": "mysetting",
-                    "param1": "myparamval",
-                    "param2": [
-                        2,
-                        3,
-                        5
-                    ]
-                }
-            ]
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_id": {
+          "title": "data_id",
+          "description": "Data sampling method ID.",
+          "type": "string"
+        },
+        "seed_range": {
+          "title": "seed_range",
+          "description": "This data setup will be simulated for this range of seeds. E.g. seed_range:[1,3] will generate 3 datsets (and corresponding models) with seeds 1,2,3.",
+          "anyOf": [
+            {
+              "title": "range",
+              "description": "List of 2 integers [a, b], where a<=b.",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "maxLength": 2,
+              "minLength": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
+      },
+      "required": ["graph_id", "parameters_id", "data_id", "seed_range"],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [1, 3]
+        }
+      ]
+    },
+    "prob": {
+      "title": "prob type",
+      "description": "Number in the range [0,1].",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "problist": {
+      "title": "problist type",
+      "type": "array",
+      "description": "Probability list",
+      "items": {
+        "$ref": "#/$defs/prob"
+      }
+    },
+    "natnum": {
+      "title": "natnum type",
+      "description": "Positive integer",
+      "type": "integer",
+      "minimum": 1
+    },
+    "nonnegint": {
+      "title": "nonnegint type",
+      "description": "Non-negative integer, 0,1,2,...",
+      "type": "integer",
+      "minimum": 0
+    },
+    "nonnegnum": {
+      "title": "nonnegnum type",
+      "description": "Non-negative number",
+      "type": "number",
+      "minimum": 0
+    },
+    "nonnegnumlist": {
+      "title": "nonnegnumlist",
+      "type": "array",
+      "description": "List of non-negative numbers",
+      "items": {
+        "$ref": "#/$defs/nonnegnum"
+      }
+    },
+    "flexnonnegnum": {
+      "description": "Non-negative number(s).",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/nonnegnum"
+        },
+        {
+          "$ref": "#/$defs/nonnegnumlist"
+        }
+      ]
+    },
+    "flexnonnegnumnull": {
+      "title": "Non-negative number(s) or null",
+      "description": "E.g. 1.5 or [1.6, 3.8] or null.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/flexnonnegnum"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "flexnonnegint": {
+      "title": "Non-negative integer(s)",
+      "description": "Non-negative integers, (0,1,2,...), or array of the same.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/nonnegint"
+        },
+        {
+          "$ref": "#/$defs/nonnegintlist"
+        }
+      ]
+    },
+    "nonnegintlist": {
+      "type": "array",
+      "title": "nonnegint list",
+      "description": "Non-negative integer list",
+      "items": {
+        "$ref": "#/$defs/nonnegint"
+      }
+    },
+    "flexnonnegintnull": {
+      "title": "Non-negative integer(s), or null.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/flexnonnegint"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "flexnonnegintstring": {
+      "title": "flexnonnegintstring",
+      "description": "Non-negative integer(s), or Inf string.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/flexnonnegint"
+        },
+        {
+          "type": "string",
+          "enum": ["Inf"]
+        }
+      ]
+    },
+    "flexnatnum": {
+      "title": "Non-negative integer(s)",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/natnum"
+        },
+        {
+          "title": "Positive integer list",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/natnum"
+          }
+        }
+      ]
+    },
+    "flexnatnumnull": {
+      "title": "Non-negative integer or null",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/flexnatnum"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "flexprob": {
+      "description": "Number(s) in the range [0,1].",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/prob"
+        },
+        {
+          "$ref": "#/$defs/problist"
+        }
+      ]
+    },
+    "flexprobnull": {
+      "title": "flexprobnull",
+      "description": "Number(s) in the range [0,1], or null.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/flexprob"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mylib_myalg": {
+      "title": "mylib_myalg item",
+      "description": "Parameter setting for mylib_myalg.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Algorithm identifier",
+          "type": "string"
+        },
+        "timeout": {
+          "$ref": "#/$defs/flexnonnegnumnull"
+        }
+      },
+      "required": ["id"],
+      "examples": [
+        {
+          "id": "mysetting",
+          "param1": "myparamval",
+          "param2": [2, 3, 5]
+        }
+      ]
+    }
   }
 }

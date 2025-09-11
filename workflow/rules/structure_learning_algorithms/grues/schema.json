@@ -12,16 +12,16 @@
                 "type": "string"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "mcmc_seed": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "n_iterations": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/nonnegint"
+                "$ref": "#/$defs/nonnegint"
             },
             "threshold": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "mcmc_estimator": {
                 "anyOf": [
@@ -45,7 +45,7 @@
                 ]
             },
             "burnin_frac": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             }
         },
         "required": [
@@ -62,7 +62,11 @@
                 "id": "grues",
                 "burnin_frac": 0.5,
                 "mcmc_estimator": "threshold",
-                "mcmc_seed": [1, 2, 3],
+                "mcmc_seed": [
+                    1,
+                    2,
+                    3
+                ],
                 "threshold": 0.5,
                 "timeout": null
             }

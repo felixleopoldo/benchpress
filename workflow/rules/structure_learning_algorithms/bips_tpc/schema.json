@@ -1,127 +1,135 @@
 {
-  "title": "MVPC",
-  "description": "List of objects",
-  "type": "array",
-  "items": {
-    "title": "Some item",
-    "description": "Some description.",
-    "type": "object",
-    "properties": {
-      "id": {
-        "description": "Algorithm identifier",
-        "type": "string"
-      },
-      "alpha": {
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
-      },
-      "indepTest": {
-        "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest",
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "gaussCItest",
-                "binCItest",
-                "gaussCItwd",
-                "disCItwd",
-                "mixCItwd",
-                "disCItest",
-                "gaussMItest",
-                "mixMItest",
-                "disMItest"
-              ]
+    "title": "MVPC",
+    "description": "List of objects",
+    "type": "array",
+    "items": {
+        "title": "Some item",
+        "description": "Some description.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "Algorithm identifier",
+                "type": "string"
+            },
+            "alpha": {
+                "$ref": "#/$defs/flexprob"
+            },
+            "indepTest": {
+                "description": "gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest",
+                "anyOf": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "gaussCItest",
+                                "binCItest",
+                                "gaussCItwd",
+                                "disCItwd",
+                                "mixCItwd",
+                                "disCItest",
+                                "gaussMItest",
+                                "mixMItest",
+                                "disMItest"
+                            ]
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "gaussCItest",
+                            "binCItest",
+                            "disCItest",
+                            "gaussCItwd",
+                            "disCItwd",
+                            "mixCItwd",
+                            "gaussMItest",
+                            "mixMItest",
+                            "disMItest"
+                        ]
+                    }
+                ]
+            },
+            "input_algorithm_id": {
+                "description": "When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice <mice>` module. It is a workaround to get imputed data.",
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+$"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+$"
+                        }
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
+            "verbose": {
+                "type": "boolean"
+            },
+            "mmax": {
+                "$ref": "#/$defs/flexnonnegintstring"
+            },
+            "conservative": {
+                "type": "boolean"
+            },
+            "majrule": {
+                "type": "boolean"
+            },
+            "solveconfl": {
+                "type": "boolean"
+            },
+            "timeout": {
+                "$ref": "#/$defs/flexnonnegnumnull"
+            },
+            "edgeConstraints": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": ".*\\.json$",
+                "description": "Name of the JSON file containing :ref:`edge_constraints`"
             }
-          },
-          {
-            "type": "string",
-            "enum": [
-              "gaussCItest",
-              "binCItest",
-              "disCItest",
-              "gaussCItwd",
-              "disCItwd",
-              "mixCItwd",
-              "gaussMItest",
-              "mixMItest",
-              "disMItest"
-            ]
-          }
-        ]
-      },
-      "input_algorithm_id": {
-        "description": "When using multiple imputation (MI) i.e. when indepTest is set to gaussMItest, mixMItest, or disMItest, this should be and id of the :ref:`mice <mice>` module. It is a workaround to get imputed data.",
-        "anyOf": [
-          {
-            "type": "string",
-            "pattern": "^[a-zA-Z0-9_]+$"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[a-zA-Z0-9_]+$"
+        },
+        "required": [
+            "id",
+            "timeout",
+            "alpha",
+            "indepTest",
+            "verbose",
+            "mmax",
+            "conservative",
+            "majrule",
+            "timeout",
+            "input_algorithm_id",
+            "edgeConstraints"
+        ],
+        "examples": [
+            {
+                "id": "tpc",
+                "alpha": [
+                    0.001,
+                    0.01,
+                    0.05,
+                    0.1
+                ],
+                "mmax": "Inf",
+                "conservative": false,
+                "majrule": true,
+                "numCores": 1,
+                "cl_type": "PSOCK",
+                "verbose": false,
+                "indepTest": "gaussCItwd",
+                "input_algorithm_id": null,
+                "timeout": null,
+                "edgeConstraints": null
             }
-          },
-          {
-            "type": "null"
-          }
         ]
-      },
-      "verbose": {
-        "type": "boolean"
-      },
-      "mmax": {
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintstring"
-      },
-      "conservative": {
-        "type": "boolean"
-      },
-      "majrule": {
-        "type": "boolean"
-      },
-      "solveconfl": {
-        "type": "boolean"
-      },
-      "timeout": {
-        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
-      },
-      "edgeConstraints": {
-        "type": ["string", "null"],
-        "pattern": ".*\\.json$",
-        "description": "Name of the JSON file containing :ref:`edge_constraints`"
-      }
     },
-    "required": [
-      "id",
-      "timeout",
-      "alpha",
-      "indepTest",
-      "verbose",
-      "mmax",
-      "conservative",
-      "majrule",
-      "timeout",
-      "input_algorithm_id",
-      "edgeConstraints"
-    ],
-    "examples": [
-      {
-        "id": "tpc",
-        "alpha": [0.001, 0.01, 0.05, 0.1],
-        "mmax": "Inf",
-        "conservative": false,
-        "majrule": true,
-        "numCores": 1,
-        "cl_type": "PSOCK",
-        "verbose": false,
-        "indepTest": "gaussCItwd",
-        "input_algorithm_id": null,
-        "timeout": null,
-        "edgeConstraints": null
-      }
-    ]
-  },
-  "uniqueItems": true
+    "uniqueItems": true
 }

@@ -11,10 +11,10 @@
                 "type": "string"
             },
             "dim": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "bandwidth": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             }
         },
         "required": [

@@ -18,7 +18,7 @@ bin_bn
    * - Docs
      - 
    * - Paper
-     - :footcite:t:`rios2021benchpress`
+     - :footcite:t:`rios2025benchpress`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - Docker 

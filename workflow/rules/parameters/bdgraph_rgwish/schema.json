@@ -11,10 +11,10 @@
                 "type": "string"
             },
             "b": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             },
             "threshold_conv": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             }
         },
         "required": [

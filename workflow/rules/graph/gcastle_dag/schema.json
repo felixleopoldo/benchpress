@@ -11,17 +11,17 @@
                 "type": "string"
             },
             "n_nodes": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "n_edges": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "method": {
                 "type": "string"
             }
         },
         "required": [
-            "id",            
+            "id",
             "n_nodes",
             "n_edges",
             "method"

@@ -11,10 +11,10 @@
                 "type": "string"
             },
             "n_levels": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "pseudo_obs": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             }
         },
         "required": [

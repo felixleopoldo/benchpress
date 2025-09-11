@@ -32,14 +32,17 @@ You may also have a look at [this Medium story](https://medium.com/@felixleopold
 ## Citing
 
 ```
-@misc{rios2021benchpress,
-      title={Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models}, 
-      author={Felix L. Rios and Giusi Moffa and Jack Kuipers},
-      year={2021},
-      eprint={2107.03863},
-      archivePrefix={arXiv},
-      primaryClass={stat.ML}
+@Article{Benchpress,
+    author = {Felix L. Rios and Giusi Moffa and Jack Kuipers},
+    title = {{Benchpress}: A Versatile Platform for Structure Learning in Causal and Probabilistic Graphical Models},
+    journal = {Journal of Statistical Software},
+    year = {2025},
+    volume = {114},
+    number = {12},
+    pages = {1--43},
+    doi = {10.18637/jss.v114.i12}
 }
+
 ```
 
 ## Contact

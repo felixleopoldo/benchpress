@@ -12,7 +12,7 @@
                 "description": "Unique identifier"
             },
             "input_algorithm_id": {
-                "description": "Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package.",    
+                "description": "Algorithm to use for initial search space. This should be the ID of another algorithm object. It corresponds to the original startspace parameter in the R package.",
                 "anyOf": [
                     {
                         "type": "string"
@@ -32,40 +32,40 @@
                 "type": "boolean"
             },
             "chi": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "edgepf": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "am": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "aw": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "iterations": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "stepsave": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "alpha": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprobnull"
+                "$ref": "#/$defs/flexprobnull"
             },
             "gamma": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             },
             "cpdag": {
                 "type": "boolean"
             },
             "threshold": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "mcmc_seed": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "mcmc_estimator": {
                 "anyOf": [
@@ -89,10 +89,13 @@
                 ]
             },
             "burnin_frac": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+                "$ref": "#/$defs/flexprob"
             },
             "edgeConstraints": {
-                "type": ["string", "null"],
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
@@ -162,7 +165,7 @@
                 "MAP": true,
                 "cpdag": false,
                 "mcmc_seed": 1,
-                "threshold": [     
+                "threshold": [
                     0.5
                 ],
                 "burnin_frac": 0,

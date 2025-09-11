@@ -162,7 +162,7 @@ def info_to_small_table():
                 tab += str2link(info["data_types"][i]) +", "
             tab = tab[:-2]
         else:
-            tab += "\-"        
+            tab += r"\-"
         tab += "\n"
         
         # MCMC:

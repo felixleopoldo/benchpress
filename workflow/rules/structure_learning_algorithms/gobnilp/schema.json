@@ -37,34 +37,37 @@
                 "type": "boolean"
             },
             "palim": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             },
             "alpha": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "alpha_omega_minus_nvars": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnatnumnull"
+                "$ref": "#/$defs/flexnatnumnull"
             },
             "alpha_mu": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "timeout": {
                 "description": "Use the best DAG found so far after this number of seconds.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "time_limit": {
                 "description": "Time limit in seconds for the solver (not including the time to build the score tables).",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "gap_limit": {
                 "description": "Gap limit.",
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "prune": {
                 "type": "boolean"
             },
             "edgeConstraints": {
-                "type": ["string", "null"],
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
@@ -87,7 +90,7 @@
                 "plot": false,
                 "palim": 3,
                 "alpha_mu": [
-                    0.00001,
+                    1e-05,
                     0.0001,
                     0.001
                 ],

@@ -30,50 +30,6 @@ configfile: configfilename
 with open("workflow/schemas/config.schema.json") as json_file:
     schema = json.load(json_file)
 
-for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "structure_learning_algorithms"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/structure_learning_algorithms/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/graph/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "graph"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/graph/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/parameters/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "parameters"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/parameters/{}/schema.json".format(p.name)
-    }
-
-for p in Path("workflow/rules/data/").iterdir():
-    item = schema["properties"]["resources"]["properties"][
-        "data"
-    ]["properties"]
-
-    item[p.name] = {
-        "$ref": "../rules/data/{}/schema.json".format(p.name)
-    }
-
-# Write the definitions
-# Generate the evaluation schemas
-for p in Path("workflow/rules/evaluation/").iterdir():
-    item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
-    item[p.name] = {
-        "$ref": "workflow/rules/evaluation/{}/schema.json".format(p.name)
-    }
-
 import pprint as pp
 
 # Replace all $ref paths to use local definitions, recursively checking all levels
@@ -82,11 +38,11 @@ def fix_refs(obj):
         for key, value in obj.items():
             if key == "$ref" and isinstance(value, str):
                 # Match any path pattern leading to definitions.schema.json
-                if "definitions.schema.json#/definitions/" in value:
+                if "definitions.schema.json#/$defs/" in value:
                     # Extract just the definition name after definitions/
                     #print("found ref: ", value)
-                    definition_name = value.split("definitions/")[-1]
-                    obj[key] = "definitions.schema.json#/$defs/" + definition_name
+                    definition_name = value.split("$defs/")[-1]
+                    obj[key] = "#/$defs/" + definition_name
             else:
                 # Recursively check nested dictionaries and lists
                 fix_refs(value)
@@ -109,64 +65,76 @@ def flattern_refs(obj):
 
 # Write the definitions
 # Generate the evaluation schemas
+item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
 for p in Path("workflow/rules/evaluation/").iterdir():
     # skip .DS_Store
     if p.name == ".DS_Store":
         continue
-    print("--------------------------------")
-    print(p.name)
-    item = schema["$defs"]["benchmark_setup"]["properties"]["evaluation"]["properties"]
 
     module_schema_filename = "workflow/rules/evaluation/{}/schema.json".format(p.name)
     with open(module_schema_filename) as json_file:
         module_schema = json.load(json_file)
 
-    # Apply the fix to the entire module schema
-    fix_refs(module_schema)
-    print("module schema after fix:")
-    pp.pprint(module_schema)
     item[p.name] = module_schema
 
-#print("schema:")
-#pp.pprint(schema)
-#quit()
 
 # now the same for the data modules
+data_module_schemas = schema["properties"]["resources"]["properties"]["data"]["properties"]
 for p in Path("workflow/rules/data/").iterdir():
     if p.name == ".DS_Store" or p.name == "fixed_data":
         continue
-    print("--------------------------------")
-    print(p.name)
-
-    #item = schema["$defs"]["benchmark_setup"]["properties"]["data"]["properties"]
     module_schema_filename = "workflow/rules/data/{}/schema.json".format(p.name)
     with open(module_schema_filename) as json_file:
         module_schema = json.load(json_file)
+    
+    data_module_schemas[p.name] = module_schema
 
-    print("module schema:")
-    pp.pprint(module_schema)
-    # Apply the fix to the entire module schema
-    fix_refs(module_schema)
-    print("module schema after fix:")
-    pp.pprint(module_schema)
+# now for the parameters modules
+parameters_module_schemas = schema["properties"]["resources"]["properties"]["parameters"]["properties"]
+for p in Path("workflow/rules/parameters/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_params":
+        continue
 
-    item[p.name] = module_schema
+    module_schema_filename = "workflow/rules/parameters/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
 
-quit()
+    parameters_module_schemas[p.name] = module_schema
+
+# now the same for thr graphs modules
+graph_module_schemas = schema["properties"]["resources"]["properties"]["graph"]["properties"]
+for p in Path("workflow/rules/graph/").iterdir():
+    if p.name == ".DS_Store" or p.name == "fixed_graph":
+        continue
+
+    module_schema_filename = "workflow/rules/graph/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    graph_module_schemas[p.name] = module_schema
+
+# now the same for the structure_learning_algorithms modules
+structure_learning_algorithms_module_schemas = schema["properties"]["resources"]["properties"]["structure_learning_algorithms"]["properties"]
+for p in Path("workflow/rules/structure_learning_algorithms/").iterdir():
+    if p.name == ".DS_Store":
+        continue
+
+    module_schema_filename = "workflow/rules/structure_learning_algorithms/{}/schema.json".format(p.name)
+    with open(module_schema_filename) as json_file:
+        module_schema = json.load(json_file)
+
+    structure_learning_algorithms_module_schemas[p.name] = module_schema
+
 # Yes this is a hack. But it works probably. Any better ideas?
 # Generate random hash for the temporary schema file
 tmp_hash = random.getrandbits(128)
 tmp_schema = f"schemas/tmp.config.schema_{tmp_hash}.json"
 with open("workflow/"+tmp_schema, "w") as outfile:
     outfile.write(json.dumps(schema, indent=4))
-print("Full schema:")
-pp.pprint(schema)
+
 snakemake.utils.validate(config, tmp_schema)
 # remove the temporary schema file
 os.remove("workflow/"+tmp_schema)
-
-
-
 
 include: "rules/docker_images.smk"
 
@@ -176,8 +144,9 @@ rule all:
     input:
         get_active_rules
 
-# Validate JSON file based on its values.
-include: "rules/validate.py"
+if "validate" not in config or config["validate"] is True:
+    include: "rules/validate.py"
+
 # The pattern strings are generated from the json config file.
 pattern_strings = {}
 pattern_strings.update(get_algorithm_patterns(config))

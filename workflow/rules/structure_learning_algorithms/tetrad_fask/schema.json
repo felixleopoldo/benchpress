@@ -25,16 +25,19 @@
                 "type": "string"
             },
             "semBicStructurePrior": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnum"
+                "$ref": "#/$defs/flexnonnegnum"
             },
             "timeout": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+                "$ref": "#/$defs/flexnonnegnumnull"
             },
             "datatype": {
                 "type": "string"
             },
             "edgeConstraints": {
-                "type": ["string", "null"],
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "pattern": ".*\\.json$",
                 "description": "Name of the JSON file containing background knowledge"
             }
