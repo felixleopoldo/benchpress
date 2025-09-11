@@ -4,7 +4,5 @@ rule fixed_adjmat:
         "resources/adjmat/myadjmats/{adjmat}.csv"
     output:
         "{output_dir}/adjmat/myadjmats/{adjmat}.csv" 
-    wildcard_constraints:
-        output_dir="^(?!resources).*$"
-    shell:
+    shell:        
         "cp {input} {output}"
