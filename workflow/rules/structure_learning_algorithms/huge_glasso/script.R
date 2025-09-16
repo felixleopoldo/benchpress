@@ -43,7 +43,7 @@ myalg <- function() {
                              criterion = select_criterion,
                              verbose = FALSE)
     ## transform to an adjmat
-    adjmat <- as.matrix(abs(as.matrix(out.select$opt.icov)) > 0)
+    adjmat <- abs(as.matrix(out.select$refit))
    
     # Format and save the results
     totaltime <- proc.time()[1] - start

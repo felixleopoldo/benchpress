@@ -45,7 +45,7 @@ myalg <- function() {
                              verbose = FALSE)
     
     ## transform to an adjmat
-    adjmat <- as.matrix(out.select$path[out.select$opt.index][[1]])
+    adjmat <- abs(as.matrix(out.select$refit))
         
     # Format and save the results
     totaltime <- proc.time()[1] - start
