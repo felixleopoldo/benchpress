@@ -22,7 +22,7 @@ getNextSetMDAG <- function(n, k, set) {
 }
 
 
-get_S_substantive_and_missingness <- function(S_fixed, nbrs) {
+get_S_substantive_and_missingness <- function(S_fixed, nbrs, labels) {
     gr <- grepl("^R_", labels[nbrs[S_fixed]])
     print(gr)
 
@@ -234,6 +234,8 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
         for (i in 1:remEdges) {
             # every edge is visited twice, so that each of the endpoints gets to
             # be the node whose neighbours are considered
+            #if (i>=j) next
+            
             if (verbose && (verbose >= 2 || i %% 100 == 0)) {
                 cat("|i=", i, "|iMax=", remEdges, "\n")
             }
@@ -242,11 +244,13 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             # endpoint 2 of current edge
             y <- ind[i, 2]
 
+            if (x>=y) next
 
             if (G[y, x] && !fixedEdges[y, x]) {
+
                 print(paste0("x: ", labels[x], " y: ", labels[y]))
-                print("G:")
-                print(G)
+                #print("G:")
+                #print(G)
          
                 # only edges are considered that are still in the current skeleton
                 # else go to next remaining edge
@@ -265,25 +269,26 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     G[, y]
                 }
 
-                print("nbrsBool_x:")
-                print(nbrsBool_x)
-                print("nbrsBool_y:")
-                print(nbrsBool_y)
+                #print("nbrsBool_x:")
+                #print(nbrsBool_x)
+                #print("nbrsBool_y:")
+                #print(nbrsBool_y)
                 #################################################
                 # this excludes neighbours in a later tier than x from the
                 # conditioning set
-                nbrsBool_x[tiers > tiers[x]] <- FALSE
-                nbrsBool_y[tiers > tiers[y]] <- FALSE
+                #nbrsBool_x[tiers > tiers[x]] <- FALSE
+                #nbrsBool_y[tiers > tiers[y]] <- FALSE
 
-                print("nbrsBool_x after tiers:")
-                print(nbrsBool_x)
-                print("nbrsBool_y after tiers:")
-                print(nbrsBool_y)
+                #print("nbrsBool_x after tiers:")
+                #print(nbrsBool_x)
+                #print("nbrsBool_y after tiers:")
+                #print(nbrsBool_y)
 
                 #################################################
                 
-                nbrsBool_x[y] <- FALSE
-                nbrsBool_y[x] <- FALSE
+                #nbrsBool_x[y] <- FALSE
+                #nbrsBool_y[x] <- FALSE
+                
                 # nbrs contains the indices of all eligible neighbours
                 nbrs_x <- seq_p[nbrsBool_x]
                 nbrs_y <- seq_p[nbrsBool_y]
@@ -294,44 +299,57 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 print(labels[nbrs_y])
                 # now find the R-variables and correspoding index of x and y (if they are not themselves R-variables)
                 
-               
-                R_x_index <- which(labels[nbrs_x] == paste0("R_", labels[x]))
-                R_y_index <- which(labels[nbrs_y] == paste0("R_", labels[y]))
-
-                
-                nbrsBool_Rx <- if (method == "stable") {
-                    G.l[[R_x_index]]
-                } #
-                else {
-                    G[[R_x_index]]
-                }
-                nbrsBool_Ry <- if (method == "stable") {
-                    G.l[[R_y_index]]
-                } #
-                else {
-                    G[[R_y_index]]
-                }
-
-                nbrsBool_Rx[tiers > tiers[R_x_index]] <- FALSE
-                nbrsBool_Ry[tiers > tiers[R_y_index]] <- FALSE
-                                # The neighbours of the R-variables for x and y:
-                nbrsBool_Rx[x] <- FALSE
-                nbrsBool_Ry[y] <- FALSE
-
-                nbrs_Rx <- seq_p[nbrsBool_Rx]
-                nbrs_Ry <- seq_p[nbrsBool_Ry]
-
-                R_vars_x <- labels[nbrs_x[R_x_index]]
-                R_vars_y <- labels[nbrs_y[R_y_index]]
-
+                R_x_index <- which(labels == paste0("R_", labels[x]))
+                R_y_index <- which(labels == paste0("R_", labels[y]))
                 #print(paste0("R_x_index: ", R_x_index, " R_y_index: ", R_y_index))
-                print(paste0("R_vars_x: ", R_vars_x, " R_vars_y: ", R_vars_y))
-           
 
+                nbrsBool_Rx <- c()
+                nbrsBool_Ry <- c()
+                R_vars_x <- c()
+                R_vars_y <- c()
+                nbrs_all <- c()
 
-                # union of nbrs_x and nbrs_y
-                nbrs_all <- union(nbrs_x, nbrs_y, nbrs_Rx, nbrs_Ry)
+                if (length(R_x_index) != 0) {
+                    nbrsBool_Rx <- if (method == "stable") {
+                        G.l[[R_x_index]]
+                    } #
+                    else {
+                        G[[R_x_index]]
+                    }
+                    nbrs_Rx <- seq_p[nbrsBool_Rx]
+                    R_vars_x <- labels[nbrs_Rx]
+                    print("R_vars_x: ")
+                    print(R_vars_x)
+                    nbrs_all <- c(nbrs_all, nbrs_Rx)
+                }
 
+                if (length(R_y_index) != 0) {
+                    nbrsBool_Ry <- if (method == "stable") {
+                        G.l[[R_y_index]]
+                    } #
+                    else {
+                        G[[R_y_index]]
+                    }
+                    nbrs_Ry <- seq_p[nbrsBool_Ry]
+                    R_vars_y <- labels[nbrs_Ry]
+                    print("R_vars_y: ")
+                    print(R_vars_y)
+                    nbrs_all <- c(nbrs_all, nbrs_Ry)
+                }
+
+            
+
+                nbrs_all <- unique(c(nbrs_x, nbrs_y, nbrs_all))
+                # remove x and y from nbrs_all
+                nbrs_all <- nbrs_all[nbrs_all != x & nbrs_all != y]
+                # remove R_x and R_y from nbrs_all
+                #print("neighbors all indices:")
+                #print(nbrs_all)
+                #print("labels:")
+                #print(labels[nbrs_all])
+                nbrs_all <- nbrs_all[nbrs_all != R_x_index & nbrs_all != R_y_index]
+                print("labels[nbrs_all] without R_x and R_y variables:")
+                print(labels[nbrs_all])
                 # now remove the R- variables if the substantive variables are in the conditioning set
                 nbrs <- nbrs_all #[!grepl("^R_", labels[nbrs_all])]
               
@@ -347,12 +365,16 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     S <- seq_len(ord)
                     # split S into substantive and missingness variables
-
+                    print("S:")
+                    print(labels[nbrs[S]])
+                    print("Starting with this S and going through different subsets of the neighbours with length ord")
                     repeat { # the repeat loop goes over all subsets of the
                         # neighbours with length ord
                         n.edgetests[ord1] <- n.edgetests[ord1] + 1
 
                         S_fixed <- S
+                        print("S_fixed:")
+                        print(labels[nbrs[S_fixed]])
                         # Somewhere here we add back the R-variables if the variable in S has missingness.
 
 
@@ -372,9 +394,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             )
                         }
 
-                        tmp <- get_S_substantive_and_missingness(S_fixed, nbrs)
-                        S_substantive <- tmp$S_substantive
-                        S_missingness <- tmp$S_missingness
+                        #tmp <- get_S_substantive_and_missingness(S_fixed, nbrs, labels)
+                        #S_substantive <- tmp$S_substantive
+                        #S_missingness <- tmp$S_missingness
 
                         R_x <- NULL
                         if (paste0("R_", labels[x]) %in% labels) {
@@ -383,22 +405,21 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         }
 
                         R_y <- NULL
-
                         if (paste0("R_", labels[y]) %in% labels) {
                             R_y <- paste0("R_", labels[y])
                             R_y_index <- which(labels == R_y)
                         }
 
-                        print("R(x):")
-                        print(R_x)
-                        print("R(y):")
-                        print(R_y)
+                        print(paste0("R(x):", R_x))
+                        
+                        print(paste0("R(y):", R_y))
+                        
                         print("S:")
                         print(labels[nbrs[S_fixed]])
-                        print("S_substantive:")
-                        print(labels[nbrs[S_substantive]])
-                        print("S_missingness:")
-                        print(labels[nbrs[S_missingness]])
+                        #print("S_substantive:")
+                        #print(labels[nbrs[S_substantive]])
+                        #print("S_missingness:")
+                        #print(labels[nbrs[S_missingness]])
 
                         # now get all missingness indicators of S and x and y
                         # And get theyr parents. This is the set to take all subsets of.
