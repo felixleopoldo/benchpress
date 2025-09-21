@@ -221,7 +221,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
         # how many edges are remaining?
         remEdges <- nrow(ind)
         if (verbose) {
-            cat("Order=", ord, "; remaining edges:", remEdges,
+            cat("***** Order=", ord, "; remaining edges:", remEdges,
                 "\n",
                 sep = ""
             )
@@ -318,7 +318,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     nbrs_Rx <- seq_p[nbrsBool_Rx]
                     R_vars_x <- labels[nbrs_Rx]
-                    print("R_vars_x: ")
+                    print("R_x neighbors: ")
                     print(R_vars_x)
                     nbrs_all <- c(nbrs_all, nbrs_Rx)
                 }
@@ -332,7 +332,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     nbrs_Ry <- seq_p[nbrsBool_Ry]
                     R_vars_y <- labels[nbrs_Ry]
-                    print("R_vars_y: ")
+                    print("R_y neighbors: ")
                     print(R_vars_y)
                     nbrs_all <- c(nbrs_all, nbrs_Ry)
                 }
@@ -347,15 +347,62 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 #print(nbrs_all)
                 #print("labels:")
                 #print(labels[nbrs_all])
-                nbrs_all <- nbrs_all[nbrs_all != R_x_index & nbrs_all != R_y_index]
+                if (length(R_x_index) != 0) {   
+                    nbrs_all <- nbrs_all[nbrs_all != R_x_index]
+                }
+                if (length(R_y_index) != 0) {
+                    nbrs_all <- nbrs_all[nbrs_all != R_y_index]
+                }
                 print("labels[nbrs_all] without R_x and R_y variables:")
                 print(labels[nbrs_all])
+
+                # Sems like we will never have to condition on only the missingess variable, if the substantive variables are in the conditioning set.
+                # So we can remove the R- variables if the substantive variables are in the conditioning set.
+                var_with_R_var <- c()
+                R_vars <- c()
+                R_vars_indices <- c()
+                for (var in nbrs_all) {
+                    if (paste0("R_", labels[var]) %in% labels[nbrs_all]) {
+                        var_with_R_var <- c(var_with_R_var, var)
+                        R_vars <- c(R_vars, paste0("R_", labels[var]))
+                    }
+                }
+                R_vars_indices <- which(labels[nbrs_all] %in% R_vars)
+
+                print("nbrs_all:")
+                print(nbrs_all)
+                print("labels[nbrs_all]:")
+                print(labels[nbrs_all])
+                print("R- variables:")
+                print(R_vars)
+                print("R_vars_indices:")
+                print(R_vars_indices)
+                print("Variables with R- variables:")
+                print(labels[var_with_R_var])
+                if (length(var_with_R_var) > 0) {
+                    # remove index R_vars_indices from nbrs_all
+                    print("Removing R- variables from nbrs_all:")
+                    nbrs_all <- nbrs_all[!(nbrs_all %in% nbrs_all[R_vars_indices])]
+                }
+                print("nbrs_all after removing R- variables:")
+                print(labels[nbrs_all])
+
+                print("nbrs_all after removing variables with R- variables:")
+                print(labels[nbrs_all])
+
+
+                # remove the R- variables if the substantive variables are in the conditioning set
                 # now remove the R- variables if the substantive variables are in the conditioning set
                 nbrs <- nbrs_all #[!grepl("^R_", labels[nbrs_all])]
               
                 length_nbrs <- length(nbrs)
                 # next steps only possible if there are enough neighbours to form
                 # conditioning sets of cardinality length_nbrs
+
+                print("length_nbrs:")
+                print(length_nbrs)
+                print("ord:")
+                print(ord)
                 if (length_nbrs >= ord) { # else go to next remaining edge
                     if (length_nbrs > ord) {
                         # done is reset to FALSE if for any node with remaining edges,
@@ -435,7 +482,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         if (grepl("^R_", labels[x])) {
                             # print(paste0("Checking if substantive variable of ", labels[x], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[x])
-                            S_index_node_name <- which(labels[S_fixed] == node_name)
+                            S_index_node_name <- which(labels[nbrs[S_fixed]] == node_name)
 
                             # print(paste0("node_name: ", node_name))
                             # print(paste0("nbrs[S]: ", labels[nbrs[S]]))
@@ -450,14 +497,17 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         if (grepl("^R_", labels[y])) {
                             # print(paste0("Checking if substantive variable of ", labels[y], " is in the independent set"))
                             node_name <- gsub("^R_", "", labels[y])
-                            S_index_node_name <- which(labels[S_fixed] == node_name)
+                            S_index_node_name <- which(labels[nbrs[S_fixed]] == node_name)
+
                             if (node_name %in% labels[nbrs[S_fixed]]) {
                                 print(paste0(labels[y], " is in the independent set, and ", node_name, " is in the conditioning set"))
                                 # remove y from the conditioning set
                                 print(paste0("Removing ", node_name, " from the conditioning set"))
-                                print(paste0("Current conditioning set: ", labels[nbrs[S_fixed]]))
+                                print(paste0("Current conditioning set: "))
+                                print(labels[nbrs[S_fixed]])
                                 S_fixed <- S_fixed[S_fixed != S_index_node_name]
-                                print(paste0("New conditioning set: ", labels[nbrs[S_fixed]]))
+                                print(paste0("New conditioning set: "))
+                                print(labels[nbrs[S_fixed]])
                             }
                         }
                         # if the missingness variable of x or y is in the conditioning set, remove it from S
@@ -493,6 +543,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             # print(paste0("New conditioning set: ", labels[nbrs[S_faith_obs]]))
                             faith_obs <- TRUE
                         }
+                        
 
 
 

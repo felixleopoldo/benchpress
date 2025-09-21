@@ -44,8 +44,8 @@ Algorithms
     structure_learning_algorithms/bnlearn_hpc
     structure_learning_algorithms/bnlearn_iamb
     structure_learning_algorithms/bnlearn_iambfdr
-    structure_learning_algorithms/gcastle_ica_lingam
     structure_learning_algorithms/tetrad_ica-lingam
+    structure_learning_algorithms/gcastle_ica_lingam
     structure_learning_algorithms/bnlearn_interiamb
     structure_learning_algorithms/bidag_itsearch
     structure_learning_algorithms/huge_mb
@@ -54,15 +54,14 @@ Algorithms
     structure_learning_algorithms/bnlearn_mmhc
     structure_learning_algorithms/bnlearn_mmpc
     structure_learning_algorithms/mvpc
-    structure_learning_algorithms/causallearn_ges
     structure_learning_algorithms/gcastle_notears
     structure_learning_algorithms/gcastle_notears_low_rank
     structure_learning_algorithms/gcastle_notears_nonlinear
     structure_learning_algorithms/bidag_order_mcmc
-    structure_learning_algorithms/pcalg_pc
-    structure_learning_algorithms/bnlearn_pcstable
-    structure_learning_algorithms/tetrad_pc
     structure_learning_algorithms/gcastle_pc
+    structure_learning_algorithms/pcalg_pc
+    structure_learning_algorithms/tetrad_pc
+    structure_learning_algorithms/bnlearn_pcstable
     structure_learning_algorithms/paralleldg
     structure_learning_algorithms/trilearn_pgibbs
     structure_learning_algorithms/bidag_partition_mcmc
@@ -355,20 +354,20 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - :ref:`Yes <edge_constraints>`
      - 
      - 
-   * - :ref:`ICA-LiNGAM <gcastle_ica_lingam>`
-     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - C
-     - 
-     - 
-     - 
-     - 
    * - :ref:`ICA-LiNGAM <tetrad_ica-lingam>`
      - `TETRAD <https://github.com/bd2kccd/causal-cmd>`__
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
      - :ref:`Yes <edge_constraints>`
+     - 
+     - 
+   * - :ref:`ICA-LiNGAM <gcastle_ica_lingam>`
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - C
+     - 
+     - 
      - 
      - 
    * - :ref:`INTER-IAMB <bnlearn_interiamb>`
@@ -467,18 +466,18 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - :ref:`Yes <edge_constraints>`
      - 
      - 
+   * - :ref:`PC <gcastle_pc>`
+     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - C
+     - 
+     - 
+     - 
+     - 
    * - :ref:`PC <pcalg_pc>`
      - `pcalg <https://cran.r-project.org/web/packages/pcalg/index.html>`__
      - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__, `CG <https://en.wikipedia.org/wiki/Mixed_graph>`__
      - C, D
-     - 
-     - :ref:`Yes <edge_constraints>`
-     - 
-     - 
-   * - :ref:`PC <bnlearn_pcstable>`
-     - `bnlearn <https://www.bnlearn.com/>`__
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - C, D, M
      - 
      - :ref:`Yes <edge_constraints>`
      - 
@@ -491,12 +490,12 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - :ref:`Yes <edge_constraints>`
      - 
      - 
-   * - :ref:`PC <gcastle_pc>`
-     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
+   * - :ref:`PC <bnlearn_pcstable>`
+     - `bnlearn <https://www.bnlearn.com/>`__
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - C
+     - C, D, M
      - 
-     - 
+     - :ref:`Yes <edge_constraints>`
      - 
      - 
    * - :ref:`Parallel DG <paralleldg>`
