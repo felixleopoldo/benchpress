@@ -15,7 +15,7 @@
                 "$ref": "#/$defs/flexprob"
             },
             "indepTest": {
-                "description": "flexCItest, flexMItest, gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest",
+                "description": "flexCItwd, flexMItest, gaussCItest, binCItest, disCItest, gaussCItwd, disCItwd, mixCItwd, gaussMItest, mixMItest, disMItest",
                 "anyOf": [
                     {
                         "type": "array",
@@ -27,11 +27,11 @@
                                 "gaussCItwd",
                                 "disCItwd",
                                 "mixCItwd",
+                                "flexCItwd",
                                 "disCItest",
                                 "gaussMItest",
                                 "mixMItest",
-                                "disMItest",
-                                "flexCItest",
+                                "disMItest",                                
                                 "flexMItest"
                             ]
                         }
