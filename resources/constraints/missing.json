@@ -1,0 +1,22 @@
+﻿{
+  "tiers": [
+    ["X", "Y", "W"],
+    ["R_X", "R_Y"]
+  ],
+  "context_tier": [],
+  "tier_settings": {
+    "forbid_within_tiers": false,
+    "can_only_cause_next_tier": false
+  },
+  "context_all": [],
+  "forbidden_edges": [
+    ["X", "R_X"],
+    ["Y", "R_Y"],
+    ["R_X", "X"],
+    ["R_Y", "Y"],
+    ["R_X", "R_a"]
+  ],
+  "forbidden_groups": [],
+  "required_groups": [],
+  "source_nodes": []
+}
