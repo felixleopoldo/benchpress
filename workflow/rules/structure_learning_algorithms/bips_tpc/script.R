@@ -2,12 +2,11 @@ source("workflow/scripts/utils/helpers.R")
 
 library(RBGL)
 library(tpc)
-#insertSource("workflow/rules/structure_learning_algorithms/bips_tpc/R/tskeleton.R", package="tpc")
+#insertSource("workflow/rules/structure_learning_algorithms/bips_tpc/R/tskeleton.R", package = "tpc")
 library(micd)
 source("resources/code_for_binary_simulations/bnlearn_help_fns.R")
 
 wrapper <- function() {
-
     filename <- file.path(snakemake@output[["adjmat"]])
     filename_data <- snakemake@input[["data"]]
     filename_edge_constraints <- snakemake@input[["edgeConstraints_formatted"]]
@@ -52,13 +51,6 @@ wrapper <- function() {
         forbEdges <- edgeConstraints$forbEdges
     }
 
-    print("Edge constraints")
-    print(forbEdges)
-
-    #print("context.tier")
-    #print(context.tier)
-
-
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
@@ -70,16 +62,15 @@ wrapper <- function() {
         suffStat <- list(C = cor(data), n = n)
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
         suffStat <- data
-        if (snakemake@wildcards[["indepTest"]] == "flexCItest") {            
+        if (snakemake@wildcards[["indepTest"]] == "flexCItest") {
             suffStat <- getSuff(data, test = "flexCItest")
         }
-        
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "disMItest", "flexMItest")) {
-        
-        if (filename_mice_data != "None" ) {
-            imputed_datasets <- readRDS(filename_mice_data)            
-            suffStat <- getSuff(imputed_datasets, test = snakemake@wildcards[["indepTest"]])
-        }        
+        if (filename_mice_data != "None") {
+            imputed_datasets <- readRDS(filename_mice_data)
+            test <- snakemake@wildcards[["indepTest"]]
+            suffStat <- getSuff(imputed_datasets, test = test)
+        }
     }
 
     start <- proc.time()[1]

@@ -39,8 +39,9 @@ myalg <- function() {
         #print("range header removed. discrete")
     }
 
+
     print("Starting MICE imputation")
-    print(head(data, 20))
+    print(head(data, 10))
     mi_object <- mice(data,
         m = m,
         method = method,
@@ -68,6 +69,11 @@ myalg <- function() {
     )
 
     totaltime <- proc.time()[1] - start
+
+    print("mi_data dim:")
+    print(dim(mi_data))
+    print(head(mi_data, 10))
+    print(paste0("write to file: ", snakemake@output[["adjmat"]]))
     saveRDS(mi_data, file = snakemake@output[["adjmat"]])
 
     write(totaltime, file = snakemake@output[["time"]])

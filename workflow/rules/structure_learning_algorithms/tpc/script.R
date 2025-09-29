@@ -89,6 +89,17 @@ wrapper <- function() {
     }
 
     start <- proc.time()[1]
+
+    # create a new data frame with the missingness indicators, called R_original_var_name_na for each variable that has missingness
+    data_with_missingness <- data
+    for (i in 1:ncol(data)) {
+        if (any(is.na(data[, i]))) {
+            data_with_missingness[, paste0("R_", colnames(data)[i], "_na")] <- ifelse(is.na(data[, i]), 0, 1)
+        }
+    }
+    #print("data_with_missingness:")
+    #print(head(data_with_missingness))
+
     set.seed(seed)
 
     pc.fit <- tpc(

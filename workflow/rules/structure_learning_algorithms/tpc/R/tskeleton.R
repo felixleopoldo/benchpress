@@ -134,7 +134,7 @@ get_S_substantive_and_missingness <- function(S_fixed, nbrs, labels) {
 #' tskel.fit@n.edgetests
 #' tskel.fit2@n.edgetests
 #'
-pc_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
+tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                          method = c("stable", "original"), m.max = Inf,
                          fixedGaps = NULL, fixedEdges = NULL, NAdelete = TRUE,
                          tiers = NULL, verbose = FALSE) {
@@ -674,7 +674,7 @@ pc_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
 #' tskel.fit@n.edgetests
 #' tskel.fit2@n.edgetests
 #'
-tskeleton <- function(suffStat, indepTest, alpha, labels, p,
+sgs_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                       method = c("stable", "original"), m.max = Inf,
                       fixedGaps = NULL, fixedEdges = NULL, NAdelete = TRUE,
                       tiers = NULL, verbose = FALSE) {
@@ -766,11 +766,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 sep = ""
             )
         }
-        if (method == "stable") {
-            # G is split into p vectors, each vector respresenting the neighbours
-            # of one node
-            G.l <- split(G, gl(p, p))
-        }
+        
         for (i in 1:remEdges) {
             # every edge is visited twice, so that each of the endpoints gets to
             # be the node whose neighbours are considered
