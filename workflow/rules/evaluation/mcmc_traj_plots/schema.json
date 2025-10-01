@@ -1,84 +1,53 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "mcmc_traj_plots",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "mcmc_traj_plots",
+  "description": "This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.",
+  "type": "array",
+  "items": {
+    "title": "mcmc_traj_plots item",
     "description": "This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.",
-    "type": "array",
-    "items": {
-        "$ref": "#/$defs/mcmc_traj_plots"
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "burn_in": {
+        "$ref": "#/$defs/flexprob"
+      },
+      "thinning": {
+        "$ref": "#/$defs/flexnonnegintnull"
+      },
+      "active": {
+        "type": "boolean"
+      },
+      "functional": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": ["score", "size"]
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["score", "size"]
+            }
+          }
+        ]
+      }
     },
+    "required": ["id", "burn_in", "thinning", "functional"],
     "additionalItems": false,
-    "examples": [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ],
-    "$defs": {
-        "mcmc_traj_plots": {
-            "examples": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0.5,
-                    "thinning": 1,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ],
-            "title": "mcmc_traj_plots item",
-            "description": "This module plots the so called score values in the trajectory or the value of a given functional. The currently supported functionals are the number of edges for the graphs (size) and the graph score. The mcmc_traj_plots module has a list of objects, where each object has an id field for the algorithm object id, a burn-in field (burn_in) and a field specifying the functional to be considered (functional). Since the trajectories tend to be very long, the user may choose to thin out the trajectory by only considering every graph at a given interval length specified by the thinning field. The plots are saved in results/mcmc_traj_plots/ and copied to results/output/mcmc_traj_plots/.",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "burn_in": {
-                    "$ref": "#/$defs/flexprob"
-                },
-                "thinning": {
-                    "$ref": "#/$defs/flexnonnegintnull"
-                },
-                "active": {
-                    "type": "boolean"
-                },
-                "functional": {
-                    "anyOf": [
-                        {
-                            "type": "string",
-                            "enum": [
-                                "score",
-                                "size"
-                            ]
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "score",
-                                    "size"
-                                ]
-                            }
-                        }
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "burn_in",
-                "thinning",
-                "functional"
-            ],
-            "additionalItems": false,
-            "additionalProperties": false
-        }
+    "additionalProperties": false
+  },
+  "additionalItems": false,
+  "examples": [
+    {
+      "id": "omcmc_itsample-bge",
+      "burn_in": 0.5,
+      "thinning": 1,
+      "functional": ["score", "size"],
+      "active": true
     }
+  ]
 }

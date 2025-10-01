@@ -53,9 +53,13 @@ for adjmat in adjmats:
                                      (df["alg"] == alg)]
 
                         # more filtering of adjmat or params are provided
-                        if not np.isnan(adjmat):
+                        print("adjmat")
+                        print(adjmat)
+                        
+                        
+                        if isinstance(adjmat, str):
                             tmp = tmp.loc[tmp["adjmat"] == adjmat]
-                        if not np.isnan(param):
+                        if isinstance(param, str):
                             tmp = tmp.loc[tmp["parameters"] == param]
                         
                         if len(tmp) == 0:
@@ -111,9 +115,10 @@ for adjmat in adjmats:
                                              (df["param"] == algparam) &
                                              (df["param_val"] == algparam_val)]
 
-                                if not np.isnan(adjmat):
+
+                                if isinstance(adjmat, str):
                                     tmp = tmp.loc[tmp["adjmat"] == adjmat]
-                                if not np.isnan(param):
+                                if isinstance(param, str):
                                     tmp = tmp.loc[tmp["parameters"] == param]
                             
                                     

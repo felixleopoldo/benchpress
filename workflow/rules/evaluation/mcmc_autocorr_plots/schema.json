@@ -1,88 +1,56 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "mcmc_autocorr_plots",
-    "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
-    "type": "array",
-    "items": {
-        "$ref": "#/$defs/mcmc_autocorr_plots"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "mcmc_autocorr_plots",
+  "description": "Plots mean graph as a heatmap from an MCMC trajectory of graphs.",
+  "type": "array",
+  "items": {
+    "title": "mcmc_autocorr_plots item",
+    "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
+
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "burn_in": {
+        "$ref": "#/$defs/flexprob"
+      },
+      "thinning": {
+        "$ref": "#/$defs/flexnonnegintnull"
+      },
+      "active": {
+        "type": "boolean"
+      },
+      "lags": {
+        "$ref": "#/$defs/flexnonnegintnull"
+      },
+      "functional": {
+        "title": "stringorlist",
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": ["score", "size"]
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["score", "size"]
+            }
+          }
+        ]
+      }
     },
-    "additionalItems": false,
-    "examples": [
-        {
-            "id": "omcmc_itsample-bge",
-            "burn_in": 0.5,
-            "thinning": 1,
-            "lags": 50,
-            "functional": [
-                "score",
-                "size"
-            ],
-            "active": true
-        }
-    ],
-    "$defs": {
-        "mcmc_autocorr_plots": {
-            "title": "mcmc_autocorr_plots item",
-            "description": "Plots the auto correlation for a given functional in a MCMC trajectory.",
-            "examples": [
-                {
-                    "id": "omcmc_itsample-bge",
-                    "burn_in": 0.5,
-                    "thinning": 1,
-                    "lags": 50,
-                    "functional": [
-                        "score",
-                        "size"
-                    ],
-                    "active": true
-                }
-            ],
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "burn_in": {
-                    "$ref": "#/$defs/flexprob"
-                },
-                "thinning": {
-                    "$ref": "#/$defs/flexnonnegintnull"
-                },
-                "active": {
-                    "type": "boolean"
-                },
-                "lags": {
-                    "$ref": "#/$defs/flexnonnegintnull"
-                },
-                "functional": {
-                    "title": "stringorlist",
-                    "anyOf": [
-                        {
-                            "type": "string",
-                            "enum": [
-                                "score",
-                                "size"
-                            ]
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "score",
-                                    "size"
-                                ]
-                            }
-                        }
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "burn_in",
-                "thinning",
-                "functional",
-                "lags"
-            ]
-        }
+    "required": ["id", "burn_in", "thinning", "functional", "lags"]
+  },
+  "additionalItems": false,
+  "examples": [
+    {
+      "id": "omcmc_itsample-bge",
+      "burn_in": 0.5,
+      "thinning": 1,
+      "lags": 50,
+      "functional": ["score", "size"],
+      "active": true
     }
+  ]
 }

@@ -50,3 +50,5 @@ ggplot(data = df, aes(x = as.factor(seed), y = value, fill = stats)) +
     ylab("") +
     theme(plot.title = element_text(hjust = 0.5))
 ggsave(snakemake@output[["graph_density_plot"]])
+
+pdf(NULL)
