@@ -92,8 +92,6 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 
 ..  youtube:: tx3hIH3b9Hg
-   :width: 640
-   :height: 480
 
 .. .. note::
 

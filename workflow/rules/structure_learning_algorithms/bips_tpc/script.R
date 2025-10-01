@@ -60,9 +60,9 @@ wrapper <- function() {
     } else if (snakemake@wildcards[["indepTest"]] == "gaussCItest") {
         n <- dim(data)[1]
         suffStat <- list(C = cor(data), n = n)
-    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd")) {
+    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd")) {
         suffStat <- data
-    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "disMItest")) {
+    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "flexMItest", "disMItest")) {
         
         if (filename_mice_data != "None" ) {
             imputed_datasets <- readRDS(filename_mice_data)            

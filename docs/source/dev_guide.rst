@@ -1,13 +1,12 @@
 Authors
 ################
 
-.. image:: _static/IMG_784FC721EEEE-1.png
+.. image:: https://felixleopoldo.github.io/IMG_784FC721EEEE-1.png
    :width: 250
 
 | `Felix Rios <https://felixleopoldo.github.io>`_
 | `Department of Paediatrics, Division of Biomedical Data Science <https://medicine.nus.edu.sg/sites/bids/people.html>`_
 | NUS Singapore
-
 
 
 .. image:: https://avatar.unibas.ch/image/236B4DEB-A2B0-47C4-BDA0-D9D46334F7E9

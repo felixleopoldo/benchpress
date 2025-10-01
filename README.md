@@ -68,6 +68,6 @@ This project is licensed under the GPL-2.0 License - see the [LICENSE](LICENSE) 
 
 
 ## References
-* <a id="1">[1]</a> [Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: a scalable and versatile workflow for benchmarking structure learning algorithms for graphical models. *ArXiv eprints.*, 2107.03863, 2021.](https://arxiv.org/abs/2107.03863)
+* <a id="1">[1]</a> [Felix L. Rios and Giusi Moffa and Jack Kuipers Benchpress: A Versatile Platform for Structure Learning in Causal and Probabilistic Graphical Models. *Journal of Statistical Software.*, 10.18637/jss.v114.i12, 2025.](https://doi.org/10.18637/jss.v114.i12)
 
 
