@@ -7,14 +7,22 @@ rule compress:
         "{whatever}/adjvecs.tar.gz"
     shell:
         "tar -czf {output} {input}"
-
+ 
 rule extract:
     input:
-        "{whatever}/adjvecs.tar.gz"
+        tar="{whatever}/adjvecs.tar.gz",       
+    output:
+        csv=temp("{whatever}/adjvecs_tobecompressed.csv")
+    shell:
+        "tar -xf {input.tar}"
+
+rule copy_adjvecs:
+    input:
+        csv=rules.extract.output.csv
     output:
         temp("{whatever}/adjvecs.csv")
     shell:
-        "tar -xf {input} && mv {wildcards.whatever}/adjvecs_tobecompressed.csv {output}"
+        "cp {input.csv} {output}"
 
 # From the alg id we could easily determine the varying paramter by checking which key has
 # a list instead of a single value. But we need to match the id and we need to match the
