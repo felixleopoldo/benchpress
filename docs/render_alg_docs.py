@@ -100,7 +100,8 @@ def info_to_small_table():
     algspath = Path("../workflow/rules/structure_learning_algorithms")
     tab = ""
     tab += ".. list-table:: \n"#+p.name+"\n\n"
-    tab +="   :header-rows: 1 \n\n"
+    tab += "   :class: sphinx-datatable\n"
+    tab += "   :header-rows: 1 \n\n"
     tab += "   * - Algorithm\n" 
     tab += "     - Package\n" 
     #tab += "     - Module\n" 

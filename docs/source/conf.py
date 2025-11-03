@@ -45,7 +45,9 @@ extensions = [
     'versionwarning.extension',
     "sphinxext.opengraph",
     "sphinxcontrib.googleanalytics",
-    "sphinxcontrib.youtube"
+    "sphinxcontrib.youtube",
+    "sphinxcontrib.jquery",
+    "sphinx_datatables",
 ]
 googleanalytics_id = "G-CDYR88PWR3"
 
@@ -58,6 +60,18 @@ paths = [Path("../../workflow/rules/structure_learning_algorithms"),
          Path("../../workflow/rules/data/fixed_data")
          ]
 
+
+# in conf.py
+
+# set the version to use for DataTables plugin
+datatables_version = "2.3.0"
+
+# name of the class to use for tables to enable DataTables
+datatables_class = "sphinx-datatable"
+
+# any custom options to pass to the DataTables constructor. Note that any
+# options you set are used for all DataTables.
+datatables_options = { "pageLength": -1,}
 
 bibtex_bibfiles = []
 for mod in paths:

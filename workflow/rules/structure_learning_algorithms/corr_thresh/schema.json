@@ -1,31 +1,38 @@
 {
-    "title": "Some title",
-    "description": "List of  objects",
-    "type": "array",
-    "items": {
-        "title": "Some item",
-        "description": "Fields setting for .",
-        "type": "object",
-        "properties": {
-            "id": {
-                "desciption": "Algorithm identifier",
-                "type": "string"
-            },
-            "timeout": {
-                "$ref": "#/$defs/flexnonnegnumnull"
-            }
-        },
-        "required": [
-            "id",
-            "timeout"
-        ],
-        "examples": [
-            {
-                "id": "ct",
-                "thresh": 0.5,
-                "timeout": null
-            }
-        ]
+  "title": "Some title",
+  "description": "List of  objects",
+  "type": "array",
+  "items": {
+    "title": "Some item",
+    "description": "Fields setting for .",
+    "type": "object",
+    "properties": {
+      "id": {
+        "desciption": "Algorithm identifier",
+        "type": "string"
+      },
+      "method": {
+        "desciption": "Correlation or p-value thresholding",
+        "type": "string",
+        "enum": ["corr", "pval"]
+      },
+      "thresh": {
+        "desciption": "Threshold value [0, 1]",
+        "$ref": "#/$defs/flexprobnull"
+      },
+      "timeout": {
+        "$ref": "#/$defs/flexnonnegnumnull"
+      }
     },
-    "uniqueItems": true
+    "required": ["id", "timeout", "method", "thresh"],
+    "examples": [
+      {
+        "id": "ct",
+        "thresh": 0.5,
+        "method": "corr",
+        "timeout": null
+      }
+    ]
+  },
+  "uniqueItems": true
 }

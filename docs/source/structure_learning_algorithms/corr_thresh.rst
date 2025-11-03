@@ -69,6 +69,7 @@ Assuming Gaussian data, absense of an edge between a pair of nodes corresponds t
       {
         "id": "ct",
         "thresh": 0.5,
+        "method": "corr",
         "timeout": null
       }
     ]

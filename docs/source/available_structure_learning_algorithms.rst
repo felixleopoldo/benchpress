@@ -97,6 +97,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
 
 
 .. list-table:: 
+   :class: sphinx-datatable
    :header-rows: 1 
 
    * - Algorithm
