@@ -8,8 +8,8 @@ matplotlib.use('Agg')
 sns.set(rc={"figure.dpi": 300, 'savefig.dpi': 300})
 
 # If the algorithm was timed out
-if os.stat(snakemake.input["matrix_filename"]).st_size== 0:
-    open(snakemake.output["plot_filename"],'a').close()
+if os.stat(snakemake.input["matrix_filename"]).st_size == 0:
+    open(snakemake.output["plot_filename"], 'a').close()
 else:
     heatmap = pd.read_csv(snakemake.input["matrix_filename"])
     heatmap.index = heatmap.columns
@@ -24,8 +24,17 @@ else:
     cax.tick_params(labelsize=6)
     plt.title(snakemake.params["title"], fontsize=6, ha="center")
     if snakemake.params["alg_string"]:
-        plt.ylabel("Algorithm:\n\n"+snakemake.params["alg_string"].replace("/", "\n") + "\n\n" + "Graph type: " + snakemake.params["graph_type"], 
-                rotation="horizontal", fontsize=6, ha="right", va="center")
+        unwrapped = snakemake.params["alg_string"].replace(
+            "/", "\n")  # newlines separate the parameters
+        wrapped_lines = []
+        for line in unwrapped.splitlines():
+            wrapped = [line[i:i+25] for i in range(0, len(line), 25)]
+            wrapped_lines.extend(wrapped)
+        wrapped_alg_string = "\n".join(wrapped_lines)
+        type = snakemake.params["graph_type"]
+        ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}\n\nGraph type: {type}"
+        plt.ylabel(ylabel_text, rotation="horizontal",
+                   fontsize=6, ha="right", va="center")
     plt.tight_layout()
     plt.savefig(snakemake.output["plot_filename"])
     plt.clf()
