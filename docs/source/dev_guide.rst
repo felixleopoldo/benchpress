@@ -44,6 +44,10 @@ Contributors
 | `Department of Computer Science <http://www.bristol.ac.uk/engineering/departments/computerscience/>`_
 | University of Bristol, UK
 
+| `Damian Machlanski <https://dmachlanski.com/>`_
+| Department of Computer Science and Electronic Engineering
+| University of Essex, UK
+
 Credits
 ########
 
