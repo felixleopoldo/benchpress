@@ -108,12 +108,12 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - Edge constraints
      - Data missingness
      - Intervention type
-   * - :ref:`ANM <gcastle_anm>`
+   * - :ref:`ANMNonlinear <gcastle_anm>`
      - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C, D
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`ASOBS <rblip_asobs>`
@@ -145,7 +145,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`Chordal graph samplers <athomas_jtsamplers>`
@@ -225,7 +225,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
-     - :ref:`Yes <edge_constraints>`
+     - 
      - 
      - 
    * - :ref:`GIES <pcalg_gies>`

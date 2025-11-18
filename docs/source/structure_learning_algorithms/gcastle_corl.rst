@@ -29,7 +29,7 @@ CORL (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-5>`__
    * - Paper
      - :footcite:t:`wang2021ordering`
    * - Graph type
@@ -37,7 +37,7 @@ CORL (gCastle)
    * - MCMC
      - No
    * - Edge constraints
-     - :ref:`Yes <edge_constraints>`
+     - No
    * - Data type
      - C
    * - Data missingness

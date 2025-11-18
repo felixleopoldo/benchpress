@@ -29,7 +29,7 @@ NO TEARS low rank (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-11>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.2006.05691`
    * - Graph type

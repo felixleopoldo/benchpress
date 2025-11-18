@@ -29,7 +29,7 @@ GAE (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-7>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1911.07420`
    * - Graph type
@@ -37,7 +37,7 @@ GAE (gCastle)
    * - MCMC
      - No
    * - Edge constraints
-     - :ref:`Yes <edge_constraints>`
+     - No
    * - Data type
      - C
    * - Data missingness
@@ -50,7 +50,7 @@ GAE (gCastle)
 
 
 
-Graph autoencoder 
+Graph Autoencoder 
 ---------------------
 
 

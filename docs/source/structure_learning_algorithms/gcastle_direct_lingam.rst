@@ -29,7 +29,7 @@ Direct LINGAM (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-1>`__
    * - Paper
      - :footcite:t:`shimizu2011directlingam`
    * - Graph type
@@ -50,8 +50,8 @@ Direct LINGAM (gCastle)
 
 
 
-Direct LINGAM 
------------------
+Direct Learning Algorithm for Linear Non-Gaussian Acyclic Model 
+-------------------------------------------------------------------
 
 
 A direct learning algorithm for linear non-Gaussian acyclic model (LiNGAM).

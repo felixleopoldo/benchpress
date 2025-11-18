@@ -1,14 +1,14 @@
 
 
 
-:og:description: 
+:og:description: Notears Nonlinear. Include notears-mlp and notears-sob. A gradient-based algorithm using neural network or Sobolev space modeling for non-linear causal relationships.
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
 :og:title: NO TEARS non-linear (gCastle)
  
 .. meta::
     :title: NO TEARS non-linear (gCastle)
-    :description: 
+    :description: Notears Nonlinear. Include notears-mlp and notears-sob. A gradient-based algorithm using neural network or Sobolev space modeling for non-linear causal relationships.
 
 
 .. _gcastle_notears_nonlinear: 
@@ -29,7 +29,7 @@ NO TEARS non-linear (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-13>`__
    * - Paper
      - :footcite:t:`pmlr-v108-zheng20a`
    * - Graph type
@@ -53,6 +53,8 @@ NO TEARS non-linear (gCastle)
 NO TEARS non-linear 
 -----------------------
 
+
+Notears Nonlinear. Include notears-mlp and notears-sob. A gradient-based algorithm using neural network or Sobolev space modeling for non-linear causal relationships.
 
 
 

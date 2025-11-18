@@ -5,13 +5,7 @@
         "title": "gCastle",
         "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
-    "docs_url": "",
-    "papers": [
-        {
-            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
-            "url": "https://arxiv.org/abs/2111.15155"
-        }
-    ],
+    "docs_url": "https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-8",
     "outputs": [
         "adjmat"
     ],
@@ -19,7 +13,7 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "Gradient-based neural DAG learning",
+    "title_full": "Gradient-based Neural DAG Learner",
     "meta_description": "A gradient-based algorithm using neural network modeling for non-linear additive noise data.",
     "data_types": [
         "continuous"

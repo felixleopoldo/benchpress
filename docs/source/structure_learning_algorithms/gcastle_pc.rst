@@ -29,7 +29,7 @@ PC (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-3>`__
    * - Paper
      - :footcite:t:`kalisch2007estimating`
    * - Graph type

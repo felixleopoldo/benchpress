@@ -29,7 +29,7 @@ GOLEM (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-12>`__
    * - Paper
      - :footcite:t:`NEURIPS2020_d04d42cd`
    * - Graph type

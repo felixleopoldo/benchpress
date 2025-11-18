@@ -5,7 +5,7 @@
         "title": "gCastle",
         "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
-    "docs_url": "",
+    "docs_url": "https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-1",
     "outputs": [
         "adjmat"
     ],
@@ -13,7 +13,7 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "Direct LINGAM",
+    "title_full": "Direct Learning Algorithm for Linear Non-Gaussian Acyclic Model",
     "meta_description": "Direct LINGAM",
     "data_types": [
         "continuous"

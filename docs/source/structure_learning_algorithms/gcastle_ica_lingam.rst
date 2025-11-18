@@ -29,7 +29,7 @@ ICA-LiNGAM (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-2>`__
    * - Paper
      - :footcite:t:`10.5555/1248547.1248619`
    * - Graph type

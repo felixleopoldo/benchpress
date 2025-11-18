@@ -29,7 +29,7 @@ GraNDAG (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-8>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1906.02226`
    * - Graph type
@@ -50,8 +50,8 @@ GraNDAG (gCastle)
 
 
 
-Gradient-based neural DAG learning 
---------------------------------------
+Gradient-based Neural DAG Learner 
+-------------------------------------
 
 
 A gradient-based algorithm using neural network modeling for non-linear additive noise data.

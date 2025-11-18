@@ -29,7 +29,7 @@ NO TEARS (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-10>`__
    * - Paper
      - :footcite:t:`NEURIPS2018_e347c514`
    * - Graph type

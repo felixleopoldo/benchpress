@@ -29,7 +29,7 @@ MCSL (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#castle.algorithms.MCSL>`__
    * - Paper
      - :footcite:t:`doi:10.1137/1.9781611977172.48`
    * - Graph type

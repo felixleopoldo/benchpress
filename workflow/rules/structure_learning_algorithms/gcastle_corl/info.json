@@ -5,7 +5,7 @@
         "title": "gCastle",
         "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
-    "docs_url": "",
+    "docs_url": "https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-5",
     "outputs": [
         "adjmat"
     ],
@@ -21,5 +21,5 @@
     "data_missingness": [],
     "intervention_types": [],
     "mcmc": false,
-    "edge_constraints": true
+    "edge_constraints": false
 }

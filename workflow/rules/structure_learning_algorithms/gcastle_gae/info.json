@@ -5,13 +5,7 @@
         "title": "gCastle",
         "url": "https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle"
     },
-    "docs_url": "",
-    "papers": [
-        {
-            "title": "Keli Zhang, Shengyu Zhu, Marcus Kalander, Ignavier Ng, Junjian Ye, Zhitang Chen, Lujia Pan (2021). gCastle: A Python Toolbox for Causal Discovery.",
-            "url": "https://arxiv.org/abs/2111.15155"
-        }
-    ],
+    "docs_url": "https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-7",
     "outputs": [
         "adjmat"
     ],
@@ -19,7 +13,7 @@
         "DAG"
     ],
     "language": "Python",
-    "title_full": "Graph autoencoder",
+    "title_full": "Graph Autoencoder",
     "meta_description": "The proposed method generalizes the recent gradient-based methods to a graph autoencoder framework that allows nonlinear structural equation models and is easily applicable to vector-valued variables.",
     "data_types": [
         "continuous"
@@ -27,5 +21,5 @@
     "data_missingness": [],
     "intervention_types": [],
     "mcmc": false,
-    "edge_constraints": true
+    "edge_constraints": false
 }

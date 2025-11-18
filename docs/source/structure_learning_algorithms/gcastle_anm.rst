@@ -1,20 +1,20 @@
 
 
 
-:og:description: Nonlinear causal discovery with additive noise models.
+:og:description: Additive noise models for nonlinear causal discovery
 :og:image:alt: Benchpress logo
 :og:sitename: Benchpress causal discovery platform
-:og:title: ANM (gCastle)
+:og:title: ANMNonlinear (gCastle)
  
 .. meta::
-    :title: ANM (gCastle)
-    :description: Nonlinear causal discovery with additive noise models.
+    :title: ANMNonlinear (gCastle)
+    :description: Additive noise models for nonlinear causal discovery
 
 
 .. _gcastle_anm: 
 
-ANM (gCastle) 
-**************
+ANMNonlinear (gCastle) 
+***********************
 
 
 
@@ -29,7 +29,7 @@ ANM (gCastle)
    * - Language
      - `Python <https://www.python.org/>`__
    * - Docs
-     - 
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.algorithms.html#module-castle.algorithms>`__
    * - Paper
      - :footcite:t:`hoyer2008nonlinear`
    * - Graph type
@@ -37,7 +37,7 @@ ANM (gCastle)
    * - MCMC
      - No
    * - Edge constraints
-     - :ref:`Yes <edge_constraints>`
+     - No
    * - Data type
      - C, D
    * - Data missingness
@@ -50,8 +50,8 @@ ANM (gCastle)
 
 
 
-ANM 
--------
+ANMNonlinear 
+----------------
 
 
 Nonlinear causal discovery with additive noise models.

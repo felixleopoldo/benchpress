@@ -14,18 +14,8 @@
         "graph_true_plots": true,
         "graph_true_stats": false,
         "ggally_ggpairs": false,
-        "benchmarks": {
-          "filename_prefix": "example/",
-          "show_seed": false,
-          "errorbar": true,
-          "errorbarh": false,
-          "scatter": true,
-          "path": true,
-          "text": false,
-          "ids": ["mvpc", "bips_tpc"]
-        },
         "graph_estimation": {
-          "ids": ["mvpc", "bips_tpc"],
+          "ids": ["bips_tpc"],
           "convert_to": [],
           "graphs": false,
           "adjmats": false,
@@ -155,17 +145,17 @@
       "bips_tpc": [
         {
           "id": "bips_tpc",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "alpha": [0.05],
           "mmax": "Inf",
           "conservative": false,
           "majrule": true,
           "numCores": 1,
           "cl_type": "PSOCK",
           "verbose": false,
-          "indepTest": "gaussMItest",
-          "input_algorithm_id": "mice",
+          "indepTest": "gaussCItwd",
+          "input_algorithm_id": null,
           "timeout": null,
-          "edgeConstraints": null
+          "edgeConstraints": "edgeConstraints1.json"
         }
       ],
       "mice": [
