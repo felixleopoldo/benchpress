@@ -14,7 +14,7 @@
                 "type": "boolean"
             },
             "n": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             }
         },
         "required": [
