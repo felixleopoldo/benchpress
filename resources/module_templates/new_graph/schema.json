@@ -11,7 +11,7 @@
                 "type": "string"
             },
             "p": {
-                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+                "$ref": "#/$defs/flexnonnegint"
             }
         },
         "required": [
