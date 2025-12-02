@@ -14,7 +14,7 @@ rule sample_fixed_sem_params_data_gcastle:
              "seed={seed}.csv"
     wildcard_constraints:
         n="[0-9]*",
-        bn=".*\.csv"
+        bn=r".*\.csv"
     container:
         "docker://bpimages/gcastle:1.0.3"
     script:

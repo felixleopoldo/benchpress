@@ -188,30 +188,29 @@ def wrapper():
     elif(snakemake.params["alg"] == "gae"):
         from castle.algorithms import GAE
 
-        n = GAE(seed=seed,
-                x_dim=int(snakemake.wildcards["x_dim"]),
-                num_encoder_layers=int(
-                    snakemake.wildcards["num_encoder_layers"]),
-                num_decoder_layers=int(
-                    snakemake.wildcards["num_deoder_layers"]),
-                hidden_size=int(snakemake.wildcards["hidden_size"]),
-                latent_dim=int(snakemake.wildcards["latent_dim"]),
-                l1_graph_penalty=float(
-                    snakemake.wildcards["l1_graph_penalty"]),
-                use_float64=eval(snakemake.wildcards["use_float64"]),
-                learning_rate=float(snakemake.wildcards["learning_rate"]),
-                max_iter=int(snakemake.wildcards["max_iter"]),
-                iter_step=int(snakemake.wildcards["iter_step"]),
+        n = GAE(
+                input_dim=int(snakemake.wildcards["input_dim"]),
+                hidden_layers=int(snakemake.wildcards["hidden_layers"]),
+                hidden_dim=int(snakemake.wildcards["hidden_dim"]),
+                # activation=torch.nn.LeakyReLU(0.05)
+                epochs=int(snakemake.wildcards["epochs"]),
+                update_freq=int(snakemake.wildcards["update_freq"]),
                 init_iter=int(snakemake.wildcards["init_iter"]),
-                h_tol=float(snakemake.wildcards["h_tol"]),
-                init_rho=int(snakemake.wildcards["init_tol"]),
+                lr=float(snakemake.wildcards["lr"]),
+                alpha=float(snakemake.wildcards["alpha"]),
+                beta=float(snakemake.wildcards["beta"]),
+                init_rho=float(snakemake.wildcards["init_rho"]),
                 rho_thresh=float(snakemake.wildcards["rho_thresh"]),
+                gamma=float(snakemake.wildcards["gamma"]),
+                penalty_lambda=float(snakemake.wildcards["penalty_lambda"]),
                 h_thresh=float(snakemake.wildcards["h_thresh"]),
-                rho_multiply=float(snakemake.wildcards["rho_multiply"]),
+                graph_thresh=float(snakemake.wildcards["graph_thresh"]),
                 early_stopping=eval(snakemake.wildcards["early_stopping"]),
-                early_stopping_thres=float(
-                    snakemake.wildcards["early_stopping_thresh"]),
-                graph_thres=float(snakemake.wildcards["graph_thresh"]))
+                early_stopping_thresh=float(snakemake.wildcards["early_stopping_thresh"]),      
+                seed=seed,
+                device_type=snakemake.wildcards["device_type"],
+                device_ids=snakemake.wildcards["device_ids"]
+                )
 
         n.learn(df.values, columns=df.columns)
 

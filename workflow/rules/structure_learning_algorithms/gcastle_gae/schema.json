@@ -1,51 +1,48 @@
 {
-    "title": "gcastle_notears_low_rank",
-    "description": "List of gcastle_notears_low_rank objects",
-    "type": "array",
-    "items": {
-        "title": "gcastle_notears_low_rank item",
-        "description": "gcastle_notears_low_rank object",
-        "type": "object",
-        "properties": {
-            "id": {
-                "type": "string",
-                "title": "Unique identifier",
-                "description": "Unique identifier for that can be used as reference in the benchmark_setup."
-            },
-            "timeout": {
-                "$ref": "#/$defs/flexnonnegnumnull"
-            }
-        },
-        "additionalProperties": true,
-        "required": [
-            "id",
-            "timeout"
-        ],
-        "examples": [
-            {
-                "id": "gcastle_gae",
-                "x_dim": 1,
-                "num_encoder_layers": 1,
-                "num_decoder_layers": 1,
-                "hidden_size": 4,
-                "latent_dim": 1,
-                "l1_graph_penalty": 0.0,
-                "use_float64": false,
-                "learning_rate": "1e-3",
-                "max_iter": 10,
-                "iter_step": 3000,
-                "init_iter": 3,
-                "h_tol": "1e-8",
-                "init_rho": 1.0,
-                "rho_thres": "1e+30",
-                "h_thres": 0.25,
-                "rho_multiply": 2.0,
-                "early_stopping": false,
-                "early_stopping_thres": 1.0,
-                "graph_thres": 0.3,
-                "timeout": null
-            }
-        ]
+  "title": "gcastle_notears_low_rank",
+  "description": "List of gcastle_notears_low_rank objects",
+  "type": "array",
+  "items": {
+    "title": "gcastle_notears_low_rank item",
+    "description": "gcastle_notears_low_rank object",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "title": "Unique identifier",
+        "description": "Unique identifier for that can be used as reference in the benchmark_setup."
+      },
+      "timeout": {
+        "$ref": "#/$defs/flexnonnegnumnull"
+      }
     },
-    "uniqueItems": true
+    "additionalProperties": true,
+    "required": ["id", "timeout"],
+    "examples": [
+      {
+        "id": "gcastle_gae",
+        "input_dim": 1,
+        "hidden_layers": 1,
+        "hidden_dim": 4,
+        "epochs": 10,
+        "update_freq": 3000,
+        "init_iter": 3,
+        "lr": "1e-3",
+        "alpha": 0.0,
+        "beta": 2.0,
+        "init_rho": 1.0,
+        "rho_thresh": "1e+30",
+        "gamma": 0.25,
+        "penalty_lambda": 0.0,
+        "h_thresh": 0.25,
+        "graph_thresh": 0.3,
+        "early_stopping": false,
+        "early_stopping_thresh": 1.0,
+        "device_type": "cpu",
+        "device_ids": "0",
+        "timeout": null
+      }
+    ]
+  },
+  "uniqueItems": true
 }

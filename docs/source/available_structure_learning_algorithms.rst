@@ -140,14 +140,6 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - :ref:`Yes <edge_constraints>`
      - 
      - 
-   * - :ref:`CORL <gcastle_corl>`
-     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - C
-     - 
-     - 
-     - 
-     - 
    * - :ref:`Chordal graph samplers <athomas_jtsamplers>`
      - `A. Thomas <https://medicine.utah.edu/faculty/alun-thomas>`__
      - `DG <https://en.wikipedia.org/wiki/Chordal_graph>`__
@@ -544,14 +536,6 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - `pyagrum <https://pyagrum.readthedocs.io/en/latest/>`__
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - B
-     - 
-     - 
-     - 
-     - 
-   * - :ref:`RL <gcastle_rl>`
-     - `gCastle <https://github.com/huawei-noah/trustworthyAI/tree/master/gcastle>`__
-     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
-     - C
      - 
      - 
      - 
