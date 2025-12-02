@@ -56,6 +56,30 @@ Graph Autoencoder
 
 A gradient-based algorithm using graph autoencoder to model non-linear causal relationships.
 
+.. rubric:: Example 
+
+Config file: `gcastle.json <https://github.com/felixleopoldo/benchpress/blob/master/config/gcastle.json>`_
+
+Command:
+
+.. code:: bash
+
+    snakemake --cores all --use-apptainer --configfile config/gcastle.json
+
+:numref:`gcastleplot` shows the pattern graph's FP/P vs. TP/P benchmark results for 12 gCastle algorithms (and comparison with BOSS from TETRAD and BiDAG iterative search).
+The benchmark is based on 5 datasets corresponding to 5 realisations of a 20-variable random Gaussian SEM with Erdős-Rényi structure (expected degree 4, max parents 5). 
+Each dataset contains 300 standardized samples. 
+The SEM parameters are uniformly sampled from [0.25, 1].
+
+.. _gcastleplot:
+
+.. figure:: ../../../../../docs/source/_static/gcastle_benchmarks.png
+    :width: 640
+    :alt: FP/P vs. TP/P for gCastle algorithms
+    :align: center
+
+    FP/P vs. TP/P for gCastle algorithms.
+
 
 
 .. rubric:: Example JSON
@@ -67,25 +91,25 @@ A gradient-based algorithm using graph autoencoder to model non-linear causal re
     [
       {
         "id": "gcastle_gae",
-        "x_dim": 1,
-        "num_encoder_layers": 1,
-        "num_decoder_layers": 1,
-        "hidden_size": 4,
-        "latent_dim": 1,
-        "l1_graph_penalty": 0.0,
-        "use_float64": false,
-        "learning_rate": "1e-3",
-        "max_iter": 10,
-        "iter_step": 3000,
+        "input_dim": 1,
+        "hidden_layers": 1,
+        "hidden_dim": 4,
+        "epochs": 10,
+        "update_freq": 3000,
         "init_iter": 3,
-        "h_tol": "1e-8",
+        "lr": "1e-3",
+        "alpha": 0.0,
+        "beta": 2.0,
         "init_rho": 1.0,
-        "rho_thres": "1e+30",
-        "h_thres": 0.25,
-        "rho_multiply": 2.0,
+        "rho_thresh": "1e+30",
+        "gamma": 0.25,
+        "penalty_lambda": 0.0,
+        "h_thresh": 0.25,
+        "graph_thresh": 0.3,
         "early_stopping": false,
-        "early_stopping_thres": 1.0,
-        "graph_thres": 0.3,
+        "early_stopping_thresh": 1.0,
+        "device_type": "cpu",
+        "device_ids": "0",
         "timeout": null
       }
     ]

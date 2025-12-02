@@ -14,7 +14,7 @@ gcastle_iidsim
    * - Version
      - 1.0.3
    * - Docs
-     - `here <https://github.com/huawei-noah/trustworthyAI/blob/master/gcastle/castle/datasets/simulator.py>`__
+     - `here <https://gcastle.readthedocs.io/en/latest/castle/castle.datasets.html#castle.datasets.simulator.IIDSimulation>`__
    * - Paper
      - :footcite:t:`zhang2021gcastle`
    * - Graph type
