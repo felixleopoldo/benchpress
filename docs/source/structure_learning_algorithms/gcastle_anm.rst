@@ -74,7 +74,7 @@ The SEM parameters are uniformly sampled from [0.25, 1].
 
 .. _gcastlenonlinearplot:
 
-.. figure:: ../../../../../docs/source/_static/gcastle_benchmarks_nonlinear_anm.png
+.. figure:: https://raw.githubusercontent.com/felixleopoldo/benchpress/master/docs/source/_static/gcastle_benchmarks_nonlinear_anm.png
     :width: 640
     :alt: FP/P vs. TP/P for gCastle algorithms on nonlinear MLP data
     :align: left
@@ -83,7 +83,7 @@ The SEM parameters are uniformly sampled from [0.25, 1].
 
 .. _gcastlenonlinearquadplot:
 
-.. figure:: ../../../../../docs/source/_static/gcastle_benchmarks_nonlinear_quadratic.png
+.. figure:: https://raw.githubusercontent.com/felixleopoldo/benchpress/master/docs/source/_static/gcastle_benchmarks_nonlinear_quadratic.png
     :width: 640
     :alt: FP/P vs. TP/P for gCastle algorithms on nonlinear quadratic data
     :align: right
