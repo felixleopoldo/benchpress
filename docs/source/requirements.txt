@@ -5,7 +5,7 @@ sphinxcontrib.bibtex
 bibtexparser
 sphinx_rtd_theme
 recommonmark
-urllib3==2.5.0
+urllib3==2.6.0
 requests
 sphinx-version-warning
 sphinx-last-updated-by-git
