@@ -12,12 +12,12 @@
       "evaluation": {
         "benchmarks": {
           "filename_prefix": "paper_sachs/",
-          "show_seed": false,
-          "errorbar": false,
-          "errorbarh": false,
+          "show_seed": true,
+          "errorbar": true,
+          "errorbarh": true,
           "scatter": true,
           "path": true,
-          "text": false,
+          "text": true,
           "ids": [
             "boss-sem-bic",
             "grasp-sem-bic",
@@ -34,18 +34,26 @@
         "graph_true_stats": true,
         "graph_true_plots": true,
         "ggally_ggpairs": true,
-        "graph_plots": [
-          "notears-l2",
-          "gs-zf",
-          "fges-sem-bic",
-          "hc-bge",
-          "itsearch-bge",
-          "mmhc-bge-zf",
-          "omcmc-bge",
-          "pc-gaussCItest",
-          "tabu-bge",
-          "interiamb-zf"
-        ],
+        "graph_estimation": {
+          "ids": [
+            "boss-sem-bic",
+            "grasp-sem-bic",
+            "notears-l2",
+            "fges-sem-bic",
+            "hc-bge",
+            "itsearch-bge",
+            "mmhc-bge-zf",
+            "omcmc-bge",
+            "pc-gaussCItest",
+            "tabu-bge"
+          ],
+          "convert_to": ["cpdag", "pattern"],
+          "graphs": true,
+          "adjmats": false,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        },
         "mcmc_traj_plots": [],
         "mcmc_heatmaps": [],
         "mcmc_autocorr_plots": []
@@ -67,13 +75,7 @@
           "allowInternalRandomess": false,
           "samplePrior": 0,
           "semBicStructurePrior": 0,
-          "penaltyDiscount": [
-            1,
-            1.5,
-            2.0,
-            2.5,
-            3.0
-          ],
+          "penaltyDiscount": [1, 1.5, 2.0, 2.5, 3.0],
           "timeout": null,
           "edgeConstraints": null
         }
@@ -86,13 +88,7 @@
           "test": "fisher-z-test",
           "samplePrior": 0,
           "semBicStructurePrior": 0,
-          "penaltyDiscount": [
-            1,
-            1.5,
-            2.0,
-            2.5,
-            3.0
-          ],
+          "penaltyDiscount": [1, 1.5, 2.0, 2.5, 3.0],
           "timeout": null,
           "edgeConstraints": null
         }
@@ -105,11 +101,7 @@
           "max_iter": 100,
           "h_tol": "1e-8",
           "rho_max": "1e+16",
-          "w_threshold": [
-            0.05,
-            0.1,
-            0.25
-          ],
+          "w_threshold": [0.05, 0.1, 0.25],
           "timeout": null
         }
       ],
@@ -139,11 +131,7 @@
           "datatype": "continuous",
           "samplePrior": 1,
           "semBicStructurePrior": 1,
-          "penaltyDiscount": [
-            0.8,
-            1,
-            1.5
-          ],
+          "penaltyDiscount": [0.8, 1, 1.5],
           "timeout": null,
           "edgeConstraints": null
         }
@@ -151,12 +139,7 @@
       "pcalg_pc": [
         {
           "id": "pc-gaussCItest",
-          "alpha": [
-            0.001,
-            0.01,
-            0.05,
-            0.1
-          ],
+          "alpha": [0.001, 0.01, 0.05, 0.1],
           "NAdelete": true,
           "mmax": "Inf",
           "u2pd": "relaxed",
@@ -174,12 +157,7 @@
       "bnlearn_mmhc": [
         {
           "id": "mmhc-bge-zf",
-          "alpha": [
-            0.001,
-            0.01,
-            0.05,
-            0.1
-          ],
+          "alpha": [0.001, 0.01, 0.05, 0.1],
           "score": "bge",
           "test": "zf",
           "iss": 1,
@@ -196,10 +174,7 @@
       "bnlearn_interiamb": [
         {
           "id": "interiamb-zf",
-          "alpha": [
-            0.01,
-            0.05
-          ],
+          "alpha": [0.01, 0.05],
           "test": "zf",
           "B": null,
           "maxsx": null,
@@ -212,10 +187,7 @@
       "bnlearn_gs": [
         {
           "id": "gs-zf",
-          "alpha": [
-            0.01,
-            0.05
-          ],
+          "alpha": [0.01, 0.05],
           "test": "zf",
           "B": null,
           "maxsx": null,
@@ -230,12 +202,7 @@
           "id": "tabu-bge",
           "score": "bge",
           "iss": 1,
-          "issmu": [
-            0.0001,
-            0.001,
-            0.01,
-            0.05
-          ],
+          "issmu": [0.0001, 0.001, 0.01, 0.05],
           "issw": null,
           "l": 5,
           "k": 1,
@@ -250,12 +217,7 @@
           "id": "hc-bge",
           "score": "bge",
           "iss": 1,
-          "issmu": [
-            0.0001,
-            0.001,
-            0.01,
-            0.05
-          ],
+          "issmu": [0.0001, 0.001, 0.01, 0.05],
           "issw": null,
           "l": 5,
           "k": 1,
@@ -326,9 +288,7 @@
           "MAP": false,
           "cpdag": false,
           "mcmc_seed": 1,
-          "threshold": [
-            0.5
-          ],
+          "threshold": [0.5],
           "burnin_frac": 0,
           "mcmc_estimator": "threshold",
           "timeout": null,
