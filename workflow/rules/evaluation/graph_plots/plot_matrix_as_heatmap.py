@@ -31,8 +31,9 @@ else:
             wrapped = [line[i:i+25] for i in range(0, len(line), 25)]
             wrapped_lines.extend(wrapped)
         wrapped_alg_string = "\n".join(wrapped_lines)
-        type = snakemake.params["graph_type"]
-        ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}\n\nGraph type: {type}"
+        #type = snakemake.params["graph_type"]
+        #ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}\n\nGraph type: {type}"
+        ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}"
         plt.ylabel(ylabel_text, rotation="horizontal",
                    fontsize=6, ha="right", va="center")
     plt.tight_layout()
