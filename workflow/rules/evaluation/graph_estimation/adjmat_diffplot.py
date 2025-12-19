@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib
+from helper_functions import text_wrap
 matplotlib.use('Agg')
 
 # If the algorithm was timed out or no true graph was provided in benchmark_setup.
