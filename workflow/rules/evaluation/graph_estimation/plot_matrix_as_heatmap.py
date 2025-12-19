@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib
+from helper_functions import text_wrap
 matplotlib.use('Agg')
 sns.set(rc={"figure.dpi": 300, 'savefig.dpi': 300})
 
@@ -24,13 +25,7 @@ else:
     cax.tick_params(labelsize=6)
     plt.title(snakemake.params["title"], fontsize=6, ha="center")
     if snakemake.params["alg_string"]:
-        unwrapped = snakemake.params["alg_string"].replace(
-            "/", "\n")  # newlines separate the parameters
-        wrapped_lines = []
-        for line in unwrapped.splitlines():
-            wrapped = [line[i:i+25] for i in range(0, len(line), 25)]
-            wrapped_lines.extend(wrapped)
-        wrapped_alg_string = "\n".join(wrapped_lines)
+        wrapped_alg_string = text_wrap(snakemake.params["alg_string"],width=3)
         type = snakemake.params["graph_type"]
         ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}\n\nGraph type: {type}"
         plt.ylabel(ylabel_text, rotation="horizontal",
