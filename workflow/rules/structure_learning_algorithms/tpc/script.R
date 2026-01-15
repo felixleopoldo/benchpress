@@ -59,11 +59,14 @@ wrapper <- function() {
         forbEdges <- edgeConstraints$forbEdges
     }
     print("In TPC")
-    print("Edge constraints")
-    print(edgeConstraints)
 
-    print("context.tier")
-    print(context.tier)
+    #if (!is.null(edgeConstraints)) {
+    #    print("Edge constraints")
+    #    print(edgeConstraints)
+
+    #    print("context.tier")
+    #    print(context.tier)
+    #}
 
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
