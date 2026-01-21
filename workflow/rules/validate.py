@@ -66,6 +66,27 @@ def validate_data_setup(config, data_setup, bmark_setup):
             available_conf_ids.append(alg_conf["id"])
     available_conf_ids += available_data_files
 
+# also include csvfiles in subdirectories
+    import glob
+
+    # Gather all .csv files in resources/data/mydatasets and all subdirectories (relative paths)
+    csv_files_in_all_dirs = []
+    for filepath in glob.glob("resources/data/mydatasets/**/*.csv", recursive=True):
+        # Make path relative to "resources/data/mydatasets/"
+        relpath = os.path.relpath(filepath, "resources/data/mydatasets")
+        csv_files_in_all_dirs.append(relpath)
+    available_data_files += csv_files_in_all_dirs
+    available_conf_ids += csv_files_in_all_dirs
+    
+    # Now to get all the subdirectories we that csvs_in_all_dirs and strip the csv file name
+    subdirectories = []
+    for csv_file in csv_files_in_all_dirs:                
+        # Extract the directory (without the .csv file) from e/a/b.csv -> e/a/
+        subdirectories.append(os.path.dirname(csv_file))
+    available_data_files += list(set(subdirectories))
+    available_conf_ids += list(set(subdirectories))
+   
+
     if data_setup["data_id"] not in available_conf_ids:
         raise Exception(str(data_setup["data_id"]) +
                         " is not an available data id.\n"
