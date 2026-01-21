@@ -256,6 +256,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
         }
     }
 
+
     if (conservative && maj.rule) {
         stop("Choose either conservative PC or majority rule PC!")
     }
@@ -373,12 +374,17 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
         )
     }
 
+    print("******* Phase I done *****.")
+    print("skeleton:")
+    print(as(skel@graph, "matrix"))
     skel@call <- cl
-
 
     if (numEdges(skel@graph) == 0) {
         return(skel)
     }
+    print("****** Phase II starting ******")
+    print("suffstat")
+    print(head(suffStat))
     ## step II, orientation of v-structures:
     skelII <- tpc.cons.intern(skel, suffStat, indepTest, alpha,
         version.unf = c(2, 1), maj.rule = maj.rule,
@@ -386,6 +392,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
         forbEdges = forbEdges
     )
 
+    print("*** Phase III")
     ## step III, orientation of edges between tiers:
     gIII <- as(skelII$sk@graph, "matrix")
     for (t in unique(tiers)) {
@@ -404,6 +411,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
         gIII[r[1], r[2]] <- 0
     }
 
+    print("**** Phase IV")
     # step IV, Meek's rules
     skelIII <- skelII$sk
     skelIII@graph <- as(gIII, "graphNEL")

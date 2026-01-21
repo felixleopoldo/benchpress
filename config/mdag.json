@@ -3,67 +3,61 @@
     {
       "title": "missingness",
       "data": [
-          {
-            "graph_id": "missing_y.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
+        {
+          "graph_id": "fork_missing_orig.csv",
+          "parameters_id": "binbn",
+          "data_id": "bin",
+          "seed_range": [2, 4]
+        },
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "fork_missing_a.csv",
+          "seed_range": null
+        },
+        {
+          "graph_id": null,
+          "parameters_id": null,
+          "data_id": "fork_missing_a_with_missing.csv",
+          "seed_range": null
+        },
+        {
+          "graph_id": "fork_missing_orig_b.csv",
+          "parameters_id": "binbn",
+          "data_id": "bin",
+          "seed_range": [1, 10]
+        },
+        {
+            "graph_id": null,
+            "parameters_id": null,
+            "data_id": "fork_missing_orig_b_seed1.csv",
+            "seed_range": null
           },
           {
-            "graph_id": "y.csv",
-            "parameters_id": "binbn",
-            "data_id": "binary",
-            "seed_range": [1, 3]
+            "graph_id": null,
+            "parameters_id": null,
+            "data_id": "fork_missing_b.csv",
+            "seed_range": null
           },
           {
-            "graph_id": "eyecolor_missing.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 1]
+            "graph_id": "fork_missing_orig_b.csv",
+            "parameters_id": null,
+            "data_id": "fork_missing_b_with_missing.csv",
+            "seed_range": null
           },
           {
-            "graph_id": "missing_w.csv",
+            "graph_id": "missing_structure_c.csv",
             "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_w_star.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_w_2star.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_lambda.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_x.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing_2000",
-            "seed_range": [1, 5]
-          },
-          {
-            "graph_id": "missing_xo.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing_2000",
+            "data_id": "bin",
             "seed_range": [1, 5]
           }
         ],
       "evaluation": {
-        "graph_true_plots": true,
+        "graph_true_plots": false,
         "graph_true_stats": false,
         "ggally_ggpairs": true,
         "graph_estimation": {
-          "ids": ["td-pc", "bips_tpc"],
+          "ids": ["bips_tpc"],
           "convert_to": [],
           "graphs": true,
           "adjmats": false,
@@ -86,26 +80,14 @@
           "n": [10000]
         },
         {
-          "id": "binary",
+          "id": "bin",
           "standardized": false,
           "n": [1000]
-        }
-      ],
-      "iid_bin_missing": [
-        {
-          "id": "bin_missing",
-          "standardized": false,
-          "n": [1000]
-        },
-        {
-            "id": "bin_missing_2000",
-            "standardized": false,
-            "n": [2000]
         }
       ],
       "mvpc_gen_data": [
         {
-          "id": "missing_mvpc",
+          "id": "missing",
           "num_extra_e": 2,
           "num_m": 5,
           "mode": "mnar",
@@ -141,8 +123,8 @@
       "bin_bn": [
         {
           "id": "binbn",
-          "min": 0.2,
-          "max": 0.8
+          "min": 0.1,
+          "max": 0.9
         }
       ]
     },
@@ -195,38 +177,39 @@
           "indepTest": "gaussCItest.td",
           "timeout": null,
           "edgeConstraints": null
+        },
+        {
+          "id": "td-pc",
+          "alpha": [0.001, 0.01, 0.05, 0.1],
+          "corrMethod": null,
+          "NAdelete": true,
+          "mmax": "Inf",
+          "u2pd": "relaxed",
+          "skelmethod": "stable",
+          "conservative": false,
+          "majrule": true,
+          "solveconfl": true,
+          "numCores": 1,
+          "verbose": false,
+          "indepTest": "gaussCItest.td",
+          "timeout": null,
+          "edgeConstraints": null
         }
       ],
       "bips_tpc": [
         {
           "id": "bips_tpc",
-          "alpha": [0.05],
+          "alpha": [0.001, 0.01, 0.05, 0.1, 0.15],
           "mmax": "Inf",
           "conservative": false,
           "majrule": true,
           "numCores": 1,
           "cl_type": "PSOCK",
           "verbose": true,
-          "indepTest": "flexCItwd",
+          "indepTest": "mixCItwd",
           "input_algorithm_id": null,
           "timeout": null,
-          "edgeConstraints": null
-        }
-      ],
-      "tpc": [
-        {
-          "id": "td-pc",
-          "alpha": [0.05],
-          "mmax": "Inf",
-          "conservative": false,
-          "majrule": true,
-          "numCores": 1,
-          "cl_type": "PSOCK",
-          "verbose": true,
-          "indepTest": "flexCItwd",
-          "input_algorithm_id": null,
-          "timeout": null,
-          "edgeConstraints": null
+          "edgeConstraints": "edgeConstraints.json"
         }
       ],
       "mice": [

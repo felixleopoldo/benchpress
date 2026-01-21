@@ -1,0 +1,38 @@
+{
+    "title": "List of iid bin missing setups.",
+    "description": "List of iid bin missing setups.",
+    "type": "array",
+    "items": {
+        "title": "iid bin missing",
+        "description": "Data sampling from binary Bayesian network with missing values.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "title": "Unique ID",
+                "type": "string"
+            },
+            "n": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint"
+            },
+            "standardized": {
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "id",
+            "n",
+            "standardized"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "standardized",
+                "standardized": true,
+                "n": [
+                    100
+                ]
+            }
+        ]
+    },
+    "uniqueItems": true
+}

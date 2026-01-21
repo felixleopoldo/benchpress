@@ -1,62 +1,15 @@
 {
   "benchmark_setup": [
     {
-      "title": "missingness",
+      "title": "missing_w_2star",
       "data": [
-          {
-            "graph_id": "missing_y.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "y.csv",
-            "parameters_id": "binbn",
-            "data_id": "binary",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "eyecolor_missing.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 1]
-          },
-          {
-            "graph_id": "missing_w.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_w_star.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
           {
             "graph_id": "missing_w_2star.csv",
             "parameters_id": "binbn",
             "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_lambda.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [1, 3]
-          },
-          {
-            "graph_id": "missing_x.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing_2000",
-            "seed_range": [1, 5]
-          },
-          {
-            "graph_id": "missing_xo.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing_2000",
-            "seed_range": [1, 5]
+            "seed_range": [1, 1]
           }
+          
         ],
       "evaluation": {
         "graph_true_plots": true,
@@ -88,7 +41,7 @@
         {
           "id": "binary",
           "standardized": false,
-          "n": [1000]
+          "n": [3000]
         }
       ],
       "iid_bin_missing": [
@@ -141,8 +94,8 @@
       "bin_bn": [
         {
           "id": "binbn",
-          "min": 0.2,
-          "max": 0.8
+          "min": 0.3,
+          "max": 0.7
         }
       ]
     },

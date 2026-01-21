@@ -156,6 +156,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             stop("'p' is not needed when 'labels' is specified, and must match length(labels)")
         }
     }
+
     seq_p <- seq_len(p)
     method <- match.arg(method)
     if (is.null(fixedGaps)) {
@@ -247,7 +248,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             if (x >= y) next
 
             if (G[y, x] && !fixedEdges[y, x]) {
-                print(paste0("x: ", labels[x], " y: ", labels[y]))
+                #message("########################")
+                #message("Current edge x-y: ", labels[x], "-", labels[y])
+
                 # print("G:")
                 # print(G)
 
@@ -268,34 +271,12 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     G[, y]
                 }
 
-                # print("nbrsBool_x:")
-                # print(nbrsBool_x)
-                # print("nbrsBool_y:")
-                # print(nbrsBool_y)
-                #################################################
-                # this excludes neighbours in a later tier than x from the
-                # conditioning set
-                # nbrsBool_x[tiers > tiers[x]] <- FALSE
-                # nbrsBool_y[tiers > tiers[y]] <- FALSE
-
-                # print("nbrsBool_x after tiers:")
-                # print(nbrsBool_x)
-                # print("nbrsBool_y after tiers:")
-                # print(nbrsBool_y)
-
-                #################################################
-
-                # nbrsBool_x[y] <- FALSE
-                # nbrsBool_y[x] <- FALSE
-
                 # nbrs contains the indices of all eligible neighbours
                 nbrs_x <- seq_p[nbrsBool_x]
                 nbrs_y <- seq_p[nbrsBool_y]
 
-                print("Neighbours of x:")
-                print(labels[nbrs_x])
-                print("Neighbours of y:")
-                print(labels[nbrs_y])
+                #message("Neighbours of x: ", paste(labels[nbrs_x], collapse = ", "))
+                #message("Neighbours of y: ", paste(labels[nbrs_y], collapse = ", "))
                 # now find the R-variables and correspoding index of x and y (if they are not themselves R-variables)
 
                 R_x_index <- which(labels == paste0("R_", labels[x]))
@@ -317,8 +298,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     nbrs_Rx <- seq_p[nbrsBool_Rx]
                     R_vars_x <- labels[nbrs_Rx]
-                    print("R_x neighbors: ")
-                    print(R_vars_x)
+                    #message("R_x neighbors: ", paste(R_vars_x, collapse = ", "))
                     nbrs_all <- c(nbrs_all, nbrs_Rx)
                 }
 
@@ -331,12 +311,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     nbrs_Ry <- seq_p[nbrsBool_Ry]
                     R_vars_y <- labels[nbrs_Ry]
-                    print("R_y neighbors: ")
-                    print(R_vars_y)
+                    #message("R_y neighbors: ", paste(R_vars_y, collapse = ", "))
                     nbrs_all <- c(nbrs_all, nbrs_Ry)
                 }
-
-
 
                 nbrs_all <- unique(c(nbrs_x, nbrs_y, nbrs_all))
                 # remove x and y from nbrs_all
@@ -352,10 +329,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 if (length(R_y_index) != 0) {
                     nbrs_all <- nbrs_all[nbrs_all != R_y_index]
                 }
-                print("labels[nbrs_all] without R_x and R_y variables:")
-                print(labels[nbrs_all])
+                #message("All neighbors without x, y, R_x, and R_y variables: ", paste(labels[nbrs_all], collapse = ", "))
 
-                # Sems like we will never have to condition on only the missingess variable, if the substantive variables are in the conditioning set.
+                # Seems like we will never have to condition on only the missingess variable, if the substantive variables are in the conditioning set.
                 # So we can remove the R- variables if the substantive variables are in the conditioning set.
                 var_with_R_var <- c()
                 R_vars <- c()
@@ -366,29 +342,16 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         R_vars <- c(R_vars, paste0("R_", labels[var]))
                     }
                 }
-                R_vars_indices <- which(labels[nbrs_all] %in% R_vars)
+                R_vars_indices <- which(labels[nbrs_all] %in% R_vars)                
 
-                print("nbrs_all:")
-                print(nbrs_all)
-                print("labels[nbrs_all]:")
-                print(labels[nbrs_all])
-                print("R- variables:")
-                print(R_vars)
-                print("R_vars_indices:")
-                print(R_vars_indices)
-                print("Variables with R- variables:")
-                print(labels[var_with_R_var])
+                #message("R-variables: ", paste(R_vars, collapse = ", "))
+                #message("Variables with R- variables: ", paste(labels[var_with_R_var], collapse = ", "))
                 if (length(var_with_R_var) > 0) {
                     # remove index R_vars_indices from nbrs_all
-                    print("Removing R- variables from nbrs_all:")
+                    #message("Removing R- variables from nbrs_all:")
                     nbrs_all <- nbrs_all[!(nbrs_all %in% nbrs_all[R_vars_indices])]
                 }
-                print("nbrs_all after removing R- variables:")
-                print(labels[nbrs_all])
-
-                print("nbrs_all after removing variables with R- variables:")
-                print(labels[nbrs_all])
-
+                #message("All neighbors after removing R- variables: ", paste(labels[nbrs_all], collapse = ", "))
 
                 # remove the R- variables if the substantive variables are in the conditioning set
                 # now remove the R- variables if the substantive variables are in the conditioning set
@@ -397,11 +360,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                 length_nbrs <- length(nbrs)
                 # next steps only possible if there are enough neighbours to form
                 # conditioning sets of cardinality length_nbrs
-
-                print("length_nbrs:")
-                print(length_nbrs)
-                print("ord:")
-                print(ord)
+                
                 if (length_nbrs >= ord) { # else go to next remaining edge
                     if (length_nbrs > ord) {
                         # done is reset to FALSE if for any node with remaining edges,
@@ -411,16 +370,19 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     }
                     S <- seq_len(ord)
                     # split S into substantive and missingness variables
-                    print("S:")
-                    print(labels[nbrs[S]])
-                    print("Starting with this S and going through different subsets of the neighbours with length ord")
+                    #message("Current S: ", paste(labels[nbrs[S]], collapse = ", "))
+
+
+                    message("")
+                    message("********************************************************************************")
+                    message(paste0("Going through sepsets for ", labels[x], "-", labels[y], ": ", paste(labels[nbrs_all], collapse = ", "), " (ord = ", ord, ")"))
+                    message("********************************************************************************")
                     repeat { # the repeat loop goes over all subsets of the
                         # neighbours with length ord
                         n.edgetests[ord1] <- n.edgetests[ord1] + 1
 
                         S_fixed <- S
-                        print("S_fixed:")
-                        print(labels[nbrs[S_fixed]])
+                        #message("Current S_fixed: ", paste(labels[nbrs[S_fixed]], collapse = ", "))
                         # Somewhere here we add back the R-variables if the variable in S has missingness.
 
 
@@ -436,7 +398,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         pval <- NULL
                         if (verbose) {
                             cat(
-                                "\nTesting: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]], "\n"
+                                "\nTesting: ", labels[x], " _|_ ", labels[y], " | ", labels[nbrs[S_fixed]], "\n"
                             )
                         }
 
@@ -456,22 +418,19 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             R_y_index <- which(labels == R_y)
                         }
 
-                        print(paste0("R(x):", R_x))
-
-                        print(paste0("R(y):", R_y))
-
-                        print("S:")
-                        print(labels[nbrs[S_fixed]])
-                        # print("S_substantive:")
-                        # print(labels[nbrs[S_substantive]])
-                        # print("S_missingness:")
-                        # print(labels[nbrs[S_missingness]])
+                        #message("R(x):", R_x)
+                        #message("R(y):", R_y)
+                        #message("S: ", paste(labels[nbrs[S_fixed]], collapse = ", "))
 
                         # now get all missingness indicators of S and x and y
-                        # And get theyr parents. This is the set to take all subsets of.
+                        # And get their parents. This is the set to take all subsets of.
                         # we may need a anouther loop.
 
-                        # self_masking <- paste0("R_", labels[x]) == labels[y] || paste0("R_", labels[y]) == labels[x]
+                        self_masking <- (paste0("R_", labels[x]) == labels[y]) || (paste0("R_", labels[y]) == labels[x])
+                        if (self_masking) {
+                            pval <- 1
+                            print("Self-masking detected, setting pval to 1")
+                        }
 
                         untestable <- NULL
                         faith_obs <- FALSE
@@ -486,9 +445,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             # print(paste0("node_name: ", node_name))
                             # print(paste0("nbrs[S]: ", labels[nbrs[S]]))
                             if (node_name %in% labels[nbrs[S_fixed]]) {
-                                print(paste0(labels[x], " is in the independent set, and ", node_name, " is in the conditioning set"))
+                                message(labels[x], " is in the independent set, and ", node_name, " is in the conditioning set")
                                 # remove x from the conditioning set
-                                print(paste0("Removing ", node_name, " from the conditioning set"))
+                                message("Removing ", node_name, " from the conditioning set. This test has already been performed, so can as well skip it.")
                                 S_fixed <- S_fixed[-S_index_node_name]
                             }
                         }
@@ -499,9 +458,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             S_index_node_name <- which(labels[nbrs[S_fixed]] == node_name)
 
                             if (node_name %in% labels[nbrs[S_fixed]]) {
-                                print(paste0(labels[y], " is in the independent set, and ", node_name, " is in the conditioning set"))
+                                message(labels[y], " is in the independent set, and ", node_name, " is in the conditioning set")
                                 # remove y from the conditioning set
-                                print(paste0("Removing ", node_name, " from the conditioning set"))
+                                message("Removing ", node_name, " from the conditioning set")
                                 S_fixed <- S_fixed[-S_index_node_name]
                             }
                         }
@@ -518,23 +477,40 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             faith_obs <- TRUE
                         }
 
-                        if (faith_obs) {
-                            print(paste0("Faithful observability assumption removes the missingness variable from the conditioning set for implmentational reasons: x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]]))
-                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
-                        } else {
+                        n_complete_rows <- sum(complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]))
+                        complete_data <- suffStat[complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]), c(x, y, nbrs[S_fixed])]
+                        #print("Head of complete cases data:")
+                        #print(head(complete_data,10))
+                       
+                        if (!self_masking) {    
                             pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
                         }
 
+                        # For each of the labels[nbrs[S_fixed]], check if it has a corresponding R-variable
+                        # If so, save the corresponding substantive variable in a list. 
+                        R_vars_in_S <- c()
+                        for (var in labels[nbrs[S_fixed]]) {
+                            if (paste0("R_", var) %in% labels) {
+                                R_vars_in_S <- c(R_vars_in_S, paste0("R_", var))
+                            }
+                        }
+
+                        all_R_vars <- c(R_x, R_y, R_vars_in_S)                        
                         if (verbose) {
                             if (faith_obs) {
                                 cat(
-                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]],
-                                    ": pval =", pval, "\n"
+                                    labels[x], " _|_ ", labels[y], " | ", labels[nbrs[S_fixed]],
+                                    ": pval =", pval, " (n_complete_rows = ", n_complete_rows, ")\n"
                                 )
                             } else {
+                                if (length(all_R_vars) > 0) {
+                                    all_R_vars_str <- paste0(paste0(all_R_vars,"=1") , collapse = ", ")
+                                } else {
+                                    all_R_vars_str <- ""
+                                }
                                 cat(
-                                    "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S_fixed]],
-                                    ": pval =", pval, "\n"
+                                    labels[x], " _|_ ", labels[y], " | ", labels[nbrs[S_fixed]], all_R_vars_str,
+                                    ": pval =", pval, " (n_complete_rows = ", n_complete_rows, ")\n"
                                 )
                             }
                         }
@@ -926,7 +902,10 @@ sgs_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         print("S_fixed after removing R-variables:")
                         print(labels[nbrs[S_fixed]])
 
-                        pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
+                        #pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
+                        pval <- indepTest(x, y, 
+                          as.integer(unlist(nbrs[S_fixed], use.names = FALSE)),
+                          suffStat)
 
                         if (verbose) {
                             cat(

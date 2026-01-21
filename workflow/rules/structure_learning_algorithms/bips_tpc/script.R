@@ -56,13 +56,19 @@ wrapper <- function() {
         # the discrete case
         nlev <- as.numeric(data[1, ])
         data <- data[-1, ] # Remove range header
+        # creaate factor variables from the data
+        data <- as.data.frame(lapply(data, as.factor))
+        
         suffStat <- list(dm = data, nlev = nlev, adaptDF = FALSE)
     } else if (snakemake@wildcards[["indepTest"]] == "gaussCItest") {
         n <- dim(data)[1]
         suffStat <- list(C = cor(data), n = n)
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
+        data <- data[-1, ]
+        # creaate factor variables from the data
+        data <- as.data.frame(lapply(data, as.factor))
         suffStat <- data
-        if (snakemake@wildcards[["indepTest"]] == "flexCItest") {
+        if (snakemake@wildcards[["indepTest"]] == "flexCItest") {            
             suffStat <- getSuff(data, test = "flexCItest")
         }
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussMItest", "mixMItest", "disMItest", "flexMItest")) {
