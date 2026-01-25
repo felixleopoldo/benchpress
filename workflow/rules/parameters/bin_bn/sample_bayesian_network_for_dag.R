@@ -2,6 +2,7 @@
 library(argparser)
 
 source("resources/binarydatagen/generatebinaryBNf.r")
+source("resources/binarydatagen/generateNStatesBNf.r")
 
 adjacency2dag <- function(adj, nodes = NULL) {
     l <- ncol(adj)
@@ -63,7 +64,7 @@ colnames(adjmat) <- seq(n)
 DAG <- adjacency2dag(adjmat)#, nodes = colnames(adjmat))
 
 set.seed(seed_number)
-binBN <- generateBinaryBN(DAG, c(argv$min, argv$max))
+binBN <- generateNStatesBN(DAG, nstates = 3, baseline = c(argv$min, argv$max))
 # Set the node labels
 nodes(binBN$DAG) <- labels
 colnames(binBN$adj) <- labels

@@ -102,8 +102,6 @@ wrapper <- function() {
     # Forbid edges from the R_ variables to the original variables
     for (i in 1:ncol(data)) {
         for (j in 1:ncol(data)) {
-            print(paste0("i: ", i, " j: ", j))
-
             if (grepl("^R_", colnames(data)[i]) && !grepl("^R_", colnames(data)[j])) {
                 forbEdges[i, j] <- 1
             }

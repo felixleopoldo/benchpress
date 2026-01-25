@@ -1,13 +1,13 @@
 {
   "benchmark_setup": [
     {
-      "title": "missing_w_star",
+      "title": "missing_y",
       "data": [
           {
-            "graph_id": "missing_w_star.csv",
-            "parameters_id": "binbn",
-            "data_id": "bin_missing",
-            "seed_range": [12, 12]
+            "graph_id": "missing_y.csv",
+            "parameters_id": "discbn",
+            "data_id": "disc_missing",
+            "seed_range": [1, 1]
           }
           
         ],
@@ -48,12 +48,14 @@
         {
           "id": "bin_missing",
           "standardized": false,
-          "n": [1000]
-        },
+          "n": [5000]
+        }
+      ],      
+      "iid_disc_missing": [
         {
-            "id": "bin_missing_2000",
-            "standardized": false,
-            "n": [2000]
+          "id": "disc_missing",
+          "standardized": false,
+          "n": [1000]
         }
       ],
       "mvpc_gen_data": [
@@ -96,6 +98,14 @@
           "id": "binbn",
           "min": 0.3,
           "max": 0.7
+        }
+      ],
+      "disc_bn": [
+        {
+          "id": "discbn",
+          "min": 0.3,
+          "max": 0.7,
+          "nstates": 3
         }
       ]
     },

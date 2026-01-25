@@ -7,7 +7,7 @@
             "graph_id": "missing_w_2star.csv",
             "parameters_id": "binbn",
             "data_id": "bin_missing",
-            "seed_range": [1, 1]
+            "seed_range": [1, 5]
           }
           
         ],

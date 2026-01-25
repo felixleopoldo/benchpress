@@ -26,7 +26,7 @@
 #'
 tcheckTriple <- function (a, b, c, nbrsA, nbrsC, sepsetA, sepsetC, suffStat,
           indepTest, alpha, version.unf = c(NA, NA), maj.rule = FALSE,
-          verbose = FALSE, NAdelete=TRUE) {
+          verbose = FALSE, NAdelete=TRUE, labels = NULL) {
   nr.indep <- 0
   stopifnot(length(version.unf) == 2, version.unf %in% 1:2)
   tmp <- if (version.unf[2] == 2)
@@ -36,9 +36,9 @@ tcheckTriple <- function (a, b, c, nbrsA, nbrsC, sepsetA, sepsetC, suffStat,
     allComb <- expand.grid(lapply(integer(nn), function(.) 0:1))
     for (i in 1:nrow(allComb)) {
       S <- nbrsA[which(allComb[i, ] != 0)]
-      pval <- indepTest(a, c, S, suffStat)
+      pval <- indepTest(a, c, S, suffStat, labels = labels)
       if (verbose)
-        cat("a: S =", S, " - pval =", pval,
+        cat("a: S =", labels[S], " - pval =", pval,
             "\n")
       if (is.na(pval))
         pval <- as.numeric(NAdelete)
@@ -53,9 +53,9 @@ tcheckTriple <- function (a, b, c, nbrsA, nbrsC, sepsetA, sepsetC, suffStat,
     allComb <- expand.grid(lapply(integer(nn), function(.) 0:1))
     for (i in 1:nrow(allComb)) {
       S <- nbrsC[which(allComb[i, ] != 0)]
-      pval <- indepTest(a, c, S, suffStat)
+      pval <- indepTest(a, c, S, suffStat, labels = labels)
       if (verbose)
-        cat("c: S =", S, " - pval =", pval,
+        cat("c: S =", labels[S], " - pval =", pval,
             "\n")
       if (is.na(pval))
               pval <- as.numeric(NAdelete)

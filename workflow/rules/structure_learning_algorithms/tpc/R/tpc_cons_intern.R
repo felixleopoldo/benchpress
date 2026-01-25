@@ -69,7 +69,7 @@
 tpc.cons.intern <- function(
   sk, suffStat, indepTest, alpha, version.unf = c(NA, NA),
   maj.rule = FALSE, forbEdges=NULL, tiers=NULL,
-  context.all=NULL, context.tier=NULL, verbose = FALSE) {
+  context.all=NULL, context.tier=NULL, verbose = FALSE, labels = NULL) {
 
   orientConflictCollider <- function(pdag, x, y, z) {
     if (pdag[x, y] == 1) {
@@ -168,11 +168,11 @@ tpc.cons.intern <- function(
 
         ############################# new code
         # neighbours in the future of both candidate parents are excluded
-        nbrsA <- intersect(nbrsA, which(tiers<=tiers[a]))
+        nbrsA <- intersect(nbrsA, which(tiers   <=tiers[a]))
         nbrsC <- intersect(nbrsC, which(tiers<=tiers[c]))
         ############################# end new code
         if (verbose) {
-          cat("\nTriple:", a, b, c, "and sepset by skelet:",
+          cat("\nTriple:", labels[a], "-", labels[b], "-", labels[c], "and sepset by skelet:",
               unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]]),
               "\n")
         }
@@ -180,7 +180,7 @@ tpc.cons.intern <- function(
         r.abc <- tcheckTriple(a, b, c, nbrsA, nbrsC, sk@sepset[[a]][[c]],
                              sk@sepset[[c]][[a]], suffStat = suffStat, indepTest = indepTest,
                              alpha = alpha, version.unf = version.unf, maj.rule = maj.rule,
-                             verbose = verbose)
+                             verbose = verbose, labels = labels)
         if (r.abc$decision == 3) { # decision 3 is ambiguous
           # add ambiguous triple to unfTripl
           counter <- counter + 1

@@ -483,7 +483,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         #print(head(complete_data,10))
                        
                         if (!self_masking) {    
-                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
+                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat, labels = labels)
                         }
 
                         # For each of the labels[nbrs[S_fixed]], check if it has a corresponding R-variable

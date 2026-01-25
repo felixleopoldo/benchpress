@@ -5,7 +5,7 @@
 rule sample_bin_missing_data:
     input:
         bn="{output_dir}/parameters/bin_bn/{bn}/adjmat=/{adjmat}.rds",
-        script="workflow/rules/data/iid_bin_missing/sample_bindata_with_missing_values.R"
+        script="workflow/rules/data/iid_bin_missing/script.R"
     output:
         data="{output_dir}/data" \
              "/adjmat=/{adjmat}"\
@@ -15,7 +15,7 @@ rule sample_bin_missing_data:
     wildcard_constraints:
         n="[0-9]*"
     shell:
-        "Rscript workflow/rules/data/iid_bin_missing/sample_bindata_with_missing_values.R " \
+        "Rscript workflow/rules/data/iid_bin_missing/script.R " \
         "--filename {output.data} " \
         "--filename_bn {input.bn} " \
         "--samples {wildcards.n} " \

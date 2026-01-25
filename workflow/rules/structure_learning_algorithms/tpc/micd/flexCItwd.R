@@ -38,7 +38,7 @@
 #' # mixed variables
 #' flexCItwd(2, 3, 4, dat)
 #'
-flexCItwd <- function(x, y, S = NULL, data) {
+flexCItwd <- function(x, y, S = NULL, data, labels = NULL) {
 
   conpos <- Rfast::which.is(data, "numeric")
   dispos <- Rfast::which.is(data, "factor")
@@ -60,8 +60,13 @@ flexCItwd <- function(x, y, S = NULL, data) {
     print(pval)
   } else if ( all(c(x,y,S) %in% dispos) ) {
     
+    message(paste0("DisCItwd: ", labels[x], " _|_ ", labels[y], " | ", paste(labels[S], collapse = ", ")))
 
-    message(paste0("DisCItwd: ", x, " ", y, " ", paste(S, collapse = " ")))
+    # if S contains a missingness variable, remove it from S
+    if (any(grepl("^R_", labels[S]))) {
+        message(paste0("Removing missingness variables from S: ", labels[S[grepl("^R_", labels[S])]]))
+      S <- which(dispos %in% S[!grepl("^R_", labels[S])])
+    }
 
     data <- lapply(data[,dispos], function(x){
                x <- as.integer(x)

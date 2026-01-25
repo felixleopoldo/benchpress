@@ -389,7 +389,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
     skelII <- tpc.cons.intern(skel, suffStat, indepTest, alpha,
         version.unf = c(2, 1), maj.rule = maj.rule,
         verbose = verbose, tiers = tiers, context.all = context.all, context.tier = context.tier,
-        forbEdges = forbEdges
+        forbEdges = forbEdges, labels = labels
     )
 
     print("*** Phase III")
