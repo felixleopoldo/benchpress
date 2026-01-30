@@ -7,7 +7,8 @@ rule disc_bn:
             pattern_strings["disc_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
     params:
-        collider_flag = lambda wildcards: "--collider_effect" if hasattr(wildcards, 'collider_effect') and wildcards.collider_effect == "True" else ""
+        collider_flag = lambda wildcards: "--collider_effect" if hasattr(wildcards, 'collider_effect') and wildcards.collider_effect == "True" else "",
+        strong_flag = lambda wildcards: "--strong_effects" if hasattr(wildcards, 'strong_effects') and wildcards.strong_effects == "True" else ""
     container:
         "docker://bpimages/benchpress:2.1.0"
     shell:
@@ -18,4 +19,5 @@ rule disc_bn:
         "--max {wildcards.max} " \
         "--nstates {wildcards.nstates} " \
         "--seed {wildcards.seed} " \
-        "{params.collider_flag}"
+        "{params.collider_flag} " \
+        "{params.strong_flag}"

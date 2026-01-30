@@ -22,8 +22,11 @@ BaseNToDec <- function(x, nstates) {
 #' @param nconfigs optional: number of parent configurations (if not provided, calculated as nstates^nf)
 #' @param collider_effect logical: if TRUE, use OR-gate-like collider effects for nodes with multiple parents
 #'                        (P(child=1) is high if ANY parent is active). Default FALSE uses additive influence.
+#' @param strong_effects logical: if TRUE, make all parent-child relationships strong (P(child=1|parent=1) ~ 0.7-0.95).
+#'                       Useful for ensuring induced dependencies through collider descendants are detectable.
+#'                       Default FALSE uses moderate additive influence.
 #' @return matrix of size nstates x nconfigs, where each column is a probability distribution
-generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, collider_effect = FALSE) {
+generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, collider_effect = FALSE, strong_effects = FALSE) {
   # Validate inputs
   if (is.na(nstates) || !is.numeric(nstates) || nstates < 1) {
     stop("nstates must be a positive numeric value")
@@ -94,10 +97,10 @@ generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, 
     
     # Generate distributions for other parent configurations
     if (nconfigs > 1) {
-      # For collider effect, generate a high probability for state 1 when any parent is active
-      if (collider_effect && nf >= 2 && nstates == 2) {
-        # OR-gate style: P(child=1) is high if ANY parent is active
-        high_prob <- runif(1, min = 0.7, max = 0.95)  # High prob when any parent active
+      # For collider effect or strong effects, generate a high probability for state 1 when parents are active
+      if ((collider_effect || strong_effects) && nstates == 2) {
+        # High prob when parent(s) active
+        high_prob <- runif(1, min = 0.7, max = 0.95)
       }
       
       for (config in 2:nconfigs) {
@@ -112,8 +115,13 @@ generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, 
           stop("Invalid mapping structure in generatefactors")
         }
         
-        if (collider_effect && nf >= 2 && nstates == 2) {
-          # Collider/OR-gate effect: P(child=1) is high if ANY parent is in state 1
+        # Use strong effects for:
+        # - collider_effect with 2+ parents (OR-gate)
+        # - strong_effects with any number of parents
+        use_strong <- (collider_effect && nf >= 2 && nstates == 2) || (strong_effects && nstates == 2)
+        
+        if (use_strong) {
+          # Strong effect: P(child=1) is high if ANY parent is in state 1
           any_parent_active <- any(parent_states > 0)
           if (any_parent_active) {
             # Add small random variation to high_prob
@@ -208,6 +216,10 @@ BNmaps <- function(np, nstates) {
 #'                        This creates strong "explaining away" effects useful for testing
 #'                        conditional independence when conditioning on collider descendants.
 #'                        Default: FALSE (uses additive influence model).
+#' @param strong_effects logical: if TRUE, make ALL parent-child relationships strong
+#'                       (P(child=1|parent=1) ~ 0.7-0.95), not just colliders. This ensures
+#'                       induced dependencies through collider descendants are detectable.
+#'                       Default: FALSE.
 #'
 #' @return list containing:
 #'   - DAG: the DAG object
@@ -219,7 +231,7 @@ BNmaps <- function(np, nstates) {
 #'   - map: mapping object
 #'   - skel: skeleton (undirected graph)
 #'   - nstates: number of states
-generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collider_effect = FALSE) {
+generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collider_effect = FALSE, strong_effects = FALSE) {
   adj <- dag2adjacencymatrix(mydag)
   n <- numNodes(mydag)
 
@@ -345,16 +357,16 @@ generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collid
         temp_mapping_std$partable[[np[i]]] <- temp_mapping$partable
         temp_mapping_std$index[[np[i]]] <- temp_mapping$index
         # Generate factors with correct dimensions
-        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping_std, nconfigs = nconfigs_mixed, collider_effect = collider_effect)
+        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping_std, nconfigs = nconfigs_mixed, collider_effect = collider_effect, strong_effects = strong_effects)
       } else {
         # All parents have same nstates - need to calculate nconfigs based on parent nstates
         parent_nstates_val <- node_nstates[parlist[[i]]][1]
         nconfigs_parent <- parent_nstates_val^np[i]
-        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping, nconfigs = nconfigs_parent, collider_effect = collider_effect)
+        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping, nconfigs = nconfigs_parent, collider_effect = collider_effect, strong_effects = strong_effects)
       }
     } else {
       # No parents or use standard mapping
-      fp[[i]] <- generatefactors(np[i], node_states, baseline, mapping, collider_effect = collider_effect)
+      fp[[i]] <- generatefactors(np[i], node_states, baseline, mapping, collider_effect = collider_effect, strong_effects = strong_effects)
     }
   }
   

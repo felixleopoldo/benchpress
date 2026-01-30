@@ -50,6 +50,7 @@ p <- add_argument(p, "--min", help = "Min baseline probability", type = "numeric
 p <- add_argument(p, "--max", help = "Max baseline probability", type = "numeric")
 p <- add_argument(p, "--nstates", help = "Number of states", type = "numeric")
 p <- add_argument(p, "--collider_effect", help = "Use OR-gate collider effects for nodes with multiple parents", flag = TRUE)
+p <- add_argument(p, "--strong_effects", help = "Make all parent-child relationships strong (not just colliders)", flag = TRUE)
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)
@@ -77,12 +78,14 @@ min_val <- as.numeric(argv$min)
 max_val <- as.numeric(argv$max)
 
 collider_effect_val <- isTRUE(argv$collider_effect)
+strong_effects_val <- isTRUE(argv$strong_effects)
 
 print("Arguments:")
 print(paste("nstates:", nstates_val))
 print(paste("min:", min_val))
 print(paste("max:", max_val))
 print(paste("collider_effect:", collider_effect_val))
+print(paste("strong_effects:", strong_effects_val))
 
 if (is.na(nstates_val) || !is.numeric(nstates_val) || nstates_val < 2) {
   stop(paste("nstates must be a numeric value >= 2, got:", argv$nstates))
@@ -93,7 +96,7 @@ if (is.na(min_val) || is.na(max_val) || !is.numeric(min_val) || !is.numeric(max_
 
 set.seed(seed_number)
 # Node names should be available from the adjacency matrix column names
-discBN <- generateNStatesBN(DAG, nstates = nstates_val, baseline = c(min_val, max_val), collider_effect = collider_effect_val)
+discBN <- generateNStatesBN(DAG, nstates = nstates_val, baseline = c(min_val, max_val), collider_effect = collider_effect_val, strong_effects = strong_effects_val)
 # Ensure node labels are set correctly (should already be set, but just in case)
 nodes(discBN$DAG) <- labels
 colnames(discBN$adj) <- labels

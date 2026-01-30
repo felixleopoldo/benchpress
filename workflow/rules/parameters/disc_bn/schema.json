@@ -25,6 +25,11 @@
                 "type": "boolean",
                 "description": "Use OR-gate collider effects for nodes with multiple parents. Creates strong explaining away effects.",
                 "default": false
+            },
+            "strong_effects": {
+                "type": "boolean",
+                "description": "Make ALL parent-child relationships strong (not just colliders). Ensures induced dependencies through collider descendants are detectable.",
+                "default": false
             }
         },
         "required": [
@@ -47,6 +52,14 @@
                 "max": 0.9,
                 "nstates": 2,
                 "collider_effect": true
+            },
+            {
+                "id": "discbn_strong",
+                "min": 0.5,
+                "max": 0.5,
+                "nstates": 2,
+                "collider_effect": true,
+                "strong_effects": true
             }
         ]
     },
