@@ -1,0 +1,19 @@
+{
+    "title": "Binary BN",
+    "version": "",
+    "package": {
+        "title": "Benchpress",
+        "url": ""
+    },
+    "docs_url": "",
+    "papers": [
+        {
+            "title": "",
+            "url": ""
+        }
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "language": "R"
+}

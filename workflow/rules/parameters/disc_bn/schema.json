@@ -1,0 +1,54 @@
+{
+    "title": "disc_bn",
+    "description": "List of generateNStatesBN objects",
+    "type": "array",
+    "items": {
+        "title": "disc_bn item",
+        "description": "Parameter setting for generateNStatesBN",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "min": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "max": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "nstates": {
+                "type": "integer",
+                "minimum": 2,
+                "description": "Number of states per node (default: 2 for binary)"
+            },
+            "collider_effect": {
+                "type": "boolean",
+                "description": "Use OR-gate collider effects for nodes with multiple parents. Creates strong explaining away effects.",
+                "default": false
+            }
+        },
+        "required": [
+            "min",
+            "max",
+            "nstates",
+            "id"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "discbn",
+                "min": 0.1,
+                "max": 0.9,
+                "nstates": 2
+            },
+            {
+                "id": "discbn_collider",
+                "min": 0.1,
+                "max": 0.9,
+                "nstates": 2,
+                "collider_effect": true
+            }
+        ]
+    },
+    "uniqueItems": true
+}
