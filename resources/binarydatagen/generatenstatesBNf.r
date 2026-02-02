@@ -25,8 +25,12 @@ BaseNToDec <- function(x, nstates) {
 #' @param strong_effects logical: if TRUE, make all parent-child relationships strong (P(child=1|parent=1) ~ 0.7-0.95).
 #'                       Useful for ensuring induced dependencies through collider descendants are detectable.
 #'                       Default FALSE uses moderate additive influence.
+#' @param noisy_or logical: if TRUE, use noisy-OR parameterization for nodes with parents.
+#'                 P(child=1|parents) = 1 - (1-baseline) * prod((1-p_i)^parent_i) where p_i is the 
+#'                 activation probability for parent i. Creates proper "explaining away" effects at colliders.
+#'                 Default FALSE.
 #' @return matrix of size nstates x nconfigs, where each column is a probability distribution
-generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, collider_effect = FALSE, strong_effects = FALSE) {
+generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, collider_effect = FALSE, strong_effects = FALSE, noisy_or = FALSE) {
   # Validate inputs
   if (is.na(nstates) || !is.numeric(nstates) || nstates < 1) {
     stop("nstates must be a positive numeric value")
@@ -98,9 +102,17 @@ generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, 
     # Generate distributions for other parent configurations
     if (nconfigs > 1) {
       # For collider effect or strong effects, generate a high probability for state 1 when parents are active
-      if ((collider_effect || strong_effects) && nstates == 2) {
+      if ((collider_effect || strong_effects) && nstates == 2 && !noisy_or) {
         # High prob when parent(s) active
         high_prob <- runif(1, min = 0.7, max = 0.95)
+      }
+      
+      # For noisy-OR, generate activation probabilities for each parent
+      if (noisy_or && nstates == 2) {
+        # Each parent has an activation probability p_i
+        # P(child=1|parents) = 1 - (1-leak) * prod((1-p_i)^parent_i)
+        leak <- probmat[2, 1]  # baseline P(child=1) when all parents are 0
+        parent_activation_probs <- runif(nf, min = 0.5, max = 0.8)
       }
       
       for (config in 2:nconfigs) {
@@ -115,53 +127,69 @@ generatefactors <- function(nf, nstates, baselinevec, mapping, nconfigs = NULL, 
           stop("Invalid mapping structure in generatefactors")
         }
         
-        # Use strong effects for:
-        # - collider_effect with 2+ parents (OR-gate)
-        # - strong_effects with any number of parents
-        use_strong <- (collider_effect && nf >= 2 && nstates == 2) || (strong_effects && nstates == 2)
-        
-        if (use_strong) {
-          # Strong effect: P(child=1) is high if ANY parent is in state 1
-          any_parent_active <- any(parent_states > 0)
-          if (any_parent_active) {
-            # Add small random variation to high_prob
-            prob_state1 <- high_prob + runif(1, min = -0.05, max = 0.05)
-            prob_state1 <- max(0.6, min(0.95, prob_state1))  # Keep in reasonable range
-            probmat[1, config] <- 1 - prob_state1  # P(state=0)
-            probmat[2, config] <- prob_state1       # P(state=1)
-          } else {
-            # No parent active: use baseline (this shouldn't happen for config > 1, but just in case)
-            probmat[, config] <- probmat[, 1]
+        if (noisy_or && nstates == 2) {
+          # Noisy-OR model: P(child=0|parents) = (1-leak) * prod((1-p_i)^parent_i)
+          # This creates proper "explaining away" effects
+          prob_child_0 <- (1 - leak)
+          for (j in 1:nf) {
+            if (parent_states[j] > 0) {
+              prob_child_0 <- prob_child_0 * (1 - parent_activation_probs[j])
+            }
           }
+          prob_state1 <- 1 - prob_child_0
+          # Ensure reasonable bounds
+          prob_state1 <- max(0.01, min(0.99, prob_state1))
+          probmat[1, config] <- 1 - prob_state1  # P(state=0)
+          probmat[2, config] <- prob_state1       # P(state=1)
         } else {
-          # Default additive influence model
-          # Generate factor strengths (how much each parent influences each state)
-          if (nf < 3) {
-            factorstrength <- runif(nf * nstates, min = 0.4, max = 0.9)
+          # Use strong effects for:
+          # - collider_effect with 2+ parents (OR-gate)
+          # - strong_effects with any number of parents
+          use_strong <- (collider_effect && nf >= 2 && nstates == 2) || (strong_effects && nstates == 2)
+          
+          if (use_strong) {
+            # Strong effect: P(child=1) is high if ANY parent is in state 1
+            any_parent_active <- any(parent_states > 0)
+            if (any_parent_active) {
+              # Add small random variation to high_prob
+              prob_state1 <- high_prob + runif(1, min = -0.05, max = 0.05)
+              prob_state1 <- max(0.6, min(0.95, prob_state1))  # Keep in reasonable range
+              probmat[1, config] <- 1 - prob_state1  # P(state=0)
+              probmat[2, config] <- prob_state1       # P(state=1)
+            } else {
+              # No parent active: use baseline (this shouldn't happen for config > 1, but just in case)
+              probmat[, config] <- probmat[, 1]
+            }
           } else {
-            factorstrength <- runif(nf * nstates, min = 0.3, max = 0.7)
+            # Default additive influence model
+            # Generate factor strengths (how much each parent influences each state)
+            if (nf < 3) {
+              factorstrength <- runif(nf * nstates, min = 0.4, max = 0.9)
+            } else {
+              factorstrength <- runif(nf * nstates, min = 0.3, max = 0.7)
+            }
+            
+            # Reshape factor strength into matrix: rows = states, cols = parents
+            factormat <- matrix(factorstrength, nrow = nstates, ncol = nf)
+            
+            # Compute influence: for each state, sum contributions from active parents
+            influence <- numeric(nstates)
+            for (s in 1:nstates) {
+              # Weight parent contributions by their state values
+              influence[s] <- sum(factormat[s, ] * (parent_states + 1) / nstates)
+            }
+            
+            # Convert influence to probabilities (softmax-like transformation)
+            # Add baseline and normalize
+            probmat[, config] <- probmat[, 1] + influence
+            probmat[, config] <- pmax(probmat[, config], 0.01)  # Ensure minimum probability
+            probmat[, config] <- probmat[, config] / sum(probmat[, config])  # Normalize
+            
+            # Ensure probabilities are in reasonable range
+            probmat[which(probmat[, config] > 0.95), config] <- 0.95
+            probmat[which(probmat[, config] < 0.01), config] <- 0.01
+            probmat[, config] <- probmat[, config] / sum(probmat[, config])  # Renormalize
           }
-          
-          # Reshape factor strength into matrix: rows = states, cols = parents
-          factormat <- matrix(factorstrength, nrow = nstates, ncol = nf)
-          
-          # Compute influence: for each state, sum contributions from active parents
-          influence <- numeric(nstates)
-          for (s in 1:nstates) {
-            # Weight parent contributions by their state values
-            influence[s] <- sum(factormat[s, ] * (parent_states + 1) / nstates)
-          }
-          
-          # Convert influence to probabilities (softmax-like transformation)
-          # Add baseline and normalize
-          probmat[, config] <- probmat[, 1] + influence
-          probmat[, config] <- pmax(probmat[, config], 0.01)  # Ensure minimum probability
-          probmat[, config] <- probmat[, config] / sum(probmat[, config])  # Normalize
-          
-          # Ensure probabilities are in reasonable range
-          probmat[which(probmat[, config] > 0.95), config] <- 0.95
-          probmat[which(probmat[, config] < 0.01), config] <- 0.01
-          probmat[, config] <- probmat[, config] / sum(probmat[, config])  # Renormalize
         }
       }
     }
@@ -220,6 +248,11 @@ BNmaps <- function(np, nstates) {
 #'                       (P(child=1|parent=1) ~ 0.7-0.95), not just colliders. This ensures
 #'                       induced dependencies through collider descendants are detectable.
 #'                       Default: FALSE.
+#' @param noisy_or logical: if TRUE, use noisy-OR parameterization for nodes with parents.
+#'                 P(child=1|parents) = 1 - (1-leak) * prod((1-p_i)^parent_i).
+#'                 Creates proper "explaining away" effects at colliders while maintaining
+#'                 faithfulness. Recommended for testing conditional independence.
+#'                 Default: FALSE.
 #'
 #' @return list containing:
 #'   - DAG: the DAG object
@@ -231,7 +264,7 @@ BNmaps <- function(np, nstates) {
 #'   - map: mapping object
 #'   - skel: skeleton (undirected graph)
 #'   - nstates: number of states
-generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collider_effect = FALSE, strong_effects = FALSE) {
+generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collider_effect = FALSE, strong_effects = FALSE, noisy_or = FALSE) {
   adj <- dag2adjacencymatrix(mydag)
   n <- numNodes(mydag)
 
@@ -357,16 +390,16 @@ generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collid
         temp_mapping_std$partable[[np[i]]] <- temp_mapping$partable
         temp_mapping_std$index[[np[i]]] <- temp_mapping$index
         # Generate factors with correct dimensions
-        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping_std, nconfigs = nconfigs_mixed, collider_effect = collider_effect, strong_effects = strong_effects)
+        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping_std, nconfigs = nconfigs_mixed, collider_effect = collider_effect, strong_effects = strong_effects, noisy_or = noisy_or)
       } else {
         # All parents have same nstates - need to calculate nconfigs based on parent nstates
         parent_nstates_val <- node_nstates[parlist[[i]]][1]
         nconfigs_parent <- parent_nstates_val^np[i]
-        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping, nconfigs = nconfigs_parent, collider_effect = collider_effect, strong_effects = strong_effects)
+        fp[[i]] <- generatefactors(np[i], node_states, baseline, temp_mapping, nconfigs = nconfigs_parent, collider_effect = collider_effect, strong_effects = strong_effects, noisy_or = noisy_or)
       }
     } else {
       # No parents or use standard mapping
-      fp[[i]] <- generatefactors(np[i], node_states, baseline, mapping, collider_effect = collider_effect, strong_effects = strong_effects)
+      fp[[i]] <- generatefactors(np[i], node_states, baseline, mapping, collider_effect = collider_effect, strong_effects = strong_effects, noisy_or = noisy_or)
     }
   }
   

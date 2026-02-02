@@ -47,6 +47,7 @@ p <- add_argument(p, "--min", help = "Min baseline probability", type = "numeric
 p <- add_argument(p, "--max", help = "Max baseline probability", type = "numeric")
 p <- add_argument(p, "--collider_effect", help = "Use OR-gate collider effects for nodes with multiple parents", flag = TRUE)
 p <- add_argument(p, "--strong_effects", help = "Make all parent-child relationships strong", flag = TRUE)
+p <- add_argument(p, "--noisy_or", help = "Use noisy-OR parameterization for proper explaining away effects", flag = TRUE)
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)
@@ -66,9 +67,10 @@ DAG <- adjacency2dag(adjmat)#, nodes = colnames(adjmat))
 
 collider_effect_val <- isTRUE(argv$collider_effect)
 strong_effects_val <- isTRUE(argv$strong_effects)
+noisy_or_val <- isTRUE(argv$noisy_or)
 
 set.seed(seed_number)
-binBN <- generateBinaryBN(DAG, baseline = c(argv$min, argv$max), collider_effect = collider_effect_val, strong_effects = strong_effects_val)
+binBN <- generateBinaryBN(DAG, baseline = c(argv$min, argv$max), collider_effect = collider_effect_val, strong_effects = strong_effects_val, noisy_or = noisy_or_val)
 # Set the node labels
 nodes(binBN$DAG) <- labels
 colnames(binBN$adj) <- labels

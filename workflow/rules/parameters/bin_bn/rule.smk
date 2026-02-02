@@ -8,7 +8,8 @@ rule bin_bn:
             "seed={seed}/adjmat=/{adjmat}.rds"
     params:
         collider_flag = lambda wildcards: "--collider_effect" if hasattr(wildcards, 'collider_effect') and wildcards.collider_effect == "True" else "",
-        strong_flag = lambda wildcards: "--strong_effects" if hasattr(wildcards, 'strong_effects') and wildcards.strong_effects == "True" else ""
+        strong_flag = lambda wildcards: "--strong_effects" if hasattr(wildcards, 'strong_effects') and wildcards.strong_effects == "True" else "",
+        noisy_or_flag = lambda wildcards: "--noisy_or" if hasattr(wildcards, 'noisy_or') and wildcards.noisy_or == "True" else ""
     container:
         "docker://bpimages/benchpress:2.1.0"
     shell:
@@ -19,4 +20,5 @@ rule bin_bn:
         "--max {wildcards.max} " \
         "--seed {wildcards.seed} " \
         "{params.collider_flag} " \
-        "{params.strong_flag}"
+        "{params.strong_flag} " \
+        "{params.noisy_or_flag}"

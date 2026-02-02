@@ -8,8 +8,9 @@ library(BiDAG)
 #' @param mapping mapping object from BNmaps
 #' @param collider_effect logical: if TRUE, use OR-gate-like collider effects for nodes with 2+ parents
 #' @param strong_effects logical: if TRUE, make all parent-child relationships strong
+#' @param noisy_or logical: if TRUE, use noisy-OR parameterization for proper explaining away
 #' @return vector of probabilities P(node=1) for each parent configuration
-generatefactors <- function(nf, baselinevec, mapping, collider_effect = FALSE, strong_effects = FALSE) {
+generatefactors <- function(nf, baselinevec, mapping, collider_effect = FALSE, strong_effects = FALSE, noisy_or = FALSE) {
   prob0 <- vector(length = 2^nf)
   if (nf > 0) {
     # probability of 1 when all parents are 0 (baseline)
@@ -19,36 +20,55 @@ generatefactors <- function(nf, baselinevec, mapping, collider_effect = FALSE, s
     prob0[1] <- runif(1, min = baselinevec[1], max = baselinevec[2])
   }
   if (nf > 0) {
-    # Determine if we should use strong effects
-    use_strong <- (collider_effect && nf >= 2) || strong_effects
-    
-    if (use_strong) {
-      # Strong effect: P(node=1) is high (~0.7-0.95) if ANY parent is active
-      high_prob <- runif(1, min = 0.7, max = 0.95)
+    if (noisy_or) {
+      # Noisy-OR model: P(child=1|parents) = 1 - (1-leak) * prod((1-p_i)^parent_i)
+      # Creates proper "explaining away" effects
+      leak <- prob0[1]  # baseline when all parents are 0
+      parent_activation_probs <- runif(nf, min = 0.5, max = 0.8)
+      
       for (config in 2:(2^nf)) {
-        # Get parent states for this configuration
         parent_states <- as.numeric(mapping$partable[[nf]][config, ])
-        any_parent_active <- any(parent_states > 0)
-        if (any_parent_active) {
-          # Add small random variation
-          prob0[config] <- high_prob + runif(1, min = -0.05, max = 0.05)
-          prob0[config] <- max(0.6, min(0.95, prob0[config]))
-        } else {
-          prob0[config] <- prob0[1]  # Use baseline (shouldn't happen for config > 1)
+        prob_child_0 <- (1 - leak)
+        for (j in 1:nf) {
+          if (parent_states[j] > 0) {
+            prob_child_0 <- prob_child_0 * (1 - parent_activation_probs[j])
+          }
         }
+        prob0[config] <- 1 - prob_child_0
+        prob0[config] <- max(0.01, min(0.99, prob0[config]))
       }
     } else {
-      # Default additive influence model
-      if (nf < 3) {
-        factorstrength <- runif(nf, min = 0.4, max = 0.9)
+      # Determine if we should use strong effects
+      use_strong <- (collider_effect && nf >= 2) || strong_effects
+      
+      if (use_strong) {
+        # Strong effect: P(node=1) is high (~0.7-0.95) if ANY parent is active
+        high_prob <- runif(1, min = 0.7, max = 0.95)
+        for (config in 2:(2^nf)) {
+          # Get parent states for this configuration
+          parent_states <- as.numeric(mapping$partable[[nf]][config, ])
+          any_parent_active <- any(parent_states > 0)
+          if (any_parent_active) {
+            # Add small random variation
+            prob0[config] <- high_prob + runif(1, min = -0.05, max = 0.05)
+            prob0[config] <- max(0.6, min(0.95, prob0[config]))
+          } else {
+            prob0[config] <- prob0[1]  # Use baseline (shouldn't happen for config > 1)
+          }
+        }
       } else {
-        factorstrength <- runif(nf, min = 0.4, max = 0.9)
+        # Default additive influence model
+        if (nf < 3) {
+          factorstrength <- runif(nf, min = 0.4, max = 0.9)
+        } else {
+          factorstrength <- runif(nf, min = 0.4, max = 0.9)
+        }
+        prob0[2:(2^nf)] <- (apply(
+          t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
+          1, sum
+        ))[2:(2^nf)]
+        prob0[which(prob0 > 0.95)] <- 0.95
       }
-      prob0[2:(2^nf)] <- (apply(
-        t(t(as.matrix(mapping$partable[[nf]])) * factorstrength),
-        1, sum
-      ))[2:(2^nf)]
-      prob0[which(prob0 > 0.95)] <- 0.95
     }
   }
   return(prob0)
@@ -87,8 +107,10 @@ BNmaps <- function(np) {
 #'                        Default: FALSE.
 #' @param strong_effects logical: if TRUE, make ALL parent-child relationships strong.
 #'                       Default: FALSE.
+#' @param noisy_or logical: if TRUE, use noisy-OR parameterization for proper explaining away.
+#'                 Default: FALSE.
 #'
-generateBinaryBN <- function(mydag, baseline, collider_effect = FALSE, strong_effects = FALSE) {
+generateBinaryBN <- function(mydag, baseline, collider_effect = FALSE, strong_effects = FALSE, noisy_or = FALSE) {
   adj <- dag2adjacencymatrix(mydag)
   n <- numNodes(mydag)
 
@@ -103,7 +125,7 @@ generateBinaryBN <- function(mydag, baseline, collider_effect = FALSE, strong_ef
   ord <- as.numeric(tsort(mydag))
   fp <- list()
   for (i in ord) {
-    fp[[i]] <- generatefactors(np[i], baseline, mapping, collider_effect = collider_effect, strong_effects = strong_effects)
+    fp[[i]] <- generatefactors(np[i], baseline, mapping, collider_effect = collider_effect, strong_effects = strong_effects, noisy_or = noisy_or)
   }
   res <- list()
   res$DAG <- mydag

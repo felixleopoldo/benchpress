@@ -30,6 +30,11 @@
                 "type": "boolean",
                 "description": "Make ALL parent-child relationships strong (not just colliders). Ensures induced dependencies through collider descendants are detectable.",
                 "default": false
+            },
+            "noisy_or": {
+                "type": "boolean",
+                "description": "Use noisy-OR parameterization. Creates proper explaining away effects at colliders while maintaining faithfulness. Recommended for testing conditional independence.",
+                "default": false
             }
         },
         "required": [
@@ -60,6 +65,13 @@
                 "nstates": 2,
                 "collider_effect": true,
                 "strong_effects": true
+            },
+            {
+                "id": "discbn_noisy_or",
+                "min": 0.5,
+                "max": 0.5,
+                "nstates": 2,
+                "noisy_or": true
             }
         ]
     },
