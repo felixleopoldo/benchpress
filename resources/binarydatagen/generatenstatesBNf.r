@@ -273,6 +273,11 @@ generateNStatesBN <- function(mydag, nstates = 2, baseline = c(0.1, 0.3), collid
     stop("nstates must be a numeric value >= 2")
   }
   
+  # Validate mutually exclusive options
+  if (noisy_or && (collider_effect || strong_effects)) {
+    stop("noisy_or cannot be combined with collider_effect or strong_effects. Use only one parameterization strategy.")
+  }
+  
   # Get node names from adjacency matrix column names (they should be preserved from DAG)
   node_names <- colnames(adj)
   if (is.null(node_names) || length(node_names) != n || any(is.na(node_names)) || any(nchar(node_names) == 0)) {

@@ -111,6 +111,11 @@ BNmaps <- function(np) {
 #'                 Default: FALSE.
 #'
 generateBinaryBN <- function(mydag, baseline, collider_effect = FALSE, strong_effects = FALSE, noisy_or = FALSE) {
+  # Validate mutually exclusive options
+  if (noisy_or && (collider_effect || strong_effects)) {
+    stop("noisy_or cannot be combined with collider_effect or strong_effects. Use only one parameterization strategy.")
+  }
+  
   adj <- dag2adjacencymatrix(mydag)
   n <- numNodes(mydag)
 
