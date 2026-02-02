@@ -1,6 +1,6 @@
 {
     "title": "bin_bn",
-    "description": "List of generateBinayBN objects",
+    "description": "List of generateBinaryBN objects",
     "type": "array",
     "items": {
         "title": "bin_bn item",
@@ -15,6 +15,16 @@
             },
             "max": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexprob"
+            },
+            "collider_effect": {
+                "type": "boolean",
+                "description": "Use OR-gate collider effects for nodes with multiple parents. Creates strong explaining away effects.",
+                "default": false
+            },
+            "strong_effects": {
+                "type": "boolean",
+                "description": "Make ALL parent-child relationships strong (not just colliders). Ensures induced dependencies through collider descendants are detectable.",
+                "default": false
             }
         },
         "required": [
@@ -28,6 +38,13 @@
                 "id": "binbn",
                 "min": 0.1,
                 "max": 0.9
+            },
+            {
+                "id": "binbn_strong",
+                "min": 0.5,
+                "max": 0.5,
+                "collider_effect": true,
+                "strong_effects": true
             }
         ]
     },

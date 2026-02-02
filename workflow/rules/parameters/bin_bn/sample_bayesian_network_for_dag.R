@@ -2,7 +2,6 @@
 library(argparser)
 
 source("resources/binarydatagen/generatebinaryBNf.r")
-source("resources/binarydatagen/generateNStatesBNf.r")
 
 adjacency2dag <- function(adj, nodes = NULL) {
     l <- ncol(adj)
@@ -44,8 +43,10 @@ p <- arg_parser("A program for generating a random directed acyclig graph.")
 p <- add_argument(p, "--filename", help = "output filename")
 p <- add_argument(p, "--filename_dag", help = "Filename for DAG")
 p <- add_argument(p, "--seed", help = "Random seed", type = "numeric")
-p <- add_argument(p, "--min", help = "Random seed", type = "numeric")
-p <- add_argument(p, "--max", help = "Random seed", type = "numeric")
+p <- add_argument(p, "--min", help = "Min baseline probability", type = "numeric")
+p <- add_argument(p, "--max", help = "Max baseline probability", type = "numeric")
+p <- add_argument(p, "--collider_effect", help = "Use OR-gate collider effects for nodes with multiple parents", flag = TRUE)
+p <- add_argument(p, "--strong_effects", help = "Make all parent-child relationships strong", flag = TRUE)
 argv <- parse_args(p)
 
 filename <- file.path(argv$filename)
@@ -63,8 +64,11 @@ colnames(adjmat) <- seq(n)
 
 DAG <- adjacency2dag(adjmat)#, nodes = colnames(adjmat))
 
+collider_effect_val <- isTRUE(argv$collider_effect)
+strong_effects_val <- isTRUE(argv$strong_effects)
+
 set.seed(seed_number)
-binBN <- generateNStatesBN(DAG, nstates = 3, baseline = c(argv$min, argv$max))
+binBN <- generateBinaryBN(DAG, baseline = c(argv$min, argv$max), collider_effect = collider_effect_val, strong_effects = strong_effects_val)
 # Set the node labels
 nodes(binBN$DAG) <- labels
 colnames(binBN$adj) <- labels
