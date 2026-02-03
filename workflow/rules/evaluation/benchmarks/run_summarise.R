@@ -178,6 +178,27 @@ benchmarks <- function(true_adjmat, estimated_adjmat) {
 if (file.info(argv$adjmat_est)$size > 0) {
   true_adjmat <- as.matrix(read.csv(argv$adjmat_true, check.names = FALSE))
   estimated_adjmat <- as.matrix(read.csv(argv$adjmat_est, check.names = FALSE))
+  
+  # Remove R_ variables (missingness indicators) from comparison if present
+  est_vars <- colnames(estimated_adjmat)
+  true_vars <- colnames(true_adjmat)
+  
+  # Filter out R_ variables from estimated matrix
+  if (!is.null(est_vars)) {
+    substantive_est <- !grepl("^R_", est_vars)
+    if (any(!substantive_est)) {
+      estimated_adjmat <- estimated_adjmat[substantive_est, substantive_est, drop = FALSE]
+    }
+  }
+  
+  # Filter out R_ variables from true matrix
+  if (!is.null(true_vars)) {
+    substantive_true <- !grepl("^R_", true_vars)
+    if (any(!substantive_true)) {
+      true_adjmat <- true_adjmat[substantive_true, substantive_true, drop = FALSE]
+    }
+  }
+  
   df <- benchmarks(true_adjmat, estimated_adjmat)
 } else {
   df <- data.frame(
