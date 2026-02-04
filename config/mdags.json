@@ -3,9 +3,165 @@
         {
             "title": "missingness_structures",
             "data": [
-
                 {
-                    "graph_id": "missing_v_star.csv",
+                    "graph_id": "missing_w.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        6
+                    ]
+                },
+                {
+                    "graph_id": "missing_w_star.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        10
+                    ]
+                },
+                {
+                    "graph_id": "missing_w_2star.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_lambda.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_x.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_xo.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_y.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                }
+            ],
+            "evaluation": {
+                "graph_true_plots": true,
+                "graph_true_stats": false,
+                "ggally_ggpairs": false,
+                "graph_estimation": {
+                    "ids": [
+                        "tdpc",
+                        "bips_tpc",
+                        "tdic"
+                    ],
+                    "convert_to": [],
+                    "graphs": true,
+                    "adjmats": false,
+                    "diffplots": false,
+                    "csvs": false,
+                    "graphvizcompare": false
+                },
+                "benchmarks": {
+                    "filename_prefix": "mdags/",
+                    "show_seed": false,
+                    "errorbar": true,
+                    "errorbarh": false,
+                    "scatter": true,
+                    "path": true,
+                    "text": false,
+                    "ids": [
+                        "tdpc",
+                        "bips_tpc",
+                        "tdic"
+                    ]
+                },
+                "mcmc_traj_plots": [],
+                "mcmc_heatmaps": [],
+                "mcmc_autocorr_plots": []
+            }
+        },
+        {
+            "title": "missingness_structures_noisy_or",
+            "data": [
+                {
+                    "graph_id": "missing_w.csv",
+                    "parameters_id": "discbn_noisy_or",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        6
+                    ]
+                },
+                {
+                    "graph_id": "missing_w_star.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        6
+                    ]
+                },
+                {
+                    "graph_id": "missing_w_2star.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_lambda.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_x.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_xo.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        5
+                    ]
+                },
+                {
+                    "graph_id": "missing_y.csv",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [

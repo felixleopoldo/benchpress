@@ -367,6 +367,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
             clusterexport = clusterexport
         )
     } else {
+        print("Running tskeleton")
         skel <- tskeleton(suffStat, indepTest, alpha,
             labels = labels,
             method = skel.method, fixedGaps = fixedGaps, fixedEdges = fixedEdges,

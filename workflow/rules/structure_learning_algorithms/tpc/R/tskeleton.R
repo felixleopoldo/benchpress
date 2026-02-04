@@ -650,7 +650,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
 #' tskel.fit@n.edgetests
 #' tskel.fit2@n.edgetests
 #'
-sgs_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
+tskeleton_ic <- function(suffStat, indepTest, alpha, labels, p,
                       method = c("stable", "original"), m.max = Inf,
                       fixedGaps = NULL, fixedEdges = NULL, NAdelete = TRUE,
                       tiers = NULL, verbose = FALSE) {
@@ -826,12 +826,8 @@ sgs_tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         }
 
                         print(paste0("R(x):", R_x))
-
                         print(paste0("R(y):", R_y))
-
-
-
-
+                        
                         # print("S_substantive:")
                         # print(labels[nbrs[S_substantive]])
                         # print("S_missingness:")

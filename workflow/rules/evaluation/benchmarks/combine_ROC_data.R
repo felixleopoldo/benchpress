@@ -118,24 +118,25 @@ for (algorithm in active_algorithms) {
         FPRn_pattern_q3 = quantile(FPRn_pattern, probs = c(0.95)),
         TPR_skel_mean = mean(TP_skel / true_n_edges_skel),
         TPR_skel_median = median(TP_skel / true_n_edges_skel),
-        TPR_skel_q1 = quantile(TP_skel / true_n_edges_skel, probs = c(0.05)),
-        TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95)),
+        TPR_skel_q1 = quantile(TP_skel / true_n_edges_skel, probs = c(0.05), na.rm = TRUE),
+        TPR_skel_q3 = quantile(TP_skel / true_n_edges_skel, probs = c(0.95), na.rm = TRUE),
         FPR_skel_mean = mean(FPR_skel),
         FPR_skel_median = median(FP_skel / true_n_edges_skel),
-        FPR_skel_q1 = quantile(FPR_skel, probs = c(0.05)),
-        FPR_skel_q3 = quantile(FPR_skel, probs = c(0.95)),
+        FPR_skel_q1 = quantile(FPR_skel, probs = c(0.05), na.rm = TRUE),
+        FPR_skel_q3 = quantile(FPR_skel, probs = c(0.95), na.rm = TRUE),
         FNR_skel_mean = mean(FNR_skel),
         FNR_skel_median = median(FNR_skel),
-        FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05)),
-        FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95)),
+        FNR_skel_q1 = quantile(FNR_skel, probs = c(0.05), na.rm = TRUE),
+        FNR_skel_q3 = quantile(FNR_skel, probs = c(0.95), na.rm = TRUE),
         time_mean = mean(time),
         time_median = median(time),
-        time_q1 = quantile(time, probs = c(0.05)),
-        time_q3 = quantile(time, probs = c(0.95)),
+        time_q1 = quantile(time, probs = c(0.05), na.rm = TRUE),
+        time_q3 = quantile(time, probs = c(0.95), na.rm = TRUE),
         n_seeds = n(),
         curve_vals = mean(!!as.symbol(curve_param))
       )
 
+    print("Done summarising")
     sumROC["curve_param"] <- curve_param
     toplot <- dplyr::bind_rows(toplot, sumROC)
   }
