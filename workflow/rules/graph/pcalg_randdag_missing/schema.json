@@ -1,0 +1,74 @@
+{
+    "title": "pcalg_randdag_missing",
+    "description": "Sampling DAG with missingness indicators using randDAG from the pcalg package.",
+    "type": "array",
+    "items": {
+        "title": "pcalg_randdag_missing item",
+        "description": "An instance of pcalg randdag with missingness indicators. Generates a DAG and relabels n_missing nodes as R_X (missingness indicators) where X is a substantive variable.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier for this configuration"
+            },
+            "n": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
+                "description": "Total number of nodes (substantive + missingness indicators)"
+            },
+            "d": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
+                "description": "Average neighborhood size (children + parents)"
+            },
+            "n_missing": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegint",
+                "description": "Number of nodes to relabel as missingness indicators (R_X). Must be <= n/2."
+            },
+            "par1": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull",
+                "description": "Additional parameter for randDAG method"
+            },
+            "par2": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull",
+                "description": "Additional parameter for randDAG method"
+            },
+            "method": {
+                "type": "string",
+                "description": "Method for randDAG (e.g., 'er' for Erdos-Renyi)"
+            },
+            "max_parents": {
+                "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull",
+                "description": "Maximum number of parents per node"
+            },
+            "DAG": {
+                "type": "boolean",
+                "description": "Whether to generate a DAG (should be true)"
+            }
+        },
+        "required": [
+            "id",
+            "max_parents",
+            "d",
+            "n",
+            "n_missing",
+            "par1",
+            "par2",
+            "method",
+            "DAG"
+        ],
+        "additionalProperties": false,
+        "examples": [
+            {
+                "id": "missing_dag_small",
+                "max_parents": 5,
+                "n": 6,
+                "d": 2,
+                "n_missing": 2,
+                "par1": null,
+                "par2": null,
+                "method": "er",
+                "DAG": true
+            }
+        ]
+    },
+    "uniqueItems": true
+}
