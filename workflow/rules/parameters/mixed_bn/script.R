@@ -1,5 +1,11 @@
 library(argparser)
 
+# Safe sample function that handles single-element vectors correctly
+safe_sample <- function(x, size = 1) {
+  if (length(x) == 1) return(x)
+  return(sample(x, size))
+}
+
 # Helper function to sample from Dirichlet
 rdirichlet <- function(n, alpha) {
   if (length(alpha) == 1) alpha <- rep(alpha, n)
@@ -162,7 +168,7 @@ generateMixedBN <- function(adj, node_types, n_levels = NULL,
         # Determine number of bins for each continuous parent
         n_bins <- integer(length(continuous_parents))
         for (j in seq_along(continuous_parents)) {
-          n_bins[j] <- sample(n_bins_range[1]:n_bins_range[2], 1)
+          n_bins[j] <- safe_sample(n_bins_range[1]:n_bins_range[2])
         }
         
         # Calculate CPT dimensions
@@ -241,7 +247,7 @@ for (i in 1:n) {
     # Randomly assign continuous or discrete
     if (runif(1) < argv$prob_discrete) {
       node_types[i] <- "discrete"
-      n_levels[i] <- sample(argv$min_levels:argv$max_levels, 1)
+      n_levels[i] <- safe_sample(argv$min_levels:argv$max_levels)
     } else {
       node_types[i] <- "continuous"
       n_levels[i] <- NA
@@ -259,6 +265,9 @@ params <- generateMixedBN(
   noise_sd_range = c(argv$noise_sd_min, argv$noise_sd_max),
   dirichlet_alpha = argv$dirichlet_alpha
 )
+
+print("params:")
+print(params)
 
 # Save parameters
 saveRDS(params, file = argv$filename)
