@@ -152,6 +152,26 @@ sampleMixedBN <- function(params, n) {
         probs <- cpt[, config_idx]
         data[i, node] <- sample(0:(n_lev - 1), 1, prob = probs)
       }
+    } else if (node_type == "discrete_logistic") {
+      # Missingness indicator with logistic model on continuous parents
+      # P(R=1|parents) = logistic(intercept + sum(coef * parent))
+      cont_parents <- node_params$continuous_parents
+      coefs <- node_params$logistic_coefs
+      intercept <- node_params$logistic_intercept
+      
+      # Compute linear predictor
+      if (length(cont_parents) > 0) {
+        X <- as.matrix(data[, cont_parents, drop = FALSE])
+        linear_pred <- intercept + X %*% coefs
+      } else {
+        linear_pred <- rep(intercept, n)
+      }
+      
+      # Apply logistic function
+      prob_1 <- 1 / (1 + exp(-linear_pred))
+      
+      # Sample binary outcome
+      data[, node] <- rbinom(n, 1, prob_1)
     }
   }
   

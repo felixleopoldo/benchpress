@@ -31,7 +31,8 @@ generateMixedBN <- function(adj, node_types, n_levels = NULL,
                             n_bins_range = c(2, 5),
                             coef_range = c(-1, 1),
                             noise_sd_range = c(0.5, 1.5),
-                            dirichlet_alpha = 1) {
+                            dirichlet_alpha = 1,
+                            logistic_missingness = FALSE) {
   
   n <- ncol(adj)
   node_names <- colnames(adj)
@@ -161,45 +162,67 @@ generateMixedBN <- function(adj, node_types, n_levels = NULL,
         }
       } else {
         # Discrete node with parents
-        # Need to handle continuous parents via discretization
-        
         n_lev <- n_levels[i]
         
-        # Determine number of bins for each continuous parent
-        n_bins <- integer(length(continuous_parents))
-        for (j in seq_along(continuous_parents)) {
-          n_bins[j] <- safe_sample(n_bins_range[1]:n_bins_range[2])
-        }
+        # Check if this is a missingness indicator (R_ node) with continuous parents
+        # Optionally use logistic model for stronger selection effects
+        is_R_node <- grepl("^R_", node_names[i])
         
-        # Calculate CPT dimensions
-        # Rows: child levels
-        # Cols: all parent configurations
-        discrete_levels <- if (length(discrete_parents) > 0) n_levels[discrete_parents] else integer(0)
-        
-        # Total parent configurations
-        all_parent_dims <- c(n_bins, discrete_levels)
-        if (length(all_parent_dims) == 0) {
-          n_configs <- 1
+        if (logistic_missingness && is_R_node && length(continuous_parents) > 0 && n_lev == 2) {
+          # Use logistic model: P(R=1|parents) = logistic(intercept + sum(coef * parent))
+          # Strong coefficients create strong selection effects
+          n_cont <- length(continuous_parents)
+          # Use stronger coefficients for selection (1.5 to 3 in magnitude)
+          logistic_coefs <- runif(n_cont, 1.5, 3) * sample(c(-1, 1), n_cont, replace = TRUE)
+          logistic_intercept <- runif(1, -0.5, 0.5)  # Keep intercept moderate
+          
+          params$node_params[[i]] <- list(
+            type = "discrete_logistic",
+            n_levels = n_lev,
+            continuous_parents = continuous_parents,
+            discrete_parents = discrete_parents,
+            logistic_coefs = logistic_coefs,
+            logistic_intercept = logistic_intercept
+          )
         } else {
-          n_configs <- prod(all_parent_dims)
+          # Standard discrete node: use CPT with discretized continuous parents
+          
+          # Determine number of bins for each continuous parent
+          n_bins <- integer(length(continuous_parents))
+          for (j in seq_along(continuous_parents)) {
+            n_bins[j] <- safe_sample(n_bins_range[1]:n_bins_range[2])
+          }
+          
+          # Calculate CPT dimensions
+          # Rows: child levels
+          # Cols: all parent configurations
+          discrete_levels <- if (length(discrete_parents) > 0) n_levels[discrete_parents] else integer(0)
+          
+          # Total parent configurations
+          all_parent_dims <- c(n_bins, discrete_levels)
+          if (length(all_parent_dims) == 0) {
+            n_configs <- 1
+          } else {
+            n_configs <- prod(all_parent_dims)
+          }
+          
+          # Sample CPT from Dirichlet for each parent configuration
+          cpt <- matrix(0, nrow = n_lev, ncol = n_configs)
+          for (config in 1:n_configs) {
+            cpt[, config] <- as.vector(rdirichlet(1, rep(dirichlet_alpha, n_lev)))
+          }
+          
+          params$node_params[[i]] <- list(
+            type = "discrete_cpt",
+            n_levels = n_lev,
+            continuous_parents = continuous_parents,
+            discrete_parents = discrete_parents,
+            n_bins = n_bins,  # Number of bins for each continuous parent
+            discrete_parent_levels = discrete_levels,
+            parent_dims = all_parent_dims,  # Dimensions for indexing CPT
+            cpt = cpt
+          )
         }
-        
-        # Sample CPT from Dirichlet for each parent configuration
-        cpt <- matrix(0, nrow = n_lev, ncol = n_configs)
-        for (config in 1:n_configs) {
-          cpt[, config] <- as.vector(rdirichlet(1, rep(dirichlet_alpha, n_lev)))
-        }
-        
-        params$node_params[[i]] <- list(
-          type = "discrete_cpt",
-          n_levels = n_lev,
-          continuous_parents = continuous_parents,
-          discrete_parents = discrete_parents,
-          n_bins = n_bins,  # Number of bins for each continuous parent
-          discrete_parent_levels = discrete_levels,
-          parent_dims = all_parent_dims,  # Dimensions for indexing CPT
-          cpt = cpt
-        )
       }
     }
   }
@@ -223,6 +246,7 @@ p <- add_argument(p, "--coef_max", help = "Maximum regression coefficient", type
 p <- add_argument(p, "--noise_sd_min", help = "Minimum noise SD", type = "numeric", default = 0.5)
 p <- add_argument(p, "--noise_sd_max", help = "Maximum noise SD", type = "numeric", default = 1.5)
 p <- add_argument(p, "--dirichlet_alpha", help = "Dirichlet concentration parameter", type = "numeric", default = 1)
+p <- add_argument(p, "--logistic_missingness", help = "Use logistic model for R_ nodes", flag = TRUE)
 
 argv <- parse_args(p)
 
@@ -263,7 +287,8 @@ params <- generateMixedBN(
   n_bins_range = c(argv$min_bins, argv$max_bins),
   coef_range = c(argv$coef_min, argv$coef_max),
   noise_sd_range = c(argv$noise_sd_min, argv$noise_sd_max),
-  dirichlet_alpha = argv$dirichlet_alpha
+  dirichlet_alpha = argv$dirichlet_alpha,
+  logistic_missingness = argv$logistic_missingness
 )
 
 print("params:")

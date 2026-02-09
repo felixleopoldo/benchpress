@@ -1,6 +1,8 @@
 # Rules for sampling mixed data with missingness
 
-rule sample_mixed_missing_data:
+rule:
+    name:
+        "iid_mixed_missing"
     input:
         params="{output_dir}/parameters/mixed_bn/{bn}/adjmat=/{adjmat}.rds",
         script="workflow/rules/data/iid_mixed_missing/script.R"

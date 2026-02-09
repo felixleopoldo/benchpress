@@ -69,6 +69,11 @@
                 "minimum": 0,
                 "description": "Dirichlet concentration parameter for CPTs",
                 "default": 1
+            },
+            "logistic_missingness": {
+                "type": "boolean",
+                "description": "Use logistic model for R_ nodes (stronger selection effects) instead of discretized CPT",
+                "default": false
             }
         },
         "required": ["id"],

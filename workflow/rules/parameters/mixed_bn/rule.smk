@@ -1,11 +1,13 @@
 rule mixed_bn:
-    input:        
+    input:
         "workflow/rules/parameters/mixed_bn/script.R",
         adjmat = "{output_dir}/adjmat/{adjmat}.csv" 
     output:
         bn = "{output_dir}/parameters/" + \
             pattern_strings["mixed_bn"] + "/" \
             "seed={seed}/adjmat=/{adjmat}.rds"
+    params:
+        logistic_flag = lambda wildcards: "--logistic_missingness" if hasattr(wildcards, 'logistic_missingness') and wildcards.logistic_missingness == "True" else ""
     shell:
         "Rscript workflow/rules/parameters/mixed_bn/script.R " \
         "--filename_dag {input.adjmat} " \
@@ -20,4 +22,5 @@ rule mixed_bn:
         "--coef_max {wildcards.coef_max} " \
         "--noise_sd_min {wildcards.noise_sd_min} " \
         "--noise_sd_max {wildcards.noise_sd_max} " \
-        "--dirichlet_alpha {wildcards.dirichlet_alpha}"
+        "--dirichlet_alpha {wildcards.dirichlet_alpha} " \
+        "{params.logistic_flag}"
