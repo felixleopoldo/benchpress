@@ -1,0 +1,40 @@
+{
+    "title": "iid_mixed_missing",
+    "description": "IID samples from mixed Bayesian network with missingness",
+    "type": "array",
+    "items": {
+        "title": "iid_mixed_missing item",
+        "description": "Sample mixed continuous/discrete data with missingness indicators",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "n": {
+                "oneOf": [
+                    {"type": "integer", "minimum": 1},
+                    {"type": "array", "items": {"type": "integer", "minimum": 1}}
+                ],
+                "description": "Sample size(s)"
+            },
+            "standardized": {
+                "type": "boolean",
+                "description": "Whether to standardize continuous variables (not yet implemented)",
+                "default": false
+            }
+        },
+        "required": ["id", "n"],
+        "examples": [
+            {
+                "id": "mixed_n1000",
+                "n": 1000
+            },
+            {
+                "id": "mixed_various",
+                "n": [500, 1000, 5000, 10000]
+            }
+        ]
+    },
+    "uniqueItems": true
+}

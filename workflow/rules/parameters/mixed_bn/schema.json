@@ -1,0 +1,98 @@
+{
+    "title": "mixed_bn",
+    "description": "Parameters for mixed Bayesian network (continuous and discrete variables)",
+    "type": "array",
+    "items": {
+        "title": "mixed_bn item",
+        "description": "Mixed BN parameters based on Andrews et al. approach",
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "description": "Unique identifier"
+            },
+            "prob_discrete": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Probability a substantive node is discrete (R_ nodes are always discrete)",
+                "default": 0.5
+            },
+            "min_levels": {
+                "type": "integer",
+                "minimum": 2,
+                "description": "Minimum number of levels for discrete nodes",
+                "default": 2
+            },
+            "max_levels": {
+                "type": "integer",
+                "minimum": 2,
+                "description": "Maximum number of levels for discrete nodes",
+                "default": 5
+            },
+            "min_bins": {
+                "type": "integer",
+                "minimum": 2,
+                "description": "Minimum bins for discretizing continuous parents of discrete nodes",
+                "default": 2
+            },
+            "max_bins": {
+                "type": "integer",
+                "minimum": 2,
+                "description": "Maximum bins for discretizing continuous parents of discrete nodes",
+                "default": 5
+            },
+            "coef_min": {
+                "type": "number",
+                "description": "Minimum regression coefficient for continuous nodes",
+                "default": -1
+            },
+            "coef_max": {
+                "type": "number",
+                "description": "Maximum regression coefficient for continuous nodes",
+                "default": 1
+            },
+            "noise_sd_min": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Minimum noise standard deviation",
+                "default": 0.5
+            },
+            "noise_sd_max": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Maximum noise standard deviation",
+                "default": 1.5
+            },
+            "dirichlet_alpha": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Dirichlet concentration parameter for CPTs",
+                "default": 1
+            }
+        },
+        "required": ["id"],
+        "examples": [
+            {
+                "id": "mixed_default",
+                "prob_discrete": 0.5,
+                "min_levels": 2,
+                "max_levels": 5,
+                "min_bins": 2,
+                "max_bins": 5,
+                "coef_min": -1,
+                "coef_max": 1,
+                "dirichlet_alpha": 1
+            },
+            {
+                "id": "mixed_mostly_continuous",
+                "prob_discrete": 0.2,
+                "min_levels": 2,
+                "max_levels": 3,
+                "coef_min": -2,
+                "coef_max": 2
+            }
+        ]
+    },
+    "uniqueItems": true
+}
