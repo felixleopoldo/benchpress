@@ -6,10 +6,11 @@ source("workflow/rules/structure_learning_algorithms/tdic/micd/flexCItwd.R")
 
 source("workflow/rules/structure_learning_algorithms/tdic/R/tpc.R")
 source("workflow/rules/structure_learning_algorithms/tdic/R/tskeleton.R")
-source("workflow/rules/structure_learning_algorithms/tdic/R/tpc_cons_intern.R")
-source("workflow/rules/structure_learning_algorithms/tdic/R/MeeksRules.R")
+source("workflow/rules/structure_learning_algorithms/tpc/R/tpc_cons_intern.R")
+source("workflow/rules/structure_learning_algorithms/tpc/R/MeeksRules.R")
 source("workflow/rules/structure_learning_algorithms/tdic/R/tpc-package.R")
-source("workflow/rules/structure_learning_algorithms/tdic/R/tcheckTriple.R")
+source("workflow/rules/structure_learning_algorithms/tpc/R/tcheckTriple.R")
+
 
 wrapper <- function() {
 
@@ -31,6 +32,7 @@ wrapper <- function() {
     cl_type <- snakemake@wildcards[["cl_type"]]
 
     data <- read.csv(filename_data, check.names = FALSE)
+
 
     tiers <- NULL
     context.all <- NULL
@@ -113,6 +115,9 @@ wrapper <- function() {
     print("forbEdges")
     print(forbEdges)
 
+    print("data")
+    print(head(data, 20))
+
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
@@ -128,10 +133,21 @@ wrapper <- function() {
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
 
         data <- data[-1, ]
-        # creaate factor variables from the data
-        data <- as.data.frame(lapply(data, as.factor))
-        suffStat <- data
-
+        # creaate factor variables from the data. If discrete varibles. As the binCItest doesnt seem to work.
+        # to check if a variable is discrete, check if the number of unique values is less than 10.
+        is_discrete <- FALSE
+        for (i in 1:ncol(data)) {
+            if (length(unique(data[, i])) < 10) {
+                data[, i] <- as.factor(data[, i])
+            }
+        }
+    
+        print("is_discrete")
+        print(is_discrete)
+        if (is_discrete) {
+            data <- as.data.frame(lapply(data, as.factor))
+            suffStat <- data
+        } 
         # if the first row is only 2s, then remove it
 
         if (snakemake@wildcards[["indepTest"]] == "flexCItest") {            

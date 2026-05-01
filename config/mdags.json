@@ -9,7 +9,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        6
+                        5
                     ]
                 },
                 {
@@ -18,7 +18,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        5
                     ]
                 },
                 {
@@ -93,112 +93,8 @@
                     "path": true,
                     "text": false,
                     "ids": [
-                        "tdpc",
-                        "bips_tpc",
-                        "tdic"
-                    ]
-                },
-                "mcmc_traj_plots": [],
-                "mcmc_heatmaps": [],
-                "mcmc_autocorr_plots": []
-            }
-        },
-        {
-            "title": "missingness_structures_noisy_or",
-            "data": [
-                {
-                    "graph_id": "missing_w.csv",
-                    "parameters_id": "discbn_noisy_or",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        6
-                    ]
-                },
-                {
-                    "graph_id": "missing_w_star.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        6
-                    ]
-                },
-                {
-                    "graph_id": "missing_w_2star.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        5
-                    ]
-                },
-                {
-                    "graph_id": "missing_lambda.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        5
-                    ]
-                },
-                {
-                    "graph_id": "missing_x.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        5
-                    ]
-                },
-                {
-                    "graph_id": "missing_xo.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        5
-                    ]
-                },
-                {
-                    "graph_id": "missing_y.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        5
-                    ]
-                }
-            ],
-            "evaluation": {
-                "graph_true_plots": true,
-                "graph_true_stats": false,
-                "ggally_ggpairs": false,
-                "graph_estimation": {
-                    "ids": [
-                        "tdpc",
-                        "bips_tpc",
-                        "tdic"
-                    ],
-                    "convert_to": [],
-                    "graphs": true,
-                    "adjmats": false,
-                    "diffplots": false,
-                    "csvs": false,
-                    "graphvizcompare": false
-                },
-                "benchmarks": {
-                    "filename_prefix": "mdags/",
-                    "show_seed": false,
-                    "errorbar": true,
-                    "errorbarh": false,
-                    "scatter": true,
-                    "path": true,
-                    "text": false,
-                    "ids": [
-                        "tdpc",
-                        "bips_tpc",
-                        "tdic"
+                        "tdpc"
+                 
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -314,6 +210,20 @@
             ]
         },
         "structure_learning_algorithms": {
+            "tetrad_grasp": [
+                {
+                  "id": "grasp",
+                  "score": "bdeu-score",
+                  "datatype": "discrete",
+                  "test": "chi-square-test",
+                  "samplePrior": [
+                    1                  ],
+                  "semBicStructurePrior": null,
+                  "penaltyDiscount": null,
+                  "timeout": null,
+                  "edgeConstraints": null
+                }
+              ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -334,23 +244,20 @@
             ],
             "pcalg_pc": [
                 {
-                    "id": "pc-gaussCItest",
+                    "id": "pc",
                     "alpha": [
-                        0.001,
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "NAdelete": true,
-                    "mmax": "Inf",
+                    "mmax": 4,
                     "u2pd": "relaxed",
                     "skelmethod": "stable",
                     "conservative": false,
-                    "majrule": false,
+                    "majrule": true,
                     "solveconfl": false,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest",
+                    "indepTest": "binCItest",
                     "timeout": null,
                     "edgeConstraints": null
                 }
@@ -366,7 +273,7 @@
                     ],
                     "corrMethod": "gaussCItest.permc",
                     "NAdelete": true,
-                    "mmax": "Inf",
+                    "mmax": 4,
                     "u2pd": "relaxed",
                     "skelmethod": "stable",
                     "conservative": false,
@@ -385,7 +292,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "mmax": "Inf",
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,
@@ -395,7 +302,24 @@
                     "input_algorithm_id": null,
                     "timeout": null,
                     "edgeConstraints": null
+                },
+                {
+                    "id": "tdpc-mice",
+                    "alpha": [
+                        0.05
+                    ],
+                    "mmax": 3,
+                    "conservative": false,
+                    "majrule": true,
+                    "numCores": 1,
+                    "cl_type": "PSOCK",
+                    "verbose": true,
+                    "indepTest": "flexMItest",
+                    "input_algorithm_id": "mice",
+                    "timeout": null,
+                    "edgeConstraints": null
                 }
+
             ],
             "tpc": [
                 {
@@ -403,7 +327,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "mmax": "Inf",
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,
@@ -421,7 +345,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "mmax": "Inf",
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,

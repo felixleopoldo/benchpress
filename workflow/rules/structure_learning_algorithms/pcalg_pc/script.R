@@ -23,6 +23,12 @@ wrapper <- function() {
 
   data <- read.csv(filename_data, check.names = FALSE)
 
+  # conunt the number of missing values in the data
+  rows_with_missing <- apply(data, 1, function(x) any(is.na(x)))
+  print(paste0("Number of rows with missing values: ", sum(rows_with_missing)))
+  print(paste0("Number of rows without missing values: ", sum(!rows_with_missing)))
+  data <- data[!rows_with_missing, ]
+
   if (!is.null(filename_edge_constraints)) {
     edgeConstraints <- read.csv(filename_edge_constraints)
     p <- ncol(data)

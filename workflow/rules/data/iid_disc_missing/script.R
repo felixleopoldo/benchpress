@@ -60,13 +60,18 @@ new_disc_data <- disc_data
 # For each R_column, at each row replace the value with NA if the R_column is 0.
 # The column names should not change
 
+
 for (colname in colnames(disc_data)) {
     if (grepl("R_", colname)) {
         R_X <- colname
         X <- sub("R_", "", colname)
+        print(paste0("R_X: ", R_X, " X: ", X))
         new_disc_data[, X] <- ifelse(disc_data[[R_X]] == 0, NA, new_disc_data[, X])
     }
 }
+
+print("new_disc_data after:")
+print(head(new_disc_data,10))
 
 # Remove the R_varname_na columns
 new_disc_data <- new_disc_data[, !grepl("R_", colnames(new_disc_data))]
@@ -83,9 +88,6 @@ node_states_range_header <- data.frame(rbind(node_states))
 colnames(node_states_range_header) <- colnames(new_disc_data)
 
 rownames(node_states_range_header) <- NULL
-
-print("node_states_range_header:")
-print(head(node_states_range_header,10))
 
 new_disc_data_range_header <- data.frame(rbind(node_states_range_header, as.matrix(new_disc_data)))
 rownames(new_disc_data_range_header) <- NULL

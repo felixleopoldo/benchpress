@@ -122,6 +122,7 @@ randMissingDAGMaxParents <- function(n, d, n_missing, method = "er", par1 = NULL
       
       for (node in 1:n) {
         if (is_R_node[node]) next  # Already an R_ node
+        if (taken_substantive[node]) next  # This node's name is used for an R_ variable, must stay substantive
         
         children <- which(adj[node, ] == 1)
         

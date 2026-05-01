@@ -181,9 +181,15 @@ tpc.cons.intern <- function(
                 if (verbose) {
                     cat(
                         "\nTriple:", labels[a], "-", labels[b], "-", labels[c], "and sepset by skelet:",
-                        unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]]),
+                        labels[unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]])],
                         "\n"
                     )
+                    message("nbrsA:")
+                    message(paste(labels[nbrsA], collapse = ", "))
+                    message("nbrsC:")
+                    message(paste(labels[nbrsC], collapse = ", "))
+                    message("sepset:")
+                    message(paste(labels[unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]])], collapse = ", "))
                 }
 
                 # for the untestable triples,eg R_X _|_ X, we set r.abc$decision to 1
@@ -191,7 +197,6 @@ tpc.cons.intern <- function(
                 r.abc <- list(decision = NULL, version = NULL)
                 # check if labels[a] starts with R_ and if labels[c] is labels[a] without the R_ prefix
                 if (grepl("^R_", labels[a]) && labels[c] == gsub("^R_", "", labels[a])) {
-                    
                     r.abc$decision <- 1
                     print(paste("Untestable triple:", labels[a], "-", labels[b], "-", labels[c]))
                 }

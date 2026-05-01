@@ -106,7 +106,7 @@ colnames(discBN$adj) <- labels
 
 print("discBN:")
 print(discBN)   
-print("nstates:")
-print(discBN$nstates)
+
+
 
 saveRDS(discBN, file = filename)

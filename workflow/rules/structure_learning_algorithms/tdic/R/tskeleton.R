@@ -875,11 +875,24 @@ tskeleton_ic <- function(suffStat, indepTest, alpha, labels, p,
 
                         # number of complete rows
                         n_complete_rows <- sum(complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]))
-                        print(paste0("n_complete_rows: ", n_complete_rows))
+                        #print(paste0("n_complete_rows: ", n_complete_rows))
+                        complete_rows <- complete.cases(suffStat[, c(x, y, nbrs[S_fixed])])
+                        # print the cell counts for the conditioning set nbrs[S_fixed]
+               
+                        # take only the complete rows of the suffStat
+                        complete_data <- suffStat[complete_rows, nbrs[S_fixed]]
+                        #print("Head of complete data for the conditioning set nbrs[S_fixed]:")                        
+                        #print(head(complete_data))
+
+                        if (length(nbrs[S_fixed]) > 1) {
+                        counts <- as.data.frame(table(complete_data))
+                            #print("Counts of the complete data for the conditioning set nbrs[S_fixed]:")
+                            print(min(counts$Freq))
+                        }
 
                         pval <- indepTest(x, y, 
                           as.integer(unlist(nbrs[S_fixed], use.names = FALSE)),
-                          suffStat)
+                          suffStat, labels = labels)
 
                         if (verbose) {
                             cat(

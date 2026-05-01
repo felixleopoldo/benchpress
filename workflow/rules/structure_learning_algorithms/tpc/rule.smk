@@ -9,7 +9,9 @@ rule:
         input_algorithm=input_algorithm, # To use this, add a field called input_algorithm_id to the JSON file
         edgeConstraints_formatted=edge_constraints_tpc,        
         data = alg_input_data(),
-        tpc="workflow/rules/structure_learning_algorithms/tpc/R/tskeleton.R"
+        tpc="workflow/rules/structure_learning_algorithms/tpc/R/tskeleton.R",
+        tcheckTriple="workflow/rules/structure_learning_algorithms/tpc/R/tcheckTriple.R",
+        tpc_cons_intern="workflow/rules/structure_learning_algorithms/tpc/R/tpc_cons_intern.R",
     output:
         adjmat = alg_output_adjmat_path(module_name),
         time = alg_output_time_path(module_name),

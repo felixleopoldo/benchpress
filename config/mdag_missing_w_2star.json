@@ -16,7 +16,7 @@
         "graph_true_stats": false,
         "ggally_ggpairs": true,
         "graph_estimation": {
-          "ids": ["td-pc", "bips_tpc"],
+          "ids": ["mvpc", "m-tdpc", "bips_tdpc"],
           "convert_to": [],
           "graphs": true,
           "adjmats": false,
@@ -134,10 +134,10 @@
       "mvpc": [
         {
           "id": "mvpc",
-          "alpha": [0.001, 0.01, 0.05, 0.1],
-          "corrMethod": "gaussCItest.permc",
+          "alpha": [0.05],
+          "corrMethod": "binCItest.permc",
           "NAdelete": true,
-          "mmax": "Inf",
+          "mmax": 3,
           "u2pd": "relaxed",
           "skelmethod": "stable",
           "conservative": false,
@@ -145,14 +145,14 @@
           "solveconfl": true,
           "numCores": 1,
           "verbose": false,
-          "indepTest": "gaussCItest.td",
+          "indepTest": "binCItest.td",
           "timeout": null,
           "edgeConstraints": null
         }
       ],
       "bips_tpc": [
         {
-          "id": "bips_tpc",
+          "id": "tdpc",
           "alpha": [0.05],
           "mmax": "Inf",
           "conservative": false,
@@ -168,7 +168,7 @@
       ],
       "tpc": [
         {
-          "id": "td-pc",
+          "id": "tdpc",
           "alpha": [0.05],
           "mmax": "Inf",
           "conservative": false,

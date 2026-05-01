@@ -1,15 +1,15 @@
 {
     "benchmark_setup": [
         {
-            "title": "missingness_structures_random",
+            "title": "missingness_structures",
             "data": [
                 {
-                    "graph_id": "avneigs2_p15_3_missing",
-                    "parameters_id": "discbn",
+                    "graph_id": "missing_w_2star.csv",
+                    "parameters_id": "discbn_noisy_or",
                     "data_id": "disc_missing",
                     "seed_range": [
-                        1,
-                        5
+                        9,
+                        9
                     ]
                 }
             ],
@@ -19,10 +19,8 @@
                 "ggally_ggpairs": false,
                 "graph_estimation": {
                     "ids": [
-                        "tdpc",
-                        "m-tdpc",
-                        "mvpc",
-                        "m-tdic"
+                        "m-tdic",
+                        "tdpc"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -32,7 +30,7 @@
                     "graphvizcompare": false
                 },
                 "benchmarks": {
-                    "filename_prefix": "random_mdag_estimates/",
+                    "filename_prefix": "mdags/",
                     "show_seed": false,
                     "errorbar": true,
                     "errorbarh": false,
@@ -40,9 +38,6 @@
                     "path": true,
                     "text": false,
                     "ids": [
-                        "tdpc",
-                        "m-tdpc",
-                        "mvpc"
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -83,7 +78,7 @@
                     "id": "disc_missing",
                     "standardized": false,
                     "n": [
-                        15000
+                        50000
                     ]
                 },
                 {
@@ -114,52 +109,6 @@
                     "max_parents": 5,
                     "n": 10,
                     "d": 4,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                }
-            ],
-            "pcalg_randdag_missing": [
-                {
-                    "id": "avneigs2_p5_1_missing",
-                    "max_parents": 2,
-                    "n": 5,
-                    "d": 2,
-                    "n_missing": 1,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p10_2_missing",
-                    "max_parents": 3,
-                    "n": 10,
-                    "d": 4,
-                    "n_missing": 2,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p15_2_missing",
-                    "max_parents": 3,
-                    "n": 15,
-                    "d": 4,
-                    "n_missing": 2,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p15_3_missing",
-                    "max_parents": 3,
-                    "n": 15,
-                    "d": 4,
-                    "n_missing": 3,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -204,6 +153,21 @@
             ]
         },
         "structure_learning_algorithms": {
+            "tetrad_grasp": [
+                {
+                    "id": "grasp",
+                    "score": "bdeu-score",
+                    "datatype": "discrete",
+                    "test": "chi-square-test",
+                    "samplePrior": [
+                        1
+                    ],
+                    "semBicStructurePrior": null,
+                    "penaltyDiscount": null,
+                    "timeout": null,
+                    "edgeConstraints": null
+                }
+            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -218,21 +182,6 @@
                         1,
                         1.5
                     ],
-                    "timeout": null,
-                    "edgeConstraints": null
-                }
-            ],
-            "tetrad_grasp": [
-                {
-                    "id": "grasp",
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "test": "chi-square-test",
-                    "samplePrior": [
-                        1
-                    ],
-                    "semBicStructurePrior": null,
-                    "penaltyDiscount": null,
                     "timeout": null,
                     "edgeConstraints": null
                 }
@@ -284,7 +233,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "mmax": 3,
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,

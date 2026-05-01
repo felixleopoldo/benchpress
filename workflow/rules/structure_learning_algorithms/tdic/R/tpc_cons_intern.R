@@ -175,15 +175,22 @@ tpc.cons.intern <- function(
 
                 ############################# new code
                 # neighbours in the future of both candidate parents are excluded
+                # Felix: this we might remove?
                 nbrsA <- intersect(nbrsA, which(tiers <= tiers[a]))
                 nbrsC <- intersect(nbrsC, which(tiers <= tiers[c]))
                 ############################# end new code
                 if (verbose) {
                     cat(
-                        "\nTriple:", labels[a], "-", labels[b], "-", labels[c], "and sepset by skelet:",
+                        "\nTriple:", labels[a], "-", labels[b], "-", labels[c], "and sepset by skeleton:",
                         unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]]),
                         "\n"
                     )
+                    message("nbrsA:")
+                    message(paste(labels[nbrsA], collapse = ", "))
+                    message("nbrsC:")
+                    message(paste(labels[nbrsC], collapse = ", "))
+                    message("sepset:")
+                    message(paste(labels[unique(sk@sepset[[a]][[c]], sk@sepset[[c]][[a]])], collapse = ", "))
                 }
 
                 # for the untestable triples,eg R_X _|_ X, we set r.abc$decision to 1
@@ -200,6 +207,7 @@ tpc.cons.intern <- function(
                     r.abc$decision <- 1
                     print(paste("Untestable triple:", labels[a], "-", labels[b], "-", labels[c]))
                 }
+                
 
                 if (is.null(r.abc$decision)) {
                     # checkTriple goes through all subsets of nbrsA and nbrsC

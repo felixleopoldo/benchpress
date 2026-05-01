@@ -5,14 +5,25 @@ CMD="$CMD --delimiter comma"
 CMD="$CMD --prefix ${snakemake_output[adjmat]}"
 CMD="$CMD --json-graph"
 
+no_missing_file=${snakemake_output[adjmat]}.nomissing.csv
+
+#awk -F',' '!/,,$/ && !/,,/' ${snakemake_input[data]} > ${no_missing_file}
+# also remove if the the value is indicated by NAqq
+awk -F',' '{skip=0; for(i=1;i<=NF;i++) if($i=="" || $i=="NA") skip=1; if(!skip) print}' ${snakemake_input[data]} > ${no_missing_file}
+
+#head -n 10 ${no_missing_file}
+
+echo "GRaSP:Number of rows left after list-wise deletion: $(wc -l ${no_missing_file})"
+
+
 # Use data without range header for discrete data 
 if [ ${snakemake_wildcards[datatype]} = "discrete" ]; then
     # Create temporary datafile without range/cardinality header
     # for discrete data
-    sed '2d' ${snakemake_input[data]} > ${snakemake_output[adjmat]}.no_range_header
-    CMD="$CMD --dataset ${snakemake_output[adjmat]}.no_range_header"
+    sed '2d' ${no_missing_file} > ${no_missing_file}.no_range_header
+    CMD="$CMD --dataset ${no_missing_file}.no_range_header"
 else
-    CMD="$CMD --dataset ${snakemake_input[data]}"
+    CMD="$CMD --dataset ${no_missing_file}"
 fi
 
 CMD="$CMD --algorithm grasp"
@@ -55,7 +66,9 @@ fi
 if [ -f ${snakemake_output[adjmat]}_graph.json ]; then 
         
     Rscript workflow/scripts/utils/tetrad_graph_to_adjmat.R --jsongraph ${snakemake_output[adjmat]}_graph.json --filename ${snakemake_output[adjmat]}  
-    rm -f ${snakemake_output[adjmat]}.no_range_header 
+    #rm -f ${snakemake_output[adjmat]}.no_range_header 
+    rm -f ${no_missing_file}
+    rm -f ${no_missing_file}.no_range_header
     rm ${snakemake_output[adjmat]}_graph.json 
     rm ${snakemake_output[adjmat]}_out.txt; # prefix is not the same in the new versin
     
