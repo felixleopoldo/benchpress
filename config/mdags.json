@@ -354,7 +354,8 @@
                     "indepTest": "flexCItwd",
                     "input_algorithm_id": null,
                     "timeout": null,
-                    "edgeConstraints": null
+                    "edgeConstraints": null,
+                    "mgraph": true
                 }
             ],
             "mice": [

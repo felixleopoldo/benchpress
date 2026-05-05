@@ -30,6 +30,7 @@ wrapper <- function() {
     verbose <- as.logical(snakemake@wildcards[["verbose"]])
     indepTest <- match.fun(snakemake@wildcards[["indepTest"]])
     cl_type <- snakemake@wildcards[["cl_type"]]
+    mgraph <- as.logical(snakemake@wildcards[["mgraph"]])
 
     data <- read.csv(filename_data, check.names = FALSE)
 
@@ -63,26 +64,24 @@ wrapper <- function() {
 
     print("In TPC script.R")
 
-    # create a new data frame with the missingness indicators, called R_original_var_name_na for each variable that has missingness
-    
-    #message("Adding missingness indicators to the data")
-    data_with_missingness <- data
     num_missing <- 0
-    for (i in 1:ncol(data)) {
-        if (any(is.na(data[, i]))) {
-            data_with_missingness[, paste0("R_", colnames(data)[i])] <- ifelse(is.na(data[, i]), 0, 1)
-            num_missing <- num_missing + 1
+    if (mgraph) {
+        # Missingness-indicator nodes R_<var> for each substantive column with NAs (m-graph construction).
+        data_with_missingness <- data
+        for (i in 1:ncol(data)) {
+            if (any(is.na(data[, i]))) {
+                data_with_missingness[, paste0("R_", colnames(data)[i])] <- ifelse(is.na(data[, i]), 0, 1)
+                num_missing <- num_missing + 1
+            }
         }
+        data <- data_with_missingness
     }
-    # first row should be  only 2s
-    #data_with_missingness[1, ] <- 2
-    data <- data_with_missingness   
 
     if (is.null(forbEdges)) {
         forbEdges <- matrix(0, nrow = ncol(data), ncol = ncol(data))
         colnames(forbEdges) <- colnames(data)
         rownames(forbEdges) <- colnames(data)
-    } else {
+    } else if (mgraph) {
         # Extend forbEdges matrix by adding num_missing rows and columns
         forbEdges <- cbind(forbEdges, matrix(0, nrow = nrow(forbEdges), ncol = num_missing))
         forbEdges <- rbind(forbEdges, matrix(0, nrow = num_missing, ncol = ncol(forbEdges)))
@@ -90,24 +89,24 @@ wrapper <- function() {
         rownames(forbEdges) <- c(rownames(forbEdges), paste0("R_", colnames(data)[1:num_missing]))
     }
 
-    # Forbid edges from the R_ variables to the original variables
-    for (i in 1:ncol(data)) {
-        for (j in 1:ncol(data)) {
-            if (grepl("^R_", colnames(data)[i]) && !grepl("^R_", colnames(data)[j])) {
-                forbEdges[i, j] <- 1
+    if (mgraph) {
+        # Forbid edges from the R_ variables to the original variables
+        for (i in 1:ncol(data)) {
+            for (j in 1:ncol(data)) {
+                if (grepl("^R_", colnames(data)[i]) && !grepl("^R_", colnames(data)[j])) {
+                    forbEdges[i, j] <- 1
+                }
             }
         }
-    }
 
-    # Forbid edges like X to R_X
-    for (i in 1:ncol(data)) {
-        for (j in 1:ncol(data)) {
-            # check is it is a substantive variable 
-            X <- colnames(data)[i]
-            Y <- colnames(data)[j]
-            # If Y is the R_X of X, then forbid the edge X to Y
-            if (grepl("^R_", Y) && gsub("^R_", "", Y) == X) {
-                forbEdges[i, j] <- 1
+        # Forbid edges like X to R_X
+        for (i in 1:ncol(data)) {
+            for (j in 1:ncol(data)) {
+                X <- colnames(data)[i]
+                Y <- colnames(data)[j]
+                if (grepl("^R_", Y) && gsub("^R_", "", Y) == X) {
+                    forbEdges[i, j] <- 1
+                }
             }
         }
     }
@@ -135,11 +134,11 @@ wrapper <- function() {
         data <- data[-1, ]
         # creaate factor variables from the data. If discrete varibles. As the binCItest doesnt seem to work.
         # to check if a variable is discrete, check if the number of unique values is less than 10.
-        is_discrete <- FALSE
+        is_discrete <- TRUE
         for (i in 1:ncol(data)) {
-            if (length(unique(data[, i])) < 10) {
-                data[, i] <- as.factor(data[, i])
-            }
+            if (length(unique(data[, i])) > 10) {
+                is_discrete <- FALSE
+            } 
         }
     
         print("is_discrete")
@@ -164,6 +163,8 @@ wrapper <- function() {
 
     }
 
+    print("suffStat")
+    print(suffStat)
 
     start <- proc.time()[1]
 

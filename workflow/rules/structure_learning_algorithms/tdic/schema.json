@@ -13,11 +13,16 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "mgraph": {
+                "description": "If true, augment data with missingness-indicator nodes R_<variable> and forbid edges accordingly (m-graph style). If false, learn structure on substantive variables only.",
+                "type": "boolean"
             }
         },
         "required": [
             "id",
-            "timeout"
+            "timeout",
+            "mgraph"
         ],
         "examples": [
             {
