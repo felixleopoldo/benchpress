@@ -22,7 +22,8 @@
                         "tdpc",
                         "m-tdpc",
                         "mvpc",
-                        "m-tdic"
+                        "m-tdic",
+                        "m-tdic-nomgraph"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -331,6 +332,23 @@
                     "timeout": null,
                     "edgeConstraints": null,
                     "mgraph": true
+                },
+                {
+                    "id": "m-tdic-nomgraph",
+                    "alpha": [
+                        0.05
+                    ],
+                    "mmax": 3,
+                    "conservative": false,
+                    "majrule": true,
+                    "numCores": 1,
+                    "cl_type": "PSOCK",
+                    "verbose": true,
+                    "indepTest": "flexCItwd",
+                    "input_algorithm_id": null,
+                    "timeout": null,
+                    "edgeConstraints": null,
+                    "mgraph": false
                 }
             ],
             "mice": [
