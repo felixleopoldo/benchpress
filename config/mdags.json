@@ -75,6 +75,7 @@
                     "ids": [
                         "tdpc",
                         "bips_tpc",
+                        "m-tdic",
                         "tdic"
                     ],
                     "convert_to": [],
@@ -341,7 +342,7 @@
             ],
             "tdic": [
                 {
-                    "id": "tdic",
+                    "id": "m-tdic",
                     "alpha": [
                         0.05
                     ],
@@ -356,6 +357,23 @@
                     "timeout": null,
                     "edgeConstraints": null,
                     "mgraph": true
+                },
+                {
+                    "id": "tdic",
+                    "alpha": [
+                        0.05
+                    ],
+                    "mmax": 4,
+                    "conservative": false,
+                    "majrule": true,
+                    "numCores": 1,
+                    "cl_type": "PSOCK",
+                    "verbose": true,
+                    "indepTest": "flexCItwd",
+                    "input_algorithm_id": null,
+                    "timeout": null,
+                    "edgeConstraints": null,
+                    "mgraph": false
                 }
             ],
             "mice": [

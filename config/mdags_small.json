@@ -20,6 +20,7 @@
                 "graph_estimation": {
                     "ids": [
                         "m-tdic",
+                        "tdic",
                         "tdpc"
                     ],
                     "convert_to": [],
@@ -280,6 +281,23 @@
                     "timeout": null,
                     "edgeConstraints": null,
                     "mgraph": true
+                },
+                {
+                    "id": "tdic",
+                    "alpha": [
+                        0.05
+                    ],
+                    "mmax": 3,
+                    "conservative": false,
+                    "majrule": true,
+                    "numCores": 1,
+                    "cl_type": "PSOCK",
+                    "verbose": true,
+                    "indepTest": "flexCItwd",
+                    "input_algorithm_id": null,
+                    "timeout": null,
+                    "edgeConstraints": null,
+                    "mgraph": false
                 }
             ],
             "mice": [
