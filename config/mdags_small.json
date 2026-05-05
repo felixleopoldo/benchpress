@@ -8,8 +8,8 @@
                     "parameters_id": "discbn_noisy_or",
                     "data_id": "disc_missing",
                     "seed_range": [
-                        9,
-                        9
+                        1,
+                        5
                     ]
                 }
             ],
@@ -21,7 +21,11 @@
                     "ids": [
                         "m-tdic",
                         "tdic",
-                        "tdpc"
+                        "tdpc",
+                        "m-tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -39,6 +43,13 @@
                     "path": true,
                     "text": false,
                     "ids": [
+                        "m-tdic",
+                        "tdic",
+                        "tdpc",
+                        "m-tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
                     ]
                 },
                 "mcmc_traj_plots": [],

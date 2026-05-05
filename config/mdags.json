@@ -73,10 +73,13 @@
                 "ggally_ggpairs": false,
                 "graph_estimation": {
                     "ids": [
-                        "tdpc",
-                        "bips_tpc",
+                        "tdic",
                         "m-tdic",
-                        "tdic"
+                        "m-tdpc",
+                        "tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -94,8 +97,13 @@
                     "path": true,
                     "text": false,
                     "ids": [
-                        "tdpc"
-                 
+                        "pc",
+                        "grasp",
+                        "mvpc",
+                        "tdic",
+                        "m-tdic",
+                        "tdpc",
+                        "m-tdpc"
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -289,7 +297,7 @@
             ],
             "bips_tpc": [
                 {
-                    "id": "bips_tpc",
+                    "id": "tdpc",
                     "alpha": [
                         0.05
                     ],
@@ -324,7 +332,7 @@
             ],
             "tpc": [
                 {
-                    "id": "tdpc",
+                    "id": "m-tdpc",
                     "alpha": [
                         0.05
                     ],

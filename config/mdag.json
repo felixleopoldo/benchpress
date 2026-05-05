@@ -4,12 +4,12 @@
             "title": "missingness_structures_random",
             "data": [
                 {
-                    "graph_id": "avneigs2_p15_3_missing",
+                    "graph_id": "avneigs2_p10_2_missing",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        5
+                        3
                     ]
                 }
             ],
@@ -23,7 +23,8 @@
                         "m-tdpc",
                         "mvpc",
                         "m-tdic",
-                        "m-tdic-nomgraph"
+                        "tdic",
+                        "pc"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -34,7 +35,7 @@
                 },
                 "benchmarks": {
                     "filename_prefix": "random_mdag_estimates/",
-                    "show_seed": false,
+                    "show_seed": true,
                     "errorbar": true,
                     "errorbarh": false,
                     "scatter": true,
@@ -43,7 +44,11 @@
                     "ids": [
                         "tdpc",
                         "m-tdpc",
-                        "mvpc"
+                        "mvpc",
+                        "m-tdic",
+                        "tdic",
+                        "pc",
+                        "grasp"
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -242,7 +247,7 @@
                 {
                     "id": "pc",
                     "alpha": [
-                        0.05
+                        0.01,0.05,0.1
                     ],
                     "NAdelete": true,
                     "mmax": 4,
@@ -262,7 +267,7 @@
                 {
                     "id": "mvpc",
                     "alpha": [
-                        0.05
+                        0.01,0.05,0.1
                     ],
                     "corrMethod": "binCItest.permc",
                     "NAdelete": true,
@@ -283,7 +288,7 @@
                 {
                     "id": "tdpc",
                     "alpha": [
-                        0.05
+                        0.01,0.05,0.1
                     ],
                     "mmax": 3,
                     "conservative": false,
@@ -301,7 +306,7 @@
                 {
                     "id": "m-tdpc",
                     "alpha": [
-                        0.05
+                        0.01,0.05,0.1
                     ],
                     "mmax": 3,
                     "conservative": false,
@@ -334,9 +339,9 @@
                     "mgraph": true
                 },
                 {
-                    "id": "m-tdic-nomgraph",
+                    "id": "tdic",
                     "alpha": [
-                        0.05
+                        0.01,0.05,0.1
                     ],
                     "mmax": 3,
                     "conservative": false,
