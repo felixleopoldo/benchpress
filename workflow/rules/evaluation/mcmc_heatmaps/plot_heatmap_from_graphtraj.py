@@ -9,6 +9,7 @@ import numpy as np
 import networkx as nx
 from sklearn.cluster import estimate_bandwidth
 import os
+from helper_functions import text_wrap
 sys.path.append("workflow/scripts/evaluation")
 
 
@@ -51,13 +52,7 @@ else:
     plt.title("Graph: "+snakemake.params["adjmat_string"] + "\nParameters: " +
               snakemake.params["param_string"] + "\nData: " + snakemake.params["data_string"], fontsize=6, ha="center")
 
-    unwrapped = snakemake.params["alg_string"].replace(
-        "/", "\n")  # newlines separate the parameters
-    wrapped_lines = []
-    for line in unwrapped.splitlines():
-        wrapped = [line[i:i+25] for i in range(0, len(line), 25)]
-        wrapped_lines.extend(wrapped)
-    wrapped_alg_string = "\n".join(wrapped_lines)
+    wrapped_alg_string = text_wrap(snakemake.params["alg_string"])
     burn_in = snakemake.wildcards["burn_in"]
     ylabel_text = f"Algorithm:\n\n{wrapped_alg_string}\n\nburn_in={burn_in}"
     plt.ylabel(ylabel_text, rotation="horizontal",

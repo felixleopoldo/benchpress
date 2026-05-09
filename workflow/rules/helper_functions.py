@@ -2,6 +2,21 @@ import json
 from pathlib import Path
 import pprint as pp
 
+def text_wrap(string,char="/", width = 25): 
+    """ string: any string type
+    char: the character to split at (Note "" is the case of no additional splits other than width)
+    width: The width of each line """
+    if string:
+        if char != "":
+            string = string.replace(char, "\n")  # splits at each character
+        wrapped_lines = []
+        for line in string.splitlines():
+            wrapped = [line[i:i+width] for i in range(0, len(line), width)] # separate each instance by width
+            wrapped_lines.extend(wrapped)
+        wrapped_string = "\n".join(wrapped_lines)
+        return wrapped_string
+    return ""
+
 def edge_constraints_tetrad(wildcards):
     if wildcards.edgeConstraints == "None":
         return []
