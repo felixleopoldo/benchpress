@@ -93,10 +93,10 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 ..  youtube:: tx3hIH3b9Hg
 
-.. .. note::
 
-..     If you have any questions, suggestions, or contributions, please feel free to contact us. Either raise an issue at the `GitHub <https://github.com/felixleopoldo/benchpress>`_, or join the `Discord <https://discord.com/channels/1007933286724685824/1007933287215411284>`_ chat. 
-..     Or simply send an email to felix leopoldo rios at gmail dot com.
+.. note:: For suggestions for improvements and to report bugs, raise an issue or start a discussion at `GitHub <https://github.com/felixleopoldo/benchpress>`__.
+
+
 
 .. rubric:: News
 
