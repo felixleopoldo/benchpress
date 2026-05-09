@@ -3,6 +3,7 @@
 Adding new modules 
 *******************
 
+You may first want to watch the `part of the UAI2023 tutorial <https://youtu.be/tx3hIH3b9Hg?t=2350>`__ on how to create a new module.
 All modules have the following basic file structure, where all the files are necessary except for *script.R* that may be replaced by some `alternative script <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`_.
 However, to get something working, you only have to consider altering *script.R* (or some alternative and in that case also *rule.smk*) and the modules `JSON <https://www.json.org/json-en.html>`_ snippets, as shown in the examples below.
 
@@ -47,7 +48,6 @@ To test run
 .. prompt:: bash
 
     snakemake --cores all --use-singularity --configfile config/mysandbox.json
-
 
 
 Graph 
