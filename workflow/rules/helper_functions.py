@@ -78,7 +78,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(alg)
 
-    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation"):
+    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation") or (eval_method == "average_adjmat"):
         benchmarks_alg_ids = bmark_setup["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
             for alg_conf_id in benchmarks_alg_ids:
@@ -172,6 +172,16 @@ def get_active_rules(wildcards):
         if "benchmarks" in evaluation and len(evaluation["benchmarks"]["ids"]) > 0:
             rules.append("results/output/"+bmark_setup_title
                         +"/benchmarks/benchmarks.done")
+
+        # average_adjmat
+        if "average_adjmat" in evaluation and evaluation["average_adjmat"] is not None and len(evaluation["average_adjmat"].get("ids", [])) > 0:
+            graph_type = evaluation["average_adjmat"].get("graph_type", "original")
+            for sim_setup in bmark_setup["data"]:
+                sim_id = f"graph_id={sim_setup['graph_id']}_parameters_id={sim_setup['parameters_id']}_data_id={sim_setup['data_id']}"
+                for alg in active_algorithms(bmark_setup, eval_method="average_adjmat"):
+                    for alg_conf in config["resources"]["structure_learning_algorithms"][alg]:
+                        if alg_conf["id"] in evaluation["average_adjmat"]["ids"]:
+                            rules.append(f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}/{alg_conf['id']}.done")
 
     return rules
 

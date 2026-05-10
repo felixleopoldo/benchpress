@@ -1,0 +1,13 @@
+{
+    "title": "Average Adjacency Matrix",
+    "version": "v0.0.1",
+    "description": "Computes average adjacency matrix over seeds to show edge recovery probability.",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "papers": [],
+    "graph_types": ["dag", "cpdag", "skeleton"],
+    "language": "python"
+}

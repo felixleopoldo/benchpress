@@ -1,0 +1,28 @@
+{
+    "title": "average_adjmat",
+    "description": "Computes average adjacency matrix over seeds to show edge recovery probability.",
+    "type": "object",
+    "properties": {
+        "ids": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of algorithm IDs to include."
+        },
+        "graph_type": {
+            "type": "string",
+            "enum": ["original", "cpdag", "skeleton", "pattern"],
+            "default": "original",
+            "description": "Graph type to convert estimates to before averaging."
+        }
+    },
+    "required": ["ids"],
+    "additionalProperties": false,
+    "examples": {
+        "average_adjmat": {
+            "ids": ["fges-sem-bic", "pc-gaussCItest"],
+            "graph_type": "skeleton"
+        }
+    }
+}
