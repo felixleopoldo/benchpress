@@ -65,42 +65,46 @@ if (package == "pcalg" || package == "mvpc") {
         constraints <- list() # save this to file serialized
 
         tiers_vars <- c()
-        if (!is.null(data$tiers)) {
+        has_tiers <- !is.null(data$tiers) && length(data$tiers) > 0
+        if (has_tiers) {
             for (tier in data$tiers) {
                 tiers_vars <- c(tiers_vars, tier)
             }
         }
 
-        # check that tiers_vars has the same variables as node_labels
-        #  check if the node_labels are a subset of tiers_vars
-        if (!all(node_labels %in% tiers_vars)) {
-            print("Some variables in the data are not in the tiers")
-            print(setdiff(node_labels, tiers_vars))
-            stop("Some variables in the data are not in the tiers")
-        }
-
-        
-       #print ("Checking tiers  variables")
-        if (!all(tiers_vars %in% node_labels)) {
-            # check whcih variables are not in the tiers
-            print("Some variables in the tiers are not in the data")
-            print(setdiff(tiers_vars, node_labels))
-            stop("Some variables in the tiers are not in the data")
-        }
-        
-
-        tiers <- rep(NULL, p)
-        # for each tier in data$tiers,
-
-        tier_no <- 1
-        for (t in data$tiers) {
-            for (v in t) {
-                # get the index of the variable in the node_labels
-                index <- which(node_labels == v)
-
-                tiers[index] <- tier_no
+        tiers <- NULL
+        if (has_tiers) {
+            # check that tiers_vars has the same variables as node_labels
+            # check if node_labels are a subset of tiers_vars
+            if (!all(node_labels %in% tiers_vars)) {
+                print("Some variables in the data are not in the tiers")
+                print(setdiff(node_labels, tiers_vars))
+                stop("Some variables in the data are not in the tiers")
             }
-            tier_no <- tier_no + 1
+
+            # Allow extra tier variables that are not present in current data.
+            # They are ignored for this run.
+            if (!all(tiers_vars %in% node_labels)) {
+                ignored_tier_vars <- setdiff(tiers_vars, node_labels)
+                message(
+                    "Ignoring tier variables not found in data: ",
+                    paste(ignored_tier_vars, collapse = ", ")
+                )
+            }
+
+            tiers <- rep(NULL, p)
+            # for each tier in data$tiers
+            tier_no <- 1
+            for (t in data$tiers) {
+                for (v in t) {
+                    # get the index of the variable in node_labels
+                    index <- which(node_labels == v)
+                    if (length(index) > 0) {
+                        tiers[index] <- tier_no
+                    }
+                }
+                tier_no <- tier_no + 1
+            }
         }
         constraints$tiers <- tiers
 
@@ -130,7 +134,7 @@ if (package == "pcalg" || package == "mvpc") {
         # Now, check if data$tier_setting$forbid_withid_tiers == true
         # if so fot the edges within the tiers, add them to forbEdges
 
-        if (!is.null(data$tier_settings) && data$tier_settings$forbid_within_tiers) {
+        if (has_tiers && !is.null(data$tier_settings) && data$tier_settings$forbid_within_tiers) {
             for (tier in data$tiers) {
                 for (i in 1:(length(tier) - 1)) {
                     for (j in (i + 1):length(tier)) {
@@ -144,7 +148,7 @@ if (package == "pcalg" || package == "mvpc") {
 
         # Now, check if data$tier_setting$can_only_cause_next_tier == true
         # if so fot the edges within the tiers, add them to forbEdges
-        if (!is.null(data$tier_settings) && data$tier_settings$can_only_cause_next_tier) {
+        if (has_tiers && !is.null(data$tier_settings) && data$tier_settings$can_only_cause_next_tier) {
             for (i in 1:(length(data$tiers) - 1)) {
                 current_tier <- data$tiers[[i]]
                 future_tiers <- data$tiers[(i + 2):length(data$tiers)]
