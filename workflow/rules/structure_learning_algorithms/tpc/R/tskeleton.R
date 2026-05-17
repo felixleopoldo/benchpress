@@ -583,6 +583,13 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                                 G[x, y] <- G[y, x] <- FALSE
                                 sepset[[x]][[y]] <- nbrs[S]
                                 break # exit repeat loop (?)
+                            } else {
+                                # path check failed: advance to next subset
+                                nextSet <- getNextSet(length_nbrs, ord, S)
+                                if (nextSet$wasLast) {
+                                    break
+                                }
+                                S <- nextSet$nextSet
                             }
                         } else {
                             # chose ord elements from the neighbours as the new S
