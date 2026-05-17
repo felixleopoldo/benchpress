@@ -228,6 +228,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
     edge_log <- data.frame(
         x = character(), y = character(), sepset = character(),
         pval = numeric(), n_complete = integer(), sepset_on_path = logical(),
+        edge_deleted = logical(),
         stringsAsFactors = FALSE
     )
     # seq_p is just the vector 1:p
@@ -568,6 +569,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             } else {
                                 NA
                             }
+                            edge_deleted <- !sepnodes_on_path || isTRUE(on_path)
                             if (verbose) {
                                 edge_log <- rbind(edge_log, data.frame(
                                     x = labels[x],
@@ -576,10 +578,11 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                                     pval = pval,
                                     n_complete = n_complete_rows,
                                     sepset_on_path = on_path,
+                                    edge_deleted = edge_deleted,
                                     stringsAsFactors = FALSE
                                 ))
                             }
-                            if (!sepnodes_on_path || isTRUE(on_path)) {
+                            if (edge_deleted) {
                                 G[x, y] <- G[y, x] <- FALSE
                                 sepset[[x]][[y]] <- nbrs[S]
                                 break # exit repeat loop (?)
