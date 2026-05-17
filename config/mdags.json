@@ -221,18 +221,19 @@
         "structure_learning_algorithms": {
             "tetrad_grasp": [
                 {
-                  "id": "grasp",
-                  "score": "bdeu-score",
-                  "datatype": "discrete",
-                  "test": "chi-square-test",
-                  "samplePrior": [
-                    1                  ],
-                  "semBicStructurePrior": null,
-                  "penaltyDiscount": null,
-                  "timeout": null,
-                  "edgeConstraints": null
+                    "id": "grasp",
+                    "score": "bdeu-score",
+                    "datatype": "discrete",
+                    "test": "chi-square-test",
+                    "samplePrior": [
+                        1
+                    ],
+                    "semBicStructurePrior": null,
+                    "penaltyDiscount": null,
+                    "timeout": null,
+                    "edgeConstraints": null
                 }
-              ],
+            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -328,7 +329,6 @@
                     "timeout": null,
                     "edgeConstraints": null
                 }
-
             ],
             "tpc": [
                 {
@@ -342,6 +342,7 @@
                     "numCores": 1,
                     "cl_type": "PSOCK",
                     "verbose": true,
+                    "sepnodes_on_path": false,
                     "indepTest": "flexCItwd",
                     "input_algorithm_id": null,
                     "timeout": null,

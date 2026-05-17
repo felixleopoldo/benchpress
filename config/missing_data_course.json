@@ -1,30 +1,22 @@
 {
     "benchmark_setup": [
         {
-            "title": "missingness_structures_random",
+            "title": "dukenus_course",
             "data": [
                 {
-                    "graph_id": "avneigs2_p10_2_missing",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        10
-                    ]
+                    "graph_id": null,
+                    "parameters_id": null,
+                    "data_id": "df_mnar_numeric.csv",
+                    "seed_range": null
                 }
             ],
             "evaluation": {
-                "graph_true_plots": true,
+                "graph_true_plots": false,
                 "graph_true_stats": false,
-                "ggally_ggpairs": false,
+                "ggally_ggpairs": true,
                 "graph_estimation": {
                     "ids": [
-                        "tdpc",
-                        "m-tdpc",
-                        "mvpc",
-                        "m-tdic",
-                        "tdic",
-                        "pc"
+                        "m-tdpc"
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -32,24 +24,6 @@
                     "diffplots": false,
                     "csvs": false,
                     "graphvizcompare": false
-                },
-                "benchmarks": {
-                    "filename_prefix": "random_mdag_estimates/",
-                    "show_seed": true,
-                    "errorbar": true,
-                    "errorbarh": false,
-                    "scatter": true,
-                    "path": true,
-                    "text": false,
-                    "ids": [
-                        "tdpc",
-                        "m-tdpc",
-                        "mvpc",
-                        "m-tdic",
-                        "tdic",
-                        "pc",
-                        "grasp"
-                    ]
                 },
                 "mcmc_traj_plots": [],
                 "mcmc_heatmaps": [],
@@ -89,7 +63,7 @@
                     "id": "disc_missing",
                     "standardized": false,
                     "n": [
-                        15000
+                        50000
                     ]
                 },
                 {
@@ -120,52 +94,6 @@
                     "max_parents": 5,
                     "n": 10,
                     "d": 4,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                }
-            ],
-            "pcalg_randdag_missing": [
-                {
-                    "id": "avneigs2_p5_1_missing",
-                    "max_parents": 2,
-                    "n": 5,
-                    "d": 2,
-                    "n_missing": 1,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p10_2_missing",
-                    "max_parents": 3,
-                    "n": 10,
-                    "d": 4,
-                    "n_missing": 2,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p15_2_missing",
-                    "max_parents": 3,
-                    "n": 15,
-                    "d": 4,
-                    "n_missing": 2,
-                    "par1": null,
-                    "par2": null,
-                    "method": "er",
-                    "DAG": true
-                },
-                {
-                    "id": "avneigs2_p15_3_missing",
-                    "max_parents": 3,
-                    "n": 15,
-                    "d": 4,
-                    "n_missing": 3,
                     "par1": null,
                     "par2": null,
                     "method": "er",
@@ -210,6 +138,21 @@
             ]
         },
         "structure_learning_algorithms": {
+            "tetrad_grasp": [
+                {
+                    "id": "grasp",
+                    "score": "bdeu-score",
+                    "datatype": "discrete",
+                    "test": "chi-square-test",
+                    "samplePrior": [
+                        1
+                    ],
+                    "semBicStructurePrior": null,
+                    "penaltyDiscount": null,
+                    "timeout": null,
+                    "edgeConstraints": null
+                }
+            ],
             "tetrad_fges": [
                 {
                     "id": "fges-sem-bic",
@@ -228,28 +171,11 @@
                     "edgeConstraints": null
                 }
             ],
-            "tetrad_grasp": [
-                {
-                    "id": "grasp",
-                    "score": "bdeu-score",
-                    "datatype": "discrete",
-                    "test": "chi-square-test",
-                    "samplePrior": [
-                        1
-                    ],
-                    "semBicStructurePrior": null,
-                    "penaltyDiscount": null,
-                    "timeout": null,
-                    "edgeConstraints": null
-                }
-            ],
             "pcalg_pc": [
                 {
                     "id": "pc",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "NAdelete": true,
                     "mmax": 4,
@@ -269,9 +195,7 @@
                 {
                     "id": "mvpc",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "corrMethod": "binCItest.permc",
                     "NAdelete": true,
@@ -292,11 +216,9 @@
                 {
                     "id": "tdpc",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
-                    "mmax": 3,
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,
@@ -312,9 +234,7 @@
                 {
                     "id": "m-tdpc",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.051
                     ],
                     "mmax": 3,
                     "conservative": false,
@@ -333,9 +253,7 @@
                 {
                     "id": "m-tdic",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "mmax": 3,
                     "conservative": false,
@@ -352,9 +270,7 @@
                 {
                     "id": "tdic",
                     "alpha": [
-                        0.01,
-                        0.05,
-                        0.1
+                        0.05
                     ],
                     "mmax": 3,
                     "conservative": false,
