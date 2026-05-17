@@ -13,6 +13,10 @@
             },
             "timeout": {
                 "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
+            },
+            "sepnodes_on_path": {
+                "description": "If true, an edge x-y is only removed if pval >= alpha AND all nodes in the separating set lie on some indirect simple path between x and y in the current skeleton.",
+                "type": "boolean"
             }
         },
         "required": [
@@ -23,7 +27,8 @@
             {
                 "id": "myalg",
                 "cutoff": 0.5,
-                "timeout": null
+                "timeout": null,
+                "sepnodes_on_path": false
             }
         ]
     },

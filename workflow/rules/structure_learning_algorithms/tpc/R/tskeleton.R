@@ -170,7 +170,7 @@ get_S_substantive_and_missingness <- function(S_fixed, nbrs, labels) {
 tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                          method = c("stable", "original"), m.max = Inf,
                          fixedGaps = NULL, fixedEdges = NULL, NAdelete = TRUE,
-                         tiers = NULL, verbose = FALSE) {
+                         tiers = NULL, verbose = FALSE, sepnodes_on_path = FALSE) {
     cl <- match.call()
     if (!missing(p)) {
         stopifnot(is.numeric(p), length(p <- as.integer(p)) ==
@@ -563,8 +563,12 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             pMax[x, y] <- pval
                         }
                         if (pval >= alpha) {
+                            on_path <- if (verbose || sepnodes_on_path) {
+                                is_sepset_on_path(x, y, nbrs[S], G)
+                            } else {
+                                NA
+                            }
                             if (verbose) {
-                                on_path <- is_sepset_on_path(x, y, nbrs[S], G)
                                 edge_log <- rbind(edge_log, data.frame(
                                     x = labels[x],
                                     y = labels[y],
@@ -575,9 +579,11 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                                     stringsAsFactors = FALSE
                                 ))
                             }
-                            G[x, y] <- G[y, x] <- FALSE
-                            sepset[[x]][[y]] <- nbrs[S]
-                            break # exit repeat loop (?)
+                            if (!sepnodes_on_path || isTRUE(on_path)) {
+                                G[x, y] <- G[y, x] <- FALSE
+                                sepset[[x]][[y]] <- nbrs[S]
+                                break # exit repeat loop (?)
+                            }
                         } else {
                             # chose ord elements from the neighbours as the new S
                             nextSet <- getNextSet( # TODO: Look at this function

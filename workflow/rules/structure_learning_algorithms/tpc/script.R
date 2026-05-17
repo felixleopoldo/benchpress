@@ -30,6 +30,7 @@ wrapper <- function() {
     solveconfl <- as.logical(snakemake@wildcards[["solveconfl"]])
     numCores <- as.integer(snakemake@wildcards[["numCores"]])
     verbose <- as.logical(snakemake@wildcards[["verbose"]])
+    sepnodes_on_path <- as.logical(snakemake@wildcards[["sepnodes_on_path"]])
     indepTest <- match.fun(snakemake@wildcards[["indepTest"]])
     cl_type <- snakemake@wildcards[["cl_type"]]
 
@@ -138,9 +139,16 @@ wrapper <- function() {
         suffStat <- list(C = cor(data), n = n)
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
 
-        data <- data[-1, ]
+        data <- as.data.frame(data[-1, ])
         # creaate factor variables from the data
-        data <- as.data.frame(lapply(data, as.factor))
+        #data <- as.data.frame(lapply(data, as.factor))
+        
+        for (i in 1:ncol(data)) {
+            if (length(unique(data[, i])) < 10) {
+                data[, i] <- as.factor(data[, i])
+            }
+        }
+        
         suffStat <- data
 
         # if the first row is only 2s, then remove it
@@ -178,7 +186,8 @@ wrapper <- function() {
         tiers = tiers,
         context.all = context.all,
         context.tier = context.tier,
-        verbose = verbose
+        verbose = verbose,
+        sepnodes_on_path = sepnodes_on_path
     )
 
     totaltime <- proc.time()[1] - start

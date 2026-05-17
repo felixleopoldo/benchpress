@@ -17,6 +17,17 @@
                 "graph_true_plots": true,
                 "graph_true_stats": false,
                 "ggally_ggpairs": false,
+                "average_adjmat": {
+                    "ids": [
+                        "tdic",
+                        "tdpc",
+                        "m-tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
+                    ],
+                    "graph_type": "skeleton"
+                },
                 "graph_estimation": {
                     "ids": [
                         "m-tdic",
@@ -269,6 +280,7 @@
                     "numCores": 1,
                     "cl_type": "PSOCK",
                     "verbose": true,
+                    "sepnodes_on_path": false,
                     "indepTest": "flexCItwd",
                     "input_algorithm_id": null,
                     "timeout": null,

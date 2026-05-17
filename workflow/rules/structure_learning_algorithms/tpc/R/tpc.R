@@ -175,7 +175,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
                 forbEdges = NULL, m.max = Inf,
                 conservative = FALSE, maj.rule = TRUE,
                 tiers = NULL, context.all = NULL, context.tier = NULL,
-                verbose = FALSE,
+                verbose = FALSE, sepnodes_on_path = FALSE,
                 numCores = NULL, cl.type = "PSOCK",
                 clusterexport = NULL) {
     cl <- match.call()
@@ -371,7 +371,8 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
         skel <- tskeleton(suffStat, indepTest, alpha,
             labels = labels,
             method = skel.method, fixedGaps = fixedGaps, fixedEdges = fixedEdges,
-            m.max = m.max, verbose = verbose, tiers = tiers
+            m.max = m.max, verbose = verbose, tiers = tiers,
+            sepnodes_on_path = sepnodes_on_path
         )
     }
 
