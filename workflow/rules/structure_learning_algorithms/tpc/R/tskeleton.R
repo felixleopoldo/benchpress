@@ -22,6 +22,39 @@ getNextSetMDAG <- function(n, k, set) {
 }
 
 
+bfs_reachable <- function(start, target, G) {
+    if (start == target) return(TRUE)
+    p <- nrow(G)
+    visited <- logical(p)
+    visited[start] <- TRUE
+    queue <- start
+    while (length(queue) > 0) {
+        node <- queue[1]
+        queue <- queue[-1]
+        neighbors <- which(G[node, ])
+        for (nb in neighbors) {
+            if (nb == target) return(TRUE)
+            if (!visited[nb]) {
+                visited[nb] <- TRUE
+                queue <- c(queue, nb)
+            }
+        }
+    }
+    return(FALSE)
+}
+
+is_sepset_on_path <- function(x, y, sepset_nodes, G) {
+    if (length(sepset_nodes) == 0) return(TRUE)
+    for (z in sepset_nodes) {
+        G_no_y <- G; G_no_y[y, ] <- FALSE; G_no_y[, y] <- FALSE
+        G_no_x <- G; G_no_x[x, ] <- FALSE; G_no_x[, x] <- FALSE
+        if (!bfs_reachable(x, z, G_no_y) || !bfs_reachable(y, z, G_no_x)) {
+            return(FALSE)
+        }
+    }
+    return(TRUE)
+}
+
 get_S_substantive_and_missingness <- function(S_fixed, nbrs, labels) {
     gr <- grepl("^R_", labels[nbrs[S_fixed]])
     print(gr)
@@ -192,6 +225,11 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
     }
 
     pval <- NULL
+    edge_log <- data.frame(
+        x = character(), y = character(), sepset = character(),
+        pval = numeric(), n_complete = integer(), sepset_on_path = logical(),
+        stringsAsFactors = FALSE
+    )
     # seq_p is just the vector 1:p
     # sepset is a list of p lists with p elements each,
     # so each element represents an edge, and each edge is represented twice
@@ -525,6 +563,18 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             pMax[x, y] <- pval
                         }
                         if (pval >= alpha) {
+                            if (verbose) {
+                                on_path <- is_sepset_on_path(x, y, nbrs[S], G)
+                                edge_log <- rbind(edge_log, data.frame(
+                                    x = labels[x],
+                                    y = labels[y],
+                                    sepset = paste(labels[nbrs[S]], collapse = ","),
+                                    pval = pval,
+                                    n_complete = n_complete_rows,
+                                    sepset_on_path = on_path,
+                                    stringsAsFactors = FALSE
+                                ))
+                            }
                             G[x, y] <- G[y, x] <- FALSE
                             sepset[[x]][[y]] <- nbrs[S]
                             break # exit repeat loop (?)
@@ -553,6 +603,11 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
     } else {
         colnames(G) <- rownames(G) <- labels
         as(G, "graphNEL")
+    }
+    if (verbose && nrow(edge_log) > 0) {
+        cat("\n===== Edge rejection log =====\n")
+        print(edge_log)
+        cat("==============================\n")
     }
     new("pcAlgo",
         graph = Gobject, call = cl, n = integer(0),
