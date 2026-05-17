@@ -77,8 +77,6 @@
                         "m-tdic",
                         "m-tdpc",
                         "tdpc",
-                        "pc",
-                        "grasp",
                         "mvpc"
                     ],
                     "convert_to": [],
@@ -97,8 +95,6 @@
                     "path": true,
                     "text": false,
                     "ids": [
-                        "pc",
-                        "grasp",
                         "mvpc",
                         "tdic",
                         "m-tdic",
@@ -342,7 +338,7 @@
                     "numCores": 1,
                     "cl_type": "PSOCK",
                     "verbose": true,
-                    "sepnodes_on_path": false,
+                    "sepnodes_on_path": true,
                     "indepTest": "flexCItwd",
                     "input_algorithm_id": null,
                     "timeout": null,

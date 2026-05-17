@@ -111,12 +111,6 @@ wrapper <- function() {
         }
     }
 
-    print("forbEdges")
-    print(forbEdges)
-
-    print("data")
-    print(head(data, 20))
-
     suffStat <- NULL
     if (snakemake@wildcards[["indepTest"]] %in% c("binCItest", "disCItwd")) {
         # the discrete case
@@ -131,24 +125,17 @@ wrapper <- function() {
         suffStat <- list(C = cor(data), n = n)
     } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
 
-        data <- data[-1, ]
-        # creaate factor variables from the data. If discrete varibles. As the binCItest doesnt seem to work.
-        # to check if a variable is discrete, check if the number of unique values is less than 10.
-        is_discrete <- TRUE
+        data <- as.data.frame(data[-1, ])
+        # creaate factor variables from the data
+        #data <- as.data.frame(lapply(data, as.factor))
+        
         for (i in 1:ncol(data)) {
-            if (length(unique(data[, i])) > 10) {
-                is_discrete <- FALSE
-            } 
+            if (length(unique(data[, i])) < 10) {
+                data[, i] <- as.factor(data[, i])
+            }
         }
-    
-        print("is_discrete")
-        print(is_discrete)
-        if (is_discrete) {
-            data <- as.data.frame(lapply(data, as.factor))
-            suffStat <- data
-        } 
-        # if the first row is only 2s, then remove it
-
+        
+        suffStat <- data
         if (snakemake@wildcards[["indepTest"]] == "flexCItest") {            
             suffStat <- getSuff(data, test = "flexCItest")
         }
@@ -162,9 +149,6 @@ wrapper <- function() {
         print("4")
 
     }
-
-    print("suffStat")
-    print(suffStat)
 
     start <- proc.time()[1]
 

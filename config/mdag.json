@@ -20,11 +20,8 @@
                 "graph_estimation": {
                     "ids": [
                         "tdpc",
-                        "m-tdpc",
-                        "mvpc",
-                        "m-tdic",
-                        "tdic",
-                        "pc"
+                        "m-tdpc"
+
                     ],
                     "convert_to": [],
                     "graphs": true,
@@ -46,9 +43,7 @@
                         "m-tdpc",
                         "mvpc",
                         "m-tdic",
-                        "tdic",
-                        "pc",
-                        "grasp"
+                        "tdic"
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -89,7 +84,7 @@
                     "id": "disc_missing",
                     "standardized": false,
                     "n": [
-                        15000
+                        1000
                     ]
                 },
                 {
@@ -322,7 +317,7 @@
                     "numCores": 1,
                     "cl_type": "PSOCK",
                     "verbose": true,
-                    "sepnodes_on_path": false,
+                    "sepnodes_on_path": true,
                     "indepTest": "flexCItwd",
                     "input_algorithm_id": null,
                     "timeout": null,
