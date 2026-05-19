@@ -20,6 +20,10 @@ n_seeds = snakemake.params["n_seeds"]
 alg_strings = snakemake.params["alg_strings"]
 annot = snakemake.params["annot"]
 show_cbar = snakemake.params["show_cbar"]
+show_title = snakemake.params["show_title"]
+show_ylabel = snakemake.params["show_ylabel"]
+ytick_rotation = snakemake.params["ytick_rotation"]
+fmt = snakemake.params["format"]
 
 all_adjmat_files = list(snakemake.input["adjmats"])
 n_params = len(alg_strings)
@@ -60,8 +64,7 @@ for param_idx, alg_string in enumerate(alg_strings):
              f"Data: {snakemake.params['data_string']}\n"
              f"Graphs used: {actual_n_seeds}/{n_seeds}")
 
-    ylabel = ("Algorithm:\n\n" + alg_string.replace("/", "\n") +
-              "\n\nn_seeds=" + str(actual_n_seeds))
+    ylabel = "Algorithm:\n\n" + alg_string.replace("/", "\n")
     
     diff_matrix = np.zeros_like(avg_adjmat)
     
@@ -94,12 +97,14 @@ for param_idx, alg_string in enumerate(alg_strings):
                     mask=mask,
                     annot_kws={"size": 5} if annot else {})
     plt.tick_params(axis="both", labelsize=6)
+    plt.yticks(rotation=ytick_rotation)
     if show_cbar:
         cax = plt.gcf().axes[-1]
         cax.tick_params(labelsize=6)
-    diffplot_title = title + "\nGreen=TP, Red=FP"
-    plt.title(diffplot_title, fontsize=6, ha="center")
-    plt.ylabel(ylabel, rotation="horizontal", fontsize=6, ha="right", va="center")
+    if show_title:
+        plt.title(title + "\nGreen=TP, Red=FP", fontsize=6, ha="center")
+    if show_ylabel:
+        plt.ylabel(ylabel, rotation="horizontal", fontsize=6, ha="right", va="center")
     plt.tight_layout()
-    plt.savefig(f"{output_dir}/{base_name}_diffplot.png")
+    plt.savefig(f"{output_dir}/{base_name}_diffplot.{fmt}")
     plt.clf()

@@ -15,10 +15,31 @@
             "default": false,
             "description": "If true, write the value as text in each cell of the heatmap."
         },
+        "format": {
+            "type": "string",
+            "enum": ["png", "pdf", "svg"],
+            "default": "png",
+            "description": "Output file format for the diffplot."
+        },
         "show_cbar": {
             "type": "boolean",
             "default": true,
             "description": "If true, show the colorbar to the right of the heatmap."
+        },
+        "show_title": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the title above the heatmap."
+        },
+        "show_ylabel": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the algorithm label on the y-axis."
+        },
+        "ytick_rotation": {
+            "type": "number",
+            "default": 90,
+            "description": "Rotation angle in degrees for y-axis tick labels."
         },
         "graph_type": {
             "oneOf": [
