@@ -10,11 +10,33 @@
             },
             "description": "List of algorithm IDs to include."
         },
+        "annot": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, write the value as text in each cell of the heatmap."
+        },
+        "show_cbar": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the colorbar to the right of the heatmap."
+        },
         "graph_type": {
-            "type": "string",
-            "enum": ["original", "cpdag", "skeleton", "pattern"],
+            "oneOf": [
+                {
+                    "type": "string",
+                    "enum": ["original", "cpdag", "skeleton", "pattern"]
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["original", "cpdag", "skeleton", "pattern"]
+                    },
+                    "minItems": 1
+                }
+            ],
             "default": "original",
-            "description": "Graph type to convert estimates to before averaging."
+            "description": "Graph type(s) to convert estimates to before averaging. Can be a single string or a list."
         }
     },
     "required": ["ids"],

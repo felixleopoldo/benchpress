@@ -97,7 +97,8 @@ for bmark_setup in config["benchmark_setup"]:
         continue
 
     bmark_setup_title = bmark_setup["title"]
-    graph_type = bmark_setup["evaluation"]["average_adjmat"].get("graph_type", "original")
+    graph_types_raw = bmark_setup["evaluation"]["average_adjmat"].get("graph_type", "original")
+    graph_types = graph_types_raw if isinstance(graph_types_raw, list) else [graph_types_raw]
 
     for alg in active_algorithms(bmark_setup, eval_method="average_adjmat"):
         for alg_conf in config["resources"]["structure_learning_algorithms"][alg]:
@@ -107,48 +108,52 @@ for bmark_setup in config["benchmark_setup"]:
             for sim_setup in bmark_setup["data"]:
                 first_seed = get_seed_range(sim_setup["seed_range"])[0]
                 adjmat_string = get_first_adjmat_string(sim_setup)
-                
+
                 parameters_string = gen_parameter_string_from_conf(sim_setup["parameters_id"], first_seed)
                 if isinstance(parameters_string, list):
                     parameters_string = parameters_string[0]
-                
+
                 data_string = gen_data_string_from_conf(sim_setup["data_id"], first_seed, seed_in_path=False)
                 if isinstance(data_string, list):
                     data_string = data_string[0]
-                
+
                 alg_strings = json_string[alg_conf["id"]]
-                
+
                 sim_id = f"graph_id={sim_setup['graph_id']}_parameters_id={sim_setup['parameters_id']}_data_id={sim_setup['data_id']}"
-                output_dir = f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}"
 
-                if graph_type == "original":
-                    true_adjmat_path = f"results/adjmat/{adjmat_string}.csv"
-                else:
-                    true_adjmat_path = f"results/adjmat/graph_type={graph_type}/{adjmat_string}.csv"
+                for graph_type in graph_types:
+                    output_dir = f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}"
 
-                rule:
-                    name:
-                        f"average_adjmat_{bmark_setup_title}_{sim_setup['graph_id']}_{alg_conf['id']}_{graph_type}"
-                    input:
-                        conf=configfilename,
-                        adjmats=[
-                            collect_adjmats_over_seeds_single_param(sim_setup, alg_str, graph_type)
-                            for alg_str in alg_strings
-                        ],
-                        true_adjmat=true_adjmat_path
-                    output:
-                        done=touch(f"{output_dir}/{alg_conf['id']}.done")
-                    params:
-                        adjmat_string=adjmat_string,
-                        parameters_string=parameters_string,
-                        data_string=data_string,
-                        alg_strings=alg_strings,
-                        alg_id=alg_conf["id"],
-                        alg_module=alg,
-                        graph_type=graph_type,
-                        output_dir=output_dir,
-                        n_seeds=len(get_seed_range(sim_setup["seed_range"]))
-                    container:
-                        docker_image("pydatascience")
-                    script:
-                        "average_adjmat.py"
+                    if graph_type == "original":
+                        true_adjmat_path = f"results/adjmat/{adjmat_string}.csv"
+                    else:
+                        true_adjmat_path = f"results/adjmat/graph_type={graph_type}/{adjmat_string}.csv"
+
+                    rule:
+                        name:
+                            f"average_adjmat_{bmark_setup_title}_{sim_setup['graph_id']}_{alg_conf['id']}_{graph_type}"
+                        input:
+                            conf=configfilename,
+                            adjmats=[
+                                collect_adjmats_over_seeds_single_param(sim_setup, alg_str, graph_type)
+                                for alg_str in alg_strings
+                            ],
+                            true_adjmat=true_adjmat_path
+                        output:
+                            done=touch(f"{output_dir}/{alg_conf['id']}.done")
+                        params:
+                            adjmat_string=adjmat_string,
+                            parameters_string=parameters_string,
+                            data_string=data_string,
+                            alg_strings=alg_strings,
+                            alg_id=alg_conf["id"],
+                            alg_module=alg,
+                            graph_type=graph_type,
+                            output_dir=output_dir,
+                            n_seeds=len(get_seed_range(sim_setup["seed_range"])),
+                            annot=bmark_setup["evaluation"]["average_adjmat"].get("annot", False),
+                            show_cbar=bmark_setup["evaluation"]["average_adjmat"].get("show_cbar", True)
+                        container:
+                            docker_image("pydatascience")
+                        script:
+                            "average_adjmat.py"

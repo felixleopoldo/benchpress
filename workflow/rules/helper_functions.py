@@ -175,13 +175,15 @@ def get_active_rules(wildcards):
 
         # average_adjmat
         if "average_adjmat" in evaluation and evaluation["average_adjmat"] is not None and len(evaluation["average_adjmat"].get("ids", [])) > 0:
-            graph_type = evaluation["average_adjmat"].get("graph_type", "original")
+            graph_types_raw = evaluation["average_adjmat"].get("graph_type", "original")
+            graph_types = graph_types_raw if isinstance(graph_types_raw, list) else [graph_types_raw]
             for sim_setup in bmark_setup["data"]:
                 sim_id = f"graph_id={sim_setup['graph_id']}_parameters_id={sim_setup['parameters_id']}_data_id={sim_setup['data_id']}"
                 for alg in active_algorithms(bmark_setup, eval_method="average_adjmat"):
                     for alg_conf in config["resources"]["structure_learning_algorithms"][alg]:
                         if alg_conf["id"] in evaluation["average_adjmat"]["ids"]:
-                            rules.append(f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}/{alg_conf['id']}.done")
+                            for graph_type in graph_types:
+                                rules.append(f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}/{alg_conf['id']}.done")
 
     return rules
 

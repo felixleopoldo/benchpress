@@ -18,6 +18,8 @@ true_adjmat_values = true_adjmat.values
 
 n_seeds = snakemake.params["n_seeds"]
 alg_strings = snakemake.params["alg_strings"]
+annot = snakemake.params["annot"]
+show_cbar = snakemake.params["show_cbar"]
 
 all_adjmat_files = list(snakemake.input["adjmats"])
 n_params = len(alg_strings)
@@ -38,7 +40,7 @@ for param_idx, alg_string in enumerate(alg_strings):
         df.index = df.columns
         if node_names is None:
             node_names = df.columns
-        adjmats.append(df.values)
+        adjmats.append(np.clip(df.values, 0, 1))
     
     if len(adjmats) == 0:
         continue
@@ -55,9 +57,10 @@ for param_idx, alg_string in enumerate(alg_strings):
     
     title = (f"Graph: {snakemake.params['adjmat_string']}\n"
              f"Parameters: {snakemake.params['parameters_string']}\n"
-             f"Data: {snakemake.params['data_string']}")
-    
-    ylabel = ("Algorithm:\n\n" + alg_string.replace("/", "\n") + 
+             f"Data: {snakemake.params['data_string']}\n"
+             f"Graphs used: {actual_n_seeds}/{n_seeds}")
+
+    ylabel = ("Algorithm:\n\n" + alg_string.replace("/", "\n") +
               "\n\nn_seeds=" + str(actual_n_seeds))
     
     diff_matrix = np.zeros_like(avg_adjmat)
@@ -75,14 +78,25 @@ for param_idx, alg_string in enumerate(alg_strings):
     diff_df = pd.DataFrame(diff_matrix, columns=node_names, index=node_names)
     
     cmap = sns.diverging_palette(10, 130, as_cmap=True)
+    def _fmt(v):
+        v = abs(v)
+        if v == 0 or v == 1:
+            return ""
+        return f"{v:.2f}".lstrip("0").rstrip("0").rstrip(".")
+    annot_data = diff_df.applymap(_fmt) if annot else False
+    mask = np.tril(np.ones_like(diff_matrix, dtype=bool)) if snakemake.params["graph_type"] == "skeleton" else None
     with sns.axes_style("white"):
-        sns.heatmap(diff_df, annot=False, linewidth=1,
+        sns.heatmap(diff_df, annot=annot_data, fmt="", linewidth=1,
                     cmap=cmap,
                     vmin=-1.0, vmax=1.0, square=True,
-                    cbar=True, center=0,
-                    xticklabels=1, yticklabels=1)
-    cax = plt.gcf().axes[-1]
-    cax.tick_params(labelsize=6)
+                    cbar=show_cbar, center=0,
+                    xticklabels=1, yticklabels=1,
+                    mask=mask,
+                    annot_kws={"size": 5} if annot else {})
+    plt.tick_params(axis="both", labelsize=6)
+    if show_cbar:
+        cax = plt.gcf().axes[-1]
+        cax.tick_params(labelsize=6)
     diffplot_title = title + "\nGreen=TP, Red=FP"
     plt.title(diffplot_title, fontsize=6, ha="center")
     plt.ylabel(ylabel, rotation="horizontal", fontsize=6, ha="right", va="center")

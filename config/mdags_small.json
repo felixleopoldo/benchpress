@@ -19,6 +19,7 @@
                 "ggally_ggpairs": false,
                 "average_adjmat": {
                     "ids": [
+                        "m-tdic",
                         "tdic",
                         "tdpc",
                         "m-tdpc",
@@ -26,7 +27,9 @@
                         "grasp",
                         "mvpc"
                     ],
-                    "graph_type": "skeleton"
+                    "annot": true,
+                    "show_cbar": true,
+                    "graph_type": ["skeleton","pattern"]
                 },
                 "graph_estimation": {
                     "ids": [

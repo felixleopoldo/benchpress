@@ -88,8 +88,8 @@ if (snakemake@params[["output_graph_type"]] == "cpdag"){
 
 } else if (snakemake@params[["output_graph_type"]] == "pattern"){
     if (isSymmetric(unname(orig_adjmat)) ||
-        isValidGraph(orig_adjmat, type = "dag", verbose = FALSE) ||
-        isValidGraph(orig_adjmat, type = "cpdag", verbose = FALSE)) {
+        isValidGraph(t(orig_adjmat), type = "dag", verbose = FALSE) ||
+        isValidGraph(t(orig_adjmat), type = "cpdag", verbose = FALSE)) {
         
         pattern <- getPattern(orig_adjmat)
         colnames(pattern) <- names(orig_df)
