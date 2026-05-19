@@ -9,7 +9,16 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        5
+                        10
+                    ]
+                },
+                {
+                    "graph_id": "missing_w.csv",
+                    "parameters_id": "discbn_noisy_or",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        10
                     ]
                 }
             ],
@@ -28,8 +37,15 @@
                         "mvpc"
                     ],
                     "annot": true,
-                    "show_cbar": true,
-                    "graph_type": ["skeleton","pattern"]
+                    "show_cbar": false,
+                    "show_title": false,
+                    "show_ylabel": false,
+                    "ytick_rotation": 0,
+                    "format": "pdf",
+                    "graph_type": [
+                        "skeleton",
+                        "pattern"
+                    ]
                 },
                 "graph_estimation": {
                     "ids": [
