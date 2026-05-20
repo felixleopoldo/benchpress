@@ -1,0 +1,13 @@
+{
+    "title": "Edge Frequency Table",
+    "version": "v0.0.1",
+    "description": "Computes, for user-specified edges, the proportion of seeds where each algorithm configuration recovered the edge, tabulated as rows=sim_setups, columns=alg_conf IDs.",
+    "package": {
+        "title": "",
+        "url": ""
+    },
+    "docs_url": "",
+    "papers": [],
+    "graph_types": ["dag", "cpdag", "skeleton"],
+    "language": "python"
+}

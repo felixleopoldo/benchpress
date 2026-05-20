@@ -41,7 +41,7 @@
                     "show_title": false,
                     "show_ylabel": false,
                     "ytick_rotation": 0,
-                    "format": "pdf",
+                    "format": "png",
                     "graph_type": [
                         "skeleton",
                         "pattern"
@@ -84,7 +84,26 @@
                 },
                 "mcmc_traj_plots": [],
                 "mcmc_heatmaps": [],
-                "mcmc_autocorr_plots": []
+                "mcmc_autocorr_plots": [],
+                "edge_frequency_table": {
+                    "ids": [
+                        "m-tdic",
+                        "tdic",
+                        "tdpc",
+                        "m-tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
+                    ],
+                    "edges": [["X", "Y"]],
+                    "graph_type": "skeleton",
+                    "annot": true,
+                    "annot_fontsize": 6,
+                    "show_title": true,
+                    "show_cbar": true,
+                    "figsize": null,
+                    "format": "png"
+                }
             }
         }
     ],

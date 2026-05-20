@@ -78,7 +78,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(alg)
 
-    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation") or (eval_method == "average_adjmat"):
+    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation") or (eval_method == "average_adjmat") or (eval_method == "edge_frequency_table"):
         benchmarks_alg_ids = bmark_setup["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
             for alg_conf_id in benchmarks_alg_ids:
@@ -184,6 +184,14 @@ def get_active_rules(wildcards):
                         if alg_conf["id"] in evaluation["average_adjmat"]["ids"]:
                             for graph_type in graph_types:
                                 rules.append(f"results/output/{bmark_setup_title}/average_adjmat/{sim_id}/graph_type={graph_type}/{alg}/{alg_conf['id']}.done")
+
+        # edge_frequency_table
+        if "edge_frequency_table" in evaluation and evaluation["edge_frequency_table"] is not None and len(evaluation["edge_frequency_table"].get("ids", [])) > 0:
+            graph_type = evaluation["edge_frequency_table"].get("graph_type", "original")
+            edges = evaluation["edge_frequency_table"].get("edges", [])
+            for edge in edges:
+                edge_str = f"{edge[0]}_{edge[1]}"
+                rules.append(f"results/output/{bmark_setup_title}/edge_frequency_table/graph_type={graph_type}/{edge_str}/table.done")
 
     return rules
 

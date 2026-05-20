@@ -1,0 +1,73 @@
+{
+    "title": "edge_frequency_table",
+    "description": "Computes, for user-specified edges, the proportion of seeds where each algorithm configuration recovered the edge.",
+    "type": "object",
+    "properties": {
+        "ids": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of algorithm configuration IDs (columns in the table)."
+        },
+        "edges": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {"type": "string"},
+                "minItems": 2,
+                "maxItems": 2
+            },
+            "description": "List of edges as [node1, node2] pairs. One table is produced per edge."
+        },
+        "graph_type": {
+            "type": "string",
+            "enum": ["original", "cpdag", "skeleton", "pattern"],
+            "default": "original",
+            "description": "Graph type to convert estimates to before computing edge frequency."
+        },
+        "annot": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, write the value as text in each cell of the heatmap."
+        },
+        "annot_fontsize": {
+            "type": "number",
+            "default": 6,
+            "description": "Font size for cell annotations."
+        },
+        "show_title": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the title above the heatmap."
+        },
+        "show_cbar": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the colorbar to the right of the heatmap."
+        },
+        "figsize": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Figure size as [width, height] in inches. If null, matplotlib auto-sizes."
+        },
+        "format": {
+            "type": "string",
+            "enum": ["png", "pdf", "svg"],
+            "default": "png",
+            "description": "Output file format for the heatmap."
+        }
+    },
+    "required": ["ids", "edges"],
+    "additionalProperties": false,
+    "examples": {
+        "edge_frequency_table": {
+            "ids": ["tdic", "pc"],
+            "edges": [["X", "Y"]],
+            "graph_type": "skeleton"
+        }
+    }
+}
