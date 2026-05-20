@@ -152,11 +152,13 @@ for bmark_setup in config["benchmark_setup"]:
                             output_dir=output_dir,
                             n_seeds=len(get_seed_range(sim_setup["seed_range"])),
                             annot=bmark_setup["evaluation"]["average_adjmat"].get("annot", False),
+                            annot_fontsize=bmark_setup["evaluation"]["average_adjmat"].get("annot_fontsize", 5),
                             show_cbar=bmark_setup["evaluation"]["average_adjmat"].get("show_cbar", True),
                             show_title=bmark_setup["evaluation"]["average_adjmat"].get("show_title", True),
                             show_ylabel=bmark_setup["evaluation"]["average_adjmat"].get("show_ylabel", True),
                             ytick_rotation=bmark_setup["evaluation"]["average_adjmat"].get("ytick_rotation", 90),
-                            format=bmark_setup["evaluation"]["average_adjmat"].get("format", "png")
+                            format=bmark_setup["evaluation"]["average_adjmat"].get("format", "png"),
+                            figsize=bmark_setup["evaluation"]["average_adjmat"].get("figsize", None)
                         container:
                             docker_image("pydatascience")
                         script:

@@ -15,11 +15,24 @@
             "default": false,
             "description": "If true, write the value as text in each cell of the heatmap."
         },
+        "annot_fontsize": {
+            "type": "number",
+            "default": 5,
+            "description": "Font size for cell annotations."
+        },
         "format": {
             "type": "string",
             "enum": ["png", "pdf", "svg"],
             "default": "png",
             "description": "Output file format for the diffplot."
+        },
+        "figsize": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Figure size as [width, height] in inches. If null, matplotlib auto-sizes."
         },
         "show_cbar": {
             "type": "boolean",

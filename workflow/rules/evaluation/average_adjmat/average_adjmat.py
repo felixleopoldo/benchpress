@@ -19,11 +19,13 @@ true_adjmat_values = true_adjmat.values
 n_seeds = snakemake.params["n_seeds"]
 alg_strings = snakemake.params["alg_strings"]
 annot = snakemake.params["annot"]
+annot_fontsize = snakemake.params["annot_fontsize"]
 show_cbar = snakemake.params["show_cbar"]
 show_title = snakemake.params["show_title"]
 show_ylabel = snakemake.params["show_ylabel"]
 ytick_rotation = snakemake.params["ytick_rotation"]
 fmt = snakemake.params["format"]
+figsize = snakemake.params["figsize"]
 
 all_adjmat_files = list(snakemake.input["adjmats"])
 n_params = len(alg_strings)
@@ -88,6 +90,8 @@ for param_idx, alg_string in enumerate(alg_strings):
         return f"{v:.2f}".lstrip("0").rstrip("0").rstrip(".")
     annot_data = diff_df.applymap(_fmt) if annot else False
     mask = np.tril(np.ones_like(diff_matrix, dtype=bool)) if snakemake.params["graph_type"] == "skeleton" else None
+    if figsize is not None:
+        plt.figure(figsize=figsize)
     with sns.axes_style("white"):
         sns.heatmap(diff_df, annot=annot_data, fmt="", linewidth=1,
                     cmap=cmap,
@@ -95,7 +99,7 @@ for param_idx, alg_string in enumerate(alg_strings):
                     cbar=show_cbar, center=0,
                     xticklabels=1, yticklabels=1,
                     mask=mask,
-                    annot_kws={"size": 5} if annot else {})
+                    annot_kws={"size": annot_fontsize} if annot else {})
     plt.tick_params(axis="both", labelsize=6)
     plt.yticks(rotation=ytick_rotation)
     if show_cbar:
@@ -106,5 +110,5 @@ for param_idx, alg_string in enumerate(alg_strings):
     if show_ylabel:
         plt.ylabel(ylabel, rotation="horizontal", fontsize=6, ha="right", va="center")
     plt.tight_layout()
-    plt.savefig(f"{output_dir}/{base_name}_diffplot.{fmt}")
+    plt.savefig(f"{output_dir}/{base_name}_diffplot.{fmt}", dpi=300, bbox_inches="tight")
     plt.clf()
