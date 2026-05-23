@@ -58,11 +58,7 @@ filename <- file.path(argv$filename)
 seed_number <- argv$seed
 filename_dag <- argv$filename_dag
 
-print("filename_dag:")
-print(filename_dag)
 adjmat <- read.csv(filename_dag, check.names = FALSE)
-print("adjmat:")
-print(adjmat)
 n <- dim(adjmat)[2]
 labels <- colnames(adjmat)
 rownames(adjmat) <- colnames(adjmat)
@@ -82,14 +78,6 @@ collider_effect_val <- isTRUE(argv$collider_effect)
 strong_effects_val <- isTRUE(argv$strong_effects)
 noisy_or_val <- isTRUE(argv$noisy_or)
 
-print("Arguments:")
-print(paste("nstates:", nstates_val))
-print(paste("min:", min_val))
-print(paste("max:", max_val))
-print(paste("collider_effect:", collider_effect_val))
-print(paste("strong_effects:", strong_effects_val))
-print(paste("noisy_or:", noisy_or_val))
-
 if (is.na(nstates_val) || !is.numeric(nstates_val) || nstates_val < 2) {
   stop(paste("nstates must be a numeric value >= 2, got:", argv$nstates))
 }
@@ -103,10 +91,5 @@ discBN <- generateNStatesBN(DAG, nstates = nstates_val, baseline = c(min_val, ma
 # Ensure node labels are set correctly (should already be set, but just in case)
 nodes(discBN$DAG) <- labels
 colnames(discBN$adj) <- labels
-
-print("discBN:")
-print(discBN)   
-
-
 
 saveRDS(discBN, file = filename)
