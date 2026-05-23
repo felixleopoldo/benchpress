@@ -59,6 +59,11 @@
             "enum": ["png", "pdf", "svg"],
             "default": "png",
             "description": "Output file format for the heatmap."
+        },
+        "latex": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, also write a LaTeX table to {edge_str}_table.tex."
         }
     },
     "required": ["ids", "edges"],

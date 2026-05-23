@@ -120,7 +120,8 @@ for bmark_setup in config["benchmark_setup"]:
                 show_title=eval_conf.get("show_title", True),
                 show_cbar=eval_conf.get("show_cbar", True),
                 figsize=eval_conf.get("figsize", None),
-                format=eval_conf.get("format", "png")
+                format=eval_conf.get("format", "png"),
+                latex=eval_conf.get("latex", False)
             container:
                 docker_image("pydatascience")
             script:

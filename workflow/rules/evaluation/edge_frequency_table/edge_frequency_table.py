@@ -25,6 +25,7 @@ show_title = snakemake.params["show_title"]
 show_cbar = snakemake.params["show_cbar"]
 figsize = snakemake.params["figsize"]
 fmt = snakemake.params["format"]
+latex = snakemake.params["latex"]
 
 all_adjmat_files = list(snakemake.input["adjmats"])
 true_adjmat_files = list(snakemake.input["true_adjmats"])
@@ -106,3 +107,16 @@ if show_title:
 plt.tight_layout()
 plt.savefig(f"{output_dir}/{edge_str}_heatmap.{fmt}", dpi=300, bbox_inches="tight")
 plt.clf()
+
+# LaTeX table
+if latex:
+    tex = diff_df.to_latex(
+        float_format="%.2f",
+        caption=(f"Edge frequency table for edge {node1}--{node2} "
+                 f"(graph type: {graph_type}). "
+                 f"Positive values are true positives; negative values are false positives."),
+        label=f"tab:eft_{edge_str}_{graph_type}",
+        hrules=True,
+    )
+    with open(f"{output_dir}/{edge_str}_table.tex", "w") as f:
+        f.write(tex)
