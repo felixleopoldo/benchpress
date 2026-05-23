@@ -1,7 +1,7 @@
 # Samples a binary Bayesian network given a DAG.
 library(argparser)
 
-source("resources/binarydatagen/generateNStatesBNf.r")
+source("resources/binarydatagen/generatenstatesBNf.r")
 
 
 adjacency2dag <- function(adj, nodes = NULL) {
