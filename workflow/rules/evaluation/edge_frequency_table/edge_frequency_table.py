@@ -116,7 +116,6 @@ if latex:
                  f"(graph type: {graph_type}). "
                  f"Positive values are true positives; negative values are false positives."),
         label=f"tab:eft_{edge_str}_{graph_type}",
-        hrules=True,
     )
     with open(f"{output_dir}/{edge_str}_table.tex", "w") as f:
         f.write(tex)
