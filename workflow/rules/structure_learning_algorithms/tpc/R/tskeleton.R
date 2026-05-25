@@ -516,8 +516,9 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                             faith_obs <- TRUE
                         }
 
-                        n_complete_rows <- sum(complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]))
-                        complete_data <- suffStat[complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]), c(x, y, nbrs[S_fixed])]
+                        #n_complete_rows <- sum(complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]))
+                        #complete_data <- suffStat[complete.cases(suffStat[, c(x, y, nbrs[S_fixed])]), c(x, y, nbrs[S_fixed])]
+                        n_complete_rows = -1
                         #print("Head of complete cases data:")
                         #print(head(complete_data,10))
                        
