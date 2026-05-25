@@ -54,6 +54,11 @@ for bmark_setup in config["benchmark_setup"]:
 
     bmark_setup_title = bmark_setup["title"]
     graph_type = eval_conf.get("graph_type", "original")
+    row_labels_conf = eval_conf.get("row_labels", None)
+    if row_labels_conf is not None and len(row_labels_conf) != len(bmark_setup["data"]):
+        raise ValueError(
+            f"edge_frequency_table '{bmark_setup_title}': row_labels has "
+            f"{len(row_labels_conf)} entries but there are {len(bmark_setup['data'])} sim_setups.")
 
     for edge in edges:
         edge_str = f"{edge[0]}_{edge[1]}"
@@ -65,10 +70,13 @@ for bmark_setup in config["benchmark_setup"]:
         sim_setup_labels = []
         true_adjmat_paths = []
 
-        for sim_setup in bmark_setup["data"]:
-            sim_id = (f"graph_id={sim_setup['graph_id']}_"
-                      f"parameters_id={sim_setup['parameters_id']}_"
-                      f"data_id={sim_setup['data_id']}")
+        for i, sim_setup in enumerate(bmark_setup["data"]):
+            if row_labels_conf is not None:
+                sim_id = row_labels_conf[i]
+            else:
+                sim_id = (f"graph_id={sim_setup['graph_id']}_"
+                          f"parameters_id={sim_setup['parameters_id']}_"
+                          f"data_id={sim_setup['data_id']}")
             sim_setup_labels.append(sim_id)
 
             # True adjmat for this sim_setup (use first seed for fixed graphs)

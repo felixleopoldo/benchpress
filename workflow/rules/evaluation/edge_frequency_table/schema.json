@@ -64,6 +64,14 @@
             "type": "boolean",
             "default": false,
             "description": "If true, also write a LaTeX table to {edge_str}_table.tex."
+        },
+        "row_labels": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "string"}},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Custom row labels for the table, one per sim_setup. Must match the number of datasets. If null, auto-generated labels are used."
         }
     },
     "required": ["ids", "edges"],

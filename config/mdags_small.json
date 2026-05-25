@@ -96,6 +96,7 @@
                         "mvpc"
                     ],
                     "edges": [["X", "Y"]],
+                    "row_labels": ["2-star", "w"],
                     "graph_type": "skeleton",
                     "annot": true,
                     "annot_fontsize": 6,
