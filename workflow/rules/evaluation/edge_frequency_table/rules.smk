@@ -59,6 +59,11 @@ for bmark_setup in config["benchmark_setup"]:
         raise ValueError(
             f"edge_frequency_table '{bmark_setup_title}': row_labels has "
             f"{len(row_labels_conf)} entries but there are {len(bmark_setup['data'])} sim_setups.")
+    latex_row_labels_conf = eval_conf.get("latex_row_labels", None)
+    if latex_row_labels_conf is not None and len(latex_row_labels_conf) != len(bmark_setup["data"]):
+        raise ValueError(
+            f"edge_frequency_table '{bmark_setup_title}': latex_row_labels has "
+            f"{len(latex_row_labels_conf)} entries but there are {len(bmark_setup['data'])} sim_setups.")
 
     for edge in edges:
         edge_str = f"{edge[0]}_{edge[1]}"
@@ -129,7 +134,8 @@ for bmark_setup in config["benchmark_setup"]:
                 show_cbar=eval_conf.get("show_cbar", True),
                 figsize=eval_conf.get("figsize", None),
                 format=eval_conf.get("format", "png"),
-                latex=eval_conf.get("latex", False)
+                latex=eval_conf.get("latex", False),
+                latex_row_labels=latex_row_labels_conf
             container:
                 docker_image("pydatascience")
             script:

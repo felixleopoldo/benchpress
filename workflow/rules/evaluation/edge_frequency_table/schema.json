@@ -71,7 +71,15 @@
                 {"type": "null"}
             ],
             "default": null,
-            "description": "Custom row labels for the table, one per sim_setup. Must match the number of datasets. If null, auto-generated labels are used."
+            "description": "Custom row labels for the heatmap and CSV, one per sim_setup. Must match the number of datasets. If null, auto-generated labels are used."
+        },
+        "latex_row_labels": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "string"}},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Custom row labels for the LaTeX table, one per sim_setup. May contain LaTeX code. Falls back to row_labels then auto-generated labels if null."
         }
     },
     "required": ["ids", "edges"],

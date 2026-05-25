@@ -26,6 +26,7 @@ show_cbar = snakemake.params["show_cbar"]
 figsize = snakemake.params["figsize"]
 fmt = snakemake.params["format"]
 latex = snakemake.params["latex"]
+latex_row_labels = snakemake.params["latex_row_labels"]
 
 all_adjmat_files = list(snakemake.input["adjmats"])
 true_adjmat_files = list(snakemake.input["true_adjmats"])
@@ -110,7 +111,10 @@ plt.clf()
 
 # LaTeX table
 if latex:
-    tex = diff_df.to_latex(
+    latex_index = latex_row_labels if latex_row_labels is not None else sim_setup_labels
+    latex_df = diff_df.copy()
+    latex_df.index = latex_index
+    tex = latex_df.to_latex(
         float_format="%.2f",
         caption=(f"Edge frequency table for edge {node1}--{node2} "
                  f"(graph type: {graph_type}). "
@@ -119,3 +123,4 @@ if latex:
     )
     with open(f"{output_dir}/{edge_str}_table.tex", "w") as f:
         f.write(tex)
+
