@@ -115,8 +115,8 @@ if latex:
 
     def _cell(v):
         abs_v = abs(v)
-        opacity = int(round(abs_v * 100))
-        color = "green" if v >= 0 else "red"
+        opacity = int(round(abs_v * 70))
+        color = "bpgreen" if v >= 0 else "red"
         bg = f"\\cellcolor{{{color}!{opacity}}}"
         if abs_v == 0:
             return f"{bg}."
@@ -131,6 +131,7 @@ if latex:
     col_fmt = "l" + "r" * n_cols
     lines = []
     lines.append("% Requires \\usepackage[table]{xcolor} in preamble")
+    lines.append("\\definecolor{bpgreen}{RGB}{34,139,34}")
     lines.append("\\begin{table}[ht]")
     lines.append("\\centering")
     lines.append(f"\\caption{{Edge frequency table for edge ${node1}$--${node2}$ "
