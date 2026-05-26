@@ -112,15 +112,41 @@ plt.clf()
 # LaTeX table
 if latex:
     latex_index = latex_row_labels if latex_row_labels is not None else sim_setup_labels
+
+    def _cell(v):
+        abs_v = abs(v)
+        opacity = int(round(abs_v * 100))
+        color = "green" if v >= 0 else "red"
+        bg = f"\\cellcolor{{{color}!{opacity}}}"
+        if abs_v == 0:
+            return f"{bg}."
+        if abs_v == 1:
+            return bg
+        return f"{bg}{abs_v:.2f}".replace("0.", ".")
+
     latex_df = diff_df.copy()
     latex_df.index = latex_index
-    tex = latex_df.to_latex(
-        float_format="%.2f",
-        caption=(f"Edge frequency table for edge {node1}--{node2} "
+
+    n_cols = len(alg_conf_ids)
+    col_fmt = "l" + "r" * n_cols
+    lines = []
+    lines.append("% Requires \\usepackage[table]{xcolor} in preamble")
+    lines.append("\\begin{table}[ht]")
+    lines.append("\\centering")
+    lines.append(f"\\caption{{Edge frequency table for edge ${node1}$--${node2}$ "
                  f"(graph type: {graph_type}). "
-                 f"Positive values are true positives; negative values are false positives."),
-        label=f"tab:eft_{edge_str}_{graph_type}",
-    )
+                 f"Green = TP, red = FP; opacity encodes fraction.}}")
+    lines.append(f"\\label{{tab:eft_{edge_str}_{graph_type}}}")
+    lines.append(f"\\begin{{tabular}}{{{col_fmt}}}")
+    lines.append("\\toprule")
+    lines.append(" & ".join([""] + list(alg_conf_ids)) + " \\\\")
+    lines.append("\\midrule")
+    for row_label, (_, row) in zip(latex_index, latex_df.iterrows()):
+        lines.append(" & ".join([row_label] + [_cell(v) for v in row]) + " \\\\")
+    lines.append("\\bottomrule")
+    lines.append("\\end{tabular}")
+    lines.append("\\end{table}")
+
     with open(f"{output_dir}/{edge_str}_table.tex", "w") as f:
-        f.write(tex)
+        f.write("\n".join(lines) + "\n")
 
