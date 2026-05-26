@@ -119,7 +119,7 @@ if latex:
         color = "bpgreen" if v >= 0 else "red"
         bg = f"\\cellcolor{{{color}!{opacity}}}"
         if abs_v == 0:
-            return f"{bg}."
+            return ""
         if abs_v == 1:
             return bg
         return f"{bg}{abs_v:.2f}".replace("0.", ".")
