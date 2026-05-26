@@ -131,7 +131,7 @@ if latex:
     col_fmt = "l" + "r" * n_cols
     lines = []
     lines.append("% Requires \\usepackage[table]{xcolor} in preamble")
-    lines.append("\\definecolor{bpgreen}{RGB}{34,139,34}")
+    lines.append("\\colorlet{bpgreen}{green!70!black}")
     lines.append("\\begin{table}[ht]")
     lines.append("\\centering")
     lines.append(f"\\caption{{Edge frequency table for edge ${node1}$--${node2}$ "
