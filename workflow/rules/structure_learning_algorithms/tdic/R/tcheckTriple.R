@@ -36,7 +36,12 @@ tcheckTriple <- function (a, b, c, nbrsA, nbrsC, sepsetA, sepsetC, suffStat,
     allComb <- expand.grid(lapply(integer(nn), function(.) 0:1))
     for (i in 1:nrow(allComb)) {
       S <- nbrsA[which(allComb[i, ] != 0)]
-      pval <- indepTest(a, c, S, suffStat, labels = labels)
+      # MI tests (e.g. flexMItest) do not accept the labels argument
+      if ("labels" %in% names(formals(indepTest))) {
+        pval <- indepTest(a, c, S, suffStat, labels = labels)
+      } else {
+        pval <- indepTest(a, c, S, suffStat)
+      }
       if (verbose)
         cat("a: S =", labels[S], " - pval =", pval,
             "\n")
@@ -53,7 +58,12 @@ tcheckTriple <- function (a, b, c, nbrsA, nbrsC, sepsetA, sepsetC, suffStat,
     allComb <- expand.grid(lapply(integer(nn), function(.) 0:1))
     for (i in 1:nrow(allComb)) {
       S <- nbrsC[which(allComb[i, ] != 0)]
-      pval <- indepTest(a, c, S, suffStat, labels = labels)
+      # MI tests (e.g. flexMItest) do not accept the labels argument
+      if ("labels" %in% names(formals(indepTest))) {
+        pval <- indepTest(a, c, S, suffStat, labels = labels)
+      } else {
+        pval <- indepTest(a, c, S, suffStat)
+      }
       if (verbose)
         cat("c: S =", labels[S], " - pval =", pval,
             "\n")
