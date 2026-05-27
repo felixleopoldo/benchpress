@@ -483,7 +483,12 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         #print(head(complete_data,10))
                        
                         if (!self_masking) {    
-                            pval <- indepTest(x, y, nbrs[S_fixed], suffStat, labels = labels)
+                            # MI tests (e.g. flexMItest) do not accept the labels argument
+                            if ("labels" %in% names(formals(indepTest))) {
+                                pval <- indepTest(x, y, nbrs[S_fixed], suffStat, labels = labels)
+                            } else {
+                                pval <- indepTest(x, y, nbrs[S_fixed], suffStat)
+                            }
                         }
 
                         # For each of the labels[nbrs[S_fixed]], check if it has a corresponding R-variable
