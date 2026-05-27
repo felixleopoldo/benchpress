@@ -386,7 +386,7 @@ tpc <- function(suffStat, indepTest, alpha, labels, p,
     }
     print("****** Phase II starting ******")
     print("suffstat")
-    print(head(suffStat))
+    
     ## step II, orientation of v-structures:
     skelII <- tpc.cons.intern(skel, suffStat, indepTest, alpha,
         version.unf = c(2, 1), maj.rule = maj.rule,
