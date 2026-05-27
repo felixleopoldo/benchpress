@@ -24,10 +24,11 @@ myalg <- function() {
     include <- as.logical(snakemake@wildcards[["include"]])
     mild <- as.logical(snakemake@wildcards[["mild"]])
     order <- snakemake@wildcards[["order"]]
+    include_r_vars <- as.logical(snakemake@wildcards[["include_r_vars"]])
 
     start <- proc.time()[1]
 
-    # This is a fast and naiive algorithm.    
+    # This is a fast and naiive algorithm.
     set.seed(seed)
 
     # Check if data is a range header. That happens if the sum of
@@ -37,6 +38,16 @@ myalg <- function() {
     if (is.wholenumber(sum(na.omit(t(data[1:2,]))))) {
         data <- data[-1, ]
         #print("range header removed. discrete")
+    }
+
+    # Add missingness indicator variables (R_X) so they appear in the imputed datasets.
+    # Required when the imputed data will be used with tpc and MI tests.
+    if (include_r_vars) {
+        for (i in seq_len(ncol(data))) {
+            if (any(is.na(data[, i]))) {
+                data[, paste0("R_", colnames(data)[i])] <- ifelse(is.na(data[, i]), 0, 1)
+            }
+        }
     }
 
     mi_object <- mice(data,

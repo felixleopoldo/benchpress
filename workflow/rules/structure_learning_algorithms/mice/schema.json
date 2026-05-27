@@ -51,6 +51,10 @@
         "description": "Parameter for the complete function",
         "type": "string",
         "enum": ["first", "last"]
+      },
+      "include_r_vars": {
+        "description": "If true, add missingness indicator variables (R_X for each X with missing values) to the data before imputation. Required when the imputed data will be used with tpc and MI tests.",
+        "type": "boolean"
       }
     },
     "required": ["id", "timeout"],
@@ -65,6 +69,7 @@
         "include": false,
         "mild": true,
         "order": "last",
+        "include_r_vars": false,
         "timeout": null
       }
     ]
