@@ -411,7 +411,7 @@
                     "verbose": true,
                     "sepnodes_on_path": true,
                     "indepTest": "flexMItest",
-                    "input_algorithm_id": "mice",
+                    "input_algorithm_id": "mice-r",
                     "timeout": null,
                     "edgeConstraints": null
                 }
@@ -455,6 +455,19 @@
             "mice": [
                 {
                     "id": "mice",
+                    "m": 5,
+                    "maxit": 3,
+                    "method": "rf",
+                    "defaultMethod": "rf",
+                    "action": "all",
+                    "include": false,
+                    "mild": true,
+                    "order": "last",
+                    "include_r_vars": false,
+                    "timeout": null
+                },
+                {
+                    "id": "mice-r",
                     "m": 5,
                     "maxit": 3,
                     "method": "rf",
