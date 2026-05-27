@@ -3,13 +3,22 @@
         {
             "title": "missingness_structures",
             "data": [
+		                {
+                    "graph_id": "missing_tu1b.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+		},
                 {
                     "graph_id": "missing_w.csv",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -18,7 +27,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -27,7 +36,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -36,7 +45,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -45,7 +54,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -54,7 +63,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -63,7 +72,7 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 },
                 {
@@ -72,45 +81,14 @@
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
-                        10
+                        50
                     ]
                 }
             ],
             "evaluation": {
-                "graph_true_plots": true,
+                "graph_true_plots": false,
                 "graph_true_stats": false,
                 "ggally_ggpairs": false,
-                "graph_estimation": {
-                    "ids": [
-                        "tdic",
-                        "m-tdic",
-                        "m-tdpc",
-                        "tdpc",
-                        "mvpc"
-                    ],
-                    "convert_to": [],
-                    "graphs": true,
-                    "adjmats": false,
-                    "diffplots": false,
-                    "csvs": false,
-                    "graphvizcompare": false
-                },
-                "benchmarks": {
-                    "filename_prefix": "mdags/",
-                    "show_seed": false,
-                    "errorbar": true,
-                    "errorbarh": false,
-                    "scatter": true,
-                    "path": true,
-                    "text": false,
-                    "ids": [
-                        "mvpc",
-                        "tdic",
-                        "m-tdic",
-                        "tdpc",
-                        "m-tdpc"
-                    ]
-                },
                 "average_adjmat": {
                     "ids": [
                         "m-tdic",
@@ -119,7 +97,9 @@
                         "m-tdpc",
                         "pc",
                         "grasp",
-                        "mvpc"
+                        "mvpc",
+			"tdpc-mice",
+			"m-tdpc-mice"
                     ],
                     "annot": true,
                     "show_cbar": false,
@@ -140,11 +120,16 @@
                         "m-tdpc",
                         "pc",
                         "grasp",
-                        "mvpc"
+                        "mvpc",
+			"tdpc-mice",
+			"m-tdpc-mice"
                     ],
                     "edges": [["X", "Y"]],
+		    "row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
+		    "latex_row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
                     "graph_type": "skeleton",
                     "annot": true,
+		    "latex": true,
                     "annot_fontsize": 6,
                     "show_title": true,
                     "show_cbar": true,
@@ -180,7 +165,7 @@
                     "id": "bin_missing",
                     "standardized": false,
                     "n": [
-                        1000
+                        100
                     ]
                 }
             ],
@@ -360,7 +345,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "mmax": 3,
+                    "mmax": 4,
                     "conservative": false,
                     "majrule": true,
                     "numCores": 1,
@@ -375,6 +360,23 @@
             "tpc": [
                 {
                     "id": "m-tdpc",
+                    "alpha": [
+                        0.05
+                    ],
+                    "mmax": 4,
+                    "conservative": false,
+                    "majrule": true,
+                    "numCores": 1,
+                    "cl_type": "PSOCK",
+                    "verbose": true,
+                    "sepnodes_on_path": true,
+                    "indepTest": "flexCItwd",
+                    "input_algorithm_id": null,
+                    "timeout": null,
+                    "edgeConstraints": null
+                },
+                {
+                    "id": "m-tdpc-mice",
                     "alpha": [
                         0.05
                     ],
