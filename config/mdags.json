@@ -97,7 +97,7 @@
                         "m-tdpc",
                         "pc",
                         "grasp",
-                        "mvpc",
+                        "MVPC",
             			"tdpc-mice",
 			            "m-tdpc-mice"
                     ],
@@ -120,16 +120,15 @@
                         "m-tdpc",
                         "pc",
                         "grasp",
-                        "mvpc",
-            			"tdpc-mice",
-			            "m-tdpc-mice"
+                        "MVPC",
+            			"tdpc-mice"
                     ],
                     "edges": [["X", "Y"]],
         		    "row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
 		            "latex_row_labels": ["\\cite{tu_causal_2019}",
                     "Figure~\\ref{fig:m_w}", "Figure~\\ref{fig:m_w_new}",
                     "Figure~\\ref{fig:m_w2_star}", "Figure~\\ref{fig:m_u2}",
-                    "X", "Xo", "Figure~\\ref{fig:m_y}", "Y2"],
+                    "Figure~\\ref{fig:m_x}", "Figure~\\ref{fig:m_xo}", "Figure~\\ref{fig:m_y}", "Figure~\\ref{fig:m_y2}"],
                     "graph_type": "skeleton",
                     "annot": true,
 		            "latex": true,
@@ -148,15 +147,15 @@
                         "pc",
                         "grasp",
                         "mvpc",
-                        "tdpc-mice",
-			            "m-tdpc-mice"
+                        "tdpc-mice"
                     ],
                     "graph_type": ["skeleton"],
         		    "row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
-		            "latex_row_labels": ["\\cite{tu_causal_2019}",
+		            "latex_row_labels": [
+                        "\\cite{tu_causal_2019}",
                     "Figure~\\ref{fig:m_w}", "Figure~\\ref{fig:m_w_new}",
                     "Figure~\\ref{fig:m_w2_star}", "Figure~\\ref{fig:m_u2}",
-                    "X", "Xo", "Figure~\\ref{fig:m_y}", "Y2"],
+                    "Figure~\\ref{fig:m_x}", "Figure~\\ref{fig:m_xo}", "Figure~\\ref{fig:m_y}", "Figure~\\ref{fig:m_y2}"],
                           "annot": true,
                     "annot_fontsize": 6,
                     "show_title": true,
@@ -333,7 +332,7 @@
             ],
             "mvpc": [
                 {
-                    "id": "mvpc",
+                    "id": "MVPC",
                     "alpha": [
                         0.05
                     ],
