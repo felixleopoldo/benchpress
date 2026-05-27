@@ -135,7 +135,7 @@ for bmark_setup in config["benchmark_setup"]:
                 figsize=eval_conf.get("figsize", None),
                 format=eval_conf.get("format", "png"),
                 latex=eval_conf.get("latex", False),
-                latex_row_labels=latex_row_labels_conf
+                latex_row_labels=lambda wildcards: latex_row_labels_conf
             container:
                 docker_image("pydatascience")
             script:
