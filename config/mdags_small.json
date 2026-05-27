@@ -105,6 +105,27 @@
                     "figsize": null,
                     "format": "png",
                     "latex": true
+                },
+                "precision_recall_table": {
+                    "ids": [
+                        "m-tdic",
+                        "tdic",
+                        "tdpc",
+                        "m-tdpc",
+                        "pc",
+                        "grasp",
+                        "mvpc"
+                    ],
+                    "graph_type": ["skeleton"],
+                    "row_labels": ["2-star", "w"],
+                    "latex_row_labels": null,
+                    "annot": true,
+                    "annot_fontsize": 6,
+                    "show_title": true,
+                    "show_cbar": true,
+                    "figsize": null,
+                    "format": "png",
+                    "latex": true
                 }
             }
         }

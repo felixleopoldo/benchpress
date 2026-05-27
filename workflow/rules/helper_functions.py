@@ -78,7 +78,7 @@ def active_algorithms(bmark_setup, eval_method="benchmarks"):
                 if alg_conf_id in [ac["id"] for ac in alg_conf_list]:
                     algs.append(alg)
 
-    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation") or (eval_method == "average_adjmat") or (eval_method == "edge_frequency_table"):
+    elif (eval_method == "benchmarks") or (eval_method == "graph_estimation") or (eval_method == "average_adjmat") or (eval_method == "edge_frequency_table") or (eval_method == "precision_recall_table"):
         benchmarks_alg_ids = bmark_setup["evaluation"][eval_method]["ids"]
         for alg, alg_conf_list in config["resources"]["structure_learning_algorithms"].items():
             for alg_conf_id in benchmarks_alg_ids:
@@ -192,6 +192,13 @@ def get_active_rules(wildcards):
             for edge in edges:
                 edge_str = f"{edge[0]}_{edge[1]}"
                 rules.append(f"results/output/{bmark_setup_title}/edge_frequency_table/graph_type={graph_type}/{edge_str}/table.done")
+
+        # precision_recall_table
+        if "precision_recall_table" in evaluation and evaluation["precision_recall_table"] is not None and len(evaluation["precision_recall_table"].get("ids", [])) > 0:
+            graph_types_raw = evaluation["precision_recall_table"].get("graph_type", "original")
+            graph_types = graph_types_raw if isinstance(graph_types_raw, list) else [graph_types_raw]
+            for graph_type in graph_types:
+                rules.append(f"results/output/{bmark_setup_title}/precision_recall_table/graph_type={graph_type}/table.done")
 
     return rules
 

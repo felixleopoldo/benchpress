@@ -1,0 +1,93 @@
+{
+    "title": "precision_recall_table",
+    "description": "Computes TP/P (recall) and FP/P averaged over seeds for each (sim_setup, alg_conf) cell.",
+    "type": "object",
+    "properties": {
+        "ids": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "List of algorithm configuration IDs (columns in the table)."
+        },
+        "graph_type": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "enum": ["original", "cpdag", "skeleton", "pattern"]
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["original", "cpdag", "skeleton", "pattern"]
+                    },
+                    "minItems": 1
+                }
+            ],
+            "default": "original",
+            "description": "Graph type(s) to evaluate. One table is produced per graph type."
+        },
+        "row_labels": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "string"}},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Custom row labels for the heatmap and CSV, one per sim_setup. If null, auto-generated labels are used."
+        },
+        "latex_row_labels": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "string"}},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Custom row labels for the LaTeX table. May contain LaTeX code. Falls back to row_labels then auto-generated labels if null."
+        },
+        "latex": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, also write a LaTeX table to table.tex."
+        },
+        "annot": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, write the value as text in each cell of the heatmap."
+        },
+        "annot_fontsize": {
+            "type": "number",
+            "default": 6,
+            "description": "Font size for cell annotations."
+        },
+        "show_title": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the title above the heatmap."
+        },
+        "show_cbar": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, show the colorbar to the right of the heatmap."
+        },
+        "figsize": {
+            "oneOf": [
+                {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                {"type": "null"}
+            ],
+            "default": null,
+            "description": "Figure size as [width, height] in inches. If null, matplotlib auto-sizes."
+        },
+        "format": {
+            "type": "string",
+            "enum": ["png", "pdf", "svg"],
+            "default": "png",
+            "description": "Output file format for the heatmap."
+        }
+    },
+    "required": ["ids"],
+    "additionalProperties": false,
+    "examples": {
+        "precision_recall_table": {
+            "ids": ["tdic", "pc"],
+            "graph_type": ["skeleton", "cpdag"]
+        }
+    }
+}
