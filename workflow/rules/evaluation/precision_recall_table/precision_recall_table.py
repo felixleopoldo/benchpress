@@ -54,8 +54,10 @@ for s in range(n_sim_setups):
                 continue
             df = pd.read_csv(f)
             df.index = df.columns
-            # Align to common nodes — P and FP denominator computed on same nodes
-            common = [col for col in true_cols if col in df.columns]
+            # Align to common non-R_* nodes — exclude missingness indicators
+            # so algorithms that output R_* nodes are compared fairly with those that don't
+            common = [col for col in true_cols
+                      if col in df.columns and not col.startswith("R_")]
             if len(common) == 0:
                 continue
             common_idx = [true_cols.index(col) for col in common]
