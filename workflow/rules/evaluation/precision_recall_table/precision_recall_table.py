@@ -39,8 +39,7 @@ for s in range(n_sim_setups):
     true_df = pd.read_csv(true_adjmat_files[s])
     true_df.index = true_df.columns
     true_mat = (true_df.values > 0).astype(float)
-    n_true = true_mat.sum()
-    n_false = (1 - true_mat).sum() - true_mat.shape[0]  # exclude diagonal
+    true_cols = list(true_df.columns)
 
     for c in range(n_alg_confs):
         cell_idx = s * n_alg_confs + c
@@ -55,26 +54,24 @@ for s in range(n_sim_setups):
                 continue
             df = pd.read_csv(f)
             df.index = df.columns
-            # Align columns with true adjmat
-            common = [col for col in true_df.columns if col in df.columns]
+            # Align to common nodes — P and FP denominator computed on same nodes
+            common = [col for col in true_cols if col in df.columns]
             if len(common) == 0:
                 continue
+            common_idx = [true_cols.index(col) for col in common]
             est = np.clip(df.loc[common, common].values, 0, 1)
-            true = true_mat[np.ix_(
-                [list(true_df.columns).index(c) for c in common],
-                [list(true_df.columns).index(c) for c in common]
-            )]
-            tp = (est * true).sum()
-            fp = (est * (1 - true)).sum()
-            # Subtract diagonal contributions
-            diag_est = np.diag(est)
-            diag_true = np.diag(true)
-            fp -= (diag_est * (1 - diag_true)).sum()
+            true_sub = true_mat[np.ix_(common_idx, common_idx)]
+            n_true_common = true_sub.sum()
+            n_false_common = (1 - true_sub).sum() - true_sub.shape[0]
 
-            if n_true > 0:
-                tp_vals.append(tp / n_true)
-            if n_false > 0:
-                fp_vals.append(fp / n_false)
+            tp = (est * true_sub).sum()
+            fp = (est * (1 - true_sub)).sum()
+            fp -= np.diag(est * (1 - true_sub)).sum()  # exclude diagonal
+
+            if n_true_common > 0:
+                tp_vals.append(tp / n_true_common)
+            if n_false_common > 0:
+                fp_vals.append(fp / n_false_common)
 
         tp_table[s, c] = np.mean(tp_vals) if tp_vals else 0.0
         fp_table[s, c] = np.mean(fp_vals) if fp_vals else 0.0
