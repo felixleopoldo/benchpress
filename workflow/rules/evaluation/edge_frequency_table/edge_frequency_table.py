@@ -118,11 +118,12 @@ if latex:
         opacity = int(round(abs_v * 70))
         color = "bpgreen" if v >= 0 else "red"
         bg = f"\\cellcolor{{{color}!{opacity}}}"
-        if abs_v == 0:
+        s = f"{abs_v:.2f}"
+        if s == "0.00":
             return ""
-        if abs_v == 1:
+        if s == "1.00":
             return bg
-        return f"{bg}{abs_v:.2f}".replace("0.", ".")
+        return f"{bg}{s}".replace("0.", ".")
 
     latex_df = diff_df.copy()
     latex_df.index = latex_index

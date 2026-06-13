@@ -139,20 +139,18 @@ if latex:
     def _cell_tp(v):
         opacity = int(round(v * 70))
         bg = f"\\cellcolor{{bpgreen!{opacity}}}"
-        if v == 0:
-            return ""
-        if v == 1:
-            return bg
-        return f"{bg}{v:.2f}".replace("0.", ".")
+        s = f"{v:.2f}"
+        if s == "0.00" or s == "1.00":
+            return bg if s == "1.00" else ""
+        return f"{bg}{s}".replace("0.", ".")
 
     def _cell_fp(v):
         opacity = int(round(v * 70))
         bg = f"\\cellcolor{{red!{opacity}}}"
-        if v == 0:
-            return ""
-        if v == 1:
-            return bg
-        return f"{bg}{v:.2f}".replace("0.", ".")
+        s = f"{v:.2f}"
+        if s == "0.00" or s == "1.00":
+            return bg if s == "1.00" else ""
+        return f"{bg}{s}".replace("0.", ".")
 
     n_cols = n_alg_confs * 2
     col_fmt = "l" + "rr" * n_alg_confs
