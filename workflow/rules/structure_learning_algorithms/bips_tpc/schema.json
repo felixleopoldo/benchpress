@@ -94,6 +94,10 @@
       "timeout": {
         "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegnumnull"
       },
+      "minCell": {
+        "$ref": "../../../schemas/definitions.schema.json#/definitions/flexnonnegintnull",
+        "description": "Minimum contingency-table cell count required to accept a separating set (discrete/mixed tests). null disables the filter (standard PC)."
+      },
       "edgeConstraints": {
         "type": ["string", "null"],
         "pattern": ".*\\.json$",
@@ -126,6 +130,7 @@
         "indepTest": "gaussCItwd",
         "input_algorithm_id": null,
         "timeout": null,
+        "minCell": null,
         "edgeConstraints": null
       }
     ]

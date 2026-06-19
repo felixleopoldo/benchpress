@@ -17,6 +17,8 @@ fi
 
 CMD="$CMD --algorithm boss"
 
+cat ${snakemake_input[data]}
+
 # Check if edge constraints are provided
 if [ -z ${snakemake_input[edgeConstraints_formatted]} ]; then
     echo "No edge constraints provided"
@@ -43,6 +45,12 @@ fi
 
 if [ ${snakemake_wildcards[score]} = "bdeu-score" ]; then
     CMD="$CMD --priorEquivalentSampleSize ${snakemake_wildcards[samplePrior]}"
+fi
+
+
+if [ ${snakemake_wildcards[score]} = "cg-bic-score" ]; then
+    echo "Using numCategories: ${snakemake_wildcards[numCategories]}"
+    CMD="$CMD --numCategories ${snakemake_wildcards[numCategories]}"
 fi
 
 # Run the command

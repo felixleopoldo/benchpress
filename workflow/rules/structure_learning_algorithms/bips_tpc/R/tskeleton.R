@@ -40,6 +40,9 @@
 #' in \code{t(y)}, only those variables are allowed in the conditioning set whose tier is
 #' not larger than \code{t(x)}.
 #' @param verbose if \code{TRUE}, detailed output is provided.
+#' @param returnRemovedEdges logical. If \code{TRUE} (default), attach a data frame with
+#' information on removed edges (those with \code{pval >= alpha}) and their
+#' separating sets as attribute \code{"removedEdges"} to the returned object.
 #'
 #' @details See \code{pcalg::\link[pcalg]{skeleton}} for further information on the
 #' skeleton algorithm.
@@ -47,6 +50,23 @@
 #' @return An object of class "pcAlgo" (see \code{pcalg::\link[pcalg]{pcAlgo}})
 #' containing an estimate of the skeleton of the underlying DAG, the conditioning
 #' sets (sepset) that led to edge removals and several other parameters.
+#' If \code{returnRemovedEdges = TRUE}, the returned object has an attribute
+#' \code{"removedEdges"} with columns \code{node_1}, \code{node_2},
+#' \code{n_used}, \code{min_cell}, \code{n_table_cells}, \code{sep_between},
+#' \code{sep_between_final},
+#' \code{alpha}, \code{ord}, \code{pval}, and \code{sepset}.
+#' @param requireSepBetween If \code{TRUE}, only test and accept separating sets
+#' \code{S} for which every node lies on some simple \code{x}-\code{y} path in the
+#' current skeleton (see \code{sep_between}). Set \code{FALSE} to restore standard PC.
+#' @param minCell If not \code{NULL}, do not accept a separating set whose
+#' \code{min_cell} (see \code{ci_test_sparsity_diagnostics()}) is below this value.
+#' \code{NULL} (default) keeps standard PC behaviour. Can be set from
+#' \code{script.R} via \code{options(bips_tpc.minCell = ...)} before calling \code{tpc()}.
+#' \code{sep_between} and \code{sep_between_final} log that condition at removal and
+#' on the final skeleton. \code{sep_between} is \code{TRUE} when every node in the
+#' separating set is an interior node on some simple \code{x}-\code{y} path in the
+#' skeleton (each vertex at most once; the direct \code{x}-\code{y} edge is excluded).
+#' \code{sep_between_final} repeats that check on the final skeleton.
 #'
 #' @author
 #' Original code by Markus Kalisch, Martin Maechler, Alain Hauser and Diego Colombo.
@@ -90,11 +110,17 @@
 tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                       method = c("stable", "original"), m.max = Inf,
                       fixedGaps = NULL, fixedEdges = NULL, NAdelete = TRUE,
-                      tiers = NULL, verbose = FALSE) {
+                      tiers = NULL, verbose = FALSE, returnRemovedEdges = TRUE,
+                      requireSepBetween = TRUE, # FALSE restores standard PC
+                      minCell = NULL) {
     print("********* In tskeleton")
 
-    print("suffStat:")
-    print(suffStat)
+    if (is.null(minCell)) {
+        minCell <- getOption("bips_tpc.minCell", NULL)
+    }
+    if (!is.null(minCell)) {
+        minCell <- as.integer(minCell)
+    }
 
     cl <- match.call()
     if (!missing(p)) {
@@ -157,12 +183,64 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
     # are -Inf
     pMax <- matrix(-Inf, nrow = p, ncol = p)
     diag(pMax) <- 1
+    removedEdges <- vector("list", 0L)
     done <- FALSE
     # ord is the size of the conditioning set
     ord <- 0L
     # n.edgetests is for recording how many cond. ind. tests have been conducted
     # in total
     n.edgetests <- numeric(1)
+    # TRUE if s is interior on a simple path x-...-s-...-y (no repeated vertices).
+    is_interior_on_simple_xy_path <- function(x, y, s, adj, edge_x, edge_y) {
+        if (s == x || s == y) {
+            return(FALSE)
+        }
+        on_path <- FALSE
+        on_path_nodes <- rep(FALSE, nrow(adj))
+        dfs <- function(cur, seen_s) {
+            if (on_path) {
+                return()
+            }
+            if (cur == y) {
+                if (seen_s) {
+                    on_path <<- TRUE
+                }
+                return()
+            }
+            on_path_nodes[cur] <<- TRUE
+            nbrs_cur <- which(adj[cur, ])
+            for (nb in nbrs_cur) {
+                if ((cur == edge_x && nb == edge_y) || (cur == edge_y && nb == edge_x)) {
+                    next
+                }
+                if (on_path_nodes[nb]) {
+                    next
+                }
+                dfs(nb, seen_s || (nb == s))
+            }
+            on_path_nodes[cur] <<- FALSE
+        }
+        dfs(x, FALSE)
+        on_path
+    }
+    sepset_sep_between <- function(x, y, sepNodes, adj) {
+        if (length(sepNodes) == 0L) {
+            return(TRUE)
+        }
+        all(vapply(
+            sepNodes,
+            function(s) {
+                is_interior_on_simple_xy_path(x, y, s, adj, x, y)
+            },
+            logical(1)
+        ))
+    }
+    parse_sepset_nodes <- function(sepset_str, node_labels) {
+        if (length(sepset_str) != 1L || !nzchar(sepset_str)) {
+            return(integer(0))
+        }
+        match(strsplit(sepset_str, ",", fixed = TRUE)[[1]], node_labels)
+    }
     # G is a (pxp)-matrix (each entry represents an edge and each edge is
     # represented twice); at the beginning, all elements are TRUE except for the
     # diagonal
@@ -230,6 +308,41 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                     S <- seq_len(ord)
                     repeat { # the repeat loop goes over all subsets of the
                         # neighbours with length ord
+                        sepNodes <- nbrs[S]
+                        sparsity <- ci_test_sparsity_diagnostics(
+                            suffStat, x, y, sepNodes
+                        )
+                        if (requireSepBetween && !sepset_sep_between(x, y, sepNodes, G)) {
+                            if (verbose) {
+                                cat(
+                                    "x=", labels[x], " y=", labels[y], " S=", labels[sepNodes],
+                                    ": skip (sep_between)\n"
+                                )
+                            }
+                            nextSet <- getNextSet(length_nbrs, ord, S)
+                            if (nextSet$wasLast) {
+                                break
+                            }
+                            S <- nextSet$nextSet
+                            next
+                        }
+                        if (!is.null(minCell) && !ci_test_min_cell_ok(sparsity, minCell)) {
+                            if (verbose) {
+                                cat(
+                                    "x=", labels[x], " y=", labels[y], " S=", labels[sepNodes],
+                                    ": skip (min_cell=", sparsity[["min_cell"]],
+                                    " < ", minCell, ")\n",
+                                    sep = ""
+                                )
+                            }
+                            nextSet <- getNextSet(length_nbrs, ord, S)
+                            if (nextSet$wasLast) {
+                                break
+                            }
+                            S <- nextSet$nextSet
+                            next
+                        }
+
                         n.edgetests[ord1] <- n.edgetests[ord1] +
                             1
 
@@ -238,69 +351,34 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         # print(paste0("x: ", labels[x], " y: ", labels[y], " nbrs[S]: ", labels[nbrs[S]]))
                         # print(names(suffStat))
 
-                        # if S is then just check x and y
-                        if (length(S) == 0) {
-                            n_complete_rows <- sum(complete.cases(suffStat[, c(x, y)]))
-                        } else {
-                            # get the indices of the columns in suffStat$dm that correspond to x, y, and nbrs[S]
-                            n_complete_rows <- sum(complete.cases(suffStat[, c(x, y, nbrs[S])]))
+                        n_complete_rows <- NA_integer_
+                        # Estimate sample size used in the CI test when possible.
+                        if (is.data.frame(suffStat) || is.matrix(suffStat)) {
+                            test_cols <- if (length(S) == 0) c(x, y) else c(x, y, nbrs[S])
+                            n_complete_rows <- sum(complete.cases(suffStat[, test_cols, drop = FALSE]))
+                        } else if (is.list(suffStat) && !is.null(suffStat$dm)) {
+                            test_cols <- if (length(S) == 0) c(x, y) else c(x, y, nbrs[S])
+                            n_complete_rows <- sum(complete.cases(suffStat$dm[, test_cols, drop = FALSE]))
+                        } else if (is.list(suffStat) && !is.null(suffStat$n)) {
+                            n_complete_rows <- as.integer(suffStat$n)
+                        }
+
+                        if (ord == 3) {
+                            print(paste0("x: ", labels[x], " y: ", labels[y]))
+                            print("S:")
+                            print(labels[nbrs[S]])
+                            # summary of the used rows in the dataset
+                            print("Summary of the used rows in the dataset:")
+                            print(head(suffStat[, c(nbrs[S], x, y)]))
+                            
+
                         }
                         pval <- indepTest(x, y, nbrs[S], suffStat)
-
-
-                        # if CEBQ_FAp_YR5  BRIEF_P_inhibit_YR4.5
-                        # if ((labels[x] == "CEBQ_FAp_YR5") & (labels[y] == "BRIEF_P_inhibit_YR4.5") || (labels[x] == "BRIEF_P_inhibit_YR4.5") & (labels[y] == "CEBQ_FAp_YR5")) {
-                        #         cat(paste0("\n\n"))
-                        #         print("Checking expected dependence")
-                        #         print("--------------------------------- CEBQ_FAp_YR5 and BRIEF_P_inhibit_YR4.5 ---------------------------------")
-                        #         print(paste0("Complete rows to test: ", n_complete_rows))
-                        #         print(paste0("x: ", labels[x], " y: ", labels[y]))
-                        #         print("nbrs: ")
-                        #         print(labels[nbrs[S]])
-                        #         print(paste0("alpha: ", alpha))
-                        #         print(paste0("pval: ", pval))
-                        #         print(paste0("Dependent?: ", pval < alpha))
-                        #         if (is.na(pval) || (pval >= alpha)) {
-                        #             print("INDEPENDENCE FOUND")
-                        #         }
-                        # }
-
    
-                        if (is.na(pval) || (pval >= alpha && n_complete_rows <= 50) || length(nbrs[S]) > 5) {
-                            cat(paste0("\n\n"))
-                            print(paste0("Complete rows to test: ", n_complete_rows))
-                            print(paste0("x: ", labels[x], " y: ", labels[y]))
-                            print("nbrs: ")
-                            print(labels[nbrs[S]])
-                            print(paste0("pval: ", pval))
-                            print("Setting pval to 0 as too little power.  I.e assume dependent.")
-                            cc <- complete.cases(suffStat[, c(x, y, nbrs[S])])
-                            #print(suffStat[cc, c(x, y, nbrs[S])])
-                            #quit()
-                            # pval <- 0
-                            #print("Setting pval to 0 as too little power.  I.e assume dependent.")
-                            #pval <- 0
-                        }
-
-                        #if ((((labels[x] == "Bodpod_fatp_YR6") & (labels[y] == "CEBQ_FAv_YR5")) || ((labels[x] == "CEBQ_FAv_YR5") & (labels[y] == "Bodpod_fatp_YR6")))) {
-                        if ((((labels[x] == "Bodpod_fatp_YR5") & (labels[y] == "CEBQ_FAv_YR5")) || ((labels[x] == "CEBQ_FAv_YR5") & (labels[y] == "Bodpod_fatp_YR5")))) {
-                            if (is.na(pval) || (pval >= alpha)) {
-                                cat(paste0("\n\n"))                                
-                                print("Checking expected dependence")
-                                print("--------------------------------- Bodpod_fatp_YR5 and CEBQ_FAv_YR5 ---------------------------------")
-                                print(paste0("Complete rows to test: ", n_complete_rows))
-                                print(paste0("x: ", labels[x], " y: ", labels[y]))
-                                print("nbrs: ")
-                                print(labels[nbrs[S]])
-                                print(paste0("pval: ", pval))
-                            }
-                        }
-
-
 
                         if (verbose) {
                             cat(
-                                "x=", x, " y=", y, " S=", nbrs[S],
+                                "x=", labels[x], " y=", labels[y], " S=", labels[nbrs[S]],
                                 ": pval =", pval, "\n"
                             )
                         }
@@ -316,6 +394,27 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                         if (pval >= alpha) { # if pval is greater than alpha, remove the edge. I.e keep H0: x and y are independent | S
                             G[x, y] <- G[y, x] <- FALSE
                             sepset[[x]][[y]] <- nbrs[S]
+                            if (returnRemovedEdges) {
+                                sepNodes <- nbrs[S]
+                                sepLabels <- if (length(nbrs[S]) == 0L) {
+                                    character(0)
+                                } else {
+                                    labels[nbrs[S]]
+                                }
+                                removedEdges[[length(removedEdges) + 1L]] <- data.frame(
+                                    node_1 = labels[x],
+                                    node_2 = labels[y],
+                                    n_used = as.integer(n_complete_rows),
+                                    min_cell = as.integer(sparsity[["min_cell"]]),
+                                    n_table_cells = as.integer(sparsity[["n_table_cells"]]),
+                                    sep_between = sepset_sep_between(x, y, sepNodes, G),
+                                    alpha = alpha,
+                                    ord = ord,
+                                    pval = pval,
+                                    sepset = paste(sepLabels, collapse = ","),
+                                    stringsAsFactors = FALSE
+                                )
+                            }
                             break # exit repeat loop (?)
                         } else {
                             # chose ord elements from the neighbours as the new S
@@ -343,9 +442,45 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
         colnames(G) <- rownames(G) <- labels
         as(G, "graphNEL")
     }
-    new("pcAlgo",
+    out <- new("pcAlgo",
         graph = Gobject, call = cl, n = integer(0),
         max.ord = as.integer(ord - 1), n.edgetests = n.edgetests,
         sepset = sepset, pMax = pMax, zMin = matrix(NA, 1, 1)
     )
+    if (returnRemovedEdges) {
+        removedEdgesDf <- if (length(removedEdges) > 0L) {
+            do.call(rbind, removedEdges)
+        } else {
+            data.frame(
+                node_1 = character(0),
+                node_2 = character(0),
+                n_used = integer(0),
+                min_cell = integer(0),
+                n_table_cells = integer(0),
+                sep_between = logical(0),
+                sep_between_final = logical(0),
+                alpha = numeric(0),
+                ord = integer(0),
+                pval = numeric(0),
+                sepset = character(0),
+                stringsAsFactors = FALSE
+            )
+        }
+        if (nrow(removedEdgesDf) > 0L) {
+            removedEdgesDf$sep_between_final <- vapply(
+                seq_len(nrow(removedEdgesDf)),
+                function(i) {
+                    x <- match(removedEdgesDf$node_1[i], labels)
+                    y <- match(removedEdgesDf$node_2[i], labels)
+                    sepNodes <- parse_sepset_nodes(removedEdgesDf$sepset[i], labels)
+                    sepset_sep_between(x, y, sepNodes, G)
+                },
+                logical(1)
+            )
+        }
+        attr(out, "removedEdges") <- removedEdgesDf
+        # Keep a copy on sepset to survive wrappers that rebuild pcAlgo objects.
+        attr(out@sepset, "removedEdges") <- removedEdgesDf
+    }
+    out
 }

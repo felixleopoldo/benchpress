@@ -15,7 +15,8 @@
                 "type": "string",
                 "enum": [
                     "sem-bic-score",
-                    "bdeu-score"
+                    "bdeu-score",
+                    "cg-bic-score"
                 ]
             },
             "useBes": {
@@ -30,7 +31,8 @@
                 "type": "string",
                 "enum": [
                     "continuous",
-                    "discrete"
+                    "discrete",
+                    "mixed"
                 ]
             },
             "samplePrior": {
@@ -56,6 +58,7 @@
             "id",
             "useBes",
             "allowInternalRandomess",
+            "numCategories",
             "score",
             "datatype",
             "samplePrior",
@@ -68,6 +71,7 @@
                 "id": "boss-bic",
                 "score": "sem-bic-score",
                 "datatype": "continuous",
+                "numCategories": null,
                 "samplePrior": null,
                 "useBes": true,
                 "allowInternalRandomess": false,
@@ -84,6 +88,7 @@
                 "id": "boss-bdeu",
                 "score": "bdeu-score",
                 "datatype": "discrete",
+                "numCategories": null,
                 "samplePrior": [
                     1,
                     10,

@@ -1,32 +1,18 @@
 ﻿{
   "tiers": [
-    ["1", "6"],
-    ["3", "4"],
-    ["5", "2", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+    ["age", "sex", "ethnicity"],
+    ["med_hypert_onb", "med_diabetes_onb", "med_hyperl_onb","bmi"],
+    ["sri_mean", "tst_sd_mean"],
+    ["sys", "dias", "pwvmean"]
   ],
-  "context_tier":["3", "7"],
   "tier_settings": {
     "forbid_within_tiers": false,
-    "can_only_cause_next_tier": true
+    "can_only_cause_next_tier": false
   },
-  "context_all":[]
-  ,
-  "forbidden_groups": [
-    {
-      "cause": ["5"],
-      "effect": ["3"]
-    }
-  ],
-  "required_groups": [
-    {
-      "cause": ["1"],
-      "effect": ["6"]
-    }
-  ],
   "forbidden_edges": [
-    ["5", "7"]
-  ],
-  "required_edges": [
-    ["8", "9"]
+    ["sex", "ethnicity"],
+    ["ethnicity", "sex"],
+    ["ethnicity", "age"],
+    ["age", "ethnicity"]
   ]
 }
