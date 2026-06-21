@@ -18,11 +18,7 @@
                 "graph_true_stats": false,
                 "ggally_ggpairs": false,
                 "graph_estimation": {
-                    "ids": [
-                        "tdpc",
-                        "m-tdpc"
-
-                    ],
+                    "ids": [],
                     "convert_to": [],
                     "graphs": true,
                     "adjmats": false,
@@ -43,7 +39,7 @@
                         "m-tdpc",
                         "mvpc",
                         "m-tdic",
-                        "tdic"
+                        "TD-IC"
                     ]
                 },
                 "mcmc_traj_plots": [],
@@ -345,7 +341,7 @@
                     "mgraph": true
                 },
                 {
-                    "id": "tdic",
+                    "id": "TD-IC",
                     "alpha": [
                         0.01,
                         0.05,
