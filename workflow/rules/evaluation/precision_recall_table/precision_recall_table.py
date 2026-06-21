@@ -49,31 +49,38 @@ for s in range(n_sim_setups):
 
         tp_vals = []
         fp_vals = []
+
+        # P denominator: all true non-R edges (fixed, regardless of algorithm output)
+        true_non_r = [col for col in true_cols if not col.startswith("R_")]
+        true_non_r_idx = [true_cols.index(col) for col in true_non_r]
+        true_non_r_sub = true_mat[np.ix_(true_non_r_idx, true_non_r_idx)]
+        n_true = true_non_r_sub.sum()
+        n_false = true_non_r_sub.shape[0] * (true_non_r_sub.shape[0] - 1) - n_true
+
         for f in cell_files:
             if os.stat(f).st_size == 0:
                 continue
             df = pd.read_csv(f)
             df.index = df.columns
-            # Align to common non-R_* nodes — exclude missingness indicators
-            # so algorithms that output R_* nodes are compared fairly with those that don't
-            common = [col for col in true_cols
-                      if col in df.columns and not col.startswith("R_")]
+            # Common non-R nodes: present in both true and estimated graph
+            common = [col for col in true_non_r if col in df.columns]
             if len(common) == 0:
                 continue
-            common_idx = [true_cols.index(col) for col in common]
+            common_in_non_r = [true_non_r.index(col) for col in common]
             est = np.clip(df.loc[common, common].values, 0, 1)
-            true_sub = true_mat[np.ix_(common_idx, common_idx)]
-            n_true_common = true_sub.sum()
-            n_false_common = (1 - true_sub).sum() - true_sub.shape[0]
+            true_sub = true_non_r_sub[np.ix_(common_in_non_r, common_in_non_r)]
 
+            # TP: correctly found edges among common nodes
+            # Missing nodes (not in estimated graph) count as false negatives (tp += 0)
             tp = (est * true_sub).sum()
+            # FP: estimated edges among common nodes that are not true edges
             fp = (est * (1 - true_sub)).sum()
             fp -= np.diag(est * (1 - true_sub)).sum()  # exclude diagonal
 
-            if n_true_common > 0:
-                tp_vals.append(tp / n_true_common)
-            if n_false_common > 0:
-                fp_vals.append(fp / n_false_common)
+            if n_true > 0:
+                tp_vals.append(tp / n_true)
+            if n_false > 0:
+                fp_vals.append(fp / n_false)
 
         tp_table[s, c] = np.mean(tp_vals) if tp_vals else 0.0
         fp_table[s, c] = np.mean(fp_vals) if fp_vals else 0.0
