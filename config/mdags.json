@@ -3,15 +3,60 @@
         {
             "title": "missingness_structures",
             "data": [
-		                {
-                    "graph_id": "missing_tu1b.csv",
+                {
+                    "graph_id": "missing_y.csv",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [
                         1,
                         50
                     ]
-		},
+                },
+                {
+                    "graph_id": "missing_lambda.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+                },
+                {
+                    "graph_id": "missing_fork2.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+                },
+                {
+                    "graph_id": "missing_indep.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+                },
+                {
+                    "graph_id": "missing_indep2.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+                },
+                {
+                    "graph_id": "missing_w_2star.csv",
+                    "parameters_id": "discbn",
+                    "data_id": "disc_missing",
+                    "seed_range": [
+                        1,
+                        50
+                    ]
+                },
                 {
                     "graph_id": "missing_w.csv",
                     "parameters_id": "discbn",
@@ -31,7 +76,7 @@
                     ]
                 },
                 {
-                    "graph_id": "missing_w_2star.csv",
+                    "graph_id": "missing_y2.csv",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [
@@ -40,7 +85,7 @@
                     ]
                 },
                 {
-                    "graph_id": "missing_lambda.csv",
+                    "graph_id": "missing_tu1b.csv",
                     "parameters_id": "discbn",
                     "data_id": "disc_missing",
                     "seed_range": [
@@ -65,24 +110,6 @@
                         1,
                         50
                     ]
-                },
-                {
-                    "graph_id": "missing_y.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        50
-                    ]
-                },
-                {
-                    "graph_id": "missing_y2.csv",
-                    "parameters_id": "discbn",
-                    "data_id": "disc_missing",
-                    "seed_range": [
-                        1,
-                        50
-                    ]
                 }
             ],
             "evaluation": {
@@ -91,15 +118,14 @@
                 "ggally_ggpairs": false,
                 "average_adjmat": {
                     "ids": [
-                        "m-tdic",
-                        "tdic",
-                        "tdpc",
-                        "m-tdpc",
-                        "pc",
-                        "grasp",
+                        "mTD-IC",
+                        "TD-IC",
+                        "TD-PC",
+                        "mTD-PC",
+                        "PC",
+                        "GRaSP",
                         "MVPC",
-            			"tdpc-mice",
-			            "m-tdpc-mice"
+                        "TD-PC-MI"
                     ],
                     "annot": true,
                     "show_cbar": false,
@@ -114,24 +140,52 @@
                 },
                 "edge_frequency_table": {
                     "ids": [
-                        "m-tdic",
-                        "tdic",
-                        "tdpc",
-                        "m-tdpc",
-                        "pc",
-                        "grasp",
+                        "mTD-IC",
+                        "TD-IC",
+                        "TD-PC",
+                        "mTD-PC",
+                        "PC",
+                        "GRaSP",
                         "MVPC",
-            			"tdpc-mice"
+                        "TD-PC-MI"
                     ],
-                    "edges": [["X", "Y"]],
-        		    "row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
-		            "latex_row_labels": ["\\cite{tu_causal_2019}",
-                    "Figure~\\ref{fig:m_w}", "Figure~\\ref{fig:m_w_new}",
-                    "Figure~\\ref{fig:m_w2_star}", "Figure~\\ref{fig:m_u2}",
-                    "Figure~\\ref{fig:m_x}", "Figure~\\ref{fig:m_xo}", "Figure~\\ref{fig:m_y}", "Figure~\\ref{fig:m_y2}"],
+                    "edges": [
+                        [
+                            "X",
+                            "Y"
+                        ]
+                    ],
+                    "row_labels": [
+                        "Y",
+                        "U2",
+                        "O",
+                        "Lambda",
+                        "Trivial",
+                        "W2star",
+                        "W",
+                        "Wstar",
+                        "Y2",
+                        "Tu et al.",
+                        "X",
+                        "Xo"
+                    ],
+                    "latex_row_labels": [
+                        "Figure~\\ref{fig:m_y}",
+                        "Figure~\\ref{fig:m_u2}",
+                        "Figure~\\ref{fig:m_o}",
+                        "Figure~\\ref{fig:m_lambda}",
+                        "Figure~\\ref{fig:m_trivial}",
+                        "Figure~\\ref{fig:m_w2_star}",
+                        "Figure~\\ref{fig:m_w}",
+                        "Figure~\\ref{fig:m_w_new}",
+                        "Figure~\\ref{fig:m_y2}",
+                        "Figure~\\ref{fig:tu_et_al}",
+                        "Figure~\\ref{fig:m_x}",
+                        "Figure~\\ref{fig:m_xo}"
+                    ],
                     "graph_type": "skeleton",
                     "annot": true,
-		            "latex": true,
+                    "latex": true,
                     "annot_fontsize": 6,
                     "show_title": true,
                     "show_cbar": true,
@@ -140,23 +194,47 @@
                 },
                 "precision_recall_table": {
                     "ids": [
-                        "m-tdic",
-                        "tdic",
-                        "tdpc",
-                        "m-tdpc",
-                        "pc",
-                        "grasp",
-                        "mvpc",
-                        "tdpc-mice"
+                        "mTD-IC",
+                        "TD-IC",
+                        "TD-PC",
+                        "mTD-PC",
+                        "PC",
+                        "GRaSP",
+                        "MVPC",
+                        "TD-PC-MI"
                     ],
-                    "graph_type": ["skeleton"],
-        		    "row_labels": ["Tu et al.","W", "Wstar", "W2star", "Lambda", "X", "Xo", "Y", "Y2"],
-		            "latex_row_labels": [
-                        "\\cite{tu_causal_2019}",
-                    "Figure~\\ref{fig:m_w}", "Figure~\\ref{fig:m_w_new}",
-                    "Figure~\\ref{fig:m_w2_star}", "Figure~\\ref{fig:m_u2}",
-                    "Figure~\\ref{fig:m_x}", "Figure~\\ref{fig:m_xo}", "Figure~\\ref{fig:m_y}", "Figure~\\ref{fig:m_y2}"],
-                          "annot": true,
+                    "graph_type": [
+                        "skeleton"
+                    ],
+                    "row_labels": [
+                        "Y",
+                        "U2",
+                        "O",
+                        "Lambda",
+                        "Trivial",
+                        "W2star",
+                        "W",
+                        "Wstar",
+                        "Y2",
+                        "Tu et al.",
+                        "X",
+                        "Xo"
+                    ],
+                    "latex_row_labels": [
+                        "Figure~\\ref{fig:m_y}",
+                        "Figure~\\ref{fig:m_u2}",
+                        "Figure~\\ref{fig:m_o}",
+                        "Figure~\\ref{fig:m_lambda}",
+                        "Figure~\\ref{fig:m_trivial}",
+                        "Figure~\\ref{fig:m_w2_star}",
+                        "Figure~\\ref{fig:m_w}",
+                        "Figure~\\ref{fig:m_w_new}",
+                        "Figure~\\ref{fig:m_y2}",
+                        "Figure~\\ref{fig:tu_et_al}",
+                        "Figure~\\ref{fig:m_x}",
+                        "Figure~\\ref{fig:m_xo}"
+                    ],
+                    "annot": true,
                     "annot_fontsize": 6,
                     "show_title": true,
                     "show_cbar": true,
@@ -279,7 +357,7 @@
         "structure_learning_algorithms": {
             "tetrad_grasp": [
                 {
-                    "id": "grasp",
+                    "id": "GRaSP",
                     "score": "bdeu-score",
                     "datatype": "discrete",
                     "test": "chi-square-test",
@@ -312,7 +390,7 @@
             ],
             "pcalg_pc": [
                 {
-                    "id": "pc",
+                    "id": "PC",
                     "alpha": [
                         0.05
                     ],
@@ -353,7 +431,7 @@
             ],
             "bips_tpc": [
                 {
-                    "id": "tdpc",
+                    "id": "TD-PC",
                     "alpha": [
                         0.05
                     ],
@@ -369,7 +447,7 @@
                     "edgeConstraints": null
                 },
                 {
-                    "id": "tdpc-mice",
+                    "id": "TD-PC-MI",
                     "alpha": [
                         0.05
                     ],
@@ -387,7 +465,7 @@
             ],
             "tpc": [
                 {
-                    "id": "m-tdpc",
+                    "id": "mTD-PC",
                     "alpha": [
                         0.05
                     ],
@@ -404,7 +482,7 @@
                     "edgeConstraints": null
                 },
                 {
-                    "id": "m-tdpc-mice",
+                    "id": "mTD-PC-MI",
                     "alpha": [
                         0.05
                     ],
@@ -423,7 +501,7 @@
             ],
             "tdic": [
                 {
-                    "id": "m-tdic",
+                    "id": "mTD-IC",
                     "alpha": [
                         0.05
                     ],
@@ -440,7 +518,7 @@
                     "mgraph": true
                 },
                 {
-                    "id": "tdic",
+                    "id": "TD-IC",
                     "alpha": [
                         0.05
                     ],
