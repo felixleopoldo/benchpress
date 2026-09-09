@@ -29,7 +29,7 @@ GOBNILP (GOBNILP)
    * - Language
      - `C <https://en.wikipedia.org/wiki/C_(programming_language)>`__
    * - Docs
-     - `here <https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf>`__
+     - `here <https://bitbucket.org/jamescussens/gobnilp/downloads/manual.pdf>`__
    * - Paper
      - :footcite:t:`https://doi.org/10.48550/arxiv.1202.3713`, :footcite:t:`BARTLETT2017258`, :footcite:t:`cussens2017bayesian`, :footcite:t:`pmlr-v138-cussens20a`
    * - Graph type

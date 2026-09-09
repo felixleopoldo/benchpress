@@ -6,7 +6,7 @@
         "title": "GOBNILP",
         "url": "https://bitbucket.org/jamescussens/gobnilp"
     },
-    "docs_url": "https://www.cs.york.ac.uk/aig/sw/gobnilp/manual.pdf",
+    "docs_url": "https://bitbucket.org/jamescussens/gobnilp/downloads/manual.pdf",
     "papers": [
         {
             "title": "M. Bartlett and J. Cussens (2017). Integer linear programming for the bayesian network structure learning problem.",
