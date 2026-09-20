@@ -1,0 +1,56 @@
+{
+    "title": "breaking_bad",
+    "description": "List of Breaking Bad objects",
+    "type": "array",
+    "items": {
+        "title": "Breaking Bad item",
+        "description": "A single Breaking Bad run: a baseline score-based search algorithm (GES, XGES, OPS, or LGES) optionally perturbed with the paper's component-wise parent-deletion operator.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "Algorithm identifier",
+                "type": "string"
+            },
+            "baseline": {
+                "description": "Base search algorithm. Note: \"boss\" is not supported here -- it requires an initial graph produced separately by BOSS/Tetrad, which this module does not provide (see RESTORE_GUIDE.md Section 7 in LGAI-Research/breaking-bad).",
+                "type": "string",
+                "enum": ["ges", "xges", "ops", "lges-safe", "lges-cons"]
+            },
+            "variant": {
+                "description": "Perturbation strategy. 0: no perturbation (vanilla baseline). 1: single-edge deletion (XGES-style). 2: component-wise parent deletion (the paper's proposed DP operator, Algorithm 2). 3: three-phase scheduled perturbation (DP -> single-node -> single-edge).",
+                "$ref": "#/$defs/flexnonnegint",
+                "examples": [0, 1, 2, 3]
+            },
+            "alpha": {
+                "description": "Penalty parameter (lambda) for the Gaussian BIC score.",
+                "$ref": "#/$defs/flexnonnegnum"
+            },
+            "delete_op": {
+                "description": "Hub node deletion option passed to Search's --delete_op flag.",
+                "$ref": "#/$defs/flexnonnegint"
+            },
+            "timeout": {
+                "$ref": "#/$defs/flexnonnegnumnull"
+            }
+        },
+        "required": [
+            "id",
+            "baseline",
+            "variant",
+            "alpha",
+            "delete_op",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "breakingbad-ges-dp",
+                "baseline": "ges",
+                "variant": 2,
+                "alpha": 2.0,
+                "delete_op": 1,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

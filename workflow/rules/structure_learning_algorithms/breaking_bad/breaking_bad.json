@@ -1,0 +1,161 @@
+{
+  "benchmark_setup": [
+    {
+      "title": "breaking_bad_test",
+      "data": [
+        {
+          "graph_id": "avneigs4_p20",
+          "parameters_id": "SEM",
+          "data_id": "standardized",
+          "seed_range": [
+            1,
+            5
+          ]
+        },
+        {
+          "graph_id": "avneigs4_p80",
+          "parameters_id": "SEM",
+          "data_id": "standardized_p80",
+          "seed_range": [
+            1,
+            5
+          ]
+        }
+      ],
+      "evaluation": {
+        "benchmarks": {
+          "filename_prefix": "breaking_bad_test/",
+          "show_seed": false,
+          "errorbar": true,
+          "errorbarh": false,
+          "scatter": true,
+          "path": true,
+          "text": false,
+          "ids": [
+            "breakingbad-ges-dp",
+            "breakingbad-ges-vanilla",
+            "fges-sem-bic"
+          ]
+        },
+        "graph_true_plots": true,
+        "graph_true_stats": true,
+        "ggally_ggpairs": true,
+        "graph_estimation": {
+          "ids": [
+            "breakingbad-ges-dp",
+            "breakingbad-ges-vanilla",
+            "fges-sem-bic"
+          ],
+          "convert_to": [],
+          "graphs": true,
+          "adjmats": true,
+          "diffplots": true,
+          "csvs": true,
+          "graphvizcompare": true
+        },
+        "mcmc_traj_plots": [],
+        "mcmc_heatmaps": [],
+        "mcmc_autocorr_plots": []
+      }
+    }
+  ],
+  "resources": {
+    "data": {
+      "iid": [
+        {
+          "id": "standardized",
+          "standardized": true,
+          "n": [
+            300
+          ]
+        },
+        {
+          "id": "standardized_p80",
+          "standardized": true,
+          "n": [
+            640
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "pcalg_randdag": [
+        {
+          "id": "avneigs4_p20",
+          "max_parents": 5,
+          "n": 20,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        },
+        {
+          "id": "avneigs4_p80",
+          "max_parents": 5,
+          "n": 80,
+          "d": 4,
+          "par1": null,
+          "par2": null,
+          "method": "er",
+          "DAG": true
+        }
+      ]
+    },
+    "parameters": {
+      "sem_params": [
+        {
+          "id": "SEM",
+          "min": 0.25,
+          "max": 1
+        }
+      ]
+    },
+    "structure_learning_algorithms": {
+      "breaking_bad": [
+        {
+          "id": "breakingbad-ges-dp",
+          "baseline": "ges",
+          "variant": 2,
+          "alpha": [
+            1.5,
+            2.0,
+            4.0
+          ],
+          "delete_op": 1,
+          "timeout": null
+        },
+        {
+          "id": "breakingbad-ges-vanilla",
+          "baseline": "ges",
+          "variant": 0,
+          "alpha": [
+            1.5,
+            2.0,
+            4.0
+          ],
+          "delete_op": 1,
+          "timeout": null
+        }
+      ],
+      "tetrad_fges": [
+        {
+          "id": "fges-sem-bic",
+          "faithfulnessAssumed": true,
+          "score": "sem-bic-score",
+          "datatype": "continuous",
+          "samplePrior": 1,
+          "semBicStructurePrior": 1,
+          "penaltyDiscount": [
+            0.75,
+            0.8,
+            1,
+            1.5
+          ],
+          "timeout": null,
+          "edgeConstraints": null
+        }
+      ]
+    }
+  }
+}
