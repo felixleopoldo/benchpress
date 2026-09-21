@@ -13,11 +13,8 @@ rule:
         ntests = alg_output_ntests_path(module_name)
     container:
         # Built from LGAI-Research/breaking-bad (see the Dockerfile in this
-        # directory for how). Points at a local .sif (gitignored -- see
-        # resources/local_images/), not pushed anywhere since it embeds
-        # XGES's BICScorer.h/.cpp, which XGES itself does not license for
-        # redistribution. Swap for "docker://bpimages/breaking-bad:<tag>"
-        # once/if a private or otherwise appropriate registry copy exists.
-        "resources/local_images/breaking-bad_09d621a.sif"
+        # directory for how). Tag matches the breaking-bad commit it was
+        # built against.
+        "docker://bpimages/breaking_bad:09d621a"
     script:
         "script.py"
