@@ -9,7 +9,7 @@
           "data_id": "standardized",
           "seed_range": [
             1,
-            5
+            20
           ]
         },
         {
@@ -18,13 +18,13 @@
           "data_id": "standardized_p80",
           "seed_range": [
             1,
-            5
+            20
           ]
         }
       ],
       "evaluation": {
         "benchmarks": {
-          "filename_prefix": "breaking_bad_test/",
+          "filename_prefix": "breaking_bad/",
           "show_seed": false,
           "errorbar": true,
           "errorbarh": false,
@@ -37,14 +37,11 @@
             "fges-sem-bic"
           ]
         },
-        "graph_true_plots": true,
-        "graph_true_stats": true,
-        "ggally_ggpairs": true,
+        "graph_true_plots": false,
+        "graph_true_stats": false,
+        "ggally_ggpairs": false,
         "graph_estimation": {
           "ids": [
-            "breakingbad-ges-dp",
-            "breakingbad-ges-vanilla",
-            "fges-sem-bic"
           ],
           "convert_to": [],
           "graphs": true,
