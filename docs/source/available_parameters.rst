@@ -13,6 +13,7 @@ Parameters
     parameters/bdgraph_rgwish
     parameters/bin_bn
     parameters/fixed_params
+    parameters/new_params
     parameters/sem_params
     parameters/trilearn_g_inv_wishart
     parameters/trilearn_hyper-dir
@@ -48,6 +49,12 @@ Make sure that the parameter module is compatible with the graph module you are 
      - 
      - 
      - :ref:`fixed_params` 
+   * - Some title
+     - 
+     - 
+     - 
+     - v0.0.1
+     - :ref:`new_params` 
    * - SEM parameters
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - `R <https://www.r-project.org/>`__

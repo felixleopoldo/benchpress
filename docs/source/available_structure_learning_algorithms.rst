@@ -16,6 +16,7 @@ Algorithms
     structure_learning_algorithms/rblip_asobs
     structure_learning_algorithms/bdgraph
     structure_learning_algorithms/tetrad_boss
+    structure_learning_algorithms/breaking_bad
     structure_learning_algorithms/gcastle_corl
     structure_learning_algorithms/athomas_jtsamplers
     structure_learning_algorithms/corr_thresh
@@ -138,6 +139,14 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - C, D
      - 
      - :ref:`Yes <edge_constraints>`
+     - 
+     - 
+   * - :ref:`Breaking Bad <breaking_bad>`
+     - `breaking-bad <https://github.com/LGAI-Research/breaking-bad>`__
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
+     - C
+     - 
+     - 
      - 
      - 
    * - :ref:`Chordal graph samplers <athomas_jtsamplers>`

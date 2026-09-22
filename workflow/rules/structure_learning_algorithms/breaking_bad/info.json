@@ -1,0 +1,23 @@
+{
+    "title": "Breaking Bad",
+    "title_full": "Breaking Bad: Component-Wise Parent Deletion for Score-Based Causal Discovery",
+    "version": "09d621a",
+    "package": {
+        "title": "breaking-bad",
+        "url": "https://github.com/LGAI-Research/breaking-bad"
+    },
+    "docs_url": "https://github.com/LGAI-Research/breaking-bad",
+    "outputs": "adjmat",
+    "graph_types": [
+        "CPDAG"
+    ],
+    "meta_description": "Score-based causal discovery with GES, XGES, OPS and LGES baselines, optionally perturbed by a component-wise parent-deletion operator within an Iterated Local Search framework.",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false,
+    "language": "Python"
+}

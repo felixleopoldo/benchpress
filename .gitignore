@@ -14,3 +14,4 @@ __pycache__
 workflow/schemas/tmp.config.schema.json
 .RData
 .Rhistory
+resources/local_images/
