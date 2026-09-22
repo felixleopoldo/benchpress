@@ -100,8 +100,8 @@ generated datasets, the workflow also includes a number of standard datasets and
 
 .. rubric:: News
 
-* 2026-09-22: Benchpress 2.14.0. Added the :ref:`breaking_bad` module, wrapping `LGAI-Research/breaking-bad <https://github.com/LGAI-Research/breaking-bad>`_'s component-wise parent-deletion operator for score-based causal discovery.
-* **2025-10-30**: Benchpress published in the `Journal of Statistical Software <https://www.jstatsoft.org/article/view/v114i12>`_.
+* **2026-09-22**: Benchpress 2.14.0. Added the :ref:`breaking_bad` causal discovery module, which introduces *parent deletion, a novel, simple, yet powerful operator for score-based causal discovery*. 
+* 2025-10-30: Benchpress published in the `Journal of Statistical Software <https://www.jstatsoft.org/article/view/v114i12>`_.
 * 2025-09-10: Benchpress 2.13.0. This version supports `Snakemake 9 <https://snakemake.readthedocs.io/en/stable/>`_.
 * 2024-12-26: Benchpress 2.12.0. This version introduces the :ref:`pyagrum` module, providing access to the `pyAgrum <https://agrum.gitlab.io/>`_ library's structure learning capabilities for discrete valued Bayesian networks. 
 * 2024-12-16: Benchpress 2.11.0. This version introduces the :ref:`bips_tpc` module, based on the temporal PC (`tPC <https://github.com/bips-hb/tpc>`_) and the `micd <https://github.com/bips-hb/micd>`_ package. It enables causal discovery through the PC algorithm allowing for :ref:`edge_constraints`, mixed data, and missing data handling. Thanks `Leibniz-Institut für Präventionsforschung und Epidemiologie – (BIPS GmbH)  <https://github.com/bips-hb>`_. 
