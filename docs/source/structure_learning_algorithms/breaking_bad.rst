@@ -25,15 +25,15 @@ Breaking Bad (breaking-bad)
    * - Package
      - `breaking-bad <https://github.com/LGAI-Research/breaking-bad>`__
    * - Version
-     - UAI2026
+     - 09d621a
    * - Language
-     - C++
+     - `Python <https://www.python.org/>`__
    * - Docs
      - `here <https://github.com/LGAI-Research/breaking-bad>`__
    * - Paper
      - :footcite:t:`park2026breaking`, :footcite:t:`nazaret2021extremely`
    * - Graph type
-     - PDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
    * - MCMC
      - No
    * - Edge constraints
@@ -77,8 +77,8 @@ Command:
 
     snakemake --cores all --use-singularity --configfile workflow/rules/structure_learning_algorithms/breaking_bad/breaking_bad.json
 
-:numref:`bbtime20`, :numref:`bbf120` and :numref:`bbtpr20` show timings, F1 (pattern graph), and
-FP/P vs. TP/P (pattern graph) for GES-DP (``breakingbad-ges-dp``), vanilla GES
+:numref:`bbtime20`, :numref:`bbf120` and :numref:`bbtpr20` show timings, F1, and
+FP/P vs. TP/P for GES-DP (``breakingbad-ges-dp``), vanilla GES
 (``breakingbad-ges-vanilla``), and FGES (``fges-sem-bic``), based on 20 realisations of a 20-variable
 random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`bbtime80`,
 :numref:`bbf180` and :numref:`bbtpr80` show the same for an 80-variable version of the same setup
@@ -105,32 +105,32 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
 
     * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
               :width: 320
-              :alt: F1 (pattern graph), 20 variables
+              :alt: F1, 20 variables
               :name: bbf120
 
-              F1 (pattern graph), 20 variables.
+              F1, 20 variables.
       - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p80.png
               :width: 320
-              :alt: F1 (pattern graph), 80 variables
+              :alt: F1, 80 variables
               :name: bbf180
 
-              F1 (pattern graph), 80 variables.
+              F1, 80 variables.
 
 .. list-table::
     :widths: 50 50
 
     * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png
               :width: 320
-              :alt: FP/P vs. TP/P (pattern graph), 20 variables
+              :alt: FP/P vs. TP/P, 20 variables
               :name: bbtpr20
 
-              FP/P vs. TP/P (pattern graph), 20 variables.
+              FP/P vs. TP/P, 20 variables.
       - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p80.png
               :width: 320
-              :alt: FP/P vs. TP/P (pattern graph), 80 variables
+              :alt: FP/P vs. TP/P, 80 variables
               :name: bbtpr80
 
-              FP/P vs. TP/P (pattern graph), 80 variables.
+              FP/P vs. TP/P, 80 variables.
 
 
 .. rubric:: Some fields described 
