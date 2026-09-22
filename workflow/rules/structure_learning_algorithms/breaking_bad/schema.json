@@ -12,21 +12,21 @@
                 "type": "string"
             },
             "baseline": {
-                "description": "Base search algorithm. Note: \"boss\" is not supported here -- it requires an initial graph produced separately by BOSS/Tetrad, which this module does not provide (see RESTORE_GUIDE.md Section 7 in LGAI-Research/breaking-bad).",
+                "description": "Base search algorithm (ges, xges, ops, lges-safe, or lges-cons). Note: \"boss\" is not supported here -- it requires an initial graph produced beforehand by BOSS (part of the Tetrad library), a separate, external step this module does not cover.",
                 "type": "string",
                 "enum": ["ges", "xges", "ops", "lges-safe", "lges-cons"]
             },
             "variant": {
-                "description": "Perturbation strategy. 0: no perturbation (vanilla baseline). 1: single-edge deletion (XGES-style). 2: component-wise parent deletion (the paper's proposed DP operator, Algorithm 2). 3: three-phase scheduled perturbation (DP -> single-node -> single-edge).",
+                "description": "Perturbation strategy on top of the baseline, 0 through 3, where 2 is the paper's proposed component-wise parent-deletion (DP) operator (Algorithm 2) and 3 additionally schedules single-node and single-edge phases after it. 0: no perturbation (vanilla baseline). 1: single-edge deletion (XGES-style). 2: component-wise parent deletion (DP). 3: three-phase scheduled perturbation (DP -> single-node -> single-edge).",
                 "$ref": "#/$defs/flexnonnegint",
                 "examples": [0, 1, 2, 3]
             },
             "alpha": {
-                "description": "Penalty parameter (lambda) for the Gaussian BIC score.",
+                "description": "The BIC penalty parameter (lambda) for the Gaussian BIC score.",
                 "$ref": "#/$defs/flexnonnegnum"
             },
             "delete_op": {
-                "description": "Hub node deletion option passed to Search's --delete_op flag.",
+                "description": "Passed straight through to Search's --delete_op flag.",
                 "$ref": "#/$defs/flexnonnegint"
             },
             "timeout": {

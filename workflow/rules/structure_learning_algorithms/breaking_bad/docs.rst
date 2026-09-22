@@ -8,12 +8,6 @@ adapted from XGES :footcite:t:`nazaret2021extremely`.
 This module wraps the ``Search`` C++ binary from
 `LGAI-Research/breaking-bad <https://github.com/LGAI-Research/breaking-bad>`_.
 
-``baseline`` selects the base search algorithm (``ges``, ``xges``, ``ops``, ``lges-safe``, or
-``lges-cons``). ``variant`` selects the perturbation strategy on top of it, 0 through 3, where 2 is
-the paper's proposed component-wise parent-deletion (DP) operator (Algorithm 2) and 3 additionally
-schedules single-node and single-edge phases after it. ``alpha`` is the BIC penalty parameter, and
-``delete_op`` is passed straight through to ``Search --delete_op``.
-
 The ``boss`` baseline is **not** supported by this module: it requires an initial graph produced
 beforehand by BOSS (part of the Tetrad library), a separate, external step this module does not cover.
 
@@ -34,74 +28,50 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
 :numref:`bbf180` and :numref:`bbtpr80` show the same for an 80-variable version of the same setup
 (640 samples each).
 
-.. raw:: html
+.. list-table::
+    :widths: 50 50
 
-    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
+    * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p20.png
+              :width: 320
+              :alt: Timings, 20 variables
+              :name: bbtime20
 
-.. _bbtime20:
+              Timings, 20 variables.
+      - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p80.png
+              :width: 320
+              :alt: Timings, 80 variables
+              :name: bbtime80
 
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p20.png
-    :width: 320
-    :alt: Timings, 20 variables
+              Timings, 80 variables.
 
-    Timings, 20 variables.
+.. list-table::
+    :widths: 50 50
 
-.. _bbtime80:
+    * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
+              :width: 320
+              :alt: F1 (pattern graph), 20 variables
+              :name: bbf120
 
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p80.png
-    :width: 320
-    :alt: Timings, 80 variables
+              F1 (pattern graph), 20 variables.
+      - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p80.png
+              :width: 320
+              :alt: F1 (pattern graph), 80 variables
+              :name: bbf180
 
-    Timings, 80 variables.
+              F1 (pattern graph), 80 variables.
 
-.. raw:: html
+.. list-table::
+    :widths: 50 50
 
-    </div>
+    * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png
+              :width: 320
+              :alt: FP/P vs. TP/P (pattern graph), 20 variables
+              :name: bbtpr20
 
-.. raw:: html
+              FP/P vs. TP/P (pattern graph), 20 variables.
+      - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p80.png
+              :width: 320
+              :alt: FP/P vs. TP/P (pattern graph), 80 variables
+              :name: bbtpr80
 
-    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
-
-.. _bbf120:
-
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
-    :width: 320
-    :alt: F1 (pattern graph), 20 variables
-
-    F1 (pattern graph), 20 variables.
-
-.. _bbf180:
-
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p80.png
-    :width: 320
-    :alt: F1 (pattern graph), 80 variables
-
-    F1 (pattern graph), 80 variables.
-
-.. raw:: html
-
-    </div>
-
-.. raw:: html
-
-    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
-
-.. _bbtpr20:
-
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png
-    :width: 320
-    :alt: FP/P vs. TP/P (pattern graph), 20 variables
-
-    FP/P vs. TP/P (pattern graph), 20 variables.
-
-.. _bbtpr80:
-
-.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p80.png
-    :width: 320
-    :alt: FP/P vs. TP/P (pattern graph), 80 variables
-
-    FP/P vs. TP/P (pattern graph), 80 variables.
-
-.. raw:: html
-
-    </div>
+              FP/P vs. TP/P (pattern graph), 80 variables.
