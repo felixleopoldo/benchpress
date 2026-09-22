@@ -29,7 +29,7 @@ Breaking Bad (breaking-bad)
    * - Language
      - C++
    * - Docs
-     - `here <https://openreview.net/forum?id=oxdOxCxgCu>`__
+     - `here <https://github.com/LGAI-Research/breaking-bad>`__
    * - Paper
      - :footcite:t:`park2026breaking`, :footcite:t:`nazaret2021extremely`
    * - Graph type

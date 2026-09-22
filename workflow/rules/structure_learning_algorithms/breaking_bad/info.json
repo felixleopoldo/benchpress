@@ -6,7 +6,7 @@
         "title": "breaking-bad",
         "url": "https://github.com/LGAI-Research/breaking-bad"
     },
-    "docs_url": "https://openreview.net/forum?id=oxdOxCxgCu",
+    "docs_url": "https://github.com/LGAI-Research/breaking-bad",
     "outputs": "adjmat",
     "graph_types": [
         "PDAG"
