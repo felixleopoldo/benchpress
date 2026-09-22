@@ -1,9 +1,9 @@
-Breaking Bad :cite:`park2026breaking` proposes **parent deletion**, a perturbation operator for
+Breaking Bad :footcite:t:`park2026breaking` proposes **parent deletion**, a perturbation operator for
 score-based causal discovery that deletes all incoming edges of a target node (or of an entire
 undirected component) at once. It is combined with existing score-based search methods -- GES,
-XGES :cite:`nazaret2021extremely`, OPS, and `LGES <https://github.com/CausalAILab/lges>`_ -- inside
-an Iterated Local Search (ILS) framework, and scores candidate DAGs with a Gaussian BIC score adapted
-from XGES :cite:`nazaret2021extremely`.
+XGES :footcite:t:`nazaret2021extremely`, OPS, and `LGES <https://github.com/CausalAILab/lges>`_ --
+inside an Iterated Local Search (ILS) framework, and scores candidate DAGs with a Gaussian BIC score
+adapted from XGES :footcite:t:`nazaret2021extremely`.
 
 This module wraps the ``Search`` C++ binary from
 `LGAI-Research/breaking-bad <https://github.com/LGAI-Research/breaking-bad>`_.
@@ -34,56 +34,74 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
 :numref:`bbf180` and :numref:`bbtpr80` show the same for an 80-variable version of the same setup
 (640 samples each).
 
-.. list-table::
-    :widths: 50 50
+.. raw:: html
 
-    * - .. _bbtime20:
+    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p20.png
-              :width: 320
-              :alt: Timings, 20 variables
+.. _bbtime20:
 
-              Timings, 20 variables.
-      - .. _bbtime80:
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p20.png
+    :width: 320
+    :alt: Timings, 20 variables
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p80.png
-              :width: 320
-              :alt: Timings, 80 variables
+    Timings, 20 variables.
 
-              Timings, 80 variables.
+.. _bbtime80:
 
-.. list-table::
-    :widths: 50 50
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p80.png
+    :width: 320
+    :alt: Timings, 80 variables
 
-    * - .. _bbf120:
+    Timings, 80 variables.
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
-              :width: 320
-              :alt: F1 (pattern graph), 20 variables
+.. raw:: html
 
-              F1 (pattern graph), 20 variables.
-      - .. _bbf180:
+    </div>
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p80.png
-              :width: 320
-              :alt: F1 (pattern graph), 80 variables
+.. raw:: html
 
-              F1 (pattern graph), 80 variables.
+    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
 
-.. list-table::
-    :widths: 50 50
+.. _bbf120:
 
-    * - .. _bbtpr20:
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
+    :width: 320
+    :alt: F1 (pattern graph), 20 variables
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png
-              :width: 320
-              :alt: FP/P vs. TP/P (pattern graph), 20 variables
+    F1 (pattern graph), 20 variables.
 
-              FP/P vs. TP/P (pattern graph), 20 variables.
-      - .. _bbtpr80:
+.. _bbf180:
 
-          .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p80.png
-              :width: 320
-              :alt: FP/P vs. TP/P (pattern graph), 80 variables
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p80.png
+    :width: 320
+    :alt: F1 (pattern graph), 80 variables
 
-              FP/P vs. TP/P (pattern graph), 80 variables.
+    F1 (pattern graph), 80 variables.
+
+.. raw:: html
+
+    </div>
+
+.. raw:: html
+
+    <div style="display: flex; gap: 1em; flex-wrap: wrap;">
+
+.. _bbtpr20:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png
+    :width: 320
+    :alt: FP/P vs. TP/P (pattern graph), 20 variables
+
+    FP/P vs. TP/P (pattern graph), 20 variables.
+
+.. _bbtpr80:
+
+.. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p80.png
+    :width: 320
+    :alt: FP/P vs. TP/P (pattern graph), 80 variables
+
+    FP/P vs. TP/P (pattern graph), 80 variables.
+
+.. raw:: html
+
+    </div>
