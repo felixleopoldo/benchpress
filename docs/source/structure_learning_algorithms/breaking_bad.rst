@@ -1,3 +1,59 @@
+
+
+
+:og:description: Score-based causal discovery with GES, XGES, OPS and LGES baselines, optionally perturbed by a component-wise parent-deletion operator within an Iterated Local Search framework.
+:og:image:alt: Benchpress logo
+:og:sitename: Benchpress causal discovery platform
+:og:title: Breaking Bad (breaking-bad)
+ 
+.. meta::
+    :title: Breaking Bad (breaking-bad)
+    :description: Score-based causal discovery with GES, XGES, OPS and LGES baselines, optionally perturbed by a component-wise parent-deletion operator within an Iterated Local Search framework.
+
+
+.. _breaking_bad: 
+
+Breaking Bad (breaking-bad) 
+****************************
+
+
+
+.. list-table:: 
+
+   * - Module name
+     - `breaking_bad <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/breaking_bad>`__
+   * - Package
+     - `breaking-bad <https://github.com/LGAI-Research/breaking-bad>`__
+   * - Version
+     - UAI2026
+   * - Language
+     - C++
+   * - Docs
+     - `here <https://openreview.net/forum?id=oxdOxCxgCu>`__
+   * - Paper
+     - :footcite:t:`park2026breaking`, :footcite:t:`nazaret2021extremely`
+   * - Graph type
+     - PDAG
+   * - MCMC
+     - No
+   * - Edge constraints
+     - No
+   * - Data type
+     - C
+   * - Data missingness
+     - 
+   * - Intervention type
+     - 
+   * - Docker 
+     - `bpimages/breaking_bad:09d621a <https://hub.docker.com/r/bpimages/breaking_bad/tags>`__
+
+
+
+
+Breaking Bad: Component-Wise Parent Deletion for Score-Based Causal Discovery 
+---------------------------------------------------------------------------------
+
+
 Breaking Bad :cite:`park2026breaking` proposes **parent deletion**, a perturbation operator for
 score-based causal discovery that deletes all incoming edges of a target node (or of an entire
 undirected component) at once. It is combined with existing score-based search methods -- GES,
@@ -87,3 +143,31 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
               :alt: FP/P vs. TP/P (pattern graph), 80 variables
 
               FP/P vs. TP/P (pattern graph), 80 variables.
+
+
+.. rubric:: Some fields described 
+* ``alpha`` Penalty parameter (lambda) for the Gaussian BIC score. 
+* ``baseline`` Base search algorithm. Note: "boss" is not supported here -- it requires an initial graph produced separately by BOSS/Tetrad, which this module does not provide (see RESTORE_GUIDE.md Section 7 in LGAI-Research/breaking-bad). 
+* ``delete_op`` Hub node deletion option passed to Search's --delete_op flag. 
+* ``variant`` Perturbation strategy. 0: no perturbation (vanilla baseline). 1: single-edge deletion (XGES-style). 2: component-wise parent deletion (the paper's proposed DP operator, Algorithm 2). 3: three-phase scheduled perturbation (DP -> single-node -> single-edge). 
+
+
+.. rubric:: Example JSON
+
+
+.. code-block:: json
+
+
+    [
+      {
+        "id": "breakingbad-ges-dp",
+        "baseline": "ges",
+        "variant": 2,
+        "alpha": 2.0,
+        "delete_op": 1,
+        "timeout": null
+      }
+    ]
+
+.. footbibliography::
+
