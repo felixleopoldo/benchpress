@@ -84,7 +84,18 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
 :numref:`bbf180` and :numref:`bbtpr80` show the same for an 80-variable version of the same setup
 (640 samples each).
 
+.. raw:: html
+
+    <style>
+    table.figure-table, table.figure-table tr, table.figure-table td,
+    table.figure-table tr:nth-child(2n-1) td {
+        background-color: white !important;
+        border: none !important;
+    }
+    </style>
+
 .. list-table::
+    :class: figure-table
     :widths: 50 50
 
     * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/time_p20.png
@@ -101,6 +112,7 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
               Timings, 80 variables.
 
 .. list-table::
+    :class: figure-table
     :widths: 50 50
 
     * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/f1_pattern_p20.png
@@ -117,6 +129,7 @@ random Gaussian SEM with an average indegree of 4 (300 samples each). :numref:`b
               F1, 80 variables.
 
 .. list-table::
+    :class: figure-table
     :widths: 50 50
 
     * - .. figure:: ../../../workflow/rules/structure_learning_algorithms/breaking_bad/images/tprfpr_pattern_p20.png

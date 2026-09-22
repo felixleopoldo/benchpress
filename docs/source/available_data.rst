@@ -14,6 +14,7 @@ Data
     data/gcastle_iidsim
     data/iid
     data/mvpc_gen_data
+    data/new_data
 The available data modules are listed below.
 
 
@@ -47,6 +48,11 @@ The available data modules are listed below.
      - `MVPC <https://github.com/felixleopoldo/MVPC>`__
      - d901361
      - :ref:`mvpc_gen_data` 
+   * - Some title
+     - 
+     - 
+     - v0.0.1
+     - :ref:`new_data` 
 
 
 

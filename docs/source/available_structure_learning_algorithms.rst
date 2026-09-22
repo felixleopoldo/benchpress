@@ -143,7 +143,7 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - 
    * - :ref:`Breaking Bad <breaking_bad>`
      - `breaking-bad <https://github.com/LGAI-Research/breaking-bad>`__
-     - PDAG
+     - `CPDAG <https://search.r-project.org/CRAN/refmans/pcalg/html/dag2cpdag.html>`__
      - C
      - 
      - 
