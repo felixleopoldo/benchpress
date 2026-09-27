@@ -260,7 +260,7 @@
                         0.05,
                         0.1
                     ],
-                    "corrMethod": "gaussCItest.permc",
+                    "corrMethod": "binCItest.permc",
                     "NAdelete": true,
                     "mmax": "Inf",
                     "u2pd": "relaxed",
@@ -270,7 +270,7 @@
                     "solveconfl": true,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest.td",
+                    "indepTest": "binCItest.td",
                     "timeout": null,
                     "edgeConstraints": null
                 }

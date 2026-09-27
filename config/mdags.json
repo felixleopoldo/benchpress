@@ -414,7 +414,7 @@
                     "alpha": [
                         0.05
                     ],
-                    "corrMethod": "gaussCItest.permc",
+                    "corrMethod": "binCItest.permc",
                     "NAdelete": true,
                     "mmax": 4,
                     "u2pd": "relaxed",
@@ -424,7 +424,7 @@
                     "solveconfl": true,
                     "numCores": 1,
                     "verbose": false,
-                    "indepTest": "gaussCItest.td",
+                    "indepTest": "binCItest.td",
                     "timeout": null,
                     "edgeConstraints": null
                 }
