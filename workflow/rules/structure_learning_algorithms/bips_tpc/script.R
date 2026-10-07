@@ -1,5 +1,7 @@
 source("workflow/scripts/utils/helpers.R")
 source("workflow/rules/structure_learning_algorithms/bips_tpc/R/ci_test_diagnostics.R")
+source("workflow/rules/structure_learning_algorithms/bips_tpc/R/pooled_mixed_ci.R")
+source("workflow/rules/structure_learning_algorithms/bips_tpc/R/flexCItwd_pooled.R")
 
 library(RBGL)
 library(tpc)
@@ -23,8 +25,8 @@ print_removed_edges <- function(pc_fit) {
     }
 
     cols <- c(
-        "node_1", "node_2", "n_used", "min_cell", "n_table_cells",
-        "sep_between", "sep_between_final", "pval", "ord", "sepset", "alpha"
+        "node_1", "node_2", "sepset", "test_used", "n_used", "min_cell", "n_table_cells",
+        "sep_between", "sep_between_final", "pval", "ord", "alpha"
     )
     cols <- cols[cols %in% names(removed_edges)]
     pretty_tbl <- removed_edges[, cols, drop = FALSE]
@@ -33,6 +35,7 @@ print_removed_edges <- function(pc_fit) {
     display_names <- c(
         node_1 = "node_1",
         node_2 = "node_2",
+        test_used = "test_used",
         n_used = "n_used",
         min_cell = "min_cell",
         n_table_cells = "n_table_cells",
@@ -76,6 +79,7 @@ wrapper <- function() {
 
     data <- read.csv(filename_data, check.names = FALSE)
 
+
     tiers <- NULL
     context.all <- NULL
     context.tier <- NULL
@@ -113,7 +117,7 @@ wrapper <- function() {
     } else if (snakemake@wildcards[["indepTest"]] == "gaussCItest") {
         n <- dim(data)[1]
         suffStat <- list(C = cor(data), n = n)
-    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest")) {
+    } else if (snakemake@wildcards[["indepTest"]] %in% c("gaussCItwd", "mixCItwd", "flexCItwd", "flexCItest", "flexCItwd_pooled")) {
      #   data <- data[-1, ]
         # creaate factor variables from the data
         # to see if a column is a factor. Check it it contains more than 10 unique values
@@ -122,6 +126,7 @@ wrapper <- function() {
                 data[, i] <- as.factor(data[, i])
             }
         }
+        
 
         suffStat <- data
         if (snakemake@wildcards[["indepTest"]] == "flexCItest") {            

@@ -33,7 +33,8 @@
                 "disMItest",
                 "flexMItest",
                 "flexCItwd",
-                "flexCItest"
+                "flexCItest",
+                "flexCItwd_pooled"
               ]
             }
           },
@@ -52,7 +53,8 @@
               "disMItest",
               "flexMItest",
               "flexCItwd",
-              "flexCItest"
+              "flexCItest",
+              "flexCItwd_pooled"
             ]
           }
         ]

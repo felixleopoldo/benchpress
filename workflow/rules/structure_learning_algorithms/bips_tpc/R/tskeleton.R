@@ -52,9 +52,12 @@
 #' sets (sepset) that led to edge removals and several other parameters.
 #' If \code{returnRemovedEdges = TRUE}, the returned object has an attribute
 #' \code{"removedEdges"} with columns \code{node_1}, \code{node_2},
-#' \code{n_used}, \code{min_cell}, \code{n_table_cells}, \code{sep_between},
-#' \code{sep_between_final},
+#' \code{test_used}, \code{n_used}, \code{min_cell}, \code{n_table_cells},
+#' \code{sep_between}, \code{sep_between_final},
 #' \code{alpha}, \code{ord}, \code{pval}, and \code{sepset}.
+#' \code{test_used} records which CI test ran: \code{"gauss"} (all-continuous),
+#' \code{"disc_gsq"} (all-discrete G-square), or \code{"mixed_lm_f"} (mixed,
+#' pooled lm partial F-test).
 #' @param requireSepBetween If \code{TRUE}, only test and accept separating sets
 #' \code{S} for which every node lies on some simple \code{x}-\code{y} path in the
 #' current skeleton (see \code{sep_between}). Set \code{FALSE} to restore standard PC.
@@ -241,6 +244,29 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
         }
         match(strsplit(sepset_str, ",", fixed = TRUE)[[1]], node_labels)
     }
+    # Fallback when indepTest does not tag its result with "test_used":
+    # infer the test from the column types of x, y, S (mirrors flexCItwd_pooled).
+    infer_test_used <- function(suffStat, x, y, S) {
+        is_disc <- function(col) is.factor(col) || is.logical(col)
+        idx <- c(x, y, S)
+        if (is.data.frame(suffStat)) {
+            disc <- vapply(idx, function(j) is_disc(suffStat[[j]]), logical(1))
+            if (all(!disc)) {
+                return("gauss")
+            }
+            if (all(disc)) {
+                return("disc_gsq")
+            }
+            return("mixed_lm_f")
+        }
+        if (is.list(suffStat) && !is.null(suffStat$dm)) {
+            return("disc_gsq")
+        }
+        if (is.list(suffStat) && !is.null(suffStat$C)) {
+            return("gauss")
+        }
+        NA_character_
+    }
     # G is a (pxp)-matrix (each entry represents an edge and each edge is
     # represented twice); at the beginning, all elements are TRUE except for the
     # diagonal
@@ -374,7 +400,12 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
 
                         }
                         pval <- indepTest(x, y, nbrs[S], suffStat)
-   
+                        # Which CI test actually ran (tagged by the test fn,
+                        # else inferred from column types).
+                        test_used <- attr(pval, "test_used")
+                        if (is.null(test_used) || is.na(test_used)) {
+                            test_used <- infer_test_used(suffStat, x, y, nbrs[S])
+                        }
 
                         if (verbose) {
                             cat(
@@ -404,6 +435,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
                                 removedEdges[[length(removedEdges) + 1L]] <- data.frame(
                                     node_1 = labels[x],
                                     node_2 = labels[y],
+                                    test_used = as.character(test_used),
                                     n_used = as.integer(n_complete_rows),
                                     min_cell = as.integer(sparsity[["min_cell"]]),
                                     n_table_cells = as.integer(sparsity[["n_table_cells"]]),
@@ -454,6 +486,7 @@ tskeleton <- function(suffStat, indepTest, alpha, labels, p,
             data.frame(
                 node_1 = character(0),
                 node_2 = character(0),
+                test_used = character(0),
                 n_used = integer(0),
                 min_cell = integer(0),
                 n_table_cells = integer(0),
