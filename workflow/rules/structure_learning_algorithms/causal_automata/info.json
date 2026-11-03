@@ -1,0 +1,25 @@
+{
+    "title": "causal-automata",
+    "title_full": "Causal Automata: GPU-native causal discovery via synchronous cellular automata in JAX",
+    "version": "0.3.6",
+    "package": {
+        "title": "causal-automata",
+        "url": "https://pypi.org/project/causal-automata/"
+    },
+    "docs_url": "https://pypi.org/project/causal-automata/",
+    "outputs": [
+        "adjmat"
+    ],
+    "graph_types": [
+        "DAG"
+    ],
+    "meta_description": "JAX-accelerated cellular automaton engine for causal discovery over continuous observational data.",
+    "data_types": [
+        "continuous"
+    ],
+    "data_missingness": [],
+    "intervention_types": [],
+    "mcmc": false,
+    "edge_constraints": false,
+    "language": "Python"
+}

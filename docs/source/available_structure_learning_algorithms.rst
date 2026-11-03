@@ -38,6 +38,7 @@ Algorithms
     structure_learning_algorithms/tetrad_grasp
     structure_learning_algorithms/bnlearn_gs
     structure_learning_algorithms/causaldag_gsp
+    structure_learning_algorithms/causal_automata
     structure_learning_algorithms/grues
     structure_learning_algorithms/gcastle_grandag
     structure_learning_algorithms/bnlearn_h2pc
@@ -295,6 +296,14 @@ Modules for MCMC algorithms can be used seamlessly with the other modules. Howev
      - 
    * - :ref:`GSP <causaldag_gsp>`
      - `CausalDAG <https://github.com/uhlerlab/causaldag>`__
+     - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
+     - C
+     - 
+     - 
+     - 
+     - 
+   * - :ref:`causal-automata <causal_automata>`
+     - `causal-automata <https://pypi.org/project/causal-automata/>`__
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
      - C
      - 
