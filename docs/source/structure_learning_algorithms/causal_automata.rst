@@ -31,7 +31,7 @@ causal-automata
    * - Docs
      - `here <https://pypi.org/project/causal-automata/>`__
    * - Paper
-     - :footcite:t:`yamagiwa2025causalautomata`
+     - :footcite:t:`yamagiwa2026causalautomata`
    * - Graph type
      - `DAG <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__
    * - MCMC
@@ -53,7 +53,7 @@ causal-automata
 Causal Automata: GPU-native causal discovery via synchronous cellular automata in JAX 
 ----------------------------------------------------------------------------------------
 
-causal-automata :footcite:t:`yamagiwa2025causalautomata` is a JAX-accelerated
+causal-automata :footcite:t:`yamagiwa2026causalautomata` is a JAX-accelerated
 cellular automaton engine for causal discovery. It evolves an adjacency matrix
 and a node elevation field under synchronous gravity / V-well / death / birth
 updates, compiled with XLA for CPU or GPU backends.

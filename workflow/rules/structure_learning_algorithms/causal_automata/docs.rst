@@ -1,4 +1,4 @@
-causal-automata :footcite:t:`yamagiwa2025causalautomata` is a JAX-accelerated
+causal-automata :footcite:t:`yamagiwa2026causalautomata` is a JAX-accelerated
 cellular automaton engine for causal discovery. It evolves an adjacency matrix
 and a node elevation field under synchronous gravity / V-well / death / birth
 updates, compiled with XLA for CPU or GPU backends.
