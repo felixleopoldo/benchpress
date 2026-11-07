@@ -264,8 +264,8 @@ However, you may either extend or copy one of the existing ones.
 
 
 
-Local development 
-************************************************
+Local development
+########################
 
 The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox:1.0 <https://hub.docker.com/repository/docker/bpimages/sandbox:1.0/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
 If you instead prefer to run a module using software installed on your local computer, you should change the ``container`` field in *rule.smk* to *None*, *i.e.*
@@ -279,7 +279,7 @@ If you instead prefer to run a module using software installed on your local com
 .. _build_images:
 
 Build and push images
-************************************************
+########################
 
 Each module's container image is built with `build_images.sh <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/build_images.sh>`__, located in *workflow/envs*. It automatically resolves which Dockerfile to use: if the module has its own *Dockerfile* (e.g. *workflow/rules/structure_learning_algorithms/<module_name>/Dockerfile*), that is used; otherwise it falls back to *Dockerfile.<module_name>* in *workflow/envs*.
 
@@ -448,7 +448,7 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
             myalg()
     
 Updating the documentation
-******************************************
+########################
 
 When adding a new module you may also update the documentation.
 First install the requirements by 
