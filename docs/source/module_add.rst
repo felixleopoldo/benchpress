@@ -272,80 +272,45 @@ If you instead prefer to run a module using software installed on your local com
 
 .. code-block:: python
 
-    container: 
+    container:
         None
 
 
-.. _build_images:
-
-Build and push images
-########################
-
-Each module's container image is built with `build_images.sh <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/build_images.sh>`__, located in *workflow/envs*. It automatically resolves which Dockerfile to use: if the module has its own *Dockerfile* (e.g. *workflow/rules/structure_learning_algorithms/<module_name>/Dockerfile*), that is used; otherwise it falls back to *Dockerfile.<module_name>* in *workflow/envs*.
-
-Docker images are architecture-specific, so to make a module work on both ``amd64`` and ``arm64`` machines, the image needs to be built once on each architecture (e.g. an Intel/AMD machine and an Apple Silicon Mac, or using Docker's cross-build support). Running *build_images.sh* on each architecture produces two separate, arch-tagged images; once both have been pushed, the script combines them into a single joint multi-arch manifest, so that one plain tag (no arch suffix) transparently contains both architectures and resolves to the right one automatically when pulled.
-
-Building and pushing requires push access to the target Docker Hub repository; log in first with
-
-.. prompt:: bash
-
-    docker login
-
-To build and push an image, run from the *workflow/envs* directory
-
-.. prompt:: bash
-
-    cd workflow/envs
-    ./build_images.sh -a <amd64|arm64> -r <docker_repo> -i <module_name> -v <version>
-
-For example, to build the `causal_automata <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causal_automata>`__ module's image for Apple Silicon
-
-.. prompt:: bash
-
-    ./build_images.sh -a arm64 -r bpimages -i causal_automata -v 0.3.6
-
-This builds, tags, and pushes the image as ``bpimages/causal_automata:0.3.6-arm64``. The optional ``-f`` flag forces a rebuild without the Docker layer cache (``--no-cache``).
-
-Since images are architecture-specific, both the ``amd64`` and ``arm64`` variants need to be built and pushed (typically from a machine of each architecture, or using Docker's cross-build support) before the architecture-agnostic tag works. *build_images.sh* automatically creates and pushes a `multi-arch manifest <https://docs.docker.com/engine/reference/commandline/manifest/>`__ under the plain version tag at the end of every run, combining whichever ``-amd64``/``-arm64`` tags already exist — so once you've run the script once per architecture, pulling e.g. ``bpimages/causal_automata:0.3.6`` (no arch suffix) automatically resolves to the right image for whichever architecture is pulling it. No separate manifest step is needed.
-
-The *rule.smk* ``container:`` field should reference this plain, architecture-agnostic tag (e.g. ``docker://bpimages/causal_automata:0.3.6``), not an architecture-specific one, so the module works regardless of which machine runs it. An architecture-specific tag is still useful for local testing on your own machine before both variants have been built and pushed.
-
-
 Integrating existing project
-#############################################
+---------------------------------------------
 
 You may have an existing (possibly version controlled by e.g. `git <https://git-scm.com/>`_) project that you want to integrate into Benchpress.
 Below we show how this is done in `Python <https://www.python.org/>`_ and `R <https://www.r-project.org/>`_.
 
 
 Python
--------
+~~~~~~~~~
 
 If you for example have a `Python <https://www.python.org/>`_ project in your local folder */path/to/my/local/python_lib*, you may simply add the folder to the systems library path variable as:
 
 .. .. literalinclude:: ../../resources/module_templates/new_alg/script.py
 ..    :language: python
-..    :name: 
+..    :name:
 ..    :caption: Line to uncomment in script.py from new_alg.
 ..    :lines: 3
 
 
 .. code-block:: python
-   
+
    sys.path.append("/path/to/my/local/python_lib")
 
 R
--------
+~~~~~~~~~
 
 If you for example have an `R <https://www.r-project.org/>`_ project in your local folder */path/to/my/local/r/code.R*, you may source the code as:
 
 .. code-block:: r
 
-    source("/path/to/my/local/r/code.R")    
+    source("/path/to/my/local/r/code.R")
 
 
 Using Conda environments
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Conda <https://conda.io/projects/conda/en/latest/user-guide/getting-started.html>`_ is an open-source platform-independent package management system widely used in the data science community.
 If your local projects requirements are installed on a conda environment, called *e.g.* *myenv*, you may specify that the in *rule.smk* as
@@ -367,7 +332,7 @@ To use conda, the extra *use-conda* flag has to be passed to snakemake when runn
 .. _update_docs:
 
 Example
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The rule and `Python <https://www.python.org/>`_ script for a structure learning module, using the local conda environment *myenv* may look like :numref:`conda_rule` and :numref:`local_script`.
 
@@ -446,9 +411,45 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
                     snakemake.output["ntests"],
                     start):
             myalg()
-    
-Updating the documentation
+
+
+.. _build_images:
+
+Build and push images
 ########################
+
+Each module's container image is built with `build_images.sh <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/build_images.sh>`__, located in *workflow/envs*. It automatically resolves which Dockerfile to use: if the module has its own *Dockerfile* (e.g. *workflow/rules/structure_learning_algorithms/<module_name>/Dockerfile*), that is used; otherwise it falls back to *Dockerfile.<module_name>* in *workflow/envs*.
+
+Docker images are architecture-specific, so to make a module work on both ``amd64`` and ``arm64`` machines, the image needs to be built once on each architecture (e.g. an Intel/AMD machine and an Apple Silicon Mac, or using Docker's cross-build support). Running *build_images.sh* on each architecture produces two separate, arch-tagged images; once both have been pushed, the script combines them into a single joint multi-arch manifest, so that one plain tag (no arch suffix) transparently contains both architectures and resolves to the right one automatically when pulled.
+
+Building and pushing requires push access to the target Docker Hub repository; log in first with
+
+.. prompt:: bash
+
+    docker login
+
+To build and push an image, run from the *workflow/envs* directory
+
+.. prompt:: bash
+
+    cd workflow/envs
+    ./build_images.sh -a <amd64|arm64> -r <docker_repo> -i <module_name> -v <version>
+
+For example, to build the `causal_automata <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causal_automata>`__ module's image for Apple Silicon
+
+.. prompt:: bash
+
+    ./build_images.sh -a arm64 -r bpimages -i causal_automata -v 0.3.6
+
+This builds, tags, and pushes the image as ``bpimages/causal_automata:0.3.6-arm64``. The optional ``-f`` flag forces a rebuild without the Docker layer cache (``--no-cache``).
+
+Since images are architecture-specific, both the ``amd64`` and ``arm64`` variants need to be built and pushed (typically from a machine of each architecture, or using Docker's cross-build support) before the architecture-agnostic tag works. *build_images.sh* automatically creates and pushes a `multi-arch manifest <https://docs.docker.com/engine/reference/commandline/manifest/>`__ under the plain version tag at the end of every run, combining whichever ``-amd64``/``-arm64`` tags already exist — so once you've run the script once per architecture, pulling e.g. ``bpimages/causal_automata:0.3.6`` (no arch suffix) automatically resolves to the right image for whichever architecture is pulling it. No separate manifest step is needed.
+
+The *rule.smk* ``container:`` field should reference this plain, architecture-agnostic tag (e.g. ``docker://bpimages/causal_automata:0.3.6``), not an architecture-specific one, so the module works regardless of which machine runs it. An architecture-specific tag is still useful for local testing on your own machine before both variants have been built and pushed.
+
+
+Updating the documentation
+###############################
 
 When adding a new module you may also update the documentation.
 First install the requirements by 
