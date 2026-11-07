@@ -265,7 +265,7 @@ However, you may either extend or copy one of the existing ones.
 
 
 Local development
-########################
+*******************
 
 The above examples show how to create new modules from scratch, and the code runs by default in a container based on the image `docker://bpimages/sandbox:1.0 <https://hub.docker.com/repository/docker/bpimages/sandbox:1.0/general>`_, where the required packages for the template modules are installed, see the `Dockerfile <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/Dockerfile.sandbox>`_ for details.
 If you instead prefer to run a module using software installed on your local computer, you should change the ``container`` field in *rule.smk* to *None*, *i.e.*
@@ -277,14 +277,14 @@ If you instead prefer to run a module using software installed on your local com
 
 
 Integrating existing project
----------------------------------------------
+################################################
 
 You may have an existing (possibly version controlled by e.g. `git <https://git-scm.com/>`_) project that you want to integrate into Benchpress.
 Below we show how this is done in `Python <https://www.python.org/>`_ and `R <https://www.r-project.org/>`_.
 
 
 Python
-~~~~~~~~~
+-------
 
 If you for example have a `Python <https://www.python.org/>`_ project in your local folder */path/to/my/local/python_lib*, you may simply add the folder to the systems library path variable as:
 
@@ -300,7 +300,7 @@ If you for example have a `Python <https://www.python.org/>`_ project in your lo
    sys.path.append("/path/to/my/local/python_lib")
 
 R
-~~~~~~~~~
+-------
 
 If you for example have an `R <https://www.r-project.org/>`_ project in your local folder */path/to/my/local/r/code.R*, you may source the code as:
 
@@ -310,7 +310,7 @@ If you for example have an `R <https://www.r-project.org/>`_ project in your loc
 
 
 Using Conda environments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 `Conda <https://conda.io/projects/conda/en/latest/user-guide/getting-started.html>`_ is an open-source platform-independent package management system widely used in the data science community.
 If your local projects requirements are installed on a conda environment, called *e.g.* *myenv*, you may specify that the in *rule.smk* as
@@ -332,7 +332,7 @@ To use conda, the extra *use-conda* flag has to be passed to snakemake when runn
 .. _update_docs:
 
 Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 The rule and `Python <https://www.python.org/>`_ script for a structure learning module, using the local conda environment *myenv* may look like :numref:`conda_rule` and :numref:`local_script`.
 
@@ -416,7 +416,7 @@ The rule and `Python <https://www.python.org/>`_ script for a structure learning
 .. _build_images:
 
 Build and push images
-########################
+*************************
 
 Each module's container image is built with `build_images.sh <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/build_images.sh>`__, located in *workflow/envs*. It automatically resolves which Dockerfile to use: if the module has its own *Dockerfile* (e.g. *workflow/rules/structure_learning_algorithms/<module_name>/Dockerfile*), that is used; otherwise it falls back to *Dockerfile.<module_name>* in *workflow/envs*.
 
@@ -449,7 +449,7 @@ The *rule.smk* ``container:`` field should reference this plain, architecture-ag
 
 
 Updating the documentation
-###############################
+*****************************
 
 When adding a new module you may also update the documentation.
 First install the requirements by 
