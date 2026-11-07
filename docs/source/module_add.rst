@@ -20,7 +20,7 @@ However, to get something working, you only have to consider altering *script.R*
 * *rule.smk* contains a `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ with the required fields on the proper form.  
   The template modules run by default in a container based on the Docker image "bpimages/sandbox:1.0". 
   To force local execution this should be changed to None, in which case you need to make sure that the used dependencies are installed locally.  
-  On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version* (see e.g. `this tutorial <https://www.techrepublic.com/article/how-to-build-a-docker-image-and-upload-it-to-docker-hub/>`_ for building and pushing images to `Docker Hub <https://hub.docker.com/>`__). 
+  On deployment (pushing to Benchpress repository) however, this field should be a `Docker Hub <https://hub.docker.com/>`__ URI on the form *docker://username/image:version* — see :ref:`build_images` for how to build and push images using Benchpress's own *build_images.sh* script (or e.g. `this tutorial <https://www.techrepublic.com/article/how-to-build-a-docker-image-and-upload-it-to-docker-hub/>`_ for the generic process).
 * *script.R* contains an `R <https://www.r-project.org/>`_-script that is called by the rule. The variables available in the script are generated both from the `Snakemake rule <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#>`_ and the `JSON <https://www.json.org/json-en.html>`_ object for the module file (from the *wildcards* dict). See the `Snakemake documentation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#external-scripts>`__ for further details on how to access variables in scripts. Note that the values are passed as strings and might have to be converted to suit your specific script.
 * *schema.json* is a `JSON schema <https://json-schema.org/>`_  for the module. On deployment, you should alter this to restrict the fields for the `JSON <https://www.json.org/json-en.html>`_ file.
 * *info.json* is a `JSON <https://www.json.org/json-en.html>`_ file to be parsed when :ref:`update_docs`.
@@ -274,6 +274,41 @@ If you instead prefer to run a module using software installed on your local com
 
     container: 
         None
+
+
+.. _build_images:
+
+Build and push images
+************************************************
+
+Each module's container image is built with `build_images.sh <https://github.com/felixleopoldo/benchpress/blob/master/workflow/envs/build_images.sh>`__, located in *workflow/envs*. It automatically resolves which Dockerfile to use: if the module has its own *Dockerfile* (e.g. *workflow/rules/structure_learning_algorithms/<module_name>/Dockerfile*), that is used; otherwise it falls back to *Dockerfile.<module_name>* in *workflow/envs*.
+
+Docker images are architecture-specific, so to make a module work on both ``amd64`` and ``arm64`` machines, the image needs to be built once on each architecture (e.g. an Intel/AMD machine and an Apple Silicon Mac, or using Docker's cross-build support). Running *build_images.sh* on each architecture produces two separate, arch-tagged images; once both have been pushed, the script combines them into a single joint multi-arch manifest, so that one plain tag (no arch suffix) transparently contains both architectures and resolves to the right one automatically when pulled.
+
+Building and pushing requires push access to the target Docker Hub repository; log in first with
+
+.. prompt:: bash
+
+    docker login
+
+To build and push an image, run from the *workflow/envs* directory
+
+.. prompt:: bash
+
+    cd workflow/envs
+    ./build_images.sh -a <amd64|arm64> -r <docker_repo> -i <module_name> -v <version>
+
+For example, to build the `causal_automata <https://github.com/felixleopoldo/benchpress/tree/master/workflow/rules/structure_learning_algorithms/causal_automata>`__ module's image for Apple Silicon
+
+.. prompt:: bash
+
+    ./build_images.sh -a arm64 -r bpimages -i causal_automata -v 0.3.6
+
+This builds, tags, and pushes the image as ``bpimages/causal_automata:0.3.6-arm64``. The optional ``-f`` flag forces a rebuild without the Docker layer cache (``--no-cache``).
+
+Since images are architecture-specific, both the ``amd64`` and ``arm64`` variants need to be built and pushed (typically from a machine of each architecture, or using Docker's cross-build support) before the architecture-agnostic tag works. *build_images.sh* automatically creates and pushes a `multi-arch manifest <https://docs.docker.com/engine/reference/commandline/manifest/>`__ under the plain version tag at the end of every run, combining whichever ``-amd64``/``-arm64`` tags already exist — so once you've run the script once per architecture, pulling e.g. ``bpimages/causal_automata:0.3.6`` (no arch suffix) automatically resolves to the right image for whichever architecture is pulling it. No separate manifest step is needed.
+
+The *rule.smk* ``container:`` field should reference this plain, architecture-agnostic tag (e.g. ``docker://bpimages/causal_automata:0.3.6``), not an architecture-specific one, so the module works regardless of which machine runs it. An architecture-specific tag is still useful for local testing on your own machine before both variants have been built and pushed.
 
 
 Integrating existing project
