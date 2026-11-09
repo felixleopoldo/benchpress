@@ -1,0 +1,92 @@
+{
+    "title": "causal_automata",
+    "description": "List of causal_automata objects. Package: https://pypi.org/project/causal-automata/",
+    "type": "array",
+    "items": {
+        "title": "causal-automata",
+        "description": "JAX-accelerated cellular automaton causal discovery (causal-automata). Parameters map to CausalAutomaton.fit / causal_automata.run. null death/birth/skeleton thresholds enable Fisher-z calibration from n_samples.",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "Algorithm identifier used in benchmark_setup evaluation ids.",
+                "type": "string"
+            },
+            "ticks": {
+                "description": "Number of synchronous CA ticks (static for XLA).",
+                "$ref": "#/$defs/flexnonnegint"
+            },
+            "k": {
+                "description": "Conditioning-set size for death/birth partial correlations. null uses the package default_conditioning_k(n).",
+                "anyOf": [
+                    {
+                        "type": "null"
+                    },
+                    {
+                        "$ref": "#/$defs/flexnonnegint"
+                    }
+                ]
+            },
+            "learning_rate": {
+                "description": "Elevation learning rate.",
+                "$ref": "#/$defs/flexprob"
+            },
+            "threshold_death": {
+                "description": "Partial-correlation threshold for edge death. null = Fisher-z from n_samples and alpha.",
+                "$ref": "#/$defs/flexprobnull"
+            },
+            "threshold_birth": {
+                "description": "Partial-correlation threshold for edge birth. null = 1.2 * calibrated death threshold.",
+                "$ref": "#/$defs/flexprobnull"
+            },
+            "skeleton_threshold": {
+                "description": "Absolute correlation threshold for the initial undirected skeleton. null = package default (aligned with calibrated Fisher-z birth threshold via CausalAutomaton.fit).",
+                "$ref": "#/$defs/flexprobnull"
+            },
+            "alpha": {
+                "description": "Two-sided significance level for Fisher-z threshold calibration when death/birth are null (default 0.01).",
+                "$ref": "#/$defs/flexprob"
+            },
+            "multihop": {
+                "description": "Enable 2-hop gravity pulls.",
+                "type": "boolean"
+            },
+            "fuzzy": {
+                "description": "Keep continuous edge weights during ticks; binarize only at the end.",
+                "type": "boolean"
+            },
+            "timeout": {
+                "$ref": "#/$defs/flexnonnegnumnull"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id",
+            "ticks",
+            "k",
+            "learning_rate",
+            "threshold_death",
+            "threshold_birth",
+            "skeleton_threshold",
+            "alpha",
+            "multihop",
+            "fuzzy",
+            "timeout"
+        ],
+        "examples": [
+            {
+                "id": "causal_automata",
+                "ticks": 100,
+                "k": null,
+                "learning_rate": 0.1,
+                "threshold_death": null,
+                "threshold_birth": null,
+                "skeleton_threshold": null,
+                "alpha": 0.01,
+                "multihop": false,
+                "fuzzy": false,
+                "timeout": null
+            }
+        ]
+    },
+    "uniqueItems": true
+}

@@ -1,0 +1,56 @@
+# syntax=docker/dockerfile:1
+#
+# Benchpress GPU image for causal-automata (JAX CUDA 12).
+#
+# Docker:
+#   docker build -t causal_automata:0.3.6-gpu \
+#     -f workflow/rules/structure_learning_algorithms/causal_automata/Dockerfile.gpu .
+#
+# Apptainer / Singularity on RunPod (from this directory):
+#   Do NOT pass Dockerfile.gpu to ``apptainer build`` — it is parsed as a
+#   Singularity def and fails on Docker ``FROM``. Use the sibling .def:
+#   apptainer build causal_automata_0.3.6_gpu.sif causal_automata_gpu.def
+#   apptainer exec --nv causal_automata_0.3.6_gpu.sif \
+#     python -c "import jax; print(jax.devices())"
+#
+# Or, where a Docker daemon is available:
+#   docker build -t causal_automata:0.3.6-gpu -f Dockerfile.gpu .
+#   apptainer build causal_automata_0.3.6_gpu.sif docker-daemon://causal_automata:0.3.6-gpu
+#
+# Then point rule.smk at the GPU image / bind the SIF into the Snakemake
+# singularity cache, and run with:
+#   snakemake --cores N --resources gpu=1 --use-singularity \
+#     --singularity-args="--nv" --configfile config/runpod_full.json
+
+FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    JAX_ENABLE_X64=true
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        software-properties-common \
+        build-essential \
+        curl \
+        ca-certificates \
+    && add-apt-repository -y ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        python3.11 \
+        python3.11-dev \
+        python3.11-venv \
+        python3-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -sf /usr/bin/python3.11 /usr/local/bin/python \
+    && ln -sf /usr/bin/python3.11 /usr/local/bin/python3 \
+    && python -m pip install --upgrade pip setuptools wheel
+
+# JAX CUDA 12 wheels + causal-automata (CPU extras unused; JAX provides GPU).
+RUN pip install --no-cache-dir \
+        "jax[cuda12]==0.4.38" \
+        "causal-automata==0.3.6" \
+        pandas
+
+RUN python -c "import importlib.metadata as m; print('causal-automata', m.version('causal-automata'))"
